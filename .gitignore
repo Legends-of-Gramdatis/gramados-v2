@@ -22,6 +22,8 @@ minerim/*
 plugins/*
 world/*
 
+!world/customnpcs/*
+
 *.txt
 *.log
 *.jar
