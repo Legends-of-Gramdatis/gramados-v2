@@ -20,9 +20,14 @@ Flan/*
 local/*
 minerim/*
 plugins/*
-world/*
+world/advancements/*
+world/apocalypse/*
+world/data/*
+world/DIM*
+world/region/*
 
-!world/customnpcs/scripts/*
+world/session.lock
+world/icon.png
 
 *.txt
 *.log
@@ -33,3 +38,5 @@ world/*
 *.json
 *.properties
 *.cfg
+*.dat
+*.dat_old
