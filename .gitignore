@@ -10,7 +10,6 @@
 config/*
 crash-reports/*
 CustomServerTools/*
-dynmap/*
 journeymap/*
 libraries/*
 logs/*
@@ -28,10 +27,16 @@ world/region/*
 world/stats/*
 world/customnpcs/playerdata/*
 world/customnpcs/scripts/*.json
+dynmap/*
 
 world/session.lock
 world/icon.png
 banned-ips.json
+banned-players.json
+ops.json
+usercache.json
+usernamecache.json
+whitelist.json
 
 *.txt
 *.log
@@ -43,8 +48,6 @@ banned-ips.json
 *.cfg
 *.dat
 *.dat_old
-banned-players.json
-ops.json
-usercache.json
-usernamecache.json
-whitelist.json
+*.old
+
+!dynmap/markers.yml

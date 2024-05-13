@@ -1,0 +1,1165 @@
+%YAML 1.1
+---
+icons:
+    furnitureshop:
+        label: furnitureshop
+    butchery:
+        label: butchery
+    junkyard:
+        label: junkyard
+    fuelpump_c:
+        label: fuelpump_c
+    tech_c:
+        label: tech_c
+    wholesale_c:
+        label: wholesale_c
+    bakery_c:
+        label: bakery_c
+    bar:
+        label: bar
+    trin_track:
+        label: trin_track
+    wholesale:
+        label: wholesale
+    junkyard_c:
+        label: junkyard_c
+    restaurant_c:
+        label: restaurant_c
+    port_c:
+        label: port_c
+    dealership_unu:
+        label: dealership_unu
+    butchery_c:
+        label: butchery_c
+    hotel:
+        label: hotel
+    florist:
+        label: florist
+    hardware_c:
+        label: hardware_c
+    hotel_c:
+        label: hotel_c
+    hardware:
+        label: hardware
+    tech:
+        label: tech
+    townhall:
+        label: townhall
+    townhall_c:
+        label: townhall_c
+    bakery:
+        label: bakery
+    bar_c:
+        label: bar_c
+    bank_c:
+        label: bank_c
+    restaurant:
+        label: restaurant
+    garage:
+        label: garage
+    post_office:
+        label: post_office
+    dealership:
+        label: dealership
+    dealership_c:
+        label: dealership_c
+    garage_c:
+        label: garage_c
+    airport:
+        label: airport
+    fuelpump:
+        label: fuelpump
+    airport_c:
+        label: airport_c
+    trin_main_track:
+        label: trin_main_track
+    dealership_ivl:
+        label: dealership_ivl
+    port:
+        label: port
+    gunshop:
+        label: gunshop
+    gbank:
+        label: gbank
+    post_office_c:
+        label: post_office_c
+    lumberjack:
+        label: lumberjack
+    autoparts:
+        label: autoparts
+    lumberjack_c:
+        label: lumberjack_c
+    dealership_trin:
+        label: dealership_trin
+    school:
+        label: school
+    school_c:
+        label: school_c
+sets:
+    Tech Shops:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Tech Shops
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1773.0
+                icon: tech
+                y: 75.0
+                z: 309.0
+                label: Hellotech Tech Shop
+        lines: {
+            }
+        layerprio: 0
+    Hardware Shops:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Hardware Shops
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -941.0
+                icon: hardware
+                y: 76.0
+                z: 246.0
+                label: Belli Hardware
+            marker_2:
+                world: world
+                markup: false
+                x: 207.33460544782662
+                icon: hardware
+                y: 78.0
+                z: -973.3000000119209
+                label: Electrobulb Electricity Hardware
+        lines: {
+            }
+        layerprio: 0
+    Butcheries:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Butcheries
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1841.0
+                icon: butchery
+                y: 74.0
+                z: 17.0
+                label: Grola Butchery
+        lines: {
+            }
+        layerprio: 0
+    Florists:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Florists
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1987.0
+                icon: florist
+                y: 75.0
+                z: -7.0
+                label: Jack Herborist
+            marker_2:
+                world: world
+                markup: false
+                x: 251.0
+                icon: florist
+                y: 75.0
+                z: -1005.0
+                label: Springfield Flowers
+        lines: {
+            }
+        layerprio: 0
+    Airports:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Airports
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1728.0
+                icon: airport
+                y: 75.0
+                z: 236.0
+                label: Gramados Airport
+            marker_2:
+                world: world
+                markup: false
+                x: 22.0
+                icon: airport
+                y: 98.0
+                z: -1653.0
+                label: Greenfield Airport
+            marker_3:
+                world: world
+                markup: false
+                x: -1734.0
+                icon: airport
+                y: 66.0
+                z: -1183.0
+                label: Allen Point Airport
+        lines: {
+            }
+        layerprio: 0
+    Ports:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Ports
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1693.0
+                icon: port
+                y: 65.0
+                z: -831.0
+                label: Gramados Port
+            marker_2:
+                world: world
+                markup: false
+                x: 88.0
+                icon: port
+                y: 65.0
+                z: -878.0
+                label: Springfield Port
+            marker_3:
+                world: world
+                markup: false
+                x: -1769.0
+                icon: port
+                y: 66.0
+                z: -1173.0
+                label: Allen Point Port
+        lines: {
+            }
+        layerprio: 0
+    Wholesalers:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Wholesalers
+        markers:
+            marker_10:
+                world: world
+                markup: false
+                x: 204.32550699047619
+                icon: wholesale
+                y: 74.0
+                z: -1036.300000011921
+                label: Wine Export Int. Wholesale (sell)
+            marker_1:
+                world: world
+                markup: false
+                x: -4619.0
+                icon: wholesale_c
+                y: 74.0
+                z: -477.0
+                label: Cheese &amp; Milk Wholesale (sell)
+            marker_2:
+                world: world
+                markup: false
+                x: -3808.0
+                icon: wholesale_c
+                y: 70.0
+                z: 623.0
+                label: Farm Animals Wholesale (buy)
+            marker_3:
+                world: world
+                markup: false
+                x: -874.0
+                icon: wholesale
+                y: 73.0
+                z: 188.0
+                label: Concrete Materials Wholesale (sell &amp; buy)
+            marker_4:
+                world: world
+                markup: false
+                x: 594.0
+                icon: wholesale
+                y: 88.0
+                z: -1634.0
+                label: Seeds &amp; Saplings Nursery Wholesale (buy)
+            marker_5:
+                world: world
+                markup: false
+                x: 1135.0
+                icon: wholesale
+                y: 93.0
+                z: -1968.0
+                label: Local Farm Product Wholesale (sell)
+            marker_6:
+                world: world
+                markup: false
+                x: -6980.0
+                icon: wholesale
+                y: 84.0
+                z: -258.0
+                label: Large-Scale Cereal Wholesale (sell)
+            marker_7:
+                world: world
+                markup: false
+                x: 204.68921362181703
+                icon: wholesale
+                y: 76.0
+                z: -994.2124007103154
+                label: Beekeeping Wholesale (buy)
+            marker_8:
+                world: world
+                markup: false
+                x: 214.30000001192093
+                icon: wholesale
+                y: 74.0
+                z: -1032.7519893789997
+                label: Greenfield Farm Equipment Wholesale (buy)
+            marker_9:
+                world: world
+                markup: false
+                x: 212.30000001192093
+                icon: wholesale
+                y: 74.0
+                z: -1040.5242758179133
+                label: Wine Brewing Equipment Wholesale (buy)
+        lines: {
+            }
+        layerprio: 0
+    Post Offices:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Post Offices
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -2063.0
+                icon: post_office
+                y: 74.0
+                z: 190.0
+                label: Gramados Post Office
+            marker_2:
+                world: world
+                markup: false
+                x: 106.0
+                icon: post_office
+                y: 75.0
+                z: -951.0
+                label: Springfield Post Office
+        lines: {
+            }
+        layerprio: 0
+    Junk Yards:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Junk Yards
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -6370.0
+                icon: junkyard
+                y: 72.0
+                z: 288.0
+                label: Nowhere Junk Yard
+            marker_2:
+                world: world
+                markup: false
+                x: 137.0
+                icon: junkyard_c
+                y: 79.0
+                z: -1063.0
+                label: Springfield Junk Yard
+            marker_3:
+                world: world
+                markup: false
+                x: -1140.0
+                icon: junkyard
+                y: 76.0
+                z: -74.0
+                label: Gramados Great Junk Yard
+        lines: {
+            }
+        layerprio: 0
+    Restaurants:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Restaurants
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: 228.0
+                icon: restaurant
+                y: 75.0
+                z: -990.0
+                label: Domico&#39;s Restaurant
+            marker_2:
+                world: world
+                markup: false
+                x: 1008.0
+                icon: restaurant
+                y: 94.0
+                z: -1191.0
+                label: Blockbros Restaurant
+            marker_3:
+                world: world
+                markup: false
+                x: -2046.0
+                icon: restaurant
+                y: 74.0
+                z: -458.0
+                label: Citrus Alley Restaurant
+            marker_4:
+                world: world
+                markup: false
+                x: -2034.0
+                icon: restaurant
+                y: 76.0
+                z: 25.0
+                label: Daniel&#39;s Fast Food Restaurant
+            marker_5:
+                world: world
+                markup: false
+                x: -1904.0
+                icon: restaurant
+                y: 75.0
+                z: 338.0
+                label: Toki Japanese Restaurant
+            marker_6:
+                world: world
+                markup: false
+                x: -939.0
+                icon: restaurant
+                y: 74.0
+                z: 218.0
+                label: Sal&#39;s Breakfast Restaurant
+            marker_7:
+                world: world
+                markup: false
+                x: 95.0
+                icon: restaurant
+                y: 72.0
+                z: 114.0
+                label: Seaside Hut Restaurant
+            marker_8:
+                world: world
+                markup: false
+                x: 1002.0
+                icon: restaurant
+                y: 91.0
+                z: -1181.0
+                label: Retro Diner
+            marker_9:
+                world: world
+                markup: false
+                x: -1818.0
+                icon: restaurant
+                y: 93.0
+                z: -521.0
+                label: The Fabric Nightclub
+            marker_10:
+                world: world
+                markup: false
+                x: -2974.0
+                icon: restaurant_c
+                y: 77.0
+                z: 821.0
+                label: The Ghetto Nightclub
+        lines: {
+            }
+        layerprio: 0
+    Sawmills:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Sawmills
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1684.0
+                icon: lumberjack
+                y: 98.0
+                z: 998.0
+                label: Gramados Sawmill
+            marker_2:
+                world: world
+                markup: false
+                x: 308.0
+                icon: lumberjack
+                y: 77.0
+                z: -923.0
+                label: Springfield Sawmill
+        lines: {
+            }
+        layerprio: 0
+    Hotels:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Hotels
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: 246.0
+                icon: hotel
+                y: 73.0
+                z: -906.0
+                label: Springfield Starter Hotel
+            marker_2:
+                world: world
+                markup: false
+                x: -1800.0
+                icon: hotel_c
+                y: 75.0
+                z: 237.0
+                label: Gramados Airport Hotel
+            marker_3:
+                world: world
+                markup: false
+                x: -1895.0
+                icon: hotel
+                y: 74.0
+                z: -192.0
+                label: Gramados Starter Hotel
+            marker_4:
+                world: world
+                markup: false
+                x: -1937.0
+                icon: hotel_c
+                y: 76.0
+                z: -585.0
+                label: Noreach Hotel
+            marker_5:
+                world: world
+                markup: false
+                x: -2004.0
+                icon: hotel_c
+                y: 73.0
+                z: -506.0
+                label: Citrus Alley Hotel
+        lines: {
+            }
+        layerprio: 0
+    Town Halls:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Town Halls
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -5130.0
+                icon: townhall_c
+                y: 73.0
+                z: 243.0
+                label: Ardocor Town Hall
+            marker_2:
+                world: world
+                markup: false
+                x: 1030.0
+                icon: townhall_c
+                y: 103.0
+                z: -1228.0
+                label: Blockingham Town Hall
+            marker_3:
+                world: world
+                markup: false
+                x: -1865.0
+                icon: townhall
+                y: 92.0
+                z: 282.0
+                label: Gramados Town Hall
+            marker_4:
+                world: world
+                markup: false
+                x: 272.0
+                icon: townhall
+                y: 76.0
+                z: -940.0
+                label: Springfield Town Hall
+            marker_5:
+                world: world
+                markup: false
+                x: -1272.0
+                icon: townhall_c
+                y: 86.0
+                z: -1385.0
+                label: Allen Point Town Hall
+            marker_6:
+                world: world
+                markup: false
+                x: -4557.0
+                icon: townhall_c
+                y: 75.0
+                z: -427.0
+                label: Chaseals Town Hall
+            marker_7:
+                world: world
+                markup: false
+                x: -411.0
+                icon: townhall_c
+                y: 69.0
+                z: -5375.0
+                label: Branwen City Town Hall
+        lines: {
+            }
+        layerprio: 0
+    Automobile Parts:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Automobile Parts
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -972.0
+                icon: autoparts
+                y: 74.0
+                z: 221.0
+                label: Top Garage Auto Parts
+            marker_2:
+                world: world
+                markup: false
+                x: -1802.0
+                icon: autoparts
+                y: 75.0
+                z: 301.0
+                label: Bob The Suitcase
+            marker_3:
+                world: world
+                markup: false
+                x: -925.0
+                icon: autoparts
+                y: 74.0
+                z: 236.0
+                label: Rem&#39;s Seat Stitching Craftsman
+            marker_4:
+                world: world
+                markup: false
+                x: -2872.0
+                icon: autoparts
+                y: 94.0
+                z: 903.0
+                label: Benny&#39;s Original Motor Works
+        lines: {
+            }
+        layerprio: 0
+    Furniture Shops:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Furniture Shops
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: 223.0
+                icon: furnitureshop
+                y: 75.0
+                z: -975.0
+                label: Springfield Furniture
+            marker_2:
+                world: world
+                markup: false
+                x: -1776.0
+                icon: furnitureshop
+                y: 75.0
+                z: 285.0
+                label: Gramados Kitchen Designer
+            marker_3:
+                world: world
+                markup: false
+                x: -1800.0
+                icon: furnitureshop
+                y: 75.0
+                z: 281.0
+                label: Gramados Drawer&#39;s
+            marker_4:
+                world: world
+                markup: false
+                x: -2035.0
+                icon: furnitureshop
+                y: 76.0
+                z: -9.0
+                label: Gramados Grand Furniture Provider
+        lines: {
+            }
+        layerprio: 0
+    Beerhouses:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Beerhouses
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1969.0
+                icon: bar
+                y: 75.0
+                z: 47.0
+                label: The Old Booze Bar
+            marker_2:
+                world: world
+                markup: false
+                x: 209.0
+                icon: bar
+                y: 76.0
+                z: -1017.0
+                label: The Drunken Cow Bar
+        lines: {
+            }
+        layerprio: 0
+    Dealerships:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Dealerships
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1011.0
+                icon: dealership_c
+                y: 74.0
+                z: 103.0
+                label: Used Car Dealership
+            marker_2:
+                world: world
+                markup: false
+                x: -1042.0
+                icon: dealership
+                y: 77.0
+                z: 234.0
+                label: Used Car Dealership
+            marker_3:
+                world: world
+                markup: false
+                x: -1828.0
+                icon: dealership
+                y: 74.0
+                z: -46.0
+                label: Luxury Car Dealership
+            marker_4:
+                world: world
+                markup: false
+                x: -1133.0
+                icon: dealership_ivl
+                y: 74.0
+                z: 231.0
+                label: IVLabs Dealership
+            marker_5:
+                world: world
+                markup: false
+                x: -1141.0
+                icon: dealership_trin
+                y: 74.0
+                z: 126.0
+                label: Trin Dealership
+            marker_6:
+                world: world
+                markup: false
+                x: -1831.0
+                icon: dealership_unu
+                y: 75.0
+                z: 293.0
+                label: UNU Dealership
+            marker_7:
+                world: world
+                markup: false
+                x: -2524.0
+                icon: dealership
+                y: 95.0
+                z: -34.0
+                label: Retro Car Dealership
+        lines: {
+            }
+        layerprio: 0
+    Banks:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Banks
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: 246.0
+                icon: gbank
+                y: 74.0
+                z: -992.0
+                label: Springfield Bank
+            marker_2:
+                world: world
+                markup: false
+                x: -2022.0
+                icon: bank_c
+                y: 75.0
+                z: -35.0
+                label: Gramados National Bank
+            marker_3:
+                world: world
+                markup: false
+                x: -1883.0
+                icon: gbank
+                y: 78.0
+                z: 216.0
+                label: Goldincina Bank
+        lines: {
+            }
+        layerprio: 0
+    Repair Shops:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Repair Shops
+        markers:
+            marker_10:
+                world: world
+                markup: false
+                x: -1001.0
+                icon: garage_c
+                y: 76.0
+                z: 233.0
+                label: Available Repair Shop 9
+            marker_1:
+                world: world
+                markup: false
+                x: -2034.0
+                icon: garage_c
+                y: 77.0
+                z: 361.0
+                label: Available Repair Shop 1
+            marker_2:
+                world: world
+                markup: false
+                x: -2111.0
+                icon: garage_c
+                y: 76.0
+                z: 147.0
+                label: Available Repair Shop 2
+            marker_3:
+                world: world
+                markup: false
+                x: -2112.0
+                icon: garage
+                y: 76.0
+                z: 103.0
+                label: Ferris Wheel Automobile repair
+            marker_4:
+                world: world
+                markup: false
+                x: -1338.0
+                icon: garage_c
+                y: 74.0
+                z: 262.0
+                label: Available Repair Shop 4
+            marker_5:
+                world: world
+                markup: false
+                x: -2000.0
+                icon: garage_c
+                y: 75.0
+                z: -482.0
+                label: Available Repair Shop 5
+            marker_6:
+                world: world
+                markup: false
+                x: 1053.0
+                icon: garage_c
+                y: 91.0
+                z: -1179.0
+                label: Blockingham Repair Shop
+            marker_7:
+                world: world
+                markup: false
+                x: 47.0
+                icon: garage
+                y: 86.0
+                z: -1043.0
+                label: Springfield Garage
+            marker_8:
+                world: world
+                markup: false
+                x: -1173.0
+                icon: garage_c
+                y: 78.0
+                z: -93.0
+                label: Available Repair Shop 7
+            marker_9:
+                world: world
+                markup: false
+                x: -4488.0
+                icon: garage_c
+                y: 71.0
+                z: -361.0
+                label: Available Repair Shop 8
+        lines: {
+            }
+        layerprio: 0
+    Bakeries:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Bakeries
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1971.0
+                icon: bakery
+                y: 75.0
+                z: -2.0
+                label: Wheaty Mill Bakery
+            marker_2:
+                world: world
+                markup: false
+                x: -1466.0
+                icon: bakery
+                y: 72.0
+                z: 141.0
+                label: Filly Mill Bakery
+        lines: {
+            }
+        layerprio: 0
+    markers:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Markers
+        markers: {
+            }
+        lines: {
+            }
+        layerprio: 0
+    Armories:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Armories
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -2033.0
+                icon: gunshop
+                y: 77.0
+                z: 61.0
+                label: Gramados Gun Club
+        lines: {
+            }
+        layerprio: 0
+    Fuel Stations:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Fuel Stations
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -6369.0
+                icon: fuelpump
+                y: 72.0
+                z: 255.0
+                label: Nowhere Fuel Station
+            marker_2:
+                world: world
+                markup: false
+                x: -2559.0
+                icon: fuelpump
+                y: 95.0
+                z: -13.0
+                label: Smell Oil Fuel Station
+            marker_3:
+                world: world
+                markup: false
+                x: -2071.0
+                icon: fuelpump
+                y: 76.0
+                z: -35.0
+                label: Bravo Fuel Station
+            marker_4:
+                world: world
+                markup: false
+                x: -1794.0
+                icon: fuelpump
+                y: 77.0
+                z: 56.0
+                label: Fulpower Fuel Station
+            marker_5:
+                world: world
+                markup: false
+                x: 1044.0
+                icon: fuelpump
+                y: 91.0
+                z: -1172.0
+                label: Blockingham Fuel Station
+            marker_6:
+                world: world
+                markup: false
+                x: 251.0
+                icon: fuelpump
+                y: 75.0
+                z: -968.0
+                label: Springfield Fuel Station
+            marker_7:
+                world: world
+                markup: false
+                x: -2059.0
+                icon: fuelpump
+                y: 76.0
+                z: 350.0
+                label: Minchaly Fuel Station
+            marker_8:
+                world: world
+                markup: false
+                x: -1377.0
+                icon: fuelpump
+                y: 89.0
+                z: -1293.0
+                label: Allen Point Fuel Station
+            marker_9:
+                world: world
+                markup: false
+                x: -4535.0
+                icon: fuelpump
+                y: 74.0
+                z: -454.0
+                label: Chaseals Fuel Station
+            marker_10:
+                world: world
+                markup: false
+                x: -6973.0
+                icon: fuelpump
+                y: 85.0
+                z: -197.0
+                label: Silo Fuel Station
+            marker_11:
+                world: world
+                markup: false
+                x: -2103.0
+                icon: fuelpump
+                y: 83.0
+                z: -431.0
+                label: Citrus Station
+        lines: {
+            }
+        layerprio: 0
+    Education:
+        hide: false
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Culture
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1766.0
+                icon: school_c
+                y: 86.0
+                z: -725.0
+                label: Gramados University
+            marker_2:
+                world: world
+                markup: false
+                x: -1900.0
+                icon: school
+                y: 78.0
+                z: -620.0
+                label: Gramados Civic Center
+        lines: {
+            }
+        layerprio: 0
+playersets: {
+    }
