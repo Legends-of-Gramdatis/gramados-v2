@@ -1,0 +1,67 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 121,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Landmarks p2",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "**Citrus Alley:**
+- Located on the north coast of Gramados Island, within Gramados City, Citrus Alley has a rich history. Originally an enormous 18th-century underground warehouse, this ten-meter-tall structure with grand arches served as a storage facility for harvested citrus. It featured a direct road to Gramados Port from the same era.
+- In the 1920s, a portion of the warehouse crumbled, leading to a tragic accident and its temporary closure. However, a decade later, it was reconstructed and transformed into a vast hall. Numerous fancy buildings from the 1930s era sprang up around it, turning it into a stylish spot in town, adorned with elegant hotels and restaurants. This transformation remains intact even today.
+
+While not officially designated as landmarks, the overall Gramados City Center is a captivating attraction. It features a blend of architectural styles, from Victorian to 19th-century buildings reflecting the influence of the industrial revolution. The city center's unique and varied facade makes it a notable part of the city.
+
+Feel free to explore these landmarks, and if you have any questions or need directions, don't hesitate to ask.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1698837596884L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

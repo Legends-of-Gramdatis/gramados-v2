@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Mail Service",
+    "NextQuestId": 35,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Emergency Mail Delivery",
+    "Text": "Collect the urgent mails concerning the assault at Serenity Court and the bag theft incident from Gramados Mail Service.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "Officer Reynolds",
+        "BeenRead": 0b,
+        "Message": {
+            "pages": [
+                "Please assist in the recovery of Ms. Beatrice Johnson's stolen bag. Refer to your earlier discussion for details on the thief and their last known direction. Immediate action is appreciated."
+            ]
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713997109879L,
+        "Time": 0L,
+        "Subject": "Urgent: Stolen Bag Recovery Needed"
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "You have received the urgent mails. One details an assault in Serenity Court, and the other pertains to the theft of Ms. Beatrice Johnson's bag. These issues demand your immediate attention.",
+    "NextQuestTitle": "Urgent Vehicle Recovery Request",
+    "QuestLocation": "Gramados City Mail Service"
+}

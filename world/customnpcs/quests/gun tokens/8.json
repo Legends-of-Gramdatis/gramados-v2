@@ -1,0 +1,97 @@
+{
+    "CompleterNpc": "Token distribution service",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 3,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Pistol Token",
+    "Text": "",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1581368548581L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_emerald",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§dAvailable for: pistols"
+                        ],
+                        "Name": "§eGun Token"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Name": "§eAmmo Token"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:letter",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§3Allows you to buy pistols"
+                        ],
+                        "Name": "§fGun Owning Papers"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 1b,
+    "CompleteText": "Here are the tokens.",
+    "NextQuestTitle": ""
+}

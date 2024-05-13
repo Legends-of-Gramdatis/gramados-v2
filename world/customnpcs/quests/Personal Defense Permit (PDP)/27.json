@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Marcus Eldridge",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Reflections and Next Steps",
+    "Text": "Now that I've attended the Self-Defense Awareness Workshop, it might be wise to revisit Marcus Eldridge at the Town Hall. He mentioned that this workshop was just the beginning. I should check in with him to see what my next steps should be in securing my Personal Defense Permit.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 143,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713956343811L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I revisited the Town Hall and spoke with Marcus Eldridge. He commended me on completing the workshop and expressed the importance of continuing my training. It’s clear that understanding self-defense goes beyond simple awareness. Marcus hinted at a more practical approach to defense in the next phase of my journey.",
+    "NextQuestTitle": ""
+}

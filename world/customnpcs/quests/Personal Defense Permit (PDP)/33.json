@@ -1,0 +1,57 @@
+{
+    "CompleterNpc": "Officer Reynolds",
+    "NextQuestId": 34,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Citizen Assistance Mission",
+    "Text": "Officer Reynolds has tasked me with assisting three citizens who have reported incidents requiring police intervention. Each citizen is located at a different area in Gramados City. I must find and speak with each of them to gather information about their respective situations.
+
+- Ms. Beatrice Johnson is located at the corner of Jorty Street and Comenial Street, south of the airport Hotel, in front of the airport.
+- Mr. Robert Anderson can be found at the Marina Vista Café & Grill, situated at the Marina Bay Building, closest to the University.
+- Ms. Sophia Rodriguez is situated at Serenity Court, a fancy courtyard in the Downtown district, at the North-West, near the Bravo Fuel Station.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 173,
+            "Slot": 0
+        },
+        {
+            "Integer": 169,
+            "Slot": 1
+        },
+        {
+            "Integer": 178,
+            "Slot": 2
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713997251392L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I have successfully spoken with each of the citizens in need of assistance. Ms. Beatrice Johnson provided details about a bag theft incident, Mr. Robert Anderson reported a vehicle theft, and Ms. Sophia Rodriguez recounted an assault at Serenity Court. Now, I must return to the Gramados Police Station to report my findings to Officer Reynolds and receive further instructions.",
+    "NextQuestTitle": "Emergency Mail Delivery"
+}

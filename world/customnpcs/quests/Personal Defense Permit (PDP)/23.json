@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Gramados Gymnasium Guide",
+    "NextQuestId": 24,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "The Path to Fitness",
+    "Text": "Next on my journey for a Personal Defense Permit is to locate the Gramados Gymnasium, where I'll undergo self-defense training. It's time to find the gym and see what challenges await me.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713910515021L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've arrived at the Gramados Gymnasium, the training ground for many aspiring defenders. Stepping through its doors, I feel ready to tackle the physical challenges that will surely test my resolve.",
+    "NextQuestTitle": "Embarking on Self-Defense",
+    "QuestLocation": "Gramados Gymnasium"
+}

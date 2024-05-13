@@ -1,0 +1,78 @@
+{
+    "CompleterNpc": "Ms. Sophia Rodriguez",
+    "NextQuestId": 47,
+    "QuestLocation3": "Serenity Court - Crimoge Street - North",
+    "RandomReward": 0b,
+    "QuestLocation2": "Serenity Court - NE",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Uncovering Evidence",
+    "Text": "Now, I need to investigate the park thoroughly to uncover any evidence that might lead to the assailant's identity. This could include looking for any items left behind at the scene of the crime.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714667705878L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:satchel",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§1Found at Serenity Court"
+                        ],
+                        "Name": "§rAssaulter's Wallet"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e20G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "After a meticulous search of the park, I've discovered a wallet containing the assailant's identification papers. This critical piece of evidence brings us one step closer to resolving the case.",
+    "NextQuestTitle": "Reporting Back",
+    "QuestLocation": "Serenity Court - SE"
+}

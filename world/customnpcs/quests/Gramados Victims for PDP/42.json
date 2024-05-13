@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Citrus Station",
+    "NextQuestId": 39,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Tracing the Trail (Dialogue)",
+    "Text": "Following the lead from \"the fabric\", my next destination is Citrus Station, an art deco complex that combines a fuel station, car wash, and a fancy café. At the exit of \"the fabric\", I need to head roughly 40 meters south until I reach the intersection between Richide Road and Fortuna Street. Fortuna Street, known for its chic atmosphere above Citrus Tunnel and Citrus Hall, stretches to the west. I'll follow Fortuna Street until I come across Citrus Station, where the stolen UNU Mastodon Coupe has probably been spotted. This could be a significant lead in retracing the stolen vehicle's path.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 194,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714339727548L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Upon investigating the car wash and fuel station complex, I confirmed sightings of the stolen UNU Mastodon Coupe receiving a thorough clean. Now, armed with this information, I must continue my investigation and trace the trail further south along Citrus Road.",
+    "NextQuestTitle": "Inquiring at Smell Oil"
+}

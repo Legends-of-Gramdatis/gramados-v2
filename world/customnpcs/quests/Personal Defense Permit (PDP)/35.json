@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Mail Service",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Urgent Vehicle Recovery Request",
+    "Text": "Visit Gramados Mail Service to collect an important mail regarding a stolen vehicle.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "Officer Reynolds",
+        "BeenRead": 0b,
+        "Message": {
+            "pages": [
+                "Your expertise is needed to recover Mr. Robert Anderson's stolen UNU Mastodon Coupe. Use the information gathered from your recent conversation to track down the vehicle."
+            ]
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713997092067L,
+        "Time": 0L,
+        "Subject": "Action Required: Stolen Vehicle Investigation"
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "You have collected the mail detailing Mr. Robert Anderson's stolen UNU Mastodon Coupe. Use the information provided to track down the vehicle and resolve the situation.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Gramados City Mail Service"
+}

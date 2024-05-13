@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Mr. Robert Anderson",
+    "NextQuestId": 37,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "A Stolen Ride",
+    "Text": "The victim of the stolen UNU Mastodon Coupe awaits my assistance at the Marina Vista Café and Grill. I should speak with Mr. Robert Anderson to let him know I am on the case.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 184,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714665199197L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've spoken with Mr. Robert Anderson at the Marina Vista Café and Grill and assured him I'll find something.",
+    "NextQuestTitle": "Uncovering Clues"
+}

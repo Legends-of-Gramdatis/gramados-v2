@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Smell Oil Manager",
+    "NextQuestId": 40,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Inquiring at Smell Oil (Dialogue)",
+    "Text": "I must continue my investigation by heading further south along Citrus Road to the Smell Oil Fuel Station, which includes a retro car dealership. Perhaps someone there can provide additional insights into the whereabouts of the stolen UNU Mastodon Coupe.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 199,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714323795902L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "At the Smell Oil Fuel Station and retro car dealership, I learned that the stolen UNU Mastodon Coupe was recently acquired by the dealership. The vehicle matches the description of the stolen car, raising suspicions about its origins. It's time to delve deeper into this discovery.",
+    "NextQuestTitle": "Reporting to Mr. Anderson"
+}

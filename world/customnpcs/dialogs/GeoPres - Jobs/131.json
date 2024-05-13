@@ -1,0 +1,69 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 131,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "HTGAJ - Concrete Factory - Gramados - p2",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "**Operational Process:**
+- As a Concrete Factory Worker, your primary tasks involve operating the Immersive Engineering mod concrete-making machines. These machines are responsible for producing concrete slabs and other concrete-related items, catering to the specific orders placed with the factory.
+- To source raw materials for concrete production, the factory office occasionally provides special offers, allowing you to acquire them at a lower cost. However, most of the time, you'll need to make a trip to the Quarry, located on the east side of Gramados City, to purchase your own raw materials.
+- Once the concrete has been produced, you'll return to the factory office to complete the final step: exporting the concrete products to generate a profit.
+
+**Getting Started:**
+- To embark on your journey as a Concrete Factory Worker, all you need to do is reach out to a staff member. They will guide you through the initial steps and introduce you to an NPC who holds the key to unlocking the necessary wholesalers and regions.
+
+Working at Blacksby Concrete offers a unique blend of tradition and modern industry, giving you the opportunity to contribute to Gramados City's industrial legacy. If you have any questions or require further information about this job, please don't hesitate to ask.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1698858098589L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

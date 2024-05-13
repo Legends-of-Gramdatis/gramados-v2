@@ -1,0 +1,86 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 108,
+                "Title": "[What jobs can I find in this town?]",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 106,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Springfield - Presentation - p2",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "6. **Junkyard:**
+   - Our junkyard is a treasure trove of resources waiting to be discovered. You never know what valuable items you might find among the discarded materials.
+
+7. **Repair Shop:**
+   - Need to fix up your vehicles or equipment? The repair shop in Springfield is the place to go for all your maintenance and repair needs.
+
+8. **Post Office:**
+   - Stay connected with the outside world through our efficient post office services. Send and receive mail, parcels, and important messages.
+
+9. **Port:**
+   - The bustling port in Springfield is a gateway to the sea, allowing for trade and transportation to and from our island.
+
+10. **Multiservice Office:**
+   - Our multiservice office offers a range of administrative and clerical services. If you have paperwork to handle, this is the place to get it done.
+
+Springfield is a vibrant hub of activity on Greenfield Island, providing everything you need for a comfortable and productive stay. If you have any specific questions or if you'd like to explore any of these services further, feel free to ask.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1698831354388L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

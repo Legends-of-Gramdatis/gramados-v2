@@ -1,0 +1,43 @@
+{
+    "CompleterNpc": "Ms. Beatrice Johnson",
+    "NextQuestId": 51,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Tracking Down the Thief",
+    "Text": "Armed with the evidence collected from the crime scene, I must now follow the trail to locate the thief's hideout. Ms. Beatrice Johnson provided information on the direction the assailant fled. It's imperative to act swiftly and apprehend the thief before they can evade capture.
+I need to go West of Garmos Street, then follow Minchally Street, a small street parallel to Gramos Street that leads to the east of Minchally Block.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714669459472L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've followed the trail and located the thief's hideout. Now, it's time to confront the thief and recover the stolen bag.",
+    "NextQuestTitle": "Apprehending the Thief",
+    "QuestLocation": "Thief Hideout, Minchally Street"
+}

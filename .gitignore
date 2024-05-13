@@ -25,9 +25,13 @@ world/apocalypse/*
 world/data/*
 world/DIM*
 world/region/*
+world/stats/*
+world/customnpcs/playerdata/*
+world/customnpcs/scripts/*.json
 
 world/session.lock
 world/icon.png
+banned-ips.json
 
 *.txt
 *.log
@@ -35,8 +39,12 @@ world/icon.png
 *.zip
 *.xml
 *.sh
-*.json
 *.properties
 *.cfg
 *.dat
 *.dat_old
+banned-players.json
+ops.json
+usercache.json
+usernamecache.json
+whitelist.json

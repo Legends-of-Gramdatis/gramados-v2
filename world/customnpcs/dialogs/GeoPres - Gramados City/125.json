@@ -1,0 +1,84 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 126,
+                "Title": "[Continue]",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 125,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Gramados City p1 Presentation",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "Welcome to Gramados City, the capital city of the Gramados Country, situated on the vibrant Gramados Island. Our city has a rich history, blending the heritage of citrus farming and industrialization. Let me give you a tour of this unique metropolis:
+
+**Historical Origins:**
+- Originally a small trading hub during the late 16th and 17th centuries, Gramados City was a vital center for the citrus farming industry that thrived across Gramados Island.
+- Some buildings still stand from that era, offering a glimpse into the city's historical roots.
+
+**Industrial Revolution and Evolution:**
+- The Industrial Revolution transformed Gramados City into a bustling industrial hub with large factories dotting the landscape. Unfortunately, this industrial focus gradually overshadowed the once-dominant citrus farming industry.
+- In the early 20th century, the last citrus farm closed its doors, marking the end of a cherished tradition. However, the city flourished with new buildings, including several 19th-century skyscrapers that dot the skyline.
+
+**Minchaly Block:**
+- In the mid-20th century, as the city expanded, giant and inexpensive worker housing emerged. Today, this district, known as Minchaly Block, is reputed to harbor a significant mafia presence.
+- The area is best avoided due to its history of crime, gunshots, and unrest. While some structures have been renovated recently, it remains the home of thieves and the mafia.
+",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1698844323688L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "CompleterNpc": "Gramados Civic Center Guide",
+    "NextQuestId": 20,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "A Step Towards Safety",
+    "Text": "I've heard whispers about a Self-Defense Awareness Workshop at the Gramados Civic Center. Perhaps I should pay a visit to enhance my safety skills. The Civic Center's office should have more details.
+",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 10,
+        "OptionFactions1": 3,
+        "OptionFactions2": 2,
+        "OptionFaction1Points": 10,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713909994719L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've made my way to the Gramados Civic Center's office. Time to gather information about the Self-Defense Awareness Workshop.
+",
+    "NextQuestTitle": "Inquiring Minds",
+    "QuestLocation": "Gramados Civic Center"
+}

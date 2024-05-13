@@ -1,0 +1,408 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 18b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 19b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e500G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 21b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 22b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 2b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e2K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 24b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 25b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 200.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e200G"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 1000.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e1K"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 2000.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e2K"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 10000.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e10K"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 20000.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e20K"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "min": 0.0f,
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "moneypouch.min.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "max": 100000.0f,
+                    "display": {
+                        "Lore": [
+                            "§bContains §r錫§e0G§b - §r錫§e100K"
+                        ],
+                        "Name": "§3§lLottery Print"
+                    }
+                },
+                "Damage": 411s
+            }
+        ]
+    }
+}

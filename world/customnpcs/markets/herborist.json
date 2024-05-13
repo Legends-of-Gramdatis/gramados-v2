@@ -1,0 +1,1694 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:dye",
+                "Count": 15b,
+                "Damage": 15s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:fertilizer_bio",
+                "Count": 15b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:aridgarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:dye",
+                "Count": 10b,
+                "Damage": 15s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_dark_oak",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fMushroom Farmer's Kit"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:whitemushroomitem",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:brown_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:red_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:whitemushroomitem",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:red_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:dirt",
+                            "Count": 4b,
+                            "tag": {
+                                "display": {
+                                    "Name": "§fMushroom Smelly Dirt"
+                                }
+                            },
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:dirt",
+                            "Count": 4b,
+                            "tag": {
+                                "display": {
+                                    "Name": "§fMushroom Smelly Dirt"
+                                }
+                            },
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:brown_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:brown_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:dirt",
+                            "Count": 4b,
+                            "tag": {
+                                "display": {
+                                    "Name": "§fMushroom Smelly Dirt"
+                                }
+                            },
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:dirt",
+                            "Count": 4b,
+                            "tag": {
+                                "display": {
+                                    "Name": "§fMushroom Smelly Dirt"
+                                }
+                            },
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:red_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:whitemushroomitem",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:red_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:brown_mushroom",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:whitemushroomitem",
+                            "Count": 4b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:frostgarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_spruce",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fBerries Collection Box"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:juniperberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:mulberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cranberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:juniperberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:huckleberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:elderberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:elderberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:candleberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:blueberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:elderberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:elderberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:blackberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:juniperberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:strawberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:raspberryseeditem",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:juniperberryseeditem",
+                            "Count": 2b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:shadedgarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:fertilizer_bio",
+                "Count": 10b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_acacia",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fSpring Seed Sample Box"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:kaleseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:flaxseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:coffeeseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:leekseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cabbageseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:rhubarbseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:celeryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:garlicseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:turnipseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:strawberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:parsnipseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:spinachseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:lentilseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cauliflowerseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:asparagusseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:brusselsproutseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:windygarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_jungle",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fAutumn Seed Sample Box"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cranberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:eggplantseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:whitemushroomseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:artichokeseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:rutabagaseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:beetseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:wintersquashseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:ryeseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:blackberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 6b,
+                            "Damage": 14s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 6b,
+                            "Damage": 13s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 6b,
+                            "Damage": 10s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:huckleberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:elderberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:arrowrootseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_milk:thistle_seed",
+                            "Count": 6b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:tropicalgarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fSummer Seed Sample Box"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:blueberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:candleberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:raspberryseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:lettuceseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cactusfruitseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:bambooshootseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cantaloupeseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cucumberseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:peanutseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:tomatoseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:okraseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:chilipepperseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:bellpepperseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:soybeanseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:mustardseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:spiceleafseeditem",
+                            "Count": 6b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:soggygarden",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_birch",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Name": "§fDesert Arid Starter Kit"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cactusfruititem",
+                            "Count": 16b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:cactus",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:aridgarden",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cactusfruititem",
+                            "Count": 16b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:aridgarden",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:sand",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:sand",
+                            "Count": 8b,
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:cactus",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:cactus",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:sand",
+                            "Count": 8b,
+                            "Damage": 1s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:sand",
+                            "Count": 8b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:aridgarden",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cactusfruititem",
+                            "Count": 16b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:aridgarden",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:cactus",
+                            "Count": 4b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:cactusfruititem",
+                            "Count": 16b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:crate_dark_oak",
+                "Count": 1b,
+                "tag": {
+                    "Sealed": 1b,
+                    "display": {
+                        "Lore": [
+                            "§7A collection of seeds and crops not obtainable, with a few other random ones."
+                        ],
+                        "Name": "§fFarm Seed Kit"
+                    },
+                    "Items": [
+                        {
+                            "Slot": 0b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:beetroot_seeds",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 1b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:pumpkin_seeds",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 2b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:melon_seeds",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 3b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "minecraft:wheat_seeds",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 4b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 5b,
+                            "Damage": 14s
+                        },
+                        {
+                            "Slot": 5b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "immersiveengineering:seed",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 6b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_hops:hop_seeds",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 7b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 5b,
+                            "Damage": 10s
+                        },
+                        {
+                            "Slot": 8b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_grapes:grape_seed",
+                            "Count": 5b,
+                            "Damage": 13s
+                        },
+                        {
+                            "Slot": 9b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:gigapickleseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 10b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "growthcraft_rice:rice",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 11b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:teaseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 12b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:coffeeseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 13b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:huckleberryseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 14b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:pineappleseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        },
+                        {
+                            "Slot": 15b,
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "harvestcraft:peanutseeditem",
+                            "Count": 5b,
+                            "Damage": 0s
+                        }
+                    ],
+                    "Lock": ""
+                },
+                "Damage": 0s
+            }
+        ]
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Ms. Sophia Rodriguez",
+    "NextQuestId": 45,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Gathering Intel",
+    "Text": "Ms. Sophia Rodriguez, a resident who was recently assaulted in the park, awaits my assistance. I need to gather more information about the assailant to aid in the investigation. She can be found in Serenity Court, the tranquil courtyard in the Downtown district.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 209,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1714666939577L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've spoken with Ms. Sophia Rodriguez and obtained details about the assault. Now, armed with this information, I must set out to identify the assailant and ensure justice is served.",
+    "NextQuestTitle": "Providing Aid"
+}

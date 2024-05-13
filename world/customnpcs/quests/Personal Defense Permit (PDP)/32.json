@@ -1,0 +1,65 @@
+{
+    "CompleterNpc": "Officer Reynolds",
+    "NextQuestId": 33,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Guardian's Guidance",
+    "Text": "Arriving at the Gramados Police Station, I need to locate Officer Reynolds and seek his guidance on my journey to become a guardian of the community.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 165,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1713974980770L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:batton",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.medkit",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "After a thorough search of the police station, I found Officer Reynolds' office on the second floor, as instructed. Engaging in conversation with him, I expressed my intent to acquire the necessary skills to safeguard the community. Officer Reynolds, recognizing my commitment, provided me with a sturdy baton and a med kit, essential tools for my duties as a guardian of Gramados City. With his guidance, I am now ready to embark on my first mission to ensure the safety and security of our citizens.",
+    "NextQuestTitle": "Citizen Assistance Mission"
+}
