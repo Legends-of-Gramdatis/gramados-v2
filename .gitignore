@@ -22,7 +22,7 @@ minerim/*
 plugins/*
 world/*
 
-!world/customnpcs/*
+!world/customnpcs/scripts/*
 
 *.txt
 *.log
@@ -33,4 +33,3 @@ world/*
 *.json
 *.properties
 *.cfg
-
