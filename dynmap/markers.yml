@@ -405,7 +405,7 @@ sets:
                 world: world
                 markup: false
                 x: 137.0
-                icon: junkyard_c
+                icon: junkyard
                 y: 79.0
                 z: -1063.0
                 label: Springfield Junk Yard
