@@ -37,6 +37,7 @@ ops.json
 usercache.json
 usernamecache.json
 whitelist.json
+autostart.stamp
 
 *.txt
 *.log
@@ -51,3 +52,4 @@ whitelist.json
 *.old
 
 !dynmap/markers.yml
+
