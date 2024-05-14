@@ -164,6 +164,24 @@
                 "Damage": 0s
             },
             {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 2b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e200G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
                 "Slot": 12b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -247,6 +265,24 @@
                     "display": {
                         "Lore": [
                             "§e200G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 29b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -380,6 +416,16 @@
                         "Name": "§fAdvanced Hoe"
                     }
                 },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:mts.paintgun",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
