@@ -835,3 +835,20 @@ function increase3DArray(array, increase_x, increase_y, increase_z) {
 
     return new_array;
 }
+
+
+//function to draw a circle in a 3D array
+function drawCircle(array, x, y, z, radius, block) {
+    // for each block in the array, check if it is within the circle
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array[0].length; j++) {
+            for (var k = 0; k < array[0][0].length; k++) {
+                if (isInside(i, j, k, x - radius, y - radius, z - radius, x + radius, y + radius, z + radius)) {
+                    array[i][j][k] = block;
+                }
+            }
+        }
+    }
+
+    return array;
+}
