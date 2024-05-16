@@ -285,7 +285,7 @@ sets:
                 world: world
                 markup: false
                 x: -4619.0
-                icon: wholesale_c
+                icon: wholesale
                 y: 74.0
                 z: -477.0
                 label: Cheese &amp; Milk Wholesale (sell)
