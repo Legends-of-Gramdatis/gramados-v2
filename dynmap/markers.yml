@@ -509,6 +509,14 @@ sets:
                 y: 77.0
                 z: 821.0
                 label: The Ghetto Nightclub
+            marker_11:
+                world: world
+                markup: false
+                x: -1842.0
+                icon: restaurant_c
+                y: 72.0
+                z: -711.0
+                label: Marina Vista Café & Grill
         lines: {
             }
         layerprio: 0
