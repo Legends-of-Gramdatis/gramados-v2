@@ -1166,6 +1166,14 @@ sets:
                 y: 78.0
                 z: -620.0
                 label: Gramados Civic Center
+            marker_3:
+                world: world
+                markup: false
+                x: -1834.0
+                icon: school
+                y: 74.0
+                z: -157.0
+                label: Gramados Gymnasium
         lines: {
             }
         layerprio: 0
