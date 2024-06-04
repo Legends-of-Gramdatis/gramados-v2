@@ -7,6 +7,25 @@ The final goal is to have a region with several values that will allow some tree
 //var quality = 1;
 var quality = Math.random() * 2;
 
+// Init the item with custom texture
+function init(event) {
+    // Get the item
+    var item = event.item;
+    item.setDurabilityValue(10);
+    item.setDurabilityShow(false);
+
+    return true;
+}
+
+function tick(event) {
+    //get the player
+    var player = event.player;
+    //randoim quality
+    quality = Math.random() * 2;
+    //player.message("Quality: " + quality);
+    return true;
+}
+
 // Script for scripted block that spawns a tree above it when interacted with
 function interact(event) {
     buildTree(event);
@@ -28,7 +47,9 @@ function isInside(x, y, z, x1, y1, z1, x2, y2, z2) {
 
 // Funtion to build a tree above the scripted block
 function buildTree(event) {
-    var block_location = event.block.getPos();
+    // var block_location = event.block.getPos();
+    // For scripted item, get the position of the block the player used the item on
+    var block_location = event.target.getPos();
     var world = event.player.getWorld();
     //block_location is type IPos
     var x = block_location.getX();
@@ -40,9 +61,16 @@ function buildTree(event) {
     var leaves = "minecraft:leaves";
     var placeholder = "minecraft:sponge";
     var tree = treetypePine(log, leaves, placeholder, quality);
+    //var tree = createPineBranch(log, leaves, placeholder, quality);
+
+    //offset teh tree for the center to be above the block
+    var offset_x = Math.floor(tree[1][0] / 2);
+    var offset_z = Math.floor(tree[1][2] / 2);
+
 
     // build the array in the world
-    build3DArray(tree[0], x, y + 1, z, world);
+    build3DArray(tree[0], x - offset_x, y + 1, z - offset_z, world);
+    //build3DArray(tree, x, y + 1, z, world);
 
     return true;
 }
@@ -270,74 +298,161 @@ function treetypePine(log, leaves, placeholder, quality) {
     var cap = concatenate3DArrays(cap, cap2, 1, 2, 1);
 
     var tree = concatenate3DArrays(log_array, cap, center - 1, log_height - 1, center - 1, false);
-    tree = increase3DArray(tree, 10, 10, 10);
+    var increase_scale = 5 * quality;
+    if (increase_scale < 10) {
+        increase_scale = 10;
+    }
+    tree = increase3DArray(tree, increase_scale, 10, increase_scale);
 
     var tree_size = [tree.length, tree[0].length, tree[0][0].length];
 
-    // Create many branches on the tree.
+    /*// Create many branches on the tree.
     // branches have quality, the lower the smaller. Make the quality proportionnal to the Y position of the branch on the main log, the taller the smaller (0 at the top, 2 at the bottom)
     // For each side, create a branch. Then, random between 3 to 4 blocks higher, create the next branch. Repeat until the top of the tree is reached.
 
-    // get y min and max for the branches
-    var branch_y = getBounds(1, 3, log_height, 3);
+    
     
     // start by the top of the log
     var y = log_height - 3;
     // get the quality of the first branch
-    var proportion = 1 - (y - branch_y[0]) / (branch_y[1] - branch_y[0]);
-    // create the first branch
-    var branch = createPineBranch(log, leaves, placeholder, proportion);
-    // concatenate the branch to the tree
-    tree = concatenate3DArrays(tree, branch, center + 1, y, center - 1, false);
+    var proportion = 1 - (y - branch_y[0]) / (branch_y[1] - branch_y[0]);*/
 
-    var step = 3;
+    var last_branch_y = [0,0,0,0]; // index 0: north, 1: east, 2: south, 3: west
 
-    // for all the blocks lower, from 3 blocks under the previous branch, create a new branch (random)
-    for (var y = log_height - 6; y > 0; y -= step) {
-        // get the coordinate of the log from where the branch will start (max x log, y, z of log)
-        //for the blocks of the layer
-        var checked_logs = [];
-        for (var x = 0; x < log_array.length; x++) {
-            for (var z = 0; z < log_array[0][0].length; z++) {
-                if (log_array[x][y][z] == log) {
-                    checked_logs.push([x, z]);
+    // get y min and max for the branches
+    var branch_y = 3;
+
+    // Look for the cross of the log, and create a branch
+    for (var y = branch_y; y < tree[0].length; y++) {
+        for (var x = 0; x < tree.length; x++) {
+            for (var z = 0; z < tree[0][0].length; z++) {
+                if (tree[x][y][z] == log) {
+                    var connected = 0;
+                    if (withinArray(x - 1, y, z, tree) && tree[x - 1][y][z] == log) {
+                        connected++;
+                    }
+                    if (withinArray(x + 1, y, z, tree) && tree[x + 1][y][z] == log) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z - 1, tree) && tree[x][y][z - 1] == log) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z + 1, tree) && tree[x][y][z + 1] == log) {
+                        connected++;
+                    }
+                    if (connected == 4 || connected == 0) {
+                        // generate 4 random booleans
+                        var randoms = [Math.random() < 0.5, Math.random() < 0.5, Math.random() < 0.5, Math.random() < 0.5];
+                        // for each random, create a branch
+                        for (var i = 0; i < 4; i++) {
+                            if (randoms[i]) {
+                                //placeholder
+                                //tree[x][y][z] = placeholder;
+                                var branch_x = x;
+                                var branch_z = z;
+                                while (tree[branch_x][y][branch_z] == log) {
+                                    switch (i) {
+                                        case 0:
+                                            branch_z--;
+                                            break;
+                                        case 1:
+                                            branch_x++;
+                                            break;
+                                        case 2:
+                                            branch_z++;
+                                            break;
+                                        case 3:
+                                            branch_x--;
+                                            break;
+                                    }
+                                }
+
+                                if (tree[branch_x][y][branch_z] == null) {
+                                    if (y - last_branch_y[i] > 3) {
+                                        last_branch_y[i] = y;
+
+                                        // create a quality for the branch
+
+                                        var proportion = (quality / (log_height - branch_y)) * (log_height - y);
+                                        // create the branch
+                                        var branch = createPineBranch(log, leaves, placeholder, proportion);
+                                        // rotate the branch according to the side
+                                        switch (i) {
+                                            // default is east
+                                            case 0:
+                                                branch = rotate3DArray(branch, true);
+                                                break;
+                                            case 2:
+                                                branch = rotate3DArray(branch, false);
+                                                break;
+                                            case 3:
+                                                branch = rotate3DArray(rotate3DArray(branch, false), false);
+                                                break;
+                                        }
+
+                                        y--;
+
+                                        // concatenate the branch to the tree
+                                        switch (i) {
+                                            case 0:
+                                                branch_z = branch_z - branch[0][0].length + 1;
+                                                branch_x = branch_x - Math.floor(branch.length / 2);
+                                                tree = concatenate3DArrays(tree, branch, branch_x, y, branch_z, false);
+                                                break;
+                                            case 1:
+                                                branch_z = branch_z - Math.floor(branch[0][0].length / 2);
+                                                tree = concatenate3DArrays(tree, branch, branch_x, y, branch_z, false);
+                                                break;
+                                            case 2:
+                                                branch_x = branch_x - Math.floor(branch.length / 2);
+                                                tree = concatenate3DArrays(tree, branch, branch_x, y, branch_z, false);
+                                                break;
+                                            case 3:
+                                                branch_x = branch_x - branch.length + 1;
+                                                branch_z = branch_z - Math.floor(branch[0][0].length / 2);
+                                                tree = concatenate3DArrays(tree, branch, branch_x, y, branch_z, false);
+                                                break;
+                                        }
+                                    } else {
+                                        //50% place leaves
+                                        if (Math.random() < 0.5) {
+                                            tree[branch_x][y][branch_z] = leaves;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
-        // get the log with the highest x and center z
-        var max_x = 0;
-        var max_z = 0;
-        for (var i = 0; i < checked_logs.length; i++) {
-            if (checked_logs[i][0] > max_x) {
-                max_x = checked_logs[i][0];
-                max_z = checked_logs[i][1];
-            }
-        }
-
-        // get the quality of the branch
-        var proportion = 1 - (y - branch_y[0]) / (branch_y[1] - branch_y[0]);
-        // create the branch with random chance
-        if (Math.random() < 0.3) {
-            var branch = createPineBranch(log, leaves, placeholder, proportion);
-            //rotate the branch left
-            branch = rotate3DArray(branch, false);
-
-            // concatenate the branch to the tree
-            tree = concatenate3DArrays(tree, branch, max_x, y, max_z, false);
-            step = 3;
-        }
-        else {
-            // if fail, try again right under the previous try
-            step = 1;
-        }
     }
 
-
-    //tree[center][y][center] = placeholder;
-
-    
-
-
+    // scan the tree, and for every leves surrounded by 3 or more none-air blocks, place a leaf block
+    for (var x = 0; x < tree.length; x++) {
+        for (var y = 0; y < tree[0].length; y++) {
+            for (var z = 0; z < tree[0][0].length; z++) {
+                if (tree[x][y][z] == null) {
+                    var connected = 0;
+                    if (withinArray(x - 1, y, z, tree) && tree[x - 1][y][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x + 1, y, z, tree) && tree[x + 1][y][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z - 1, tree) && tree[x][y][z - 1] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z + 1, tree) && tree[x][y][z + 1] != null) {
+                        connected++;
+                    }
+                    if (connected >= 3) {
+                        tree[x][y][z] = leaves;
+                    }
+                }
+            }
+        }
+    }
 
     return [tree, tree_size];
 }
@@ -370,7 +485,9 @@ function createPineBranch(log, leaves, placeholder, proportion) {
 
     // after the log, fill with leaves to the tip
     for (var x = log_length; x < branch_lenght; x++) {
-        branch[x][1][Math.floor(branch_width / 2)] = leaves;
+        var z = Math.floor(branch_width / 2);
+        if (withinArray(x, 1, z, branch) && branch[x][1][z] == null)
+            branch[x][1][z] = leaves;
     }
 
     // create the leaves on the sides of the log
@@ -386,7 +503,7 @@ function createPineBranch(log, leaves, placeholder, proportion) {
         fillZone([x_1, 1, z_1], [x_2, 1, z_2], leaves, 1, branch);
 
         // if x_1 to x_2 is 4 or more, break
-        if (x_2 - x_1 < 5) {
+        if (x_2 - x_1 < 4) {
             break;
         }
 
@@ -712,7 +829,8 @@ function concatenate3DArrays(array1, array2, offset_x, offset_y, offset_z, repla
     for (var i = 0; i < x2; i++) {
         for (var j = 0; j < y2; j++) {
             for (var k = 0; k < z2; k++) {
-                if (replace_blocks || merged[i + offset_x][j + offset_y][k + offset_z] == null) {
+                //if value within bounds
+                if (replace_blocks || (withinArray(i + offset_x, j + offset_y, k + offset_z, merged) && merged[i + offset_x][j + offset_y][k + offset_z] == null)) {
                     merged[i + offset_x][j + offset_y][k + offset_z] = array2[i][j][k];
                 }
             }
@@ -794,18 +912,18 @@ function display2DArray(array) {
 
 //function to rotate a 3D array 90 degrees right or left
 function rotate3DArray(array, right) {
-    // create a new array with the same size
-    var new_array = create3DArray(array.length, array[0].length, array[0][0].length);
+    // create a new array with the same size but rotated
+    var new_array = create3DArray(array[0][0].length, array[0].length, array.length);
 
     // for each block in the array, rotate it
     for (var x = 0; x < array.length; x++) {
         for (var y = 0; y < array[0].length; y++) {
             for (var z = 0; z < array[0][0].length; z++) {
                 if (right) {
-                    new_array[x][y][z] = array[array.length - z - 1][y][x];
+                    new_array[z][y][array.length - x - 1] = array[x][y][z];
                 }
                 else {
-                    new_array[x][y][z] = array[z][y][array[0][0].length - x - 1];
+                    new_array[array[0][0].length - z - 1][y][x] = array[x][y][z];
                 }
             }
         }
@@ -817,12 +935,12 @@ function rotate3DArray(array, right) {
 //function to increase a 3D array on each axis while keeping content centered
 function increase3DArray(array, increase_x, increase_y, increase_z) {
     // create a new array with the increased size
-    var new_array = create3DArray(array.length + increase_x, array[0].length + increase_y, array[0][0].length + increase_z);
+    var new_array = create3DArray(array.length + (increase_x * 2), array[0].length + increase_y, array[0][0].length + (increase_z * 2));
 
     // get the offset for each axis
-    var offset_x = Math.floor(increase_x / 2);
-    var offset_y = Math.floor(increase_y / 2);
-    var offset_z = Math.floor(increase_z / 2);
+    var offset_x = increase_x;
+    var offset_y = 0;
+    var offset_z = increase_z;
 
     // copy the content of the old array to the new array
     for (var x = 0; x < array.length; x++) {
@@ -845,6 +963,74 @@ function drawCircle(array, x, y, z, radius, block) {
             for (var k = 0; k < array[0][0].length; k++) {
                 if (isInside(i, j, k, x - radius, y - radius, z - radius, x + radius, y + radius, z + radius)) {
                     array[i][j][k] = block;
+                }
+            }
+        }
+    }
+
+    return array;
+}
+
+// function to check if a coordinate is inbounds of an array
+function withinArray(x, y, z, array) {
+    return x >= 0 && x < array.length && y >= 0 && y < array[0].length && z >= 0 && z < array[0][0].length;
+}
+
+//function to get the number of connected similar blocks in a 3D array
+function getConnectedBlocks(array, x, y, z, block) {
+    // create a new array with the same size
+    var new_array = create3DArray(array.length, array[0].length, array[0][0].length);
+
+    // create a list of connected blocks
+    var connected = [];
+    connected.push([x, y, z]);
+
+    // while there are connected blocks
+    while (connected.length > 0) {
+        // get the first block
+        var block = connected.pop();
+        var x = block[0];
+        var y = block[1];
+        var z = block[2];
+
+        // if the block is the same as the original block, and is not already in the new array
+        if (array[x][y][z] == block && new_array[x][y][z] == null) {
+            // add the block to the new array
+            new_array[x][y][z] = block;
+
+            // add the connected blocks to the list
+            if (withinArray(x - 1, y, z, array)) {
+                connected.push([x - 1, y, z]);
+            }
+            if (withinArray(x + 1, y, z, array)) {
+                connected.push([x + 1, y, z]);
+            }
+            if (withinArray(x, y - 1, z, array)) {
+                connected.push([x, y - 1, z]);
+            }
+            if (withinArray(x, y + 1, z, array)) {
+                connected.push([x, y + 1, z]);
+            }
+            if (withinArray(x, y, z - 1, array)) {
+                connected.push([x, y, z - 1]);
+            }
+            if (withinArray(x, y, z + 1, array)) {
+                connected.push([x, y, z + 1]);
+            }
+        }
+    }
+
+    return new_array;
+}
+
+//function to fill all the empty blocks in a 3D array with a block
+function fillEmptyBlocks(array, block) {
+    // for each block in the array, if it is empty, fill it
+    for (var x = 0; x < array.length; x++) {
+        for (var y = 0; y < array[0].length; y++) {
+            for (var z = 0; z < array[0][0].length; z++) {
+                if (array[x][y][z] == null) {
+                    array[x][y][z] = block;
                 }
             }
         }
