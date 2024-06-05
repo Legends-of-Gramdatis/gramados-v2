@@ -13,6 +13,7 @@ function init(event) {
     var item = event.item;
     item.setDurabilityValue(10);
     item.setDurabilityShow(false);
+    item.setCustomName("§6§lPine Tree Spawner");
 
     return true;
 }
@@ -57,9 +58,9 @@ function buildTree(event) {
     var z = block_location.getZ();
 
     // generate a tree
-    var log = "minecraft:log";
-    var leaves = "minecraft:leaves";
-    var placeholder = "minecraft:sponge";
+    var log = "minecraft:log:0";
+    var leaves = "minecraft:leaves:0";
+    var placeholder = "minecraft:sponge:0";
     var tree = treetypePine(log, leaves, placeholder, quality);
     //var tree = createPineBranch(log, leaves, placeholder, quality);
 
@@ -850,7 +851,18 @@ function build3DArray(array, build_x, build_y, build_z, world) {
             for (var z = 0; z < array[0][0].length; z++) {
                 if (array[x][y][z] != null) {
                     //log("Placing block " + array[x][y][z] + " at " + build_x + x + ", " + build_y + y + ", " + build_z + z);
-                    world.setBlock(build_x + x, build_y + y, build_z + z, array[x][y][z], 0);
+                    //split block name on :
+                    var block = array[x][y][z].split(":");
+                    //merge the 2 first elements with :
+                    var block_id = block[0] + ":" + block[1];
+                    
+                    // if it has damage
+                    if (block.length > 2) {
+                        var damage = block[2];
+                        world.setBlock(build_x + x, build_y + y, build_z + z, block_id, damage);
+                    } else {
+                        world.setBlock(build_x + x, build_y + y, build_z + z, block_id, 0);
+                    }
                 }
             }
         }
