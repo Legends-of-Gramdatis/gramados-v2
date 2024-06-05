@@ -58,8 +58,8 @@ function buildTree(event) {
     var z = block_location.getZ();
 
     // generate a tree
-    var log = "minecraft:log:0";
-    var leaves = "minecraft:leaves:0";
+    var log = "forestry:logs.5:0";
+    var leaves = "forestry:leaves.decorative.0:12";
     var placeholder = "minecraft:sponge:0";
     var tree = treetypePine(log, leaves, placeholder, quality);
     //var tree = createPineBranch(log, leaves, placeholder, quality);
