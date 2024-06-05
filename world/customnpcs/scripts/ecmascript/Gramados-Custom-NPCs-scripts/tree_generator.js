@@ -13,7 +13,7 @@ function init(event) {
     var item = event.item;
     item.setDurabilityValue(10);
     item.setDurabilityShow(false);
-    item.setCustomName("§6§lPine Tree Spawner");
+    item.setCustomName("§6§lRandom Tree Spawner");
 
     return true;
 }
@@ -56,13 +56,34 @@ function buildTree(event) {
     var x = block_location.getX();
     var y = block_location.getY();
     var z = block_location.getZ();
-
-    // generate a tree
-    var log = "forestry:logs.5:0";
-    var leaves = "forestry:leaves.decorative.0:12";
+    
     var placeholder = "minecraft:sponge:0";
-    var tree = treetypePine(log, leaves, placeholder, quality);
-    //var tree = createPineBranch(log, leaves, placeholder, quality);
+    var log = "minecraft:log:0";
+    var leaves = "minecraft:leaves:0";
+    //var tree = treetypeSequoia(log, leaves, placeholder, quality);
+
+    //get a random integer between 0 1 or 2
+    var tree_type = Math.floor(Math.random() * 3);
+    switch (tree_type) {
+        case 0:
+            // generate a tall oak tree
+            log = "minecraft:log:0";
+            leaves = "minecraft:leaves:0";
+            var tree = treetypeTallOak(log, leaves, placeholder, quality);
+            break;
+        case 1:
+            // generate a pine tree
+            log = "forestry:logs.5:0";
+            leaves = "minecraft:leaves:1";
+            var tree = treetypePine(log, leaves, placeholder, quality);
+            break;
+        case 2:
+            // generate a sequoia tree
+            log = "forestry:logs.1:3";
+            leaves = "minecraft:leaves:1";
+            var tree = treetypeSequoia(log, leaves, placeholder, quality);
+            break;
+    }
 
     //offset teh tree for the center to be above the block
     var offset_x = Math.floor(tree[1][0] / 2);
@@ -454,6 +475,108 @@ function treetypePine(log, leaves, placeholder, quality) {
             }
         }
     }
+
+    return [tree, tree_size];
+}
+
+// algorithm to generate a sequoia tree. return a 3D array with the tree blocks
+function treetypeSequoia(log, leaves, placeholder, quality) {
+    //multiply quality by 20 to get log height
+    var log_height = Math.floor(20 * quality) + 10;
+    //create a 3D array
+    var tree = create3DArray(5, log_height, 5);
+    //fill the log
+    for (var y = 0; y < log_height; y++) {
+        tree[2][y][2] = log;
+    }
+
+    var incxrease_scale = 5 * quality;
+    if (incxrease_scale < 10) {
+        incxrease_scale = 10;
+    }
+
+    //increase the size of the tree
+    tree = increase3DArray(tree, incxrease_scale, 10, incxrease_scale);
+
+    // cet teh center coordinates
+    var center = Math.floor(tree.length / 2);
+
+    // at the bottom of the tree (1/4), make the log 5 blocks wide
+    var bottom_bound = getBounds(0, 1, log_height, 4);
+    for (var i = bottom_bound[0]; i < bottom_bound[1]; i++) {
+        // draw a circle of logs
+        drawCircle(tree, center, i, center, 1, log);
+        drawCircle(tree, center, i, center, 2, log, 0.8);
+    }
+
+    // at the 1/4 to 2/4 of the tree, make the log 3 blocks wide
+    var middle_bound = getBounds(1, 2, log_height, 4);
+    for (var i = middle_bound[0]; i < middle_bound[1]; i++) {
+        // draw a circle of logs
+        drawCircle(tree, center, i, center, 0, log);
+        drawCircle(tree, center, i, center, 1, log, 0.8);
+    }
+
+    // At the top third of the tree, create random branches (wooden blocks)
+    var branches_bound = getBounds(5, 7, log_height, 8);
+    for (var i = branches_bound[0]; i < branches_bound[1]; i++) {
+        if (Math.random() < 0.75) {
+            // get a random direction
+            var direction = Math.floor(Math.random() * 4);
+            // get a random angle
+            var angle = Math.floor(Math.random() * 4) + 1;
+            // get a random length
+            var length = Math.floor(Math.random() * (log_height/8)) + 1;
+            // generate the coordinates (orign and destination)
+            var origin = [center, i, center];
+            // generate destination with angle, length and direction
+            var destination = [center, i + length, center];
+            switch (direction) {
+                case 0:
+                    destination[0] = center - angle;
+                    break;
+                case 1:
+                    destination[2] = center + angle;
+                    break;
+                case 2:
+                    destination[0] = center + angle;
+                    break;
+                case 3:
+                    destination[2] = center - angle;
+                    break;
+            }
+            //draw a random leaf sphere at destination
+            var radius = Math.floor(Math.random() * 2) + 2;
+            drawSphere(tree, destination[0], destination[1], destination[2], radius, leaves, 0.75);
+
+            // fdraw the branch
+            drawLine(tree, origin[0], origin[1], origin[2], destination[0], destination[1], destination[2], log, true);
+        }
+    }
+
+    for (var x = 0, z = 0; x < tree.length; x++) {
+        for (var y = branches_bound[0]; y < tree[0].length; y++) {
+            for (var z = 0; z < tree[0][0].length; z++) {
+                // if there is a log
+                if (tree[x][y][z] == log && Math.random() < 0.5) {
+                    // Draw a sphere of random leaves around the log
+                    var radius = Math.floor(Math.random() * 3) + 1;
+                    drawSphere(tree, x, y, z, radius, leaves);
+                    //draw another sphere 1 block larger, but only 50% of the time
+                    drawSphere(tree, x, y, z, radius + 1, leaves, 0.5);
+                }
+            }
+        }
+    }
+
+    // always have a leaf sphere above the highest log block
+    drawSphere(tree, center, log_height - 1, center, 2, leaves);
+    drawSphere(tree, center, log_height - 1, center, 3, leaves, 0.5);
+
+
+    tree = cleanupUnconnected(tree, leaves);
+
+    var tree_size = [tree.length, tree[0].length, tree[0][0].length];
 
     return [tree, tree_size];
 }
@@ -966,18 +1089,64 @@ function increase3DArray(array, increase_x, increase_y, increase_z) {
     return new_array;
 }
 
+//function to draw a line in a 3D array
+function drawLine(array, x1, y1, z1, x2, y2, z2, block, force) {
+    // get the distance between the 2 points
+    var distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2) + Math.pow(z2 - z1, 2));
 
-//function to draw a circle in a 3D array
-function drawCircle(array, x, y, z, radius, block) {
-    // for each block in the array, check if it is within the circle
+    // for each block in the array, check if it is on the line
     for (var i = 0; i < array.length; i++) {
         for (var j = 0; j < array[0].length; j++) {
             for (var k = 0; k < array[0][0].length; k++) {
-                if (isInside(i, j, k, x - radius, y - radius, z - radius, x + radius, y + radius, z + radius)) {
+                // get the distance between the block and the 2 points
+                var d1 = Math.sqrt(Math.pow(i - x1, 2) + Math.pow(j - y1, 2) + Math.pow(k - z1, 2));
+                var d2 = Math.sqrt(Math.pow(i - x2, 2) + Math.pow(j - y2, 2) + Math.pow(k - z2, 2));
+
+                // if the sum of the 2 distances is equal to the distance between the 2 points, the block is on the line
+                if (Math.abs(d1 + d2 - distance) < 0.2 && (force || array[i][j][k] == null)) {
                     array[i][j][k] = block;
                 }
             }
         }
+    }
+
+    return array;
+}
+
+//function to draw a sphere in a 3D array
+function drawSphere(array, x, y, z, radius, block, chance) {
+    // for each block in the array, check if it is within the sphere
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array[0].length; j++) {
+            for (var k = 0; k < array[0][0].length; k++) {
+                if (array[i][j][k] == null && Math.pow(i - x, 2) + Math.pow(j - y, 2) + Math.pow(k - z, 2) < Math.pow(radius, 2)) {
+                    if (chance == null || Math.random() < chance) {
+                        array[i][j][k] = block;
+                    }
+                }
+            }
+        }
+    }
+    return array;
+}
+
+//function to draw a circle in a 3D array
+function drawCircle(array, x, y, z, radius, block, chance) {
+    // for each block in the array, check if it is within the circle
+    for (var it_x = 0; it_x < array.length; it_x++) {
+        for (var it_z = 0; it_z < array[0][0].length; it_z++) {
+            // tolerence:
+            var tolerence = 0.2;
+            // get the distance between the block and the center of the circle
+            var distance = Math.sqrt(Math.pow(it_x - x, 2) + Math.pow(it_z - z, 2));
+            // if the distance is within the radius, place the block
+            if (distance < radius + tolerence) {
+                if (chance == null || Math.random() < chance) {
+                    array[it_x][y][it_z] = block;
+                }
+            }
+        }
+
     }
 
     return array;
@@ -1043,6 +1212,44 @@ function fillEmptyBlocks(array, block) {
             for (var z = 0; z < array[0][0].length; z++) {
                 if (array[x][y][z] == null) {
                     array[x][y][z] = block;
+                }
+            }
+        }
+    }
+
+    return array;
+}
+
+//function to cleanup unconnected blocks in a 3D array
+function cleanupUnconnected(array, block) {
+    // for each block in the array, if it is a leaf, and is not connected to the tree, remove it
+    for (var x = 0; x < array.length; x++) {
+        for (var y = 0; y < array[0].length; y++) {
+            for (var z = 0; z < array[0][0].length; z++) {
+                if (array[x][y][z] == block) {
+                    // If all 6 blocks around are null, remove the block
+                    var connected = 0;
+                    if (withinArray(x - 1, y, z, array) && array[x - 1][y][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x + 1, y, z, array) && array[x + 1][y][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y - 1, z, array) && array[x][y - 1][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y + 1, z, array) && array[x][y + 1][z] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z - 1, array) && array[x][y][z - 1] != null) {
+                        connected++;
+                    }
+                    if (withinArray(x, y, z + 1, array) && array[x][y][z + 1] != null) {
+                        connected++;
+                    }
+                    if (connected == 0) {
+                        array[x][y][z] = null;
+                    }
                 }
             }
         }
