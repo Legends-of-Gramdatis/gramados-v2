@@ -7,6 +7,9 @@ The final goal is to have a region with several values that will allow some tree
 //var quality = 1;
 var quality = Math.random() * 2;
 
+//get player
+var player;
+
 // Init the item with custom texture
 function init(event) {
     // Get the item
@@ -15,15 +18,15 @@ function init(event) {
     item.setDurabilityShow(false);
     item.setCustomName("§6§lRandom Tree Spawner");
 
+    player = event.player;
+
     return true;
 }
 
 function tick(event) {
-    //get the player
-    var player = event.player;
     //randoim quality
     quality = Math.random() * 2;
-    //player.message("Quality: " + quality);
+    player = event.player;
     return true;
 }
 
@@ -978,7 +981,7 @@ function build3DArray(array, build_x, build_y, build_z, world) {
                     var block = array[x][y][z].split(":");
                     //merge the 2 first elements with :
                     var block_id = block[0] + ":" + block[1];
-                    
+
                     // if it has damage
                     if (block.length > 2) {
                         var damage = block[2];
@@ -986,6 +989,27 @@ function build3DArray(array, build_x, build_y, build_z, world) {
                     } else {
                         world.setBlock(build_x + x, build_y + y, build_z + z, block_id, 0);
                     }
+                }
+            }
+        }
+    }
+
+    // expand the bottom layer (if log) to the ground
+    for (var x = 0; x < array.length; x++) {
+        for (var z = 0; z < array[0][0].length; z++) {
+            if (array[x][0][z] != null) {
+                var y = 1;
+                while (world.getBlock(build_x + x, build_y - y, build_z + z).isAir()) {
+                    //player.message("Placing block at " + (build_x + x) + ", " + (build_y - y) + ", " + (build_z + z));
+                    var block = array[x][0][z].split(":");
+                    var block_id = block[0] + ":" + block[1];
+                    if (block.length > 2) {
+                        var damage = block[2];
+                        world.setBlock(build_x + x, build_y - y, build_z + z, block_id, damage);
+                    } else {
+                        world.setBlock(build_x + x, build_y - y, build_z + z, block_id, 0);
+                    }
+                    y++;
                 }
             }
         }
