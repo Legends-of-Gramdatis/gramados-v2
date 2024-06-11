@@ -95,6 +95,31 @@ icons:
         label: school
     school_c:
         label: school_c
+    service_firedept:
+        label: service_firedept
+    service_firedept_c:
+        label: service_firedept_c
+    service_health:
+        label: service_health
+    service_health_c:
+        label: service_health_c
+    service_multi:
+        label: service_multi
+    service_multi_c:
+        label: service_multi_c
+    service_police:
+        label: service_police
+    service_police_c:
+        label: service_police_c
+    generalstore:
+        label: generalstore
+    generalstore_c:
+        label: generalstore_c
+    marketstand:
+        label: marketstand
+    marketstand_c:
+        label: marketstand_c
+
 sets:
     Tech Shops:
         hide: false
@@ -113,6 +138,14 @@ sets:
                 y: 75.0
                 z: 309.0
                 label: Hellotech Tech Shop
+            marker_2:
+                world: world
+                markup: false
+                x: -2846.0
+                icon: tech
+                y: 95.0
+                z: 856.0
+                label: Petrolton Tech Shop
         lines: {
             }
         layerprio: 0
@@ -353,6 +386,22 @@ sets:
                 y: 74.0
                 z: -1040.5242758179133
                 label: Wine Brewing Equipment Wholesale (buy)
+            marker_10:
+                world: world
+                markup: false
+                x: -1314.0
+                icon: wholesale_c
+                y: 87.0
+                z: -1365.0
+                label: Allen Point Export Wholesale (sell)
+            marker_11:
+                world: world
+                markup: false
+                x: -6836.0
+                icon: wholesale_c
+                y: 82.0
+                z: -255.0
+                label: Farmiston Farm Heavy Machinery Wholesale (buy)
         lines: {
             }
         layerprio: 0
@@ -381,6 +430,22 @@ sets:
                 y: 75.0
                 z: -951.0
                 label: Springfield Post Office
+            marker_3:
+                world: world
+                markup: false
+                x: -4560.0
+                icon: post_office
+                y: 75.0
+                z: -408.0
+                label: Chaseals Post Office
+            marker_4:
+                world: world
+                markup: false
+                x: -1282.0
+                icon: post_office
+                y: 94.0
+                z: -1421.0
+                label: Allen Point Post Office
         lines: {
             }
         layerprio: 0
@@ -441,7 +506,7 @@ sets:
                 world: world
                 markup: false
                 x: 1008.0
-                icon: restaurant
+                icon: restaurant_c
                 y: 94.0
                 z: -1191.0
                 label: Blockbros Restaurant
@@ -489,7 +554,7 @@ sets:
                 world: world
                 markup: false
                 x: 1002.0
-                icon: restaurant
+                icon: restaurant_c
                 y: 91.0
                 z: -1181.0
                 label: Retro Diner
@@ -517,6 +582,30 @@ sets:
                 y: 72.0
                 z: -711.0
                 label: Marina Vista Café & Grill
+            marker_12:
+                world: world
+                markup: false
+                x: -4580.0
+                icon: restaurant
+                y: 75.0
+                z: -405.0
+                label: The Buttered Pancake
+            marker_13:
+                world: world
+                markup: false
+                x: -2786.0
+                icon: restaurant
+                y: 95.0
+                z: 860.0
+                label: Petrolton Fish Restaurant
+            marker_14:
+                world: world
+                markup: false
+                x: -6961.0
+                icon: restaurant
+                y: 83.0
+                z: -107
+                label: Dominico's Pizza
         lines: {
             }
         layerprio: 0
@@ -665,6 +754,14 @@ sets:
                 y: 69.0
                 z: -5375.0
                 label: Branwen City Town Hall
+            marker_8:
+                world: world
+                markup: false
+                x: -2917.0
+                icon: townhall_c
+                y: 98.0
+                z: 1019.0
+                label: Petrolton Town Hall
         lines: {
             }
         layerprio: 0
@@ -753,6 +850,38 @@ sets:
                 y: 76.0
                 z: -9.0
                 label: Gramados Grand Furniture Provider
+            marker_5:
+                world: world
+                markup: false
+                x: -1235.0
+                icon: furnitureshop
+                y: 95.0
+                z: -1423.0
+                label: Allen Point Furniture Shop
+            marker_6:
+                world: world
+                markup: false
+                x: -4582.0
+                icon: furnitureshop
+                y: 75.0
+                z: -395.0
+                label: Chaseals Furniture
+            marker_7:
+                world: world
+                markup: false
+                x: -2838.0
+                icon: furnitureshop
+                y: 95.0
+                z: 855.0
+                label: Petrolton Furniture
+            marker_8:
+                world: world
+                markup: false
+                x: -6957.0
+                icon: furnitureshop
+                y: 82.0
+                z: -122
+                label: Silorose Furniture
         lines: {
             }
         layerprio: 0
@@ -885,6 +1014,14 @@ sets:
                 y: 78.0
                 z: 216.0
                 label: Goldincina Bank
+            marker_4:
+                world: world
+                markup: false
+                x: -169.0
+                icon: bank_c
+                y: 68.0
+                z: -5432.0
+                label: Branwen City Bank
         lines: {
             }
         layerprio: 0
@@ -1174,6 +1311,146 @@ sets:
                 y: 74.0
                 z: -157.0
                 label: Gramados Gymnasium
+        lines: {
+            }
+        layerprio: 0
+    Services:
+        hide: false
+        circles: {
+            }
+        deficon: service_multi_c
+        areas: {
+            }
+        label: Services
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -1977.0
+                icon: service_firedept_c
+                y: 77.0
+                z: 137.0
+                label: Gramados Fire Department
+            marker_2:
+                world: world
+                markup: false
+                x: -1925.0
+                icon: service_police
+                y: 76.0
+                z: 40.0
+                label: Gramados Police Department
+            marker_3:
+                world: world
+                markup: false
+                x: -1817.0
+                icon: service_health_c
+                y: 77.0
+                z: 136.0
+                label: Gramados Great Hospital
+            marker_4:
+                world: world
+                markup: false
+                x: -1303.0
+                icon: service_multi_c
+                y: 97.0
+                z: -1421.0
+                label: Allen Point Multi-Service Facility
+            marker_5:
+                world: world
+                markup: false
+                x: 298.0
+                icon: service_multi_c
+                y: 77.0
+                z: -994.0
+                label: Springfield Multi-Service Facility
+            marker_6:
+                world: world
+                markup: false
+                x: 1016.0
+                icon: service_multi_c
+                y: 94.0
+                z: -1247.0
+                label: Blockingham Multi-Service Facility
+            marker_7:
+                world: world
+                markup: false
+                x: -4656.0
+                icon: service_multi_c
+                y: 70.0
+                z: -587.0
+                label: Chaseals Multi-Service Facility
+            marker_8:
+                world: world
+                markup: false
+                x: -2906.0
+                icon: service_police
+                y: 95.0
+                z: 893.0
+                label: Petrolton Police Department
+            marker_9:
+                world: world
+                markup: false
+                x: -2954.0
+                icon: service_firedept_c
+                y: 95.0
+                z: 895.0
+                label: Petrolton Fire Department
+            marker_10:
+                world: world
+                markup: false
+                x: -2854.0
+                icon: service_health_c
+                y: 95.0
+                z: 880.0
+                label: Petrolton Pharmacist
+        lines: {
+            }
+        layerprio: 0
+    General Stores:
+        hide: false
+        circles: {
+            }
+        deficon: generalstore_c
+        areas: {
+            }
+        label: Stores &amp; Markets
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -2872.0
+                icon: generalstore
+                y: 95.0
+                z: 871.0
+                label: Fury Milk
+        lines: {
+            }
+        layerprio: 0
+    Open Air Markets:
+        hide: false
+        circles: {
+            }
+        deficon: marketstand_c
+        areas: {
+            }
+        label: Open Air Markets
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -2796.0
+                icon: marketstand
+                y: 95.0
+                z: 902.0
+                label: Petrolton Market
+            marker_2:
+                world: world
+                markup: false
+                x: -1308.0 
+                icon: marketstand
+                y: 87.0
+                z: -1385.0
+                label: Allen Point Local Market
         lines: {
             }
         layerprio: 0
