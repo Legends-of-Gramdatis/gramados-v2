@@ -1,0 +1,49 @@
+{
+    "CompleterNpc": "Lindu",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 1,
+    "QuestCompletion": 1,
+    "Title": "Dousing Evil",
+    "Text": "Smother out the Firefreaks",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 15,
+        "OptionFactions1": 2,
+        "OptionFactions2": 6,
+        "OptionFaction1Points": 10,
+        "DecreaseFaction2Points": 1b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 5,
+            "Slot": "Firefreak"
+        },
+        {
+            "Value": 1,
+            "Slot": "Firefreak Leader"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1718995807510L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Complete",
+    "NextQuestTitle": ""
+}
