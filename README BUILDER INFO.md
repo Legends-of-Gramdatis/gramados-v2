@@ -58,3 +58,17 @@ For those creating their own towns or villages, follow these guidelines:
 - **Lore:** Adding lore to your settlement enhances the experience for players, giving your town or village a rich history and depth.
 
 By following these guidelines, you'll contribute to the vibrant and dynamic world of Gramados, making it a better place for everyone. Happy building!
+
+# Renovation in Gramados Server
+
+As a builder in the Gramados Server, you have the opportunity to renovate existing structures. A house or building owner may request a renovation, here's what the owner can ask for:
+- replacement of the color palette of a structures
+- replacement of windows
+- replacement of doors
+In a renovation, you need to keep the original chiseled variant of the block, and you can't change the structure's shape.
+The renovation has a price:
+- for each block replaced, the builder receives 100 grons
+- for each window replaced, the builder receives 200 grons
+- for each door replaced, the builder receives 1000 grons
+Over a rnovation price of 50000 grons, the door replacement is free.
+The builder is responsible for the renovation, and may get sued if the renovation is not according to the rules above.
