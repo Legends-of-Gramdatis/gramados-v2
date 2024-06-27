@@ -762,6 +762,14 @@ sets:
                 y: 98.0
                 z: 1019.0
                 label: Petrolton Town Hall
+            marker_9:
+                world: world
+                markup: false
+                x: -6905.0
+                icon: townhall_c
+                y: 82.0
+                z: -67
+                label: Silorose Town Hall
         lines: {
             }
         layerprio: 0
@@ -1275,6 +1283,14 @@ sets:
                 y: 83.0
                 z: -431.0
                 label: Citrus Station
+            marker_12:
+                world: world
+                markup: false
+                x: -6194.0
+                icon: fuelpump_c
+                y: 77.0
+                z: -972.0
+                label: Buglaton Station
         lines: {
             }
         layerprio: 0
@@ -1403,6 +1419,14 @@ sets:
                 y: 95.0
                 z: 880.0
                 label: Petrolton Pharmacist
+            marker_11:
+                world: world
+                markup: false
+                x: -6913.0
+                icon: service_multi_c
+                y: 82.0
+                z: -93.0
+                label: Silorose Multi-Service Facility 
         lines: {
             }
         layerprio: 0
