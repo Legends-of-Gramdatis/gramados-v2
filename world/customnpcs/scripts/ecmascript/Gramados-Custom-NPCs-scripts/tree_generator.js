@@ -66,7 +66,8 @@ function buildTree(event) {
     //var tree = treetypeSequoia(log, leaves, placeholder, quality);
 
     //get a random integer between 0 1 or 2
-    var tree_type = Math.floor(Math.random() * 3);
+    var tree_type = Math.floor(Math.random() * 4);
+    //var tree_type = 3;
     switch (tree_type) {
         case 0:
             // generate a tall oak tree
@@ -85,6 +86,12 @@ function buildTree(event) {
             log = "forestry:logs.1:3";
             leaves = "minecraft:leaves:1";
             var tree = treetypeSequoia(log, leaves, placeholder, quality);
+            break;
+        case 3:
+            // generate a ceder tree
+            log = "forestry:logs.0:3";
+            leaves = "minecraft:leaves2:1";
+            var tree = treetypeCeder(log, leaves, placeholder, quality);
             break;
     }
 
@@ -508,16 +515,16 @@ function treetypeSequoia(log, leaves, placeholder, quality) {
     var bottom_bound = getBounds(0, 1, log_height, 4);
     for (var i = bottom_bound[0]; i < bottom_bound[1]; i++) {
         // draw a circle of logs
-        drawCircle(tree, center, i, center, 1, log);
-        drawCircle(tree, center, i, center, 2, log, 0.8);
+        drawCircle(tree, center, i, center, 1, log, 1, true);
+        drawCircle(tree, center, i, center, 2, log, 0.8, true);
     }
 
     // at the 1/4 to 2/4 of the tree, make the log 3 blocks wide
     var middle_bound = getBounds(1, 2, log_height, 4);
     for (var i = middle_bound[0]; i < middle_bound[1]; i++) {
         // draw a circle of logs
-        drawCircle(tree, center, i, center, 0, log);
-        drawCircle(tree, center, i, center, 1, log, 0.8);
+        drawCircle(tree, center, i, center, 0, log, 1, true);
+        drawCircle(tree, center, i, center, 1, log, 0.8, true);
     }
 
     // At the top third of the tree, create random branches (wooden blocks)
@@ -582,6 +589,104 @@ function treetypeSequoia(log, leaves, placeholder, quality) {
     var tree_size = [tree.length, tree[0].length, tree[0][0].length];
 
     return [tree, tree_size];
+}
+
+// algorithm to generate a ceder tree. return a 3D array with the tree blocks
+function treetypeCeder(log, leaves, placeholder, quality) {
+    var trunk_height = Math.floor(10 + 20 * quality);
+    //calculate the trunk height using segmentNumber
+    var trunk_segments = segmentNumber(trunk_height, 5, 10);
+    // trunk_height is the sum of the segments
+    trunk_height = 0;
+    for (var i = 0; i < trunk_segments.length; i++) {
+        trunk_height += trunk_segments[i];
+    }
+    player.message("Trunk height: " + trunk_height);
+
+    //create a 3D array
+    var tree = create3DArray(Math.floor(quality * 10 + 11), trunk_height + 10, Math.floor(quality * 10 + 11));
+
+    //player.message("Creating a ceder tree with log " + log + " and leaves " + leaves + " with quality " + quality);
+
+    var center_x = Math.floor(tree.length / 2);
+    var center_z = Math.floor(tree[0][0].length / 2);
+    var general_y = 0;
+
+    // get the lower branch position: 1 + 2 * quality, topped at 6
+    var lower_branch = Math.floor(1 + 2 * quality);
+    if (lower_branch > 6) {
+        lower_branch = 6;
+    }
+    //player.message("Lower branch position: " + lower_branch);
+
+    var trunk_radius = 1;
+
+    //for each element of the trunk height array
+    for (var i = 0; i < trunk_segments.length; i++) {
+
+        //player.message("Segment " + i + " is " + trunk_segments[i] + " tall");
+
+
+        trunk_radius = (trunk_segments.length - i) / 2;
+
+
+
+        if (i == 0) {
+            //fill the trunk
+            for (general_y = 0; general_y < trunk_segments[0]; general_y++) {
+                drawCircle(tree, center_x, general_y, center_z, trunk_radius, log, 1, true);
+
+                // create a branch
+                if (general_y > lower_branch && Math.random() < 0.5) {
+                    //random radius between 2.5 * trunk_radius and 3 * trunk_radius
+                    var branch_radius = (2.5 * trunk_radius + Math.random() * 0.5 * trunk_radius) + i;
+
+                    //player.message("Creating a branch at segment " + i + " with radius " + branch_radius + " at y " + general_y);
+
+                    //create a branch
+                    createCedarBranch(log, leaves, placeholder, tree, branch_radius, general_y, center_x, center_z);
+                }
+            }
+
+            
+
+        } else {
+            //player.message("Next trunk segment is " + trunk_segments[i] + " tall, and starts at " + general_y);
+            //fill the trunk
+            for (var y = general_y; y < general_y + trunk_segments[i]; y++) {
+                drawCircle(tree, center_x, y, center_z, trunk_radius, log, 1, true);
+
+                // create a branch
+                if (Math.random() < 0.8) {
+                    //random radius between 2.5 * trunk_radius and 3 * trunk_radius
+                    var branch_radius = (2.5 * trunk_radius + Math.random() * 0.5 * trunk_radius) + i;
+
+                    //player.message("Creating a branch at segment " + i + " with radius " + branch_radius + " at y " + y);
+
+                    //create a branch
+                    createCedarBranch(log, leaves, placeholder, tree, branch_radius, y, center_x, center_z);
+                }
+            }
+
+            general_y += trunk_segments[i];
+
+            
+        }
+
+        //cap the tree with a branch
+        if (i == trunk_segments.length - 1) {
+            // draw a leaf circle at the top
+            drawCircle(tree, center_x, general_y, center_z, trunk_segments.length, leaves, 1, false);
+            drawCircle(tree, center_x, general_y, center_z, trunk_segments.length + 1, leaves, 0.5, false);
+            if (trunk_segments.length > 3) {
+                // add another circle above
+                drawCircle(tree, center_x, general_y + 1, center_z, trunk_segments.length - 2, leaves, 1, false);
+                drawCircle(tree, center_x, general_y + 1, center_z, trunk_segments.length - 1, leaves, 0.5, false);
+            }
+        }
+    }
+
+    return [tree, [tree.length, tree[0].length, tree[0][0].length]];
 }
 
 
@@ -680,7 +785,24 @@ function createPineBranch(log, leaves, placeholder, proportion) {
     return branch;
 }
 
+function createCedarBranch(log, leaves, placeholder, tree, radius, y, center_x, center_z) {
+    // from y, get a random second y in any direction at a distance of "radius"
+    var x2 = center_x + Math.floor(Math.random() * (radius * 2 + 1) - radius);
+    var z2 = center_z + Math.floor(Math.random() * (radius * 2 + 1) - radius);
+    // draw a line from x1, y, z1 to x2, y, z2
+    drawLine(tree, center_x, y, center_z, x2, y, z2, log, true);
 
+    // draw a leaf circle at x2, y, z2
+    drawCircle(tree, x2, y, z2, radius, leaves, 1, false);
+    drawCircle(tree, x2, y, z2, radius + 1, leaves, 0.5, false);
+
+    if (radius > 3) {
+        // add another circle above
+        drawCircle(tree, x2, y + 1, z2, radius - 2, leaves, 1, false);
+        drawCircle(tree, x2, y + 1, z2, radius - 1, leaves, 0.5, false);
+    }
+
+}
 
 
 
@@ -1155,7 +1277,7 @@ function drawSphere(array, x, y, z, radius, block, chance) {
 }
 
 //function to draw a circle in a 3D array
-function drawCircle(array, x, y, z, radius, block, chance) {
+function drawCircle(array, x, y, z, radius, block, chance, force) {
     // for each block in the array, check if it is within the circle
     for (var it_x = 0; it_x < array.length; it_x++) {
         for (var it_z = 0; it_z < array[0][0].length; it_z++) {
@@ -1166,7 +1288,9 @@ function drawCircle(array, x, y, z, radius, block, chance) {
             // if the distance is within the radius, place the block
             if (distance < radius + tolerence) {
                 if (chance == null || Math.random() < chance) {
-                    array[it_x][y][it_z] = block;
+                    if (force || array[it_x][y][it_z] == null) {
+                        array[it_x][y][it_z] = block;
+                    }
                 }
             }
         }
