@@ -890,6 +890,14 @@ sets:
                 y: 82.0
                 z: -122
                 label: Silorose Furniture
+            marker_9:
+                world: world
+                markup: false
+                x: -5168.0
+                icon: furnitureshop
+                y: 67.0
+                z: 234.0
+                label: Ardocor Furniture
         lines: {
             }
         layerprio: 0
@@ -1291,6 +1299,14 @@ sets:
                 y: 77.0
                 z: -972.0
                 label: Buglaton Station
+            marker_13:
+                world: world
+                markup: false
+                x: -5356.0
+                icon: fuelpump
+                y: 70.0
+                z: 112.0
+                label: Ardocor UNU Fuel Station
         lines: {
             }
         layerprio: 0
@@ -1427,6 +1443,14 @@ sets:
                 y: 82.0
                 z: -93.0
                 label: Silorose Multi-Service Facility 
+            marker_12:
+                world: world
+                markup: false
+                x: -5150.0
+                icon: service_multi_c
+                y: 67.0
+                z: 207.0
+                label: Ardocor Multi-Service Facility
         lines: {
             }
         layerprio: 0
