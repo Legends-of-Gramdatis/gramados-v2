@@ -37,10 +37,10 @@ function array_remove(array, element) {
 }
 
 function removeFromArray(arr, vals) {
-    if (typeof(vals) == 'string') { vals = [vals]; }
+    if (typeof (vals) == 'string') { vals = [vals]; }
     var a = arr;
-    for(var v in vals) {
-var val = vals[v];
+    for (var v in vals) {
+        var val = vals[v];
         array_remove(a, val);
     }
     return a;
@@ -48,12 +48,12 @@ var val = vals[v];
 
 function removeFromArrayByKey(arr, keys) {
     var narr = [];
-    for(var k in keys) {
-var key = keys[k];
+    for (var k in keys) {
+        var key = keys[k];
         keys[k] = parseInt(key);
     }
-    for(var i in arr) {
-var ari = arr[i];
+    for (var i in arr) {
+        var ari = arr[i];
         if (keys.indexOf(i) > -1) {
             narr.push(ari);
         }
@@ -75,21 +75,21 @@ function array_merge(a1, a2) {
 
 function arrayTransform(arr, elfn) {
     var newa = [];
-    for(var a in arr) {
-var arri = arr[a];
+    for (var a in arr) {
+        var arri = arr[a];
         newa.push(elfn(arri, a, arr));
     }
     return newa;
 }
 
 function arrayTakeRange(arr, start, end) {
-	if(typeof(end) == typeof(undefined) || end === null) { end = null; }
+    if (typeof (end) == typeof (undefined) || end === null) { end = null; }
     if (end == null) { end = arr.length; }
     var a = [];
     var _end = Math.min(end, arr.length);
     var _start = Math.min(start, _end);
     for (var i = _start; i < Math.min(end, arr.length); i++) {
-        if (typeof(arr[i]) != typeof(undefined)) {
+        if (typeof (arr[i]) != typeof (undefined)) {
             a.push(arr[i]);
         }
     }
@@ -97,11 +97,11 @@ function arrayTakeRange(arr, start, end) {
 }
 
 function arrayOccurs(string, subArray, allowOverlapping, caseSensitive) {
-	if(typeof(allowOverlapping) == typeof(undefined) || allowOverlapping === null) { allowOverlapping = false; }
-	if(typeof(caseSensitive) == typeof(undefined) || caseSensitive === null) { caseSensitive = true; }
+    if (typeof (allowOverlapping) == typeof (undefined) || allowOverlapping === null) { allowOverlapping = false; }
+    if (typeof (caseSensitive) == typeof (undefined) || caseSensitive === null) { caseSensitive = true; }
     var occ = 0;
-    for(var i in subArray) {
-var sel = subArray[i];
+    for (var i in subArray) {
+        var sel = subArray[i];
         occ += occurrences(string, sel, allowOverlapping, caseSensitive);
     }
 
@@ -118,11 +118,11 @@ function arrayFormat(array, format, sep) {
     return joined;
 }//==Reallife date handler for hiring regions etc
 
-Date.prototype.addTime = function(addTime) {
+Date.prototype.addTime = function (addTime) {
     this.setTime(this.getTime() + addTime);
 };
 
-Date.prototype.hasPassed = function(passDate) {
+Date.prototype.hasPassed = function (passDate) {
     return (this.getTime() >= passDate.getTime());
 };
 
@@ -150,7 +150,7 @@ function getStringTime(timeString) {
 }
 //Converts number to TimeString
 function getTimeString(stringTime, excludes) {
-	if(typeof(excludes) == typeof(undefined) || excludes === null) { excludes = []; }
+    if (typeof (excludes) == typeof (undefined) || excludes === null) { excludes = []; }
     var newTime = parseInt(stringTime);
     var newStr = '';
     for (var ms in msTable) {
@@ -172,9 +172,9 @@ function getTimeString(stringTime, excludes) {
 
 
 function getDateString(val, mode, dateSeperator, timeSeperator) {
-	if(typeof(mode) == typeof(undefined) || mode === null) { mode = null; }
-	if(typeof(dateSeperator) == typeof(undefined) || dateSeperator === null) { dateSeperator = '/'; }
-	if(typeof(timeSeperator) == typeof(undefined) || timeSeperator === null) { timeSeperator = ':'; }
+    if (typeof (mode) == typeof (undefined) || mode === null) { mode = null; }
+    if (typeof (dateSeperator) == typeof (undefined) || dateSeperator === null) { dateSeperator = '/'; }
+    if (typeof (timeSeperator) == typeof (undefined) || timeSeperator === null) { timeSeperator = ':'; }
     var date = new Date();
     date.setTime(val);
 
@@ -194,27 +194,27 @@ function getDateString(val, mode, dateSeperator, timeSeperator) {
     }
 
     return outputStr;
-}function getFnArgs(fn) {
-	var fnrgx = /function[\s]+([\w]+)\(([\w,\s]+)\)/;
-	var fnstr = fn.toString();
-	var fnargs = [];
-	var m = fnstr.match(fnrgx);
-	if(m != null) {
-		
-      	m[2].split(',').forEach(function(a){
-        	fnargs.push(a.trim());
+} function getFnArgs(fn) {
+    var fnrgx = /function[\s]+([\w]+)\(([\w,\s]+)\)/;
+    var fnstr = fn.toString();
+    var fnargs = [];
+    var m = fnstr.match(fnrgx);
+    if (m != null) {
+
+        m[2].split(',').forEach(function (a) {
+            fnargs.push(a.trim());
         });
-      	
-      	return fnargs;
-	}
-	
-	return fnargs;
+
+        return fnargs;
+    }
+
+    return fnargs;
 }
 //Convert object to array
 function objArray(obj) {
     var a = [];
-    for(var i in obj) {
-var o = obj[i];
+    for (var i in obj) {
+        var o = obj[i];
         a.push(o);
     }
     return a;
@@ -285,14 +285,14 @@ function getAllFuncs(obj) {
         props = props.concat(Object.getOwnPropertyNames(obj));
     } while (obj = Object.getPrototypeOf(obj));
 
-    return props.sort().filter(function(e, i, arr) {
+    return props.sort().filter(function (e, i, arr) {
         if (e != arr[i + 1] && typeof obj[e] == 'function') return true;
     });
 }
 
 //Merge 2 objects
 function objMerge(obj1, obj2, inheritNewProps) {
-	if(typeof(inheritNewProps) == typeof(undefined) || inheritNewProps === null) { inheritNewProps = true; }
+    if (typeof (inheritNewProps) == typeof (undefined) || inheritNewProps === null) { inheritNewProps = true; }
     var obj3 = {};
     for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
     for (var attrname in obj2) {
@@ -303,13 +303,13 @@ function objMerge(obj1, obj2, inheritNewProps) {
     return obj3;
 }
 
-Object.__proto__.assign = function() {
+Object.__proto__.assign = function () {
     var obj = arguments[0];
 
     for (var i = 1; i < arguments.length; i++) {
         var arg = arguments[i];
-        for(var key in arg) {
-var value = arg[key];
+        for (var key in arg) {
+            var value = arg[key];
             obj[key] = value;
         }
     }
@@ -317,19 +317,19 @@ var value = arg[key];
     return obj;
 };
 
-Object.__proto__.values = function(obj) {
-        var vals = [];
-        for (var i in obj) {
-            vals.push(obj[i]);
-        }
-
-        return vals;
+Object.__proto__.values = function (obj) {
+    var vals = [];
+    for (var i in obj) {
+        vals.push(obj[i]);
     }
-    /* */
+
+    return vals;
+}
+/* */
 
 function formatObj(obj, tabIndex, maxDeep, maxLoop, propTypes, propType, argFn) {
-	if(typeof(propTypes) == typeof(undefined) || propTypes === null) { propTypes = {}; }
-	if(typeof(argFn) == typeof(undefined) || argFn === null) { argFn = null; }
+    if (typeof (propTypes) == typeof (undefined) || propTypes === null) { propTypes = {}; }
+    if (typeof (argFn) == typeof (undefined) || argFn === null) { argFn = null; }
     if (typeof obj === 'object' && obj !== null) {
 
         var tabIndex = (typeof tabIndex === 'undefined' || tabIndex == null) ? 1 : tabIndex;
@@ -401,29 +401,29 @@ function formatObj(obj, tabIndex, maxDeep, maxLoop, propTypes, propType, argFn) 
     }
 
     return obj;
-}; /* */if(typeof(Object.values) !== "function")  {
-    Object.values = function(obj){
+}; /* */if (typeof (Object.values) !== "function") {
+    Object.values = function (obj) {
         var v = [];
-        for(var i in obj) {
-var oi = obj[i];
+        for (var i in obj) {
+            var oi = obj[i];
             v.push(oi);
         }
 
         return v;
     }
 }
-if(typeof(Object.keys) !== "function")  {
-    Object.keys = function(obj){
+if (typeof (Object.keys) !== "function") {
+    Object.keys = function (obj) {
         var v = [];
-        for(var i in obj) {
-var oi = obj[i];
+        for (var i in obj) {
+            var oi = obj[i];
             v.push(i);
         }
 
         return v;
     }
 }
-String.prototype.allMatch = function(regx) {
+String.prototype.allMatch = function (regx) {
     var m = this.match(regx);
     var rr = [];
     for (var mm in m) {
@@ -436,11 +436,11 @@ String.prototype.allMatch = function(regx) {
 };
 
 
-String.prototype.cmatch = function(regx) {
+String.prototype.cmatch = function (regx) {
     return (this.match(regx) || []).length;
 };
 
-String.prototype.rangeUpper = function(min, max) {
+String.prototype.rangeUpper = function (min, max) {
     var str = '';
     for (var i = 0; i < this.length; i++) {
         var c = this.substring(i, i + 1); //curchar
@@ -451,7 +451,7 @@ String.prototype.rangeUpper = function(min, max) {
     }
     return str;
 };
-String.prototype.rangeLower = function(min, max) {
+String.prototype.rangeLower = function (min, max) {
     var str = '';
     for (var i = 0; i < this.length; i++) {
         var c = this.substring(i, i + 1); //curchar
@@ -463,7 +463,7 @@ String.prototype.rangeLower = function(min, max) {
     return str;
 };
 
-String.prototype.pad = function(character, len) {
+String.prototype.pad = function (character, len) {
     var n = this.toString();
     for (var i = n.length; i < len; i++) {
         n += character.toString();
@@ -471,16 +471,16 @@ String.prototype.pad = function(character, len) {
     return n;
 };
 
-String.prototype.fill = function(payload) {
+String.prototype.fill = function (payload) {
     var str = this.toString();
-    for(var p in payload) {
-var payl = payload[p];
+    for (var p in payload) {
+        var payl = payload[p];
         str = str.split("{" + p + "}").join(payl);
     }
     return str;
 }
 
-String.prototype.padMiddle = function(character, len) {
+String.prototype.padMiddle = function (character, len) {
 
     var n = this.toString();
     var sc = Math.floor((len - n.length) / 2);
@@ -495,12 +495,12 @@ String.prototype.padMiddle = function(character, len) {
     return ns;
 };
 
-String.prototype.cInt = function() {
+String.prototype.cInt = function () {
     return (isNaN(parseInt(this)) ? null : parseInt(this));
 };
 
 
-String.prototype.append = function(ch, amount) {
+String.prototype.append = function (ch, amount) {
     var new_str = this.toString();
     for (var i = 0; i < amount; i++) {
         if (i >= new_str.length) {
@@ -511,7 +511,7 @@ String.prototype.append = function(ch, amount) {
     return new_str;
 };
 
-String.prototype.prepend = function(ch, amount) {
+String.prototype.prepend = function (ch, amount) {
     var new_str = this.toString();
     for (var i = 0; i < amount; i++) {
         if (i >= new_str.length) {
@@ -522,19 +522,19 @@ String.prototype.prepend = function(ch, amount) {
     return new_str;
 };
 
-String.prototype.replaceAll = function(search, replacement) {
+String.prototype.replaceAll = function (search, replacement) {
     var target = this.toString();
-    if (typeof(search) == 'string') { search = [search]; }
-    for(var s in search) {
-var sr = search[s];
+    if (typeof (search) == 'string') { search = [search]; }
+    for (var s in search) {
+        var sr = search[s];
         target = target.split(sr).join(replacement);
     }
     return target;
 };
 
 function occurrences(string, subString, allowOverlapping, caseSensitive) {
-	if(typeof(allowOverlapping) == typeof(undefined) || allowOverlapping === null) { allowOverlapping = false; }
-	if(typeof(caseSensitive) == typeof(undefined) || caseSensitive === null) { caseSensitive = true; }
+    if (typeof (allowOverlapping) == typeof (undefined) || allowOverlapping === null) { allowOverlapping = false; }
+    if (typeof (caseSensitive) == typeof (undefined) || caseSensitive === null) { caseSensitive = true; }
     string = string.toString()
     subString = subString.toString()
 
@@ -617,7 +617,7 @@ var MCP = {
         "World_saveHandler": "field_73019_z",
         "Entity_onGround": "field_70122_E",
     }
-    
+
 };
 
 var MCItem = Java.type("net.minecraft.item.Item");
@@ -630,21 +630,21 @@ var REGISTRY = Java.type('net.minecraftforge.fml.common.registry.ForgeRegistries
 
 
 function getItemType(iitemstack, mcentity) {
-	if(typeof(mcentity) == typeof(undefined) || mcentity === null) { mcentity = null; }
+    if (typeof (mcentity) == typeof (undefined) || mcentity === null) { mcentity = null; }
     var mcitem = iitemstack.getMCItemStack()[MCP.ItemStack_getItem]();
-    if(mcitem instanceof MCItemBow) {
+    if (mcitem instanceof MCItemBow) {
         return "BOW";
     }
-    if(mcitem instanceof MCItemSword) {
+    if (mcitem instanceof MCItemSword) {
         return "SWORD";
     }
-    if(mcitem instanceof MCItemTool) {
+    if (mcitem instanceof MCItemTool) {
 
         return "TOOL";
     }
-    if(mcitem instanceof MCItemArmor) {
-        if(mcentity != null) {
-            if(mcitem.isValidArmor(iitemstack.getMCItemStack(), EntityEqSlot.CHEST, mcentity)) {
+    if (mcitem instanceof MCItemArmor) {
+        if (mcentity != null) {
+            if (mcitem.isValidArmor(iitemstack.getMCItemStack(), EntityEqSlot.CHEST, mcentity)) {
                 return "ARMOR_CHEST";
             }
         }
@@ -656,9 +656,9 @@ function getItemType(iitemstack, mcentity) {
 
 function getEnchIdByName(name) {
     var enchants = REGISTRY.ENCHANTMENTS.getValues();
-    for(var r in enchants) {
-var ench = enchants[r];
-        if(name == REGISTRY.ENCHANTMENTS.getKey(ench)) {
+    for (var r in enchants) {
+        var ench = enchants[r];
+        if (name == REGISTRY.ENCHANTMENTS.getKey(ench)) {
             return parseInt(REGISTRY.ENCHANTMENTS.getID(ench));
         }
     }
@@ -668,60 +668,60 @@ var ench = enchants[r];
 
 //Get data from IData
 function data_get(data, keys) {
-	var get = {};
-	for(var k in keys) {
-		//var key = keys[k];
-		get[keys[k]] = data.get(keys[k]);
-		//if(get[keys[k]] == null) { get[keys[k]] = keys[k]; }
-	}
+    var get = {};
+    for (var k in keys) {
+        //var key = keys[k];
+        get[keys[k]] = data.get(keys[k]);
+        //if(get[keys[k]] == null) { get[keys[k]] = keys[k]; }
+    }
 
-	return get;
+    return get;
 }
 
 //Add data to IData if it doesn't exist
 function data_register(data, vals) {
-	for(var k in vals) {
-var val = vals[k];
-		if(data.get(k) == null) { data.put(k, val); }
-	}
+    for (var k in vals) {
+        var val = vals[k];
+        if (data.get(k) == null) { data.put(k, val); }
+    }
 }
 
 //Add data to IData even if it does exist
 function data_overwrite(data, keys, vals) {
-	if(typeof(keys) == typeof(undefined) || keys === null) { keys = []; }
-	if(typeof(vals) == typeof(undefined) || vals === null) { vals = []; }
-	if(typeof(keys) == 'string') { keys = [keys]; }
-	if(typeof(vals) == 'string') { vals = [vals]; }
+    if (typeof (keys) == typeof (undefined) || keys === null) { keys = []; }
+    if (typeof (vals) == typeof (undefined) || vals === null) { vals = []; }
+    if (typeof (keys) == 'string') { keys = [keys]; }
+    if (typeof (vals) == 'string') { vals = [vals]; }
 
-	for(var k in keys) {
-		var key = keys[k];
-		var val = vals[k];
-		data.put(key, val);
-	}
+    for (var k in keys) {
+        var key = keys[k];
+        var val = vals[k];
+        data.put(key, val);
+    }
 }
 //Compare 2 IItemStacks
-function isItemEqual(stack, other, ignoreNbt){
-	if(typeof(ignoreNbt) == typeof(undefined) || ignoreNbt === null) { ignoreNbt = false; }
-	if (!other || other.isEmpty()) {
-		return false;
-	}
+function isItemEqual(stack, other, ignoreNbt) {
+    if (typeof (ignoreNbt) == typeof (undefined) || ignoreNbt === null) { ignoreNbt = false; }
+    if (!other || other.isEmpty()) {
+        return false;
+    }
 
-	var stackNbt = stack.getItemNbt();
-	stackNbt.remove('Count');
-	var otherNbt = other.getItemNbt();
-	otherNbt.remove('Count');
+    var stackNbt = stack.getItemNbt();
+    stackNbt.remove('Count');
+    var otherNbt = other.getItemNbt();
+    otherNbt.remove('Count');
 
-	if(ignoreNbt) {
-		if(stackNbt.getString("id") == otherNbt.getString("id")) {
-			return true;
-		}
-	} else {
-		if(isNbtEqual(stackNbt, otherNbt)) {
-			return true;
-		}
-	}
+    if (ignoreNbt) {
+        if (stackNbt.getString("id") == otherNbt.getString("id")) {
+            return true;
+        }
+    } else {
+        if (isNbtEqual(stackNbt, otherNbt)) {
+            return true;
+        }
+    }
 
-	return false;
+    return false;
 }
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
@@ -745,9 +745,9 @@ var NbtTypes = {
 };
 
 function getNbtType(num) {
-    for(var n in NbtTypes) {
-var nbtType = NbtTypes[n];
-        if(nbtType === num) { return n; }
+    for (var n in NbtTypes) {
+        var nbtType = NbtTypes[n];
+        if (nbtType === num) { return n; }
     }
     return null;
 }
@@ -756,8 +756,8 @@ function getMCModList() {
     var modlist = [];
     var loadmods = Java.type("net.minecraftforge.fml.common.Loader").instance().getModList();
 
-    for(var mid in loadmods) {
-var lmod = loadmods[mid];
+    for (var mid in loadmods) {
+        var lmod = loadmods[mid];
         modlist.push(lmod.getModId());
     }
 
@@ -771,30 +771,30 @@ function hasMCMod(name) {
 
 function ENbt(nbtObject) {
     this.nbt = nbtObject; /* INbt */
-    this.copy = function() {
+    this.copy = function () {
         return new ENbt(API.stringToNbt(this.nbt.toJsonString()));
     };
-    this.get = function(path) {
+    this.get = function (path) {
         var paths = path.toString().split(".");
         var cur = this.nbt;
-        for(var pa in paths) {
-var p = paths[pa];
+        for (var pa in paths) {
+            var p = paths[pa];
             var keyType = getNbtType(cur.getType(p));
-            if(keyType != "List") {
+            if (keyType != "List") {
                 //getString, getInteger etc
-                cur = cur["get"+keyType](p);
+                cur = cur["get" + keyType](p);
             } else {
-                cur = cur["get"+keyType](p, cur.getListType(p));
+                cur = cur["get" + keyType](p, cur.getListType(p));
             }
         }
         return cur;
     };
-    this.toJsonString = function() { return this.nbt.toJsonString(); }
-    this.toJsonObj = function() { return JSON.parse(this.toJsonString()); }
+    this.toJsonString = function () { return this.nbt.toJsonString(); }
+    this.toJsonObj = function () { return JSON.parse(this.toJsonString()); }
 }
 
 function nbtCopy(nbt) {
-	return API.stringToNbt(nbt.toJsonString());
+    return API.stringToNbt(nbt.toJsonString());
 }
 
 function nbtToObject(nbt) {
@@ -802,9 +802,9 @@ function nbtToObject(nbt) {
 }
 
 function nbtItem(nbt, w) {
-	if(typeof(nbt) == 'string') { nbt = API.stringToNbt(nbt); }
-	var item = w.createItemFromNbt(nbt);
-	return item;
+    if (typeof (nbt) == 'string') { nbt = API.stringToNbt(nbt); }
+    var item = w.createItemFromNbt(nbt);
+    return item;
 }
 
 function nbtGetList(nbt, list) {
@@ -814,8 +814,8 @@ function nbtGetList(nbt, list) {
 //Turn String[] with item nbts to IItemStack[]
 function nbtItemArr(nbtArr, w) {
     var itemArr = [];
-	for(var itemData in nbtArr) {
-var item = nbtArr[itemData];
+    for (var itemData in nbtArr) {
+        var item = nbtArr[itemData];
         itemArr.push(nbtItem(item, w));
     }
 
@@ -828,15 +828,15 @@ function isNbtEqual(nbt, otherNbt) {
 
 function nbtHasSameData(nbt, onbt) {
     //TODO:compare keys of nbt
-}function givePlayerItems(player, stacks, pnbt) {
-	if(typeof(pnbt) == typeof(undefined) || pnbt === null) { pnbt = null; }
+} function givePlayerItems(player, stacks, pnbt) {
+    if (typeof (pnbt) == typeof (undefined) || pnbt === null) { pnbt = null; }
     var w = player.world;
     if (pnbt == null) {
         pnbt = player.getEntityNbt(); //Dont over-use this one
     }
     var invcnt = getPlayerInvCount(pnbt, w);
-    for(var s in stacks) {
-var stack = stacks[s];
+    for (var s in stacks) {
+        var stack = stacks[s];
         if (invcnt < 36) {
             //Player inv not full
             player.giveItem(stack);
@@ -849,17 +849,17 @@ var stack = stacks[s];
 
 //Made for givePlayerItems (does not include armor and offhand)
 function getPlayerInvCount(pnbt, w) {
-    return getPlayerInvFromNbt(pnbt, w, function(item, itnbt) {
+    return getPlayerInvFromNbt(pnbt, w, function (item, itnbt) {
         //Exclude armor slots and offhand
         return ["-106", "100", "101", "102", "103"].indexOf(itnbt.getByte('Slot').toString()) == -1;
     }).length;
 }
 
 function getArrItemCount(array, itemstack, ignoreNbt) {
-	if(typeof(ignoreNbt) == typeof(undefined) || ignoreNbt === null) { ignoreNbt = false; }
+    if (typeof (ignoreNbt) == typeof (undefined) || ignoreNbt === null) { ignoreNbt = false; }
     var icount = 0;
-    for(var pi in array) {
-var pitem = array[pi];
+    for (var pi in array) {
+        var pitem = array[pi];
         var pinbt = pitem.getItemNbt();
         var scount = parseInt(pinbt.getByte('Count'));
         if (isItemEqual(itemstack, pitem, ignoreNbt))
@@ -870,11 +870,11 @@ var pitem = array[pi];
 }
 
 function getPlayerInvFromNbt(pnbt, w, filterFn) {
-	if(typeof(filterFn) == typeof(undefined) || filterFn === null) { filterFn = null; }
+    if (typeof (filterFn) == typeof (undefined) || filterFn === null) { filterFn = null; }
     var pinv = pnbt.getList('Inventory', pnbt.getListType('Inventory'));
     var pitems = [];
-    for(var p in pinv) {
-var pin = pinv[p];
+    for (var p in pinv) {
+        var pin = pinv[p];
         var pitm = w.createItemFromNbt(API.stringToNbt(pin.toJsonString()));
         //pin (INbt) contains key "Slot"
         //pitm.getItemNbt() does not, thats why pin is passed
@@ -918,8 +918,8 @@ function getChatTag(player, team, color) {
 
 function scanPlayerOnNbt(player, nbtstring) {
     return player.getEntityNbt().getCompound('Inventory').toJsonString().indexOf(nbtstring.toString()) > -1;
-}function normalizePos(pos, asObj) {
-	if(typeof(asObj) == typeof(undefined) || asObj === null) { asObj = false; }
+} function normalizePos(pos, asObj) {
+    if (typeof (asObj) == typeof (undefined) || asObj === null) { asObj = false; }
     if (!asObj) {
         return [
             pos.x,
@@ -933,16 +933,16 @@ function scanPlayerOnNbt(player, nbtstring) {
             'z': pos.z
         }
     }
-}function getChunk(pos) {
-    return [Math.floor(pos.x/16), Math.floor(pos.z/16)];
+} function getChunk(pos) {
+    return [Math.floor(pos.x / 16), Math.floor(pos.z / 16)];
 }
 
 function getChunkCoords(chunk) {
     return [
-        chunk[0]*16,
-        chunk[1]*16,
-        (chunk[0]+1)*16 - 1,
-        (chunk[1]+1)*16 - 1,
+        chunk[0] * 16,
+        chunk[1] * 16,
+        (chunk[0] + 1) * 16 - 1,
+        (chunk[1] + 1) * 16 - 1,
     ];
 }
 
@@ -1009,12 +1009,12 @@ function Player(name) {
     ]);
 
 
-    for(var v in VIRTUAL_CURRENCIES) {
-var crncy = VIRTUAL_CURRENCIES[v];
+    for (var v in VIRTUAL_CURRENCIES) {
+        var crncy = VIRTUAL_CURRENCIES[v];
         this.data[crncy.name] = crncy.default || 0;
     }
 
-    this.registerBackPos = function(pos) {
+    this.registerBackPos = function (pos) {
         this.data.backPos = {
             x: pos.x,
             y: pos.y,
@@ -1022,12 +1022,12 @@ var crncy = VIRTUAL_CURRENCIES[v];
         };
         return this;
     };
-    this.sync = function(ipl) {
+    this.sync = function (ipl) {
         this.data.UUID = ipl.getUUID();
         this.name = ipl.getName();
         return this;
     };
-    this.getTeamName = function(sb) {
+    this.getTeamName = function (sb) {
         var t = sb.getPlayerTeam(this.name);
         if (t != null) {
             return t.getDisplayName();
@@ -1037,11 +1037,11 @@ var crncy = VIRTUAL_CURRENCIES[v];
 
         return "";
     };
-    this.getCap = function(capName) {
-	if(typeof(capName) == typeof(undefined) || capName === null) { capName = null; }
+    this.getCap = function (capName) {
+        if (typeof (capName) == typeof (undefined) || capName === null) { capName = null; }
         return Math.floor(this.data[capName ? capName + 'Cap' : 'cap']);
     };
-    this.getPlayerColor = function(sb) {
+    this.getPlayerColor = function (sb) {
         var t = sb.getPlayerTeam(this.name);
         var ccol = 'white';
         if (this.data.color != null) {
@@ -1052,7 +1052,7 @@ var crncy = VIRTUAL_CURRENCIES[v];
         }
         return ccol;
     };
-    this.getChatColorPref = function(sb, data) {
+    this.getChatColorPref = function (sb, data) {
         var pref = '';
         var prefeff = '';
         var t = sb.getPlayerTeam(this.name);
@@ -1077,17 +1077,17 @@ var crncy = VIRTUAL_CURRENCIES[v];
         return pref + prefeff;
     };
 
-    this.hasUnlock = function(name) {
+    this.hasUnlock = function (name) {
         return Object.keys(this.data.unlocks).indexOf(name) > -1;
     }
 
-    this.hasColor = function(name) {
+    this.hasColor = function (name) {
         return this.data.chatcolors.indexOf(name) > -1 || this.hasUnlock('chatcolor_' + name);
     };
 
 
-    this.getNameTag = function(sb, prefix, namesuff, teamsuff, ccChar, data) {
-	if(typeof(data) == typeof(undefined) || data === null) { data = null; }
+    this.getNameTag = function (sb, prefix, namesuff, teamsuff, ccChar, data) {
+        if (typeof (data) == typeof (undefined) || data === null) { data = null; }
         var t = sb.getPlayerTeam(this.name);
         var dc = ccChar || '&';
         var ccol = '';
@@ -1106,8 +1106,8 @@ var crncy = VIRTUAL_CURRENCIES[v];
         var badgestr = "";
         var badges = data != null ? this.getBadges(data, true) : [];
         var st;
-        for(var i in badges) {
-var badge = badges[i];
+        for (var i in badges) {
+            var badge = badges[i];
             if (i < this.getCap('badge')) {
                 badgestr += badge.formatBadge();
                 // st = (badge.data.displayName + "&r\n" + badge.data.desc).replaceAll("&", "$");
@@ -1117,11 +1117,11 @@ var badge = badges[i];
 
         return ccol + dc + 'l[' + ccol + ctm + (teamsuff || '') + dc + 'r' + badgestr + ccol + this.name + (namesuff || '') + ccol + dc + 'l' + ']' + (prefix || '') + dc + 'r';
     };
-    this.getBadges = function(data, onlyShow) {
-	if(typeof(onlyShow) == typeof(undefined) || onlyShow === null) { onlyShow = false; }
+    this.getBadges = function (data, onlyShow) {
+        if (typeof (onlyShow) == typeof (undefined) || onlyShow === null) { onlyShow = false; }
         var retbadges = [];
-        for(var i in this.data.badges) {
-var badge = this.data.badges[i];
+        for (var i in this.data.badges) {
+            var badge = this.data.badges[i];
             var databadge = new Badge(badge);
             if (databadge.load(data) && (onlyShow ? this.data.showbadges.indexOf(badge) > -1 : true)) {
 
@@ -1132,28 +1132,28 @@ var badge = this.data.badges[i];
 
         return retbadges;
     };
-    this.hasBadge = function(name) {
+    this.hasBadge = function (name) {
         return this.data.badges.indexOf(name) > -1;
     };
-    this.isShowingBadge = function(name) {
+    this.isShowingBadge = function (name) {
         return this.data.showbadges.indexOf(name) > -1 && this.hasBadge(name);
     }
-    this.delJob = function(name) {
+    this.delJob = function (name) {
         if (this.hasJob(name)) {
             delete this.data.jobs[name];
         }
         return this;
     };
-    this.getJob = function(name) {
+    this.getJob = function (name) {
         if (this.hasJob(name)) {
             return this.data.jobs[name];
         }
         return null;
     };
-    this.getJobs = function(data) {
+    this.getJobs = function (data) {
         var jobs = [];
-        for(var i in this.data.jobs) {
-var job = this.data.jobs[i];
+        for (var i in this.data.jobs) {
+            var job = this.data.jobs[i];
             var pjob = new Job(i);
             if (pjob.load(data)) {
                 jobs.push(pjob);
@@ -1161,26 +1161,26 @@ var job = this.data.jobs[i];
         }
         return jobs;
     };
-    this.getJobCount = function() {
+    this.getJobCount = function () {
         return Object.keys(this.data.jobs).length;
     };
-    this.addJob = function(name) {
+    this.addJob = function (name) {
         this.data.jobs[name] = {
             "lastPayed": 0
         };
         return this;
     };
-    this.hasJob = function(name) {
+    this.hasJob = function (name) {
         return Object.keys(this.data.jobs).indexOf(name) > -1;
     };
-    this.hasMaxJobs = function() {
+    this.hasMaxJobs = function () {
         return (this.data.maxJobs != -1 && this.getJobCount() >= this.getMaxJobs());
     };
-    this.getMaxJobs = function(sb) {
+    this.getMaxJobs = function (sb) {
         //check this.getMaxHomes()
         return this.data.maxJobs;
     };
-    this.addHome = function(name, x, y, z) {
+    this.addHome = function (name, x, y, z) {
         this.data.homes[name] = {
             x: x,
             y: y,
@@ -1188,25 +1188,25 @@ var job = this.data.jobs[i];
         };
         return this;
     };
-    this.delHome = function(name) {
+    this.delHome = function (name) {
         if (this.data.homes.hasOwnProperty(name)) {
             delete this.data.homes[name];
         }
         return this;
     };
-    this.hasHome = function(name) {
+    this.hasHome = function (name) {
         return (this.data.homes.hasOwnProperty(name));
     };
-    this.getMaxHomes = function(sb) {
+    this.getMaxHomes = function (sb) {
         //WILL be edited later for handling the desision maxHome setting in teams
         return this.data.maxHomes;
     };
 
-    this.getChats = function(data) {
+    this.getChats = function (data) {
         var chats = [];
         var dkeys = data.getKeys();
-        for(var d in dkeys) {
-var dkey = dkeys[d];
+        for (var d in dkeys) {
+            var dkey = dkeys[d];
             if (dkey.cmatch(/chatchannel_([\w]+)/g) > 0) {
                 var cc = new ChatChannel(dkey.replace(/chatchannel_([\w]+)/g, "$1"));
                 if (cc.load(data)) {
@@ -1219,11 +1219,11 @@ var dkey = dkeys[d];
 
         return chats;
     }
-    this.getAllowedColors = function(data, sb) {
+    this.getAllowedColors = function (data, sb) {
         var ac = ['r'];
         var hasAllPerm = new Permission('__ALL__').init(data).permits(this.name, sb, data);
-        for(var i in _RAWCOLORS) {
-var col = _RAWCOLORS[i];
+        for (var i in _RAWCOLORS) {
+            var col = _RAWCOLORS[i];
             if (this.hasColor(col) || hasAllPerm) {
                 ac.push(i);
             }
@@ -1231,10 +1231,10 @@ var col = _RAWCOLORS[i];
 
         return ac;
     };
-    this.canCreateCommandText = function(data, sb) {
+    this.canCreateCommandText = function (data, sb) {
         return new Permission('chat.command').init(data).permits(this.name, sb, data);
     };
-    this.getBounty = function(sb) {
+    this.getBounty = function (sb) {
         var sbo = sb.getObjective("bounty");
         if (sbo != null) {
             var sbs = sbo.getScore(this.name);
@@ -1246,21 +1246,21 @@ var col = _RAWCOLORS[i];
     };
 
 
-    this.getInventory = function(name) {
-        for(var invName in this.data.inventories) {
-var inv = this.data.inventories[invName];
+    this.getInventory = function (name) {
+        for (var invName in this.data.inventories) {
+            var inv = this.data.inventories[invName];
             if (inv[0] == name) return inv[1];
         }
         return;
     };
-    this.removeInventory = function(name) {
+    this.removeInventory = function (name) {
         for (var invName in this.data.inventories) {
             this.data.inventories.splice(invName, 1);
             return true;
         }
         return false;
     };
-    this.hasEmote = function(name, sb, data) { //Checks if player has emote
+    this.hasEmote = function (name, sb, data) { //Checks if player has emote
         var em = new Emote(name).init(data, false);
         return (this.data.emotes.indexOf(name) > -1 ||
             em.getPermission().init(data, false).permits(this.name, sb, data) ||
@@ -1268,10 +1268,10 @@ var inv = this.data.inventories[invName];
         );
     };
 
-    this.getAllowedEmotes = function(sb, data) {
+    this.getAllowedEmotes = function (sb, data) {
         var ems = [];
-        for(var c in CHAT_EMOTES) {
-var ce = CHAT_EMOTES[c];
+        for (var c in CHAT_EMOTES) {
+            var ce = CHAT_EMOTES[c];
             var ec = new Emote(c);
             ec.load(data);
             if (this.hasEmote(ec.name, sb, data)) {
@@ -1281,12 +1281,12 @@ var ce = CHAT_EMOTES[c];
         return ems;
     };
 
-    this.getBanks = function(data) {
+    this.getBanks = function (data) {
         var banks = [];
         var allBanks = new Bank().getAllDataEntries(data);
 
-        for(var i in allBanks) {
-var checkBank = allBanks[i];
+        for (var i in allBanks) {
+            var checkBank = allBanks[i];
             if (checkBank.canSee(this.name)) {
                 banks.push(checkBank);
             }
@@ -1309,15 +1309,15 @@ function Permission(name) {
         "meta": {}
     });
 
-    this.set = function(key, val) {
+    this.set = function (key, val) {
         this.data[key] = val;
         return this;
     };
 
-    this.addTeams = function(teams) {
-        if (typeof(teams) == 'string') { teams = [teams]; }
-        for(var t in teams) {
-var team = teams[t];
+    this.addTeams = function (teams) {
+        if (typeof (teams) == 'string') { teams = [teams]; }
+        for (var t in teams) {
+            var team = teams[t];
             var teamname = team;
             if (this.data.teams.indexOf(teamname) == -1) {
                 this.data.teams.push(teamname);
@@ -1326,14 +1326,14 @@ var team = teams[t];
 
         return this;
     };
-    this.removeTeams = function(teams) {
-        if (typeof(teams) == 'string') {
+    this.removeTeams = function (teams) {
+        if (typeof (teams) == 'string') {
             teams = [teams];
         }
 
         var nteams = [];
-        for(var t in this.data.teams) {
-var team = this.data.teams[t];
+        for (var t in this.data.teams) {
+            var team = this.data.teams[t];
             if (teams.indexOf(team) == -1) {
                 nteams.push(team);
             }
@@ -1341,10 +1341,10 @@ var team = this.data.teams[t];
         this.data.teams = nteams;
         return this;
     };
-    this.addPlayers = function(players) {
-        if (typeof(players) == 'string') { players = [players]; }
-        for(var p in players) {
-var player = players[p];
+    this.addPlayers = function (players) {
+        if (typeof (players) == 'string') { players = [players]; }
+        for (var p in players) {
+            var player = players[p];
             if (this.data.players.indexOf(player) == -1) {
                 this.data.players.push(player);
             }
@@ -1352,11 +1352,11 @@ var player = players[p];
 
         return this;
     };
-    this.removePlayers = function(players) {
-        if (typeof(players) == 'string') { players = [players]; }
+    this.removePlayers = function (players) {
+        if (typeof (players) == 'string') { players = [players]; }
         var nplayers = [];
-        for(var p in this.data.players) {
-var player = this.data.players[p];
+        for (var p in this.data.players) {
+            var player = this.data.players[p];
             if (players.indexOf(player) == -1) {
                 nplayers.push(player);
             }
@@ -1364,13 +1364,13 @@ var player = this.data.players[p];
         this.data.players = nplayers;
         return this;
     };
-    this.permitsPlayer = function(pl, listenToDisabled) {
-	if(typeof(listenToDisabled) == typeof(undefined) || listenToDisabled === null) { listenToDisabled = true; }
+    this.permitsPlayer = function (pl, listenToDisabled) {
+        if (typeof (listenToDisabled) == typeof (undefined) || listenToDisabled === null) { listenToDisabled = true; }
         return this.permits(pl.getName(), pl.world.scoreboard, pl.world.storeddata);
     };
 
-    this.permits = function(player, sb, data, listenToDisabled) {
-	if(typeof(listenToDisabled) == typeof(undefined) || listenToDisabled === null) { listenToDisabled = true; }
+    this.permits = function (player, sb, data, listenToDisabled) {
+        if (typeof (listenToDisabled) == typeof (undefined) || listenToDisabled === null) { listenToDisabled = true; }
         ///String player
         ///IScoreboard sb
         ///IData data
@@ -1404,15 +1404,15 @@ var player = this.data.players[p];
         var pjobs = p.getJobs(data);
         for(var p in pjobs) {
 var pjob = pjobs[p];
-        	if(this.data.jobs.indexOf(pjob.name) != -1) {
-        		permitted = true;
-        	}
+            if(this.data.jobs.indexOf(pjob.name) != -1) {
+                permitted = true;
+            }
         }*/
 
         //Check parents
         var ppar = getParentPerms(this.name || "", data);
-        for(var p in ppar) {
-var par = ppar[p];
+        for (var p in ppar) {
+            var par = ppar[p];
             if (par.permits(player, sb, data, false)) {
                 permitted = true;
                 break;
@@ -1684,47 +1684,47 @@ var _COINTABLE = { //MUST BE FROM LOW TO HIGH
 }; //With this setup, the syntax for 223503 would be 2k235g3c (case-INSensitive)
 
 var VIRTUAL_CURRENCIES = [{
-        "name": "amoney",
-        "displayName": "Arcade Money",
-        "displayPrefix": "&c",
-        "default": 0,
-        "prefix": "&3:money:A",
-        "color": "&b",
-        "suffix": "",
-    },
-    {
-        "name": "vmoney",
-        "displayName": "Vote Money",
-        "displayPrefix": "&5",
-        "default": 0,
-        "prefix": "&d:money:V",
-        "color": "&d",
-        "suffix": "",
-    },
-    {
-        "name": "credit",
-        "displayName": "Store Money",
-        "displayPrefix": "&c&l",
-        "default": 0,
-        "prefix": "&c:money:",
-        "color": "&c",
-        "suffix": "",
-    },
-    {
-        "name": "money",
-        "displayName": "Money",
-        "displayPrefix": "&2&l",
-        "default": 0,
-        "prefix": "&r:money:&e",
-        "color": "&e",
-        "suffix": "",
-        "items": true
-    }
+    "name": "amoney",
+    "displayName": "Arcade Money",
+    "displayPrefix": "&c",
+    "default": 0,
+    "prefix": "&3:money:A",
+    "color": "&b",
+    "suffix": "",
+},
+{
+    "name": "vmoney",
+    "displayName": "Vote Money",
+    "displayPrefix": "&5",
+    "default": 0,
+    "prefix": "&d:money:V",
+    "color": "&d",
+    "suffix": "",
+},
+{
+    "name": "credit",
+    "displayName": "Store Money",
+    "displayPrefix": "&c&l",
+    "default": 0,
+    "prefix": "&c:money:",
+    "color": "&c",
+    "suffix": "",
+},
+{
+    "name": "money",
+    "displayName": "Money",
+    "displayPrefix": "&2&l",
+    "default": 0,
+    "prefix": "&r:money:&e",
+    "color": "&e",
+    "suffix": "",
+    "items": true
+}
 ];
 
 function getCurrency(type) {
-    for(var i in VIRTUAL_CURRENCIES) {
-var currency = VIRTUAL_CURRENCIES[i];
+    for (var i in VIRTUAL_CURRENCIES) {
+        var currency = VIRTUAL_CURRENCIES[i];
         if (currency.name != type) {
             continue;
         }
@@ -1737,9 +1737,9 @@ var currency = VIRTUAL_CURRENCIES[i];
 
 
 function formatCurrency(amount, currencyType) {
-	if(typeof(currencyType) == typeof(undefined) || currencyType === null) { currencyType = 'money'; }
-    for(var i in VIRTUAL_CURRENCIES) {
-var currency = VIRTUAL_CURRENCIES[i];
+    if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
+    for (var i in VIRTUAL_CURRENCIES) {
+        var currency = VIRTUAL_CURRENCIES[i];
         if (currency.name != currencyType) {
             continue;
         }
@@ -1818,22 +1818,22 @@ var _COINITEMS = { //MUST BE FROM LOW TO HIGH
 };//LANGUAGE settings
 var _MSG = {
     //Error Strings
-	"cmdNotFound": "&cCould not find this command!",
-	"cmdNoPerm": "&cYou don't have permission to this command!",
-	"argNotValid": "&c'{argName}' is not a valid id/name! It can only contain: &o{allowed}",
-	"argToShort": "&c'{argName}' is too short! (Min. {allowed} characters)",
-	"argNoColor": "&c'{argName}' cannot contain colorcoding!",
-	"argEnum": "&c'{argName}' must be one of the following: &o{allowed}!",
-	"argNaN": "&c'{argName}' is not a number!",
-	"argMax": "&c'{argName}' cannot be bigger than {allowed}!",
-	"argMin": "&c'{argName}' cannot be smaller than {allowed}!",
-	"argNotExists": "&c{type} '{argVal}' does not exists!",
-	"argExists": "&c{type} '{argVal}' already exists!",
-	"argColor": "&cColors must be one of the following: {allowed}!",
-	"argColorEffect": "&cChat effects must be one of the following: {allowed}!",
-	"argItemAttr": "&cItem attributes must be one of these {allowed}!",
-	"argBool": "&c{dataType} must be true or false!",
-	//button texts
+    "cmdNotFound": "&cCould not find this command!",
+    "cmdNoPerm": "&cYou don't have permission to this command!",
+    "argNotValid": "&c'{argName}' is not a valid id/name! It can only contain: &o{allowed}",
+    "argToShort": "&c'{argName}' is too short! (Min. {allowed} characters)",
+    "argNoColor": "&c'{argName}' cannot contain colorcoding!",
+    "argEnum": "&c'{argName}' must be one of the following: &o{allowed}!",
+    "argNaN": "&c'{argName}' is not a number!",
+    "argMax": "&c'{argName}' cannot be bigger than {allowed}!",
+    "argMin": "&c'{argName}' cannot be smaller than {allowed}!",
+    "argNotExists": "&c{type} '{argVal}' does not exists!",
+    "argExists": "&c{type} '{argVal}' already exists!",
+    "argColor": "&cColors must be one of the following: {allowed}!",
+    "argColorEffect": "&cChat effects must be one of the following: {allowed}!",
+    "argItemAttr": "&cItem attributes must be one of these {allowed}!",
+    "argBool": "&c{dataType} must be true or false!",
+    //button texts
     "undoBtnText": "Undo",
     "refreshBtnText": "Refresh"
 };
@@ -1888,25 +1888,25 @@ var msTable = {
 
 
 function handleError(error, logsToConsole, target) {
-	if(typeof(logsToConsole) == typeof(undefined) || logsToConsole === null) { logsToConsole = true; }
-	if(typeof(target) == typeof(undefined) || target === null) { target = null; }
+    if (typeof (logsToConsole) == typeof (undefined) || logsToConsole === null) { logsToConsole = true; }
+    if (typeof (target) == typeof (undefined) || target === null) { target = null; }
     var world = API.getIWorld(0);
 
     var errinfo = "";
-    if(error.fileName) {
-        errinfo += "$6Error in "+error.fileName+(error.lineNumber?':'+error.lineNumber:"")+"\n";
+    if (error.fileName) {
+        errinfo += "$6Error in " + error.fileName + (error.lineNumber ? ':' + error.lineNumber : "") + "\n";
     }
-    if(error.message) {
-        errinfo += "$e"+error.message.replaceAll("&", "")+"\n";
+    if (error.message) {
+        errinfo += "$e" + error.message.replaceAll("&", "") + "\n";
     }
-    if(error.stack) {
-        errinfo += "$r\n"+error.stack+"\n";
+    if (error.stack) {
+        errinfo += "$r\n" + error.stack + "\n";
     }
-    var errorTxt = "&cScript error in "+error.fileName+(error.lineNumber? ":"+error.lineNumber : '')+"! &n&c[Error Info]{*|show_text:"+errinfo.replaceAll("&", "")+"}&r";
-    if(logsToConsole) {
-        print("Error in "+error.fileName+":"+error.lineNumber+"\n"+error.message+"\n\n"+error.stack);
+    var errorTxt = "&cScript error in " + error.fileName + (error.lineNumber ? ":" + error.lineNumber : '') + "! &n&c[Error Info]{*|show_text:" + errinfo.replaceAll("&", "") + "}&r";
+    if (logsToConsole) {
+        print("Error in " + error.fileName + ":" + error.lineNumber + "\n" + error.message + "\n\n" + error.stack);
     }
-    executeCommandGlobal("/tellraw "+(target||"@a")+" "+strf(errorTxt));
+    executeCommandGlobal("/tellraw " + (target || "@a") + " " + strf(errorTxt));
 }
 
 var File = Java.type("java.io.File");
@@ -1935,8 +1935,8 @@ function mkPath(path) {
 function readDir(dirPath) {
     var res = [];
     var files = new File(dirPath).listFiles();
-    for(var id in files) {
-var file = files[id];
+    for (var id in files) {
+        var file = files[id];
         if (file.isDirectory())
             res = res.concat(readDir(file.toString()));
         else
@@ -1966,8 +1966,8 @@ function readFile(filePath) {
 }
 
 function writeToFile(filePath, text, offset, length) {
-	if(typeof(offset) == typeof(undefined) || offset === null) { offset = null; }
-	if(typeof(length) == typeof(undefined) || length === null) { length = null; }
+    if (typeof (offset) == typeof (undefined) || offset === null) { offset = null; }
+    if (typeof (length) == typeof (undefined) || length === null) { length = null; }
     var path = Paths.get(filePath);
     try {
         var writer = Files.newBufferedWriter(path, CHARSET_UTF_8);
@@ -1990,7 +1990,7 @@ function getServerProperties() {
     var proprgx = /([\w\-.]+)\s*=([\w\W]*?)$/m;
     var propdata = {};
 
-    (readFileAsString('server.properties').match(proprgxs) || []).forEach(function(prop) {
+    (readFileAsString('server.properties').match(proprgxs) || []).forEach(function (prop) {
         var propmeta = prop.match(proprgx);
         var propname = propmeta[1];
         var propval = propmeta[2];
@@ -2007,7 +2007,7 @@ function getServerProperties() {
 }
 
 function getDiskHandler(diskname) {
-	if(typeof(diskname) == typeof(undefined) || diskname === null) { diskname = null; }
+    if (typeof (diskname) == typeof (undefined) || diskname === null) { diskname = null; }
     diskname = diskname || CONFIG_SERVER.USE_DISK;
     if (diskname === "DEFAULT") {
         return API.getIWorld(0).storeddata;
@@ -2096,8 +2096,8 @@ function getColorId(name) {
             return i;
         }
     }
-    for(var i in _RAWEFFECTS) {
-var re = _RAWEFFECTS[i];
+    for (var i in _RAWEFFECTS) {
+        var re = _RAWEFFECTS[i];
         if (name == re) {
             return i;
         }
@@ -2106,14 +2106,14 @@ var re = _RAWEFFECTS[i];
 }
 
 function getColorName(id) {
-    for(var i in _RAWCOLORS) {
-var rc = _RAWCOLORS[i];
+    for (var i in _RAWCOLORS) {
+        var rc = _RAWCOLORS[i];
         if (id == i) {
             return rc;
         }
     }
-    for(var i in _RAWEFFECTS) {
-var re = _RAWEFFECTS[i];
+    for (var i in _RAWEFFECTS) {
+        var re = _RAWEFFECTS[i];
         if (id == i) {
             return re;
         }
@@ -2122,8 +2122,8 @@ var re = _RAWEFFECTS[i];
 }
 
 function stripColors(str) {
-    for(var i in _RAWCODES) {
-var rawcode = _RAWCODES[i];
+    for (var i in _RAWCODES) {
+        var rawcode = _RAWCODES[i];
         str = str.replaceAll('&' + rawcode, '');
     }
 
@@ -2141,12 +2141,12 @@ function slugify(text) {
 }
 
 function ccs(str, af) {
-	if(typeof(af) == typeof(undefined) || af === null) { af = null; }
+    if (typeof (af) == typeof (undefined) || af === null) { af = null; }
     return colorCodeString(str, af);
 }
 
 function colorCodeString(str, allowed_formats) {
-	if(typeof(allowed_formats) == typeof(undefined) || allowed_formats === null) { allowed_formats = null; }
+    if (typeof (allowed_formats) == typeof (undefined) || allowed_formats === null) { allowed_formats = null; }
     if (allowed_formats == null) {
         allowed_formats = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
     }
@@ -2155,7 +2155,7 @@ function colorCodeString(str, allowed_formats) {
 }
 
 function escCcs(str, esc_formats) {
-	if(typeof(esc_formats) == typeof(undefined) || esc_formats === null) { esc_formats = null; }
+    if (typeof (esc_formats) == typeof (undefined) || esc_formats === null) { esc_formats = null; }
     if (esc_formats == null) {
         esc_formats = _RAWCODES;
     }
@@ -2164,8 +2164,8 @@ function escCcs(str, esc_formats) {
 }
 
 function parseEmotes(str, allwd, replaceOld) {
-	if(typeof(allwd) == typeof(undefined) || allwd === null) { allwd = []; }
-	if(typeof(replaceOld) == typeof(undefined) || replaceOld === null) { replaceOld = true; }
+    if (typeof (allwd) == typeof (undefined) || allwd === null) { allwd = []; }
+    if (typeof (replaceOld) == typeof (undefined) || replaceOld === null) { replaceOld = true; }
     if (replaceOld) {
         str = str.replaceAll(Object.values(CHAT_EMOTES), '');
     }
@@ -2180,164 +2180,164 @@ function parseEmotes(str, allwd, replaceOld) {
 }
 
 function strf(str, toRaw, allowed) {
-	if(typeof(toRaw) == typeof(undefined) || toRaw === null) { toRaw = true; }
-	if(typeof(allowed) == typeof(undefined) || allowed === null) { allowed = null; }
-	return strrawformat(str, toRaw, allowed);
+    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = true; }
+    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
+    return strrawformat(str, toRaw, allowed);
 }
 var CHAT_CMD_RGX = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/;
 var CHAT_CMD_RGX_G = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/g;
 
 
 function strrawformat(str, toRaw, allowed) {
-	if(typeof(toRaw) == typeof(undefined) || toRaw === null) { toRaw = false; }
-	var rf = [];
-	var txt = '';
-	var ri = -1;
-	var isCode = false;
-	var txtColor = 'white';
-	var isItalic = false;
-	var isBold = false;
-	var isStrike = false;
-	var isUnderlined = false;
-	var isObf = false;
-	str = str+'&r ';
+    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = false; }
+    var rf = [];
+    var txt = '';
+    var ri = -1;
+    var isCode = false;
+    var txtColor = 'white';
+    var isItalic = false;
+    var isBold = false;
+    var isStrike = false;
+    var isUnderlined = false;
+    var isObf = false;
+    str = str + '&r ';
 
-	for(var i = 0; i < str.length; i++) {
-		var c = str.substr(i, 1);
-		if(c == '&' || i == str.length-1) {
-			//Check if new section has to be made
-			if(txt.length > 0) {
-				ri++;
-				var cmds = [];
+    for (var i = 0; i < str.length; i++) {
+        var c = str.substr(i, 1);
+        if (c == '&' || i == str.length - 1) {
+            //Check if new section has to be made
+            if (txt.length > 0) {
+                ri++;
+                var cmds = [];
 
-				rf.push([txt, txtColor, isItalic, isBold, isUnderlined, isStrike, isObf]);
-				isItalic = false;
-				isBold = false;
-				isUnderlined = false;
-				isStrike = false;
-				isObf = false;
-				txtColor = 'white';
-				txt = '';
-			}
-			isCode = true;
-			continue;
-		} else {
-			if(!isCode) {
-				txt += c.toString();
-			} else {
-				//Check Colors
-				if(typeof(_RAWCOLORS[c]) != typeof(undefined)) {
-					txtColor = _RAWCOLORS[c];
-				}
-				//Check Markup
-				switch(c.toString()) {
-					case 'o': {
-						isItalic = true;
-						break;
-					}
-					case 'l': {
-						isBold = true;
-						break;
-					}
-					case 'n': {
-						isUnderlined = true;
-						break;
-					}
-					case 'm': {
-						isStrike = true;
-						break;
-					}
-					case 'k': {
-						isObf = true;
-						break;
-					}
-					case 'r': {
-						isItalic = false;
-						isBold = false;
-						isUnderlined = false;
-						isStrike = false;
-						isObf = false;
-						txtColor = 'white';
-						break;
-					}
-				}
-				isCode = false;
-			}
-		}
-	}
+                rf.push([txt, txtColor, isItalic, isBold, isUnderlined, isStrike, isObf]);
+                isItalic = false;
+                isBold = false;
+                isUnderlined = false;
+                isStrike = false;
+                isObf = false;
+                txtColor = 'white';
+                txt = '';
+            }
+            isCode = true;
+            continue;
+        } else {
+            if (!isCode) {
+                txt += c.toString();
+            } else {
+                //Check Colors
+                if (typeof (_RAWCOLORS[c]) != typeof (undefined)) {
+                    txtColor = _RAWCOLORS[c];
+                }
+                //Check Markup
+                switch (c.toString()) {
+                    case 'o': {
+                        isItalic = true;
+                        break;
+                    }
+                    case 'l': {
+                        isBold = true;
+                        break;
+                    }
+                    case 'n': {
+                        isUnderlined = true;
+                        break;
+                    }
+                    case 'm': {
+                        isStrike = true;
+                        break;
+                    }
+                    case 'k': {
+                        isObf = true;
+                        break;
+                    }
+                    case 'r': {
+                        isItalic = false;
+                        isBold = false;
+                        isUnderlined = false;
+                        isStrike = false;
+                        isObf = false;
+                        txtColor = 'white';
+                        break;
+                    }
+                }
+                isCode = false;
+            }
+        }
+    }
 
-	return (!toRaw ? rf : rawformat(rf, true));
+    return (!toRaw ? rf : rawformat(rf, true));
 }
 
 function rawformat(str_pieces, fullraw, allowed) {
-	if(typeof(fullraw) == typeof(undefined) || fullraw === null) { fullraw = true; }
-	if(typeof(allowed) == typeof(undefined) || allowed === null) { allowed = null; }
-	if(allowed == null) {
-		allowed = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS)).concat(['x', 'y']);
+    if (typeof (fullraw) == typeof (undefined) || fullraw === null) { fullraw = true; }
+    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
+    if (allowed == null) {
+        allowed = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS)).concat(['x', 'y']);
 
-	}
-	var txt = '';
-	if(fullraw) { txt+='[""'; }
+    }
+    var txt = '';
+    if (fullraw) { txt += '[""'; }
 
-	for(var i in str_pieces) {
-		var p = str_pieces[i];
-		var ntext = p[0].replace(/\"/g, '\\"');
-		var nm =  ntext.match(CHAT_CMD_RGX) || [];
-		if(nm.length > 0) {
-			p[7] = nm[1];
-			p[8] = nm[2];
-			p[9] = nm[3];
-			p[10] = nm[4];
-			ntext = ntext.replace(nm[0], '');
-		}
-		var pc = '{"text":"'+ntext+'"';
-		if(p[1]) {
-			if(allowed.indexOf(getColorId(p[1])) == -1) {
-				p[1] = 'white';
-			}
+    for (var i in str_pieces) {
+        var p = str_pieces[i];
+        var ntext = p[0].replace(/\"/g, '\\"');
+        var nm = ntext.match(CHAT_CMD_RGX) || [];
+        if (nm.length > 0) {
+            p[7] = nm[1];
+            p[8] = nm[2];
+            p[9] = nm[3];
+            p[10] = nm[4];
+            ntext = ntext.replace(nm[0], '');
+        }
+        var pc = '{"text":"' + ntext + '"';
+        if (p[1]) {
+            if (allowed.indexOf(getColorId(p[1])) == -1) {
+                p[1] = 'white';
+            }
 
-			pc+=',"color":"'+p[1].toString()+'"';
+            pc += ',"color":"' + p[1].toString() + '"';
 
-		}
-		if(p[2]) {
-			if(allowed.indexOf('o') > -1) {
-				pc+=',"italic":true';
-			}
-		}
-		if(p[3]) {
-			if(allowed.indexOf('l') > -1) {
-				pc+=',"bold":true';
-			}
-		}
-		if(p[4]) {
-			if(allowed.indexOf('n') > -1) {
-				pc+=',"underlined":true';
-			}
-		}
-		if(p[5]) {
-			if(allowed.indexOf('m') > -1) {
-				pc+=',"strikethrough":true';
-			}
-		}
-		if(p[6]) {
-			if(allowed.indexOf('k') > -1) {
-				pc+=',"obfuscated":true';
-			}
-		}
+        }
+        if (p[2]) {
+            if (allowed.indexOf('o') > -1) {
+                pc += ',"italic":true';
+            }
+        }
+        if (p[3]) {
+            if (allowed.indexOf('l') > -1) {
+                pc += ',"bold":true';
+            }
+        }
+        if (p[4]) {
+            if (allowed.indexOf('n') > -1) {
+                pc += ',"underlined":true';
+            }
+        }
+        if (p[5]) {
+            if (allowed.indexOf('m') > -1) {
+                pc += ',"strikethrough":true';
+            }
+        }
+        if (p[6]) {
+            if (allowed.indexOf('k') > -1) {
+                pc += ',"obfuscated":true';
+            }
+        }
 
-		if(p[7] && p[8]) { pc+=',"clickEvent":{"action":"'+p[7]+'","value":"'+p[8]+'"}'; }
-		if(p[9] && p[10]) { pc+=',"hoverEvent":{"action":"'+p[9]+'","value":"'+ccs((p[10]||"").replace(/\$/g, '\u00A7'),allowed)+'"}'; }
-		pc += '}';
+        if (p[7] && p[8]) { pc += ',"clickEvent":{"action":"' + p[7] + '","value":"' + p[8] + '"}'; }
+        if (p[9] && p[10]) { pc += ',"hoverEvent":{"action":"' + p[9] + '","value":"' + ccs((p[10] || "").replace(/\$/g, '\u00A7'), allowed) + '"}'; }
+        pc += '}';
 
 
-		txt+=( fullraw ? ',' : '' )+pc.toString();
-	}
+        txt += (fullraw ? ',' : '') + pc.toString();
+    }
 
-	if(fullraw) {
-		txt += ']';
-	}
+    if (fullraw) {
+        txt += ']';
+    }
 
-	return txt;
+    return txt;
 }
 
 /**
@@ -2349,20 +2349,20 @@ function rawformat(str_pieces, fullraw, allowed) {
  * @param {String} fillColor Filled color code '&a'
  * @param {String} leftColor Filles color code '&c'
  */
-function progressBar(value, max, length, progChar, fillColor, leftColor, opener, closer){
-	if(typeof(progChar) == typeof(undefined) || progChar === null) { progChar = null; }
-	if(typeof(fillColor) == typeof(undefined) || fillColor === null) { fillColor = '&a'; }
-	if(typeof(leftColor) == typeof(undefined) || leftColor === null) { leftColor = '&c'; }
-	if(typeof(opener) == typeof(undefined) || opener === null) { opener = '&l['; }
-	if(typeof(closer) == typeof(undefined) || closer === null) { closer = '&l]'; }
-	var skillBar = '&r'+opener+'&r';
-	var progress = Math.floor((value/max)*length);
-	var proc = Math.round(value/max*100);
-	for(var i = 0; i < length; i++) {
-		if(i < progress) skillBar += fillColor+(progChar||'|');
-		if(i >= progress) skillBar += leftColor+(progChar||'|');
-	}
-	return skillBar += '&r'+closer+'&r';
+function progressBar(value, max, length, progChar, fillColor, leftColor, opener, closer) {
+    if (typeof (progChar) == typeof (undefined) || progChar === null) { progChar = null; }
+    if (typeof (fillColor) == typeof (undefined) || fillColor === null) { fillColor = '&a'; }
+    if (typeof (leftColor) == typeof (undefined) || leftColor === null) { leftColor = '&c'; }
+    if (typeof (opener) == typeof (undefined) || opener === null) { opener = '&l['; }
+    if (typeof (closer) == typeof (undefined) || closer === null) { closer = '&l]'; }
+    var skillBar = '&r' + opener + '&r';
+    var progress = Math.floor((value / max) * length);
+    var proc = Math.round(value / max * 100);
+    for (var i = 0; i < length; i++) {
+        if (i < progress) skillBar += fillColor + (progChar || '|');
+        if (i >= progress) skillBar += leftColor + (progChar || '|');
+    }
+    return skillBar += '&r' + closer + '&r';
 }
 
 
@@ -2385,17 +2385,17 @@ function cson_parse(cson_string) {
 
 
 function executeCommand(player, command, as_player) {
-	if(typeof(as_player) == typeof(undefined) || as_player === null) { as_player = null; }
-	if(as_player == null) { as_player = player.getName(); }
-	var cmd = API.createNPC(player.world.getMCWorld());
+    if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
+    if (as_player == null) { as_player = player.getName(); }
+    var cmd = API.createNPC(player.world.getMCWorld());
 
-	return cmd.executeCommand("/execute "+as_player+" ~ ~ ~ "+command);
+    return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
 
 }
 
 function executeCommandGlobal(command, dim) {
-	if(typeof(dim) == typeof(undefined) || dim === null) { dim = 0; }
-	return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
+    if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
+    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
 }
 
 
@@ -2404,67 +2404,67 @@ function executeCommandGlobal(command, dim) {
 //
 
 //Initialize PLugin Folder
-var PLUGIN_FOLDER = CONFIG_SERVER.PLUGIN_FOLDER||"CustomServerTools/plugins";
+var PLUGIN_FOLDER = CONFIG_SERVER.PLUGIN_FOLDER || "CustomServerTools/plugins";
 var PLUGIN_LIST = [];
 
 var PluginAPI = {
     Plugins: {
-        get: function(name){
-            for(var i in PLUGIN_LIST) {
-var _plugin = PLUGIN_LIST[i];
+        get: function (name) {
+            for (var i in PLUGIN_LIST) {
+                var _plugin = PLUGIN_LIST[i];
 
-                if(_plugin.id.toString() === name.toString()) {
+                if (_plugin.id.toString() === name.toString()) {
                     return _plugin;
                 }
             }
             return null;
         },
-        list: function(){
+        list: function () {
             var ids = [];
-            for(var i in PLUGIN_LIST) {
-var plugin = PLUGIN_LIST[i];
+            for (var i in PLUGIN_LIST) {
+                var plugin = PLUGIN_LIST[i];
                 ids.push(plugin);
             }
             return ids;
         },
-        export: function(key, value){
+        export: function (key, value) {
             PluginAPI._exports[key] = value;
         },
-        import: function(key){
+        import: function (key) {
             return PluginAPI._exports[key];
         },
         _exports: {},
     },
     DataHandlers: {
-        implement: function(datahandlername, implementationFunc) {
-            if(!(datahandlername in PluginAPI.DataHandlers.implementFuncs)) {
+        implement: function (datahandlername, implementationFunc) {
+            if (!(datahandlername in PluginAPI.DataHandlers.implementFuncs)) {
                 PluginAPI.DataHandlers.implementFuncs[datahandlername] = [];
             }
             PluginAPI.DataHandlers.implementFuncs[datahandlername].push(implementationFunc);
         },
         implementFuncs: {},
-        run: function(dhname, t) {
-            if(dhname in PluginAPI.DataHandlers.implementFuncs) {
+        run: function (dhname, t) {
+            if (dhname in PluginAPI.DataHandlers.implementFuncs) {
                 var imf = PluginAPI.DataHandlers.implementFuncs[dhname];
-                for(var i in imf) {
-var im = imf[i];
+                for (var i in imf) {
+                    var im = imf[i];
                     im.apply(t, []);
                 }
             }
         }
     },
     Players: {
-        on: function(hook, func){
-            if(!(hook in PluginAPI.Players.hookFns)) {
+        on: function (hook, func) {
+            if (!(hook in PluginAPI.Players.hookFns)) {
                 PluginAPI.Players.hookFns[hook] = [];
             }
 
             PluginAPI.Players.hookFns[hook].push(func)
         },
-        run: function(hook, args){
-            if(Object.keys(PluginAPI.Players.hookFns).indexOf(hook) > -1) {
-                for(var i in PluginAPI.Players.hookFns[hook]) {
-var hookFn = PluginAPI.Players.hookFns[hook][i];
+        run: function (hook, args) {
+            if (Object.keys(PluginAPI.Players.hookFns).indexOf(hook) > -1) {
+                for (var i in PluginAPI.Players.hookFns[hook]) {
+                    var hookFn = PluginAPI.Players.hookFns[hook][i];
                     hookFn.apply(null, args);
                 }
             }
@@ -2477,27 +2477,27 @@ var hookFn = PluginAPI.Players.hookFns[hook][i];
 
 
 registerXCommands([
-    ['!plugins', function(pl, args, data){
-        var output = getTitleBar("Plugin List")+"\n&dHover plugin name for more info\n&a";
-        for(var p in PLUGIN_LIST) {
-var plugin = PLUGIN_LIST[p];
+    ['!plugins', function (pl, args, data) {
+        var output = getTitleBar("Plugin List") + "\n&dHover plugin name for more info\n&a";
+        for (var p in PLUGIN_LIST) {
+            var plugin = PLUGIN_LIST[p];
             var pluginInfo = "$6$lName: $r$e{PluginName}\n$r$6$lID: $r$e{PluginId}\n$r$6$lAuthor: $r$e{PluginAuthor}\n$r$6$lVersion: $r$e{PluginVersion}\n\n$r$e{PluginDesc}$r".fill({
                 "PluginId": plugin.id,
                 "PluginName": plugin.name,
                 "PluginVersion": plugin.version,
-                "PluginDesc": plugin.description||"",
-                "PluginAuthor": plugin.author||"No author defined",
+                "PluginDesc": plugin.description || "",
+                "PluginAuthor": plugin.author || "No author defined",
             });
-            output += plugin.name+"{*|show_text:"+pluginInfo+"}&a";
-            if(p < PLUGIN_LIST.length-1) {
+            output += plugin.name + "{*|show_text:" + pluginInfo + "}&a";
+            if (p < PLUGIN_LIST.length - 1) {
                 output += ", ";
             }
         }
         tellPlayer(pl, output);
         return true;
     }, 'plugins.list'],
-    ['!plugin reload', function(pl, args, data){
-        if(reloadPluginsFromDisk()) {
+    ['!plugin reload', function (pl, args, data) {
+        if (reloadPluginsFromDisk()) {
             tellPlayer(pl, "&r[&eCSTPluginLoader{*|show_text:$eCustomServerTools PluginLoader}&r] &aLoaded &c{PluginCount} &aplugins! &2[Plugin List]{run_command:!plugins|show_text:$aClick to see plugins or do $o$a!plugins}&r".fill({
                 "PluginCount": PLUGIN_LIST.length
             }));
@@ -2610,7 +2610,7 @@ function reloadPluginsFromDisk() {
     PLUGIN_LIST = [];
     PluginAPI.Players.hookFns = {};
 
-    if(!(new File(PLUGIN_FOLDER).exists())) {
+    if (!(new File(PLUGIN_FOLDER).exists())) {
         mkPath(PLUGIN_FOLDER);
     }
 
@@ -2621,24 +2621,24 @@ function reloadPluginsFromDisk() {
     var pluginDirs = new File(PLUGIN_FOLDER).listFiles();
     var pluginsToRun = [];
     //Loop plugin directories
-    for(var p in pluginDirs) {
-var pluginDir = pluginDirs[p];
-        if(pluginDir.isDirectory()) {
+    for (var p in pluginDirs) {
+        var pluginDir = pluginDirs[p];
+        if (pluginDir.isDirectory()) {
             var pluginFiles = pluginDir.listFiles();
             var loadPlugin = null;
-            for(var pf in pluginFiles) {
-var pluginFile = pluginFiles[pf];
+            for (var pf in pluginFiles) {
+                var pluginFile = pluginFiles[pf];
                 //get config file
-                if(pluginFile.getName() == "plugin.json") {
+                if (pluginFile.getName() == "plugin.json") {
                     try {
                         loadPlugin = cson_parse(readFileAsString(pluginFile.getPath()));
                         loadPlugin['DIR'] = pluginDir.getPath();
                         //Load JS files
-                        for(var lf in loadPlugin.files) {
-var lfilename = loadPlugin.files[lf];
-                            var lfilepath = pluginDir.getPath()+"/"+lfilename;
+                        for (var lf in loadPlugin.files) {
+                            var lfilename = loadPlugin.files[lf];
+                            var lfilepath = pluginDir.getPath() + "/" + lfilename;
                             var lfile = new File(lfilepath);
-                            if(lfile.exists()) {
+                            if (lfile.exists()) {
                                 //loadPlugin.fileFuncs[lfilepath] = (loadPlugin.fileFuncs[lfilepath]||[]).push(readFileAsString(lfilepath));
 
 
@@ -2662,39 +2662,39 @@ var lfilename = loadPlugin.files[lf];
                     break;
                 }
             }
-            if(loadPlugin != null) {
+            if (loadPlugin != null) {
                 PLUGIN_LIST.push(loadPlugin);
             } else {
                 var errtxt = "&cError loading plugin! &n&c[info]{*|show_text:$c{PluginDir} has no plugin.json!}".fill({
                     "PluginDir": pluginDir.getPath()
                 });
-                executeCommandGlobal("/tellraw @a "+strf(errtxt));
+                executeCommandGlobal("/tellraw @a " + strf(errtxt));
                 return false;
             }
         }
     }
 
-    for(var i in pluginsToRun) {
-var runPlugin = pluginsToRun[i];
+    for (var i in pluginsToRun) {
+        var runPlugin = pluginsToRun[i];
         //Check requirements
         var canRun = true;
-        var req = (runPlugin.plugin.required||{});
+        var req = (runPlugin.plugin.required || {});
         var errtxt = "";
-        if(Object.keys(req).length > 0) {
-            for(var reqid in req) {
-var minver = req[reqid];
+        if (Object.keys(req).length > 0) {
+            for (var reqid in req) {
+                var minver = req[reqid];
                 var checkPlugin = PluginAPI.Plugins.get(reqid);
-                if(checkPlugin != null) {
+                if (checkPlugin != null) {
 
-                    if(compareVersion(checkPlugin.version, minver) == -1) {
-                        errtxt += "&cError loading plugin '"+runPlugin.plugin.id+"' &4[Info]{*|show_text:{INFO}}&r\n".fill({
-                            "INFO": ("&cToo low version of plugin '"+reqid+"' installed! Current: &l"+checkPlugin.version+"&r&c Required: &l"+minver).replaceAll("&", "§")
+                    if (compareVersion(checkPlugin.version, minver) == -1) {
+                        errtxt += "&cError loading plugin '" + runPlugin.plugin.id + "' &4[Info]{*|show_text:{INFO}}&r\n".fill({
+                            "INFO": ("&cToo low version of plugin '" + reqid + "' installed! Current: &l" + checkPlugin.version + "&r&c Required: &l" + minver).replaceAll("&", "§")
                         });
                         canRun = false;
                     }
                 } else {
-                    errtxt += "&cError loading plugin '"+runPlugin.plugin.id+"' &4[Info]{*|show_text:{INFO}}&r\n".fill({
-                        "INFO": ("&cThis plugin requires &o"+reqid+"&r&c to be installed!").replaceAll("&", "§")
+                    errtxt += "&cError loading plugin '" + runPlugin.plugin.id + "' &4[Info]{*|show_text:{INFO}}&r\n".fill({
+                        "INFO": ("&cThis plugin requires &o" + reqid + "&r&c to be installed!").replaceAll("&", "§")
                     });
                     canRun = false;
                 }
@@ -2703,15 +2703,15 @@ var minver = req[reqid];
 
         }
 
-        if(canRun) {
+        if (canRun) {
             try {
                 //execute plugins
-                runPlugin.func(runPlugin.plugin.settings||{}, runPlugin.plugin);
-            } catch(exc) {
+                runPlugin.func(runPlugin.plugin.settings || {}, runPlugin.plugin);
+            } catch (exc) {
                 handleError(exc);
             }
         } else {
-            executeCommandGlobal("/tellraw @a "+strf(errtxt));
+            executeCommandGlobal("/tellraw @a " + strf(errtxt));
         }
     }
 
@@ -2757,73 +2757,73 @@ function compare(fval, operator, sval) {
 function UUIDLM() { return rrandom_range(1, 99999); }
 
 function getDropChance(npcnbt, slot) {
-	var dropC = npcnbt.getList('DropChance', 10);
-	var dropChance = parseInt(dropC[slot].getInteger('Integer'));
+    var dropC = npcnbt.getList('DropChance', 10);
+    var dropChance = parseInt(dropC[slot].getInteger('Integer'));
 
-	return dropChance;
+    return dropChance;
 }
 
 function getHandItem(player) {
-	return player.getMainhandItem() || player.getOffhandItem();
+    return player.getMainhandItem() || player.getOffhandItem();
 }
 
 //Get unique ID
 function uniqid() {
-	var id = '';
-	for(var i = 0; i <= 3; i++) {
-		id+=Math.random().toString(36).substr(2, 9);
-	}
-	return id;
+    var id = '';
+    for (var i = 0; i <= 3; i++) {
+        id += Math.random().toString(36).substr(2, 9);
+    }
+    return id;
 }
 
 //Vanilla item attributes
 var _ITEMATTR = [
-	'generic.attackDamage',
-	'generic.followRange',
-	'generic.maxHealth',
-	'generic.followRange',
-	'generic.knockbackResistance',
-	'generic.movementSpeed',
-	'generic.armor',
-	'generic.armorToughness',
-	'generic.attackSpeed',
-	'generic.luck',
-	'generic.attackKnockback',
-	'generic.flyingSpeed',
-	'generic.luck'
+    'generic.attackDamage',
+    'generic.followRange',
+    'generic.maxHealth',
+    'generic.followRange',
+    'generic.knockbackResistance',
+    'generic.movementSpeed',
+    'generic.armor',
+    'generic.armorToughness',
+    'generic.attackSpeed',
+    'generic.luck',
+    'generic.attackKnockback',
+    'generic.flyingSpeed',
+    'generic.luck'
 ];
 
 //Escape JSON symbols
 function escapeNbtJson(json, trim_ends) {
-	if(typeof(trim_ends) == typeof(undefined) || trim_ends === null) { trim_ends = true; }
-	json = json.replace(/(?:\\n|\\)/g, '');
-	json = json.replace(/(\d) ([fbds]+)/g, "$1$2");
-	json = json.replace(/\\("|')/g, "$1");
-	if(trim_ends) {
-		json = json.slice(1, json.length - 1);
-	}
+    if (typeof (trim_ends) == typeof (undefined) || trim_ends === null) { trim_ends = true; }
+    json = json.replace(/(?:\\n|\\)/g, '');
+    json = json.replace(/(\d) ([fbds]+)/g, "$1$2");
+    json = json.replace(/\\("|')/g, "$1");
+    if (trim_ends) {
+        json = json.slice(1, json.length - 1);
+    }
 
-	return json;
+    return json;
 }
 
 function getDayTime(time) {
-	while(time > 24000) { time -= 24000; }
-	return time;
+    while (time > 24000) { time -= 24000; }
+    return time;
 }
 
 function isArray(obj) {
-	if(typeof(obj) === 'object') {
-      for(var k in obj) {
-          if(isNaN(k)) {
-			  return false;
-		  }
-      }
-      return true;
+    if (typeof (obj) === 'object') {
+        for (var k in obj) {
+            if (isNaN(k)) {
+                return false;
+            }
+        }
+        return true;
     } else { return false }
 }
 
 function isObject(obj) {
-	return ( typeof(obj) === 'object' && !isArray(obj) );
+    return (typeof (obj) === 'object' && !isArray(obj));
 }
 
 
@@ -2834,7 +2834,7 @@ function dataHandlerQuery(type, items) {
         _where: [],
     };
 
-    query.dump = function(player) {
+    query.dump = function (player) {
 
         var results = query.get();
         var moreResults = 0;
@@ -2842,15 +2842,15 @@ function dataHandlerQuery(type, items) {
 
         var queryInfo = '';
 
-        for(var i in query._where) {
-var qw = query._where[i];
+        for (var i in query._where) {
+            var qw = query._where[i];
             queryInfo += '&awhere &e' + qw[0] + ' &6' + qw[1] + ' &c' + qw[2] + '\n';
         }
 
         tellPlayer(player, '&5&l#Query Dump');
         tellPlayer(player, '&d#[Query Info]{*|show_text:' + queryInfo.replaceAll('&', '$') + '}&r');
-        for(var i in results) {
-var result = results[i];
+        for (var i in results) {
+            var result = results[i];
             if (parseInt(i) > 14) {
                 moreResults++;
                 continue;
@@ -2869,7 +2869,7 @@ var result = results[i];
         return this;
     };
 
-    query.whereMoney = function(name, operator, amount) {
+    query.whereMoney = function (name, operator, amount) {
         if (typeof amount === 'undefined') {
             amount = operator;
             operator = '==';
@@ -2879,7 +2879,7 @@ var result = results[i];
         return query.where(name, operator, amount);
     };
 
-    query.whereTime = function(name, operator, time) {
+    query.whereTime = function (name, operator, time) {
         if (typeof time === 'undefined') {
             time = operator;
             operator = '==';
@@ -2892,7 +2892,7 @@ var result = results[i];
 
 
 
-    query.where = function(name, operator, value) {
+    query.where = function (name, operator, value) {
         if (typeof name === 'function') {
             query._items = query._items.filter(name);
         } else {
@@ -2903,7 +2903,7 @@ var result = results[i];
 
             query._where.push([name, operator, value]);
 
-            query._items = query._items.filter(function(item) {
+            query._items = query._items.filter(function (item) {
                 return compare((getObjectProp(item, 'data.' + name) || getObjectProp(item, name)), operator, value);
             });
         }
@@ -2911,7 +2911,7 @@ var result = results[i];
         return query;
     };
 
-    query.whereCount = function(name, operator, value) {
+    query.whereCount = function (name, operator, value) {
         if (typeof value === 'undefined') {
             value = operator;
             operator = '==';
@@ -2919,25 +2919,25 @@ var result = results[i];
 
         query._where.push([name, operator, value]);
 
-        query._items = query._items.filter(function(item) {
+        query._items = query._items.filter(function (item) {
             return compare((getObjectProp(item, 'data.' + name) || getObjectProp(item, name) || []).length, operator, value);
         });
 
         return query;
     }
 
-    query.whereContains = function(key, value, caseSensitive) {
-	if(typeof(caseSensitive) == typeof(undefined) || caseSensitive === null) { caseSensitive = true; }
+    query.whereContains = function (key, value, caseSensitive) {
+        if (typeof (caseSensitive) == typeof (undefined) || caseSensitive === null) { caseSensitive = true; }
         if (!isArray(value)) {
             value = [value];
         }
         query._where.push([key, 'contains', value]);
 
-        query._items = query._items.filter(function(item) {
+        query._items = query._items.filter(function (item) {
             var contains = false;
             var haystack = (getObjectProp(item, 'data.' + key) || getObjectProp(item, key)).toString();
-            for(var v in value) {
-var val = value[v];
+            for (var v in value) {
+                var val = value[v];
                 if (!caseSensitive) {
                     if (typeof haystack === 'string') {
                         haystack = haystack.toLowerCase();
@@ -2958,47 +2958,47 @@ var val = value[v];
         return query;
     };
 
-    query.whereNull = function(name) {
+    query.whereNull = function (name) {
         return query.where(name, '===', null);
     };
 
-    query.whereNotNull = function(name) {
+    query.whereNotNull = function (name) {
         return query.where(name, '!==', null)
     }
 
-    query.shuffle = function() {
+    query.shuffle = function () {
         query._items = array_shuffle(query._items);
         return query;
     };
 
-    query.limit = function(amount) {
+    query.limit = function (amount) {
         query._items.splice(amount, query._items.length);
         return query;
     };
 
-    query.first = function() {
+    query.first = function () {
         return query._items[0] || null;
     }
 
-    query.last = function() {
+    query.last = function () {
         return query._items[query._items.length - 1] || null;
     }
 
-    query.skip = function(amount) {
+    query.skip = function (amount) {
         query._items.splice(0, amount);
         return query;
     };
 
-    query.filter = function(filterFn) {
+    query.filter = function (filterFn) {
         query._items.filter(filterFn);
 
         return query;
     }
 
-    query.sortBy = function() {
-        for(var i in arguments) {
-var key = arguments[i];
-            query._items.sort(function(a, b) {
+    query.sortBy = function () {
+        for (var i in arguments) {
+            var key = arguments[i];
+            query._items.sort(function (a, b) {
                 var ak = getObjectProp(a, key) || getObjectProp(a, 'data.' + key);
                 var bk = getObjectProp(b, key) || getObjectProp(b, 'data.' + key);
 
@@ -3013,8 +3013,8 @@ var key = arguments[i];
         return query;
     };
 
-    query.sortByDesc = function(key) {
-        query._items.sort(function(a, b) {
+    query.sortByDesc = function (key) {
+        query._items.sort(function (a, b) {
             var ak = getObjectProp(a, key) || getObjectProp(a, 'data.' + key);
             var bk = getObjectProp(b, key) || getObjectProp(b, 'data.' + key);
 
@@ -3030,7 +3030,7 @@ var key = arguments[i];
         return query;
     };
 
-    query.get = function() {
+    query.get = function () {
         var items = query._items.concat([]);
         if (query._limit > -1) {
             items.splice(query._limit, query._items.length);
@@ -3040,14 +3040,14 @@ var key = arguments[i];
     };
 
     Object.defineProperty(query, 'count', {
-        get: function() {
+        get: function () {
             return query._items.length;
         }
     });
 
 
     Object.defineProperty(query, 'each', {
-        get: function() {
+        get: function () {
             return dataHandlerCaller(type, query._items);
         }
     });
@@ -3064,13 +3064,13 @@ function dataHandlerCaller(type, items) {
         _items: items
     };
 
-    for(var prop in mockDataHandler) {
-var val = mockDataHandler[prop];
+    for (var prop in mockDataHandler) {
+        var val = mockDataHandler[prop];
         if (typeof val === 'function') {
-            caller[prop] = (function(prop, mockDataHandler, val) {
-                return function() {
-                    for(var i in caller._items) {
-var item = caller._items[i];
+            caller[prop] = (function (prop, mockDataHandler, val) {
+                return function () {
+                    for (var i in caller._items) {
+                        var item = caller._items[i];
                         item[prop].apply(item, arguments);
                     }
 
@@ -3085,7 +3085,7 @@ var item = caller._items[i];
 var _UNIQIDS = [];
 
 function uniqid(length) {
-	if(typeof(length) == typeof(undefined) || length === null) { length = 7; }
+    if (typeof (length) == typeof (undefined) || length === null) { length = 7; }
     var _CHARSET = "01234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var id;
     do {
@@ -3120,34 +3120,34 @@ function DataHandler(type, name) {
     this.dkeyrgx = new RegExp(this.type + '_([\\w.\-]+)', 'g');
 
 
-    this.moneyData = function(props) {
+    this.moneyData = function (props) {
         this._moneyData = this._moneyData.concat(props);
         return this;
     };
 
-    this.timeData = function(props) {
+    this.timeData = function (props) {
         this._timeData = this._timeData.concat(props);
         return this;
     };
-    this.dateData = function(props) {
+    this.dateData = function (props) {
         this._dateData = this._dateData.concat(props);
         return this;
     };
 
 
     Object.defineProperty(this.data, 'name', {
-        get: function() {
+        get: function () {
             return this.name;
         },
     });
 
     //Gets all data IDS
-    this.getAllDataIds = function(data, includeType) {
-	if(typeof(includeType) == typeof(undefined) || includeType === null) { includeType = false; }
+    this.getAllDataIds = function (data, includeType) {
+        if (typeof (includeType) == typeof (undefined) || includeType === null) { includeType = false; }
         var dkeys = data.getKeys();
         var ids = [];
-        for(var d in dkeys) {
-var dkey = dkeys[d];
+        for (var d in dkeys) {
+            var dkey = dkeys[d];
             if (dkey.cmatch(this.dkeyrgx) > 0) {
                 ids.push(includeType ? dkey : dkey.replace(this.dkeyrgx, '$1'));
             }
@@ -3156,16 +3156,16 @@ var dkey = dkeys[d];
         return ids;
     };
 
-    this.addData = function(dataObj) {
+    this.addData = function (dataObj) {
         this.data = objMerge(this.data, dataObj);
     };
 
-    this.getAllDataEntries = function(data) {
+    this.getAllDataEntries = function (data) {
         var ids = this.getAllDataIds(data, true);
         var de = [];
 
-        for(var i in ids) {
-var id = ids[i];
+        for (var i in ids) {
+            var id = ids[i];
             if (DataHandler.cache[id]) {
                 de.push(DataHandler.cache[id]);
                 continue;
@@ -3180,52 +3180,52 @@ var id = ids[i];
         return de;
     };
 
-    this.query = function(data) {
+    this.query = function (data) {
         return dataHandlerQuery(this.type, this.getAllDataEntries(data));
     };
 
-    this.dumpdata = function(player, prop) {
+    this.dumpdata = function (player, prop) {
         tellPlayer(player, this._getdump(player, prop));
     };
 
-    this._getdump = function(player, prop) {
-	if(typeof(prop) == typeof(undefined) || prop === null) { prop = ''; }
+    this._getdump = function (player, prop) {
+        if (typeof (prop) == typeof (undefined) || prop === null) { prop = ''; }
         var propTypes = {};
-        for(var i in this._moneyData) {
-var moneyProp = this._moneyData[i];
+        for (var i in this._moneyData) {
+            var moneyProp = this._moneyData[i];
             propTypes[moneyProp] = 'money';
         }
-        for(var i in this._timeData) {
-var timeProp = this._timeData[i];
+        for (var i in this._timeData) {
+            var timeProp = this._timeData[i];
             propTypes[timeProp] = 'time';
         }
-        for(var i in this._dateData) {
-var dateProp = this._dateData[i];
+        for (var i in this._dateData) {
+            var dateProp = this._dateData[i];
             propTypes[dateProp] = 'date';
         }
-        return formatObj(getObjectProp(this.data, prop), 1, 3, -1, propTypes, null, function() {
+        return formatObj(getObjectProp(this.data, prop), 1, 3, -1, propTypes, null, function () {
             this.maxLoop = 2;
         });
     }
-    this.getPropType = function(property) {
+    this.getPropType = function (property) {
         var propTypes = {};
-        for(var i in this._moneyData) {
-var moneyProp = this._moneyData[i];
+        for (var i in this._moneyData) {
+            var moneyProp = this._moneyData[i];
             propTypes[moneyProp] = 'money';
         }
-        for(var i in this._timeData) {
-var timeProp = this._timeData[i];
+        for (var i in this._timeData) {
+            var timeProp = this._timeData[i];
             propTypes[timeProp] = 'time';
         }
-        for(var i in this._dateData) {
-var dateProp = this._dateData[i];
+        for (var i in this._dateData) {
+            var dateProp = this._dateData[i];
             propTypes[dateProp] = 'date';
         }
 
         return propTypes[property] || typeof this.data[property];
     };
 
-    this.dump = function(player) {
+    this.dump = function (player) {
         var dumpInfo = ' === &2&lDUMP&r === \n' +
             '&6&lType: &c' + this.type + '\n' +
             '&6&lName: &e' + this.name + '\n\n' +
@@ -3254,8 +3254,8 @@ var dateProp = this._dateData[i];
 
         var shownProps = [];
 
-        for(var prop in this.data) {
-var val = this.data[prop];
+        for (var prop in this.data) {
+            var val = this.data[prop];
             if (allowed.indexOf(prop) == -1 && allowed.length > 0) {
                 continue;
             }
@@ -3290,7 +3290,7 @@ var val = this.data[prop];
 
         var propDiff = Object.keys(this.data).length - shownProps.length;
         if (propDiff > 0 && allowed.length == 0) {
-            dumpInfo += '&3Hiding ' + propDiff + ' more properties.\n&b' + Object.keys(this.data).filter(function(key) {
+            dumpInfo += '&3Hiding ' + propDiff + ' more properties.\n&b' + Object.keys(this.data).filter(function (key) {
                 return shownProps.indexOf(key) == -1;
             }).join(', ');
         }
@@ -3301,27 +3301,27 @@ var val = this.data[prop];
         return this;
     }
 
-    this.getDataId = function() {
+    this.getDataId = function () {
         return this.type + '_' + this.name;
     }
-    this.exists = function(data) {
+    this.exists = function (data) {
         return data.get(this.getDataId()) != null;
     };
-    this.save = function(data) {
+    this.save = function (data) {
         var now = new Date().getTime();
         if (!this.exists(data)) { //Run onCreate
-            for(var i in this.createFns) {
-var createFn = this.createFns[i];
-                if (typeof(createFn) == 'function') {
+            for (var i in this.createFns) {
+                var createFn = this.createFns[i];
+                if (typeof (createFn) == 'function') {
                     createFn(this, data);
                 }
             }
             this.data.created = now;
         }
         //Run onSave
-        for(var i in this.saveFns) {
-var saveFn = this.saveFns[i];
-            if (typeof(saveFn) == 'function') {
+        for (var i in this.saveFns) {
+            var saveFn = this.saveFns[i];
+            if (typeof (saveFn) == 'function') {
                 saveFn(this, data);
             }
         }
@@ -3330,26 +3330,26 @@ var saveFn = this.saveFns[i];
         DataHandler.__proto__.cache[this.getDataId()] = this;
         return this;
     };
-    this.load = function(data) {
+    this.load = function (data) {
         if (this.exists(data)) {
-            for(var i in this.loadFns) {
-var loadFn = this.loadFns[i];
-                if (typeof(loadFn) == 'function') { loadFn(this, data); }
+            for (var i in this.loadFns) {
+                var loadFn = this.loadFns[i];
+                if (typeof (loadFn) == 'function') { loadFn(this, data); }
             }
             var ndata = data.get(this.getDataId());
             this.data = objMerge(this.data, JSON.parse(ndata));
-            for(var i in this.loadedFns) {
-var loadedFn = this.loadedFns[i];
-                if (typeof(loadedFn) == 'function') { loadedFn(this, data); }
+            for (var i in this.loadedFns) {
+                var loadedFn = this.loadedFns[i];
+                if (typeof (loadedFn) == 'function') { loadedFn(this, data); }
             }
             return true;
         }
         return false;
     };
-    this.remove = function(data) {
-        for(var rf in this.removeFns) {
-			var removeFn = this.removeFns[rf];
-            if (typeof(removeFn) == 'function') {
+    this.remove = function (data) {
+        for (var rf in this.removeFns) {
+            var removeFn = this.removeFns[rf];
+            if (typeof (removeFn) == 'function') {
                 removeFn(this, data);
             }
         }
@@ -3359,28 +3359,28 @@ var loadedFn = this.loadedFns[i];
         }
         return this;
     };
-    this.onRemove = function(fn, args) { //When removed
+    this.onRemove = function (fn, args) { //When removed
         this.removeFns.push(fn, args || {});
         return this;
     };
-    this.onLoad = function(fn, args) { //When gets loaded, before retrieving data
+    this.onLoad = function (fn, args) { //When gets loaded, before retrieving data
         this.loadFns.push(fn, args || {});
         return this;
     };
-    this.onLoaded = function(fn, args) { //when loaded is complete
+    this.onLoaded = function (fn, args) { //when loaded is complete
         this.loadedFns.push(fn, args || {});
         return this;
     };
-    this.onSave = function(fn, args) { //Everytime when gets saved
+    this.onSave = function (fn, args) { //Everytime when gets saved
         this.saveFns.push(fn, args || {});
         return this;
     };
-    this.onCreate = function(fn, args) { //When gets saved but did not exists before (newly created)
+    this.onCreate = function (fn, args) { //When gets saved but did not exists before (newly created)
         this.createFns.push(fn, args || {});
         return this;
     };
-    this.init = function(data, createIfNotExists) {
-	if(typeof(createIfNotExists) == typeof(undefined) || createIfNotExists === null) { createIfNotExists = true; }
+    this.init = function (data, createIfNotExists) {
+        if (typeof (createIfNotExists) == typeof (undefined) || createIfNotExists === null) { createIfNotExists = true; }
         var self = this;
         if (DataHandler.cache[this.getDataId()]) {
             self = DataHandler.cache[this.getDataId()];
@@ -3393,63 +3393,63 @@ var loadedFn = this.loadedFns[i];
 
         return self;
     };
-    this.set = function(key, value) {
+    this.set = function (key, value) {
         if (Object.keys(this.data).indexOf(key) > -1) {
             this.data[key] = value;
         }
 
         return this;
     };
-    this.callback = function(fn) {
+    this.callback = function (fn) {
         fn.apply(this, [this]);
         return this;
     };
-    this.setMoney = function(key, value) {
+    this.setMoney = function (key, value) {
         return this.set(key, getCoinAmount(value));
     };
 
-    this.setTime = function(key, value) {
+    this.setTime = function (key, value) {
         return this.set(key, getStringTime(value));
     };
 
-    this.add = function(key, amount) {
+    this.add = function (key, amount) {
         return this.set(key, this.data[key] + amount);
     };
 
-    this.addMoney = function(key, amount) {
+    this.addMoney = function (key, amount) {
         return this.add(key, getCoinAmount(amount));
     };
 
-    this.addTime = function(key, time) {
+    this.addTime = function (key, time) {
         return this.add(key, getStringTime(time));
     };
 
 
 
-    this.sub = function(key, amount) {
+    this.sub = function (key, amount) {
         return this.set(key, this.data[key] - amount);
     }
 
-    this.subMoney = function(key, amount) {
+    this.subMoney = function (key, amount) {
         return this.sub(key, getCoinAmount(amount));
     };
 
-    this.subTime = function(key, time) {
+    this.subTime = function (key, time) {
         return this.sub(key, getStringTime(time));
     };
 
 
-    this.toJson = function() {
+    this.toJson = function () {
         return JSON.stringify(this.data);
     };
 
-    this.fill = function(data) {
+    this.fill = function (data) {
         this.data = Object.assign(this.data, data);
 
         return this;
     };
 
-    this.rename = function(name, data) {
+    this.rename = function (name, data) {
         var clone = this.copy(name, data);
 
         this.remove(data);
@@ -3458,7 +3458,7 @@ var loadedFn = this.loadedFns[i];
         return clone;
     };
 
-    this.copy = function(name, data) {
+    this.copy = function (name, data) {
         var clone = new this.constructor(name);
 
         clone.data = Object.assign(clone.data, this.data);
@@ -3475,14 +3475,14 @@ var loadedFn = this.loadedFns[i];
         'updated': now
     });
 
-    this.onLoaded(function(model, data) {
+    this.onLoaded(function (model, data) {
         if (model.data.created == null) {
             model.data.created = new Date().getTime();
         }
     });
 }
 var _DHCacheKey = 'DataHandlerCache';
-DataHandler.__proto__.reloadCache = function() {
+DataHandler.__proto__.reloadCache = function () {
     DataHandler.__proto__.cache = {};
 
     var tempdata = API.getIWorld(0).tempdata;
@@ -3506,22 +3506,22 @@ DataHandler.reloadCache();
  * @param {String} toptext The text above the results, below the help buttons
  */
 function genDataPageList(items, matches, showLen, curPage, navCmd, listingFn, sortFn, compareFn, sortDesc, toptext, options) {
-	if(typeof(matches) == typeof(undefined) || matches === null) { matches = []; }
-	if(typeof(showLen) == typeof(undefined) || showLen === null) { showLen = 10; }
-	if(typeof(curPage) == typeof(undefined) || curPage === null) { curPage = 1; }
-	if(typeof(navCmd) == typeof(undefined) || navCmd === null) { navCmd = null; }
-	if(typeof(listingFn) == typeof(undefined) || listingFn === null) { listingFn = null; }
-	if(typeof(sortFn) == typeof(undefined) || sortFn === null) { sortFn = null; }
-	if(typeof(compareFn) == typeof(undefined) || compareFn === null) { compareFn = null; }
-	if(typeof(sortDesc) == typeof(undefined) || sortDesc === null) { sortDesc = false; }
-	if(typeof(toptext) == typeof(undefined) || toptext === null) { toptext = ''; }
-	if(typeof(options) == typeof(undefined) || options === null) { options = {}; }
+    if (typeof (matches) == typeof (undefined) || matches === null) { matches = []; }
+    if (typeof (showLen) == typeof (undefined) || showLen === null) { showLen = 10; }
+    if (typeof (curPage) == typeof (undefined) || curPage === null) { curPage = 1; }
+    if (typeof (navCmd) == typeof (undefined) || navCmd === null) { navCmd = null; }
+    if (typeof (listingFn) == typeof (undefined) || listingFn === null) { listingFn = null; }
+    if (typeof (sortFn) == typeof (undefined) || sortFn === null) { sortFn = null; }
+    if (typeof (compareFn) == typeof (undefined) || compareFn === null) { compareFn = null; }
+    if (typeof (sortDesc) == typeof (undefined) || sortDesc === null) { sortDesc = false; }
+    if (typeof (toptext) == typeof (undefined) || toptext === null) { toptext = ''; }
+    if (typeof (options) == typeof (undefined) || options === null) { options = {}; }
 
 
     var output = "";
     //Sanitize
-    for(var i in matches) {
-var match = matches[i];
+    for (var i in matches) {
+        var match = matches[i];
         matches[i] = match.replace(/[^*\w]/g, "");
     }
 
@@ -3532,8 +3532,8 @@ var match = matches[i];
     var excludes = [];
     var excludeRgx = /\*([\w]+)/;
     var newMatches = [];
-    for(var a in matches) {
-var match = matches[a];
+    for (var a in matches) {
+        var match = matches[a];
         (match.cmatch(excludeRgx) > 0 ? excludes : newMatches).push(match.replace(excludeRgx, "$1"));
     }
     matches = newMatches;
@@ -3546,7 +3546,7 @@ var match = matches[a];
     var tellItems = [];
     //Sort items
     if (sortFn !== false) {
-        items.sort(typeof sortFn === "function" ? sortFn : function(a, b) {
+        items.sort(typeof sortFn === "function" ? sortFn : function (a, b) {
             var al = a.toLowerCase();
             var bl = b.toLowerCase();
 
@@ -3562,8 +3562,8 @@ var match = matches[a];
         items.reverse();
     }
     //Filter items
-    for(var i in items) {
-var item = items[i];
+    for (var i in items) {
+        var item = items[i];
         var isExcluded = (compareFn == null ? arrayOccurs(item, excludes, false, false) > 0 : compareFn(item, excludes));
         if (matches.length == 0 || (compareFn == null ? arrayOccurs(item, matches, false, false) > 0 : compareFn(item, matches))) {
             if (!isExcluded) {
@@ -3576,9 +3576,9 @@ var item = items[i];
     }
 
     function genNavCmd(_page, _showLen, _sort) {
-	if(typeof(_page) == typeof(undefined) || _page === null) { _page = curPage; }
-	if(typeof(_showLen) == typeof(undefined) || _showLen === null) { _showLen = showLen; }
-	if(typeof(_sort) == typeof(undefined) || _sort === null) { _sort = sortDesc; }
+        if (typeof (_page) == typeof (undefined) || _page === null) { _page = curPage; }
+        if (typeof (_showLen) == typeof (undefined) || _showLen === null) { _showLen = showLen; }
+        if (typeof (_sort) == typeof (undefined) || _sort === null) { _sort = sortDesc; }
         return navCmd.fill({
             "MATCHES": matches.join(" ") + " " + arrayFormat(excludes, "*{VALUE}"),
             "PAGE": _page,
@@ -3614,8 +3614,8 @@ var item = items[i];
         20
     ];
     var sloTxt = "";
-    for(var s in showLenOptions) {
-var slo = showLenOptions[s];
+    for (var s in showLenOptions) {
+        var slo = showLenOptions[s];
         var showLenCmd = genNavCmd(Math.round(curPage * (showLen / slo)), slo)
 
         sloTxt += "&b[Show " + slo + "]{run_command:" + showLenCmd + "|show_text:$3Click to show " + slo.toString() + " results per page.}&r ";
@@ -3636,8 +3636,8 @@ var slo = showLenOptions[s];
     if (tellItems.length > 0) {
         output += "&6&lPage: &5&l" + curPage + "/" + maxPages + "&r" + navBtns + "\n";
         var j = 0;
-        for(var i in tellItems) {
-var tellItem = tellItems[i];
+        for (var i in tellItems) {
+            var tellItem = tellItems[i];
             var result = (listingFn == null ? " - &b&l" + tellItem + "&r\n" : listingFn(tellItem, j, i));
 
             if (result !== false) {
@@ -3673,8 +3673,8 @@ function getDataHandler(alias) {
 }
 
 function registerXCommand(commandMatch, callback, perm, rules, payload) {
-	if(typeof(rules) == typeof(undefined) || rules === null) { rules = []; }
-	if(typeof(payload) == typeof(undefined) || payload === null) { payload = {}; }
+    if (typeof (rules) == typeof (undefined) || rules === null) { rules = []; }
+    if (typeof (payload) == typeof (undefined) || payload === null) { payload = {}; }
     _COMMANDS.push({
         usage: commandMatch,
         callback: callback,
@@ -3690,14 +3690,14 @@ function getCommandNoArg(cmdstr) {
 }
 
 function matchXCommands(cmdstrs) {
-	if(typeof(cmdstrs) == typeof(undefined) || cmdstrs === null) { cmdstrs = []; }
-    if (typeof(cmdstrs) == 'string') { cmdstrs = [cmdstrs]; }
+    if (typeof (cmdstrs) == typeof (undefined) || cmdstrs === null) { cmdstrs = []; }
+    if (typeof (cmdstrs) == 'string') { cmdstrs = [cmdstrs]; }
     var cmds = [];
 
-    for(var c in _COMMANDS) {
-var command = _COMMANDS[c];
-        for(var ci in cmdstrs) {
-var cmdstr = cmdstrs[ci];
+    for (var c in _COMMANDS) {
+        var command = _COMMANDS[c];
+        for (var ci in cmdstrs) {
+            var cmdstr = cmdstrs[ci];
             var cname = getCommandNoArg(command.usage).trim();
             if (cmdstr.substr(0, 1) == "^") {
                 if ((cmdstrs.length == 0 || occurrences(cname, cmdstr.substr(1, cmdstr.length)) == 0) && cmds.indexOf(command) == -1) {
@@ -3749,21 +3749,21 @@ function CommandFactory(datahandler, cmdtree) {
     this._settables = [];
 
     //Event functions
-    this.on = function(action, callback) {
+    this.on = function (action, callback) {
         this.onFns[action].push(callback);
         return this;
     };
 
     //Command Building functions
-    this.addInfoText = function(infoFn) {
+    this.addInfoText = function (infoFn) {
         this.info.push(infoFn);
         return this;
     };
-    this.add = function(subCommand, fn, rules, payload, dhNameArg, dhMustExists) {
-	if(typeof(rules) == typeof(undefined) || rules === null) { rules = []; }
-	if(typeof(payload) == typeof(undefined) || payload === null) { payload = {}; }
-	if(typeof(dhNameArg) == typeof(undefined) || dhNameArg === null) { dhNameArg = "name"; }
-	if(typeof(dhMustExists) == typeof(undefined) || dhMustExists === null) { dhMustExists = true; }
+    this.add = function (subCommand, fn, rules, payload, dhNameArg, dhMustExists) {
+        if (typeof (rules) == typeof (undefined) || rules === null) { rules = []; }
+        if (typeof (payload) == typeof (undefined) || payload === null) { payload = {}; }
+        if (typeof (dhNameArg) == typeof (undefined) || dhNameArg === null) { dhNameArg = "name"; }
+        if (typeof (dhMustExists) == typeof (undefined) || dhMustExists === null) { dhMustExists = true; }
         payload = objMerge({
             "datatype": this.type,
             "cmdtree": this.cmdtree,
@@ -3773,7 +3773,7 @@ function CommandFactory(datahandler, cmdtree) {
         var cmdstr = "!" + this.cmdtree + " " + subCommand;
         this.cmds.push([
             cmdstr,
-            function(pl, args, data, cdata) {
+            function (pl, args, data, cdata) {
                 var dht = getDataHandler(cdata.datatype);
                 var dh = new dht(args[cdata.argname]).init(data, false);
                 return cdata.fn(dh, pl, args, data, cdata);
@@ -3789,10 +3789,10 @@ function CommandFactory(datahandler, cmdtree) {
         ]);
         return this;
     };
-    this.addSettable = function(property, argTransformFn, rules, outputTransform, argNode, argName, propertyAlias) {
-	if(typeof(argTransformFn) == typeof(undefined) || argTransformFn === null) { argTransformFn = null; }
-	if(typeof(rules) == typeof(undefined) || rules === null) { rules = []; }
-	if(typeof(outputTransform) == typeof(undefined) || outputTransform === null) { outputTransform = null; }
+    this.addSettable = function (property, argTransformFn, rules, outputTransform, argNode, argName, propertyAlias) {
+        if (typeof (argTransformFn) == typeof (undefined) || argTransformFn === null) { argTransformFn = null; }
+        if (typeof (rules) == typeof (undefined) || rules === null) { rules = []; }
+        if (typeof (outputTransform) == typeof (undefined) || outputTransform === null) { outputTransform = null; }
         var propname = (propertyAlias || property).rangeUpper(0, 1);
         var out = objMerge({
             "val": "\"{" + property + "}\"",
@@ -3804,7 +3804,7 @@ function CommandFactory(datahandler, cmdtree) {
         this._settables.push(property);
         this.cmds.push([
             '!' + this.cmdtree + ' set' + propname + ' <name> ' + argNode,
-            function(pl, args, data, cdata) {
+            function (pl, args, data, cdata) {
                 var dht = getDataHandler(cdata.datatype);
                 var dh = new dht(args.name);
                 var val = args[cdata.argname];
@@ -3836,24 +3836,24 @@ function CommandFactory(datahandler, cmdtree) {
 
         return this;
     };
-    this.setListTransformer = function(transformFn) {
+    this.setListTransformer = function (transformFn) {
         this.listingTransformerFn = transformFn;
 
         return this;
     };
     //Generate Functions
-    this.genDefault = function(excludes) {
-	if(typeof(excludes) == typeof(undefined) || excludes === null) { excludes = []; }
+    this.genDefault = function (excludes) {
+        if (typeof (excludes) == typeof (undefined) || excludes === null) { excludes = []; }
         if (excludes.indexOf("create") == -1)
             this.cmds.push(
-                ['!' + this.cmdtree + ' create <name>', function(pl, args, data, cdata) {
+                ['!' + this.cmdtree + ' create <name>', function (pl, args, data, cdata) {
                     var dht = getDataHandler(cdata.datatype);
                     var dh = new dht(args.name);
                     var payload = {
                         "cancel": false,
                     };
-                    for(var o in cdata.self.onFns['create']) {
-var onFn = cdata.self.onFns['create'][o];
+                    for (var o in cdata.self.onFns['create']) {
+                        var onFn = cdata.self.onFns['create'][o];
                         onFn(dh, pl, args, data, cdata, payload);
                     }
 
@@ -3864,27 +3864,27 @@ var onFn = cdata.self.onFns['create'][o];
                     }
                     return false;
                 }, this.cmdtree.replaceAll(" ", ".") + '.create', [{
-                        "argname": "name",
-                        "type": "string",
-                        "noColor": true,
-                    },
-                    {
-                        "argname": "name",
-                        "type": "datahandler",
-                        "datatype": this.type,
-                        "exists": false,
-                    },
+                    "argname": "name",
+                    "type": "string",
+                    "noColor": true,
+                },
+                {
+                    "argname": "name",
+                    "type": "datahandler",
+                    "datatype": this.type,
+                    "exists": false,
+                },
                 ], {
                     "datatype": this.type,
                     "self": this,
                 }]);
         if (excludes.indexOf("remove") == -1)
             this.cmds.push(
-                ['!' + this.cmdtree + ' remove <name>', function(pl, args, data, cdata) {
+                ['!' + this.cmdtree + ' remove <name>', function (pl, args, data, cdata) {
                     var dht = getDataHandler(cdata.datatype);
                     var dh = new dht(args.name);
-                    for(var o in cdata.self.onFns['remove']) {
-var onFn = cdata.self.onFns['remove'][o];
+                    for (var o in cdata.self.onFns['remove']) {
+                        var onFn = cdata.self.onFns['remove'][o];
                         onFn(dh, pl, args, data, cdata, payload);
                     }
                     dh.remove(data);
@@ -3901,7 +3901,7 @@ var onFn = cdata.self.onFns['remove'][o];
                 }]);
         if (excludes.indexOf("info") == -1)
             this.cmds.push(
-                ['!' + this.cmdtree + ' info <name>', function(pl, args, data, cdata) {
+                ['!' + this.cmdtree + ' info <name>', function (pl, args, data, cdata) {
                     var dht = getDataHandler(cdata.datatype);
                     var dh = new dht(args.name);
                     dh.load(data);
@@ -3915,16 +3915,16 @@ var onFn = cdata.self.onFns['remove'][o];
                     }
 
                     var tellInfo = "";
-                    for(var i in cdata.info) {
-var infoFn = cdata.info[i];
+                    for (var i in cdata.info) {
+                        var infoFn = cdata.info[i];
                         tellInfo += infoFn(dh, pl, args, data, cdata);
                     }
                     if (tellInfo != "") {
                         tellPlayer(pl, tellInfo);
                     }
 
-                    for(var o in cdata.self.onFns['info']) {
-var onFn = cdata.self.onFns['info'][o];
+                    for (var o in cdata.self.onFns['info']) {
+                        var onFn = cdata.self.onFns['info'][o];
                         onFn(dh, pl, args, data, cdata);
                     }
 
@@ -3943,58 +3943,58 @@ var onFn = cdata.self.onFns['info'][o];
                 }]);
         if (excludes.indexOf("list") == -1)
             this.cmds.push(
-                ['!' + this.cmdtree + ' list [...matches]', function(pl, args, data, cdata) {
-                        var w = pl.world;
-                        var sb = w.getScoreboard();
-                        var dht = getDataHandler(cdata.datatype);
-                        var params = getArgParams(args.matches);
+                ['!' + this.cmdtree + ' list [...matches]', function (pl, args, data, cdata) {
+                    var w = pl.world;
+                    var sb = w.getScoreboard();
+                    var dht = getDataHandler(cdata.datatype);
+                    var params = getArgParams(args.matches);
 
-                        var de = new dht().getAllDataEntries(data);
-                        for(var o in cdata.self.onFns['list']) {
-var onFn = cdata.self.onFns['list'][o];
-                            onFn(dh, pl, args, data, cdata);
-                        }
-                        var txt = getTitleBar(cdata.datatype.rangeUpper(0, 1) + " List") + "\n";
-                        txt += genDataPageList(
-                            de,
-                            args.matches,
-                            parseInt(params.show || 10),
-                            parseInt(params.page || 1),
-                            "!" + cdata.cmdtree + " list {MATCHES} -page:{PAGE} -show:{SHOWLEN} -sort:{SORT}",
-                            function(item) {
-                                return cdata.ltfn == null ? ("&e - &b" + item.name + "&r\n") : cdata.ltfn(item, pl, args, data);
-                            },
-                            function(a, b) {
-                                var aa = a.name;
-                                var bb = b.name;
-                                if (aa < bb) return -1;
-                                if (aa > bb) return 1;
-                                return 0;
-                            },
-                            function(cmd, list) {
-                                return arrayOccurs(cmd.name, list, false, false);
-                            },
-                            (params.sort || "").toLowerCase() == "desc"
-                        );
+                    var de = new dht().getAllDataEntries(data);
+                    for (var o in cdata.self.onFns['list']) {
+                        var onFn = cdata.self.onFns['list'][o];
+                        onFn(dh, pl, args, data, cdata);
+                    }
+                    var txt = getTitleBar(cdata.datatype.rangeUpper(0, 1) + " List") + "\n";
+                    txt += genDataPageList(
+                        de,
+                        args.matches,
+                        parseInt(params.show || 10),
+                        parseInt(params.page || 1),
+                        "!" + cdata.cmdtree + " list {MATCHES} -page:{PAGE} -show:{SHOWLEN} -sort:{SORT}",
+                        function (item) {
+                            return cdata.ltfn == null ? ("&e - &b" + item.name + "&r\n") : cdata.ltfn(item, pl, args, data);
+                        },
+                        function (a, b) {
+                            var aa = a.name;
+                            var bb = b.name;
+                            if (aa < bb) return -1;
+                            if (aa > bb) return 1;
+                            return 0;
+                        },
+                        function (cmd, list) {
+                            return arrayOccurs(cmd.name, list, false, false);
+                        },
+                        (params.sort || "").toLowerCase() == "desc"
+                    );
 
-                        tellPlayer(pl, txt);
-                        return true;
-                    }, this.cmdtree.replaceAll(" ", ".") + '.list', [],
-                    {
-                        "self": this,
-                        "datatype": this.type,
-                        "cmdtree": this.cmdtree,
-                        "lt": this.listingTransformer,
-                        "ltfn": this.listingTransformerFn,
-                    },
+                    tellPlayer(pl, txt);
+                    return true;
+                }, this.cmdtree.replaceAll(" ", ".") + '.list', [],
+                {
+                    "self": this,
+                    "datatype": this.type,
+                    "cmdtree": this.cmdtree,
+                    "lt": this.listingTransformer,
+                    "ltfn": this.listingTransformerFn,
+                },
                 ]);
         if (excludes.indexOf("copy") == -1)
             this.cmds.push(
-                ['!' + this.cmdtree + ' copy <name> <new_name>', function(pl, args, data, cdata) {
+                ['!' + this.cmdtree + ' copy <name> <new_name>', function (pl, args, data, cdata) {
                     var dht = getDataHandler(cdata.datatype);
                     var dh = new dht(args.name).init(data);
-                    for(var o in cdata.self.onFns['copy']) {
-var onFn = cdata.self.onFns['copy'][o];
+                    for (var o in cdata.self.onFns['copy']) {
+                        var onFn = cdata.self.onFns['copy'][o];
                         onFn(dh, pl, args, data, cdata);
                     }
                     dh.name = args.new_name;
@@ -4002,29 +4002,29 @@ var onFn = cdata.self.onFns['copy'][o];
                     tellPlayer(pl, "&aCopied " + dh.type + " '" + args.name + "' to '" + args.new_name + "'!");
                     return true;
                 }, this.cmdtree.replaceAll(" ", ".") + '.copy', [{
-                        "argname": "new_name",
-                        "type": "string",
-                        "noColor": true,
-                    },
-                    {
-                        "argname": "name",
-                        "type": "datahandler",
-                        "datatype": this.type,
-                        "exists": true,
-                    },
-                    {
-                        "argname": "new_name",
-                        "type": "datahandler",
-                        "datatype": this.type,
-                        "exists": false
-                    }
+                    "argname": "new_name",
+                    "type": "string",
+                    "noColor": true,
+                },
+                {
+                    "argname": "name",
+                    "type": "datahandler",
+                    "datatype": this.type,
+                    "exists": true,
+                },
+                {
+                    "argname": "new_name",
+                    "type": "datahandler",
+                    "datatype": this.type,
+                    "exists": false
+                }
                 ], {
                     "datatype": this.type,
                     "self": this,
                 }]);
         return this;
     };
-    this.register = function() {
+    this.register = function () {
         registerXCommands(this.cmds);
         return this;
     };
@@ -4032,7 +4032,7 @@ var onFn = cdata.self.onFns['copy'][o];
 
 
 function parseUsageRgx(command, str) {
-	if(typeof(str) == typeof(undefined) || str === null) { str = null; } //Converts command usage to Regex, and gathers info about command
+    if (typeof (str) == typeof (undefined) || str === null) { str = null; } //Converts command usage to Regex, and gathers info about command
     //!perms\s+manage\s+add((?:\s+[\w]+))((?:\s+[\w]+)*)
     //+ == <...vars> //multiple args, minimal one required
     //* == [...vars] //multiple args, optional
@@ -4122,11 +4122,11 @@ function getArgParams(arr) {
 }
 
 function executeXCommand(str, player, permcheck, data) {
-	if(typeof(permcheck) == typeof(undefined) || permcheck === null) { permcheck = true; }
+    if (typeof (permcheck) == typeof (undefined) || permcheck === null) { permcheck = true; }
     var data = data || player.world.getStoreddata();
     var sb = player.world.getScoreboard();
-    for(var c in _COMMANDS) {
-var cmd = _COMMANDS[c];
+    for (var c in _COMMANDS) {
+        var cmd = _COMMANDS[c];
         var cmdm = parseUsageRgx(cmd, str);
 
         var argrgx = cmdm[0];
@@ -4139,13 +4139,13 @@ var cmd = _COMMANDS[c];
                 for (var a in argnames) {
                     var argname = argnames[a][0];
                     var ismulti = argnames[a][1];
-                    if (typeof(args[argname]) == typeof(undefined)) {
+                    if (typeof (args[argname]) == typeof (undefined)) {
                         args[argname] = (ismulti ? [] : null)
                     }
                     var argval = str.replace(rgx, '$' + cg.toString());
                     if (ismulti) {
                         args[argname] = argval.split(' ');
-                        args[argname] = args[argname].filter(function(el) {
+                        args[argname] = args[argname].filter(function (el) {
                             return el.toString().length > 0;
                         });
                     } else {
@@ -4163,12 +4163,12 @@ var cmd = _COMMANDS[c];
                 cmdperm.load(data);
                 if (cmdperm.permits(player.getName(), sb, data) || !permcheck) {
                     //Check arguments
-                    for(var a in args) {
-var arg = args[a];
+                    for (var a in args) {
+                        var arg = args[a];
                         if (arg == null) { continue; }
 
-                        for(var b in cmd.rules) {
-var rule = cmd.rules[b];
+                        for (var b in cmd.rules) {
+                            var rule = cmd.rules[b];
 
                             if (!("argname" in rule)) { continue; }
                             var errpref = '';
@@ -4240,7 +4240,7 @@ var rule = cmd.rules[b];
                                         }
                                     case 'virtualcurrency':
                                         {
-                                            var curtypes = VIRTUAL_CURRENCIES.map(function(currency) { return currency.name; });
+                                            var curtypes = VIRTUAL_CURRENCIES.map(function (currency) { return currency.name; });
                                             if (curtypes.indexOf(arg) == -1) {
                                                 tellPlayer(player, "&c'" + rulename + "' must be one of the following: " + curtypes.join(', '));
                                                 return false;
@@ -4365,8 +4365,8 @@ var rule = cmd.rules[b];
     while (aa.length > 0) {
         var saa = aa.join(" ");
         if (usg.length == 0) {
-            for(var c in _COMMANDS) {
-var cmd = _COMMANDS[c];
+            for (var c in _COMMANDS) {
+                var cmd = _COMMANDS[c];
                 if (occurrences(cmd.usage, saa) > 0) {
                     var lcp = new Permission(cmd.perm);
                     lcp.load(data);
@@ -4408,14 +4408,14 @@ var cmd = _COMMANDS[c];
 //Register commands
 
 registerXCommands([
-    ['!config reload', function(pl, args, data) {
+    ['!config reload', function (pl, args, data) {
         reloadConfiguration();
         tellPlayer(pl, "&aReloaded CustomServerTools configuration.");
     }, 'config.reload'],
 ]);
 
 registerXCommands([
-    ['!item renameLore <slot> [...lore]', function(pl, args) {
+    ['!item renameLore <slot> [...lore]', function (pl, args) {
         var mItem = pl.getMainhandItem();
 
         if (!mItem.isEmpty()) {
@@ -4435,7 +4435,7 @@ registerXCommands([
 
         return false;
     }, 'item.renameLore'],
-    ['!item rename <...name>', function(pl, args) {
+    ['!item rename <...name>', function (pl, args) {
         var mItem = pl.getMainhandItem();
 
         if (!mItem.isEmpty()) {
@@ -4448,20 +4448,20 @@ registerXCommands([
 
         return false;
     }, 'item.rename'],
-    ['!item addcstEnchant <name> [lvl]', function(pl, args, data) {
+    ['!item addcstEnchant <name> [lvl]', function (pl, args, data) {
         var mItem = pl.getMainhandItem();
         var ench = getCSTEnchantByName(args.name);
         if (!mItem.isEmpty() && ench != null) {
             addCSTEnchant(mItem, ench.name, args.lvl || 1);
         }
     }, 'item.addEnchant', [{
-            "argname": "lvl",
-            "type": "number",
-            "min": 1
-        },
+        "argname": "lvl",
+        "type": "number",
+        "min": 1
+    },
 
-    ]],
-    ["!item addSellItem", function(pl, args, data) {
+        ]],
+    ["!item addSellItem", function (pl, args, data) {
         var oItem = pl.getOffhandItem();
         var mItem = pl.getMainhandItem();
 
@@ -4471,36 +4471,36 @@ registerXCommands([
             tellPlayer(pl, "&cYou don't have an chance item in your offhand!");
             return false;
         } else
-        if (mItem.isEmpty()) {
-            tellPlayer(pl, "&cYou don't have an sell item in your mainhand!");
-            return false;
-        } else {
-            var chanceItems = mNbt.has("CSTSellItems") ? Java.from(mNbt.getList("CSTSellItems", mNbt.getListType("CSTSellItems"))) : [];
+            if (mItem.isEmpty()) {
+                tellPlayer(pl, "&cYou don't have an sell item in your mainhand!");
+                return false;
+            } else {
+                var chanceItems = mNbt.has("CSTSellItems") ? Java.from(mNbt.getList("CSTSellItems", mNbt.getListType("CSTSellItems"))) : [];
 
-            chanceItems.push(oItem.getItemNbt());
+                chanceItems.push(oItem.getItemNbt());
 
-            mNbt.setList("CSTSellItems", chanceItems);
+                mNbt.setList("CSTSellItems", chanceItems);
 
-            tellPlayer(pl, "&aAdded offhand item as chance item to sell item! To view sell item info, do &2!item sellItemInfo&a!");
+                tellPlayer(pl, "&aAdded offhand item as chance item to sell item! To view sell item info, do &2!item sellItemInfo&a!");
 
-        }
+            }
 
 
     }, "item.addSellItem"],
-    ['!item removecstEnchant <name>', function(pl, args, data) {
+    ['!item removecstEnchant <name>', function (pl, args, data) {
         var mItem = pl.getMainhandItem();
         var ench = getCSTEnchantByName(args.name);
         if (!mItem.isEmpty() && ench != null) {
             removeCSTEnchant(mItem, ench.name);
         }
     }, 'item.removeEnchant', [{
-            "argname": "lvl",
-            "type": "number",
-            "min": 1
-        },
+        "argname": "lvl",
+        "type": "number",
+        "min": 1
+    },
 
-    ]],
-    ['!listCstEnchants [...matches]', function(pl, args) {
+        ]],
+    ['!listCstEnchants [...matches]', function (pl, args) {
         var params = getArgParams(args.matches);
         var txt = getTitleBar("Custom Server Tools Enchants", false) + "\n";
 
@@ -4510,10 +4510,10 @@ registerXCommands([
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!listCstEnchants {MATCHES} -show:{SHOWLEN} -page:{PAGE} -sort:{SORT}",
-            function(ench) {
+            function (ench) {
                 return "&e - &c&l" + ench.name + "&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.name.toLowerCase();
                 var bl = b.name.toLowerCase();
 
@@ -4522,7 +4522,7 @@ registerXCommands([
 
                 return 0;
             },
-            function(ench, list) {
+            function (ench, list) {
                 return arrayOccurs(ench.name, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -4531,7 +4531,7 @@ registerXCommands([
         tellPlayer(pl, txt);
 
     }, "listCstEnchants"],
-    ['!item setAttr <slot> <attribute> <value>', function(pl, args) {
+    ['!item setAttr <slot> <attribute> <value>', function (pl, args) {
         var mItem = pl.getMainhandItem();
 
         if (!mItem.isEmpty()) {
@@ -4544,27 +4544,27 @@ registerXCommands([
 
         return false;
     }, 'item.setAttr', [{
-            "argname": "slot",
-            "type": "number",
-            "min": -1,
-            "max": 5,
-        },
-        {
-            "argname": "attribute",
-            "type": "attribute",
-        },
-        {
-            "argname": "value",
-            "type": "number",
-            "min": 0,
-        }
-    ]],
+        "argname": "slot",
+        "type": "number",
+        "min": -1,
+        "max": 5,
+    },
+    {
+        "argname": "attribute",
+        "type": "attribute",
+    },
+    {
+        "argname": "value",
+        "type": "number",
+        "min": 0,
+    }
+        ]],
 
 ]);
 
 //REGISTER UTIL COMMANDS
 registerXCommands([
-    ['!debug [...matches]', function(pl, args, data) {
+    ['!debug [...matches]', function (pl, args, data) {
         var items = new Permission().getAllDataEntries(data);
 
         var params = getArgParams(args.matches);
@@ -4575,15 +4575,15 @@ registerXCommands([
                 parseInt(params.show || 10),
                 parseInt(params.page || 1),
                 "!debug {MATCHES} -page:{PAGE} -show:{SHOWLEN}",
-                function(item, i) {
+                function (item, i) {
                     return "&r[&c&l" + item.name + "&r] " + "\n";
                 },
-                function(a, b) {
+                function (a, b) {
                     if (a.name < b.name) return -1;
                     if (a.name > b.name) return 1;
                     return 0;
                 },
-                function(item, list) {
+                function (item, list) {
                     return arrayOccurs(item.name, list, false, false) > 0;
                 }
             );
@@ -4594,13 +4594,13 @@ registerXCommands([
         "min": 1,
         "max": 6,
     }]],
-    ['!fakemsg <player> <team> <team_color> [...message]', function(pl, args, data) {
+    ['!fakemsg <player> <team> <team_color> [...message]', function (pl, args, data) {
         executeCommand(pl, "/tellraw @a " + parseEmotes(strf(getChatMessage(args.player, args.team, args.team_color, args.message.join(" ")))));
     }, 'fakemsg', [{
         "argname": "team_color",
         "type": "color"
     }]],
-    ['!scare [player] [type]', function(pl, args, data) {
+    ['!scare [player] [type]', function (pl, args, data) {
         var tpl = args.player || pl.getName();
         var type = args.type || "creeper";
         var snds = {
@@ -4619,7 +4619,7 @@ registerXCommands([
             "ghast"
         ]
     }]],
-    ['!thunder [player]', function(pl, args, data) {
+    ['!thunder [player]', function (pl, args, data) {
         var target = (args.player == null ? pl : pl.world.getPlayer(args.player));
         if (target != null) {
             var tpo = new Player(target.getName()).init(data);
@@ -4628,7 +4628,7 @@ registerXCommands([
             executeCommand(pl, "/tellraw @a " + parseEmotes(strf(tpo.getNameTag(pl.world.getScoreboard()) + "&a&l HAS MADE THE &r:seagull:&a&lHOLY SEAGULL&r:seagull:&a&l ANGRY!!!")));
         }
     }, 'thunder', []],
-    ['!sign edit <line> [...text]', function(pl, args, data) {
+    ['!sign edit <line> [...text]', function (pl, args, data) {
 
         var rt = pl.rayTraceBlock(16, false, false);
         var rtb = rt.getBlock();
@@ -4658,14 +4658,14 @@ registerXCommands([
         "type": "number",
         "min": 1,
         "max": 4,
-    }, ]],
-    ['!help [...matches]', function(pl, args, data) {
+    },]],
+    ['!help [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var txt = getTitleBar("Commands") + "\n";
         var cmds = [];
         //Only get permiited commands
-        for(var c in _COMMANDS) {
-var _cmd = _COMMANDS[c];
+        for (var c in _COMMANDS) {
+            var _cmd = _COMMANDS[c];
             if (new Permission(_cmd.perm).init(data).permits(pl.getName(), pl.world.scoreboard, data)) {
                 cmds.push(_cmd);
             }
@@ -4676,27 +4676,27 @@ var _cmd = _COMMANDS[c];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!help {MATCHES} -page:{PAGE} -show:{SHOWLEN} -sort:{SORT}",
-            function(cmd, i) {
+            function (cmd, i) {
                 return "&c" + cmd.usage + "{suggest_command:" + getCommandNoArg(cmd.usage) + "}&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var aa = getCommandNoArg(a.usage);
                 var bb = getCommandNoArg(b.usage);
                 if (aa < bb) return -1;
                 if (aa > bb) return 1;
                 return 0;
             },
-            function(cmd, list) {
+            function (cmd, list) {
                 return arrayOccurs(cmd.usage, list, false, false);
             },
             (params.sort || "").toLowerCase() == "desc"
         );
         tellPlayer(pl, txt);
     }, 'help'],
-    ['!command info <...command>', function(pl, args, data) {
+    ['!command info <...command>', function (pl, args, data) {
         var argcmd = args.command.join(" ").trim();
-        for(var c in _COMMANDS) {
-var cmd = _COMMANDS[c];
+        for (var c in _COMMANDS) {
+            var cmd = _COMMANDS[c];
             if (getCommandName(cmd.usage) == argcmd) {
                 tellPlayer(pl, getTitleBar("Command Info"));
                 tellPlayer(pl, "&eCommand: &b" + getCommandNoArg(cmd.usage).trim());
@@ -4714,10 +4714,10 @@ var cmd = _COMMANDS[c];
         tellPlayer(pl, "&cNo commands found.");
         return true;
     }, 'command.info'],
-    ['!chain <...commands>', function(pl, args, data) {
+    ['!chain <...commands>', function (pl, args, data) {
         var acmds = args.commands.join(" ").split(";");
-        for(var a in acmds) {
-var acmd = acmds[a];
+        for (var a in acmds) {
+            var acmd = acmds[a];
             var excmd = acmd.trim().replace(/\s+/g, ' ');
             if (excmd.length != "") {
                 executeXCommand(excmd, pl);
@@ -4725,12 +4725,12 @@ var acmd = acmds[a];
         }
         return true;
     }, 'chain'],
-    ['!fakeleave [...players]', function(pl, args) {
+    ['!fakeleave [...players]', function (pl, args) {
         var pcol = '&f';
         var sb = pl.world.getScoreboard();
         var spl = (args.players.length > 0 ? args.players : [pl.getName()]);
-        for(var ss in spl) {
-var sp = spl[ss];
+        for (var ss in spl) {
+            var sp = spl[ss];
             var t = sb.getPlayerTeam(sp);
             if (t != null) {
                 var tc = t.getColor();
@@ -4742,12 +4742,12 @@ var sp = spl[ss];
             executeCommand(pl, '/tellraw @a ' + strf(pcol + sp + ' &r&eleft the game', true));
         }
     }, 'fakeleave'],
-    ['!fakejoin [...players]', function(pl, args) {
+    ['!fakejoin [...players]', function (pl, args) {
         var pcol = '&f';
         var sb = pl.world.getScoreboard();
         var spl = (args.players.length > 0 ? args.players : [pl.getName()]);
-        for(var ss in spl) {
-var sp = spl[ss];
+        for (var ss in spl) {
+            var sp = spl[ss];
             var t = sb.getPlayerTeam(sp);
             if (t != null) {
                 var tc = t.getColor();
@@ -4759,19 +4759,19 @@ var sp = spl[ss];
             executeCommand(pl, '/tellraw @a ' + strf(pcol + sp + ' &r&ejoined the game', true));
         }
     }, 'fakejoin'],
-    ['!version', function(pl, args) {
+    ['!version', function (pl, args) {
         tellPlayer(pl, getTitleBar("Server Software"));
         tellPlayer(pl, "&e&l" + CONFIG_SERVER.NAME + " Version: &c&l" + SCRIPT_VERSION);
         tellPlayer(pl, "&e&lSubscription: &9&lPrototype Edition");
         tellPlayer(pl, "&e&lProgrammed by: &r&lRunonstof&e and &r&lslava_110");
         tellPlayer(pl, "&6Contact Runonstof for further questions. Or visit the &6&nDiscord Server&r");
     }, "version"],
-    ['!listEnchants [...matches]', function(pl, args) {
+    ['!listEnchants [...matches]', function (pl, args) {
         var ENCHANTS = REGISTRY.ENCHANTMENTS.getValues();
         ///tellPlayer(pl, getTitleBar("All Registered Enchantments", false));
         var showEnchants = [];
-        for(var i in ENCHANTS) {
-var ench = ENCHANTS[i];
+        for (var i in ENCHANTS) {
+            var ench = ENCHANTS[i];
             var ename = REGISTRY.ENCHANTMENTS.getKey(ench);
             var eid = REGISTRY.ENCHANTMENTS.getID(ench);
             showEnchants.push({
@@ -4790,27 +4790,27 @@ var ench = ENCHANTS[i];
                 parseInt(params.show || 10),
                 parseInt(params.page || 1),
                 "!listEnchants {MATCHES} -page:{PAGE} -show:{SHOWLEN}",
-                function(showEnchant, i) {
+                function (showEnchant, i) {
                     return "&r&b" + showEnchant.name + "&e (ID: &a" + showEnchant.id + "&e)\n";
                 },
-                function(a, b) {
+                function (a, b) {
                     if (a.name < b.name) return -1;
                     if (a.name > b.name) return 1;
                     return 0;
                 },
-                function(showEnchant, list) {
+                function (showEnchant, list) {
                     return arrayOccurs(showEnchant.name, list, false, false) > 0;
                 }
             );
 
         tellPlayer(pl, tellStr);
     }, 'listEnchants'],
-    ['!listPotions [...matches]', function(pl, args) {
+    ['!listPotions [...matches]', function (pl, args) {
         var POTIONS = REGISTRY.POTIONS.getValues();
         // tellPlayer(pl, getTitleBar("All Registered Potion Effects", false));
         var showPotions = [];
-        for(var i in POTIONS) {
-var pot = POTIONS[i];
+        for (var i in POTIONS) {
+            var pot = POTIONS[i];
             var pname = REGISTRY.POTIONS.getKey(pot);
             var pid = REGISTRY.POTIONS.getID(pot);
             // if(args.matches.length == 0 || arrayOccurs(pname, args.matches) > 0) {
@@ -4830,26 +4830,26 @@ var pot = POTIONS[i];
                 parseInt(params.show || 10),
                 parseInt(params.page || 1),
                 "!listPotions {MATCHES} -page:{PAGE} -show:{SHOWLEN}",
-                function(showPotion, i) {
+                function (showPotion, i) {
                     return "&r&b" + showPotion.name + "&e (ID: &a" + showPotion.id + "&e)\n";
                 },
-                function(a, b) {
+                function (a, b) {
                     if (a.name < b.name) return -1;
                     if (a.name > b.name) return 1;
                     return 0;
                 },
-                function(showPotion, list) {
+                function (showPotion, list) {
                     return arrayOccurs(showPotion.name, list, false, false) > 0;
                 }
             );
 
         tellPlayer(pl, tellStr);
     }, 'listPotions'],
-    ['!listBiomes [...matches]', function(pl, args) {
+    ['!listBiomes [...matches]', function (pl, args) {
         var BIOMES = REGISTRY.BIOMES.getValues();
         tellPlayer(pl, getTitleBar("All Registered Biomes", false));
-        for(var i in BIOMES) {
-var bio = BIOMES[i];
+        for (var i in BIOMES) {
+            var bio = BIOMES[i];
             var bname = REGISTRY.BIOMES.getKey(bio);
             var bid = REGISTRY.BIOMES.getID(bio);
             if (args.matches.length == 0 || arrayOccurs(bname, args.matches) > 0) {
@@ -4857,11 +4857,11 @@ var bio = BIOMES[i];
             }
         }
     }, 'listBiomes'],
-    ['!listEntities [...matches]', function(pl, args) {
+    ['!listEntities [...matches]', function (pl, args) {
         var ENTITIES = REGISTRY.ENTITIES.getValues();
         tellPlayer(pl, getTitleBar("All Registered Entities", false));
-        for(var i in ENTITIES) {
-var ent = ENTITIES[i];
+        for (var i in ENTITIES) {
+            var ent = ENTITIES[i];
             var bname = REGISTRY.ENTITIES.getKey(ent);
             var bid = REGISTRY.ENTITIES.getID(ent);
             if (args.matches.length == 0 || arrayOccurs(bname, args.matches) > 0) {
@@ -4869,12 +4869,12 @@ var ent = ENTITIES[i];
             }
         }
     }, 'listEntities'],
-    ['!listSkills [...matches]', function(pl, args) {
+    ['!listSkills [...matches]', function (pl, args) {
         if (ReskillableRegistry != null) {
             var SKILLS = ReskillableRegistry.SKILLS.getValues();
             tellPlayer(pl, getTitleBar("All Registered Skills", false));
-            for(var i in SKILLS) {
-var skill = SKILLS[i];
+            for (var i in SKILLS) {
+                var skill = SKILLS[i];
                 var bname = ReskillableRegistry.SKILLS.getKey(skill);
                 var bid = ReskillableRegistry.SKILLS.getID(skill);
                 var obj = skill.getKey().replace(/\w+\.(\w+)/g, '$1_xp');
@@ -4886,22 +4886,22 @@ var skill = SKILLS[i];
             tellPlayer(pl, "&6This command requires the mod 'Reskillable' to be installed.");
         }
     }, 'listSkills'],
-    ['!tellraw <player> <...message>', function(pl, args) {
+    ['!tellraw <player> <...message>', function (pl, args) {
         var msg = args.message.join(' ');
         executeCommand(pl, '/tellraw ' + args.player + ' ' + parseEmotes(strf(msg, true)));
         return true;
     }, 'tellraw'],
-    ['!tellaction <player> <...message>', function(pl, args, data) {
+    ['!tellaction <player> <...message>', function (pl, args, data) {
         var msg = args.message.join(' ');
         executeCommand(pl, "/title " + args.player + " actionbar " + parseEmotes(strf(msg)));
         return true;
     }, 'tellaction'],
-    ['!telltitle <player> <...message>', function(pl, args, data) {
+    ['!telltitle <player> <...message>', function (pl, args, data) {
         var msg = args.message.join(' ');
         executeCommand(pl, "/title " + args.player + " title " + parseEmotes(strf(msg)));
         return true;
     }, 'telltitle'],
-    ['!setMagAmmo <amount>', function(pl, args) {
+    ['!setMagAmmo <amount>', function (pl, args) {
         var mItem = pl.getMainhandItem();
         if (!mItem.isEmpty() && mItem.hasNbt()) {
             var mnbt = mItem.getNbt();
@@ -4920,29 +4920,29 @@ var skill = SKILLS[i];
         "type": "number",
         "min": 0
     }]],
-    ['!giveMoney <amount> [...players]', function(pl, args) {
+    ['!giveMoney <amount> [...players]', function (pl, args) {
         var w = pl.world;
         var plrs = [];
-        objArray(w.getAllPlayers()).forEach(function(wp) {
+        objArray(w.getAllPlayers()).forEach(function (wp) {
             plrs.push(wp.getName());
         });
         var am = getCoinAmount(args.amount);
         if (args.players.length == 0) { args.players = [pl.getName()]; }
         var mn = genMoney(w, am);
 
-        for(var i in args.players) {
-var apl = args.players[i];
+        for (var i in args.players) {
+            var apl = args.players[i];
             if (plrs.indexOf(apl) > -1) {
-                for(var m in mn) {
-var mi = mn[m];
+                for (var m in mn) {
+                    var mi = mn[m];
                     w.getPlayer(apl).giveItem(mi);
                 }
             }
         }
 
         tellPlayer(pl, "&aGave &r:money:&e" + getAmountCoin(am) + "&a to players: '" + args.players.join(', ') + "'");
-        for(var a in args.players) {
-var apl = args.players[a];
+        for (var a in args.players) {
+            var apl = args.players[a];
             if (playerIsOnline(w, apl)) {
                 executeCommand(pl, "/tellraw " + apl + " " + parseEmotes(strf("&aYou got &r:money:&e" + getAmountCoin(am))));
             }
@@ -4952,17 +4952,17 @@ var apl = args.players[a];
         "type": "currency",
         "min": 1
     }]],
-    ['!takeMoney <amount> [...players]', function(pl, args, data) {
+    ['!takeMoney <amount> [...players]', function (pl, args, data) {
         var w = pl.world;
         var plrs = [];
-        objArray(w.getAllPlayers()).forEach(function(wp) {
+        objArray(w.getAllPlayers()).forEach(function (wp) {
             plrs.push(wp.getName());
         });
         var am = getCoinAmount(args.amount);
         if (args.players.length == 0) { args.players = [pl.getName()]; }
 
-        for(var i in args.players) {
-var ap = args.players[i];
+        for (var i in args.players) {
+            var ap = args.players[i];
             var apo = new Player(ap).init(data);
             apo.data.money -= am;
             apo.save(data);
@@ -4972,12 +4972,12 @@ var ap = args.players[i];
         "type": "currency",
         "min": 1
     }]],
-    ['!giveCurrency <currency> <amount> [...players]', function(pl, args, data) {
+    ['!giveCurrency <currency> <amount> [...players]', function (pl, args, data) {
         var plrs = args.players;
         if (plrs.length == 0) { plrs.push(pl.getName()); }
         var amount = getCoinAmount(args.amount)
-        for(var i in plrs) {
-var plr = plrs[i];
+        for (var i in plrs) {
+            var plr = plrs[i];
             var p = new Player(plr).init(data);
 
             p.data[args.currency] += amount;
@@ -4986,22 +4986,22 @@ var plr = plrs[i];
 
         tellPlayer(pl, '&aAdded &r' + formatCurrency(amount, args.currency) + '&a to ' + plrs.join(', '));
     }, 'giveCurrency', [{
-            "argname": "currency",
-            "type": "enum",
-            "values": VIRTUAL_CURRENCIES.map(function(currency) { return currency.name; })
-        },
-        {
-            "argname": "amount",
-            "type": "money",
-            "min": 1
-        }
-    ]],
-    ['!takeCurrency <currency> <amount> [...players]', function(pl, args, data) {
+        "argname": "currency",
+        "type": "enum",
+        "values": VIRTUAL_CURRENCIES.map(function (currency) { return currency.name; })
+    },
+    {
+        "argname": "amount",
+        "type": "money",
+        "min": 1
+    }
+        ]],
+    ['!takeCurrency <currency> <amount> [...players]', function (pl, args, data) {
         var plrs = args.players;
         if (plrs.length == 0) { plrs.push(pl.getName()); }
         var amount = getCoinAmount(args.amount)
-        for(var i in plrs) {
-var plr = plrs[i];
+        for (var i in plrs) {
+            var plr = plrs[i];
             var p = new Player(plr);
             if (!p.load(data)) {
                 continue;
@@ -5013,25 +5013,25 @@ var plr = plrs[i];
 
         tellPlayer(pl, '&aTook &r' + formatCurrency(amount, args.currency) + '&a from ' + plrs.join(', '));
     }, 'takeCurrency', [{
-            "argname": "currency",
-            "type": "enum",
-            "values": VIRTUAL_CURRENCIES.map(function(currency) { return currency.name; })
-        },
-        {
-            "argname": "amount",
-            "type": "money",
-            "min": 1
-        }
-    ]],
-    ['!giveVMoney <amount> [...players]', function(pl, args, data) {
+        "argname": "currency",
+        "type": "enum",
+        "values": VIRTUAL_CURRENCIES.map(function (currency) { return currency.name; })
+    },
+    {
+        "argname": "amount",
+        "type": "money",
+        "min": 1
+    }
+        ]],
+    ['!giveVMoney <amount> [...players]', function (pl, args, data) {
         var w = pl.world;
 
         var am = getCoinAmount(args.amount);
         if (args.players.length == 0) { args.players = [pl.getName()]; }
 
 
-        for(var i in args.players) {
-var apl = args.players[i];
+        for (var i in args.players) {
+            var apl = args.players[i];
             var apo = new Player(apl);
             if (apo.exists(data)) {
                 apo.load(data);
@@ -5043,8 +5043,8 @@ var apl = args.players[i];
         }
 
         tellPlayer(pl, "&aGave &b:money:" + getAmountCoin(am) + "&a to players: '" + args.players.join(', ') + "'");
-        for(var a in args.players) {
-var apl = args.players[a];
+        for (var a in args.players) {
+            var apl = args.players[a];
             if (playerIsOnline(w, apl)) {
                 executeCommand(pl, "/tellraw " + apl + " " + parseEmotes(strf("&aYou got &b:money:" + getAmountCoin(am))));
             }
@@ -5054,15 +5054,15 @@ var apl = args.players[a];
         "type": "currency",
         "min": 1
     }]],
-    ['!giveArMoney <amount> [...players]', function(pl, args, data) {
+    ['!giveArMoney <amount> [...players]', function (pl, args, data) {
         var w = pl.world;
 
         var am = getCoinAmount(args.amount);
         if (args.players.length == 0) { args.players = [pl.getName()]; }
 
 
-        for(var i in args.players) {
-var apl = args.players[i];
+        for (var i in args.players) {
+            var apl = args.players[i];
             var apo = new Player(apl);
             if (apo.exists(data)) {
                 apo.load(data);
@@ -5074,8 +5074,8 @@ var apl = args.players[i];
         }
 
         tellPlayer(pl, "&aGave &d:money:" + getAmountCoin(am) + "&a to players: '" + args.players.join(', ') + "'");
-        for(var a in args.players) {
-var apl = args.players[a];
+        for (var a in args.players) {
+            var apl = args.players[a];
             if (playerIsOnline(w, apl)) {
                 executeCommand(pl, "/tellraw " + apl + " " + parseEmotes(strf("&aYou got &d:money:" + getAmountCoin(am))));
             }
@@ -5085,7 +5085,7 @@ var apl = args.players[a];
         "type": "currency",
         "min": 1
     }]],
-    ['!convertMoney', function(pl, args) {
+    ['!convertMoney', function (pl, args) {
         var mItem = pl.getMainhandItem();
         if (!mItem.isEmpty()) {
             var mL = mItem.getLore();
@@ -5112,7 +5112,7 @@ var apl = args.players[a];
 
         return false;
     }, 'convertMoney'],
-    ['!copyCoords [player]', function(pl, args, data) {
+    ['!copyCoords [player]', function (pl, args, data) {
         var pname = args.player || pl.getName();
         if (playerIsOnline(pl.world, pname)) {
             var telltxt = getTitleBar("Coords", false) + "\n\n" +
@@ -5134,7 +5134,7 @@ var apl = args.players[a];
         }
     }, 'copyCoords'],
     //Inventory load/save
-    ['!inv save <name>', function(pl, args, data) {
+    ['!inv save <name>', function (pl, args, data) {
         var apo = new Player(pl.getName());
         apo.load(data);
 
@@ -5151,7 +5151,7 @@ var apl = args.players[a];
         return true;
 
     }, 'inv.save'],
-    ['!inv load <name>', function(pl, args, data) {
+    ['!inv load <name>', function (pl, args, data) {
         var w = pl.world;
         var apo = new Player(pl.getName());
         apo.load(data);
@@ -5177,7 +5177,7 @@ var apl = args.players[a];
         return true;
 
     }, 'inv.load'],
-    ['!inv remove <name>', function(pl, args, data) {
+    ['!inv remove <name>', function (pl, args, data) {
         var w = pl.world;
         var apo = new Player(pl.getName());
         apo.load(data);
@@ -5193,7 +5193,7 @@ var apl = args.players[a];
         return true;
 
     }, 'inv.save'],
-    ['!eval [...code]', function(pl, args, data) {
+    ['!eval [...code]', function (pl, args, data) {
         var evalCode = 'return ' + args.code.join(" ") + ';';
         var fn = new Function(
             'player',
@@ -5209,10 +5209,10 @@ var apl = args.players[a];
             handleError(exc);
         }
     }, 'eval'],
-    ['!query <datahandler> <...code>', function(pl, args, data) {
+    ['!query <datahandler> <...code>', function (pl, args, data) {
         executeXCommand('!eval new ' + args.datahandler + '().query(data).' + args.code.join(' '), pl, false);
     }, 'query'],
-    ['!testDynmap', function(pl, args, data) {
+    ['!testDynmap', function (pl, args, data) {
         var rgx = /\[name: "([\w\W\s]+?)", x: (\-?\d+), y: (\-?\d+), z: (\-?\d+)\]/gm;
         var text = ' -\
         Japanese Food Shop: [name: "Japanese Food Shop", x: -1906, y: 74, z: 337] -\
@@ -5253,7 +5253,7 @@ var apl = args.players[a];
         }
         tellPlayer(pl, output);
     }, 'testDynmap'],
-    ['!genLot <min> <max> [amount]', function(pl, args, data) {
+    ['!genLot <min> <max> [amount]', function (pl, args, data) {
         if (!CONFIG_SERVER.MONEY_POUCH_SCRIPT) {
             tellPlayer(pl, '&cThere is no money pouch script set in settings.json');
             return false;
@@ -5285,7 +5285,7 @@ var apl = args.players[a];
 var permCommands = new CommandFactory("permission", "perms");
 
 permCommands
-    .addInfoText(function(perm) {
+    .addInfoText(function (perm) {
         var infoText = "&6&lEnabled: " + (perm.data.enabled ? "&atrue" : "&cfalse");
         infoText += "&r [" +
             (perm.data.enabled ?
@@ -5294,20 +5294,20 @@ permCommands
             ) +
             "&r]\n";
         infoText += "&6&lPermitted Teams: &r(&a:check: Add Teams{suggest_command:!perms addTeams " + perm.name + " }&r)\n";
-        for(var t in perm.data.teams) {
-var permteam = perm.data.teams[t];
+        for (var t in perm.data.teams) {
+            var permteam = perm.data.teams[t];
             infoText += "&e - &r" + permteam + "&r (&c:cross: Remove{run_command:!perms removeTeams " + perm.name + " " + permteam + "|show_text:$cClick to remove team $o" + permteam + "$c from permission $o" + perm.name + "}&r)\n";
         }
 
         infoText += "&6&lPermitted Players: &r(&a:check: Add Players{suggest_command:!perms addPlayers " + perm.name + " }&r)\n";
-        for(var p in perm.data.players) {
-var permpl = perm.data.players[p];
+        for (var p in perm.data.players) {
+            var permpl = perm.data.players[p];
             infoText += "&e - &r" + permpl + "&r (&c:cross: Remove{run_command:!perms removePlayers " + perm.name + " " + permpl + "}&r)\n";
         }
         return infoText;
     })
     .setListTransformer(
-        function(perm, pl, args, data) {
+        function (perm, pl, args, data) {
             var sb = pl.world.getScoreboard();
 
             var canInfo = new Permission("perms.info").init(data).permits(pl.getName(), sb, data);
@@ -5322,7 +5322,7 @@ var permpl = perm.data.players[p];
         }
     )
     .genDefault()
-    .addSettable("enabled", function(enabled) {
+    .addSettable("enabled", function (enabled) {
         return (enabled.toString() === "true");
     }, [{
         "argname": "enabled",
@@ -5333,7 +5333,7 @@ var permpl = perm.data.players[p];
     .register();
 
 registerXCommands([
-    ['!perms addTeams <permission_id> <...teams>', function(pl, args, data) {
+    ['!perms addTeams <permission_id> <...teams>', function (pl, args, data) {
         var w = pl.world;
         var p = new Permission(args.permission_id).init(data);
         p.addTeams(args.teams).save(data);
@@ -5344,7 +5344,7 @@ registerXCommands([
         "datatype": "permission",
         "exists": true,
     }]],
-    ['!perms removeTeams <permission_id> <...teams>', function(pl, args, data) {
+    ['!perms removeTeams <permission_id> <...teams>', function (pl, args, data) {
         var w = pl.world;
         var p = new Permission(args.permission_id).init(data);
         if (p.load(data)) {
@@ -5361,7 +5361,7 @@ registerXCommands([
         "datatype": "permission",
         "exists": true,
     }]],
-    ['!perms addPlayers <permission_id> <...players>', function(pl, args, data) {
+    ['!perms addPlayers <permission_id> <...players>', function (pl, args, data) {
         var w = pl.world;
         var p = new Permission(args.permission_id).init(data);
         p.addPlayers(args.players).save(data);
@@ -5372,7 +5372,7 @@ registerXCommands([
         "datatype": "permission",
         "exists": true,
     }]],
-    ['!perms removePlayers <permission_id> <...players>', function(pl, args, data) {
+    ['!perms removePlayers <permission_id> <...players>', function (pl, args, data) {
         var w = pl.world;
         var p = new Permission(args.permission_id).init(data);
         p.removePlayers(args.players).save(data);
@@ -5388,15 +5388,15 @@ registerXCommands([
 //REGISTER COMMANDS
 var warpCommands = new CommandFactory("warp");
 warpCommands
-    .addInfoText(function(warp) {
+    .addInfoText(function (warp) {
         return "&6&lTeleport Price: &r:money:&e" + getAmountCoin(warp.data.price) + "&r [&a:check: Set{suggest_command:!warp setPrice " + warp.name + " }&r]\n";
     })
-    .addInfoText(function(warp) {
+    .addInfoText(function (warp) {
         var wpos = warp.data.pos;
         return "&aX: &c" + wpos.x + "&a Y: &c" + wpos.y + "&a Z: &c" + wpos.z;
     })
     .setListTransformer(
-        function(warp, pl, args, data) {
+        function (warp, pl, args, data) {
             var sb = pl.world.getScoreboard();
             var wperm = warp.getPermission().init(data).permits(pl.getName(), sb, data);
             var canUseTp = new Permission("warp.tp").init(data).permits(pl.getName(), sb, data);
@@ -5410,7 +5410,7 @@ warpCommands
         }
     )
     .genDefault(['create'])
-    .addSettable("price", function(price) {
+    .addSettable("price", function (price) {
         return getCoinAmount(price);
     }, [{
         "argname": "price",
@@ -5419,7 +5419,7 @@ warpCommands
     }], {
         "val": "&r:money:&e{price}"
     })
-    .add("tp <name>", function(warp, pl, args, data) {
+    .add("tp <name>", function (warp, pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         if (warp.getPermission().init(data).permitsPlayer(pl) || plo.hasUnlock(warp.getDataId())) {
             if (plo.data.money >= warp.data.price) {
@@ -5442,10 +5442,10 @@ warpCommands
     .register();
 
 registerXCommands([
-    ['!warps', function(pl, args, data) {
+    ['!warps', function (pl, args, data) {
         executeXCommand("!warp list", pl);
     }, 'warp.list'],
-    ['!warp set <name>', function(pl, args, data) {
+    ['!warp set <name>', function (pl, args, data) {
         var warp = new Warp(args.name);
         warp.load(data);
 
@@ -5461,30 +5461,30 @@ registerXCommands([
     }, 'warp.set']
 ]);
 
-    registerXCommands([
-        ['!redeem [code]', function(pl, args, data){
-            var response = HTTP.post('http://runonstof.000webhostapp.com/api/cst/adlink-mc', {
-                'username': pl.getName()
-            });
-            tellPlayer(pl, JSON.stringify(response));
-            print(response);
-        }, 'redeem']
-    ]);
+registerXCommands([
+    ['!redeem [code]', function (pl, args, data) {
+        var response = HTTP.post('http://runonstof.000webhostapp.com/api/cst/adlink-mc', {
+            'username': pl.getName()
+        });
+        tellPlayer(pl, JSON.stringify(response));
+        print(response);
+    }, 'redeem']
+]);
 
-    registerXCommands([
-        ["!kick <player> [...reason]", function(pl, args, data){
-            if(playerIsOnline(pl.world, args.player)) {
-                var plo = new Player(pl.getName()).init(data);
-                pl.world.getPlayer(args.player).kick(parseEmotes(ccs(CONFIG_SERVER.BAR_OPEN+CONFIG_SERVER.TITLE+CONFIG_SERVER.BAR_CLOSE+"\n\n"+plo.getNameTag(pl.world.scoreboard)+"\n\n&9&lHas kicked you for:&r "+args.reason.join(" "))));
-            } else {
-                tellPlayer(pl, "&cPlayer is not online.")
-            }
-        }, "kick"],
-    ]);
+registerXCommands([
+    ["!kick <player> [...reason]", function (pl, args, data) {
+        if (playerIsOnline(pl.world, args.player)) {
+            var plo = new Player(pl.getName()).init(data);
+            pl.world.getPlayer(args.player).kick(parseEmotes(ccs(CONFIG_SERVER.BAR_OPEN + CONFIG_SERVER.TITLE + CONFIG_SERVER.BAR_CLOSE + "\n\n" + plo.getNameTag(pl.world.scoreboard) + "\n\n&9&lHas kicked you for:&r " + args.reason.join(" "))));
+        } else {
+            tellPlayer(pl, "&cPlayer is not online.")
+        }
+    }, "kick"],
+]);
 
 //REGISTER AUTOMSG COMMANDS
 registerXCommands([
-    ['!announce <...msg>', function(pl, args, data) {
+    ['!announce <...msg>', function (pl, args, data) {
 
         tellPlayer(pl, output);
     }, 'announce']
@@ -5492,26 +5492,26 @@ registerXCommands([
 
 var badgeCommands = new CommandFactory("badge");
 badgeCommands
-    .setListTransformer(function(badge) {
+    .setListTransformer(function (badge) {
         return '&e - &r' + badge.data.displayName + ' &r&o(' + badge.name + ') &5[Info]{run_command:!badge info ' + badge.name + '|show_text:$dClick to show badge info.}&r\n';
     })
     .genDefault()
-    .addSettable("desc", function(desc) {
+    .addSettable("desc", function (desc) {
         return desc.join(" ");
     }, [], null, "[...{NAME}]")
     .addSettable("color", null, [{
         "argname": "color",
         "type": "color"
     }])
-    .addSettable("emote", function(emote) { return emote; }, [{
+    .addSettable("emote", function (emote) { return emote; }, [{
         "argname": "emote",
         "type": "enum",
         "value": Object.keys(CHAT_EMOTES)
     }])
-    .addSettable("displayName", function(name) {
+    .addSettable("displayName", function (name) {
         return name.join(" ");
     }, [], null, "[...{NAME}]")
-    .addInfoText(function(badge) {
+    .addInfoText(function (badge) {
         return "&6&lDisplay Name: &r" + badge.data.displayName + " &r&4[Change]{suggest_command:!badge setDisplayName " + badge.name + " }&r\n" +
             "&6&lPrice: " + badge.formatPrice() + ' &a[Change]{suggest_command:!badge setPrice ' + badge.name + ' |show_text:$aClick to change the price.}&r\n' +
             "&6&lCurrency: &e" + badge.data.currency + ' &a[Change]{suggest_command:!badge setCurrency ' + badge.name + ' |show_text:$aClick to change the currency.}&r\n' +
@@ -5521,10 +5521,10 @@ badgeCommands
             "&6&lDescription: &a[Change]{suggest_command:!badge setDesc " + badge.name + "|show_text:$aClick to change description of badge}&r\n" + badge.data.desc + '\n' +
             '&6&lPreview: ' + badge.formatBadge();
     })
-    .add("give <name> [...players]", function(badge, pl, args, data) {
+    .add("give <name> [...players]", function (badge, pl, args, data) {
         if (args.players.length == 0) { args.players.push(pl.getName()); }
-        for(var i in args.players) {
-var apl = args.players[i];
+        for (var i in args.players) {
+            var apl = args.players[i];
             var aplo = new Player(apl);
             if (aplo.load(data)) {
                 if (aplo.data.badges.indexOf(badge.name) == -1) {
@@ -5536,16 +5536,16 @@ var apl = args.players[i];
 
         tellPlayer(pl, "&aGave badge '" + badge.name + "' to players '" + args.players.join(", ") + "'.");
     })
-    .add("take <name> [...players]", function(badge, pl, args, data) {
+    .add("take <name> [...players]", function (badge, pl, args, data) {
         if (args.players.length == 0) { args.players.push(pl.getName()); }
-        for(var i in args.players) {
-var apl = args.players[i];
+        for (var i in args.players) {
+            var apl = args.players[i];
             var aplo = new Player(apl);
             if (aplo.load(data)) {
                 if (aplo.data.badges.indexOf(badge.name) > -1) {
                     var newBadges = [];
-                    for(var pb in aplo.data.badges) {
-var plb = aplo.data.badges[pb];
+                    for (var pb in aplo.data.badges) {
+                        var plb = aplo.data.badges[pb];
                         if (plb != badge.name) {
                             newBadges.push(plb);
                         }
@@ -5558,7 +5558,7 @@ var plb = aplo.data.badges[pb];
 
         tellPlayer(pl, "&aTook badge '" + badge.name + "' from players '" + args.players.join(", ") + "'.");
     })
-    .add("buy <name>", function(badge, pl, args, data) {
+    .add("buy <name>", function (badge, pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         var balance = p.data[badge.data.currency] || 0;
         var currency = getCurrency(badge.data.currency);
@@ -5587,19 +5587,19 @@ var plb = aplo.data.badges[pb];
         "argname": "currency",
         "type": "virtualcurrency"
     }])
-    .addSettable("forSale", function(value) {
+    .addSettable("forSale", function (value) {
         return value == 'true';
     }, [{
         "argname": "forSale",
         "type": "bool",
     }])
-    .addSettable("hidden", function(value) {
+    .addSettable("hidden", function (value) {
         return value == 'true';
     }, [{
         "argname": "hidden",
         "type": "bool",
     }])
-    .addSettable("price", function(value) {
+    .addSettable("price", function (value) {
         return getCoinAmount(value);
     }, [{
         "argname": "price",
@@ -5609,7 +5609,7 @@ var plb = aplo.data.badges[pb];
     .register();
 
 registerXCommands([
-    ['!myBadge toggle <badge>', function(pl, args, data) {
+    ['!myBadge toggle <badge>', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         if (p.data.badges.indexOf(args.badge) == -1) {
             tellPlayer(pl, '&cYou don\'t own this badge.');
@@ -5636,7 +5636,7 @@ registerXCommands([
         "datatype": "badge",
         "exists": true
     }]],
-    ['!myBadges [...matches]', function(pl, args, data) {
+    ['!myBadges [...matches]', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         tellPlayer(pl, getTitleBar('Badges') + '\n' + getNavBar() + '\n' + '&6You can show &a' + p.getCap('badge') + ' &6badges max at a time.');
         var output = '';
@@ -5644,16 +5644,16 @@ registerXCommands([
         var badges = [];
         var showWidth = 10;
 
-        for(var i in allBadges) {
-var badge = allBadges[i];
+        for (var i in allBadges) {
+            var badge = allBadges[i];
             if (badge.data.hidden && !p.hasBadge(badge.name)) {
                 continue;
             }
             badges.push(badge);
         }
 
-        for(var i in badges) {
-var badge = badges[i];
+        for (var i in badges) {
+            var badge = badges[i];
             var sellTxt = '';
             if (p.hasBadge(badge.name)) {
                 sellTxt += '&a&lUNLOCKED';
@@ -5704,14 +5704,14 @@ var bankFreezePlans = [
 ];
 
 bankCommands
-    .addSettable("cap", function(value) {
+    .addSettable("cap", function (value) {
         return parseInt(value);
     }, [{
         "argname": "cap",
         "type": "number",
         "min": 1,
     }])
-    .addInfoText(function(bank) {
+    .addInfoText(function (bank) {
         return "&6&lOwner: &e" + (bank.data.owner || CONFIG_SERVER.TITLE) + '\n' +
             "&6&lCapacity: &r:money:&e" + getAmountCoin(bank.data.cap) + '\n' +
             '&6&lBankcode: &b' + bank.name;
@@ -5720,7 +5720,7 @@ bankCommands
     .register();
 
 registerXCommands([
-    ['!bank remove <code>', function(pl, args, data) {
+    ['!bank remove <code>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
 
         if (bank.data.isFrozen) {
@@ -5742,14 +5742,14 @@ registerXCommands([
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank make <...displayName>', function(pl, args, data) {
+    ['!bank make <...displayName>', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
 
         var banks = p.getBanks(data);
         //Todo bank cap
         var bankCount = 0;
-        for(var i in banks) {
-var checkBank = banks[i];
+        for (var i in banks) {
+            var checkBank = banks[i];
             if (checkBank.isOwner(pl.getName())) {
                 bankCount++;
             }
@@ -5776,14 +5776,14 @@ var checkBank = banks[i];
         tellPlayer(pl, "&aTook &r:money:&e" + getAmountCoin(bankCreationCost) + "&a as bank creation cost.");
         tellPlayer(pl, "&aCreated new bank under code &e" + bank.name + "&a. Do &c!myBanks&a to manage your banks and the ones you're added to.");
     }, 'bank.make'],
-    ['!myBanks [...matches]', function(pl, args, data) {
+    ['!myBanks [...matches]', function (pl, args, data) {
         var output = getTitleBar('Bank Accounts') + '\n';
         var params = getArgParams(args.matches);
 
         var banks = [];
         var allBanks = new Bank().getAllDataEntries(data);
-        for(var i in allBanks) {
-var checkBank = allBanks[i];
+        for (var i in allBanks) {
+            var checkBank = allBanks[i];
             if (checkBank.canSee(pl.getName())) {
                 if (checkBank.hasAutopay(pl.getName())) {
                     checkBank.saveAutopayAmount(pl.getName());
@@ -5799,7 +5799,7 @@ var checkBank = allBanks[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             '!myBanks {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(bank) {
+            function (bank) {
                 var infoText = '&dClick to see more details.\n' +
                     '&6&lBank Code: &e&o' + bank.name + '\n' +
                     '&e&o' + bank.data.displayName + '\n' +
@@ -5818,10 +5818,10 @@ var checkBank = allBanks[i];
                     (bank.canDeposit(pl.getName()) ? ' &a[- Deposit]{suggest_command:!myBank deposit ' + bank.name + ' |show_text:$aClick to deposit $oan amount of your own choice$r$a in $e$o' + bank.name + '}&r' : ' &c&m[- Deposit]&r') +
                     (bank.hasAutopay(pl.getName()) ? ' &a[% Collect Autopay]{run_command:!myBank collectAutopay ' + bank.name + '|show_text:$aYou have $r:money:$e' + getAmountCoin(bank.getAutopay(pl.getName()).amount) + '$a to collect at this bank.}&r' : ' &c&m[% Collect Autopay]') + '\n';
             },
-            function(a, b) {
+            function (a, b) {
                 return (b.data.amount || 0) - (a.data.amount || 0);
             },
-            function(bank, list) {
+            function (bank, list) {
                 return arrayOccurs(bank.name, list, false, false) > 0 ||
                     arrayOccurs(bank.data.displayName, list, false, false) > 0 ||
                     arrayOccurs(bank.data.description, list, false, false) > 0;
@@ -5831,7 +5831,7 @@ var checkBank = allBanks[i];
 
         tellPlayer(pl, output);
     }, 'myBanks'],
-    ['!myBank withdraw <code> <amount>', function(pl, args, data) {
+    ['!myBank withdraw <code> <amount>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var p = new Player(pl.getName()).init(data);
         var amount = getCoinAmount(args.amount);
@@ -5870,7 +5870,7 @@ var checkBank = allBanks[i];
         "type": "currency",
         "min": 1
     }]],
-    ['!myBank deposit <code> <amount>', function(pl, args, data) {
+    ['!myBank deposit <code> <amount>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var p = new Player(pl.getName()).init(data);
         var amount = getCoinAmount(args.amount);
@@ -5910,7 +5910,7 @@ var checkBank = allBanks[i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!myBank info <code> [...matches]', function(pl, args, data) {
+    ['!myBank info <code> [...matches]', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var params = getArgParams(args.matches);
 
@@ -5980,8 +5980,8 @@ var checkBank = allBanks[i];
                 // Show freeze plans
                 if (!bank.data.isFrozen) {
                     var fpText;
-                    for(var i in bankFreezePlans) {
-var freezePlan = bankFreezePlans[i];
+                    for (var i in bankFreezePlans) {
+                        var freezePlan = bankFreezePlans[i];
                         fpText = '&3Click to freeze your bank account for ' + freezePlan[2] + ' to get:\n' +
                             '&r:money:&e' + getAmountCoin(bank.data.amount) + ' &3+ &b' + freezePlan[1] + '%&3 = &r:money:&e' + getAmountCoin(bank.getFreezeAmount(freezePlan[1])) + '\n' +
                             '&3Profit after ' + freezePlan[2] + ': &r:money:&e' + getAmountCoin(bank.getFreezeAmount(freezePlan[1]) - bank.data.amount);
@@ -6022,14 +6022,14 @@ var freezePlan = bankFreezePlans[i];
                     parseInt(params.show || 10),
                     parseInt(params.page || 1),
                     "!myBank info " + bank.name + " -showpage:" + page + " -show:{SHOWLEN} -page:{PAGE} -sort:{SORT}",
-                    function(trusted) {
+                    function (trusted) {
                         var txt = '&e - &a' + trusted + ' &c[:cross: Remove]{run_command:!myBank removetrusted ' + trustedName.toLowerCase() + ' ' + bank.name + ' ' + trusted + '}&r\n';
                         return txt;
                     },
-                    function(a, b) {
+                    function (a, b) {
                         return b - a;
                     },
-                    function(trusted, list) {
+                    function (trusted, list) {
                         return arrayOccurs(trusted, list, false, false) > 0;
                     },
                     (params.sort || '').toLowerCase() == 'desc',
@@ -6058,7 +6058,7 @@ var freezePlan = bankFreezePlans[i];
                     parseInt(params.show || 10),
                     parseInt(params.page || 1),
                     "!myBank info " + bank.name + " -showpage:" + page + " -show:{SHOWLEN} -page:{PAGE} -sort:{SORT}",
-                    function(autopayPlayer) {
+                    function (autopayPlayer) {
                         var hoverTxt = '&6&lPlayer: &a' + autopayPlayer.player + '\n' +
                             '&6&lIncome: &r:money:&e' + getAmountCoin(autopayPlayer.payAmount) + ' &6every &e' + getTimeString(bank.data.autopayInterval) + ' &6passed\n' +
                             '&6&lCollect Money Left: &r:money:&e' + getAmountCoin(autopayPlayer.amount);
@@ -6067,10 +6067,10 @@ var freezePlan = bankFreezePlans[i];
                             '&e--: &d[Set Amount]{suggest_command:!myBank changeAutopayAmount ' + bank.name + ' ' + autopayPlayer.player + '|show_text:$dClick to change autopay amount}&r';
                         return txt + '\n';
                     },
-                    function(a, b) {
+                    function (a, b) {
                         return b.payAmount - a.payAmount;
                     },
-                    function(autopayPlayer, list) {
+                    function (autopayPlayer, list) {
                         return arrayOccurs(autopayPlayer.player, list, false, false) > 0;
                     },
                     (params.sort || '').toLowerCase() == 'desc',
@@ -6092,7 +6092,7 @@ var freezePlan = bankFreezePlans[i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!myBank collectAutopay <bank>', function(pl, args, data) {
+    ['!myBank collectAutopay <bank>', function (pl, args, data) {
         var bank = new Bank(args.bank).init(data);
         if (!bank.hasAutopay(pl.getName())) {
             tellPlayer(pl, '&cYou are not in this bank\'s autopay list.');
@@ -6122,7 +6122,7 @@ var freezePlan = bankFreezePlans[i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank list [...matches]', function(pl, args, data) {
+    ['!bank list [...matches]', function (pl, args, data) {
         var output = getTitleBar('Bank List') + '\n';
         var params = getArgParams(args.matches);
         output += genDataPageList(
@@ -6131,7 +6131,7 @@ var freezePlan = bankFreezePlans[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             '!bank list {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(bank) {
+            function (bank) {
                 var infoText = '&6&lBank Code: &e&o' + bank.name + '\n' +
                     '&e&o' + bank.data.displayName + '\n' +
                     '&f&o' + bank.data.description + '\n' +
@@ -6145,10 +6145,10 @@ var freezePlan = bankFreezePlans[i];
                     '&6Max: &r:money:&e' + getAmountCoin(bank.data.cap);
                 return '&r - &e&o' + bank.data.displayName + ' &6&o(' + bank.name + ') &d[Info]{run_command:!myBank info ' + bank.name + '|show_text:' + infoText.replaceAll('&', '$') + '\n$dClick to see more details.} &r[:money:&e' + getAmountCoin(bank.data.amount) + '&r]\n';
             },
-            function(a, b) {
+            function (a, b) {
                 return (b.data.amount || 0) - (a.data.amount || 0);
             },
-            function(bank, list) {
+            function (bank, list) {
                 return arrayOccurs(bank.name, list, false, false) > 0 ||
                     arrayOccurs(bank.data.displayName, list, false, false) > 0 ||
                     arrayOccurs(bank.data.description, list, false, false) > 0;
@@ -6158,7 +6158,7 @@ var freezePlan = bankFreezePlans[i];
 
         tellPlayer(pl, output);
     }, 'bank.list'],
-    ['!myBank addtrusted <trustedList> <code> <...players>', function(pl, args, data) {
+    ['!myBank addtrusted <trustedList> <code> <...players>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var adminPerm = new Permission('bank.admin').init(data);
         if (args.trustedList == 'admin') {
@@ -6186,8 +6186,8 @@ var freezePlan = bankFreezePlans[i];
         }
 
         var addCount = 0;
-        for(var i in args.players) {
-var player = args.players[i];
+        for (var i in args.players) {
+            var player = args.players[i];
             if (bank.data[trustedListKey].indexOf(player) == -1) {
                 bank.data[trustedListKey].push(player);
                 addCount++;
@@ -6198,18 +6198,18 @@ var player = args.players[i];
         tellPlayer(pl, '&aSaved ' + addCount + ' players to trusted ' + args.trustedList);
         return true;
     }, 'myBank.addtrusted', [{
-            "argname": "trustedList",
-            "type": "enum",
-            "values": ["admin", "deposit", "withdraw"]
-        },
-        {
-            "argname": "code",
-            "type": "datahandler",
-            "datatype": "bank",
-            "exists": true
-        }
-    ]],
-    ['!myBank removetrusted <trustedList> <code> <...players>', function(pl, args, data) {
+        "argname": "trustedList",
+        "type": "enum",
+        "values": ["admin", "deposit", "withdraw"]
+    },
+    {
+        "argname": "code",
+        "type": "datahandler",
+        "datatype": "bank",
+        "exists": true
+    }
+        ]],
+    ['!myBank removetrusted <trustedList> <code> <...players>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var adminPerm = new Permission('bank.admin').init(data);
         if (args.trustedList == 'admin') {
@@ -6233,8 +6233,8 @@ var player = args.players[i];
 
         var removeCount = 0;
         var newPlayers = [];
-        for(var i in bank.data[trustedListKey]) {
-var trustedPlayer = bank.data[trustedListKey][i];
+        for (var i in bank.data[trustedListKey]) {
+            var trustedPlayer = bank.data[trustedListKey][i];
             if (args.players.indexOf(trustedPlayer) == -1) {
                 newPlayers.push(trustedPlayer);
                 continue;
@@ -6247,18 +6247,18 @@ var trustedPlayer = bank.data[trustedListKey][i];
         tellPlayer(pl, "&aRemoved " + removeCount + " from " + args.trustedList);
 
     }, 'myBank.removetrusted', [{
-            "argname": "trustedList",
-            "type": "enum",
-            "values": ["admin", "deposit", "withdraw"]
-        },
-        {
-            "argname": "code",
-            "type": "datahandler",
-            "datatype": "bank",
-            "exists": true
-        }
-    ]],
-    ['!myBank addAutopay <bank> <player> [amount]', function(pl, args, data) {
+        "argname": "trustedList",
+        "type": "enum",
+        "values": ["admin", "deposit", "withdraw"]
+    },
+    {
+        "argname": "code",
+        "type": "datahandler",
+        "datatype": "bank",
+        "exists": true
+    }
+        ]],
+    ['!myBank addAutopay <bank> <player> [amount]', function (pl, args, data) {
         var now = new Date().getTime();
         var bank = new Bank(args.bank).init(data);
         if (!bank.isOwner(pl.getName())) {
@@ -6302,7 +6302,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "player",
         "exists": true
     }]],
-    ['!myBank changeAutopayAmount <bank> <player> <amount>', function(pl, args, data) {
+    ['!myBank changeAutopayAmount <bank> <player> <amount>', function (pl, args, data) {
         var now = new Date().getTime();
         var bank = new Bank(args.bank).init(data);
         if (!bank.isOwner(pl.getName())) {
@@ -6335,7 +6335,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "type": "money",
         "min": 0
     }]],
-    ['!myBank removeAutopay <bank> <player>', function(pl, args, data) {
+    ['!myBank removeAutopay <bank> <player>', function (pl, args, data) {
         var bank = new Bank(args.bank).init(data);
         if (!bank.isOwner(pl.getName())) {
             tellPlayer(pl, '&cYou are not the owner of this bank.');
@@ -6373,7 +6373,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "player",
         "exists": true
     }]],
-    ['!bank setDesc <code> [...description]', function(pl, args, data) {
+    ['!bank setDesc <code> [...description]', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var desc = args.description.join(' ');
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
@@ -6392,7 +6392,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank setDisplayName <code> [...displayName]', function(pl, args, data) {
+    ['!bank setDisplayName <code> [...displayName]', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var displayName = args.displayName.join(' ');
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
@@ -6411,7 +6411,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank upgrade <code>', function(pl, args, data) {
+    ['!bank upgrade <code>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
 
@@ -6444,7 +6444,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank setDesc <code> [...description]', function(pl, args, data) {
+    ['!bank setDesc <code> [...description]', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var desc = args.description.join(' ');
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
@@ -6463,7 +6463,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank setDisplayName <code> [...displayName]', function(pl, args, data) {
+    ['!bank setDisplayName <code> [...displayName]', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var displayName = args.displayName.join(' ');
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
@@ -6482,7 +6482,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank freeze <code> <freezePlan>', function(pl, args, data) {
+    ['!bank freeze <code> <freezePlan>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
 
@@ -6527,7 +6527,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "max": bankFreezePlans.length - 1
     }]],
 
-    ['!bank collect <code>', function(pl, args, data) {
+    ['!bank collect <code>', function (pl, args, data) {
         var bank = new Bank(args.code).init(data);
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
         if (!bank.data.isFrozen) {
@@ -6560,7 +6560,7 @@ var trustedPlayer = bank.data[trustedListKey][i];
         "datatype": "bank",
         "exists": true
     }]],
-    ['!bank regencode <code>', function(pl, args, data) {
+    ['!bank regencode <code>', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         var bank = new Bank(args.code).init(data);
         var hasAdminPerm = new Permission('bank.admin').init(data).permitsPlayer(pl);
@@ -6594,188 +6594,188 @@ var trustedPlayer = bank.data[trustedListKey][i];
     }]]
 ]);
 
-	//REGISTER CHAT CHANNEL COMMANDS
+//REGISTER CHAT CHANNEL COMMANDS
 
-	registerXCommands([
-		//['', function(pl, args){}, ''],
-		['!chat create <name>', function(pl, args){
-			var data = pl.world.getStoreddata();
-			var cc = new ChatChannel(args.name);
-			cc.save(data);
-			tellPlayer(pl, "&aCreated chat channel '"+cc.name+"'!");
+registerXCommands([
+    //['', function(pl, args){}, ''],
+    ['!chat create <name>', function (pl, args) {
+        var data = pl.world.getStoreddata();
+        var cc = new ChatChannel(args.name);
+        cc.save(data);
+        tellPlayer(pl, "&aCreated chat channel '" + cc.name + "'!");
 
-			return false;
-		}, 'chat.create', [
-			{
-				"argname": "name",
-				"type": "id",
-				"minlen": 3
-			},
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": false,
-			}
-		]],
-		['!chat remove <name>', function(pl, args, data){
-			var cc = new ChatChannel(args.name);
-			cc.remove(data);
-			tellPlayer(pl, "&aRemoved chat channel '"+cc.name+"'!");
+        return false;
+    }, 'chat.create', [
+            {
+                "argname": "name",
+                "type": "id",
+                "minlen": 3
+            },
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": false,
+            }
+        ]],
+    ['!chat remove <name>', function (pl, args, data) {
+        var cc = new ChatChannel(args.name);
+        cc.remove(data);
+        tellPlayer(pl, "&aRemoved chat channel '" + cc.name + "'!");
 
-			return false;
-		}, 'chat.remove', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			}
-		]],
-		['!chat list [...matches]', function(pl, args, data){
-			var cids = new ChatChannel().getAllDataIds(data);
-			tellPlayer(pl, getTitleBar("Chat Channels"));
-			for(var ci in cids) {
-var cid = cids[ci];
-				var cc = new ChatChannel(cid);
-				if(args.matches.length == 0 || arrayOccurs(cid, args.matches) > 0) {
-					if(cc.load(data) && cc.getPermission().init(data).permits(pl.getName(), pl.world.getScoreboard(), data)) {
-						var onlinePlayers = [];
-						var offPlayers = []
-						for(var cpli in cc.data.players) {
-var cpl = cc.data.players[cpli];
-							if(playerIsOnline(pl.world, cpl)) {
-								onlinePlayers.push(cpl);
-							} else {
-								offPlayers.push(cpl);
-							}
-						}
-						var onlineText = "$eOnline Players:$r\n"+
-							onlinePlayers.join("\n")+
-							"\n$eOffline Players:$r\n"+
-							offPlayers.join("\n");
-						var ontxt = "&r&e"+onlinePlayers.length+"/"+cc.data.players.length+" Online{*|show_text:"+onlineText+"}&r";
-						var opttxt = (cc.data.players.indexOf(pl.getName()) > -1 ? "&c&nLeave{run_command:!chat leave "+cc.name+"}&r":"&a&nJoin{run_command:!chat join "+cc.name+"}&r");
-						tellPlayer(pl, cc.getTag()+"&r ("+cc.name+") "+opttxt+" "+ontxt);
-					}
-				}
-			}
-			return false;
-		}, 'chat.list'],
-		['!chat setColor <name> <color>', function(pl, args, data){
-			var cc = new ChatChannel(args.name);
-			cc.load(data);
-			cc.data.color = args.color.toLowerCase();
-			cc.save(data);
-			tellPlayer(pl, '&aSet color of chatchannel '+cc.getName()+'&a to '+cc.data.color+'!');
-			return true;
-		}, 'chat.setColor', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			},
-			{
-				"argname": "color",
-				"type": "color",
-			}
-		]],
-		['!chat setDisplayName <name> [...displayName]', function(pl, args, data){
-			var cc = new ChatChannel(args.name).init(data);
+        return false;
+    }, 'chat.remove', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            }
+        ]],
+    ['!chat list [...matches]', function (pl, args, data) {
+        var cids = new ChatChannel().getAllDataIds(data);
+        tellPlayer(pl, getTitleBar("Chat Channels"));
+        for (var ci in cids) {
+            var cid = cids[ci];
+            var cc = new ChatChannel(cid);
+            if (args.matches.length == 0 || arrayOccurs(cid, args.matches) > 0) {
+                if (cc.load(data) && cc.getPermission().init(data).permits(pl.getName(), pl.world.getScoreboard(), data)) {
+                    var onlinePlayers = [];
+                    var offPlayers = []
+                    for (var cpli in cc.data.players) {
+                        var cpl = cc.data.players[cpli];
+                        if (playerIsOnline(pl.world, cpl)) {
+                            onlinePlayers.push(cpl);
+                        } else {
+                            offPlayers.push(cpl);
+                        }
+                    }
+                    var onlineText = "$eOnline Players:$r\n" +
+                        onlinePlayers.join("\n") +
+                        "\n$eOffline Players:$r\n" +
+                        offPlayers.join("\n");
+                    var ontxt = "&r&e" + onlinePlayers.length + "/" + cc.data.players.length + " Online{*|show_text:" + onlineText + "}&r";
+                    var opttxt = (cc.data.players.indexOf(pl.getName()) > -1 ? "&c&nLeave{run_command:!chat leave " + cc.name + "}&r" : "&a&nJoin{run_command:!chat join " + cc.name + "}&r");
+                    tellPlayer(pl, cc.getTag() + "&r (" + cc.name + ") " + opttxt + " " + ontxt);
+                }
+            }
+        }
+        return false;
+    }, 'chat.list'],
+    ['!chat setColor <name> <color>', function (pl, args, data) {
+        var cc = new ChatChannel(args.name);
+        cc.load(data);
+        cc.data.color = args.color.toLowerCase();
+        cc.save(data);
+        tellPlayer(pl, '&aSet color of chatchannel ' + cc.getName() + '&a to ' + cc.data.color + '!');
+        return true;
+    }, 'chat.setColor', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            },
+            {
+                "argname": "color",
+                "type": "color",
+            }
+        ]],
+    ['!chat setDisplayName <name> [...displayName]', function (pl, args, data) {
+        var cc = new ChatChannel(args.name).init(data);
 
-			cc.data.displayName = (args.displayName.length > 0 ? args.displayName.join(' ') : cc.name);
-			cc.save(data);
-			tellPlayer(pl, '&aSet display name to: '+cc.getName());
-			return true;
-		}, 'chat.setDisplayName', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			},
-			{
-				"argname": "displayName",
-				"type": "string",
-				"noColor": true
-			}
-		]],
-		['!chat setDesc <name> [...desc]', function(pl, args, data){
-			var cc = new ChatChannel(args.name).init(data);
-			cc.data.desc = args.desc.join(' ');
-			cc.save(data);
-			tellPlayer(pl, '&aSet description of '+cc.getName()+'&r&a to: '+cc.data.desc);
-			return true;
-		}, 'chat.setDisplayName', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			},
-		]],
-		['!chat join <name>', function(pl, args, data){
-			var cc = new ChatChannel(args.name).init(data);
-			var plo = new Player(pl.getName()).init(data);
-			if(cc.getPermission().init(data).permits(pl.getName(), pl.world.getScoreboard(), data)) {
-				if(cc.data.players.indexOf(pl.getName()) == -1) {
-					cc.data.players.push(pl.getName());
-					plo.data.talkchat = cc.name;
-					plo.save(data);
-					cc.save(data);
-					cc.broadcast(pl.world, plo.getNameTag(pl.world.getScoreboard())+"&r &ehas joined "+cc.getName(), [pl.getName()]);
-					tellPlayer(pl, "&eJoined chat-channel "+cc.getTag()+(cc.data.desc != '' ? "&r\n&e"+cc.data.desc:""));
-					return true;
-				} else {
-					tellPlayer(pl, "&cYou are already in this chat!");
-				}
+        cc.data.displayName = (args.displayName.length > 0 ? args.displayName.join(' ') : cc.name);
+        cc.save(data);
+        tellPlayer(pl, '&aSet display name to: ' + cc.getName());
+        return true;
+    }, 'chat.setDisplayName', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            },
+            {
+                "argname": "displayName",
+                "type": "string",
+                "noColor": true
+            }
+        ]],
+    ['!chat setDesc <name> [...desc]', function (pl, args, data) {
+        var cc = new ChatChannel(args.name).init(data);
+        cc.data.desc = args.desc.join(' ');
+        cc.save(data);
+        tellPlayer(pl, '&aSet description of ' + cc.getName() + '&r&a to: ' + cc.data.desc);
+        return true;
+    }, 'chat.setDisplayName', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            },
+        ]],
+    ['!chat join <name>', function (pl, args, data) {
+        var cc = new ChatChannel(args.name).init(data);
+        var plo = new Player(pl.getName()).init(data);
+        if (cc.getPermission().init(data).permits(pl.getName(), pl.world.getScoreboard(), data)) {
+            if (cc.data.players.indexOf(pl.getName()) == -1) {
+                cc.data.players.push(pl.getName());
+                plo.data.talkchat = cc.name;
+                plo.save(data);
+                cc.save(data);
+                cc.broadcast(pl.world, plo.getNameTag(pl.world.getScoreboard()) + "&r &ehas joined " + cc.getName(), [pl.getName()]);
+                tellPlayer(pl, "&eJoined chat-channel " + cc.getTag() + (cc.data.desc != '' ? "&r\n&e" + cc.data.desc : ""));
+                return true;
+            } else {
+                tellPlayer(pl, "&cYou are already in this chat!");
+            }
 
 
-			} else {
-				tellPlayer(pl, "&cYou are not allowed to join this channel!");
-			}
-			return false;
-		}, 'chat.join', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			}
-		]],
-		['!chat leave <name>', function(pl, args, data){
-			var cc = new ChatChannel(args.name).init(data);
-			var plo = new Player(pl.getName()).init(data);
+        } else {
+            tellPlayer(pl, "&cYou are not allowed to join this channel!");
+        }
+        return false;
+    }, 'chat.join', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            }
+        ]],
+    ['!chat leave <name>', function (pl, args, data) {
+        var cc = new ChatChannel(args.name).init(data);
+        var plo = new Player(pl.getName()).init(data);
 
-			if(cc.data.players.indexOf(pl.getName()) > -1) {
-				cc.data.players = removeFromArray(cc.data.players, pl.getName());
-				cc.save(data);
-				tellPlayer(pl, "&eLeaved channel "+cc.getName());
-				cc.broadcast(pl.world, plo.getNameTag(pl.world.getScoreboard())+"&r &ehas left "+cc.getName(), [pl.getName()]);
-				return true;
-			} else {
-				tellPlayer(pl, "&cYou can't leave a channel that you're not in!");
-			}
-			return false;
-		}, 'chat.leave', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "chatchannel",
-				"exists": true
-			}
-		]],
-	]);
+        if (cc.data.players.indexOf(pl.getName()) > -1) {
+            cc.data.players = removeFromArray(cc.data.players, pl.getName());
+            cc.save(data);
+            tellPlayer(pl, "&eLeaved channel " + cc.getName());
+            cc.broadcast(pl.world, plo.getNameTag(pl.world.getScoreboard()) + "&r &ehas left " + cc.getName(), [pl.getName()]);
+            return true;
+        } else {
+            tellPlayer(pl, "&cYou can't leave a channel that you're not in!");
+        }
+        return false;
+    }, 'chat.leave', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "chatchannel",
+                "exists": true
+            }
+        ]],
+]);
 
 registerXCommands([
     //['', function(pl, args, data){}, '', []],
-    ['!emote list [...matches]', function(pl, args, data) {
+    ['!emote list [...matches]', function (pl, args, data) {
         var emids = new Emote().getAllDataIds(data);
         tellPlayer(pl, getTitleBar('Emote List'));
 
     }, 'emote.list', []],
-    ['!emote info <name>', function(pl, args, data) {
+    ['!emote info <name>', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         tellPlayer(pl, getTitleBar('Emote Info'));
         tellPlayer(pl, "&eEmote Name: &r" + em.name);
@@ -6791,7 +6791,7 @@ registerXCommands([
         "datatype": "emote",
         "exists": true,
     }]],
-    ['!emote buy <emote> [...matches]', function(pl, args, data) {
+    ['!emote buy <emote> [...matches]', function (pl, args, data) {
         var em = new Emote(args.emote).init(data);
         var params = getArgParams(args.matches);
 
@@ -6827,27 +6827,27 @@ registerXCommands([
         "type": "datahandler",
         "datatype": "emote",
         "exists": true,
-    }, ]],
-    ['!emote take <emote> <player>', function(pl, args, data) {
+    },]],
+    ['!emote take <emote> <player>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         p.data.emotes = removeFromArray(p.data.emotes, args.emote);
         p.save(data);
         tellPlayer(pl, "&aTook emote '" + args.emote + "' from player '" + p.name + "'!");
         return true;
     }, 'emote.take', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true,
-        },
-        {
-            "argname": "emote",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-    ]],
-    ['!emote give <emote> <player>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true,
+    },
+    {
+        "argname": "emote",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+        ]],
+    ['!emote give <emote> <player>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         if (p.data.emotes.indexOf(args.emote) == -1) {
             p.data.emotes.push(args.emote);
@@ -6856,67 +6856,67 @@ registerXCommands([
         tellPlayer(pl, "&aGave emote '" + args.emote + "' to player '" + p.name + "'!");
         return true;
     }, 'emote.give', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true,
-        },
-        {
-            "argname": "emote",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-    ]],
-    ['!emote setForSale <name> <forSale>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true,
+    },
+    {
+        "argname": "emote",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+        ]],
+    ['!emote setForSale <name> <forSale>', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         em.data.forSale = (args.forSale == 'true');
         em.save(data);
         tellPlayer(pl, "&a" + (em.data.forSale ? "Put" : "Pulled") + " emote '" + em.name + "' " + (em.data.forSale ? "on" : "off") + "-sale!");
     }, 'emote.setForSale', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-        {
-            "argname": "forSale",
-            "type": "bool",
-        },
-    ]],
-    ['!emote setHidden <name> <hidden>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+    {
+        "argname": "forSale",
+        "type": "bool",
+    },
+        ]],
+    ['!emote setHidden <name> <hidden>', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         em.data.hidden = (args.hidden == 'true');
         em.save(data);
         tellPlayer(pl, "&a" + (em.data.hidden ? "Hided" : "Showing") + " emote '" + em.name + "'");
     }, 'emote.setHidden', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-        {
-            "argname": "hidden",
-            "type": "bool",
-        },
-    ]],
-    ['!emote setDefault <name> <default>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+    {
+        "argname": "hidden",
+        "type": "bool",
+    },
+        ]],
+    ['!emote setDefault <name> <default>', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         em.data.default = (args.default == 'true');
         em.save(data);
         tellPlayer(pl, "&a" + (em.data.default ? "Put" : "Pulled") + " emote '" + em.name + "' " + (em.data.default ? "into" : "from") + " default emotes!");
     }, 'emote.setDefault', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-        {
-            "argname": "default",
-            "type": "bool",
-        },
-    ]],
-    ['!emote setDesc <name> [...desc]', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+    {
+        "argname": "default",
+        "type": "bool",
+    },
+        ]],
+    ['!emote setDesc <name> [...desc]', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         em.data.desc = args.desc.join(" ");
         em.save(data);
@@ -6926,8 +6926,8 @@ registerXCommands([
         "type": "datahandler",
         "datatype": "emote",
         "exists": true,
-    }, ]],
-    ['!emote setPrice <name> <price>', function(pl, args, data) {
+    },]],
+    ['!emote setPrice <name> <price>', function (pl, args, data) {
         var em = new Emote(args.name).init(data);
         em.data.price = getCoinAmount(args.price);
         em.save(data);
@@ -6935,27 +6935,27 @@ registerXCommands([
 
         return true;
     }, 'emote.setPrice', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true,
-        },
-        {
-            "argname": "price",
-            "type": "currency",
-            "min": 0,
-        },
-    ]],
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "emote",
+        "exists": true,
+    },
+    {
+        "argname": "price",
+        "type": "currency",
+        "min": 0,
+    },
+        ]],
 ]);
 
-    //REGISTER ENTITY COMMANDS
-    registerXCommands([
-        //['', function(pl, args, data){}, '', []],
-        ['!entity rename [...name]', function(pl, args, data){}, 'entity.rename', []],
-    ]);
+//REGISTER ENTITY COMMANDS
+registerXCommands([
+    //['', function(pl, args, data){}, '', []],
+    ['!entity rename [...name]', function (pl, args, data) { }, 'entity.rename', []],
+]);
 
 registerXCommands([
-    ['!fine give <player> <amount> [...reason]', function(pl, args, data) {
+    ['!fine give <player> <amount> [...reason]', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         var fine = new Fine(Fine.genFineCode(data));
 
@@ -6982,13 +6982,13 @@ registerXCommands([
         "type": "money",
         "min": 0
     }]],
-    ['!fine list [...matches]', function(pl, args, data) {
+    ['!fine list [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var output = getTitleBar('Fine List') + '\n';
         var allFines = new Fine().query(data).sortByDesc('gave').get();
         var plrs = {};
-        for(var i in allFines) {
-var fine = allFines[i];
+        for (var i in allFines) {
+            var fine = allFines[i];
             if (Object.keys(plrs).indexOf(fine.data.player) == -1) {
                 plrs[fine.data.player] = {
                     player: fine.data.player,
@@ -7016,7 +7016,7 @@ var fine = allFines[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!fine list {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(plr) {
+            function (plr) {
                 var hoverText = '&dClick for more details.\n' +
                     '&6&lUnpaid late fines: &e' + plr.unpaid.toString() + '\n' +
                     '&6&lUnpaid active fines: &e' + plr.active.toString() + '\n' +
@@ -7024,7 +7024,7 @@ var fine = allFines[i];
                     '&dClick for more details.';
                 return "&e - " + (plr.unpaid > 0 ? '&c' : (plr.active > 0 ? '&e' : '&a')) + "&l" + plr.player + "&r &c(Total: &r:money:&e" + getAmountCoin(plr.total) + "&c) &5[Info]{run_command:!fine see " + plr.player + "|show_text:" + ccs(hoverText) + "}&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.total.toLowerCase();
                 var bl = b.total.toLowerCase();
 
@@ -7033,7 +7033,7 @@ var fine = allFines[i];
 
                 return 0;
             },
-            function(plr, list) {
+            function (plr, list) {
                 return arrayOccurs(plr.player, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -7041,7 +7041,7 @@ var fine = allFines[i];
 
         tellPlayer(pl, output);
     }, 'fine.list'],
-    ['!myFines [...matches]', function(pl, args, data) {
+    ['!myFines [...matches]', function (pl, args, data) {
         var fines = new Fine().query(data).where('player', pl.getName()).sortBy('gave').get();
         var params = getArgParams(args.matches);
         var output = getTitleBar('My Fines', false) + '\n';
@@ -7052,14 +7052,14 @@ var fine = allFines[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!myFines {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(fine) {
+            function (fine) {
                 var hoverText = '&6&lGave By: &e' + fine.data.player + '\n' +
                     '&6&lFor: &e' + fine.data.reason + '\n' +
                     '&6&lBase amount: &e' + formatCurrency(fine.data.amount) + '\n' +
                     '&6&lTotal amount: &e' + formatCurrency(fine.getTotalAmount());
                 return '&e - &r:money:&e' + getAmountCoin(fine.getTotalAmount()) + ' &c' + getDateString(fine.data.gave) + '&5 [Info]{*|show_text:' + ccs(hoverText) + '}&r\n';
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.data.gave;
                 var bl = b.data.gave;
 
@@ -7069,7 +7069,7 @@ var fine = allFines[i];
 
                 return 0;
             },
-            function(plr, list) {
+            function (plr, list) {
                 return arrayOccurs(plr.player, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -7079,550 +7079,550 @@ var fine = allFines[i];
     }, 'myFines']
 ]);
 
-  registerXCommands([
-    ['!giftcode list [...matches]', function(pl, args, data){
+registerXCommands([
+    ['!giftcode list [...matches]', function (pl, args, data) {
         tellPlayer(pl, getTitleBar("GiftCodes List"));
         var codes = new GiftCode().getAllDataIds(data);
-        for(var n in codes) {
-var codeId = codes[n];
+        for (var n in codes) {
+            var codeId = codes[n];
             var code = new GiftCode(codeId).init(data);
-            var hoverInfo = "$e$lCode: $r"+code.data.code+"\n$e$lUses left: $r"+code.getUsesLeft();
-            tellPlayer(pl, "&e - &b&l"+code.name+"{*|show_text:"+hoverInfo+"}&r [&6:sun: Info{run_command:!giftcode info "+code.name+"}&r] [&c:cross: Remove{run_command:!giftcode remove "+code.name+"}&r]");
+            var hoverInfo = "$e$lCode: $r" + code.data.code + "\n$e$lUses left: $r" + code.getUsesLeft();
+            tellPlayer(pl, "&e - &b&l" + code.name + "{*|show_text:" + hoverInfo + "}&r [&6:sun: Info{run_command:!giftcode info " + code.name + "}&r] [&c:cross: Remove{run_command:!giftcode remove " + code.name + "}&r]");
         }
     }, 'giftcode.list', []],
-	['!giftcode info <name>', function(pl, args, data){
-		var code = new GiftCode(args.name).init(data);
+    ['!giftcode info <name>', function (pl, args, data) {
+        var code = new GiftCode(args.name).init(data);
         tellPlayer(pl, getTitleBar('GiftCode Info'));
-        tellPlayer(pl, "&6GiftCode Name: &r"+code.name);
-        tellPlayer(pl, "&6Code: &r"+code.data.code+"&r [&d:recycle: Regen{run_command:!giftcode setCode "+code.name+"}&r] [&eEdit{suggest_command:!giftcode setCode "+code.name+" }&r]");
-        tellPlayer(pl, "&6Permission ID: &9&l"+code.getPermission().name+"&r [&6:sun: Info{run_command:!perms info "+code.getPermission().name+"}&r]");
-        tellPlayer(pl, "&6Uses left: &c"+code.getUsesLeft());
+        tellPlayer(pl, "&6GiftCode Name: &r" + code.name);
+        tellPlayer(pl, "&6Code: &r" + code.data.code + "&r [&d:recycle: Regen{run_command:!giftcode setCode " + code.name + "}&r] [&eEdit{suggest_command:!giftcode setCode " + code.name + " }&r]");
+        tellPlayer(pl, "&6Permission ID: &9&l" + code.getPermission().name + "&r [&6:sun: Info{run_command:!perms info " + code.getPermission().name + "}&r]");
+        tellPlayer(pl, "&6Uses left: &c" + code.getUsesLeft());
         tellPlayer(pl, getTitleBar('Rewards', false));
-		tellPlayer(pl, "&6Money: &r:money:&e"+getAmountCoin(code.data.money));
-		if(code.data.items.length > 0){
-			tellPlayer(pl, "&eItems:");
-			for(var i in code.data.items) {
-var itemData = code.data.items[i];
-				var item = nbtItem(itemData, pl.world);
-				tellPlayer(pl, "&6-&3 [" + (parseInt(i)+1) + "] " + item.getDisplayName() + " &2x"+item.getStackSize() + " &r[&c:cross: Remove{run_command:!giftcode removeItem " + code.name + " " +(parseInt(i)+1)+"}&r]");
-			}
-		}
-		if(code.data.emotes.length > 0){
-			tellPlayer(pl, "&eEmotes:");
-			for(var i in code.data.emotes) {
-var emoteData = code.data.emotes[i];
-				var emote = new Emote(emoteData).init(data);
-				tellPlayer(pl, "&6-&3 [" + (parseInt(i)+1) + "] " + emote.name + " &r:" + emote.name + ": [&c:cross: Remove{run_command:!giftcode removeEmote " + code.name + " " +(parseInt(i)+1)+"}&r]");
-			}
-		}
+        tellPlayer(pl, "&6Money: &r:money:&e" + getAmountCoin(code.data.money));
+        if (code.data.items.length > 0) {
+            tellPlayer(pl, "&eItems:");
+            for (var i in code.data.items) {
+                var itemData = code.data.items[i];
+                var item = nbtItem(itemData, pl.world);
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + item.getDisplayName() + " &2x" + item.getStackSize() + " &r[&c:cross: Remove{run_command:!giftcode removeItem " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+            }
+        }
+        if (code.data.emotes.length > 0) {
+            tellPlayer(pl, "&eEmotes:");
+            for (var i in code.data.emotes) {
+                var emoteData = code.data.emotes[i];
+                var emote = new Emote(emoteData).init(data);
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + emote.name + " &r:" + emote.name + ": [&c:cross: Remove{run_command:!giftcode removeEmote " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+            }
+        }
 
 
     }, 'giftcode.info', [
-		{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true
-        }
-	]],
-    ['!giftcode create <name> [code]', function(pl, args, data){
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true
+            }
+        ]],
+    ['!giftcode create <name> [code]', function (pl, args, data) {
         var giftcode = new GiftCode(args.name);
-        if(args.code) {
+        if (args.code) {
             giftcode.data.code = args.code;
         } else {
             giftcode.generateCode();
         }
-		giftcode.data.uses = -1;
-        tellPlayer(pl, "&aGiftcode '"+args.name+"&a' added with code '"+giftcode.data.code+"'!");
+        giftcode.data.uses = -1;
+        tellPlayer(pl, "&aGiftcode '" + args.name + "&a' added with code '" + giftcode.data.code + "'!");
         giftcode.save(data);
     }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "id",
-            "minlen": 3
-        },
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": false,
-        }
-    ]],
-    ['!giftcode setCode <name> [code]', function(pl, args, data){
+            {
+                "argname": "name",
+                "type": "id",
+                "minlen": 3
+            },
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": false,
+            }
+        ]],
+    ['!giftcode setCode <name> [code]', function (pl, args, data) {
         var giftcode = new GiftCode(args.name);
         giftcode.load(data);
-        if(typeof(args.code) === "string") {
+        if (typeof (args.code) === "string") {
             giftcode.data.code = args.code;
         } else {
             giftcode.generateCode();
         }
         giftcode.save(data);
-        tellPlayer(pl, "&aSet the code for GiftCode '"+args.name+"&a' to "+giftcode.data.code+"!");
+        tellPlayer(pl, "&aSet the code for GiftCode '" + args.name + "&a' to " + giftcode.data.code + "!");
     }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
-        },
-        {
-            "argname": "code",
-            "type": "id",
-            "minlen": 3
-        }
-    ]],
-    ['!giftcode setMaxUses <name> <uses>', function(pl, args, data){
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "code",
+                "type": "id",
+                "minlen": 3
+            }
+        ]],
+    ['!giftcode setMaxUses <name> <uses>', function (pl, args, data) {
         var giftcode = new GiftCode(args.name);
         giftcode.load(data);
         giftcode.data.uses = args.uses;
         giftcode.save(data);
-        tellPlayer(pl, "&aSet max uses for GiftCode '"+args.name+"&a' to "+giftcode.getUsesLeft()+"!");
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
-        },
-        {
-            "argname": "uses",
-            "type": "number"
+        tellPlayer(pl, "&aSet max uses for GiftCode '" + args.name + "&a' to " + giftcode.getUsesLeft() + "!");
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "uses",
+                "type": "number"
+            }
+        ]],
+    ['!giftcode addItem <name>', function (pl, args, data) {
+        var hand = pl.getMainhandItem();
+        if (!hand.isEmpty()) {
+            var giftcode = new GiftCode(args.name);
+            giftcode.load(data);
+            giftcode.data.items.push(hand.getItemNbt().toJsonString());
+            giftcode.save(data);
+            executeXCommand("!giftcode info " + args.name, pl);
+            return true;
         }
-    ]],
-    ['!giftcode addItem <name>', function(pl, args, data){
-		var hand = pl.getMainhandItem();
-		if(!hand.isEmpty()) {
-			var giftcode = new GiftCode(args.name);
-	        giftcode.load(data);
-			giftcode.data.items.push(hand.getItemNbt().toJsonString());
-			giftcode.save(data);
-			executeXCommand("!giftcode info " + args.name, pl);
-			return true;
-		}
-		tellPlayer(pl, "&cYou don't have anything in your hand!");
-		return false;
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
+        tellPlayer(pl, "&cYou don't have anything in your hand!");
+        return false;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            }
+        ]],
+    ['!giftcode removeItem <name> <id>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        var id = args.id - 1;
+        giftcode.load(data);
+        if (giftcode.data.items.length > id) {
+            giftcode.data.items.splice(id, 1);
+            giftcode.save(data);
+            executeXCommand("!giftcode info " + args.name, pl);
+            return true;
         }
-    ]],
-	['!giftcode removeItem <name> <id>', function(pl, args, data){
-		var giftcode = new GiftCode(args.name);
-		var id = args.id - 1;
-		giftcode.load(data);
-		if(giftcode.data.items.length > id) {
-			giftcode.data.items.splice(id, 1);
-			giftcode.save(data);
-			executeXCommand("!giftcode info " + args.name, pl);
-			return true;
-		}
-		tellPlayer(pl, "&cNo item with this id!");
-		return false;
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
-        },
-		{
-			"argname": "id",
-			"type": "number",
-			"min": 1
-		}
-    ]],
-	['!giftcode setMoney <name> <amount>', function(pl, args, data){
-		var giftcode = new GiftCode(args.name);
-	    giftcode.load(data);
-		if(args.amount != 0)
-			giftcode.data.money = getCoinAmount(args.amount);
-		else
-			giftcode.data.money = 0;
-		giftcode.save(data);
-		tellPlayer(pl, "&aMoney prize set to "+args.amount+"!");
-		return true;
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true
-        },
-		{
-			"argname": "amount",
-			"type": "currency"
-		}
-    ]],
-	['!giftcode addEmote <name> <emote>', function(pl, args, data){
-		var giftcode = new GiftCode(args.name);
-	    giftcode.load(data);
-		giftcode.data.emotes.push(args.emote);
-		giftcode.save(data);
-		executeXCommand("!giftcode info " + args.name, pl);
-		return true;
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true
-        },
-		{
-            "argname": "emote",
-            "type": "datahandler",
-            "datatype": "emote",
-            "exists": true
+        tellPlayer(pl, "&cNo item with this id!");
+        return false;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "id",
+                "type": "number",
+                "min": 1
+            }
+        ]],
+    ['!giftcode setMoney <name> <amount>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        giftcode.load(data);
+        if (args.amount != 0)
+            giftcode.data.money = getCoinAmount(args.amount);
+        else
+            giftcode.data.money = 0;
+        giftcode.save(data);
+        tellPlayer(pl, "&aMoney prize set to " + args.amount + "!");
+        return true;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true
+            },
+            {
+                "argname": "amount",
+                "type": "currency"
+            }
+        ]],
+    ['!giftcode addEmote <name> <emote>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        giftcode.load(data);
+        giftcode.data.emotes.push(args.emote);
+        giftcode.save(data);
+        executeXCommand("!giftcode info " + args.name, pl);
+        return true;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true
+            },
+            {
+                "argname": "emote",
+                "type": "datahandler",
+                "datatype": "emote",
+                "exists": true
+            }
+        ]],
+    ['!giftcode removeEmote <name> <id>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        var id = args.id - 1;
+        giftcode.load(data);
+        if (giftcode.data.emotes.length > id) {
+            giftcode.data.emotes.splice(id, 1);
+            giftcode.save(data);
+            executeXCommand("!giftcode info " + args.name, pl);
+            return true;
         }
-    ]],
-	['!giftcode removeEmote <name> <id>', function(pl, args, data){
-		var giftcode = new GiftCode(args.name);
-		var id = args.id - 1;
-		giftcode.load(data);
-		if(giftcode.data.emotes.length > id) {
-			giftcode.data.emotes.splice(id, 1);
-			giftcode.save(data);
-			executeXCommand("!giftcode info " + args.name, pl);
-			return true;
-		}
-		tellPlayer(pl, "&cNo emote with this id!");
-		return false;
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
-        },
-		{
-			"argname": "id",
-			"type": "number",
-			"min": 1
-		}
-    ]],
-    ['!giftcode redeem <code>', function(pl, args, data){
-		var codes = new GiftCode().getAllDataIds(data);
-        for(var n in codes) {
-var codeId = codes[n];
+        tellPlayer(pl, "&cNo emote with this id!");
+        return false;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "id",
+                "type": "number",
+                "min": 1
+            }
+        ]],
+    ['!giftcode redeem <code>', function (pl, args, data) {
+        var codes = new GiftCode().getAllDataIds(data);
+        for (var n in codes) {
+            var codeId = codes[n];
             var code = new GiftCode(codeId).init(data);
-			if(code.data.code == args.code){
-				return code.redeem(pl, data);
-			}
+            if (code.data.code == args.code) {
+                return code.redeem(pl, data);
+            }
         }
-        tellPlayer(pl, "&cGiftCode with code '"+args.code+"' not found!");
-  }, 'giftcode.redeem'],
+        tellPlayer(pl, "&cGiftCode with code '" + args.code + "' not found!");
+    }, 'giftcode.redeem'],
 
-  	['!giftcode unredeem <name> <player>', function(pl, args, data){
-	  var code = new GiftCode(args.name);
-	  code.load(data);
-	  if(code.data.players.indexOf(args.player) == -1) {
-		  tellPlayer(pl, "&cCode isn't activated yet!");
-		  return false;
-	  }
-	  array_remove(code.data.players, args.player);
-	  code.save(data);
-	  tellPlayer(pl, "&aUnredeemed giftcode '"+args.name+"&a' for player "+args.player+"!");
-	}, 'giftcode.create', [
-	  {
-		  "argname": "name",
-		  "type": "datahandler",
-		  "datatype": "giftcode",
-		  "exists": true,
-	  },
-	  {
-		  "argname": "player",
-		  "type": "datahandler",
-		  "datatype": "player",
-		  "exists": true
-	  }
-  	]],
-
-	['!giftcode remove <name>', function(pl, args, data){
-		var code = new GiftCode(args.name);
-		code.remove(data);
-		tellPlayer(pl, "&aRemoved giftcode '"+args.name+"&a'!");
-  }, 'giftcode.create', [
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "giftcode",
-            "exists": true,
+    ['!giftcode unredeem <name> <player>', function (pl, args, data) {
+        var code = new GiftCode(args.name);
+        code.load(data);
+        if (code.data.players.indexOf(args.player) == -1) {
+            tellPlayer(pl, "&cCode isn't activated yet!");
+            return false;
         }
-    ]]
-  ]);
+        array_remove(code.data.players, args.player);
+        code.save(data);
+        tellPlayer(pl, "&aUnredeemed giftcode '" + args.name + "&a' for player " + args.player + "!");
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "player",
+                "type": "datahandler",
+                "datatype": "player",
+                "exists": true
+            }
+        ]],
 
-	registerXCommands([
-		['!jobs create <name> [...display_name]', function(pl, args){
-			var job = new Job(args.name);
-			var dname = args.display_name.join(' ');
-			var data = pl.world.getStoreddata();
-			if(dname != "") {
-				job.data.displayName = dname;
-			}
-			tellPlayer(pl, "&aJob '"+job.getDisplayName(data)+"&a' created! "+getUndoBtn(["!jobs remove "+job.name], "$cClick to undo"));
-			job.save(data);
-		}, 'jobs.create', [
-			{
-				"argname": "name",
-				"type": "id",
-				"minlen": 3
-			},
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": false,
-			}
-		]],
-		['!jobs remove <name>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.remove(data);
-			tellPlayer(pl, "&aRemoved job '"+job.getDisplayName(data)+"&a'!");
-		}, 'jobs.add', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs setPay <name> <amount>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			var amount = getCoinAmount(args.amount);
-			job.data.pay = amount;
-			job.save(data);
-			tellPlayer(pl, "&aSet the salary of job '"+job.getDisplayName(data)+"&a' to &r:money:&e"+getAmountCoin(amount)+"&a!");
-		}, 'jobs.setPay', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			},
-			{
-				"argname": "amount",
-				"type": "number"
-			}
-		]],
-		['!jobs setPayTime <name> <time>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			job.data.payTime = args.time;
-			job.save(data);
-			tellPlayer(pl, "&aSet the paytime of job '"+job.getDisplayName(data)+"&a' to "+getTimeString(args.time)+"!");
-		}, 'jobs.setPayTime', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			},
-			{
-				"argname": "time",
-				"type": "time"
-			}
-		]],
-		['!jobs setOpen <name> <open>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			job.data.isOpen = (args.open == 'true');
-			job.save(data);
-			tellPlayer(pl, "&aSet if job '"+job.getDisplayName(data)+"&a' is open to "+args.open);
-		}, 'jobs.setOpen', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			},
-			{
-				"argname": "open",
-				"type": "bool"
-			}
-		]],
-		['!jobs setDisplayName <name> <...display_name>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			job.data.displayName = args.display_name.join(' ');
-			job.save(data);
-			tellPlayer(pl, "&aSet the display of job_id '"+job.name+"' to '"+job.getDisplayName(data)+"&a'!");
-		}, 'jobs.setDisplayName', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs list [...matches]', function(pl, args){
-			var data = pl.world.getStoreddata();
-			var dkeys = data.getKeys();
-			tellPlayer(pl, getTitleBar("Job List"));
-			for(var d in dkeys) {
-var dkey = dkeys[d];
-				if( ( dkey.match(/job_(\w.)/g) || [] ).length > 0 ) {
-					var job = new Job(dkey.replace(/job_(\w.)/g, '$1'));
-					var isMatch = false;
-					args.matches.forEach(function(mt){
-						if(occurrences(mt, job.name) > 0 || occurrences(mt, job.getDisplayName(data)) > 0) {
-							isMatch = true;
-						}
-					});
-
-					if(args.matches.length == 0 || isMatch) {
-						job.load(data);
-						tellPlayer(pl, "&e - &r"+job.getStatusColor(data)+escCcs(job.getDisplayName())+"&r (&9&o"+job.name+"&r)");
-					}
-
-				}
-			}
-			return true;
-		}, 'jobs.list'],
-		['!jobs info <name>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			tellPlayer(pl, getTitleBar("Job Info"));
-			tellPlayer(pl, "&eName: &9&o"+job.name);
-			tellPlayer(pl, "&eDisplay Name: &r"+job.getStatusColor(data)+escCcs(job.getDisplayName()));
-			tellPlayer(pl, "&eCompany: &c"+job.data.companyId);
-			tellPlayer(pl, "&eIncome: "+getAmountCoin(job.data.pay)+' per '+getTimeString(job.data.payTime));
-			tellPlayer(pl, "&eIs Open: "+(job.data.isOpen ? '&atrue':'&cfalse'));
-			tellPlayer(pl, "&ePlaces taken: "+job.getStatusColor(data)+job.getPlayers(data).length+"/"+(job.data.capacity > -1 ? job.data.capacity : 'UNLIMITED'));
-			tellPlayer(pl, "&eFire Time: &6"+getTimeString(job.data.fireTime));
-		}, 'jobs.info', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs playerList <name>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			tellPlayer(pl, getTitleBar("Job Player List"));
-			tellPlayer(pl, "&eJob: &9&o"+args.name);
-			var pls = job.getPlayers(data);
-			for(var p in pls) {
-var plr = pls[p];
-				tellPlayer(pl, "&e - &r"+plr);
-			}
-		}, 'jobs.playerList', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs addPlayers <name> <...player_names>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.load(data);
-			for(var p in args.player_names) {
-var apl = args.player_names[p];
-				var apo = new Player(apl);
-				if(apo.load(data)) {
-					apo.addJob(job.name);
-					apo.save(data);
-				}
-			}
-			tellPlayer(pl, "&aAdded "+args.player_names.length+" player(s) to job '"+job.name+"'");
-		}, 'jobs.addPlayers', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs setPlaces <name> <amount>', function(pl, args){
-			var am = parseInt(args.amount) || 10;
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.data.capacity = am;
-			tellPlayer(pl, "&aSet max players of job '"+job.name+"' to "+am+'!');
-			job.save(data);
-		}, 'jobs.setPlaces', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			},
-			{
-				"argname": "amount",
-				"type": "number"
-			}
-		]],
-		['!jobs setFireTime <name> <time>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			job.data.fireTime = args.time;
-			tellPlayer(pl, "&aSet fire time of job '"+job.name+"' to "+getTimeString(args.time)+"!");
-			job.save(data);
-		}, 'jobs.setFireTime', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			},
-			{
-				"argname": "time",
-				"type": "time"
-			}
-		]],
-		['!jobs removePlayers <name> <...players>', function(pl, args){
-			var job = new Job(args.name);
-			var data = pl.world.getStoreddata();
-			for(var p in args.players) {
-var apl = args.players[p];
-				var apo = new Player(apl);
-				if(apo.load(data)) {
-					apo.delJob(job.name);
-					apo.save(data);
-				}
-			}
-			tellPlayer(pl, "&aRemoved "+args.players.length+" player(s) from job '"+job.name+"'");
-		}, 'jobs.removePlayers', [
-			{
-				"argname": "name",
-				"type": "datahandler",
-				"datatype": "job",
-				"exists": true,
-			}
-		]],
-		['!jobs reload', function(pl, args){
-			var data = pl.world.getStoreddata();
-			var dkeys = data.getKeys();
-			var jc = 0;
-			for(var d in dkeys) {
-var dkey = dkeys[d];
-				if(dkey.cmatch(/job_(\w+)/g)) {
-					var job = new Job(dkey.replace(/job_(\w+)/g, '$1'));
-					if(job.load(data)) {
-						job.save(data);
-					}
-					jc++;
-				}
-			}
-			tellPlayer(pl, "&aReloaded "+jc+" job(s)!");
-		}, 'jobs.reload']
-	]);
+    ['!giftcode remove <name>', function (pl, args, data) {
+        var code = new GiftCode(args.name);
+        code.remove(data);
+        tellPlayer(pl, "&aRemoved giftcode '" + args.name + "&a'!");
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            }
+        ]]
+]);
 
 registerXCommands([
-    ['!loan take <amount>', function(pl, args, data) {
+    ['!jobs create <name> [...display_name]', function (pl, args) {
+        var job = new Job(args.name);
+        var dname = args.display_name.join(' ');
+        var data = pl.world.getStoreddata();
+        if (dname != "") {
+            job.data.displayName = dname;
+        }
+        tellPlayer(pl, "&aJob '" + job.getDisplayName(data) + "&a' created! " + getUndoBtn(["!jobs remove " + job.name], "$cClick to undo"));
+        job.save(data);
+    }, 'jobs.create', [
+            {
+                "argname": "name",
+                "type": "id",
+                "minlen": 3
+            },
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": false,
+            }
+        ]],
+    ['!jobs remove <name>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.remove(data);
+        tellPlayer(pl, "&aRemoved job '" + job.getDisplayName(data) + "&a'!");
+    }, 'jobs.add', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs setPay <name> <amount>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        var amount = getCoinAmount(args.amount);
+        job.data.pay = amount;
+        job.save(data);
+        tellPlayer(pl, "&aSet the salary of job '" + job.getDisplayName(data) + "&a' to &r:money:&e" + getAmountCoin(amount) + "&a!");
+    }, 'jobs.setPay', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            },
+            {
+                "argname": "amount",
+                "type": "number"
+            }
+        ]],
+    ['!jobs setPayTime <name> <time>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        job.data.payTime = args.time;
+        job.save(data);
+        tellPlayer(pl, "&aSet the paytime of job '" + job.getDisplayName(data) + "&a' to " + getTimeString(args.time) + "!");
+    }, 'jobs.setPayTime', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            },
+            {
+                "argname": "time",
+                "type": "time"
+            }
+        ]],
+    ['!jobs setOpen <name> <open>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        job.data.isOpen = (args.open == 'true');
+        job.save(data);
+        tellPlayer(pl, "&aSet if job '" + job.getDisplayName(data) + "&a' is open to " + args.open);
+    }, 'jobs.setOpen', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            },
+            {
+                "argname": "open",
+                "type": "bool"
+            }
+        ]],
+    ['!jobs setDisplayName <name> <...display_name>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        job.data.displayName = args.display_name.join(' ');
+        job.save(data);
+        tellPlayer(pl, "&aSet the display of job_id '" + job.name + "' to '" + job.getDisplayName(data) + "&a'!");
+    }, 'jobs.setDisplayName', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs list [...matches]', function (pl, args) {
+        var data = pl.world.getStoreddata();
+        var dkeys = data.getKeys();
+        tellPlayer(pl, getTitleBar("Job List"));
+        for (var d in dkeys) {
+            var dkey = dkeys[d];
+            if ((dkey.match(/job_(\w.)/g) || []).length > 0) {
+                var job = new Job(dkey.replace(/job_(\w.)/g, '$1'));
+                var isMatch = false;
+                args.matches.forEach(function (mt) {
+                    if (occurrences(mt, job.name) > 0 || occurrences(mt, job.getDisplayName(data)) > 0) {
+                        isMatch = true;
+                    }
+                });
+
+                if (args.matches.length == 0 || isMatch) {
+                    job.load(data);
+                    tellPlayer(pl, "&e - &r" + job.getStatusColor(data) + escCcs(job.getDisplayName()) + "&r (&9&o" + job.name + "&r)");
+                }
+
+            }
+        }
+        return true;
+    }, 'jobs.list'],
+    ['!jobs info <name>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        tellPlayer(pl, getTitleBar("Job Info"));
+        tellPlayer(pl, "&eName: &9&o" + job.name);
+        tellPlayer(pl, "&eDisplay Name: &r" + job.getStatusColor(data) + escCcs(job.getDisplayName()));
+        tellPlayer(pl, "&eCompany: &c" + job.data.companyId);
+        tellPlayer(pl, "&eIncome: " + getAmountCoin(job.data.pay) + ' per ' + getTimeString(job.data.payTime));
+        tellPlayer(pl, "&eIs Open: " + (job.data.isOpen ? '&atrue' : '&cfalse'));
+        tellPlayer(pl, "&ePlaces taken: " + job.getStatusColor(data) + job.getPlayers(data).length + "/" + (job.data.capacity > -1 ? job.data.capacity : 'UNLIMITED'));
+        tellPlayer(pl, "&eFire Time: &6" + getTimeString(job.data.fireTime));
+    }, 'jobs.info', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs playerList <name>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        tellPlayer(pl, getTitleBar("Job Player List"));
+        tellPlayer(pl, "&eJob: &9&o" + args.name);
+        var pls = job.getPlayers(data);
+        for (var p in pls) {
+            var plr = pls[p];
+            tellPlayer(pl, "&e - &r" + plr);
+        }
+    }, 'jobs.playerList', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs addPlayers <name> <...player_names>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.load(data);
+        for (var p in args.player_names) {
+            var apl = args.player_names[p];
+            var apo = new Player(apl);
+            if (apo.load(data)) {
+                apo.addJob(job.name);
+                apo.save(data);
+            }
+        }
+        tellPlayer(pl, "&aAdded " + args.player_names.length + " player(s) to job '" + job.name + "'");
+    }, 'jobs.addPlayers', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs setPlaces <name> <amount>', function (pl, args) {
+        var am = parseInt(args.amount) || 10;
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.data.capacity = am;
+        tellPlayer(pl, "&aSet max players of job '" + job.name + "' to " + am + '!');
+        job.save(data);
+    }, 'jobs.setPlaces', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            },
+            {
+                "argname": "amount",
+                "type": "number"
+            }
+        ]],
+    ['!jobs setFireTime <name> <time>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        job.data.fireTime = args.time;
+        tellPlayer(pl, "&aSet fire time of job '" + job.name + "' to " + getTimeString(args.time) + "!");
+        job.save(data);
+    }, 'jobs.setFireTime', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            },
+            {
+                "argname": "time",
+                "type": "time"
+            }
+        ]],
+    ['!jobs removePlayers <name> <...players>', function (pl, args) {
+        var job = new Job(args.name);
+        var data = pl.world.getStoreddata();
+        for (var p in args.players) {
+            var apl = args.players[p];
+            var apo = new Player(apl);
+            if (apo.load(data)) {
+                apo.delJob(job.name);
+                apo.save(data);
+            }
+        }
+        tellPlayer(pl, "&aRemoved " + args.players.length + " player(s) from job '" + job.name + "'");
+    }, 'jobs.removePlayers', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "job",
+                "exists": true,
+            }
+        ]],
+    ['!jobs reload', function (pl, args) {
+        var data = pl.world.getStoreddata();
+        var dkeys = data.getKeys();
+        var jc = 0;
+        for (var d in dkeys) {
+            var dkey = dkeys[d];
+            if (dkey.cmatch(/job_(\w+)/g)) {
+                var job = new Job(dkey.replace(/job_(\w+)/g, '$1'));
+                if (job.load(data)) {
+                    job.save(data);
+                }
+                jc++;
+            }
+        }
+        tellPlayer(pl, "&aReloaded " + jc + " job(s)!");
+    }, 'jobs.reload']
+]);
+
+registerXCommands([
+    ['!loan take <amount>', function (pl, args, data) {
         var amount = getCoinAmount(args.amount);
         var loan = new Loan(pl.getName());
         loan.load(data);
@@ -7652,7 +7652,7 @@ registerXCommands([
         "min": getCoinAmount('5K'),
         "max": getCoinAmount('1M')
     }]],
-    ['!loan takefor <player> <amount> [interest] [timePerTerm]', function(pl, args, data) {
+    ['!loan takefor <player> <amount> [interest] [timePerTerm]', function (pl, args, data) {
         var p = new Player(args.player);
         if (!p.exists(data)) {
             tellPlayer(pl, "&c" + args.player + " isn't known in this server, needs to be at least joined once.");
@@ -7684,23 +7684,23 @@ registerXCommands([
 
         tellPlayer(pl, "&aLoaned &r:money:&e" + getAmountCoin(amount) + "&a for " + args.player + "!");
     }, 'loan.takefor', [{
-            "argname": "amount",
-            "type": "currency",
-            "min": getCoinAmount('100G'),
-        },
-        {
-            "argname": "interest",
-            "type": "number",
-            "min": 0,
-            "max": 100
-        },
-        {
-            "argname": "timePerTerm",
-            "type": "time",
-            "min": getStringTime('1h'),
-        }
-    ]],
-    ['!myLoan [...matches]', function(pl, args, data) {
+        "argname": "amount",
+        "type": "currency",
+        "min": getCoinAmount('100G'),
+    },
+    {
+        "argname": "interest",
+        "type": "number",
+        "min": 0,
+        "max": 100
+    },
+    {
+        "argname": "timePerTerm",
+        "type": "time",
+        "min": getStringTime('1h'),
+    }
+        ]],
+    ['!myLoan [...matches]', function (pl, args, data) {
         var loan = new Loan(pl.getName());
         var params = getArgParams(args.matches);
         if (!loan.exists(data)) {
@@ -7714,7 +7714,7 @@ registerXCommands([
         tellPlayer(pl, formatLoanInfo(loan, params, 'Info', '!myLoan'));
         // print(JSON.stringify([loan.getPaymentTerms(), loan.getPaybackAmount()]));
     }, 'myLoan'],
-    ['!loan pay <amount>', function(pl, args, data) {
+    ['!loan pay <amount>', function (pl, args, data) {
         var loan = new Loan(pl.getName());
         if (!loan.exists(data)) {
             tellPlayer(pl, "&cYou don't have an open loan currently.");
@@ -7762,7 +7762,7 @@ registerXCommands([
         'type': 'currency',
         'min': 100
     }]],
-    ['!loan payFor <player> <amount>', function(pl, args, data) {
+    ['!loan payFor <player> <amount>', function (pl, args, data) {
         var loan = new Loan(args.player);
         if (!loan.exists(data)) {
             tellPlayer(pl, "&cThis player doesn't have an open loan currently.");
@@ -7804,7 +7804,7 @@ registerXCommands([
         'type': 'currency',
         'min': 100
     }]],
-    ['!loan spy <player> [...matches]', function(pl, args, data) {
+    ['!loan spy <player> [...matches]', function (pl, args, data) {
         var loan = new Loan(args.player);
         var params = getArgParams(args.matches);
         if (!loan.exists(data)) {
@@ -7816,7 +7816,7 @@ registerXCommands([
 
         tellPlayer(pl, formatLoanInfo(loan, params, 'Spy ' + loan.data.player, '!loan spy ' + args.player));
     }, 'loan.spy'],
-    ['!loan help <amount> [interest] [timePerTerm] [...matches]', function(pl, args, data) {
+    ['!loan help <amount> [interest] [timePerTerm] [...matches]', function (pl, args, data) {
         var loan = new Loan(args.player);
         var amount = getCoinAmount(args.amount);
         var interest = parseInt(args.interest);
@@ -7828,30 +7828,30 @@ registerXCommands([
 
         tellPlayer(pl, formatLoanInfo(loan, params, 'Help', '!loan help ' + getAmountCoin(loan.data.amount) + ' ' + loan.data.interest + ' ' + getTimeString(loan.data.payInterval)));
     }, 'loan.help', [{
-            "argname": "amount",
-            "type": "currency",
-            "min": getCoinAmount('5K'),
-            "max": getCoinAmount('1M')
-        },
-        {
-            "argname": "interest",
-            "type": "number",
-            "min": 1,
-            "max": 100
-        },
-        {
-            "argname": "timePerTerm",
-            "type": "time",
-            "min": getStringTime('1h'),
-        }
-    ]],
-    ['!loan unpaid [...matches]', function(pl, args, data) {
+        "argname": "amount",
+        "type": "currency",
+        "min": getCoinAmount('5K'),
+        "max": getCoinAmount('1M')
+    },
+    {
+        "argname": "interest",
+        "type": "number",
+        "min": 1,
+        "max": 100
+    },
+    {
+        "argname": "timePerTerm",
+        "type": "time",
+        "min": getStringTime('1h'),
+    }
+        ]],
+    ['!loan unpaid [...matches]', function (pl, args, data) {
         var unpaid = [];
         var loans = new Loan().getAllDataEntries(data);
         var params = getArgParams(args.matches);
 
-        for(var i in loans) {
-var loan = loans[i];
+        for (var i in loans) {
+            var loan = loans[i];
             if (!loan.isLate()) {
                 continue;
             }
@@ -7867,10 +7867,10 @@ var loan = loans[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!loan unpaid {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(loan) {
+            function (loan) {
                 return "&e - &c&l" + loan.data.player + "&r &e[Spy]{run_command:!loan spy " + loan.data.player + "|show_text:$cClick to see loan of this player}&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.data.player.toLowerCase();
                 var bl = b.data.player.toLowerCase();
 
@@ -7879,7 +7879,7 @@ var loan = loans[i];
 
                 return 0;
             },
-            function(loan, list) {
+            function (loan, list) {
                 return arrayOccurs(loan.data.player, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -7887,7 +7887,7 @@ var loan = loans[i];
 
         tellPlayer(pl, output);
     }, 'loan.unpaid'],
-    ['!loan change interest <player> <interest>', function(pl, args, data) {
+    ['!loan change interest <player> <interest>', function (pl, args, data) {
         var loan = new Loan(args.player);
         var params = getArgParams(args.matches);
         if (!loan.exists(data)) {
@@ -7903,7 +7903,7 @@ var loan = loans[i];
         return true;
 
     }, 'loan.change.interest'],
-    ['!loan change timePerTerm <player> <time>', function(pl, args, data) {
+    ['!loan change timePerTerm <player> <time>', function (pl, args, data) {
         var loan = new Loan(args.player);
         var params = getArgParams(args.matches);
         if (!loan.exists(data)) {
@@ -7923,7 +7923,7 @@ var loan = loans[i];
         "type": "time",
         "min": getStringTime('1h')
     }]],
-    ['!loan list [...matches]', function(pl, args, data) {
+    ['!loan list [...matches]', function (pl, args, data) {
         var loans = new Loan().getAllDataEntries(data);
         var params = getArgParams(args.matches);
 
@@ -7935,10 +7935,10 @@ var loan = loans[i];
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             "!loan list {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(loan) {
+            function (loan) {
                 return "&e - &" + (loan.isLate() ? 'c' : 'a') + "&l" + loan.data.player + "&r :money:&e" + getAmountCoin(loan.data.amount) + "&r &6+ &e" + loan.data.interest + "% &6[Spy]{run_command:!loan spy " + loan.data.player + "|show_text:$cClick to see loan of this player}&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var al = (a.player || "").toLowerCase();
                 var bl = (b.player || "").toLowerCase();
 
@@ -7947,7 +7947,7 @@ var loan = loans[i];
 
                 return 0;
             },
-            function(loan, list) {
+            function (loan, list) {
                 return arrayOccurs(loan.data.player, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -7955,7 +7955,7 @@ var loan = loans[i];
 
         tellPlayer(pl, output);
     }, 'loan.list'],
-    ['!loan request <player> <amount> [interest] [timePerPayment] [...params]', function(pl, args, data) {
+    ['!loan request <player> <amount> [interest] [timePerPayment] [...params]', function (pl, args, data) {
         // if (pl.getName() == args.player) {
         //     tellPlayer(pl, '&cYou can\'t request a loan to yourself.');
         //     return false;
@@ -8006,31 +8006,31 @@ var loan = loans[i];
 
         tellPlayer(pl, output);
     }, 'loan.request', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true,
-        },
-        {
-            "argname": "amount",
-            "type": "currency",
-            "min": getCoinAmount('1K'),
-            "max": getCoinAmount('500B'),
-        },
-        {
-            "argname": "interest",
-            "type": "number",
-            "min": 0,
-            "max": 100,
-        },
-        {
-            "argname": "timePerPayment",
-            "type": "time",
-            "min": getStringTime('1h'),
-            "max": getStringTime('1mon2w'),
-        }
-    ]],
-    ['!loan check <player> [...params]', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true,
+    },
+    {
+        "argname": "amount",
+        "type": "currency",
+        "min": getCoinAmount('1K'),
+        "max": getCoinAmount('500B'),
+    },
+    {
+        "argname": "interest",
+        "type": "number",
+        "min": 0,
+        "max": 100,
+    },
+    {
+        "argname": "timePerPayment",
+        "type": "time",
+        "min": getStringTime('1h'),
+        "max": getStringTime('1mon2w'),
+    }
+        ]],
+    ['!loan check <player> [...params]', function (pl, args, data) {
         var params = getArgParams(args.params);
         var output = '';
         var p = new Player(pl.getName()).init(data);
@@ -8104,7 +8104,7 @@ var loan = loans[i];
         "datatype": "player",
         "exists": true,
     }]],
-    ['!myPlayerLoans [...matches]', function(pl, args, data) {
+    ['!myPlayerLoans [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var output = getTitleBar('My Player Loans', false) + '\n';
 
@@ -8115,10 +8115,10 @@ var loan = loans[i];
             (params.show || 10),
             (params.page || 1),
             '!myPlayerLoans {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(loan) {
+            function (loan) {
                 return "&e - &" + (loan.isLate() ? 'c' : 'a') + "&l" + loan.data.player + "&r :money:&e" + getAmountCoin(loan.data.amount) + "&r &6+ &e" + loan.data.interest + "% &6[Check]{run_command:!myPlayerLoan " + loan.data.player + "|show_text:$cClick to see loan of this player}&r\n";
             },
-            function(a, b) {
+            function (a, b) {
                 var al = (a.player || "").toLowerCase();
                 var bl = (b.player || "").toLowerCase();
 
@@ -8127,7 +8127,7 @@ var loan = loans[i];
 
                 return 0;
             },
-            function(loan, list) {
+            function (loan, list) {
                 return arrayOccurs(loan.data.player, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc"
@@ -8135,7 +8135,7 @@ var loan = loans[i];
 
         tellPlayer(pl, output);
     }, 'myPlayerLoans'],
-    ['!myPlayerLoan <player> [...params]', function(pl, args, data) {
+    ['!myPlayerLoan <player> [...params]', function (pl, args, data) {
         var params = getArgParams(args.params);
         var loan = new Loan(args.player).init(data);
         if (loan.data.loanedFrom != pl.getName()) {
@@ -8153,26 +8153,26 @@ var loan = loans[i];
 ]);
 
 
-    registerXCommands([
-        ["!menu open <file>", function(pl, args, data){
-            var path = "menus/"+args.file+".json";
-            var menuFile = new File(path);
-            if(menuFile.exists()){
-                var json = readFileAsString(path);
-                try {
-                    json = JSON.parse(json);
-                } catch(exc) {
-                    handleError(exc, true, pl.getName());
-                }
-
-                var menu = new CustomMenu().fromJson(json);
-                var c = menu.open(pl);
-                tellPlayer(pl, "The size is: "+c.getSize());
-            } else {
-                tellPlayer(pl, "&cFile '"+path+"' doesn't exists!");
+registerXCommands([
+    ["!menu open <file>", function (pl, args, data) {
+        var path = "menus/" + args.file + ".json";
+        var menuFile = new File(path);
+        if (menuFile.exists()) {
+            var json = readFileAsString(path);
+            try {
+                json = JSON.parse(json);
+            } catch (exc) {
+                handleError(exc, true, pl.getName());
             }
-        }, "menu.open"]
-    ]);
+
+            var menu = new CustomMenu().fromJson(json);
+            var c = menu.open(pl);
+            tellPlayer(pl, "The size is: " + c.getSize());
+        } else {
+            tellPlayer(pl, "&cFile '" + path + "' doesn't exists!");
+        }
+    }, "menu.open"]
+]);
 
 
 
@@ -8183,7 +8183,7 @@ var playerCommands = new CommandFactory("player");
 
 playerCommands
     .setListTransformer(
-        function(player) {
+        function (player) {
             return "&e - &b" + player.name + " &3[Info]{run_command:!player info " + player.name + "}&r\n";
         }
     )
@@ -8193,7 +8193,7 @@ playerCommands
 
 registerXCommands([
     //PLAYER MANAGE
-    ['!player perms <player> [...matches]', function(pl, args, data) {
+    ['!player perms <player> [...matches]', function (pl, args, data) {
         var permids = new Permission().getAllDataIds(data);
 
         var w = pl.world;
@@ -8202,8 +8202,8 @@ registerXCommands([
         tellPlayer(pl, getTitleBar("Player Perms"));
         tellPlayer(pl, "&ePermissions for player:&r " + args.player);
         var shownperms = 0;
-        for(var p in permids) {
-var pid = permids[p];
+        for (var p in permids) {
+            var pid = permids[p];
             if (args.matches.length == 0 || arrayOccurs(pid, args.matches, false, false) > 0) {
                 var perm = new Permission(pid).init(data);
                 if (perm.permits(args.player, sb, data)) {
@@ -8226,7 +8226,7 @@ var pid = permids[p];
             tellPlayer(pl, "&cNo permissions found for player " + args.player);
         }
     }, 'player.perms'],
-    ['!player setColor <player> [color]', function(pl, args, data) {
+    ['!player setColor <player> [color]', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         plo.data.color = args.color;
         plo.save(data);
@@ -8238,17 +8238,17 @@ var pid = permids[p];
         }
 
     }, "player.setColor", [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true,
-        },
-        {
-            "argname": "color",
-            "type": "color"
-        }
-    ]],
-    ['!player setPay <player> <amount>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true,
+    },
+    {
+        "argname": "color",
+        "type": "color"
+    }
+        ]],
+    ['!player setPay <player> <amount>', function (pl, args, data) {
         var am = getCoinAmount(args.amount);
         var p = new Player(args.player).init(data);
 
@@ -8258,18 +8258,18 @@ var pid = permids[p];
 
         return true;
     }, 'player.setPay', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "amount",
-            "type": "currency",
-            "min": 0
-        }
-    ]],
-    ['!player setPayTime <player> <time>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "amount",
+        "type": "currency",
+        "min": 0
+    }
+        ]],
+    ['!player setPayTime <player> <time>', function (pl, args, data) {
         var am = getStringTime(args.time);
         var p = new Player(args.player).init(data);
         p.data.payTime = am;
@@ -8278,18 +8278,18 @@ var pid = permids[p];
 
         return true;
     }, 'player.setPayTime', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "time",
-            "type": "time",
-            "min": getStringTime("30s"),
-        }
-    ]],
-    ['!player setMaxJobs <player> <amount>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "time",
+        "type": "time",
+        "min": getStringTime("30s"),
+    }
+        ]],
+    ['!player setMaxJobs <player> <amount>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         p.data.maxJobs = parseInt(args.amount) || 1;
         p.save(data);
@@ -8298,18 +8298,18 @@ var pid = permids[p];
         return true;
 
     }, 'player.setMaxJobs', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "amount",
-            "type": "number",
-            "min": -1,
-        }
-    ]],
-    ['!player setMaxHomes <player> <amount>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "amount",
+        "type": "number",
+        "min": -1,
+    }
+        ]],
+    ['!player setMaxHomes <player> <amount>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         p.data.maxHomes = parseInt(args.amount) || 1;
         p.save(data);
@@ -8317,35 +8317,35 @@ var pid = permids[p];
         return true;
 
     }, 'player.setMaxHomes', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "amount",
-            "type": "number",
-            "min": -1,
-        }
-    ]],
-    ['!player setChatColor <player> <color>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "amount",
+        "type": "number",
+        "min": -1,
+    }
+        ]],
+    ['!player setChatColor <player> <color>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         plo.data.chatcolor = args.color;
         plo.save(data);
         tellPlayer(pl, "&aChanged chatcolor to " + args.color + "!");
         return true;
     }, 'player.setChatColor', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "color",
-            "type": "color"
-        }
-    ]],
-    ['!player resetChatColor <player>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "color",
+        "type": "color"
+    }
+        ]],
+    ['!player resetChatColor <player>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         plo.data.chatcolor = null;
         plo.save(data);
@@ -8356,8 +8356,8 @@ var pid = permids[p];
         "type": "datahandler",
         "datatype": "player",
         "exists": true
-    }, ]],
-    ['!player giveChatColor <player> <color>', function(pl, args, data) {
+    },]],
+    ['!player giveChatColor <player> <color>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         if (plo.data.chatcolors.indexOf(args.color) > -1) {
             tellPlayer(pl, '&cThis player has already the chat color ' + args.color);
@@ -8368,17 +8368,17 @@ var pid = permids[p];
         tellPlayer(pl, "&Gave chatcolor " + args.color + " to " + args.player + "!");
         return true;
     }, 'player.giveChatColor', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "color",
-            "type": "color"
-        }
-    ]],
-    ['!player takeChatColor <player> <color>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "color",
+        "type": "color"
+    }
+        ]],
+    ['!player takeChatColor <player> <color>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         var cindex = plo.data.chatcolors.indexOf(args.color);
         if (cindex == -1) {
@@ -8390,34 +8390,34 @@ var pid = permids[p];
         tellPlayer(pl, "&Took chatcolor " + args.color + " from " + args.player + "!");
         return true;
     }, 'player.takeChatColor', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "color",
-            "type": "color"
-        }
-    ]],
-    ['!player setChatEffect <player> <effect>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "color",
+        "type": "color"
+    }
+        ]],
+    ['!player setChatEffect <player> <effect>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         plo.data.chatcolor = args.effect;
         plo.save(data);
         tellPlayer(pl, "&aChanged chateffect to " + args.effect + "!");
         return true;
     }, 'player.setChatColor', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "effect",
-            "type": "coloreffect"
-        }
-    ]],
-    ['!player resetChatEffect <player>', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "effect",
+        "type": "coloreffect"
+    }
+        ]],
+    ['!player resetChatEffect <player>', function (pl, args, data) {
         var plo = new Player(args.player).init(data);
         plo.data.chateffect = null;
         plo.save(data);
@@ -8428,8 +8428,8 @@ var pid = permids[p];
         "type": "datahandler",
         "datatype": "player",
         "exists": true
-    }, ]],
-    ['!player income <player>', function(pl, args, data) {
+    },]],
+    ['!player income <player>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         var sb = pl.world.getScoreboard();
         tellPlayer(pl, getTitleBar("Player Income"));
@@ -8440,8 +8440,8 @@ var pid = permids[p];
         var pjobs = p.getJobs(data);
 
         if (pjobs.length > 0) {
-            for(var pj in pjobs) {
-var pjob = pjobs[pj];
+            for (var pj in pjobs) {
+                var pjob = pjobs[pj];
                 tellPlayer(pl, "&eJob income for &r" + pjob.getDisplayName(data));
                 tellPlayer(pl, "&e - Job salary: &6&o" + getAmountCoin(pjob.data.pay));
                 var jleft = (p.getJob(pjob.name).lastPayed + pjob.data.payTime) - new Date().getTime();
@@ -8458,7 +8458,7 @@ var pjob = pjobs[pj];
         "datatype": "player",
         "exists": true
     }]],
-    ['!player info <player>', function(pl, args, data) {
+    ['!player info <player>', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         var sb = pl.world.getScoreboard();
         var po = null;
@@ -8468,8 +8468,8 @@ var pjob = pjobs[pj];
         tellPlayer(pl, "&6UUID: &e" + p.data.UUID);
         tellPlayer(pl, "&6First Login: &e&o" + getTimeString(now - p.data.firstLogin, ['ms']) + "&r &eago.");
         tellPlayer(pl, "&6Last Login: &e&o" + getTimeString(now - p.data.lastLogin, ['ms']) + "&r &eago.");
-        for(var v in VIRTUAL_CURRENCIES) {
-var crncy = VIRTUAL_CURRENCIES[v];
+        for (var v in VIRTUAL_CURRENCIES) {
+            var crncy = VIRTUAL_CURRENCIES[v];
             tellPlayer(pl, "&6" + crncy.displayName + ": &r" + crncy.prefix + getAmountCoin(p.data[crncy.name]) + crncy.suffix);
         }
         tellPlayer(pl, "&6Bounty: &r:money:&e" + getAmountCoin(p.getBounty(sb)));
@@ -8489,14 +8489,14 @@ var crncy = VIRTUAL_CURRENCIES[v];
         "datatype": "player",
         "exists": true
     }]],
-    ['!player homes <player>', function(pl, args, data) {
+    ['!player homes <player>', function (pl, args, data) {
         var apo = new Player(args.player).init(data);
         var w = pl.world;
         var sb = w.getScoreboard();
         tellPlayer(pl, getTitleBar("Player Homes"));
         tellPlayer(pl, "&6Player: " + apo.getNameTag(sb));
-        for(var hname in apo.data.homes) {
-var home = apo.data.homes[hname];
+        for (var hname in apo.data.homes) {
+            var home = apo.data.homes[hname];
             tellPlayer(pl, "&6 - &b&l" + hname + "&r [&9Teleport{run_command:/tp " + pl.getName() + " " + home.x + " " + home.y + " " + home.z + "}&r]");
         }
     }, 'player.homes', [{
@@ -8509,7 +8509,7 @@ var home = apo.data.homes[hname];
 
 
     //PLAYER UTILITY
-    ['!bounty add <player> <amount>', function(pl, args, data) {
+    ['!bounty add <player> <amount>', function (pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         var tplo = new Player(args.player).init(data);
         var ba = getCoinAmount(args.amount);
@@ -8542,44 +8542,44 @@ var home = apo.data.homes[hname];
         }
 
     }, 'bounty.add', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true,
-        },
-        {
-            "argname": "amount",
-            "type": "currency",
-            "min": getCoinAmount("5K"),
-        },
-    ]],
-    ['!topBounty', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true,
+    },
+    {
+        "argname": "amount",
+        "type": "currency",
+        "min": getCoinAmount("5K"),
+    },
+        ]],
+    ['!topBounty', function (pl, args, data) {
         var sb = pl.world.getScoreboard();
         var bo = sb.getObjective("bounty");
         var scores = [];
         if (bo != null) {
             var bos = bo.getScores();
-            for(var b in bos) {
-var bscore = bos[b];
+            for (var b in bos) {
+                var bscore = bos[b];
                 scores.push({
                     name: bscore.getPlayerName(),
                     value: bscore.getValue(),
                 });
             }
         }
-        scores = scores.sort(function(a, b) {
+        scores = scores.sort(function (a, b) {
             return b.value - a.value;
         });
         tellPlayer(pl, getTitleBar("Top Bounties"))
-        for(var s in scores) {
-var score = scores[s];
+        for (var s in scores) {
+            var score = scores[s];
             var spl = new Player(score.name);
             spl.load(data);
             var pnum = parseInt(s) + 1;
             tellPlayer(pl, " - " + pnum + ". " + spl.getNameTag(sb) + "&r :money:&e" + getAmountCoin(score.value));
         }
     }, 'topBounty', []],
-    ['!money pay <player> <amount> [...args]', function(pl, args, data) {
+    ['!money pay <player> <amount> [...args]', function (pl, args, data) {
         if (pl.getName() == args.player) {
             tellPlayer(pl, '&cYou can\'t pay to yourself.');
             return false;
@@ -8618,18 +8618,18 @@ var score = scores[s];
             tellPlayer(pl, output);
         }
     }, 'money.pay', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "amount",
-            "type": "money",
-            "min": 1
-        }
-    ]],
-    ['!money request <player> <amount> [...reason]', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "amount",
+        "type": "money",
+        "min": 1
+    }
+        ]],
+    ['!money request <player> <amount> [...reason]', function (pl, args, data) {
         if (!playerIsOnline(pl.world, args.player)) {
             tellPlayer(pl, '&c' + args.player + ' is not online!');
             return false;
@@ -8641,18 +8641,18 @@ var score = scores[s];
 
         tellTarget(pl, args.player, output);
     }, 'money.request', [{
-            "argname": "player",
-            "type": "datahandler",
-            "datatype": "player",
-            "exists": true
-        },
-        {
-            "argname": "amount",
-            "type": "money",
-            "min": 1
-        }
-    ]],
-    ['!menu', function(pl, args, data) {
+        "argname": "player",
+        "type": "datahandler",
+        "datatype": "player",
+        "exists": true
+    },
+    {
+        "argname": "amount",
+        "type": "money",
+        "min": 1
+    }
+        ]],
+    ['!menu', function (pl, args, data) {
         var output = getTitleBar('Menu') + '\n' +
             '&6[My Money]{run_command:!myMoney|show_text:$eClick to show your money}&r &e|| ' +
             '&6[My Banks]{run_command:!myBanks|show_text:$eClick to show your banks}&r &e|| ' +
@@ -8667,7 +8667,7 @@ var score = scores[s];
             '&6[My Badges]{run_command:!myBadges|show_text:$eClick to show your badges}&r &e|| ';
         tellPlayer(pl, output);
     }, 'menu'],
-    ['!withdraw <amount> [times] [currency]', function(pl, args, data) {
+    ['!withdraw <amount> [times] [currency]', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var times = parseInt(args.times || 1);
@@ -8697,18 +8697,18 @@ var score = scores[s];
         }
         return false;
     }, 'withdraw', [{
-            "argname": "amount",
-            "type": "currency",
-            "min": 1,
-        },
-        {
-            "argname": "times",
-            "type": "number",
-            "min": 1,
-            "max": 128
-        }
-    ]],
-    ['!deposit', function(pl, args, data) {
+        "argname": "amount",
+        "type": "currency",
+        "min": 1,
+    },
+    {
+        "argname": "times",
+        "type": "number",
+        "min": 1,
+        "max": 128
+    }
+        ]],
+    ['!deposit', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var mItem = pl.getMainhandItem();
@@ -8723,7 +8723,7 @@ var score = scores[s];
         }
         return false;
     }, 'deposit'],
-    ['!depositAll [currency]', function(pl, args, data) {
+    ['!depositAll [currency]', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var pnbt = pl.getEntityNbt();
@@ -8737,12 +8737,12 @@ var score = scores[s];
             return false;
         }
 
-        var mItems = getPlayerInvFromNbt(pnbt, w, function(item, itnbt, w) {
+        var mItems = getPlayerInvFromNbt(pnbt, w, function (item, itnbt, w) {
             return isItemMoney(item, w, currency.name);
         });
         var addAmount = 0;
-        for(var i in mItems) {
-var mItem = mItems[i];
+        for (var i in mItems) {
+            var mItem = mItems[i];
             var mVal = getItemMoney(mItem, w) * mItem.getStackSize();
 
             addAmount += mVal;
@@ -8759,7 +8759,7 @@ var mItem = mItems[i];
 
 
     }, 'deposit', []],
-    ['!myMoney', function(pl, args, data) {
+    ['!myMoney', function (pl, args, data) {
         var pnbt = pl.getEntityNbt();
         var p = new Player(pl.getName()).init(data);
         var mp = p.data.money;
@@ -8768,8 +8768,8 @@ var mItem = mItems[i];
         tellPlayer(pl, getTitleBar('Money Pouch'));
         tellPlayer(pl, getNavBar());
         tellPlayer(pl, ":danger: &4&oYou will lose 50% of your money pouch on death.&r :danger:");
-        for(var v in VIRTUAL_CURRENCIES) {
-var crncy = VIRTUAL_CURRENCIES[v];
+        for (var v in VIRTUAL_CURRENCIES) {
+            var crncy = VIRTUAL_CURRENCIES[v];
             tellPlayer(pl, "&6" + crncy.displayName + ": &r" + crncy.prefix + getAmountCoin(p.data[crncy.name]) + crncy.suffix + (crncy.name == 'credit' ? '&r &a[Buy More]{open_url:https://www.paypal.me/TheOddlySeagull|show_text:$aClick or contact TheOddlySeagull on Discord. 1€ = 1G}&r' : ''));
         }
 
@@ -8781,7 +8781,7 @@ var crncy = VIRTUAL_CURRENCIES[v];
         tellPlayer(pl, "&9You will lose &r:money:&e" + getAmountCoin(mi + Math.round(mp / 2)) + "&9 on death!");
         return true;
     }, 'myMoney'],
-    ['!myIncome', function(pl, args, data) {
+    ['!myIncome', function (pl, args, data) {
         var p = new Player(pl.getName());
         p.load(data);
         tellPlayer(pl, getTitleBar("Income"));
@@ -8791,8 +8791,8 @@ var crncy = VIRTUAL_CURRENCIES[v];
         var pjobs = p.getJobs(data);
 
         if (pjobs.length > 0) {
-            for(var pj in pjobs) {
-var pjob = pjobs[pj];
+            for (var pj in pjobs) {
+                var pjob = pjobs[pj];
                 tellPlayer(pl, "&eJob income for &r" + pjob.getDisplayName(data));
                 tellPlayer(pl, "&e - Job salary: &6&o" + getAmountCoin(pjob.data.pay));
                 var jleft = (p.getJob(pjob.name).lastPayed + pjob.data.payTime) - new Date().getTime();
@@ -8805,13 +8805,13 @@ var pjob = pjobs[pj];
         return true;
 
     }, 'myIncome'],
-    ['!myStats [...matches]', function(pl, args, data) {
+    ['!myStats [...matches]', function (pl, args, data) {
         var pskills = getSkills(pl);
         var maxLvl = 32;
         tellPlayer(pl, getTitleBar("Stats"));
-        var lmatches = arrayTransform(args.matches, function(arr_el) { return arr_el.toLowerCase(); });
-        for(var p in pskills) {
-var pskill = pskills[p];
+        var lmatches = arrayTransform(args.matches, function (arr_el) { return arr_el.toLowerCase(); });
+        for (var p in pskills) {
+            var pskill = pskills[p];
             if (arrayOccurs(pskill.name.toLowerCase(), lmatches) || args.matches.length == 0) {
                 var proc = Math.round(pskill.xp / pskill.maxXp * 100);
                 skillBar = progressBar(pskill.xp, pskill.maxXp, 10);
@@ -8822,7 +8822,7 @@ var pskill = pskills[p];
 
         return true;
     }, 'myStats'],
-    ['!myColors', function(pl, args, data) {
+    ['!myColors', function (pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         var output = getTitleBar('Chat Colors') + '\n';
 
@@ -8833,8 +8833,8 @@ var pskill = pskills[p];
 
         output += '&5[Help]{*|show_text:' + helpText.replace(/&/g, '\u00A7') + '}&r &a[Reset chatcolor]{run_command:!myColor reset|show_text:$aClick to reset your default chat color to white}&r\n';
         var i = 1;
-        for(var r in _RAWCOLORS) {
-var rcol = _RAWCOLORS[r];
+        for (var r in _RAWCOLORS) {
+            var rcol = _RAWCOLORS[r];
             var colchar = (!plo.hasColor(rcol) ? "\u2B1C" : ":box:");
             var unlock = new Unlockable('chatcolor_' + rcol).init(data);
             var sellTxt = '';
@@ -8856,7 +8856,7 @@ var rcol = _RAWCOLORS[r];
 
         tellPlayer(pl, output);
     }, 'myColors'],
-    ['!myColor use <color>', function(pl, args, data) {
+    ['!myColor use <color>', function (pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         var output = '';
         if (plo.hasColor(args.color) == -1) {
@@ -8874,7 +8874,7 @@ var rcol = _RAWCOLORS[r];
         "argname": "color",
         "type": "color"
     }]],
-    ['!myColor reset', function(pl, args, data) {
+    ['!myColor reset', function (pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         var output = '';
 
@@ -8885,7 +8885,7 @@ var rcol = _RAWCOLORS[r];
 
         tellPlayer(pl, output);
     }, 'myColor.reset'],
-    ['!myEmotes [...matches]', function(pl, args, data) {
+    ['!myEmotes [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var plo = new Player(pl.getName()).init(data);
         var sb = pl.world.getScoreboard();
@@ -8896,8 +8896,8 @@ var rcol = _RAWCOLORS[r];
 
         var output = '';
 
-        for(var c in CHAT_EMOTES) {
-var ce = CHAT_EMOTES[c];
+        for (var c in CHAT_EMOTES) {
+            var ce = CHAT_EMOTES[c];
             if (args.matches.length == 0 || arrayOccurs(c, args.matches, false, false) > 0) {
                 var ec = new Emote(c).init(data, false);
                 showEmotes.push(ec);
@@ -8923,7 +8923,7 @@ var ce = CHAT_EMOTES[c];
             parseInt(params.show || 60),
             parseInt(params.page || 1),
             "!myEmotes {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(emote, i) {
+            function (emote, i) {
                 var plHas = plo.hasEmote(emote.name, sb, data);
                 var plHasPerm = emote.getPermission().init(data, false).permits(plo.name, sb, data);
 
@@ -8956,24 +8956,24 @@ var ce = CHAT_EMOTES[c];
                 return (plHas ? '&r' : '&8') + '[:' + emote.name + ':]{' + cmdStr + '|show_text:' + ccs(infoStr + lockedStr + sellStr) + '}' + newLine;
             },
             false,
-            function(emote, list) {
+            function (emote, list) {
                 return arrayOccurs(emote.name, list, false, false) > 0
             },
             (params.sort || "").toLowerCase() == "desc",
             '', {
-                showLenOptions: [
-                    20,
-                    40,
-                    60
-                ]
-            }
+            showLenOptions: [
+                20,
+                40,
+                60
+            ]
+        }
         );
 
 
         tellPlayer(pl, output);
 
     }, 'myEmotes'],
-    ['!setHome <name>', function(pl, args) {
+    ['!setHome <name>', function (pl, args) {
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         var ppos = pl.getPos();
@@ -8990,7 +8990,7 @@ var ce = CHAT_EMOTES[c];
 
         return false;
     }, 'setHome'],
-    ['!delHome <name>', function(pl, args) {
+    ['!delHome <name>', function (pl, args) {
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         var ppos = pl.getPos();
@@ -9005,7 +9005,7 @@ var ce = CHAT_EMOTES[c];
         }
         return false;
     }, 'delHome'],
-    ['!myHomes', function(pl, args) {
+    ['!myHomes', function (pl, args) {
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         plo.load(data);
@@ -9013,8 +9013,8 @@ var ce = CHAT_EMOTES[c];
             tellPlayer(pl, getTitleBar("Homes"));
             var maxHomeStr = " - &e" + Object.keys(plo.data.homes).length + "/" + (plo.data.maxHomes == -1 ? "&aInfinite" : plo.data.maxHomes) + "&e Homes used";
             tellPlayer(pl, "[&a:check: Add{suggest_command:!setHome }&r]" + maxHomeStr);
-            for(var i in plo.data.homes) {
-var home = plo.data.homes[i];
+            for (var i in plo.data.homes) {
+                var home = plo.data.homes[i];
                 tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to TP\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
             }
             return true;
@@ -9024,7 +9024,7 @@ var home = plo.data.homes[i];
 
         return false;
     }, 'myHomes'],
-    ['!defaultHome <name>', function(pl, args, data) {
+    ['!defaultHome <name>', function (pl, args, data) {
         var plo = new Player(pl.getName()).init(data);
         if (Object.keys(plo.data.homes).indexOf(args.name) > -1) {
             plo.data.defaultHome = args.name;
@@ -9036,7 +9036,7 @@ var home = plo.data.homes[i];
         }
         return false;
     }, 'defaultHome'],
-    ['!home [name]', function(pl, args) {
+    ['!home [name]', function (pl, args) {
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         var ppos = pl.getPos();
@@ -9058,7 +9058,7 @@ var home = plo.data.homes[i];
         }
         return false;
     }, 'home'],
-    ['!back', function(pl, args, data) {
+    ['!back', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
 
         if (p.data.backPos == null) {
@@ -9072,21 +9072,21 @@ var home = plo.data.homes[i];
 
         p.set('backPos', null).save(data);
     }, 'back'],
-    ['!heal', function(pl, args) {
+    ['!heal', function (pl, args) {
         pl.setHealth(parseFloat(pl.getMaxHealth()));
         pl.setHunger(20);
         // pl.getMCEntity().func_71024_bL().func_75119_b(20);
         tellPlayer(pl, "&aYou have been healed!");
     }, 'heal'],
-    ['!claim', function(pl, args, data) {
+    ['!claim', function (pl, args, data) {
         tellPlayer(pl, '&aChecking if there are unclaimed rewards for you...');
         var p = new Player(pl.getName()).init(data);
         var sb = pl.world.scoreboard;
 
         var _claimed = 0;
 
-        for(var v in VIRTUAL_CURRENCIES) {
-var currency = VIRTUAL_CURRENCIES[v];
+        for (var v in VIRTUAL_CURRENCIES) {
+            var currency = VIRTUAL_CURRENCIES[v];
             var objKey = '_cst_' + currency.name;
             if (!sb.hasObjective(objKey)) {
                 continue;
@@ -9110,7 +9110,7 @@ var currency = VIRTUAL_CURRENCIES[v];
         }
 
     }, 'claim'],
-    ['!player unlock <player> <unlock> [unlocked]', function(pl, args, data) {
+    ['!player unlock <player> <unlock> [unlocked]', function (pl, args, data) {
         var p = new Player(args.player).init(data);
         var unlocked = (args.unlocked == null ? true : (args.unlocked == 'true'));
 
@@ -9136,7 +9136,7 @@ var currency = VIRTUAL_CURRENCIES[v];
 //REGISTER REGION COMMANDS
 registerXCommands([
     //['', function(pl, args){}, '', []],
-    ['!region create <name>', function(pl, args, data) {
+    ['!region create <name>', function (pl, args, data) {
         var region = new Region(args.name);
         region.save(data);
         tellPlayer(pl, "&aAdded region '" + args.name + "'!");
@@ -9147,7 +9147,7 @@ registerXCommands([
         "datatype": "region",
         "exists": false
     }]],
-    ['!region info [name] [...matches]', function(pl, args, data) {
+    ['!region info [name] [...matches]', function (pl, args, data) {
         var allArgs = args.matches.concat([]);
         allArgs.push(args.name || '');
         var params = getArgParams(allArgs);
@@ -9179,8 +9179,8 @@ registerXCommands([
                         'Build',
                     ];
                     output += '&6&lSale Info: &b[Sale Settings]{run_command:!region info ' + region.name + ' -showpage:sale|show_text:$cClick to view region\'s sale settings.}&r\n';
-                    for(var i in openVals) {
-var opv = openVals[i];
+                    for (var i in openVals) {
+                        var opv = openVals[i];
                         var rov = region.data['all' + opv];
                         output +=
                             '&6&lOpen ' + opv + ': &b' + (rov ? '&a:check: Yes' : '&c:cross: No') +
@@ -9194,8 +9194,8 @@ var opv = openVals[i];
                     if (region.data.positions.length > 0) {
                         //Cache positions for undo
                         output += '&6&lPosition List:&r (&cClear{run_command:!region removePos ' + region.name + ' ' + Object.keys(region.data.positions).join(' ') + '}&r)\n';
-                        for(var ri in region.data.positions) {
-var regpos = region.data.positions[ri];
+                        for (var ri in region.data.positions) {
+                            var regpos = region.data.positions[ri];
                             output += '&5&l - #' + ri + '&r &d[Info]{run_command:!region info ' + region.name + ' -showpage:posinfo -posNum:' + ri.toString() + '}&r &c[:cross: Remove]{run_command:!region removePos ' + region.name + ' ' + ri + '}&r\n';
                         }
                     } else {
@@ -9226,8 +9226,8 @@ var regpos = region.data.positions[ri];
                     output += '&6&lFor Sale: &r' +
                         (
                             region.data.forSale ?
-                            '&a[:check: Yes] &c[Disable]{run_command:!region setForSale ' + region.name + ' false|show_text:$cClick to disable region for sale.}&r' :
-                            '&c[:cross: No] &a[Enable]{run_command:!region setForSale ' + region.name + ' true|show_text:$aClick to enable region for sale.}&r'
+                                '&a[:check: Yes] &c[Disable]{run_command:!region setForSale ' + region.name + ' false|show_text:$cClick to disable region for sale.}&r' :
+                                '&c[:cross: No] &a[Enable]{run_command:!region setForSale ' + region.name + ' true|show_text:$aClick to enable region for sale.}&r'
                         ) + '\n';
 
                     if (region.data.saleType == 'buy') {
@@ -9261,8 +9261,8 @@ var regpos = region.data.positions[ri];
                 pl.getPos().getZ(),
             ];
             var showRegs = [];
-            for(var r in regids) {
-var regid = regids[r];
+            for (var r in regids) {
+                var regid = regids[r];
                 var reg = new Region(regid).init(data);
                 if (reg.hasCoord(ppos)) {
                     showRegs.push(reg.name);
@@ -9283,7 +9283,7 @@ var regid = regids[r];
         "datatype": "region",
         "exists": true,
     }]],
-    ['!region editPosType <name> <posNum> <type>', function(pl, args, data) {
+    ['!region editPosType <name> <posNum> <type>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var output = '';
         var posNum = parseInt(args.posNum);
@@ -9300,23 +9300,23 @@ var regid = regids[r];
 
         tellPlayer(pl, output);
     }, 'region.editPosType', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true,
-        },
-        {
-            "argname": "posNum",
-            "type": "number",
-            "min": 0,
-        },
-        {
-            "argname": "type",
-            "type": "enum",
-            "values": Object.keys(CONFIG_SERVER.REGION_TYPES || {}).concat(['none'])
-        }
-    ]],
-    ['!region setOpen <name> <action> <value>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true,
+    },
+    {
+        "argname": "posNum",
+        "type": "number",
+        "min": 0,
+    },
+    {
+        "argname": "type",
+        "type": "enum",
+        "values": Object.keys(CONFIG_SERVER.REGION_TYPES || {}).concat(['none'])
+    }
+        ]],
+    ['!region setOpen <name> <action> <value>', function (pl, args, data) {
         var reg = new Region(args.name).init(data);
         var rdatakey = 'all' + args.action.toLowerCase().rangeUpper(0, 1);
         var newval = (args.value == "true");
@@ -9324,21 +9324,21 @@ var regid = regids[r];
         tellPlayer(pl, "&a" + (newval ? "Enabled" : "Disabled") + " open " + args.action + " of region '" + args.name + "'");
         reg.save(data);
     }, 'region.setOpen', [{
-            "argname": "name",
-            "type": "datahandler",
-            "exists": true,
-        },
-        {
-            "argname": "action",
-            "type": "enum",
-            "values": ["interact", "build", "attack"],
-        },
-        {
-            "argname": "value",
-            "type": "bool",
-        },
-    ]],
-    ['!region setPrio <name> <priority>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "exists": true,
+    },
+    {
+        "argname": "action",
+        "type": "enum",
+        "values": ["interact", "build", "attack"],
+    },
+    {
+        "argname": "value",
+        "type": "bool",
+    },
+        ]],
+    ['!region setPrio <name> <priority>', function (pl, args, data) {
         var reg = new Region(args.name);
         reg.load(data);
         reg.data.priority = parseInt(args.priority);
@@ -9351,7 +9351,7 @@ var regid = regids[r];
         "datatype": "region",
         "exists": true,
     }]],
-    ['!region setForSale <name> <forSale>', function(pl, args, data) {
+    ['!region setForSale <name> <forSale>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var forSale = args.forSale.toString() == 'true';
 
@@ -9367,14 +9367,14 @@ var regid = regids[r];
         "argname": "forSale",
         "type": "bool"
     }]],
-    ['!region removePos <name> [...posNumbers]', function(pl, args, data) {
+    ['!region removePos <name> [...posNumbers]', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         //Cache pos for undo
         var undocmds = [];
         var newPos = [];
 
-        for(var i in region.data.positions) {
-var rpos = region.data.positions[i];
+        for (var i in region.data.positions) {
+            var rpos = region.data.positions[i];
             if (args.posNumbers.indexOf(i.toString()) > -1) {
                 if (rpos.xyz1 && rpos.xyz2) {
                     undocmds.push("!region setPos " + region.name + " " + i + " 1 " + rpos.xyz1[0] + " " + rpos.xyz1[1] + " " + rpos.xyz1[2]);
@@ -9396,11 +9396,11 @@ var rpos = region.data.positions[i];
         "datatype": "region",
         "exists": true
     }]],
-    ['!region setPos <name> <posNum> <selectionNum> <x> <y> <z>', function(pl, args, data) { //Wont be used by players, but region wand commands
+    ['!region setPos <name> <posNum> <selectionNum> <x> <y> <z>', function (pl, args, data) { //Wont be used by players, but region wand commands
         var region = new Region(args.name).init(data);
         var posArgs = ['x', 'y', 'z'];
-        for(var i in posArgs) {
-var pa = posArgs[i];
+        for (var i in posArgs) {
+            var pa = posArgs[i];
             args[pa] = args[pa].replace("~", pl.getPos()['get' + pa.toUpperCase()]());
         }
         var newPos = [
@@ -9420,42 +9420,42 @@ var pa = posArgs[i];
         region.save(data);
         return true;
     }, 'region.setPos', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true,
-        },
-        {
-            "argname": "posNum",
-            "min": 0,
-        },
-        {
-            "argname": "selectioNum",
-            "min": 1,
-            "max": 2,
-        },
-    ]],
-	['!region setName <name> <newName>', function(pl, args, data) {
-		var region = new Region(args.name).init(data);
-		var permission = new Permission(region.getPermissionId()).init();
-		region.rename(args.newName, data)
-		permission.rename(region.getPermissionId(), data);
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true,
+    },
+    {
+        "argname": "posNum",
+        "min": 0,
+    },
+    {
+        "argname": "selectioNum",
+        "min": 1,
+        "max": 2,
+    },
+        ]],
+    ['!region setName <name> <newName>', function (pl, args, data) {
+        var region = new Region(args.name).init(data);
+        var permission = new Permission(region.getPermissionId()).init();
+        region.rename(args.newName, data)
+        permission.rename(region.getPermissionId(), data);
 
-		tellPlayer(pl, "&aRenamed region '"+args.name+"' to '"+args.newName+"'!&r");
+        tellPlayer(pl, "&aRenamed region '" + args.name + "' to '" + args.newName + "'!&r");
     }, 'region.setName', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true
-        },
-		{
-			"argname": "newName",
-			"type": "datahandler",
-			"datatype": "region",
-			"exists": false
-		}
-    ]],
-    ['!region list [...matches]', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    },
+    {
+        "argname": "newName",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": false
+    }
+        ]],
+    ['!region list [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var regions = new Region().getAllDataEntries(data);
 
@@ -9466,10 +9466,10 @@ var pa = posArgs[i];
             (params.show || 10),
             (params.page || 1),
             '!region list {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(region) {
+            function (region) {
                 return '&e - &b' + region.name + ' &6[Info]{run_command:!region info ' + region.name + '|show_text:$aClick to show info.}&r\n';
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.name.toLowerCase();
                 var bl = b.name.toLowerCase();
 
@@ -9478,7 +9478,7 @@ var pa = posArgs[i];
 
                 return 0;
             },
-            function(region, list) {
+            function (region, list) {
                 return arrayOccurs(region.name, list, false, false);
             },
             (params.sort == 'desc')
@@ -9488,7 +9488,7 @@ var pa = posArgs[i];
 
         return true;
     }, 'region.list'],
-    ['!region remove <name>', function(pl, args, data) {
+    ['!region remove <name>', function (pl, args, data) {
         var region = new Region(args.name);
         region.remove(data);
         tellPlayer(pl, "&aRemoved region '" + region.name + "'!");
@@ -9499,7 +9499,7 @@ var pa = posArgs[i];
         "datatype": "region",
         "exists": true
     }]],
-    ['!region setOwner <name> [player]', function(pl, args, data) {
+    ['!region setOwner <name> [player]', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         region.data.owner = args.player;
         if (!region.data.owner) {
@@ -9514,12 +9514,12 @@ var pa = posArgs[i];
         "datatype": "region",
         "exists": true
     }]],
-    ['!region select <name>', function(pl, args, data) {
+    ['!region select <name>', function (pl, args, data) {
         var rayt;
         try {
             rayt = pl.rayTraceBlock(16, false, true);
 
-        } catch (exc) {}
+        } catch (exc) { }
         var region = new Region(args.name).init(data);
         if (rayt) {
             var rpos = [
@@ -9534,68 +9534,68 @@ var pa = posArgs[i];
         tellPlayer(pl, "&cYou are not looking at a block.");
         return false;
     }, 'region.setPos', [ //Needs setPos permission (to keep modifying position at one perm!)
-        {
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true
-        }
-    ]],
-    ['!region setPrice <name> <price>', function(pl, args, data) {
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "region",
+                "exists": true
+            }
+        ]],
+    ['!region setPrice <name> <price>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var amount = getCoinAmount(args.price);
         region.set('salePrice', amount).save(data);
 
         tellPlayer(pl, '&aSet sale price to &r:money:&e' + getAmountCoin(amount));
     }, 'region.setPrice', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true
-        },
-        {
-            "argname": "price",
-            "type": "currency",
-            "min": 0
-        }
-    ]],
-    ['!region setRentPrice <name> <price>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    },
+    {
+        "argname": "price",
+        "type": "currency",
+        "min": 0
+    }
+        ]],
+    ['!region setRentPrice <name> <price>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var amount = getCoinAmount(args.price);
         region.set('rentPrice', amount).save(data);
 
         tellPlayer(pl, '&aSet rent price to &r:money:&e' + getAmountCoin(amount));
     }, 'region.setPrice', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true
-        },
-        {
-            "argname": "price",
-            "type": "currency",
-            "min": 0
-        }
-    ]],
-    ['!region setSaleType <name> <saleType>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    },
+    {
+        "argname": "price",
+        "type": "currency",
+        "min": 0
+    }
+        ]],
+    ['!region setSaleType <name> <saleType>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
         region.set('saleType', args.saleType).save(data);
 
         tellPlayer(pl, '&aSet sale type of region \'' + region.name + '\' to ' + args.saleType);
     }, 'region.setSaleType', [{
-            "argname": "name",
-            "type": "datahandler",
-            "datatype": "region",
-            "exists": true
-        },
-        {
-            "argname": "saleType",
-            "type": "enum",
-            "values": ["buy", "rent"]
-        }
-    ]],
-    ['!region setRentTime <name> <time>', function(pl, args, data) {
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    },
+    {
+        "argname": "saleType",
+        "type": "enum",
+        "values": ["buy", "rent"]
+    }
+        ]],
+    ['!region setRentTime <name> <time>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
         region.set('rentTime', getStringTime(args.time)).save(data);
@@ -9611,7 +9611,7 @@ var pa = posArgs[i];
         "type": "time",
         "min": getStringTime('1h')
     }]],
-    ['!region setMaxRentTime <name> <time>', function(pl, args, data) {
+    ['!region setMaxRentTime <name> <time>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
         region.set('maxRentTime', getStringTime(args.time)).save(data);
@@ -9627,7 +9627,7 @@ var pa = posArgs[i];
         "type": "time",
         "min": -1
     }]],
-    ['!region buy [name] [...matches]', function(pl, args, data) {
+    ['!region buy [name] [...matches]', function (pl, args, data) {
         if (args.name) { args.matches.push(args.name); }
         var params = getArgParams(args.matches);
 
@@ -9639,8 +9639,8 @@ var pa = posArgs[i];
                 pl.getPos().getZ(),
             ];
             var showRegs = [];
-            for(var r in regids) {
-var regid = regids[r];
+            for (var r in regids) {
+                var regid = regids[r];
                 var reg = new Region(regid).init(data);
                 if (reg.data.forSale && reg.data.saleType == 'buy') {
                     if (reg.hasCoord(ppos)) {
@@ -9655,11 +9655,11 @@ var regid = regids[r];
                     (params.show || 10),
                     (params.page || 1),
                     "!region rent -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-                    function(reg) {
+                    function (reg) {
                         var regBuyInfo = '&aBuy this region for &r:money:&e' + getAmountCoin(reg.data.salePrice);
                         return '&e - &b' + reg.name + ' &r:money:&e' + getAmountCoin(reg.data.salePrice) + ' &a[Buy]{run_command:!region buy ' + reg.name + '|show_text:' + regBuyInfo.replaceAll('&', '$') + '}&r\n';
                     },
-                    function(a, b) {
+                    function (a, b) {
                         var al = a.name.toLowerCase();
                         var bl = b.name.toLowerCase();
 
@@ -9668,7 +9668,7 @@ var regid = regids[r];
 
                         return 0;
                     },
-                    function(reg, list) {
+                    function (reg, list) {
                         return arrayOccurs(reg.name, list, false, false) > 0;
                     },
                     (params.sort == 'desc')
@@ -9721,7 +9721,7 @@ var regid = regids[r];
         "datatype": "region",
         "exists": true
     }]],
-    ['!region rent [name] [...matches]', function(pl, args, data) {
+    ['!region rent [name] [...matches]', function (pl, args, data) {
         if (args.name) { args.matches.push(args.name); }
         var params = getArgParams(args.matches);
         if (!args.name) {
@@ -9732,8 +9732,8 @@ var regid = regids[r];
                 pl.getPos().getZ(),
             ];
             var showRegs = [];
-            for(var r in regids) {
-var regid = regids[r];
+            for (var r in regids) {
+                var regid = regids[r];
                 var reg = new Region(regid).init(data);
                 if (((reg.data.forSale && !reg.data.owner) || reg.data.owner == pl.getName()) && reg.data.saleType == 'rent') {
                     if (reg.hasCoord(ppos)) {
@@ -9748,12 +9748,12 @@ var regid = regids[r];
                     (params.show || 10),
                     (params.page || 1),
                     "!region rent -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-                    function(reg) {
+                    function (reg) {
                         var regRentInfo = '&aRent this region for &c' + getTimeString(reg.data.rentTime) + '&r&a for &r:money:&e' + getAmountCoin(reg.data.rentPrice) + '&r\n' +
                             '&aYou can pre-pay up to &c' + reg.getMaxRentTimeString();
                         return '&e - &b' + reg.name + ' &a[Rent]{run_command:!region rent ' + reg.name + '|show_text:' + regRentInfo.replaceAll('&', '$') + '}&r\n';
                     },
-                    function(a, b) {
+                    function (a, b) {
                         var al = a.name.toLowerCase();
                         var bl = b.name.toLowerCase();
 
@@ -9762,7 +9762,7 @@ var regid = regids[r];
 
                         return 0;
                     },
-                    function(reg, list) {
+                    function (reg, list) {
                         return arrayOccurs(reg.name, list, false, false) > 0;
                     },
                     (params.sort == 'desc')
@@ -9819,13 +9819,13 @@ var regid = regids[r];
         "datatype": "region",
         "exists": true
     }]],
-    ['!myRegions [...matches]', function(pl, args, data) {
+    ['!myRegions [...matches]', function (pl, args, data) {
         var checkRegions = new Region().getAllDataEntries(data);
         var params = getArgParams(args.matches);
         var regions = [];
 
-        for(var i in checkRegions) {
-var checkRegion = checkRegions[i];
+        for (var i in checkRegions) {
+            var checkRegion = checkRegions[i];
             if (checkRegion.data.owner == pl.getName() || checkRegion.data.trusted.indexOf(pl.getName()) > -1) {
                 regions.push(checkRegion);
             }
@@ -9840,7 +9840,7 @@ var checkRegion = checkRegions[i];
             (params.show || 10),
             (params.page || 1),
             "!myRegions {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-            function(region) {
+            function (region) {
                 var regionInfo = '&dClick to see more details.\n' +
                     '&6&lRegion Name: &b' + region.name + '&r\n' +
                     (region.data.owner == pl.getName() ? '&a[:check: Owner]' : '&c[:cross: Owner] ' + (region.isTrusted(pl.getName()) ? '&a[:check: Trusted]' : '&c[:cross: Trusted]')) + ' ' + (region.getPermission().init(data).permitsPlayer(pl) ? '&a[:check: Via Permission]' : '&c[:cross: Via Permission]') + '\n' +
@@ -9849,17 +9849,17 @@ var checkRegion = checkRegions[i];
 
                 return '&e - &b' + region.name + ' &d[Info]{run_command:!myRegion info ' + region.name + '|show_text:' + regionInfo.replaceAll('&', '$') + '}&r\n';
             },
-            function(a, b) {
+            function (a, b) {
                 return b.name - a.name;
             },
-            function(region, list) {
+            function (region, list) {
                 return arrayOccurs(region.name, list, false, false) > 0;
             }
         );
 
         tellPlayer(pl, output);
     }, 'myRegions'],
-    ['!myRegion info [name] [...matches]', function(pl, args, data) {
+    ['!myRegion info [name] [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var showpage = params.showpage || 'info';
 
@@ -9874,8 +9874,8 @@ var checkRegion = checkRegions[i];
                 pl.getPos().getZ(),
             ];
             var showRegs = [];
-            for(var r in regids) {
-var regid = regids[r];
+            for (var r in regids) {
+                var regid = regids[r];
                 var reg = new Region(regid).init(data);
                 if (reg.data.owner == pl.getName() || reg.data.trusted.indexOf(pl.getName()) > -1) {
                     if (reg.hasCoord(ppos)) {
@@ -9927,13 +9927,13 @@ var regid = regids[r];
                         (params.show || 10),
                         (params.page || 1),
                         '!myRegion info ' + region.name + ' {MATCHES} -showpage:trusted -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-                        function(trusted) {
+                        function (trusted) {
                             return '&e - &b' + trusted + ' &c[:cross: Remove]{run_command:!myRegion removeTrusted ' + region.name + ' ' + trusted + '|show_text:$cClick to remove ' + trusted + ' from trusted list.}&r\n';
                         },
-                        function(a, b) {
+                        function (a, b) {
                             return a.toLowerCase() - b.toLowerCase();
                         },
-                        function(trusted, list) {
+                        function (trusted, list) {
                             return arrayOccurs(trusted, list, false, false) > 0;
                         },
                         (params.sort == 'desc'),
@@ -9951,7 +9951,7 @@ var regid = regids[r];
         "datatype": "region",
         "exists": true
     }]],
-    ['!myRegion setForSale <name> <forSale>', function(pl, args, data) {
+    ['!myRegion setForSale <name> <forSale>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var forSale = args.forSale == 'true';
 
@@ -9978,7 +9978,7 @@ var regid = regids[r];
         "argname": "forSale",
         "type": "bool"
     }]],
-    ['!myRegion addTrusted <name> <...players>', function(pl, args, data) {
+    ['!myRegion addTrusted <name> <...players>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
         if (region.data.owner != pl.getName()) {
@@ -9986,8 +9986,8 @@ var regid = regids[r];
             return false;
         }
 
-        for(var i in args.players) {
-var player = args.players[i];
+        for (var i in args.players) {
+            var player = args.players[i];
             if (region.data.trusted.indexOf(player) == -1) {
                 region.data.trusted.push(player);
             }
@@ -10002,7 +10002,7 @@ var player = args.players[i];
         "datatype": "region",
         "exists": true
     }]],
-    ['!myRegion removeTrusted <name> <...players>', function(pl, args, data) {
+    ['!myRegion removeTrusted <name> <...players>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
         if (region.data.owner != pl.getName()) {
@@ -10010,8 +10010,8 @@ var player = args.players[i];
             return false;
         }
         var newTrusted = [];
-        for(var i in region.data.trusted) {
-var trusted = region.data.trusted[i];
+        for (var i in region.data.trusted) {
+            var trusted = region.data.trusted[i];
             if (args.players.indexOf(trusted) == -1) {
                 newTrusted.push(trusted);
             }
@@ -10028,9 +10028,9 @@ var trusted = region.data.trusted[i];
         "datatype": "region",
         "exists": true
     }]],
-    ['!region unpaid [...matches]', function(pl, args, data) {
+    ['!region unpaid [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
-        var regions = new Region().getAllDataEntries(data).filter(function(region) {
+        var regions = new Region().getAllDataEntries(data).filter(function (region) {
             return region.data.saleType == 'rent' && region.getRentTimeLeft() < 0 && region.data.owner;
         });
 
@@ -10041,7 +10041,7 @@ var trusted = region.data.trusted[i];
             (params.show || 10),
             (params.page || 1),
             '!region list {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(region) {
+            function (region) {
                 var timeLate = getTimeString(Math.abs(region.getRentTimeLeft()), ['ms']);
                 var helpTxt = '&dClick for more details.&r\n\n' +
                     '&6&lRegion owner: &e' + region.data.owner + '&r\n' +
@@ -10050,7 +10050,7 @@ var trusted = region.data.trusted[i];
                     '\n&dClick for more details.';
                 return '&e - &b' + region.name + ' &e(' + region.data.owner + ') &c' + timeLate + ' too late&r &6[Info]{run_command:!region info ' + region.name + '|show_text:' + helpTxt.replaceAll('&', '$') + '}&r\n';
             },
-            function(a, b) {
+            function (a, b) {
                 var al = a.name.toLowerCase();
                 var bl = b.name.toLowerCase();
 
@@ -10059,7 +10059,7 @@ var trusted = region.data.trusted[i];
 
                 return 0;
             },
-            function(region, list) {
+            function (region, list) {
                 return arrayOccurs(region.name, list, false, false);
             },
             (params.sort == 'desc')
@@ -10077,13 +10077,13 @@ var teamCommands = new CommandFactory("team");
 
 
 registerXCommands([
-    ['!team syncAll [removeNonExistend]', function(pl, args, data) {
+    ['!team syncAll [removeNonExistend]', function (pl, args, data) {
         var w = pl.world;
         var sb = w.getScoreboard();
         var sbteams = sb.getTeams();
         var dhteams = new Team().getAllDataIds(data);
-        for(var s in sbteams) {
-var sbt = sbteams[s];
+        for (var s in sbteams) {
+            var sbt = sbteams[s];
             if (dhteams.indexOf(sbt.getName()) == -1) {
                 tellPlayer(pl, "&cScoreboard team '" + sbt.getName() + "' has no synced data! Syncing...");
             }
@@ -10093,7 +10093,7 @@ var sbt = sbteams[s];
         "argname": "removeNonExistend",
         "type": "bool"
     }]],
-    ['!team join <team> [...players]', function(pl, args, data) {
+    ['!team join <team> [...players]', function (pl, args, data) {
         var w = pl.world;
         var sb = w.scoreboard;
         if (!sb.hasTeam(args.team)) {
@@ -10104,8 +10104,8 @@ var sbt = sbteams[s];
         var addPlayers = args.players;
         if (addPlayers.length == 0) { addPlayers.push(pl.getName()); }
 
-        for(var i in addPlayers) {
-var addPlayer = addPlayers[i];
+        for (var i in addPlayers) {
+            var addPlayer = addPlayers[i];
             executeCommand(pl, '/scoreboard teams join ' + args.team + ' ' + addPlayer);
         }
 
@@ -10121,17 +10121,17 @@ var addPlayer = addPlayers[i];
 
 var unlockCommands = new CommandFactory("unlockable", "unlock");
 unlockCommands
-    .addSettable("price", function(value) {
+    .addSettable("price", function (value) {
         return getCoinAmount(value);
     }, [{
         "argname": "price",
         "type": "currency",
         "min": 1,
     }])
-    .addSettable("displayName", function(value) {
+    .addSettable("displayName", function (value) {
         return value.join(' ');
     }, [], null, '[...{NAME}]')
-    .addSettable("description", function(value) {
+    .addSettable("description", function (value) {
         return value.join(' ');
     }, [], null, '[...{NAME}]', null, 'desc')
     .addSettable("color", null, [{
@@ -10142,19 +10142,19 @@ unlockCommands
         "argname": "currency",
         "type": "virtualcurrency"
     }])
-    .addSettable("forSale", function(value) {
+    .addSettable("forSale", function (value) {
         return value == 'true';
     }, [{
         "argname": "forSale",
         "type": "bool",
     }])
-    .addSettable("hidden", function(value) {
+    .addSettable("hidden", function (value) {
         return value == 'true';
     }, [{
         "argname": "hidden",
         "type": "bool",
     }])
-    .addInfoText(function(unlock) {
+    .addInfoText(function (unlock) {
         return "&6&lDisplay Name: &e" + unlock.data.displayName + ' &a[Change]{suggest_command:!unlock setDisplayName ' + unlock.name + ' |show_text:$aClick to change the display name.}&r\n' +
             "&6&lCurrency: &e" + unlock.data.currency + ' &a[Change]{suggest_command:!unlock setCurrency ' + unlock.name + ' |show_text:$aClick to change the currency.}&r\n' +
             "&6&lPrice: " + unlock.formatPrice() + ' &a[Change]{suggest_command:!unlock setPrice ' + unlock.name + ' |show_text:$aClick to change the price.}&r\n' +
@@ -10163,14 +10163,14 @@ unlockCommands
             '&6&lColor: &' + unlock.getColor() + unlock.data.color + ' &a[Change]{suggest_command:!unlock setColor ' + unlock.name + ' |show_text:$aClick to change the color.}&r\n' +
             '&6&lFor Sale:' + (unlock.data.forSale ? '&a:check: Yes &c[Disable]{run_command:!unlock setForSale ' + unlock.name + ' false|show_text:$cClick to disable ' + unlock.name + '}&r' : '&c:cross: No &a[Enable]{run_command:!unlock setForSale ' + unlock.name + ' true|show_text:$aClick to enable ' + unlock.name + '}&r');
     })
-    .setListTransformer(function(unlock) {
+    .setListTransformer(function (unlock) {
         return '&e - &b' + unlock.name + ' &5[Info]{run_command:!unlock info ' + unlock.name + '|show_text:$5Click to show info about unlockable}&r\n';
     })
     .genDefault(['copy'])
     .register();
 
 registerXCommands([
-    ['!unlock buy <unlockable>', function(pl, args, data) {
+    ['!unlock buy <unlockable>', function (pl, args, data) {
         var unlock = new Unlockable(args.unlockable).init(data);
         if (!unlock.data.forSale) {
             tellPlayer(pl, '&cThis unlockable is not for sale.');
@@ -10204,10 +10204,10 @@ registerXCommands([
         "datatype": "unlockable",
         "exists": true,
     }]],
-    ['!myUnlocks [...matches]', function(pl, args, data) {
+    ['!myUnlocks [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var p = new Player(pl.getName()).init(data);
-        var unlocks = new Unlockable().getAllDataEntries(data).filter(function(unlock) {
+        var unlocks = new Unlockable().getAllDataEntries(data).filter(function (unlock) {
             return !unlock.data.hidden;
         });
 
@@ -10218,7 +10218,7 @@ registerXCommands([
             parseInt(params.show || 10),
             parseInt(params.page || 1),
             '!myUnlocks {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}',
-            function(unlock) {
+            function (unlock) {
                 var color = '&' + unlock.getColor();
                 var hoverCmd = p.hasUnlock(unlock.name) ? '*' : 'suggest_command:!unlock buy ' + unlock.name;
                 var hoverText = color + '[' + unlock.data.displayName + ']\n' +
@@ -10233,10 +10233,10 @@ registerXCommands([
                 }
                 return color + (p.hasUnlock(unlock.name) ? '' : '&m') + '[' + unlock.data.displayName + ']{' + hoverCmd + '|show_text:' + ccs(hoverText) + '}\n';
             },
-            function(a, b) {
+            function (a, b) {
                 return (b.data.price || 0) - (a.data.price || 0);
             },
-            function(unlock, list) {
+            function (unlock, list) {
                 return arrayOccurs(unlock.name, list, false, false) > 0 ||
                     arrayOccurs(unlock.data.displayName, list, false, false) > 0 ||
                     arrayOccurs(unlock.data.description, list, false, false) > 0;
@@ -10261,13 +10261,13 @@ function tellTarget(player, target, rawtext) {
 }
 
 function tellPlayerTitle(player, rawtext, type, target) {
-	if(typeof(type) == typeof(undefined) || type === null) { type = "actionbar"; }
+    if (typeof (type) == typeof (undefined) || type === null) { type = "actionbar"; }
     return executeCommand(player, "/title " + (target || player.getName()) + " " + type + " " + parseEmotes(strf(rawtext)))
 }
 //Send player multiple formatted messages from array
 function storytellPlayer(player, ar) {
-    for(var i in ar) {
-var ari = ar[i];
+    for (var i in ar) {
+        var ari = ar[i];
         tellPlayer(player, ari);
     }
 }
@@ -10275,7 +10275,7 @@ var ari = ar[i];
 //Get server title bar for displaying
 //TO-DO: Placeholders instead of multiple variables
 function getTitleBar(title, showServerName) {
-	if(typeof(showServerName) == typeof(undefined) || showServerName === null) { showServerName = true; }
+    if (typeof (showServerName) == typeof (undefined) || showServerName === null) { showServerName = true; }
     return CONFIG_SERVER.BAR_OPEN + (showServerName ? CONFIG_SERVER.TITLE + " " : CONFIG_SERVER.PREFIX) + title + CONFIG_SERVER.BAR_CLOSE;
 }
 
@@ -10284,7 +10284,7 @@ function getNavBar() {
 }
 
 function getUndoBtn(undo_cmds, hoverText) {
-	if(typeof(hoverText) == typeof(undefined) || hoverText === null) { hoverText = null; }
+    if (typeof (hoverText) == typeof (undefined) || hoverText === null) { hoverText = null; }
     return "&r[" + _MSG['undoBtnText'] + "{run_command:!chain ;" + undo_cmds.join(";") + (hoverText == null ? "" : "|show_text:" + hoverText.toString()) + "}&r]";
 }
 
@@ -10301,27 +10301,27 @@ Bridge between Reskillable-Compatskills mod and Custom NPCs
  * @param {function||null} callback Optional callback when leveling up
  */
 function checkLevelUp(player, callback) {
-	if(typeof(callback) == typeof(undefined) || callback === null) { callback = null; }
-	if(hasMCMod("reskillable")) {
-		var skillData = getPlayerSkills(player);
-		for(var i = 0; i < skillData.length; i++) {
-			var skill = skillData[i];
-			if(skill.xp >= skill.maxXp) {
-				skill.mcSkill.setLevel(skill.level+1);
-				skill.sbScore.setValue(skill.xp - skill.maxXp);
-				if(typeof callback === 'function') {
-					var e = {
-						player: player,
-						skill: getPlayerSkill(player, skill.name)
-					};
-					if(typeof callback === 'function') {
-						callback(e);
-					}
-				}
-				
-			}
-		}
-	}
+    if (typeof (callback) == typeof (undefined) || callback === null) { callback = null; }
+    if (hasMCMod("reskillable")) {
+        var skillData = getPlayerSkills(player);
+        for (var i = 0; i < skillData.length; i++) {
+            var skill = skillData[i];
+            if (skill.xp >= skill.maxXp) {
+                skill.mcSkill.setLevel(skill.level + 1);
+                skill.sbScore.setValue(skill.xp - skill.maxXp);
+                if (typeof callback === 'function') {
+                    var e = {
+                        player: player,
+                        skill: getPlayerSkill(player, skill.name)
+                    };
+                    if (typeof callback === 'function') {
+                        callback(e);
+                    }
+                }
+
+            }
+        }
+    }
 }
 
 /**
@@ -10329,154 +10329,154 @@ function checkLevelUp(player, callback) {
  * @param {IPlayer} player Player to get skills from
  */
 function getPlayerSkills(player) {
-	
-	if(hasMCMod("reskillable")) {
-		var SkillDataHandler = Java.type('codersafterdark.reskillable.api.data.PlayerDataHandler');
-		var skillDataList = SkillDataHandler.get(player.getMCEntity()).getAllSkillInfo().toArray();
-		var retSkills = [];
-		var sb = player.world.getScoreboard();
 
-		for(var s in skillDataList) {
-var skillData = skillDataList[s];
-			var skillslug = skillData.skill.getKey().replace(/\w+(?:\.|:)(\w+)/g, '$1');
-			var sxp = skillslug+'_xp';//id.name to name_xp
+    if (hasMCMod("reskillable")) {
+        var SkillDataHandler = Java.type('codersafterdark.reskillable.api.data.PlayerDataHandler');
+        var skillDataList = SkillDataHandler.get(player.getMCEntity()).getAllSkillInfo().toArray();
+        var retSkills = [];
+        var sb = player.world.getScoreboard();
 
-			var sb_xp = sb.getObjective(sxp);
+        for (var s in skillDataList) {
+            var skillData = skillDataList[s];
+            var skillslug = skillData.skill.getKey().replace(/\w+(?:\.|:)(\w+)/g, '$1');
+            var sxp = skillslug + '_xp';//id.name to name_xp
 
-			if(sb_xp == null)
-				sb_xp = sb.addObjective(sxp, 'dummy');
+            var sb_xp = sb.getObjective(sxp);
 
-			var pl_xp = sb_xp.getScore(player.getName());
+            if (sb_xp == null)
+                sb_xp = sb.addObjective(sxp, 'dummy');
 
-			if(pl_xp == null) {
-				pl_xp = sb_xp.createScore(player.getName());
-				pl_xp.setValue(0);
-			}
+            var pl_xp = sb_xp.getScore(player.getName());
 
-			var fskill = {
-				name: skillData.skill.getName(),
-				skillslug: skillslug,
-				xpname: sxp,
-				key: skillData.skill.getKey(),
-				level: skillData.getLevel(),
-				points: skillData.getSkillPoints(),
-				xp: pl_xp.getValue(),
-				maxXp: getMaxXp(skillData.getLevel()),
-				traits: [],
-				mcSkill: skillData,
-				sbObjective: sb_xp,
-				sbScore: pl_xp
-			};
-			//Traits iteration
-			for(var t in skillData.skill.getUnlockables()) {
-var trait = skillData.skill.getUnlockables()[t];
-				var ftrait = {
-					name: trait.getName(),
-					desc: trait.getDescription(),
-					key: trait.getKey(),
-					cost: trait.getCost(),
-					unlocked: skillData.isUnlocked(trait),
-					mcTrait: trait
-				}
+            if (pl_xp == null) {
+                pl_xp = sb_xp.createScore(player.getName());
+                pl_xp.setValue(0);
+            }
 
-				fskill.traits.push(ftrait);
-			}
+            var fskill = {
+                name: skillData.skill.getName(),
+                skillslug: skillslug,
+                xpname: sxp,
+                key: skillData.skill.getKey(),
+                level: skillData.getLevel(),
+                points: skillData.getSkillPoints(),
+                xp: pl_xp.getValue(),
+                maxXp: getMaxXp(skillData.getLevel()),
+                traits: [],
+                mcSkill: skillData,
+                sbObjective: sb_xp,
+                sbScore: pl_xp
+            };
+            //Traits iteration
+            for (var t in skillData.skill.getUnlockables()) {
+                var trait = skillData.skill.getUnlockables()[t];
+                var ftrait = {
+                    name: trait.getName(),
+                    desc: trait.getDescription(),
+                    key: trait.getKey(),
+                    cost: trait.getCost(),
+                    unlocked: skillData.isUnlocked(trait),
+                    mcTrait: trait
+                }
 
-			retSkills.push(fskill);
-		}
+                fskill.traits.push(ftrait);
+            }
 
-		return retSkills;
-	} else {
-		return [];
-	}
+            retSkills.push(fskill);
+        }
+
+        return retSkills;
+    } else {
+        return [];
+    }
 }
 
 function getPlayerSkill(player, skill_id) {
-	var skills = getPlayerSkills(player);
+    var skills = getPlayerSkills(player);
 
-	
 
-	for(var i in skills) {
-		if(skills[i].key == skill_id
-		|| skills[i].name == skill_id
-		|| skills[i].skillslug == skill_id
-		) {
-			return skills[i];
-		}
-	}
 
-	return null;
+    for (var i in skills) {
+        if (skills[i].key == skill_id
+            || skills[i].name == skill_id
+            || skills[i].skillslug == skill_id
+        ) {
+            return skills[i];
+        }
+    }
+
+    return null;
 }
 
 
 function givePlayerXP(player, skill_id, amount) {
-	var _API = Java.type("noppes.npcs.api.NpcAPI").Instance();
-	var cmd = _API.createNPC(player.world.getMCWorld());
-	var skill = getPlayerSkill(player, skill_id);
-	amount = Math.round(amount);
-	var xpname = skill_id.replace(/\w+(?:\.|:)(\w+)/g, '$1')+'_xp';
-	if(skill) {
-		var event = {
-			player: player,
-			skill: skill,
-			amount: amount,
-			_canceled: false,
-			setCanceled: function(bool){
-				this._canceled = bool;
-			}
-		};
-		if(typeof skillGetXP === 'function') {
-			skillGetXP(event);
-		}
-	
-		if(!event._canceled) {
-			var putamount = Math.round(event.amount);
-			var cmdOutput = cmd.executeCommand("/scoreboard players "+(putamount > 0 ? "add" : "remove")+" "+player.getName()+" "+xpname+" "+Math.abs(putamount).toString());
-			
+    var _API = Java.type("noppes.npcs.api.NpcAPI").Instance();
+    var cmd = _API.createNPC(player.world.getMCWorld());
+    var skill = getPlayerSkill(player, skill_id);
+    amount = Math.round(amount);
+    var xpname = skill_id.replace(/\w+(?:\.|:)(\w+)/g, '$1') + '_xp';
+    if (skill) {
+        var event = {
+            player: player,
+            skill: skill,
+            amount: amount,
+            _canceled: false,
+            setCanceled: function (bool) {
+                this._canceled = bool;
+            }
+        };
+        if (typeof skillGetXP === 'function') {
+            skillGetXP(event);
+        }
 
-			if(typeof skillHasXP === 'function') {
-				
-				skillHasXP(objMerge(event,{
-					skill: getPlayerSkill(player, skill_id)
-				}));
-			}
-		}
+        if (!event._canceled) {
+            var putamount = Math.round(event.amount);
+            var cmdOutput = cmd.executeCommand("/scoreboard players " + (putamount > 0 ? "add" : "remove") + " " + player.getName() + " " + xpname + " " + Math.abs(putamount).toString());
 
-	} else {
-		handleError({
-			'fileName': 'function givePlayerXP',
-			'message': '\''+skill_id+'\' is not a registered skill id!',
-			'stack': 'Blame Runonstof'
-		});
-	}
+
+            if (typeof skillHasXP === 'function') {
+
+                skillHasXP(objMerge(event, {
+                    skill: getPlayerSkill(player, skill_id)
+                }));
+            }
+        }
+
+    } else {
+        handleError({
+            'fileName': 'function givePlayerXP',
+            'message': '\'' + skill_id + '\' is not a registered skill id!',
+            'stack': 'Blame Runonstof'
+        });
+    }
 
 }
 
 function getMaxXp(lvl) {
-	var mxp = 0;
-	if(lvl < 16) {
-		mxp = 2 * lvl + 7;
-	} else if(lvl < 31) {
-		mxp = 5 * lvl - 38;
-	} else {
-		mxp = 9 * lvl - 158;
-	}
-	return mxp *2;
+    var mxp = 0;
+    if (lvl < 16) {
+        mxp = 2 * lvl + 7;
+    } else if (lvl < 31) {
+        mxp = 5 * lvl - 38;
+    } else {
+        mxp = 9 * lvl - 158;
+    }
+    return mxp * 2;
 }
 
 
 
 function romanize(num) {
-  var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
-      roman = '',
-      i;
-  for ( i in lookup ) {
-    while ( num >= lookup[i] ) {
-      roman += i;
-      num -= lookup[i];
+    var lookup = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 },
+        roman = '',
+        i;
+    for (i in lookup) {
+        while (num >= lookup[i]) {
+            roman += i;
+            num -= lookup[i];
+        }
     }
-  }
-  return roman;
+    return roman;
 }
 
 
@@ -10484,28 +10484,28 @@ function romanize(num) {
 var _ENCHANTS = [];
 var CSTENCH_TAG = "CSTEnch";
 
-registerCSTEnchant("cst:berserker", "Berserker", 10, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:berserker", "Berserker", 10, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
-            var chance = 5+2*lvl;
+            var chance = 5 + 2 * lvl;
             var newHP = e.player.getHealth();
-            var hpPerc = Math.round(100/e.player.getMaxHealth()*newHP);
-            if(hpPerc <= 50 && Math.random()*100 <= chance) {
+            var hpPerc = Math.round(100 / e.player.getMaxHealth() * newHP);
+            if (hpPerc <= 50 && Math.random() * 100 <= chance) {
                 //Add Strength
                 e.player.addPotionEffect(5, 3, lvl, true);
                 //Add Speed
-                e.player.addPotionEffect(1, 3, Math.ceil(lvl/2), true);
+                e.player.addPotionEffect(1, 3, Math.ceil(lvl / 2), true);
                 //Add Haste
                 e.player.addPotionEffect(3, 3, lvl, true);
             }
-        break;
+            break;
     }
 });
 
 
 function getEntityMobHead(entity) {
     //Player
-    if(entity.getType() == 1) {
+    if (entity.getType() == 1) {
         var head = API.getIWorld(0).createItem("minecraft:skull", 3, 1);
         head.getNbt().setString("SkullOwner", entity.getName());
         return head;
@@ -10517,7 +10517,7 @@ function getEntityMobHead(entity) {
         "Creeper": 4,
     };
     var vk = Object.keys(vanillaSkulls);
-    if(vk.indexOf(entity.getTypeName()) > -1) {
+    if (vk.indexOf(entity.getTypeName()) > -1) {
         var head = API.getIWorld(0).createItem("minecraft:skull", vanillaSkulls[entity.getTypeName()], 1);
         return head;
     }
@@ -10542,9 +10542,9 @@ function getEntityMobHead(entity) {
         "Villager": "Villager",
 
     };
-    if(Object.keys(mhfSkulls).indexOf(entity.getTypeName()) > -1) {
+    if (Object.keys(mhfSkulls).indexOf(entity.getTypeName()) > -1) {
         var head = API.getIWorld(0).createItem("minecraft:skull", 3, 1);
-        head.getNbt().setString("SkullOwner", "MHF_"+mhfSkulls[entity.getTypeName()]);
+        head.getNbt().setString("SkullOwner", "MHF_" + mhfSkulls[entity.getTypeName()]);
         return head;
     }
 
@@ -10552,39 +10552,39 @@ function getEntityMobHead(entity) {
 }
 
 
-registerCSTEnchant("cst:decapitation", "Decapitation", 5, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:decapitation", "Decapitation", 5, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
             var head = getEntityMobHead(e.target);
-            if(head != null) {
+            if (head != null) {
                 e.player.giveItem(head);
             }
-        break;
+            break;
     }
 });
-registerCSTEnchant("cst:depth_fighter", "Depth Fighter", 10, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:depth_fighter", "Depth Fighter", 10, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
-            var xpChance = Math.min(5+4*(lvl-1), 100);
-            var xpPerc = Math.min(25+5*(lvl-1), 100);
-            var num = Math.round(Math.random()*100);
-            if(num <= xpChance) {
-                var giveXP = Math.round((e.damage)/100*xpPerc);
-                executeCommand(e.player, "/playsound minecraft:entity.experience_orb.pickup ambient "+e.player.getName())
+            var xpChance = Math.min(5 + 4 * (lvl - 1), 100);
+            var xpPerc = Math.min(25 + 5 * (lvl - 1), 100);
+            var num = Math.round(Math.random() * 100);
+            if (num <= xpChance) {
+                var giveXP = Math.round((e.damage) / 100 * xpPerc);
+                executeCommand(e.player, "/playsound minecraft:entity.experience_orb.pickup ambient " + e.player.getName())
                 executeCommand(e.player, "/summon xp_orb {X} {Y} {Z} {Value:{XP}}".fill({
                     "X": e.player.getX(),
-                    "Y": e.player.getY()+1,
+                    "Y": e.player.getY() + 1,
                     "Z": e.player.getZ(),
                     "XP": giveXP
                 }));
             }
-        break;
+            break;
     }
 });
-registerCSTEnchant("cst:ender_swap", "Ender Swap", 1, function(id, e, lvl, type, slot){
-    switch(type) {
+registerCSTEnchant("cst:ender_swap", "Ender Swap", 1, function (id, e, lvl, type, slot) {
+    switch (type) {
         case "damagedEntity":
-            if(e.damageSource.isProjectile()) {
+            if (e.damageSource.isProjectile()) {
                 var ppos = e.player.getPos().up();
                 var ppitch = e.player.getPitch();
                 var prot = e.player.getRotation();
@@ -10614,44 +10614,44 @@ registerCSTEnchant("cst:ender_swap", "Ender Swap", 1, function(id, e, lvl, type,
                     "Z": ppos.getZ(),
                 }));
             }
-        break;
+            break;
     }
 }, false);
-registerCSTEnchant("cst:launch", "launch", 10, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:launch", "launch", 10, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
             //if(hpPerc <= 50) {
-                var jumpspd = 0.8+(0.05*lvl);
-                (e.target).setMotionY(jumpspd);
+            var jumpspd = 0.8 + (0.05 * lvl);
+            (e.target).setMotionY(jumpspd);
             //}
-        break;
+            break;
     }
 });
-registerCSTEnchant("cst:life_steal", "Life Steal", 10, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:life_steal", "Life Steal", 10, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
-            var stealChance = Math.min(5+4*(lvl-1), 100);
-            var stealPerc = Math.min(50+5*(lvl-1), 100);
-            var num = Math.round(Math.random()*100);
-            if(num <= stealChance) {
-                var newHP = Math.min(Math.round(e.player.getHealth()+(e.damage/100*stealPerc)), e.player.getMaxHealth());
+            var stealChance = Math.min(5 + 4 * (lvl - 1), 100);
+            var stealPerc = Math.min(50 + 5 * (lvl - 1), 100);
+            var num = Math.round(Math.random() * 100);
+            if (num <= stealChance) {
+                var newHP = Math.min(Math.round(e.player.getHealth() + (e.damage / 100 * stealPerc)), e.player.getMaxHealth());
                 e.player.setHealth(newHP);
                 executeCommand(e.player, "/particle heart {x} {y} {z} 1 2 1 10 20".fill({
                     "x": e.player.getX(),
-                    "y": e.player.getY()+1,
+                    "y": e.player.getY() + 1,
                     "z": e.player.getZ(),
                 }));
-                executeCommand(e.player, "/playsound minecraft:entity.firework.large_blast ambient "+e.player.getName());
+                executeCommand(e.player, "/playsound minecraft:entity.firework.large_blast ambient " + e.player.getName());
             }
-        break;
+            break;
     }
 });
-registerCSTEnchant("cst:paralyze", "Paralyze", 10, function(id, e, lvl, type){
-    switch(type) {
+registerCSTEnchant("cst:paralyze", "Paralyze", 10, function (id, e, lvl, type) {
+    switch (type) {
         case "damagedEntity":
-            var parChance = Math.min(5+(2*(lvl-1)), 100);
-            if(Math.round(Math.random()*100) <= parChance) {
-                var duration = Math.round(lvl*1.5);
+            var parChance = Math.min(5 + (2 * (lvl - 1)), 100);
+            if (Math.round(Math.random() * 100) <= parChance) {
+                var duration = Math.round(lvl * 1.5);
                 e.target.addPotionEffect(8, duration, 128, true);
                 e.target.addPotionEffect(2, duration, 128, true);
             }
@@ -10661,9 +10661,9 @@ registerCSTEnchant("cst:paralyze", "Paralyze", 10, function(id, e, lvl, type){
 
 
 function getCSTEnchantByName(name_id) {
-    for(var i in _ENCHANTS) {
-var ench = _ENCHANTS[i];
-        if( ench.name == name_id ) {
+    for (var i in _ENCHANTS) {
+        var ench = _ENCHANTS[i];
+        if (ench.name == name_id) {
             return ench;
         }
     }
@@ -10671,14 +10671,14 @@ var ench = _ENCHANTS[i];
 }
 
 function getCSTEnchantsFromItem(itemstack) {
-    if(itemstack == null || !itemstack.hasNbt()) {
+    if (itemstack == null || !itemstack.hasNbt()) {
         return [];
     }
     var nbt = itemstack.getNbt();
     var enchs = [];
-    var itemenchs = nbtGetList(nbt, CSTENCH_TAG)||[];
-    for(var i in itemenchs) {
-var itemench = itemenchs[i];
+    var itemenchs = nbtGetList(nbt, CSTENCH_TAG) || [];
+    for (var i in itemenchs) {
+        var itemench = itemenchs[i];
         enchs.push({
             "name": itemench.getString("name"),
             "lvl": parseInt(itemench.getShort("lvl")),
@@ -10690,16 +10690,16 @@ var itemench = itemenchs[i];
 //Checks if item has CST Enchant
 //if lvl > 0 it will check also if enchant level >= lvl
 function hasCSTEnchant(item, id, lvl) {
-	if(itemstack == null || !itemstack.hasNbt()) {
+    if (itemstack == null || !itemstack.hasNbt()) {
         return false;
     }
-	if(typeof(lvl) == typeof(undefined) || lvl === null) { lvl = 0; }
+    if (typeof (lvl) == typeof (undefined) || lvl === null) { lvl = 0; }
     var itemnbt = item.getNbt();
     var cstenchs = nbtGetList(itemnbt, CSTENCH_TAG);
-    for(var i in cstenchs) {
-var cstench = cstenchs[i];
-        if(cstench.getString("name") == id) {
-            if(lvl > 0) {
+    for (var i in cstenchs) {
+        var cstench = cstenchs[i];
+        if (cstench.getString("name") == id) {
+            if (lvl > 0) {
                 return parseInt(cstench.getShort("lvl")) >= lvl;
             }
             return true;
@@ -10710,19 +10710,19 @@ var cstench = cstenchs[i];
 }
 
 function removeCSTEnchant(item, id) {
-    if(hasCSTEnchant(item, id)) {
+    if (hasCSTEnchant(item, id)) {
         var newench = [];
         var itemnbt = item.getNbt();
         var cstenchs = nbtGetList(itemnbt, CSTENCH_TAG);
         var newLore = [];
         var remLore = [];
-        for(var i in cstenchs) {
-var cstench = cstenchs[i];
+        for (var i in cstenchs) {
+            var cstench = cstenchs[i];
             var ench = getCSTEnchantByName(cstench.getString("name"));
             var lvl = parseInt(cstench.getShort("lvl"));
 
 
-            if(ench.name != id) {
+            if (ench.name != id) {
                 newench.push(cstench);
             } else {
                 remLore.push(ccs(getCSTEnchantDisplay(ench.name, lvl)));
@@ -10730,9 +10730,9 @@ var cstench = cstenchs[i];
         }
         itemnbt.setList(CSTENCH_TAG, newench);
         var iLore = Java.from(item.getLore());
-        for(var i in iLore) {
-var lore = iLore[i];
-            if(remLore.indexOf(lore) == -1) {
+        for (var i in iLore) {
+            var lore = iLore[i];
+            if (remLore.indexOf(lore) == -1) {
                 newLore.push(lore);
             }
         }
@@ -10744,7 +10744,7 @@ var lore = iLore[i];
 
 function runCSTEnchant(id, event, lvl, type, slot) {
     var ench = getCSTEnchantByName(id);
-    if(ench != null) {
+    if (ench != null) {
         return ench.func(id, event, lvl, type, slot);
     }
     return null;
@@ -10753,25 +10753,25 @@ function runCSTEnchant(id, event, lvl, type, slot) {
 function addCSTEnchant(item, id, lvl) {
     var itemNbt = item.getNbt();
     var addench = getCSTEnchantByName(id);
-    var newench = Java.from(nbtGetList(itemNbt, CSTENCH_TAG))||[];
-    if(hasCSTEnchant(item, id)) {
+    var newench = Java.from(nbtGetList(itemNbt, CSTENCH_TAG)) || [];
+    if (hasCSTEnchant(item, id)) {
         removeCSTEnchant(item, id);
     }
-    newench.push(API.stringToNbt('{"name":"'+id+'","lvl":'+lvl+'s}'));
+    newench.push(API.stringToNbt('{"name":"' + id + '","lvl":' + lvl + 's}'));
     itemNbt.setList(CSTENCH_TAG, newench);
     item.setLore(Java.from(item.getLore()).concat([ccs(getCSTEnchantDisplay(id, lvl))]))
 }
 
 function getCSTEnchantDisplay(id, lvl) {
     var ench = getCSTEnchantByName(id);
-    if(ench != null) {
-        return "&7"+ench.displayName+(ench.showLvl ? " "+romanize(lvl) : "");
+    if (ench != null) {
+        return "&7" + ench.displayName + (ench.showLvl ? " " + romanize(lvl) : "");
     }
     return "";
 }
 
 function registerCSTEnchant(name, displayName, maxLvl, func, showLvl) {
-	if(typeof(showLvl) == typeof(undefined) || showLvl === null) { showLvl = true; }
+    if (typeof (showLvl) == typeof (undefined) || showLvl === null) { showLvl = true; }
     _ENCHANTS.push({
         "maxlvl": maxLvl,
         "name": name,
@@ -10783,18 +10783,18 @@ function registerCSTEnchant(name, displayName, maxLvl, func, showLvl) {
 
 //Unstable, use money pouch for taking money
 function takeMoneyFromPlayer(player, amount, pnbt) {
-	if(typeof(pnbt) == typeof(undefined) || pnbt === null) { pnbt = null; }
+    if (typeof (pnbt) == typeof (undefined) || pnbt === null) { pnbt = null; }
     if (pnbt == null) { pnbt = player.getEntityNbt(); }
     var w = player.world;
     if (getMoneyItemCount(pnbt, w) >= amount) {
-        var pmitems = getPlayerInvFromNbt(pnbt, w, function(item, inbt, w) {
+        var pmitems = getPlayerInvFromNbt(pnbt, w, function (item, inbt, w) {
             return isItemMoney(item, w); //Get only money items
-        }).sort(function(r, s) {
+        }).sort(function (r, s) {
             return getItemMoney(r, w) - getItemMoney(s, w); //Sort by money
         });
 
-        for(var pm in pmitems) {
-var pmitem = pmitems[pm];
+        for (var pm in pmitems) {
+            var pmitem = pmitems[pm];
             var pval = getItemMoney(pmitem, w);
 
             for (var i = 1; i <= pmitem.getStackSize(); i++) {
@@ -10817,11 +10817,11 @@ var pmitem = pmitems[pm];
 //Returns amount of money in player inv
 function getMoneyItemCount(pnbt, w) {
     var am = 0;
-    for(var itemvalue in _COINITEMS) {
-var ci = _COINITEMS[itemvalue];
+    for (var itemvalue in _COINITEMS) {
+        var ci = _COINITEMS[itemvalue];
         var coinItems = genMoney(w, getCoinAmount(itemvalue));
-        for(var _cii in coinItems) {
-var _coin = coinItems[_cii];
+        for (var _cii in coinItems) {
+            var _coin = coinItems[_cii];
             am += getInvItemCount(pnbt, _coin, w, false) * getCoinAmount(itemvalue);
         }
 
@@ -10832,8 +10832,8 @@ var _coin = coinItems[_cii];
 
 
 function getItemMoney(stack, w, currencyType) {
-    for(var ival in _COINITEMS) {
-var ci = _COINITEMS[ival];
+    for (var ival in _COINITEMS) {
+        var ci = _COINITEMS[ival];
         var cm = genMoney(w, getCoinAmount(ival), currencyType)[0] || null;
         if (cm != null) {
             if (isItemEqual(stack, cm)) {
@@ -10849,7 +10849,7 @@ function isItemMoney(stack, w, currencyType) {
 }
 
 function genMoney(w, amount, currencyType) {
-	if(typeof(currencyType) == typeof(undefined) || currencyType === null) { currencyType = 'money'; }
+    if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
     var am = amount
     var coinams = Object.keys(_COINITEMS);
     var currency = getCurrency(currencyType);
@@ -10910,8 +10910,8 @@ function getCoinAmount(str) {
     var sgn = 1;
     if (str.substr(0, 1) == '-') { sgn = -1; }
 
-    for(var a in amounts) {
-var _am = amounts[a];
+    for (var a in amounts) {
+        var _am = amounts[a];
         var _amnum = parseInt(_am.replace(arx, '$1'));
         var _amunit = _am.replace(arx, '$2').toLowerCase();
         var coinkeys = Object.keys(_COINTABLE);
@@ -10925,9 +10925,9 @@ var _am = amounts[a];
 
 
 function getPlayerMessage(player, message, w, pname, fullraw, allowed) {
-	if(typeof(pname) == typeof(undefined) || pname === null) { pname = null; }
-	if(typeof(fullraw) == typeof(undefined) || fullraw === null) { fullraw = true; }
-	if(typeof(allowed) == typeof(undefined) || allowed === null) { allowed = []; }
+    if (typeof (pname) == typeof (undefined) || pname === null) { pname = null; }
+    if (typeof (fullraw) == typeof (undefined) || fullraw === null) { fullraw = true; }
+    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = []; }
     if (pname == null) { pname = player.getName(); }
     var data = w.getStoreddata();
     var plo = new Player(player.getName()).init(data);
@@ -11003,11 +11003,11 @@ function getPlayerMessage(player, message, w, pname, fullraw, allowed) {
 
     var trx = /\$(\w+)/g;
     var tlr = newmsg.match(trx) || [];
-    var apl = (function(w) {
+    var apl = (function (w) {
         var pnames = [];
         var ps = w.getAllPlayers();
-        for(var psi in ps) {
-var iplayr = ps[psi];
+        for (var psi in ps) {
+            var iplayr = ps[psi];
             pnames.push(iplayr.getName());
         }
 
@@ -11015,8 +11015,8 @@ var iplayr = ps[psi];
     })(w);
     for (var t in tlr) {
         var tc = tlr[t].replace(trx, '$1');
-        for(var tt in ts) {
-var sbt = ts[tt];
+        for (var tt in ts) {
+            var sbt = ts[tt];
             if (occurrences(sbt.getDisplayName().toLowerCase(), tc.toLowerCase()) > 0) {
                 //Team select
                 var spl = sbt.getPlayers();
@@ -11027,8 +11027,8 @@ var sbt = ts[tt];
                     sscol = "&" + getColorId(scol);
                 }
 
-                for(var sp in spl) {
-var splayr = spl[sp];
+                for (var sp in spl) {
+                    var splayr = spl[sp];
                     if (apl.indexOf(splayr) > -1) {
                         executeCommand(player, '/playsound ' + notifySound + ' hostile ' + splayr, splayr);
                     }
@@ -11053,25 +11053,25 @@ var PERMISSION_REGEX = /permission_([\w.\-]+)/g;
 //Superfunction (extendable)
 //Used to add permission requirements to datahandlers.
 function Permittable(permDomain) {
-	this.permDomain = permDomain||this.type;
-	//Requires DataHandler
-	this.getPermission = function(){
-		return new Permission(this.getPermissionId());
-	};
-	this.getPermissionId = function(){
-		return this.permDomain+'.'+this.name;
-	};
-	this.onRemove(function(self, data) {
-		self.getPermission().remove(data); //Removes permission when DataHandler gets removed
+    this.permDomain = permDomain || this.type;
+    //Requires DataHandler
+    this.getPermission = function () {
+        return new Permission(this.getPermissionId());
+    };
+    this.getPermissionId = function () {
+        return this.permDomain + '.' + this.name;
+    };
+    this.onRemove(function (self, data) {
+        self.getPermission().remove(data); //Removes permission when DataHandler gets removed
 
-	});
-	this.onSave(function(self, data){
-		var perm = self.getPermission();
-		if(!perm.exists(data)) {
-			//Create permission of permittable if not exists
-			perm.save(data); //this will run Permission onSave functions
-		}
-	});
+    });
+    this.onSave(function (self, data) {
+        var perm = self.getPermission();
+        if (!perm.exists(data)) {
+            //Create permission of permittable if not exists
+            perm.save(data); //this will run Permission onSave functions
+        }
+    });
 }
 
 
@@ -11079,7 +11079,7 @@ function Permittable(permDomain) {
 
 
 registerXCommands([
-    ['!skills [...matches]', function(pl, args, data){
+    ['!skills [...matches]', function (pl, args, data) {
         //!skills {MATCHES} -show:{SHOWLEN} -page:{PAGE} -sort:{SORT}
         var pskills = getPlayerSkills(pl);
         var skillItems = [];
@@ -11093,22 +11093,22 @@ registerXCommands([
                 params.show,
                 params.page,
                 "!skills {MATCHES} -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-                function(skill, i){
-                    var progBar = progressBar(skill.xp, skill.maxXp, 20,"|");
-                    var proc = Math.round(100/skill.maxXp*skill.xp);
+                function (skill, i) {
+                    var progBar = progressBar(skill.xp, skill.maxXp, 20, "|");
+                    var proc = Math.round(100 / skill.maxXp * skill.xp);
                     var hovertxt = [
-                        "&l&o[&e&l&o"+skill.name+"&r&l&o]&r",
-                        "&e&l&oLevel: &a&l"+skill.level+"&r",
-                        progBar+"&r &9&l"+proc+"% &d"+skill.xp+"/"+skill.maxXp+"&r"
+                        "&l&o[&e&l&o" + skill.name + "&r&l&o]&r",
+                        "&e&l&oLevel: &a&l" + skill.level + "&r",
+                        progBar + "&r &9&l" + proc + "% &d" + skill.xp + "/" + skill.maxXp + "&r"
                     ];
 
-                    return "&l[&6&l"+skill.level+"&r&l] &e&l"+skill.name+"&r "+progBar+"&r &7&l[Info]{*|show_text:"+hovertxt.join("\n").replace(/&/g,'\$')+"}&r\n";
+                    return "&l[&6&l" + skill.level + "&r&l] &e&l" + skill.name + "&r " + progBar + "&r &7&l[Info]{*|show_text:" + hovertxt.join("\n").replace(/&/g, '\$') + "}&r\n";
                 },
-                function(a,b){//sort by level first, then xp
+                function (a, b) {//sort by level first, then xp
                     return b.lvl - a.lvl || b.xp - a.xp;
                 },
                 null,
-                (params.sort||"").toLowerCase() == 'desc'
+                (params.sort || "").toLowerCase() == 'desc'
             )
         ];
 
@@ -11121,20 +11121,20 @@ function AutoMsg(name) {
     DataHandler.apply(this, ['automsg', name]);
 
     this.addData({
-		"msg": "Default AutoMessage",
+        "msg": "Default AutoMessage",
         "enabled": true,
         "mode": "interval",
         "interval": getStringTime("5min"),
         "lastSend": 0,
-	});
+    });
 
-    this.broadcast = function(pl, target) {
-        executeCommand(pl, "/tellraw "+target+" "+parseEmotes(strf(this.msg)));
+    this.broadcast = function (pl, target) {
+        executeCommand(pl, "/tellraw " + target + " " + parseEmotes(strf(this.msg)));
         return this;
     };
 
-    this.canSend = function(){
-        return new Date().getTime() >= this.lastSend+this.interval;
+    this.canSend = function () {
+        return new Date().getTime() >= this.lastSend + this.interval;
     };
 }
 registerDataHandler("badge", Badge);
@@ -11153,14 +11153,14 @@ function Badge(name) {
         currency: 'credit'
     });
 
-    this.formatPrice = function() {
+    this.formatPrice = function () {
         return formatCurrency(this.data.price, this.data.currency);
     };
-    this.getColor = function() {
+    this.getColor = function () {
         return getColorId(this.data.color);
     };
 
-    this.formatBadge = function(prefix, hoverTxt, hoverCmd) {
+    this.formatBadge = function (prefix, hoverTxt, hoverCmd) {
         return '&' + this.getColor() + (prefix || '') + ':' + this.data.emote + ':{' + (hoverCmd || '*') + '|show_text:' + ccs(this.data.displayName + '\n&r' + this.data.desc + (hoverTxt || '')) + '}&r'
     }
 }
@@ -11200,10 +11200,10 @@ function Bank(code) {
         linkedTraders: []
     });
 
-    this.onLoaded(function(bank, data) {
-        for(var i in bank.data.trustedAutopay) {
-var autopayPlayer = bank.data.trustedAutopay[i];
-            bank.saveAutopayAmount(autopayPlayer.player, function() {
+    this.onLoaded(function (bank, data) {
+        for (var i in bank.data.trustedAutopay) {
+            var autopayPlayer = bank.data.trustedAutopay[i];
+            bank.saveAutopayAmount(autopayPlayer.player, function () {
                 this.save(data);
             });
         }
@@ -11220,7 +11220,7 @@ var autopayPlayer = bank.data.trustedAutopay[i];
         'autopayAmount', 'amount', 'cap', 'increaseCost', 'increaseAmount'
     ]);
 
-    this.onRemove(function(bank, data) {
+    this.onRemove(function (bank, data) {
         if (bank.data.owner) {
             var p = new Player(bank.data.owner).init(data);
             p.data.money += bank.data.amount;
@@ -11228,22 +11228,22 @@ var autopayPlayer = bank.data.trustedAutopay[i];
         }
     });
 
-    this.getCap = function(capName) {
-	if(typeof(capName) == typeof(undefined) || capName === null) { capName = null; }
+    this.getCap = function (capName) {
+        if (typeof (capName) == typeof (undefined) || capName === null) { capName = null; }
         return Math.floor(this.data[capName ? capName + 'Cap' : 'cap']);
     };
 
-    this.getInterval = function(intervalName) {
-	if(typeof(intervalName) == typeof(undefined) || intervalName === null) { intervalName = null; }
+    this.getInterval = function (intervalName) {
+        if (typeof (intervalName) == typeof (undefined) || intervalName === null) { intervalName = null; }
         return (this.data[intervalName ? intervalName + 'Interval' : 'interval']);
     };
-    this.getIncrease = function(increaseName) {
-	if(typeof(increaseName) == typeof(undefined) || increaseName === null) { increaseName = null; }
+    this.getIncrease = function (increaseName) {
+        if (typeof (increaseName) == typeof (undefined) || increaseName === null) { increaseName = null; }
         return (this.data[increaseName ? increaseName + 'Increase' : 'increase']);
     };
 
-    this.upgrade = function(times) {
-	if(typeof(times) == typeof(undefined) || times === null) { times = 1; }
+    this.upgrade = function (times) {
+        if (typeof (times) == typeof (undefined) || times === null) { times = 1; }
         for (var i = 1; i <= times; i++) {
             this.data.cap += this.data.increaseAmount;
             this.data.trustedCap += this.data.trustedIncreaseAmount;
@@ -11254,11 +11254,11 @@ var autopayPlayer = bank.data.trustedAutopay[i];
         return this;
     };
 
-    this.validateLinkedTraders = function(world) {
+    this.validateLinkedTraders = function (world) {
         var newTraders = [];
         var changed = false;
-        for(var i in this.data.linkedTraders) {
-var linkedTrader = this.data.linkedTraders[i];
+        for (var i in this.data.linkedTraders) {
+            var linkedTrader = this.data.linkedTraders[i];
             var trader = world.getEntity(linkedTrader);
             if (!trader) {
                 changed = true;
@@ -11286,7 +11286,7 @@ var linkedTrader = this.data.linkedTraders[i];
         return this;
     };
 
-    this.linkTrader = function(npc) {
+    this.linkTrader = function (npc) {
         this.validateLinkedTraders(npc.world);
         var uuid = npc.getUUID();
         if (this.data.linkedTraders.indexOf(uuid) == -1) {
@@ -11298,14 +11298,14 @@ var linkedTrader = this.data.linkedTraders[i];
         return this;
     };
 
-    this.getFreezeAmount = function(interest) {
-	if(typeof(interest) == typeof(undefined) || interest === null) { interest = null; }
+    this.getFreezeAmount = function (interest) {
+        if (typeof (interest) == typeof (undefined) || interest === null) { interest = null; }
         interest = interest || this.data.interest;
 
         return this.data.amount + Math.floor(this.data.amount / 100 * interest);
     };
 
-    this.freeze = function(time) {
+    this.freeze = function (time) {
         this.data.frozeAt = new Date().getTime();
         this.data.isFrozen = true;
         this.data.freezeTime = time;
@@ -11313,15 +11313,15 @@ var linkedTrader = this.data.linkedTraders[i];
         return this;
     };
 
-    this.getFreezeStatus = function() {
+    this.getFreezeStatus = function () {
         return this.data.isFrozen ? (this.isFrozenAndDone() ? 'done' : 'frozen') : 'none'
     };
 
-    this.isFrozenAndDone = function() {
+    this.isFrozenAndDone = function () {
         return this.data.isFrozen && new Date().getTime() >= this.data.frozeAt + this.data.freezeTime;
     }
 
-    this.unfreeze = function() {
+    this.unfreeze = function () {
         this.data.amount = this.getFreezeAmount(this.data.interest);
         this.data.frozeAt = -1;
         this.data.isFrozen = false;
@@ -11331,16 +11331,16 @@ var linkedTrader = this.data.linkedTraders[i];
     };
 
 
-    this.canDeposit = function(playerName) {
+    this.canDeposit = function (playerName) {
         return (this.isAdmin(playerName) || (this.data.trustedPut.indexOf(playerName) > -1));
     };
-    this.canWithdraw = function(playerName) {
+    this.canWithdraw = function (playerName) {
         return (this.isAdmin(playerName) || (this.data.trustedGet.indexOf(playerName) > -1));
     };
 
-    this.hasAutopay = function(playerName) {
-        for(var i in this.data.trustedAutopay) {
-var autopayPlayer = this.data.trustedAutopay[i];
+    this.hasAutopay = function (playerName) {
+        for (var i in this.data.trustedAutopay) {
+            var autopayPlayer = this.data.trustedAutopay[i];
             if (autopayPlayer.player == playerName) {
                 return true;
             }
@@ -11349,9 +11349,9 @@ var autopayPlayer = this.data.trustedAutopay[i];
         return false;
     };
 
-    this.getAutopay = function(playerName) {
-        for(var i in this.data.trustedAutopay) {
-var autopayPlayer = this.data.trustedAutopay[i];
+    this.getAutopay = function (playerName) {
+        for (var i in this.data.trustedAutopay) {
+            var autopayPlayer = this.data.trustedAutopay[i];
             if (autopayPlayer.player == playerName) {
                 return autopayPlayer;
             }
@@ -11360,7 +11360,7 @@ var autopayPlayer = this.data.trustedAutopay[i];
         return null;
     };
 
-    this.addAutopay = function(playerName, payAmount, payTime, enabled) {
+    this.addAutopay = function (playerName, payAmount, payTime, enabled) {
         var bank = this;
         var autopayPlayer = {
             player: playerName,
@@ -11374,7 +11374,7 @@ var autopayPlayer = this.data.trustedAutopay[i];
         return autopayPlayer;
     };
 
-    this.removeAutopay = function(playerName) {
+    this.removeAutopay = function (playerName) {
         for (var i = 0; i < this.data.trustedAutopay.length; i++) {
             if (this.data.trustedAutopay[i].player == playerName) {
                 this.data.trustedAutopay.splice(i, 1);
@@ -11384,30 +11384,30 @@ var autopayPlayer = this.data.trustedAutopay[i];
         return this;
     };
 
-    this.isAdmin = function(playerName) {
+    this.isAdmin = function (playerName) {
         return this.isOwner(playerName) || (this.data.trustedAdmins.indexOf(playerName) > -1);
     };
 
-    this.isOwner = function(playerName) {
+    this.isOwner = function (playerName) {
         return (playerName == this.data.owner);
     };
 
-    this.canSee = function(playerName) {
+    this.canSee = function (playerName) {
         return this.canWithdraw(playerName) || this.canDeposit(playerName) || this.hasAutopay(playerName);
     };
 
-    this.getTotalAutopay = function() {
+    this.getTotalAutopay = function () {
         var amount = 0;
-        for(var i in this.data.trustedAutopay) {
-var autopayPlayer = this.data.trustedAutopay[i];
+        for (var i in this.data.trustedAutopay) {
+            var autopayPlayer = this.data.trustedAutopay[i];
             amount += autopayPlayer.payAmount;
         }
 
         return amount;
     }
 
-    this.getAutopayAmount = function(playerName, time) {
-	if(typeof(time) == typeof(undefined) || time === null) { time = null; }
+    this.getAutopayAmount = function (playerName, time) {
+        if (typeof (time) == typeof (undefined) || time === null) { time = null; }
         var autopayPlayer = this.getAutopay(playerName);
         var now = time || new Date().getTime();
         var timePassed = now - autopayPlayer.lastPayed;
@@ -11419,7 +11419,7 @@ var autopayPlayer = this.data.trustedAutopay[i];
         return amount;
     };
 
-    this.saveAutopayAmount = function(playerName, callback) {
+    this.saveAutopayAmount = function (playerName, callback) {
         var now = new Date().getTime();
         var autopayPlayer = this.getAutopay(playerName);
         var timePassed = now - autopayPlayer.lastPayed;
@@ -11439,92 +11439,92 @@ var autopayPlayer = this.data.trustedAutopay[i];
 
         return this;
     };
-    this.canAutopay = function() {
+    this.canAutopay = function () {
         return this.data.amount >= this.getTotalAutopay() && this.data.autopayEnabled && !this.data.isFrozen();
     };
 }
 
-Bank.__proto__.genBankCode = function(data) {
-        var code;
-        var allCodes = new Bank().getAllDataIds(data);
-        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        do {
-            code = '';
-            for (var i = 0; i < 9; i++) {
-                code += chars[Math.floor(Math.random() * chars.length)];
-            }
-        } while (allCodes.indexOf(code) > -1);
+Bank.__proto__.genBankCode = function (data) {
+    var code;
+    var allCodes = new Bank().getAllDataIds(data);
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    do {
+        code = '';
+        for (var i = 0; i < 9; i++) {
+            code += chars[Math.floor(Math.random() * chars.length)];
+        }
+    } while (allCodes.indexOf(code) > -1);
 
-        return code;
-    }
-    //registerDataHandler("chatchannel", ChatChannel);
+    return code;
+}
+//registerDataHandler("chatchannel", ChatChannel);
 function ChatChannel(name) {
-	DataHandler.apply(this, ['chatchannel', name]);
-	Permittable.apply(this, []); //add getPermission etc
+    DataHandler.apply(this, ['chatchannel', name]);
+    Permittable.apply(this, []); //add getPermission etc
 
-	this.addData({
-		"displayName": name,
-		"players": [],
-		"color": "blue",
-		"desc": "",
-	});
-	this.addPlayers = function(players){
-		for(var p in players) {
-var player = players[p];
-			this.data.players.push(player);
-		}
-		return this;
-	};
-	this.getColor = function(cr) {
-		cr = cr||'&';
-		return cr+getColorId(this.data.color);
-	};
-	this.getName = function() {
-		return this.getColor()+this.data.displayName+"&r";
-	};
-	this.getTag = function(prefix, cr) {
-		cr = cr||'&';
-		return this.getColor(cr)+cr+"l[#"+this.data.displayName+(prefix||'')+"]"+cr+"r";
-	};
-	this.removePlayers = function(players) {
-		var np = [];
-		for(var p in this.data.players) {
-var player = this.data.players[p];
-			if(players.indexOf(player) == -1) {
-				np.push(player);
-			}
-		}
-		this.data.players = np;
-		return this;
-	};
-	this.getPlayers = function(world) { //returns all online IPlayers
-		var plr = world.getAllPlayers();
-		var plrs = [];
-		for(var p in plr) {
-var pl = plr[p];
-			if(this.data.players.indexOf(pl.getName()) > -1) {
-				plrs.push(pl);
-			}
-		}
-		return plrs;
-	};
-	this.broadcast = function(w, msg, exc) {
-		if(typeof(exc) == typeof(undefined)) { exc = []; }
-		var plrs = w.getAllPlayers();
-		for(var p in plrs) {
-var pl = plrs[p];
-			if(this.data.players.indexOf(pl.getName()) > -1 && exc.indexOf(pl.getName()) == -1) {
-				tellPlayer(pl, msg);
-			}
-		}
-		return this;
-	};
+    this.addData({
+        "displayName": name,
+        "players": [],
+        "color": "blue",
+        "desc": "",
+    });
+    this.addPlayers = function (players) {
+        for (var p in players) {
+            var player = players[p];
+            this.data.players.push(player);
+        }
+        return this;
+    };
+    this.getColor = function (cr) {
+        cr = cr || '&';
+        return cr + getColorId(this.data.color);
+    };
+    this.getName = function () {
+        return this.getColor() + this.data.displayName + "&r";
+    };
+    this.getTag = function (prefix, cr) {
+        cr = cr || '&';
+        return this.getColor(cr) + cr + "l[#" + this.data.displayName + (prefix || '') + "]" + cr + "r";
+    };
+    this.removePlayers = function (players) {
+        var np = [];
+        for (var p in this.data.players) {
+            var player = this.data.players[p];
+            if (players.indexOf(player) == -1) {
+                np.push(player);
+            }
+        }
+        this.data.players = np;
+        return this;
+    };
+    this.getPlayers = function (world) { //returns all online IPlayers
+        var plr = world.getAllPlayers();
+        var plrs = [];
+        for (var p in plr) {
+            var pl = plr[p];
+            if (this.data.players.indexOf(pl.getName()) > -1) {
+                plrs.push(pl);
+            }
+        }
+        return plrs;
+    };
+    this.broadcast = function (w, msg, exc) {
+        if (typeof (exc) == typeof (undefined)) { exc = []; }
+        var plrs = w.getAllPlayers();
+        for (var p in plrs) {
+            var pl = plrs[p];
+            if (this.data.players.indexOf(pl.getName()) > -1 && exc.indexOf(pl.getName()) == -1) {
+                tellPlayer(pl, msg);
+            }
+        }
+        return this;
+    };
 
-	this.onCreate(function(self, data){
-		var perm = self.getPermission();
-		perm.data.enabled = false;
-		perm.save(data);
-	});
+    this.onCreate(function (self, data) {
+        var perm = self.getPermission();
+        perm.data.enabled = false;
+        perm.save(data);
+    });
 }
 
 
@@ -11554,14 +11554,14 @@ function Emote(name) {
         "hidden": false, //Will be hidden from !myEmotes, unless player has it, if forSale == true emote can still be bought via command
     });
 
-    this.showPrice = function() {
+    this.showPrice = function () {
         return formatCurrency(this.data.price, this.data.currency);
     }
 
-    this.getCode = function() {
+    this.getCode = function () {
         return CHAT_EMOTES[this.name] || "?";
     };
-}registerDataHandler("fine", Fine);
+} registerDataHandler("fine", Fine);
 
 function Fine(code) {
     registerDataHandler("fine", Fine);
@@ -11587,7 +11587,7 @@ function Fine(code) {
         'completed'
     ]);
 
-    this.getTotalAmount = function() {
+    this.getTotalAmount = function () {
         var now = new Date().getTime();
         var payBefore = this.getPayBefore();
 
@@ -11600,53 +11600,53 @@ function Fine(code) {
         return this.data.amount + Math.round((this.data.amount / 100) * (this.data.interest * payTimesLate));
     };
 
-    this.getPayBefore = function() {
+    this.getPayBefore = function () {
         return this.data.gave + this.data.payTime;
     };
 
-    this.isLate = function() {
+    this.isLate = function () {
         return this.isPaid() && new Date().getTime() > this.getPayBefore();
     };
 
-    this.isPaid = function() {
+    this.isPaid = function () {
         return this.data.paid >= this.getTotalAmount();
     };
 }
 
-Fine.__proto__.genFineCode = function(data) {
-        var code;
-        var allCodes = new Fine().getAllDataIds(data);
-        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        do {
-            code = '';
-            for (var i = 0; i < 9; i++) {
-                code += chars[Math.floor(Math.random() * chars.length)];
-            }
-        } while (allCodes.indexOf(code) > -1);
+Fine.__proto__.genFineCode = function (data) {
+    var code;
+    var allCodes = new Fine().getAllDataIds(data);
+    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    do {
+        code = '';
+        for (var i = 0; i < 9; i++) {
+            code += chars[Math.floor(Math.random() * chars.length)];
+        }
+    } while (allCodes.indexOf(code) > -1);
 
-        return code;
-    }
-    //registerDataHandler("giftcode", GiftCode);
+    return code;
+}
+//registerDataHandler("giftcode", GiftCode);
 
 function GiftCode(name) {
-	DataHandler.apply(this, ['giftcode', name]);
-	Permittable.apply(this, ['giftcodes']);
-	this.addData({
-		"code": "",
+    DataHandler.apply(this, ['giftcode', name]);
+    Permittable.apply(this, ['giftcodes']);
+    this.addData({
+        "code": "",
         "uses": 0,
         "items": [],
-		"money": 0,
-		"emotes": [],
-		"players": [], //redeemed players
-	});
+        "money": 0,
+        "emotes": [],
+        "players": [], //redeemed players
+    });
 
-	this.onCreate(function(self, data){
-		var perm = self.getPermission();
+    this.onCreate(function (self, data) {
+        var perm = self.getPermission();
         perm.data.enabled = false;
         perm.save(data);
     });
 
-    this.generateCode = function(){
+    this.generateCode = function () {
         var code = "";
         var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -11656,97 +11656,97 @@ function GiftCode(name) {
         this.data.code = code;
     };
 
-    this.getUsesLeft = function(pl){
-        if(this.data.uses == -1) return "infinite";
+    this.getUsesLeft = function (pl) {
+        if (this.data.uses == -1) return "infinite";
         return this.data.uses;
     };
 
-    this.redeem = function(pl, data){
-		var perm = this.getPermission().init(data);
-		if(!perm.permits(pl.getName(), pl.world.getScoreboard(), data)){
-			tellPlayer(pl, "&cYou don't have permission to use this code!");
-			return false;
-		}
+    this.redeem = function (pl, data) {
+        var perm = this.getPermission().init(data);
+        if (!perm.permits(pl.getName(), pl.world.getScoreboard(), data)) {
+            tellPlayer(pl, "&cYou don't have permission to use this code!");
+            return false;
+        }
 
-		var p = new Player(pl.getName()).init(data);
-		if(this.data.uses == 0){
-			tellPlayer(pl, "&cMax uses reached");
-			return false;
-		}
-		if(this.data.players.indexOf(pl.getName()) > -1){
-			tellPlayer(pl, "&cYou already activated this code");
-			return false;
-		}
-		//give
-		if(this.data.emotes.length > 0){
-			for(var n in this.data.emotes) {
-var emote = this.data.emotes[n];
-				if(p.data.emotes.indexOf(emote) == -1) {
-	          		p.data.emotes.push(emote);
-	        	}
-        	}
-		}
-		if(this.data.items.length > 0) givePlayerItems(pl, nbtItemArr(this.data.items, pl.world));
-		if(this.data.money > 0) givePlayerItems(pl, genMoney(pl.world, this.data.money));
+        var p = new Player(pl.getName()).init(data);
+        if (this.data.uses == 0) {
+            tellPlayer(pl, "&cMax uses reached");
+            return false;
+        }
+        if (this.data.players.indexOf(pl.getName()) > -1) {
+            tellPlayer(pl, "&cYou already activated this code");
+            return false;
+        }
+        //give
+        if (this.data.emotes.length > 0) {
+            for (var n in this.data.emotes) {
+                var emote = this.data.emotes[n];
+                if (p.data.emotes.indexOf(emote) == -1) {
+                    p.data.emotes.push(emote);
+                }
+            }
+        }
+        if (this.data.items.length > 0) givePlayerItems(pl, nbtItemArr(this.data.items, pl.world));
+        if (this.data.money > 0) givePlayerItems(pl, genMoney(pl.world, this.data.money));
 
-		if(this.data.uses > 0) { //keep -1 special
-			this.data.uses -= 1;
-		}
-		this.data.players.push(pl.getName());
-		this.save(data);
-		p.save(data);
-		tellPlayer(pl, "&aCode '"+this.name+"&a' activated!");
-		return true;
+        if (this.data.uses > 0) { //keep -1 special
+            this.data.uses -= 1;
+        }
+        this.data.players.push(pl.getName());
+        this.save(data);
+        p.save(data);
+        tellPlayer(pl, "&aCode '" + this.name + "&a' activated!");
+        return true;
     };
 
 }
 registerDataHandler("job", Job);
 function Job(name) {
-	DataHandler.apply(this, ['job', name]);
-	this.addData({
-		"displayName": name,
-		"pay": getCoinAmount('5g'),
-		"payTime": getStringTime('20min'),
-		"isOpen": false,
-		"capacity": 10,
-		"fireTime": getStringTime('1w'),
-		"companyId": null
-	});
+    DataHandler.apply(this, ['job', name]);
+    this.addData({
+        "displayName": name,
+        "pay": getCoinAmount('5g'),
+        "payTime": getStringTime('20min'),
+        "isOpen": false,
+        "capacity": 10,
+        "fireTime": getStringTime('1w'),
+        "companyId": null
+    });
 
-	this.getPlayers = function(data) {
-		var pl = [];
-		var dkeys = data.getKeys();
-		for(var d in dkeys) {
-var dkey = dkeys[d];
-			if(dkey.cmatch(/player_(\w+)/g) == 1) {
-				var player = new Player(dkey.replace(/player_(\w+)/g, '$1'));
-				player.load(data);
-				if(player.hasJob(this.name) && pl.indexOf(player.name) == -1) {
-					pl.push(player.name);
-				}
-			}
-		}
+    this.getPlayers = function (data) {
+        var pl = [];
+        var dkeys = data.getKeys();
+        for (var d in dkeys) {
+            var dkey = dkeys[d];
+            if (dkey.cmatch(/player_(\w+)/g) == 1) {
+                var player = new Player(dkey.replace(/player_(\w+)/g, '$1'));
+                player.load(data);
+                if (player.hasJob(this.name) && pl.indexOf(player.name) == -1) {
+                    pl.push(player.name);
+                }
+            }
+        }
 
-		return pl;
-	};
+        return pl;
+    };
 
-	this.getDisplayName = function(data) {
-		if(typeof(data) == typeof(undefined)) {
-			return this.data.displayName+'&r';
-		} else {
-			return this.getStatusColor(data)+this.data.displayName+'&r';
-		}
-	}
+    this.getDisplayName = function (data) {
+        if (typeof (data) == typeof (undefined)) {
+            return this.data.displayName + '&r';
+        } else {
+            return this.getStatusColor(data) + this.data.displayName + '&r';
+        }
+    }
 
-	this.getStatusColor = function(data) {
-		if(this.data.capacity == -1) {
-			return '&a';
-		}
-		if(this.getPlayers(data).length < this.data.capacity) {
-			return '&6';
-		}
-		return '&c';
-	};
+    this.getStatusColor = function (data) {
+        if (this.data.capacity == -1) {
+            return '&a';
+        }
+        if (this.getPlayers(data).length < this.data.capacity) {
+            return '&6';
+        }
+        return '&c';
+    };
 }
 
 
@@ -11777,7 +11777,7 @@ function Loan(player) {
         'amount', 'paid'
     ]);
 
-    this.onLoaded(function(loan, data) {
+    this.onLoaded(function (loan, data) {
         if (!('interest' in loan)) {
             loan.data.interest = loan.data.interest || loan.data.payRate || 12.5;
         }
@@ -11786,7 +11786,7 @@ function Loan(player) {
         }
     });
 
-    this.onRemove(function(loan, data) {
+    this.onRemove(function (loan, data) {
         var p = new Player(loan.data.player).init(data);
         var overflow = loan.data.paid - loan.getPaybackAmount();
 
@@ -11796,11 +11796,11 @@ function Loan(player) {
         }
     });
 
-    this.getPaybackAmount = function() {
+    this.getPaybackAmount = function () {
         return Math.floor(this.data.amount + (this.data.amount / 100 * this.data.interest));
     };
 
-    this.getPayTime = function() {
+    this.getPayTime = function () {
         var maxAmount = getCoinAmount('1M');
         var maxTime = getStringTime('4mon2w');
 
@@ -11808,10 +11808,10 @@ function Loan(player) {
         // return Math.min(getStringTime('9d') + (Math.floor(Math.pow(1.4, (this.data.amount / maxAmount))) * this.data.payInterval), maxTime);
     };
 
-    this.getTermPrice = function() {
+    this.getTermPrice = function () {
         return Math.round(this.getPaybackAmount() / Math.ceil(this.getPayTime() / this.data.payInterval));
     };
-    this.getPaymentTerms = function() {
+    this.getPaymentTerms = function () {
         var terms = [];
         var amount = this.getPaybackAmount();
         var mustPayBefore = new Date().getTime() + this.getPaybackAmount();
@@ -11833,17 +11833,17 @@ function Loan(player) {
         return terms;
     };
 
-    this.isPaid = function() {
+    this.isPaid = function () {
         return this.data.paid >= this.getPaybackAmount();
     };
 
-    this.isLate = function() {
+    this.isLate = function () {
         var now = new Date().getTime();
         var terms = this.getPaymentTerms();
         var late = false;
 
-        for(var i in terms) {
-var term = terms[i];
+        for (var i in terms) {
+            var term = terms[i];
             if (now > term.payBefore && !term.isPaid) {
                 late = true;
                 break;
@@ -11856,109 +11856,109 @@ var term = terms[i];
 
 
 function random_ranges(min, max, amount) {
-	var a = 0;
-	for(var i = 0; i < amount; i++) { a += random_range(min, max); }
-	return a;
+    var a = 0;
+    for (var i = 0; i < amount; i++) { a += random_range(min, max); }
+    return a;
 }
 
 function rrandom_ranges(min, max, amount) {
-	var a = 0;
-	for(var i = 0; i < amount; i++) { a += rrandom_range(min, max); }
-	return a;
+    var a = 0;
+    for (var i = 0; i < amount; i++) { a += rrandom_range(min, max); }
+    return a;
 }
 
 function pickchance(a, amount) {
-	var aa = [];
-	for(var e in a) {
-		if(!isArray(a[e])) {
-			aa[aa.length] = a[e];
-		} else {
-			for(var i = 0; i < a[e][1]; i++) {
-				aa[aa.length] = a[e][0];
-			}
-		}
-	}
+    var aa = [];
+    for (var e in a) {
+        if (!isArray(a[e])) {
+            aa[aa.length] = a[e];
+        } else {
+            for (var i = 0; i < a[e][1]; i++) {
+                aa[aa.length] = a[e][0];
+            }
+        }
+    }
 
-	return pick(aa, amount);
+    return pick(aa, amount);
 }
 
 function rrandom_range(min, max) { return Math.round(random_range(min, max)); }
 
 function random_range(_min, _max) {
-	var min = Math.min(_min, _max);
-	var max = Math.max(_min, _max);
+    var min = Math.min(_min, _max);
+    var max = Math.max(_min, _max);
 
-	var diff = max - min;
+    var diff = max - min;
 
-	return (min + (Math.random() * diff));
+    return (min + (Math.random() * diff));
 }
 
 function pickwhere(a, fn, amount) {
-	return pick(array_filter(a, fn), amount);
+    return pick(array_filter(a, fn), amount);
 }
 
 function genName(name) {
-	var p = [
-    'Amazing',
-    'Awesome',
-    'Blithesome',
-    'Excellent',
-    'Fabulous',
-    'Fantastic',
-    'Favorable',
-    'Gorgeous',
-    'Incredible',
-    'Outstanding',
-    'Perfect',
-    'Propitious',
-    'Remarkable',
-    'Rousing',
-    'Spectacular',
-    'Splendid',
-    'Stellar',
-    'Super',
-    'Upbeat',
-    'Unbelievable',
-    'Wondrous',
-	'Tempered',
-	'Legendary',
-	'Magical'
-	];
-	var s = [
-		'Destruction',
-		'Slaughter',
-		'Starlight',
-		'Heroism',
-		'Bonebreaking',
-		'The Fallen',
-		'Silence',
-		'Spellkeeping',
-		'Massacre',
-		'Sanity',
-		'Insanity',
-		'Remorse',
-		'Fury'
-	];
+    var p = [
+        'Amazing',
+        'Awesome',
+        'Blithesome',
+        'Excellent',
+        'Fabulous',
+        'Fantastic',
+        'Favorable',
+        'Gorgeous',
+        'Incredible',
+        'Outstanding',
+        'Perfect',
+        'Propitious',
+        'Remarkable',
+        'Rousing',
+        'Spectacular',
+        'Splendid',
+        'Stellar',
+        'Super',
+        'Upbeat',
+        'Unbelievable',
+        'Wondrous',
+        'Tempered',
+        'Legendary',
+        'Magical'
+    ];
+    var s = [
+        'Destruction',
+        'Slaughter',
+        'Starlight',
+        'Heroism',
+        'Bonebreaking',
+        'The Fallen',
+        'Silence',
+        'Spellkeeping',
+        'Massacre',
+        'Sanity',
+        'Insanity',
+        'Remorse',
+        'Fury'
+    ];
 
-	return pick(p) + ' ' + name + ' of ' + pick(s);
+    return pick(p) + ' ' + name + ' of ' + pick(s);
 }
 
 function pick(a, amount) {
-	if(typeof(amount) == typeof(undefined) || amount === null) { amount = 1; }
-	var index = Math.floor(Math.random() * a.length);
-	amount = Math.min(a.length, amount);
-	if(amount == 1) {
-		return a[index];
-	} else {
-		var picks = [];
+    if (typeof (amount) == typeof (undefined) || amount === null) { amount = 1; }
+    var index = Math.floor(Math.random() * a.length);
+    amount = Math.min(a.length, amount);
+    if (amount == 1) {
+        return a[index];
+    } else {
+        var picks = [];
 
-		while(picks.length < amount) {
-			index = Math.floor(Math.random() * a.length);
-			if(picks.indexOf(a[index]) == -1) { picks.push(a[index]); }
-		}
+        while (picks.length < amount) {
+            index = Math.floor(Math.random() * a.length);
+            if (picks.indexOf(a[index]) == -1) { picks.push(a[index]); }
+        }
 
-		return picks;
-	}
+        return picks;
+    }
 }
 
 
@@ -11979,11 +11979,11 @@ function Lottery(name) {
         'tickets': {}
     });
 
-    this.getWinner = function() {
+    this.getWinner = function () {
         var pickFrom = [];
 
-        for(var player in this.tickets) {
-var amount = this.tickets[player];
+        for (var player in this.tickets) {
+            var amount = this.tickets[player];
             pickFrom.push([player, amount]);
         }
 
@@ -11992,37 +11992,37 @@ var amount = this.tickets[player];
         return pickchance(pickFrom, 1);
     };
 
-    this.isEnded = function() {
+    this.isEnded = function () {
         return new Date().getTime() >= this.data.openedAt + this.data.endAfter;
     };
 
-    this.hasMinimumPlayers = function() {
+    this.hasMinimumPlayers = function () {
         return Object.keys(this.tickets).length >= this.data.minimumPlayers;
     };
 
-}registerDataHandler("mail", Mail);
+} registerDataHandler("mail", Mail);
 function Mail(name) {
-	this.addData({
-		"from": null,
-		"to": [],
-		"title": "",
-		"message": ""
-	});
+    this.addData({
+        "from": null,
+        "to": [],
+        "title": "",
+        "message": ""
+    });
 }
 registerDataHandler("minigame", Minigame);
 function Minigame(name) {
     DataHandler.apply(this, ["minigame", name]);
-	this.addData({
-		"from": null,
-		"to": [],
-		"title": "",
-		"message": ""
-	});
+    this.addData({
+        "from": null,
+        "to": [],
+        "title": "",
+        "message": ""
+    });
 
-    this.start = function(){
+    this.start = function () {
 
     }
-    this.win = function(){
+    this.win = function () {
 
     }
 }
@@ -12065,49 +12065,49 @@ function Region(name) {
         'salePrice', 'rentPrice'
     ]);
 
-    this.reset = function() {
+    this.reset = function () {
         this.data.rentTimeCredit = 0;
         this.data.trusted = [];
 
         return this;
     };
 
-    this.getRentTimeLeft = function() {
+    this.getRentTimeLeft = function () {
         return (this.data.rentedAt + this.data.rentTimeCredit) - new Date().getTime();
     }
 
-    this.isTrusted = function(playerName) {
+    this.isTrusted = function (playerName) {
         return this.data.trusted.indexOf(playerName) > -1;
     };
 
     /*String player, IScoreboard sb, IData data*/
-    this.can = function(player, sb, data, action) {
-	if(typeof(action) == typeof(undefined) || action === null) { action = null; }
-            var perm = this.getPermission().init(data);
-            var canAction = false;
+    this.can = function (player, sb, data, action) {
+        if (typeof (action) == typeof (undefined) || action === null) { action = null; }
+        var perm = this.getPermission().init(data);
+        var canAction = false;
 
-            switch (action) {
-                case "interact":
-                    if (this.data.allInteract) canAction = true;
-                    break;
-                case "build":
-                    if (this.data.allBuild) canAction = true;
-                    break;
-                case "attack":
-                    if (this.data.allAttack) canAction = true;
-                    break;
+        switch (action) {
+            case "interact":
+                if (this.data.allInteract) canAction = true;
+                break;
+            case "build":
+                if (this.data.allBuild) canAction = true;
+                break;
+            case "attack":
+                if (this.data.allAttack) canAction = true;
+                break;
 
-            }
-
-            return (
-                this.data.owner == player ||
-                this.data.trusted.indexOf(player) > -1 ||
-                perm.permits(player, sb, data) ||
-                canAction
-            );
         }
-        /*Array xyz1, Array xyz2*/
-    this.addPos = function(xyz1, xyz2) {
+
+        return (
+            this.data.owner == player ||
+            this.data.trusted.indexOf(player) > -1 ||
+            perm.permits(player, sb, data) ||
+            canAction
+        );
+    }
+    /*Array xyz1, Array xyz2*/
+    this.addPos = function (xyz1, xyz2) {
         var newPos = {
             xyz1: xyz1,
             xyz2: xyz2,
@@ -12116,11 +12116,11 @@ function Region(name) {
 
         return this;
     };
-    this.addCoord = function(xyz) {
+    this.addCoord = function (xyz) {
         //Check if there is a half-position
         var hasHalfPos = false;
-        for(var i in this.data.positions) {
-var pos = this.data.positions[i];
+        for (var i in this.data.positions) {
+            var pos = this.data.positions[i];
             if (pos.xyz1 == null || pos.xyz2 == null) {
                 pos.xyz1 = pos.xyz1 || xyz;
                 pos.xyz2 = pos.xyz2 || xyz;
@@ -12137,14 +12137,14 @@ var pos = this.data.positions[i];
         return this;
     };
 
-    this.getMaxRentTimeString = function() {
+    this.getMaxRentTimeString = function () {
         return this.data.maxRentTime == -1 ? 'Infinity' : getTimeString(this.data.maxRentTime);
     };
 
     /*Array xyz*/
-    this.getPos = function(xyz) { //Gets cube number of xyz coord
-        for(var i in this.data.positions) {
-var pos = this.data.positions[i]; //Loop cubes
+    this.getPos = function (xyz) { //Gets cube number of xyz coord
+        for (var i in this.data.positions) {
+            var pos = this.data.positions[i]; //Loop cubes
 
             if (pos.xyz1 != null && pos.xyz2 != null) { //Check is valid cube
                 var minx = Math.min(pos.xyz1[0], pos.xyz2[0]);
@@ -12177,30 +12177,30 @@ var pos = this.data.positions[i]; //Loop cubes
         return -1;
     };
 
-    this.hasCoord = function(xyz) { //Check if xyz is in region
+    this.hasCoord = function (xyz) { //Check if xyz is in region
         return (this.getPos(xyz) > -1);
     };
 
-    this.hasPaid = function() {
-            if (this.data.owner == null) {
-                return true;
-            }
+    this.hasPaid = function () {
+        if (this.data.owner == null) {
+            return true;
+        }
 
-            if (this.data.saleType == "buy") {
-                return true;
-            }
-            return this.getRentTimeLeft() > 0;
-        } //TODO: REGION RENT PRICE
-}registerDataHandler("team", Team);
+        if (this.data.saleType == "buy") {
+            return true;
+        }
+        return this.getRentTimeLeft() > 0;
+    } //TODO: REGION RENT PRICE
+} registerDataHandler("team", Team);
 function Team(name) {
-	DataHandler.apply(this, ['team', name]);
-	this.addData({
-		"chatcolor": null,
-		"chateffect": null,
-	});
-	this.teamExists = function(sb) {
-		return sb.hasTeam(this.name);
-	};
+    DataHandler.apply(this, ['team', name]);
+    this.addData({
+        "chatcolor": null,
+        "chateffect": null,
+    });
+    this.teamExists = function (sb) {
+        return sb.hasTeam(this.name);
+    };
 }
 
 
@@ -12222,16 +12222,16 @@ function Trader(uuid) {
         'hireTimeIncrease': getStringTime('1mon'),
     });
 
-    this.getMaxItemCount = function() {
+    this.getMaxItemCount = function () {
         return Math.round(Math.max(Math.min(this.data.rowcap, 6), 1)) * 9;
     };
 
-    this.getItemCount = function(item, ignoreNbt) {
-	if(typeof(ignoreNbt) == typeof(undefined) || ignoreNbt === null) { ignoreNbt = false; }
+    this.getItemCount = function (item, ignoreNbt) {
+        if (typeof (ignoreNbt) == typeof (undefined) || ignoreNbt === null) { ignoreNbt = false; }
         var traderItems = this.getItems();
         var count = 0;
-        for(var i in traderItems) {
-var traderItem = traderItems[i];
+        for (var i in traderItems) {
+            var traderItem = traderItems[i];
             if (ignoreNbt) {
                 if (isItemEqual(item, traderItem)) {
                     count += traderItem.getStackSize();
@@ -12246,46 +12246,46 @@ var traderItem = traderItems[i];
         return count;
     }
 
-    this.getItems = function() {
+    this.getItems = function () {
         var items = [];
         var world = API.getIWorld(0);
 
-        for(var i in this.items) {
-var item = this.items[i];
+        for (var i in this.items) {
+            var item = this.items[i];
             items.push(world.createItemFromFromNBT(API.stringToNbt(item)));
         }
 
         return items;
     };
 
-    this.removeItems = function(items, ignoreNbt) {
-        for(var i in items) {
-var item = items[i];
+    this.removeItems = function (items, ignoreNbt) {
+        for (var i in items) {
+            var item = items[i];
             this.removeItem(items, ignoreNbt);
         }
 
         return this;
     };
 
-    this.removeItem = function(item, ignoreNbt) {
-	if(typeof(ignoreNbt) == typeof(undefined) || ignoreNbt === null) { ignoreNbt = false; }
-        this.setItems(this.getItems().filter(function(traderItem) {
+    this.removeItem = function (item, ignoreNbt) {
+        if (typeof (ignoreNbt) == typeof (undefined) || ignoreNbt === null) { ignoreNbt = false; }
+        this.setItems(this.getItems().filter(function (traderItem) {
             return (ignoreNbt ? (traderItem.getName() != item.getName()) : (!isItemEqual(traderItem, item)));
         }));
 
         return this;
     };
 
-    this.calcNewItems = function(items) {
+    this.calcNewItems = function (items) {
         var newItems = [];
         var traderItems = this.getItems();
 
-        for(var i in items) {
-var item = items[i];
+        for (var i in items) {
+            var item = items[i];
             item = item.copy();
             // this.items.push(item.getItemNbt().toJsonString());
-            for(var j in traderItems) {
-var traderItem = traderItems[j];
+            for (var j in traderItems) {
+                var traderItem = traderItems[j];
                 if (!isItemEqual(item, traderItem)) {
                     continue;
                 }
@@ -12305,15 +12305,15 @@ var traderItem = traderItems[j];
             newItems.push(item);
         }
 
-        for(var j in traderItems) {
-var traderItem = traderItems[j];
+        for (var j in traderItems) {
+            var traderItem = traderItems[j];
             newItems.unshift(traderItem);
         }
 
         return newItems.length <= this.getMaxItemCount() ? newItems : false;
     }
 
-    this.addItems = function(items) {
+    this.addItems = function (items) {
         var newItems = this.calcNewItems(items);
 
         if (newItems !== false) {
@@ -12323,10 +12323,10 @@ var traderItem = traderItems[j];
         return this;
     };
 
-    this.setNewItems = function(items) {
+    this.setNewItems = function (items) {
         this.data.items = [];
-        for(var i in items) {
-var item = items[i];
+        for (var i in items) {
+            var item = items[i];
             this.data.items.push(item.getItemNbt().toJsonString());
         }
 
@@ -12349,32 +12349,32 @@ function Unlockable(name) {
         currency: 'credit',
     });
 
-    this.formatPrice = function() {
+    this.formatPrice = function () {
         return formatCurrency(this.data.price, this.data.currency);
     };
 
-    this.getColor = function() {
+    this.getColor = function () {
         return getColorId(this.data.color);
     }
-}registerDataHandler("warp", Warp);
+} registerDataHandler("warp", Warp);
 function Warp(name) {
-	DataHandler.apply(this, ["warp", name]);
-	Permittable.apply(this, ["warps"]); //Use new domain "warps"
+    DataHandler.apply(this, ["warp", name]);
+    Permittable.apply(this, ["warps"]); //Use new domain "warps"
 
-	this.onCreate(function(self, data){
-		var perm = self.getPermission();
-		perm.data.enabled = false;
-		perm.save(data);
-	});
+    this.onCreate(function (self, data) {
+        var perm = self.getPermission();
+        perm.data.enabled = false;
+        perm.save(data);
+    });
 
-	this.addData({
-		"pos": {
-			"x": null,
-			"y": null,
-			"z": null,
-		},
-		"price": 0,
-	});
+    this.addData({
+        "pos": {
+            "x": null,
+            "y": null,
+            "z": null,
+        },
+        "price": 0,
+    });
 }
 
 
@@ -12388,7 +12388,7 @@ var InputStreamReader = Java.type("java.io.InputStreamReader");
 var String = Java.type("java.lang.String");
 
 var HTTP = {
-    get: function(url, contentType) {
+    get: function (url, contentType) {
         var obj = new URL(url);
         var con = obj.openConnection();
 
@@ -12401,27 +12401,27 @@ var HTTP = {
         var inputLine;
         var response = "";
         while ((inputLine = input.readLine()) != null) {
-            response = response + inputLine+"\n";
+            response = response + inputLine + "\n";
         }
         input.close();
         //print(response);
 
-        switch(contentType) {
+        switch (contentType) {
             case "application/json":
                 response = cson_parse(response);
                 break;
         }
 
-        return {"success": responseCode === 200, "data": response, "reponseCode": responseCode};
+        return { "success": responseCode === 200, "data": response, "reponseCode": responseCode };
     },
-    post: function(url, data) {
+    post: function (url, data) {
         var obj = new URL(url);
         var con = obj.openConnection();
         con.setDoInput(true);
         con.setDoOutput(true);
-        con.setInstanceFollowRedirects( false );
-        con.setRequestMethod( "POST" );
-        con.setRequestProperty("Content-Type", "application/json; utf-8");  
+        con.setInstanceFollowRedirects(false);
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json; utf-8");
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         var os;
@@ -12430,9 +12430,9 @@ var HTTP = {
             var writer = new DataOutputStream(os);
             writer.writeBytes(new String(JSON.stringify(data)));
             writer.flush();
-            writer.close();       
+            writer.close();
             os.close();
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
         }
         var br;
@@ -12440,14 +12440,14 @@ var HTTP = {
         try {
             br = new BufferedReader(
                 new InputStreamReader(con.getInputStream(), "UTF-8")
-            ); 
+            );
             var response = '';
             var responseLine = null;
             while ((responseLine = br.readLine()) != null) {
                 response += responseLine.trim();
             }
             res = JSON.parse(response.toString());
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
         }
         con.disconnect();
@@ -12457,13 +12457,13 @@ var HTTP = {
 }
 
 HTTP.async = {
-    post: function(url, data){
-        var promise = new Promise(function(resolve,reject){
+    post: function (url, data) {
+        var promise = new Promise(function (resolve, reject) {
             var response = HTTP.post(url, data);
-            if(response.success) {
+            if (response.success) {
                 resolve(response);
-            } 
-            
+            }
+
         })
     },
 };
@@ -12484,7 +12484,7 @@ HTTP.async = {
 
 
 function getColorPermId(colorId) {
-	return 'chat.color.'+getColorName(colorId);
+    return 'chat.color.' + getColorName(colorId);
 }
 
 
@@ -12495,8 +12495,8 @@ function getColorPermId(colorId) {
 
 function reloadEmotes(w) {
     var data = w.getStoreddata();
-    for(var c in CHAT_EMOTES) {
-var ce = CHAT_EMOTES[c];
+    for (var c in CHAT_EMOTES) {
+        var ce = CHAT_EMOTES[c];
         var ec = new Emote(c);
         if (!ec.exists(data)) {
             ec.save(data);
@@ -12519,8 +12519,8 @@ var ce = CHAT_EMOTES[c];
 
 
 function formatLoanInfo(loan, params, title, cmdPrefix) {
-	if(typeof(params) == typeof(undefined) || params === null) { params = {}; }
-	if(typeof(title) == typeof(undefined) || title === null) { title = 'Info'; }
+    if (typeof (params) == typeof (undefined) || params === null) { params = {}; }
+    if (typeof (title) == typeof (undefined) || title === null) { title = 'Info'; }
     var now = new Date().getTime();
 
     var terms = loan.getPaymentTerms();
@@ -12546,7 +12546,7 @@ function formatLoanInfo(loan, params, title, cmdPrefix) {
                 parseInt(params.show || 10),
                 parseInt(params.page || 1),
                 cmdPrefix + " {MATCHES} -payments -show:{SHOW} -page:{PAGE} -sort:{SORT}",
-                function(term) {
+                function (term) {
                     var termNum = (parseInt(term.index) + 1);
                     var termString = '';
                     var paymentColor = term.isPaid ? '&a' : '&b';
@@ -12578,10 +12578,10 @@ function formatLoanInfo(loan, params, title, cmdPrefix) {
                     return termString;
 
                 },
-                function(a, b) {
+                function (a, b) {
                     return a.index - b.index;
                 },
-                function(term, list) {
+                function (term, list) {
                     return arrayOccurs(term.index, list, false, false) > 0
                 },
                 (params.sort || "").toLowerCase() == "desc"
@@ -12615,11 +12615,11 @@ var MENU_CAN_EDIT = false;
 
 function fillObject(obj, data) {
 
-    for(var key in obj) {
-var val = obj[key];
-        if(typeof val === 'string') {
+    for (var key in obj) {
+        var val = obj[key];
+        if (typeof val === 'string') {
             //obj[key] = val.fill(data);
-        } else if(typeof val != 'number') {
+        } else if (typeof val != 'number') {
             //fillObject(obj[key], data);
         }
     }
@@ -12627,61 +12627,61 @@ var val = obj[key];
 }
 
 function containerGetRows(container) {
-    return (container.getSize()-36)/9;
+    return (container.getSize() - 36) / 9;
 }
 
 function handleMenuEvents(player, evs, filldata) {
     filldata = objMerge({
         "player": player.getName(),
-    }, filldata||{});
+    }, filldata || {});
 
-    for(var c in evs) {
-var ev = evs[c];
+    for (var c in evs) {
+        var ev = evs[c];
         fillObject(ev, filldata);
-        switch(ev.type) {
+        switch (ev.type) {
             case "run_command":
-                executeCommand(player, ev.command||"");
+                executeCommand(player, ev.command || "");
                 break;
             case "run_xcommand":
             case "run_xcommand_admin":
-                executeXCommand(ev.command||"", player, ev.type === "run_xcommand");
+                executeXCommand(ev.command || "", player, ev.type === "run_xcommand");
                 break;
             case "run_file":
-                var scrPath = ev.file||"";
+                var scrPath = ev.file || "";
                 var scrFile = new File(scrPath);
-                if(scrFile.exists()) {
+                if (scrFile.exists()) {
                     var scr = readFileAsString(scrPath);
                     var scrFunc = new Function('e', 'payload', scr);
                     var payl = objMerge({
                         //defaults
-                    }, ev.payload||{});
+                    }, ev.payload || {});
 
                     try {
                         scrFunc(e, payl);
-                    } catch(exc) {
+                    } catch (exc) {
                         handleError(exc, false, player.getName());
                     }
                 } else {
-                    tellPlayer(player, "&cFile '"+scrPath+"' doesn't exist!");
+                    tellPlayer(player, "&cFile '" + scrPath + "' doesn't exist!");
                 }
                 break;
             case "run_script":
-                var scr = ev.script||"";
+                var scr = ev.script || "";
                 var scrFunc = new Function('e', 'payload', scr);
                 var payl = objMerge({
                     //defaults
-                }, ev.payload||{});
+                }, ev.payload || {});
 
                 try {
                     scrFunc(e, payl);
-                } catch(exc) {
+                } catch (exc) {
                     handleError(exc, false, player.getName());
                 }
                 break;
             case "open_menu":
-                var menuPath = "menus/"+(ev.file||"")+".json";
+                var menuPath = "menus/" + (ev.file || "") + ".json";
                 var menuFile = new File(menuPath);
-                if(menuFile.exists()) {
+                if (menuFile.exists()) {
                     var menuFileText = readFileAsString(menuPath);
                     var menuJson = null;
 
@@ -12691,20 +12691,20 @@ var ev = evs[c];
                         handleError(exc, false, player.getName());
                     }
 
-                    if(menuJson !== null) {
+                    if (menuJson !== null) {
                         player.closeGui();
-                        MENU_TIMER_PAYLOAD = {'menu':menuJson,'data':ev.data||{},'onClose':menuJson.onClose||[]};
+                        MENU_TIMER_PAYLOAD = { 'menu': menuJson, 'data': ev.data || {}, 'onClose': menuJson.onClose || [] };
                         player.timers.forceStart(MENU_TIMER_ID, 1, false);
 
                     }
 
 
                 } else {
-                    tellPlayer(player, "&cFile '"+menuPath+"' does not exists!")
+                    tellPlayer(player, "&cFile '" + menuPath + "' does not exists!")
                 }
                 break;
             case "cancel":
-                if(e.isCancelable()) {
+                if (e.isCancelable()) {
                     e.setCanceled(true);
                 }
                 break;
@@ -12712,12 +12712,12 @@ var ev = evs[c];
                 player.closeGui();
                 break;
             case "function":
-                if(typeof ev.function === 'function') {
+                if (typeof ev.function === 'function') {
                     var payl = objMerge({
                         //defaults
-                    }, ev.payload||{});
+                    }, ev.payload || {});
                     var c = player.getOpenContainer();
-                    ev.function(player, payl, c.getSize()>36 ? c : null);
+                    ev.function(player, payl, c.getSize() > 36 ? c : null);
                 }
                 break;
         }
@@ -12725,74 +12725,74 @@ var ev = evs[c];
 }
 
 function CustomMenu(name, meta) {
-    this.name = name||"";
+    this.name = name || "";
     this.rows = 6;
     this.items = [];
     this.closeFns = [];
     this.openFns = [];
     this.filldata = {};
-    this.meta = meta||{};
+    this.meta = meta || {};
 
-    this.getFirstFreeSlot = function(container) {
+    this.getFirstFreeSlot = function (container) {
         var items = container.getItems();
-        for(var i in items) {
-var item = items[i];
-            if(item.isEmpty() && i>=36) {
-                return i-36;
+        for (var i in items) {
+            var item = items[i];
+            if (item.isEmpty() && i >= 36) {
+                return i - 36;
             }
         }
         return -1;
     };
 
-    this.fromContainer = function(container) {
+    this.fromContainer = function (container) {
         this.name = container.getName();
-        this.items = container.getItems().map(function(item){
+        this.items = container.getItems().map(function (item) {
             return new CustomMenuItem().fromItemStack(item);
         });
         this.rows = containerGetRows(container);
 
     };
 
-    this.fromJson = function(json) {
-        if(typeof json === 'string') { json = JSON.parse(json); }
-        this.name = json.name||"";
-        this.rows = Math.min(Math.max(json.rows||6, 1),6);
-        if(json.items) {
-            for(var i in json.items) {
-var jitem = json.items[i];
+    this.fromJson = function (json) {
+        if (typeof json === 'string') { json = JSON.parse(json); }
+        this.name = json.name || "";
+        this.rows = Math.min(Math.max(json.rows || 6, 1), 6);
+        if (json.items) {
+            for (var i in json.items) {
+                var jitem = json.items[i];
                 this.items.push(new CustomMenuItem().fromJson(jitem));
             }
         }
-        if(json.onClose) {
+        if (json.onClose) {
             this.closeFns = json.onClose;
         }
-        if(json.onOpen) {
+        if (json.onOpen) {
             this.openFns = json.onOpen;
         }
-        if(json.data) {
+        if (json.data) {
             this.filldata = json.data;
         }
-        if(json.meta) {
+        if (json.meta) {
             this.meta = json.meta;
         }
 
         return this;
     };
 
-    this.onClose = function(ev) {
+    this.onClose = function (ev) {
         this.closeFns.push(ev);
     };
 
-    this.onOpen = function(ev){
+    this.onOpen = function (ev) {
         this.openFns.push(ev);
     };
 
-    this.getItems = function() {
+    this.getItems = function () {
         return new Collection(this.items);
     };
 
-    this.open = function(player) {
-        var container =  player.showChestGui(this.rows);
+    this.open = function (player) {
+        var container = player.showChestGui(this.rows);
 
         MENU_ON_CLOSE = fillObject(objMerge({}, this.closeFns), {});
         handleMenuEvents(player, this.openFns);
@@ -12800,24 +12800,24 @@ var jitem = json.items[i];
         return container;
     };
 
-    this.update = function(){
-        this.getItems().do("each",function(item){item.update();});
+    this.update = function () {
+        this.getItems().do("each", function (item) { item.update(); });
     };
 
-    this.populate = function(w, container) {
+    this.populate = function (w, container) {
         container.setName(parseEmotes(ccs(this.name)));
         var items = this.items;
-        for(var i in this.items) {
-var citem = this.items[i];
+        for (var i in this.items) {
+            var citem = this.items[i];
 
-            container.setSlot(36+citem.slot, citem.toItemStack(w));
+            container.setSlot(36 + citem.slot, citem.toItemStack(w));
         }
     };
 }
 
 function CustomMenuItem(id, damage, count) {
-	if(typeof(damage) == typeof(undefined) || damage === null) { damage = 0; }
-	if(typeof(count) == typeof(undefined) || count === null) { count = 1; }
+    if (typeof (damage) == typeof (undefined) || damage === null) { damage = 0; }
+    if (typeof (count) == typeof (undefined) || count === null) { count = 1; }
     this.id = id;
     this.lore = [];
     this.slot = 0;
@@ -12829,7 +12829,7 @@ function CustomMenuItem(id, damage, count) {
     this.name = null;
     this.takeable = false;
 
-    this.toJsonString = function(){
+    this.toJsonString = function () {
         var json = {
             "id": this.id,
             "lore": this.lore,
@@ -12839,57 +12839,57 @@ function CustomMenuItem(id, damage, count) {
             "classes": this.classes,
             "takeable": this.takeable
         };
-        if(this.nbt) { json.nbt = this.nbt; }
-        if(this.name) { json.name = this.name }
+        if (this.nbt) { json.nbt = this.nbt; }
+        if (this.name) { json.name = this.name }
 
         return JSON.stringify(json);
     };
 
-    this.fromJson = function(json){
-        if(typeof json === 'string') { json = JSON.parse(json); }
-        this.id=json.id;
-        if("name" in json) {
+    this.fromJson = function (json) {
+        if (typeof json === 'string') { json = JSON.parse(json); }
+        this.id = json.id;
+        if ("name" in json) {
             this.name = json.name;
         }
-        this.lore = json.lore||[];
-        this.damage = json.damage||0;
-        this.count = json.count||1;
-        this.nbt = json.nbt||null;
-        this.classes = json.classes||[];
-        this.takeable = json.takeable||false;
-        this.slot = json.slot||0;
-        this.onClickFuncs = json.onClick||[];
+        this.lore = json.lore || [];
+        this.damage = json.damage || 0;
+        this.count = json.count || 1;
+        this.nbt = json.nbt || null;
+        this.classes = json.classes || [];
+        this.takeable = json.takeable || false;
+        this.slot = json.slot || 0;
+        this.onClickFuncs = json.onClick || [];
 
         return this;
     };
 
     this.onClickFuncs = [];
 
-    this.onClick = function(type, meta){
+    this.onClick = function (type, meta) {
         this.onClickFuncs.push(objMerge({
             "type": type,
         }, meta));
     };
 
-    this.fromItemStack = function(stack) {
+    this.fromItemStack = function (stack) {
         this.id = stack.getName();
         this.damage = stack.getItemDamage();
         this.count = stack.getStackSize();
-        this.lore = stack.getLore()||[];
-        if(stack.hasCustomName()) {
+        this.lore = stack.getLore() || [];
+        if (stack.hasCustomName()) {
             this.name = stack.getDisplayName().replace("§", "&");
         }
-        if(stack.hasNbt()) {
+        if (stack.hasNbt()) {
             var snbt = stack.getNbt();
-            this.classes = nbtGetList(snbt, "classes")||[];
-            var clickActions = (nbtGetList(snbt, "onClick")||[]);
+            this.classes = nbtGetList(snbt, "classes") || [];
+            var clickActions = (nbtGetList(snbt, "onClick") || []);
             this.onClick = [];
-            for(var c in clickActions) {
-var ca = clickActions[c];
+            for (var c in clickActions) {
+                var ca = clickActions[c];
                 this.onClick.push(JSON.stringify(ca));
             }
             //print(nbtGetList(snbt, "onClick")||[]);
-            this.takeable = snbt.getBoolean("takeable")||false;
+            this.takeable = snbt.getBoolean("takeable") || false;
 
 
             var setNbt = nbtCopy(snbt);
@@ -12904,24 +12904,24 @@ var ca = clickActions[c];
 
         return this;
     };
-    this.toItemStack = function(w){
+    this.toItemStack = function (w) {
         var item = w.createItem(this.id, this.damage, this.count);
-        if(this.nbt) {
+        if (this.nbt) {
             //item.getNbt().merge(API.stringToNbt(JSON.stringify(this.nbt)));
         }
         var newLore = this.lore;
         item.setLore(newLore);
-        if(this.name) {
-            item.setCustomName(parseEmotes(ccs(this.name||""), [], false));
+        if (this.name) {
+            item.setCustomName(parseEmotes(ccs(this.name || ""), [], false));
         }
         var inbt = item.getNbt();
-        inbt.setList("classes", (Java.from(inbt.getList("classes", inbt.getListType("classes")))||[]).concat.apply([], [this.classes]));
-        inbt.setList("onClick", (Java.from(inbt.getList("onClick", inbt.getListType("onClick")))||[]).concat.apply([], [this.onClickFuncs.map(function(f){return JSON.stringify(f);})]));
+        inbt.setList("classes", (Java.from(inbt.getList("classes", inbt.getListType("classes"))) || []).concat.apply([], [this.classes]));
+        inbt.setList("onClick", (Java.from(inbt.getList("onClick", inbt.getListType("onClick"))) || []).concat.apply([], [this.onClickFuncs.map(function (f) { return JSON.stringify(f); })]));
         inbt.setBoolean("takeable", this.takeable);
 
 
 
-        if(this.nbtstring) {
+        if (this.nbtstring) {
             inbt.merge(API.stringToNbt(this.nbtstring));
         }
         return item;
@@ -12967,38 +12967,38 @@ var ca = clickActions[c];
 
 var DATA_PATH = "CustomServerTools/data";
 
-if(!new File(DATA_PATH).exists()) {
+if (!new File(DATA_PATH).exists()) {
     mkPath(DATA_PATH);
 }
 
 function CSTData(disk, create) {
-	if(typeof(disk) == typeof(undefined) || disk === null) { disk = null; }
-	if(typeof(create) == typeof(undefined) || create === null) { create = false; }
+    if (typeof (disk) == typeof (undefined) || disk === null) { disk = null; }
+    if (typeof (create) == typeof (undefined) || create === null) { create = false; }
 
 
     this.file = "";
 
-    this.useDisk = function(diskname){
+    this.useDisk = function (diskname) {
 
-        diskname = diskname||CONFIG_SERVER.USE_DISK;
-        if(Object.keys(CONFIG_SERVER.FILE_DISKS).indexOf(diskname) > -1) {
+        diskname = diskname || CONFIG_SERVER.USE_DISK;
+        if (Object.keys(CONFIG_SERVER.FILE_DISKS).indexOf(diskname) > -1) {
 
             this.file = CONFIG_SERVER.FILE_DISKS[diskname].path.fill({
                 "worldname": getServerProperties()['level-name']
             });
-            
+
         }
         return this;
     };
 
 
 
-    this.exists = function() {
+    this.exists = function () {
         return new File(this.file).exists();
     };
-    this.create = function(){
-        if(!this.exists()) {
-            print("DEBUGFILE: "+this.file);
+    this.create = function () {
+        if (!this.exists()) {
+            print("DEBUGFILE: " + this.file);
             new File(this.file).createNewFile();
             writeToFile(this.file, "{}");
         }
@@ -13006,65 +13006,65 @@ function CSTData(disk, create) {
     };
 
 
-    if(create) {this.create();}
+    if (create) { this.create(); }
 
-    this.clear = function() {
+    this.clear = function () {
         writeToFile(this.file, "{}");
     }
 
-    this.put = function(key, value) {
+    this.put = function (key, value) {
         try {
             var d = JSON.parse(this.exists() ? readFileAsString(this.file).replace(/\n/gm, "") : "{}");
             d[key] = value;
             writeToFile(this.file, JSON.stringify(d));
             return true;
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
             return false;
         }
     }
 
-    this.has = function(key) {
+    this.has = function (key) {
         try {
             return Object.keys(cson_parse(readFileAsString(this.file))).indexOf(key) > -1;
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
             return false;
         }
     }
 
-    this.get = function(key) {
+    this.get = function (key) {
         try {
-            print(this.file.toString()+" --- "+key+" --- "+readFileAsString(this.file).toString());
+            print(this.file.toString() + " --- " + key + " --- " + readFileAsString(this.file).toString());
             var jdata = JSON.parse(readFileAsString(this.file));
-            if(Object.keys(jdata).indexOf(key) > -1) {
+            if (Object.keys(jdata).indexOf(key) > -1) {
                 return jdata[key];
             }
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
         }
         return null;
     }
 
-    this.getKeys = function() {
+    this.getKeys = function () {
         try {
             var jdata = JSON.parse(readFileAsString(this.file));
             return Object.keys(jdata);
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
         }
         return [];
     }
 
-    this.remove = function(key) {
+    this.remove = function (key) {
         try {
             var jdata = JSON.parse(readFileAsString(this.file));
-            if(Object.keys(jdata).indexOf(key) > -1) {
+            if (Object.keys(jdata).indexOf(key) > -1) {
                 delete jdata[key];
                 writeToFile(this.file, JSON.stringify(jdata));
                 return true;
             }
-        } catch(exc) {
+        } catch (exc) {
             handleError(exc);
         }
 
@@ -13076,44 +13076,44 @@ function CSTData(disk, create) {
 
 
 function Collection(o) {
-	if(typeof(o) == typeof(undefined) || o === null) { o = []; }
+    if (typeof (o) == typeof (undefined) || o === null) { o = []; }
     this.items = o;
 
-    this.do = function(funcname, args){
+    this.do = function (funcname, args) {
         this.items[funcname].apply(this.items, args);
         return this;
     };
 
-    this.where = function(boolfunc) {
+    this.where = function (boolfunc) {
         var newItems = [];
-        this.items.forEach(function(item, i){
-            if(boolfunc(item, i)) { newItems.push(item); }
+        this.items.forEach(function (item, i) {
+            if (boolfunc(item, i)) { newItems.push(item); }
         });
         return new Collection(newItems);
     };
 
-    this.whereKey = function(key, opr_val, value) {
+    this.whereKey = function (key, opr_val, value) {
         var operator = (value ? opr_val : '==');
         var newItems = [];
-        this.items.forEach(function(item, i){
-            if(compare(key, operator, val)) { newItems.push(item); }
+        this.items.forEach(function (item, i) {
+            if (compare(key, operator, val)) { newItems.push(item); }
         });
 
         return new Collection(newItems);
     }
 
-    this.toArray = function(){
+    this.toArray = function () {
         return this.items;
     };
 
-    this.pluck = function(key) {
+    this.pluck = function (key) {
         var plucked = [];
-        this.items.forEach(function(item,i){
-            if(typeof key === 'string') {
+        this.items.forEach(function (item, i) {
+            if (typeof key === 'string') {
                 plucked.push(item[key]);
             } else {
                 var objToPush = {};
-                for(var k in key) {
+                for (var k in key) {
                     objToPush[key[k]] = item[key[k]];
                 }
                 plucked.push(objToPush);
@@ -13124,44 +13124,44 @@ function Collection(o) {
     };
 
 
-    
+
 }
 
 
 var CONFIG_PATH = "CustomServerTools/config/";
 function Config(name, startvalues) {
-    this.path = CONFIG_PATH+name+'.json';
+    this.path = CONFIG_PATH + name + '.json';
 
-    if(!this.exists()) {
+    if (!this.exists()) {
         this.create();
     }
 
-    this.create = function(){
+    this.create = function () {
         mkPath(this.path);
-        writeToFile(this.path, JSON.stringify(startvalues||{}));
+        writeToFile(this.path, JSON.stringify(startvalues || {}));
     };
 
-    this.all = function(){
-        return JSON.parse(readFileAsString(this.path)||"{}");
+    this.all = function () {
+        return JSON.parse(readFileAsString(this.path) || "{}");
     }
 
-    this.exists = function(){
+    this.exists = function () {
         return new File(this.path).exists();
     };
 
-    this.has = function(key) {
+    this.has = function (key) {
         return Object.keys(this.all()).indexOf(key) > -1;
     };
 
-    this.get = function(key) {
-        if(this.has(key)) {
+    this.get = function (key) {
+        if (this.has(key)) {
             return this.all()[key];
         }
 
         return null;
     };
 
-    this.put = function(key, value) {
+    this.put = function (key, value) {
         var o = this.all();
         o[key] = value;
         writeToFile(this.path, JSON.stringify(o));
@@ -13173,55 +13173,55 @@ var rgx_booktag = /^#(\w+)(?:\s+([\w\W]+?))??\n?$/gm;
 var rgx_booktaginfo = /^#(\w+)(?:\s+([\w\W]+?))??$/m;
 
 function generateBook(w, bookstring) {
-	var book = w.createItem("minecraft:written_book", 0, 1);
-	var bnbt = book.getNbt();
+    var book = w.createItem("minecraft:written_book", 0, 1);
+    var bnbt = book.getNbt();
     var pages = bookstring.split("#ENDPAGE");
 
-	var putpages = [];
-	for(var p in pages) {
-		var page = pages[p];
+    var putpages = [];
+    for (var p in pages) {
+        var page = pages[p];
 
-		var booktags = page.match(rgx_booktag);
-		for(var b in booktags) {
-			var bt = booktags[b];
-			
-			var btinfo = bt.match(rgx_booktaginfo);
-			switch(btinfo[1]) {
-				case "TITLE":
-					bnbt.setString("title", parseEmotes(ccs(btinfo[2])));
-					break;
-				case "AUTHOR":
-					bnbt.setString("author", parseEmotes(ccs(btinfo[2])));
-					break;
-			}
-			
-			page = page.replace(btinfo[0]+"\n", "");
-			page = page.replace(btinfo[0], "");
-			
-			
-		}
-		
-		putpages.push(strf('&0'+page.replaceAll("&r", "&r&0")));
-		
-	}
-	
-	bnbt.setList("pages", putpages);
-	
-	return book;
-	
+        var booktags = page.match(rgx_booktag);
+        for (var b in booktags) {
+            var bt = booktags[b];
+
+            var btinfo = bt.match(rgx_booktaginfo);
+            switch (btinfo[1]) {
+                case "TITLE":
+                    bnbt.setString("title", parseEmotes(ccs(btinfo[2])));
+                    break;
+                case "AUTHOR":
+                    bnbt.setString("author", parseEmotes(ccs(btinfo[2])));
+                    break;
+            }
+
+            page = page.replace(btinfo[0] + "\n", "");
+            page = page.replace(btinfo[0], "");
+
+
+        }
+
+        putpages.push(strf('&0' + page.replaceAll("&r", "&r&0")));
+
+    }
+
+    bnbt.setList("pages", putpages);
+
+    return book;
+
 }
 function array_compare(array1, array2, compareFn) {
     var same = true;
-    for(var i in array1) {
-      if(compareFn ? !compareFn(array1[i],array2) : (array2.indexOf(array1[i]) == -1)) {
-          same = false;
-      }
-  }
-    for(var i in array2) {
-      if(compareFn ? !compareFn(array2[i],array1) : (array1.indexOf(array2[i]) == -1)) {
-          same = false;
-      }
-  }
+    for (var i in array1) {
+        if (compareFn ? !compareFn(array1[i], array2) : (array2.indexOf(array1[i]) == -1)) {
+            same = false;
+        }
+    }
+    for (var i in array2) {
+        if (compareFn ? !compareFn(array2[i], array1) : (array1.indexOf(array2[i]) == -1)) {
+            same = false;
+        }
+    }
 
     return same;
 }
@@ -13234,16 +13234,16 @@ function array_compare(array1, array2, compareFn) {
 var rgx_selector = /@([\w]+)(?:\[([^\v]*)\])?/;
 var rgx_selector_arg = /(\w+)(?:=(\w+)?(?:(\.\.)(\w+)?)?)?/g;
 var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
-function $(query,e, source) {
-    
+function $(query, e, source) {
+
     //The order is important
-    source = source||(e&&(e.npc||e.item||e.player))||null;
-    
+    source = source || (e && (e.npc || e.item || e.player)) || null;
+
     var _x = 0;
     var _y = 0;
     var _z = 0;
     var w = API.getIWorld(0);
-    if(source) {
+    if (source) {
         _x = source.pos.x;
         _y = source.pos.y;
         _z = source.pos.z;
@@ -13251,88 +13251,88 @@ function $(query,e, source) {
     }
     var from = API.getIPos(_x, _y, _z);
     var ents = [];
-    if(typeof query === 'string') {
+    if (typeof query === 'string') {
         //query
         var selectors = query.split(';');
-        for(var i in selectors) {
-          var selector = selectors[i];
+        for (var i in selectors) {
+            var selector = selectors[i];
             //selector
             var smatch = selector.match(rgx_selector);
             var targetType = smatch[1];
             var args = {};
             var argdata;
 
-            while( (argdata = rgx_selector_nbt.exec(smatch[2])) !== null ) {
+            while ((argdata = rgx_selector_nbt.exec(smatch[2])) !== null) {
                 args[argdata[1]] = API.stringToNbt(argdata[2]);
             }
 
             argdata = null;
             //
-            while( (argdata = rgx_selector_arg.exec(smatch[2])) !== null ) {
+            while ((argdata = rgx_selector_arg.exec(smatch[2])) !== null) {
                 //if no ".." 
-                if(typeof argdata[3] === typeof undefined) {
-                  //console.log("II",argdata);
+                if (typeof argdata[3] === typeof undefined) {
+                    //console.log("II",argdata);
                     var val = argdata[2] === undefined ? 'true' : argdata[2];
-                  	if(['true','false'].indexOf(val.toLowerCase()) > -1) {
+                    if (['true', 'false'].indexOf(val.toLowerCase()) > -1) {
                         val = (val.toLowerCase() == 'true');
                     }
-                    if(!isNaN(parseFloat(val))) {
+                    if (!isNaN(parseFloat(val))) {
                         val = parseFloat(val);
                     }
-                    
+
                     args[argdata[1]] = val;
                     //console.log(val)
-                //If has ".." (range)
+                    //If has ".." (range)
                 } else {
-                	var rule = {};
-                  	if(argdata[2] !== undefined) {
-                    	rule.min = parseInt(argdata[2]);
+                    var rule = {};
+                    if (argdata[2] !== undefined) {
+                        rule.min = parseInt(argdata[2]);
                     }
-                  
-                  	if(argdata[4] !== undefined) {
-                    	rule.max = parseInt(argdata[4]);
+
+                    if (argdata[4] !== undefined) {
+                        rule.max = parseInt(argdata[4]);
                     }
-                  	args[argdata[1]] = rule;
+                    args[argdata[1]] = rule;
                 }
-              
+
             }
             //has args
 
 
-            switch(targetType) {
+            switch (targetType) {
                 case 'f':
                 case 'p':
                     var plrs = w.getAllPlayers();
-                    if(plrs.length > 0) {
-                        plrs.sort(function(a,b){
+                    if (plrs.length > 0) {
+                        plrs.sort(function (a, b) {
                             return from.distanceTo(b.pos) - from.distanceTo(a.pos)
                         });
-                        if(targetType == 'f') { plrs.reverse(); }
+                        if (targetType == 'f') { plrs.reverse(); }
                         sel_ents.push(plrs[0]);
                     }
                     break;
                 case 'a':
                     var plrs = w.getAllPlayers();
-                    for(var p in plrs) {
+                    for (var p in plrs) {
                         sel_ents.push(plrs[p]);
                     }
                     break;
                 case 'r':
                     var plrs = w.getAllPlayers();
                     plrs = array_shuffle(plrs);
-                    if(plrs.length > 0) {
+                    if (plrs.length > 0) {
                         sel_ents.push(plrs[0]);
                     }
                     break;
                 case 'e':
                     var all_ents = w.getAllEntities(EntityType_ANY);
-                    for(var a in all_ents) {
+                    for (var a in all_ents) {
                         sel_ents.push(all_ents[a]);
                     }
                     break;
-                break;
+                    break;
                 case 's':
-                    if(source) {
+                    if (source) {
                         sel_ents.push(source);
                     }
                     break;
@@ -13341,14 +13341,14 @@ function $(query,e, source) {
             //target determined
             var canAdd = true;
             //handle args
-            for(var argname in args) {
+            for (var argname in args) {
                 var argval = args[argname];
 
 
             }
         }
     }
-    
+
 }
 
 var _TIMERS = [];
@@ -13359,7 +13359,7 @@ var _TIMERS = [];
  */
 function runDelay(seconds, callback) {
     _TIMERS.push({
-        end: new Date().getTime()+seconds*1000,
+        end: new Date().getTime() + seconds * 1000,
         callback: callback
     });
 }
@@ -13369,14 +13369,14 @@ function runDelay(seconds, callback) {
  * Used in tick function to let runDelay work
  */
 function runDelayTick() {
-    if(_TIMERS.length > 0) {
+    if (_TIMERS.length > 0) {
         var _newTimers = [];
         var _curTime = new Date().getTime();
 
         var timer;
-        for(var i = 0; i < _TIMERS.length; i++) {
+        for (var i = 0; i < _TIMERS.length; i++) {
             timer = _TIMERS[i];
-            if(_curTime >= timer.end) {
+            if (_curTime >= timer.end) {
                 timer.callback();
             } else {
                 _newTimers.push(timer);
@@ -13385,30 +13385,30 @@ function runDelayTick() {
 
         _TIMERS = _newTimers;
     }
-}var _TIMERS = [];
+} var _TIMERS = [];
 function runDelay(timerObj, time, func) {
-	//Generate a timer id that doesn't exists
-	//To know what id does not exists, we need to get all timers
-	var timerIds = [];
-	for(var i in _TIMERS) {
-		timerIds.push(_TIMERS[i].id);
-	}
+    //Generate a timer id that doesn't exists
+    //To know what id does not exists, we need to get all timers
+    var timerIds = [];
+    for (var i in _TIMERS) {
+        timerIds.push(_TIMERS[i].id);
+    }
 
-	var timerId;
-	do {//Gen a new timer ID
-		timerId = Math.round(Math.random()*10000);
-	}
-	while(timerIds.indexOf(timerId) > -1); //Do this until the generated id is unique
+    var timerId;
+    do {//Gen a new timer ID
+        timerId = Math.round(Math.random() * 10000);
+    }
+    while (timerIds.indexOf(timerId) > -1); //Do this until the generated id is unique
 
-	//Add newly created timers to array
-	_TIMERS.push({
-		"id": timerId,
-		"func": func,
-	});
+    //Add newly created timers to array
+    _TIMERS.push({
+        "id": timerId,
+        "func": func,
+    });
 
-	if(!timerObj.has(timerId)) {
-		timerObj.start(timerId, time, false);
-	}
+    if (!timerObj.has(timerId)) {
+        timerObj.start(timerId, time, false);
+    }
 }
 
 ;
@@ -13421,83 +13421,83 @@ function runDelay(timerObj, time, func) {
 
 
 function lengthdir_x(length, angle) {
-	return length * Number(Math.cos(toRadians(angle))).toFixed(2) * -1;
+    return length * Number(Math.cos(toRadians(angle))).toFixed(2) * -1;
 }
 
 function lengthdir_z(length, angle) {
-	return length * Number(Math.sin(toRadians(angle))).toFixed(2);
+    return length * Number(Math.sin(toRadians(angle))).toFixed(2);
 }
 
 function toRadians(angle) {
-  return angle * (Math.PI / 180);
+    return angle * (Math.PI / 180);
 }
 
 //Get angle between two points (2-dimensional)
 function getPosAngle(x1, y1, x2, y2) {
-	return Math.atan2(y2-y1, x2-x1) *(180/Math.PI);
+    return Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
 }
 
 function roundByNum(num, rounder, mode) {
-	var m = 1/(rounder||1);
-	var mode = mode||"round";
+    var m = 1 / (rounder || 1);
+    var mode = mode || "round";
 
-	return Math[mode](num*m)/m;
+    return Math[mode](num * m) / m;
 }
 
 
 function sign(num) {
-	if(typeof(num) == typeof(undefined) || num === null) { num = 0; }
-	if(num > 0) { return 1; }
-	if(num < 0) { return -1; }
-	return 0;
+    if (typeof (num) == typeof (undefined) || num === null) { num = 0; }
+    if (num > 0) { return 1; }
+    if (num < 0) { return -1; }
+    return 0;
 }
 
 function roundDec(num, dec) {
-	if(typeof(dec) == typeof(undefined) || dec === null) { dec = 1; }
-  	var mult = Math.pow(10, dec);
+    if (typeof (dec) == typeof (undefined) || dec === null) { dec = 1; }
+    var mult = Math.pow(10, dec);
 
-  	return Math.round(num*mult)/mult;
+    return Math.round(num * mult) / mult;
 }
 
 function fixAngle(angle) {
-	return Number((Math.abs(angle) % 360) * sign(angle)).toFixed(2);
+    return Number((Math.abs(angle) % 360) * sign(angle)).toFixed(2);
 }
 
 function posdir(pos, dir, pitch, len, flying) {
-	if(typeof(dir) == typeof(undefined) || dir === null) { dir = 0; }
-	if(typeof(pitch) == typeof(undefined) || pitch === null) { pitch = 0; }
-	if(typeof(len) == typeof(undefined) || len === null) { len = 1; }
-	if(typeof(flying) == typeof(undefined) || flying === null) { flying = false; }
-	var x = pos.getX();
-	var y = pos.getY();
-	var z = pos.getZ();
-	var xdir = getQuartRotation(dir);
-	var zdir = getQuartRotation(dir-90);
-	x += Math.round(len*(Math.abs(xdir)/90)*sign(xdir));
-	z += Math.round(len*(Math.abs(zdir)/90)*sign(zdir));
-	if(flying) {
-		y += (len)*(Math.abs(pitch)/90)*-sign(pitch);
-	}
-	return {x:x,y:y,z:z};
+    if (typeof (dir) == typeof (undefined) || dir === null) { dir = 0; }
+    if (typeof (pitch) == typeof (undefined) || pitch === null) { pitch = 0; }
+    if (typeof (len) == typeof (undefined) || len === null) { len = 1; }
+    if (typeof (flying) == typeof (undefined) || flying === null) { flying = false; }
+    var x = pos.getX();
+    var y = pos.getY();
+    var z = pos.getZ();
+    var xdir = getQuartRotation(dir);
+    var zdir = getQuartRotation(dir - 90);
+    x += Math.round(len * (Math.abs(xdir) / 90) * sign(xdir));
+    z += Math.round(len * (Math.abs(zdir) / 90) * sign(zdir));
+    if (flying) {
+        y += (len) * (Math.abs(pitch) / 90) * -sign(pitch);
+    }
+    return { x: x, y: y, z: z };
 }
 
 function lengthpitch_y(pitch, length) {
-	return Math.round(pitch/-90)*length;
+    return Math.round(pitch / -90) * length;
 }
 
 function getQuartRotation(dir) {
-	dir = getHalfRotation(dir);
+    dir = getHalfRotation(dir);
 
-	if(Math.abs(dir) > 90) {
-		dir = (180-Math.abs(dir))*sign(dir);
-	}
+    if (Math.abs(dir) > 90) {
+        dir = (180 - Math.abs(dir)) * sign(dir);
+    }
 
-	return dir;
+    return dir;
 }
 
 function getHalfRotation(angle) {
-	angle = fixAngle(angle);
-	if(angle <= 180) { return angle; } else { return -(180-(angle-180)); }
+    angle = fixAngle(angle);
+    if (angle <= 180) { return angle; } else { return -(180 - (angle - 180)); }
 }
 
 
@@ -13505,16 +13505,16 @@ function getHalfRotation(angle) {
 
 function clonePlayerAsNpc(player) {
     var npc = API.createNPC(player.world.getMCWorld());
-    
+
     npc.setPos(player.getPos());
     // npc.display.setTint(0x777777);
     npc.display.setShowName(0);
     npc.display.setName(player.getName());
-    
+
     npc.display.setSkinPlayer(player.getName());
-    
-    
-    
+
+
+
     npc.spawn();
 
     npc.ai.setAnimation(AnimationType_SLEEP);
@@ -13537,8 +13537,8 @@ reloadConfiguration();
 function init(e) {
     var w = API.getIWorld(0);
     var data = w.storeddata;
-	
-	var sb = w.scoreboard;
+
+    var sb = w.scoreboard;
 
     if (e.player != null) {
         //e.player.getTimers().forceStart(SLOWTICK_TIMER_ID, SLOWTICK_TIMER, true);
@@ -13549,21 +13549,21 @@ function init(e) {
                 sb.getTeam(CONFIG_SERVER.DEFAULT_TEAM_JOIN).addPlayer(e.player.getName());
             }
         }
-		
-		var bankCount = new Bank().query(data).where('owner', e.player.getName()).count;
 
-		if (bankCount == 0) {
-			var bank = new Bank(Bank.genBankCode(data));
-			bank.data.owner = e.player.getName();
-			bank.data.canFreeze = false;
-			bank.save(data);
+        var bankCount = new Bank().query(data).where('owner', e.player.getName()).count;
 
-			tellPlayer(e.player, '&aCreated a free new starter\'s bank. View &e!myBanks &ato see all the banks you\'re affiliated to.');
-		}
+        if (bankCount == 0) {
+            var bank = new Bank(Bank.genBankCode(data));
+            bank.data.owner = e.player.getName();
+            bank.data.canFreeze = false;
+            bank.save(data);
+
+            tellPlayer(e.player, '&aCreated a free new starter\'s bank. View &e!myBanks &ato see all the banks you\'re affiliated to.');
+        }
     }
 
-    for(var v in VIRTUAL_CURRENCIES) {
-		var currency = VIRTUAL_CURRENCIES[v];
+    for (var v in VIRTUAL_CURRENCIES) {
+        var currency = VIRTUAL_CURRENCIES[v];
         var objKey = '_cst_' + currency.name;
         if (!sb.hasObjective(objKey)) {
             sb.addObjective(objKey, 'dummy');
@@ -13572,50 +13572,50 @@ function init(e) {
 
 
     //init chatcolor unlocks 
-    for(var c in _RAWCOLORS) {
-		var col = _RAWCOLORS[c];
+    for (var c in _RAWCOLORS) {
+        var col = _RAWCOLORS[c];
         new Unlockable('chatcolor_' + col).init(data);
     }
 }
 
 function interact(e) {
-    
-	PluginAPI.Players.run("interact", [e]);
 
-(function(e){
-	//Create a 'build'-event for player scripts
-	var USABLE_BLOCKS = [
-		"minecraft:crafting_table",
-	];
+    PluginAPI.Players.run("interact", [e]);
 
-	if(e.type == 2) {
-		var place_block = e.player.getMainhandItem();
-		if( (place_block == null ? true : !place_block.isBlock()) ) { //If placeblock is null or not a block at all
-			place_block = e.player.getOffhandItem(); //Try the offhand item
-		}
-		if( (place_block == null ? false : place_block.isBlock()) ) { //Is place_block not null and is a block?
-			//Build event can be executed, check if it exists though
-			//e.player.world.broadcast(e.target.getName());
-			if(
-				(
-					e.player.isSneaking()
-					||
-					(!e.target.isContainer() && USABLE_BLOCKS.indexOf(e.target.getName()) == -1)
-				)
-			) { //Trying to build
-				if(typeof(build) != typeof(undefined)) {
-					build(e, place_block);
-				}
-			} else { //Trying to interact
-				blockinteract(e);
-			}
-		} else {
-			if(typeof(blockinteract) != typeof(undefined)) {
-				blockinteract(e);
-			}
-		}
-	}
-})(e);
+    (function (e) {
+        //Create a 'build'-event for player scripts
+        var USABLE_BLOCKS = [
+            "minecraft:crafting_table",
+        ];
+
+        if (e.type == 2) {
+            var place_block = e.player.getMainhandItem();
+            if ((place_block == null ? true : !place_block.isBlock())) { //If placeblock is null or not a block at all
+                place_block = e.player.getOffhandItem(); //Try the offhand item
+            }
+            if ((place_block == null ? false : place_block.isBlock())) { //Is place_block not null and is a block?
+                //Build event can be executed, check if it exists though
+                //e.player.world.broadcast(e.target.getName());
+                if (
+                    (
+                        e.player.isSneaking()
+                        ||
+                        (!e.target.isContainer() && USABLE_BLOCKS.indexOf(e.target.getName()) == -1)
+                    )
+                ) { //Trying to build
+                    if (typeof (build) != typeof (undefined)) {
+                        build(e, place_block);
+                    }
+                } else { //Trying to interact
+                    blockinteract(e);
+                }
+            } else {
+                if (typeof (blockinteract) != typeof (undefined)) {
+                    blockinteract(e);
+                }
+            }
+        }
+    })(e);
 
 }
 
@@ -13624,49 +13624,49 @@ function scriptCommand(e) {
 }
 
 function slowTick(e) {
-    
+
 }
 
 function keyPressed(e) {
-    
-	PluginAPI.Players.run("keyPressed", [e]);
+
+    PluginAPI.Players.run("keyPressed", [e]);
 
 }
 
 function blockinteract(e) { //Custom event
-    
-if (!e.isCanceled()) {
-    var pl = e.player;
-    var w = pl.world;
-    var data = w.getStoreddata();
-    var sb = w.getScoreboard();
-    var regids = new Region().getAllDataIds(data);
-    var checkregs = 0;
-    var can = false;
-    var regs = [];
-    var prio = 0;
-    for(var ri in regids) {
-var regid = regids[ri];
-        var reg = new Region(regid).init(data);
-        if (reg.hasCoord(normalizePos((e.target == null ? e.player : e.target).getPos()))) {
-            checkregs++;
-            regs.push(reg);
-            if (reg.data.priority > prio) {
-                prio = reg.data.priority;
+
+    if (!e.isCanceled()) {
+        var pl = e.player;
+        var w = pl.world;
+        var data = w.getStoreddata();
+        var sb = w.getScoreboard();
+        var regids = new Region().getAllDataIds(data);
+        var checkregs = 0;
+        var can = false;
+        var regs = [];
+        var prio = 0;
+        for (var ri in regids) {
+            var regid = regids[ri];
+            var reg = new Region(regid).init(data);
+            if (reg.hasCoord(normalizePos((e.target == null ? e.player : e.target).getPos()))) {
+                checkregs++;
+                regs.push(reg);
+                if (reg.data.priority > prio) {
+                    prio = reg.data.priority;
+                }
             }
         }
-    }
 
-    reginteractcheck:
-        for(var r in regs) {
-var reg = regs[r];
+        reginteractcheck:
+        for (var r in regs) {
+            var reg = regs[r];
             if (reg.data.priority == prio && reg.can(pl.getName(), sb, data, "interact")) {
                 can = true;
                 break reginteractcheck;
             }
 
-            for(var p in reg.data.positions) {
-var regpos = reg.data.positions[p];
+            for (var p in reg.data.positions) {
+                var regpos = reg.data.positions[p];
                 if ((regpos.type || 'none') == 'none') {
                     continue;
                 }
@@ -13678,8 +13678,8 @@ var regpos = reg.data.positions[p];
 
                 var regionType = CONFIG_SERVER.REGION_TYPES[posType].interact;
 
-                for(var rti in regionType) {
-var regionTypeItem = regionType[rti];
+                for (var rti in regionType) {
+                    var regionTypeItem = regionType[rti];
                     if (e.target.getName().indexOf(regionTypeItem) == -1) {
                         continue;
                     }
@@ -13690,50 +13690,50 @@ var regionTypeItem = regionType[rti];
 
             }
         }
-    if (checkregs > 0 && !can) {
-        tellPlayer(pl, "&cYou can't interact here!");
-        e.setCanceled(true);
+        if (checkregs > 0 && !can) {
+            tellPlayer(pl, "&cYou can't interact here!");
+            e.setCanceled(true);
+        }
     }
-}
 
 }
 
 function build(e, placeblock) { //Custom event
-    
-if (!e.isCanceled()) {
-    var pl = e.player;
-    var w = pl.world;
-    var data = w.getStoreddata();
-    var sb = w.getScoreboard();
-    var rayt = pl.rayTraceBlock(10, false, false);
-    var regids = new Region().getAllDataIds(data);
-    var checkregs = 0;
-    var can = false;
-    var regs = [];
-    var prio = 0;
-    for(var ri in regids) {
-var regid = regids[ri];
-        var reg = new Region(regid).init(data);
-        if (reg.hasCoord(normalizePos(e.target.getPos().offset(rayt.getSideHit())))) {
-            checkregs++;
-            regs.push(reg);
-            if (reg.data.priority > prio) {
-                prio = reg.data.priority;
+
+    if (!e.isCanceled()) {
+        var pl = e.player;
+        var w = pl.world;
+        var data = w.getStoreddata();
+        var sb = w.getScoreboard();
+        var rayt = pl.rayTraceBlock(10, false, false);
+        var regids = new Region().getAllDataIds(data);
+        var checkregs = 0;
+        var can = false;
+        var regs = [];
+        var prio = 0;
+        for (var ri in regids) {
+            var regid = regids[ri];
+            var reg = new Region(regid).init(data);
+            if (reg.hasCoord(normalizePos(e.target.getPos().offset(rayt.getSideHit())))) {
+                checkregs++;
+                regs.push(reg);
+                if (reg.data.priority > prio) {
+                    prio = reg.data.priority;
+                }
             }
         }
-    }
 
-    regbuildcheck:
-        for(var r in regs) {
-var reg = regs[r];
+        regbuildcheck:
+        for (var r in regs) {
+            var reg = regs[r];
             if (reg.data.priority == prio && reg.can(pl.getName(), sb, data, "build")) {
                 can = true;
                 break regbuildcheck;
             }
 
 
-            for(var p in reg.data.positions) {
-var regpos = reg.data.positions[p];
+            for (var p in reg.data.positions) {
+                var regpos = reg.data.positions[p];
                 if ((regpos.type || 'none') == 'none') {
                     continue;
                 }
@@ -13745,8 +13745,8 @@ var regpos = reg.data.positions[p];
 
                 var regionType = CONFIG_SERVER.REGION_TYPES[posType].build;
 
-                for(var rti in regionType) {
-var regionTypeItem = regionType[rti];
+                for (var rti in regionType) {
+                    var regionTypeItem = regionType[rti];
                     if (placeblock.getName().indexOf(regionTypeItem) == -1) {
                         continue;
                     }
@@ -13755,42 +13755,42 @@ var regionTypeItem = regionType[rti];
                 }
             }
         }
-    if (checkregs > 0 && !can) {
-        tellPlayer(pl, "&cYou can't build here!");
-        e.setCanceled(true);
+        if (checkregs > 0 && !can) {
+            tellPlayer(pl, "&cYou can't build here!");
+            e.setCanceled(true);
+        }
     }
-}
 
 }
 
 function kill(e) {
-    
-	PluginAPI.Players.run("kill", [e]);
+
+    PluginAPI.Players.run("kill", [e]);
 
 }
 
 function customChestClicked(e) {
-    
+
     var snbt = e.slotItem.getNbt();
-    if(snbt.getBoolean("takeable") || MENU_CAN_EDIT) {
+    if (snbt.getBoolean("takeable") || MENU_CAN_EDIT) {
         var heldItem = e.heldItem.copy();
         e.heldItem = e.slotItem;
         e.slotItem = heldItem;
     }
 
-    if(snbt.has("onClick")) {
+    if (snbt.has("onClick")) {
         var clickEvents = Java.from(nbtGetList(snbt, "onClick"));
-        handleMenuEvents(e.player, clickEvents.map(function(ce){ return JSON.parse(ce); }));
+        handleMenuEvents(e.player, clickEvents.map(function (ce) { return JSON.parse(ce); }));
     }
 
 
 }
 
 function customChestClosed(e) {
-    
+
     try {
         handleMenuEvents(e.player, MENU_ON_CLOSE);
-    } catch(exc) {
+    } catch (exc) {
         handleError(exc, true, e.player.getName());
     }
 
@@ -13800,10 +13800,10 @@ function customChestClosed(e) {
 }
 
 function login(e) {
-    
-	PluginAPI.Players.run("login", [e]);
 
-    (function(e) {
+    PluginAPI.Players.run("login", [e]);
+
+    (function (e) {
         var pl = e.player;
         var data = pl.world.getStoreddata();
         var plo = new Player(pl.getName()).init(data).sync(pl);
@@ -13814,7 +13814,7 @@ function login(e) {
             tellPlayer(pl, "[" + CONFIG_SERVER.TITLE + "&r] &eYou are not in a chatchannel yet! &6&nClick here{run_command:!chat list|show_text:$6!chat list}&r&e to join one!");
         } else {
             var tellchannels = "";
-            pchats.forEach(function(pc) {
+            pchats.forEach(function (pc) {
                 tellchannels += pc.getTag('{run_command:!chat leave ' + pc.name + '|show_text:$eClick to leave channel.}') + '&r ';
             });
 
@@ -13828,29 +13828,29 @@ function login(e) {
 }
 
 function logout(e) {
-    
-	PluginAPI.Players.run("logout", [e]);
+
+    PluginAPI.Players.run("logout", [e]);
 
 }
 
 function pickedUp(e) {
-    
-	PluginAPI.Players.run("pickedUp", [e]);
+
+    PluginAPI.Players.run("pickedUp", [e]);
 
 }
 
 function rangedLaunched(e) {
-    
-	PluginAPI.Players.run("rangedLaunched", [e]);
+
+    PluginAPI.Players.run("rangedLaunched", [e]);
 
 }
 
 function timer(e) {
-    
-	PluginAPI.Players.run("timer", [e]);
 
-    if(e.id == MENU_TIMER_ID) {
-        if(MENU_TIMER_PAYLOAD) {
+    PluginAPI.Players.run("timer", [e]);
+
+    if (e.id == MENU_TIMER_ID) {
+        if (MENU_TIMER_PAYLOAD) {
             //Open new menu
             var menu = new CustomMenu().fromJson(MENU_TIMER_PAYLOAD.menu, MENU_TIMER_PAYLOAD.data);
 
@@ -13858,85 +13858,85 @@ function timer(e) {
             MENU_TIMER_PAYLOAD = null;
         }
     }
-;
-	var newTimers = [];
+    ;
+    var newTimers = [];
 
-	//Loop all timers
+    //Loop all timers
 
-	for(var i in _TIMERS) {
-		//If timer id is id of event
-		if(e.id == _TIMERS[i].id) {
-			_TIMERS[i].func(e, _TIMERS[i].data);
-		} else {
-			newTimers.push(_TIMERS[i]);
-		}
-	}
+    for (var i in _TIMERS) {
+        //If timer id is id of event
+        if (e.id == _TIMERS[i].id) {
+            _TIMERS[i].func(e, _TIMERS[i].data);
+        } else {
+            newTimers.push(_TIMERS[i]);
+        }
+    }
 
-	_TIMERS = newTimers;
+    _TIMERS = newTimers;
 
 
     if (e.id == SLOWTICK_TIMER_ID) {
-        if (typeof(slowTick) != typeof(undefined)) {
+        if (typeof (slowTick) != typeof (undefined)) {
             slowTick(e);
         }
     }
 }
 
 function toss(e) {
-    
-	PluginAPI.Players.run("toss", [e]);
+
+    PluginAPI.Players.run("toss", [e]);
 
 }
 
 function tick(e) {
-    
-	PluginAPI.Players.run("tick", [e]);
+
+    PluginAPI.Players.run("tick", [e]);
 
 }
 
 function attack(e) {
-    
-	PluginAPI.Players.run("attack", [e]);
+
+    PluginAPI.Players.run("attack", [e]);
 
 }
 
 function broken(e) {
-    
-	PluginAPI.Players.run("broken", [e]);
 
-if (!e.isCanceled()) {
-    var pl = e.player;
-    var w = pl.world;
-    var data = w.getStoreddata();
-    var sb = w.getScoreboard();
-    var regids = new Region().getAllDataIds(data);
-    var checkregs = 0;
-    var can = false;
-    var regs = [];
-    var prio = 0;
-    for(var ri in regids) {
-var regid = regids[ri];
-        var reg = new Region(regid).init(data);
-        if (reg.hasCoord(normalizePos(e.block.getPos()))) {
-            checkregs++;
-            regs.push(reg);
-            if (reg.data.priority > prio) {
-                prio = reg.data.priority;
+    PluginAPI.Players.run("broken", [e]);
+
+    if (!e.isCanceled()) {
+        var pl = e.player;
+        var w = pl.world;
+        var data = w.getStoreddata();
+        var sb = w.getScoreboard();
+        var regids = new Region().getAllDataIds(data);
+        var checkregs = 0;
+        var can = false;
+        var regs = [];
+        var prio = 0;
+        for (var ri in regids) {
+            var regid = regids[ri];
+            var reg = new Region(regid).init(data);
+            if (reg.hasCoord(normalizePos(e.block.getPos()))) {
+                checkregs++;
+                regs.push(reg);
+                if (reg.data.priority > prio) {
+                    prio = reg.data.priority;
+                }
             }
         }
-    }
 
-    regbreakcheck:
-        for(var r in regs) {
-var reg = regs[r];
+        regbreakcheck:
+        for (var r in regs) {
+            var reg = regs[r];
             if (reg.data.priority == prio && reg.can(pl.getName(), sb, data, "build")) {
                 can = true;
                 break regbreakcheck;
             }
 
 
-            for(var p in reg.data.positions) {
-var regpos = reg.data.positions[p];
+            for (var p in reg.data.positions) {
+                var regpos = reg.data.positions[p];
                 if ((regpos.type || 'none') == 'none') {
                     continue;
                 }
@@ -13948,8 +13948,8 @@ var regpos = reg.data.positions[p];
 
                 var regionType = CONFIG_SERVER.REGION_TYPES[posType].build;
 
-                for(var rti in regionType) {
-var regionTypeItem = regionType[rti];
+                for (var rti in regionType) {
+                    var regionTypeItem = regionType[rti];
                     if (e.block.getName().indexOf(regionTypeItem) == -1) {
                         continue;
                     }
@@ -13960,64 +13960,64 @@ var regionTypeItem = regionType[rti];
             }
 
         }
-    if (checkregs > 0 && !can) {
-        tellPlayer(pl, "&cYou can't break here!");
-        e.setCanceled(true);
+        if (checkregs > 0 && !can) {
+            tellPlayer(pl, "&cYou can't break here!");
+            e.setCanceled(true);
+        }
     }
-}
 
 }
 
 var ScriptHooks = null;
 
 try {
-	ScriptHooks = Java.type('com.gramdatis.server.script.ScriptHooks').INSTANCE;
-} catch(e) {
-	
+    ScriptHooks = Java.type('com.gramdatis.server.script.ScriptHooks').INSTANCE;
+} catch (e) {
+
 }
 
 function discordMessage(e) {
-        var msg = e.message.replace(CHAT_CMD_RGX_G, '');
+    var msg = e.message.replace(CHAT_CMD_RGX_G, '');
 
-        var logMsg = "[" + e.author + "] -> " + colorCodeString(e.message.toString());
+    var logMsg = "[" + e.author + "] -> " + colorCodeString(e.message.toString());
 
-        //Chat emotes
-        msg = parseEmotes(msg);
+    //Chat emotes
+    msg = parseEmotes(msg);
 
-        //time
-        var curTimeStr = getDateString(new Date().getTime())
+    //time
+    var curTimeStr = getDateString(new Date().getTime())
 
-        //Concat new message
-        var msgInfo = '&e' + curTimeStr + '\n';
+    //Concat new message
+    var msgInfo = '&e' + curTimeStr + '\n';
 
-        var msg = parseEmotes("[:lang:]{*|show_text:" + msgInfo.replace(/&/gm, '\u00A7') + "}&r ") + "&7[&3Discord&7]&r " + e.author + ": " + msg;
+    var msg = parseEmotes("[:lang:]{*|show_text:" + msgInfo.replace(/&/gm, '\u00A7') + "}&r ") + "&7[&3Discord&7]&r " + e.author + ": " + msg;
 
-        Logger.info(logMsg);
-		
-		executeCommandGlobal("/tellraw @a " + strf(msg))
+    Logger.info(logMsg);
+
+    executeCommandGlobal("/tellraw @a " + strf(msg))
 }
 
 function chat(e) {
-    
-	PluginAPI.Players.run("chat", [e]);
+
+    PluginAPI.Players.run("chat", [e]);
 
 
-	if (e.message.substr(0, 1) == '!' && !e.isCanceled()) {
-		var now = new Date().getTime();
-		var CMD_HISTORY_FILE = 'CustomServerTools/history/commandhistory_' + getDateString(now, 'date', '-') + '.txt';
+    if (e.message.substr(0, 1) == '!' && !e.isCanceled()) {
+        var now = new Date().getTime();
+        var CMD_HISTORY_FILE = 'CustomServerTools/history/commandhistory_' + getDateString(now, 'date', '-') + '.txt';
 
-		if (!new File(CMD_HISTORY_FILE).exists()) {
-			mkPath(CMD_HISTORY_FILE);
-		}
+        if (!new File(CMD_HISTORY_FILE).exists()) {
+            mkPath(CMD_HISTORY_FILE);
+        }
 
-		executeXCommand(e.message, e.player, true, getDiskHandler());
+        executeXCommand(e.message, e.player, true, getDiskHandler());
 
-		var historyMsg = '[' + getDateString(now, 'time') + '] [' + e.player.getName() + '] Issued command: ' + e.message;
+        var historyMsg = '[' + getDateString(now, 'time') + '] [' + e.player.getName() + '] Issued command: ' + e.message;
 
-		writeToFile(CMD_HISTORY_FILE, readFileAsString(CMD_HISTORY_FILE) + historyMsg + '\n\r');
-		e.setCanceled(true);
-		return true;
-	}
+        writeToFile(CMD_HISTORY_FILE, readFileAsString(CMD_HISTORY_FILE) + historyMsg + '\n\r');
+        e.setCanceled(true);
+        return true;
+    }
 
 
     if (!e.isCanceled()) {
@@ -14060,13 +14060,13 @@ function chat(e) {
         var mentioned = [];
 
         var tmatch = escmsg.match(trgx) || [];
-        for(var tm in tmatch) {
-var tmt = tmatch[tm];
-            for(var tmi in teams) {
-var team = teams[tmi];
+        for (var tm in tmatch) {
+            var tmt = tmatch[tm];
+            for (var tmi in teams) {
+                var team = teams[tmi];
                 if (occurrences(team.getName().toLowerCase(), tmt.replace(trgx, '$1').toLowerCase()) > 0) {
-                    for(var ply in players) {
-var plyr = players[ply];
+                    for (var ply in players) {
+                        var plyr = players[ply];
                         var pteam = sb.getPlayerTeam(plyr.getName());
                         if (pteam != null) {
                             if (pteam.getName() == team.getName()) {
@@ -14083,10 +14083,10 @@ var plyr = players[ply];
         }
 
         var pmatch = escmsg.match(prgx) || [];
-        for(var pm in pmatch) {
-var pmt = pmatch[pm];
-            for(var ply in players) {
-var plyr = players[ply];
+        for (var pm in pmatch) {
+            var pmt = pmatch[pm];
+            for (var ply in players) {
+                var plyr = players[ply];
                 if (occurrences(plyr.getName().toLowerCase(), pmt.replace(prgx, '$1').toLowerCase()) > 0) {
                     var pmpl = new Player(plyr.getName()); //Dont have to init, only using scoreboard
                     if (mentioned.indexOf(plyr.getName()) == -1) {
@@ -14100,10 +14100,10 @@ var plyr = players[ply];
 
 
         var cmatch = escmsg.match(crgx) || [];
-        for(var cm in cmatch) {
-var cmt = cmatch[cm];
-            for(var cmi in allChats) {
-var chat = allChats[cmi];
+        for (var cm in cmatch) {
+            var cmt = cmatch[cm];
+            for (var cmi in allChats) {
+                var chat = allChats[cmi];
                 chat = new ChatChannel(chat).init(data);
                 var cmm = cmt.replace(crgx, '$1');
                 var cmp = chat.getPermission(data);
@@ -14140,7 +14140,7 @@ var chat = allChats[cmi];
         if (dpl.data.unlocks.moneyChat) {
             var moneyRgx = /\[\s*((?:[\d]+[a-zA-Z])+)\s*\]/g;
 
-            newmsg = newmsg.replace(moneyRgx, function(match, p1, offset, string) {
+            newmsg = newmsg.replace(moneyRgx, function (match, p1, offset, string) {
                 var amount = getAmountCoin(getCoinAmount(p1));
                 return parseEmotes('&r:money:&e' + amount + '{run_command:!money pay ' + dpl.name + ' ' + amount + '|show_text:$aClick to pay ' + dpl.name + ' $r:money:$e' + amount + '\n$a$oIt has a confirm screen.}&r&' + getColorId(dpl.data.chatcolor));
             });
@@ -14149,14 +14149,14 @@ var chat = allChats[cmi];
 
 
         if (chats.length > 0) {
-            for(var c in chats) {
-var ch = chats[c];
-                for(var ww in wp) {
-var wpl = wp[ww];
+            for (var c in chats) {
+                var ch = chats[c];
+                for (var ww in wp) {
+                    var wpl = wp[ww];
                     if (toldPlayers.indexOf(wpl.getName()) == -1 && ch.data.players.indexOf(wpl.getName()) > -1) {
                         var wchats = [];
                         var wcnames = [];
-                        new Player(wpl.getName()).init(data).getChats(data).forEach(function(wchat) {
+                        new Player(wpl.getName()).init(data).getChats(data).forEach(function (wchat) {
                             wchats.push(wchat.getTag('', '$'));
                             wcnames.push(wchat.name);
                         });
@@ -14169,8 +14169,8 @@ var wpl = wp[ww];
 
 
         } else {
-            for(var ww in wp) {
-var wpl = wp[ww];
+            for (var ww in wp) {
+                var wpl = wp[ww];
                 var wplo = new Player(wpl.getName()).init(data);
                 if (toldPlayers.indexOf(wpl.getName()) == -1 && wplo.getChats(data).length == 0) {
 
@@ -14180,9 +14180,9 @@ var wpl = wp[ww];
                 }
             }
         }
-		
-		if(ScriptHooks)
-			ScriptHooks.sendMessage(e.player.getName(), escCcs(e.message.toString()));
+
+        if (ScriptHooks)
+            ScriptHooks.sendMessage(e.player.getName(), escCcs(e.message.toString()));
 
         Logger.info(logMsg);
         e.setCanceled(true); //Cancel real message
@@ -14190,22 +14190,22 @@ var wpl = wp[ww];
 }
 
 function containerOpen(e) {
-    
-	PluginAPI.Players.run("containerOpen", [e]);
+
+    PluginAPI.Players.run("containerOpen", [e]);
 
 }
 
 function containerClose(e) {
-    
+
 }
 
 function damaged(e) {
-    
-	PluginAPI.Players.run("damaged", [e]);
+
+    PluginAPI.Players.run("damaged", [e]);
 
     var mItemEnch = getCSTEnchantsFromItem(e.player.getMainhandItem());
-    for(var m in mItemEnch) {
-var mench = mItemEnch[m];
+    for (var m in mItemEnch) {
+        var mench = mItemEnch[m];
         runCSTEnchant(mench.name, e, mench.lvl, "damaged");
     }
 
@@ -14216,13 +14216,13 @@ var mench = mItemEnch[m];
 }
 
 function damagedEntity(e) {
-    
-	PluginAPI.Players.run("damagedEntity", [e]);
+
+    PluginAPI.Players.run("damagedEntity", [e]);
 
 
     var mItemEnch = getCSTEnchantsFromItem(e.player.getMainhandItem());
-    for(var m in mItemEnch) {
-var mench = mItemEnch[m];
+    for (var m in mItemEnch) {
+        var mench = mItemEnch[m];
         runCSTEnchant(mench.name, e, mench.lvl, "damagedEntity");
     }
 
@@ -14232,10 +14232,10 @@ var mench = mItemEnch[m];
 }
 
 function died(e) {
-    
-	PluginAPI.Players.run("died", [e]);
 
-    (function(e) {
+    PluginAPI.Players.run("died", [e]);
+
+    (function (e) {
         var pl = e.player;
         var data = pl.world.getStoreddata();
         var plo = new Player(pl.getName()).init(data).sync(pl);
@@ -14263,8 +14263,8 @@ function died(e) {
         if (loseMoney > 0) {
             plo.data.money -= loseMoney;
             var lm = genMoney(w, loseMoney);
-            for(var l in lm) {
-var lsm = lm[l];
+            for (var l in lm) {
+                var lsm = lm[l];
                 pl.dropItem(lsm);
             }
             plo.save(data);
@@ -14277,7 +14277,7 @@ var lsm = lm[l];
 }
 
 function factionUpdate(e) {
-    
-	PluginAPI.Players.run("factionUpdate", [e]);
+
+    PluginAPI.Players.run("factionUpdate", [e]);
 
 }
