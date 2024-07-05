@@ -52,4 +52,6 @@ autostart.stamp
 *.old
 
 !dynmap/markers.yml
+!world/customnpcs/scripts/truck_destinations.json
+!world/customnpcs/scripts/players_phone.json
 
