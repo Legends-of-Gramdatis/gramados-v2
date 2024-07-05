@@ -45,9 +45,9 @@ function interact(event) {
 
     // load the destinations
     if (!file_exists(FILE_PATH)) {
-        create_data(FILE_PATH);
+        create_data(FILE_PATH, destinations);
     }
-    
+
     destinations = load_destinations();
 
     list_valid_cargos();
@@ -62,7 +62,6 @@ function create_delivery_quest(world) {
     // From the list of valid cargos, we select one randomly
     var cargo = valid_cargo[Math.floor(Math.random() * valid_cargo.length)];
     var cargo_name = cargo.name;
-    var cargo_category = cargo.category;
     var cargo_producer = cargo.producer_list[Math.floor(Math.random() * cargo.producer_list.length)];
     var cargo_consumer = cargo.consumer_list[Math.floor(Math.random() * cargo.consumer_list.length)];
 
@@ -73,9 +72,17 @@ function create_delivery_quest(world) {
     // multiply by 9
     cargo_quantity = cargo_quantity * 9;
 
+    var new_quest = {
+        "type": "Truck Delivery",
+        "cargo": cargo_name,
+        "quantity": cargo_quantity,
+        "producer": cargo_producer,
+        "consumer": cargo_consumer
+    };
+
     world.broadcast("New Truck Delivery Quest: Deliver " + cargo_quantity + " stacks of " + cargo_name + " from " + cargo_producer.name + " to " + cargo_consumer.name + ".");
 
-    save_truck_job_on_phone();
+    save_truck_job_on_phone(new_quest);
 }
 
 function list_valid_cargos() {
@@ -114,21 +121,67 @@ function list_valid_cargos() {
 
 
 
+
+
+
+
+
 // function to store the quest into player's phone
-function save_truck_job_on_phone() {
+function save_truck_job_on_phone(new_quest) {
 
     // get player's nickname
     var player_name = player.getName();
 
-    // check if the player has phone data
-    //(look for player name key)
-    player.message("Player name: " + player_name);
-
     // get the player's phone data
     var player_phone_data = check_user(player_name);
 
-    player.message("Player phone data: " + player_phone_data);
+    player.message("Player phone data: " + JSON.stringify(player_phone_data));
+
+    // check if "Trucker" app is installed
+    if (!check_app_installed(player_phone_data, "Trucker App", false)) {
+        player.message("You don't have the Trucker app installed. Please install it first.");
+    } else {
+        player.message("Trucker app is installed. Saving the quest...");
+
+        // find the app with the name "Trucker App" and update the data
+        for (var i = 0; i < player_phone_data.apps.length; i++) {
+            if (player_phone_data.apps[i].name == "Trucker App") {
+                player_phone_data.apps[i].data = new_quest;
+            }
+        }
+
+        // save the phone data
+        update_phone_data(player_name, JSON.stringify(player_phone_data));
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,18 +212,6 @@ function file_exists(path) {
     return file.exists();
 }
 
-// Function to add a destination to the json
-function add_destination(destination) {
-    if (destinations == "") {
-        destinations = [];
-    }
-    destinations.push(destination);
-    create_data();
-}
-
-
-
-
 
 
 
@@ -181,6 +222,7 @@ function add_destination(destination) {
 
 // Function to read the file
 function read_file(path) {
+    //player.message("Reading file: " + path);
     var ips = new java.io.FileInputStream(path);
     var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
     var data1 = fileReader.read();
@@ -191,15 +233,32 @@ function read_file(path) {
         start1 = start1 + data;
         data1 = fileReader.read();
     }
+    //player.message("Data read: " + start1);
     return start1;
 }
 
 // Function to write data to the file
 function create_data(path, data) {
+    //player.message("Creating data: " + JSON.stringify(data));
     var fileWriter = new java.io.FileWriter(path);
     fileWriter.write(JSON.stringify(data));
     fileWriter.close();
 }
+
+// function to update a player's phone data
+function update_phone_data(player_name, data) {
+    var phone_data = read_file(PHONE_FILE_PATH);
+    var phone_data_json = JSON.parse(phone_data);
+
+    phone_data_json[player_name] = JSON.parse(data);
+
+    player.message("Updating phone data: " + JSON.stringify(phone_data_json));
+
+    create_data(PHONE_FILE_PATH, phone_data_json);
+}
+
+
+
 
 
 // function to add a new user to the phone
@@ -207,22 +266,28 @@ function check_user(player_name) {
     var data = read_file(PHONE_FILE_PATH);
     var phone_data = JSON.parse(data);
 
+    //player.message("Imported Phone data: " + JSON.stringify(phone_data));
+
     // check if the player has phone data
     //(look for player name key)
     if (phone_data[player_name] == undefined) {
-        phone_data[player_name] = [];
         player.message("It seems you don't have a phone yet. Creating new data.");
 
         // add a json entry with player name and UUID
         var new_player = {
-            "name": player_name,
             "uuid": player.getUUID(),
             "apps": []
         };
 
+        //player.message("New player: " + JSON.stringify(new_player));
+
         // add the player to the phone data
         phone_data[player_name] = new_player;
+
+        //player.message("Added " + player_name + " to phone data: " + JSON.stringify(phone_data));
     }
+
+    //player.message("About to save Phone data: " + JSON.stringify(phone_data));
 
     // Save the data in the file
     create_data(PHONE_FILE_PATH, phone_data);
@@ -231,11 +296,8 @@ function check_user(player_name) {
 }
 
 // Function to check if an app is installed
-function check_app_installed(player_phone_data, app_name, install_if_not) {
-
-    if (install_if_not == undefined) {
-        install_if_not = false;
-    }
+function check_app_installed(player_phone_data, app_name) 
+{
 
     var apps = player_phone_data.apps;
     for (var i = 0; i < apps.length; i++) {
@@ -248,4 +310,9 @@ function check_app_installed(player_phone_data, app_name, install_if_not) {
         create_data(PHONE_FILE_PATH, player_phone_data);
     }
     return false;
+}
+
+// function to log the player's phone data
+function log_phone_data(player_phone_data) {
+    player.message("Phone data: " + JSON.stringify(player_phone_data));
 }
