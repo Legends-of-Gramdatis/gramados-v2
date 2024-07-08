@@ -770,6 +770,14 @@ sets:
                 y: 82.0
                 z: -67
                 label: Silorose Town Hall
+            marker_10:
+                world: world
+                markup: false
+                x: -3440
+                icon: townhall_c
+                y: 70.0
+                z: -2586.0
+                label: Trilnat Village Town Hall
         lines: {
             }
         layerprio: 0
