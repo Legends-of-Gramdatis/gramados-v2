@@ -906,6 +906,14 @@ sets:
                 y: 67.0
                 z: 234.0
                 label: Ardocor Furniture
+            marker_10:
+                world: world
+                markup: false
+                x: -1773.0
+                icon: furnitureshop
+                y: 75.0
+                z: 325.0
+                label: Door Shop
         lines: {
             }
         layerprio: 0
@@ -1315,6 +1323,14 @@ sets:
                 y: 70.0
                 z: 112.0
                 label: Ardocor UNU Fuel Station
+            marker_14:
+                world: world
+                markup: false
+                x: -3278.0
+                icon: fuelpump
+                y: 68.0
+                z: -2491.0
+                label: Trilnat Auto Fuel Station
         lines: {
             }
         layerprio: 0
