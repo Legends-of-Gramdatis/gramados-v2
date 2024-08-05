@@ -174,6 +174,14 @@ sets:
                 y: 78.0
                 z: -973.3000000119209
                 label: Electrobulb Electricity Hardware
+            marker_3:
+                world: world
+                markup: false
+                x: -3580.0
+                icon: hardware
+                y: 69.0
+                z: -2305.0
+                label: Chestnut Hardware
         lines: {
             }
         layerprio: 0
@@ -778,6 +786,14 @@ sets:
                 y: 70.0
                 z: -2586.0
                 label: Trilnat Village Town Hall
+            marker_11:
+                world: world
+                markup: false
+                x: -5946.0
+                icon: townhall_c
+                y: 74.0
+                z: -879.0
+                label: Buglaton Town Hall
         lines: {
             }
         layerprio: 0
@@ -1311,7 +1327,7 @@ sets:
                 world: world
                 markup: false
                 x: -6194.0
-                icon: fuelpump_c
+                icon: fuelpump
                 y: 77.0
                 z: -972.0
                 label: Buglaton Station
@@ -1328,9 +1344,17 @@ sets:
                 markup: false
                 x: -3278.0
                 icon: fuelpump
-                y: 68.0
-                z: -2491.0
+                y: 69.0
+                z: -2482.0
                 label: Trilnat Auto Fuel Station
+            marker_15:
+                world: world
+                markup: false
+                x: 5223.0
+                icon: fuelpump
+                y: 70.0
+                z: -1917.0
+                label: Newland Fuel Station
         lines: {
             }
         layerprio: 0
@@ -1495,6 +1519,14 @@ sets:
                 y: 95.0
                 z: 871.0
                 label: Fury Milk
+            marker_2:
+                world: world
+                markup: false
+                x: -3278.0
+                icon: generalstore
+                y: 69.0
+                z: -2496.0
+                label: Trilnat Auto General Store
         lines: {
             }
         layerprio: 0
