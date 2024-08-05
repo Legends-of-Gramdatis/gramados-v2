@@ -3,6 +3,7 @@ var GUI, GRID = 16, GRID_BORDER = 2;
 
 // buttons
 var BUTTON_CLOSE = 1;
+var EMERGENCY_RESET = 2;
 
 // file path for the destinations
 var FILE_PATH = "world/customnpcs/scripts/players_phone.json";
@@ -15,7 +16,7 @@ var BUTTON_TEXTURE_PATH = "minecraft:textures/gui/gramados_trucker_point_putton_
 // currently selected app
 var current_app = "home";
 
-var player;
+//var player;
 
 var personal_phone_data;
 
@@ -27,10 +28,20 @@ var apps = {
     "Trucker App": trucker_app
 };
 
+// Init the item
+function init(event) {
+    // Get the item
+    var item = event.item;
+    item.setDurabilityShow(false);
+    item.setCustomName("§6§lSmartphone");
+
+    return true;
+}
+
 // Script for scripted item to generate a point on interact
 function interact(event) {
 
-    personal_phone_data = check_user(event.player.getName());
+    personal_phone_data = check_user(event.player.getName(), event);
 
     GUI = event.API.createCustomGui(1, GRID * 12, GRID * 16, false);
 
@@ -40,27 +51,50 @@ function interact(event) {
 
     event.player.showCustomGui(GUI);
 
-    player = event.player;
+    //player = event.player;
 
     return true;
 }
 
-function tick(event) {
+/*function tick(event) {
     player = event.player;
     return true;
-}
+}*/
 
 
 function customGuiButton(event) {
     var b1 = event.buttonId;
+    var player = event.player;
 
     switch (b1) {
+        case EMERGENCY_RESET:
+            // reset the phone data
+            var phone_data = read_file(PHONE_FILE_PATH);
+            var phone_data_json = JSON.parse(phone_data);
+            phone_data_json[player.getName()] = {
+                "uuid": player.getUUID(),
+                "apps": []
+            };
+            create_data(PHONE_FILE_PATH, phone_data_json);
+            player.message("Phone data reset");
+
+            // close the GUI
+            event.player.closeGui();
+
+            break;
         case 16:
             if (current_app == "home")
                 switch_app(event, app_store);
             break;
         case BUTTON_CLOSE:
             switch_app(event, home_app);
+            break;
+        
+        case 33:
+            complete_trucker_quest(event);
+            break;
+        case 34:
+            player.message("Canceling quest");
             break;
     }
     if (b1 > 400 && b1 < 500) {
@@ -85,7 +119,11 @@ function customGuiButton(event) {
     }
     if (b1 > 100 && b1 < 200) {
         var app_name = GUI.getComponent(b1).getLabel();
+        /*
         player.message("Switching to " + app_name + " app");
+        player.message("Current app: " + current_app);
+        player.message("apps: " + JSON.stringify(apps));
+        */
         switch_app(event, apps[app_name]);
     }
 
@@ -93,6 +131,7 @@ function customGuiButton(event) {
 }
 
 function switch_app(event, next_app) {
+    //event.player.message("Switching app to " + next_app);
     var index = 0;
     var component_count = GUI.getComponents().length;
     for (var i = 0; i < component_count; i++) {
@@ -105,6 +144,12 @@ function switch_app(event, next_app) {
         }
     }
 
+
+    if (next_app === undefined) {
+        event.player.message("App not found: " + next_app);
+        create_undefined_app_gui(event);
+        return;
+    }
     next_app(event);
 }
 
@@ -115,7 +160,7 @@ function home_app(event) {
     //remove X button
     GUI.removeComponent(BUTTON_CLOSE);
 
-    event.player.message("Openning Home GUI");
+    //event.player.message("Openning Home GUI");
 
     GUI.addTexturedButton(16, "APP STORE", GRID, GRID, GRID * 4, GRID, BUTTON_TEXTURE_PATH, 0, 0);
 
@@ -132,7 +177,7 @@ function app_store(event) {
 
     current_app = "app_store";
 
-    player.message("Openning App Store GUI");
+    event.player.message("Openning App Store GUI");
 
     // App Store Label
     GUI.addLabel(16, "App Store", GRID, GRID, GRID * 9, GRID);
@@ -145,7 +190,7 @@ function app_store(event) {
 
     // For all apps, if not installed, add a button to install
     for (var app in apps) {
-        var player_phone_data = check_user(event.player.getName());
+        var player_phone_data = check_user(event.player.getName(), event);
         var app_installed = check_app_installed(player_phone_data, app);
 
         if (!app_installed) {
@@ -154,7 +199,7 @@ function app_store(event) {
             GUI.addLabel(300 + it_uninstalled, app, GRID, GRID * (it_uninstalled + 2), GRID * 5, GRID);
             GUI.addTexturedButton(400 + it_uninstalled, "INSTALL", GRID * 6, GRID * (it_uninstalled + 2), GRID * 4, GRID, BUTTON_TEXTURE_PATH, 0, 0);
         
-            player.message("App " + app + " not installed, button INSTALL id: " + (400 + it_uninstalled));
+            event.player.message("App " + app + " not installed, button INSTALL id: " + (400 + it_uninstalled));
         }
     }
 }
@@ -164,7 +209,7 @@ function trucker_app(event) {
 
     current_app = "trucker";
 
-    player.message("Openning Trucker GUI");
+    //player.message("Openning Trucker GUI");
 
     // Trucker Label
     GUI.addLabel(16, "Trucker App", GRID, GRID, GRID * 9, GRID);
@@ -176,8 +221,10 @@ function trucker_app(event) {
     // Check if player has an active trucker quest
     var trucker_quest = check_trucker_quest(event.player.getName());
 
+    //event.player.message("Trucker quest: " + JSON.stringify(trucker_quest));
+
     // if data is "no quest", no active quest
-    if (trucker_quest == "no quest") {
+    if (trucker_quest == "no quest" || trucker_quest == undefined || JSON.stringify(trucker_quest) == "{}") {
         GUI.addLabel(17, "No active quest", GRID, GRID * 2, GRID * 9, GRID);
     } else {
         // At the top, add a lebel saying "from: " + trucker_quest.producer.name
@@ -221,6 +268,46 @@ function trucker_app(event) {
         GUI.addTexturedButton(33, "Complete", GRID, GRID * 14, GRID * 5, GRID, BUTTON_TEXTURE_PATH, 9 * GRID, 0);
         GUI.addTexturedButton(34, "Cancel", GRID * 6, GRID * 14, GRID * 5, GRID, BUTTON_TEXTURE_PATH, 9 * GRID, 0);
     }
+}
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Utility functions
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Function to get the distance between two points
+function get_distance(x1, y1, z1, x2, y2, z2) {
+    return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2) + Math.pow(z2 - z1, 2));
+}
+
+// Function to open the "undefined app" GUI
+function create_undefined_app_gui(event) {
+
+    // clean any previous GUI
+    var component_count = GUI.getComponents().length;
+    for (var i = 0; i < component_count; i++) {
+        GUI.removeComponent(GUI.getComponents()[0].getID());
+    }
+
+    // Add the components
+
+    // it has an "ERROR: APP NOT FOUND" label
+    // a cross button to close the app
+    // A "Warnoing: your phone may need to be reset" label
+    // A reset button
+
+    GUI.addLabel(16, "ERROR: APP NOT FOUND", GRID, GRID, GRID * 9, GRID);
+    GUI.addLabel(17, "Warning: your phone may need to be reset", GRID, GRID * 2, GRID * 9, GRID);
+    GUI.addTexturedButton(BUTTON_CLOSE, "X", GRID * 10, GRID, GRID, GRID, BUTTON_TEXTURE_PATH, GRID * 6, 0);
+    GUI.addTexturedButton(EMERGENCY_RESET, "RESET", GRID, GRID * 3, GRID * 9, GRID, BUTTON_TEXTURE_PATH, 0, 0);
+
+    return true;
 }
 
 
@@ -274,7 +361,7 @@ function trucker_app(event) {
 
 
 // function to add a new user to the phone
-function check_user(player_name) {
+function check_user(player_name, event) {
     var data = read_file(PHONE_FILE_PATH);
     var phone_data = JSON.parse(data);
 
@@ -283,11 +370,11 @@ function check_user(player_name) {
     // check if the player has phone data
     //(look for player name key)
     if (phone_data[player_name] == undefined) {
-        player.message("It seems you don't have a phone yet. Creating new data.");
+        event.player.message("It seems you don't have a phone yet. Creating new data.");
 
         // add a json entry with player name and UUID
         var new_player = {
-            "uuid": player.getUUID(),
+            "uuid": event.player.getUUID(),
             "apps": []
         };
 
@@ -296,13 +383,9 @@ function check_user(player_name) {
         // add the player to the phone data
         phone_data[player_name] = new_player;
 
-        //player.message("Added " + player_name + " to phone data: " + JSON.stringify(phone_data));
+        // save the new phone data
+        create_data(PHONE_FILE_PATH, phone_data);
     }
-
-    //player.message("About to save Phone data: " + JSON.stringify(phone_data));
-
-    // Save the data in the file
-    create_data(PHONE_FILE_PATH, phone_data);
 
     return phone_data[player_name];
 }
@@ -320,8 +403,8 @@ function check_app_installed(player_phone_data, app_name) {
 }
 
 // function to log the player's phone data
-function log_phone_data(player_phone_data) {
-    player.message("Phone data: " + JSON.stringify(player_phone_data));
+function log_phone_data(player_phone_data, event) {
+    event.player.message("Phone data: " + JSON.stringify(player_phone_data));
 }
 
 
@@ -358,7 +441,7 @@ function update_phone_data(player_name, data) {
 
     phone_data_json[player_name] = JSON.parse(data);
 
-    player.message("Updating phone data: " + JSON.stringify(phone_data_json));
+    //player.message("Updating phone data: " + JSON.stringify(phone_data_json));
 
     create_data(PHONE_FILE_PATH, phone_data_json);
 }
@@ -432,10 +515,12 @@ function update_phone_data(player_name, data) {
 // Trucker APP
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// GENERAL FEATURES
+
 // function to check if player has an active trucker quest
-function check_trucker_quest(player_name) {
+function check_trucker_quest(player_name, event) {
     
-    personal_phone_data = check_user(player_name);
+    personal_phone_data = check_user(player_name, event);
 
     var apps = personal_phone_data.apps;
 
@@ -444,11 +529,107 @@ function check_trucker_quest(player_name) {
     for (var i = 0; i < apps.length; i++) {
         if (apps[i].name == "Trucker App") {
             //player.message("Trucker App found: " + JSON.stringify(apps[i]));
-            if (apps[i].data.type) {
+            if (apps[i].data != {} && apps[i].data != undefined) {
                 return apps[i].data;
             }
-
-            return "no quest";
         }
     }
+
+    return "no quest";
+}
+
+// Function to check if a player is close enough to a destination
+function check_destination_proximity(player, destination) {
+    var player_pos = player.getPos();
+    var distance = get_distance(player_pos.getX(), player_pos.getY(), player_pos.getZ(), destination.x, destination.y, destination.z);
+    if (distance < 10) {
+        return true;
+    }
+    return false;
+} 
+
+// function to check if trucker quest can be completed
+function check_trucker_quest_completion(event) {
+    var player_name = event.player.getName();
+    var trucker_quest = check_trucker_quest(player_name);
+
+    if (trucker_quest == "no quest") {
+        return "no quest";
+    }
+
+    // get the current time
+    var current_time = new Date();
+    var current_time_millis = current_time.getTime();
+
+    // if the time limit has passed
+    if (current_time_millis - trucker_quest.start_time > trucker_quest.time_limit) {
+        return "time limit";
+    }
+
+    // if the player is not at the destination
+    if (!check_destination_proximity(event.player, trucker_quest.consumer)) {
+        return "destination";
+    }
+
+    return "ok";
+}
+
+// Function to complete a trucker quest if possible
+function complete_trucker_quest(event) {
+    var completion = check_trucker_quest_completion(event);
+
+    //event.player.message("Completion: " + completion);
+
+    if (completion == "ok") {
+        // remove the quest from the player's phone data
+        var player_phone_data = check_user(event.player.getName(), event);
+        //event.player.message("Phone data: " + JSON.stringify(player_phone_data));
+
+        var apps = player_phone_data.apps;
+
+        for (var i = 0; i < apps.length; i++) {
+            //event.player.message("Checking app: " + player_phone_data.apps[i].name);
+            if (player_phone_data.apps[i].name == "Trucker App") {
+                //event.player.message("Removing quest from phone data");
+                player_phone_data.apps[i].data = {};
+
+                // update the phone data
+                update_phone_data(event.player.getName(), JSON.stringify(player_phone_data));
+
+                event.player.message("Quest completed ! Congratulations !");
+
+                // reload the trucker app
+                switch_app(event, trucker_app);
+            }
+        }
+        // give the player the reward
+        //var trucker_quest = check_trucker_quest(event.player.getName());
+        //event.player.message("Reward: " + trucker_quest.reward);
+        //event.player.giveItem(trucker_quest.cargo, trucker_quest.quantity);
+    } else if (completion == "no quest") {
+        event.player.message("No active quest");
+    } else if (completion == "time limit") {
+        event.player.message("Time limit exceeded");
+    } else if (completion == "destination") {
+        // calculate how far the player is from the destination
+        var trucker_quest = check_trucker_quest(event.player.getName());
+        var player_pos = event.player.getPos();
+        var distance = get_distance(player_pos.getX(), player_pos.getY(), player_pos.getZ(), trucker_quest.consumer.x, trucker_quest.consumer.y, trucker_quest.consumer.z);
+        distance = Math.round(distance);
+        event.player.message("You are not close enough to the destination. Distance: " + distance + " blocks (flown)");
+    } else {
+        event.player.message("Unknown error");
+    }
+}
+
+// GUIs
+
+// GUI of Trucker App with no active quest
+function create_trucker_app_gui_no_quest(event) {
+    GUI.addLabel(16, "No active quest", GRID, GRID, GRID * 9, GRID);
+}
+
+// GUI of Trucker App with active quest
+function create_trucker_app_gui_active_quest(event) {
+    GUI.addLabel(16, "Active quest", GRID, GRID, GRID * 9, GRID);
 }

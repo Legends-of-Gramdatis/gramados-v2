@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": " Excellent. Always glad to have eager recruits. Let's get started, shall we?",
+    "DialogText": "Excellent. Always glad to have eager recruits. Let's get started, shall we?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1713959645556L,
+        "TimePast": 1722722828801L,
         "Time": 0L,
         "Subject": ""
     }

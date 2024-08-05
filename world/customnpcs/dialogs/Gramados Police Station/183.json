@@ -54,14 +54,11 @@ Remember, @p, your actions can make a significant difference in ensuring the saf
         "Sender": "Officer Reynolds",
         "BeenRead": 0b,
         "Message": {
-            "pages": [
-                "Please proceed to Serenity Court to address the assault reported by Ms. Sophia Rodriguez. Details about the assailant and the incident are crucial to this investigation."
-            ]
         },
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 177140L,
+        "TimePast": 8725644679L,
         "Time": 1713997205871L,
         "Subject": "Assault at Serenity Court"
     }

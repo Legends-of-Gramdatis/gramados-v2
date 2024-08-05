@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": " I was dining at the Marina Vista Café & Grill, enjoying a lovely evening when I realized it was gone. I'm afraid those ruffians have taken off with it!",
+    "DialogText": "I was dining at the Marina Vista Café & Grill, enjoying a lovely evening when I realized it was gone. I'm afraid those ruffians have taken off with it!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1713971610120L,
+        "TimePast": 1722722884306L,
         "Time": 0L,
         "Subject": ""
     }

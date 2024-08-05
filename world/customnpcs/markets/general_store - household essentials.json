@@ -2,71 +2,17 @@
     "TraderCurrency": {
         "NpcMiscInv": [
             {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e10G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 1b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e10G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 2b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e10G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 3b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 1b,
+                "id": "variedcommodities:coin_iron",
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e1G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -79,12 +25,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 1b,
+                "id": "variedcommodities:coin_iron",
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e5G"
+                            "§e1G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -115,12 +61,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 4b,
+                "id": "variedcommodities:coin_iron",
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e100G"
+                            "§e1G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -134,7 +80,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 60b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -147,24 +93,6 @@
             },
             {
                 "Slot": 8b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 6b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e10G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 9b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -188,11 +116,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 60b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e5G"
+                            "§e10G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -205,12 +133,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 6b,
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e1G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -228,7 +156,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e5G"
+                            "§e10G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -236,67 +164,21 @@
                 "Damage": 0s
             },
             {
-                "Slot": 15b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:plans",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e2K"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:plans",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e2K"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
+                "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e100G"
+                            "§e10G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
                 },
-                "Damage": 0s
-            },
-            {
-                "Slot": 18b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:bucket",
-                "Count": 1b,
                 "Damage": 0s
             },
             {
@@ -305,8 +187,34 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:bucket",
+                "id": "variedcommodities:coin_iron",
                 "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 22b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
                 "Damage": 0s
             },
             {
@@ -315,32 +223,30 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:bucket",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 27b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:bucket",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 33b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:plans",
+                "id": "variedcommodities:coin_iron",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e1K"
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 29b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -354,51 +260,13 @@
     "TraderSold": {
         "NpcMiscInv": [
             {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forge:bucketfilled",
-                "Count": 1b,
-                "tag": {
-                    "FluidName": "biomass",
-                    "Amount": 1000
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 1b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forestry:bituminous_peat",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 2b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:coal",
-                "Count": 9b,
-                "Damage": 1s
-            },
-            {
                 "Slot": 3b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forge:bucketfilled",
+                "id": "mts:ivv.toiletpaper_roll",
                 "Count": 1b,
-                "tag": {
-                    "FluidName": "seed.oil",
-                    "Amount": 1000
-                },
                 "Damage": 0s
             },
             {
@@ -407,7 +275,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forestry:peat",
+                "id": "mts:ivv.tape",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -417,8 +285,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 9b,
+                "id": "variedcommodities:lighter",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
@@ -427,7 +295,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:lava_bucket",
+                "id": "cfm:item_soap",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -437,8 +305,13 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forestry:bituminous_peat",
-                "Count": 64b,
+                "id": "minecraft:stone_shovel",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Name": "§rShovel"
+                    }
+                },
                 "Damage": 0s
             },
             {
@@ -447,22 +320,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 64b,
-                "Damage": 1s
-            },
-            {
-                "Slot": 9b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forge:bucketfilled",
+                "id": "mts:ivv.lighter",
                 "Count": 1b,
-                "tag": {
-                    "FluidName": "diesel",
-                    "Amount": 1000
-                },
                 "Damage": 0s
             },
             {
@@ -471,8 +330,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forestry:peat",
-                "Count": 64b,
+                "id": "minecraft:bucket",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
@@ -481,8 +340,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 64b,
+                "id": "mts:ivv.butanepack",
+                "Count": 4b,
                 "Damage": 0s
             },
             {
@@ -491,80 +350,17 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "immersiveengineering:metal_device1",
+                "id": "flansmod:mwmedicbag",
                 "Count": 1b,
-                "Damage": 6s
-            },
-            {
-                "Slot": 15b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "cfm:crate",
-                "Count": 1b,
-                "tag": {
-                    "Sealed": 1b,
-                    "RepairCost": 0,
-                    "display": {
-                        "Name": "§fFluid Tank Creation Kit"
-                    },
-                    "Items": [
-                        {
-                            "Slot": 0b,
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "immersivepetroleum:schematic",
-                            "Count": 1b,
-                            "tag": {
-                                "multiblock": "IE:SheetmetalTank"
-                            },
-                            "Damage": 0s
-                        },
-                        {
-                            "Slot": 1b,
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "immersiveengineering:wooden_decoration",
-                            "Count": 4b,
-                            "Damage": 0s
-                        },
-                        {
-                            "Slot": 2b,
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "immersiveengineering:sheetmetal",
-                            "Count": 34b,
-                            "Damage": 9s
-                        }
-                    ],
-                    "Lock": ""
-                },
                 "Damage": 0s
             },
             {
-                "Slot": 16b,
+                "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "immersiveengineering:metal_device0",
-                "Count": 1b,
-                "Damage": 5s
-            },
-            {
-                "Slot": 17b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "cfm:item_crow_bar",
+                "id": "mts:iv_tpp.trin_crate2",
                 "Count": 1b,
                 "Damage": 0s
             }

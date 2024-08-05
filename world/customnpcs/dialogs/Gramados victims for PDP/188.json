@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 189,
-                "Title": " I'm trying to track down a stolen vehicle, a vintage UNU Mastodon Coupe. Have you seen anything suspicious around here lately?",
+                "Title": "I'm trying to track down a stolen vehicle, a vintage UNU Mastodon Coupe. Have you seen anything suspicious around here lately?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1714297271367L,
+        "TimePast": 1722722859754L,
         "Time": 0L,
         "Subject": ""
     }

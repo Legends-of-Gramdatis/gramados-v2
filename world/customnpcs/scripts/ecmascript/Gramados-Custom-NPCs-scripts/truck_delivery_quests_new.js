@@ -1,37 +1,21 @@
 /*
 This script is for plans to add the truck driver job on the Gramados server.
-The final goal is to have several saved destinations, and a GUI to select one of several random delivery (from a point to another).
+The final goal is to have several saved trucker_data, and a GUI to select one of several random delivery (from a point to another).
 Each delivery will also fill the truck with a random cargo, and the player will have to deliver it to the destination.
 */
 
 //get player
 var player;
 
-var destinations = [];
+var trucker_data = {}
 
-var FILE_PATH = "world/customnpcs/scripts/truck_destinations.json";
+var FILE_PATH = "world/customnpcs/scripts/trucker_job_data.json";
 var PHONE_FILE_PATH = "world/customnpcs/scripts/players_phone.json";
-
-
-
-// list of available regions
-var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Feldpard"];
-
-// dictionary of available categories
-var categories = {
-    "Material": ["wood", "stone", "dirt", "sand", "gravel", "clay", "terracotta", "iron", "steel", "scrap metal", "feldspar", "high quality paper"],
-    "Fluid": ["water", "lava", "milk", "oil", "ethanol", "diesel", "biodiesel", "concrete", "biomass"],
-    "Food": ["grain", "vegetables", "fruits", "dairy", "cheese", "seafood", "twingo juice"],
-    "Organic": ["flowers", "saplings", "seeds"],
-    "Animals": ["Angus cow", "Friesian cow", "Hereford cow", "Holstein cow", "Longhorn cow", "Highland cow", "Jersey cow"],
-    "Armoury": ["ammo", "missiles", "grenades", "rockets", "handguns", "rifles", "shotguns", "sniper rifles", "machine guns", "rocket launchers"],
-};
 
 var valid_cargo = [];
 
-// Init the item
+
 function init(event) {
-    player = event.player;
     // Get the item
     var item = event.item;
     item.setDurabilityShow(false);
@@ -40,28 +24,25 @@ function init(event) {
     return true;
 }
 
-
-/*function tick(event) {
+function tick(event) {
     player = event.player;
     return true;
-}*/
+}
 
 // Script for scripted block to generate a quest on interact
 function interact(event) {
     player = event.player;
-    var world = player.world;
 
-    // load the destinations
-    if (!file_exists(FILE_PATH)) {
-        create_data(FILE_PATH, destinations);
-    }
+    trucker_data = load_data();
 
-    destinations = load_destinations();
+    //event.player.message("Trucker data: " + JSON.stringify(trucker_data));
+    //event.player.message("Trucker data: " + JSON.stringify(trucker_data.data));
+    //event.player.message("Trucker data: " + JSON.stringify(trucker_data.destinations));
 
-    list_valid_cargos();
+    list_valid_cargos(event);
 
     // create a new delivery quest
-    create_delivery_quest(world);
+    //create_delivery_quest(world);
 
     return true;
 }
@@ -93,10 +74,10 @@ function create_delivery_quest(world) {
     save_truck_job_on_phone(new_quest);
 }
 
-function list_valid_cargos() {
+function list_valid_cargos(event) {
     var tested_cargo
-    // For all the categories and their type, we loop through all the destinations to check if there is at least one producer and one consumer of the cargo.
-    for (var category in categories) {
+    // For all the categories and their type, we loop through all the trucker_data to check if there is at least one producer and one consumer of the cargo.
+    /*for (var category in categories) {
         for (var i = 0; i < categories[category].length; i++) {
             var cargo = categories[category][i];
             tested_cargo = {
@@ -105,13 +86,13 @@ function list_valid_cargos() {
                 "producer_list": [],
                 "consumer_list": []
             };
-            for (var j = 0; j < destinations.length; j++) {
-                for (var look_type_it = 0; look_type_it < destinations[j].types.length; look_type_it++) {
-                    if (destinations[j].trade_type == "Producer" && destinations[j].types[look_type_it] == cargo) {
-                        tested_cargo.producer_list.push(destinations[j]);
+            for (var j = 0; j < trucker_data.length; j++) {
+                for (var look_type_it = 0; look_type_it < trucker_data[j].types.length; look_type_it++) {
+                    if (trucker_data[j].trade_type == "Producer" && trucker_data[j].types[look_type_it] == cargo) {
+                        tested_cargo.producer_list.push(trucker_data[j]);
                     }
-                    if (destinations[j].trade_type == "Consumer" && destinations[j].types[look_type_it] == cargo) {
-                        tested_cargo.consumer_list.push(destinations[j]);
+                    if (trucker_data[j].trade_type == "Consumer" && trucker_data[j].types[look_type_it] == cargo) {
+                        tested_cargo.consumer_list.push(trucker_data[j]);
                     }
                 }
             }
@@ -119,6 +100,29 @@ function list_valid_cargos() {
                 valid_cargo.push(tested_cargo);
             }
         }
+    }*/
+
+    // in the data, list all the "destinations" keys
+    var destinations = Object.keys(trucker_data.destinations);
+    for (var i = 0; i < destinations.length; i++) {
+
+        event.player.message("Destination: " + destinations[i]);
+
+        var produces = get_keys(trucker_data.destinations[destinations[i]].producer);
+        var consumes = get_keys(trucker_data.destinations[destinations[i]].consumer);
+        var produced_ressources = [];
+        var consumed_ressources = [];
+        for (var j = 0; j < produces.length; j++) {
+            produced_ressources.push(get_keys(trucker_data.destinations[destinations[i]].producer[produces[j]]));
+        }
+        for (var j = 0; j < consumes.length; j++) {
+            consumed_ressources.push(get_keys(trucker_data.destinations[destinations[i]].consumer[consumes[j]]));
+        }
+
+
+        event.player.message("This destination turns " + consumes + " to " + produces);
+        event.player.message("This destination produces: " + produced_ressources);
+        event.player.message("This destination consumes: " + consumed_ressources);
     }
 }
 
@@ -195,15 +199,17 @@ function save_truck_job_on_phone(new_quest) {
 
 
 
-// Function to load the destinations from world data
-function load_destinations() {
-    // load the destinations
+// Function to load the trucker_data from world data
+function load_data() {
+
+    // load the trucker_data
     if (!file_exists(FILE_PATH)) {
         create_file(FILE_PATH);
     }
+
     var data = read_file(FILE_PATH);
-    var destinations = JSON.parse(data);
-    return destinations;
+    var trucker_data = JSON.parse(data);
+    return trucker_data;
 }
 
 // Function to create data
@@ -317,4 +323,14 @@ function check_app_installed(player_phone_data, app_name)
 // function to log the player's phone data
 function log_phone_data(player_phone_data) {
     player.message("Phone data: " + JSON.stringify(player_phone_data));
+}
+
+
+
+// function to get keys of a json input
+function get_keys(json_input) {
+    if (json_input != undefined) {
+        return Object.keys(json_input);
+    }
+    return [];
 }

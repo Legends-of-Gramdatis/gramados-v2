@@ -20,6 +20,8 @@ var BUTTON_REGION_PREV = 301,
     BUTTON_CATEGORY_NEXT = 312,
     BUTTON_PRODUCER_PREV = 321,
     BUTTON_PRODUCER_NEXT = 322,
+    BUTTON_QUANTITY_PREV = 331,
+    BUTTON_QUANTITY_NEXT = 332,
     BUTTON_CANCEL = 13,
     BUTTON_CONFIRM = 14,
     ENTRY_ID = 101,
@@ -27,11 +29,11 @@ var BUTTON_REGION_PREV = 301,
     ENTRY_X = 103,
     ENTRY_Y = 104,
     ENTRY_Z = 105,
-    ENTRY_QUANTITY_FACTOR = 106,
     ENTRY_DESCRIPTION = 200,
     TEXT_REGION = 351,
     TEXT_CATEGORY = 352,
     TEXT_PRODUCER = 353,
+    IMAGE_QUANTITY = 354,
     LIST_TYPE = 100;
 
 
@@ -54,11 +56,11 @@ var new_wip_destination = {
 };
 
 // list of available regions
-var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis"];
+var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Feldpard"];
 
 // dictionary of available categories
 var categories = {
-    "Material": ["wood", "stone", "dirt", "sand", "gravel", "clay", "terracotta", "iron", "steel", "scrap metal"],
+    "Material": ["wood", "stone", "dirt", "sand", "gravel", "clay", "terracotta", "iron", "steel", "scrap metal", "feldspar", "high quality paper"],
     "Fluid": ["water", "lava", "milk", "oil", "ethanol", "diesel", "biodiesel", "concrete", "biomass"],
     "Food": ["grain", "vegetables", "fruits", "dairy", "cheese", "seafood", "twingo juice"],
     "Organic": ["flowers", "saplings", "seeds"],
@@ -68,6 +70,20 @@ var categories = {
 
 // list of available trade types
 var trade_types = ["Producer", "Consumer"];
+
+// List of quantities
+var quantities = [16, 32, 48, 96, 144];
+var current_quantity = 16;
+
+// Init the item
+function init(event) {
+    // Get the item
+    var item = event.item;
+    item.setDurabilityShow(false);
+    item.setCustomName("§6§lTrucker's Job Point Generator");
+
+    return true;
+}
 
 // Script for scripted item to generate a point on interact
 function interact(event) {
@@ -96,10 +112,14 @@ function create_GUI(event, GRID_W, GRID_H) {
     // Name entry
     GUI.addLabel(16, "Name", GRID_W + GRID_BORDER, GRID_H, (GRID_W * 2) - (2 * GRID_BORDER), GRID_H);
     GUI.addTextField(ENTRY_NAME, GRID_BORDER + GRID_W * 3, GRID_H + GRID_BORDER, GRID_W * 4 - 2 * GRID_BORDER, GRID_H - 2*GRID_BORDER);
+    // hover text:
+    GUI.getComponent(ENTRY_NAME).setHoverText("Name of the destination");
 
     // ID entry
     GUI.addLabel(17, "ID", GRID_W + GRID_BORDER, GRID_H * 2, GRID_W * 2, GRID_H);
     GUI.addTextField(ENTRY_ID, GRID_W * 3  + GRID_BORDER, GRID_H * 2  + GRID_BORDER, GRID_W * 4  - 2 * GRID_BORDER, GRID_H  - 2 * GRID_BORDER);
+    // hover text:
+    GUI.getComponent(ENTRY_ID).setHoverText("ID of the destination");
 
     // X entry
     GUI.addLabel(18, "X", GRID_W + GRID_BORDER, GRID_H * 3, GRID_W * 2, GRID_H);
@@ -116,15 +136,23 @@ function create_GUI(event, GRID_W, GRID_H) {
     // Description entry
     GUI.addLabel(21, "Description", GRID_W + GRID_BORDER, GRID_H * 5, GRID_W * 6, GRID_H);
     GUI.addTextField(ENTRY_DESCRIPTION, GRID_W + GRID_BORDER, GRID_H * 6 + GRID_BORDER, GRID_W * 6 - 2 * GRID_BORDER, GRID_H - 2 * GRID_BORDER);
+    // hover text:
+    GUI.getComponent(ENTRY_DESCRIPTION).setHoverText("Description of the destination");
 
     // Consumer / Producer
     GUI.addTexturedButton(BUTTON_PRODUCER_PREV, "", GRID_W, GRID_H * 7, GRID_W, GRID_H, button_texture_sheet, GRID_W * 8, 0);
     GUI.addLabel(TEXT_PRODUCER, "Producer", GRID_W * 2 + GRID_BORDER, GRID_H * 7, GRID_W * 4, GRID_H);
     GUI.addTexturedButton(BUTTON_PRODUCER_NEXT, "", GRID_W * 6, GRID_H * 7, GRID_W, GRID_H, button_texture_sheet, GRID_W * 7, 0);
+    // hover text:
+    GUI.getComponent(TEXT_PRODUCER).setHoverText("Weather the destination is a producer or a consumer");
+    
 
-    // Quantity Factor
-    GUI.addLabel(22, "Quantity", GRID_W + GRID_BORDER, GRID_H * 8, GRID_W * 3, GRID_H);
-    GUI.addTextField(ENTRY_QUANTITY_FACTOR, GRID_W * 4 + GRID_BORDER, GRID_H * 8 + GRID_BORDER, GRID_W * 3 - 2 * GRID_BORDER, GRID_H - 2 * GRID_BORDER);
+    // Quantity selection
+    GUI.addTexturedButton(BUTTON_QUANTITY_PREV, "", GRID_W, GRID_H * 8, GRID_W, GRID_H, button_texture_sheet, GRID_W * 8, 0);
+    GUI.addTexturedRect(IMAGE_QUANTITY, button_texture_sheet, GRID_W * 2, GRID_H * 8, GRID_W * 4, GRID_H, 0, GRID_H * (9 + quantities.indexOf(current_quantity)));
+    GUI.addTexturedButton(BUTTON_QUANTITY_NEXT, "", GRID_W * 6, GRID_H * 8, GRID_W, GRID_H, button_texture_sheet, GRID_W * 7, 0);
+    // hover text:
+    GUI.getComponent(IMAGE_QUANTITY).setHoverText("Quantity of the cargo, refer to the icons. Current quantity: Up to " + current_quantity * 9 + " stacks / buckets");
 
 
     // Region label
@@ -132,6 +160,8 @@ function create_GUI(event, GRID_W, GRID_H) {
     GUI.addTexturedButton(BUTTON_REGION_PREV, "", GRID_W * 7, GRID_H * 2, GRID_W, GRID_H, button_texture_sheet, GRID_W * 8, 0);
     GUI.addLabel(TEXT_REGION, "", GRID_W * 8 + GRID_BORDER, GRID_H * 2, GRID_W * 4, GRID_H);
     GUI.addTexturedButton(BUTTON_REGION_NEXT, "", GRID_W * 12, GRID_H * 2, GRID_W, GRID_H, button_texture_sheet, GRID_W * 7, 0);
+    // hover text:
+    GUI.getComponent(TEXT_REGION).setHoverText("Select the Island region where the destination is located");
 
     // Category label
     GUI.addLabel(24, "Category", GRID_W * 7 + GRID_BORDER, GRID_H * 3, GRID_W * 3, GRID_H);
@@ -142,6 +172,8 @@ function create_GUI(event, GRID_W, GRID_H) {
     // Type list
     GUI.addLabel(25, "Type(s)", GRID_W * 7 + GRID_BORDER, GRID_H * 5, GRID_W * 3, GRID_H);
     GUI.addScroll(LIST_TYPE, GRID_W * 7 + GRID_BORDER, GRID_H * 6, GRID_W * 6 - GRID_BORDER * 2, GRID_H * 3, get_type_list()).setMultiSelect(true);
+    // hover text:
+    GUI.getComponent(25).setHoverText("Select the type(s) of cargo that can be delivered to the destination. Warning: fill this part last, as it is reset when changing the category and other.");
 
     // CANCEL button
     GUI.addTexturedButton(BUTTON_CANCEL, "Cancel", GRID_W, GRID_H * 9, GRID_W * 6, GRID_H, button_texture_sheet, 0, GRID_H * 6 - 1);
@@ -224,6 +256,32 @@ function customGuiButton(event) {
             }
             update_type_list();
             break
+        // Quantity previous
+        case BUTTON_QUANTITY_PREV:
+            var index = quantities.indexOf(current_quantity);
+            if (index > 0) {
+                current_quantity = quantities[index - 1];
+                index = quantities.indexOf(current_quantity);
+                //event.player.message("New Quantity: " + current_quantity + " of index " + index);
+                GUI.getComponent(IMAGE_QUANTITY).setTextureOffset(0, GRID_H * (9 + index));
+            }
+            // hover text update
+            GUI.getComponent(IMAGE_QUANTITY).setHoverText("Quantity of the cargo, refer to the icons. Current quantity: Up to " + current_quantity * 9 + " stacks / buckets");
+            update_type_list();
+            break;
+        // Quantity next
+        case BUTTON_QUANTITY_NEXT:
+            var index = quantities.indexOf(current_quantity);
+            if (index < quantities.length - 1) {
+                current_quantity = quantities[index + 1];
+                index = quantities.indexOf(current_quantity);
+                //event.player.message("New Quantity: " + current_quantity + " of index " + index);
+                GUI.getComponent(IMAGE_QUANTITY).setTextureOffset(0, GRID_H * (9 + index));
+            }
+            // hover text update
+            GUI.getComponent(IMAGE_QUANTITY).setHoverText("Quantity of the cargo, refer to the icons. Current quantity: Up to " + current_quantity * 9 + " stacks / buckets");
+            update_type_list();
+            break;
     }
 
     event.gui.update(event.player);
@@ -244,7 +302,6 @@ function save_GUI_content(event) {
     var region = event.gui.getComponent(TEXT_REGION).getText();
     var category = event.gui.getComponent(TEXT_CATEGORY).getText();
     var trade_type = event.gui.getComponent(TEXT_PRODUCER).getText();
-    var quantity_factor = event.gui.getComponent(ENTRY_QUANTITY_FACTOR).getText();
     var types = [];
     for (var i = 0; i < scrollSelection.length; i++) {
         types.push(scrollSelection[i]);
@@ -262,7 +319,7 @@ function save_GUI_content(event) {
         category: category,
         types: types,
         trade_type: trade_type,
-        quantity_factor: quantity_factor
+        quantity_factor: String(current_quantity)
     };
 
     display_delivry_chat(event);
@@ -311,7 +368,7 @@ function prefill_GUI(player) {
     }
     GUI.getComponent(TEXT_PRODUCER).setText(new_wip_destination.trade_type);
 
-    GUI.getComponent(ENTRY_QUANTITY_FACTOR).setText(new_wip_destination.quantity_factor);
+    //GUI.getComponent(ENTRY_QUANTITY_FACTOR).setText(new_wip_destination.quantity_factor);
 
     update_type_list();
 

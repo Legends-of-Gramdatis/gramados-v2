@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Ms. Beatrice Johnson",
-    "NextQuestId": -1,
+    "NextQuestId": 36,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1714669183622L,
+        "TimePast": 1722722362410L,
         "Time": 0L,
         "Subject": ""
     },
@@ -78,5 +78,5 @@
     },
     "LeaveItems": 0b,
     "CompleteText": "I've returned the stolen bag to Ms. Beatrice Johnson, ensuring her well-being and providing her with reassurance. Another case resolved, and the community is safer for it.",
-    "NextQuestTitle": ""
+    "NextQuestTitle": "A Stolen Ride"
 }

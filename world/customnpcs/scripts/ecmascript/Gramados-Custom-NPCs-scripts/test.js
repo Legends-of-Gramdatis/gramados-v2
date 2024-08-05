@@ -112,3 +112,21 @@ function customGuiSlot(event) {
     event.player.world.broadcast("this from slot function " + event.gui.getComponent(30).getText());
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function interact(event) {
+    event.player.message(event.player.world.getStoreddata().get("abc"));
+    
+    }

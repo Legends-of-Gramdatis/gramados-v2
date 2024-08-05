@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Officer Reynolds",
-    "NextQuestId": -1,
+    "NextQuestId": 49,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1714667576478L,
+        "TimePast": 1722722180318L,
         "Time": 0L,
         "Subject": ""
     },
@@ -60,5 +60,5 @@
     },
     "LeaveItems": 0b,
     "CompleteText": "I've reported the discovery of the assailant's identification papers to Officer Reynolds at the Gramados Police Station. With this evidence in hand, we are poised to take the next steps towards apprehending the culprit and ensuring justice is served.",
-    "NextQuestTitle": ""
+    "NextQuestTitle": "Investigating the Scene"
 }

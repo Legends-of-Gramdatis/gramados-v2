@@ -21,19 +21,16 @@
     "ModRev": 18,
     "Type": 3,
     "QuestMail": {
-        "Sender": "Officer Reynolds",
+        "Sender": "",
         "BeenRead": 0b,
         "Message": {
-            "pages": [
-                "Please assist in the recovery of Ms. Beatrice Johnson's stolen bag. Refer to your earlier discussion for details on the thief and their last known direction. Immediate action is appreciated."
-            ]
         },
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1713997109879L,
+        "TimePast": 1722721385775L,
         "Time": 0L,
-        "Subject": "Urgent: Stolen Bag Recovery Needed"
+        "Subject": ""
     },
     "Rewards": {
         "NpcMiscInv": [

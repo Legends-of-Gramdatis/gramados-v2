@@ -7,9 +7,9 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thank you for the information, ma'am. I'll do my best to ensure your safety and apprehend the perpetrator.",
+                "Title": "Talk",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 2
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 181,
+    "DialogId": 215,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -31,14 +31,14 @@
     "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
-    "AvailabilityDayTime": 0,
+    "AvailabilityDayTime": 2,
     "OptionFactions2": -1,
     "AvailabilityFaction2Id": -1,
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 3",
+    "DialogTitle": "daytime disabled",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Not really, I'm afraid. It all happened so fast. But they were wearing a dark hoodie and ran off outside the court.",
+    "DialogText": "It's too light out to conduct our business at the moment. Come back at night.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722935276L,
+        "TimePast": 1722728412097L,
         "Time": 0L,
         "Subject": ""
     }
