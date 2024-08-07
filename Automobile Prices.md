@@ -15,3 +15,7 @@ For the vehicles that aren't listed, here are the prices:
 - AliceMotors Kitsune: 25000 g
 - AliceMotors Yumi: 21500 g
 - AliceMotors Utesu: 21500 g
+
+# Useful blocks and items not yet on sale in shops:
+
+- mts:ivv.benchengine : 5000g
