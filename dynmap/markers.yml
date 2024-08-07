@@ -119,6 +119,10 @@ icons:
         label: marketstand
     marketstand_c:
         label: marketstand_c
+    truck_stop:
+        label: truck_stop
+    truck_stop_c:
+        label: truck_stop_c
 
 sets:
     Tech Shops:
@@ -614,6 +618,22 @@ sets:
                 y: 83.0
                 z: -107
                 label: Dominico's Pizza
+            marker_15:
+                world: world
+                markup: false
+                x: -3385.0
+                icon: restaurant
+                y: 74.0
+                z: -2565.0
+                label: The Mahogany Café & Restaurant
+            marker_16:
+                world: world
+                markup: false
+                x: -6705.0
+                icon: restaurant
+                y: 79.0
+                z: -326.0
+                label: Silorose Trucker Fast Food
         lines: {
             }
         layerprio: 0
@@ -694,6 +714,22 @@ sets:
                 y: 73.0
                 z: -506.0
                 label: Citrus Alley Hotel
+            marker_6:
+                world: world
+                markup: false
+                x: -3429.0
+                icon: hotel_c
+                y: 71.0
+                z: -2350.0
+                label: Montrose Hotel
+            marker_7:
+                world: world
+                markup: false
+                x: -6723.0
+                icon: hotel
+                y: 79.0
+                z: -402
+                label: Silorose Trucker Hotel
         lines: {
             }
         layerprio: 0
@@ -1026,6 +1062,14 @@ sets:
                 y: 95.0
                 z: -34.0
                 label: Retro Car Dealership
+            marker_8:
+                world: world
+                markup: false
+                x: -3372.0
+                icon: dealership_trin
+                y: 69.0
+                z: -2512.0
+                label: Trilnat Trin Dealership
         lines: {
             }
         layerprio: 0
@@ -1499,6 +1543,14 @@ sets:
                 y: 67.0
                 z: 207.0
                 label: Ardocor Multi-Service Facility
+            marker_13:
+                world: world
+                markup: false
+                x: -3664.0
+                icon: service_multi_c
+                y: 70.0
+                z: -2389.0
+                label: Trilnat Multi-Service Facility
         lines: {
             }
         layerprio: 0
@@ -1527,6 +1579,14 @@ sets:
                 y: 69.0
                 z: -2496.0
                 label: Trilnat Auto General Store
+            marker_3:
+                world: world
+                markup: false
+                x: -6701.0
+                icon: generalstore
+                y: 79.0
+                z: -364.0
+                label: Silorose Trucker General Store
         lines: {
             }
         layerprio: 0
@@ -1557,6 +1617,33 @@ sets:
                 label: Allen Point Local Market
         lines: {
             }
+        layerprio: 0
+    Truck Stops:
+        hide: false
+        circles: {
+            }
+        deficon: truck_stop_c
+        areas: {
+            }
+        label: Truck Stops
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -4187.0
+                icon: truck_stop_c
+                y: 76.0
+                z: -2013.0
+                label: Feldpard Truck Stop
+            marker_2:
+                world: world
+                markup: false
+                x: -6733.0
+                icon: truck_stop
+                y: 79.0
+                z: -347
+                label: Farmiston Truck Stop
+        lines: {}
         layerprio: 0
 playersets: {
     }
