@@ -79,3 +79,6 @@ for recipe in recipes.all {
 for ingredient in disabledItems {
     recipes.remove(ingredient);
 }
+
+// Add the soapy water recipe
+recipes.addShaped(<cfm:item_soap_water>, [[<cfm:item_soap>, <minecraft:water_bucket>]]);
