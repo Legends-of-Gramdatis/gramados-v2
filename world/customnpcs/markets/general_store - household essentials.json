@@ -44,7 +44,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -102,7 +102,25 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -146,24 +164,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e10G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -175,6 +175,24 @@
                     "display": {
                         "Lore": [
                             "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -233,6 +251,16 @@
                         "Name": "§2§lMoney§r"
                     }
                 },
+                "Damage": 0s
+            },
+            {
+                "Slot": 27b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:bucket",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
@@ -325,6 +353,21 @@
                 "Damage": 0s
             },
             {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "cfm:item_soap_water",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Name": "§rLaundry Liquid"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
                 "Slot": 10b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -345,22 +388,22 @@
                 "Damage": 0s
             },
             {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:mwmedicbag",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
                 "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
                 "id": "mts:iv_tpp.trin_crate2",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.medkit",
                 "Count": 1b,
                 "Damage": 0s
             }

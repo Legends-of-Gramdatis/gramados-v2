@@ -2,22 +2,12 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
-        {
-            "OptionSlot": 0,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 180,
-                "Title": "I'll get a first aid kit for you right away.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 179,
+    "DialogId": 230,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +18,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 40,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 1",
+    "DialogTitle": "TESTING PURPOSE citizens assistance mission mails",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Thank you. I appreciate it. I've got a few bruises and cuts from the attack. I could really use a first aid kit to tend to these injuries. I don’t have one handy right now.",
+    "DialogText": "TESTING PURPOSE",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722981002397L,
+        "TimePast": 1723024792111L,
         "Time": 0L,
         "Subject": ""
     }

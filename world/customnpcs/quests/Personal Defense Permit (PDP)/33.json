@@ -1,15 +1,13 @@
 {
-    "CompleterNpc": "Officer Reynolds",
-    "NextQuestId": 34,
+    "CompleterNpc": "Mail Service",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
     "RandomReward": 0b,
+    "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 0,
     "Title": "Citizen Assistance Mission",
-    "Text": "Officer Reynolds has tasked me with assisting three citizens who have reported incidents requiring police intervention. Each citizen is located at a different area in Gramados City. I must find and speak with each of them to gather information about their respective situations.
-
-- Ms. Beatrice Johnson is located at the corner of Jorty Street and Comenial Street, south of the airport Hotel, in front of the airport.
-- Mr. Robert Anderson can be found at the Marina Vista Café & Grill, situated at the Marina Bay Building, closest to the University.
-- Ms. Sophia Rodriguez is situated at Serenity Court, a fancy courtyard in the Downtown district, at the North-West, near the Bravo Fuel Station.",
+    "Text": "Officer Reynolds has informed me that new citizen complaints and issues will be delivered to me via mail. I should head to the Gramados Mail Station to check if any letters have arrived. These letters will provide further instructions on how I can assist the community.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -20,38 +18,32 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
-    "QuestDialogs": [
-        {
-            "Integer": 173,
-            "Slot": 0
-        },
-        {
-            "Integer": 169,
-            "Slot": 1
-        },
-        {
-            "Integer": 178,
-            "Slot": 2
-        }
-    ],
     "ModRev": 18,
-    "Type": 1,
+    "Type": 3,
     "QuestMail": {
-        "Sender": "",
+        "Sender": "Officer Reynolds",
+        "MailQuestTitle": "Assault at Serenity Court",
         "BeenRead": 0b,
         "Message": {
+            "pages": [
+                "You have been assigned a new case regarding an assault incident. The victim, Ms. Sophia Rodriguez, resides at Serenity Court in the Downtown district, near Bravo Fuel Station. While no items were stolen, she was attacked by an unknown thief.",
+                "Please visit her to gather more information about the attack and any possible clues that might help in resolving this case.",
+                "Best regards,
+Officer Reynolds"
+            ]
         },
         "MailItems": [
         ],
-        "MailQuest": -1,
-        "TimePast": 1713997251392L,
+        "MailQuest": 54,
+        "TimePast": 1722980187472L,
         "Time": 0L,
-        "Subject": ""
+        "Subject": "Assault Incident at Serenity Court"
     },
     "Rewards": {
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I have successfully spoken with each of the citizens in need of assistance. Ms. Beatrice Johnson provided details about a bag theft incident, Mr. Robert Anderson reported a vehicle theft, and Ms. Sophia Rodriguez recounted an assault at Serenity Court. Now, I must return to the Gramados Police Station to report my findings to Officer Reynolds and receive further instructions.",
-    "NextQuestTitle": "Emergency Mail Delivery"
+    "CompleteText": "I've arrived at the Gramados Mail Station. Now, I need to locate my assigned mailbox and retrieve the letters inside. These letters will guide me in addressing the complaints and issues reported by the citizens.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Gramados City Mail Service"
 }

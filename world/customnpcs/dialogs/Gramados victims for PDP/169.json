@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 55,
     "Options": [
         {
             "OptionSlot": 0,
@@ -18,11 +18,11 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 169,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -50,7 +50,7 @@
     "DialogText": "Hello?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 52,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722890310L,
+        "TimePast": 1723022327956L,
         "Time": 0L,
         "Subject": ""
     }

@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Mail Service",
-    "NextQuestId": 35,
+    "CompleterNpc": "Officer Reynolds",
+    "NextQuestId": -1,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
-    "Title": "Emergency Mail Delivery",
-    "Text": "Collect the urgent mails concerning the assault at Serenity Court and the bag theft incident from Gramados Mail Service.",
+    "QuestCompletion": 1,
+    "Title": "Your Personal Defense Permit",
+    "Text": "Officer Reynolds has approved my Personal Defense Permit (PDP) application following my successful resolution of the recent cases.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722721385775L,
+        "TimePast": 1723025575337L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "You have received the urgent mails. One details an assault in Serenity Court, and the other pertains to the theft of Ms. Beatrice Johnson's bag. These issues demand your immediate attention.",
-    "NextQuestTitle": "Urgent Vehicle Recovery Request",
-    "QuestLocation": "Gramados City Mail Service"
+    "CompleteText": "I’ve reported back to Officer Reynolds and received my Personal Defense Permit (PDP). This permit not only grants me the right to carry small firearms for personal defense but also signifies a significant step in my commitment to protecting the community.",
+    "NextQuestTitle": "",
+    "QuestLocation": ""
 }

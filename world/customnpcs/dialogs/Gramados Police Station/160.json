@@ -22,7 +22,7 @@
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -50,7 +50,7 @@
     "DialogText": "Welcome, welcome. Marcus Eldridge sent you, didn't he? What brings you to my office today?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 59,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722853702L,
+        "TimePast": 1723032746337L,
         "Time": 0L,
         "Subject": ""
     }

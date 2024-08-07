@@ -6,10 +6,40 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Don't worry, I'll proceed with caution. Stay safe, Ms. Rodriguez. I'll be in touch soon.",
+                "Dialog": 224,
+                "Title": "Personal Defense Permit (PDP)",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 225,
+                "Title": "Marksmanship License (ML)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 226,
+                "Title": "Guardian License (GL)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 228,
+                "Title": "How do I get the PDP permit?",
+                "DialogColor": 14737632,
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 209,
+    "DialogId": 224,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 1 - First Quest",
+    "DialogTitle": "Permit PDP",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +77,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I'm counting on you. Please, be careful out there.",
+    "DialogText": "This permit focuses on small and concealable firearms suitable for personal defense. It's ideal for those who want basic protection with minimal firepower.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +94,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722931903L,
+        "TimePast": 1722977979321L,
         "Time": 0L,
         "Subject": ""
     }

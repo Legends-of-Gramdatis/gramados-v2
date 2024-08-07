@@ -12,7 +12,7 @@
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -44,7 +44,7 @@ I've prepared detailed reports for each case. You'll find them at the Gramados M
 Remember, @p, your actions can make a significant difference in ensuring the safety and well-being of our citizens. Good luck.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 58,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -58,7 +58,7 @@ Remember, @p, your actions can make a significant difference in ensuring the saf
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 8725644679L,
+        "TimePast": 9035370047L,
         "Time": 1713997205871L,
         "Subject": "Assault at Serenity Court"
     }

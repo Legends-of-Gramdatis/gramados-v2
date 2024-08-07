@@ -1,24 +1,14 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 44,
+    "AvailabilityQuestId": -1,
     "Options": [
-        {
-            "OptionSlot": 0,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 209,
-                "Title": "It's my duty to ensure your safety. I'll do everything I can to assist you. Now, I'm going to gather more information about the assailant and investigate the park thoroughly. If I find anything, I'll let you know immediately.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 208,
-    "AvailabilityQuest": 3,
+    "DialogId": 228,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez - First Quest",
+    "DialogTitle": "See Marcus Eldridge",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Thank you for your help. I really appreciate it.",
+    "DialogText": "If you're interested in pursuing the PDP, I recommend speaking with Marcus Eldridge. He’s located on the first floor, in the east wing. Marcus will guide you through the process and help you get your permit.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722928454L,
+        "TimePast": 1722977886078L,
         "Time": 0L,
         "Subject": ""
     }

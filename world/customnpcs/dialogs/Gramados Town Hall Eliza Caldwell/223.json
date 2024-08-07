@@ -6,10 +6,30 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Thank you for the information, ma'am. I'll do my best to ensure your safety and apprehend the perpetrator.",
+                "Dialog": 224,
+                "Title": "Personal Defense Permit (PDP)",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 225,
+                "Title": "Marksmanship License (ML)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 226,
+                "Title": "Guardian License (GL)",
+                "DialogColor": 14737632,
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +37,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 181,
+    "DialogId": 223,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 3",
+    "DialogTitle": "Gun System Presentation",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Not really, I'm afraid. It all happened so fast. But they were wearing a dark hoodie and ran off outside the court.",
+    "DialogText": "Of course! In Gramados, we have a structured system for obtaining firearm permits, ensuring that all citizens who carry firearms are well-trained and responsible. There are three different types of permits, each tailored to specific needs:",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722935276L,
+        "TimePast": 1722977928348L,
         "Time": 0L,
         "Subject": ""
     }

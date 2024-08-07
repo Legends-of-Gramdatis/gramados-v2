@@ -11,6 +11,16 @@
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 221,
+                "Title": "I'm terribly sorry to hear that, ma'am. I will comunicate this report to Officer Raynolds, then come back to you.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
         }
     ],
     "AvailabilityScoreboardType": 1,
@@ -64,7 +74,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722893500L,
+        "TimePast": 1722975061693L,
         "Time": 0L,
         "Subject": ""
     }

@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 33,
+    "AvailabilityQuestId": 54,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 179,
-                "Title": "Good afternoon, ma'am. Officer Reynolds mentioned you might have encountered some trouble?",
+                "Title": "I'm here to help. Officer Reynolds sent me to check on you and see what I can do.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -18,7 +18,7 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 178,
-    "AvailabilityQuest": 3,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Hello?",
+    "DialogText": "Oh, hello there. You must be the one sent to assist me. I’m Ms. Sophia Rodriguez. I’m still a bit shaken up from the incident. I was attacked by a thief right here at Serenity Court, but thankfully, nothing was stolen.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722925758L,
+        "TimePast": 1723020512448L,
         "Time": 0L,
         "Subject": ""
     }

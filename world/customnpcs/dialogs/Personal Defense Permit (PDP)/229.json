@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 20,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 180,
-                "Title": "I'll get a first aid kit for you right away.",
+                "Dialog": 143,
+                "Title": "Hello! I am @p and I'm seeking a Personal Defense Permit for my safety.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 179,
-    "AvailabilityQuest": 0,
+    "DialogId": 229,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 1",
+    "DialogTitle": "First welcome",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Thank you. I appreciate it. I've got a few bruises and cuts from the attack. I could really use a first aid kit to tend to these injuries. I don’t have one handy right now.",
+    "DialogText": "Ah, welcome! I’m Marcus Eldridge, the coordinator for firearm permits here in Gramados. How can I assist you today?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722981002397L,
+        "TimePast": 1722978522826L,
         "Time": 0L,
         "Subject": ""
     }

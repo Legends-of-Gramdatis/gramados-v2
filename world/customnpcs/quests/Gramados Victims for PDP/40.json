@@ -1,11 +1,11 @@
 {
     "CompleterNpc": "Mr. Robert Anderson",
-    "NextQuestId": -1,
+    "NextQuestId": 58,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
     "Title": "Reporting to Mr. Anderson",
-    "Text": "With valuable information gathered during my investigation, it's time to report back to Mr. Robert Anderson at the Marina Vista Café & Grill. I must inform him of the progress made and the latest developments in the search for his stolen UNU Mastodon Coupe.",
+    "Text": "With valuable information gathered during my investigation, it's time to report back to Mr. Robert Anderson at the Marina Vista Café and Grill. I must inform him of the progress made and the latest developments in the search for his stolen UNU Mastodon Coupe.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1714665376103L,
+        "TimePast": 1723024732824L,
         "Time": 0L,
         "Subject": ""
     },
@@ -37,5 +37,5 @@
         ]
     },
     "CompleteText": "I've returned to Mr. Robert Anderson and provided a detailed report of my investigation into the stolen UNU Mastodon Coupe. While the case remains unsolved, Mr. Anderson now has a clearer picture of the situation, and we're one step closer to recovering his prized vehicle.",
-    "NextQuestTitle": ""
+    "NextQuestTitle": "Reporting Back to Officer Reynolds"
 }

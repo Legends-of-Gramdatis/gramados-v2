@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 58,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 180,
-                "Title": "I'll get a first aid kit for you right away.",
+                "Dialog": 232,
+                "Title": "Thank you, Officer Reynolds. I’m glad I could help.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,12 +17,12 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 179,
-    "AvailabilityQuest": 0,
+    "DialogId": 231,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ms. Sophia Rodriguez 1",
+    "DialogTitle": "Officer Reynolds Conclusion",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Thank you. I appreciate it. I've got a few bruises and cuts from the attack. I could really use a first aid kit to tend to these injuries. I don’t have one handy right now.",
+    "DialogText": "Ah, @p, just the person I wanted to see. I’ve read through your reports, and I must say, you’ve done an outstanding job. From assisting victims to recovering that stolen collection car, you’ve demonstrated exceptional diligence and a strong sense of duty. The community is safer because of your efforts.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 59,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722981002397L,
+        "TimePast": 1723032717019L,
         "Time": 0L,
         "Subject": ""
     }

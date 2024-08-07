@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Mr. Robert Anderson",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Meeting Mr. Anderson",
+    "Text": "I’ve been assigned to investigate a stolen collection car. The owner, Mr. Robert Anderson, is waiting for me at the Marina Vista Café and Grill, located in the Marina Bay Building. This building is west of the Gramados University and along the Gramados Marina. I should head there to speak with him and learn more about the incident.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1723024007435L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've located Mr. Robert Anderson at the Marina Vista Café & Grill. He’s distraught over the theft of his collection car. Now I must speak with him, it’s time to start piecing together the clues and track down the stolen vehicle.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Mr. Robert Anderson"
+}

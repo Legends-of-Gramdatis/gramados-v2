@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Officer Reynolds",
-    "NextQuestId": 49,
+    "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
@@ -20,16 +20,25 @@
     "ModRev": 18,
     "Type": 0,
     "QuestMail": {
-        "Sender": "",
+        "Sender": "Officer Reynolds",
+        "MailQuestTitle": "Bag Theft Investigation",
         "BeenRead": 0b,
         "Message": {
+            "pages": [
+                "I hope this message finds you well. We've just received a report of a bag theft in the vicinity of Gramados Airport. The victim, Ms. Beatrice Johnson, is currently waiting at the intersection of Comenial Street and Jorty Street,",
+                "right in front of the airport hotel. Comenial Street is a bustling commercial area, so it’s important we act quickly to resolve this situation.",
+                "Please head over to the location and speak with Ms. Johnson to gather more details about the incident. She’s an older lady, very friendly, but understandably shaken up by the theft. Your assistance will be greatly appreciated.",
+                "Best regards,
+Officer Reynolds
+Gramados Police Department"
+            ]
         },
         "MailItems": [
         ],
-        "MailQuest": -1,
-        "TimePast": 1722722180318L,
+        "MailQuest": 55,
+        "TimePast": 1723021513029L,
         "Time": 0L,
-        "Subject": ""
+        "Subject": "Assistance Required: Bag Theft Incident"
     },
     "IgnoreDamage": 0b,
     "Rewards": {
@@ -59,6 +68,6 @@
         ]
     },
     "LeaveItems": 0b,
-    "CompleteText": "I've reported the discovery of the assailant's identification papers to Officer Reynolds at the Gramados Police Station. With this evidence in hand, we are poised to take the next steps towards apprehending the culprit and ensuring justice is served.",
-    "NextQuestTitle": "Investigating the Scene"
+    "CompleteText": "I've reported the discovery of the assailant's identification papers to Officer Reynolds at the Gramados Police Station. With this evidence in hand, we are poised to take the next steps towards apprehending the culprit and ensuring justice is served. I now recieved a new mail with my next mission.",
+    "NextQuestTitle": ""
 }
