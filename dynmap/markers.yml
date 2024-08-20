@@ -306,6 +306,14 @@ sets:
                 y: 66.0
                 z: -1173.0
                 label: Allen Point Port
+            marker_4:
+                world: world
+                markup: false
+                x: 5040.0
+                icon: port
+                y: 67.0
+                z: -1847.0
+                label: Buxton Harbor
         lines: {
             }
         layerprio: 0
@@ -1398,7 +1406,7 @@ sets:
                 icon: fuelpump
                 y: 70.0
                 z: -1917.0
-                label: Newland Fuel Station
+                label: Buxton Harbor Service Station
         lines: {
             }
         layerprio: 0
@@ -1587,6 +1595,14 @@ sets:
                 y: 79.0
                 z: -364.0
                 label: Silorose Trucker General Store
+            marker_4:
+                world: world
+                markup: false
+                x: 5352.0
+                icon: generalstore_c
+                y: 70.0
+                z: -1915
+                label: Federal Goods Supermarket
         lines: {
             }
         layerprio: 0
