@@ -16,6 +16,9 @@ For the vehicles that aren't listed, here are the prices:
 - AliceMotors Yumi: 21500 g
 - AliceMotors Utesu: 21500 g
 
+- Mini cooper bunno cc: 37500 g
+
 # Useful blocks and items not yet on sale in shops:
 
 - mts:ivv.benchengine : 5000g
+- IE windmill: 15000g
