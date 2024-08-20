@@ -56,7 +56,7 @@ var new_wip_destination = {
 };
 
 // list of available regions
-var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Feldpard"];
+var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Feldpard", "Casco"];
 
 // dictionary of available categories
 var categories = {

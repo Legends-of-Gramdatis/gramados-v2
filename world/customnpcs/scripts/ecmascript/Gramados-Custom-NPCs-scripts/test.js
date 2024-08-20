@@ -1,34 +1,34 @@
-var GUI_1, GUI_2, GUI_3, GUI_4, run_thru = 1, rect1, changeColor = 0, itemS1, itemS2, scrollSelection;
+var GUI, GUI_2, GUI_3, GUI_4, run_thru = 1, rect1, changeColor = 0, itemS1, itemS2, scrollSelection;
 function interact(event) {
-    GUI_1 = event.API.createCustomGui(1, 248, 166, false);
-    GUI_1.setBackgroundTexture("minecraft:textures/gui/toad1.png");
-    GUI_1.addTexturedButton(10, "             Right", 10, 0, 30, 30, "minecraft:textures/gui/resource_packs.png", 0, 0);
-    GUI_1.addTexturedButton(11, "             Left", 10, 30, 30, 30, "minecraft:textures/gui/resource_packs.png", 30, 0);
-    GUI_1.addButton(20, "§cABCDEF", 10, 65, 50, 19);
-    GUI_1.addTextField(30, 10, 85, 50, 19);
+    GUI = event.API.createCustomGui(1, 248, 166, false);
+    GUI.setBackgroundTexture("minecraft:textures/gui/toad1.png");
+    GUI.addTexturedButton(10, "             Right", 10, 0, 30, 30, "minecraft:textures/gui/resource_packs.png", 0, 0);
+    GUI.addTexturedButton(11, "             Left", 10, 30, 30, 30, "minecraft:textures/gui/resource_packs.png", 30, 0);
+    GUI.addButton(20, "§cABCDEF", 10, 65, 50, 19);
+    GUI.addTextField(30, 10, 85, 50, 19);
     //
     //GUI_1.addItemSlot(30, 90);
     //GUI_1.addItemSlot(0, 0);
     //GUI_1.addItemSlot(57, 88,event.player.world.createItem("minecraft:log",0,1));
     //
-    GUI_1.addTexturedRect(50, "minecraft:textures/gui/colors.png", 10, 120, 30, 30, 0, 0);
-    GUI_1.addTexturedRect(51, "minecraft:textures/gui/widgets.png", 90, 85, 23, 23, 1, 23);
-    GUI_1.addTexturedRect(52, "minecraft:textures/gui/widgets.png", 63, 87, 20, 20, 1, 1);
+    GUI.addTexturedRect(50, "minecraft:textures/gui/colors.png", 10, 120, 30, 30, 0, 0);
+    GUI.addTexturedRect(51, "minecraft:textures/gui/widgets.png", 90, 85, 23, 23, 1, 23);
+    GUI.addTexturedRect(52, "minecraft:textures/gui/widgets.png", 63, 87, 20, 20, 1, 1);
     //
-    GUI_1.addButton(21, "X", 80, 5, 19, 19);
-    GUI_1.addButton(22, "A", 70, 35, 19, 19);
-    GUI_1.addButton(23, "B", 93, 35, 19, 19);
-    GUI_1.addButton(24, "N", 93, 65, 19, 19);
-    GUI_1.addScroll(60, 185, 111, 55, 50, ["one", "two", "three", "four", "5555", "6666", "7777", "8888", "9999", "ten ten"]).setMultiSelect(true);
+    GUI.addButton(21, "X", 80, 5, 19, 19);
+    GUI.addButton(22, "A", 70, 35, 19, 19);
+    GUI.addButton(23, "B", 93, 35, 19, 19);
+    GUI.addButton(24, "N", 93, 65, 19, 19);
+    GUI.addScroll(60, 185, 111, 55, 50, ["one", "two", "three", "four", "5555", "6666", "7777", "8888", "9999", "ten ten"]).setMultiSelect(true);
     ////
-    GUI_1.getComponent(10).setHoverText("§aThis makes it go right");
-    GUI_1.getComponent(11).setHoverText("§dThis makes it go left");
-    GUI_1.getComponent(20).setHoverText("§fThis changes the color");
-    GUI_1.getComponent(30).setHoverText("§ftext??");
-    GUI_1.getComponent(50).setHoverText("§bExample");
-    GUI_1.getComponent(52).setHoverText("blank");
+    GUI.getComponent(10).setHoverText("§aThis makes it go right");
+    GUI.getComponent(11).setHoverText("§dThis makes it go left");
+    GUI.getComponent(20).setHoverText("§fThis changes the color");
+    GUI.getComponent(30).setHoverText("§ftext??");
+    GUI.getComponent(50).setHoverText("§bExample");
+    GUI.getComponent(52).setHoverText("blank");
     //
-    event.player.showCustomGui(GUI_1);
+    event.player.showCustomGui(GUI);
     // other gui's
     GUI_2 = event.API.createCustomGui(2, 248, 166, false);
     GUI_2.setBackgroundTexture("minecraft:textures/gui/demo_background.png");
@@ -70,12 +70,12 @@ function customGuiButton(event) {
         }
 
     } else if (b1 == 23) {
-        GUI_1.removeComponent(60);
+        GUI.removeComponent(60);
     } else if (b1 == 24) {
         switch (run_thru) {
             case 0:
-                event.player.showCustomGui(GUI_1);
-                GUI_1.removeComponent(4);
+                event.player.showCustomGui(GUI);
+                GUI.removeComponent(4);
                 break;
             case 1:
                 event.player.showCustomGui(GUI_2);
@@ -100,7 +100,7 @@ function customGuiButton(event) {
 }
 
 function customGuiClose(event) {
-    event.player.world.broadcast("close function " + GUI_1.getComponent(30).getText());
+    event.player.world.broadcast("close function " + GUI.getComponent(30).getText());
 
 }
 function customGuiScroll(event) {
