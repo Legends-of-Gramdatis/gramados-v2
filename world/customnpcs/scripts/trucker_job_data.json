@@ -1,0 +1,173 @@
+{
+    "data": {
+        "regions": [
+            "Gramados",
+            "Greenfield",
+            "Monsalac",
+            "Farmiston",
+            "Allenis",
+            "Feldpard",
+            "Casco"
+        ],
+        "categories": {
+            "Material": [
+                "wood",
+                "stone",
+                "dirt",
+                "sand",
+                "gravel",
+                "clay",
+                "terracotta",
+                "iron",
+                "steel",
+                "scrap metal",
+                "feldspar",
+                "high quality paper"
+            ],
+            "Fluid": [
+                "water",
+                "lava",
+                "milk",
+                "oil",
+                "ethanol",
+                "diesel",
+                "biodiesel",
+                "concrete",
+                "biomass"
+            ],
+            "Food": [
+                "water",
+                "lava",
+                "milk",
+                "oil",
+                "ethanol",
+                "diesel",
+                "biodiesel",
+                "concrete",
+                "biomass"
+            ],
+            "Organic": [
+                "flowers",
+                "saplings",
+                "seeds"
+            ],
+            "Animals": [
+                "Angus cow",
+                "Friesian cow",
+                "Hereford cow",
+                "Holstein cow",
+                "Longhorn cow",
+                "Highland cow",
+                "Jersey cow"
+            ],
+            "Armoury": [
+                "ammo",
+                "missiles",
+                "grenades",
+                "rockets",
+                "handguns",
+                "rifles",
+                "shotguns",
+                "sniper rifles",
+                "machine guns",
+                "rocket launchers"
+            ]
+        }
+    },
+    "destinations": {
+        "blacksby_concrete_factory": {
+            "display_name": "Blacksby Concrete Factory",
+            "description": "The famous Blacksby Concrete Factory, from Gramados City.",
+            "region": "Gramados",
+            "x": -2070,
+            "y": 73,
+            "z": 147,
+            "access_difficulty": 10,
+            "producer": {
+                "Fluid": {
+                    "Ready-Mix Concrete": {
+                        "quantity_factor": 40,
+                        "wheight": 1
+                    },
+                    "Fluid Waste Materials": {
+                        "quantity_factor": 40,
+                        "wheight": 1
+                    }
+                },
+                "Material": {
+                    "Precast Concrete Products": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Solid Waste Materials": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    }
+                }
+            },
+            "consumer": {
+                "Material": {
+                    "Gravel": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Sand": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Crushed Stone": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Cement Powder": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Steel Rebar": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Reinforcement Fibers": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    }
+                },
+                "Fluid": {
+                    "Liquid Admixtures": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    },
+                    "Water": {
+                        "quantity_factor": 30,
+                        "wheight": 1
+                    }
+                }
+            }
+        },
+        "gramados_sand_gravel_quarry": {
+            "display_name": "Gramados Sand and Gravel Quarry",
+            "description": "The biggest producer of Gravel, Sand, and Clay of Gramados!",
+            "region": "Gramados",
+            "x": -875,
+            "y": 72,
+            "z": 199,
+            "access_difficulty": 0,
+            "producer": {
+                "Material": {
+                    "Gravel": {
+                        "quantity_factor": 95,
+                        "wheight": 1
+                    },
+                    "Sand": {
+                        "quantity_factor": 95,
+                        "wheight": 1
+                    },
+                    "Clay": {
+                        "quantity_factor": 95,
+                        "wheight": 1
+                    }
+                }
+            }
+        }
+    }
+}
