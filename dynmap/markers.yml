@@ -1443,6 +1443,14 @@ sets:
                 y: 74.0
                 z: -157.0
                 label: Gramados Gymnasium
+            marker_4:
+                world: world
+                markup: false
+                x: -1574.0
+                icon: school_c
+                y: 77.0
+                z: 436.0
+                label: Gramados Royal Arsenal Museum
         lines: {
             }
         layerprio: 0
