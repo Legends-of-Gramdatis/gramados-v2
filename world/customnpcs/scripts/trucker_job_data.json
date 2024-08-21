@@ -1,5 +1,5 @@
 {
-    "data": {
+    "contents": {
         "regions": [
             "Gramados",
             "Greenfield",
@@ -83,6 +83,7 @@
             "y": 73,
             "z": 147,
             "access_difficulty": 10,
+            "generousity": "Reasonable",
             "producer": {
                 "Fluid": {
                     "Ready-Mix Concrete": {
@@ -152,6 +153,7 @@
             "y": 72,
             "z": 199,
             "access_difficulty": 0,
+            "generousity": "Stingy",
             "producer": {
                 "Material": {
                     "Gravel": {
