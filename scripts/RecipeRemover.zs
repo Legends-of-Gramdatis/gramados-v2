@@ -1,6 +1,7 @@
 import crafttweaker.item.IItemStack;
 import crafttweaker.item.IIngredient;
 import mods.jei.JEI;
+import crafttweaker.item.IItemTransformer;
 
 //======= Configuration section =======
 
@@ -82,3 +83,14 @@ for ingredient in disabledItems {
 
 // Add the soapy water recipe
 recipes.addShaped(<cfm:item_soap_water>, [[<cfm:item_soap>, <minecraft:water_bucket>]]);
+
+val temp_unfiltered_honey = <forge:bucketfilled>.withTag({FluidName: "for.honey", Amount: 1000});
+val unfiltered_honey = temp_unfiltered_honey.noReturn();
+val filter = <growthcraft_milk:cheese_cloth>;
+val keepable_filter = filter.reuse();
+
+val brewable_honey = <forge:bucketfilled>.withTag({FluidName: "fluid_honey", Amount: 1000});
+
+// forestry honey to growthcraft honey
+recipes.addShapeless(brewable_honey, [unfiltered_honey, keepable_filter]);
+
