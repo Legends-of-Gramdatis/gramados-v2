@@ -58,6 +58,3 @@ autostart.stamp
 !world/customnpcs/scripts/players_phone.json
 !world/customnpcs/scripts/trucker_job_data.json
 
-# CNPCs scripts
-!world/customnpcs/scripts/ecmascript/Gramados-Custom-NPCs-scripts/truck_delivery_point_generator.js
-
