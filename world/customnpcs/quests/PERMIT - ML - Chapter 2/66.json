@@ -1,0 +1,46 @@
+{
+    "CompleterNpc": "TESTING PURPOSES",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Step 1: Finding the Marksman’s Lodge",
+    "Text": "I need to continue my training to earn the Marksmanship License. Marcus Eldridge has directed me to the Marksman’s Lodge and Highland Shooting Range, where I’ll meet Darius Blackwood, a top instructor. The Lodge and Range are located near the top of the south mountain on Monsalac Island, southeast of Chaseals Village. I should head there to begin my training.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1724601363165L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I've found the Marksman’s Lodge and Highland Shooting Range. Time to meet Darius Blackwood and start my training.",
+    "NextQuestTitle": ""
+}
