@@ -7,7 +7,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 228,
+    "DialogId": 253,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "See Marcus Eldridge (PDP)",
+    "DialogTitle": "Letter reception, chapter 2 start",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +37,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you're interested in pursuing the PDP, I recommend speaking with Marcus Eldridge. He’s located on the first floor, in the east wing. Marcus will guide you through the process and help you get your permit.",
+    "DialogText": "Excellent. With this, you’re ready to move on to the next step in earning your Marksmanship License. You’ll need to head over to the Marksman’s Lodge and the Highland Shooting Range. It’s there that you’ll meet Darius Blackwood, one of the best instructors in the region. He’ll guide you through the basics of aiming and shooting.
+
+Remember, this isn't just about pulling a trigger. It’s about precision, control, and respect for the weapon. Show Darius what you've learned so far, and he’ll take you the rest of the way.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +56,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724522784630L,
+        "TimePast": 1724600201283L,
         "Time": 0L,
         "Subject": ""
     }

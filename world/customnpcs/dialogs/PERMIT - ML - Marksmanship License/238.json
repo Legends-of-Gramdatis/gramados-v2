@@ -2,12 +2,22 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Yes!",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 228,
+    "DialogId": 238,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "See Marcus Eldridge (PDP)",
+    "DialogTitle": "Marksmanship License Presentation",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you're interested in pursuing the PDP, I recommend speaking with Marcus Eldridge. He’s located on the first floor, in the east wing. Marcus will guide you through the process and help you get your permit.",
+    "DialogText": "Ah, the Marksmanship License—ML for short. It’s a step up from the PDP and requires a steady hand and sharp focus. Since you've already got your PDP, you're eligible to start the process.
+
+First things first, you’ll need to visit the War Museum at the Gramados Arsenal Factory. It’s a place rich in history, and it will give you a solid understanding of the legacy and responsibilities that come with being a marksman. The curator there, Evelyn Marston, is well-versed in everything you'll need to know. Talk to her, and she’ll guide you through the museum. Once you're done, she’ll provide a recommendation letter to bring back to me.
+
+Complete that, and we’ll talk about the next steps. Ready to get started?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724522784630L,
+        "TimePast": 1724599957883L,
         "Time": 0L,
         "Subject": ""
     }

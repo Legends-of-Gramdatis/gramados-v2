@@ -7,7 +7,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 228,
+    "DialogId": 236,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "See Marcus Eldridge (PDP)",
+    "DialogTitle": "See Marcus Eldridge (ML)",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you're interested in pursuing the PDP, I recommend speaking with Marcus Eldridge. He’s located on the first floor, in the east wing. Marcus will guide you through the process and help you get your permit.",
+    "DialogText": "If you're looking to obtain the ML permit, you'll first need to have your PDP permit secured. Once you've got that in hand, head back to Marcus Eldridge in the east wing on the first floor. Marcus will guide you through the next steps to get your Marksmanship License.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724522784630L,
+        "TimePast": 1724522812653L,
         "Time": 0L,
         "Subject": ""
     }
