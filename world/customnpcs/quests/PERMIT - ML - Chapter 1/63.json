@@ -1,0 +1,63 @@
+{
+    "CompleterNpc": "Evelyn Marston",
+    "NextQuestId": 64,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 4: Return to Curator Evelyn Marston",
+    "Text": "After exploring the museum exhibits, I should return to Curator Evelyn Marston. She mentioned she'd have something for me once I finished the tour—likely a recommendation that I need to proceed further in the process of obtaining my Marksmanship License.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 248,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1724534953335L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§aEndorsed by the War Museum for dedication to Gramados' legacy."
+                        ],
+                        "Name": "§3Curator's Recommendation Letter"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "Curator Evelyn Marston was pleased with my exploration of the museum and provided me with a recommendation letter. This letter will be essential as I continue my journey to earn the Marksmanship License. Now, I should head back to Marcus Eldridge to review my progress.",
+    "NextQuestTitle": "Step 5: Return to Marcus Eldridge"
+}
