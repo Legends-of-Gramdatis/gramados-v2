@@ -1,5 +1,312 @@
 {
     "NPCData": {
+        "ReturnToStart": 1b,
+        "NpcInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                        "ScriptEnabled": 0b,
+                        "DurabilityValue": 1.0d,
+                        "Scripts": [
+                        ],
+                        "ItemColor": -1,
+                        "MaxStackSize": 64,
+                        "DurabilityShow": 1b,
+                        "ScriptLanguage": "ECMAScript",
+                        "DurabilityColor": -1
+                    }
+                },
+                "id": "customnpcs:scripted_item",
+                "Count": 1b,
+                "tag": {
+                    "ScriptedData": {
+                        "ScriptEnabled": 1b,
+                        "Scripts": [
+                            {
+                                "Script": "",
+                                "Console": [
+                                ],
+                                "ScriptList": [
+                                    {
+                                        "Line": "gramados-custom-npcs-scripts/open_gramados_bank_gate.js"
+                                    }
+                                ]
+                            }
+                        ],
+                        "ScriptLanguage": "ECMAScript"
+                    },
+                    "display": {
+                        "Name": "§6§lBank Key"
+                    }
+                },
+                "Damage": 0s
+            }
+        ],
+        "BossColor": 1,
+        "PotionEffect": 5,
+        "Size": 5,
+        "stopAndInteract": 0b,
+        "Resistances": {
+            "Arrow": 1.0f,
+            "Explosion": 1.0f,
+            "Knockback": 2.0f,
+            "Melee": 1.0f
+        },
+        "BossBar": 2b,
+        "RespawnTime": 600,
+        "NpcAngrySound": "ivv:robot.anger",
+        "ReactsToFire": 0b,
+        "IgnoreCobweb": 0b,
+        "PositionOffsetZ": 5.0f,
+        "PositionOffsetY": 5.0f,
+        "PositionOffsetX": 5.0f,
+        "LootMode": 1,
+        "TransformHasAI": 0b,
+        "AttackStrenght": 5,
+        "IsStatue": 0b,
+        "MovingPatern": 0,
+        "NpcLines": {
+            "Lines": [
+            ]
+        },
+        "DefendFaction": 1b,
+        "FireIndirect": 0,
+        "NpcVisible": 0,
+        "NpcScenes": {
+            "Scenes": [
+            ]
+        },
+        "HitSound": "minecraft:entity.arrow.hit",
+        "FindShelter": 2,
+        "TacticalVariant": 0,
+        "Orientation": 270,
+        "KnockBack": 4,
+        "TransformHasJob": 0b,
+        "BurnInSun": 0b,
+        "StandingState": 1,
+        "AttackInvisible": 1b,
+        "NpcInteractNPCLines": {
+            "Lines": [
+            ]
+        },
+        "WalkingRange": 10,
+        "ShotCount": 1,
+        "pDur": 5,
+        "StartPosNew": [I;-1898,62,230],
+        "AttackRange": 2,
+        "NpcKillLines": {
+            "Lines": [
+            ]
+        },
+        "PotionImmune": 0b,
+        "AvoidsSun": 0b,
+        "Texture": "customnpcs:textures/entity/machines/robots/robot_gramados_police_on_face.png",
+        "NpcJob": 0,
+        "BurstCount": 1,
+        "NpcAttackLines": {
+            "Lines": [
+            ]
+        },
+        "pSpeed": 10,
+        "pArea": 0,
+        "pImpact": 0,
+        "MoveState": 0,
+        "pRender3D": 1b,
+        "CombatRegen": 0,
+        "MarkovGender": 0,
+        "pEffect": 0,
+        "DistanceToMelee": 0,
+        "NpcStepSound": "",
+        "FireRate": 5,
+        "pEffAmp": 0,
+        "ImmuneToFire": 0b,
+        "NpcKilledLines": {
+            "Lines": [
+            ]
+        },
+        "DisablePitch": 0b,
+        "pPhysics": 1b,
+        "TransformHasInv": 0b,
+        "NpcInteractLines": {
+            "Lines": [
+            ]
+        },
+        "pSpin": 0b,
+        "NpcHurtSound": "immersiveengineering:metalpresssmash",
+        "pTrail": 0,
+        "CreatureType": 0,
+        "TransformHasDisplay": 0b,
+        "NoFallDamage": 0b,
+        "TransformHasRole": 0b,
+        "Name": "Bank Gate Guard",
+        "SkinColor": 16777215,
+        "Weapons": [
+        ],
+        "NpcIdleSound": "",
+        "NPCDialogOptions": [
+        ],
+        "AggroRange": 16,
+        "DirectLOS": 0b,
+        "HealthRegen": 1,
+        "minDelay": 20,
+        "DoorInteract": 2,
+        "MoveSpeed": 4,
+        "TransformEditingModus": 0b,
+        "UsingSkinUrl": 0b,
+        "SkinUrl": "",
+        "CanSwim": 1b,
+        "GroundSound": "minecraft:block.stone.break",
+        "MaxHealth": 150,
+        "HideBodyWhenKilled": 1b,
+        "AttackSpeed": 20,
+        "PotionDuration": 5,
+        "DropChance": [
+            {
+                "Integer": 100,
+                "Slot": 0
+            },
+            {
+                "Integer": 100,
+                "Slot": 1
+            },
+            {
+                "Integer": 100,
+                "Slot": 2
+            },
+            {
+                "Integer": 100,
+                "Slot": 3
+            },
+            {
+                "Integer": 100,
+                "Slot": 4
+            },
+            {
+                "Integer": 100,
+                "Slot": 5
+            },
+            {
+                "Integer": 100,
+                "Slot": 6
+            },
+            {
+                "Integer": 100,
+                "Slot": 7
+            },
+            {
+                "Integer": 100,
+                "Slot": 8
+            }
+        ],
+        "maxDelay": 40,
+        "Role": 0,
+        "FactionPoints": {
+            "DecreaseFaction1Points": 0b,
+            "OptionFaction2Points": 100,
+            "OptionFactions1": -1,
+            "OptionFactions2": -1,
+            "OptionFaction1Points": 100,
+            "DecreaseFaction2Points": 0b
+        },
+        "pDamage": 4,
+        "AimWhileShooting": 0b,
+        "AttackOtherFactions": 1b,
+        "CanDrown": 1b,
+        "pSize": 5,
+        "CanSprint": 0b,
+        "CanLeap": 0b,
+        "TransformIsActive": 0b,
+        "ModelData": {
+            "LegsConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.012000002f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "BodyConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "Eyes": {
+                "Pattern": 0b,
+                "Glint": 1b,
+                "Type": -1b,
+                "PositionY": 1,
+                "SkinColor": 11830381,
+                "PlayerTexture": 0b,
+                "Color": 15066419,
+                "BrowColor": 5982516,
+                "BrowThickness": 4
+            },
+            "LegParts": {
+                "Pattern": 0b,
+                "Type": 0b,
+                "PlayerTexture": 0b,
+                "Color": 16777215
+            },
+            "Parts": [
+            ],
+            "ArmsConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": -0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "ExtraData": {
+            },
+            "HeadConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            }
+        },
+        "MovingState": 0,
+        "MovingPos": 0,
+        "PotionAmp": 1,
+        "OnAttack": 0,
+        "TacticalRadius": 8,
+        "MaxExp": 0,
+        "OrderedLines": 0b,
+        "pGlows": 0b,
+        "TransformHasAdvanced": 0b,
+        "TransformHasStats": 0b,
+        "MovementType": 0,
+        "FiringSound": "minecraft:entity.arrow.shoot",
+        "Accuracy": 60,
+        "MinExp": 0,
+        "Armor": [
+        ],
+        "CloakTexture": "",
+        "GlowTexture": "",
+        "MaxFiringRange": 15,
+        "pXlr8": 0b,
+        "MarkovGeneratorId": 2,
+        "pStick": 0b,
+        "MovingPause": 1b,
+        "NpcDeathSound": "ivv:robot.hurt",
+        "FactionID": 2,
+        "Title": "",
+        "ShowName": 1,
+        "npcInteracting": 1b,
+        "AvoidsWater": 0b,
+        "NoLivingAnimation": 0b,
+        "SpawnCycle": 0
     },
     "LinkedName": "New"
 }
