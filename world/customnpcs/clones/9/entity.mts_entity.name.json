@@ -1,0 +1,138 @@
+{
+    "variables1": "FRSuspension",
+    "RRSuspension": 0.02578728459775448d,
+    "variables2": "damage",
+    "variables0": "RRSuspension",
+    "variables5": "FLSuspension",
+    "variables6": "door_l",
+    "variables3": "RLSuspension",
+    "variables4": "p_brake",
+    "Invulnerable": 0b,
+    "entityid": "EntityVehicleF_Physics",
+    "radio": {
+        "volume": 10,
+        "currentURL": "",
+        "uniqueUUID": "b0ee512b-be7a-4cdb-8514-e4b30cda8571"
+    },
+    "FallDistance": 0.0f,
+    "systemName": "pegasus",
+    "ForgeCaps": {
+    },
+    "id": "mts:mts_entity",
+    "FRSuspension": 0.027361907064914703d,
+    "fuelTank": {
+        "currentFluid": "",
+        "uniqueUUID": "0af777ca-1179-4ef3-a4e9-b56d06396680"
+    },
+    "Air": 300s,
+    "positionx": 2139.52742601081d,
+    "positiony": 90.01690077922878d,
+    "part_22": {
+        "packID": "syndicatemotorfoundry",
+        "systemName": "kit_stormwalker",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gramados",
+        "uniqueUUID": "cd093fee-cd7a-4bf1-98fa-3b85dc2e5b7b"
+    },
+    "positionz": 3740.428018197344d,
+    "anglesz": -0.9812835870071452d,
+    "spawnedDefaultParts": 1b,
+    "anglesy": 157.44018154349547d,
+    "anglesx": 14.109673020926214d,
+    "part_7": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_2",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "50ccd978-2e7d-4438-8cb7-ef214d20bc79"
+    },
+    "damage": 1.0d,
+    "part_6": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_2",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "a43d4732-8e3a-4add-9f4d-0b01bf7a15f8"
+    },
+    "part_5": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_2",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "f557cf7c-4be0-464c-9296-1cd69ffccaac"
+    },
+    "part_4": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_2",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "27bd0d0b-8c42-4d66-a0da-bd43e7b7f012"
+    },
+    "serverDeltaRx": 14.1092052106524d,
+    "PortalCooldown": 0,
+    "part_15": {
+        "packID": "syndicatemotorfoundry",
+        "temp": 18.471722062819705d,
+        "systemName": "engine_oppressor",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "uniqueUUID": "0d669f3a-0fa7-45fb-bd75-41362a232e5e"
+    },
+    "part_3": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d16",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "8a83a0c5-ff84-4e89-a0b0-dddb20876d67"
+    },
+    "part_2": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d16",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "29c2bdd8-4585-473b-bbf0-d6ada2b7512a"
+    },
+    "FLSuspension": 0.02578728459775448d,
+    "part_1": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d16",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "0f9a1e45-bf3d-46b0-a2a2-75e4703895d1"
+    },
+    "serverDeltaRy": -0.1823930094298163d,
+    "part_0": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d16",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "9618c87e-995b-4d76-882d-8ec3ea676f4e"
+    },
+    "serverDeltaRz": -1.932959939614979d,
+    "packID": "syndicatemotorfoundry",
+    "serverDeltaMz": -0.07988175959988064d,
+    "ModRev": 1,
+    "serverDeltaMx": 0.028673298818276988d,
+    "serverDeltaMy": -0.6688318665701987d,
+    "RLSuspension": 0.027361907064914703d,
+    "uniqueUUID": "5eb54b1d-b08a-4520-8435-6f5c9990e167",
+    "Motion": [
+        0.0d,
+        0.0d,
+        0.0d
+    ],
+    "OnGround": 0b,
+    "Dimension": 0,
+    "p_brake": 1.0d,
+    "Rotation": [
+        0.0f,
+        0.0f
+    ],
+    "UpdateBlocked": 0b,
+    "electricPower": 12.0d,
+    "door_l": 1.0d,
+    "variablescount": 7,
+    "selectedBeaconName": "",
+    "subName": "gramados",
+    "Fire": -1s
+}
