@@ -1,0 +1,80 @@
+{
+    "CompleterNpc": "Darius Blackwood",
+    "NextQuestId": 68,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 2: Meeting Darius Blackwood",
+    "Text": "I’ve arrived at the Marksman’s Lodge and Highland Shooting Range near the top of the South Mountain on Monsalac Island, southeast of Chaseals Village. I need to find Darius Blackwood to get started.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 255,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1724773911924L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m14",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:m14ammo",
+                            "Count": 1b,
+                            "Damage": 0s
+                        }
+                    ]
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "Darius Blackwood has debriefed me and provided a training gun. I’m ready to start learning the basics of aiming and shooting at the Highland Shooting Range.",
+    "NextQuestTitle": "Step 3: Precision Practice"
+}

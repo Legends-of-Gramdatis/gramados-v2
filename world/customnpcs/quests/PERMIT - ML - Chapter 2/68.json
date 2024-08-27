@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Darius Blackwood",
+    "NextQuestId": 70,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 3: Precision Practice",
+    "Text": "I need to head to the Highland Shooting Range at the Marksman’s Lodge and demonstrate my precision by shooting 16 targets. I must aim carefully and take your time with each shot.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 16,
+            "Slot": "Highland Shooting Range Target"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1724775742894L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I successfully hit 16 targets at the Highland Shooting Range. My accuracy is improving. I must return to Darius Blackwood to discuss my progress and next steps.",
+    "NextQuestTitle": "Step 4: Review of Precision Practice"
+}

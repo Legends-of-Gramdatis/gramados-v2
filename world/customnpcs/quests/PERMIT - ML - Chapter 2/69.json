@@ -1,0 +1,56 @@
+{
+    "CompleterNpc": "Darius Blackwood",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 1,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Ammo Refill",
+    "Text": "Wait for Darius Blackwood to gather the ammo.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1724775248539L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m14ammo",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "Here you go. Make sure to use these rounds wisely. Let me know if you need anything else.",
+    "NextQuestTitle": ""
+}

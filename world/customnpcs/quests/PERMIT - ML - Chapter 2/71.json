@@ -1,13 +1,13 @@
 {
     "CompleterNpc": "Darius Blackwood",
-    "NextQuestId": 67,
+    "NextQuestId": 72,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 1: Finding the Marksman’s Lodge",
-    "Text": "I need to continue my training to earn the Marksmanship License. Marcus Eldridge has directed me to the Marksman’s Lodge and Highland Shooting Range, where I’ll meet Darius Blackwood, a top instructor. The Lodge and Range are located near the top of the south mountain on Monsalac Island, southeast of Chaseals Village. I should head there to begin my training.",
+    "Title": "Step 5: Finding the Range Tower",
+    "Text": "I need to find the small hunting tower situated on the south-west hill from the Marksman’s Lodge and shooting range. It should be visible from the range.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724768943924L,
+        "TimePast": 1724775082939L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've found the Marksman’s Lodge and Highland Shooting Range. Time to meet Darius Blackwood and start my training.",
-    "NextQuestTitle": "Step 2: Meeting Darius Blackwood",
-    "QuestLocation": "Marksman's Lodge"
+    "CompleteText": "I’ve found the small hunting tower on the south-west hill. It overlooks a variety of robotic dummies set up as targets for my practice.",
+    "NextQuestTitle": "Step 6: Practice on Moving Targets",
+    "QuestLocation": "Range Tower"
 }
