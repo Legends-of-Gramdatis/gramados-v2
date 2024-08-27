@@ -7,7 +7,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 250,
+    "DialogId": 259,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TESTING - Chapter 2",
+    "DialogTitle": "p2.2 - recap and introduction to next step",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "",
+    "DialogText": "That’s excellent progress. You’ve shown great accuracy. For the next step, I want you to test your skills with moving targets. Head over to the small hunting tower on the south-west hill from the Marksman’s Lodge and shooting range. There, you’ll need to shoot at animated targets that simulate more realistic conditions. This will help you adapt to dynamic shooting situations. Let me know when you’re done.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724599944712L,
+        "TimePast": 1724777589893L,
         "Time": 0L,
         "Subject": ""
     }

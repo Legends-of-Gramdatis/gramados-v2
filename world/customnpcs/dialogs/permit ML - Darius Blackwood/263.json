@@ -2,12 +2,22 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 264,
+                "Title": "Understood. What should I do next?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 253,
+    "DialogId": 263,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Letter reception, chapter 2 start",
+    "DialogTitle": "ch2 - concluding: transition 2",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,9 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Excellent. With this, you’re ready to move on to the next step in earning your Marksmanship License. You’ll need to head over to the Marksman’s Lodge and the Highland Shooting Range. It’s there that you’ll meet Darius Blackwood, one of the best instructors in the region. He’ll guide you through the basics of aiming and shooting.
-
-Remember, this isn't just about pulling a trigger. It’s about precision, control, and respect for the weapon. Show Darius what you've learned so far, and he’ll take you the rest of the way.",
+    "DialogText": "Well, for now, this concludes your training here. You’ve done a good job with the basics. However, getting the Marksmanship License involves more advanced steps that will require additional skill and time. You might need to return later for further evaluations.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -56,7 +64,7 @@ Remember, this isn't just about pulling a trigger. It’s about precision, contr
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724600201283L,
+        "TimePast": 1724774954639L,
         "Time": 0L,
         "Subject": ""
     }
