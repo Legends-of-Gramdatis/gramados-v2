@@ -642,6 +642,14 @@ sets:
                 y: 79.0
                 z: -326.0
                 label: Silorose Trucker Fast Food
+            marker_17:
+                world: world
+                markup: false
+                x: -4181.0
+                icon: restaurant
+                y: 76.0
+                z: -2053.0
+                label: Feldpard Trucker Hotel Restaurant
         lines: {
             }
         layerprio: 0
@@ -738,6 +746,14 @@ sets:
                 y: 79.0
                 z: -402
                 label: Silorose Trucker Hotel
+            marker_8:
+                world: world
+                markup: false
+                x: -4212.0
+                icon: hotel
+                y: 76.0
+                z: -2063
+                label: Feldpard Trucker Hotel
         lines: {
             }
         layerprio: 0
@@ -1407,6 +1423,14 @@ sets:
                 y: 70.0
                 z: -1917.0
                 label: Buxton Harbor Service Station
+            marker_16:
+                world: world
+                markup: false
+                x: -4225.0
+                icon: fuelpump
+                y: 76.0
+                z: -2046.0
+                label: Feldpard Truck Stop Fuel Service
         lines: {
             }
         layerprio: 0
@@ -1611,6 +1635,14 @@ sets:
                 y: 70.0
                 z: -1915
                 label: Federal Goods Supermarket
+            marker_5:
+                world: world
+                markup: false
+                x: -4181.0
+                icon: generalstore_c
+                y: 76.0
+                z: -2069.0
+                label: Feldpard Truck Stop Taxidermy
         lines: {
             }
         layerprio: 0
