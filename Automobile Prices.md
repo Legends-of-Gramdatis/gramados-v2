@@ -28,6 +28,7 @@ For the vehicles that aren't listed, here are the prices:
 
 ## Syndicate Vehicles
 - Syndicate Attributer: 18000 g (+ 3000g import fee, 6k for sidecar)
+- Syndicate Pegasus: 80000 g (+ 30000g Stormwalker kit)
 
 ## Other Vehicles
 - Mini cooper bunno cc: 37500 g
