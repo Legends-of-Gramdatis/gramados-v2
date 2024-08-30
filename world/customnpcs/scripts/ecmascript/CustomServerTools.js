@@ -8981,9 +8981,17 @@ registerXCommands([
 
         if (plo.data.maxHomes == -1 || Object.keys(plo.data.homes).length < plo.data.maxHomes) {
             plo.addHome(args.name, ppos.getX(), ppos.getY(), ppos.getZ());
-            tellPlayer(pl, "&aAdded home '" + args.name + "'!");
-            plo.save(data);
-            return true;
+            //check if the player owns the region where the home is set
+            var r = getRegionAtPos(pl.getPos(), pl.world);
+            if (r != null && (r.isTrusted(pl.getName()) || r.isOwner(pl.getName()))) {
+                tellPlayer(pl, "&aAdded home '" + args.name + "'!");
+                plo.save(data);
+                return true;
+            } else {
+                tellPlayer(pl, "&cYou can't set a home in a region you don't own or are not trusted in!&r [&9Your Regions{run_command:!myregions}&r]");
+                return false;
+            }
+            
         } else {
             tellPlayer(pl, "&cYou have reached maximum amount of homes! (" + plo.data.maxHomes + ")");
         }
@@ -9015,7 +9023,11 @@ registerXCommands([
             tellPlayer(pl, "[&a:check: Add{suggest_command:!setHome }&r]" + maxHomeStr);
             for (var i in plo.data.homes) {
                 var home = plo.data.homes[i];
-                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to TP\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
+                // get home teleportation price
+                var dist = Math.sqrt(Math.pow(home.x - pl.getX(), 2) + Math.pow(home.y - pl.getY(), 2) + Math.pow(home.z - pl.getZ(), 2));
+                var cost = Math.ceil(dist * 10);
+                
+                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + getAmountCoin(cost) + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
             }
             return true;
         } else {
@@ -9048,13 +9060,29 @@ registerXCommands([
 
                 plo.registerBackPos(pl.pos).save(data);
 
+                // check how much money the player has
+                var cost = 0;
+
+                // calculate the cost by seeing how far the player is from the home
+                var dist = Math.sqrt(Math.pow(h.x - pl.getX(), 2) + Math.pow(h.y - pl.getY(), 2) + Math.pow(h.z - pl.getZ(), 2));
+                cost = Math.ceil(dist * 10);
+
+                if (plo.data.money < cost) {
+                    tellPlayer(pl, '&cYou don\'t have enough money (" + getAmountCoin(cost) + ") to take the taxi to destination ' + hname + '!');
+                    return false;
+                } else {
+                    plo.data.money -= cost;
+                    plo.save(data);
+                    tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &e' + getAmountCoin(cost));
+                }
+
                 pl.setPosition(h.x, h.y, h.z);
                 return true;
             } else {
                 tellPlayer(pl, "&cHome '" + args.name + "' does not exist!");
             }
         } else {
-            tellPlayer(pl, "&cYou don't have an default home!");
+            tellPlayer(pl, "&cYou don't have any default home set!");
         }
         return false;
     }, 'home'],
@@ -12080,6 +12108,10 @@ function Region(name) {
         return this.data.trusted.indexOf(playerName) > -1;
     };
 
+    this.isOwner = function (playerName) {
+        return this.data.owner == playerName;
+    };
+
     /*String player, IScoreboard sb, IData data*/
     this.can = function (player, sb, data, action) {
         if (typeof (action) == typeof (undefined) || action === null) { action = null; }
@@ -14280,4 +14312,28 @@ function factionUpdate(e) {
 
     PluginAPI.Players.run("factionUpdate", [e]);
 
+}
+
+function getRegionAtPos(pos, w) {
+    // check if the player is in a region
+    var data = w.getStoreddata();
+    var regids = new Region().getAllDataIds(data);
+    var checkregs = 0;
+    var regs = [];
+    var prio = 0;
+    for (var ri in regids) {
+        var regid = regids[ri];
+        var reg = new Region(regid).init(data);
+        if (reg.hasCoord(normalizePos(pos))) {
+            checkregs++;
+            regs.push(reg);
+            if (reg.data.priority > prio) {
+                prio = reg.data.priority;
+
+                return reg;
+            }
+        }
+    }
+
+    return null;
 }
