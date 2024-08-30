@@ -240,7 +240,7 @@
     "pRender3D": 1b,
     "Motion": [
         0.0d,
-        -0.230527368912964d,
+        -0.0784000015258789d,
         0.0d
     ],
     "CombatRegen": 0,
@@ -253,7 +253,7 @@
     "FireRate": 5,
     "LeftHanded": 0b,
     "pEffAmp": 0,
-    "OnGround": 0b,
+    "OnGround": 1b,
     "Dimension": 0,
     "ImmuneToFire": 0b,
     "NpcKilledLines": {
@@ -283,7 +283,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 878,
+    "HurtByTimestamp": 103407,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -332,7 +332,7 @@
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
     "Name": "SPO Sniper",
-    "FallDistance": 0.233632f,
+    "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
     "Weapons": [
@@ -455,7 +455,7 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 20,
+    "minDelay": 30,
     "DoorInteract": 2,
     "MoveSpeed": 1,
     "TransformEditingModus": 0b,
@@ -468,7 +468,7 @@
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 30,
+    "maxDelay": 60,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -517,7 +517,7 @@
         "OptionFaction1Points": 6,
         "DecreaseFaction2Points": 0b
     },
-    "pDamage": 30,
+    "pDamage": 20,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -548,7 +548,7 @@
     "MovementType": 0,
     "FiringSound": "flansmod:r700shoot",
     "ModRev": 18,
-    "Accuracy": 99,
+    "Accuracy": 90,
     "MinExp": 3,
     "Armor": [
     ],
@@ -565,7 +565,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 2,
     "Title": "",
-    "TotalTicksAlive": 3692421L,
+    "TotalTicksAlive": 207227212L,
     "Rotation": [
         270.2394f,
         0.0f
