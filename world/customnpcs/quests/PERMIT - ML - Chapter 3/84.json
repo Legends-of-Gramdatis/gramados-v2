@@ -1,0 +1,41 @@
+{
+    "CompleterNpc": "Taxidermist",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 7: Return to Marcus Eldridge",
+    "Text": "Now that I’ve handed over the White Stag to the taxidermist, it’s time to return to Marcus Eldridge and update him on my progress.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1725119710190L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve returned to Marcus Eldridge to review my progress. The taxidermist will send me the mounted White Stag once it's ready. I’m now ready to move on to the next chapter.",
+    "NextQuestTitle": ""
+}

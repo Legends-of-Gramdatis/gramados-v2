@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Ranger Samuel",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 1: Finding the Hunting Hut",
+    "Text": "I need to find the Pinoros Hunting Hut where Ranger Samuel is waiting for me. The hut is located in the middle of Pinoros Forest, a dense pine forest on a hill in the south of Gramados Island. I should take the road that leads to the southernmost point of the island and look for a small picnic stop called Pinoros Picnic Stop. From there, I'll need to follow the hiking path to the wooden hunting hut.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1725113826543L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've found the Pinoros Hunting Hut. Ranger Samuel is here, ready to brief me on the task ahead.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Pinoros Hunting Hut"
+}

@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Darius Blackwood",
+    "CompleterNpc": "Ranger Samuel",
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 1,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
     "Title": "Ammo Refill",
-    "Text": "Wait for Darius Blackwood to gather the ammo.",
+    "Text": "Wait for Ranger Samuel to gather the ammo.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725113819685L,
+        "TimePast": 1725113851425L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,7 +40,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:m14ammo",
+                "id": "flansmod:dragunovammo",
                 "Count": 1b,
                 "Damage": 0s
             }
