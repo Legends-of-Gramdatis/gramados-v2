@@ -72,3 +72,106 @@ The renovation has a price:
 - for each door replaced, the builder receives 1000 grons
 Over a rnovation price of 50000 grons, the door replacement is free.
 The builder is responsible for the renovation, and may get sued if the renovation is not according to the rules above.
+
+
+
+
+# Setting Up a new Region in Gramados Server
+
+A region in gramados is an area of the map that can be owned by aplayer. A region can be a house, a building, a factory, a field, or even a garden. A region can be given a price, and a sale type (rent or buy).
+To set up a new region, here are the steps:
+
+### Step 1: finding a name
+Each region has a name, usually based on its adress, but it could also be a lieu-dit.
+The region name is unique, and can't be changed once set.
+Usually, this is how a region name is set:
+Region_Town/Independent_Street_HouseNumber(_Extra)
+For example, an appartment in the town of Gramados, on the street of GrolaSTreet, in the appartment 3 of the floor 2 of the building number 12, would be named:
+Gramados_GramadosCity_GrolaStreet_12_F2A3
+
+### Step 2: setting the region
+First, now that you have the name, you need to create the region. To do so, use the command:
+```
+!region create <regionName>
+```
+Then, in the apartment, you will have to manually set the region, using the command:
+```
+!region select <regionName>
+```
+The region is selected in multiple cuboids, you have to run the command in both opposite corners of the cuboids. The script will automatically consider the second command as the second corner of the cuboid. You can then select another cuboid for teh same area. Repeat the process until the whole region is selected, including exteriors.
+When selecting cuboids, here are rules to follos:
+- Inner walls of the region are selected
+- Outer walls of the region are not selected
+- Floors are selected
+  - If between 2 stories of a building is a 1 block thickness (ceiling of the story beneath, and floor of the story above are the same block), you shouldn't select the floor.
+  - If between 2 stories of a building is a 2 block thickness (ceiling of the story beneath, and floor of the story above are different blocks), you should select the floor.
+
+### Step 3: setting the region types
+In one region, sometimes you might have multiple cuboids with different types, for example, have a cuboid that is part of garden, one that is a field, and one that is the standard interior.
+This can be done either by directly using teh commands, or using the clickable chat. It's easier and recommended to use the clickable chat.
+Start by running the command:
+```
+!region info <regionName>
+```
+Here you will have this in chat:
+```
+Region ID: <regionName>
+Permission ID: <regionPermission>
+Owner: Gramados
+Priority: 0 [EDIT]
+Sale Info [Sale Settings]
+Open Interact: X No [Enable]
+Open Build: X No [Enable]
+Position List: [Show List]
+```
+Click on the [Show List] button, and you will have this in chat:
+```
+[...]
+Position List: (Clear)
+- #0 [Info] [X Remove]
+- #1 [Info] [X Remove]
+- #2 [Info] [X Remove]
+- #3 [Info] [X Remove]
+- ...
+```
+Here, you can easily edit every cuboid of the region, by clicking on the [Info] button. You will have this in chat:
+```
+[...]
+Num: #0
+- XYZ1: [...] [Teleport]
+- XYZ2: [...] [Teleport]
+- Type: none [Set]
+```
+Click on the [Set] button, and it will prefill your chat line with the command to set the type of the region. You can then change the type of the region, by running the command. Here are the types of regions:
+- none: standard interior
+- garden: a garden
+  - A garden is a region that is outside. It only lets exterior furniture and machinery to be placed.
+- field: a field
+  - A field is a region that is outside. It only lets crops or saplings to be placed.
+- lumber: a lumber area
+  - A lumber area is a region that is outside. It only lets saplings to be placed, and tree related blocks.
+- hotel: a hotel room 
+  - A hotel room is a region that is inside. It prevents the owner / renter to place anything, but allows any access to the room and storage.
+
+### Step 4: setting the region priority
+The region priority is the priority of the region in the list of regions. The higher the priority, the higher the region will be in the list. The priority is used to determine which region is selected when 2 regions overlap.
+To set the priority of a region, you can also use the clickable chat. Like previously, run the command:
+```
+!region info <regionName>
+```
+Then click on the [EDIT] button after the Priority line, and it will prefill your chat line with the command to set the priority of the region. You can then change the priority of the region, by running the command. It is recommended to set the priority of the region to 2, unless you have a good reason to set it otherwise.
+
+### Step 5: setting the region sale price and type
+The region can be sold or rented. To set the sale price and type of the region, you can also use the clickable chat. Like previously, run the command:
+```
+!region info <regionName>
+```
+Then click on the [Sale Settings] button, and you should see this in chat:
+```
+[...]
+Sale Type: buy [Switch to rent]
+For Sale: [X No] [Enable]
+Sale Price: 0 [Change]
+```
+Click on the [Change] button after the Sale Price line, and it will prefill your chat line with the command to set the sale price of the region. You can then change the sale price of the region, by running the command.
+Then, click on the [Enable] button after the For Sale line, it will allow any player to buy or rent the region. If you want to rent the region, click on the [Switch to rent] button after the Sale Type line, it will change the sale type to rent.
