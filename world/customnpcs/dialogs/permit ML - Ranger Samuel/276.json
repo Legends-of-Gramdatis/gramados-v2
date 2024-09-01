@@ -7,19 +7,9 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "It was fascinating, especially learning about the marksmen in our history.",
+                "Title": "Thanks. I’ll get back to it.",
                 "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "It was a good reminder of the responsibilities that come with handling a firearm.",
-                "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -27,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 251,
+    "DialogId": 276,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 79,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -48,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Transitionnal CH1 - CH2",
+    "DialogTitle": "t1.1 - ammo supply 2",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, you're back! I hope your visit to the War Museum was enlightening. The Arsenal’s legacy is something we’re all very proud of here. So, what did you think?",
+    "DialogText": "No problem. Here’s some more ammunition for the Dragunov. Be sure to use it wisely. The White Stag won’t wait around for you.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725111619114L,
+        "TimePast": 1725113747125L,
         "Time": 0L,
         "Subject": ""
     }

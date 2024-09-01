@@ -7,17 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "It was fascinating, especially learning about the marksmen in our history.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "It was a good reminder of the responsibilities that come with handling a firearm.",
+                "Title": "Understood. I won’t let it slip away.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 251,
+    "DialogId": 273,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -48,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Transitionnal CH1 - CH2",
+    "DialogTitle": "p1.2 - White stag: where?",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, you're back! I hope your visit to the War Museum was enlightening. The Arsenal’s legacy is something we’re all very proud of here. So, what did you think?",
+    "DialogText": "The White Stag roams deep within the Pinoros Forest. You’ll need to be patient and keep your eyes peeled. The dense pines can make it tricky to spot, but that’s part of the challenge. Take this rifle, head into the forest, and good luck. Bring the Stag’s carcass back here when you’re done, and we’ll get it to the taxidermist. And remember, you’ve only got one shot at this.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725111619114L,
+        "TimePast": 1725113454022L,
         "Time": 0L,
         "Subject": ""
     }

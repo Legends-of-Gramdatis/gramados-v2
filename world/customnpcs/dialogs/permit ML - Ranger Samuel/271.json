@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 77,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "It was fascinating, especially learning about the marksmen in our history.",
+                "Dialog": 272,
+                "Title": "Sounds like a real challenge. What’s the plan?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,17 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "It was a good reminder of the responsibilities that come with handling a firearm.",
+                "Title": "Can you tell me more about the area?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "What kind of gun will I be using?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,8 +37,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 251,
-    "AvailabilityQuest": 0,
+    "DialogId": 271,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -48,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Transitionnal CH1 - CH2",
+    "DialogTitle": "p1.0 - Welcome",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, you're back! I hope your visit to the War Museum was enlightening. The Arsenal’s legacy is something we’re all very proud of here. So, what did you think?",
+    "DialogText": "Ah, there you are {player}! I've been expecting you. Ready to put those skills to the test? Out here, it’s just you, the wilderness, and the hunt. The White Stag is no ordinary game—legend has it that it’s elusive, almost ghostly. But with the right tool, you might just be able to catch it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725111619114L,
+        "TimePast": 1725113421392L,
         "Time": 0L,
         "Subject": ""
     }

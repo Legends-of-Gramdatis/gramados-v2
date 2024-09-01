@@ -1,23 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 80,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "It was fascinating, especially learning about the marksmen in our history.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "It was a good reminder of the responsibilities that come with handling a firearm.",
+                "Dialog": 276,
+                "Title": "I’m out of ammo. Can I get more?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 251,
-    "AvailabilityQuest": 0,
+    "DialogId": 275,
+    "AvailabilityQuest": 3,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -48,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Transitionnal CH1 - CH2",
+    "DialogTitle": "t1.0 - ammo supply 1",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, you're back! I hope your visit to the War Museum was enlightening. The Arsenal’s legacy is something we’re all very proud of here. So, what did you think?",
+    "DialogText": "Back already? How’s the hunt going?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725111619114L,
+        "TimePast": 1725118544875L,
         "Time": 0L,
         "Subject": ""
     }
