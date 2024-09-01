@@ -186,6 +186,14 @@ sets:
                 y: 69.0
                 z: -2305.0
                 label: Chestnut Hardware
+            marker_4:
+                world: world
+                markup: false
+                x: -2066.0
+                icon: hardware
+                y: 79.0
+                z: 15.0
+                label: Gramados Tool Shop
         lines: {
             }
         layerprio: 0
@@ -990,6 +998,14 @@ sets:
                 y: 75.0
                 z: 325.0
                 label: Door Shop
+            marker_11:
+                world: world
+                markup: false
+                x: -1921.0
+                icon: furnitureshop
+                y: 74.0
+                z: -102.0
+                label: The Woodworker's Workshop
         lines: {
             }
         layerprio: 0
@@ -1291,6 +1307,30 @@ sets:
                 y: 77.0
                 z: 61.0
                 label: Gramados Gun Club
+            marker_2:
+                world: world
+                markup: false
+                x: -2063.0
+                icon: generalstore
+                y: 77.0
+                z: 6.0
+                label: Gramado Armors
+            marker_3:
+                world: world
+                markup: false
+                x: -2064.0
+                icon: generalstore
+                y: 75.0
+                z: 22.0
+                label: Knife shop
+            marker_4:
+                world: world
+                markup: false
+                x: -2094.0
+                icon: generalstore
+                y: 76.0
+                z: -31.0
+                label: Civil Tactical Armors
         lines: {
             }
         layerprio: 0
@@ -1643,6 +1683,38 @@ sets:
                 y: 76.0
                 z: -2069.0
                 label: Feldpard Truck Stop Taxidermy
+            marker_6:
+                world: world
+                markup: false
+                x: -1841.0
+                icon: generalstore
+                y: 74.0
+                z: -2
+                label: Packpacks &amp; More
+            marker_7:
+                world: world
+                markup: false
+                x: -2110.0
+                icon: generalstore
+                y: 76.0
+                z: 44.0
+                label: Gramados Supermarket
+            marker_8:
+                world: world
+                markup: false
+                x: -2019.0
+                icon: generalstore
+                y: 77.0
+                z: 83.0
+                label: A Place of Wonder - Antiquary
+            marker_9:
+                world: world
+                markup: false
+                x: -2008.0
+                icon: generalstore
+                y: 77.0
+                z: 59.0
+                label: Gems of Zanzibar - Jewelry
         lines: {
             }
         layerprio: 0
