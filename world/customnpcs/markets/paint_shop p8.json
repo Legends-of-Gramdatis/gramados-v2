@@ -324,330 +324,6 @@
                     }
                 },
                 "Damage": 0s
-            },
-            {
-                "Slot": 18b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 19b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 20b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 21b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 22b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 23b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 24b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 25b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 26b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 27b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 28b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 29b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 30b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 31b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 32b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 33b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 34b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 35b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
             }
         ]
     },
@@ -661,7 +337,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_emerald",
+                "id": "mts:ivv.paintcan_black",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -671,7 +347,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_lemonyellow",
+                "id": "mts:ivv.paintcan_cyan",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -681,7 +357,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_tomato",
+                "id": "mts:ivv.paintcan_light_blue",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -691,7 +367,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_oakgreen",
+                "id": "mts:ivv.paintcan_red",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -701,7 +377,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_buttercup",
+                "id": "mts:ivv.paintcan_light_gray",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -711,7 +387,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_ruby",
+                "id": "mts:ivv.paintcan_magenta",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -721,7 +397,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_spruce",
+                "id": "mts:ivv.paintcan_green",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -731,7 +407,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_sunshineyellow",
+                "id": "mts:ivv.paintcan_gray",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -741,7 +417,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_firered",
+                "id": "mts:ivv.paintcan_orange",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -751,7 +427,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_coldspruce",
+                "id": "mts:ivv.paintcan_brown",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -761,7 +437,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_honey",
+                "id": "mts:ivv.paintcan_pink",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -771,7 +447,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_bloodred",
+                "id": "mts:ivv.paintcan_white",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -781,7 +457,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_militarygreen",
+                "id": "mts:ivv.paintcan_blue",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -791,17 +467,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_fireorange",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 14b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_carminred",
+                "id": "mts:ivv.paintcan_lime",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -811,7 +477,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_steelblue",
+                "id": "mts:ivv.paintcan_purple",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -821,17 +487,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_orangered",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_milkcoffee",
+                "id": "mts:ivv.paintcan_yellow",
                 "Count": 1b,
                 "Damage": 0s
             }

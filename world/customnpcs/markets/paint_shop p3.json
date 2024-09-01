@@ -254,24 +254,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 14b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e200G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 15b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -291,24 +273,6 @@
             },
             {
                 "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e200G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -578,24 +542,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 32b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 33b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -630,24 +576,6 @@
                     }
                 },
                 "Damage": 0s
-            },
-            {
-                "Slot": 35b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
             }
         ]
     },
@@ -661,7 +589,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_emerald",
+                "id": "mts:iv_tpp.paint_bucket_brown",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -671,7 +599,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_lemonyellow",
+                "id": "mts:iv_tpp.paint_bucket_grape",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -681,7 +609,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_tomato",
+                "id": "mts:iv_tpp.paint_bucket_vibrantpurple",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -691,7 +619,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_oakgreen",
+                "id": "mts:iv_tpp.paint_bucket_chocolate",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -701,7 +629,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_buttercup",
+                "id": "mts:iv_tpp.paint_bucket_pink",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -711,7 +639,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_ruby",
+                "id": "mts:iv_tpp.paint_bucket_turquoise",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -721,7 +649,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_spruce",
+                "id": "mts:iv_tpp.paint_bucket_caramel",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -731,7 +659,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_sunshineyellow",
+                "id": "mts:iv_tpp.paint_bucket_fuchsia",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -741,7 +669,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_firered",
+                "id": "mts:iv_tpp.paint_bucket_slimelime",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -751,7 +679,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_coldspruce",
+                "id": "mts:iv_tpp.paint_bucket_amber",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -761,7 +689,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_honey",
+                "id": "mts:iv_tpp.paint_bucket_vibrantred",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -771,7 +699,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_bloodred",
+                "id": "mts:iv_tpp.paint_bucket_citruslime",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -781,7 +709,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_militarygreen",
+                "id": "mts:iv_tpp.paint_bucket_midnightpurple",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -791,17 +719,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_fireorange",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 14b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_carminred",
+                "id": "mts:iv_tpp.paint_bucket_pinkcandy",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -811,27 +729,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_steelblue",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_orangered",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_milkcoffee",
+                "id": "mts:iv_tpp.paint_bucket_plum",
                 "Count": 1b,
                 "Damage": 0s
             }

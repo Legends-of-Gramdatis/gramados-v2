@@ -8,7 +8,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 6b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -25,12 +25,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -48,7 +48,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -61,12 +61,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -79,12 +79,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -102,7 +102,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -115,12 +115,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e2K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -133,12 +133,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -156,7 +156,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -169,30 +169,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 10b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e200G"
+                            "§e2K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -210,7 +192,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -223,30 +205,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 13b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e200G"
+                            "§e2K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -264,7 +228,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -277,30 +241,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e200G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -318,7 +264,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -350,29 +296,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 20b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
+                            "§e200G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -390,7 +318,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e50G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -404,47 +332,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 23b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
                             "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 24b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -458,25 +350,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 26b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -498,43 +372,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 28b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 29b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -552,43 +390,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 31b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 32b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -606,43 +408,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 34b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 35b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
+                            "§e200G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -661,7 +427,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_emerald",
+                "id": "mts:iv_tpp.wrap_roll_coal",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -671,7 +437,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_lemonyellow",
+                "id": "mts:iv_tpp.wrap_roll_lapislazuli",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -681,7 +447,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_tomato",
+                "id": "mts:iv_tpp.paint_double_bucket_bubblegum",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -691,7 +457,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_oakgreen",
+                "id": "mts:iv_tpp.wrap_roll_iron",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -701,7 +467,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_buttercup",
+                "id": "mts:iv_tpp.wrap_roll_quartz",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -711,7 +477,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_ruby",
+                "id": "mts:iv_tpp.paint_double_bucket_forest",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -721,7 +487,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_spruce",
+                "id": "mts:iv_tpp.wrap_roll_gold",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -731,7 +497,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_sunshineyellow",
+                "id": "mts:iv_tpp.wrap_roll_redstone",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -741,7 +507,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_firered",
+                "id": "mts:iv_tpp.paint_double_bucket_redandblack",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -751,17 +517,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_coldspruce",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 10b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_honey",
+                "id": "mts:iv_tpp.wrap_roll_diamond",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -771,7 +527,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_bloodred",
+                "id": "mts:iv_tpp.paint_double_bucket_shagbark",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -781,17 +537,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_militarygreen",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 13b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_fireorange",
+                "id": "mts:iv_tpp.wrap_roll_emerald",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -801,7 +547,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_carminred",
+                "id": "mts:iv_tpp.paint_double_bucket_steelblueandteal",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -811,17 +557,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_steelblue",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.paint_bucket_orangered",
+                "id": "mts:iv_tpp.wrap_roll_driveschool",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -831,7 +567,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.paint_bucket_milkcoffee",
+                "id": "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue",
                 "Count": 1b,
                 "Damage": 0s
             }
