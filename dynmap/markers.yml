@@ -150,6 +150,14 @@ sets:
                 y: 95.0
                 z: 856.0
                 label: Petrolton Tech Shop
+            marker_3:
+                world: world
+                markup: false
+                x: -1718.0
+                icon: tech
+                y: 75.0
+                z: 198.0
+                label: The Telephone Booth - used and new phones
         lines: {
             }
         layerprio: 0
@@ -906,6 +914,14 @@ sets:
                 y: 94.0
                 z: 903.0
                 label: Benny&#39;s Original Motor Works
+            marker_5:
+                world: world
+                markup: false
+                x: -1840.0
+                icon: autoparts
+                y: 74.0
+                z: -9.0
+                label: Cary's Colourific Paint Store
         lines: {
             }
         layerprio: 0
@@ -1631,6 +1647,14 @@ sets:
                 y: 70.0
                 z: -2389.0
                 label: Trilnat Multi-Service Facility
+            marker_14:
+                world: world
+                markup: false
+                x: -1693.0
+                icon: service_firedept
+                y: 74.0
+                z: 197.0
+                label: Gramados Airport Fire Station
         lines: {
             }
         layerprio: 0
