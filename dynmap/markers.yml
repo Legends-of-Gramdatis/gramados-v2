@@ -1,135 +1,174 @@
 %YAML 1.1
 ---
 icons:
-    furnitureshop:
-        label: furnitureshop
-    butchery:
-        label: butchery
-    junkyard:
-        label: junkyard
-    fuelpump_c:
-        label: fuelpump_c
-    tech_c:
-        label: tech_c
-    wholesale_c:
-        label: wholesale_c
-    bakery_c:
-        label: bakery_c
-    bar:
-        label: bar
-    trin_track:
-        label: trin_track
-    wholesale:
-        label: wholesale
-    junkyard_c:
-        label: junkyard_c
-    restaurant_c:
-        label: restaurant_c
-    port_c:
-        label: port_c
-    dealership_unu:
-        label: dealership_unu
-    butchery_c:
-        label: butchery_c
-    hotel:
-        label: hotel
-    florist:
-        label: florist
-    hardware_c:
-        label: hardware_c
-    hotel_c:
-        label: hotel_c
-    hardware:
-        label: hardware
-    tech:
-        label: tech
-    townhall:
-        label: townhall
-    townhall_c:
-        label: townhall_c
-    bakery:
-        label: bakery
-    bar_c:
-        label: bar_c
-    bank_c:
-        label: bank_c
-    restaurant:
-        label: restaurant
-    garage:
-        label: garage
-    post_office:
-        label: post_office
-    dealership:
-        label: dealership
-    dealership_c:
-        label: dealership_c
-    garage_c:
-        label: garage_c
-    airport:
-        label: airport
-    fuelpump:
-        label: fuelpump
-    airport_c:
-        label: airport_c
-    trin_main_track:
-        label: trin_main_track
-    dealership_ivl:
-        label: dealership_ivl
-    port:
-        label: port
-    gunshop:
-        label: gunshop
-    gbank:
-        label: gbank
-    post_office_c:
-        label: post_office_c
-    lumberjack:
-        label: lumberjack
-    autoparts:
-        label: autoparts
-    lumberjack_c:
-        label: lumberjack_c
-    dealership_trin:
-        label: dealership_trin
-    school:
-        label: school
-    school_c:
-        label: school_c
-    service_firedept:
-        label: service_firedept
-    service_firedept_c:
-        label: service_firedept_c
-    service_health:
-        label: service_health
-    service_health_c:
-        label: service_health_c
-    service_multi:
-        label: service_multi
-    service_multi_c:
-        label: service_multi_c
-    service_police:
-        label: service_police
-    service_police_c:
-        label: service_police_c
-    generalstore:
-        label: generalstore
-    generalstore_c:
-        label: generalstore_c
-    marketstand:
-        label: marketstand
-    marketstand_c:
-        label: marketstand_c
-    truck_stop:
-        label: truck_stop
-    truck_stop_c:
-        label: truck_stop_c
+    civil_services_misc:
+        label: civil_services_misc
+    civil_services_bridge:
+        label: civil_services_bridge
+    civil_services_Civic_Building:
+        label: civil_services_Civic_Building
+    civil_services_library:
+        label: civil_services_library
+    civil_services_police:
+        label: civil_services_police
+    civil_services_post_office:
+        label: civil_services_post_office
+    civil_services_restroom:
+        label: civil_services_restroom
+    civil_services_school:
+        label: civil_services_school
+    ent&lei_misc:
+        label: ent&lei_misc
+    ent&lei_amusement_park:
+        label: ent&lei_amusement_park
+    ent&lei_aquarium:
+        label: ent&lei_aquarium
+    ent&lei_arts:
+        label: ent&lei_arts
+    ent&lei_casino:
+        label: ent&lei_casino
+    ent&lei_cinema:
+        label: ent&lei_cinema
+    ent&lei_event_venue:
+        label: ent&lei_event_venue
+    ent&lei_historic:
+        label: ent&lei_historic
+    ent&lei_lighthouse:
+        label: ent&lei_lighthouse
+    ent&lei_monument:
+        label: ent&lei_monument
+    ent&lei_museum:
+        label: ent&lei_museum
+    ent&lei_music:
+        label: ent&lei_music
+    ent&lei_relic:
+        label: ent&lei_relic
+    ent&lei_theatre:
+        label: ent&lei_theatre
+    ent&lei_tourist:
+        label: ent&lei_tourist
+    food&drink_misc:
+        label: food&drink_misc
+    food&drink__wine:
+        label: food&drink__wine
+    food&drink_bakery:
+        label: food&drink_bakery
+    food&drink_bar:
+        label: food&drink_bar
+    food&drink_butchery:
+        label: food&drink_butchery
+    food&drink_cafe:
+        label: food&drink_cafe
+    food&drink_food:
+        label: food&drink_food
+    health_misc:
+        label: health_misc
+    health_fire_dept:
+        label: health_fire_dept
+    health_hospital:
+        label: health_hospital
+    health_medical:
+        label: health_medical
+    health_pharmacy:
+        label: health_pharmacy
+    health_vet_surgery:
+        label: health_vet_surgery
+    misc_misc_hotel:
+        label: misc_misc_hotel
+    misc_hotel:
+        label: misc_hotel
+    outdoor_misc:
+        label: outdoor_misc
+    outdoor_boating:
+        label: outdoor_boating
+    outdoor_campsite:
+        label: outdoor_campsite
+    outdoor_cemetery:
+        label: outdoor_cemetery
+    outdoor_fishing:
+        label: outdoor_fishing
+    outdoor_garden_park:
+        label: outdoor_garden_park
+    outdoor_golf:
+        label: outdoor_golf
+    outdoor_hiking:
+        label: outdoor_hiking
+    outdoor_logging:
+        label: outdoor_logging
+    outdoor_mountain:
+        label: outdoor_mountain
+    outdoor_park:
+        label: outdoor_park
+    outdoor_resort:
+        label: outdoor_resort
+    outdoor_stadium:
+        label: outdoor_stadium
+    outdoor_zoo_dogpark:
+        label: outdoor_zoo_dogpark
+    services_truck_stop:
+        label: services_truck_stop
+    services_misc:
+        label: services_misc
+    services_atm:
+        label: services_atm
+    services_bank:
+        label: services_bank
+    services_car_hire:
+        label: services_car_hire
+    services_parking:
+        label: services_parking
+    services_station_electric:
+        label: services_station_electric
+    services_station_petrol:
+        label: services_station_petrol
+    shopping_misc:
+        label: shopping_misc
+    shopping_grocery:
+        label: shopping_grocery
+    shopping_junkyard:
+        label: shopping_junkyard
+    shopping_gun:
+        label: shopping_gun
+    shopping_hardware:
+        label: shopping_hardware
+    shopping_market:
+        label: shopping_market
+    shopping_shopping:
+        label: shopping_shopping
+    shopping_tech:
+        label: shopping_tech
+    shopping_wholesale:
+        label: shopping_wholesale
+    shopping_garage:
+        label: shopping_garage
+    shopping_dealership:
+        label: shopping_dealership
+    shopping_carparts:
+        label: shopping_carparts
+    transport_misc:
+        label: transport_misc
+    transport_airport:
+        label: transport_airport
+    transport_bus:
+        label: transport_bus
+    transport_ferry:
+        label: transport_ferry
+    transport_metro:
+        label: transport_metro
+    transport_rail:
+        label: transport_rail
+    transport_taxi:
+        label: transport_taxi
+    transport_train:
+        label: transport_train
 
 sets:
     Tech Shops:
+        minzoom: 4
         hide: false
         circles: {
             }
-        deficon: default
+        deficon: shopping_tech
         areas: {
             }
         label: Tech Shops
@@ -138,7 +177,7 @@ sets:
                 world: world
                 markup: false
                 x: -1773.0
-                icon: tech
+                icon: shopping_tech
                 y: 75.0
                 z: 309.0
                 label: Hellotech Tech Shop
@@ -146,7 +185,7 @@ sets:
                 world: world
                 markup: false
                 x: -2846.0
-                icon: tech
+                icon: shopping_tech
                 y: 95.0
                 z: 856.0
                 label: Petrolton Tech Shop
@@ -154,7 +193,7 @@ sets:
                 world: world
                 markup: false
                 x: -1718.0
-                icon: tech
+                icon: shopping_tech
                 y: 75.0
                 z: 198.0
                 label: The Telephone Booth - used and new phones
@@ -162,10 +201,11 @@ sets:
             }
         layerprio: 0
     Hardware Shops:
+        minzoom: 4
         hide: false
         circles: {
             }
-        deficon: default
+        deficon: shopping_hardware
         areas: {
             }
         label: Hardware Shops
@@ -174,7 +214,7 @@ sets:
                 world: world
                 markup: false
                 x: -941.0
-                icon: hardware
+                icon: shopping_hardware
                 y: 76.0
                 z: 246.0
                 label: Belli Hardware
@@ -182,7 +222,7 @@ sets:
                 world: world
                 markup: false
                 x: 207.33460544782662
-                icon: hardware
+                icon: shopping_hardware
                 y: 78.0
                 z: -973.3000000119209
                 label: Electrobulb Electricity Hardware
@@ -190,7 +230,7 @@ sets:
                 world: world
                 markup: false
                 x: -3580.0
-                icon: hardware
+                icon: shopping_hardware
                 y: 69.0
                 z: -2305.0
                 label: Chestnut Hardware
@@ -198,7 +238,7 @@ sets:
                 world: world
                 markup: false
                 x: -2066.0
-                icon: hardware
+                icon: shopping_hardware
                 y: 79.0
                 z: 15.0
                 label: Gramados Tool Shop
@@ -206,10 +246,11 @@ sets:
             }
         layerprio: 0
     Butcheries:
+        minzoom: 4
         hide: false
         circles: {
             }
-        deficon: default
+        deficon: food&drink_butchery
         areas: {
             }
         label: Butcheries
@@ -218,7 +259,7 @@ sets:
                 world: world
                 markup: false
                 x: -1841.0
-                icon: butchery
+                icon: food&drink_butchery
                 y: 74.0
                 z: 17.0
                 label: Grola Butchery
@@ -227,9 +268,10 @@ sets:
         layerprio: 0
     Florists:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: default
+        deficon: shopping_misc
         areas: {
             }
         label: Florists
@@ -238,7 +280,7 @@ sets:
                 world: world
                 markup: false
                 x: -1987.0
-                icon: florist
+                icon: shopping_misc
                 y: 75.0
                 z: -7.0
                 label: Jack Herborist
@@ -246,98 +288,19 @@ sets:
                 world: world
                 markup: false
                 x: 251.0
-                icon: florist
+                icon: shopping_misc
                 y: 75.0
                 z: -1005.0
                 label: Springfield Flowers
         lines: {
             }
         layerprio: 0
-    Airports:
-        hide: false
-        circles: {
-            }
-        deficon: default
-        areas: {
-            }
-        label: Airports
-        markers:
-            marker_1:
-                world: world
-                markup: false
-                x: -1728.0
-                icon: airport
-                y: 75.0
-                z: 236.0
-                label: Gramados Airport
-            marker_2:
-                world: world
-                markup: false
-                x: 22.0
-                icon: airport
-                y: 98.0
-                z: -1653.0
-                label: Greenfield Airport
-            marker_3:
-                world: world
-                markup: false
-                x: -1734.0
-                icon: airport
-                y: 66.0
-                z: -1183.0
-                label: Allen Point Airport
-        lines: {
-            }
-        layerprio: 0
-    Ports:
-        hide: false
-        circles: {
-            }
-        deficon: default
-        areas: {
-            }
-        label: Ports
-        markers:
-            marker_1:
-                world: world
-                markup: false
-                x: -1693.0
-                icon: port
-                y: 65.0
-                z: -831.0
-                label: Gramados Port
-            marker_2:
-                world: world
-                markup: false
-                x: 88.0
-                icon: port
-                y: 65.0
-                z: -878.0
-                label: Springfield Port
-            marker_3:
-                world: world
-                markup: false
-                x: -1769.0
-                icon: port
-                y: 66.0
-                z: -1173.0
-                label: Allen Point Port
-            marker_4:
-                world: world
-                markup: false
-                x: 5040.0
-                icon: port
-                y: 67.0
-                z: -1847.0
-                label: Buxton Harbor
-        lines: {
-            }
-        layerprio: 0
     Wholesalers:
         hide: false
+        minzoom: 3
         circles: {
             }
-        deficon: default
+        deficon: shopping_wholesale
         areas: {
             }
         label: Wholesalers
@@ -346,7 +309,7 @@ sets:
                 world: world
                 markup: false
                 x: 204.32550699047619
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 74.0
                 z: -1036.300000011921
                 label: Wine Export Int. Wholesale (sell)
@@ -354,7 +317,7 @@ sets:
                 world: world
                 markup: false
                 x: -4619.0
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 74.0
                 z: -477.0
                 label: Cheese &amp; Milk Wholesale (sell)
@@ -362,7 +325,7 @@ sets:
                 world: world
                 markup: false
                 x: -3808.0
-                icon: wholesale_c
+                icon: shopping_wholesale
                 y: 70.0
                 z: 623.0
                 label: Farm Animals Wholesale (buy)
@@ -370,7 +333,7 @@ sets:
                 world: world
                 markup: false
                 x: -874.0
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 73.0
                 z: 188.0
                 label: Concrete Materials Wholesale (sell &amp; buy)
@@ -378,7 +341,7 @@ sets:
                 world: world
                 markup: false
                 x: 594.0
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 88.0
                 z: -1634.0
                 label: Seeds &amp; Saplings Nursery Wholesale (buy)
@@ -386,7 +349,7 @@ sets:
                 world: world
                 markup: false
                 x: 1135.0
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 93.0
                 z: -1968.0
                 label: Local Farm Product Wholesale (sell)
@@ -394,7 +357,7 @@ sets:
                 world: world
                 markup: false
                 x: -6980.0
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 84.0
                 z: -258.0
                 label: Large-Scale Cereal Wholesale (sell)
@@ -402,7 +365,7 @@ sets:
                 world: world
                 markup: false
                 x: 204.68921362181703
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 76.0
                 z: -994.2124007103154
                 label: Beekeeping Wholesale (buy)
@@ -410,7 +373,7 @@ sets:
                 world: world
                 markup: false
                 x: 214.30000001192093
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 74.0
                 z: -1032.7519893789997
                 label: Greenfield Farm Equipment Wholesale (buy)
@@ -418,7 +381,7 @@ sets:
                 world: world
                 markup: false
                 x: 212.30000001192093
-                icon: wholesale
+                icon: shopping_wholesale
                 y: 74.0
                 z: -1040.5242758179133
                 label: Wine Brewing Equipment Wholesale (buy)
@@ -426,7 +389,7 @@ sets:
                 world: world
                 markup: false
                 x: -1314.0
-                icon: wholesale_c
+                icon: shopping_wholesale
                 y: 87.0
                 z: -1365.0
                 label: Allen Point Export Wholesale (sell)
@@ -434,7 +397,7 @@ sets:
                 world: world
                 markup: false
                 x: -6836.0
-                icon: wholesale_c
+                icon: shopping_wholesale
                 y: 82.0
                 z: -255.0
                 label: Farmiston Farm Heavy Machinery Wholesale (buy)
@@ -443,6 +406,7 @@ sets:
         layerprio: 0
     Post Offices:
         hide: false
+        minzoom: 2
         circles: {
             }
         deficon: default
@@ -454,7 +418,7 @@ sets:
                 world: world
                 markup: false
                 x: -2063.0
-                icon: post_office
+                icon: civil_services_post_office
                 y: 74.0
                 z: 190.0
                 label: Gramados Post Office
@@ -462,7 +426,7 @@ sets:
                 world: world
                 markup: false
                 x: 106.0
-                icon: post_office
+                icon: civil_services_post_office
                 y: 75.0
                 z: -951.0
                 label: Springfield Post Office
@@ -470,7 +434,7 @@ sets:
                 world: world
                 markup: false
                 x: -4560.0
-                icon: post_office
+                icon: civil_services_post_office
                 y: 75.0
                 z: -408.0
                 label: Chaseals Post Office
@@ -478,7 +442,7 @@ sets:
                 world: world
                 markup: false
                 x: -1282.0
-                icon: post_office
+                icon: civil_services_post_office
                 y: 94.0
                 z: -1421.0
                 label: Allen Point Post Office
@@ -487,9 +451,10 @@ sets:
         layerprio: 0
     Junk Yards:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: default
+        deficon: shopping_junkyard
         areas: {
             }
         label: Junk Yards
@@ -498,7 +463,7 @@ sets:
                 world: world
                 markup: false
                 x: -6370.0
-                icon: junkyard
+                icon: shopping_junkyard
                 y: 72.0
                 z: 288.0
                 label: Nowhere Junk Yard
@@ -506,7 +471,7 @@ sets:
                 world: world
                 markup: false
                 x: 137.0
-                icon: junkyard
+                icon: shopping_junkyard
                 y: 79.0
                 z: -1063.0
                 label: Springfield Junk Yard
@@ -514,7 +479,7 @@ sets:
                 world: world
                 markup: false
                 x: -1140.0
-                icon: junkyard
+                icon: shopping_junkyard
                 y: 76.0
                 z: -74.0
                 label: Gramados Great Junk Yard
@@ -523,6 +488,7 @@ sets:
         layerprio: 0
     Restaurants:
         hide: false
+        minzoom: 4
         circles: {
             }
         deficon: default
@@ -534,15 +500,15 @@ sets:
                 world: world
                 markup: false
                 x: 228.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 75.0
                 z: -990.0
-                label: Domico&#39;s Restaurant
+                label: Seb's Diner
             marker_2:
                 world: world
                 markup: false
                 x: 1008.0
-                icon: restaurant_c
+                icon: food&drink_food
                 y: 94.0
                 z: -1191.0
                 label: Blockbros Restaurant
@@ -550,7 +516,7 @@ sets:
                 world: world
                 markup: false
                 x: -2046.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 74.0
                 z: -458.0
                 label: Citrus Alley Restaurant
@@ -558,39 +524,39 @@ sets:
                 world: world
                 markup: false
                 x: -2034.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 76.0
                 z: 25.0
-                label: Daniel&#39;s Fast Food Restaurant
+                label: Daniel's Fast Food
             marker_5:
                 world: world
                 markup: false
                 x: -1904.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 75.0
                 z: 338.0
-                label: Toki Japanese Restaurant
+                label: Toki Sushi
             marker_6:
                 world: world
                 markup: false
                 x: -939.0
-                icon: restaurant
+                icon: food&drink_cafe
                 y: 74.0
                 z: 218.0
-                label: Sal&#39;s Breakfast Restaurant
+                label: Sal's Breakfast
             marker_7:
                 world: world
                 markup: false
                 x: 95.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 72.0
                 z: 114.0
-                label: Seaside Hut Restaurant
+                label: Seaside Hut
             marker_8:
                 world: world
                 markup: false
                 x: 1002.0
-                icon: restaurant_c
+                icon: food&drink_food
                 y: 91.0
                 z: -1181.0
                 label: Retro Diner
@@ -598,7 +564,7 @@ sets:
                 world: world
                 markup: false
                 x: -1818.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 93.0
                 z: -521.0
                 label: The Fabric Nightclub
@@ -606,7 +572,7 @@ sets:
                 world: world
                 markup: false
                 x: -2974.0
-                icon: restaurant_c
+                icon: food&drink_food
                 y: 77.0
                 z: 821.0
                 label: The Ghetto Nightclub
@@ -614,7 +580,7 @@ sets:
                 world: world
                 markup: false
                 x: -1842.0
-                icon: restaurant_c
+                icon: food&drink_food
                 y: 72.0
                 z: -711.0
                 label: Marina Vista Café & Grill
@@ -622,7 +588,7 @@ sets:
                 world: world
                 markup: false
                 x: -4580.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 75.0
                 z: -405.0
                 label: The Buttered Pancake
@@ -630,7 +596,7 @@ sets:
                 world: world
                 markup: false
                 x: -2786.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 95.0
                 z: 860.0
                 label: Petrolton Fish Restaurant
@@ -638,7 +604,7 @@ sets:
                 world: world
                 markup: false
                 x: -6961.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 83.0
                 z: -107
                 label: Dominico's Pizza
@@ -646,7 +612,7 @@ sets:
                 world: world
                 markup: false
                 x: -3385.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 74.0
                 z: -2565.0
                 label: The Mahogany Café & Restaurant
@@ -654,7 +620,7 @@ sets:
                 world: world
                 markup: false
                 x: -6705.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 79.0
                 z: -326.0
                 label: Silorose Trucker Fast Food
@@ -662,7 +628,7 @@ sets:
                 world: world
                 markup: false
                 x: -4181.0
-                icon: restaurant
+                icon: food&drink_food
                 y: 76.0
                 z: -2053.0
                 label: Feldpard Trucker Hotel Restaurant
@@ -671,6 +637,7 @@ sets:
         layerprio: 0
     Sawmills:
         hide: false
+        minzoom: 4
         circles: {
             }
         deficon: default
@@ -682,7 +649,7 @@ sets:
                 world: world
                 markup: false
                 x: -1684.0
-                icon: lumberjack
+                icon: outdoor_logging
                 y: 98.0
                 z: 998.0
                 label: Gramados Sawmill
@@ -690,7 +657,7 @@ sets:
                 world: world
                 markup: false
                 x: 308.0
-                icon: lumberjack
+                icon: outdoor_logging
                 y: 77.0
                 z: -923.0
                 label: Springfield Sawmill
@@ -699,6 +666,7 @@ sets:
         layerprio: 0
     Hotels:
         hide: false
+        minzoom: 2
         circles: {
             }
         deficon: default
@@ -710,7 +678,7 @@ sets:
                 world: world
                 markup: false
                 x: 246.0
-                icon: hotel
+                icon: misc_hotel
                 y: 73.0
                 z: -906.0
                 label: Springfield Starter Hotel
@@ -718,7 +686,7 @@ sets:
                 world: world
                 markup: false
                 x: -1800.0
-                icon: hotel_c
+                icon: misc_hotel
                 y: 75.0
                 z: 237.0
                 label: Gramados Airport Hotel
@@ -726,7 +694,7 @@ sets:
                 world: world
                 markup: false
                 x: -1895.0
-                icon: hotel
+                icon: misc_hotel
                 y: 74.0
                 z: -192.0
                 label: Gramados Starter Hotel
@@ -734,7 +702,7 @@ sets:
                 world: world
                 markup: false
                 x: -1937.0
-                icon: hotel_c
+                icon: misc_hotel
                 y: 76.0
                 z: -585.0
                 label: Noreach Hotel
@@ -742,7 +710,7 @@ sets:
                 world: world
                 markup: false
                 x: -2004.0
-                icon: hotel_c
+                icon: misc_hotel
                 y: 73.0
                 z: -506.0
                 label: Citrus Alley Hotel
@@ -750,7 +718,7 @@ sets:
                 world: world
                 markup: false
                 x: -3429.0
-                icon: hotel_c
+                icon: misc_hotel
                 y: 71.0
                 z: -2350.0
                 label: Montrose Hotel
@@ -758,7 +726,7 @@ sets:
                 world: world
                 markup: false
                 x: -6723.0
-                icon: hotel
+                icon: misc_hotel
                 y: 79.0
                 z: -402
                 label: Silorose Trucker Hotel
@@ -766,7 +734,7 @@ sets:
                 world: world
                 markup: false
                 x: -4212.0
-                icon: hotel
+                icon: misc_hotel
                 y: 76.0
                 z: -2063
                 label: Feldpard Trucker Hotel
@@ -775,6 +743,7 @@ sets:
         layerprio: 0
     Town Halls:
         hide: false
+        minzoom: 0
         circles: {
             }
         deficon: default
@@ -786,7 +755,7 @@ sets:
                 world: world
                 markup: false
                 x: -5130.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 73.0
                 z: 243.0
                 label: Ardocor Town Hall
@@ -794,7 +763,7 @@ sets:
                 world: world
                 markup: false
                 x: 1030.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 103.0
                 z: -1228.0
                 label: Blockingham Town Hall
@@ -802,7 +771,7 @@ sets:
                 world: world
                 markup: false
                 x: -1865.0
-                icon: townhall
+                icon: civil_services_Civic_Building
                 y: 92.0
                 z: 282.0
                 label: Gramados Town Hall
@@ -810,7 +779,7 @@ sets:
                 world: world
                 markup: false
                 x: 272.0
-                icon: townhall
+                icon: civil_services_Civic_Building
                 y: 76.0
                 z: -940.0
                 label: Springfield Town Hall
@@ -818,7 +787,7 @@ sets:
                 world: world
                 markup: false
                 x: -1272.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 86.0
                 z: -1385.0
                 label: Allen Point Town Hall
@@ -826,7 +795,7 @@ sets:
                 world: world
                 markup: false
                 x: -4557.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 75.0
                 z: -427.0
                 label: Chaseals Town Hall
@@ -834,7 +803,7 @@ sets:
                 world: world
                 markup: false
                 x: -411.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 69.0
                 z: -5375.0
                 label: Branwen City Town Hall
@@ -842,7 +811,7 @@ sets:
                 world: world
                 markup: false
                 x: -2917.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 98.0
                 z: 1019.0
                 label: Petrolton Town Hall
@@ -850,7 +819,7 @@ sets:
                 world: world
                 markup: false
                 x: -6905.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 82.0
                 z: -67
                 label: Silorose Town Hall
@@ -858,7 +827,7 @@ sets:
                 world: world
                 markup: false
                 x: -3440
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 70.0
                 z: -2586.0
                 label: Trilnat Village Town Hall
@@ -866,7 +835,7 @@ sets:
                 world: world
                 markup: false
                 x: -5946.0
-                icon: townhall_c
+                icon: civil_services_Civic_Building
                 y: 74.0
                 z: -879.0
                 label: Buglaton Town Hall
@@ -875,9 +844,10 @@ sets:
         layerprio: 0
     Automobile Parts:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: default
+        deficon: shopping_carparts
         areas: {
             }
         label: Automobile Parts
@@ -886,7 +856,7 @@ sets:
                 world: world
                 markup: false
                 x: -972.0
-                icon: autoparts
+                icon: shopping_carparts
                 y: 74.0
                 z: 221.0
                 label: Top Garage Auto Parts
@@ -894,7 +864,7 @@ sets:
                 world: world
                 markup: false
                 x: -1802.0
-                icon: autoparts
+                icon: shopping_carparts
                 y: 75.0
                 z: 301.0
                 label: Bob The Suitcase
@@ -902,7 +872,7 @@ sets:
                 world: world
                 markup: false
                 x: -925.0
-                icon: autoparts
+                icon: shopping_carparts
                 y: 74.0
                 z: 236.0
                 label: Rem&#39;s Seat Stitching Craftsman
@@ -910,15 +880,15 @@ sets:
                 world: world
                 markup: false
                 x: -2872.0
-                icon: autoparts
+                icon: shopping_carparts
                 y: 94.0
                 z: 903.0
-                label: Benny&#39;s Original Motor Works
+                label: Benny's Original Motor Works
             marker_5:
                 world: world
                 markup: false
                 x: -1840.0
-                icon: autoparts
+                icon: ent&lei_arts
                 y: 74.0
                 z: -9.0
                 label: Cary's Colourific Paint Store
@@ -927,9 +897,10 @@ sets:
         layerprio: 0
     Furniture Shops:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: default
+        deficon: shopping_shopping
         areas: {
             }
         label: Furniture Shops
@@ -938,7 +909,7 @@ sets:
                 world: world
                 markup: false
                 x: 223.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 75.0
                 z: -975.0
                 label: Springfield Furniture
@@ -946,7 +917,7 @@ sets:
                 world: world
                 markup: false
                 x: -1776.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 75.0
                 z: 285.0
                 label: Gramados Kitchen Designer
@@ -954,7 +925,7 @@ sets:
                 world: world
                 markup: false
                 x: -1800.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 75.0
                 z: 281.0
                 label: Gramados Drawer&#39;s
@@ -962,7 +933,7 @@ sets:
                 world: world
                 markup: false
                 x: -2035.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 76.0
                 z: -9.0
                 label: Gramados Grand Furniture Provider
@@ -970,7 +941,7 @@ sets:
                 world: world
                 markup: false
                 x: -1235.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 95.0
                 z: -1423.0
                 label: Allen Point Furniture Shop
@@ -978,7 +949,7 @@ sets:
                 world: world
                 markup: false
                 x: -4582.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 75.0
                 z: -395.0
                 label: Chaseals Furniture
@@ -986,7 +957,7 @@ sets:
                 world: world
                 markup: false
                 x: -2838.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 95.0
                 z: 855.0
                 label: Petrolton Furniture
@@ -994,7 +965,7 @@ sets:
                 world: world
                 markup: false
                 x: -6957.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 82.0
                 z: -122
                 label: Silorose Furniture
@@ -1002,7 +973,7 @@ sets:
                 world: world
                 markup: false
                 x: -5168.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 67.0
                 z: 234.0
                 label: Ardocor Furniture
@@ -1010,7 +981,7 @@ sets:
                 world: world
                 markup: false
                 x: -1773.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 75.0
                 z: 325.0
                 label: Door Shop
@@ -1018,7 +989,7 @@ sets:
                 world: world
                 markup: false
                 x: -1921.0
-                icon: furnitureshop
+                icon: shopping_shopping
                 y: 74.0
                 z: -102.0
                 label: The Woodworker's Workshop
@@ -1027,6 +998,7 @@ sets:
         layerprio: 0
     Beerhouses:
         hide: false
+        minzoom: 4
         circles: {
             }
         deficon: default
@@ -1038,7 +1010,7 @@ sets:
                 world: world
                 markup: false
                 x: -1969.0
-                icon: bar
+                icon: food&drink_bar
                 y: 75.0
                 z: 47.0
                 label: The Old Booze Bar
@@ -1046,18 +1018,19 @@ sets:
                 world: world
                 markup: false
                 x: 209.0
-                icon: bar
+                icon: food&drink_bar
                 y: 76.0
                 z: -1017.0
-                label: The Drunken Cow Bar
+                label: The Drunken Cow Pub
         lines: {
             }
         layerprio: 0
     Dealerships:
         hide: false
+        minzoom: 3
         circles: {
             }
-        deficon: default
+        deficon: shopping_dealership
         areas: {
             }
         label: Dealerships
@@ -1066,71 +1039,72 @@ sets:
                 world: world
                 markup: false
                 x: -1011.0
-                icon: dealership_c
+                icon: shopping_dealership
                 y: 74.0
                 z: 103.0
-                label: Used Car Dealership
+                label: Used Car Dealerships
             marker_2:
                 world: world
                 markup: false
                 x: -1042.0
-                icon: dealership
+                icon: shopping_dealership
                 y: 77.0
                 z: 234.0
-                label: Used Car Dealership
+                label: Used Car Dealerships
             marker_3:
                 world: world
                 markup: false
                 x: -1828.0
-                icon: dealership
+                icon: shopping_dealership
                 y: 74.0
                 z: -46.0
-                label: Luxury Car Dealership
+                label: Luxury Car Dealerships
             marker_4:
                 world: world
                 markup: false
                 x: -1133.0
-                icon: dealership_ivl
+                icon: shopping_dealership
                 y: 74.0
                 z: 231.0
-                label: IVLabs Dealership
+                label: IVLabs Dealerships
             marker_5:
                 world: world
                 markup: false
                 x: -1141.0
-                icon: dealership_trin
+                icon: shopping_dealership
                 y: 74.0
                 z: 126.0
-                label: Trin Dealership
+                label: Trin Dealerships
             marker_6:
                 world: world
                 markup: false
                 x: -1831.0
-                icon: dealership_unu
+                icon: shopping_dealership
                 y: 75.0
                 z: 293.0
-                label: UNU Dealership
+                label: UNU Dealerships
             marker_7:
                 world: world
                 markup: false
                 x: -2524.0
-                icon: dealership
+                icon: shopping_dealership
                 y: 95.0
                 z: -34.0
-                label: Retro Car Dealership
+                label: Retro Car Dealerships
             marker_8:
                 world: world
                 markup: false
                 x: -3372.0
-                icon: dealership_trin
+                icon: shopping_dealership
                 y: 69.0
                 z: -2512.0
-                label: Trilnat Trin Dealership
+                label: Trilnat Trin Dealerships
         lines: {
             }
         layerprio: 0
     Banks:
         hide: false
+        minzoom: 2
         circles: {
             }
         deficon: default
@@ -1142,7 +1116,7 @@ sets:
                 world: world
                 markup: false
                 x: 246.0
-                icon: gbank
+                icon: services_bank
                 y: 74.0
                 z: -992.0
                 label: Springfield Bank
@@ -1150,7 +1124,7 @@ sets:
                 world: world
                 markup: false
                 x: -2022.0
-                icon: bank_c
+                icon: services_bank
                 y: 75.0
                 z: -35.0
                 label: Gramados National Bank
@@ -1158,7 +1132,7 @@ sets:
                 world: world
                 markup: false
                 x: -1883.0
-                icon: gbank
+                icon: services_bank
                 y: 78.0
                 z: 216.0
                 label: Goldincina Bank
@@ -1166,7 +1140,7 @@ sets:
                 world: world
                 markup: false
                 x: -169.0
-                icon: bank_c
+                icon: services_bank
                 y: 68.0
                 z: -5432.0
                 label: Branwen City Bank
@@ -1175,6 +1149,7 @@ sets:
         layerprio: 0
     Repair Shops:
         hide: false
+        minzoom: 4
         circles: {
             }
         deficon: default
@@ -1186,7 +1161,7 @@ sets:
                 world: world
                 markup: false
                 x: -1001.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 76.0
                 z: 233.0
                 label: Available Repair Shop 9
@@ -1194,7 +1169,7 @@ sets:
                 world: world
                 markup: false
                 x: -2034.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 77.0
                 z: 361.0
                 label: Available Repair Shop 1
@@ -1202,7 +1177,7 @@ sets:
                 world: world
                 markup: false
                 x: -2111.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 76.0
                 z: 147.0
                 label: Available Repair Shop 2
@@ -1210,7 +1185,7 @@ sets:
                 world: world
                 markup: false
                 x: -2112.0
-                icon: garage
+                icon: shopping_garage
                 y: 76.0
                 z: 103.0
                 label: Ferris Wheel Automobile repair
@@ -1218,7 +1193,7 @@ sets:
                 world: world
                 markup: false
                 x: -1338.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 74.0
                 z: 262.0
                 label: Available Repair Shop 4
@@ -1226,7 +1201,7 @@ sets:
                 world: world
                 markup: false
                 x: -2000.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 75.0
                 z: -482.0
                 label: Available Repair Shop 5
@@ -1234,7 +1209,7 @@ sets:
                 world: world
                 markup: false
                 x: 1053.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 91.0
                 z: -1179.0
                 label: Blockingham Repair Shop
@@ -1242,7 +1217,7 @@ sets:
                 world: world
                 markup: false
                 x: 47.0
-                icon: garage
+                icon: shopping_garage
                 y: 86.0
                 z: -1043.0
                 label: Springfield Garage
@@ -1250,7 +1225,7 @@ sets:
                 world: world
                 markup: false
                 x: -1173.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 78.0
                 z: -93.0
                 label: Available Repair Shop 7
@@ -1258,7 +1233,7 @@ sets:
                 world: world
                 markup: false
                 x: -4488.0
-                icon: garage_c
+                icon: shopping_garage
                 y: 71.0
                 z: -361.0
                 label: Available Repair Shop 8
@@ -1267,9 +1242,10 @@ sets:
         layerprio: 0
     Bakeries:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: default
+        deficon: food&drink_bakery
         areas: {
             }
         label: Bakeries
@@ -1278,7 +1254,7 @@ sets:
                 world: world
                 markup: false
                 x: -1971.0
-                icon: bakery
+                icon: food&drink_bakery
                 y: 75.0
                 z: -2.0
                 label: Wheaty Mill Bakery
@@ -1286,7 +1262,7 @@ sets:
                 world: world
                 markup: false
                 x: -1466.0
-                icon: bakery
+                icon: food&drink_bakery
                 y: 72.0
                 z: 141.0
                 label: Filly Mill Bakery
@@ -1295,6 +1271,7 @@ sets:
         layerprio: 0
     markers:
         hide: false
+        minzoom: 0
         circles: {
             }
         deficon: default
@@ -1308,6 +1285,7 @@ sets:
         layerprio: 0
     Armories:
         hide: false
+        minzoom: 4
         circles: {
             }
         deficon: default
@@ -1319,7 +1297,7 @@ sets:
                 world: world
                 markup: false
                 x: -2033.0
-                icon: gunshop
+                icon: shopping_gun
                 y: 77.0
                 z: 61.0
                 label: Gramados Gun Club
@@ -1327,7 +1305,7 @@ sets:
                 world: world
                 markup: false
                 x: -2063.0
-                icon: generalstore
+                icon: shopping_misc
                 y: 77.0
                 z: 6.0
                 label: Gramado Armors
@@ -1335,7 +1313,7 @@ sets:
                 world: world
                 markup: false
                 x: -2064.0
-                icon: generalstore
+                icon: shopping_misc
                 y: 75.0
                 z: 22.0
                 label: Knife shop
@@ -1343,7 +1321,7 @@ sets:
                 world: world
                 markup: false
                 x: -2094.0
-                icon: generalstore
+                icon: shopping_misc
                 y: 76.0
                 z: -31.0
                 label: Civil Tactical Armors
@@ -1352,6 +1330,7 @@ sets:
         layerprio: 0
     Fuel Stations:
         hide: false
+        minzoom: 2
         circles: {
             }
         deficon: default
@@ -1363,7 +1342,7 @@ sets:
                 world: world
                 markup: false
                 x: -6369.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 72.0
                 z: 255.0
                 label: Nowhere Fuel Station
@@ -1371,7 +1350,7 @@ sets:
                 world: world
                 markup: false
                 x: -2559.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 95.0
                 z: -13.0
                 label: Smell Oil Fuel Station
@@ -1379,7 +1358,7 @@ sets:
                 world: world
                 markup: false
                 x: -2071.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 76.0
                 z: -35.0
                 label: Bravo Fuel Station
@@ -1387,7 +1366,7 @@ sets:
                 world: world
                 markup: false
                 x: -1794.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 77.0
                 z: 56.0
                 label: Fulpower Fuel Station
@@ -1395,7 +1374,7 @@ sets:
                 world: world
                 markup: false
                 x: 1044.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 91.0
                 z: -1172.0
                 label: Blockingham Fuel Station
@@ -1403,7 +1382,7 @@ sets:
                 world: world
                 markup: false
                 x: 251.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 75.0
                 z: -968.0
                 label: Springfield Fuel Station
@@ -1411,7 +1390,7 @@ sets:
                 world: world
                 markup: false
                 x: -2059.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 76.0
                 z: 350.0
                 label: Minchaly Fuel Station
@@ -1419,7 +1398,7 @@ sets:
                 world: world
                 markup: false
                 x: -1377.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 89.0
                 z: -1293.0
                 label: Allen Point Fuel Station
@@ -1427,7 +1406,7 @@ sets:
                 world: world
                 markup: false
                 x: -4535.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 74.0
                 z: -454.0
                 label: Chaseals Fuel Station
@@ -1435,7 +1414,7 @@ sets:
                 world: world
                 markup: false
                 x: -6973.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 85.0
                 z: -197.0
                 label: Silo Fuel Station
@@ -1443,7 +1422,7 @@ sets:
                 world: world
                 markup: false
                 x: -2103.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 83.0
                 z: -431.0
                 label: Citrus Station
@@ -1451,7 +1430,7 @@ sets:
                 world: world
                 markup: false
                 x: -6194.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 77.0
                 z: -972.0
                 label: Buglaton Station
@@ -1459,7 +1438,7 @@ sets:
                 world: world
                 markup: false
                 x: -5356.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 70.0
                 z: 112.0
                 label: Ardocor UNU Fuel Station
@@ -1467,7 +1446,7 @@ sets:
                 world: world
                 markup: false
                 x: -3278.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 69.0
                 z: -2482.0
                 label: Trilnat Auto Fuel Station
@@ -1475,7 +1454,7 @@ sets:
                 world: world
                 markup: false
                 x: 5223.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 70.0
                 z: -1917.0
                 label: Buxton Harbor Service Station
@@ -1483,7 +1462,7 @@ sets:
                 world: world
                 markup: false
                 x: -4225.0
-                icon: fuelpump
+                icon: services_station_petrol
                 y: 76.0
                 z: -2046.0
                 label: Feldpard Truck Stop Fuel Service
@@ -1492,6 +1471,7 @@ sets:
         layerprio: 0
     Education:
         hide: false
+        minzoom: 3
         circles: {
             }
         deficon: default
@@ -1503,7 +1483,7 @@ sets:
                 world: world
                 markup: false
                 x: -1766.0
-                icon: school_c
+                icon: civil_services_school
                 y: 86.0
                 z: -725.0
                 label: Gramados University
@@ -1511,7 +1491,7 @@ sets:
                 world: world
                 markup: false
                 x: -1900.0
-                icon: school
+                icon: ent&lei_event_venue
                 y: 78.0
                 z: -620.0
                 label: Gramados Civic Center
@@ -1519,7 +1499,7 @@ sets:
                 world: world
                 markup: false
                 x: -1834.0
-                icon: school
+                icon: ent&lei_misc
                 y: 74.0
                 z: -157.0
                 label: Gramados Gymnasium
@@ -1527,7 +1507,7 @@ sets:
                 world: world
                 markup: false
                 x: -1574.0
-                icon: school_c
+                icon: ent&lei_museum
                 y: 77.0
                 z: 436.0
                 label: Gramados Royal Arsenal Museum
@@ -1536,9 +1516,10 @@ sets:
         layerprio: 0
     Services:
         hide: false
+        minzoom: 2
         circles: {
             }
-        deficon: service_multi_c
+        deficon: health_misc
         areas: {
             }
         label: Services
@@ -1547,7 +1528,7 @@ sets:
                 world: world
                 markup: false
                 x: -1977.0
-                icon: service_firedept_c
+                icon: health_fire_dept
                 y: 77.0
                 z: 137.0
                 label: Gramados Fire Department
@@ -1555,7 +1536,7 @@ sets:
                 world: world
                 markup: false
                 x: -1925.0
-                icon: service_police
+                icon: civil_services_police
                 y: 76.0
                 z: 40.0
                 label: Gramados Police Department
@@ -1563,7 +1544,7 @@ sets:
                 world: world
                 markup: false
                 x: -1817.0
-                icon: service_health_c
+                icon: health_hospital
                 y: 77.0
                 z: 136.0
                 label: Gramados Great Hospital
@@ -1571,7 +1552,7 @@ sets:
                 world: world
                 markup: false
                 x: -1303.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 97.0
                 z: -1421.0
                 label: Allen Point Multi-Service Facility
@@ -1579,7 +1560,7 @@ sets:
                 world: world
                 markup: false
                 x: 298.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 77.0
                 z: -994.0
                 label: Springfield Multi-Service Facility
@@ -1587,7 +1568,7 @@ sets:
                 world: world
                 markup: false
                 x: 1016.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 94.0
                 z: -1247.0
                 label: Blockingham Multi-Service Facility
@@ -1595,7 +1576,7 @@ sets:
                 world: world
                 markup: false
                 x: -4656.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 70.0
                 z: -587.0
                 label: Chaseals Multi-Service Facility
@@ -1603,7 +1584,7 @@ sets:
                 world: world
                 markup: false
                 x: -2906.0
-                icon: service_police
+                icon: civil_services_police
                 y: 95.0
                 z: 893.0
                 label: Petrolton Police Department
@@ -1611,7 +1592,7 @@ sets:
                 world: world
                 markup: false
                 x: -2954.0
-                icon: service_firedept_c
+                icon: health_fire_dept
                 y: 95.0
                 z: 895.0
                 label: Petrolton Fire Department
@@ -1619,7 +1600,7 @@ sets:
                 world: world
                 markup: false
                 x: -2854.0
-                icon: service_health_c
+                icon: health_pharmacy
                 y: 95.0
                 z: 880.0
                 label: Petrolton Pharmacist
@@ -1627,7 +1608,7 @@ sets:
                 world: world
                 markup: false
                 x: -6913.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 82.0
                 z: -93.0
                 label: Silorose Multi-Service Facility 
@@ -1635,7 +1616,7 @@ sets:
                 world: world
                 markup: false
                 x: -5150.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 67.0
                 z: 207.0
                 label: Ardocor Multi-Service Facility
@@ -1643,7 +1624,7 @@ sets:
                 world: world
                 markup: false
                 x: -3664.0
-                icon: service_multi_c
+                icon: health_misc
                 y: 70.0
                 z: -2389.0
                 label: Trilnat Multi-Service Facility
@@ -1651,7 +1632,7 @@ sets:
                 world: world
                 markup: false
                 x: -1693.0
-                icon: service_firedept
+                icon: health_fire_dept
                 y: 74.0
                 z: 197.0
                 label: Gramados Airport Fire Station
@@ -1660,9 +1641,10 @@ sets:
         layerprio: 0
     General Stores:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: generalstore_c
+        deficon: shopping_grocery
         areas: {
             }
         label: Stores &amp; Markets
@@ -1671,7 +1653,7 @@ sets:
                 world: world
                 markup: false
                 x: -2872.0
-                icon: generalstore
+                icon: shopping_misc
                 y: 95.0
                 z: 871.0
                 label: Fury Milk
@@ -1679,7 +1661,7 @@ sets:
                 world: world
                 markup: false
                 x: -3278.0
-                icon: generalstore
+                icon: shopping_grocery
                 y: 69.0
                 z: -2496.0
                 label: Trilnat Auto General Store
@@ -1687,7 +1669,7 @@ sets:
                 world: world
                 markup: false
                 x: -6701.0
-                icon: generalstore
+                icon: shopping_grocery
                 y: 79.0
                 z: -364.0
                 label: Silorose Trucker General Store
@@ -1695,7 +1677,7 @@ sets:
                 world: world
                 markup: false
                 x: 5352.0
-                icon: generalstore_c
+                icon: shopping_grocery
                 y: 70.0
                 z: -1915
                 label: Federal Goods Supermarket
@@ -1703,7 +1685,7 @@ sets:
                 world: world
                 markup: false
                 x: -4181.0
-                icon: generalstore_c
+                icon: shopping_misc
                 y: 76.0
                 z: -2069.0
                 label: Feldpard Truck Stop Taxidermy
@@ -1711,15 +1693,15 @@ sets:
                 world: world
                 markup: false
                 x: -1841.0
-                icon: generalstore
+                icon: shopping_shopping
                 y: 74.0
                 z: -2
-                label: Packpacks &amp; More
+                label: Packpacks
             marker_7:
                 world: world
                 markup: false
                 x: -2110.0
-                icon: generalstore
+                icon: shopping_grocery
                 y: 76.0
                 z: 44.0
                 label: Gramados Supermarket
@@ -1727,7 +1709,7 @@ sets:
                 world: world
                 markup: false
                 x: -2019.0
-                icon: generalstore
+                icon: shopping_shopping
                 y: 77.0
                 z: 83.0
                 label: A Place of Wonder - Antiquary
@@ -1735,7 +1717,7 @@ sets:
                 world: world
                 markup: false
                 x: -2008.0
-                icon: generalstore
+                icon: shopping_misc
                 y: 77.0
                 z: 59.0
                 label: Gems of Zanzibar - Jewelry
@@ -1744,9 +1726,10 @@ sets:
         layerprio: 0
     Open Air Markets:
         hide: false
+        minzoom: 4
         circles: {
             }
-        deficon: marketstand_c
+        deficon: shopping_market
         areas: {
             }
         label: Open Air Markets
@@ -1755,7 +1738,7 @@ sets:
                 world: world
                 markup: false
                 x: -2796.0
-                icon: marketstand
+                icon: shopping_market
                 y: 95.0
                 z: 902.0
                 label: Petrolton Market
@@ -1763,18 +1746,27 @@ sets:
                 world: world
                 markup: false
                 x: -1308.0 
-                icon: marketstand
+                icon: shopping_market
                 y: 87.0
                 z: -1385.0
                 label: Allen Point Local Market
+            marker_3:
+                world: world
+                markup: false
+                x: 194.0
+                icon: shopping_market
+                y: 71.0
+                z: -896.0
+                label: Springfield Market
         lines: {
             }
         layerprio: 0
     Truck Stops:
         hide: false
+        minzoom: 1
         circles: {
             }
-        deficon: truck_stop_c
+        deficon: services_truck_stop
         areas: {
             }
         label: Truck Stops
@@ -1783,7 +1775,7 @@ sets:
                 world: world
                 markup: false
                 x: -4187.0
-                icon: truck_stop_c
+                icon: services_truck_stop
                 y: 76.0
                 z: -2013.0
                 label: Feldpard Truck Stop
@@ -1791,10 +1783,478 @@ sets:
                 world: world
                 markup: false
                 x: -6733.0
-                icon: truck_stop
+                icon: services_truck_stop
                 y: 79.0
                 z: -347
                 label: Farmiston Truck Stop
+        lines: {}
+        layerprio: 0
+    Parks And Gardens:
+        hide: false
+        minzoom: 3
+        circles: {
+            }
+        deficon: outdoor_misc
+        areas: {
+            }
+        label: Parks And Gardens
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                x: -2116.0
+                icon: outdoor_garden_park
+                y: 76.0
+                z: -64.0
+                label: Serenity Court
+            marker_2:
+                world: world
+                markup: false
+                x: -2039.0
+                icon: outdoor_garden_park
+                y: 74.0
+                z: -486.0
+                label: Citrus Alley
+            marker_3:
+                world: world
+                markup: false
+                x: -2041.0
+                icon: outdoor_resort
+                y: 69.0
+                z: -562.0
+                label: Citrus Alley Beach
+            marker_4:
+                world: world
+                markup: false
+                x: -1951.0
+                icon: outdoor_garden_park
+                y: 81.0
+                z: -487.0
+                label: Domros Tunnel Gardens
+            marker_5:
+                world: world
+                markup: false
+                x: -1799.0
+                icon: outdoor_park
+                y: 106.0
+                z: 1313.0
+                label: Pinoros Pine Forest
+            marker_6:
+                world: world
+                markup: false
+                x: -2015
+                icon: outdoor_park
+                y: 74.0
+                z: 1320.0
+                label: Pinoros Rest Area
+            marker_7:
+                world: world
+                markup: false
+                x: -1871.0
+                icon: outdoor_hiking
+                y: 87.0
+                z: 1372.0
+                label: Pinoros Hunting Hut
+            marker_8:
+                world: world
+                markup: false
+                x: 243.0
+                icon: outdoor_resort
+                y: 68.0
+                z: -854.0
+                label: Springfield Beach
+            marker_9:
+                world: world
+                markup: false
+                x: 244.0
+                icon: outdoor_garden_park
+                y: 78.0
+                z: -1032.0
+                label: Grasfol Ring
+            marker_10:
+                world: world
+                markup: false
+                x: -4881.0
+                icon: outdoor_mountain
+                y: 128.0
+                z: -655.0
+                label: Chaseals Peak
+            marker_11:
+                world: world
+                markup: false
+                x: -6055.0
+                icon: outdoor_cemetery
+                y: 73.0
+                z: -1068.0
+                label: Buglaton Catacombs
+            marker_12:
+                world: world
+                markup: false
+                x: -4016.0
+                icon: outdoor_hiking
+                y: 124.0
+                z: 42.0
+                label: The Marksman's Lodge
+            marker_13:
+                world: world
+                markup: false
+                x: -1871.0
+                icon: outdoor_garden_park
+                y: 76.0
+                z: -620.0
+                label: Civic Center Square
+            marker_14:
+                world: world
+                markup: false
+                icon: outdoor_garden_park
+                x: -1993.0
+                y: 75.0
+                z: -55.0
+                label: Square of Exchange
+            marker_15:
+                world: world
+                markup: false
+                icon: outdoor_garden_park
+                x: -1918.0
+                y: 76.0
+                z: 207.0
+                label: The Square of the four benches
+        lines: {}
+        layerprio: 0
+    Parkings:
+        hide: false
+        minzoom: 5
+        circles: {
+            }
+        deficon: services_parking
+        areas: {
+            }
+        label: Parkings
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: services_parking
+                x: 292.0
+                y: 77.0
+                z: -890.0
+                label: Springfield Parking
+            marker_2:
+                world: world
+                markup: false
+                icon: services_parking
+                x: 70.0
+                y: 71.0
+                z: -905.0
+                label: Springfield Port Parking
+            marker_3:
+                world: world
+                markup: false
+                icon: services_parking
+                x: 1053.0
+                y: 94.0
+                z: -1232.0
+                label: Blockingham Parking
+            marker_4:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -4606.0
+                y: 72.0
+                z: -460.0
+                label: Chaseals Center Parking
+            marker_5:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -3561.0
+                y: 68.0
+                z: -2512.0
+                label: Trilnat Parking
+            marker_6:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -5946.0
+                y: 74.0
+                z: -902.0
+                label: Buglaton Town Hall Parking
+            marker_7:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -6908.0
+                y: 80.0
+                z: -30.0
+                label: Silorose Parking
+            marker_8:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1812.0
+                y: 77.0
+                z: 92.0
+                label: Gramados Hospital Parking
+            marker_9:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1904.0
+                y: 74.0
+                z: -135.0
+                label: Gramados Starter Hotel Parking
+            marker_10:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1877.0
+                y: 75.0
+                z: 337.0
+                label: Town Hall Car Park
+            marker_11:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2128.0
+                y: 76.0
+                z: 26.0
+                label: Coralis Commercial Parking
+            marker_12:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1743.0
+                y: 74.0
+                z: -668.0
+                label: University Parking
+            marker_13:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1869.0
+                y: 76.0
+                z: -666.0
+                label: Civic Center Parking
+            marker_14:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2127.0
+                y: 75.0
+                z: 207.0
+                label: Troyen Underbridge Parking
+        lines: {}
+        layerprio: 0
+    Historical Sites:
+        hide: false
+        minzoom: 1
+        circles: {
+            }
+        deficon: ent&lei_historic
+        areas: {
+            }
+        label: Historical Sites
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: 2190.0
+                y: 86.0
+                z: -1209.0
+                label: Eldergrove Hall
+            marker_2:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -1225.0
+                y: 86.0
+                z: -1476.0
+                label: Allen Point Old Coal Mine
+            marker_3:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -1474.0
+                y: 100.0
+                z: -1704.0
+                label: Chateau Vinor
+            marker_4:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -5036.0
+                y: 72.0
+                z: 168.0
+                label: Suncrest Estate
+            marker_5:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3546.0
+                y: 77.0
+                z: -2462.0
+                label: Trilnat Castle
+            marker_6:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2964.0
+                y: 163.0
+                z: -3669.0
+                label: Vieuxmont Bastion
+            marker_7:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -4047.0
+                y: 122.0
+                z: -3761.0
+                label: Ambert Paper Mill
+            marker_8:
+                world: world
+                markup: false
+                icon: ent&lei_monument
+                x: -1930.0
+                y: 103.0
+                z: -552.0
+                label: The Mooring Mast
+            marker_9:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2031.0
+                y: 74.0
+                z: -437.0
+                label: Citrus Hall
+            marker_10:
+                world: world
+                markup: false
+                icon: ent&lei_lighthouse
+                x: -1948.0
+                y: 98.0
+                z: -831.0
+                label: Gramados Marina Lighthouse
+        lines: {}
+        layerprio: 0
+    Bridges:
+        hide: false
+        minzoom: 2
+        circles: {
+            }
+        deficon: civil_services_bridge
+        areas: {
+            }
+        label: Bridges
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -4675.0
+                y: 70.0
+                z: 48.0
+                label: Mirefall Bridge
+            marker_2:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -3165.0
+                y: 72.0
+                z: 220.0
+                label: Azure Span
+            marker_3:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: 838.0
+                y: 93.0
+                z: -320.0
+                label: Aurora Pillars Bridge
+        lines: {}
+        layerprio: 0
+    Transports:
+        hide: false
+        minzoom: 1
+        circles: {
+            }
+        deficon: transport_misc
+        areas: {
+            }
+        label: Transports
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: transport_taxi
+                x: -1741.0
+                y: 75.0
+                z: 187.0
+                label: Gramados Airport Taxi Stand
+            marker_2:
+                world: world
+                markup: false
+                x: -1728.0
+                icon: transport_airport
+                y: 75.0
+                z: 236.0
+                label: Gramados Airport
+            marker_3:
+                world: world
+                markup: false
+                x: 22.0
+                icon: transport_airport
+                y: 98.0
+                z: -1653.0
+                label: Greenfield Airport
+            marker_4:
+                world: world
+                markup: false
+                x: -1734.0
+                icon: transport_airport
+                y: 66.0
+                z: -1183.0
+                label: Allen Point Airport
+            marker_5:
+                world: world
+                markup: false
+                x: -1693.0
+                icon: transport_ferry
+                y: 65.0
+                z: -831.0
+                label: Gramados Port
+            marker_6:
+                world: world
+                markup: false
+                x: 88.0
+                icon: transport_ferry
+                y: 65.0
+                z: -878.0
+                label: Springfield Port
+            marker_7:
+                world: world
+                markup: false
+                x: -1769.0
+                icon: transport_ferry
+                y: 66.0
+                z: -1173.0
+                label: Allen Point Port
+            marker_8:
+                world: world
+                markup: false
+                x: 5040.0
+                icon: transport_ferry
+                y: 67.0
+                z: -1847.0
+                label: Buxton Harbor
+            marker_9:
+                world: world
+                markup: false
+                icon: outdoor_boating
+                x: -1907.0
+                y: 65.0
+                z: -782.0
+                label: Gramados Marina
         lines: {}
         layerprio: 0
 playersets: {
