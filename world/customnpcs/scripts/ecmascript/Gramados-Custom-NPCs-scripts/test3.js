@@ -1,27 +1,187 @@
-// attempt to spawn a MTS vehicle with NBT
+// Wine Aging Shelf
+// This script adds a wine aging feature to the Growthcraft wine bottles.
 
-//get api
-var api = Java.type('noppes.npcs.api.NpcAPI').Instance();
+/*
+The block data must store an array of 32 IItemStacks.
+Each IItemStack must be some sort of wine bottle from the mod Growthcraft.
+Within each of those IItemStacks, there must be a custom NBT tag that will store the age of the wine bottle, and the date this bottle was placed in the shelf.
+On opening the GUI, the script will read the block data and generate a custom GUI with 32 bottle, that will be represented by a textured button per bottle. (32 buttons in total)
+Each bottle in stored data will also have its age increased by the time the bottle was in the shelf (aka add the time between now and the date the bottle was placed in the shelf to the age of the bottle).
+When the player clicks on a bottle, the button will be removed and the bottle will be removed from the block data.
+At the same time, the player will receive the bottle in his inventory as an Growthcraft wine bottle item with an extra NBT tag that will store the age of the wine bottle.
+The player can age further the bottle by placing it again in the shelf.
+*/
+
+
+// GUI
+var GUI, GRID_H = 16, GRID_W = 16, GRID_BORDER = 2;
+
+var owner = "";
+
+
+
+function init(event) {
+    // If stored data is empty, create an empty array of 32 IItemStacks
+    if (event.block.storeddata.get("stored_bottles") == null) {
+        var stored_bottles = [];
+        for (var i = 0; i < 32; i++) {
+            stored_bottles.push(event.block.world.createItem("minecraft:air", 0, 1));
+        }
+        event.block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
+    }
+}
 
 function interact(event) {
-    var player = event.player;
-    var world = player.world;
 
-    event.player.message("Interacting");
+    var stored_bottles = JSON.parse(event.block.storeddata.get("stored_bottles"));
 
-    var NBT = api.stringToNbt("{variables1:\"FRSuspension\",RRSuspension:0.024040082469582558d,variables2:\"damage\",variables0:\"RRSuspension\",variables5:\"FLSuspension\",variables6:\"door_l\",motiony:-3.6905206988688266E-4d,variables3:\"RLSuspension\",variables4:\"p_brake\",Invulnerable:0b,entityid:\"EntityVehicleF_Physics\",radio:{volume:10,currentURL:\"\"},FallDistance:0.0f,systemName:\"pegasus\",ForgeCaps:{},id:\"mts:mts_entity\",FRSuspension:0.022465460002422333d,fuelTank:{currentFluid:\"\"},Air:300s,positionx:2139.52742601081d,positiony:90.01677161100432d,part_22:{packID:\"syndicatemotorfoundry\",systemName:\"kit_stormwalker\",spawnedDefaultParts:1b,subName:\"_gramados\"},positionz:3740.428018197344d,Pos:[2139.52742601081d,90.01677161100432d,3740.428018197344d],anglesz:-0.9812835870071452d,spawnedDefaultParts:1b,anglesy:157.44018154349547d,anglesx:14.109673020926214d,part_7:{packID:\"iv_tpp\",systemName:\"trin_seat_2\",spawnedDefaultParts:1b,subName:\"_gray\"},damage:1.0d,part_6:{packID:\"iv_tpp\",systemName:\"trin_seat_2\",spawnedDefaultParts:1b,subName:\"_gray\"},part_5:{packID:\"iv_tpp\",systemName:\"trin_seat_2\",spawnedDefaultParts:1b,subName:\"_gray\"},part_4:{packID:\"iv_tpp\",systemName:\"trin_seat_2\",spawnedDefaultParts:1b,subName:\"_gray\"},serverDeltaRx:14.1092052106524d,PortalCooldown:0,part_15:{packID:\"syndicatemotorfoundry\",temp:24.02628326415945d,systemName:\"engine_oppressor\",spawnedDefaultParts:1b,subName:\"\"},part_3:{packID:\"iv_tpp\",systemName:\"wheel_classic_4d16\",spawnedDefaultParts:1b,subName:\"_0_steel\"},part_2:{packID:\"iv_tpp\",systemName:\"wheel_classic_4d16\",spawnedDefaultParts:1b,subName:\"_0_steel\"},FLSuspension:0.024040082469582558d,part_1:{packID:\"iv_tpp\",systemName:\"wheel_classic_4d16\",spawnedDefaultParts:1b,subName:\"_0_steel\"},serverDeltaRy:-0.1823930094298163d,part_0:{packID:\"iv_tpp\",systemName:\"wheel_classic_4d16\",spawnedDefaultParts:1b,subName:\"_0_steel\"},serverDeltaRz:-1.932959939614979d,packID:\"syndicatemotorfoundry\",serverDeltaMz:-0.07988175959988064d,serverDeltaMx:0.028673298818276988d,serverDeltaMy:-0.6689610352365138d,RLSuspension:0.022465460002422333d,Motion:[0.0d,0.0d,0.0d],OnGround:0b,Dimension:0,p_brake:1.0d,Rotation:[0.0f,0.0f],UpdateBlocked:0b,electricPower:12.0d,door_l:1.0d,variablescount:7,selectedBeaconName:\"\",subName:\"gramados\",Fire:-1s}")
-    event.player.message("NBT: " + NBT.toJsonString());
+    // tell the player the current data of the block
+    event.player.message("Stored items: " + JSON.stringify(stored_bottles));
 
-    //change position
-    NBT.setDouble("positionx", player.posX);
-    NBT.setDouble("positiony", player.posY);
-    NBT.setDouble("positionz", player.posZ);
+    // get what the player has in hand:
+    var item = event.player.getMainhandItem();
+    //get how many items the player has in hand
+    var item_count = item.getStackSize();
 
 
+    // get the first available slot of the array
+    for (var i = 0; i < 32; i++) {
+        if (stored_bottles[i] == null && item_count > 0) {
 
-    var entity = world.createEntityFromNBT(NBT);
+            // add the item to the slot
+            stored_bottles[i] = item;
+            item_count--;
 
-    event.player.message("Entity: " + entity);
+            // tell the player that the item was placed in the shelf
+            event.player.message("You placed 1 item in the shelf: " + item.getDisplayName() + " at slot " + i);
+        }
+    }
 
-    world.spawnEntity(entity);
+    // get the item held by the player
+    /*var item = event.player.getMainhandItem();
+
+    // if the player is not holding an item or is holding air
+    if (item != null && item.getDisplayName() != "Air") {
+
+        // remove item by giving air
+        event.player.setMainhandItem(event.block.world.createItem("minecraft:air", 0, 1));
+        //event.player.message("Item held: " + item.getItemNbt().toJsonString());
+        event.player.updatePlayerInventory();
+
+
+
+        //tell the player that the item was removed
+        event.player.message("You placed an item in the shelf: " + item.getDisplayName() + " x" + item.getStackSize());
+
+
+    } else {
+        event.player.message("No item held");
+    }
+
+    GUI = event.API.createCustomGui(1, GRID_W * 14, GRID_H * 11, false);
+
+    create_GUI(event, GRID_W, GRID_H);
+    GUI.showPlayerInventory(50, 100);
+
+    event.player.showCustomGui(GUI);
+
+    /*if (owner == "") {
+        owner = event.player.getName();
+    }
+
+    event.player.message("Owner: " + owner);
+
+    var custom_stored_bottles = JSON.parse(event.block.storeddata.get("stored_bottles"))
+    // if there is indeed a stored_bottles in the block data
+    if (custom_stored_bottles != null) {
+        custom_stored_bottles[0].age = 50
+        event.player.message(custom_stored_bottles[0].age)
+        event.player.message(stored_bottles[0].age)
+        //you'll notice that the age is different. custom_stored_bottles was recreated from the block's storeddata
+    }
+
+    readGuiSlots(event);*/
+
+    // Save block data
+    event.block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
+
+    return true;
 }
+
+function create_GUI(event, GRID_W, GRID_H) {
+
+    GUI.setBackgroundTexture("minecraft:textures/gui/wine_aging_shelf_gui_wip.png");
+    var button_texture_sheet = "minecraft:textures/gui/gramados_trucker_point_putton_textures.png";
+
+    // add 9 item slots
+    /*for (var i = 0; i < 9; i++) {
+
+        if (i == 0) {
+            var itemstack = load_placeholder_item(event);
+            GUI.addItemSlot(20 + (i * GRID_W), 20, itemstack);
+            event.player.message("Item added to slot 0");
+        } else {
+
+            GUI.addItemSlot(20 + (i * GRID_W), 20);
+            // add a red rectangle at the slot
+            GUI.addTexturedRect(i, button_texture_sheet, 20 + (i * GRID_W), 20, GRID_W, GRID_H, GRID_W * 8, 0);
+        }
+
+    }*/
+}
+
+function readGuiSlots(event) {
+    var slot_list = GUI.getSlots();
+    var slot_count = slot_list.length;
+    event.player.message("There are " + slot_count + " slots");
+    // navigate all slots
+    for (var i = 0; i < slot_count; i++) {
+
+        if (slot_list[i].hasStack()) {
+            event.player.message("Slot " + i + " has an item");
+        } else {
+            event.player.message("Slot " + i + " is empty");
+        }
+    }
+
+    // save data
+    //save_bottles_to_blockdata(event);
+}
+
+/*function customGuiSlot(event) {
+    event.player.message("Slot clicked");
+    readGuiSlots(event);
+}*/
+
+function customGuiClose(event) {
+    event.player.message("GUI closed");
+    // save data
+    save_bottles_to_blockdata(event);
+}
+
+function fill_shelf_with_stored_bottles(event) {
+    var custom_stored_bottles = event.block.storeddata.get("stored_bottles")
+    event.player.message(custom_stored_bottles)
+    // if there is indeed a stored_bottles in the block data
+    if (custom_stored_bottles != null) {
+        for (var i = 0; i < 9; i++) {
+            if (!custom_stored_bottles[i].isEmpty()) {
+                var nbt_object = e.API.stringToNbt(nbtString)
+            }
+        }
+    }
+}
+
+/*function save_placeholder_item(event) {
+    var item = event.block.world.createItem("growthcraft_grapes:grapewine", 1, 4);
+    var itemAsNBT = item.getItemNbt().toJsonString()
+    event.block.storeddata.put("placeholderItem", itemAsNBT);
+}
+
+function load_placeholder_item(event) {
+    var nbtString = event.block.storeddata.get("placeholderItem");
+    event.player.message(nbtString);
+    var nbt_object = event.API.stringToNbt(nbtString);
+    var item = event.block.world.createItemFromNbt(nbt_object);
+    return item;
+}*/
