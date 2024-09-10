@@ -22,12 +22,12 @@ var block;
 
 function init(event) {
     // If stored data is empty, create an empty array of 32 IItemStacks
-    if (block.storeddata.get("stored_bottles") == null) {
+    if (event.block.storeddata.get("stored_bottles") == null) {
         var stored_bottles = [];
         for (var i = 0; i < 32; i++) {
-            stored_bottles.push(block.world.createItem("minecraft:air", 0, 1));
+            stored_bottles.push(event.block.world.createItem("minecraft:air", 0, 1));
         }
-        block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
+        event.block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
     }
 
     block = event.block;
@@ -204,6 +204,9 @@ function customGuiButton(event) {
     
     // Get the stored bottles
     var stored_bottles = block.storeddata.get("stored_bottles");
+    stored_bottles = JSON.parse(stored_bottles);
+
+    //event.player.message("Stored Bottles: " + stored_bottles);
 
     // Get the bottle indexes
     var bottle_indexes = [];
@@ -212,6 +215,8 @@ function customGuiButton(event) {
             bottle_indexes.push(i);
         }
     }
+
+    event.player.message("Bottle Indexes: " + bottle_indexes);
 
     for (var i = 0; i < 32; i++) {
         if (button_id == i) {
@@ -231,9 +236,9 @@ function customGuiButton(event) {
             event.gui.update(event.player);
 
             // remove the bottle from the stored data
-            stored_data = JSON.parse(stored_data);
-            stored_data[bottle_indexes[i]] = null;
-            block.storeddata.put("stored_bottles", JSON.stringify(stored_data));
+            /*stored_data = JSON.parse(stored_data);
+            stored_data[bottle_indexes[i]] = null;*/
+            block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
         }
     }
 }
