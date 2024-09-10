@@ -73,6 +73,8 @@ function interact(event) {
                 var server_date = event.player.getWorld().getTotalTime();
                 var time_passed = server_date - bottle_date;
                 bottle_nbt.Age = age + time_passed;
+                bottle_nbt.Date = server_date;
+                //event.player.message("Bottle " + i + " has aged " + time_passed + " ticks. It now has " + bottle_nbt.Age + " ticks. It's Date: " + bottle_nbt.Date + " Server Date: " + server_date);
                 stored_bottles[i] = JSON.stringify(bottle_nbt);
             }
         }
@@ -216,7 +218,7 @@ function customGuiButton(event) {
         }
     }
 
-    event.player.message("Bottle Indexes: " + bottle_indexes);
+    //event.player.message("Bottle Indexes: " + bottle_indexes);
 
     for (var i = 0; i < 32; i++) {
         if (button_id == i) {
@@ -267,15 +269,15 @@ function createNBTFromBottle(item, event) {
 
     // Process the lore to get the bottle age and bottling date
     for (var i = 0; i < lore.length; i++) {
-        if (lore[i].includes("Bottle Age")) {
+        if (lore[i].contains("Bottle Age")) {
             var age = lore[i].split(": ");
             nbt.setInteger("Age", age[1]);
         }
-        if (lore[i].includes("Bottling Date")) {
+        if (lore[i].contains("Bottling Date")) {
             var bottling_date = lore[i].split(": ");
             nbt.setString("BottlingDate", bottling_date[1]);
         }
-        if (lore[i].includes("Age (in ticks)")) {
+        if (lore[i].contains("Age (in ticks)")) {
             var age_ticks = lore[i].split(": ");
             nbt.setInteger("Age", age_ticks[1]);
         }
