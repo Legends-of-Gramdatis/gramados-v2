@@ -80,7 +80,7 @@ function interact(event) {
         }
 
         // Create then open the GUI
-        GUI = event.API.createCustomGui(1, GRID * 12, GRID * 15, false);
+        GUI = event.API.createCustomGui(1, GRID * 12, GRID * 16, false);
         create_GUI(event, GRID, stored_bottles);
         event.player.showCustomGui(GUI);
 
