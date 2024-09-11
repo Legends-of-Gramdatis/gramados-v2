@@ -81,7 +81,7 @@ function interact(event) {
 
         // Create then open the GUI
         GUI = event.API.createCustomGui(1, GRID * 12, GRID * 15, false);
-        create_GUI(event, GRID, bottle_indexes, stored_bottles);
+        create_GUI(event, GRID, stored_bottles);
         event.player.showCustomGui(GUI);
 
     } else {
@@ -152,7 +152,7 @@ function interact(event) {
     return true;
 }
 
-function create_GUI(event, GRID, bottle_indexes, stored_bottles) {
+function create_GUI(event, GRID, stored_bottles) {
 
     GUI.setBackgroundTexture(TEXTURE_PATH_BACKGROUND);
 
@@ -184,9 +184,9 @@ function create_GUI(event, GRID, bottle_indexes, stored_bottles) {
     for (var i = 0; i < 32; i++) {
         var x = bottle_button_textures[i][0];
         var y = bottle_button_textures[i][1];
-        if (stored_bottles[bottle_indexes[i]] != null) {
+        if (stored_bottles[i] != null) {
             // Get some of the bottle NBT data to display on the button
-            var bottle_nbt = JSON.parse(stored_bottles[bottle_indexes[i]]);
+            var bottle_nbt = JSON.parse(stored_bottles[i]);
             var age = bottle_nbt.Age;
             var bottling_date = bottle_nbt.BottlingDate;
 
@@ -210,26 +210,18 @@ function customGuiButton(event) {
 
     //event.player.message("Stored Bottles: " + stored_bottles);
 
-    // Get the bottle indexes
-    var bottle_indexes = [];
     for (var i = 0; i < 32; i++) {
-        if (stored_bottles[i] != null) {
-            bottle_indexes.push(i);
-        }
-    }
+        if (button_id == i && stored_bottles[i] != null) {
+            //event.player.message("Button ID: " + button_id + " Stored Bottle: " + stored_bottles[i]);
 
-    //event.player.message("Bottle Indexes: " + bottle_indexes);
-
-    for (var i = 0; i < 32; i++) {
-        if (button_id == i) {
-            //event.player.message("Button ID: " + button_id + " Bottle Index: " + bottle_indexes[i] + " Stored Bottle: " + stored_bottles[bottle_indexes[i]]);
-            
             // Get the bottle NBT
-            var bottle_nbt = JSON.parse(stored_bottles[bottle_indexes[i]]);
+            var bottle_nbt = JSON.parse(stored_bottles[i]);
+            
+            
             // Create the bottle item
             var item = createBottleFromNBT(event, bottle_nbt);
             // Remove the bottle from the stored data
-            stored_bottles[bottle_indexes[i]] = null;
+            stored_bottles[i] = null;
             // Remve the GUI button
             event.gui.removeComponent(button_id);
             // Add the item to the player's inventory
@@ -237,12 +229,20 @@ function customGuiButton(event) {
             // Update the GUI to remove the bottle's button
             event.gui.update(event.player);
 
-            // remove the bottle from the stored data
-            /*stored_data = JSON.parse(stored_data);
-            stored_data[bottle_indexes[i]] = null;*/
-            block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
+        } else if (stored_bottles[i] == null) {
+            // Security in case the player manages to click multiple bottles at the same time
+
+            event.gui.removeComponent(i);
+            event.gui.update(event.player);
+
         }
+
     }
+
+    
+
+    // remove the bottle from the stored data
+    block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
 }
 
 //function to generate the item from the nbt
