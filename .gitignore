@@ -58,3 +58,4 @@ autostart.stamp
 !world/customnpcs/scripts/truck_destinations.json
 !world/customnpcs/scripts/players_phone.json
 !world/customnpcs/scripts/trucker_job_data.json
+world/customnpcs/scripts/ecmascript/*/test*.js
