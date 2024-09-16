@@ -1,1 +1,148 @@
-{"TheOddlySeagull":{"uuid":"d0603f61-f4f7-4006-b731-cceab2a2b6a5","apps":[{"name":"Trucker App","data":{"type":"Truck Delivery","cargo":"scrap metal","quantity":81,"producer":{"name":"Springfiel Junkyard","id":"3","x":"117","y":"86","z":"-1070","description":"The Greenfield Island small local junkyard","region":"Greenfield","category":"Material","types":["scrap metal"],"trade_type":"Producer","quantity_factor":"10"},"consumer":{"name":"Nowhere Junkyard","id":"14","x":"-6386","y":"71","z":"307","description":"The only place where a weirdo simply stacks wreaks and scrap metal.","region":"Farmiston","category":"Material","types":["steel","iron","scrap metal"],"trade_type":"Consumer","quantity_factor":"144"}}}]},"cowboycosmic":{"uuid":"f01a9026-7e6b-46a4-99ff-d16d5a847ba8","apps":[{"name":"0","data":{}},{"name":"Trucker App","data":{"type":"Truck Delivery","cargo":"sand","quantity":216,"producer":{"name":"Gramados Sand and Gravel Quarry","id":"1","x":"-875","y":"72","z":"199","description":"The biggest producer of Gravel, Sand, and Clay of Gramados!","region":"Gramados","category":"Material","types":["gravel","sand","clay"],"trade_type":"Producer","quantity_factor":"95"},"consumer":{"name":"Blacksby Concrete Factory Import","id":"10","x":"-2070","y":"73","z":"147","description":"The famous Blacksby Concrete Factory, from Gramados City.","region":"Gramados","category":"Material","types":["gravel","sand"],"trade_type":"Consumer","quantity_factor":"30"}}}]},"SinaBloodsaw":{"uuid":"e1aa77ce-559b-4c38-8462-5ece25dbf0fe","apps":[{"name":"Trucker App","data":{}}]},"BOTFerris":{"uuid":"e6f54888-a9dc-4514-af06-f72d1cc035b1","apps":[{"name":"Trucker App","data":{"type":"Truck Delivery","cargo":"saplings","quantity":171,"producer":{"name":"Greenfield Seeds & Spalings Nursery Wholesale","id":"4","x":"600","y":"87","z":"-1626","description":"A seed and sapling nursery where greenfield farmers can buy seeds and saplings for their farm","region":"Greenfield","category":"Organic","types":["seeds","saplings"],"trade_type":"Producer","quantity_factor":"30"},"consumer":{"name":"Springfield Lumber Jack Office","id":"5","x":"311","y":"76","z":"-934","description":"The Springfield lumberjacks gets their saplings and equipment from here","region":"Greenfield","category":"Organic","types":["saplings"],"trade_type":"Consumer","quantity_factor":"20"}}}]}}
+{
+    "TheOddlySeagull": {
+        "uuid": "d0603f61-f4f7-4006-b731-cceab2a2b6a5",
+        "apps": [
+            {
+                "name": "Trucker App",
+                "data": {
+                    "type": "Truck Delivery",
+                    "cargo": "twingo juice",
+                    "quantity": 36,
+                    "producer": {
+                        "name": "Twingo Juice Factory Export",
+                        "id": "8",
+                        "x": "-2436",
+                        "y": "108",
+                        "z": "274",
+                        "description": "The allmighty Twingo Juice Factory, the only place whete the Twingo Juice is made in the world.",
+                        "region": "Gramados",
+                        "category": "Food",
+                        "types": [
+                            "twingo juice"
+                        ],
+                        "trade_type": "Producer",
+                        "quantity_factor": "95"
+                    },
+                    "consumer": {
+                        "name": "Seagull's House",
+                        "id": "6",
+                        "x": "-1350",
+                        "y": "73",
+                        "z": "222",
+                        "description": "Oh no! Seagull is out of Twingo Juice! He needs a truckload of it as soon as possible!",
+                        "region": "Gramados",
+                        "category": "Food",
+                        "types": [
+                            "twingo juice"
+                        ],
+                        "trade_type": "Consumer",
+                        "quantity_factor": "5"
+                    }
+                }
+            }
+        ]
+    },
+    "cowboycosmic": {
+        "uuid": "f01a9026-7e6b-46a4-99ff-d16d5a847ba8",
+        "apps": [
+            {
+                "name": "0",
+                "data": {}
+            },
+            {
+                "name": "Trucker App",
+                "data": {
+                    "type": "Truck Delivery",
+                    "cargo": "sand",
+                    "quantity": 216,
+                    "producer": {
+                        "name": "Gramados Sand and Gravel Quarry",
+                        "id": "1",
+                        "x": "-875",
+                        "y": "72",
+                        "z": "199",
+                        "description": "The biggest producer of Gravel, Sand, and Clay of Gramados!",
+                        "region": "Gramados",
+                        "category": "Material",
+                        "types": [
+                            "gravel",
+                            "sand",
+                            "clay"
+                        ],
+                        "trade_type": "Producer",
+                        "quantity_factor": "95"
+                    },
+                    "consumer": {
+                        "name": "Blacksby Concrete Factory Import",
+                        "id": "10",
+                        "x": "-2070",
+                        "y": "73",
+                        "z": "147",
+                        "description": "The famous Blacksby Concrete Factory, from Gramados City.",
+                        "region": "Gramados",
+                        "category": "Material",
+                        "types": [
+                            "gravel",
+                            "sand"
+                        ],
+                        "trade_type": "Consumer",
+                        "quantity_factor": "30"
+                    }
+                }
+            }
+        ]
+    },
+    "SinaBloodsaw": {
+        "uuid": "e1aa77ce-559b-4c38-8462-5ece25dbf0fe",
+        "apps": [
+            {
+                "name": "Trucker App",
+                "data": {}
+            }
+        ]
+    },
+    "BOTFerris": {
+        "uuid": "e6f54888-a9dc-4514-af06-f72d1cc035b1",
+        "apps": [
+            {
+                "name": "Trucker App",
+                "data": {
+                    "type": "Truck Delivery",
+                    "cargo": "saplings",
+                    "quantity": 171,
+                    "producer": {
+                        "name": "Greenfield Seeds & Spalings Nursery Wholesale",
+                        "id": "4",
+                        "x": "600",
+                        "y": "87",
+                        "z": "-1626",
+                        "description": "A seed and sapling nursery where greenfield farmers can buy seeds and saplings for their farm",
+                        "region": "Greenfield",
+                        "category": "Organic",
+                        "types": [
+                            "seeds",
+                            "saplings"
+                        ],
+                        "trade_type": "Producer",
+                        "quantity_factor": "30"
+                    },
+                    "consumer": {
+                        "name": "Springfield Lumber Jack Office",
+                        "id": "5",
+                        "x": "311",
+                        "y": "76",
+                        "z": "-934",
+                        "description": "The Springfield lumberjacks gets their saplings and equipment from here",
+                        "region": "Greenfield",
+                        "category": "Organic",
+                        "types": [
+                            "saplings"
+                        ],
+                        "trade_type": "Consumer",
+                        "quantity_factor": "20"
+                    }
+                }
+            }
+        ]
+    }
+}
