@@ -17,6 +17,7 @@ var GUI, GRID = 16, BOTTLE_GRID = 26;
 var TEXTURE_PATH_BUTTONS = "minecraft:textures/gui/wine_aging_shelf_gui_buttons.png";
 var TEXTURE_PATH_BACKGROUND = "minecraft:textures/gui/wine_aging_shelf_gui.png";
 var block;
+var DOMAIN_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
 
 
@@ -34,6 +35,19 @@ function init(event) {
 }
 
 function interact(event) {
+
+    // If shelf has an domain
+    if (event.block.storeddata.get("domain") == null) {
+        //event.player.message("This shelf doesn't have a domain linked to it. Please contact an admin to link a domain to it.");
+        
+        // Get the player name
+        var player_name = event.player.getName();
+
+        // Setup the domain name
+        setupDomain(event, player_name);
+    } /*else {
+        event.player.message("This shelf is linked to the domain: " + event.block.storeddata.get("domain"));
+    }*/
 
     var stored_bottles = JSON.parse(block.storeddata.get("stored_bottles"));
 
@@ -194,7 +208,7 @@ function create_GUI(event, GRID, stored_bottles) {
             var button = GUI.addTexturedButton(i, "", x, y, BOTTLE_GRID, BOTTLE_GRID, TEXTURE_PATH_BUTTONS, 0, 0);
 
             // Set the button hover text
-            button.setHoverText(["Bottle Age: " + ticksToMCTime(age), "Bottling Date: " + bottling_date, "Age (in ticks): " + age]);
+            button.setHoverText(["Bottle Age: " + ticksToMCTime(age), "Bottling Date: " + bottling_date, "Age (in ticks): " + age, "Domain: " + block.storeddata.get("domain"), "Click to drop the bottle."]);
         }
     }
 }
@@ -225,9 +239,16 @@ function customGuiButton(event) {
             // Remve the GUI button
             event.gui.removeComponent(button_id);
             // Add the item to the player's inventory
-            event.player.giveItem(item);
+            event.player.dropItem(item);
+            /*if (event.player.giveItem(item)) {
+                event.player.message("You took the bottle from the shelf.");
+            } else {
+                event.player.dropItem(item);
+                event.player.message("You don't have enough space in your inventory to take the bottle from the shelf. It was dropped on the ground.");
+            }*/
             // Update the GUI to remove the bottle's button
             event.gui.update(event.player);
+            event.player.updatePlayerInventory();
 
         } else if (stored_bottles[i] == null) {
             // Security in case the player manages to click multiple bottles at the same time
@@ -251,7 +272,7 @@ function createBottleFromNBT(event, nbt) {
     var item = event.player.getWorld().createItem(nbt.id, nbt.Damage, 1);
     item.setStackSize(1);
     //event.player.message("Item: " + item.getDisplayName() + " NBT: " + item.getItemNbt().toJsonString());
-    item.setLore(["Bottle Age: " + ticksToMCTime(nbt.Age), "Bottling Date: " + nbt.BottlingDate, "Age (in ticks): " + nbt.Age]);
+    item.setLore(["Bottle Age: " + ticksToMCTime(nbt.Age), "Bottling Date: " + nbt.BottlingDate, "Age (in ticks): " + nbt.Age, 'Domain: ' + block.storeddata.get("domain")]);
     //event.player.message("Item: " + item.getDisplayName() + " NBT: " + item.getItemNbt().toJsonString());
 
     return item;
@@ -280,6 +301,10 @@ function createNBTFromBottle(item, event) {
         if (lore[i].contains("Age (in ticks)")) {
             var age_ticks = lore[i].split(": ");
             nbt.setInteger("Age", age_ticks[1]);
+        }
+        if (lore[i].contains("Domain")) {
+            var domain = lore[i].split(": ");
+            nbt.setString("Domain", domain[1]);
         }
     }
 
@@ -353,4 +378,64 @@ function cleanup(event, stored_bottles) {
     }
     
     return stored_bottles;
+}
+
+// Function to setup a domain name linked to the shelf
+function setupDomain(event, player_name) {
+    //event.player.message("Setting up domain for player: " + player_name);
+    // Get the stored data
+    var allenis_data = load_data(event, DOMAIN_FILE_PATH);
+
+    //event.player.message("Allenis data: " + JSON.stringify(allenis_data));
+
+    if (allenis_data == null) {
+        event.player.message("ERROR: Domain Data is inexistant!");
+        event.block.storeddata.put("domain", "No Domain");
+        return;
+    } else {
+        // for all domains in the data, look for the one owned by the player
+        var player_domain = "No Domain";
+        for (var domain in allenis_data.domains) {
+            if (allenis_data.domains[domain].owner == player_name) {
+                //event.player.message("Player Domain: " + allenis_data.domains[domain].display_name);
+                player_domain = allenis_data.domains[domain].display_name;
+            }
+        }
+
+        event.player.message("The domain linked to this shelf is: " + player_domain);
+        // store the domain name in the shelf
+        event.block.storeddata.put("domain", player_domain);
+    }
+}
+
+// function to load allenis data
+function load_data(event, data_file_path) {
+    // Check if the file exists, and create it if it doesn't
+    if (!check_file_exists(data_file_path)) {
+        event.player.message("ERROR: Domain Data is inexistant!");
+        return null;
+    } else {
+        var ips = new java.io.FileInputStream(data_file_path);
+        var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
+        var readFile = fileReader.read();
+        var data;
+        var start = "";
+        while (readFile != -1) {
+            data = String.fromCharCode(readFile);
+            start = start + data;
+            readFile = fileReader.read();
+        }
+
+        var json_data = JSON.parse(start);
+
+        //npc.say("Loaded data: " + JSON.stringify(json_data));
+
+        return json_data;
+    }
+}
+
+// function to check if a file exists
+function check_file_exists(file_path) {
+    var file = new java.io.File(file_path);
+    return file.exists();
 }
