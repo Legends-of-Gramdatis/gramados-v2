@@ -7,9 +7,9 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks, Marcus. I’ll do my best.",
+                "Title": "I’m ready. What’s the plan?",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 289,
+    "DialogId": 300,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p4.7 - The tournament.",
+    "DialogTitle": "p3.1 - the final exam, chapter 5",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I have no doubt. This tournament will be the final step before we begin your formal evaluation for the Marksmanship License. Remember, a high score will set you apart from the rest. Now go. The competition awaits.",
+    "DialogText": "Ah, you're here. Ready for your final challenge? This will be the culmination of everything you've learned so far.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727198517694L,
+        "TimePast": 1727199705644L,
         "Time": 0L,
         "Subject": ""
     }
