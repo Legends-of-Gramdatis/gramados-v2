@@ -198,6 +198,7 @@
     "CombatRegen": 0,
     "NpcsTimers": [
     ],
+    "MarkovGender": 0,
     "pEffect": 0,
     "DistanceToMelee": 0,
     "NpcStepSound": "",
@@ -234,7 +235,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 6327,
+    "HurtByTimestamp": 1180,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -294,6 +295,8 @@
     "DirectLOS": 1b,
     "HealthRegen": 1,
     "ForgeCaps": {
+        "fvtm:passenger": {
+        }
     },
     "HandDropChances": [
         0.085f,
@@ -422,6 +425,7 @@
             "CombatRegen": 0,
             "pEffect": 0,
             "DistanceToMelee": 0,
+            "MarkovGender": 0,
             "NpcStepSound": "",
             "FireRate": 5,
             "pEffAmp": 0,
@@ -504,6 +508,7 @@
             "MaxFiringRange": 15,
             "pXlr8": 0b,
             "GlowTexture": "",
+            "MarkovGeneratorId": 7,
             "NpcDeathSound": "minecraft:entity.player.hurt",
             "MovingPause": 1b,
             "pStick": 0b,
@@ -533,7 +538,7 @@
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "https://cdn.discordapp.com/attachments/572201695682101248/653630488350687232/mail_bro_1.png",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/gramados_steve_mailworker.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 20,
@@ -628,6 +633,7 @@
     "GlowTexture": "",
     "MaxFiringRange": 15,
     "pXlr8": 0b,
+    "MarkovGeneratorId": 0,
     "Scripts": [
     ],
     "Health": 20.0f,
@@ -636,7 +642,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 12,
     "Title": "",
-    "TotalTicksAlive": 11039353L,
+    "TotalTicksAlive": 11040916L,
     "Rotation": [
         87.38574f,
         0.0f

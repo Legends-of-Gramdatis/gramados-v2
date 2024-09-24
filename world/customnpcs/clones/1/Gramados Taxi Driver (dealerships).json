@@ -77,7 +77,7 @@
     },
     "PotionImmune": 0b,
     "AvoidsSun": 0b,
-    "Texture": "http://legends-of-gramdatis.com/gramados_skins/gramados_taxi.png",
+    "Texture": "https://legends-of-gramdatis.com/gramados_skins/gramados_taxi.png",
     "NpcJob": 0,
     "BurstCount": 1,
     "NpcAttackLines": {
@@ -272,7 +272,7 @@
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "http://legends-of-gramdatis.com/gramados_skins/Gramados_Taxi.png",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_Taxi.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 20,

@@ -268,7 +268,7 @@
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "http://legends-of-gramdatis.com/gramados_skins/Gramados_SPO_Dog.png",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_SPO_Dog.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 16,
