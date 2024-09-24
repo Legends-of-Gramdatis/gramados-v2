@@ -404,51 +404,6 @@ sets:
         lines: {
             }
         layerprio: 0
-    Post Offices:
-        hide: false
-        minzoom: 2
-        circles: {
-            }
-        deficon: default
-        areas: {
-            }
-        label: Post Offices
-        markers:
-            marker_1:
-                world: world
-                markup: false
-                x: -2063.0
-                icon: civil_services_post_office
-                y: 74.0
-                z: 190.0
-                label: Gramados Post Office
-            marker_2:
-                world: world
-                markup: false
-                x: 106.0
-                icon: civil_services_post_office
-                y: 75.0
-                z: -951.0
-                label: Springfield Post Office
-            marker_3:
-                world: world
-                markup: false
-                x: -4560.0
-                icon: civil_services_post_office
-                y: 75.0
-                z: -408.0
-                label: Chaseals Post Office
-            marker_4:
-                world: world
-                markup: false
-                x: -1282.0
-                icon: civil_services_post_office
-                y: 94.0
-                z: -1421.0
-                label: Allen Point Post Office
-        lines: {
-            }
-        layerprio: 0
     Junk Yards:
         hide: false
         minzoom: 4
@@ -632,6 +587,22 @@ sets:
                 y: 76.0
                 z: -2053.0
                 label: Feldpard Trucker Hotel Restaurant
+            marker_18:
+                world: world
+                markup: false
+                icon: food&drink_food
+                x: -2450.0
+                y: 96.0
+                z: 609.0
+                label: Gramatruck Hotel Restaurant
+            marker_19:
+                world: world
+                markup: false
+                icon: food&drink_food
+                x: -2523.0
+                y: 97.0
+                z: 608.0
+                label: Whole Life Go - Food Market Cafe
         lines: {
             }
         layerprio: 0
@@ -738,6 +709,14 @@ sets:
                 y: 76.0
                 z: -2063
                 label: Feldpard Trucker Hotel
+            marker_9:
+                world: world
+                markup: false
+                icon: misc_hotel
+                x: -2464.0
+                y: 96.0
+                z: 599.0
+                label: Gramatruck Truck Stop Hotel
         lines: {
             }
         layerprio: 0
@@ -864,7 +843,7 @@ sets:
                 world: world
                 markup: false
                 x: -1802.0
-                icon: shopping_carparts
+                icon: transport_misc
                 y: 75.0
                 z: 301.0
                 label: Bob The Suitcase
@@ -872,7 +851,7 @@ sets:
                 world: world
                 markup: false
                 x: -925.0
-                icon: shopping_carparts
+                icon: transport_misc
                 y: 74.0
                 z: 236.0
                 label: Rem&#39;s Seat Stitching Craftsman
@@ -888,10 +867,35 @@ sets:
                 world: world
                 markup: false
                 x: -1840.0
-                icon: ent&lei_arts
+                icon: shopping_carparts
                 y: 74.0
                 z: -9.0
                 label: Cary's Colourific Paint Store
+            marker_6:
+                world: world
+                markup: false
+                icon: shopping_carparts
+                x: -923.0
+                y: 76.0
+                z: 268.0
+                label: Motorcycle Billy Parts & Maintenance
+            marker_7:
+                world: world
+                markup: false
+                icon: shopping_carparts
+                x: -906.0
+                y: 76.0
+                z: 260.0
+                label: The Licensing Shop - lights, license, and security
+            marker_8:
+                world: world
+                markup: false
+                icon: transport_misc
+                x: -876.0
+                y: 65.0
+                z: 260.0
+                label: Springfield Port Boat Parts
+
         lines: {
             }
         layerprio: 0
@@ -1004,7 +1008,7 @@ sets:
         deficon: default
         areas: {
             }
-        label: Beerhouses
+        label: Bars
         markers:
             marker_1:
                 world: world
@@ -1022,6 +1026,15 @@ sets:
                 y: 76.0
                 z: -1017.0
                 label: The Drunken Cow Pub
+            marker_3:
+                world: world
+                markup: false
+                icon: food&drink_bar
+                x: -2473.0
+                y: 114.0
+                z: 600.0
+                label: Gramatruck Hotel Cocktail Bar
+            
         lines: {
             }
         layerprio: 0
@@ -1461,11 +1474,19 @@ sets:
             marker_16:
                 world: world
                 markup: false
-                x: -4225.0
                 icon: services_station_petrol
+                x: -4192.0
                 y: 76.0
-                z: -2046.0
+                z: -2019.0
                 label: Feldpard Truck Stop Fuel Service
+            marker_17:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -4219.0
+                y: 76.0
+                z: -2037.0
+                label: Feldpard Electric Charging Station
         lines: {
             }
         layerprio: 0
@@ -1636,6 +1657,46 @@ sets:
                 y: 74.0
                 z: 197.0
                 label: Gramados Airport Fire Station
+            marker_15:
+                world: world
+                markup: false
+                x: -2063.0
+                icon: civil_services_post_office
+                y: 74.0
+                z: 190.0
+                label: Gramados Post Office
+            marker_16:
+                world: world
+                markup: false
+                x: 106.0
+                icon: civil_services_post_office
+                y: 75.0
+                z: -951.0
+                label: Springfield Post Office
+            marker_17:
+                world: world
+                markup: false
+                x: -4560.0
+                icon: civil_services_post_office
+                y: 75.0
+                z: -408.0
+                label: Chaseals Post Office
+            marker_18:
+                world: world
+                markup: false
+                x: -1282.0
+                icon: civil_services_post_office
+                y: 94.0
+                z: -1421.0
+                label: Allen Point Post Office
+            marker_19:
+                world: world
+                markup: false
+                x: -5120.0
+                icon: civil_services_post_office
+                y: 67.0
+                z: 268.0
+                label: Ardocor Post Office
         lines: {
             }
         layerprio: 0
@@ -1787,6 +1848,14 @@ sets:
                 y: 79.0
                 z: -347
                 label: Farmiston Truck Stop
+            marker_3:
+                world: world
+                markup: false
+                icon: services_truck_stop
+                x: -2496.0
+                y: 96.0
+                z: 527.0
+                label: Gramatruck - Gramados Truck Stop
         lines: {}
         layerprio: 0
     Parks And Gardens:
@@ -2043,6 +2112,22 @@ sets:
                 y: 75.0
                 z: 207.0
                 label: Troyen Underbridge Parking
+            marker_15:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2931.0
+                y: 95.0
+                z: 862.0
+                label: Petrolton Service Facilities Parking
+            marker_16:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2786.0
+                y: 95.0
+                z: 984.0
+                label: Petrolton Parking Building
         lines: {}
         layerprio: 0
     Historical Sites:
@@ -2135,6 +2220,14 @@ sets:
                 y: 98.0
                 z: -831.0
                 label: Gramados Marina Lighthouse
+            marker_11:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -2945.0
+                y: 118.0
+                z: -2991.0
+                label: Lucucon Feldspar Quarry And Porcelain Factory
         lines: {}
         layerprio: 0
     Bridges:
