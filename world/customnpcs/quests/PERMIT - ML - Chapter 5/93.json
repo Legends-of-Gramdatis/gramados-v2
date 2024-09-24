@@ -2,7 +2,7 @@
     "CompleterNpc": "Darius Blackwood",
     "NextQuestId": -1,
     "RandomReward": 0b,
-    "QuestRepeat": 1,
+    "QuestRepeat": 0,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
     "Title": "Ammo Refill",
@@ -27,23 +27,13 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727199535597L,
+        "TimePast": 1727199543944L,
         "Time": 0L,
         "Subject": ""
     },
     "IgnoreDamage": 0b,
     "Rewards": {
         "NpcMiscInv": [
-            {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:m14ammo",
-                "Count": 1b,
-                "Damage": 0s
-            }
         ]
     },
     "Items": {

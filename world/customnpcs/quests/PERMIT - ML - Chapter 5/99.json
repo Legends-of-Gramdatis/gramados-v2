@@ -1,11 +1,11 @@
 {
     "CompleterNpc": "Darius Blackwood",
-    "NextQuestId": 70,
+    "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 3: Precision Practice",
-    "Text": "I need to head to the Highland Shooting Range at the Marksman’s Lodge and demonstrate my precision by shooting 16 targets. I must aim carefully and take your time with each shot.",
+    "Title": "Step 6: Present the Results",
+    "Text": "It’s time to return to Marcus Eldridge with the letter from Darius Blackwood, to finalize my Marksmanship License process.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -17,13 +17,9 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "QuestDialogs": [
-        {
-            "Value": 16,
-            "Slot": "Highland Shooting Range Target"
-        }
     ],
     "ModRev": 18,
-    "Type": 2,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -32,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727199025344L,
+        "TimePast": 1727199476261L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +36,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I successfully hit 16 targets at the Highland Shooting Range. My accuracy is improving. I must return to Darius Blackwood to discuss my progress and next steps.",
-    "NextQuestTitle": "Step 4: Review of Precision Practice"
+    "CompleteText": "I’ve returned the letter to Marcus Eldridge. My final test is complete, and now I await the results.",
+    "NextQuestTitle": ""
 }

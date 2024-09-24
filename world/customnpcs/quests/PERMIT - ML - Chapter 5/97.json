@@ -1,11 +1,11 @@
 {
     "CompleterNpc": "Darius Blackwood",
-    "NextQuestId": 70,
+    "NextQuestId": 98,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 3: Precision Practice",
-    "Text": "I need to head to the Highland Shooting Range at the Marksman’s Lodge and demonstrate my precision by shooting 16 targets. I must aim carefully and take your time with each shot.",
+    "Title": "Step 4: Moving Target Challenge",
+    "Text": "Now comes the hardest part: hitting moving targets. I need to strike 7 targets to pass this test.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,8 +18,8 @@
     "QuestCommand": "",
     "QuestDialogs": [
         {
-            "Value": 16,
-            "Slot": "Highland Shooting Range Target"
+            "Value": 7,
+            "Slot": "Range Tower Mobile Target"
         }
     ],
     "ModRev": 18,
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727199025344L,
+        "TimePast": 1727199504593L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +40,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I successfully hit 16 targets at the Highland Shooting Range. My accuracy is improving. I must return to Darius Blackwood to discuss my progress and next steps.",
-    "NextQuestTitle": "Step 4: Review of Precision Practice"
+    "CompleteText": "I managed to hit enough moving targets to complete this portion of the test. All that’s left is to return to Darius.",
+    "NextQuestTitle": "Step 5: Final Review with Darius"
 }
