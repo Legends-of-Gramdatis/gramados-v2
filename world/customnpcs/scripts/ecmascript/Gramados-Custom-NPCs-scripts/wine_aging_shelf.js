@@ -52,7 +52,7 @@ function interact(event) {
     var stored_bottles = JSON.parse(block.storeddata.get("stored_bottles"));
 
     // Clean up broken NBTS
-    stored_bottles = cleanup(event, stored_bottles);
+    //stored_bottles = cleanup(event, stored_bottles);
 
     // get what the player has in hand:
     var item = event.player.getMainhandItem();
@@ -113,7 +113,7 @@ function interact(event) {
 
         // If any, get the "Age" tag, and make it JSONable
         if (item_nbt.has("Age")) {
-            var age = item_nbt.getInteger("Age");
+            var age = item_nbt.getLong("Age");
             age = age.toString();
             age = parseInt(age);
         } else {
@@ -139,8 +139,8 @@ function interact(event) {
         // add the js style tags to the item
         item_nbt.setInteger("Damage", damage);
         item_nbt.setString("BottlingDate", bottling_date);
-        item_nbt.setInteger("Date", bottle_date);
-        item_nbt.setInteger("Age", age);
+        item_nbt.setLong("Date", bottle_date);
+        item_nbt.setLong("Age", age);
 
         // get the first available slot of the array
         for (var i = 0; i < 32; i++) {

@@ -32,6 +32,52 @@ function init(event) {
 
     allenis_data = load_data(event, DOMAIN_FILE_PATH);
     npc.say("Allenis data: " + JSON.stringify(allenis_data));
+
+    // check if the NPC has coirrect stored data.
+    /*
+    Stored data should look like something like this:
+    npc_data: {
+        "new_crate_wip": {
+            "Domain": "*domain name*",
+            "Owner": "*player name*",
+            "content": {
+                "id": "*item id*",
+                "Damage": *item damage*,
+                "Age": *item age*,
+                "BottlingDate": "*bottling date*"
+            },
+            "count": *number of bottles in the crate (0 to 4)*
+        },
+        ]
+        "stored_cargo_to_export": [
+            {
+                "Domain": "*domain name*",
+                "Owner": "*player name*",
+                "content": {
+                    "id": "*item id*",
+                    "Damage": *item damage*,
+                    "Age": *item age*,
+                    "BottlingDate": "*bottling date*"
+                },
+                "count": *number of bottles in the crate (0 to 4)*
+            },
+            //and more crates. From 0 to 9.
+            {...}
+        ]
+    }
+
+    The WIP crate is added to the stored_cargo_to_export when the player is ready to export the crate, by pressing the "Add Crate" button.
+    Then, all the crates are exported when a player presses the "Export" button.
+    The more domain variety, the more the price will increase.
+    The more bottles sold, the more the price will increase.
+    The older the bottle, the more the price will increase.
+    The more valuable the wine type, the more the price will increase.
+    The more the domain reputation, the more the price will increase.
+    The price is calculated dynamically based on the above variables.
+    */
+
+    // get npc stored data
+    var stored_cargo_to_export = load_cargo();
 }
 
 // NPC interaction
@@ -44,8 +90,6 @@ function interact(event) {
 
     // get what the player has in hand:
     var item = event.player.getMainhandItem();
-    //get how many items the player has in hand
-    var item_count = item.getStackSize();
 
     if (item.getName() != "growthcraft_grapes:grapewine") {
         // Create then open the GUI
@@ -58,8 +102,29 @@ function interact(event) {
         // Copy the item in hand
         var item_clone = item.copy();
 
+        processItemStack(event, item_clone, stored_cargo_to_export);
+
         // Add the custom NBT tags to the item
-        var item_nbt = createNBTFromBottle(item_clone, event);
+        // var item_nbt = createNBTFromBottle(item_clone, event);
+
+        // // Get the domain of the bottle
+        // var domain = item_nbt.getString("Domain");
+        // npc.say("Domain: " + domain);
+
+        // // store the bottle in the stored_cargo_to_export
+        // if (stored_cargo_to_export[domain] == null) {
+        //     stored_cargo_to_export[domain] = [];
+        // }
+
+        // stored_cargo_to_export[domain].push(JSON.parse(item_nbt.toJsonString()));
+        // npc.say("Stored cargo to export: " + JSON.stringify(stored_cargo_to_export));
+
+        // // Save the stored_cargo_to_export
+        // npc.storeddata.put("stored_cargo_to_export", stored_cargo_to_export);
+        // npc.say("Bottle stored in the cargo to export");
+
+        // // Remove the item from the player's inventory
+        // event.player.setMainhandItem(null);
     }
 }
 
@@ -147,15 +212,22 @@ function save_data(data, file_path) {
 }
 
 function load_cargo() {
-    var stored_cargo_to_export = {};
 
-    if (npc.storeddata.get("stored_cargo_to_export") == null) {
-        npc.storeddata.put("stored_cargo_to_export", stored_cargo_to_export);
+    if (npc.storeddata.get("npc_data") == null) {
+        npc.say("npc_data does not exist");
+        var npc_data = {
+            "new_crate_wip": {},
+            "stored_cargo_to_export": []
+        };
+        //convert to string
+        var npc_data_save = JSON.stringify(npc_data);
+        npc.storeddata.put("npc_data", npc_data_save);
     } else {
-        stored_cargo_to_export = npc.storeddata.get("stored_cargo_to_export");
+        npc.say("npc_data exists");
+        npc_data = npc.storeddata.get("npc_data");
     }
 
-    return stored_cargo_to_export;
+    return npc_data;
 }
 
 //function to generate the item from the nbt
@@ -202,4 +274,78 @@ function createNBTFromBottle(item, event) {
 
     // return the NBT
     return nbt;
+}
+
+// Function to process an item stack
+function processItemStack(event, item_clone, npc_data) {
+    
+    // Add the custom NBT tags to the item
+    var item_nbt = createNBTFromBottle(item_clone, event);
+
+    // Get the "Damage" tag, and make it JSONable
+    var damage = item_nbt.getInteger("Damage");
+    damage = damage.toString();
+    damage = parseInt(damage);
+
+    // If any, get the "Age" tag, and make it JSONable
+    if (item_nbt.has("Age")) {
+        var age = item_nbt.getInteger("Age");
+        age = age.toString();
+        age = parseInt(age);
+    } else {
+        var age = 0;
+    }
+
+    // If any, get the "BottingDate" tag, and make it JSONable
+    if (item_nbt.has("BottlingDate")) {
+        var bottling_date = item_nbt.getString("BottlingDate");
+    } else {
+        var bottling_date = getIRLDate();
+    }
+
+    
+    // Get the domain of the bottle
+    var domain = item_nbt.getString("Domain");
+
+    // get the number of bottles in hand
+    var count = item_clone.getStackSize();
+
+    // remove java style "Count" and "Damage" tags
+    item_nbt.remove("Count");
+    item_nbt.remove("Damage");
+
+    // add the js style tags to the item
+    item_nbt.setInteger("Damage", damage);
+    item_nbt.setString("BottlingDate", bottling_date);
+    item_nbt.setInteger("Age", age);
+
+    //make the npc say the item nbt
+    npc.say("Damage: " + item_nbt.getInteger("Damage"));
+    npc.say("Bottling Date: " + item_nbt.getString("BottlingDate"));
+    npc.say("Age: " + item_nbt.getInteger("Age"));
+    npc.say("Domain: " + domain);
+
+    npc.say("npc_data: " + JSON.stringify(npc_data) + " new_crate_wip: " + JSON.stringify(npc_data["new_crate_wip"]));
+
+    // store the bottle in the npc_data as the WIP crate
+    if (npc_data["new_crate_wip"] != {}) {
+        npc.say("WIP crate exists, add the crate to the export list");
+        return npc_data;
+    }
+
+    npc_data["new_crate_wip"]["Domain"] = domain;
+    npc_data["new_crate_wip"]["Owner"] = event.player.getName();
+    npc_data["new_crate_wip"]["content"] = JSON.parse(item_nbt.toJsonString());
+    npc_data["new_crate_wip"]["count"] = count;
+
+    npc.say("npc_data: " + JSON.stringify(npc_data) + " new_crate_wip: " + JSON.stringify(npc_data["new_crate_wip"]));
+
+    // Save the npc_data
+    npc.storeddata.put("npc_data", npc_data);
+    npc.say("Bottle stored in the WIP crate");
+
+    // Remove the item from the player's inventory
+    event.player.setMainhandItem(null);
+
+    return npc_data;
 }
