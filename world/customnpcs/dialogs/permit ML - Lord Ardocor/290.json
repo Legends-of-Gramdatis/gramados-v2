@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 82,
+    "AvailabilityQuestId": 85,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 280,
-                "Title": "I have a White Stag carcass that needs to be preserved. Can you help with that?",
+                "Dialog": 291,
+                "Title": "I'm ready for the challenge. What can you tell me about the tournament?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 279,
+    "DialogId": 290,
     "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - welcome",
+    "DialogTitle": "p1.1 - welcome",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to my workshop! What can I do for you today?",
+    "DialogText": "Ah, you must be the contestant Marcus spoke so highly of. Welcome to Suncrest Estate. You’ve arrived just in time for the tournament. We host this event every year for marksmen like yourself—those looking to prove their skills and earn some recognition. But I assure you, this competition is no easy feat.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 84,
+    "AvailabilityQuest2Id": 87,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186765132L,
+        "TimePast": 1727178540977L,
         "Time": 0L,
         "Subject": ""
     }

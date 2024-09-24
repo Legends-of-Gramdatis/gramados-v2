@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 82,
+    "AvailabilityQuestId": 83,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 280,
-                "Title": "I have a White Stag carcass that needs to be preserved. Can you help with that?",
+                "Dialog": 284,
+                "Title": "Thank you, Marcus. It was a challenge, but I managed. The stag's being prepared by the taxidermist as we speak.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 279,
+    "DialogId": 283,
     "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - welcome",
+    "DialogTitle": "p4.1 - Congrats on bagging the stag!",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to my workshop! What can I do for you today?",
+    "DialogText": "Ah, welcome back! I’ve heard about your successful hunt from Ranger Samuel. Congratulations on bagging the White Stag—quite an impressive feat. Let’s talk about your progress.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 84,
+    "AvailabilityQuest2Id": 85,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186765132L,
+        "TimePast": 1727186872082L,
         "Time": 0L,
         "Subject": ""
     }

@@ -1,15 +1,15 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 82,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 280,
-                "Title": "I have a White Stag carcass that needs to be preserved. Can you help with that?",
+                "Dialog": -1,
+                "Title": "Thank you. I’ll give it my all.",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -17,12 +17,12 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 279,
-    "AvailabilityQuest": 1,
+    "DialogId": 293,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - welcome",
+    "DialogTitle": "p1.4 - good luck!",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to my workshop! What can I do for you today?",
+    "DialogText": "Good. I expect nothing less. Remember, it’s not just about your shooting skill—it’s about focus and control. Keep your composure and make each shot count. When you’re finished, return to me and we’ll see how you fared. May your aim be steady and true.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 84,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186765132L,
+        "TimePast": 1727177904828L,
         "Time": 0L,
         "Subject": ""
     }

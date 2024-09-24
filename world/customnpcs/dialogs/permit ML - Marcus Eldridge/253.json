@@ -18,7 +18,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 66,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Letter reception, chapter 2 start",
+    "DialogTitle": "p2.3 - Letter Reception",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -56,7 +56,7 @@ Remember, this isn't just about pulling a trigger. It’s about precision, contr
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724766234273L,
+        "TimePast": 1727185153931L,
         "Time": 0L,
         "Subject": ""
     }

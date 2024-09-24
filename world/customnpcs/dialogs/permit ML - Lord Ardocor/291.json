@@ -2,12 +2,22 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 292,
+                "Title": "And the rifle I'll be using?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 239,
+    "DialogId": 291,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Placeholder ML",
+    "DialogTitle": "p1.2 - tournament goal",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You're in the midst of something important, I see. Keep at it, and when you're ready to move forward, I'll be here to help you with the next steps.",
+    "DialogText": "Straight to the point, I see. Good. The tournament will consist of several rounds of target shooting, each testing different aspects of marksmanship—precision, speed, and accuracy over varying distances. Each target has a different score depending on difficulty. The more difficult, the more rewarding. Achieve a high score, and you'll gain more than just the respect of your peers.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724523258194L,
+        "TimePast": 1727177889078L,
         "Time": 0L,
         "Subject": ""
     }

@@ -1,13 +1,23 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 82,
+    "AvailabilityQuestId": 89,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 280,
-                "Title": "I have a White Stag carcass that needs to be preserved. Can you help with that?",
+                "Dialog": 298,
+                "Title": "Thank you, Lord Ardocor! I appreciate the opportunity to compete.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 299,
+                "Title": "I’m glad to have performed well, but I hope Eli doesn’t take it too hard.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,12 +27,12 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 279,
-    "AvailabilityQuest": 1,
+    "DialogId": 297,
+    "AvailabilityQuest": 3,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -38,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - welcome",
+    "DialogTitle": "p2.1 - Closure and Congrats.",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +57,12 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to my workshop! What can I do for you today?",
+    "DialogText": "Thank you for returning the firearm in such excellent condition! It's always a pleasure to lend my weapons to a skilled marksman like yourself. Now, let’s discuss your performance in the tournament. I see you managed to secure 3rd place, just narrowly beating Eli Thompson by a single point.
+
+Eli isn’t known for his grace in defeat. I wouldn’t be surprised if he sulks in a corner somewhere, nursing his bruised ego. He tends to take things a bit too personally, but it seems you’ve proven your worth on the field. Your marksmanship skills are truly commendable!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 84,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186765132L,
+        "TimePast": 1727181317899L,
         "Time": 0L,
         "Subject": ""
     }

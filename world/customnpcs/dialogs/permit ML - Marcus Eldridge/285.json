@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 82,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 280,
-                "Title": "I have a White Stag carcass that needs to be preserved. Can you help with that?",
+                "Dialog": 286,
+                "Title": "A tournament? Sounds interesting. What’s the goal?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,12 +17,12 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 279,
-    "AvailabilityQuest": 1,
+    "DialogId": 285,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - welcome",
+    "DialogTitle": "p4.3 - transition",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to my workshop! What can I do for you today?",
+    "DialogText": "Every year, the Ardocor family hosts an exclusive shooting tournament at Suncrest Estate, their ancestral manor. It’s more than just a competition—it’s a tradition steeped in history. The tournament brings together marksmen from all over, and only those who can prove their worth make it to the top. This is your next step.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 84,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186765132L,
+        "TimePast": 1727186894678L,
         "Time": 0L,
         "Subject": ""
     }

@@ -18,7 +18,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 77,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "T2-3 4",
+    "DialogTitle": "p3.5 - Get hunting!",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725111923762L,
+        "TimePast": 1727186079912L,
         "Time": 0L,
         "Subject": ""
     }

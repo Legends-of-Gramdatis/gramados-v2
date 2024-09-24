@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
+                "Dialog": 274,
                 "Title": "Understood. I won’t let it slip away.",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725113454022L,
+        "TimePast": 1727175391074L,
         "Time": 0L,
         "Subject": ""
     }

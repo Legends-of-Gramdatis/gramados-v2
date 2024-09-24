@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 60,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Marksmanship License Presentation",
+    "DialogTitle": "p1.2 - Marksmanship License Presentation",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -68,7 +68,7 @@ Complete that, and we’ll talk about the next steps. Ready to get started?",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724599957883L,
+        "TimePast": 1727184740981L,
         "Time": 0L,
         "Subject": ""
     }
