@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725119999811L,
+        "TimePast": 1727175228974L,
         "Time": 0L,
         "Subject": ""
     },
@@ -44,14 +44,14 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.deadbody_white",
+                "id": "betteranimalsplus:wolf_pelt_snowy",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§5Bring to Taxidermist to porcess"
+                            "§6Bring to Taxidermist to process"
                         ],
-                        "Name": "§3Rare White Stag Carcass"
+                        "Name": "§dRare White Stag Carcass"
                     }
                 },
                 "Damage": 0s

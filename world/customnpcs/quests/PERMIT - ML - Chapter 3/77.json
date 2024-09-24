@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Ranger Samuel",
-    "NextQuestId": -1,
+    "NextQuestId": 78,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725113826543L,
+        "TimePast": 1727175224275L,
         "Time": 0L,
         "Subject": ""
     },
@@ -37,6 +37,6 @@
         ]
     },
     "CompleteText": "I've found the Pinoros Hunting Hut. Ranger Samuel is here, ready to brief me on the task ahead.",
-    "NextQuestTitle": "",
+    "NextQuestTitle": "Step 2: Talking with Ranger Samuel",
     "QuestLocation": "Pinoros Hunting Hut"
 }

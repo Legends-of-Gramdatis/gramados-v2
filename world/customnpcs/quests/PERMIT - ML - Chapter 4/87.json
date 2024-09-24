@@ -1,0 +1,53 @@
+{
+    "CompleterNpc": "Lord Ardocor",
+    "NextQuestId": 88,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 3: Participate in the shooting tournament at Suncrest Estate",
+    "Text": "The tournament at Suncrest Estate is underway. I need to compete and achieve a high score to prove my marksmanship. Every shot counts in this prestigious event.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 4,
+            "Slot": "Suncrest Estate Long Range Target"
+        },
+        {
+            "Value": 8,
+            "Slot": "Suncrest Estate Mobile Target"
+        },
+        {
+            "Value": 16,
+            "Slot": "Suncrest Estate Target"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1727180017776L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve completed the tournament, showcasing my shooting skills under pressure. Time to see how I scored.",
+    "NextQuestTitle": "Step 4: Achieve a high score in the tournament"
+}

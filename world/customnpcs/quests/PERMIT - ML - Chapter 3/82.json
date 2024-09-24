@@ -1,13 +1,13 @@
 {
     "CompleterNpc": "Taxidermist",
-    "NextQuestId": 83,
+    "NextQuestId": 92,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Step 5: Find the Taxidermist",
-    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south side of the island, right after crossing the bridge from Gramados Island.",
+    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Gramados Island.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725119712456L,
+        "TimePast": 1727186700764L,
         "Time": 0L,
         "Subject": ""
     },
@@ -37,6 +37,6 @@
         ]
     },
     "CompleteText": "I've reached the Truck Stop on Feldpard Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
-    "NextQuestTitle": "Step 6: Deliver the Carcass",
+    "NextQuestTitle": "Step 6: Talking with Edwin Kellen",
     "QuestLocation": "Feldpard Truck Stop Taxidermist"
 }

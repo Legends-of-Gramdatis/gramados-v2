@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Ranger Samuel",
-    "NextQuestId": 82,
+    "CompleterNpc": "Lord Ardocor",
+    "NextQuestId": 89,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
     "IgnoreNBT": 1b,
-    "Title": "Step 4: Return to Ranger Samuel",
-    "Text": "I’ve successfully hunted the rare White Stag. Now, I need to return the hunting gun to Ranger Samuel and discuss my success.",
+    "Title": "Step 4: Achieve a high score and returning gun",
+    "Text": "Now that the tournament is over, I need to wait for my score. To stand out and continue toward my Marksmanship License, I must achieve a high score. A top performance will set me apart.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -15,7 +15,7 @@
         "OptionFaction1Points": 100,
         "DecreaseFaction2Points": 0b
     },
-    "RewardExp": 0,
+    "RewardExp": 80,
     "QuestCommand": "",
     "ModRev": 18,
     "Type": 0,
@@ -27,13 +27,36 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727175231575L,
+        "TimePast": 1727180860031L,
         "Time": 0L,
         "Subject": ""
     },
     "IgnoreDamage": 1b,
     "Rewards": {
         "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:letter",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§r锅 §6Victor Stone - 92 points §r锊",
+                            "§r锆 §6Lila Rivers - 89 points",
+                            "§r锇 §2YOU! §6- 85 points",
+                            "§r",
+                            "§fHonorable Mentions:",
+                            "§r锈 §7Eli Thompson - 84 points"
+                        ],
+                        "Name": "§dTournament Score Card"
+                    }
+                },
+                "Damage": 0s
+            }
         ]
     },
     "Items": {
@@ -44,15 +67,13 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:dragunov",
+                "id": "flansmod:m14",
                 "Count": 1b,
                 "tag": {
                     "attachments": {
                         "barrel": {
                         },
                         "grip": {
-                        },
-                        "generic_1": {
                         },
                         "generic_0": {
                         },
@@ -67,7 +88,7 @@
                                 "customnpcs:itemscripteddata": {
                                 }
                             },
-                            "id": "flansmod:dragunovammo",
+                            "id": "flansmod:m14ammo",
                             "Count": 1b,
                             "Damage": 0s
                         }
@@ -78,6 +99,6 @@
         ]
     },
     "LeaveItems": 0b,
-    "CompleteText": "I’ve returned the hunting gun to Ranger Samuel and discussed the hunt. I should now take the White Stag’s carcass to a taxidermist.",
-    "NextQuestTitle": "Step 5: Find the Taxidermist"
+    "CompleteText": "I’ve achieved a high score in the tournament, proving myself worthy among the best marksmen.",
+    "NextQuestTitle": "Step 5: Talk to Lord Ardocor to conclude the tournament"
 }

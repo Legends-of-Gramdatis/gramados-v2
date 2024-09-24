@@ -4,7 +4,7 @@
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 7: Return to Marcus Eldridge",
+    "Title": "Step 8: Return to Marcus Eldridge",
     "Text": "Now that I’ve handed over the White Stag to the taxidermist, it’s time to return to Marcus Eldridge and update him on my progress.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
@@ -17,20 +17,49 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "QuestDialogs": [
+        {
+            "Integer": 289,
+            "Slot": 0
+        }
     ],
     "ModRev": 18,
     "Type": 1,
     "QuestMail": {
-        "Sender": "",
+        "Sender": "Edwin Kellen, Taxidermist",
         "BeenRead": 0b,
         "Message": {
+            "pages": [
+                "I’m pleased to inform you that your White Stag trophy is complete. The mount has been carefully prepared, and the stag’s head is now ready for display.
+",
+                "You’ll find it perfectly suited to hang on a wall, showcasing the rare beauty of this legendary creature.
+
+It has been shipped to your address as per our arrangement. If you have any further requests, feel free to contact me.",
+                "Best regards,
+Edwin Kellen
+Feldpard Island Taxidermist"
+            ]
         },
         "MailItems": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "betteranimalsplus:moosehead_3",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Name": "§dRare White Stag Trophy"
+                    }
+                },
+                "Damage": 0s
+            }
         ],
         "MailQuest": -1,
-        "TimePast": 1725119710190L,
+        "TimePast": 1727186809432L,
         "Time": 0L,
-        "Subject": ""
+        "Subject": "The rare White Stag, a symbol of the hunt’s success, proudly preserved for display."
     },
     "Rewards": {
         "NpcMiscInv": [

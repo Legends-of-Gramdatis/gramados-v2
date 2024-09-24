@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Edwin Kellen",
-    "NextQuestId": 84,
+    "CompleterNpc": "Marcus Eldridge",
+    "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
-    "Title": "Step 7: Deliver the Carcass",
-    "Text": "I need to deliver the White Stag's carcass to the taxidermist at the Truck Stop on Feldpard Island. Once I hand over the carcass, I'll need to wait for the taxidermist to process it.",
+    "Title": "Step 6: Return to Marcus Eldridge to review your progress",
+    "Text": "With the tournament completed and my score secured, it’s time to return to Marcus Eldridge at Gramados Town Hall to review my progress and prepare for the next stage.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727186792932L,
+        "TimePast": 1727181414299L,
         "Time": 0L,
         "Subject": ""
     },
@@ -44,21 +44,26 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "betteranimalsplus:wolf_pelt_snowy",
+                "id": "variedcommodities:letter",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§6Bring to Taxidermist to process"
+                            "§r锅 §6Victor Stone - 92 points §r锊",
+                            "§r锆 §6Lila Rivers - 89 points",
+                            "§r锇 §2YOU! §6- 85 points",
+                            "§r",
+                            "§fHonorable Mentions:",
+                            "§r锈 §7Eli Thompson - 84 points"
                         ],
-                        "Name": "§dRare White Stag Carcass"
+                        "Name": "§dTournament Score Card"
                     }
                 },
                 "Damage": 0s
             }
         ]
     },
-    "LeaveItems": 0b,
-    "CompleteText": "I've delivered the White Stag's carcass to the taxidermist at the Truck Stop. The taxidermist will take care of preserving the stag. Now, it's time to return to Marcus Eldridge and review my progress.",
-    "NextQuestTitle": "Step 8: Return to Marcus Eldridge"
+    "LeaveItems": 1b,
+    "CompleteText": "I’ve returned to Marcus Eldridge, who will now evaluate my performance and plan the next step of my journey toward the Marksmanship License.",
+    "NextQuestTitle": ""
 }

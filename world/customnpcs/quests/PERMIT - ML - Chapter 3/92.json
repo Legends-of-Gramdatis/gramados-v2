@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Marcus Eldridge",
-    "NextQuestId": -1,
+    "CompleterNpc": "Edwin Kellen",
+    "NextQuestId": 83,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 9: Return to Marcus Eldridge",
-    "Text": "I need to go back to Marcus Eldridge at the Gramados Town Hall to review my progress after completing my training at the Marksman’s Lodge.",
+    "Title": "Step 6: Talking with Edwin Kellen",
+    "Text": "Now that I am at the Taxidermist, I must talk to Edwin Kellen, owner of the shop.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -17,10 +17,6 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "QuestDialogs": [
-        {
-            "Integer": 270,
-            "Slot": 0
-        }
     ],
     "ModRev": 18,
     "Type": 1,
@@ -32,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727185945535L,
+        "TimePast": 1727186712134L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +36,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I’ve returned to Marcus Eldridge at the Gramados Town Hall to update him on my training progress. I’m ready to discuss the next steps in obtaining my Marksmanship License.",
-    "NextQuestTitle": ""
+    "CompleteText": "I have talken with Edwin Kellen. I now must give him the carcass, and he will come back to me later, by mail.",
+    "NextQuestTitle": "Step 7: Deliver the Carcass"
 }

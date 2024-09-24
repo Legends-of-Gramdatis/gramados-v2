@@ -1,12 +1,11 @@
 {
-    "CompleterNpc": "Ranger Samuel",
-    "NextQuestId": 82,
+    "CompleterNpc": "Lord Ardocor",
+    "NextQuestId": 87,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
-    "IgnoreNBT": 1b,
-    "Title": "Step 4: Return to Ranger Samuel",
-    "Text": "I’ve successfully hunted the rare White Stag. Now, I need to return the hunting gun to Ranger Samuel and discuss my success.",
+    "QuestCompletion": 1,
+    "Title": "Step 2: Talk to Lord Ardocor to receive your tournament instructions and gun",
+    "Text": "Upon arriving at Suncrest Estate, I need to meet Lord Ardocor, who will give me the details of the tournament. He will also provide the gun I'll be using for the competition.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -17,8 +16,14 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 293,
+            "Slot": 0
+        }
+    ],
     "ModRev": 18,
-    "Type": 0,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -27,16 +32,11 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727175231575L,
+        "TimePast": 1727178656432L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 1b,
     "Rewards": {
-        "NpcMiscInv": [
-        ]
-    },
-    "Items": {
         "NpcMiscInv": [
             {
                 "Slot": 0b,
@@ -44,15 +44,13 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:dragunov",
+                "id": "flansmod:m14",
                 "Count": 1b,
                 "tag": {
                     "attachments": {
                         "barrel": {
                         },
                         "grip": {
-                        },
-                        "generic_1": {
                         },
                         "generic_0": {
                         },
@@ -67,17 +65,26 @@
                                 "customnpcs:itemscripteddata": {
                                 }
                             },
-                            "id": "flansmod:dragunovammo",
+                            "id": "flansmod:m14ammo",
                             "Count": 1b,
                             "Damage": 0s
                         }
                     ]
                 },
                 "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m14ammo",
+                "Count": 1b,
+                "Damage": 0s
             }
         ]
     },
-    "LeaveItems": 0b,
-    "CompleteText": "I’ve returned the hunting gun to Ranger Samuel and discussed the hunt. I should now take the White Stag’s carcass to a taxidermist.",
-    "NextQuestTitle": "Step 5: Find the Taxidermist"
+    "CompleteText": "I’ve spoken to Lord Ardocor and received my instructions and the tournament rifle. Time to prove my skills.",
+    "NextQuestTitle": "Step 3: Participate in the shooting tournament at Suncrest Estate"
 }

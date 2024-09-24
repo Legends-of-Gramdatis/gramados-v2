@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Darius Blackwood",
-    "NextQuestId": 70,
+    "CompleterNpc": "Lord Ardocor",
+    "NextQuestId": 90,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 3: Precision Practice",
-    "Text": "I need to head to the Highland Shooting Range at the Marksman’s Lodge and demonstrate my precision by shooting 16 targets. I must aim carefully and take your time with each shot.",
+    "Title": "Step 5: Talk to Lord Ardocor to conclude the tournament",
+    "Text": "Having completed the tournament, I should speak with Lord Ardocor to officially conclude my participation and return the gun he provided.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,12 +18,12 @@
     "QuestCommand": "",
     "QuestDialogs": [
         {
-            "Value": 16,
-            "Slot": "Highland Shooting Range Target"
+            "Integer": 297,
+            "Slot": 0
         }
     ],
     "ModRev": 18,
-    "Type": 2,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727178743729L,
+        "TimePast": 1727180868532L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +40,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I successfully hit 16 targets at the Highland Shooting Range. My accuracy is improving. I must return to Darius Blackwood to discuss my progress and next steps.",
-    "NextQuestTitle": "Step 4: Review of Precision Practice"
+    "CompleteText": "I’ve returned the tournament rifle to Lord Ardocor and officially concluded my part in the competition.",
+    "NextQuestTitle": "Step 6: Return to Marcus Eldridge to review your progress"
 }

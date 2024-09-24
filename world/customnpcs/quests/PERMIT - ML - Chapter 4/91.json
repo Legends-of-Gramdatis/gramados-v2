@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Ms. Sophia Rodriguez",
-    "NextQuestId": 46,
+    "CompleterNpc": "Lord Ardocor",
+    "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
-    "IgnoreNBT": 1b,
-    "Title": "Providing Aid",
-    "Text": "Ms. Rodriguez is visibly shaken by the incident. I should offer her a med-kit to help alleviate any physical discomfort resulting from the assault.",
+    "IgnoreNBT": 0b,
+    "Title": "Ammo Refill",
+    "Text": "Wait for Lord Ardocor to gather the ammo.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,16 +27,12 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727144345625L,
+        "TimePast": 1727178258330L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 1b,
+    "IgnoreDamage": 0b,
     "Rewards": {
-        "NpcMiscInv": [
-        ]
-    },
-    "Items": {
         "NpcMiscInv": [
             {
                 "Slot": 0b,
@@ -44,13 +40,17 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.medkit",
+                "id": "flansmod:m14ammo",
                 "Count": 1b,
                 "Damage": 0s
             }
         ]
     },
+    "Items": {
+        "NpcMiscInv": [
+        ]
+    },
     "LeaveItems": 0b,
-    "CompleteText": "I've provided Ms. Rodriguez with a med-kit to assist with her recovery. It's imperative to address her immediate needs before proceeding with the investigation.",
-    "NextQuestTitle": "Uncovering Evidence"
+    "CompleteText": "Here you go. Make sure to use these rounds wisely. Let me know if you need anything else.",
+    "NextQuestTitle": ""
 }

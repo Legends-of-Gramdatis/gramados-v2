@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Uncovering Clues",
-    "Text": "I need to gather information about the stolen UNU Mastodon Coupe by visiting \"the fabric\", a renowned establishment nestled atop Golem Street in Citrus Alley. The venue boasts a commanding view of the district and attracts a diverse crowd. To reach \"the fabric\", I should head south from the Gramados Civic Center and follow Golem Street up the hill. Once at the end of the street, the venue will be on my left.",
+    "Text": "I need to gather information about the stolen UNU Mastodon Coupe by visiting \"the fabric\", a renowned establishment nestled atop Golmen Street in Citrus Alley. The venue boasts a commanding view of the district and attracts a diverse crowd. To reach \"the fabric\", I should head south from the Gramados Civic Center and follow Golmen Street up the hill. Once at the end of the street, the venue will be on my left.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1714665274079L,
+        "TimePast": 1727183358375L,
         "Time": 0L,
         "Subject": ""
     },
