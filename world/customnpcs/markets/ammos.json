@@ -182,24 +182,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 10b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:coin_iron",
-                "Count": 6b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e1G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 12b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -392,16 +374,6 @@
                     }
                 },
                 "id": "flansmod:makarovammo",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 10b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:w1200incendiaryammo",
                 "Count": 1b,
                 "Damage": 0s
             },
