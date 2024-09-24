@@ -1000,7 +1000,7 @@ sets:
         lines: {
             }
         layerprio: 0
-    Beerhouses:
+    Bars:
         hide: false
         minzoom: 4
         circles: {
@@ -1498,7 +1498,7 @@ sets:
         deficon: default
         areas: {
             }
-        label: Culture
+        label: Culture and Events
         markers:
             marker_1:
                 world: world
@@ -1527,11 +1527,27 @@ sets:
             marker_4:
                 world: world
                 markup: false
-                x: -1574.0
                 icon: ent&lei_museum
+                x: -1574.0
                 y: 77.0
                 z: 436.0
                 label: Gramados Royal Arsenal Museum
+            marker_5:
+                world: world
+                markup: false
+                icon: ent&lei_music
+                x: -4958.0
+                y: 77.0
+                z: 215.0
+                label:  Suncrest Estate Shooting Festival Scene
+            marker_6:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -4973.0
+                y: 76.0
+                z: 167.0
+                label: Suncrest Estate Shooting Festival
         lines: {
             }
         layerprio: 0
