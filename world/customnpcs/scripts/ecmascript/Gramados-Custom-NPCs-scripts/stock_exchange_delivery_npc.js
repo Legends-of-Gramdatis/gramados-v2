@@ -66,7 +66,7 @@ var crates_ids = [
     "mts:iv_tpp.trin_crate1_metal"
 ];
 
-var NPC_REGION = "Gramados";
+var NPC_REGION = "Allenis";
 var stock_exchange_instance;
 
 var MIN_PRICE = 10; // Minimum price threshold to prevent prices going too low
@@ -139,6 +139,10 @@ function calculateEarnings(delivery) {
             var itemPrice = stock_exchange_instance[item].current_price;
             totalEarnings += itemPrice * quantityDelivered; // Calculate total earnings
         }
+
+        // In case of ageable items, check if the item is part of stock exchanged, stripped of age data
+        var strippedItem = item.split(":")[0] + ":" + item.split(":")[1] + ":" + item.split(":")[2];
+        npc.say(strippedItem);
     }
 
     return totalEarnings; // Return total earnings in cents
@@ -169,14 +173,29 @@ function read_delivery(item, stackSize) {
         var item_id = items[i].getString("id");
         var item_damage = items[i].getShort("Damage");
         var item_count = items[i].getByte("Count");
+        var age_data = {};
 
-        // Format the item as a key
         var key = item_id + ":" + item_damage;
 
         // Check if the item is part of the stock exchange instance
         if (stock_exchange_instance[key]) {
             // Multiply item count by stack size (to account for multiple crates)
             var totalCount = item_count * stackSize;
+
+            npc.say("Item data: " + items[i].toJsonString());
+
+            // If Item has a "type" key
+            if (items[i].getString("type") != "" && items[i].getString("type") != null) {
+                // If "type": "ageable_item"
+                if (items[i].getString("type") == "ageable_item") {
+                    age_data = readAgeableItem(items[i]);
+                }
+            }
+
+            // Format the item as a key
+            if (age_data["Domain"]) {
+                var key = item_id + ":" + item_damage + ":" + age_data["Domain"] + ":" + age_data["Age"];
+            }
 
             // Add the item to the delivery, combining quantities if the same item exists
             if (delivery[key]) {
@@ -456,4 +475,28 @@ function getCoinAmount(str) {
         }
     }
     return amount;
+}
+
+//function to read an "ageable_item"
+function readAgeableItem(item) {
+    var data = {};
+    // Get the lore of the item
+    var lore = item.getLore();
+    // Process the lore to get the bottle age and bottling date
+    for (var i = 0; i < lore.length; i++) {
+        if (lore[i].contains("Bottling Date")) {
+            var bottling_date = lore[i].split(": ");
+            data["Bottling Date"] = bottling_date[1];
+        }
+        if (lore[i].contains("Age (in ticks)")) {
+            var age_ticks = lore[i].split(": ");
+            data["Age"], age_ticks[1];
+        }
+        if (lore[i].contains("Domain")) {
+            var domain = lore[i].split(": ");
+            data["Domain"] = domain[1];
+        }
+    }
+
+    return data;
 }
