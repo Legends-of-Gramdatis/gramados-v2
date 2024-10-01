@@ -71,7 +71,7 @@ var stock_exchange_instance;
 
 var MIN_PRICE = 10; // Minimum price threshold to prevent prices going too low
 var TIME_THRESHOLD = 72000; // 1 hour in ticks (72000 ticks = 60 min in Minecraft)
-var PRICE_INCREASE_FACTOR = 0.1; // 10% price increase if item hasn't been sold in a while
+var PRICE_INCREASE_FACTOR = 0.05; // 5% price increase if item hasn't been sold in a while
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json"; // Path to the JSON file
 
 var npc; // Global variable to store the NPC instance
@@ -87,6 +87,13 @@ function init(event) {
 // When a player interacts with the NPC
 function interact(event) {
     var player = event.player;
+
+    // If player has read the hire dialogue
+    if (!player.hasReadDialog(233)) {
+        npc.say("Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.");
+        return;
+    }
+
     var item = player.getMainhandItem();
     var stackSize = item.getStackSize(); // Get the number of stacked crates
 
@@ -124,29 +131,87 @@ function interact(event) {
     }
 
     // If the player isn't holding a valid crate
-    npc.say("Please hold a valid filled crate to sell items.");
+    npc.say("Hello there! I only accept deliveries in crates. Please hold a crate in your hand.");
 }
 
 // Function to calculate total earnings from delivered items
 function calculateEarnings(delivery) {
     var totalEarnings = 0;
 
-    for (var item in delivery) {
-        var quantityDelivered = delivery[item];
-
-        // Ensure the item exists in the stock exchange
-        if (stock_exchange_instance[item]) {
-            var itemPrice = stock_exchange_instance[item].current_price;
-            totalEarnings += itemPrice * quantityDelivered; // Calculate total earnings
+    // If there are generic items in the delivery
+    if (delivery["generic"]) {
+        for (var item in delivery["generic"]) {
+            totalEarnings += parseInt(calculateGenericEarnings(delivery["generic"][item], item));
         }
-
-        // In case of ageable items, check if the item is part of stock exchanged, stripped of age data
-        var strippedItem = item.split(":")[0] + ":" + item.split(":")[1] + ":" + item.split(":")[2];
-        npc.say(strippedItem);
     }
 
-    return totalEarnings; // Return total earnings in cents
+    // If there are ageable booze items in the delivery
+    if (delivery["ageable_booze"]) {
+        for (var item in delivery["ageable_booze"]) {
+            // npc.say("Current earnings: " + getAmountCoin(totalEarnings));
+            totalEarnings += calculateAgeableBoozeEarnings(delivery["ageable_booze"][item], item);
+
+            // npc.say("Total Earnings so far: " + getAmountCoin(totalEarnings));
+        }
+    }
+
+    // npc.say("Total Earnings: " + getAmountCoin(totalEarnings));
+
+    return totalEarnings;
 }
+
+// Function to calculate generic earnings
+function calculateGenericEarnings(generic_delivery_item, item_key) {
+    var totalEarnings = 0;
+    var quantity = generic_delivery_item["count"];
+    var price = stock_exchange_instance[item_key]["current_price"];
+
+    // npc.say("Generic Item: " + JSON.stringify(generic_delivery_item) + ", Quantity: " + quantity + ", Price: " + price);
+
+    totalEarnings += quantity * price;
+
+    return totalEarnings;
+}
+
+// Function to calculate ageable booze earnings
+function calculateAgeableBoozeEarnings(booze_delivery_item, item_key) {
+
+    // npc.say("Calculating earnings for ageable booze: " + JSON.stringify(booze_delivery_item));
+    var quantity = booze_delivery_item["count"];
+
+    // Get the base value of the item (only keep the first 3 parts of the key, and get the price from the stock exchange)
+    var key = item_key.split(":").slice(0, 3).join(":");
+    // npc.say("Key: " + key);
+    var stackValue = stock_exchange_instance[key]["current_price"];
+
+    // npc.say("Base (generic) Price: " + getAmountCoin(stackValue));
+
+    // 8640000 ticks = 1 minecraft year
+    // price increase by 10g per IRL day
+    stackValue += (booze_delivery_item["extra_data"]["Age"] / 8640000) * 4000;
+
+    stackValue = Math.max(stackValue);
+
+    // npc.say("Price after aging bonus: " + getAmountCoin(stackValue));
+
+    stackValue *= getDomainMultiplier(booze_delivery_item["extra_data"]["Domain"]);
+
+    // npc.say("Price after domain multiplier: " + getAmountCoin(stackValue));
+
+    //Multiply by "stock_bonus" if it exists
+    if (stock_exchange_instance[key]["stock_bonus"]) {
+        stackValue *= stock_exchange_instance[key]["stock_bonus"];
+    }
+
+    stackValue *= quantity;
+
+    stackValue = Math.max(stackValue);
+
+    // npc.say("Ageable Booze Stack Value: " + getAmountCoin(stackValue));
+
+    return stackValue;
+}
+
 
 // Function to generate money items for the player
 function generateMoneyForPlayer(world, totalCents, player) {
@@ -159,7 +224,7 @@ function generateMoneyForPlayer(world, totalCents, player) {
     }
 
     // Inform the player about the money generated
-    npc.say("&aYou received your payment!");
+    npc.say("&aYou received your payment! Total: &r" + getAmountCoin(totalCents));
 }
 
 // Function to read the contents of the crate, accounting for stack size
@@ -174,6 +239,7 @@ function read_delivery(item, stackSize) {
         var item_damage = items[i].getShort("Damage");
         var item_count = items[i].getByte("Count");
         var age_data = {};
+        var type = "generic";
 
         var key = item_id + ":" + item_damage;
 
@@ -182,82 +248,162 @@ function read_delivery(item, stackSize) {
             // Multiply item count by stack size (to account for multiple crates)
             var totalCount = item_count * stackSize;
 
-            npc.say("Item data: " + items[i].toJsonString());
+            //npc.say("Item data: " + items[i].toJsonString());
 
             // If Item has a "type" key
-            if (items[i].getString("type") != "" && items[i].getString("type") != null) {
-                // If "type": "ageable_item"
-                if (items[i].getString("type") == "ageable_item") {
-                    age_data = readAgeableItem(items[i]);
+            if (stock_exchange_instance[key]["type"]) {
+                if (stock_exchange_instance[key]["type"] == "ageable_booze") {
+
+                    // npc.say("Old key: " + key);
+
+                    var item_info = readAgeableBooze(items[i]);
+
+                    // npc.say("New key: " + item_info["key"]);
+
+                    key = item_info["key"];
+                    type = item_info["type"];
+                    age_data = item_info["data"];
                 }
             }
 
-            // Format the item as a key
-            if (age_data["Domain"]) {
-                var key = item_id + ":" + item_damage + ":" + age_data["Domain"] + ":" + age_data["Age"];
-            }
+            // npc.say("I see " + totalCount + " of " + key + " in the crate. It's type is: " + type);
 
-            // Add the item to the delivery, combining quantities if the same item exists
-            if (delivery[key]) {
-                delivery[key] += totalCount;
+            if (type == "ageable_booze") {
+
+                // If delivery has no "ageable_booze" key, create it
+                if (!delivery["ageable_booze"]) {
+                    delivery["ageable_booze"] = {};
+                    // npc.say("Created ageable_booze key");
+                }
+
+                if (!delivery["ageable_booze"][key]) {
+
+                    delivery["ageable_booze"][key] = {
+                        "count": totalCount,
+                        "extra_data": age_data
+                    };
+                } else {
+                    delivery["ageable_booze"][key]["count"] += totalCount;
+                }
             } else {
-                delivery[key] = totalCount;
+                // If delivery has no "generic" key, create it
+                if (!delivery["generic"]) {
+                    delivery["generic"] = {};
+                }
+
+                if (!delivery["generic"][key]) {
+                    delivery["generic"][key] = {
+                        "count": totalCount
+                    };
+                } else {
+                    delivery["generic"][key]["count"] += totalCount;
+                }
             }
         }
     }
+
+    // npc.say("Delivery: " + JSON.stringify(delivery));
 
     return delivery;
 }
 
 // Function to calculate price changes based on supply and time since last sale
 function updateStockPrices(region, delivery, player) {
-    var currentTime = world.getTotalTime(); // Get the current world time in ticks
+    var currentTime = world.getTotalTime();
 
-    // Iterate through the delivered items
-    for (var item in delivery) {
-        var quantityDelivered = delivery[item];
+    // npc.say("Updating stock prices...");
+    // npc.say("Current Time: " + currentTime);
+    // npc.say("Delivery: " + JSON.stringify(delivery));
 
-        // Ensure the item exists in the stock exchange
-        if (!stock_exchange_instance[item]) {
-            npc.say("The item " + item + " is not part of the stock exchange.");
-            continue;
-        }
+    for (var types in delivery) {
 
-        // Update the quantity sold
-        stock_exchange_instance[item].quantity_sold += quantityDelivered;
+        if (types == "generic") {
 
-        // Calculate the new price based on the quantity delivered
-        var decreaseFactor = 0.05; // 5% price reduction per large delivery
-        var newPrice = stock_exchange_instance[item].current_price - (decreaseFactor * quantityDelivered);
+            for (var item in delivery[types]) {
 
-        // Ensure the price doesn't drop below the minimum threshold
-        stock_exchange_instance[item].current_price = Math.max(newPrice, MIN_PRICE);
+                var quantityDelivered = delivery[types][item]["count"];
 
-        // Update the last sold time to the current time
-        stock_exchange_instance[item].last_sold_time = currentTime;
+                // npc.say("Item: " + item + ", Quantity: " + quantityDelivered);
 
-        npc.say("You sold " + quantityDelivered + " of " + stock_exchange_instance[item].display_name + ", earning " + getAmountCoin(stock_exchange_instance[item].current_price * quantityDelivered) + " ! (" + getAmountCoin(stock_exchange_instance[item].current_price) + " each)");
-    }
+                if (!stock_exchange_instance[item]) {
+                    npc.say("The item " + item + " is not part of the stock exchange.");
+                    continue;
+                }
 
-    // Now, adjust prices for items not sold recently
-    for (var item in stock_exchange_instance) {
-        if (!delivery[item]) {
-            var timeSinceLastSale = currentTime - stock_exchange_instance[item].last_sold_time;
+                stock_exchange_instance[item].quantity_sold += quantityDelivered;
 
-            // If the item hasn't been sold in a while, increase its price
-            if (timeSinceLastSale > TIME_THRESHOLD) {
-                var timeMultiplier = Math.floor(timeSinceLastSale / TIME_THRESHOLD);
-                var priceIncrease = PRICE_INCREASE_FACTOR * timeMultiplier * stock_exchange_instance[item].current_price;
-                stock_exchange_instance[item].current_price += priceIncrease;
+                // npc.say("Quantity Sold: " + stock_exchange_instance[item].quantity_sold);
 
-                npc.say(item + " price increased due to rarity. New price: " + stock_exchange_instance[item].current_price);
+                var decreaseFactor = -PRICE_INCREASE_FACTOR;
+
+                for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[item].quantity_factor) {
+                    var newPrice = stock_exchange_instance[item].current_price + (decreaseFactor * stock_exchange_instance[item].quantity_factor);
+
+                    stock_exchange_instance[item].current_price = Math.max(
+                        newPrice,
+                        stock_exchange_instance[item].min_price
+                    );
+                    stock_exchange_instance[item].last_sold_time = currentTime;
+                }
+
             }
-        }
-    }
+        } else if (types == "ageable_booze") {
 
-    // Save the updated stock exchange data back to the JSON file
+            // Load Domain Data
+            var allenis_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
+                
+                for (var item in delivery[types]) {
+    
+                    var quantityDelivered = delivery[types][item]["count"];
+
+                    var generic_id = item.split(":").slice(0, 3).join(":");
+                    var domain = delivery[types][item]["extra_data"]["Domain"];
+
+                    // If the id is not in the Domain variety, add it
+                    for (var it_domain in allenis_data.domains) {
+                        var domain_data = allenis_data.domains[it_domain];
+                        if (domain_data["display_name"] == domain) {
+                            if (domain_data["bottle_variety"].indexOf(generic_id) == -1) {
+                                domain_data["bottle_variety"].push(generic_id);
+                            }
+                        }
+                    }
+
+    
+                    // npc.say("Item: " + item + ", Quantity: " + quantityDelivered);
+
+                    if (!stock_exchange_instance[generic_id]) {
+                        npc.say("The item " + item + " is not part of the stock exchange.");
+                        continue;
+                    }
+
+                    stock_exchange_instance[generic_id].quantity_sold += quantityDelivered;
+
+                    // npc.say("Quantity Sold: " + stock_exchange_instance[generic_id].quantity_sold);
+
+                    var decreaseFactor = -PRICE_INCREASE_FACTOR;
+
+                    for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
+                        var newPrice = stock_exchange_instance[generic_id].current_price + (decreaseFactor * stock_exchange_instance[generic_id].quantity_factor);
+    
+                        stock_exchange_instance[generic_id].current_price = Math.floor(
+                            Math.max(
+                                newPrice,
+                                stock_exchange_instance[generic_id].min_price
+                            )
+                        );
+                        stock_exchange_instance[generic_id].last_sold_time = currentTime;
+                    }
+    
+                }
+
+
+            save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+            }
+    }
     save_data(stock_exchange_instance);
 }
+
 
 // Function to clear only sold items from the crate's contents
 function clear_crate(item, delivery) {
@@ -268,20 +414,38 @@ function clear_crate(item, delivery) {
         var item_damage = inventory[i].getShort("Damage");
         var key = item_id + ":" + item_damage;
 
-        // Check if this item was in the delivery (i.e., it was sold)
-        if (delivery[key]) {
-            var item_count = inventory[i].getByte("Count");
-            var sold_quantity = delivery[key];
+        if (delivery["generic"]) {
+            if (delivery["generic"][key]) {
+                var item_count = inventory[i].getByte("Count");
+                var sold_quantity = delivery["generic"][key]["count"];
 
-            // If the crate has exactly the sold quantity, clear it; otherwise reduce the count
-            if (item_count <= sold_quantity) {
-                inventory[i].setByte("Count", 0); // Remove the item completely
-            } else {
-                inventory[i].setByte("Count", item_count - sold_quantity); // Reduce the item count
+                // If the crate has exactly the sold quantity, clear it; otherwise reduce the count
+                if (item_count <= sold_quantity) {
+                    inventory[i].setByte("Count", 0); // Remove the item completely
+                } else {
+                    inventory[i].setByte("Count", item_count - sold_quantity); // Reduce the item count
+                }
             }
+        }
+        if (delivery["ageable_booze"]) {
+            for (var special_key in delivery["ageable_booze"]) {
+                if (special_key.contains(key)) {
+                    var new_key = special_key;
+                    // npc.say("Key: " + new_key);
+                    if (delivery["ageable_booze"][new_key]) {
+                        // npc.say("Key: " + new_key);
+                        var item_count = inventory[i].getByte("Count");
+                        var sold_quantity = delivery["ageable_booze"][new_key]["count"];
 
-            // Log for debugging
-            //player.message("Removed " + sold_quantity + " of " + key + " from the crate.");
+                        // If the crate has exactly the sold quantity, clear it; otherwise reduce the count
+                        if (item_count <= sold_quantity) {
+                            inventory[i].setByte("Count", 0); // Remove the item completely
+                        } else {
+                            inventory[i].setByte("Count", item_count - sold_quantity); // Reduce the item count
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -419,17 +583,17 @@ function colorCodeString(str, allowed_formats) {
 }
 
 function removeFromArray(arr, vals) {
-	if(typeof(vals) == 'string') { vals = [vals]; }
-	var a = [];
-	arr.forEach(function(el){a.push(el);});//Copy array
-	for(var v in vals) {
-		var i = arr.indexOf(vals[v]);
-		if(i > -1) {
-			a.splice(i, 1);
-		}
-	}
-	
-	return a;
+    if (typeof (vals) == 'string') { vals = [vals]; }
+    var a = [];
+    arr.forEach(function (el) { a.push(el); });//Copy array
+    for (var v in vals) {
+        var i = arr.indexOf(vals[v]);
+        if (i > -1) {
+            a.splice(i, 1);
+        }
+    }
+
+    return a;
 }
 
 // Existing code for genMoney remains unchanged
@@ -477,26 +641,129 @@ function getCoinAmount(str) {
     return amount;
 }
 
-//function to read an "ageable_item"
-function readAgeableItem(item) {
+//function to read an "ageable_booze"
+function readAgeableBooze(item_data) {
+
+    // npc.say("Reading Ageable Booze: " + item_data.toJsonString());
+
+    var item_id = item_data.getString("id");
+    var item_damage = item_data.getShort("Damage");
+    var item_tag = item_data.getCompound("tag");
+
+    // npc.say("Item Id: " + item_id + ", Damage: " + item_damage + ", Tag: " + item_tag.toJsonString());
+
+    // If the tag is null, return an empty object
+    if (!item_tag) {
+        return {};
+    }
+
     var data = {};
-    // Get the lore of the item
-    var lore = item.getLore();
-    // Process the lore to get the bottle age and bottling date
-    for (var i = 0; i < lore.length; i++) {
-        if (lore[i].contains("Bottling Date")) {
-            var bottling_date = lore[i].split(": ");
-            data["Bottling Date"] = bottling_date[1];
-        }
-        if (lore[i].contains("Age (in ticks)")) {
-            var age_ticks = lore[i].split(": ");
-            data["Age"], age_ticks[1];
-        }
-        if (lore[i].contains("Domain")) {
-            var domain = lore[i].split(": ");
-            data["Domain"] = domain[1];
+
+    var age_data = item_tag.getCompound("display").getList("Lore", 8);
+
+    // npc.say("Ageable Booze Lore: " + age_data);
+
+
+    if (age_data.length == 0) {
+        //npc.say("No age data found!");
+        return { "key": item_id + ":" + item_damage, "type": "generic" };
+    }
+
+    for (var it_key in age_data) {
+        if (age_data[it_key].contains("Age (in ticks):")) {
+            var age = age_data[it_key].replace("Age (in ticks): ", "");
+            data["Age"] = age;
+            //npc.say("Age: " + age);
+        } else if (age_data[it_key].contains("Domain:")) {
+            var domain = age_data[it_key].replace("Domain: ", "");
+            data["Domain"] = domain;
+            //npc.say("Domain: " + domain);
         }
     }
 
-    return data;
+    // npc.say("Data: " + JSON.stringify(data));
+
+    var key = item_id + ":" + item_damage + ":" + data["Domain"] + ":" + data["Age"];
+
+    // npc.say("Key: " + key);
+
+    var return_data = {
+        "key": key,
+        "type": "ageable_booze",
+        "data": data
+    }
+
+    return return_data;
+}
+
+// Function to get domain multiplier
+function getDomainMultiplier(domain_name) {
+    var multiplier = 1;
+
+    var allenis_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
+
+    // npc.say("Region data: " + JSON.stringify(allenis_data));
+
+    for (var it_domain in allenis_data.domains) {
+
+        var domain = allenis_data.domains[it_domain];
+
+        if (domain["display_name"] == domain_name) {
+            multiplier = domain["reputation"];
+
+            // update last_sale_date
+            domain["last_sale_date"] = world.getTotalTime();
+
+            // npc.say("Domains last sale date: " + domain["last_sale_date"]);
+
+            break;
+        }
+
+        allenis_data.domains[it_domain] = domain;
+    }
+
+    save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+
+    // npc.say("Domain Multiplier: " + multiplier);
+
+    return multiplier;
+}
+
+// function to load domain data
+function load_json(data_file_path) {
+    // Check if the file exists, and create it if it doesn't
+    if (!check_file_exists(data_file_path)) {
+        npc.say("ERROR: Domain Data is inexistant!");
+        return null;
+    } else {
+        var ips = new java.io.FileInputStream(data_file_path);
+        var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
+        var readFile = fileReader.read();
+        var data;
+        var start = "";
+        while (readFile != -1) {
+            data = String.fromCharCode(readFile);
+            start = start + data;
+            readFile = fileReader.read();
+        }
+
+        var json_data = JSON.parse(start);
+
+        // npc.say("Loaded data: " + JSON.stringify(json_data));
+
+        return json_data;
+    }
+}
+
+// Function to save domain data
+function save_json(data, data_file_path) {
+    var fileWriter = new java.io.FileWriter(data_file_path);
+    fileWriter.write(JSON.stringify(data, null, 4)); // Pretty-print JSON with 4 spaces
+    fileWriter.close();
+}
+
+// function to check if a file exists
+function check_file_exists(file_path) {
+    var file = new java.io.File(file_path);
+    return file.exists();
 }
