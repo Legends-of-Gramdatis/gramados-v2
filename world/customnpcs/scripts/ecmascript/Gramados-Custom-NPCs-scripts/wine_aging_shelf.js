@@ -1,169 +1,99 @@
 // Wine Aging Shelf
 // This script adds a wine aging feature to the Growthcraft wine bottles.
 
-/*
-The block data must store an array of 32 IItemStacks.
-Each IItemStack must be some sort of wine bottle from the mod Growthcraft.
-Within each of those IItemStacks, there must be a custom NBT tag that will store the age of the wine bottle, and the date this bottle was placed in the shelf.
-On opening the GUI, the script will read the block data and generate a custom GUI with 32 bottle, that will be represented by a textured button per bottle. (32 buttons in total)
-Each bottle in stored data will also have its age increased by the time the bottle was in the shelf (aka add the time between now and the date the bottle was placed in the shelf to the age of the bottle).
-When the player clicks on a bottle, the button will be removed and the bottle will be removed from the block data.
-At the same time, the player will receive the bottle in his inventory as an Growthcraft wine bottle item with an extra NBT tag that will store the age of the wine bottle.
-The player can age further the bottle by placing it again in the shelf.
-*/
-
 // Global variables
 var GUI, GRID = 16, BOTTLE_GRID = 26;
 var TEXTURE_PATH_BUTTONS = "minecraft:textures/gui/wine_aging_shelf_gui_buttons.png";
 var TEXTURE_PATH_BACKGROUND = "minecraft:textures/gui/wine_aging_shelf_gui.png";
 var block;
-var DOMAIN_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
 
 
 function init(event) {
-    // If stored data is empty, create an empty array of 32 IItemStacks
     if (event.block.storeddata.get("stored_bottles") == null) {
         var stored_bottles = [];
         for (var i = 0; i < 32; i++) {
-            stored_bottles.push(event.block.world.createItem("minecraft:air", 0, 1));
+            stored_bottles[i] = event.block.world.createItem("minecraft:air", 0, 1);
         }
         event.block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
     }
-
     block = event.block;
 }
 
 function interact(event) {
-
-    // If shelf has an domain
     if (event.block.storeddata.get("domain") == null) {
-        //event.player.message("This shelf doesn't have a domain linked to it. Please contact an admin to link a domain to it.");
-        
-        // Get the player name
-        var player_name = event.player.getName();
-
-        // Setup the domain name
-        setupDomain(event, player_name);
-    } /*else {
-        event.player.message("This shelf is linked to the domain: " + event.block.storeddata.get("domain"));
-    }*/
-
-    var stored_bottles = JSON.parse(block.storeddata.get("stored_bottles"));
-
-    // Clean up broken NBTS
-    //stored_bottles = cleanup(event, stored_bottles);
-
-    // get what the player has in hand:
-    var item = event.player.getMainhandItem();
-    //get how many items the player has in hand
-    var item_count = item.getStackSize();
-
-    // If player doesn't have any wine bottle in hand, open the GUI
-    if (item.getName() != "growthcraft_grapes:grapewine") {
-
-        // If player has something else in hand, tell him he can't place it in the shelf
-        //if player has a stick in hand, send him a debug message with the stored data
-        if (item.getName() != "minecraft:air" && item.getName() != "minecraft:stick")
-        {
-            event.player.message("You can't place " + item.getDisplayName() + " in the shelf to age. You can only place Growthcraft wine bottles.");
-        } else if (item.getName() == "minecraft:stick") {
-            event.player.message("Stored items: " + JSON.stringify(stored_bottles));
-        }
-
-        var bottle_count = 0;
-        var bottle_indexes = [];
-
-        // Count how many bottles are in the stored data
-        for (var i = 0; i < 32; i++) {
-            if (stored_bottles[i] != null) {
-                bottle_count++;
-                bottle_indexes.push(i);
-
-                // Update the age of the bottle
-                var bottle_nbt = JSON.parse(stored_bottles[i]);
-                var age = bottle_nbt.Age;
-                var bottle_date = bottle_nbt.Date;
-                var server_date = event.player.getWorld().getTotalTime();
-                var time_passed = server_date - bottle_date;
-                bottle_nbt.Age = age + time_passed;
-                bottle_nbt.Date = server_date;
-                //event.player.message("Bottle " + i + " has aged " + time_passed + " ticks. It now has " + bottle_nbt.Age + " ticks. It's Date: " + bottle_nbt.Date + " Server Date: " + server_date);
-                stored_bottles[i] = JSON.stringify(bottle_nbt);
-            }
-        }
-
-        // Create then open the GUI
-        GUI = event.API.createCustomGui(1, GRID * 12, GRID * 16, false);
-        create_GUI(event, GRID, stored_bottles);
-        event.player.showCustomGui(GUI);
-
-    } else {
-
-        // Copy the item in hand
-        var item_clone = item.copy();
-
-        // Add the custom NBT tags to the item
-        var item_nbt = createNBTFromBottle(item_clone, event);
-
-        // Get the "Damage" tag, and make it JSONable
-        var damage = item_nbt.getInteger("Damage");
-        damage = damage.toString();
-        damage = parseInt(damage);
-
-        // If any, get the "Age" tag, and make it JSONable
-        if (item_nbt.has("Age")) {
-            var age = item_nbt.getLong("Age");
-            age = age.toString();
-            age = parseInt(age);
-        } else {
-            var age = 0;
-        }
-
-        // If any, get the "BottingDate" tag, and make it JSONable
-        if (item_nbt.has("BottlingDate")) {
-            var bottling_date = item_nbt.getString("BottlingDate");
-        } else {
-            var bottling_date = getIRLDate();
-        }
-
-        // get the date, and make it JSONable
-        var bottle_date = event.player.getWorld().getTotalTime();
-        bottle_date = bottle_date.toString();
-        bottle_date = parseInt(bottle_date);
-
-        // remove java style "Count" and "Damage" tags
-        item_nbt.remove("Count");
-        item_nbt.remove("Damage");
-
-        // add the js style tags to the item
-        item_nbt.setInteger("Damage", damage);
-        item_nbt.setString("BottlingDate", bottling_date);
-        item_nbt.setLong("Date", bottle_date);
-        item_nbt.setLong("Age", age);
-
-        // get the first available slot of the array
-        for (var i = 0; i < 32; i++) {
-            if (stored_bottles[i] == null && item_count > 0) {
-
-                // add the item to the slot
-                stored_bottles[i] = item_nbt.toJsonString();
-                item_count--;
-
-                // tell the player that the item was placed in the shelf
-                event.player.message("You placed " + item_clone.getDisplayName() + " in the shelf to age.");
-            }
-        }
-
-        // Update stak size of the item in hand
-        item.setStackSize(item_count);
-        event.player.setMainhandItem(item);
+        setupDomain(event, event.player.getName());
     }
 
-    // Update block stored data
-    block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
+    var stored_bottles = JSON.parse(block.storeddata.get("stored_bottles"));
+    var item = event.player.getMainhandItem();
+    var item_count = item.getStackSize();
 
+    if (item.getName() != "growthcraft_grapes:grapewine") {
+        handleNonWineItem(event, item, stored_bottles);
+    } else {
+        storeWineBottle(event, item, item_count, stored_bottles);
+    }
+
+    block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
     return true;
+}
+
+function handleNonWineItem(event, item, stored_bottles) {
+    if (item.getName() != "minecraft:air" && item.getName() != "minecraft:stick") {
+        event.player.message("You can't place " + item.getDisplayName() + " in the shelf to age. You can only place Growthcraft wine bottles.");
+    } else if (item.getName() == "minecraft:stick") {
+        event.player.message("Stored items: " + JSON.stringify(stored_bottles));
+    }
+
+    updateBottleAges(event, stored_bottles);
+    GUI = event.API.createCustomGui(1, GRID * 12, GRID * 16, false);
+    create_GUI(event, GRID, stored_bottles);
+    event.player.showCustomGui(GUI);
+}
+
+function storeWineBottle(event, item, item_count, stored_bottles) {
+    var item_clone = item.copy();
+    var item_nbt = createNBTFromBottle(item_clone, event);
+
+    var damage = item_nbt.getInteger("Damage").toString();
+    var age = item_nbt.has("Age") ? item_nbt.getLong("Age").toString() : "0";
+    var bottling_date = item_nbt.has("BottlingDate") ? item_nbt.getString("BottlingDate") : getIRLDate();
+    var bottle_date = event.player.getWorld().getTotalTime().toString();
+
+    item_nbt.remove("Count");
+    item_nbt.remove("Damage");
+
+    item_nbt.setString("Damage", damage);
+    item_nbt.setString("BottlingDate", bottling_date);
+    item_nbt.setString("Date", bottle_date);
+    item_nbt.setString("Age", age);
+
+    for (var i = 0; i < 32; i++) {
+        if (stored_bottles[i] == null && item_count > 0) {
+            stored_bottles[i] = item_nbt.toJsonString();
+            item_count--;
+            event.player.message("You placed " + item_clone.getDisplayName() + " in the shelf to age.");
+        }
+    }
+
+    item.setStackSize(item_count);
+    event.player.setMainhandItem(item);
+}
+
+function updateBottleAges(event, stored_bottles) {
+    for (var i = 0; i < 32; i++) {
+        if (stored_bottles[i] != null) {
+            var bottle_nbt = JSON.parse(stored_bottles[i]);
+            var age = bottle_nbt.Age;
+            var bottle_date = bottle_nbt.Date;
+            var server_date = event.player.getWorld().getTotalTime();
+            var time_passed = server_date - bottle_date;
+            bottle_nbt.Age = age + time_passed;
+            bottle_nbt.Date = server_date;
+            stored_bottles[i] = JSON.stringify(bottle_nbt);
+        }
+    }
 }
 
 function create_GUI(event, GRID, stored_bottles) {
@@ -179,7 +109,7 @@ function create_GUI(event, GRID, stored_bottles) {
         // Cabinet bottom
         [43, 147], [83, 147], [123, 147],
         [63, 127], [103, 127],
-        [83, 107], 
+        [83, 107],
         //cabinet left
         [19, 123], [39, 103], [59, 83],
         [19, 83], [39, 63],
@@ -217,7 +147,7 @@ function create_GUI(event, GRID, stored_bottles) {
 function customGuiButton(event) {
     var button_id = event.buttonId;
     //event.player.message("Button ID: " + button_id);
-    
+
     // Get the stored bottles
     var stored_bottles = block.storeddata.get("stored_bottles");
     stored_bottles = JSON.parse(stored_bottles);
@@ -230,8 +160,8 @@ function customGuiButton(event) {
 
             // Get the bottle NBT
             var bottle_nbt = JSON.parse(stored_bottles[i]);
-            
-            
+
+
             // Create the bottle item
             var item = createBottleFromNBT(event, bottle_nbt);
             // Remove the bottle from the stored data
@@ -260,7 +190,7 @@ function customGuiButton(event) {
 
     }
 
-    
+
 
     // remove the bottle from the stored data
     block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
@@ -268,31 +198,34 @@ function customGuiButton(event) {
 
 //function to generate the item from the nbt
 function createBottleFromNBT(event, nbt) {
-    //event.player.message("Creating bottle from NBT: " + JSON.stringify(nbt));
-    var item = event.player.getWorld().createItem(nbt.id, nbt.Damage, 1);
+    var item = event.player.getWorld().createItem(nbt.id, parseInt(nbt.Damage), 1);
     item.setStackSize(1);
-    //event.player.message("Item: " + item.getDisplayName() + " NBT: " + item.getItemNbt().toJsonString());
-    item.setLore(["Bottle Age: " + ticksToMCTime(nbt.Age), "Bottling Date: " + nbt.BottlingDate, "Age (in ticks): " + nbt.Age, 'Domain: ' + block.storeddata.get("domain")]);
-    //event.player.message("Item: " + item.getDisplayName() + " NBT: " + item.getItemNbt().toJsonString());
+    item.setLore([
+        "Bottle Age: " + ticksToMCTime(parseInt(nbt.Age)), // Convert to long
+        "Bottling Date: " + nbt.BottlingDate,
+        "Age (in ticks): " + nbt.Age,
+        'Domain: ' + block.storeddata.get("domain")
+    ]);
 
     return item;
 }
 
 //function to generate the nbt from the item
 function createNBTFromBottle(item, event) {
-
-    
-    // Create NBT based on the item
     var nbt = item.getItemNbt();
-
-    // Get the lore of the item
     var lore = item.getLore();
 
-    // Process the lore to get the bottle age and bottling date
+    if (lore == null) {
+        nbt.setString("BottlingDate", getIRLDate());
+        nbt.setString("Age", "0"); // Convert to string
+        nbt.setString("Domain", block.storeddata.get("domain"));
+        return nbt;
+    }
+
     for (var i = 0; i < lore.length; i++) {
         if (lore[i].contains("Bottle Age")) {
             var age = lore[i].split(": ");
-            nbt.setInteger("Age", age[1]);
+            nbt.setString("Age", age[1]); // Convert to string
         }
         if (lore[i].contains("Bottling Date")) {
             var bottling_date = lore[i].split(": ");
@@ -300,7 +233,7 @@ function createNBTFromBottle(item, event) {
         }
         if (lore[i].contains("Age (in ticks)")) {
             var age_ticks = lore[i].split(": ");
-            nbt.setInteger("Age", age_ticks[1]);
+            nbt.setString("Age", age_ticks[1]); // Convert to string
         }
         if (lore[i].contains("Domain")) {
             var domain = lore[i].split(": ");
@@ -308,7 +241,6 @@ function createNBTFromBottle(item, event) {
         }
     }
 
-    // return the NBT
     return nbt;
 }
 
@@ -323,7 +255,7 @@ function ticksToMCTime(ticks) {
     days = days - years * 360;
     var months = Math.floor(days / 30);
     days = days - months * 30;
-    
+
     // Get the number of hours
     var hours = Math.floor((ticks % 24000) / 1000);
 
@@ -365,47 +297,40 @@ function getIRLDate() {
 
 // function to clean up broken bottles
 function cleanup(event, stored_bottles) {
-    // For each bottle in the stored data
     for (var i = 0; i < 32; i++) {
-        // If the bottle is missing one of the required tags, remove it from the stored data
         if (stored_bottles[i] != null) {
             var bottle_nbt = event.API.stringToNbt(stored_bottles[i]);
-            //event.player.message("Bottle NBT: " + JSON.stringify(bottle_nbt));
             if (!bottle_nbt.has("Age") || !bottle_nbt.has("BottlingDate") || !bottle_nbt.has("Date") || !bottle_nbt.has("id") || !bottle_nbt.has("Damage")) {
                 stored_bottles[i] = null;
+            } else {
+                bottle_nbt.setLong("Age", parseInt(bottle_nbt.getString("Age"))); // Convert to long
+                bottle_nbt.setLong("Date", parseInt(bottle_nbt.getString("Date"))); // Convert to long
+                stored_bottles[i] = bottle_nbt.toJsonString();
             }
         }
     }
-    
     return stored_bottles;
 }
 
 // Function to setup a domain name linked to the shelf
 function setupDomain(event, player_name) {
-    //event.player.message("Setting up domain for player: " + player_name);
-    // Get the stored data
-    var allenis_data = load_data(event, DOMAIN_FILE_PATH);
-
-    //event.player.message("Allenis data: " + JSON.stringify(allenis_data));
+    var allenis_data = load_data(event, "world/customnpcs/scripts/allenis_north_region.json");
 
     if (allenis_data == null) {
         event.player.message("ERROR: Domain Data is inexistant!");
         event.block.storeddata.put("domain", "No Domain");
         return;
-    } else {
-        // for all domains in the data, look for the one owned by the player
-        var player_domain = "No Domain";
-        for (var domain in allenis_data.domains) {
-            if (allenis_data.domains[domain].owner == player_name) {
-                //event.player.message("Player Domain: " + allenis_data.domains[domain].display_name);
-                player_domain = allenis_data.domains[domain].display_name;
-            }
-        }
-
-        event.player.message("The domain linked to this shelf is: " + player_domain);
-        // store the domain name in the shelf
-        event.block.storeddata.put("domain", player_domain);
     }
+
+    var player_domain = "No Domain";
+    for (var domain in allenis_data.domains) {
+        if (allenis_data.domains[domain].owner == player_name) {
+            player_domain = allenis_data.domains[domain].display_name;
+        }
+    }
+
+    event.player.message("The domain linked to this shelf is: " + player_domain);
+    event.block.storeddata.put("domain", player_domain);
 }
 
 // function to load allenis data
