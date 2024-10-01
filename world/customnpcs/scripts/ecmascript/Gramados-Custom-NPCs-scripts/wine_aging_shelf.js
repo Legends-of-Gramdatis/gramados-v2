@@ -40,10 +40,13 @@ function interact(event) {
 }
 
 function handleNonWineItem(event, item, stored_bottles) {
-    if (item.getName() != "minecraft:air" && item.getName() != "minecraft:stick") {
-        event.player.message("You can't place " + item.getDisplayName() + " in the shelf to age. You can only place Growthcraft wine bottles.");
-    } else if (item.getName() == "minecraft:stick") {
+    if (item.getName() == "minecraft:stick") {
         event.player.message("Stored items: " + JSON.stringify(stored_bottles));
+    } else if (item.getName() == "minecraft:command_block") {
+        event.player.message("Cleaning up broken bottles...");
+        stored_bottles = cleanup(event, stored_bottles);
+    } else {
+        event.player.message("You can't place " + item.getDisplayName() + " in the shelf to age. You can only place Growthcraft wine bottles.");
     }
 
     updateBottleAges(event, stored_bottles);
@@ -57,7 +60,7 @@ function storeWineBottle(event, item, item_count, stored_bottles) {
     var item_nbt = createNBTFromBottle(item_clone, event);
 
     var damage = item_nbt.getInteger("Damage").toString();
-    var age = item_nbt.has("Age") ? item_nbt.getLong("Age").toString() : "0";
+    var age = item_nbt.has("Age") ? item_nbt.getString("Age") : "0";
     var bottling_date = item_nbt.has("BottlingDate") ? item_nbt.getString("BottlingDate") : getIRLDate();
     var bottle_date = event.player.getWorld().getTotalTime().toString();
 
@@ -85,8 +88,9 @@ function updateBottleAges(event, stored_bottles) {
     for (var i = 0; i < 32; i++) {
         if (stored_bottles[i] != null) {
             var bottle_nbt = JSON.parse(stored_bottles[i]);
-            var age = bottle_nbt.Age;
-            var bottle_date = bottle_nbt.Date;
+            var age = parseInt(bottle_nbt.Age, 10); // Parse Age as integer
+            var bottle_date = parseInt(bottle_nbt.Date, 10); // Parse Date as integer
+
             var server_date = event.player.getWorld().getTotalTime();
             var time_passed = server_date - bottle_date;
             bottle_nbt.Age = age + time_passed;
@@ -97,47 +101,24 @@ function updateBottleAges(event, stored_bottles) {
 }
 
 function create_GUI(event, GRID, stored_bottles) {
-
     GUI.setBackgroundTexture(TEXTURE_PATH_BACKGROUND);
 
-    // Array with all the bottle button textures positions
     var bottle_button_textures = [
-        // First row
-        [51, 211], [83, 211], [115, 211],
-        // Second row
-        [19, 179], [51, 179], [83, 179], [115, 179], [147, 179],
-        // Cabinet bottom
-        [43, 147], [83, 147], [123, 147],
-        [63, 127], [103, 127],
-        [83, 107],
-        //cabinet left
-        [19, 123], [39, 103], [59, 83],
-        [19, 83], [39, 63],
-        [19, 43],
-        //cabinet right
-        [147, 123], [127, 103], [147, 83],
-        [107, 83], [127, 63],
-        [147, 43],
-        //cabinet top
-        [83, 59],
-        [63, 39], [103, 39],
-        [43, 19], [83, 19], [123, 19]
+        [51, 211], [83, 211], [115, 211], [19, 179], [51, 179], [83, 179], [115, 179], [147, 179],
+        [43, 147], [83, 147], [123, 147], [63, 127], [103, 127], [83, 107], [19, 123], [39, 103],
+        [59, 83], [19, 83], [39, 63], [19, 43], [147, 123], [127, 103], [147, 83], [107, 83],
+        [127, 63], [147, 43], [83, 59], [63, 39], [103, 39], [43, 19], [83, 19], [123, 19]
     ];
 
-    // Create the buttons
     for (var i = 0; i < 32; i++) {
         var x = bottle_button_textures[i][0];
         var y = bottle_button_textures[i][1];
         if (stored_bottles[i] != null) {
-            // Get some of the bottle NBT data to display on the button
             var bottle_nbt = JSON.parse(stored_bottles[i]);
             var age = bottle_nbt.Age;
             var bottling_date = bottle_nbt.BottlingDate;
 
-            // Create the button
             var button = GUI.addTexturedButton(i, "", x, y, BOTTLE_GRID, BOTTLE_GRID, TEXTURE_PATH_BUTTONS, 0, 0);
-
-            // Set the button hover text
             button.setHoverText(["Bottle Age: " + ticksToMCTime(age), "Bottling Date: " + bottling_date, "Age (in ticks): " + age, "Domain: " + block.storeddata.get("domain"), "Click to drop the bottle."]);
         }
     }
@@ -146,53 +127,23 @@ function create_GUI(event, GRID, stored_bottles) {
 // Buttons
 function customGuiButton(event) {
     var button_id = event.buttonId;
-    //event.player.message("Button ID: " + button_id);
-
-    // Get the stored bottles
-    var stored_bottles = block.storeddata.get("stored_bottles");
-    stored_bottles = JSON.parse(stored_bottles);
-
-    //event.player.message("Stored Bottles: " + stored_bottles);
+    var stored_bottles = JSON.parse(block.storeddata.get("stored_bottles"));
 
     for (var i = 0; i < 32; i++) {
         if (button_id == i && stored_bottles[i] != null) {
-            //event.player.message("Button ID: " + button_id + " Stored Bottle: " + stored_bottles[i]);
-
-            // Get the bottle NBT
             var bottle_nbt = JSON.parse(stored_bottles[i]);
-
-
-            // Create the bottle item
             var item = createBottleFromNBT(event, bottle_nbt);
-            // Remove the bottle from the stored data
             stored_bottles[i] = null;
-            // Remve the GUI button
             event.gui.removeComponent(button_id);
-            // Add the item to the player's inventory
             event.player.dropItem(item);
-            /*if (event.player.giveItem(item)) {
-                event.player.message("You took the bottle from the shelf.");
-            } else {
-                event.player.dropItem(item);
-                event.player.message("You don't have enough space in your inventory to take the bottle from the shelf. It was dropped on the ground.");
-            }*/
-            // Update the GUI to remove the bottle's button
             event.gui.update(event.player);
             event.player.updatePlayerInventory();
-
         } else if (stored_bottles[i] == null) {
-            // Security in case the player manages to click multiple bottles at the same time
-
             event.gui.removeComponent(i);
             event.gui.update(event.player);
-
         }
-
     }
 
-
-
-    // remove the bottle from the stored data
     block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
 }
 
@@ -201,7 +152,7 @@ function createBottleFromNBT(event, nbt) {
     var item = event.player.getWorld().createItem(nbt.id, parseInt(nbt.Damage), 1);
     item.setStackSize(1);
     item.setLore([
-        "Bottle Age: " + ticksToMCTime(parseInt(nbt.Age)), // Convert to long
+        "Bottle Age: " + ticksToMCTime(parseInt(nbt.Age)),
         "Bottling Date: " + nbt.BottlingDate,
         "Age (in ticks): " + nbt.Age,
         'Domain: ' + block.storeddata.get("domain")
@@ -246,22 +197,69 @@ function createNBTFromBottle(item, event) {
 
 // Function to convert ticks to MC time
 function ticksToMCTime(ticks) {
-    //there are 24000 ticks in a day.
-    // Get the number of days
     var days = Math.floor(ticks / 24000);
-
-    // From "days", get the number of years, months and days
     var years = Math.floor(days / 360);
     days = days - years * 360;
     var months = Math.floor(days / 30);
     days = days - months * 30;
-
-    // Get the number of hours
     var hours = Math.floor((ticks % 24000) / 1000);
 
-    var date = years + "/" + months + "/" + days + " ( + " + hours + "h)";
+    return years + "/" + months + "/" + days + " ( + " + hours + "h)";
+}
 
-    return date;
+// Function to convert MC time to ticks
+function MCTimeToTicks(event, days, months, years, hours, minutes, seconds) {
+
+    event.player.message("Botting Date: " + days + "/" + months + "/" + years + " " + hours + ":" + minutes + ":" + seconds);
+
+    // Get system date
+    var date = new Date();
+    var current_day = date.getDate();
+    var current_month = date.getMonth() + 1;
+    var current_year = date.getFullYear();
+    var current_hour = date.getHours();
+    var current_minute = date.getMinutes();
+    var current_second = date.getSeconds();
+
+    event.player.message("Current Date: " + current_day + "/" + current_month + "/" + current_year + " " + current_hour + ":" + current_minute + ":" + current_second);
+
+    // Get elapsed time
+    var elapsed_years = current_year - years;
+    var elapsed_months = current_month - months;
+    var elapsed_days = current_day - days;
+    var elapsed_hours = current_hour - hours;
+    var elapsed_minutes = current_minute - minutes;
+    var elapsed_seconds = current_second - seconds;
+
+    if (elapsed_seconds < 0) {
+        elapsed_seconds = 60 + elapsed_seconds;
+        elapsed_minutes--;
+    }
+    if (elapsed_minutes < 0) {
+        elapsed_minutes = 60 + elapsed_minutes;
+        elapsed_hours--;
+    }
+    if (elapsed_hours < 0) {
+        elapsed_hours = 24 + elapsed_hours;
+        elapsed_days--;
+    }
+    if (elapsed_days < 0) {
+        elapsed_days = 30 + elapsed_days;
+        elapsed_months--;
+    }
+    if (elapsed_months < 0) {
+        elapsed_months = 12 + elapsed_months;
+        elapsed_years--;
+    }
+
+    event.player.message("Elapsed Time: " + elapsed_days + "/" + elapsed_months + "/" + elapsed_years + " " + elapsed_hours + ":" + elapsed_minutes + ":" + elapsed_seconds);
+
+    // Get how much time that is in ticks (20 ticks = 1 second, 1 hour = 72000 ticks)
+    var ticks = (elapsed_years * 360 * 72000 * 24) + (elapsed_months * 30 * 72000 * 24) + (elapsed_days * 72000 * 24) + (elapsed_hours * 72000) + (elapsed_minutes * 1200) + (elapsed_seconds * 20);
+
+    event.player.message("Ticks: " + ticks);
+
+    return ticks;
 }
 
 // Function to get the date in DD/MM/YYYY HH:MM:SS format
@@ -299,13 +297,17 @@ function getIRLDate() {
 function cleanup(event, stored_bottles) {
     for (var i = 0; i < 32; i++) {
         if (stored_bottles[i] != null) {
-            var bottle_nbt = event.API.stringToNbt(stored_bottles[i]);
-            if (!bottle_nbt.has("Age") || !bottle_nbt.has("BottlingDate") || !bottle_nbt.has("Date") || !bottle_nbt.has("id") || !bottle_nbt.has("Damage")) {
+            var bottle_nbt = JSON.parse(stored_bottles[i]);
+            // event.player.message("Checking bottle: " + JSON.stringify(bottle_nbt));
+            if (bottle_nbt.id == null || bottle_nbt.Damage == null) {
                 stored_bottles[i] = null;
             } else {
-                bottle_nbt.setLong("Age", parseInt(bottle_nbt.getString("Age"))); // Convert to long
-                bottle_nbt.setLong("Date", parseInt(bottle_nbt.getString("Date"))); // Convert to long
-                stored_bottles[i] = bottle_nbt.toJsonString();
+                var age_string = bottle_nbt.BottlingDate;
+                // event.player.message("Age string: " + age_string);
+                bottle_nbt.Age = MCTimeToTicks(event, parseInt(age_string.split("/")[0]), parseInt(age_string.split("/")[1]), parseInt(age_string.split("/")[2]), parseInt(age_string.split(":")[0]), parseInt(age_string.split(":")[1]), parseInt(age_string.split(":")[2]));
+                bottle_nbt.Date = parseInt(bottle_nbt.Date);
+                stored_bottles[i] = JSON.stringify(bottle_nbt);
+                // event.player.message("Bottle is fine: " + JSON.stringify(bottle_nbt));
             }
         }
     }
