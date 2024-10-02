@@ -1,0 +1,304 @@
+{
+    "Gramados": {
+        "minecraft:potato:0": {
+            "display_name": "Potato",
+            "reference_price": 10,
+            "current_price": 130,
+            "min_price": 5,
+            "quantity_sold": 23552,
+            "last_sold_time": 2154718546,
+            "quantity_factor": 2500
+        },
+        "harvestcraft:strawberryitem:0": {
+            "display_name": "Strawberry",
+            "reference_price": 15,
+            "current_price": 950,
+            "min_price": 10,
+            "quantity_sold": 1472,
+            "last_sold_time": 2154718546,
+            "quantity_factor": 2000
+        }
+    },
+    "Greenfield": {
+        "minecraft:wheat:0": {
+            "display_name": "Wheat",
+            "reference_price": 70,
+            "current_price": 908,
+            "min_price": 1,
+            "quantity_sold": 0,
+            "last_sold_time": 2153932784,
+            "quantity_factor": 2500
+        },
+        "harvestcraft:appleitem:0": {
+            "display_name": "Apple",
+            "reference_price": 120,
+            "current_price": 1320,
+            "min_price": 20,
+            "quantity_sold": 0,
+            "last_sold_time": 2153932784,
+            "quantity_factor": 2500
+        },
+        "minecraft:honey_bottle:0": {
+            "display_name": "Honey Bottle",
+            "reference_price": 150,
+            "current_price": 1632,
+            "min_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 2153932784,
+            "quantity_factor": 100
+        }
+    },
+    "Farmiston": {
+        "minecraft:wheat:0": {
+            "display_name": "Wheat",
+            "reference_price": 50,
+            "current_price": 448,
+            "min_price": 1,
+            "quantity_sold": 0,
+            "last_sold_time": 2153932784,
+            "quantity_factor": 5000
+        },
+        "minecraft:hay_block:0": {
+            "display_name": "Hay Block",
+            "reference_price": 30,
+            "current_price": 316,
+            "min_price": 10,
+            "quantity_sold": 0,
+            "last_sold_time": 2153932784,
+            "quantity_factor": 2000
+        }
+    },
+    "Allenis": {
+        "growthcraft_grapes:grapewine:1": {
+            "display_name": "Purple Grape Wine",
+            "type": "ageable_booze",
+            "min_price": 500,
+            "reference_price": 1000,
+            "current_price": 952,
+            "quantity_sold": 121,
+            "last_sold_time": 2167343852,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        },
+        "growthcraft_grapes:grapewine:2": {
+            "display_name": "Purple Grape Wine (Potent)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2286,
+            "quantity_sold": 4,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:3": {
+            "display_name": "Purple Grape Wine (Extended)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 1937,
+            "quantity_sold": 6,
+            "last_sold_time": 2167369165,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:4": {
+            "display_name": "Purple Ambrosia",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 4821,
+            "quantity_sold": 120,
+            "last_sold_time": 2167343852,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:5": {
+            "display_name": "Purple Port Wine",
+            "type": "ageable_booze",
+            "min_price": 1500,
+            "reference_price": 3000,
+            "current_price": 3433,
+            "quantity_sold": 4,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 8,
+            "stock_bonus": 1.5
+        },
+        "growthcraft_grapes:grapewine:6": {
+            "display_name": "Purple Grape Wine (Intoxicated)",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 5724,
+            "quantity_sold": 4,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:7": {
+            "display_name": "Purple Grape Wine (Poisoned)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 1934,
+            "quantity_sold": 17,
+            "last_sold_time": 2167343852,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        },
+        "growthcraft_grapes:grapewine:9": {
+            "display_name": "Green Grape Wine",
+            "type": "ageable_booze",
+            "min_price": 500,
+            "reference_price": 1000,
+            "current_price": 1140,
+            "quantity_sold": 5,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        },
+        "growthcraft_grapes:grapewine:10": {
+            "display_name": "Green Grape Wine (Potent)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2285,
+            "quantity_sold": 8,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:11": {
+            "display_name": "Green Grape Wine (Extended)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2286,
+            "quantity_sold": 4,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:12": {
+            "display_name": "Green Ambrosia",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 5724,
+            "quantity_sold": 4,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:13": {
+            "display_name": "Green Port Wine",
+            "type": "ageable_booze",
+            "min_price": 1500,
+            "reference_price": 3000,
+            "current_price": 3432,
+            "quantity_sold": 9,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 8,
+            "stock_bonus": 1.5
+        },
+        "growthcraft_grapes:grapewine:14": {
+            "display_name": "Green Grape Wine (Intoxicated)",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 5724,
+            "quantity_sold": 8,
+            "last_sold_time": 2167206131,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:15": {
+            "display_name": "Green Grape Wine (Poisoned)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2284,
+            "quantity_sold": 9,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        },
+        "growthcraft_grapes:grapewine:17": {
+            "display_name": "Red Grape Wine",
+            "type": "ageable_booze",
+            "min_price": 500,
+            "reference_price": 1000,
+            "current_price": 1140,
+            "quantity_sold": 5,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        },
+        "growthcraft_grapes:grapewine:18": {
+            "display_name": "Red Grape Wine (Potent)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2284,
+            "quantity_sold": 6,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:19": {
+            "display_name": "Red Grape Wine (Extended)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2283,
+            "quantity_sold": 10,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 1
+        },
+        "growthcraft_grapes:grapewine:20": {
+            "display_name": "Red Ambrosia",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 5723,
+            "quantity_sold": 6,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:21": {
+            "display_name": "Red Port Wine",
+            "type": "ageable_booze",
+            "min_price": 1500,
+            "reference_price": 3000,
+            "current_price": 3433,
+            "quantity_sold": 5,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 8,
+            "stock_bonus": 1.5
+        },
+        "growthcraft_grapes:grapewine:22": {
+            "display_name": "Red Grape Wine (Intoxicated)",
+            "type": "ageable_booze",
+            "min_price": 2000,
+            "reference_price": 5000,
+            "current_price": 5722,
+            "quantity_sold": 8,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 4,
+            "stock_bonus": 2
+        },
+        "growthcraft_grapes:grapewine:23": {
+            "display_name": "Red Grape Wine (Poisoned)",
+            "type": "ageable_booze",
+            "min_price": 1000,
+            "reference_price": 2000,
+            "current_price": 2285,
+            "quantity_sold": 5,
+            "last_sold_time": 2167222990,
+            "quantity_factor": 16,
+            "stock_bonus": 0
+        }
+    }
+}
