@@ -59,7 +59,7 @@ function updateStockValue(event) {
             // world.broadcast("Current stock value for stock " + stock + ": " + stock_value["current_price"]);
 
             // Increase the stock value by 5% per day
-            stock_value["current_price"] = Math.floor(stock_value["current_price"] * (1 + (0.01 * days)));
+            stock_value["current_price"] = Math.floor(stock_value["current_price"] * (1 + (0.05 * days)));
 
             // if value is under minimum, set it to minimum
             if (stock_value["current_price"] < stock_value["min_price"]) {
@@ -104,18 +104,18 @@ function updateDomainValues(event) {
         // If there are 0 days, increase the domain reputation by 5%
         if (days == 0) {
             domain_data["reputation"] = domain_data["reputation"] * 1.05;
-        } else {
-            // If there are more than 0 days, decrease the domain reputation by 1% per day
-            domain_data["reputation"] = domain_data["reputation"] * (1 - (0.01 * days));
+        }
+
+        // If there are 7 days, lower the domain reputation by 5%
+        if (days >= 7) {
+            domain_data["reputation"] = domain_data["reputation"] * 0.95;
         }
 
         // Get the variety of items sold by the domain
         var variety = domain_data["bottle_variety"];
         for (var i = 0; i < variety.length; i++) {
-            domain_data["reputation"] += 0.1;
+            domain_data["reputation"] *= 1.05;
         }
-        // for all missing varieties, decrease the reputation by 0.1
-        domain_data["reputation"] -= 0.01 * (9 - variety.length);
 
         // reset the variety
         domain_data["bottle_variety"] = [];
