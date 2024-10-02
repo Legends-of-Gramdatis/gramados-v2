@@ -1,0 +1,21 @@
+{
+    "ScriptEnabled": 1b,
+    "ScriptConsole": [
+    ],
+    "Scripts": [
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "customservertools.js"
+                },
+                {
+                    "Line": "gramados-custom-npcs-scripts/criminal_police_spawn.js"
+                }
+            ]
+        }
+    ],
+    "ScriptLanguage": "ECMAScript"
+}
