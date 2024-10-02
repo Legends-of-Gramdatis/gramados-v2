@@ -1487,6 +1487,15 @@ sets:
                 y: 76.0
                 z: -2037.0
                 label: Feldpard Electric Charging Station
+            marker_18:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -1812.0
+                y: 77.0
+                z: 43.0
+                label: Fulpower Charging Station
+
         lines: {
             }
         layerprio: 0
@@ -2004,6 +2013,38 @@ sets:
                 y: 76.0
                 z: 207.0
                 label: The Square of the four benches
+            marker_16:
+                world: world
+                markup: false
+                icon: outdoor_fishing
+                x: -3438.0
+                y: 68.0
+                z: -2532.0
+                label: The Trilifish Freshwater Pond
+            marker_17:
+                world: world
+                markup: false
+                icon: outdoor_park
+                x: -1462.0
+                y: 118.0
+                z: -1377.0
+                label: Coalogrove Forest
+            marker_18:
+                world: world
+                markup: false
+                icon: outdoor_misc
+                x: -844.0
+                y: 75.0
+                z: 1222.0
+                label: The Hut
+            marker_19:
+                world: world
+                markup: false
+                icon: outdoor_hiking
+                x: -963.0
+                y: 78.0
+                z: 1128.0
+                label: Whispering Oaks Trail
         lines: {}
         layerprio: 0
     Parkings:
@@ -2167,7 +2208,7 @@ sets:
             marker_2:
                 world: world
                 markup: false
-                icon: ent&lei_historic
+                icon: ent&lei_misc
                 x: -1225.0
                 y: 86.0
                 z: -1476.0
@@ -2244,6 +2285,15 @@ sets:
                 y: 118.0
                 z: -2991.0
                 label: Lucucon Feldspar Quarry And Porcelain Factory
+            marker_12:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -2371.0
+                y: 80.0
+                z: 72.0
+                label: Historical Seagull's Road
+
         lines: {}
         layerprio: 0
     Bridges:
