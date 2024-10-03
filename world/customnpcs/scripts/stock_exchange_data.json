@@ -1,4 +1,23 @@
 {
+    "Region Generals": {
+        "Gramados": {
+            "stock_multiplier": 1.0,
+            "stock_flexibility": 1.0
+        },
+        "Greenfield": {
+            "stock_multiplier": 1.0,
+            "stock_flexibility": 1.0
+        },
+        "Farmiston": {
+            "stock_multiplier": 1.0,
+            "stock_flexibility": 1.0
+        },
+        "Allenis": {
+            "stock_multiplier": 1.0,
+            "stock_flexibility": 1.0
+        }
+
+    },
     "Gramados": {
         "minecraft:potato:0": {
             "display_name": "Potato",
