@@ -1,175 +1,115 @@
-var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json";
+var REGION_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
 var world = API.getIWorld(0);
 
 function init(event) {
     world.broadcast("Stock Exchange World initialized!");
-    updateStockValue(event);
-    updateDomainValues(event);
+    updateStockValue();
+    updateDomainValues();
 }
 
-function updateStockValue(event) {
+function updateStockValue() {
     world.broadcast("Updating stock values...");
 
-    var stock_data = load_json(STOCK_FILE_PATH);
-
-    var region_generals = stock_data["Region Generals"];
-    //remove the "Region Generals" key from the stock data
-    delete stock_data["Region Generals"];
-
-    if (stock_data == null) {
+    var stockData = loadJson(STOCK_FILE_PATH);
+    if (!stockData) {
         world.broadcast("ERROR: Stock data not found!");
         return;
     }
 
-    for (var region in stock_data) {
-        // world.broadcast("Updating stock values for region: " + region);
-        var stocks = stock_data[region];
+    var regionGenerals = stockData["Region Generals"];
+    delete stockData["Region Generals"];
 
+    for (var region in stockData) {
+        var stocks = stockData[region];
         for (var stock in stocks) {
-
-            // world.broadcast("Updating stock value for stock: " + stock);
-
-            var stock_value = stocks[stock];
-
-            // Get last time the item was sold
-            var last_sold_time = stock_value["last_sold_time"];
-            var current_time = world.getTotalTime();
-            var elapsed_time = 0;
-            // If last sold time is not 0
-            if (last_sold_time > 0) {
-                elapsed_time = current_time - last_sold_time;
-            }
-
-            // Get the number of days that have passed
-            var days = Math.floor(elapsed_time / _TIMER_COUNTER);
-
-            var daily_increase = 0.05 * days;
-
-            stock_value["current_price"] = Math.floor(stock_value["current_price"] * (1 + daily_increase));
-
-            // If needed apply the region general's influence
-            if (region_generals[region] != null && region_generals[region]["stock_multiplier"] != null) {
-                stock_value["current_price"] = Math.floor(stock_value["current_price"] * region_generals[region]["stock_multiplier"]);
-            }
-
-            // if value is under minimum, set it to minimum
-            if (stock_value["current_price"] < stock_value["min_price"]) {
-                stock_value["current_price"] = stock_value["min_price"];
-            }
-
-            // if value is over maximum, set it to maximum
-            if (stock_value["current_price"] > stock_value["max_price"]) {
-                stock_value["current_price"] = stock_value["max_price"];
-            }
-
-            // world.broadcast("New stock value for stock " + stock + ": " + stock_value["current_price"]);
-
-            stocks[stock] = stock_value;
+            updateStockPrice(stocks[stock], regionGenerals[region]);
         }
-
-        stock_data[region] = stocks;
+        stockData[region] = stocks;
     }
 
-    // Add the "Region Generals" key back to the stock data
-    stock_data["Region Generals"] = region_generals;
-
-    save_json(stock_data, STOCK_FILE_PATH);
+    stockData["Region Generals"] = regionGenerals;
+    saveJson(stockData, STOCK_FILE_PATH);
 }
 
-function updateDomainValues(event) {
+function updateStockPrice(stockValue, regionGeneral) {
+    var lastSoldTime = stockValue["last_sold_time"];
+    var currentTime = world.getTotalTime();
+    var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
+    var days = Math.floor(elapsedTime / _TIMER_COUNTER);
+    var dailyIncrease = 0.05 * days;
+
+    stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + dailyIncrease));
+
+    if (regionGeneral && regionGeneral["stock_multiplier"]) {
+        stockValue["current_price"] = Math.floor(stockValue["current_price"] * regionGeneral["stock_multiplier"]);
+    }
+
+    stockValue["current_price"] = Math.max(stockValue["min_price"], Math.min(stockValue["current_price"], stockValue["max_price"]));
+}
+
+function updateDomainValues() {
     world.broadcast("Updating domain values...");
 
-    var region_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
-
-    if (region_data == null) {
+    var regionData = loadJson(REGION_FILE_PATH);
+    if (!regionData) {
         world.broadcast("ERROR: Domain data not found!");
         return;
     }
 
-    for (var domain in region_data["domains"]) {
-        var domain_data = region_data["domains"][domain];
-
-        // Get the time where the domain sold its last item
-        var last_sold_time = domain_data["last_sale_date"];
-        var current_time = world.getTotalTime();
-
-        // Get the number of days that have passed
-        var days = Math.floor((current_time - last_sold_time) / _TIMER_COUNTER);
-
-        // If the last sale was less than 24 hours ago, increase the domain reputation by 5%
-        if (days == 0) {
-            domain_data["reputation"] += 1.05;
-        }
-
-        // If there are 7 days, lower the domain reputation by 5%
-        if (days >= 7) {
-            domain_data["reputation"] -= 0.05;
-        }
-
-        // Get the variety of items sold by the domain
-        var variety = domain_data["bottle_variety"];
-        for (var i = 0; i < variety.length; i++) {
-            domain_data["reputation"] *= 1.05;
-        }
-
-        // reset the variety
-        domain_data["bottle_variety"] = [];
-
-        // if value is under 1, set it to 1
-        if (domain_data["reputation"] < 1) {
-            domain_data["reputation"] = 1;
-        }
-
-        // floor the value to 3 decimal places
-        domain_data["reputation"] = Math.floor(domain_data["reputation"] * 1000) / 1000;
-
-        // world.broadcast("New domain value for domain " + domain_data["display_name"] + ": " + domain_data["reputation"]);
-
-        region_data["domains"][domain] = domain_data;
+    for (var domain in regionData["domains"]) {
+        updateDomainReputation(regionData["domains"][domain]);
     }
 
-    save_json(region_data, "world/customnpcs/scripts/allenis_north_region.json");
+    saveJson(regionData, REGION_FILE_PATH);
 }
 
-// function to load domain data
-function load_json(data_file_path) {
-    // Check if the file exists, and create it if it doesn't
-    if (!check_file_exists(data_file_path)) {
-        npc.say("ERROR: JSON file not found at path: " + data_file_path);
+function updateDomainReputation(domainData) {
+    var lastSoldTime = domainData["last_sale_date"];
+    var currentTime = world.getTotalTime();
+    var days = Math.floor((currentTime - lastSoldTime) / _TIMER_COUNTER);
+
+    if (days == 0) {
+        domainData["reputation"] *= 1.05;
+    } else if (days >= 7) {
+        domainData["reputation"] *= 0.95;
+    }
+
+    domainData["reputation"] *= Math.pow(1.05, domainData["bottle_variety"].length);
+    domainData["bottle_variety"] = [];
+    domainData["reputation"] = Math.max(1, Math.floor(domainData["reputation"] * 1000) / 1000);
+}
+
+function loadJson(filePath) {
+    if (!checkFileExists(filePath)) {
+        npc.say("ERROR: JSON file not found at path: " + filePath);
         return null;
-    } else {
-        var ips = new java.io.FileInputStream(data_file_path);
-        var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
-        var readFile = fileReader.read();
-        var data;
-        var start = "";
-        while (readFile != -1) {
-            data = String.fromCharCode(readFile);
-            start = start + data;
-            readFile = fileReader.read();
-        }
-
-        var json_data = JSON.parse(start);
-
-        // npc.say("Loaded data: " + JSON.stringify(json_data));
-
-        return json_data;
     }
+
+    var fileInputStream = new java.io.FileInputStream(filePath);
+    var fileReader = new java.io.InputStreamReader(fileInputStream, "UTF-8");
+    var data = '';
+    var char;
+
+    while ((char = fileReader.read()) != -1) {
+        data += String.fromCharCode(char);
+    }
+
+    fileReader.close();
+    return JSON.parse(data);
 }
 
-// Function to save domain data
-function save_json(data, data_file_path) {
-    var fileWriter = new java.io.FileWriter(data_file_path);
+function saveJson(data, filePath) {
+    var fileWriter = new java.io.FileWriter(filePath);
     fileWriter.write(JSON.stringify(data, null, 4)); // Pretty-print JSON with 4 spaces
     fileWriter.close();
 }
 
-// function to check if a file exists
-function check_file_exists(file_path) {
-    var file = new java.io.File(file_path);
+function checkFileExists(filePath) {
+    var file = new java.io.File(filePath);
     return file.exists();
 }
