@@ -68,6 +68,7 @@ var crates_ids = [
 
 var NPC_REGION = "Allenis";
 var stock_exchange_instance;
+var stock_exchange_generals;
 
 var MIN_PRICE = 10; // Minimum price threshold to prevent prices going too low
 var TIME_THRESHOLD = 72000; // 1 hour in ticks (72000 ticks = 60 min in Minecraft)
@@ -99,6 +100,7 @@ function interact(event) {
 
     // Load the stock exchange data for this NPC region
     stock_exchange_instance = load_data()[NPC_REGION];
+    stock_exchange_generals = load_data()["Region Generals"];
 
     // Check if the player is holding one of the valid crates
     for (var i = 0; i < crates_ids.length; i++) {
@@ -311,39 +313,35 @@ function read_delivery(item, stackSize) {
 function updateStockPrices(region, delivery, player) {
     var currentTime = world.getTotalTime();
 
-    // npc.say("Updating stock prices...");
-    // npc.say("Current Time: " + currentTime);
-    // npc.say("Delivery: " + JSON.stringify(delivery));
-
     for (var types in delivery) {
 
         if (types == "generic") {
 
             for (var item in delivery[types]) {
 
-                var quantityDelivered = delivery[types][item]["count"];
-
-                // npc.say("Item: " + item + ", Quantity: " + quantityDelivered);
-
                 if (!stock_exchange_instance[item]) {
                     npc.say("The item " + item + " is not part of the stock exchange.");
                     continue;
                 }
 
+                var quantityDelivered = delivery[types][item]["count"];
+
                 stock_exchange_instance[item].quantity_sold += quantityDelivered;
+                stock_exchange_instance[item].last_sold_time = currentTime;
 
-                // npc.say("Quantity Sold: " + stock_exchange_instance[item].quantity_sold);
+                var decreaseFactor = -PRICE_INCREASE_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
 
-                var decreaseFactor = -PRICE_INCREASE_FACTOR;
+                if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
+                    decreaseFactor *= stock_exchange_generals[region]["stock_flexibility"];
+                }
 
-                for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[item].quantity_factor) {
-                    var newPrice = stock_exchange_instance[item].current_price + (decreaseFactor * stock_exchange_instance[item].quantity_factor);
+                stock_exchange_instance[item].current_price = stock_exchange_instance[item].current_price + decreaseFactor;
 
-                    stock_exchange_instance[item].current_price = Math.max(
-                        newPrice,
-                        stock_exchange_instance[item].min_price
-                    );
-                    stock_exchange_instance[item].last_sold_time = currentTime;
+                if (stock_exchange_instance[item].current_price < stock_exchange_instance[item].min_price) {
+                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].min_price;
+                }
+                if (stock_exchange_instance[item].current_price > stock_exchange_instance[item].max_price) {
+                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].max_price;
                 }
 
             }
