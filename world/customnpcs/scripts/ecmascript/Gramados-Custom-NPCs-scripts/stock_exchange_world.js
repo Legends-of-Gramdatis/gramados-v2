@@ -48,7 +48,11 @@ function updateStockValue(event) {
             // Get last time the item was sold
             var last_sold_time = stock_value["last_sold_time"];
             var current_time = world.getTotalTime();
-            var elapsed_time = current_time - last_sold_time;
+            var elapsed_time = 0;
+            // If last sold time is not 0
+            if (last_sold_time > 0) {
+                elapsed_time = current_time - last_sold_time;
+            }
 
             // world.broadcast("Elapsed time since last time one of these items was sold: " + elapsed_time);
 
@@ -64,6 +68,11 @@ function updateStockValue(event) {
             // if value is under minimum, set it to minimum
             if (stock_value["current_price"] < stock_value["min_price"]) {
                 stock_value["current_price"] = stock_value["min_price"];
+            }
+
+            // if value is over maximum, set it to maximum
+            if (stock_value["current_price"] > stock_value["max_price"]) {
+                stock_value["current_price"] = stock_value["max_price"];
             }
 
             // world.broadcast("New stock value for stock " + stock + ": " + stock_value["current_price"]);
