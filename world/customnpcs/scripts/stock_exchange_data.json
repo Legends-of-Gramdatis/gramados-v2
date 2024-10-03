@@ -1,23 +1,4 @@
 {
-    "Region Generals": {
-        "Gramados": {
-            "stock_multiplier": 1.0,
-            "stock_flexibility": 1.0
-        },
-        "Greenfield": {
-            "stock_multiplier": 1.0,
-            "stock_flexibility": 1.0
-        },
-        "Farmiston": {
-            "stock_multiplier": 1.0,
-            "stock_flexibility": 1.0
-        },
-        "Allenis": {
-            "stock_multiplier": 1.0,
-            "stock_flexibility": 1.0
-        }
-
-    },
     "Gramados": {
         "minecraft:potato:0": {
             "display_name": "Potato",
@@ -99,7 +80,7 @@
             "display_name": "Purple Grape Wine",
             "type": "ageable_booze",
             "reference_price": 1000,
-            "current_price": 1000,
+            "current_price": 1100,
             "min_price": 500,
             "max_price": 5000,
             "quantity_sold": 121,
@@ -111,7 +92,7 @@
             "display_name": "Purple Grape Wine (Potent)",
             "type": "ageable_booze",
             "reference_price": 2000,
-            "current_price": 2000,
+            "current_price": 2200,
             "min_price": 1000,
             "max_price": 10000,
             "quantity_sold": 4,
@@ -125,7 +106,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2134,
+            "current_price": 2347,
             "quantity_sold": 6,
             "last_sold_time": 2167369165,
             "quantity_factor": 16,
@@ -137,7 +118,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 5315,
+            "current_price": 5846,
             "quantity_sold": 120,
             "last_sold_time": 2167343852,
             "quantity_factor": 4,
@@ -149,7 +130,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 3784,
+            "current_price": 4162,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 8,
@@ -161,7 +142,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 6310,
+            "current_price": 6941,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 4,
@@ -173,7 +154,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2131,
+            "current_price": 2344,
             "quantity_sold": 17,
             "last_sold_time": 2167343852,
             "quantity_factor": 16,
@@ -183,7 +164,7 @@
             "display_name": "Green Grape Wine",
             "type": "ageable_booze",
             "reference_price": 1000,
-            "current_price": 1256,
+            "current_price": 1381,
             "min_price": 500,
             "max_price": 5000,
             "quantity_sold": 5,
@@ -197,7 +178,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2518,
+            "current_price": 2769,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
             "quantity_factor": 16,
@@ -209,7 +190,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2520,
+            "current_price": 2772,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 16,
@@ -221,7 +202,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 6310,
+            "current_price": 6941,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 4,
@@ -233,7 +214,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 3783,
+            "current_price": 4161,
             "quantity_sold": 9,
             "last_sold_time": 2167222990,
             "quantity_factor": 8,
@@ -245,7 +226,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 6310,
+            "current_price": 6941,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
             "quantity_factor": 4,
@@ -257,7 +238,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2517,
+            "current_price": 2768,
             "quantity_sold": 9,
             "last_sold_time": 2167222990,
             "quantity_factor": 16,
@@ -269,7 +250,7 @@
             "min_price": 500,
             "max_price": 5000,
             "reference_price": 1000,
-            "current_price": 1256,
+            "current_price": 1381,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
             "quantity_factor": 16,
@@ -281,7 +262,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2517,
+            "current_price": 2768,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
             "quantity_factor": 16,
@@ -293,7 +274,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2516,
+            "current_price": 2767,
             "quantity_sold": 10,
             "last_sold_time": 2167222990,
             "quantity_factor": 16,
@@ -305,7 +286,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 6309,
+            "current_price": 6939,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
             "quantity_factor": 4,
@@ -317,7 +298,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 3784,
+            "current_price": 4162,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
             "quantity_factor": 8,
@@ -329,7 +310,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 6308,
+            "current_price": 6938,
             "quantity_sold": 8,
             "last_sold_time": 2167222990,
             "quantity_factor": 4,
@@ -341,11 +322,29 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2518,
+            "current_price": 2769,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
             "quantity_factor": 16,
             "stock_bonus": 0
+        }
+    },
+    "Region Generals": {
+        "Gramados": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Greenfield": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Farmiston": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Allenis": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
         }
     }
 }
