@@ -1,34 +1,24 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
-var counter = 0;
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json";
 
 var world = API.getIWorld(0);
 
 function init(event) {
-    counter = 0;
     world.broadcast("Stock Exchange World initialized!");
     updateStockValue(event);
     updateDomainValues(event);
-}
-
-function tick(event) {
-    // world.broadcast("Stock Exchange World ticked!");
-
-    counter++;
-
-    if (counter >= _TIMER_COUNTER) {
-        updateStockValue(event);
-        updateDomainValues(event);
-        counter = 0;
-    }
 }
 
 function updateStockValue(event) {
     world.broadcast("Updating stock values...");
 
     var stock_data = load_json(STOCK_FILE_PATH);
+
+    var region_generals = stock_data["Region Generals"];
+    //remove the "Region Generals" key from the stock data
+    delete stock_data["Region Generals"];
 
     if (stock_data == null) {
         world.broadcast("ERROR: Stock data not found!");
@@ -54,16 +44,17 @@ function updateStockValue(event) {
                 elapsed_time = current_time - last_sold_time;
             }
 
-            // world.broadcast("Elapsed time since last time one of these items was sold: " + elapsed_time);
-
             // Get the number of days that have passed
             var days = Math.floor(elapsed_time / _TIMER_COUNTER);
-            // world.broadcast("Days since last time one of these items was sold: " + days);
 
-            // world.broadcast("Current stock value for stock " + stock + ": " + stock_value["current_price"]);
+            var daily_increase = 0.05 * days;
 
-            // Increase the stock value by 5% per day
-            stock_value["current_price"] = Math.floor(stock_value["current_price"] * (1 + (0.05 * days)));
+            stock_value["current_price"] = Math.floor(stock_value["current_price"] * (1 + daily_increase));
+
+            // If needed apply the region general's influence
+            if (region_generals[region] != null && region_generals[region]["stock_multiplier"] != null) {
+                stock_value["current_price"] = Math.floor(stock_value["current_price"] * region_generals[region]["stock_multiplier"]);
+            }
 
             // if value is under minimum, set it to minimum
             if (stock_value["current_price"] < stock_value["min_price"]) {
@@ -82,6 +73,9 @@ function updateStockValue(event) {
 
         stock_data[region] = stocks;
     }
+
+    // Add the "Region Generals" key back to the stock data
+    stock_data["Region Generals"] = region_generals;
 
     save_json(stock_data, STOCK_FILE_PATH);
 }
@@ -102,22 +96,18 @@ function updateDomainValues(event) {
         // Get the time where the domain sold its last item
         var last_sold_time = domain_data["last_sale_date"];
         var current_time = world.getTotalTime();
-        var elapsed_time = current_time - last_sold_time;
 
         // Get the number of days that have passed
-        var days = Math.floor(elapsed_time / _TIMER_COUNTER);
-        // world.broadcast("Days since last time this domain sold an item: " + days);
+        var days = Math.floor((current_time - last_sold_time) / _TIMER_COUNTER);
 
-        // world.broadcast("Current domain reputation for domain " + domain_data["display_name"] + ": " + domain_data["reputation"]);
-
-        // If there are 0 days, increase the domain reputation by 5%
+        // If the last sale was less than 24 hours ago, increase the domain reputation by 5%
         if (days == 0) {
-            domain_data["reputation"] = domain_data["reputation"] * 1.05;
+            domain_data["reputation"] += 1.05;
         }
 
         // If there are 7 days, lower the domain reputation by 5%
         if (days >= 7) {
-            domain_data["reputation"] = domain_data["reputation"] * 0.95;
+            domain_data["reputation"] -= 0.05;
         }
 
         // Get the variety of items sold by the domain
