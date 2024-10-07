@@ -22,35 +22,345 @@
         }
     },
     "Greenfield": {
-        "minecraft:wheat:0": {
-            "display_name": "Wheat",
+        "harvestcraft:onionitem:0": {
+            "display_name": "Onion",
             "reference_price": 20,
             "current_price": 20,
             "min_price": 5,
-            "max_price": 50,
+            "max_price": 100,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 2500
+            "quantity_factor": 256
         },
-        "harvestcraft:appleitem:0": {
-            "display_name": "Apple",
-            "reference_price": 120,
-            "current_price": 120,
-            "min_price": 50,
-            "max_price": 500,
+        "harvestcraft:garlicitem:0": {
+            "display_name": "Garlic",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 2500
+            "quantity_factor": 256
         },
-        "minecraft:honey_bottle:0": {
-            "display_name": "Honey Bottle",
-            "reference_price": 200,
-            "current_price": 200,
-            "min_price": 100,
-            "max_price": 1000,
+        "harvestcraft:chilipepperitem:0": {
+            "display_name": "Chili Pepper",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 100
+            "quantity_factor": 256
+        },
+        "harvestcraft:tomatoitem:0": {
+            "display_name": "Tomato",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 4628,
+            "last_sold_time": 2173741253,
+            "quantity_factor": 256
+        },
+        "harvestcraft:eggplantitem:0": {
+            "display_name": "Eggplant",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:bellpepperitem:0": {
+            "display_name": "Bell Pepper",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "minecraft:potato:0": {
+            "display_name": "Potato",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 6246,
+            "last_sold_time": 2173688440,
+            "quantity_factor": 256
+        },
+        "harvestcraft:gigapickleitem:0": {
+            "display_name": "Gigapickle",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:zucchiniitem:0": {
+            "display_name": "Zucchini",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:wintersquashitem:0": {
+            "display_name": "Winter Squash",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:harvestpumpkinitem:0": {
+            "display_name": "Harvest Pumpkin",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "minecraft:melon:0": {
+            "display_name": "Melon",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:caulifloweritem:0": {
+            "display_name": "Cauliflower",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:cabbageitem:0": {
+            "display_name": "Cabbage",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:broccoliitem:0": {
+            "display_name": "Broccoli",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:brusselsproutitem:0": {
+            "display_name": "Brussels Sprout",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:cucumberitem:0": {
+            "display_name": "Cucumber",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:beetitem:0": {
+            "display_name": "Beet",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:leekitem:0": {
+            "display_name": "Leek",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:peasitem:0": {
+            "display_name": "Peas",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "minecraft:carrot:0": {
+            "display_name": "Carrot",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:rhubarbitem:0": {
+            "display_name": "Rhubarb",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:scallionitem:0": {
+            "display_name": "Scallion",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "minecraft:beetroot:0": {
+            "display_name": "Beetroot",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:parsnipitem:0": {
+            "display_name": "Parsnip",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:cornitem:0": {
+            "display_name": "Corn",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:barleyitem:0": {
+            "display_name": "Barley",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:spiceleafitem:0": {
+            "display_name": "Spice Leaf",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 3759,
+            "last_sold_time": 2173276182,
+            "quantity_factor": 256
+        },
+        "harvestcraft:lettuceitem:0": {
+            "display_name": "Lettuce",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 4937,
+            "last_sold_time": 2172996471,
+            "quantity_factor": 256
+        },
+        "harvestcraft:beanitem:0": {
+            "display_name": "Bean",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:grapeitem:0": {
+            "display_name": "Grape",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 2072,
+            "last_sold_time": 2172951882,
+            "quantity_factor": 256
+        },
+        "harvestcraft:sweetpotatoitem:0": {
+            "display_name": "Sweet Potato",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
+        },
+        "harvestcraft:soybeanitem:0": {
+            "display_name": "Soybean",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 2190,
+            "last_sold_time": 2172951882,
+            "quantity_factor": 256
+        },
+        "harvestcraft:lentilitem:0": {
+            "display_name": "Lentil",
+            "reference_price": 20,
+            "current_price": 20,
+            "min_price": 5,
+            "max_price": 100,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 256
         }
     },
     "Farmiston": {
@@ -130,9 +440,9 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 4162,
-            "quantity_sold": 4,
-            "last_sold_time": 2167206131,
+            "current_price": 3000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 8,
             "stock_bonus": 1.5
         },
@@ -154,9 +464,9 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2344,
-            "quantity_sold": 17,
-            "last_sold_time": 2167343852,
+            "current_price": 2000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 16,
             "stock_bonus": 0
         },
@@ -214,9 +524,9 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 4161,
-            "quantity_sold": 9,
-            "last_sold_time": 2167222990,
+            "current_price": 3000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 8,
             "stock_bonus": 1.5
         },
@@ -238,9 +548,9 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2768,
-            "quantity_sold": 9,
-            "last_sold_time": 2167222990,
+            "current_price": 2000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 16,
             "stock_bonus": 0
         },
@@ -298,9 +608,9 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 4162,
-            "quantity_sold": 5,
-            "last_sold_time": 2167222990,
+            "current_price": 3000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 8,
             "stock_bonus": 1.5
         },
@@ -322,9 +632,9 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2769,
-            "quantity_sold": 5,
-            "last_sold_time": 2167222990,
+            "current_price": 2000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
             "quantity_factor": 16,
             "stock_bonus": 0
         }
