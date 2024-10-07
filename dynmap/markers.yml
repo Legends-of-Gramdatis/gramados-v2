@@ -2293,6 +2293,30 @@ sets:
                 y: 80.0
                 z: 72.0
                 label: Historical Seagull's Road
+            marker_13:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -5249.0
+                y: 73.0
+                z: -828.0
+                label: Fort Harbenshire Barracks
+            marker_14:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -5238.0
+                y: 73.0
+                z: -936.0
+                label: Fort Harbenshire Main Keep
+            marker_15:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -5235.0
+                y: 71.0
+                z: -755.0
+                label: Fort Harbenshire Twin Gatehouses
 
         lines: {}
         layerprio: 0
