@@ -1,7 +1,7 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
-var _PRICE_EVOLUTION_FACTOR = 0.05;
+var _PRICE_EVOLUTION_FACTOR = 0.005;
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json";
 var REGION_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
