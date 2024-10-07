@@ -1,6 +1,7 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
+var _PRICE_EVOLUTION_FACTOR = 0.05;
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json";
 var REGION_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
@@ -40,10 +41,10 @@ function updateStockPrice(stockValue, regionGeneral) {
     var lastSoldTime = stockValue["last_sold_time"];
     var currentTime = world.getTotalTime();
     var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
-    var days = Math.floor(elapsedTime / _TIMER_COUNTER);
-    var dailyIncrease = 0.05 * days;
 
-    stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + dailyIncrease));
+    if (elapsedTime >= _TIMER_COUNTER) {
+        stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
+    }
 
     if (regionGeneral && regionGeneral["stock_multiplier"]) {
         stockValue["current_price"] = Math.floor(stockValue["current_price"] * regionGeneral["stock_multiplier"]);

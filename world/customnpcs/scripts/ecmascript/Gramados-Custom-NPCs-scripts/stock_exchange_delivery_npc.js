@@ -63,16 +63,29 @@ var crates_ids = [
     "mts:unuparts.unuparts_part_unu_crate_metal",
     "mts:iv_tpp.trin_crate2",
     "mts:iv_tpp.trin_crate1_wooden",
-    "mts:iv_tpp.trin_crate1_metal"
+    "mts:iv_tpp.trin_crate1_metal",
+    "mts:ivv.backpack_red",
+    "mts:ivv.backpack_blue",
+    "mts:ivv.backpack_green",
+    "mts:ivv.backpack_black",
+    "mts:ivv.backpack_brown",
+    "mts:ivv.backpack_white",
+    "mts:ivv.backpack_yellow",
+    "mts:ivv.crate_metallic",
+    "mts:ivv.crate",
+    "mts:ivv.box",
+    "mts:iav.iav_storage_l_crate_2",
+    "mts:iav.iav_storage_l_crate_3",
+    "mts:iav.iav_storage_l_crate_5",
+    "mts:iav.iav_storage_l_crate_6"
 ];
 
 var NPC_REGION = "Allenis";
+var region_specifics = {};
 var stock_exchange_instance;
 var stock_exchange_generals;
 
-var MIN_PRICE = 10; // Minimum price threshold to prevent prices going too low
-var TIME_THRESHOLD = 72000; // 1 hour in ticks (72000 ticks = 60 min in Minecraft)
-var PRICE_INCREASE_FACTOR = 0.05; // 5% price increase if item hasn't been sold in a while
+var _PRICE_EVOLUTION_FACTOR = 0.05; // 5% price increase if item hasn't been sold in a while
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json"; // Path to the JSON file
 
 var npc; // Global variable to store the NPC instance
@@ -83,6 +96,33 @@ var world; // Get the world where the NPC is located
 function init(event) {
     npc = event.npc;
     world = npc.getWorld();
+
+    if (NPC_REGION == "Allenis") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
+            jobId : 233,
+            varietyBonus : 0.075
+        }
+    } else if (NPC_REGION == "Greenfield") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId : 51,
+            varietyBonus : 0.15
+        }
+    } else if (NPC_REGION == "Farmiston") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
+            jobId : 154,
+            varietyBonus : -0.1
+        }
+    } else {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Lumberjack job.",
+            jobId : 59,
+            varietyBonus : 0.05
+        }
+    }
+    npc.say("I am ready to trade! Please hold a crate in your hand to begin.");
 }
 
 // When a player interacts with the NPC
@@ -90,8 +130,8 @@ function interact(event) {
     var player = event.player;
 
     // If player has read the hire dialogue
-    if (!player.hasReadDialog(233)) {
-        npc.say("Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.");
+    if (!player.hasReadDialog(region_specifics.jobId)) {
+        npc.say(region_specifics.helloPhrase);
         return;
     }
 
@@ -139,11 +179,13 @@ function interact(event) {
 // Function to calculate total earnings from delivered items
 function calculateEarnings(delivery) {
     var totalEarnings = 0;
+    var earningsMultiplier = 1;
 
     // If there are generic items in the delivery
     if (delivery["generic"]) {
         for (var item in delivery["generic"]) {
             totalEarnings += parseInt(calculateGenericEarnings(delivery["generic"][item], item));
+            earningsMultiplier += region_specifics.varietyBonus;
         }
     }
 
@@ -152,14 +194,13 @@ function calculateEarnings(delivery) {
         for (var item in delivery["ageable_booze"]) {
             // npc.say("Current earnings: " + getAmountCoin(totalEarnings));
             totalEarnings += calculateAgeableBoozeEarnings(delivery["ageable_booze"][item], item);
-
-            // npc.say("Total Earnings so far: " + getAmountCoin(totalEarnings));
+            earningsMultiplier += region_specifics.varietyBonus;
         }
     }
 
-    // npc.say("Total Earnings: " + getAmountCoin(totalEarnings));
+    // npc.say("Total Earnings: " + getAmountCoin(totalEarnings) + ", Earnings Multiplier: " + earningsMultiplier + ", Total Earnings after Multiplier: " + getAmountCoin(totalEarnings * earningsMultiplier));
 
-    return totalEarnings;
+    return totalEarnings * earningsMultiplier;
 }
 
 // Function to calculate generic earnings
@@ -329,13 +370,17 @@ function updateStockPrices(region, delivery, player) {
                 stock_exchange_instance[item].quantity_sold += quantityDelivered;
                 stock_exchange_instance[item].last_sold_time = currentTime;
 
-                var decreaseFactor = -PRICE_INCREASE_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
+                var decreaseFactor = -_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
 
                 if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
                     decreaseFactor *= stock_exchange_generals[region]["stock_flexibility"];
                 }
 
                 stock_exchange_instance[item].current_price = stock_exchange_instance[item].current_price + decreaseFactor;
+
+                stock_exchange_instance[item].current_price = Math.floor(
+                    stock_exchange_instance[item].current_price
+                );
 
                 if (stock_exchange_instance[item].current_price < stock_exchange_instance[item].min_price) {
                     stock_exchange_instance[item].current_price = stock_exchange_instance[item].min_price;
@@ -349,55 +394,55 @@ function updateStockPrices(region, delivery, player) {
 
             // Load Domain Data
             var allenis_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
-                
-                for (var item in delivery[types]) {
-    
-                    var quantityDelivered = delivery[types][item]["count"];
 
-                    var generic_id = item.split(":").slice(0, 3).join(":");
-                    var domain = delivery[types][item]["extra_data"]["Domain"];
+            for (var item in delivery[types]) {
 
-                    // If the id is not in the Domain variety, add it
-                    for (var it_domain in allenis_data.domains) {
-                        var domain_data = allenis_data.domains[it_domain];
-                        if (domain_data["display_name"] == domain) {
-                            if (domain_data["bottle_variety"].indexOf(generic_id) == -1) {
-                                domain_data["bottle_variety"].push(generic_id);
-                            }
+                var quantityDelivered = delivery[types][item]["count"];
+
+                var generic_id = item.split(":").slice(0, 3).join(":");
+                var domain = delivery[types][item]["extra_data"]["Domain"];
+
+                // If the id is not in the Domain variety, add it
+                for (var it_domain in allenis_data.domains) {
+                    var domain_data = allenis_data.domains[it_domain];
+                    if (domain_data["display_name"] == domain) {
+                        if (domain_data["bottle_variety"].indexOf(generic_id) == -1) {
+                            domain_data["bottle_variety"].push(generic_id);
                         }
                     }
-
-    
-                    // npc.say("Item: " + item + ", Quantity: " + quantityDelivered);
-
-                    if (!stock_exchange_instance[generic_id]) {
-                        npc.say("The item " + item + " is not part of the stock exchange.");
-                        continue;
-                    }
-
-                    stock_exchange_instance[generic_id].quantity_sold += quantityDelivered;
-
-                    // npc.say("Quantity Sold: " + stock_exchange_instance[generic_id].quantity_sold);
-
-                    var decreaseFactor = -PRICE_INCREASE_FACTOR;
-
-                    for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
-                        var newPrice = stock_exchange_instance[generic_id].current_price + (decreaseFactor * stock_exchange_instance[generic_id].quantity_factor);
-    
-                        stock_exchange_instance[generic_id].current_price = Math.floor(
-                            Math.max(
-                                newPrice,
-                                stock_exchange_instance[generic_id].min_price
-                            )
-                        );
-                        stock_exchange_instance[generic_id].last_sold_time = currentTime;
-                    }
-    
                 }
 
 
-            save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+                // npc.say("Item: " + item + ", Quantity: " + quantityDelivered);
+
+                if (!stock_exchange_instance[generic_id]) {
+                    npc.say("The item " + item + " is not part of the stock exchange.");
+                    continue;
+                }
+
+                stock_exchange_instance[generic_id].quantity_sold += quantityDelivered;
+
+                // npc.say("Quantity Sold: " + stock_exchange_instance[generic_id].quantity_sold);
+
+                var decreaseFactor = -_PRICE_EVOLUTION_FACTOR;
+
+                for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
+                    var newPrice = stock_exchange_instance[generic_id].current_price + (decreaseFactor * stock_exchange_instance[generic_id].quantity_factor);
+
+                    stock_exchange_instance[generic_id].current_price = Math.floor(
+                        Math.max(
+                            newPrice,
+                            stock_exchange_instance[generic_id].min_price
+                        )
+                    );
+                    stock_exchange_instance[generic_id].last_sold_time = currentTime;
+                }
+
             }
+
+
+            save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+        }
     }
     save_data(stock_exchange_instance);
 }
