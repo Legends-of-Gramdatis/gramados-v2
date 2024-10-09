@@ -43,7 +43,11 @@ function updateStockPrice(stockValue, regionGeneral) {
     var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
 
     if (elapsedTime >= _TIMER_COUNTER) {
-        stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
+        if (Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR)) == stockValue["current_price"]) {
+            stockValue["current_price"] += 1;
+        } else {
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
+        }
     }
 
     if (regionGeneral && regionGeneral["stock_multiplier"]) {
