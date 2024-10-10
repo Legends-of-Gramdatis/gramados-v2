@@ -80,7 +80,7 @@ var crates_ids = [
     "mts:iav.iav_storage_l_crate_6"
 ];
 
-var NPC_REGION = "Allenis";
+var NPC_REGION = "Gramados Industrial Concrete";
 var region_specifics = {};
 var stock_exchange_instance;
 var stock_exchange_generals;
@@ -114,6 +114,18 @@ function init(event) {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
             jobId : 154,
             varietyBonus : -0.1
+        }
+    } else if (NPC_REGION == "Gramados Industrial Concrete") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Concrete Factory Worker job.",
+            jobId : 54,
+            varietyBonus : 0.05
+        }
+    } else if (NPC_REGION == "Gramados Industrial Terracotta") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Terracotta Factory Worker job.",
+            jobId : 61,
+            varietyBonus : 0.1
         }
     } else {
         region_specifics = {
