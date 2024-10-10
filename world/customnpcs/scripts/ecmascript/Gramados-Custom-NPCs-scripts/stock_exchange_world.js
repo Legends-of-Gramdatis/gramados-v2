@@ -50,6 +50,11 @@ function updateStockPrice(stockValue, regionGeneral) {
         }
     }
 
+    // Add a random factor to the price
+    var random_proportion = Math.min(stockValue["reference_price"] / 10, 5);
+    var randomFactor = Math.floor(Math.random() * random_proportion - random_proportion / 2);
+    stockValue["current_price"] += randomFactor;
+
     if (regionGeneral && regionGeneral["stock_multiplier"]) {
         stockValue["current_price"] = Math.floor(stockValue["current_price"] * regionGeneral["stock_multiplier"]);
     }
