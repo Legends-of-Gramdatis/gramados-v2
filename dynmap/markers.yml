@@ -1128,35 +1128,43 @@ sets:
             marker_1:
                 world: world
                 markup: false
-                x: 246.0
                 icon: services_bank
+                x: 246.0
                 y: 74.0
                 z: -992.0
                 label: Springfield Bank
             marker_2:
                 world: world
                 markup: false
-                x: -2022.0
                 icon: services_bank
+                x: -2022.0
                 y: 75.0
                 z: -35.0
                 label: Gramados National Bank
             marker_3:
                 world: world
-                markup: false
-                x: -1883.0
+                markup: false0
                 icon: services_bank
+                x: -1883.
                 y: 78.0
                 z: 216.0
                 label: Goldincina Bank
             marker_4:
                 world: world
                 markup: false
-                x: -169.0
                 icon: services_bank
+                x: -169.0
                 y: 68.0
                 z: -5432.0
                 label: Branwen City Bank
+            marker_5:
+                world: world
+                markup: false
+                icon: services_bank
+                x: -2842.0
+                y: 95.0
+                z: 1056.0
+                label: Pendulum Capital
         lines: {
             }
         layerprio: 0
@@ -1499,7 +1507,7 @@ sets:
         lines: {
             }
         layerprio: 0
-    Education:
+    Education & Culture:
         hide: false
         minzoom: 3
         circles: {
@@ -1507,7 +1515,7 @@ sets:
         deficon: default
         areas: {
             }
-        label: Culture and Events
+        label: Education & Culture
         markers:
             marker_1:
                 world: world
@@ -1525,23 +1533,28 @@ sets:
                 y: 78.0
                 z: -620.0
                 label: Gramados Civic Center
-            marker_3:
-                world: world
-                markup: false
-                x: -1834.0
-                icon: ent&lei_misc
-                y: 74.0
-                z: -157.0
-                label: Gramados Gymnasium
-            marker_4:
-                world: world
-                markup: false
-                icon: ent&lei_museum
-                x: -1574.0
-                y: 77.0
-                z: 436.0
-                label: Gramados Royal Arsenal Museum
             marker_5:
+                world: world
+                markup: false
+                icon: civil_services_library
+                x: -2804.0
+                y: 95.0
+                z: 935.0
+                label: Petrolton Library
+        lines: {
+            }
+        layerprio: 0
+    Entertainment & Leisure:
+        hide: false
+        minzoom: 3
+        circles: {
+            }
+        deficon: default
+        areas: {
+            }
+        label: Entertainment & Leisure
+        markers:
+            marker_1:
                 world: world
                 markup: false
                 icon: ent&lei_music
@@ -1549,7 +1562,7 @@ sets:
                 y: 77.0
                 z: 215.0
                 label:  Suncrest Estate Shooting Festival Scene
-            marker_6:
+            marker_2:
                 world: world
                 markup: false
                 icon: ent&lei_misc
@@ -1557,6 +1570,22 @@ sets:
                 y: 76.0
                 z: 167.0
                 label: Suncrest Estate Shooting Festival
+            marker_3:
+                world: world
+                markup: false
+                icon: ent&lei_museum
+                x: -1574.0
+                y: 77.0
+                z: 436.0
+                label: Gramados Royal Arsenal Museum
+            marker_4:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -1834.0
+                y: 74.0
+                z: -157.0
+                label: Gramados Gymnasium
         lines: {
             }
         layerprio: 0
@@ -1717,11 +1746,19 @@ sets:
             marker_19:
                 world: world
                 markup: false
-                x: -5120.0
                 icon: civil_services_post_office
+                x: -5120.0
                 y: 67.0
                 z: 268.0
                 label: Ardocor Post Office
+            marker_20:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -2904.0
+                y: 103.0
+                z: 973.0
+                label: Petrolton Court House
         lines: {
             }
         layerprio: 0
@@ -2354,6 +2391,14 @@ sets:
                 y: 93.0
                 z: -320.0
                 label: Aurora Pillars Bridge
+            marker_4:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -2693.0
+                y: 98.0
+                z: 710.0
+                label: Arcolocks Bridge
         lines: {}
         layerprio: 0
     Transports:
