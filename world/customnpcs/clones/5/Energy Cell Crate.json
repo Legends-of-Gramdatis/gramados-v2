@@ -1,0 +1,614 @@
+{
+    "ReturnToStart": 1b,
+    "NpcInv": [
+    ],
+    "BossColor": 0,
+    "PotionEffect": 0,
+    "Size": 8,
+    "stopAndInteract": 0b,
+    "Resistances": {
+        "Arrow": 1.0f,
+        "Explosion": 1.0f,
+        "Knockback": 1.0f,
+        "Melee": 1.0f
+    },
+    "BossBar": 0b,
+    "RespawnTime": 0,
+    "NpcAngrySound": "",
+    "ReactsToFire": 0b,
+    "IgnoreCobweb": 0b,
+    "PositionOffsetZ": 5.0f,
+    "PositionOffsetY": 5.0f,
+    "PositionOffsetX": 5.0f,
+    "LootMode": 0,
+    "TransformHasAI": 0b,
+    "AttackStrenght": 5,
+    "PersistenceRequired": 0b,
+    "id": "customnpcs:customnpc",
+    "IsStatue": 0b,
+    "MovingPatern": 0,
+    "NpcLines": {
+        "Lines": [
+        ]
+    },
+    "DefendFaction": 0b,
+    "FireIndirect": 0,
+    "NpcVisible": 0,
+    "LinkedNpcName": "",
+    "NpcScenes": {
+        "Scenes": [
+        ]
+    },
+    "HitSound": "minecraft:entity.arrow.hit",
+    "FindShelter": 2,
+    "Air": 300s,
+    "TacticalVariant": 0,
+    "Orientation": 0,
+    "ScriptLanguage": "ECMAScript",
+    "HandItems": [
+        {
+        },
+        {
+        }
+    ],
+    "KnockBack": 0,
+    "TransformHasJob": 0b,
+    "ArmorDropChances": [
+        0.085f,
+        0.085f,
+        0.085f,
+        0.085f
+    ],
+    "BurnInSun": 0b,
+    "StandingState": 1,
+    "AttackInvisible": 0b,
+    "NpcInteractNPCLines": {
+        "Lines": [
+        ]
+    },
+    "HurtTime": 0s,
+    "WalkingRange": 10,
+    "ShotCount": 1,
+    "pDur": 5,
+    "AttackRange": 2,
+    "NpcKillLines": {
+        "Lines": [
+        ]
+    },
+    "PotionImmune": 0b,
+    "AvoidsSun": 0b,
+    "Texture": "minecraft:textures/entity/slime/slime.png",
+    "NpcJob": 0,
+    "BurstCount": 1,
+    "NpcAttackLines": {
+        "Lines": [
+        ]
+    },
+    "pSpeed": 10,
+    "pArea": 0,
+    "DeathTime": 0s,
+    "pImpact": 0,
+    "MoveState": 0,
+    "pRender3D": 1b,
+    "Motion": [
+        0.0d,
+        -0.0784000015258789d,
+        0.0d
+    ],
+    "CombatRegen": 0,
+    "NpcsTimers": [
+    ],
+    "MarkovGender": 0,
+    "pEffect": 0,
+    "DistanceToMelee": 0,
+    "NpcStepSound": "",
+    "FireRate": 5,
+    "LeftHanded": 0b,
+    "pEffAmp": 0,
+    "OnGround": 1b,
+    "Dimension": 0,
+    "ImmuneToFire": 0b,
+    "NpcKilledLines": {
+        "Lines": [
+        ]
+    },
+    "Fire": -1s,
+    "ArmorItems": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+    ],
+    "DisablePitch": 0b,
+    "pPhysics": 1b,
+    "TransformHasInv": 0b,
+    "NpcInteractLines": {
+        "Lines": [
+        ]
+    },
+    "HurtByTimestamp": 198,
+    "pSpin": 0b,
+    "NpcHurtSound": "minecraft:entity.player.hurt",
+    "pTrail": 0,
+    "CreatureType": 0,
+    "Attributes": [
+        {
+            "Base": 10.0d,
+            "Name": "generic.maxHealth"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.knockbackResistance"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.movementSpeed"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armor"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armorToughness"
+        },
+        {
+            "Base": 1.0d,
+            "Name": "forge.swimSpeed"
+        },
+        {
+            "Base": 32.0d,
+            "Name": "generic.followRange"
+        },
+        {
+            "Base": 5.0d,
+            "Name": "generic.attackDamage"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.flyingSpeed"
+        }
+    ],
+    "Invulnerable": 0b,
+    "TransformHasDisplay": 0b,
+    "NoFallDamage": 0b,
+    "AbsorptionAmount": 0.0f,
+    "TransformHasRole": 0b,
+    "Name": "Energy Cell Crate",
+    "FallDistance": 0.0f,
+    "SkinColor": 16777215,
+    "NpcIdleSound": "",
+    "Weapons": [
+    ],
+    "NPCDialogOptions": [
+    ],
+    "AggroRange": 1,
+    "DirectLOS": 1b,
+    "HealthRegen": 1,
+    "ForgeCaps": {
+        "fvtm:passenger": {
+        }
+    },
+    "HandDropChances": [
+        0.085f,
+        0.085f
+    ],
+    "NpcModelData": {
+        "LegsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.012000002f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "BodyConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "Eyes": {
+            "Pattern": 0b,
+            "Glint": 1b,
+            "Type": -1b,
+            "PositionY": 1,
+            "SkinColor": 11830381,
+            "PlayerTexture": 0b,
+            "Color": 8375321,
+            "BrowColor": 5982516,
+            "BrowThickness": 4
+        },
+        "EntityClass": "net.minecraft.entity.monster.EntitySlime",
+        "LegParts": {
+            "Pattern": 0b,
+            "Type": 0b,
+            "PlayerTexture": 0b,
+            "Color": 16777215
+        },
+        "Parts": [
+        ],
+        "ArmsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": -0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "ExtraData": {
+        },
+        "HeadConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        }
+    },
+    "minDelay": 20,
+    "DoorInteract": 2,
+    "MoveSpeed": 0,
+    "TransformEditingModus": 0b,
+    "UsingSkinUrl": 2b,
+    "Leashed": 0b,
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_slime_energycellcrate.png",
+    "CanSwim": 1b,
+    "GroundSound": "minecraft:block.stone.break",
+    "MaxHealth": 10,
+    "HideBodyWhenKilled": 0b,
+    "AttackSpeed": 20,
+    "PotionDuration": 5,
+    "maxDelay": 40,
+    "ScriptEnabled": 1b,
+    "Role": 0,
+    "DropChance": [
+        {
+            "Integer": 100,
+            "Slot": 0
+        },
+        {
+            "Integer": 5,
+            "Slot": 1
+        },
+        {
+            "Integer": 50,
+            "Slot": 2
+        },
+        {
+            "Integer": 75,
+            "Slot": 3
+        },
+        {
+            "Integer": 100,
+            "Slot": 4
+        },
+        {
+            "Integer": 100,
+            "Slot": 5
+        },
+        {
+            "Integer": 100,
+            "Slot": 6
+        },
+        {
+            "Integer": 100,
+            "Slot": 7
+        },
+        {
+            "Integer": 100,
+            "Slot": 8
+        }
+    ],
+    "FactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "pDamage": 4,
+    "KilledTime": 0L,
+    "AimWhileShooting": 0b,
+    "CanPickUpLoot": 0b,
+    "AttackOtherFactions": 0b,
+    "CanDrown": 1b,
+    "pSize": 5,
+    "CanSprint": 0b,
+    "CanLeap": 0b,
+    "TransformIsActive": 0b,
+    "ForgeData": {
+        "cnpcmarkdata": {
+            "marks": [
+            ]
+        }
+    },
+    "MovingState": 0,
+    "MovingPos": 0,
+    "PotionAmp": 0,
+    "OnAttack": 3,
+    "TacticalRadius": 8,
+    "FallFlying": 0b,
+    "MaxExp": 0,
+    "OrderedLines": 0b,
+    "PortalCooldown": 0,
+    "pGlows": 0b,
+    "TransformHasAdvanced": 0b,
+    "TransformHasStats": 0b,
+    "MovementType": 0,
+    "FiringSound": "minecraft:entity.arrow.shoot",
+    "ModRev": 18,
+    "Accuracy": 60,
+    "MinExp": 0,
+    "Armor": [
+    ],
+    "CloakTexture": "",
+    "GlowTexture": "",
+    "MaxFiringRange": 15,
+    "pXlr8": 0b,
+    "MarkovGeneratorId": 0,
+    "Scripts": [
+        {
+            "Script": "// On death
+function died(event) {
+    var npc = event.npc;
+    var world = npc.getWorld();
+    var guardian;
+
+    npc.say(\"You have found an Energy Cell Crate. Guardian-RX will be healed.\");
+
+    // Get the NPC with the name \"Guardian-RX\"
+    var nearbyNPCs = world.getNearbyEntities(npc.getPos(), 100, 0)
+    for (var i = 0; i < nearbyNPCs.length; i++) {
+        if (nearbyNPCs[i].getName().equals(\"Guardian-RX\")) {
+            guardian = nearbyNPCs[i];
+            break;
+        }
+    }
+    // If the NPC exists
+    if (guardian != null) {
+        // Set the NPC's health to max
+        guardian.setHealth(guardian.getMaxHealth());
+    }
+}",
+            "Console": [
+                {
+                    "Long": 1728899569846L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot read property \"world\" from undefined in <eval> at line number 4
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCDied(EventHooks.java:116)
+	at noppes.npcs.entity.EntityNPCInterface.func_70645_a(EntityNPCInterface.java:1287)
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:1023)
+	at noppes.npcs.entity.EntityNPCInterface.func_70097_a(EntityNPCInterface.java:602)
+	at com.flansmod.common.guns.EntityBullet.OnHit(EntityBullet.java:295)
+	at com.flansmod.common.guns.ItemGun.DoInstantShot(ItemGun.java:690)
+	at com.flansmod.common.guns.ItemGun.ServerHandleShotData(ItemGun.java:669)
+	at com.flansmod.common.network.PacketShotData.handleServerSide(PacketShotData.java:155)
+	at com.flansmod.common.network.PacketHandler.handleServerPackets(PacketHandler.java:171)
+	at com.flansmod.common.CommonTickHandler.tick(CommonTickHandler.java:54)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_54_CommonTickHandler_tick_ServerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPreServerTick(FMLCommonHandler.java:279)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:657)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:4 TypeError: Cannot read property \"world\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$239$33A$\\^eval\\_.died(<eval>:4)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:659)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 22 more"
+                },
+                {
+                    "Long": 1728899604996L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot read property \"world\" from undefined in <eval> at line number 4
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCDied(EventHooks.java:116)
+	at noppes.npcs.entity.EntityNPCInterface.func_70645_a(EntityNPCInterface.java:1287)
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:1023)
+	at noppes.npcs.entity.EntityNPCInterface.func_70097_a(EntityNPCInterface.java:602)
+	at com.flansmod.common.guns.EntityBullet.OnHit(EntityBullet.java:295)
+	at com.flansmod.common.guns.ItemGun.DoInstantShot(ItemGun.java:690)
+	at com.flansmod.common.guns.ItemGun.ServerHandleShotData(ItemGun.java:669)
+	at com.flansmod.common.network.PacketShotData.handleServerSide(PacketShotData.java:155)
+	at com.flansmod.common.network.PacketHandler.handleServerPackets(PacketHandler.java:171)
+	at com.flansmod.common.CommonTickHandler.tick(CommonTickHandler.java:54)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_54_CommonTickHandler_tick_ServerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPreServerTick(FMLCommonHandler.java:279)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:657)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:4 TypeError: Cannot read property \"world\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$242$33A$\\^eval\\_.died(<eval>:4)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:659)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 22 more"
+                },
+                {
+                    "Long": 1728899628896L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot read property \"getWorld\" from undefined in <eval> at line number 4
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCDied(EventHooks.java:116)
+	at noppes.npcs.entity.EntityNPCInterface.func_70645_a(EntityNPCInterface.java:1287)
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:1023)
+	at noppes.npcs.entity.EntityNPCInterface.func_70097_a(EntityNPCInterface.java:602)
+	at com.flansmod.common.guns.EntityBullet.OnHit(EntityBullet.java:295)
+	at com.flansmod.common.guns.ItemGun.DoInstantShot(ItemGun.java:690)
+	at com.flansmod.common.guns.ItemGun.ServerHandleShotData(ItemGun.java:669)
+	at com.flansmod.common.network.PacketShotData.handleServerSide(PacketShotData.java:155)
+	at com.flansmod.common.network.PacketHandler.handleServerPackets(PacketHandler.java:171)
+	at com.flansmod.common.CommonTickHandler.tick(CommonTickHandler.java:54)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_54_CommonTickHandler_tick_ServerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPreServerTick(FMLCommonHandler.java:279)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:657)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:4 TypeError: Cannot read property \"getWorld\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$245$33A$\\^eval\\_.died(<eval>:4)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:659)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 22 more"
+                },
+                {
+                    "Long": 1728899921848L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot read property \"getNearbyEntities\" from undefined in <eval> at line number 10
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCDied(EventHooks.java:116)
+	at noppes.npcs.entity.EntityNPCInterface.func_70645_a(EntityNPCInterface.java:1287)
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:1023)
+	at noppes.npcs.entity.EntityNPCInterface.func_70097_a(EntityNPCInterface.java:602)
+	at com.flansmod.common.guns.EntityBullet.OnHit(EntityBullet.java:295)
+	at com.flansmod.common.guns.ItemGun.DoInstantShot(ItemGun.java:690)
+	at com.flansmod.common.guns.ItemGun.ServerHandleShotData(ItemGun.java:669)
+	at com.flansmod.common.network.PacketShotData.handleServerSide(PacketShotData.java:155)
+	at com.flansmod.common.network.PacketHandler.handleServerPackets(PacketHandler.java:171)
+	at com.flansmod.common.CommonTickHandler.tick(CommonTickHandler.java:54)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_54_CommonTickHandler_tick_ServerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPreServerTick(FMLCommonHandler.java:279)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:657)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:10 TypeError: Cannot read property \"getNearbyEntities\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$247$33A$\\^eval\\_.died(<eval>:10)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:659)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 22 more"
+                },
+                {
+                    "Long": 1728899961647L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot read property \"getPos\" from undefined in <eval> at line number 10
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCDied(EventHooks.java:116)
+	at noppes.npcs.entity.EntityNPCInterface.func_70645_a(EntityNPCInterface.java:1287)
+	at net.minecraft.entity.EntityLivingBase.func_70097_a(EntityLivingBase.java:1023)
+	at noppes.npcs.entity.EntityNPCInterface.func_70097_a(EntityNPCInterface.java:602)
+	at com.flansmod.common.guns.EntityBullet.OnHit(EntityBullet.java:295)
+	at com.flansmod.common.guns.ItemGun.DoInstantShot(ItemGun.java:690)
+	at com.flansmod.common.guns.ItemGun.ServerHandleShotData(ItemGun.java:669)
+	at com.flansmod.common.network.PacketShotData.handleServerSide(PacketShotData.java:155)
+	at com.flansmod.common.network.PacketHandler.handleServerPackets(PacketHandler.java:171)
+	at com.flansmod.common.CommonTickHandler.tick(CommonTickHandler.java:54)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_54_CommonTickHandler_tick_ServerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPreServerTick(FMLCommonHandler.java:279)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:657)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:10 TypeError: Cannot read property \"getPos\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$250$33A$\\^eval\\_.died(<eval>:10)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:659)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 22 more"
+                }
+            ],
+            "ScriptList": [
+            ]
+        }
+    ],
+    "Health": 10.0f,
+    "pStick": 0b,
+    "MovingPause": 1b,
+    "NpcDeathSound": "minecraft:entity.player.hurt",
+    "FactionID": 13,
+    "Title": "",
+    "TotalTicksAlive": 54579L,
+    "Rotation": [
+        0.0f,
+        0.0f
+    ],
+    "ShowName": 0,
+    "npcInteracting": 1b,
+    "UpdateBlocked": 0b,
+    "AvoidsWater": 0b,
+    "NoLivingAnimation": 0b,
+    "SpawnCycle": 3
+}

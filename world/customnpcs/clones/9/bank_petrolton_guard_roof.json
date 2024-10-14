@@ -1,0 +1,2275 @@
+{
+    "ReturnToStart": 1b,
+    "NpcInv": [
+        {
+            "Slot": 0b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:money",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§e50G"
+                    ],
+                    "Name": "§2§lMoney§r"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:money",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§e10G"
+                    ],
+                    "Name": "§2§lMoney§r"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 2b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:money",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§e100G"
+                    ],
+                    "Name": "§2§lMoney§r"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 3b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:money",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§e5G"
+                    ],
+                    "Name": "§2§lMoney§r"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 4b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:phone",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 5b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:w1200ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 6b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:w1200ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 7b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:w1200ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 8b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:m1014",
+            "Count": 1b,
+            "tag": {
+                "attachments": {
+                    "barrel": {
+                    },
+                    "grip": {
+                    },
+                    "generic_0": {
+                    },
+                    "scope": {
+                    },
+                    "stock": {
+                    }
+                },
+                "ammo": [
+                    {
+                    },
+                    {
+                    },
+                    {
+                    },
+                    {
+                    }
+                ]
+            },
+            "Damage": 0s
+        }
+    ],
+    "BossColor": 0,
+    "PotionEffect": 0,
+    "Size": 5,
+    "stopAndInteract": 0b,
+    "Resistances": {
+        "Arrow": 1.3380282f,
+        "Explosion": 1.0f,
+        "Knockback": 1.0f,
+        "Melee": 1.3380282f
+    },
+    "BossBar": 0b,
+    "RespawnTime": 1,
+    "NpcAngrySound": "",
+    "ReactsToFire": 0b,
+    "IgnoreCobweb": 0b,
+    "PositionOffsetZ": 5.0f,
+    "PositionOffsetY": 5.0f,
+    "PositionOffsetX": 5.0f,
+    "LootMode": 0,
+    "TransformHasAI": 0b,
+    "AttackStrenght": 6,
+    "PersistenceRequired": 0b,
+    "id": "customnpcs:customnpc",
+    "IsStatue": 0b,
+    "MovingPatern": 1,
+    "NpcLines": {
+        "Lines": [
+        ]
+    },
+    "DefendFaction": 1b,
+    "FireIndirect": 2,
+    "NpcVisible": 0,
+    "LinkedNpcName": "",
+    "NpcScenes": {
+        "Scenes": [
+        ]
+    },
+    "HitSound": "ivv:gun.bullet.hit",
+    "FindShelter": 2,
+    "Air": 300s,
+    "TacticalVariant": 0,
+    "Orientation": 0,
+    "ScriptLanguage": "ECMAScript",
+    "HandItems": [
+        {
+        },
+        {
+        }
+    ],
+    "KnockBack": 1,
+    "TransformHasJob": 0b,
+    "ArmorDropChances": [
+        0.085f,
+        0.085f,
+        0.085f,
+        0.085f
+    ],
+    "BurnInSun": 0b,
+    "StandingState": 0,
+    "AttackInvisible": 0b,
+    "NpcInteractNPCLines": {
+        "Lines": [
+        ]
+    },
+    "HurtTime": 0s,
+    "WalkingRange": 20,
+    "ShotCount": 6,
+    "pDur": 5,
+    "AttackRange": 2,
+    "NpcKillLines": {
+        "Lines": [
+            {
+                "Line": "That explains the power outage...",
+                "Song": "",
+                "Slot": 0
+            },
+            {
+                "Line": "Teaches you to snoop where you aren't allowed...",
+                "Song": "",
+                "Slot": 1
+            },
+            {
+                "Line": "It was dangerous... nobody will believe it wasn't an accident",
+                "Song": "",
+                "Slot": 2
+            },
+            {
+                "Line": "Hehehe...",
+                "Song": "",
+                "Slot": 3
+            },
+            {
+                "Line": "Shouldn't have picked my bank for breaking into...",
+                "Song": "",
+                "Slot": 4
+            },
+            {
+                "Line": "Nasty...",
+                "Song": "",
+                "Slot": 5
+            }
+        ]
+    },
+    "PotionImmune": 0b,
+    "AvoidsSun": 0b,
+    "Texture": "http://novask.in/1477273163.png",
+    "NpcJob": 0,
+    "BurstCount": 3,
+    "NpcAttackLines": {
+        "Lines": [
+            {
+                "Line": "Trespasser!",
+                "Song": "",
+                "Slot": 0
+            },
+            {
+                "Line": "You're in a restricted area!",
+                "Song": "",
+                "Slot": 1
+            },
+            {
+                "Line": "Get out of here!",
+                "Song": "",
+                "Slot": 2
+            },
+            {
+                "Line": "HEY!",
+                "Song": "",
+                "Slot": 3
+            },
+            {
+                "Line": "I see you!",
+                "Song": "",
+                "Slot": 4
+            }
+        ]
+    },
+    "pSpeed": 10,
+    "pArea": 0,
+    "DeathTime": 0s,
+    "pImpact": 1,
+    "MoveState": 0,
+    "pRender3D": 1b,
+    "Motion": [
+        1.47220585330554E-4d,
+        -0.37663049823865513d,
+        0.0d
+    ],
+    "CombatRegen": 0,
+    "NpcsTimers": [
+    ],
+    "MarkovGender": 0,
+    "pEffect": 0,
+    "DistanceToMelee": 2,
+    "NpcStepSound": "",
+    "FireRate": 20,
+    "LeftHanded": 0b,
+    "pEffAmp": 0,
+    "OnGround": 0b,
+    "Dimension": 0,
+    "ImmuneToFire": 0b,
+    "NpcKilledLines": {
+        "Lines": [
+        ]
+    },
+    "Fire": -1s,
+    "ArmorItems": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+    ],
+    "DisablePitch": 0b,
+    "pPhysics": 1b,
+    "TransformHasInv": 0b,
+    "NpcInteractLines": {
+        "Lines": [
+        ]
+    },
+    "HurtByTimestamp": 447,
+    "pSpin": 0b,
+    "NpcHurtSound": "minecraft:entity.player.hurt",
+    "pTrail": 0,
+    "CreatureType": 0,
+    "Attributes": [
+        {
+            "Base": 20.0d,
+            "Name": "generic.maxHealth"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.knockbackResistance"
+        },
+        {
+            "Base": 0.25d,
+            "Name": "generic.movementSpeed"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armor"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armorToughness"
+        },
+        {
+            "Base": 1.0d,
+            "Name": "forge.swimSpeed"
+        },
+        {
+            "Base": 32.0d,
+            "Name": "generic.followRange"
+        },
+        {
+            "Base": 6.0d,
+            "Name": "generic.attackDamage"
+        },
+        {
+            "Base": 0.5d,
+            "Name": "generic.flyingSpeed"
+        }
+    ],
+    "Invulnerable": 0b,
+    "TransformHasDisplay": 0b,
+    "NoFallDamage": 0b,
+    "AbsorptionAmount": 0.0f,
+    "TransformHasRole": 0b,
+    "Name": "Guard",
+    "FallDistance": 0.7684762f,
+    "SkinColor": 16777215,
+    "NpcIdleSound": "",
+    "Weapons": [
+        {
+            "Slot": 0b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:m1014",
+            "Count": 1b,
+            "tag": {
+                "attachments": {
+                    "barrel": {
+                    },
+                    "grip": {
+                    },
+                    "generic_0": {
+                    },
+                    "scope": {
+                    },
+                    "stock": {
+                    }
+                },
+                "ammo": [
+                    {
+                    },
+                    {
+                    },
+                    {
+                    },
+                    {
+                    }
+                ]
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:bullet",
+            "Count": 1b,
+            "Damage": 0s
+        }
+    ],
+    "NPCDialogOptions": [
+    ],
+    "AggroRange": 8,
+    "DirectLOS": 1b,
+    "HealthRegen": 1,
+    "ForgeCaps": {
+        "fvtm:passenger": {
+        }
+    },
+    "HandDropChances": [
+        0.085f,
+        0.085f
+    ],
+    "NpcModelData": {
+        "LegsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.012000002f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "BodyConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "Eyes": {
+            "Pattern": 0b,
+            "Glint": 1b,
+            "Type": -1b,
+            "PositionY": 1,
+            "SkinColor": 11830381,
+            "PlayerTexture": 0b,
+            "Color": 10066329,
+            "BrowColor": 5982516,
+            "BrowThickness": 4
+        },
+        "LegParts": {
+            "Pattern": 0b,
+            "Type": 0b,
+            "PlayerTexture": 0b,
+            "Color": 16777215
+        },
+        "Parts": [
+        ],
+        "ArmsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": -0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "ExtraData": {
+        },
+        "HeadConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        }
+    },
+    "minDelay": 25,
+    "DoorInteract": 1,
+    "MoveSpeed": 5,
+    "TransformEditingModus": 0b,
+    "UsingSkinUrl": 2b,
+    "Leashed": 0b,
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_Police.png",
+    "CanSwim": 1b,
+    "GroundSound": "minecraft:block.anvil.hit",
+    "MaxHealth": 20,
+    "HideBodyWhenKilled": 1b,
+    "AttackSpeed": 20,
+    "PotionDuration": 5,
+    "maxDelay": 45,
+    "ScriptEnabled": 1b,
+    "Role": 0,
+    "DropChance": [
+        {
+            "Integer": 10,
+            "Slot": 0
+        },
+        {
+            "Integer": 25,
+            "Slot": 1
+        },
+        {
+            "Integer": 1,
+            "Slot": 2
+        },
+        {
+            "Integer": 75,
+            "Slot": 3
+        },
+        {
+            "Integer": 10,
+            "Slot": 4
+        },
+        {
+            "Integer": 50,
+            "Slot": 5
+        },
+        {
+            "Integer": 25,
+            "Slot": 6
+        },
+        {
+            "Integer": 10,
+            "Slot": 7
+        },
+        {
+            "Integer": 1,
+            "Slot": 8
+        }
+    ],
+    "FactionPoints": {
+        "DecreaseFaction1Points": 1b,
+        "OptionFaction2Points": 10,
+        "OptionFactions1": 2,
+        "OptionFactions2": 6,
+        "OptionFaction1Points": 10,
+        "DecreaseFaction2Points": 0b
+    },
+    "pDamage": 6,
+    "KilledTime": 0L,
+    "AimWhileShooting": 1b,
+    "CanPickUpLoot": 0b,
+    "AttackOtherFactions": 1b,
+    "CanDrown": 1b,
+    "pSize": 5,
+    "CanSprint": 0b,
+    "CanLeap": 0b,
+    "TransformIsActive": 0b,
+    "ForgeData": {
+        "cnpcmarkdata": {
+            "marks": [
+            ]
+        }
+    },
+    "MovingState": 1,
+    "MovingPos": 0,
+    "PotionAmp": 0,
+    "OnAttack": 0,
+    "TacticalRadius": 8,
+    "FallFlying": 0b,
+    "MaxExp": 5,
+    "OrderedLines": 0b,
+    "PortalCooldown": 0,
+    "pGlows": 0b,
+    "TransformHasAdvanced": 0b,
+    "TransformHasStats": 0b,
+    "MovementType": 0,
+    "FiringSound": "flansmod:m1014shoot",
+    "ModRev": 18,
+    "Accuracy": 60,
+    "MinExp": 3,
+    "Armor": [
+    ],
+    "CloakTexture": "",
+    "GlowTexture": "",
+    "MaxFiringRange": 32,
+    "pXlr8": 0b,
+    "MarkovGeneratorId": 0,
+    "Scripts": [
+        {
+            "Script": "function rangedLaunched(t){
+t.npc.world.playSoundAt(t.npc.getPos(),t.npc.stats.ranged.getSound(0),(Math.random()*0.1875+1.0),(Math.random()*0.25+0.875))
+for(var i = 0; i < t.projectiles.length; ++i){
+t.projectiles[i].getTempdata().put(\"npc\",t.npc)
+t.projectiles[i].enableEvents()}}
+
+function projectileImpact(t){
+var npc = t.projectile.getTempdata().get(\"npc\")
+if(t.type == 0){
+npc.world.playSoundAt(t.projectile.getPos(),npc.stats.ranged.getSound(1),2,(Math.random()*0.25+0.875))}
+if(t.type == 1){
+npc.world.playSoundAt(t.projectile.getPos(),npc.stats.ranged.getSound(2),2,(Math.random()*0.25+0.875))}}
+",
+            "Console": [
+            ],
+            "ScriptList": [
+            ]
+        },
+        {
+            "Script": "var maxLifetime = 30;
+var currentLifetime = 0;
+var despawnLine = new String(\"No subjects in sight, I'd better head back to restart the power from inside...\")
+var isTargeting = 0;
+
+function init(cc){
+var currentLifetime = 0;
+var isTargeting = 0;
+}
+
+function target(cc){isTargeting = 1;}
+function targetLost(cc){isTargeting = 0;}
+
+function tick(cc){
+if(currentLifetime >= maxLifetime && isTargeting == 0){
+if(despawnLine != \"\"){cc.npc.say(despawnLine);}
+//cc.npc.say(\"bleh\");
+cc.npc.despawn();
+}else{
+if(isTargeting == 0){currentLifetime = currentLifetime + 0.5;}
+//cc.npc.say(currentLifetime);
+}
+}
+",
+            "Console": [
+                {
+                    "Long": 1728781900724L,
+                    "String": "javax.script.ScriptException: <eval>:8:13 Expected ; but found +
+var lifetime + 1;
+             ^ in <eval> at line number 8 at column number 13
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:8:13 Expected ; but found +
+var lifetime + 1;
+             ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1110)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:863)
+	at jdk.nashorn.internal.parser.Parser.statementList(Parser.java:1013)
+	at jdk.nashorn.internal.parser.Parser.getBlock(Parser.java:531)
+	at jdk.nashorn.internal.parser.Parser.getStatement(Parser.java:555)
+	at jdk.nashorn.internal.parser.Parser.ifStatement(Parser.java:1192)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:890)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728781945722L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 34 more"
+                },
+                {
+                    "Long": 1728781959219L,
+                    "String": "javax.script.ScriptException: <eval>:8:13 Expected ; but found +
+var lifetime + 1
+             ^ in <eval> at line number 8 at column number 13
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:8:13 Expected ; but found +
+var lifetime + 1
+             ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1110)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:863)
+	at jdk.nashorn.internal.parser.Parser.statementList(Parser.java:1013)
+	at jdk.nashorn.internal.parser.Parser.getBlock(Parser.java:531)
+	at jdk.nashorn.internal.parser.Parser.getStatement(Parser.java:555)
+	at jdk.nashorn.internal.parser.Parser.ifStatement(Parser.java:1192)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:890)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728781986221L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 34 more"
+                },
+                {
+                    "Long": 1728781994222L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 34 more"
+                },
+                {
+                    "Long": 1728782039722L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 34 more"
+                },
+                {
+                    "Long": 1728782063721L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 34 more"
+                },
+                {
+                    "Long": 1728782072721L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 32 more"
+                },
+                {
+                    "Long": 1728782077222L,
+                    "String": "java.lang.AssertionError: Failed generating bytecode for <eval>:5
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGeneric(ScriptFunctionData.java:384)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.createGenericInvoker(ScriptFunctionData.java:282)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getGenericInvoker(ScriptFunctionData.java:276)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:620)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsBoolean(CodeGenerator.java:576)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.loadTestAndJump(BranchOptimizer.java:166)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:133)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.branchOptimizer(BranchOptimizer.java:153)
+	at jdk.nashorn.internal.codegen.BranchOptimizer.execute(BranchOptimizer.java:57)
+	at jdk.nashorn.internal.codegen.CodeGenerator.emitBranch(CodeGenerator.java:2206)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2184)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 32 more"
+                },
+                {
+                    "Long": 1728782129224L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"event\" is not defined in <eval> at line number 5
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:5 ReferenceError: \"event\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$465$54A$\\^eval\\_.tick(<eval>:5)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728782157725L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"clicked\" is not defined in <eval> at line number 5
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:5 ReferenceError: \"clicked\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$469$56A$\\^eval\\_.tick(<eval>:5)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728782176722L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"lifetime\" is not defined in <eval> at line number 5
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:5 ReferenceError: \"lifetime\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$473$56A$\\^eval\\_.tick(<eval>:5)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728782188722L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"lifetime\" is not defined in <eval> at line number 5
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:5 ReferenceError: \"lifetime\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$477$56A$\\^eval\\_.tick(<eval>:5)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728782200219L,
+                    "String": "javax.script.ScriptException: <eval>:2:6 Expected ; but found .
+var cc.lifetime = 0;
+      ^ in <eval> at line number 2 at column number 6
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:2:6 Expected ; but found .
+var cc.lifetime = 0;
+      ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1110)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728782219722L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"lifetime\" is not defined in <eval> at line number 5
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:5 ReferenceError: \"lifetime\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$482$56A$\\^eval\\_.tick(<eval>:5)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728783584219L,
+                    "String": "javax.script.ScriptException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^ in <eval> at line number 3 at column number 7
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728783586219L,
+                    "String": "javax.script.ScriptException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^ in <eval> at line number 3 at column number 7
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784292220L,
+                    "String": "javax.script.ScriptException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^ in <eval> at line number 3 at column number 7
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\"//leave blank for no line
+       ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784302719L,
+                    "String": "javax.script.ScriptException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\";//leave blank for no line
+       ^ in <eval> at line number 3 at column number 7
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:7 Expected ; but found despawnLine
+String despawnLine = \"No suspects in sight, I better head back inside...\";//leave blank for no line
+       ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784326720L,
+                    "String": "javax.script.ScriptException: <eval>:3:7 Expected ; but found despawnLine
+string despawnLine = \"No suspects in sight, I better head back inside...\";//leave blank for no line
+       ^ in <eval> at line number 3 at column number 7
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:7 Expected ; but found despawnLine
+string despawnLine = \"No suspects in sight, I better head back inside...\";//leave blank for no line
+       ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.endOfLine(Parser.java:3372)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1160)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784380719L,
+                    "String": "javax.script.ScriptException: <eval>:3:0 Expected an operand but found const
+const despawnLine = \"No suspects in sight, I better head back inside...\"; /leave blank for no line
+^ in <eval> at line number 3 at column number 0
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:0 Expected an operand but found const
+const despawnLine = \"No suspects in sight, I better head back inside...\"; /leave blank for no line
+^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3182)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3282)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1150)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784409719L,
+                    "String": "javax.script.ScriptException: <eval>:3:0 Expected an operand but found const
+const despawnLine = 'No suspects in sight, I better head back inside...'; /leave blank for no line
+^ in <eval> at line number 3 at column number 0
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:0 Expected an operand but found const
+const despawnLine = 'No suspects in sight, I better head back inside...'; /leave blank for no line
+^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3182)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3282)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1150)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728784498219L,
+                    "String": "javax.script.ScriptException: <eval>:3:0 Expected an operand but found const
+const despawnLine = new String(\"No suspects in sight, I better head back inside...\")
+^ in <eval> at line number 3 at column number 0
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:3:0 Expected an operand but found const
+const despawnLine = new String(\"No suspects in sight, I better head back inside...\")
+^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3182)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3282)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1150)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728785614717L,
+                    "String": "javax.script.ScriptException: TypeError: Can not invoke method [jdk.internal.dynalink.beans.SimpleDynamicMethod void noppes.npcs.api.wrapper.EntityWrapper.despawn()] with the passed arguments; they do not match any of its method signatures. in <eval> at line number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:8 TypeError: Can not invoke method [jdk.internal.dynalink.beans.SimpleDynamicMethod void noppes.npcs.api.wrapper.EntityWrapper.despawn()] with the passed arguments; they do not match any of its method signatures.
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.linker.NashornBottomLinker.linkBean(NashornBottomLinker.java:103)
+	at jdk.nashorn.internal.runtime.linker.NashornBottomLinker.getGuardedInvocation(NashornBottomLinker.java:73)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$599$176A$\\^eval\\_.tick(<eval>:8)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728786281677L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"target\" is not defined in <eval> at line number 6
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:6 ReferenceError: \"target\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$636$176A$\\^eval\\_.tick(<eval>:6)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728786298171L,
+                    "String": "javax.script.ScriptException: <eval>:6:52 Expected ( but found )
+if(currentLifetime >= maxLifetime | !function target){
+                                                    ^ in <eval> at line number 6 at column number 52
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:6:52 Expected ( but found )
+if(currentLifetime >= maxLifetime | !function target){
+                                                    ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2654)
+	at jdk.nashorn.internal.parser.Parser.memberExpression(Parser.java:2506)
+	at jdk.nashorn.internal.parser.Parser.leftHandSideExpression(Parser.java:2372)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3147)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3114)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3325)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3282)
+	at jdk.nashorn.internal.parser.Parser.ifStatement(Parser.java:1185)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:890)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728786379664L,
+                    "String": "javax.script.ScriptException: <eval>:6:34 Expected ( but found ?
+var isAttacking = function target ? 1 : 0;
+                                  ^ in <eval> at line number 6 at column number 34
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCInit(EventHooks.java:93)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:55)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:6:34 Expected ( but found ?
+var isAttacking = function target ? 1 : 0;
+                                  ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectDontAdvance(AbstractParser.java:350)
+	at jdk.nashorn.internal.parser.AbstractParser.expect(AbstractParser.java:337)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2654)
+	at jdk.nashorn.internal.parser.Parser.memberExpression(Parser.java:2506)
+	at jdk.nashorn.internal.parser.Parser.leftHandSideExpression(Parser.java:2372)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3147)
+	at jdk.nashorn.internal.parser.Parser.assignmentExpression(Parser.java:3353)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1088)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 25 more"
+                },
+                {
+                    "Long": 1728786450167L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"target\" is not defined in <eval> at line number 6
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:6 ReferenceError: \"target\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$645$176A$\\^eval\\_.tick(<eval>:6)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728786478667L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"bleh\" is not defined in <eval> at line number 9
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:9 ReferenceError: \"bleh\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$648$176A$\\^eval\\_.tick(<eval>:9)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728786599677L,
+                    "String": "javax.script.ScriptException: TypeError: Cannot set property \"target\" of noppes.npcs.api.wrapper.NPCWrapper@45e65186 in <eval> at line number 11
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:11 TypeError: Cannot set property \"target\" of noppes.npcs.api.wrapper.NPCWrapper@45e65186
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.linker.NashornBottomLinker.linkBean(NashornBottomLinker.java:124)
+	at jdk.nashorn.internal.runtime.linker.NashornBottomLinker.getGuardedInvocation(NashornBottomLinker.java:73)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$675$176A$\\^eval\\_.tick(<eval>:11)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                },
+                {
+                    "Long": 1728786745167L,
+                    "String": "javax.script.ScriptException: ReferenceError: \"isTargeting\" is not defined in <eval> at line number 14
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.entity.data.DataScript.runScript(DataScript.java:58)
+	at noppes.npcs.EventHooks.onNPCTick(EventHooks.java:109)
+	at noppes.npcs.entity.EntityNPCInterface.TickCentral_TrueOnUpdateTick(EntityNPCInterface.java:302)
+	at noppes.npcs.entity.EntityCustomNpc.TickCentral_TrueOnUpdateTick(EntityCustomNpc.java:50)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueOnUpdate(TickHub.java:56)
+	at com.github.terminatornl.laggoggles.Main.redirectOnUpdate(Main.java:105)
+	at noppes.npcs.entity.EntityCustomNpc.func_70071_h_(EntityCustomNpc.java)
+	at net.minecraft.world.World.func_72866_a(World.java:1996)
+	at net.minecraft.world.WorldServer.func_72866_a(WorldServer.java:832)
+	at net.minecraft.world.World.func_72870_g(World.java:1958)
+	at net.minecraft.world.World.func_72939_s(World.java:1762)
+	at net.minecraft.world.WorldServer.func_72939_s(WorldServer.java:613)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:767)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:14 ReferenceError: \"isTargeting\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$688$265A$\\^eval\\_.tick(<eval>:14)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 20 more"
+                }
+            ],
+            "ScriptList": [
+            ]
+        }
+    ],
+    "Health": 20.0f,
+    "pStick": 0b,
+    "MovingPause": 0b,
+    "NpcDeathSound": "minecraft:entity.player.hurt",
+    "FactionID": 11,
+    "Title": "officer",
+    "TotalTicksAlive": 3452422L,
+    "Rotation": [
+        332.9085f,
+        0.0f
+    ],
+    "ShowName": 1,
+    "npcInteracting": 0b,
+    "UpdateBlocked": 0b,
+    "AvoidsWater": 0b,
+    "NoLivingAnimation": 0b,
+    "SpawnCycle": 0
+}
