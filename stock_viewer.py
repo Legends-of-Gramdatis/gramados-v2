@@ -56,9 +56,12 @@ def update_csv(region, data):
                 item_data.get('reference_price'),
                 item_data.get('min_price'),
                 item_data.get('max_price'),
-                item_data.get('quantity_sold'),
-                item_data.get('current_price')
+                item_data.get('quantity_sold')
             ]
+            # Fill previous columns with empty values
+            new_row.extend([''] * (len(header) - len(new_row) - 1))
+            # Add the current price
+            new_row.append(item_data.get('current_price'))
             row_dict[item_id] = new_row
 
     # Write the updated data back to the CSV
