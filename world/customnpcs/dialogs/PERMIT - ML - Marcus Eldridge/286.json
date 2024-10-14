@@ -6,10 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Thanks, Marcus. I’ll do my best.",
+                "Dialog": 287,
+                "Title": "Where exactly is Suncrest Estate?",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 289,
+    "DialogId": 286,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p4.7 - The tournament.",
+    "DialogTitle": "p4.4 - transition",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I have no doubt. This tournament will be the final step before we begin your formal evaluation for the Marksmanship License. Remember, a high score will set you apart from the rest. Now go. The competition awaits.",
+    "DialogText": "The goal is to score high—very high. Lord Ardocor himself will provide you with a gun, and the competition includes a series of challenging shots. You’ll need to bring your A-game. Not only will you be tested on precision, but on your ability to handle pressure.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727198517694L,
+        "TimePast": 1728919830682L,
         "Time": 0L,
         "Subject": ""
     }

@@ -1,15 +1,15 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 85,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Thank you!",
+                "Dialog": 291,
+                "Title": "I'm ready for the challenge. What can you tell me about the tournament?",
                 "DialogColor": 14737632,
-                "OptionType": 2
+                "OptionType": 1
             }
         }
     ],
@@ -17,18 +17,18 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 257,
-    "AvailabilityQuest": 0,
+    "DialogId": 290,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 69,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "ch2 - ammo supply 2",
+    "DialogTitle": "p1.1 - welcome",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "No problem. I’ll get you some more rounds. Just give me a moment.",
+    "DialogText": "Ah, you must be the contestant Marcus spoke so highly of. Welcome to Suncrest Estate. You’ve arrived just in time for the tournament. We host this event every year for marksmen like yourself—those looking to prove their skills and earn some recognition. But I assure you, this competition is no easy feat.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 87,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724776496450L,
+        "TimePast": 1728920984497L,
         "Time": 0L,
         "Subject": ""
     }

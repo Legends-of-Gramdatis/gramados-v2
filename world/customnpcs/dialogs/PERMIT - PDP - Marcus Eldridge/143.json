@@ -1,14 +1,14 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 20,
     "Options": [
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 296,
-    "AvailabilityQuest": 0,
+    "DialogId": 143,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -18,7 +18,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 85,
+    "DialogQuest": 19,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TESTING - Chapter 4",
+    "DialogTitle": "Self-Defense Awareness Workshop",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +37,8 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "",
+    "DialogText": "Greetings, @p! I understand you're seeking a Personal Defense Permit for your safety. Before we proceed, I recommend attending a Self-Defense Awareness Workshop. It's an essential step in understanding the responsibilities that come with personal firearm ownership in Gramados. Are you ready to embark on this journey?
+",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +55,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727178340478L,
+        "TimePast": 1728910765720L,
         "Time": 0L,
         "Subject": ""
     }

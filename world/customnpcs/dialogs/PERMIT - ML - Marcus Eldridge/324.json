@@ -1,15 +1,15 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 20,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 143,
-                "Title": "Hello! I am @p and I'm seeking a Personal Defense Permit for my safety.",
+                "Dialog": -1,
+                "Title": "Thanks, Marcus. I’ll be ready.",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 229,
-    "AvailabilityQuest": 2,
+    "DialogId": 324,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "First welcome",
+    "DialogTitle": "p6.5 - Fort Harbenshire: ML Conclusion",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, welcome! I’m Marcus Eldridge, the coordinator for firearm permits here in Gramados. How can I assist you today?",
+    "DialogText": "Exactly. And one last thing: people talk, especially in these parts. So, keep that reputation sharp. You never know who’s watching.
+
+Alright then, off you go. We’ll be in touch soon. Don’t be a stranger.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -62,9 +64,29 @@
         "Message": {
         },
         "MailItems": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:blueprint",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§2The Personal Defense Permit (PDP) is issued to responsible citizens who have demonstrated the need and capacity to carry small firearms for self-defense.",
+                            "§2With rising concerns for personal safety in both urban and rural areas,",
+                            "§2this permit grants individuals the right to protect themselves while also emphasizing the importance of responsible firearm handling and compliance with Gramados laws."
+                        ],
+                        "Name": "§bPersonal Defense Permit §r锂"
+                    }
+                },
+                "Damage": 0s
+            }
         ],
         "MailQuest": -1,
-        "TimePast": 1724599929114L,
+        "TimePast": 1728914859347L,
         "Time": 0L,
         "Subject": ""
     }

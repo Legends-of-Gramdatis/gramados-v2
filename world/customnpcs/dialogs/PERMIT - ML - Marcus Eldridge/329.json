@@ -1,14 +1,24 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 20,
+    "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thanks, Marcus! I appreciate the support. I’ll head to Fort Harbenshire right away.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 143,
-    "AvailabilityQuest": 2,
+    "DialogId": 329,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -18,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 19,
+    "DialogQuest": 100,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Self-Defense Awareness Workshop",
+    "DialogTitle": "p5.5 - Completing the Tournament",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,8 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Greetings, @p! I understand you're seeking a Personal Defense Permit for your safety. Before we proceed, I recommend attending a Self-Defense Awareness Workshop. It's an essential step in understanding the responsibilities that come with personal firearm ownership in Gramados. Are you ready to embark on this journey?
-",
+    "DialogText": "Yes, just one more thing. This final exam will push you to your limits. Keep your head in the game and remember everything you've learned so far. If you have any leftover ammo or health kits from your training, you can keep them for the simulation. It might just give you the edge you need.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -55,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722978279557L,
+        "TimePast": 1728915238998L,
         "Time": 0L,
         "Subject": ""
     }

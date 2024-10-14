@@ -6,10 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Thank you, Lord Ardocor. I appreciate your help.",
+                "Dialog": 329,
+                "Title": "Got it! Is there anything else I should know before I go?",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 295,
+    "DialogId": 328,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "t1.2 - ammo supply",
+    "DialogTitle": "p5.4",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, I see. Shooting can deplete your resources quickly, especially under pressure. I can provide you with an extra box of ammunition. Just be sure to use it wisely—every shot counts in this tournament.",
+    "DialogText": "Make sure you're familiar with your equipment. You'll be given a Dragunov for the shooting range, and then an AA-12 for the simulation. Afterward, you'll return both weapons to Captain Falkner. Remember, this test is as much about strategy as it is about shooting accuracy.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727178151927L,
+        "TimePast": 1728915166148L,
         "Time": 0L,
         "Subject": ""
     }

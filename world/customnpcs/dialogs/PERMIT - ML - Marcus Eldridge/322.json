@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 67,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 257,
-                "Title": "I'm out of ammo. Could I get a new supply?",
+                "Dialog": 323,
+                "Title": "And in the meantime?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,12 +17,12 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 256,
-    "AvailabilityQuest": 1,
+    "DialogId": 322,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "ch2 - ammo supply 1",
+    "DialogTitle": "p6.3",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,12 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "How's the training going? Ready for more?",
+    "DialogText": "Now? Well, you’ve proven you’ve got the skill and the patience. The ML permit isn’t handed out to just anyone, and you’ve more than earned the right to it. But there's more than just the permit at stake here. It's about trust, responsibility, and... let's not forget, reputation.
+
+You’ve got a bright future ahead of you. There are a lot of folks who will be keeping an eye on your progress from here on out. This isn't the end, just the start of a bigger journey. That said, the paperwork will go through in a few days. You’ll be contacted once everything is official.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 75,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1727178079485L,
+        "TimePast": 1728914848498L,
         "Time": 0L,
         "Subject": ""
     }

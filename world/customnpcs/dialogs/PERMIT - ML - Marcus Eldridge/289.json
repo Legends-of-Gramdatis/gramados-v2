@@ -1,15 +1,15 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 68,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 259,
-                "Title": "I managed to shoot 16 targets at the Highland Shooting Range.",
+                "Dialog": -1,
+                "Title": "Thanks, Marcus. I’ll do my best.",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -17,18 +17,18 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 258,
-    "AvailabilityQuest": 1,
+    "DialogId": 289,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 85,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p2.1 - precision recap intro",
+    "DialogTitle": "p4.7 - The tournament.",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,10 +47,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome back! How did the Precision Practice go?",
+    "DialogText": "I have no doubt. This tournament will be the final step before we begin your formal evaluation for the Marksmanship License. Remember, a high score will set you apart from the rest. Now go. The competition awaits.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 71,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724777605995L,
+        "TimePast": 1728920205990L,
         "Time": 0L,
         "Subject": ""
     }

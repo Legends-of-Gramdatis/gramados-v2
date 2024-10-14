@@ -1,13 +1,23 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 59,
+    "AvailabilityQuestId": 20,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 143,
+                "Title": "Hello! I am @p and I'm seeking a Personal Defense Permit for my safety.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 144,
+    "DialogId": 229,
     "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -18,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 29,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Practical Experience",
+    "DialogTitle": "First welcome",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, good to see you again. Your dedication to securing your Personal Defense Permit is commendable. With your self-defense skills now sharpened, it's time to delve deeper into the practical aspects of firearm ownership. The next phase of your journey involves a hands-on experience with law enforcement officers on their patrols. By shadowing them, you'll gain invaluable insights into the complexities of maintaining safety and order in Gramados City. Are you prepared to take this step?",
+    "DialogText": "Ah, welcome! I’m Marcus Eldridge, the coordinator for firearm permits here in Gramados. How can I assist you today?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1724523362482L,
+        "TimePast": 1728910756918L,
         "Time": 0L,
         "Subject": ""
     }
