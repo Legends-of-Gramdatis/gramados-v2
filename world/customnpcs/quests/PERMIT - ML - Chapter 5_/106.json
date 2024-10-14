@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 107,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 7: Defend Guardian-RX and Collect Supplies from Crates",
+    "Text": "Waves of enemy robots are attacking from all sides, trying to reach Guardian-RX. I need to defend it by taking down these attackers as fast as I can. If I run low on ammo or health, I’ll need to scavenge the crates scattered around the ruins for supplies—ammunition, medical kits, and other essential resources. Once I’ve neutralized enough robots, the simulation will end.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 5,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728907340818L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "The enemy robots have been defeated, and Guardian-RX is still alive. The simulation has ended successfully. Now I need to return to Captain Falkner for the final debriefing.",
+    "NextQuestTitle": "Step 8: Return to Captain Falkner for Debriefing",
+    "QuestManual": [
+        {
+            "Value": 1,
+            "Slot": "Defend Guardian-RX Until The End Of The Simulation"
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "CompleterNpc": "Mail Service",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Step 10: Citizen Assistance Mission",
+    "Text": "Officer Reynolds has informed me that new citizen complaints and issues will be delivered to me via mail. I should head to the Gramados Mail Station to check if any letters have arrived. These letters will provide further instructions on how I can assist the community.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "Officer Reynolds",
+        "MailQuestTitle": "Assault at Serenity Court",
+        "BeenRead": 0b,
+        "Message": {
+            "pages": [
+                "You have been assigned a new case regarding an assault incident. The victim, Ms. Sophia Rodriguez, resides at Serenity Court in the Downtown district, near Bravo Fuel Station. While no items were stolen, she was attacked by an unknown thief.",
+                "Please visit her to gather more information about the attack and any possible clues that might help in resolving this case.",
+                "Best regards,
+Officer Reynolds"
+            ]
+        },
+        "MailItems": [
+        ],
+        "MailQuest": 54,
+        "TimePast": 1728913502737L,
+        "Time": 0L,
+        "Subject": "Assault Incident at Serenity Court"
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've arrived at the Gramados Mail Station. Now, I need to locate my assigned mailbox and retrieve the letters inside. These letters will guide me in addressing the complaints and issues reported by the citizens.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Gramados City Mail Service"
+}

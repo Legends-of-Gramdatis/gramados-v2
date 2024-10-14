@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Taxidermist",
-    "NextQuestId": 92,
+    "CompleterNpc": "Officer Reynolds",
+    "NextQuestId": -1,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 5: Find the Taxidermist",
-    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Rivetshore Island.",
+    "Title": "Your Personal Defense Permit",
+    "Text": "Officer Reynolds has approved my Personal Defense Permit (PDP) application following my successful resolution of the recent cases.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919127428L,
+        "TimePast": 1728910036469L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've reached the Truck Stop on Feldpard Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
-    "NextQuestTitle": "Step 6: Talking with Edwin Kellen",
-    "QuestLocation": "Feldpard Truck Stop Taxidermist"
+    "CompleteText": "I’ve reported back to Officer Reynolds and received my Personal Defense Permit (PDP). This permit not only grants me the right to carry small firearms for personal defense but also signifies a significant step in my commitment to protecting the community.",
+    "NextQuestTitle": "",
+    "QuestLocation": ""
 }

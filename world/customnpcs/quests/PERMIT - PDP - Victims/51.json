@@ -1,12 +1,11 @@
 {
-    "CompleterNpc": "Edwin Kellen",
-    "NextQuestId": 84,
+    "CompleterNpc": "Bag thief",
+    "NextQuestId": 52,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
-    "IgnoreNBT": 0b,
-    "Title": "Step 7: Deliver the Carcass",
-    "Text": "I need to deliver the White Stag's carcass to the taxidermist at the Truck Stop on Feldpard Island. Once I hand over the carcass, I'll need to wait for the taxidermist to process it.",
+    "QuestCompletion": 1,
+    "Title": "Apprehending the Thief",
+    "Text": "Having located the thief's hideout, I must now confront them and apprehend them to recover the stolen bag. It's essential to approach with caution and ensure the safety of both myself and the victim.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -17,8 +16,14 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 1,
+            "Slot": "Bag thief"
+        }
+    ],
     "ModRev": 18,
-    "Type": 0,
+    "Type": 2,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -27,16 +32,11 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919173281L,
+        "TimePast": 1728910986370L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 0b,
     "Rewards": {
-        "NpcMiscInv": [
-        ]
-    },
-    "Items": {
         "NpcMiscInv": [
             {
                 "Slot": 0b,
@@ -44,21 +44,20 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "betteranimalsplus:wolf_pelt_snowy",
+                "id": "variedcommodities:bag",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§6Bring to Taxidermist to process"
+                            "§1Recovered from bag thief"
                         ],
-                        "Name": "§dRare White Stag Carcass"
+                        "Name": "§rMs. Beatrice Johnson's bag"
                     }
                 },
                 "Damage": 0s
             }
         ]
     },
-    "LeaveItems": 0b,
-    "CompleteText": "I've delivered the White Stag's carcass to the taxidermist at the Truck Stop. The taxidermist will take care of preserving the stag. Now, it's time to return to Marcus Eldridge and review my progress.",
-    "NextQuestTitle": "Step 8: Return to Marcus Eldridge"
+    "CompleteText": "I've successfully apprehended the thief and recovered the stolen bag. The thief is now subdued, and the bag is secure. I must return it to Ms. Beatrice Johnson and ensure her well-being.",
+    "NextQuestTitle": "Returning the Bag"
 }

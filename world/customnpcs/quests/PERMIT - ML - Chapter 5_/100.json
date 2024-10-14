@@ -1,11 +1,13 @@
 {
-    "CompleterNpc": "Edwin Kellen",
-    "NextQuestId": 83,
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 101,
+    "QuestLocation3": "",
     "RandomReward": 0b,
+    "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 6: Talking with Edwin Kellen",
-    "Text": "Now that I am at the Taxidermist, I must talk to Edwin Kellen, owner of the shop.",
+    "Title": "Step 1: Go to Fort Harbenshire",
+    "Text": "I’ve been directed to Fort Harbenshire to complete my final test. Time to find the entrance and meet Captain Adrian Falkner.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -16,14 +18,8 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
-    "QuestDialogs": [
-        {
-            "Integer": 281,
-            "Slot": 0
-        }
-    ],
     "ModRev": 18,
-    "Type": 1,
+    "Type": 3,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -32,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919150530L,
+        "TimePast": 1728906906768L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I have talken with Edwin Kellen. I now must give him the carcass, and he will come back to me later, by mail.",
-    "NextQuestTitle": "Step 7: Deliver the Carcass"
+    "CompleteText": "I’ve reached Fort Harbenshire and met Captain Adrian Falkner. He’s explained how the test will work.",
+    "NextQuestTitle": "Step 2: Meet Captain Adrian Falkner Inside the Fort's Main Keep",
+    "QuestLocation": "Fort Harbenshire Enterance"
 }

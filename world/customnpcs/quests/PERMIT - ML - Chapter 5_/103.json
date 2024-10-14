@@ -1,0 +1,100 @@
+{
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 104,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 4: Talk to Captain Adrian Falkner for the next exam instructions",
+    "Text": "Now that I’ve completed the shooting practice, I need to talk to Captain Falkner again to receive instructions for the next phase of the test.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 315,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728907089868L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:aa12",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:aa12ammo",
+                            "Count": 1b,
+                            "Damage": 0s
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:aa12ammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:dragunovammo",
+                "Count": 2b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "Captain Falkner has outlined the next phase of my test: defending a robot (Guardian-RX) at the ruined barracks in the fort. This will simulate real combat conditions with waves of robotic attackers. Time to find the barracks.",
+    "NextQuestTitle": "Step 5: Find the Ruined Barracks and the Defense Robot"
+}

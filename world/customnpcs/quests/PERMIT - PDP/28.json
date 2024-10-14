@@ -1,0 +1,46 @@
+{
+    "CompleterNpc": "Marcus Eldridge",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Step 7: Preparation for Action",
+    "Text": "After completing the Self-Defense Training at the Gymnasium, it seems logical to consult with Marcus Eldridge once again. He guided me through the initial steps of obtaining my Personal Defense Permit, and now, with my skills honed, it's time to see what's next on the agenda. I should return to the Town Hall and seek Marcus's counsel.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728913251386L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I've met with Marcus Eldridge at the Town Hall once more. He was pleased to see my progress in self-defense training and emphasized the importance of practical experience. Marcus hinted at an opportunity to accompany law enforcement officers on their duties, offering real-world insights into the responsibilities and challenges of wielding a firearm in Gramados City.",
+    "NextQuestTitle": ""
+}

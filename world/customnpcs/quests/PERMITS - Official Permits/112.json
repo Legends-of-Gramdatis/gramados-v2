@@ -1,11 +1,12 @@
 {
-    "CompleterNpc": "Edwin Kellen",
-    "NextQuestId": 83,
+    "CompleterNpc": "",
+    "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 1,
-    "Title": "Step 6: Talking with Edwin Kellen",
-    "Text": "Now that I am at the Taxidermist, I must talk to Edwin Kellen, owner of the shop.",
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Your Marksman License",
+    "Text": "",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -16,14 +17,8 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
-    "QuestDialogs": [
-        {
-            "Integer": 281,
-            "Slot": 0
-        }
-    ],
     "ModRev": 18,
-    "Type": 1,
+    "Type": 0,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -32,14 +27,20 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919150530L,
+        "TimePast": 1728910080971L,
         "Time": 0L,
         "Subject": ""
     },
+    "IgnoreDamage": 0b,
     "Rewards": {
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I have talken with Edwin Kellen. I now must give him the carcass, and he will come back to me later, by mail.",
-    "NextQuestTitle": "Step 7: Deliver the Carcass"
+    "Items": {
+        "NpcMiscInv": [
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "",
+    "NextQuestTitle": ""
 }

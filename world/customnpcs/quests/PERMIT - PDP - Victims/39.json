@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Taxidermist",
-    "NextQuestId": 92,
+    "CompleterNpc": "Smell Oil Manager",
+    "NextQuestId": 43,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 5: Find the Taxidermist",
-    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Rivetshore Island.",
+    "Title": "Inquiring at Smell Oil",
+    "Text": "I must continue my investigation by heading further south along Citrus Road to the Smell Oil Fuel Station, which includes a retro car dealership. Perhaps someone there can provide additional insights into the whereabouts of the stolen UNU Mastodon Coupe.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919127428L,
+        "TimePast": 1728910993519L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've reached the Truck Stop on Feldpard Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
-    "NextQuestTitle": "Step 6: Talking with Edwin Kellen",
-    "QuestLocation": "Feldpard Truck Stop Taxidermist"
+    "CompleteText": "I am now at the Smell oil Fuel Station, I need to find the manager.",
+    "NextQuestTitle": "Inquiring at Smell Oil (Dialogue)",
+    "QuestLocation": "Smell Oil Fuel Station"
 }

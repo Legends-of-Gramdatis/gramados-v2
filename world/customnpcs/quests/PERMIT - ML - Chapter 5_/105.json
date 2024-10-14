@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Guardian-RX",
+    "NextQuestId": 106,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 6: Interact with Guardian-RX to Start the Simulation",
+    "Text": "The defense simulation will begin once I interact with Guardian-RX. My task is to protect it from waves of attacking robots that will spawn throughout the ruined fort and try to destroy it. I need to eliminate them before they reach Guardian-RX.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 5,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728907256668L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "The defense simulation has started. Enemy robots are closing in from all directions. It’s time to protect Guardian-RX and survive the waves of attackers.",
+    "NextQuestTitle": "Step 7: Defend Guardian-RX and Collect Supplies from Crates",
+    "QuestManual": [
+        {
+            "Value": 1,
+            "Slot": "Start the Simulation"
+        }
+    ]
+}

@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Edwin Kellen",
-    "NextQuestId": 83,
+    "CompleterNpc": "Mr. Robert Anderson",
+    "NextQuestId": 37,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 1,
-    "Title": "Step 6: Talking with Edwin Kellen",
-    "Text": "Now that I am at the Taxidermist, I must talk to Edwin Kellen, owner of the shop.",
+    "QuestCompletion": 0,
+    "Title": "A Stolen Ride",
+    "Text": "The victim of the stolen UNU Mastodon Coupe awaits my assistance at the Marina Vista Café and Grill. I should speak with Mr. Robert Anderson to let him know I am on the case.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,7 +18,7 @@
     "QuestCommand": "",
     "QuestDialogs": [
         {
-            "Integer": 281,
+            "Integer": 184,
             "Slot": 0
         }
     ],
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919150530L,
+        "TimePast": 1728910989519L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +40,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I have talken with Edwin Kellen. I now must give him the carcass, and he will come back to me later, by mail.",
-    "NextQuestTitle": "Step 7: Deliver the Carcass"
+    "CompleteText": "I've spoken with Mr. Robert Anderson at the Marina Vista Café and Grill and assured him I'll find something.",
+    "NextQuestTitle": "Uncovering Clues"
 }

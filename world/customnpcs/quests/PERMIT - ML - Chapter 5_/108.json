@@ -1,0 +1,72 @@
+{
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 109,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 9: Debrief with Captain Adrian Falkner",
+    "Text": "I need to talk to Captain Falkner for a final debriefing on my performance.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 319,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "Captain Adrian Falkner",
+        "BeenRead": 0b,
+        "Message": {
+            "pages": [
+                "This formal letter, sealed with the emblem of Fort Harbenshire, contains the official results of your final test under Captain Adrian Falkner.
+Sent by the fort's administration, it details your performance during the simulation with Guardian-RX and",
+                "evaluates your accuracy, speed, and strategic thinking.
+The letter emphasizes how close your score came to the top contenders and provides insightful feedback on how you handled the simulated combat scenario.",
+                "While you managed to keep Guardian-RX safe, the letter notes a few moments of vulnerability that affected your score-though you still rank among the top hundred candidates to have ever passed through Fort Harbenshire's rigorous exam.",
+                "Signed at the bottom is Captain Falkner’s personal commendation, acknowledging your excellent performance under fire and your potential for future challenges."
+            ]
+        },
+        "MailItems": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§bYou have passed!",
+                            "§9You have successfully defended Guardian-RX at Fort Harbenshire"
+                        ],
+                        "Name": "§dFinal Test Results Letter"
+                    }
+                },
+                "Damage": 0s
+            }
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728909080818L,
+        "Time": 0L,
+        "Subject": "Final Test Results Letter"
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Captain Falkner debriefed me on my performance in the test. My final score will be mailed to me.",
+    "NextQuestTitle": "Step 10: Collect the final score at any post office"
+}

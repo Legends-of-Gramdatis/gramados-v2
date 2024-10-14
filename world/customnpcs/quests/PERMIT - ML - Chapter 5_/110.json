@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Captain Adrian Falkner",
     "NextQuestId": -1,
     "RandomReward": 0b,
-    "QuestRepeat": 0,
+    "QuestRepeat": 1,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
-    "Title": "Ammo Refill",
-    "Text": "Wait for Lord Ardocor to gather the ammo.",
+    "Title": "Ammo Resupply",
+    "Text": "Wait for Captain Falkner to gather the ammo.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728921048653L,
+        "TimePast": 1728829571701L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,7 +40,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:m14ammo",
+                "id": "flansmod:dragunovammo",
                 "Count": 1b,
                 "Damage": 0s
             }
@@ -51,6 +51,6 @@
         ]
     },
     "LeaveItems": 0b,
-    "CompleteText": "Here you go. Make sure to use these rounds wisely. Let me know if you need anything else.",
+    "CompleteText": "Here. Don’t make a habit of it. The real test won’t be this forgiving.",
     "NextQuestTitle": ""
 }

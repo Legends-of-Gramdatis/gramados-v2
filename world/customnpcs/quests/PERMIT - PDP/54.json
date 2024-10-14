@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Ms. Sophia Rodriguez",
+    "NextQuestId": -1,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "Title": "Assault at Serenity Court",
+    "Text": "I’ve received a letter about an assault incident involving Ms. Sophia Rodriguez. She’s located at Serenity Court in the Downtown district, near the Bravo Fuel Station to the North-West. While nothing was stolen, she was attacked by a thief. I need to find her then speak with her to gather more details about the incident.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728910259170L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve reached Serenity Court and found Ms. Sophia Rodriguez. Now, I can talk with her and learn more about what happened.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Ms. Sophia Rodriguez"
+}

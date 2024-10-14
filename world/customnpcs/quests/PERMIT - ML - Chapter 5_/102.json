@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 103,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 3: Practice at the Shooting Range",
+    "Text": "Captain Falkner has instructed me to head to the shooting range inside Fort Harbenshire. I’ll need to take a few shots to warm up for the real challenge ahead. This is just the first step in my final test.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 8,
+            "Slot": "Fort Harbenshire Shooting Target"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1728907029968L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve successfully taken my shots at the shooting range. Captain Falkner seemed to be observing closely, though he didn’t say much. Now, I’ll head back to him to hear about the next step.",
+    "NextQuestTitle": "Step 4: Return to Captain Falkner for Next Instructions"
+}

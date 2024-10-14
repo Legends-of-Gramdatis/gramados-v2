@@ -1,0 +1,75 @@
+{
+    "CompleterNpc": "Guardian-RX",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 11: Return to Marcus Eldridge",
+    "Text": "I need to return to Marcus Eldridge at the Gramados Town Hall to conclude everything.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 324,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "Gramados Permit Authority",
+        "MailQuestTitle": "Your Marksman License",
+        "BeenRead": 0b,
+        "Message": {
+            "pages": [
+                "Congratulations! After careful review of your performance and skills demonstrated during the final trial at Fort Harbenshire, we are pleased to inform you that your Marksman License has been officially approved. ",
+                "You have successfully met the rigorous standards required to hold this prestigious license, and your efforts have been recognized by both your instructors and the Gramados Permit Authority",
+                "This license grants you the ability to engage in advanced shooting activities, competitions, and professional hunting across Gramados Island and beyond. Please ensure that you carry this documentation with you at all times while engaging in activities",
+                "that require an ML permit. Furthermore, remember that this is not just a certification but also a commitment to uphold the responsibilities and ethical standards of a licensed marksman.",
+                "Welcome to the ranks of the licensed elite. The path ahead holds many challenges and opportunities, and we have no doubt that you will continue to excel.
+
+Kind regards,
+Gramados Permit Authority"
+            ]
+        },
+        "MailItems": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:blueprint",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§2The Marksman License is a symbol of precision, discipline, and responsibility. Only a select few earn it, and those who do are often called upon for high-level tasks, competitive events, and professional hunting contracts.",
+                            "§2With this license, your reputation in the shooting community will grow, and doors to new challenges will open."
+                        ],
+                        "Name": "§bMarksman License §r锂"
+                    }
+                },
+                "Damage": 0s
+            }
+        ],
+        "MailQuest": 112,
+        "TimePast": 1728912442037L,
+        "Time": 0L,
+        "Subject": "Official Notification: Marksman License Approval"
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve returned to Marcus Eldridge with my final score and concluded the final test. My path as a marksman is clearer than ever now.",
+    "NextQuestTitle": ""
+}

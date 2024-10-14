@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Taxidermist",
-    "NextQuestId": 92,
+    "CompleterNpc": "Police Station Receptionist",
+    "NextQuestId": 30,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 5: Find the Taxidermist",
-    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Rivetshore Island.",
+    "Title": "Step 8: Entrance into Duty",
+    "Text": "To gain practical experience in law enforcement operations, I need to visit the Gramados Police Station. It's the hub of police activity in the city, and I'm sure to find an officer willing to guide me through their duties.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728919127428L,
+        "TimePast": 1728913397338L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've reached the Truck Stop on Feldpard Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
-    "NextQuestTitle": "Step 6: Talking with Edwin Kellen",
-    "QuestLocation": "Feldpard Truck Stop Taxidermist"
+    "CompleteText": "I've arrived at the Gramados Police Station, ready to embark on the next phase of my journey toward obtaining a Personal Defense Permit.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Gramados Police Station"
 }

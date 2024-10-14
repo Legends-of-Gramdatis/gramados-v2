@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Marcus Eldridge",
-    "NextQuestId": -1,
+    "CompleterNpc": "Captain Adrian Falkner",
+    "NextQuestId": 111,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
+    "QuestCompletion": 1,
     "IgnoreNBT": 0b,
-    "Title": "Step 6: Return to Marcus Eldridge to review your progress",
-    "Text": "With the tournament completed and my score secured, it’s time to return to Marcus Eldridge at Gramados Town Hall to review my progress and prepare for the next stage.",
+    "Title": "Step 10: Collect the final score at any post office",
+    "Text": "My final score is being mailed to me. I need to visit any post office to collect it.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728914554147L,
+        "TimePast": 1728909275769L,
         "Time": 0L,
         "Subject": ""
     },
@@ -44,19 +44,15 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:letter",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§r锅 §6Victor Stone - 92 points §r锊",
-                            "§r锆 §6Lila Rivers - 89 points",
-                            "§r锇 §2YOU! §6- 85 points",
-                            "§r",
-                            "§fHonorable Mentions:",
-                            "§r锈 §7Eli Thompson - 84 points"
+                            "§bYou have passed!",
+                            "§9You have successfully defended Guardian-RX at Fort Harbenshire"
                         ],
-                        "Name": "§dTournament Score Card"
+                        "Name": "§dFinal Test Results Letter"
                     }
                 },
                 "Damage": 0s
@@ -64,6 +60,6 @@
         ]
     },
     "LeaveItems": 1b,
-    "CompleteText": "I’ve returned to Marcus Eldridge, who will now evaluate my performance and plan the next step of my journey toward the Marksmanship License.",
-    "NextQuestTitle": ""
+    "CompleteText": "I’ve collected my final score from the post office. Time to return to Marcus Eldridge and conclude this chapter.",
+    "NextQuestTitle": "Step 11: Return to Marcus Eldridge"
 }

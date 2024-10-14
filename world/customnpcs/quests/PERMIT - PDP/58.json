@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Officer Reynolds",
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
-    "Title": "Ammo Refill",
-    "Text": "Wait for Lord Ardocor to gather the ammo.",
+    "Title": "Reporting Back to Officer Reynolds",
+    "Text": "After successfully resolving the case of the stolen collection car, it’s time to report back to Officer Reynolds at the Gramados Police Station. I should head there and provide him with the details of the investigation.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -27,23 +27,13 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728921048653L,
+        "TimePast": 1728911033320L,
         "Time": 0L,
         "Subject": ""
     },
     "IgnoreDamage": 0b,
     "Rewards": {
         "NpcMiscInv": [
-            {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:m14ammo",
-                "Count": 1b,
-                "Damage": 0s
-            }
         ]
     },
     "Items": {
@@ -51,6 +41,6 @@
         ]
     },
     "LeaveItems": 0b,
-    "CompleteText": "Here you go. Make sure to use these rounds wisely. Let me know if you need anything else.",
+    "CompleteText": "I've returned to Officer Reynolds at the Gramados Police Station and reported the successful recovery of the stolen car. He seemed pleased with my work and hinted that there’s something important he wants to discuss.",
     "NextQuestTitle": ""
 }
