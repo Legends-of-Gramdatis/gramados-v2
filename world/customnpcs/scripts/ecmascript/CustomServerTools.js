@@ -6811,7 +6811,8 @@ registerXCommands([
                         plo.save(data);
                         tellPlayer(pl, "&aBought emote " + em.name + " :" + em.name + ": for " + em.showPrice() + "&a!");
                     } else {
-                        tellPlayer(pl, "&cYou don't have enough " + getCurrency(em.data.currency).displayName + " in your money pouch!");
+                        var message = "&cYou don't have enough " + getCurrency(em.data.currency).displayName + " in your money pouch!";
+                        tellPlayer(pl, message);
                     }
                 } else {
                     tellPlayer(pl, "&cYou already have this emote!");
