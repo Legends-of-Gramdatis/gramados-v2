@@ -38,3 +38,8 @@ For the vehicles that aren't listed, here are the prices:
 
 - mts:ivv.benchengine : 5000g
 - IE windmill: 15000g
+
+# Storage:
+
+- Dry Container: 5000g
+- Reefer Container: 15000g
