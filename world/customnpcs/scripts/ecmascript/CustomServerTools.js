@@ -192,7 +192,7 @@ function spawn_sniper_spo_NPC(x, y, z, world) {
 
 // If player dies, remove the police
 function arrest_plugin_player_death(event) {
-    if (arrested_player_name == event.player.getDisplayName()) {
+    if (arrest_plugin_arrested_player_name == event.player.getDisplayName()) {
         var player = event.player;
         var world = player.world;
         var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
