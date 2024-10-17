@@ -1,3 +1,236 @@
+/*
+    Player Arrest Plugin
+*/
+
+var arrest_plugin_API = Java.type('noppes.npcs.api.NpcAPI').Instance()
+var arrest_plugin_counter = 0;
+var arrest_plugin_max_counter = 10000;
+var arrest_plugin_arrested_player_name = "";
+
+// function to check if the player is a friend of the Criminals
+function isFriendOfCriminals(event) {
+    var player = event.player
+    var world = player.world;
+    // check if the player is friendly to Criminal
+    if (player.getFactionPoints(6) > 1800) {
+        attempt_arrrest(event, player, world);
+        arrest_plugin_arrested_player_name = player.getDisplayName();
+    }
+}
+
+function attempt_arrrest(event, player, world) {
+    player.message("&4You have been arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
+    //var name = player.getDisplayName();
+    //setup_police_arrest(event, player, world);
+
+    var success = false;
+
+    if (player.getFactionPoints(6) >= 1800 && player.getFactionPoints(6) < 2000) {
+        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
+    } else if (player.getFactionPoints(6) >= 2000 && player.getFactionPoints(6) < 2500) {
+        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
+        success = success || spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
+    } else if (player.getFactionPoints(6) >= 2500 && player.getFactionPoints(6) < 3000) {
+        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
+        success = success || spawn_spo_fireteam(event, player, world);
+    } else if (player.getFactionPoints(6) >= 3000 && player.getFactionPoints(6) < 4000) {
+        success = spawn_spo_fireteam(event, player, world);
+        success = success || spawn_spo_squad(event, player, world);
+    } else if (player.getFactionPoints(6) >= 4000 && player.getFactionPoints(6) < 5000) {
+        success = spawn_spo_fireteam(event, player, world);
+        success = success || spawn_spo_squad(event, player, world);
+        success = success || spawn_spo_squad(event, player, world);
+    } else {
+        success = spawn_spo_squad(event, player, world);
+        success = success || spawn_spo_squad(event, player, world);
+        success = success || spawn_spo_platoon(event, player, world);
+    }
+
+    if (success) {
+        player.message("&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
+    }
+}
+
+// function to spawn a SPO Fireteam
+function spawn_spo_fireteam(event, player, world) {
+    // get a random number from 3 to 5
+    var count = Math.floor(Math.random() * 3) + 3;
+    // 3/4th of the team have shotguns
+    var shotgun = Math.floor(count * 0.75);
+    // 1/4th of the team have light assault rifles
+    var light_assault = Math.floor(count * 0.25);
+    // spawn the SPO dog
+    spawn_arrest(event, player, world, "dog_spo", 1, 10, 5);
+    // spawn the shotgun SPO
+    spawn_arrest(event, player, world, "shotgun_spo", shotgun, 10, 5);
+    // spawn the light assault SPO
+    spawn_arrest(event, player, world, "light_assault_spo", light_assault, 10, 5);
+}
+
+//function to spawn a SPO Squad
+function spawn_spo_squad(event, player, world) {
+    // get a random number from 8 to 12
+    var count = Math.floor(Math.random() * 5) + 8;
+    // 3/5th of the team have shotguns
+    var shotgun = Math.floor(count * 0.6);
+    // 2/5th of the team have light assault rifles
+    var light_assault = Math.floor(count * 0.4);
+    // spawn the SPO dog
+    spawn_arrest(event, player, world, "dog_spo", 1, 10, 5);
+    // spawn the shotgun SPO
+    spawn_arrest(event, player, world, "shotgun_spo", shotgun, 10, 5);
+    // spawn the light assault SPO
+    spawn_arrest(event, player, world, "light_assault_spo", light_assault, 10, 5);
+    // have 1/5 chance to spawn a sniper
+    if (Math.random() < 0.2) {
+        spawn_arrest(event, player, world, "sniper_spo", 1, 20, 5);
+    }
+}
+
+// function to spawn a SPO platoon
+function spawn_spo_platoon(event, player, world) {
+    // get a random number from 16 to 30
+    var count = Math.floor(Math.random() * 15) + 16;
+    // 3/6th of the team have shotguns
+    var shotgun = Math.floor(count * 0.5);
+    // 2/6th of the team have light assault rifles
+    var light_assault = Math.floor(count * 0.33);
+    // 1/6th of the team have sniper rifles
+    var sniper = Math.floor(count * 0.17);
+    // spawn the 2 to 4 SPO dogs
+    spawn_arrest(event, player, world, "dog_spo", Math.floor(Math.random() * 2) + 2, 10, 5);
+    // spawn the shotgun SPO
+    spawn_arrest(event, player, world, "shotgun_spo", shotgun, 10, 5);
+    // spawn the light assault SPO
+    spawn_arrest(event, player, world, "light_assault_spo", light_assault, 10, 5);
+    // spawn the sniper SPO
+    spawn_arrest(event, player, world, "sniper_spo", sniper, 20, 10);
+}
+
+function spawn_arrest(event, player, world, type, count, distance_from_player, group_radius) {
+
+    var abandon_counter = 0;
+    // get coordinates of the player
+    var x = Math.floor(player.getX() + Math.random() * distance_from_player - (distance_from_player/2));
+    var y = player.getY();
+    var z = Math.floor(player.getZ() + Math.random() * distance_from_player - (distance_from_player/2));
+
+    var success = false;
+
+    // spawn the police
+    for (var i = 0; i < count; i++) {
+        // Chage the coordinates to a random value, in 5 blocks radius
+        x = x + Math.floor(Math.random() * group_radius) - (group_radius / 2);
+        y += 10;
+        z = z + Math.floor(Math.random() * group_radius) - (group_radius / 2);
+
+        // floor the coordinates to the nearest block
+        x = Math.floor(x);
+        y = Math.floor(y);
+        z = Math.floor(z);
+
+
+        // fine an available y coordinate
+        while (world.getBlock(x, y, z).isAir() && abandon_counter < 30) {
+            y--;
+            abandon_counter++;
+        }
+        //player.message("Spawning the police at " + x + ", " + y + ", " + z);
+
+        if (!world.getBlock(x, y, z).isAir()) {
+            switch (type) {
+                case "police":
+                    spawn_police_NPC(x, y + 1, z, world);
+                    break;
+                case "dog_spo":
+                    spawn_spo_dog_NPC(x, y + 1, z, world);
+                    break;
+                case "shotgun_spo":
+                    spawn_shotgun_spo_NPC(x, y + 1, z, world);
+                    break;
+                case "light_assault_spo":
+                    spawn_light_assault_spo_NPC(x, y + 1, z, world);
+                    break;
+                case "sniper_spo":
+                    spawn_sniper_spo_NPC(x, y + 1, z, world);
+                    break;
+                default:
+                    spawn_police_NPC(x, y + 1, z, world);
+                    break;
+            }
+            success = true;
+        }
+    }
+
+    return success;
+}
+
+// function to spawn a police officer
+function spawn_police_NPC(x, y, z, world) {
+    world.spawnClone(x, y, z, 9, "Police Arrest Clone");
+}
+
+// function to spawn a SPO dog
+function spawn_spo_dog_NPC(x, y, z, world) {
+    world.spawnClone(x, y, z, 9, "SPO dog Arrest Clone");
+}
+
+// function to spawn a shotgun SPO
+function spawn_shotgun_spo_NPC(x, y, z, world) {
+    world.spawnClone(x, y, z, 9, "SPO shotgun Arrest Clone");
+}
+
+//function to spawn a SPO light-assault
+function spawn_light_assault_spo_NPC(x, y, z, world) {
+    world.spawnClone(x, y, z, 9, "SPO light-assault Arrest Clone");
+}
+
+//function to spawn a SPO sniper
+function spawn_sniper_spo_NPC(x, y, z, world) {
+    world.spawnClone(x, y, z, 9, "SPO Sniper Arrest Clone");
+}
+
+// If player dies, remove the police
+function arrest_plugin_player_death(event) {
+    if (arrested_player_name == event.player.getDisplayName()) {
+        var player = event.player;
+        var world = player.world;
+        var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
+        event.player.message("Nearby entities: " + nearby_gentity_list.length);
+        for (var i = 0; i < nearby_gentity_list.length; i++) {
+            var removal_test_entity = nearby_gentity_list[i];
+            event.player.message("Entity: " + removal_test_entity.getName());
+            if (removal_test_entity.getName().contains("Arrest Clone")) {
+                removal_test_entity.despawn();
+            }
+        }
+
+        //tell the player that his arrestation is done
+        player.message("&4Your arrest has been completed. You are now free to go.");
+        // remove 100 faction points from the player
+        player.addFactionPoints(6, -100);
+    }
+}
+
+function arrest_plugin_init(event) {
+    // set a random counter based on the current time
+    arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
+}
+
+function arrest_plugin_tick(event) {
+
+    arrest_plugin_counter++;
+
+    if (arrest_plugin_counter >= arrest_plugin_max_counter) {
+        arrest_plugin_counter = 0;
+        isFriendOfCriminals(event);
+    }
+}
+
+/*
+    Custom Server Tools
+*/
+
 function array_shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -723,7 +956,7 @@ function isItemEqual(stack, other, ignoreNbt) {
 
     return false;
 }
-var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+var arrest_plugin_API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
 var LogManager = Java.type('org.apache.logging.log4j.LogManager');
 var Logger = LogManager.getLogger("GramdatisScript");
@@ -772,7 +1005,7 @@ function hasMCMod(name) {
 function ENbt(nbtObject) {
     this.nbt = nbtObject; /* INbt */
     this.copy = function () {
-        return new ENbt(API.stringToNbt(this.nbt.toJsonString()));
+        return new ENbt(arrest_plugin_API.stringToNbt(this.nbt.toJsonString()));
     };
     this.get = function (path) {
         var paths = path.toString().split(".");
@@ -794,7 +1027,7 @@ function ENbt(nbtObject) {
 }
 
 function nbtCopy(nbt) {
-    return API.stringToNbt(nbt.toJsonString());
+    return arrest_plugin_API.stringToNbt(nbt.toJsonString());
 }
 
 function nbtToObject(nbt) {
@@ -802,7 +1035,7 @@ function nbtToObject(nbt) {
 }
 
 function nbtItem(nbt, w) {
-    if (typeof (nbt) == 'string') { nbt = API.stringToNbt(nbt); }
+    if (typeof (nbt) == 'string') { nbt = arrest_plugin_API.stringToNbt(nbt); }
     var item = w.createItemFromNbt(nbt);
     return item;
 }
@@ -875,7 +1108,7 @@ function getPlayerInvFromNbt(pnbt, w, filterFn) {
     var pitems = [];
     for (var p in pinv) {
         var pin = pinv[p];
-        var pitm = w.createItemFromNbt(API.stringToNbt(pin.toJsonString()));
+        var pitm = w.createItemFromNbt(arrest_plugin_API.stringToNbt(pin.toJsonString()));
         //pin (INbt) contains key "Slot"
         //pitm.getItemNbt() does not, thats why pin is passed
         if ((filterFn == null ? true : filterFn(pitm, pin, w))) {
@@ -1890,7 +2123,7 @@ var msTable = {
 function handleError(error, logsToConsole, target) {
     if (typeof (logsToConsole) == typeof (undefined) || logsToConsole === null) { logsToConsole = true; }
     if (typeof (target) == typeof (undefined) || target === null) { target = null; }
-    var world = API.getIWorld(0);
+    var world = arrest_plugin_API.getIWorld(0);
 
     var errinfo = "";
     if (error.fileName) {
@@ -2010,7 +2243,7 @@ function getDiskHandler(diskname) {
     if (typeof (diskname) == typeof (undefined) || diskname === null) { diskname = null; }
     diskname = diskname || CONFIG_SERVER.USE_DISK;
     if (diskname === "DEFAULT") {
-        return API.getIWorld(0).storeddata;
+        return arrest_plugin_API.getIWorld(0).storeddata;
     }
     if (Object.keys(CONFIG_SERVER.FILE_DISKS).indexOf(diskname) > -1) {
         var disk = new CSTData().useDisk(diskname);
@@ -2368,7 +2601,7 @@ function progressBar(value, max, length, progChar, fillColor, leftColor, opener,
 
 //
 function worldOut(str) {
-    API.getIWorld(0).broadcast(strf(str));
+    arrest_plugin_API.getIWorld(0).broadcast(strf(str));
 }
 
 
@@ -2387,7 +2620,7 @@ function cson_parse(cson_string) {
 function executeCommand(player, command, as_player) {
     if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
     if (as_player == null) { as_player = player.getName(); }
-    var cmd = API.createNPC(player.world.getMCWorld());
+    var cmd = arrest_plugin_API.createNPC(player.world.getMCWorld());
 
     return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
 
@@ -2395,7 +2628,7 @@ function executeCommand(player, command, as_player) {
 
 function executeCommandGlobal(command, dim) {
     if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
-    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
+    return arrest_plugin_API.createNPC(arrest_plugin_API.getIWorld(dim).getMCWorld()).executeCommand(command);
 }
 
 
@@ -3485,7 +3718,7 @@ var _DHCacheKey = 'DataHandlerCache';
 DataHandler.__proto__.reloadCache = function () {
     DataHandler.__proto__.cache = {};
 
-    var tempdata = API.getIWorld(0).tempdata;
+    var tempdata = arrest_plugin_API.getIWorld(0).tempdata;
     if (!tempdata.has(_DHCacheKey)) {
         tempdata.put(_DHCacheKey, DataHandler.cache);
     }
@@ -3653,7 +3886,7 @@ function genDataPageList(items, matches, showLen, curPage, navCmd, listingFn, so
 }
 
 var _CMD_HISTORY = {};
-var tempdata = API.getIWorld(0).tempdata;
+var tempdata = arrest_plugin_API.getIWorld(0).tempdata;
 if (!tempdata.has('xCommandCache')) {
     tempdata.put('xCommandCache', _CMD_HISTORY);
 } else {
@@ -5141,7 +5374,7 @@ registerXCommands([
         var inv = pl.getMCEntity().field_71071_by;
         var inventory = [];
         for (var i = 0; i < inv.field_70462_a.length; i++) {
-            inventory.push(API.getIItemStack(inv.field_70462_a.get(i)).getItemNbt().toJsonString());
+            inventory.push(arrest_plugin_API.getIItemStack(inv.field_70462_a.get(i)).getItemNbt().toJsonString());
         }
 
         apo.data.inventories.push([args.name, inventory]);
@@ -5166,8 +5399,8 @@ registerXCommands([
         inv.func_174888_l(); //Clear
 
         for (var i = 0; i < inventory.length; i++) {
-            if (inventory[i] && API.stringToNbt(inventory[i]).getString("id") != "minecraft:air")
-                inv.field_70462_a.set(i, w.createItemFromNbt(API.stringToNbt(inventory[i])).getMCItemStack());
+            if (inventory[i] && arrest_plugin_API.stringToNbt(inventory[i]).getString("id") != "minecraft:air")
+                inv.field_70462_a.set(i, w.createItemFromNbt(arrest_plugin_API.stringToNbt(inventory[i])).getMCItemStack());
         }
 
         inv.func_70296_d(); //Mark dirty
@@ -5272,7 +5505,7 @@ registerXCommands([
 
         var nbt = item.getNbt();
 
-        nbt.merge(API.stringToNbt('{ScriptedData: {ScriptEnabled: 1b,Scripts: [{Script: "",Console: [],ScriptList: [{Line: "' + CONFIG_SERVER.MONEY_POUCH_SCRIPT + '"}]}],ScriptLanguage: "ECMAScript"}}'));
+        nbt.merge(arrest_plugin_API.stringToNbt('{ScriptedData: {ScriptEnabled: 1b,Scripts: [{Script: "",Console: [],ScriptList: [{Line: "' + CONFIG_SERVER.MONEY_POUCH_SCRIPT + '"}]}],ScriptLanguage: "ECMAScript"}}'));
 
         nbt.setFloat('min', parseFloat(getCoinAmount(args.min) / 100));
         nbt.setFloat('max', parseFloat(getCoinAmount(args.max) / 100));
@@ -10535,7 +10768,7 @@ registerCSTEnchant("cst:berserker", "Berserker", 10, function (id, e, lvl, type)
 function getEntityMobHead(entity) {
     //Player
     if (entity.getType() == 1) {
-        var head = API.getIWorld(0).createItem("minecraft:skull", 3, 1);
+        var head = arrest_plugin_API.getIWorld(0).createItem("minecraft:skull", 3, 1);
         head.getNbt().setString("SkullOwner", entity.getName());
         return head;
     }
@@ -10547,7 +10780,7 @@ function getEntityMobHead(entity) {
     };
     var vk = Object.keys(vanillaSkulls);
     if (vk.indexOf(entity.getTypeName()) > -1) {
-        var head = API.getIWorld(0).createItem("minecraft:skull", vanillaSkulls[entity.getTypeName()], 1);
+        var head = arrest_plugin_API.getIWorld(0).createItem("minecraft:skull", vanillaSkulls[entity.getTypeName()], 1);
         return head;
     }
 
@@ -10572,7 +10805,7 @@ function getEntityMobHead(entity) {
 
     };
     if (Object.keys(mhfSkulls).indexOf(entity.getTypeName()) > -1) {
-        var head = API.getIWorld(0).createItem("minecraft:skull", 3, 1);
+        var head = arrest_plugin_API.getIWorld(0).createItem("minecraft:skull", 3, 1);
         head.getNbt().setString("SkullOwner", "MHF_" + mhfSkulls[entity.getTypeName()]);
         return head;
     }
@@ -10786,7 +11019,7 @@ function addCSTEnchant(item, id, lvl) {
     if (hasCSTEnchant(item, id)) {
         removeCSTEnchant(item, id);
     }
-    newench.push(API.stringToNbt('{"name":"' + id + '","lvl":' + lvl + 's}'));
+    newench.push(arrest_plugin_API.stringToNbt('{"name":"' + id + '","lvl":' + lvl + 's}'));
     itemNbt.setList(CSTENCH_TAG, newench);
     item.setLore(Java.from(item.getLore()).concat([ccs(getCSTEnchantDisplay(id, lvl))]))
 }
@@ -12281,11 +12514,11 @@ function Trader(uuid) {
 
     this.getItems = function () {
         var items = [];
-        var world = API.getIWorld(0);
+        var world = arrest_plugin_API.getIWorld(0);
 
         for (var i in this.items) {
             var item = this.items[i];
-            items.push(world.createItemFromFromNBT(API.stringToNbt(item)));
+            items.push(world.createItemFromFromNBT(arrest_plugin_API.stringToNbt(item)));
         }
 
         return items;
@@ -12955,7 +13188,7 @@ function CustomMenuItem(id, damage, count) {
 
 
         if (this.nbtstring) {
-            inbt.merge(API.stringToNbt(this.nbtstring));
+            inbt.merge(arrest_plugin_API.stringToNbt(this.nbtstring));
         }
         return item;
     };
@@ -13275,14 +13508,14 @@ function $(query, e, source) {
     var _x = 0;
     var _y = 0;
     var _z = 0;
-    var w = API.getIWorld(0);
+    var w = arrest_plugin_API.getIWorld(0);
     if (source) {
         _x = source.pos.x;
         _y = source.pos.y;
         _z = source.pos.z;
         w = source.world;
     }
-    var from = API.getIPos(_x, _y, _z);
+    var from = arrest_plugin_API.getIPos(_x, _y, _z);
     var ents = [];
     if (typeof query === 'string') {
         //query
@@ -13296,7 +13529,7 @@ function $(query, e, source) {
             var argdata;
 
             while ((argdata = rgx_selector_nbt.exec(smatch[2])) !== null) {
-                args[argdata[1]] = API.stringToNbt(argdata[2]);
+                args[argdata[1]] = arrest_plugin_API.stringToNbt(argdata[2]);
             }
 
             argdata = null;
@@ -13537,7 +13770,7 @@ function getHalfRotation(angle) {
 
 
 function clonePlayerAsNpc(player) {
-    var npc = API.createNPC(player.world.getMCWorld());
+    var npc = arrest_plugin_API.createNPC(player.world.getMCWorld());
 
     npc.setPos(player.getPos());
     // npc.display.setTint(0x777777);
@@ -13568,7 +13801,7 @@ reloadConfiguration();
 
 
 function init(e) {
-    var w = API.getIWorld(0);
+    var w = arrest_plugin_API.getIWorld(0);
     var data = w.storeddata;
 
     var sb = w.scoreboard;
@@ -13609,6 +13842,8 @@ function init(e) {
         var col = _RAWCOLORS[c];
         new Unlockable('chatcolor_' + col).init(data);
     }
+
+    arrest_plugin_init(e);
 }
 
 function interact(e) {
@@ -13924,6 +14159,8 @@ function toss(e) {
 function tick(e) {
 
     PluginAPI.Players.run("tick", [e]);
+
+    arrest_plugin_tick(e);
 
 }
 
@@ -14267,6 +14504,8 @@ function damagedEntity(e) {
 function died(e) {
 
     PluginAPI.Players.run("died", [e]);
+
+    arrest_plugin_player_death(e);
 
     (function (e) {
         var pl = e.player;
