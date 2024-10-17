@@ -1,12 +1,15 @@
 {
-    "CompleterNpc": "",
+    "CompleterNpc": "Officer Reynolds",
     "NextQuestId": -1,
+    "QuestLocation3": "",
     "RandomReward": 0b,
+    "QuestLocation2": "",
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
-    "IgnoreNBT": 0b,
+    "QuestCompletion": 1,
     "Title": "Your Marksman License",
-    "Text": "",
+    "Text": "Official Notification: Marksman License Approval.
+
+Head to Gramados Town Hall to finish the paperwork.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,7 +21,7 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "ModRev": 18,
-    "Type": 0,
+    "Type": 3,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -27,20 +30,15 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728910080971L,
+        "TimePast": 1729080180525L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 0b,
     "Rewards": {
         "NpcMiscInv": [
         ]
     },
-    "Items": {
-        "NpcMiscInv": [
-        ]
-    },
-    "LeaveItems": 0b,
-    "CompleteText": "",
-    "NextQuestTitle": ""
+    "CompleteText": "The Marksman License is a symbol of precision, discipline, and responsibility. Only a select few earn it, and those who do are often called upon for high-level tasks, competitive events, and professional hunting contracts. With this license, your reputation in the shooting community will grow, and doors to new challenges will open.",
+    "NextQuestTitle": "",
+    "QuestLocation": "Gramados Town Hall"
 }

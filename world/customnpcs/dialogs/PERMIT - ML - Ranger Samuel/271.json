@@ -42,7 +42,7 @@
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -70,7 +70,7 @@
     "DialogText": "Ah, there you are {player}! I've been expecting you. Ready to put those skills to the test? Out here, it’s just you, the wilderness, and the hunt. The White Stag is no ordinary game—legend has it that it’s elusive, almost ghostly. But with the right tool, you might just be able to catch it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 80,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -84,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1725113421392L,
+        "TimePast": 1729027388760L,
         "Time": 0L,
         "Subject": ""
     }

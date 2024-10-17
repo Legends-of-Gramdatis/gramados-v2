@@ -7,7 +7,9 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Your Personal Defense Permit",
-    "Text": "Officer Reynolds has approved my Personal Defense Permit (PDP) application following my successful resolution of the recent cases.",
+    "Text": "Official Notification: Personal Defense Permit Approval.
+
+Head to Gramados Town Hall to finish the paperwork.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +30,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728910036469L,
+        "TimePast": 1729080174724L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +38,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I’ve reported back to Officer Reynolds and received my Personal Defense Permit (PDP). This permit not only grants me the right to carry small firearms for personal defense but also signifies a significant step in my commitment to protecting the community.",
+    "CompleteText": "The Personal Defense Permit is issued to responsible citizens who have demonstrated the need and capacity to carry small firearms for self-defense. With rising concerns for personal safety in both urban and rural areas, this permit grants individuals the right to protect themselves while also emphasizing the importance of responsible firearm handling and compliance with Gramados laws.",
     "NextQuestTitle": "",
-    "QuestLocation": ""
+    "QuestLocation": "Gramados Town Hall"
 }
