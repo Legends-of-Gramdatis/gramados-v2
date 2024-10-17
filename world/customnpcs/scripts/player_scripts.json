@@ -10,9 +10,6 @@
             "ScriptList": [
                 {
                     "Line": "customservertools.js"
-                },
-                {
-                    "Line": "gramados-custom-npcs-scripts/criminal_police_spawn.js"
                 }
             ]
         }
