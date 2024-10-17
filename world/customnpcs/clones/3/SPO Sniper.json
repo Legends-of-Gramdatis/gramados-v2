@@ -89,7 +89,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m16a4ammo",
+            "id": "flansmod:r700ammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -99,7 +99,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m16a4ammo",
+            "id": "flansmod:r700ammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -109,7 +109,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m16a4ammo",
+            "id": "flansmod:r700ammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -119,13 +119,15 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m16a4",
+            "id": "flansmod:m40a3",
             "Count": 1b,
             "tag": {
                 "attachments": {
                     "barrel": {
                     },
                     "grip": {
+                    },
+                    "generic_1": {
                     },
                     "generic_0": {
                     },
@@ -136,6 +138,49 @@
                 },
                 "ammo": [
                     {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
                     }
                 ]
             },
@@ -145,7 +190,7 @@
     "BossColor": 0,
     "PotionEffect": 0,
     "Size": 5,
-    "stopAndInteract": 1b,
+    "stopAndInteract": 0b,
     "Resistances": {
         "Arrow": 1.0f,
         "Explosion": 1.0f,
@@ -179,7 +224,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "flansmod:m14shoot",
+    "HitSound": "flansmod:r700shoot",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -201,14 +246,14 @@
     ],
     "BurnInSun": 0b,
     "StandingState": 0,
-    "AttackInvisible": 0b,
+    "AttackInvisible": 1b,
     "NpcInteractNPCLines": {
         "Lines": [
         ]
     },
     "HurtTime": 0s,
-    "WalkingRange": 16,
-    "ShotCount": 10,
+    "WalkingRange": 32,
+    "ShotCount": 1,
     "pDur": 5,
     "AttackRange": 2,
     "NpcKillLines": {
@@ -224,16 +269,16 @@
         "Lines": [
         ]
     },
-    "pSpeed": 15,
+    "pSpeed": 32,
     "pArea": 0,
     "DeathTime": 0s,
-    "pImpact": 0,
+    "pImpact": 2,
     "MoveState": 0,
     "pRender3D": 1b,
     "Motion": [
-        -0.03034570640184647d,
-        -0.30431682745754424d,
-        1.8517616390926258E-18d
+        0.0d,
+        -0.0784000015258789d,
+        0.0d
     ],
     "CombatRegen": 0,
     "NpcsTimers": [
@@ -245,7 +290,7 @@
     "FireRate": 5,
     "LeftHanded": 0b,
     "pEffAmp": 0,
-    "OnGround": 0b,
+    "OnGround": 1b,
     "Dimension": 0,
     "ImmuneToFire": 0b,
     "NpcKilledLines": {
@@ -275,7 +320,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 685,
+    "HurtByTimestamp": 2337,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -290,7 +335,7 @@
             "Name": "generic.knockbackResistance"
         },
         {
-            "Base": 0.25d,
+            "Base": 0.05000000074505806d,
             "Name": "generic.movementSpeed"
         },
         {
@@ -314,7 +359,7 @@
             "Name": "generic.attackDamage"
         },
         {
-            "Base": 0.5d,
+            "Base": 0.10000000149011612d,
             "Name": "generic.flyingSpeed"
         }
     ],
@@ -323,8 +368,8 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "SPO light-assault",
-    "FallDistance": 0.46415937f,
+    "Name": "SPO Sniper",
+    "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
     "Weapons": [
@@ -334,13 +379,15 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m16a4",
+            "id": "flansmod:m40a3",
             "Count": 1b,
             "tag": {
                 "attachments": {
                     "barrel": {
                     },
                     "grip": {
+                    },
+                    "generic_1": {
                     },
                     "generic_0": {
                     },
@@ -355,7 +402,43 @@
                             "customnpcs:itemscripteddata": {
                             }
                         },
-                        "id": "flansmod:m16a4ammo",
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    },
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:r700ammo",
                         "Count": 1b,
                         "Damage": 0s
                     }
@@ -376,8 +459,8 @@
     ],
     "NPCDialogOptions": [
     ],
-    "AggroRange": 16,
-    "DirectLOS": 1b,
+    "AggroRange": 64,
+    "DirectLOS": 0b,
     "HealthRegen": 1,
     "ForgeCaps": {
         "fvtm:passenger": {
@@ -446,20 +529,20 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 15,
-    "DoorInteract": 1,
-    "MoveSpeed": 5,
+    "minDelay": 30,
+    "DoorInteract": 2,
+    "MoveSpeed": 1,
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
     "Leashed": 0b,
     "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_SPO_Agent.png",
     "CanSwim": 1b,
-    "GroundSound": "flansmod:m14shoot",
+    "GroundSound": "flansmod:r700shoot",
     "MaxHealth": 20,
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 20,
+    "maxDelay": 60,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -508,7 +591,7 @@
         "OptionFaction1Points": 6,
         "DecreaseFaction2Points": 0b
     },
-    "pDamage": 5,
+    "pDamage": 20,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -524,11 +607,11 @@
             ]
         }
     },
-    "MovingState": 1,
+    "MovingState": 0,
     "MovingPos": 0,
     "PotionAmp": 0,
     "OnAttack": 0,
-    "TacticalRadius": 8,
+    "TacticalRadius": 5,
     "FallFlying": 0b,
     "MaxExp": 5,
     "OrderedLines": 0b,
@@ -537,15 +620,15 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:m14shoot",
+    "FiringSound": "flansmod:r700shoot",
     "ModRev": 18,
-    "Accuracy": 75,
+    "Accuracy": 90,
     "MinExp": 3,
     "Armor": [
     ],
     "CloakTexture": "",
     "GlowTexture": "",
-    "MaxFiringRange": 32,
+    "MaxFiringRange": 64,
     "pXlr8": 0b,
     "MarkovGeneratorId": 0,
     "Scripts": [
@@ -556,9 +639,9 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 2,
     "Title": "",
-    "TotalTicksAlive": 3798832L,
+    "TotalTicksAlive": 207238634L,
     "Rotation": [
-        90.00047f,
+        270.2394f,
         0.0f
     ],
     "ShowName": 0,

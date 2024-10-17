@@ -89,7 +89,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
+            "id": "flansmod:grenadelauncherbouncyammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -99,7 +99,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
+            "id": "flansmod:grenadelauncherammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -109,7 +109,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
+            "id": "flansmod:grenadelaunchergasammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -119,7 +119,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m1014",
+            "id": "flansmod:gl1",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -136,40 +136,6 @@
                 },
                 "ammo": [
                     {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
                     }
                 ]
             },
@@ -181,9 +147,9 @@
     "Size": 5,
     "stopAndInteract": 1b,
     "Resistances": {
-        "Arrow": 1.7464789f,
+        "Arrow": 1.0f,
         "Explosion": 1.0f,
-        "Knockback": 1.3380282f,
+        "Knockback": 1.0f,
         "Melee": 1.0f
     },
     "BossBar": 0b,
@@ -196,7 +162,7 @@
     "PositionOffsetX": 5.0f,
     "LootMode": 0,
     "TransformHasAI": 0b,
-    "AttackStrenght": 7,
+    "AttackStrenght": 5,
     "PersistenceRequired": 0b,
     "id": "customnpcs:customnpc",
     "IsStatue": 0b,
@@ -213,7 +179,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "minecraft:entity.arrow.hit",
+    "HitSound": "flansmod:executionershoot",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -242,8 +208,8 @@
     },
     "HurtTime": 0s,
     "WalkingRange": 16,
-    "ShotCount": 6,
-    "pDur": 5,
+    "ShotCount": 1,
+    "pDur": 10,
     "AttackRange": 2,
     "NpcKillLines": {
         "Lines": [
@@ -258,7 +224,7 @@
         "Lines": [
         ]
     },
-    "pSpeed": 12,
+    "pSpeed": 15,
     "pArea": 0,
     "DeathTime": 0s,
     "pImpact": 0,
@@ -266,20 +232,20 @@
     "pRender3D": 1b,
     "Motion": [
         0.0d,
-        -0.230527368912964d,
+        -0.0784000015258789d,
         0.0d
     ],
     "CombatRegen": 0,
     "NpcsTimers": [
     ],
     "MarkovGender": 0,
-    "pEffect": 0,
-    "DistanceToMelee": 4,
+    "pEffect": 7,
+    "DistanceToMelee": 3,
     "NpcStepSound": "",
     "FireRate": 5,
     "LeftHanded": 0b,
-    "pEffAmp": 0,
-    "OnGround": 0b,
+    "pEffAmp": 1,
+    "OnGround": 1b,
     "Dimension": 0,
     "ImmuneToFire": 0b,
     "NpcKilledLines": {
@@ -298,7 +264,7 @@
         }
     ],
     "DisablePitch": 0b,
-    "pPhysics": 0b,
+    "pPhysics": 1b,
     "TransformHasInv": 0b,
     "NpcInteractLines": {
         "Lines": [
@@ -309,10 +275,10 @@
             }
         ]
     },
-    "HurtByTimestamp": 716,
+    "HurtByTimestamp": 8090,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
-    "pTrail": 0,
+    "pTrail": 1,
     "CreatureType": 0,
     "Attributes": [
         {
@@ -324,7 +290,7 @@
             "Name": "generic.knockbackResistance"
         },
         {
-            "Base": 0.30000001192092896d,
+            "Base": 0.20000000298023224d,
             "Name": "generic.movementSpeed"
         },
         {
@@ -344,11 +310,11 @@
             "Name": "generic.followRange"
         },
         {
-            "Base": 7.0d,
+            "Base": 5.0d,
             "Name": "generic.attackDamage"
         },
         {
-            "Base": 0.6000000238418579d,
+            "Base": 0.4000000059604645d,
             "Name": "generic.flyingSpeed"
         }
     ],
@@ -357,8 +323,8 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "SPO shotgun",
-    "FallDistance": 0.233632f,
+    "Name": "SPO Crowd-Control",
+    "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
     "Weapons": [
@@ -368,7 +334,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:m1014",
+            "id": "flansmod:gl1",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -385,40 +351,6 @@
                 },
                 "ammo": [
                     {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
-                    },
-                    {
-                        "ForgeCaps": {
-                            "customnpcs:itemscripteddata": {
-                            }
-                        },
-                        "id": "flansmod:m1014ammo",
-                        "Count": 1b,
-                        "Damage": 1s
                     }
                 ]
             },
@@ -430,14 +362,29 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "variedcommodities:bullet",
+            "id": "flansmod:grenadelaunchergasammo",
+            "Count": 16b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 2b,
+            "ForgeCaps": {
+                "Parent": {
+                    "Size": 2,
+                    "Items": [
+                    ]
+                },
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "immersiveengineering:shield",
             "Count": 1b,
             "Damage": 0s
         }
     ],
     "NPCDialogOptions": [
     ],
-    "AggroRange": 32,
+    "AggroRange": 16,
     "DirectLOS": 1b,
     "HealthRegen": 1,
     "ForgeCaps": {
@@ -507,20 +454,20 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 10,
+    "minDelay": 20,
     "DoorInteract": 1,
-    "MoveSpeed": 6,
+    "MoveSpeed": 4,
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
     "Leashed": 0b,
     "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_SPO_Agent.png",
     "CanSwim": 1b,
-    "GroundSound": "minecraft:entity.arrow.hit",
+    "GroundSound": "flansmod:executionershoot",
     "MaxHealth": 20,
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 20,
+    "maxDelay": 30,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -563,13 +510,13 @@
     ],
     "FactionPoints": {
         "DecreaseFaction1Points": 1b,
-        "OptionFaction2Points": 15,
+        "OptionFaction2Points": 3,
         "OptionFactions1": 2,
         "OptionFactions2": 6,
-        "OptionFaction1Points": 10,
+        "OptionFaction1Points": 6,
         "DecreaseFaction2Points": 0b
     },
-    "pDamage": 6,
+    "pDamage": 3,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -591,17 +538,17 @@
     "OnAttack": 0,
     "TacticalRadius": 8,
     "FallFlying": 0b,
-    "MaxExp": 15,
+    "MaxExp": 5,
     "OrderedLines": 0b,
     "PortalCooldown": 0,
     "pGlows": 0b,
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "customnpcs:gun.pistol.shot",
+    "FiringSound": "flansmod:grenadelaunchershoot",
     "ModRev": 18,
-    "Accuracy": 75,
-    "MinExp": 10,
+    "Accuracy": 50,
+    "MinExp": 3,
     "Armor": [
     ],
     "CloakTexture": "",
@@ -617,9 +564,9 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 2,
     "Title": "",
-    "TotalTicksAlive": 3403357L,
+    "TotalTicksAlive": 3808458L,
     "Rotation": [
-        277.1374f,
+        130.61145f,
         0.0f
     ],
     "ShowName": 0,

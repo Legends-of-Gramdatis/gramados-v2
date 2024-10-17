@@ -12,7 +12,7 @@
             "tag": {
                 "display": {
                     "Lore": [
-                        "§e5G"
+                        "§e50G"
                     ],
                     "Name": "§2§lMoney§r"
                 }
@@ -48,7 +48,7 @@
             "tag": {
                 "display": {
                     "Lore": [
-                        "§e50G"
+                        "§e100G"
                     ],
                     "Name": "§2§lMoney§r"
                 }
@@ -66,7 +66,7 @@
             "tag": {
                 "display": {
                     "Lore": [
-                        "§e100G"
+                        "§e5G"
                     ],
                     "Name": "§2§lMoney§r"
                 }
@@ -84,13 +84,68 @@
             "Damage": 0s
         },
         {
+            "Slot": 5b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:sigp226ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 6b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:sigp226ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 7b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:sigp226ammo",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
             "Slot": 8b,
             "ForgeCaps": {
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "variedcommodities:combat_knive",
+            "id": "flansmod:sigp226",
             "Count": 1b,
+            "tag": {
+                "attachments": {
+                    "barrel": {
+                    },
+                    "grip": {
+                    },
+                    "generic_0": {
+                    },
+                    "scope": {
+                    },
+                    "stock": {
+                    }
+                },
+                "ammo": [
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:sigp226ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    }
+                ]
+            },
             "Damage": 0s
         }
     ],
@@ -114,7 +169,7 @@
     "PositionOffsetX": 5.0f,
     "LootMode": 0,
     "TransformHasAI": 0b,
-    "AttackStrenght": 6,
+    "AttackStrenght": 5,
     "PersistenceRequired": 0b,
     "id": "customnpcs:customnpc",
     "IsStatue": 0b,
@@ -131,7 +186,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "minecraft:entity.arrow.hit",
+    "HitSound": "flansmod:m14shoot",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -159,8 +214,8 @@
         ]
     },
     "HurtTime": 0s,
-    "WalkingRange": 32,
-    "ShotCount": 1,
+    "WalkingRange": 16,
+    "ShotCount": 10,
     "pDur": 5,
     "AttackRange": 2,
     "NpcKillLines": {
@@ -169,14 +224,14 @@
     },
     "PotionImmune": 0b,
     "AvoidsSun": 0b,
-    "Texture": "customnpcs:textures/entity/humanmale/gangstersteve.png",
+    "Texture": "customnpcs:textures/entity/humanmale/steve.png",
     "NpcJob": 0,
     "BurstCount": 1,
     "NpcAttackLines": {
         "Lines": [
         ]
     },
-    "pSpeed": 10,
+    "pSpeed": 15,
     "pArea": 0,
     "DeathTime": 0s,
     "pImpact": 0,
@@ -185,7 +240,7 @@
     "Motion": [
         0.0d,
         -0.0784000015258789d,
-        0.010459741521229981d
+        0.0d
     ],
     "CombatRegen": 0,
     "NpcsTimers": [
@@ -216,13 +271,18 @@
         }
     ],
     "DisablePitch": 0b,
-    "pPhysics": 1b,
+    "pPhysics": 0b,
     "TransformHasInv": 0b,
     "NpcInteractLines": {
         "Lines": [
+            {
+                "Line": "Hello @p",
+                "Song": "",
+                "Slot": 0
+            }
         ]
     },
-    "HurtByTimestamp": 770,
+    "HurtByTimestamp": 714,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -257,7 +317,7 @@
             "Name": "generic.followRange"
         },
         {
-            "Base": 6.0d,
+            "Base": 5.0d,
             "Name": "generic.attackDamage"
         },
         {
@@ -270,7 +330,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Bandit",
+    "Name": "SPO pistol",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
@@ -281,8 +341,43 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "variedcommodities:combat_knive",
+            "id": "flansmod:sigp226",
             "Count": 1b,
+            "tag": {
+                "attachments": {
+                    "barrel": {
+                    },
+                    "grip": {
+                    },
+                    "generic_0": {
+                    },
+                    "scope": {
+                    },
+                    "stock": {
+                    }
+                },
+                "ammo": [
+                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:sigp226ammo",
+                        "Count": 1b,
+                        "Damage": 0s
+                    }
+                ]
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:bullet",
+            "Count": 64b,
             "Damage": 0s
         }
     ],
@@ -358,37 +453,37 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 20,
-    "DoorInteract": 2,
+    "minDelay": 15,
+    "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
-    "UsingSkinUrl": 0b,
+    "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_SPO_Agent.png",
     "CanSwim": 1b,
-    "GroundSound": "minecraft:block.stone.break",
+    "GroundSound": "flansmod:m14shoot",
     "MaxHealth": 20,
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 40,
+    "maxDelay": 20,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
         {
-            "Integer": 76,
+            "Integer": 10,
             "Slot": 0
         },
         {
-            "Integer": 47,
+            "Integer": 25,
             "Slot": 1
         },
         {
-            "Integer": 30,
+            "Integer": 1,
             "Slot": 2
         },
         {
-            "Integer": 19,
+            "Integer": 75,
             "Slot": 3
         },
         {
@@ -396,15 +491,15 @@
             "Slot": 4
         },
         {
-            "Integer": 100,
+            "Integer": 50,
             "Slot": 5
         },
         {
-            "Integer": 100,
+            "Integer": 25,
             "Slot": 6
         },
         {
-            "Integer": 100,
+            "Integer": 10,
             "Slot": 7
         },
         {
@@ -413,16 +508,16 @@
         }
     ],
     "FactionPoints": {
-        "DecreaseFaction1Points": 0b,
-        "OptionFaction2Points": 5,
+        "DecreaseFaction1Points": 1b,
+        "OptionFaction2Points": 3,
         "OptionFactions1": 2,
         "OptionFactions2": 6,
-        "OptionFaction1Points": 5,
-        "DecreaseFaction2Points": 1b
+        "OptionFaction1Points": 6,
+        "DecreaseFaction2Points": 0b
     },
-    "pDamage": 4,
+    "pDamage": 5,
     "KilledTime": 0L,
-    "AimWhileShooting": 0b,
+    "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
     "AttackOtherFactions": 1b,
     "CanDrown": 1b,
@@ -442,38 +537,38 @@
     "OnAttack": 0,
     "TacticalRadius": 8,
     "FallFlying": 0b,
-    "MaxExp": 2,
+    "MaxExp": 5,
     "OrderedLines": 0b,
     "PortalCooldown": 0,
     "pGlows": 0b,
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "minecraft:entity.arrow.shoot",
+    "FiringSound": "flansmod:m14shoot",
     "ModRev": 18,
-    "Accuracy": 60,
-    "MinExp": 1,
+    "Accuracy": 75,
+    "MinExp": 3,
     "Armor": [
     ],
     "CloakTexture": "",
     "GlowTexture": "",
-    "MaxFiringRange": 15,
+    "MaxFiringRange": 32,
     "pXlr8": 0b,
     "MarkovGeneratorId": 0,
     "Scripts": [
     ],
     "Health": 20.0f,
-    "pStick": 0b,
+    "pStick": 1b,
     "MovingPause": 1b,
     "NpcDeathSound": "minecraft:entity.player.hurt",
-    "FactionID": 6,
+    "FactionID": 2,
     "Title": "",
-    "TotalTicksAlive": 5006520L,
+    "TotalTicksAlive": 3810104L,
     "Rotation": [
-        6.7794647f,
+        269.93668f,
         0.0f
     ],
-    "ShowName": 1,
+    "ShowName": 0,
     "npcInteracting": 1b,
     "UpdateBlocked": 0b,
     "AvoidsWater": 0b,
