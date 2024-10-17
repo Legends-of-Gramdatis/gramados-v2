@@ -32,7 +32,7 @@
     "PositionOffsetX": 5.0f,
     "LootMode": 0,
     "TransformHasAI": 0b,
-    "AttackStrenght": 2,
+    "AttackStrenght": 7,
     "PersistenceRequired": 0b,
     "id": "customnpcs:customnpc",
     "IsStatue": 0b,
@@ -61,7 +61,7 @@
         {
         }
     ],
-    "KnockBack": 0,
+    "KnockBack": 2,
     "TransformHasJob": 0b,
     "ArmorDropChances": [
         0.085f,
@@ -140,7 +140,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 296,
+    "HurtByTimestamp": 3227,
     "pSpin": 0b,
     "NpcHurtSound": "ivv:robot.hurt",
     "pTrail": 0,
@@ -175,7 +175,7 @@
             "Name": "generic.followRange"
         },
         {
-            "Base": 2.0d,
+            "Base": 7.0d,
             "Name": "generic.attackDamage"
         },
         {
@@ -188,7 +188,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Shock Units",
+    "Name": "Shock Unit",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "ivv:robot.chatter",
@@ -248,14 +248,14 @@
                 "Pattern": 0b,
                 "Type": 0b,
                 "PlayerTexture": 0b,
-                "PartName": "claws",
+                "PartName": "particles",
                 "Color": 997340
             },
             {
                 "Pattern": 0b,
                 "Type": 0b,
                 "PlayerTexture": 0b,
-                "PartName": "particles",
+                "PartName": "claws",
                 "Color": 997340
             }
         ],
@@ -291,7 +291,7 @@
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 10,
     "HideBodyWhenKilled": 1b,
-    "AttackSpeed": 10,
+    "AttackSpeed": 20,
     "PotionDuration": 2,
     "maxDelay": 40,
     "ScriptEnabled": 0b,
@@ -390,10 +390,10 @@
     "NpcDeathSound": "ivv:robot.death",
     "FactionID": 20,
     "Title": "",
-    "TotalTicksAlive": 341003L,
+    "TotalTicksAlive": 344244L,
     "Rotation": [
         177.7506f,
-        30.0f
+        0.0f
     ],
     "ShowName": 0,
     "npcInteracting": 1b,

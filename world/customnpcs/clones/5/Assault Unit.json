@@ -19,7 +19,7 @@
     "Resistances": {
         "Arrow": 1.0f,
         "Explosion": 1.0f,
-        "Knockback": 1.0f,
+        "Knockback": 2.0f,
         "Melee": 1.0f
     },
     "BossBar": 0b,
@@ -109,7 +109,7 @@
     "NpcsTimers": [
     ],
     "MarkovGender": 0,
-    "pEffect": 7,
+    "pEffect": 5,
     "DistanceToMelee": 0,
     "NpcStepSound": "",
     "FireRate": 5,
@@ -140,7 +140,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 75059,
+    "HurtByTimestamp": 1569,
     "pSpin": 0b,
     "NpcHurtSound": "ivv:robot.hurt",
     "pTrail": 1,
@@ -155,7 +155,7 @@
             "Name": "generic.knockbackResistance"
         },
         {
-            "Base": 0.25d,
+            "Base": 0.15000000596046448d,
             "Name": "generic.movementSpeed"
         },
         {
@@ -179,7 +179,7 @@
             "Name": "generic.attackDamage"
         },
         {
-            "Base": 0.5d,
+            "Base": 0.30000001192092896d,
             "Name": "generic.flyingSpeed"
         }
     ],
@@ -306,7 +306,7 @@
     },
     "minDelay": 30,
     "DoorInteract": 2,
-    "MoveSpeed": 5,
+    "MoveSpeed": 3,
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 0b,
     "Leashed": 0b,
@@ -366,7 +366,7 @@
         "OptionFaction1Points": 100,
         "DecreaseFaction2Points": 0b
     },
-    "pDamage": 4,
+    "pDamage": 10,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -414,10 +414,10 @@
     "NpcDeathSound": "ivv:robot.death",
     "FactionID": 20,
     "Title": "",
-    "TotalTicksAlive": 441615L,
+    "TotalTicksAlive": 443360L,
     "Rotation": [
-        177.7506f,
-        30.0f
+        39.64319f,
+        0.0f
     ],
     "ShowName": 0,
     "npcInteracting": 0b,

@@ -140,7 +140,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 98177,
+    "HurtByTimestamp": 650,
     "pSpin": 0b,
     "NpcHurtSound": "ivv:robot.hurt",
     "pTrail": 0,
@@ -414,10 +414,10 @@
     "NpcDeathSound": "ivv:robot.death",
     "FactionID": 20,
     "Title": "",
-    "TotalTicksAlive": 411937L,
+    "TotalTicksAlive": 412667L,
     "Rotation": [
-        163.66988f,
-        30.0f
+        113.96846f,
+        0.0f
     ],
     "ShowName": 0,
     "npcInteracting": 0b,

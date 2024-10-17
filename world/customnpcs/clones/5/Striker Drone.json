@@ -140,7 +140,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 723,
+    "HurtByTimestamp": 1653,
     "pSpin": 0b,
     "NpcHurtSound": "ivv:robot.hurt",
     "pTrail": 0,
@@ -185,7 +185,7 @@
     ],
     "Invulnerable": 0b,
     "TransformHasDisplay": 0b,
-    "NoFallDamage": 0b,
+    "NoFallDamage": 1b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
     "Name": "Striker Drone",
@@ -376,10 +376,10 @@
     "NpcDeathSound": "ivv:robot.death",
     "FactionID": 20,
     "Title": "",
-    "TotalTicksAlive": 443659L,
+    "TotalTicksAlive": 445356L,
     "Rotation": [
-        276.01578f,
-        0.0f
+        190.26143f,
+        -16.113995f
     ],
     "ShowName": 0,
     "npcInteracting": 0b,
