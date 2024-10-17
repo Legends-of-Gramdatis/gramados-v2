@@ -94,3 +94,6 @@ val brewable_honey = <forge:bucketfilled>.withTag({FluidName: "fluid_honey", Amo
 // forestry honey to growthcraft honey
 recipes.addShapeless(brewable_honey, [unfiltered_honey, keepable_filter]);
 
+// Wheat to Hay Bales
+recipes.addShapeless(<minecraft:hay_block>, [<minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>, <minecraft:wheat>]);
+
