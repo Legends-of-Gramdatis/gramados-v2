@@ -1,0 +1,148 @@
+{
+    "CompleterNpc": "Clayton Harlow",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 1b,
+    "Title": "Return the Cargo",
+    "Text": "I need to return Clayton Harlow the stolen cargo.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 20,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1729115126313L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 1b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I returned to Clayton Harlow and reported that I had not only killed the 10 bandits but also recovered the stolen Desert Eagles. I’ve returned the cargo successfully.",
+    "NextQuestTitle": ""
+}

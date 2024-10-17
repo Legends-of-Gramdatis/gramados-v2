@@ -1,0 +1,159 @@
+{
+    "CompleterNpc": "Clayton Harlow",
+    "NextQuestId": 113,
+    "RandomReward": 0b,
+    "QuestRepeat": 5,
+    "QuestCompletion": 1,
+    "Title": "Bandit Extermination: Desert Eagle Recovery",
+    "Text": "I’ve been hired by Clayton Harlow of Harlow Weaponry Solutions to eliminate 10 bandits who stole a shipment of Desert Eagles and ammunition. He mentioned they’re likely hiding in Minchally Block, just south of Gramados City.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 10,
+        "OptionFactions1": 2,
+        "OptionFactions2": 6,
+        "OptionFaction1Points": 30,
+        "DecreaseFaction2Points": 1b
+    },
+    "RewardExp": 20,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 10,
+            "Slot": "Bandit"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1729116343715L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 4s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagle",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 1s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagleammo",
+                "Count": 2b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagleammo",
+                "Count": 5b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:deserteagleammo",
+                "Count": 5b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "I’ve taken down the 10 bandits in Minchally Block. I also found part of the stolen shipment—4 Desert Eagles and some ammo. I can return to Clayton Harlow to report the job. I’ll have to decide if I want to give back the recovered cargo or just report the kills.",
+    "NextQuestTitle": "Report to Clayton Harlow"
+}
