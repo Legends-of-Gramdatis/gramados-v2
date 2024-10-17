@@ -308,48 +308,48 @@ sets:
             marker_10:
                 world: world
                 markup: false
-                x: 204.32550699047619
                 icon: shopping_wholesale
+                x: 204.0
                 y: 74.0
-                z: -1036.300000011921
+                z: -1036.0
                 label: Wine Export Int. Wholesale (sell)
             marker_1:
                 world: world
                 markup: false
-                x: -4619.0
                 icon: shopping_wholesale
+                x: -4619.0
                 y: 74.0
                 z: -477.0
                 label: Cheese &amp; Milk Wholesale (sell)
             marker_2:
                 world: world
                 markup: false
-                x: -3808.0
                 icon: shopping_wholesale
+                x: -3808.0
                 y: 70.0
                 z: 623.0
                 label: Farm Animals Wholesale (buy)
             marker_3:
                 world: world
                 markup: false
-                x: -874.0
                 icon: shopping_wholesale
+                x: -874.0
                 y: 73.0
                 z: 188.0
                 label: Concrete Materials Wholesale (sell &amp; buy)
             marker_4:
                 world: world
                 markup: false
-                x: 594.0
                 icon: shopping_wholesale
+                x: 594.0
                 y: 88.0
                 z: -1634.0
                 label: Seeds &amp; Saplings Nursery Wholesale (buy)
             marker_5:
                 world: world
                 markup: false
-                x: 1135.0
                 icon: shopping_wholesale
+                x: 1135.0
                 y: 93.0
                 z: -1968.0
                 label: Local Farm Product Wholesale (sell)
@@ -364,40 +364,40 @@ sets:
             marker_7:
                 world: world
                 markup: false
-                x: 204.68921362181703
                 icon: shopping_wholesale
+                x: 204.0
                 y: 76.0
-                z: -994.2124007103154
-                label: Beekeeping Wholesale (buy)
+                z: -994.0
+                label: Buzzy Bee Happyculture
             marker_8:
                 world: world
                 markup: false
-                x: 214.30000001192093
-                icon: shopping_wholesale
+                icon: shopping_hardware
+                x: 214.0
                 y: 74.0
-                z: -1032.7519893789997
-                label: Greenfield Farm Equipment Wholesale (buy)
+                z: -1032.0
+                label: AgriPro Tools - Farming Equipment & Tools
             marker_9:
                 world: world
                 markup: false
-                x: 212.30000001192093
                 icon: shopping_wholesale
+                x: 212.0
                 y: 74.0
-                z: -1040.5242758179133
-                label: Wine Brewing Equipment Wholesale (buy)
+                z: -1040.0
+                label: The Apples To Be - Brewing Equipment
             marker_10:
                 world: world
                 markup: false
-                x: -1314.0
                 icon: shopping_wholesale
+                x: -1314.0
                 y: 87.0
                 z: -1365.0
                 label: Allen Point Export Wholesale (sell)
             marker_11:
                 world: world
                 markup: false
-                x: -6836.0
                 icon: shopping_wholesale
+                x: -6836.0
                 y: 82.0
                 z: -255.0
                 label: Farmiston Farm Heavy Machinery Wholesale (buy)
@@ -890,10 +890,10 @@ sets:
             marker_8:
                 world: world
                 markup: false
-                icon: transport_misc
-                x: -876.0
+                icon: shopping_carparts
+                x: 57.0
                 y: 65.0
-                z: 260.0
+                z: -876.0
                 label: Springfield Port Boat Parts
 
         lines: {
@@ -1312,7 +1312,7 @@ sets:
         deficon: default
         areas: {
             }
-        label: Armories
+        label: Gun Stores And Clubs
         markers:
             marker_1:
                 world: world
@@ -1322,30 +1322,22 @@ sets:
                 y: 77.0
                 z: 61.0
                 label: Gramados Gun Club
-            marker_2:
+            marker_5:
                 world: world
                 markup: false
-                x: -2063.0
-                icon: shopping_misc
-                y: 77.0
-                z: 6.0
-                label: Gramado Armors
-            marker_3:
+                icon: shopping_gun
+                x: -5235.0
+                y: 73.0
+                z: -968.0
+                label: Fort Harbenshire Shooting Range
+            marker_15:
                 world: world
                 markup: false
-                x: -2064.0
-                icon: shopping_misc
-                y: 75.0
-                z: 22.0
-                label: Knife shop
-            marker_4:
-                world: world
-                markup: false
-                x: -2094.0
-                icon: shopping_misc
-                y: 76.0
-                z: -31.0
-                label: Civil Tactical Armors
+                icon: shopping_gun
+                x: -5249.0
+                y: 79.0
+                z: -912.0
+                label: Fort Harbenshire Marksman's Delight
         lines: {
             }
         layerprio: 0
@@ -1503,7 +1495,22 @@ sets:
                 y: 77.0
                 z: 43.0
                 label: Fulpower Charging Station
-
+            marker_19:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -6691.0
+                y: 79.0
+                z: -289.0
+                label: Belokvaz Charging Station
+            marker_20:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -6709.0
+                y: 79.0
+                z: -256.0
+                label: Belokvaz Fuel Station
         lines: {
             }
         layerprio: 0
@@ -1759,6 +1766,22 @@ sets:
                 y: 103.0
                 z: 973.0
                 label: Petrolton Court House
+            marker_21:
+                world: world
+                markup: false
+                icon: civil_services_post_office
+                x: -6977.0
+                y: 80.0
+                z: -85.0
+                label: Silorose Post Office
+            marker_22:
+                world: world
+                markup: false
+                icon: civil_services_post_office
+                x: -5978.0
+                y: 74.0
+                z: -933.0
+                label: Buglaton Post Office
         lines: {
             }
         layerprio: 0
@@ -1811,7 +1834,7 @@ sets:
                 icon: shopping_misc
                 y: 76.0
                 z: -2069.0
-                label: Feldpard Truck Stop Taxidermy
+                label: Edwin's Taxidermy
             marker_6:
                 world: world
                 markup: false
@@ -1839,11 +1862,51 @@ sets:
             marker_9:
                 world: world
                 markup: false
-                x: -2008.0
                 icon: shopping_misc
+                x: -2008.0
                 y: 77.0
                 z: 59.0
                 label: Gems of Zanzibar - Jewelry
+            marker_10:
+                world: world
+                markup: false
+                icon: shopping_shopping
+                x: -2800.0
+                y: 95.0
+                z: 861.0
+                label: Costumes and Cosplay
+            marker_11:
+                world: world
+                markup: false
+                icon: shopping_grocery
+                x: -6670.0
+                y: 81.0
+                z: -245.0
+                label: Belokvaz Station Supermarket
+            marker_12:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -2094.0
+                y: 76.0
+                z: -31.0
+                label: Civil Tactical Armors
+            marker_13:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -2063.0
+                y: 77.0
+                z: 6.0
+                label: Armors Of Beyond
+            marker_14:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -2064.0
+                y: 75.0
+                z: 22.0
+                label: The Kings Cutlery
         lines: {
             }
         layerprio: 0
