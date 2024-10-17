@@ -28,7 +28,7 @@ function updateStockValue() {
     for (var region in stockData) {
         var stocks = stockData[region];
         for (var stock in stocks) {
-            updateStockPrice(stocks[stock], regionGenerals[region]);
+            stocks[stock] = updateStockPrice(stocks[stock], regionGenerals[region]);
         }
         stockData[region] = stocks;
     }
@@ -43,15 +43,19 @@ function updateStockPrice(stockValue, regionGeneral) {
     var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
 
     if (elapsedTime >= _TIMER_COUNTER) {
+        // Stock wasn't sold for at least 24 hours, increase price
         if (Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR)) == stockValue["current_price"]) {
             stockValue["current_price"] += 1;
         } else {
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
         }
+    } else {
+        // Stock was sold recently, decrease price
+        stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _PRICE_EVOLUTION_FACTOR));
     }
 
     // Add a random factor to the price
-    var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * 0.05, 100));
+    var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * 0.1, 100));
     randomFactor = Math.random() > 0.5 ? randomFactor : -randomFactor;
     stockValue["current_price"] += randomFactor;
 
@@ -60,6 +64,8 @@ function updateStockPrice(stockValue, regionGeneral) {
     }
 
     stockValue["current_price"] = Math.max(stockValue["min_price"], Math.min(stockValue["current_price"], stockValue["max_price"]));
+
+    return stockValue;
 }
 
 function updateDomainValues() {
