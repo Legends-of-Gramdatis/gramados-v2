@@ -14,7 +14,7 @@ def read_json(file_path):
         return json.load(file)
 
 # Function to update the CSV with new stock data, adding the current price for a new timestamp
-def update_csv(region, data):
+def update_csv(region, data, enable_plot):
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
@@ -74,8 +74,9 @@ def update_csv(region, data):
                 row.append('')
             writer.writerow(row)
 
-    # After updating the CSV, create a single plot for the entire region
-    generate_region_plot(region, csv_file)
+    # After updating the CSV, create a single plot for the entire region if enabled
+    if enable_plot:
+        generate_region_plot(region, csv_file)
 
 # Function to generate a single plot for all items in a region
 def generate_region_plot(region, csv_file):
@@ -148,7 +149,7 @@ def generate_region_plot(region, csv_file):
     plt.close()
 
 # Main function to handle the processing
-def main():
+def main(enable_csv_update=True, enable_plot_creation=True):
     # Load the JSON data
     data = read_json(json_file_path)
 
@@ -156,7 +157,12 @@ def main():
     for region, stock_data in data.items():
         if region == "Region Generals":  # Skip 'Region Generals'
             continue
-        update_csv(region, stock_data)
+        if enable_csv_update:
+            update_csv(region, stock_data, enable_plot_creation)
 
 if __name__ == '__main__':
-    main()
+    # Set the boolean values for enabling/disabling CSV update and plot creation
+    enable_csv_update = True
+    enable_plot_creation = True
+    
+    main(enable_csv_update, enable_plot_creation)
