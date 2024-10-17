@@ -1511,6 +1511,14 @@ sets:
                 y: 79.0
                 z: -256.0
                 label: Belokvaz Fuel Station
+            marker_21:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -2064.0
+                y: 76.0
+                z: -59.0
+                label: Bravo Charging Station
         lines: {
             }
         layerprio: 0
