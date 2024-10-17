@@ -80,7 +80,7 @@ var crates_ids = [
     "mts:iav.iav_storage_l_crate_6"
 ];
 
-var NPC_REGION = "Gramados Industrial Concrete";
+var NPC_REGION = "Greenfield Brewing";
 var region_specifics = {};
 var stock_exchange_instance;
 var stock_exchange_generals;
@@ -108,6 +108,12 @@ function init(event) {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
             jobId : 51,
             varietyBonus : 0.15
+        }
+    } else if (NPC_REGION == "Greenfield Brewing") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId : 51,
+            varietyBonus : 0.20
         }
     } else if (NPC_REGION == "Farmiston") {
         region_specifics = {
