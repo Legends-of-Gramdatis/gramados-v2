@@ -167,7 +167,7 @@ function switch_region() {
         region_specifics = {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Lumberjack job.",
             jobId : 56,
-            varietyBonus : 0.10
+            varietyBonus : 0.17
         }
     } else if (NPC_REGION == "Farmiston") {
         region_specifics = {
