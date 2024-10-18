@@ -7,7 +7,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 53,
+    "DialogId": 343,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -35,9 +35,9 @@
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 51,
+    "AvailabilityDialogId": 342,
     "OptionFaction2Points": 100,
-    "DialogText": "This interaction is reserved to players with the \"Greenfield Farmer\" job.",
+    "DialogText": "This interaction is reserved to players with the \"Gramados Farmer\" job.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1729242395623L,
+        "TimePast": 1729242423073L,
         "Time": 0L,
         "Subject": ""
     }

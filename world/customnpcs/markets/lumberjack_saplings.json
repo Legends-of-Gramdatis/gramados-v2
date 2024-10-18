@@ -344,23 +344,23 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeOak",
-                                "UID0": "forestry.treeOak",
+                                "UID1": "forestry.treePine",
+                                "UID0": "forestry.treePine",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
                                 "Slot": 1b
                             },
                             {
-                                "UID1": "forestry.saplingsAverage",
-                                "UID0": "forestry.saplingsAverage",
+                                "UID1": "forestry.saplingsLow",
+                                "UID0": "forestry.saplingsLow",
                                 "Slot": 2b
                             },
                             {
-                                "UID1": "forestry.fruitApple",
-                                "UID0": "forestry.fruitApple",
+                                "UID1": "forestry.fruitNone",
+                                "UID0": "forestry.fruitNone",
                                 "Slot": 3b
                             },
                             {
@@ -369,8 +369,8 @@
                                 "Slot": 4b
                             },
                             {
-                                "UID1": "forestry.sappinessLowest",
-                                "UID0": "forestry.sappinessLowest",
+                                "UID1": "forestry.sappinessLower",
+                                "UID0": "forestry.sappinessLower",
                                 "Slot": 5b
                             },
                             {
@@ -379,8 +379,8 @@
                                 "Slot": 6b
                             },
                             {
-                                "UID1": "forestry.maturationFaster",
-                                "UID0": "forestry.maturationFaster",
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
                                 "Slot": 7b
                             },
                             {
@@ -411,18 +411,18 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeSpruce",
-                                "UID0": "forestry.treeSpruce",
+                                "UID1": "forestry.treeTeak",
+                                "UID0": "forestry.treeTeak",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightAverage",
-                                "UID0": "forestry.heightAverage",
+                                "UID1": "forestry.heightSmall",
+                                "UID0": "forestry.heightSmall",
                                 "Slot": 1b
                             },
                             {
-                                "UID1": "forestry.saplingsAverage",
-                                "UID0": "forestry.saplingsAverage",
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
                                 "Slot": 2b
                             },
                             {
@@ -436,8 +436,8 @@
                                 "Slot": 4b
                             },
                             {
-                                "UID1": "forestry.sappinessLowest",
-                                "UID0": "forestry.sappinessLowest",
+                                "UID1": "forestry.sappinessLower",
+                                "UID0": "forestry.sappinessLower",
                                 "Slot": 5b
                             },
                             {
@@ -446,8 +446,8 @@
                                 "Slot": 6b
                             },
                             {
-                                "UID1": "forestry.maturationFaster",
-                                "UID0": "forestry.maturationFaster",
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
                                 "Slot": 7b
                             },
                             {
@@ -478,23 +478,23 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeCherry",
-                                "UID0": "forestry.treeCherry",
+                                "UID1": "forestry.treeWalnut",
+                                "UID0": "forestry.treeWalnut",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightSmaller",
-                                "UID0": "forestry.heightSmaller",
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
                                 "Slot": 1b
                             },
                             {
-                                "UID1": "forestry.saplingsLow",
-                                "UID0": "forestry.saplingsLow",
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
                                 "Slot": 2b
                             },
                             {
-                                "UID1": "forestry.fruitCherry",
-                                "UID0": "forestry.fruitCherry",
+                                "UID1": "forestry.fruitWalnut",
+                                "UID0": "forestry.fruitWalnut",
                                 "Slot": 3b
                             },
                             {
@@ -503,8 +503,8 @@
                                 "Slot": 4b
                             },
                             {
-                                "UID1": "forestry.sappinessLow",
-                                "UID0": "forestry.sappinessLow",
+                                "UID1": "forestry.sappinessLower",
+                                "UID0": "forestry.sappinessLower",
                                 "Slot": 5b
                             },
                             {
@@ -518,8 +518,8 @@
                                 "Slot": 7b
                             },
                             {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
                                 "Slot": 8b
                             },
                             {
@@ -540,207 +540,6 @@
                 },
                 "id": "forestry:sapling",
                 "Count": 64b,
-                "tag": {
-                    "IsAnalyzed": 0b,
-                    "Genome": {
-                        "Chromosomes": [
-                            {
-                                "UID1": "forestry.treeOak",
-                                "UID0": "forestry.treeOak",
-                                "Slot": 0b
-                            },
-                            {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
-                                "Slot": 1b
-                            },
-                            {
-                                "UID1": "forestry.saplingsAverage",
-                                "UID0": "forestry.saplingsAverage",
-                                "Slot": 2b
-                            },
-                            {
-                                "UID1": "forestry.fruitApple",
-                                "UID0": "forestry.fruitApple",
-                                "Slot": 3b
-                            },
-                            {
-                                "UID1": "forestry.yieldLowest",
-                                "UID0": "forestry.yieldLowest",
-                                "Slot": 4b
-                            },
-                            {
-                                "UID1": "forestry.sappinessLowest",
-                                "UID0": "forestry.sappinessLowest",
-                                "Slot": 5b
-                            },
-                            {
-                                "UID1": "forestry.leavesNone",
-                                "UID0": "forestry.leavesNone",
-                                "Slot": 6b
-                            },
-                            {
-                                "UID1": "forestry.maturationFaster",
-                                "UID0": "forestry.maturationFaster",
-                                "Slot": 7b
-                            },
-                            {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
-                                "Slot": 8b
-                            },
-                            {
-                                "UID1": "forestry.fireproofFalse",
-                                "UID0": "forestry.fireproofFalse",
-                                "Slot": 9b
-                            }
-                        ]
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 4b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forestry:sapling",
-                "Count": 64b,
-                "tag": {
-                    "IsAnalyzed": 0b,
-                    "Genome": {
-                        "Chromosomes": [
-                            {
-                                "UID1": "forestry.treeSpruce",
-                                "UID0": "forestry.treeSpruce",
-                                "Slot": 0b
-                            },
-                            {
-                                "UID1": "forestry.heightAverage",
-                                "UID0": "forestry.heightAverage",
-                                "Slot": 1b
-                            },
-                            {
-                                "UID1": "forestry.saplingsAverage",
-                                "UID0": "forestry.saplingsAverage",
-                                "Slot": 2b
-                            },
-                            {
-                                "UID1": "forestry.fruitNone",
-                                "UID0": "forestry.fruitNone",
-                                "Slot": 3b
-                            },
-                            {
-                                "UID1": "forestry.yieldLowest",
-                                "UID0": "forestry.yieldLowest",
-                                "Slot": 4b
-                            },
-                            {
-                                "UID1": "forestry.sappinessLowest",
-                                "UID0": "forestry.sappinessLowest",
-                                "Slot": 5b
-                            },
-                            {
-                                "UID1": "forestry.leavesNone",
-                                "UID0": "forestry.leavesNone",
-                                "Slot": 6b
-                            },
-                            {
-                                "UID1": "forestry.maturationFaster",
-                                "UID0": "forestry.maturationFaster",
-                                "Slot": 7b
-                            },
-                            {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
-                                "Slot": 8b
-                            },
-                            {
-                                "UID1": "forestry.fireproofFalse",
-                                "UID0": "forestry.fireproofFalse",
-                                "Slot": 9b
-                            }
-                        ]
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 5b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forestry:sapling",
-                "Count": 64b,
-                "tag": {
-                    "IsAnalyzed": 0b,
-                    "Genome": {
-                        "Chromosomes": [
-                            {
-                                "UID1": "forestry.treeCherry",
-                                "UID0": "forestry.treeCherry",
-                                "Slot": 0b
-                            },
-                            {
-                                "UID1": "forestry.heightSmaller",
-                                "UID0": "forestry.heightSmaller",
-                                "Slot": 1b
-                            },
-                            {
-                                "UID1": "forestry.saplingsLow",
-                                "UID0": "forestry.saplingsLow",
-                                "Slot": 2b
-                            },
-                            {
-                                "UID1": "forestry.fruitCherry",
-                                "UID0": "forestry.fruitCherry",
-                                "Slot": 3b
-                            },
-                            {
-                                "UID1": "forestry.yieldAverage",
-                                "UID0": "forestry.yieldAverage",
-                                "Slot": 4b
-                            },
-                            {
-                                "UID1": "forestry.sappinessLow",
-                                "UID0": "forestry.sappinessLow",
-                                "Slot": 5b
-                            },
-                            {
-                                "UID1": "forestry.leavesNone",
-                                "UID0": "forestry.leavesNone",
-                                "Slot": 6b
-                            },
-                            {
-                                "UID1": "forestry.maturationAverage",
-                                "UID0": "forestry.maturationAverage",
-                                "Slot": 7b
-                            },
-                            {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
-                                "Slot": 8b
-                            },
-                            {
-                                "UID1": "forestry.fireproofFalse",
-                                "UID0": "forestry.fireproofFalse",
-                                "Slot": 9b
-                            }
-                        ]
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 6b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forestry:sapling",
-                "Count": 1b,
                 "tag": {
                     "IsAnalyzed": 0b,
                     "Genome": {
@@ -801,7 +600,141 @@
                 "Damage": 0s
             },
             {
-                "Slot": 7b,
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:sapling",
+                "Count": 64b,
+                "tag": {
+                    "IsAnalyzed": 0b,
+                    "Genome": {
+                        "Chromosomes": [
+                            {
+                                "UID1": "forestry.treeTeak",
+                                "UID0": "forestry.treeTeak",
+                                "Slot": 0b
+                            },
+                            {
+                                "UID1": "forestry.heightSmall",
+                                "UID0": "forestry.heightSmall",
+                                "Slot": 1b
+                            },
+                            {
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
+                                "Slot": 2b
+                            },
+                            {
+                                "UID1": "forestry.fruitNone",
+                                "UID0": "forestry.fruitNone",
+                                "Slot": 3b
+                            },
+                            {
+                                "UID1": "forestry.yieldLowest",
+                                "UID0": "forestry.yieldLowest",
+                                "Slot": 4b
+                            },
+                            {
+                                "UID1": "forestry.sappinessLower",
+                                "UID0": "forestry.sappinessLower",
+                                "Slot": 5b
+                            },
+                            {
+                                "UID1": "forestry.leavesNone",
+                                "UID0": "forestry.leavesNone",
+                                "Slot": 6b
+                            },
+                            {
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
+                                "Slot": 7b
+                            },
+                            {
+                                "UID1": "forestry.i1d",
+                                "UID0": "forestry.i1d",
+                                "Slot": 8b
+                            },
+                            {
+                                "UID1": "forestry.fireproofFalse",
+                                "UID0": "forestry.fireproofFalse",
+                                "Slot": 9b
+                            }
+                        ]
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:sapling",
+                "Count": 64b,
+                "tag": {
+                    "IsAnalyzed": 0b,
+                    "Genome": {
+                        "Chromosomes": [
+                            {
+                                "UID1": "forestry.treeWalnut",
+                                "UID0": "forestry.treeWalnut",
+                                "Slot": 0b
+                            },
+                            {
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
+                                "Slot": 1b
+                            },
+                            {
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
+                                "Slot": 2b
+                            },
+                            {
+                                "UID1": "forestry.fruitWalnut",
+                                "UID0": "forestry.fruitWalnut",
+                                "Slot": 3b
+                            },
+                            {
+                                "UID1": "forestry.yieldAverage",
+                                "UID0": "forestry.yieldAverage",
+                                "Slot": 4b
+                            },
+                            {
+                                "UID1": "forestry.sappinessLower",
+                                "UID0": "forestry.sappinessLower",
+                                "Slot": 5b
+                            },
+                            {
+                                "UID1": "forestry.leavesNone",
+                                "UID0": "forestry.leavesNone",
+                                "Slot": 6b
+                            },
+                            {
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
+                                "Slot": 7b
+                            },
+                            {
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
+                                "Slot": 8b
+                            },
+                            {
+                                "UID1": "forestry.fireproofFalse",
+                                "UID0": "forestry.fireproofFalse",
+                                "Slot": 9b
+                            }
+                        ]
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -813,13 +746,13 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeBirch",
-                                "UID0": "forestry.treeBirch",
+                                "UID1": "forestry.treeSpruce",
+                                "UID0": "forestry.treeSpruce",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
                                 "Slot": 1b
                             },
                             {
@@ -868,7 +801,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 8b,
+                "Slot": 7b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -880,18 +813,18 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeMaple",
-                                "UID0": "forestry.treeMaple",
+                                "UID1": "forestry.treeIpe",
+                                "UID0": "forestry.treeIpe",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightAverage",
-                                "UID0": "forestry.heightAverage",
+                                "UID1": "forestry.heightLarge",
+                                "UID0": "forestry.heightLarge",
                                 "Slot": 1b
                             },
                             {
-                                "UID1": "forestry.saplingsLow",
-                                "UID0": "forestry.saplingsLow",
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
                                 "Slot": 2b
                             },
                             {
@@ -907,6 +840,73 @@
                             {
                                 "UID1": "forestry.sappinessLower",
                                 "UID0": "forestry.sappinessLower",
+                                "Slot": 5b
+                            },
+                            {
+                                "UID1": "forestry.leavesNone",
+                                "UID0": "forestry.leavesNone",
+                                "Slot": 6b
+                            },
+                            {
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
+                                "Slot": 7b
+                            },
+                            {
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
+                                "Slot": 8b
+                            },
+                            {
+                                "UID1": "forestry.fireproofFalse",
+                                "UID0": "forestry.fireproofFalse",
+                                "Slot": 9b
+                            }
+                        ]
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:sapling",
+                "Count": 1b,
+                "tag": {
+                    "IsAnalyzed": 0b,
+                    "Genome": {
+                        "Chromosomes": [
+                            {
+                                "UID1": "forestry.treeLemon",
+                                "UID0": "forestry.treeLemon",
+                                "Slot": 0b
+                            },
+                            {
+                                "UID1": "forestry.heightSmallest",
+                                "UID0": "forestry.heightSmallest",
+                                "Slot": 1b
+                            },
+                            {
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
+                                "Slot": 2b
+                            },
+                            {
+                                "UID1": "forestry.fruitLemon",
+                                "UID0": "forestry.fruitLemon",
+                                "Slot": 3b
+                            },
+                            {
+                                "UID1": "forestry.yieldLower",
+                                "UID0": "forestry.yieldLower",
+                                "Slot": 4b
+                            },
+                            {
+                                "UID1": "forestry.sappinessAverage",
+                                "UID0": "forestry.sappinessAverage",
                                 "Slot": 5b
                             },
                             {
@@ -947,80 +947,13 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treePine",
-                                "UID0": "forestry.treePine",
+                                "UID1": "forestry.treeSpruce",
+                                "UID0": "forestry.treeSpruce",
                                 "Slot": 0b
                             },
                             {
                                 "UID1": "forestry.heightAverage",
                                 "UID0": "forestry.heightAverage",
-                                "Slot": 1b
-                            },
-                            {
-                                "UID1": "forestry.saplingsLow",
-                                "UID0": "forestry.saplingsLow",
-                                "Slot": 2b
-                            },
-                            {
-                                "UID1": "forestry.fruitNone",
-                                "UID0": "forestry.fruitNone",
-                                "Slot": 3b
-                            },
-                            {
-                                "UID1": "forestry.yieldLowest",
-                                "UID0": "forestry.yieldLowest",
-                                "Slot": 4b
-                            },
-                            {
-                                "UID1": "forestry.sappinessLower",
-                                "UID0": "forestry.sappinessLower",
-                                "Slot": 5b
-                            },
-                            {
-                                "UID1": "forestry.leavesNone",
-                                "UID0": "forestry.leavesNone",
-                                "Slot": 6b
-                            },
-                            {
-                                "UID1": "forestry.maturationAverage",
-                                "UID0": "forestry.maturationAverage",
-                                "Slot": 7b
-                            },
-                            {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
-                                "Slot": 8b
-                            },
-                            {
-                                "UID1": "forestry.fireproofFalse",
-                                "UID0": "forestry.fireproofFalse",
-                                "Slot": 9b
-                            }
-                        ]
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 10b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "forestry:sapling",
-                "Count": 64b,
-                "tag": {
-                    "IsAnalyzed": 0b,
-                    "Genome": {
-                        "Chromosomes": [
-                            {
-                                "UID1": "forestry.treeBirch",
-                                "UID0": "forestry.treeBirch",
-                                "Slot": 0b
-                            },
-                            {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
                                 "Slot": 1b
                             },
                             {
@@ -1069,7 +1002,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 11b,
+                "Slot": 10b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -1081,18 +1014,18 @@
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeMaple",
-                                "UID0": "forestry.treeMaple",
+                                "UID1": "forestry.treeIpe",
+                                "UID0": "forestry.treeIpe",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightAverage",
-                                "UID0": "forestry.heightAverage",
+                                "UID1": "forestry.heightLarge",
+                                "UID0": "forestry.heightLarge",
                                 "Slot": 1b
                             },
                             {
-                                "UID1": "forestry.saplingsLow",
-                                "UID0": "forestry.saplingsLow",
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
                                 "Slot": 2b
                             },
                             {
@@ -1108,6 +1041,73 @@
                             {
                                 "UID1": "forestry.sappinessLower",
                                 "UID0": "forestry.sappinessLower",
+                                "Slot": 5b
+                            },
+                            {
+                                "UID1": "forestry.leavesNone",
+                                "UID0": "forestry.leavesNone",
+                                "Slot": 6b
+                            },
+                            {
+                                "UID1": "forestry.maturationAverage",
+                                "UID0": "forestry.maturationAverage",
+                                "Slot": 7b
+                            },
+                            {
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
+                                "Slot": 8b
+                            },
+                            {
+                                "UID1": "forestry.fireproofFalse",
+                                "UID0": "forestry.fireproofFalse",
+                                "Slot": 9b
+                            }
+                        ]
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "forestry:sapling",
+                "Count": 64b,
+                "tag": {
+                    "IsAnalyzed": 0b,
+                    "Genome": {
+                        "Chromosomes": [
+                            {
+                                "UID1": "forestry.treeLemon",
+                                "UID0": "forestry.treeLemon",
+                                "Slot": 0b
+                            },
+                            {
+                                "UID1": "forestry.heightSmallest",
+                                "UID0": "forestry.heightSmallest",
+                                "Slot": 1b
+                            },
+                            {
+                                "UID1": "forestry.saplingsLower",
+                                "UID0": "forestry.saplingsLower",
+                                "Slot": 2b
+                            },
+                            {
+                                "UID1": "forestry.fruitLemon",
+                                "UID0": "forestry.fruitLemon",
+                                "Slot": 3b
+                            },
+                            {
+                                "UID1": "forestry.yieldLower",
+                                "UID0": "forestry.yieldLower",
+                                "Slot": 4b
+                            },
+                            {
+                                "UID1": "forestry.sappinessAverage",
+                                "UID0": "forestry.sappinessAverage",
                                 "Slot": 5b
                             },
                             {
