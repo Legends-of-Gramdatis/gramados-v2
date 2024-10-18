@@ -84,14 +84,15 @@ var crates_ids = [
     When you add a new region, be sure to add the region name to the switch_region() function along with the _REGIONS array.
 */
 var _REGIONS = [
-    "Allenis",
-    "Greenfield Farming",
-    "Greenfield Brewing",
-    "Farmiston",
     "Gramados Farming",
+    "Gramados Lumber",
     "Gramados Industrial Concrete",
     "Gramados Industrial Terracotta",
-    "Gramados Lumberjack"
+    "Greenfield Farming",
+    "Greenfield Brewing",
+    "Greenfield Lumber",
+    "Farmiston",
+    "Allenis"
 ];
 
 var NPC_REGION = "Gramados Farming";
@@ -126,29 +127,17 @@ function init(event) {
 }
 
 function switch_region() {
-    if (NPC_REGION == "Allenis") {
+    if (NPC_REGION == "Gramados Farming") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
-            jobId : 233,
-            varietyBonus : 0.075
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Farmer job.",
+            jobId: 342,
+            varietyBonus: 0.1
         }
-    } else if (NPC_REGION == "Greenfield Farming") {
+    } else if (NPC_REGION == "Gramados Lumber") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
-            jobId : 51,
-            varietyBonus : 0.15
-        }
-    } else if (NPC_REGION == "Greenfield Brewing") {
-        region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
-            jobId : 51,
-            varietyBonus : 0.20
-        }
-    } else if (NPC_REGION == "Farmiston") {
-        region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
-            jobId : 154,
-            varietyBonus : -0.1
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Lumberjack job.",
+            jobId : 59,
+            varietyBonus : 0.10
         }
     } else if (NPC_REGION == "Gramados Industrial Concrete") {
         region_specifics = {
@@ -161,6 +150,36 @@ function switch_region() {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Terracotta Factory Worker job.",
             jobId : 61,
             varietyBonus : 0.1
+        }
+    } else if (NPC_REGION == "Greenfield Farming") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId : 51,
+            varietyBonus : 0.30
+        }
+    } else if (NPC_REGION == "Greenfield Brewing") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId : 51,
+            varietyBonus : 0.20
+        }
+    } else if (NPC_REGION == "Greenfield Lumber") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Lumberjack job.",
+            jobId : 56,
+            varietyBonus : 0.10
+        }
+    } else if (NPC_REGION == "Farmiston") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
+            jobId : 154,
+            varietyBonus : -0.1
+        }
+    } else if (NPC_REGION == "Allenis") {
+        region_specifics = {
+            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
+            jobId : 233,
+            varietyBonus : 0.075
         }
     } else {
         region_specifics = {
