@@ -56,7 +56,23 @@ function updateStockPrice(stockValue, regionGeneral) {
 
     // Add a random factor to the price
     var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * 0.1, 100));
-    randomFactor = Math.random() > 0.5 ? randomFactor : -randomFactor;
+
+    /* 
+        This will give a value between 0 and 1. If at 0.5, the current price is close to the reference price
+        If the value is higher, the current price is higher than the reference price
+        If the value is lower, the current price is lower than the reference price
+
+        Therefor, the stock price will have a higher chance of increasing if the current price is lower than the reference price, but still have a chance of decreasing.
+        This decrease chance gets lower as the current price gets closer to the reference price.
+
+        We will use the output of this formula to determine if the random factor should be positive or negative.
+    */
+    var randomProbability = (stockValue["current_price"] / 2) / stockValue["reference_price"];
+
+    if (Math.random() < randomProbability) {
+        randomFactor *= -1;
+    }
+
     stockValue["current_price"] += randomFactor;
 
     if (regionGeneral && regionGeneral["stock_multiplier"]) {
