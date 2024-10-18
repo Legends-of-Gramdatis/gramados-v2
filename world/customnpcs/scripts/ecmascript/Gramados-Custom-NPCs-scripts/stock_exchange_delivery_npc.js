@@ -80,7 +80,21 @@ var crates_ids = [
     "mts:iav.iav_storage_l_crate_6"
 ];
 
-var NPC_REGION = "Greenfield Brewing";
+/*
+    When you add a new region, be sure to add the region name to the switch_region() function along with the _REGIONS array.
+*/
+var _REGIONS = [
+    "Allenis",
+    "Greenfield Farming",
+    "Greenfield Brewing",
+    "Farmiston",
+    "Gramados Farming",
+    "Gramados Industrial Concrete",
+    "Gramados Industrial Terracotta",
+    "Gramados Lumberjack"
+];
+
+var NPC_REGION = "Gramados Farming";
 var region_specifics = {};
 var stock_exchange_instance;
 var stock_exchange_generals;
@@ -97,13 +111,28 @@ function init(event) {
     npc = event.npc;
     world = npc.getWorld();
 
+    // get stored data
+    var stored_data = npc.getStoreddata();
+    // npc.say("Stored Data: " + stored_data);
+
+    if (stored_data.has("region")) {
+        NPC_REGION = stored_data.get("region");
+        switch_region();
+    } else {
+        npc.say("I am not set up yet. Please use a command block renamed to the stock I manage.");
+        npc.say("Valid names: " + _REGIONS.join(", "));
+        switch_region();
+    }
+}
+
+function switch_region() {
     if (NPC_REGION == "Allenis") {
         region_specifics = {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
             jobId : 233,
             varietyBonus : 0.075
         }
-    } else if (NPC_REGION == "Greenfield") {
+    } else if (NPC_REGION == "Greenfield Farming") {
         region_specifics = {
             helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
             jobId : 51,
@@ -135,10 +164,11 @@ function init(event) {
         }
     } else {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Lumberjack job.",
-            jobId : 59,
-            varietyBonus : 0.05
+            helloPhrase : "I am currently not set up to trade in any region. Call the admin to set me up.",
+            jobId : 230,
+            varietyBonus : -1
         }
+        return;
     }
     npc.say("I am ready to trade! Please hold a crate in your hand to begin.");
 }
@@ -147,51 +177,69 @@ function init(event) {
 function interact(event) {
     var player = event.player;
 
-    // If player has read the hire dialogue
-    if (!player.hasReadDialog(region_specifics.jobId)) {
-        npc.say(region_specifics.helloPhrase);
-        return;
-    }
+    // If player is holding a command block, let the player change the NPC's region
+    if (player.getMainhandItem().getName() == "minecraft:command_block") {
+        // Get how the command block is renamed
+        var commandBlockName = player.getMainhandItem().getDisplayName();
+        // npc.say("Command Block Name: " + commandBlockName);
 
-    var item = player.getMainhandItem();
-    var stackSize = item.getStackSize(); // Get the number of stacked crates
-
-    // Load the stock exchange data for this NPC region
-    stock_exchange_instance = load_data()[NPC_REGION];
-    stock_exchange_generals = load_data()["Region Generals"];
-
-    // Check if the player is holding one of the valid crates
-    for (var i = 0; i < crates_ids.length; i++) {
-        if (item.getName() == crates_ids[i]) {
-            npc.say("Let me see what you have in that crate...");
-
-            // Read the contents of the crate
-            var delivery = read_delivery(item, stackSize); // Pass stack size to read_delivery
-
-            // If the crate is empty or contains items not in the exchange
-            if (Object.keys(delivery).length === 0) {
-                npc.say("This crate doesn't have items I can accept.");
-                return;
-            }
-
-            // Calculate total earnings before updating stock prices
-            var totalEarnings = calculateEarnings(delivery);
-
-            // Update the stock exchange data with the crate's contents
-            updateStockPrices(NPC_REGION, delivery, player);
-
-            // Clear only the sold items from the crate after processing
-            clear_crate(item, delivery);
-
-            // Generate money items for the player
-            generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
-
-            return; // End interaction
+        // Check if the command block is renamed to a valid region
+        if (_REGIONS.indexOf(commandBlockName) > -1) {
+            NPC_REGION = commandBlockName;
+            switch_region();
+            npc.getStoreddata().put("region", NPC_REGION);
+            npc.say("Region set to: " + NPC_REGION);
+        } else {
+            npc.say("Invalid region name. Valid regions: " + _REGIONS.join(", "));
         }
-    }
+    } else {
 
-    // If the player isn't holding a valid crate
-    npc.say("Hello there! I only accept deliveries in crates. Please hold a crate in your hand.");
+        // If player has read the hire dialogue
+        if (!player.hasReadDialog(region_specifics.jobId)) {
+            npc.say(region_specifics.helloPhrase);
+            return;
+        }
+
+        var item = player.getMainhandItem();
+        var stackSize = item.getStackSize(); // Get the number of stacked crates
+
+        // Load the stock exchange data for this NPC region
+        stock_exchange_instance = load_data()[NPC_REGION];
+        stock_exchange_generals = load_data()["Region Generals"];
+
+        // Check if the player is holding one of the valid crates
+        for (var i = 0; i < crates_ids.length; i++) {
+            if (item.getName() == crates_ids[i]) {
+                npc.say("Let me see what you have in that crate...");
+
+                // Read the contents of the crate
+                var delivery = read_delivery(item, stackSize); // Pass stack size to read_delivery
+
+                // If the crate is empty or contains items not in the exchange
+                if (Object.keys(delivery).length === 0) {
+                    npc.say("This crate doesn't have items I can accept.");
+                    return;
+                }
+
+                // Calculate total earnings before updating stock prices
+                var totalEarnings = calculateEarnings(delivery);
+
+                // Update the stock exchange data with the crate's contents
+                updateStockPrices(NPC_REGION, delivery, player);
+
+                // Clear only the sold items from the crate after processing
+                clear_crate(item, delivery);
+
+                // Generate money items for the player
+                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
+
+                return; // End interaction
+            }
+        }
+
+        // If the player isn't holding a valid crate
+        npc.say("Hello there! I only accept deliveries in crates. Please hold a crate in your hand.");
+    }
 }
 
 // Function to calculate total earnings from delivered items
@@ -388,13 +436,13 @@ function updateStockPrices(region, delivery, player) {
                 stock_exchange_instance[item].quantity_sold += quantityDelivered;
                 stock_exchange_instance[item].last_sold_time = currentTime;
 
-                var decreaseFactor = -_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
+                var valueMultiplier = _PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
 
                 if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
-                    decreaseFactor *= stock_exchange_generals[region]["stock_flexibility"];
+                    valueMultiplier *= stock_exchange_generals[region]["stock_flexibility"];
                 }
 
-                stock_exchange_instance[item].current_price = stock_exchange_instance[item].current_price + decreaseFactor;
+                stock_exchange_instance[item].current_price *= valueMultiplier;
 
                 stock_exchange_instance[item].current_price = Math.floor(
                     stock_exchange_instance[item].current_price
@@ -442,10 +490,8 @@ function updateStockPrices(region, delivery, player) {
 
                 // npc.say("Quantity Sold: " + stock_exchange_instance[generic_id].quantity_sold);
 
-                var decreaseFactor = -_PRICE_EVOLUTION_FACTOR;
-
                 for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
-                    var newPrice = stock_exchange_instance[generic_id].current_price + (decreaseFactor * stock_exchange_instance[generic_id].quantity_factor);
+                    var newPrice = stock_exchange_instance[generic_id].current_price * ((1 - _PRICE_EVOLUTION_FACTOR) * stock_exchange_generals[region]["stock_flexibility"]);
 
                     stock_exchange_instance[generic_id].current_price = Math.floor(
                         Math.max(
