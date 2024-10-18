@@ -875,8 +875,7 @@
             "max_price": 5000,
             "quantity_sold": 121,
             "last_sold_time": 2167343852,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:2": {
             "display_name": "Purple Grape Wine (Potent)",
@@ -887,8 +886,7 @@
             "max_price": 10000,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:3": {
             "display_name": "Purple Grape Wine (Extended)",
@@ -899,8 +897,7 @@
             "current_price": 2935,
             "quantity_sold": 6,
             "last_sold_time": 2167369165,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:4": {
             "display_name": "Purple Ambrosia",
@@ -911,8 +908,7 @@
             "current_price": 7983,
             "quantity_sold": 120,
             "last_sold_time": 2167343852,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:5": {
             "display_name": "Purple Port Wine",
@@ -923,8 +919,7 @@
             "current_price": 2615,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 8,
-            "stock_bonus": 1.5
+            "quantity_factor": 8
         },
         "growthcraft_grapes:grapewine:6": {
             "display_name": "Purple Grape Wine (Intoxicated)",
@@ -935,8 +930,7 @@
             "current_price": 9349,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:7": {
             "display_name": "Purple Grape Wine (Poisoned)",
@@ -947,8 +941,7 @@
             "current_price": 1970,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:9": {
             "display_name": "Green Grape Wine",
@@ -959,8 +952,7 @@
             "max_price": 5000,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:10": {
             "display_name": "Green Grape Wine (Potent)",
@@ -971,8 +963,7 @@
             "current_price": 3089,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:11": {
             "display_name": "Green Grape Wine (Extended)",
@@ -983,8 +974,7 @@
             "current_price": 3253,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:12": {
             "display_name": "Green Ambrosia",
@@ -995,8 +985,7 @@
             "current_price": 8929,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:13": {
             "display_name": "Green Port Wine",
@@ -1007,8 +996,7 @@
             "current_price": 3160,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 8,
-            "stock_bonus": 1.5
+            "quantity_factor": 8
         },
         "growthcraft_grapes:grapewine:14": {
             "display_name": "Green Grape Wine (Intoxicated)",
@@ -1019,8 +1007,7 @@
             "current_price": 9195,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:15": {
             "display_name": "Green Grape Wine (Poisoned)",
@@ -1031,8 +1018,7 @@
             "current_price": 2003,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:17": {
             "display_name": "Red Grape Wine",
@@ -1043,8 +1029,7 @@
             "current_price": 1750,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:18": {
             "display_name": "Red Grape Wine (Potent)",
@@ -1055,8 +1040,7 @@
             "current_price": 3500,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:19": {
             "display_name": "Red Grape Wine (Extended)",
@@ -1067,8 +1051,7 @@
             "current_price": 2971,
             "quantity_sold": 10,
             "last_sold_time": 2167222990,
-            "quantity_factor": 16,
-            "stock_bonus": 1
+            "quantity_factor": 16
         },
         "growthcraft_grapes:grapewine:20": {
             "display_name": "Red Ambrosia",
@@ -1079,8 +1062,7 @@
             "current_price": 9350,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:21": {
             "display_name": "Red Port Wine",
@@ -1091,8 +1073,7 @@
             "current_price": 2601,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 8,
-            "stock_bonus": 1.5
+            "quantity_factor": 8
         },
         "growthcraft_grapes:grapewine:22": {
             "display_name": "Red Grape Wine (Intoxicated)",
@@ -1103,8 +1084,7 @@
             "current_price": 9221,
             "quantity_sold": 8,
             "last_sold_time": 2167222990,
-            "quantity_factor": 4,
-            "stock_bonus": 2
+            "quantity_factor": 4
         },
         "growthcraft_grapes:grapewine:23": {
             "display_name": "Red Grape Wine (Poisoned)",
@@ -1115,16 +1095,35 @@
             "current_price": 1934,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 16,
-            "stock_bonus": 0
+            "quantity_factor": 16
         }
     },
     "Region Generals": {
-        "Gramados": {
+        "Gramados Farming": {
             "stock_multiplier": 1,
             "stock_flexibility": 1
         },
-        "Greenfield": {
+        "Gramados Lumber": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Gramados Industrial Concrete": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Gramados Industrial Terracotta": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Greenfield Farming": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Greenfield Brewing": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1
+        },
+        "Greenfield Lumber": {
             "stock_multiplier": 1,
             "stock_flexibility": 1
         },
