@@ -324,13 +324,6 @@ function calculateAgeableBoozeEarnings(booze_delivery_item, item_key) {
 
     stackValue *= getDomainMultiplier(booze_delivery_item["extra_data"]["Domain"]);
 
-    // npc.say("Price after domain multiplier: " + getAmountCoin(stackValue));
-
-    //Multiply by "stock_bonus" if it exists
-    if (stock_exchange_instance[key]["stock_bonus"]) {
-        stackValue *= stock_exchange_instance[key]["stock_bonus"];
-    }
-
     stackValue *= quantity;
 
     stackValue = Math.max(stackValue);
