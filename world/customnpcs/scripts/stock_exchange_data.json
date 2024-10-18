@@ -84,7 +84,7 @@
         },
         "forestry:logs.0:1": {
             "display_name": "Teak Wood",
-            "reference_price": 1000,
+            "reference_price": 700,
             "current_price": 1083,
             "min_price": 250,
             "max_price": 4000,
@@ -94,7 +94,7 @@
         },
         "forestry:logs.6:1": {
             "display_name": "Ipe Wood",
-            "reference_price": 1000,
+            "reference_price": 800,
             "current_price": 1005,
             "min_price": 250,
             "max_price": 4000,
@@ -834,7 +834,7 @@
         },
         "minecraft:log2:1": {
             "display_name": "Dark Oak Wood",
-            "reference_price": 1000,
+            "reference_price": 800,
             "current_price": 854,
             "min_price": 250,
             "max_price": 4000,
