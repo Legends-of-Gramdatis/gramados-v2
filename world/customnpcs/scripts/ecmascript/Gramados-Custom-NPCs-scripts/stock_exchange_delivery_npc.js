@@ -448,7 +448,7 @@ function updateStockPrices(region, delivery, player) {
                 stock_exchange_instance[item].quantity_sold += quantityDelivered;
                 stock_exchange_instance[item].last_sold_time = currentTime;
 
-                var valueMultiplier = _PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor);
+                var valueMultiplier = 1 - (_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor));
 
                 if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
                     valueMultiplier *= stock_exchange_generals[region]["stock_flexibility"];
