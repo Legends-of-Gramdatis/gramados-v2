@@ -619,19 +619,19 @@ sets:
             marker_1:
                 world: world
                 markup: false
-                x: -1684.0
                 icon: outdoor_logging
+                x: -1684.0
                 y: 98.0
                 z: 998.0
-                label: Gramados Sawmill
+                label: Gramados Royal Sawmill
             marker_2:
                 world: world
                 markup: false
-                x: 308.0
                 icon: outdoor_logging
+                x: 308.0
                 y: 77.0
                 z: -923.0
-                label: Springfield Sawmill
+                label: Timber Creek Sawmill
         lines: {
             }
         layerprio: 0
