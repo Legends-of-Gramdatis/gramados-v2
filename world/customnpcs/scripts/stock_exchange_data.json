@@ -855,7 +855,7 @@
             "quantity_factor": 5000
         },
         "minecraft:hay_block:0": {
-            "display_name": "Hay Block",
+            "display_name": "Hay Bale",
             "reference_price": 200,
             "current_price": 144,
             "min_price": 90,
