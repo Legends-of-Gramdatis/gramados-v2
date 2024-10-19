@@ -42,19 +42,23 @@ function updateStockPrice(stockValue, regionGeneral) {
     var currentTime = world.getTotalTime();
     var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
 
-    if (elapsedTime >= _TIMER_COUNTER) {
-        // Stock wasn't sold for at least 24 hours, increase price
-        if (Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR)) == stockValue["current_price"]) {
-            stockValue["current_price"] += 1;
-        } else {
+    // If the stock is "active" (has been sold at least once), update its price
+    if (elapsedTime != 0) {
+
+        // Check the stock's last sold time
+        if (elapsedTime >= _TIMER_COUNTER) {
+
+            // Stock wasn't sold for at least 24 hours, increase price
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
+
+        } else {
+
+            // Stock was sold recently, decrease price
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _PRICE_EVOLUTION_FACTOR));
         }
-    } else {
-        // Stock was sold recently, decrease price
-        stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _PRICE_EVOLUTION_FACTOR));
     }
 
-    // Add a random factor to the price
+    // Add a random factor to the price (between 0 and 10% of the reference price, capped at 100)
     var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * 0.1, 100));
 
     /* 
@@ -75,10 +79,12 @@ function updateStockPrice(stockValue, regionGeneral) {
 
     stockValue["current_price"] += randomFactor;
 
+    // Apply the stock multiplier if it exists
     if (regionGeneral && regionGeneral["stock_multiplier"]) {
         stockValue["current_price"] = Math.floor(stockValue["current_price"] * regionGeneral["stock_multiplier"]);
     }
 
+    // Cap the stock price between the min and max values
     stockValue["current_price"] = Math.max(stockValue["min_price"], Math.min(stockValue["current_price"], stockValue["max_price"]));
 
     return stockValue;
