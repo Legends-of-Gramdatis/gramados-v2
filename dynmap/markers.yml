@@ -1519,6 +1519,22 @@ sets:
                 y: 76.0
                 z: -59.0
                 label: Bravo Charging Station
+            marker_22:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -2546.0
+                y: 96.0
+                z: 583.0
+                label: Gramatruck Charging Station
+            marker_23:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -2567.0
+                y: 96.0
+                z: 558.0
+                label: Gramatruck Fuel Station
         lines: {
             }
         layerprio: 0
@@ -1790,6 +1806,14 @@ sets:
                 y: 74.0
                 z: -933.0
                 label: Buglaton Post Office
+            marker_23:
+                world: world
+                markup: false
+                icon: civil_services_post_office
+                x: -2795.0
+                y: 95.0
+                z: 1038.0
+                label: Petrolton Post Office
         lines: {
             }
         layerprio: 0
