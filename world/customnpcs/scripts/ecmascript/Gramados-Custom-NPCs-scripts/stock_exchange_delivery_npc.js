@@ -448,6 +448,18 @@ function updateStockPrices(region, delivery, player) {
                 stock_exchange_instance[item].quantity_sold += quantityDelivered;
                 stock_exchange_instance[item].last_sold_time = currentTime;
 
+                /*
+                    Calculate the price multiplier based on the quantity delivered.
+                    for each quantity_factor units sold, the price will decrease by 5%.
+                    So we divide the quantity delivered by the quantity factor to get the number of times the price should decrease by 5%.
+                    We then multiply the output by 5% to get the total price decrease.
+
+                    We then subtract this value from 1 to get the multiplier.
+
+                    If the stock has a stock_flexibility value, we multiply the multiplier by this value.
+
+                    We then multiply the current price by this multiplier to get the new price.
+                */
                 var valueMultiplier = 1 - (_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor));
 
                 if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
@@ -456,16 +468,18 @@ function updateStockPrices(region, delivery, player) {
 
                 stock_exchange_instance[item].current_price *= valueMultiplier;
 
+                // Round the price to the nearest integer
                 stock_exchange_instance[item].current_price = Math.floor(
                     stock_exchange_instance[item].current_price
                 );
-
-                if (stock_exchange_instance[item].current_price < stock_exchange_instance[item].min_price) {
-                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].min_price;
-                }
-                if (stock_exchange_instance[item].current_price > stock_exchange_instance[item].max_price) {
-                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].max_price;
-                }
+                
+                stock_exchange_instance[item].current_price = Math.max(
+                    stock_exchange_instance[item].min_price,
+                    Math.min(
+                        stock_exchange_instance[item].current_price,
+                        stock_exchange_instance[item].max_price
+                    )
+                );
 
             }
         } else if (types == "ageable_booze") {
