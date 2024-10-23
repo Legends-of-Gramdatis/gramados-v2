@@ -3,6 +3,7 @@ import csv
 import json
 from datetime import datetime
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
 # Define the path to the JSON file and the output directory for CSVs and plots
 json_file_path = '/home/mouette/minecraft/gramados-v2/world/customnpcs/scripts/stock_exchange_data.json'
@@ -138,6 +139,9 @@ def generate_region_plot(region, csv_file):
 
     # Set y-axis limit: minimum of 1000 or the max price + 10% for extra space
     plt.ylim(0, max(100, max_price * 1.1))
+
+    # Limit the number of X-axis labels
+    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=10))
 
     # Position the legend outside the plot (to the right)
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
