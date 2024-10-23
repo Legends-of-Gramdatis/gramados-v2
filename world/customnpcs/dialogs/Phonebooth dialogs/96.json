@@ -32,6 +32,7 @@
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
+    "DialogSound": "ivv:computer.button",
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
@@ -54,7 +55,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1706929017753L,
+        "TimePast": 1729459925079L,
         "Time": 0L,
         "Subject": ""
     }
