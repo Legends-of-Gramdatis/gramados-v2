@@ -130,62 +130,52 @@ function switch_region() {
     if (NPC_REGION == "Gramados Farming") {
         region_specifics = {
             helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Farmer job.",
-            jobId: 342,
-            varietyBonus: 0.1
+            jobId: 342
         }
     } else if (NPC_REGION == "Gramados Lumber") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Lumberjack job.",
-            jobId : 59,
-            varietyBonus : 0.10
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Lumberjack job.",
+            jobId: 59
         }
     } else if (NPC_REGION == "Gramados Industrial Concrete") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Concrete Factory Worker job.",
-            jobId : 54,
-            varietyBonus : 0.05
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Concrete Factory Worker job.",
+            jobId: 54
         }
     } else if (NPC_REGION == "Gramados Industrial Terracotta") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Terracotta Factory Worker job.",
-            jobId : 61,
-            varietyBonus : 0.1
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Gramados Terracotta Factory Worker job.",
+            jobId: 61
         }
     } else if (NPC_REGION == "Greenfield Farming") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
-            jobId : 51,
-            varietyBonus : 0.30
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId: 51
         }
     } else if (NPC_REGION == "Greenfield Brewing") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
-            jobId : 51,
-            varietyBonus : 0.20
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Farmer job.",
+            jobId: 51
         }
     } else if (NPC_REGION == "Greenfield Lumber") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Lumberjack job.",
-            jobId : 56,
-            varietyBonus : 0.17
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Greenfield Lumberjack job.",
+            jobId: 56
         }
     } else if (NPC_REGION == "Farmiston") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
-            jobId : 154,
-            varietyBonus : -0.1
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Farmiston Farmer job.",
+            jobId: 154
         }
     } else if (NPC_REGION == "Allenis") {
         region_specifics = {
-            helloPhrase : "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
-            jobId : 233,
-            varietyBonus : 0.075
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
+            jobId: 233
         }
     } else {
         region_specifics = {
-            helloPhrase : "I am currently not set up to trade in any region. Call the admin to set me up.",
-            jobId : 230,
-            varietyBonus : -1
+            helloPhrase: "I am currently not set up to trade in any region. Call the admin to set me up.",
+            jobId: 230
         }
         return;
     }
@@ -241,7 +231,7 @@ function interact(event) {
                 }
 
                 // Calculate total earnings before updating stock prices
-                var totalEarnings = calculateEarnings(delivery);
+                var totalEarnings = calculateEarnings(delivery, NPC_REGION);
 
                 // Update the stock exchange data with the crate's contents
                 updateStockPrices(NPC_REGION, delivery, player);
@@ -262,7 +252,7 @@ function interact(event) {
 }
 
 // Function to calculate total earnings from delivered items
-function calculateEarnings(delivery) {
+function calculateEarnings(delivery, region) {
     var totalEarnings = 0;
     var earningsMultiplier = 1;
 
@@ -270,7 +260,9 @@ function calculateEarnings(delivery) {
     if (delivery["generic"]) {
         for (var item in delivery["generic"]) {
             totalEarnings += parseInt(calculateGenericEarnings(delivery["generic"][item], item));
-            earningsMultiplier += region_specifics.varietyBonus;
+            if (stock_exchange_generals[region] && stock_exchange_generals[region]["variety_bonus"]) {
+                earningsMultiplier += stock_exchange_generals[region]["variety_bonus"];
+            }
         }
     }
 
@@ -279,7 +271,10 @@ function calculateEarnings(delivery) {
         for (var item in delivery["ageable_booze"]) {
             // npc.say("Current earnings: " + getAmountCoin(totalEarnings));
             totalEarnings += calculateAgeableBoozeEarnings(delivery["ageable_booze"][item], item);
-            earningsMultiplier += region_specifics.varietyBonus;
+            if (stock_exchange_generals[region] && stock_exchange_generals[region]["variety_bonus"]) {
+                earningsMultiplier += stock_exchange_generals[region]["variety_bonus"];
+
+            }
         }
     }
 
@@ -472,7 +467,7 @@ function updateStockPrices(region, delivery, player) {
                 stock_exchange_instance[item].current_price = Math.floor(
                     stock_exchange_instance[item].current_price
                 );
-                
+
                 stock_exchange_instance[item].current_price = Math.max(
                     stock_exchange_instance[item].min_price,
                     Math.min(
