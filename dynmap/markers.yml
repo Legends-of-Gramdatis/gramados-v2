@@ -2177,6 +2177,48 @@ sets:
                 y: 78.0
                 z: 1128.0
                 label: Whispering Oaks Trail
+            marker_20:
+                world: world
+                markup: false
+                icon: outdoor_resort
+                x: -3188.0
+                y: 68.0
+                z: -2176.0
+                label: Solace Beach
+            marker_21:
+                world: world
+                markup: false
+                icon: outdoor_mountain
+                x: -3118.0
+                y: 230.0
+                z: -4934.0
+                label: Alden Peaks
+            marker_22:
+                world: world
+                markup: false
+                icon: outdoor_mountain
+                x: -5097.0
+                y: 144.0
+                z: -2809.0
+                label: Mount Krelmor
+            marker_23:
+                world: world
+                markup: false
+                icon: outdoor_resort
+                x: -4702.0
+                y: 65.0
+                z: -2347.0
+                label: Crystal Cove
+            marker_24:
+                world: world
+                markup: false
+                icon: outdoor_fishing
+                x: -4754.0
+                y: 71.0
+                z: -2933.0
+                label: Highward Bay
+
+            
         lines: {}
         layerprio: 0
     Parkings:
@@ -2317,6 +2359,22 @@ sets:
                 y: 95.0
                 z: 984.0
                 label: Petrolton Parking Building
+            marker_17:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -3666.0
+                y: 72.0
+                z: 408.0
+                label: Castle Avencliff Parking
+            marker_18:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2620.0
+                y: 75.0
+                z: -4872.0
+                label: The Peace Meadows Parking
         lines: {}
         layerprio: 0
     Historical Sites:
@@ -2368,7 +2426,7 @@ sets:
                 x: -3546.0
                 y: 77.0
                 z: -2462.0
-                label: Trilnat Castle
+                label: Trinmot Castle
             marker_6:
                 world: world
                 markup: false
@@ -2376,7 +2434,7 @@ sets:
                 x: -2964.0
                 y: 163.0
                 z: -3669.0
-                label: Vieuxmont Bastion
+                label: Verdance Hall
             marker_7:
                 world: world
                 markup: false
@@ -2449,7 +2507,46 @@ sets:
                 y: 71.0
                 z: -755.0
                 label: Fort Harbenshire Twin Gatehouses
-
+            marker_16:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3687.0
+                y: 73.0
+                z: 650.0
+                label: Castle Avencliff
+            marker_17:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -3239.0
+                y: 65.0
+                z: -4723.0
+                label: Valley of Betrayal
+            marker_18:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -2351.0
+                y: 150.0
+                z: -3077.0
+                label: Widow's Cliff
+            marker_19:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -2689.0
+                y: 69.0
+                z: -4930.0
+                label: The Peace Meadows
+            marker_20:
+                world: world
+                markup: false
+                icon: ent&lei_monument
+                x: -2691.0
+                y: 71.0
+                z: -4882.0
+                label: The Peace Meadows Bell Tower
         lines: {}
         layerprio: 0
     Bridges:
