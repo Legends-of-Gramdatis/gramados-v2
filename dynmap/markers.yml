@@ -344,7 +344,7 @@ sets:
                 x: 594.0
                 y: 88.0
                 z: -1634.0
-                label: Seeds &amp; Saplings Nursery Wholesale (buy)
+                label: GreenSprout Seedworks
             marker_5:
                 world: world
                 markup: false
@@ -1535,6 +1535,14 @@ sets:
                 y: 96.0
                 z: 558.0
                 label: Gramatruck Fuel Station
+            marker_24:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -3303.0
+                y: 69.0
+                z: -2484.0
+                label: Trilnat Auto Charging Station
         lines: {
             }
         layerprio: 0
@@ -1617,6 +1625,14 @@ sets:
                 y: 74.0
                 z: -157.0
                 label: Gramados Gymnasium
+            marker_5:
+                world: world
+                markup: false
+                icon: ent&lei_museum
+                x: -3396.0
+                y: 69.0
+                z: -2465.0
+                label: House of Trin - The Birthplace of Trin
         lines: {
             }
         layerprio: 0

@@ -141,7 +141,7 @@ def generate_region_plot(region, csv_file):
     plt.ylim(0, max(100, max_price * 1.1))
 
     # Limit the number of X-axis labels
-    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=10))
+    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=11))
 
     # Position the legend outside the plot (to the right)
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
