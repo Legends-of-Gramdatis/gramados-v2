@@ -15,7 +15,8 @@ def read_json(file_path):
         return json.load(file)
 
 # Function to update the CSV with new stock data, adding the current price for a new timestamp
-def update_csv(region, data, enable_plot):
+def update_csv(region, data):
+    print(f'Updating CSV for {region}...')
     # Ensure the output directory exists
     os.makedirs(output_dir, exist_ok=True)
     
@@ -76,11 +77,12 @@ def update_csv(region, data, enable_plot):
             writer.writerow(row)
 
     # After updating the CSV, create a single plot for the entire region if enabled
-    if enable_plot:
-        generate_region_plot(region, csv_file)
+    # if enable_plot:
+    #     generate_region_plot(region, csv_file)
 
 # Function to generate a single plot for all items in a region
 def generate_region_plot(region, csv_file):
+    print(f'Generating plot for {region}...')
     # Read the CSV file to get stock data
     with open(csv_file, 'r') as file:
         reader = list(csv.reader(file))
@@ -128,7 +130,7 @@ def generate_region_plot(region, csv_file):
 
     # Plot the sorted data
     for _, timestamps, prices, display_name, display_price in plot_data:
-        plt.plot(timestamps, prices, marker='o', linestyle='-', label=f'{display_name} (Current: {display_price}g)')
+        plt.plot(timestamps, prices, linestyle='-', label=f'{display_name} (Current: {display_price}g)')
 
     # Formatting the plot
     plt.title(f'Stock Prices of {region} Over Time')
@@ -137,11 +139,14 @@ def generate_region_plot(region, csv_file):
     plt.xticks(rotation=45, ha='right')
     plt.grid(True)
 
+    # Make the plot more readable
+    plt.tight_layout()
+
     # Set y-axis limit: minimum of 1000 or the max price + 10% for extra space
     plt.ylim(0, max(100, max_price * 1.1))
 
     # Limit the number of X-axis labels
-    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=11))
+    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=10))
 
     # Position the legend outside the plot (to the right)
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0.)
@@ -162,7 +167,9 @@ def main(enable_csv_update=True, enable_plot_creation=True):
         if region == "Region Generals":  # Skip 'Region Generals'
             continue
         if enable_csv_update:
-            update_csv(region, stock_data, enable_plot_creation)
+            update_csv(region, stock_data)
+        if enable_plot_creation:
+            generate_region_plot(region, os.path.join(output_dir, f'{region}.csv'))
 
 if __name__ == '__main__':
     # Set the boolean values for enabling/disabling CSV update and plot creation
