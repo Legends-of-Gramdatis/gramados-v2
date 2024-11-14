@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 115,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 357,
-                "Title": "Tell me about Starter Jobs.",
+                "Dialog": 367,
+                "Title": "Yes, I’d like to see where each job is.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 361,
-                "Title": "What are Established Professions?",
+                "Dialog": 368,
+                "Title": "What will the trip cover?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,40 +26,10 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 362,
-                "Title": "How do I found my own industry?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 3,
-            "Option": {
-                "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Can you explain how the wholesale system works?",
+                "Title": "Actually, I’ll look around on my own.",
                 "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 366,
-                "Title": "I’d like to take a tour to locate each starter job across Gramados.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 349,
-                "Title": "Back to Tutorial Overview",
-                "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -67,8 +37,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 356,
-    "AvailabilityQuest": 0,
+    "DialogId": 366,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -88,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.0 - Jobs and Professions Branch",
+    "DialogTitle": "p4.0 - trip to starter jobs (quest)",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -97,9 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Gramados offers many paths to prosperity, whether you want to take on a steady job, start a specialized profession, or even found your own industry. Each type of job has its own challenges, demands, and rewards, but all of them play a part in Gramados’ economy.
-
-To help you navigate, let’s break things down into three main categories of jobs: Starter Jobs, Established Professions, and Founding Your Own Industry.",
+    "DialogText": "Ah, so you’re interested in finding where all the starter jobs are located! Great choice—it’s a good way to get familiar with Gramados and find the work that suits you best.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -116,7 +84,7 @@ To help you navigate, let’s break things down into three main categories of jo
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731622912893L,
+        "TimePast": 1731622869451L,
         "Time": 0L,
         "Subject": ""
     }
