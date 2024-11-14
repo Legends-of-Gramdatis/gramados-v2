@@ -111,9 +111,9 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
 
     var abandon_counter = 0;
     // get coordinates of the player
-    var x = Math.floor(player.getX() + Math.random() * distance_from_player - (distance_from_player/2));
+    var x = Math.floor(player.getX() + Math.random() * distance_from_player - (distance_from_player / 2));
     var y = player.getY();
-    var z = Math.floor(player.getZ() + Math.random() * distance_from_player - (distance_from_player/2));
+    var z = Math.floor(player.getZ() + Math.random() * distance_from_player - (distance_from_player / 2));
 
     var success = false;
 
@@ -5306,14 +5306,14 @@ registerXCommands([
 
         }
 
-        tellPlayer(pl, "&aGave &d:money:" + getAmountCoin(am) + "&a to players: '" + args.players.join(', ') + "'");
+        tellPlayer(pl, "&aGave &r:money:&e" + getAmountCoin(am) + "&a to players: '" + args.players.join(', ') + "'");
         for (var a in args.players) {
             var apl = args.players[a];
             if (playerIsOnline(w, apl)) {
-                executeCommand(pl, "/tellraw " + apl + " " + parseEmotes(strf("&aYou got &d:money:" + getAmountCoin(am))));
+                executeCommand(pl, "/tellraw " + apl + " " + parseEmotes(strf("&aYou got &r:money:&e" + getAmountCoin(am))));
             }
         }
-    }, 'giveMoney', [{
+    }, 'giveArMoney', [{
         "argname": "amount",
         "type": "currency",
         "min": 1
@@ -9002,13 +9002,13 @@ registerXCommands([
         tellPlayer(pl, getTitleBar('Money Pouch'));
         tellPlayer(pl, getNavBar());
         tellPlayer(pl, ":danger: &4&oYou will lose 50% of your money pouch on death.&r :danger:");
-        for (var v in VIRTUAL_CURRENCIES) {
+        /*for (var v in VIRTUAL_CURRENCIES) {
             var crncy = VIRTUAL_CURRENCIES[v];
             tellPlayer(pl, "&6" + crncy.displayName + ": &r" + crncy.prefix + getAmountCoin(p.data[crncy.name]) + crncy.suffix + (crncy.name == 'credit' ? '&r &a[Buy More]{open_url:https://www.paypal.me/TheOddlySeagull|show_text:$aClick or contact TheOddlySeagull on Discord. 1€ = 1G}&r' : ''));
-        }
+        }*/
 
-        //tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
-        //tellPlayer(pl, "&6Vote Tokens: &b:money:V"+getAmountCoin(p.data.vmoney));
+        tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
+        tellPlayer(pl, "&6Vote Tokens: &b:money:V"+getAmountCoin(p.data.vmoney));
         tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]");
         tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]");
         tellPlayer(pl, "&cYou carry a total of &r:money:&e" + getAmountCoin(total));
@@ -9225,7 +9225,7 @@ registerXCommands([
                 tellPlayer(pl, "&cYou can't set a home in a region you don't own or are not trusted in!&r [&9Your Regions{run_command:!myregions}&r]");
                 return false;
             }
-            
+
         } else {
             tellPlayer(pl, "&cYou have reached maximum amount of homes! (" + plo.data.maxHomes + ")");
         }
@@ -9260,7 +9260,7 @@ registerXCommands([
                 // get home teleportation price
                 var dist = Math.sqrt(Math.pow(home.x - pl.getX(), 2) + Math.pow(home.y - pl.getY(), 2) + Math.pow(home.z - pl.getZ(), 2));
                 var cost = Math.ceil(dist * 10);
-                
+
                 tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + getAmountCoin(cost) + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
             }
             return true;
