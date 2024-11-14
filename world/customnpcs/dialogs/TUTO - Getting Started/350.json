@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": 351,
+                "Title": "Tell me about Vote Money.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Automobiles",
+                "Dialog": 352,
+                "Title": "What can I do with Arcade Money?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +26,8 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Economy and Banking",
+                "Dialog": 353,
+                "Title": "How does Shop Money work?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -36,8 +36,8 @@
             "OptionSlot": 3,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
+                "Dialog": 354,
+                "Title": "Can I exchange these currencies for Grons?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -46,8 +46,8 @@
             "OptionSlot": 4,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Real Estate and Housing",
+                "Dialog": 355,
+                "Title": "Can I lose these currencies if I die?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -56,8 +56,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Lore and History",
+                "Dialog": 349,
+                "Title": "I have more questions.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +67,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 350,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,7 +88,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
+    "DialogTitle": "p1.0 - Other Currencies",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -97,7 +97,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here’s how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "Special currencies like Arcade Money, Vote Money, and Shop Money play unique roles in Gramados. Each one can be earned or spent in different ways, and they add variety to how you can engage with the economy here.
+
+To get started, let’s go over each type and how you can make the most of them.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +116,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731579044012L,
+        "TimePast": 1731578871759L,
         "Time": 0L,
         "Subject": ""
     }
