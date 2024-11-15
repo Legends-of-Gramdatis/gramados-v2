@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Hiring Manager",
+    "NextQuestId": 120,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 3: Lumberjack",
+    "Text": "The last stop on my tour is the Lumberjack’s Worksite at -1711, 99, 1002. I’ll follow the Dynmap marker to check it out.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731689379243L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’m at the Lumberjack’s Worksite. The variety of trees here is impressive! I should return to the Hiring Manager to let them know I’ve completed the tour.",
+    "NextQuestTitle": "Step 4: Return to Hire Manager",
+    "QuestLocation": "Gramados Lumberjack"
+}

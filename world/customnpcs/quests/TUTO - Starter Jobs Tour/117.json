@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Hiring Manager",
+    "NextQuestId": 118,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Step 1: Concrete Factory",
+    "Text": "I’m heading to the Concrete Factory at -2071, 75, 138 to see how concrete production works. The Dynmap marker should help me locate it.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731689189892L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve reached the Concrete Factory. It’s an impressive operation! Time to move on to the next worksite.",
+    "NextQuestTitle": "Step 2: Terracotta Factory",
+    "QuestLocation": "Gramados Concrete Factory"
+}
