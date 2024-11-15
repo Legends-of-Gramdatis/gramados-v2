@@ -24,7 +24,9 @@
             "JobLock": 55,
             "JobName": "Concrete Factory Worker",
             "Region": "Gramados",
-            "Perms": []
+            "Perms": [
+                "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Worker"
+            ]
         },
         {
             "JobID": 154,
@@ -66,7 +68,9 @@
             "JobLock": 57,
             "JobName": "Lumberjack",
             "Region": "Greenfield",
-            "Perms": []
+            "Perms": [
+                "permission_regions.Springfield_lumberjack"
+            ]
         },
         {
             "JobID": 63,
@@ -87,7 +91,9 @@
             "JobLock": 62,
             "JobName": "Terracotta Factory Worker",
             "Region": "Gramados",
-            "Perms": []
+            "Perms": [
+                "permission_regions.Gramados_material_factory_terracotta"
+            ]
         }
     ],
     "e6f54888-a9dc-4514-af06-f72d1cc035b1": {
