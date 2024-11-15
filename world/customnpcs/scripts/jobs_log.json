@@ -1,0 +1,121 @@
+{
+    "Region_To_ID": {
+        "Gramados": 379,
+        "Greenfield": 380,
+        "Farmiston": 382,
+        "Allenis": 381,
+        "Monsalac": 383
+    },
+    "Regions_To_Quit_ID": {
+        "Gramados": 384
+    },
+    "Starter_Jobs": [
+        {
+            "JobID": 59,
+            "JobLock": 60,
+            "JobName": "Lumberjack",
+            "Region": "Gramados",
+            "Perms": [
+                "permission_regions.gramados_lumberjack"
+            ]
+        },
+        {
+            "JobID": 54,
+            "JobLock": 55,
+            "JobName": "Concrete Factory Worker",
+            "Region": "Gramados",
+            "Perms": []
+        },
+        {
+            "JobID": 154,
+            "JobLock": 155,
+            "JobName": "Farmer",
+            "Region": "Farmiston",
+            "Perms": []
+        },
+        {
+            "JobID": 342,
+            "JobLock": 343,
+            "JobName": "Farmer",
+            "Region": "Gramados",
+            "Perms": []
+        },
+        {
+            "JobID": 233,
+            "JobLock": 234,
+            "JobName": "Farmer",
+            "Region": "Allenis",
+            "Perms": []
+        },
+        {
+            "JobID": 51,
+            "JobLock": 53,
+            "JobName": "Farmer",
+            "Region": "Greenfield",
+            "Perms": []
+        },
+        {
+            "JobID": 211,
+            "JobLock": 212,
+            "JobName": "Farmer",
+            "Region": "Monsalac",
+            "Perms": []
+        },
+        {
+            "JobID": 56,
+            "JobLock": 57,
+            "JobName": "Lumberjack",
+            "Region": "Greenfield",
+            "Perms": []
+        },
+        {
+            "JobID": 63,
+            "JobLock": 64,
+            "JobName": "Mechanic",
+            "Region": "Farmiston",
+            "Perms": []
+        },
+        {
+            "JobID": 65,
+            "JobLock": 66,
+            "JobName": "Mechanic",
+            "Region": "Gramados",
+            "Perms": []
+        },
+        {
+            "JobID": 61,
+            "JobLock": 62,
+            "JobName": "Terracotta Factory Worker",
+            "Region": "Gramados",
+            "Perms": []
+        }
+    ],
+    "e6f54888-a9dc-4514-af06-f72d1cc035b1": {
+        "Name": "BOTFerris",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "51": {
+                "JobID": 51,
+                "JobName": "Farmer",
+                "StartTime": 2243576422,
+                "Region": "Greenfield"
+            },
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2243554756,
+                "Region": "Gramados"
+            }
+        }
+    },
+    "d0603f61-f4f7-4006-b731-cceab2a2b6a5": {
+        "Name": "TheOddlySeagull",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "5fb2c4e1-2833-4a95-bd52-acde1cccce9f": {
+        "Name": "Beastatio",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    }
+}
