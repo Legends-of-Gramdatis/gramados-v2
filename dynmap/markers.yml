@@ -7,6 +7,8 @@ icons:
         label: civil_services_bridge
     civil_services_Civic_Building:
         label: civil_services_Civic_Building
+    civil_services_hiring_office:
+        label: civil_services_hiring_office
     civil_services_library:
         label: civil_services_library
     civil_services_police:
@@ -1830,6 +1832,22 @@ sets:
                 y: 95.0
                 z: 1038.0
                 label: Petrolton Post Office
+            marker_24:
+                world: world
+                markup: false
+                icon: civil_services_hiring_office
+                x: -1933.0
+                y: 75.0
+                z: 280.0
+                label: Gramados Hiring Agency
+            marker_25:
+                world: world
+                markup: false
+                icon: civil_services_hiring_office
+                x: 211.0
+                y: 75.0
+                z: -974.0
+                label: Greenfield Hiring Agency
         lines: {
             }
         layerprio: 0
