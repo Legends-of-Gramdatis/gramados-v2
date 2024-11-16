@@ -12,6 +12,16 @@
                     "Line": "customservertools.js"
                 }
             ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "gramados-custom-npcs-scripts/job_manager.js"
+                }
+            ]
         }
     ],
     "ScriptLanguage": "ECMAScript"
