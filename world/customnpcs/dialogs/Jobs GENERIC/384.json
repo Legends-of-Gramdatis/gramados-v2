@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Well, @p, you have now quitted your Gramados region job. All related Wholesales have now been locked.",
+    "DialogText": "Alright, you’ve successfully quit your job. Feel free to choose a new job in Gramados region whenever you’re ready!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731695762775L,
+        "TimePast": 1731777422600L,
         "Time": 0L,
         "Subject": ""
     }

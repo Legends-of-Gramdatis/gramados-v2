@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Hello @p, you are now a Greenfield Lumberjack. All related Wholesales have now been unlocked.",
+    "DialogText": "Excellent choice! You’re now a Greenfield Lumberjack. You can start chopping trees right away at the worksite.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1654691323717L,
+        "TimePast": 1731777716123L,
         "Time": 0L,
         "Subject": ""
     }

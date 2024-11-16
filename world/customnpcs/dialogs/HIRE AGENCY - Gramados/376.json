@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 377,
+                "Dialog": 384,
                 "Title": "Yes, I want to quit my job.",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -74,7 +74,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731693454069L,
+        "TimePast": 1731777445655L,
         "Time": 0L,
         "Subject": ""
     }

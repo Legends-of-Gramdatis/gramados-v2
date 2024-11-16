@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 117,
     "Options": [
     ],
     "AvailabilityScoreboardType": 1,
@@ -8,7 +8,7 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 370,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731689592339L,
+        "TimePast": 1731781846673L,
         "Time": 0L,
         "Subject": ""
     }

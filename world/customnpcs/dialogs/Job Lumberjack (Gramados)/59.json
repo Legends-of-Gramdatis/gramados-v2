@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": 379,
     "OptionFaction2Points": 100,
-    "DialogText": "Hello @p, you are now a Gramados Lumberjack. All related Wholesales have now been unlocked.",
+    "DialogText": "Excellent choice! You’re now a Gramados Lumberjack. You can start chopping trees right away at the worksite.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731693125317L,
+        "TimePast": 1731777725952L,
         "Time": 0L,
         "Subject": ""
     }

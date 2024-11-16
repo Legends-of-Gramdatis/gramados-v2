@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Hello @p, you are now a Gramados Terracotta Factory Worker. All related Wholesales have now been unlocked.",
+    "DialogText": "Fantastic! You’re now a Gramados Terracotta Factory Worker. Time to get crafting at the factory.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1667668442498L,
+        "TimePast": 1731777635983L,
         "Time": 0L,
         "Subject": ""
     }

@@ -39,13 +39,13 @@
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
     "DialogTitle": "p0.0 - Welcome",
-    "AvailabilityDialog": 1,
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 357,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
     "DialogText": "Welcome to Gramados! You've just arrived in a land rich with opportunity, where every corner holds the promise of adventure or enterprise. Here in Gramados, the monarchy has established a thriving system that you'll soon get to explore. Whether you're here to earn a fortune, discover forgotten lore, or settle down in a house of your own, Gramados has something for everyone.
 
@@ -66,7 +66,7 @@ Before you start, let me guide you through some basics so you can get the most o
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731689453044L,
+        "TimePast": 1731780636501L,
         "Time": 0L,
         "Subject": ""
     }
