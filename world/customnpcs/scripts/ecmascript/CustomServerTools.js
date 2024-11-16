@@ -1917,12 +1917,12 @@ var _COINTABLE = { //MUST BE FROM LOW TO HIGH
 }; //With this setup, the syntax for 223503 would be 2k235g3c (case-INSensitive)
 
 var VIRTUAL_CURRENCIES = [{
-    "name": "amoney",
+    "name": "armoney",
     "displayName": "Arcade Money",
     "displayPrefix": "&c",
     "default": 0,
     "prefix": "&3:money:A",
-    "color": "&b",
+    "color": "&d",
     "suffix": "",
 },
 {
@@ -1931,16 +1931,16 @@ var VIRTUAL_CURRENCIES = [{
     "displayPrefix": "&5",
     "default": 0,
     "prefix": "&d:money:V",
-    "color": "&d",
+    "color": "&b",
     "suffix": "",
 },
 {
     "name": "credit",
     "displayName": "Store Money",
-    "displayPrefix": "&c&l",
+    "displayPrefix": "&2&l",
     "default": 0,
-    "prefix": "&c:money:",
-    "color": "&c",
+    "prefix": "&2:money:",
+    "color": "&2",
     "suffix": "",
 },
 {
@@ -9009,6 +9009,7 @@ registerXCommands([
 
         tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
         tellPlayer(pl, "&6Vote Tokens: &b:money:V"+getAmountCoin(p.data.vmoney));
+        tellPlayer(pl, "&6Shop Tokens: &2:money:S"+getAmountCoin(p.data.credit));
         tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]");
         tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]");
         tellPlayer(pl, "&cYou carry a total of &r:money:&e" + getAmountCoin(total));
