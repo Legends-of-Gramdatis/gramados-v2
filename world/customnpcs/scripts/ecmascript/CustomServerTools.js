@@ -5441,10 +5441,10 @@ registerXCommands([
         } catch (exc) {
             handleError(exc);
         }
-    }, 'eval'],
+    }, 'eval']/*,
     ['!query <datahandler> <...code>', function (pl, args, data) {
         executeXCommand('!eval new ' + args.datahandler + '().query(data).' + args.code.join(' '), pl, false);
-    }, 'query'],
+    }, 'query']*/,
     ['!testDynmap', function (pl, args, data) {
         var rgx = /\[name: "([\w\W\s]+?)", x: (\-?\d+), y: (\-?\d+), z: (\-?\d+)\]/gm;
         var text = ' -\
