@@ -272,11 +272,16 @@ function get_time(start_time_ticks, end_time_ticks) {
     var time_difference = end_time_ticks - start_time_ticks;
     var time_seconds = time_difference / 20;
 
-    var hours = Math.floor(time_seconds / 3600);
-    var minutes = Math.floor(time_seconds % 3600 / 60);
-    var seconds = Math.floor(time_seconds % 3600 % 60);
+    var date = new Date(time_seconds * 1000); // Convert seconds to milliseconds
 
-    return hours + " hours, " + minutes + " minutes and " + seconds + " seconds";
+    var years = date.getUTCFullYear() - 1970; // Subtract epoch year
+    var months = date.getUTCMonth();
+    var days = date.getUTCDate() - 1; // Subtract epoch day
+    var hours = date.getUTCHours();
+    var minutes = date.getUTCMinutes();
+    var seconds = date.getUTCSeconds();
+
+    return years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes + " minutes and " + seconds + " seconds";
 }
 
 //function to update job perms
@@ -298,11 +303,12 @@ function add_job_perms(player, job_id) {
         if (job_data["Starter_Jobs"][i]["JobID"] == job_id) {
             if (job_data["Starter_Jobs"][i]["Perms"])
             {
+                // world.broadcast("Adding perms for job " + job_data["Starter_Jobs"][i]["JobName"] + " to player " + player.getName());
                 for (var j = 0; j < job_data["Starter_Jobs"][i]["Perms"].length; j++) {
                     var perm = job_data["Starter_Jobs"][i]["Perms"][j];
                     
                     // world.broadcast("Adding perm " + perm + " to player " + player.getName());
-                    // world.broadcast("Perm data: " + JSON.stringify(world_data.get(perm)));
+                    // world.broadcast("Old perm data: " + JSON.stringify(world_data.get(perm)));
 
                     /* 
                     The line looks like something like this:
@@ -312,11 +318,25 @@ function add_job_perms(player, job_id) {
                     Add the player to the players array (keeping the text format like the one above)
                     */
                     var perm_data = JSON.parse(world_data.get(perm));
-                    // if player not already in the array
-                    if (!player.getName() in perm_data["players"]) {
+
+                    // Check if the player is already in the perm data
+                    var already_perm = false;
+                    for (var k = 0; k < perm_data["players"].length; k++) {
+                        if (perm_data["players"][k] == player.getName()) {
+                            already_perm = true;
+                        }
+                    }
+
+                    // Add the player to the perm data if he's not already in it
+                    if (!already_perm) {
+                        // world.broadcast("Player not in perm data, adding...");
                         perm_data["players"].push(player.getName());
                         world_data.put(perm, JSON.stringify(perm_data));
+                    } /*else {
+                        world.broadcast("Player already in perm data");
                     }
+
+                    world.broadcast("New perm data: " + JSON.stringify(world_data.get(perm)));*/
                 }
             }
         }
