@@ -103,21 +103,50 @@
             "51": {
                 "JobID": 51,
                 "JobName": "Farmer",
-                "StartTime": 2243576422,
+                "StartTime": 982114756,
                 "Region": "Greenfield"
             },
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
-                "StartTime": 2243554756,
+                "StartTime": 982114756,
                 "Region": "Gramados"
             }
         }
     },
     "d0603f61-f4f7-4006-b731-cceab2a2b6a5": {
         "Name": "TheOddlySeagull",
-        "JobHistory": {},
-        "ActiveJobs": {}
+        "JobHistory": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2210000000,
+                "EndTime": 2219999900,
+                "Region": "Gramados"
+            },
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2230000000,
+                "EndTime": 2245211384,
+                "Region": "Gramados"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2220000000,
+                "EndTime": 2230000000,
+                "Region": "Gramados"
+            }
+        },
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2245219184,
+                "Region": "Gramados"
+            }
+        }
     },
     "5fb2c4e1-2833-4a95-bd52-acde1cccce9f": {
         "Name": "Beastatio",
