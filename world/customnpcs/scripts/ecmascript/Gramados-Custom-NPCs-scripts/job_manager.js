@@ -171,7 +171,7 @@ function quit_job_manager(player) {
                 if (job_data[player.getUUID()]["ActiveJobs"][job]["Region"] == region) {
                     // If it's been more than 24 hours since the job started
                     if (world.getTotalTime() - job_data[player.getUUID()]["ActiveJobs"][job]["StartTime"] >= 1728000) {
-                        
+
                         // Creat the data for his job history
                         var job_history = {
                             "JobID": job_data[player.getUUID()]["ActiveJobs"][job]["JobID"],
@@ -301,12 +301,11 @@ function add_job_perms(player, job_id) {
 
     for (var i = 0; i < job_data["Starter_Jobs"].length; i++) {
         if (job_data["Starter_Jobs"][i]["JobID"] == job_id) {
-            if (job_data["Starter_Jobs"][i]["Perms"])
-            {
+            if (job_data["Starter_Jobs"][i]["Perms"]) {
                 // world.broadcast("Adding perms for job " + job_data["Starter_Jobs"][i]["JobName"] + " to player " + player.getName());
                 for (var j = 0; j < job_data["Starter_Jobs"][i]["Perms"].length; j++) {
                     var perm = job_data["Starter_Jobs"][i]["Perms"][j];
-                    
+
                     // world.broadcast("Adding perm " + perm + " to player " + player.getName());
                     // world.broadcast("Old perm data: " + JSON.stringify(world_data.get(perm)));
 
@@ -350,13 +349,9 @@ function remove_job_perms(player, job_id) {
 
     for (var i = 0; i < job_data["Starter_Jobs"].length; i++) {
         if (job_data["Starter_Jobs"][i]["JobID"] == job_id) {
-            if (job_data["Starter_Jobs"][i]["Perms"])
-            {
+            if (job_data["Starter_Jobs"][i]["Perms"]) {
                 for (var j = 0; j < job_data["Starter_Jobs"][i]["Perms"].length; j++) {
                     var perm = job_data["Starter_Jobs"][i]["Perms"][j];
-                    
-                    // world.broadcast("Removing perm " + perm + " from player " + player.getName());
-                    // world.broadcast("Perm data: " + JSON.stringify(world_data.get(perm)));
 
                     /* 
                     The line looks like something like this:
@@ -374,10 +369,8 @@ function remove_job_perms(player, job_id) {
                             new_list.push(perm_data["players"][k]);
                         }
                     }
-                    // world.broadcast("New list: " + new_list);
                     perm_data["players"] = new_list;
                     world_data.put(perm, JSON.stringify(perm_data));
-                    // world.broadcast("Perm data: " + JSON.stringify(world_data.get(perm)));
                 }
             }
         }
