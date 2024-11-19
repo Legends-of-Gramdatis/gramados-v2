@@ -16,7 +16,7 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
+                "Dialog": 386,
                 "Title": "Automobiles",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -26,7 +26,7 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
+                "Dialog": 394,
                 "Title": "Economy and Banking",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -114,7 +114,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731579044012L,
+        "TimePast": 1731878406366L,
         "Time": 0L,
         "Subject": ""
     }
