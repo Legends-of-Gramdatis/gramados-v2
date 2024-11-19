@@ -1848,6 +1848,14 @@ sets:
                 y: 75.0
                 z: -974.0
                 label: Greenfield Hiring Agency
+            marker_26:
+                world: world
+                markup: false
+                icon: civil_services_restroom
+                x: -1840.0
+                y: 75.0
+                z: 439.0
+                label: Public Restrooms
         lines: {
             }
         layerprio: 0
@@ -2409,6 +2417,14 @@ sets:
                 y: 75.0
                 z: -4872.0
                 label: The Peace Meadows Parking
+            marker_19:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -1822.0
+                y: 75.0
+                z: 440.0
+                label: Parking
         lines: {}
         layerprio: 0
     Historical Sites:
