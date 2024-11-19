@@ -1,0 +1,75 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 386,
+                "Title": "Back to Automobile Overview",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 392,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p4 - Tell me about trucks and truck stops.",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "Trucks and semi-trucks are perfect for jobs that involve heavy hauling, such as carrying containers or truck beds.
+
+- Truck Stops: Every island has a truck stop. These offer parking spaces, food, and rest areas for truckers. In the future, they’ll also be important hubs for the upcoming truck driving job, which is still under development.
+
+If you’re serious about trucking, these stops will be your go-to locations for everything you need while on the road.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731857869167L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

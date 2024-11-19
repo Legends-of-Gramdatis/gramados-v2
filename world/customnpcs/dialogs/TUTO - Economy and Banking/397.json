@@ -1,0 +1,87 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 405,
+                "Title": "How does criminality work?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 394,
+                "Title": "Go back to main menu.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 397,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p3 - Loans",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "Need quick money? Take out a loan using !loan take <amount>. But remember, loans come with 12.5% interest, and you must repay them using !loan pay <amount> within the agreed time.
+
+Failing to repay your loan has consequences:
+
+- Your criminality score increases, making you more likely to be arrested by the Gramados Police or swatted by the SPO.
+
+Loans are powerful tools but carry significant risks if misused.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731878965215L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

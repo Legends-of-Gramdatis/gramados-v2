@@ -1,0 +1,114 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 401,
+                "Title": "What happens if I want to remove or rename my bank?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 402,
+                "Title": "What else can I do with banks?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 397,
+                "Title": "What about loans?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 394,
+                "Title": "Go back to main menu.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 396,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p2 - Banking System",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "Banks are invaluable! While your pouch is handy, creating a bank account opens up new possibilities.
+
+- It costs 20,000g to create a bank account using !bank make <name>.
+
+- You can deposit and withdraw funds using !myBank deposit or !myBank withdraw.
+
+- Freeze your account for profit! For example:
+  - 1 week IRL = 4% interest
+  - 2 weeks IRL = 9% interest
+  - 1 month IRL = 14% interest
+  - 2 months IRL = 20% interest
+  - 3 months IRL = 24% interest
+
+Run !bank freeze <code> <freezePlan> to lock in your earnings. To collect your profits, use !bank collect <code>.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731878786763L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

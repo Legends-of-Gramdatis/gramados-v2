@@ -1,0 +1,99 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 388,
+                "Title": "What paperwork do I need?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "How do I find the Drabus Strip dealership?",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 386,
+                "Title": "Back to Automobile Overview",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 387,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p1 - How do I buy a car?",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "There are two primary ways to buy a car in Gramados:
+
+- Staff-Managed Dealerships:
+  If you want a brand-new car or a rare collectible, reach out to a staff member. They’ll guide you through the process. Keep in mind that buying a car through staff includes the obligation to generate official paperwork for an additional fee. This paperwork is essential for free replacements if your car gets totaled.
+
+- Player-Managed Dealerships:
+  For used vehicles, you can visit BotFerris, the owner of the used car dealership in the Drabus Strip district of Gramados City. It’s located to the east, just north of the airport’s landing lane. BotFerris often offers better prices than staff dealerships. If you're looking for a great deal or a unique vehicle, their stock is worth checking out.
+
+Whatever your choice, make sure to pick a vehicle that suits your needs. From affordability to storage and fuel economy, there’s a vehicle for every purpose!",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731857901920L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

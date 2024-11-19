@@ -1,0 +1,110 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 390,
+                "Title": "What is the Trin Configurator?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 392,
+                "Title": "What about trucks specifically?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 386,
+                "Title": "Back to Automobile Overview",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 389,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p2 - What types of vehicles are available?",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "In Gramados, you’ll find a massive variety of vehicles to suit every need and style. Here’s just a taste of what’s available:
+
+- Microcars: Small, affordable, and fuel-efficient.
+- SUVs: Great for families and off-road adventures.
+- Sedans: Balanced in performance and comfort.
+- Hatchbacks: Compact and versatile.
+- Offroaders: Built for rugged terrain and exploration.
+- Campers: Perfect for long journeys and mobile living.
+- Cabriolets: Stylish convertibles for open-air driving.
+- Muscle Cars: Classic powerhouses with iconic designs.
+- Sports Cars: Fast and sleek for thrill-seekers.
+- Supercars and Hypercars: Luxury vehicles with unmatched performance.
+- Minivans: Spacious and family-friendly.
+- Tractors: Essential for farm-based jobs.
+- Compacts: Affordable and easy to park.
+- Pickups: Ideal for work and heavy hauling.
+
+…and many more! Each type comes with unique advantages, from price and storage capacity to fuel economy and speed.
+
+If you’re buying a Trin car, you can customize it using the Trin Online Configurator. It’s a unique service that lets you configure and price your vehicle in detail. Check it out here: Trin Configurator (https://trin.legends-of-gramdatis.com/)",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1731857940419L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}
