@@ -147,6 +147,8 @@ icons:
         label: shopping_dealership
     shopping_carparts:
         label: shopping_carparts
+    shopping_factory:
+        label: shopping_factory
     transport_misc:
         label: transport_misc
     transport_airport:
@@ -2727,5 +2729,82 @@ sets:
                 label: Gramados Marina
         lines: {}
         layerprio: 0
+    Factories:
+        hide: false
+        minzoom: 3
+        circles: {
+            }
+        deficon: transport_misc
+        areas: {
+            }
+        label: Transports
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -5739.0
+                y: 73.0
+                z: -1358.0
+                label: Trin Assembly Plant
+            marker_2:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -2071.0
+                y: 75.0
+                z: 137.0
+                label: Gramados Concrete Factory (starter job)
+            marker_3:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -2071.0
+                y: 77.0
+                z: 109.0
+                label: Gramados Terracotta Factory (starter job)
+            marker_4:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -2492.0
+                y: 109.0
+                z: 265.0
+                label: Twingo Juice Factory
+            marker_5:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -4669.0
+                y: 73.0
+                z: -515.0
+                label: Chaseals Cheese Facility
+            marker_6:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -5637.0
+                y: 73.0
+                z: -1367
+                label: Rivetshore Steel Plant
+            marker_7:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -1472.0
+                y: 77.0
+                z: 392
+                label: Gramados Royal Arsenal
+            marker_8:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -1472.0
+                y: 92.0
+                z: -1242
+                label: Applecidory Brewery
+        lines: {}
+        layerprio: 0
+
 playersets: {
     }
