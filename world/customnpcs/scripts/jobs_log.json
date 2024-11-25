@@ -135,5 +135,23 @@
         "Name": "hellcat1609",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "50d71a00-cb89-41e4-80b6-7526417e81a7": {
+        "Name": "oldbjorn",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2253831663,
+                "Region": "Gramados"
+            },
+            "56": {
+                "JobID": 56,
+                "JobName": "Lumberjack",
+                "StartTime": 2253831663,
+                "Region": "Greenfield"
+            }
+        }
     }
 }
