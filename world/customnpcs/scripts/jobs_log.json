@@ -153,5 +153,23 @@
                 "Region": "Greenfield"
             }
         }
+    },
+    "d353edff-6013-4e22-a69c-5da1e2031f79": {
+        "Name": "vasek9",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "51": {
+                "JobID": 51,
+                "JobName": "Farmer",
+                "StartTime": 2262572697,
+                "Region": "Greenfield"
+            },
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2262572697,
+                "Region": "Gramados"
+            }
+        }
     }
 }
