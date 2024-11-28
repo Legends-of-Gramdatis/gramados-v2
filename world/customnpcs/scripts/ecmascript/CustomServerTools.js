@@ -2632,10 +2632,6 @@ function executeCommandGlobal(command, dim) {
 }
 
 
-
-
-//
-
 //Initialize PLugin Folder
 var PLUGIN_FOLDER = CONFIG_SERVER.PLUGIN_FOLDER || "CustomServerTools/plugins";
 var PLUGIN_LIST = [];
