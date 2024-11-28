@@ -2643,6 +2643,22 @@ sets:
                 y: 98.0
                 z: 710.0
                 label: Arcolocks Bridge
+            marker_5:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -4676.0
+                y: 71.0
+                z: -1815.0
+                label: Triple Ridge Gate
+            marker_6:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -5953.0
+                y: 74.0
+                z: -629.0
+                label: Lemonvale Bridge
         lines: {}
         layerprio: 0
     Transports:
