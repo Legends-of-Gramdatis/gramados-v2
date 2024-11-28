@@ -2790,55 +2790,6 @@ function compareVersion(v1, v2, options) {
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function reloadPluginsFromDisk() {
     PLUGIN_LIST = [];
     PluginAPI.Players.hookFns = {};
