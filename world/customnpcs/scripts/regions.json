@@ -1,0 +1,23 @@
+{
+    "Gramados": {
+        "display_name": "Gramados",
+        "job_lock_id": 379,
+        "job_quit_id": 384
+    },
+    "Greenfield": {
+        "display_name": "Greenfield",
+        "job_lock_id": 380
+    },
+    "Farmiston": {
+        "display_name": "Farmiston",
+        "job_lock_id": 382
+    },
+    "Allenis": {
+        "display_name": "Allenis",
+        "job_lock_id": 381
+    },
+    "Monsalac": {
+        "display_name": "Monsalac",
+        "job_lock_id": 383
+    }
+}

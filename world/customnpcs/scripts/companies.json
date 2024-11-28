@@ -1,0 +1,181 @@
+{
+    "companies": [
+        {
+            "id": "gramados_concrete_factory",
+            "name": "Gramados Concrete Factory",
+            "region": "Gramados",
+            "owner": {
+                "type": "public",
+                "name": "Gramados"
+            },
+            "jobs": {
+                "worker": {
+                    "id": "concrete_factory_worker",
+                    "unlock_code": 59,
+                    "lock_code": 60,
+                    "name": "Concrete Factory Worker",
+                    "max_slots": -1,
+                    "promotion_hours": 120,
+                    "demotion_hours": 240,
+                    "permissions": [
+                        "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Worker"
+                    ],
+                    "employees": [
+                        {
+                            "player_uuid": "d0603f61-f4f7-4006-b731-cceab2a2b6a5",
+                            "joined_at": 2245219184,
+                            "time_worked": 3600000
+                        }
+                    ]
+                },
+                "manager": {
+                    "id": "concrete_factory_manager",
+                    "unlock_code": null,
+                    "lock_code": null,
+                    "name": "Concrete Factory Manager",
+                    "max_slots": 1,
+                    "promotion_hours": null,
+                    "demotion_hours": 240,
+                    "permissions": [
+                        "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Worker",
+                        "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Manager"
+                    ],
+                    "employees": []
+                }
+            },
+            "share": {
+                "is_tradable": false,
+                "share_value": 100,
+                "shares_on_market": 0,
+                "min_share_value": 50,
+                "max_share_value": 200
+            },
+            "value_constraints": {
+                "min_total_value": 500000,
+                "max_total_value": 10000000
+            },
+            "modules": [
+                "sell_quantity",
+                "stock_multiplier",
+                "stock_flexibility"
+            ]
+        },
+        {
+            "id": "silverleaf_wine_domain",
+            "name": "Silverleaf Wine Domain",
+            "region": "Silverleaf",
+            "owner": {
+                "type": "player",
+                "player_uuid": "a1b2c3d4-5678-9101-1121-314151617181",
+                "name": "Leyx"
+            },
+            "jobs": [
+                {
+                    "id": "silverleaf_wine_domain_winemaker",
+                    "unlock_code": 233,
+                    "lock_code": 234,
+                    "name": "Silverleaf Wine Domain Winemaker",
+                    "max_slots": 1,
+                    "promotion_hours": null,
+                    "demotion_hours": null,
+                    "permissions": [
+                        "permission_regions.Allenis_North_VintnersRoad_SilverleafWinery"
+                    ],
+                    "employees": [
+                        {
+                            "player_uuid": "a1b2c3d4-5678-9101-1121-314151617181",
+                            "joined_at": 2245219184,
+                            "time_worked": 3600000
+                        }
+                    ]
+                }
+            ],
+            "share": {
+                "is_tradable": true,
+                "share_value": 3160800,
+                "shares_on_market": 0,
+                "total_shares": 1000,
+                "shares_owned_by_owner": 1000
+            },
+            "value_constraints": {
+                "min_total_value": 1000000,
+                "max_total_value": 50000000
+            },
+            "modules": [
+                "domain_reputation"
+            ]
+        },
+        {
+            "id": "vasek9_bakery",
+            "name": "Vasek's Bakery",
+            "region": "Greenfield",
+            "owner": {
+                "type": "player",
+                "player_uuid": "d353edff-6013-4e22-a69c-5da1e2031f79",
+                "name": "vasek9"
+            },
+            "jobs": [
+                {
+                    "id": "vasek9_bakery_baker",
+                    "unlock_code": 301,
+                    "lock_code": 302,
+                    "name": "Head Baker",
+                    "max_slots": 1,
+                    "promotion_hours": null,
+                    "demotion_hours": null,
+                    "permissions": [
+                        "permission_regions.Gramados_GrezyatStreet_3_Bakery_Owner"
+                    ],
+                    "employees": [
+                        {
+                            "player_uuid": "d353edff-6013-4e22-a69c-5da1e2031f79",
+                            "joined_at": 2245219184,
+                            "time_worked": 3600000
+                        }
+                    ]
+                },
+                {
+                    "id": "vasek9_bakery_assistant_baker",
+                    "unlock_code": 303,
+                    "lock_code": 304,
+                    "name": "Assistant Baker",
+                    "max_slots": 5,
+                    "promotion_hours": null,
+                    "demotion_hours": 240,
+                    "permissions": [
+                        "permission_regions.Gramados_GrezyatStreet_3_Bakery_Worker"
+                    ],
+                    "employees": []
+                },
+                {
+                    "id": "vasek9_bakery_delivery_driver",
+                    "unlock_code": 305,
+                    "lock_code": 306,
+                    "name": "Delivery Driver",
+                    "max_slots": -1,
+                    "promotion_hours": null,
+                    "demotion_hours": 240,
+                    "permissions": [
+                        "permission_regions.Gramados_GrezyatStreet_3_Bakery_Worker"
+                    ],
+                    "employees": []
+                }
+            ],
+            "share": {
+                "is_tradable": true,
+                "share_value": 250,
+                "shares_on_market": 0,
+                "total_shares": 500,
+                "shares_owned_by_owner": 500
+            },
+            "value_constraints": {
+                "min_total_value": 50000,
+                "max_total_value": 5000000
+            },
+            "modules": [
+                "bakery_reputation",
+                "demand_supply"
+            ]
+        }
+    ]
+}
