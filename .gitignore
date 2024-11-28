@@ -30,6 +30,7 @@ world/customnpcs/playerdata/*
 world/customnpcs/scripts/ecmascript/Gramados-Custom-NPCs-scripts/test*.js
 dynmap/*
 world/customnpcs/scripts/ecmascript/*/test*.js
+world/customnpcs/scripts/ecmascript/GCNPC*
 
 world/session.lock
 world/icon.png
