@@ -1858,6 +1858,14 @@ sets:
                 y: 75.0
                 z: 439.0
                 label: Public Restrooms
+            marker_27:
+                world: world
+                markup: false
+                icon: health_hospital
+                x: -6951.0
+                y: 79.0
+                z: -3.0
+                label: Silorose Hospital
         lines: {
             }
         layerprio: 0
