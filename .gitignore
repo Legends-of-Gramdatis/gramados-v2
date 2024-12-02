@@ -7,6 +7,9 @@
 .istmux
 .bashrc
 
+
+BlueMap/*
+
 config/*
 crash-reports/*
 CustomServerTools/*
