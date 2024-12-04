@@ -176,5 +176,23 @@
         "Name": "CoconutSamurai",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "e1aa77ce-559b-4c38-8462-5ece25dbf0fe": {
+        "Name": "SinaBloodsaw",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "51": {
+                "JobID": 51,
+                "JobName": "Farmer",
+                "StartTime": 2272776282,
+                "Region": "Greenfield"
+            },
+            "65": {
+                "JobID": 65,
+                "JobName": "Mechanic",
+                "StartTime": 2272776282,
+                "Region": "Gramados"
+            }
+        }
     }
 }
