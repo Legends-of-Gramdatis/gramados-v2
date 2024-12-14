@@ -199,5 +199,17 @@
         "Name": "Tomyyz2056",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "f01a9026-7e6b-46a4-99ff-d16d5a847ba8": {
+        "Name": "cowboycosmic",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "65": {
+                "JobID": 65,
+                "JobName": "Mechanic",
+                "StartTime": 2286151954,
+                "Region": "Gramados"
+            }
+        }
     }
 }
