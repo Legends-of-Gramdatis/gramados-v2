@@ -1,7 +1,8 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
-var _PRICE_EVOLUTION_FACTOR = 0.005;
+var _OFFER_AND_DEMAND_FACTOR = 0.005;
+var _RANDOM_FACTOR = 0.1;
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json";
 var REGION_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
 
@@ -49,17 +50,17 @@ function updateStockPrice(stockValue, regionGeneral) {
         if (elapsedTime >= _TIMER_COUNTER) {
 
             // Stock wasn't sold for at least 24 hours, increase price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + _PRICE_EVOLUTION_FACTOR));
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + (_OFFER_AND_DEMAND_FACTOR * 2)));
 
         } else {
 
             // Stock was sold recently, decrease price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _PRICE_EVOLUTION_FACTOR));
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _OFFER_AND_DEMAND_FACTOR));
         }
     }
 
     // Add a random factor to the price (between 0 and 10% of the reference price, capped at 100)
-    var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * 0.1, 100));
+    var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * _RANDOM_FACTOR, 100));
 
     /* 
         This will give a value between 0 and 1. If at 0.5, the current price is close to the reference price
