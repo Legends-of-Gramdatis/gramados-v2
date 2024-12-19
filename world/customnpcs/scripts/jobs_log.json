@@ -221,5 +221,17 @@
         "Name": "SilveradoTDS",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "bd6c0c13-6608-4757-933b-7a82a6aac295": {
+        "Name": "Peter_Kitsune",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2298282700,
+                "Region": "Gramados"
+            }
+        }
     }
 }
