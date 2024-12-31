@@ -233,5 +233,15 @@
                 "Region": "Gramados"
             }
         }
+    },
+    "e378b23d-6a5e-4cf3-8dc6-64ed8761df36": {
+        "Name": "Colt_44_magnum",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "1c9c5fc6-f78b-47ba-8bba-7e120c2dc88f": {
+        "Name": "Le_joueur_de_mc",
+        "JobHistory": {},
+        "ActiveJobs": {}
     }
 }
