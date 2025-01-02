@@ -45,7 +45,7 @@ var tick_counter = 1;
 
 // Load the stock exchange data when the NPC is initialized
 function init(event) {
-    world.broadcast("Job Manager initialized for player " + event.player.getName());
+    // world.broadcast("Job Manager initialized for player " + event.player.getName());
 
     // Load the Job data
     job_data = load_json(data_file_path);
