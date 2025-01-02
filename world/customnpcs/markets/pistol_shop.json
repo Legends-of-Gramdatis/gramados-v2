@@ -126,6 +126,24 @@
                     }
                 },
                 "Damage": 0s
+            },
+            {
+                "Slot": 28b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:barrier",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§cContact admin for more info."
+                        ],
+                        "Name": "§4DISABLED TRADE."
+                    }
+                },
+                "Damage": 0s
             }
         ]
     },
