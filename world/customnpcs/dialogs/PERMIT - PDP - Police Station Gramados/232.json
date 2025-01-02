@@ -50,33 +50,24 @@ Keep up the good work, @p. We need more people like you looking out for this com
     "DecreaseFaction2Points": 0b,
     "DialogMail": {
         "Sender": "Gramados Permit Authority",
+        "MailQuestTitle": "Your Personal Defense Permit",
         "BeenRead": 0b,
         "Message": {
+            "pages": [
+                "We are pleased to inform you that, following a thorough review of your application and assessment, your Personal Defense Permit (PDP) has been officially approved by the Gramados Permit Authority. ",
+                "With this permit, you are now legally authorized to purchase, carry, and maintain small-caliber firearms, including pistols, for the purpose of personal defense.",
+                "It is important to remember that holding a PDP comes with the responsibility of adhering to the laws and regulations regarding firearm use. This permit allows you to protect yourself and your loved ones within the bounds of legal and ethical standards.",
+                "Your permit will be available for pickup at any Gramados Town Hall. We trust you will exercise the rights afforded to you responsibly and with care.
+
+Thank you for your diligence and commitment to public safety.",
+                "Best regards,
+Gramados Permit Authority"
+            ]
         },
         "MailItems": [
-            {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:blueprint",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§2The Personal Defense Permit (PDP) is issued to responsible citizens who have demonstrated the need and capacity to carry small firearms for self-defense.",
-                            "§2With rising concerns for personal safety in both urban and rural areas,",
-                            "§2this permit grants individuals the right to protect themselves while also emphasizing the importance of responsible firearm handling and compliance with Gramados laws."
-                        ],
-                        "Name": "§bPersonal Defense Permit §r锂"
-                    }
-                },
-                "Damage": 0s
-            }
         ],
-        "MailQuest": -1,
-        "TimePast": 1728939575801L,
+        "MailQuest": 59,
+        "TimePast": 1735853666689L,
         "Time": 0L,
         "Subject": "Official Notification: Personal Defense Permit Approval"
     }

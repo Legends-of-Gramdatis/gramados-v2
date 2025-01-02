@@ -3,8 +3,7 @@
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
-    "IgnoreNBT": 0b,
+    "QuestCompletion": 1,
     "Title": "Reporting Back to Officer Reynolds",
     "Text": "After successfully resolving the case of the stolen collection car, it’s time to report back to Officer Reynolds at the Gramados Police Station. I should head there and provide him with the details of the investigation.",
     "QuestFactionPoints": {
@@ -17,8 +16,14 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 231,
+            "Slot": 0
+        }
+    ],
     "ModRev": 18,
-    "Type": 0,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -27,20 +32,14 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728911033320L,
+        "TimePast": 1735853409633L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 0b,
     "Rewards": {
         "NpcMiscInv": [
         ]
     },
-    "Items": {
-        "NpcMiscInv": [
-        ]
-    },
-    "LeaveItems": 0b,
     "CompleteText": "I've returned to Officer Reynolds at the Gramados Police Station and reported the successful recovery of the stolen car. He seemed pleased with my work and hinted that there’s something important he wants to discuss.",
     "NextQuestTitle": ""
 }

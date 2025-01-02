@@ -41,28 +41,9 @@ Gramados Permit Authority"
             ]
         },
         "MailItems": [
-            {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:blueprint",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§2The Marksman License is a symbol of precision, discipline, and responsibility. Only a select few earn it, and those who do are often called upon for high-level tasks, competitive events, and professional hunting contracts.",
-                            "§2With this license, your reputation in the shooting community will grow, and doors to new challenges will open."
-                        ],
-                        "Name": "§bMarksman License §r锂"
-                    }
-                },
-                "Damage": 0s
-            }
         ],
         "MailQuest": 112,
-        "TimePast": 1729079731623L,
+        "TimePast": 1735853765984L,
         "Time": 0L,
         "Subject": "Official Notification: Marksman License Approval"
     },
