@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 
 # Define the path to the JSON file and the output directory for CSVs and plots
-json_file_path = '/home/mouette/minecraft/gramados-v2/world/customnpcs/scripts/stock_exchange_data.json'
-output_dir = '/home/mouette/website/www/html/legends-of-gramdatis/img/gramados_stocks/'
+json_file_path = '/home/mouette/gramados-v2/world/customnpcs/scripts/stock_exchange_data.json'
+output_dir = '/home/mouette/gramados-v2/gramados_stocks/'
 
 # Function to read the JSON data
 def read_json(file_path):
