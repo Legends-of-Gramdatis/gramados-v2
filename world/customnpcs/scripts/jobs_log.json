@@ -243,5 +243,23 @@
         "Name": "Le_joueur_de_mc",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "f9732915-723d-4d62-8cba-bf03153479c6": {
+        "Name": "AsmithRue",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "51": {
+                "JobID": 51,
+                "JobName": "Farmer",
+                "StartTime": 2330803037,
+                "Region": "Greenfield"
+            },
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2330803037,
+                "Region": "Gramados"
+            }
+        }
     }
 }
