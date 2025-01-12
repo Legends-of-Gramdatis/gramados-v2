@@ -3,7 +3,7 @@
     "NextQuestId": 33,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
+    "QuestCompletion": 1,
     "Title": "Step 9: Guardian's Guidance",
     "Text": "Arriving at the Gramados Police Station, I need to locate Officer Reynolds and seek his guidance on my journey to become a guardian of the community.",
     "QuestFactionPoints": {
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728913470887L,
+        "TimePast": 1736675684873L,
         "Time": 0L,
         "Subject": ""
     },
@@ -61,5 +61,5 @@
         ]
     },
     "CompleteText": "After a thorough search of the police station, I found Officer Reynolds' office on the second floor, as instructed. Engaging in conversation with him, I expressed my intent to acquire the necessary skills to safeguard the community. Officer Reynolds, recognizing my commitment, provided me with a sturdy baton and a med kit, essential tools for my duties as a guardian of Gramados City. With his guidance, I am now ready to embark on my first mission to ensure the safety and security of our citizens.",
-    "NextQuestTitle": "Citizen Assistance Mission"
+    "NextQuestTitle": "Step 10: Citizen Assistance Mission"
 }

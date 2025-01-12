@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 32,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -68,7 +68,7 @@ Officer Reynolds is expecting you. You'll find his office at the second floor, t
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1722722832250L,
+        "TimePast": 1736675640201L,
         "Time": 0L,
         "Subject": ""
     }
