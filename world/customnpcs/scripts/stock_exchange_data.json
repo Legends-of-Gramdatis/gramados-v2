@@ -3,7 +3,7 @@
         "forestry:fruits:3": {
             "display_name": "Forestry Lemon",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 22,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 0,
@@ -13,7 +13,7 @@
         "harvestcraft:lemonitem:0": {
             "display_name": "Lemon",
             "reference_price": 20,
-            "current_price": 19,
+            "current_price": 20,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 0,
@@ -23,7 +23,7 @@
         "harvestcraft:orangeitem:0": {
             "display_name": "Orange",
             "reference_price": 20,
-            "current_price": 16,
+            "current_price": 18,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 0,
@@ -43,7 +43,7 @@
         "harvestcraft:pomegranateitem:0": {
             "display_name": "Pomegranate",
             "reference_price": 20,
-            "current_price": 18,
+            "current_price": 17,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 0,
@@ -53,7 +53,7 @@
         "harvestcraft:limeitem:0": {
             "display_name": "Lime",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 24,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 0,
@@ -65,7 +65,7 @@
         "forestry:logs.5:0": {
             "display_name": "Pine Wood",
             "reference_price": 500,
-            "current_price": 677,
+            "current_price": 665,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 326,
@@ -75,7 +75,7 @@
         "minecraft:log:1": {
             "display_name": "Spruce Wood",
             "reference_price": 500,
-            "current_price": 595,
+            "current_price": 560,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 1084,
@@ -85,7 +85,7 @@
         "forestry:logs.0:1": {
             "display_name": "Teak Wood",
             "reference_price": 400,
-            "current_price": 470,
+            "current_price": 456,
             "min_price": 100,
             "max_price": 1600,
             "quantity_sold": 261,
@@ -95,7 +95,7 @@
         "forestry:logs.6:1": {
             "display_name": "Ipe Wood",
             "reference_price": 300,
-            "current_price": 362,
+            "current_price": 342,
             "min_price": 75,
             "max_price": 1200,
             "quantity_sold": 1104,
@@ -105,7 +105,7 @@
         "forestry:logs.3:1": {
             "display_name": "Walnut Wood",
             "reference_price": 500,
-            "current_price": 518,
+            "current_price": 548,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 118,
@@ -115,7 +115,7 @@
         "forestry:logs.5:3": {
             "display_name": "Citrus Wood",
             "reference_price": 1000,
-            "current_price": 1141,
+            "current_price": 1112,
             "min_price": 250,
             "max_price": 4000,
             "quantity_sold": 96,
@@ -127,7 +127,7 @@
         "immersiveengineering:stone_decoration:5": {
             "display_name": "Concrete Block",
             "reference_price": 3000,
-            "current_price": 3956,
+            "current_price": 4232,
             "min_price": 450,
             "max_price": 8000,
             "quantity_sold": 1842,
@@ -137,7 +137,7 @@
         "immersiveengineering:stone_device:5": {
             "display_name": "Concrete Chunk",
             "reference_price": 2250,
-            "current_price": 2056,
+            "current_price": 2193,
             "min_price": 75,
             "max_price": 6000,
             "quantity_sold": 273,
@@ -147,7 +147,7 @@
         "immersiveengineering:stone_decoration_slab:5": {
             "display_name": "Concrete Slab",
             "reference_price": 1500,
-            "current_price": 1580,
+            "current_price": 1814,
             "min_price": 50,
             "max_price": 4000,
             "quantity_sold": 0,
@@ -157,7 +157,7 @@
         "immersiveengineering:stone_device:4": {
             "display_name": "Concrete Panel",
             "reference_price": 750,
-            "current_price": 892,
+            "current_price": 915,
             "min_price": 25,
             "max_price": 2000,
             "quantity_sold": 0,
@@ -167,7 +167,7 @@
         "immersiveengineering:stone_device:3": {
             "display_name": "Concrete Sheet",
             "reference_price": 375,
-            "current_price": 387,
+            "current_price": 343,
             "min_price": 6,
             "max_price": 500,
             "quantity_sold": 0,
@@ -179,7 +179,7 @@
         "minecraft:brick:0": {
             "display_name": "Brick",
             "reference_price": 300,
-            "current_price": 307,
+            "current_price": 319,
             "min_price": 75,
             "max_price": 600,
             "quantity_sold": 1,
@@ -189,7 +189,7 @@
         "minecraft:hardened_clay:0": {
             "display_name": "Terracotta",
             "reference_price": 3000,
-            "current_price": 4202,
+            "current_price": 4167,
             "min_price": 750,
             "max_price": 6000,
             "quantity_sold": 9089,
@@ -209,7 +209,7 @@
         "minecraft:flower_pot:0": {
             "display_name": "Flower Pot",
             "reference_price": 600,
-            "current_price": 600,
+            "current_price": 619,
             "min_price": 150,
             "max_price": 1200,
             "quantity_sold": 287,
@@ -224,18 +224,18 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 1923,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 2063,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:garlicitem:0": {
             "display_name": "Garlic",
             "reference_price": 20,
-            "current_price": 12,
+            "current_price": 10,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 621,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 757,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:chilipepperitem:0": {
@@ -244,8 +244,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 1688,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 1711,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:tomatoitem:0": {
@@ -254,8 +254,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 7224,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 7238,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:eggplantitem:0": {
@@ -264,8 +264,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 1810,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 1936,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:bellpepperitem:0": {
@@ -281,17 +281,17 @@
         "minecraft:potato:0": {
             "display_name": "Potato",
             "reference_price": 20,
-            "current_price": 16,
+            "current_price": 12,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 8623,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 8631,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:gigapickleitem:0": {
             "display_name": "Gigapickle",
             "reference_price": 20,
-            "current_price": 27,
+            "current_price": 28,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -304,14 +304,14 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 657,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 786,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:wintersquashitem:0": {
             "display_name": "Winter Squash",
             "reference_price": 20,
-            "current_price": 17,
+            "current_price": 15,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -321,7 +321,7 @@
         "harvestcraft:harvestpumpkinitem:0": {
             "display_name": "Harvest Pumpkin",
             "reference_price": 20,
-            "current_price": 21,
+            "current_price": 22,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -331,7 +331,7 @@
         "minecraft:melon:0": {
             "display_name": "Melon",
             "reference_price": 20,
-            "current_price": 16,
+            "current_price": 17,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -341,7 +341,7 @@
         "harvestcraft:caulifloweritem:0": {
             "display_name": "Cauliflower",
             "reference_price": 20,
-            "current_price": 22,
+            "current_price": 21,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -354,14 +354,14 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 1848,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 1863,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:broccoliitem:0": {
             "display_name": "Broccoli",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 24,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -374,14 +374,14 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 635,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 758,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:cucumberitem:0": {
             "display_name": "Cucumber",
             "reference_price": 20,
-            "current_price": 25,
+            "current_price": 24,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -391,7 +391,7 @@
         "harvestcraft:beetitem:0": {
             "display_name": "Beet",
             "reference_price": 20,
-            "current_price": 18,
+            "current_price": 19,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -404,8 +404,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 622,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 753,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:peasitem:0": {
@@ -421,7 +421,7 @@
         "minecraft:carrot:0": {
             "display_name": "Carrot",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 21,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -431,7 +431,7 @@
         "harvestcraft:rhubarbitem:0": {
             "display_name": "Rhubarb",
             "reference_price": 20,
-            "current_price": 12,
+            "current_price": 14,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -441,17 +441,17 @@
         "harvestcraft:scallionitem:0": {
             "display_name": "Scallion",
             "reference_price": 20,
-            "current_price": 9,
+            "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 574,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 700,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "minecraft:beetroot:0": {
             "display_name": "Beetroot",
             "reference_price": 20,
-            "current_price": 15,
+            "current_price": 17,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -464,24 +464,24 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 626,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 755,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:cornitem:0": {
             "display_name": "Corn",
             "reference_price": 20,
-            "current_price": 6,
+            "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 2146,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 4211,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:barleyitem:0": {
             "display_name": "Barley",
             "reference_price": 20,
-            "current_price": 20,
+            "current_price": 22,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -494,8 +494,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 6647,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 6660,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:lettuceitem:0": {
@@ -504,8 +504,8 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 10224,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 10242,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:beanitem:0": {
@@ -524,14 +524,14 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 4706,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 4723,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:sweetpotatoitem:0": {
             "display_name": "Sweet Potato",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 22,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -544,14 +544,14 @@
             "current_price": 5,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 10426,
-            "last_sold_time": 2337307204,
+            "quantity_sold": 10441,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         },
         "harvestcraft:lentilitem:0": {
             "display_name": "Lentil",
             "reference_price": 20,
-            "current_price": 17,
+            "current_price": 16,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 192,
@@ -561,7 +561,7 @@
         "minecraft:apple:0": {
             "display_name": "Apple",
             "reference_price": 20,
-            "current_price": 21,
+            "current_price": 20,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 1312,
@@ -571,7 +571,7 @@
         "harvestcraft:cherryitem:0": {
             "display_name": "Cherry",
             "reference_price": 20,
-            "current_price": 19,
+            "current_price": 18,
             "min_price": 5,
             "max_price": 100,
             "quantity_sold": 946,
@@ -581,11 +581,11 @@
         "harvestcraft:figitem:0": {
             "display_name": "Fig",
             "reference_price": 20,
-            "current_price": 17,
+            "current_price": 13,
             "min_price": 5,
             "max_price": 100,
-            "quantity_sold": 1090,
-            "last_sold_time": 2337357228,
+            "quantity_sold": 1474,
+            "last_sold_time": 2337532418,
             "quantity_factor": 1000
         }
     },
@@ -595,7 +595,7 @@
             "min_price": 200,
             "max_price": 3200,
             "reference_price": 800,
-            "current_price": 525,
+            "current_price": 543,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -605,7 +605,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 993,
+            "current_price": 925,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -615,7 +615,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 722,
+            "current_price": 619,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -625,7 +625,7 @@
             "min_price": 1000,
             "max_price": 16000,
             "reference_price": 4000,
-            "current_price": 4129,
+            "current_price": 4165,
             "quantity_sold": 504,
             "last_sold_time": 2336054654,
             "quantity_factor": 32
@@ -635,7 +635,7 @@
             "min_price": 1000,
             "max_price": 16000,
             "reference_price": 4000,
-            "current_price": 4484,
+            "current_price": 4584,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
@@ -645,7 +645,7 @@
             "min_price": 300,
             "max_price": 4800,
             "reference_price": 1200,
-            "current_price": 1658,
+            "current_price": 1687,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -655,7 +655,7 @@
             "min_price": 400,
             "max_price": 6000,
             "reference_price": 1500,
-            "current_price": 1471,
+            "current_price": 1487,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 32
@@ -665,7 +665,7 @@
             "min_price": 400,
             "max_price": 6000,
             "reference_price": 1500,
-            "current_price": 1557,
+            "current_price": 1421,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 32
@@ -675,7 +675,7 @@
             "min_price": 1500,
             "max_price": 24000,
             "reference_price": 6000,
-            "current_price": 5807,
+            "current_price": 6107,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
@@ -685,7 +685,7 @@
             "min_price": 1500,
             "max_price": 24000,
             "reference_price": 6000,
-            "current_price": 7161,
+            "current_price": 6861,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
@@ -695,7 +695,7 @@
             "min_price": 200,
             "max_price": 3200,
             "reference_price": 800,
-            "current_price": 988,
+            "current_price": 912,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 128
@@ -705,7 +705,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 1138,
+            "current_price": 1120,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -715,7 +715,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 837,
+            "current_price": 874,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -725,7 +725,7 @@
             "min_price": 200,
             "max_price": 3200,
             "reference_price": 800,
-            "current_price": 602,
+            "current_price": 713,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 128
@@ -735,7 +735,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 1139,
+            "current_price": 1076,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -745,7 +745,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 878,
+            "current_price": 674,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -755,7 +755,7 @@
             "min_price": 200,
             "max_price": 3200,
             "reference_price": 800,
-            "current_price": 897,
+            "current_price": 795,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 128
@@ -765,7 +765,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 849,
+            "current_price": 813,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -775,7 +775,7 @@
             "min_price": 250,
             "max_price": 4000,
             "reference_price": 1000,
-            "current_price": 917,
+            "current_price": 765,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 64
@@ -785,7 +785,7 @@
         "minecraft:log:0": {
             "display_name": "Oak Wood",
             "reference_price": 500,
-            "current_price": 726,
+            "current_price": 659,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 121,
@@ -795,7 +795,7 @@
         "minecraft:log:2": {
             "display_name": "Birch Wood",
             "reference_price": 500,
-            "current_price": 586,
+            "current_price": 551,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 188,
@@ -805,7 +805,7 @@
         "forestry:logs.6:3": {
             "display_name": "Cocobolo Wood",
             "reference_price": 500,
-            "current_price": 667,
+            "current_price": 628,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 1049,
@@ -815,7 +815,7 @@
         "forestry:logs.5:2": {
             "display_name": "Maple Wood",
             "reference_price": 500,
-            "current_price": 476,
+            "current_price": 508,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 531,
@@ -825,7 +825,7 @@
         "forestry:logs.5:1": {
             "display_name": "Plum Wood",
             "reference_price": 1000,
-            "current_price": 1204,
+            "current_price": 1274,
             "min_price": 250,
             "max_price": 4000,
             "quantity_sold": 228,
@@ -835,7 +835,7 @@
         "minecraft:log2:1": {
             "display_name": "Dark Oak Wood",
             "reference_price": 500,
-            "current_price": 568,
+            "current_price": 618,
             "min_price": 125,
             "max_price": 2000,
             "quantity_sold": 356,
@@ -847,7 +847,7 @@
         "minecraft:wheat:0": {
             "display_name": "Wheat",
             "reference_price": 20,
-            "current_price": 24,
+            "current_price": 25,
             "min_price": 5,
             "max_price": 500,
             "quantity_sold": 0,
@@ -857,7 +857,7 @@
         "harvestcraft:cornitem:0": {
             "display_name": "Corn",
             "reference_price": 20,
-            "current_price": 23,
+            "current_price": 22,
             "min_price": 5,
             "max_price": 500,
             "quantity_sold": 0,
@@ -867,7 +867,7 @@
         "harvestcraft:barleyitem:0": {
             "display_name": "Barley",
             "reference_price": 20,
-            "current_price": 24,
+            "current_price": 25,
             "min_price": 5,
             "max_price": 500,
             "quantity_sold": 0,
@@ -877,7 +877,7 @@
         "minecraft:hay_block:0": {
             "display_name": "Hay Bale",
             "reference_price": 200,
-            "current_price": 234,
+            "current_price": 243,
             "min_price": 90,
             "max_price": 10000,
             "quantity_sold": 0,
@@ -890,7 +890,7 @@
             "display_name": "Purple Grape Wine",
             "type": "ageable_booze",
             "reference_price": 1000,
-            "current_price": 1163,
+            "current_price": 1200,
             "min_price": 500,
             "max_price": 5000,
             "quantity_sold": 121,
@@ -901,7 +901,7 @@
             "display_name": "Purple Grape Wine (Potent)",
             "type": "ageable_booze",
             "reference_price": 2000,
-            "current_price": 2995,
+            "current_price": 2817,
             "min_price": 1000,
             "max_price": 10000,
             "quantity_sold": 4,
@@ -914,7 +914,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2884,
+            "current_price": 2782,
             "quantity_sold": 6,
             "last_sold_time": 2167369165,
             "quantity_factor": 16
@@ -925,7 +925,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 10242,
+            "current_price": 10248,
             "quantity_sold": 120,
             "last_sold_time": 2167343852,
             "quantity_factor": 4
@@ -936,7 +936,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 3886,
+            "current_price": 3857,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 8
@@ -947,7 +947,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 9742,
+            "current_price": 10034,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 4
@@ -958,7 +958,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2115,
+            "current_price": 2120,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
@@ -967,7 +967,7 @@
             "display_name": "Green Grape Wine",
             "type": "ageable_booze",
             "reference_price": 1000,
-            "current_price": 1136,
+            "current_price": 1187,
             "min_price": 500,
             "max_price": 5000,
             "quantity_sold": 5,
@@ -980,7 +980,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2587,
+            "current_price": 2628,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
             "quantity_factor": 16
@@ -991,7 +991,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 3392,
+            "current_price": 3311,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 16
@@ -1002,7 +1002,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 8436,
+            "current_price": 8388,
             "quantity_sold": 4,
             "last_sold_time": 2167206131,
             "quantity_factor": 4
@@ -1013,7 +1013,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 2528,
+            "current_price": 2459,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 8
@@ -1024,7 +1024,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 8809,
+            "current_price": 8937,
             "quantity_sold": 8,
             "last_sold_time": 2167206131,
             "quantity_factor": 4
@@ -1035,7 +1035,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 1515,
+            "current_price": 1707,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
@@ -1046,7 +1046,7 @@
             "min_price": 500,
             "max_price": 5000,
             "reference_price": 1000,
-            "current_price": 1400,
+            "current_price": 1340,
             "quantity_sold": 5,
             "last_sold_time": 2167222990,
             "quantity_factor": 16
@@ -1057,7 +1057,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2862,
+            "current_price": 2933,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
             "quantity_factor": 16
@@ -1068,7 +1068,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2339,
+            "current_price": 2484,
             "quantity_sold": 10,
             "last_sold_time": 2167222990,
             "quantity_factor": 16
@@ -1079,7 +1079,7 @@
             "min_price": 2000,
             "max_price": 50000,
             "reference_price": 5000,
-            "current_price": 9047,
+            "current_price": 9221,
             "quantity_sold": 6,
             "last_sold_time": 2167222990,
             "quantity_factor": 4
@@ -1090,7 +1090,7 @@
             "min_price": 1500,
             "max_price": 15000,
             "reference_price": 3000,
-            "current_price": 2919,
+            "current_price": 2819,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 8
@@ -1101,7 +1101,7 @@
             "min_price": 2000,
             "max_price": 20000,
             "reference_price": 5000,
-            "current_price": 9062,
+            "current_price": 9079,
             "quantity_sold": 8,
             "last_sold_time": 2167222990,
             "quantity_factor": 4
@@ -1112,7 +1112,7 @@
             "min_price": 1000,
             "max_price": 10000,
             "reference_price": 2000,
-            "current_price": 2300,
+            "current_price": 2128,
             "quantity_sold": 0,
             "last_sold_time": 0,
             "quantity_factor": 16
