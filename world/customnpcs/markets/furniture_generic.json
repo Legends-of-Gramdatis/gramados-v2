@@ -8,11 +8,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 3b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -44,11 +44,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 4b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -62,11 +62,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -98,11 +98,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 4b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -116,11 +116,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -152,11 +152,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -170,11 +170,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 3b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -192,7 +192,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -206,11 +206,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 4b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -224,7 +224,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 3b,
+                "Count": 7b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -242,11 +242,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -324,6 +324,24 @@
                     }
                 },
                 "Damage": 0s
+            },
+            {
+                "Slot": 21b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 2b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
             }
         ]
     },
@@ -337,7 +355,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "cfm:table_outdoor",
+                "id": "cfm:bedside_cabinet_oak",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -367,7 +385,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "cfm:table_spruce",
+                "id": "cfm:table_outdoor",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -467,7 +485,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "cfm:bedside_cabinet_oak",
+                "id": "minecraft:crafting_table",
                 "Count": 1b,
                 "Damage": 0s
             },
