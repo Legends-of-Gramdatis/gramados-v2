@@ -405,6 +405,14 @@ sets:
                 y: 82.0
                 z: -255.0
                 label: Farmiston Farm Heavy Machinery Wholesale (buy)
+            marker_12:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -6874.0
+                y: 85.0
+                z: -347.0
+                label: Kolhoz Seed Supply
         lines: {
             }
         layerprio: 0
