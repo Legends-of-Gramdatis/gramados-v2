@@ -446,6 +446,7 @@ function updateStockPrices(region, delivery, player) {
                 /*
                     Calculate the price multiplier based on the quantity delivered.
                     for each quantity_factor units sold, the price will decrease by 5%.
+                    If less than quantity_factor units are sold, the price will not decrease.
                     So we divide the quantity delivered by the quantity factor to get the number of times the price should decrease by 5%.
                     We then multiply the output by 5% to get the total price decrease.
 
@@ -455,7 +456,11 @@ function updateStockPrices(region, delivery, player) {
 
                     We then multiply the current price by this multiplier to get the new price.
                 */
-                var valueMultiplier = 1 - (_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor));
+                var valueMultiplier = 1
+                
+                if (quantityDelivered >= stock_exchange_instance[item].quantity_factor) {
+                    valueMultiplier = valueMultiplier - (_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor));
+                }
 
                 if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
                     valueMultiplier *= stock_exchange_generals[region]["stock_flexibility"];
