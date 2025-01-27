@@ -296,12 +296,20 @@
     },
     "d097fa29-c2f8-4636-a9cb-ca638f8d78e2": {
         "Name": "Mihtsuki",
-        "JobHistory": {},
-        "ActiveJobs": {
+        "JobHistory": {
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
                 "StartTime": 2359078983,
+                "EndTime": 2361115867,
+                "Region": "Gramados"
+            }
+        },
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2361115987,
                 "Region": "Gramados"
             }
         }
