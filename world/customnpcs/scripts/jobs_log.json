@@ -138,19 +138,27 @@
     },
     "50d71a00-cb89-41e4-80b6-7526417e81a7": {
         "Name": "oldbjorn",
-        "JobHistory": {},
-        "ActiveJobs": {
+        "JobHistory": {
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2253831663,
+                "EndTime": 2353077745,
                 "Region": "Gramados"
-            },
+            }
+        },
+        "ActiveJobs": {
             "56": {
                 "JobID": 56,
                 "JobName": "Lumberjack",
                 "StartTime": 2253831663,
                 "Region": "Greenfield"
+            },
+            "65": {
+                "JobID": 65,
+                "JobName": "Mechanic",
+                "StartTime": 2353077765,
+                "Region": "Gramados"
             }
         }
     },
@@ -179,7 +187,15 @@
     },
     "e1aa77ce-559b-4c38-8462-5ece25dbf0fe": {
         "Name": "SinaBloodsaw",
-        "JobHistory": {},
+        "JobHistory": {
+            "65": {
+                "JobID": 65,
+                "JobName": "Mechanic",
+                "StartTime": 2272776282,
+                "EndTime": 2351844000,
+                "Region": "Gramados"
+            }
+        },
         "ActiveJobs": {
             "51": {
                 "JobID": 51,
@@ -187,10 +203,10 @@
                 "StartTime": 2272776282,
                 "Region": "Greenfield"
             },
-            "65": {
-                "JobID": 65,
-                "JobName": "Mechanic",
-                "StartTime": 2272776282,
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2351850720,
                 "Region": "Gramados"
             },
             "154": {
@@ -277,5 +293,29 @@
         "Name": "TheOnlySeagull",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "d097fa29-c2f8-4636-a9cb-ca638f8d78e2": {
+        "Name": "Mihtsuki",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2359078983,
+                "Region": "Gramados"
+            }
+        }
+    },
+    "4826d653-19c0-446d-b325-fd2e806eb31b": {
+        "Name": "Nop0x",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2359358757,
+                "Region": "Gramados"
+            }
+        }
     }
 }
