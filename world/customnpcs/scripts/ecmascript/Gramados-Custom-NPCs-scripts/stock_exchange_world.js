@@ -50,12 +50,25 @@ function updateStockPrice(stockValue, regionGeneral) {
         if (elapsedTime >= _TIMER_COUNTER) {
 
             // Stock wasn't sold for at least 24 hours, increase price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + (_OFFER_AND_DEMAND_FACTOR * 2)));
+            var proportion = (_OFFER_AND_DEMAND_FACTOR * 2)
+            // If the region has a flexibility multiplier, apply it
+            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+                proportion *= regionGeneral["stock_flexibility"];
+            }
+            // Increase the stock price
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + proportion));
 
         } else {
 
+
+            var proportion = (_OFFER_AND_DEMAND_FACTOR)
+            // If the region has a flexibility multiplier, apply it
+            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+                proportion *= regionGeneral["stock_flexibility"];
+            }
+
             // Stock was sold recently, decrease price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - _OFFER_AND_DEMAND_FACTOR));
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - proportion));
         }
     }
 
