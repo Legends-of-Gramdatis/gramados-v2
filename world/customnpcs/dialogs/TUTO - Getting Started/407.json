@@ -2,22 +2,12 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
-        {
-            "OptionSlot": 0,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 115,
-                "Title": "[Continue]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 117,
+    "DialogId": 407,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Island Presentation p1",
+    "DialogTitle": "How to get started?",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,16 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island, the largest and most developed island in the Gramados archipelago. Here's what you need to know about our beautiful island:
-
-**Island Geography:**
-- Gramados Island boasts a landscape that's predominantly flat, with some gentle hills.
-- Our island is home to dense forests, including two unique biomes: tall oak forests and pine forests. You might encounter these forest types on other islands in our archipelago as well.
-
-**Economic Specializations:**
-- We're known for our wood production and industrial activities, which play a significant role in our island's economy.
-- While we once excelled in citrus farming, urbanization has led to the transformation of many citrus farms into the generic tall oak and pine forests. A Citrus Hall stands as a reminder of our citrus-producing history.
-- Our island's primary agricultural activity today is citrus farming, though not in heavy quantities.",
+    "DialogText": "If you're looking for guidance on getting started, I recommend speaking with our onboarding specialist, Mr. Conrad. You'll find him inside, just through the door to the left of the main staircase here at the Town Hall. He has all the information you need to help you settle in, from job opportunities to basic survival tips. Go on, he’s expecting you!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -73,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1737558995366L,
+        "TimePast": 1737560119432L,
         "Time": 0L,
         "Subject": ""
     }

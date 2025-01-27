@@ -21,6 +21,16 @@
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 407,
+                "Title": "[How to get started?]",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
         }
     ],
     "AvailabilityScoreboardType": 1,
@@ -76,7 +86,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698857068735L,
+        "TimePast": 1737560081216L,
         "Time": 0L,
         "Subject": ""
     }
