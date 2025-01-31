@@ -339,5 +339,17 @@
                 "Region": "Gramados"
             }
         }
+    },
+    "460ee23f-214a-4c35-8088-9fc34570fbf6": {
+        "Name": "NightFall_RS",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2368267465,
+                "Region": "Gramados"
+            }
+        }
     }
 }
