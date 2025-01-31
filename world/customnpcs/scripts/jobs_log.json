@@ -145,6 +145,13 @@
                 "StartTime": 2253831663,
                 "EndTime": 2353077745,
                 "Region": "Gramados"
+            },
+            "65": {
+                "JobID": 65,
+                "JobName": "Mechanic",
+                "StartTime": 2353077765,
+                "EndTime": 2367375189,
+                "Region": "Gramados"
             }
         },
         "ActiveJobs": {
@@ -154,10 +161,10 @@
                 "StartTime": 2253831663,
                 "Region": "Greenfield"
             },
-            "65": {
-                "JobID": 65,
-                "JobName": "Mechanic",
-                "StartTime": 2353077765,
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2367375469,
                 "Region": "Gramados"
             }
         }
@@ -297,6 +304,13 @@
     "d097fa29-c2f8-4636-a9cb-ca638f8d78e2": {
         "Name": "Mihtsuki",
         "JobHistory": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2361115987,
+                "EndTime": 2363175788,
+                "Region": "Gramados"
+            },
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
@@ -306,10 +320,10 @@
             }
         },
         "ActiveJobs": {
-            "54": {
-                "JobID": 54,
-                "JobName": "Concrete Factory Worker",
-                "StartTime": 2361115987,
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2363175928,
                 "Region": "Gramados"
             }
         }
