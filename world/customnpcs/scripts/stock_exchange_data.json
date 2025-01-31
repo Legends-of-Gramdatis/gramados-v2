@@ -199,7 +199,7 @@
         "minecraft:brick_block:0": {
             "display_name": "Brick Block",
             "reference_price": 6000,
-            "current_price": 4500,
+            "current_price": 5750,
             "min_price": 1500,
             "max_price": 12000,
             "quantity_sold": 8083,
