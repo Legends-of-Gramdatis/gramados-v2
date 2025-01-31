@@ -20,7 +20,7 @@ For the vehicles that aren't listed, here are the prices:
 
 ## UNU Vehicles
 - UNU Wolf: 45000 g (+10k for each .50 Cal MMG)
-- UNU Amphibious Mule: 55000 g
+- UNU Amphibious Wolf: 55000 g
 - UNU Burro: 98500 g
 
 ## BTM Vehicles
