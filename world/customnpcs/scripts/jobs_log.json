@@ -342,12 +342,20 @@
     },
     "460ee23f-214a-4c35-8088-9fc34570fbf6": {
         "Name": "NightFall_RS",
-        "JobHistory": {},
-        "ActiveJobs": {
+        "JobHistory": {
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2368267465,
+                "EndTime": 2370340111,
+                "Region": "Gramados"
+            }
+        },
+        "ActiveJobs": {
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2370340231,
                 "Region": "Gramados"
             }
         }
