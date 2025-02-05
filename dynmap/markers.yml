@@ -241,11 +241,19 @@ sets:
             marker_4:
                 world: world
                 markup: false
-                x: -2066.0
                 icon: shopping_hardware
+                x: -2066.0
                 y: 79.0
                 z: 15.0
                 label: Gramados Tool Shop
+            marker_5:
+                world: world
+                markup: false
+                icon: shopping_hardware
+                x: -4601.0
+                y: 73.0
+                z: -426.0
+                label: Shepherd's Forge - Tool Shop
         lines: {
             }
         layerprio: 0
