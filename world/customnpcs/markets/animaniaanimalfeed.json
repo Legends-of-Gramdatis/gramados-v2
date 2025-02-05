@@ -1,0 +1,480 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e5G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:wheat",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Wheat"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:wheat_seeds",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Seeds"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:ryeitem",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Rye"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:potato",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Potato"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:beetroot_seeds",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Seeds"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:oatsitem",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Oats"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:carrot",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Carrot"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:pumpkin_seeds",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Seeds"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:barleyitem",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Barley"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:beetroot",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Beetroot"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:melon_seeds",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Seeds"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:cornitem",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Corn"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:apple",
+                "Count": 64b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§eUsed for animal feed purposes"
+                        ],
+                        "Name": "§f Animal Feed Apple"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    }
+}
