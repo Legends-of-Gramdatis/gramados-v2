@@ -116,7 +116,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 3b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -170,7 +170,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -219,6 +219,24 @@
             },
             {
                 "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -355,7 +373,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "growthcraft_milk:churn",
+                "id": "growthcraft_cellar:brew_kettle",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -375,7 +393,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "growthcraft_milk:pancheon",
+                "id": "growthcraft_milk:churn",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -387,6 +405,16 @@
                 },
                 "id": "growthcraft:salt",
                 "Count": 64b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "growthcraft_milk:pancheon",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
