@@ -421,6 +421,23 @@ sets:
                 y: 84.0
                 z: -375.0
                 label: Rodnoye Podvorye - Animal Care Products
+            marker_14:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -4659.0
+                y: 72.0
+                z: -449.0
+                label: Highland Provisions - Animal Feed
+            marker_15:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -4663.0
+                y: 72.0
+                z: -463.0
+                label: Summit Cheeseworks - Cheese making ingredients & tools
+
         lines: {
             }
         layerprio: 0
