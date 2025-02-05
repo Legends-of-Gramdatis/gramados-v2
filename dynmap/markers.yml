@@ -413,6 +413,14 @@ sets:
                 y: 85.0
                 z: -347.0
                 label: Kolhoz Seed Supply
+            marker_13:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -6937.0
+                y: 84.0
+                z: -375.0
+                label: Rodnoye Podvorye - Animal Care Products
         lines: {
             }
         layerprio: 0
