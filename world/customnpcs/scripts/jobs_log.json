@@ -80,8 +80,8 @@
             "Perms": []
         },
         {
-            "JobID": 65,
-            "JobLock": 66,
+            "JobID": 66,
+            "JobLock": 65,
             "JobName": "Mechanic",
             "Region": "GramadosUnlimited",
             "Perms": []
@@ -111,6 +111,12 @@
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 982114756,
                 "Region": "Gramados"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2374672642,
+                "Region": "GramadosUnlimited"
             }
         }
     },
@@ -272,7 +278,20 @@
     "e378b23d-6a5e-4cf3-8dc6-64ed8761df36": {
         "Name": "Colt_44_magnum",
         "JobHistory": {},
-        "ActiveJobs": {}
+        "ActiveJobs": {
+            "56": {
+                "JobID": 56,
+                "JobName": "Lumberjack",
+                "StartTime": 2373644527,
+                "Region": "Greenfield"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2373644527,
+                "Region": "Gramados"
+            }
+        }
     },
     "1c9c5fc6-f78b-47ba-8bba-7e120c2dc88f": {
         "Name": "Le_joueur_de_mc",
@@ -361,13 +380,20 @@
                 "StartTime": 2368267465,
                 "EndTime": 2370340111,
                 "Region": "Gramados"
-            }
-        },
-        "ActiveJobs": {
+            },
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
                 "StartTime": 2370340231,
+                "EndTime": 2374461549,
+                "Region": "Gramados"
+            }
+        },
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2374461669,
                 "Region": "Gramados"
             }
         }
