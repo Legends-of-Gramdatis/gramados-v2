@@ -249,6 +249,13 @@ function interact(event) {
                 // Calculate total earnings before updating stock prices
                 var totalEarnings = calculateEarnings(delivery, NPC_REGION);
 
+                // Spy data to log the delivery
+                var spy_data = {}
+                spy_data["date"] = new Date().toLocaleString();
+                spy_data["delivery"] = delivery;
+                spy_data["totalEarnings"] = totalEarnings;
+                add_spy_data(spy_data, player);
+
                 // Update the stock exchange data with the crate's contents
                 updateStockPrices(NPC_REGION, delivery, player);
 
@@ -277,6 +284,13 @@ function interact(event) {
 
                 // Calculate total earnings before updating stock prices
                 var totalEarnings = calculateEarnings(delivery, NPC_REGION);
+
+                // Spy data to log the delivery
+                var spy_data = {}
+                spy_data["date"] = new Date().toLocaleString();
+                spy_data["delivery"] = delivery;
+                spy_data["totalEarnings"] = totalEarnings;
+                add_spy_data(spy_data, player);
 
                 // Update the stock exchange data with the barrel's contents
                 updateStockPrices(NPC_REGION, delivery, player);
@@ -987,4 +1001,28 @@ function save_json(data, data_file_path) {
 function check_file_exists(file_path) {
     var file = new java.io.File(file_path);
     return file.exists();
+}
+
+// Function to load "stock_spying.json"
+function load_spy_data() {
+    var spy_data = load_json("world/customnpcs/scripts/stock_spying.json");
+    return spy_data;
+}
+
+// Function to save "stock_spying.json"
+function save_spy_data(data) {
+    save_json(data, "world/customnpcs/scripts/stock_spying.json");
+}
+
+// Funtion to add the delivery into the spy data
+function add_spy_data(data, player) {
+    var spy_data = load_spy_data();
+
+    if (!spy_data[player.getName()]) {
+        spy_data[player.getName()] = [];
+    }
+
+    spy_data[player.getName()].push(data);
+
+    save_spy_data(spy_data);
 }
