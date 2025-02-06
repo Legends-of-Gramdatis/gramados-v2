@@ -7,7 +7,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 62,
+    "DialogId": 234,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -35,9 +35,9 @@
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 61,
+    "AvailabilityDialogId": 233,
     "OptionFaction2Points": 100,
-    "DialogText": "This interaction is reserved to players with the \"Gramados Terracotta Factory Worker\" job.",
+    "DialogText": "This interaction is reserved to players with the \"Allenis Brewer\" job.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1738781807998L,
+        "TimePast": 1738797544561L,
         "Time": 0L,
         "Subject": ""
     }

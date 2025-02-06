@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Getting Hired (Terracotta Gramados)",
+    "DialogTitle": "Getting Hired (Gramados Terracotta)",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +37,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Fantastic! You’re now a Gramados Terracotta Factory Worker. Time to get crafting at the factory.",
+    "DialogText": "Hello @p, you are now a Gramados Terracotta Factory Worker. All related Wholesales have now been unlocked.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731777635983L,
+        "TimePast": 1738781781500L,
         "Time": 0L,
         "Subject": ""
     }
