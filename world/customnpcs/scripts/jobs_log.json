@@ -295,6 +295,13 @@
                 "StartTime": 2377010664,
                 "Region": "Gramados",
                 "Type": "Advanced"
+            },
+            "211": {
+                "JobID": 211,
+                "JobName": "Farmer",
+                "StartTime": 2377884403,
+                "Region": "Monsalac",
+                "Type": "Advanced"
             }
         }
     },
@@ -515,14 +522,16 @@
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2368267465,
                 "EndTime": 2370340111,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             },
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
                 "StartTime": 2370340231,
                 "EndTime": 2374461549,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         },
         "ActiveJobs": {
@@ -530,7 +539,8 @@
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2374461669,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     },
