@@ -79,6 +79,14 @@ var crates_ids = [
     "mts:iav.iav_storage_l_crate_5",
     "mts:iav.iav_storage_l_crate_6"
 ];
+var barrels_ids = [
+    "mts:unuparts.unuparts_part_unu_barrel_wooden",
+    "mts:unuparts.unuparts_part_unu_barrel_metal_yellow",
+    "mts:unuparts.unuparts_part_unu_barrel_metal_blue",
+    "mts:unuparts.unuparts_part_unu_barrel_metal_red",
+    "mts:unuparts.unuparts_part_unu_barrel_metal_grey"
+];
+
 
 var _REGIONS = [];
 
@@ -87,7 +95,7 @@ var region_specifics = {};
 var stock_exchange_instance;
 var stock_exchange_generals;
 
-var _PRICE_EVOLUTION_FACTOR = 0.01; // 1% price increase or decrease
+var _PRICE_EVOLUTION_FACTOR = 0.001; // 0.1% price increase or decrease
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json"; // Path to the JSON file
 
 var npc; // Global variable to store the NPC instance
@@ -230,7 +238,7 @@ function interact(event) {
                 npc.say("Let me see what you have in that crate...");
 
                 // Read the contents of the crate
-                var delivery = read_delivery(item, stackSize); // Pass stack size to read_delivery
+                var delivery = read_crate_delivery(item, stackSize); // Pass stack size to read_delivery
 
                 // If the crate is empty or contains items not in the exchange
                 if (Object.keys(delivery).length === 0) {
@@ -254,8 +262,37 @@ function interact(event) {
             }
         }
 
+        // Check if the player is holding one of the valid barrels
+        for (var i = 0; i < barrels_ids.length; i++) {
+            if (item.getName() == barrels_ids[i]) {
+                npc.say("Let me see what you have in that barrel...");
+
+                var delivery = read_barrel_delivery(item);
+
+                // If the barrel is empty or contains items not in the exchange
+                if (Object.keys(delivery).length === 0) {
+                    npc.say("This barrel doesn't have any fluids I can accept.");
+                    return;
+                }
+
+                // Calculate total earnings before updating stock prices
+                var totalEarnings = calculateEarnings(delivery, NPC_REGION);
+
+                // Update the stock exchange data with the barrel's contents
+                updateStockPrices(NPC_REGION, delivery, player);
+
+                // Clear only the sold content from the barrel after processing
+                clear_barrel(item, delivery);
+
+                // Generate money items for the player
+                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
+
+                return;
+            }
+        }
+
         // If the player isn't holding a valid crate
-        npc.say("Hello there! I only accept deliveries in crates. Please hold a crate in your hand.");
+        npc.say("Hello there! I only accept deliveries in crates or barrels. Please hold a crate or barrel in your hand.");
     }
 }
 
@@ -281,7 +318,16 @@ function calculateEarnings(delivery, region) {
             totalEarnings += calculateAgeableBoozeEarnings(delivery["ageable_booze"][item], item);
             if (stock_exchange_generals[region] && stock_exchange_generals[region]["variety_bonus"]) {
                 earningsMultiplier += stock_exchange_generals[region]["variety_bonus"];
+            }
+        }
+    }
 
+    // If there are fluids in the delivery
+    if (delivery["fluid"]) {
+        for (var fluid in delivery["fluid"]) {
+            totalEarnings += delivery["fluid"][fluid]["count"] * stock_exchange_instance[fluid]["current_price"];
+            if (stock_exchange_generals[region] && stock_exchange_generals[region]["variety_bonus"]) {
+                earningsMultiplier += stock_exchange_generals[region]["variety_bonus"];
             }
         }
     }
@@ -352,8 +398,8 @@ function generateMoneyForPlayer(world, totalCents, player) {
 }
 
 // Function to read the contents of the crate, accounting for stack size
-function read_delivery(item, stackSize) {
-    var delivery = {};
+function read_crate_delivery(item, stackSize) {
+    var delivery = {}; 
 
     // Read the items from the crate's inventory
     var items = item.getNbt().getCompound("inventory").getList("Items", 10);
@@ -431,13 +477,52 @@ function read_delivery(item, stackSize) {
     return delivery;
 }
 
+// Function to read the contents of the barrel
+function read_barrel_delivery(item) {
+
+    // Read the fluid type from the barrel's inventory
+    var tankdata = item.getNbt().getCompound("tank");
+    var quantity = tankdata.getDouble("fluidLevel") / 1000;
+    var fluid = tankdata.getString("currentFluid");
+
+    // Get the number of items (stacked barrels)
+    var stackSize = item.getStackSize();
+    // npc.say("Stack Size: " + stackSize);
+
+    // add liquid: to the fluid name
+    fluid = "liquid:" + fluid;
+
+    if (quantity == 0) {
+        // npc.say("The barrel is empty.");
+        return {};
+    }
+
+    // npc.say("The " + stackSize + " barrel(s) contain " + quantity + " buckets of " + fluid + " (each).");
+
+    var delivery = {};
+
+    // Check if the fluid is part of the stock exchange instance
+    if (stock_exchange_instance[fluid]) {
+        delivery["fluid"] = {};
+        delivery["fluid"][fluid] = {
+            "count": quantity * stackSize
+        };
+    }
+
+    npc.say("You have successfully sold " + quantity * stackSize + " buckets of " + stock_exchange_instance[fluid]["display_name"] + "!");
+
+    return delivery;
+}
+
 // Function to calculate price changes based on supply and time since last sale
 function updateStockPrices(region, delivery, player) {
     var currentTime = world.getTotalTime();
 
+    // npc.say("Updating stock prices: delivery: " + JSON.stringify(delivery));
+
     for (var types in delivery) {
 
-        if (types == "generic") {
+        if (types == "generic" || types == "fluid") {
 
             for (var item in delivery[types]) {
 
@@ -446,48 +531,22 @@ function updateStockPrices(region, delivery, player) {
                     continue;
                 }
 
-                var quantityDelivered = delivery[types][item]["count"];
-
-                stock_exchange_instance[item].quantity_sold += quantityDelivered;
+                stock_exchange_instance[item].quantity_sold += delivery[types][item]["count"];
                 stock_exchange_instance[item].last_sold_time = currentTime;
 
-                /*
-                    Calculate the price multiplier based on the quantity delivered.
-                    for each quantity_factor units sold, the price will decrease by 5%.
-                    If less than quantity_factor units are sold, the price will not decrease.
-                    So we divide the quantity delivered by the quantity factor to get the number of times the price should decrease by 5%.
-                    We then multiply the output by 5% to get the total price decrease.
+                var proportion = delivery[types][item]["count"] / stock_exchange_instance[item].quantity_factor;
+                var _PRICE_EVOLUTION = proportion * _PRICE_EVOLUTION_FACTOR;
+                var newPrice = stock_exchange_instance[item].current_price * ((1 - _PRICE_EVOLUTION) * stock_exchange_generals[region]["stock_flexibility"]);
 
-                    We then subtract this value from 1 to get the multiplier.
+                newPrice = Math.floor(newPrice);
 
-                    If the stock has a stock_flexibility value, we multiply the multiplier by this value.
-
-                    We then multiply the current price by this multiplier to get the new price.
-                */
-                var valueMultiplier = 1
-                
-                if (quantityDelivered >= stock_exchange_instance[item].quantity_factor) {
-                    valueMultiplier = valueMultiplier - (_PRICE_EVOLUTION_FACTOR * (quantityDelivered / stock_exchange_instance[item].quantity_factor));
+                if (newPrice < stock_exchange_instance[item].min_price) {
+                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].min_price;
+                } else if (newPrice > stock_exchange_instance[item].max_price) {
+                    stock_exchange_instance[item].current_price = stock_exchange_instance[item].max_price;
+                } else {
+                    stock_exchange_instance[item].current_price = newPrice;
                 }
-
-                if (stock_exchange_generals[region] && stock_exchange_generals[region]["stock_flexibility"]) {
-                    valueMultiplier *= stock_exchange_generals[region]["stock_flexibility"];
-                }
-
-                stock_exchange_instance[item].current_price *= valueMultiplier;
-
-                // Round the price to the nearest integer
-                stock_exchange_instance[item].current_price = Math.floor(
-                    stock_exchange_instance[item].current_price
-                );
-
-                stock_exchange_instance[item].current_price = Math.max(
-                    stock_exchange_instance[item].min_price,
-                    Math.min(
-                        stock_exchange_instance[item].current_price,
-                        stock_exchange_instance[item].max_price
-                    )
-                );
 
             }
         } else if (types == "ageable_booze") {
@@ -540,6 +599,8 @@ function updateStockPrices(region, delivery, player) {
 
 
             save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+        } else {
+            npc.say("Invalid delivery type: " + types);
         }
     }
     save_data(stock_exchange_instance);
@@ -601,6 +662,25 @@ function clear_crate(item, delivery) {
     item.getNbt().getCompound("inventory").setList("Items", left_over);
 }
 
+// Function to clear only sold content from the barrel
+function clear_barrel(item, delivery) {
+    var fluid = item.getNbt().getCompound("tank").getString("currentFluid");
+    fluid = "liquid:" + fluid;
+
+    // npc.say("Clearing " + fluid + " from the barrel whose NBt is: " + item.getNbt().getCompound("tank").toJsonString());
+    // npc.say("Delivery: " + JSON.stringify(delivery));
+
+    // var liquid_name = item.getNbt().getCompound("tank").getString("currentFluid");
+    // npc.say("You have successfully sold " + delivery["fluid"][fluid]["count"] + " buckets of " + liquid_name + "!");
+
+    if (delivery["fluid"]) {
+        if (delivery["fluid"][fluid]) {
+            // npc.say("Clearing " + fluid + " from the barrel.");
+            item.getNbt().getCompound("tank").setDouble("fluidLevel", 0);
+            item.getNbt().getCompound("tank").setString("currentFluid", "");
+        }
+    }
+}
 
 // Function to load data from a specified JSON file
 function load_data() {
