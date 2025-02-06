@@ -332,7 +332,7 @@ sets:
                 x: -4619.0
                 y: 74.0
                 z: -477.0
-                label: Cheese &amp; Milk Wholesale (sell)
+                label: The Cheesewheel Caravan - Cheese and Milk export
             marker_2:
                 world: world
                 markup: false
