@@ -1158,6 +1158,205 @@
             "quantity_factor": 16
         }
     },
+    "Monsalac Cheesemaking": {
+        "animania:holstein_cheese_wheel:0": {
+            "display_name": "Holstein Cheese Wheel",
+            "reference_price": 28000,
+            "current_price": 28000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "animania:jersey_cheese_wheel:0": {
+            "display_name": "Jersey Cheese Wheel",
+            "reference_price": 32000,
+            "current_price": 32000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "animania:goat_cheese_wheel:0": {
+            "display_name": "Goat Cheese Wheel",
+            "reference_price": 30000,
+            "current_price": 30000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "animania:sheep_cheese_wheel:0": {
+            "display_name": "Sheep Cheese Wheel",
+            "reference_price": 30000,
+            "current_price": 30000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_waxed:25": {
+            "display_name": "Cheddar Cheese Wheel",
+            "reference_price": 53000,
+            "current_price": 53000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:25": {
+            "display_name": "Gorgonzola Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:57": {
+            "display_name": "Emmentaler Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:89": {
+            "display_name": "Appenzeller Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:121": {
+            "display_name": "Asiago Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:153": {
+            "display_name": "Parmesan Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_waxed:57": {
+            "display_name": "Monterey Cheese Wheel",
+            "reference_price": 53000,
+            "current_price": 53000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_waxed:121": {
+            "display_name": "Provolone Cheese Wheel",
+            "reference_price": 53000,
+            "current_price": 53000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_waxed:89": {
+            "display_name": "Gouda Cheese Wheel",
+            "reference_price": 53000,
+            "current_price": 53000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        },
+        "growthcraft_milk:cheese_aged:185": {
+            "display_name": "Casu Marzu Cheese Wheel",
+            "reference_price": 50000,
+            "current_price": 50000,
+            "min_price": 10000,
+            "max_price": 100000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 300
+        }
+    },
+    "Monsalac Milk": {
+        "liquid:milk": {
+            "display_name": "Milk",
+            "type": "liquid",
+            "reference_price": 500,
+            "current_price": 500,
+            "min_price": 50,
+            "max_price": 5000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 30
+        },
+        "liquid:milk_holstein": {
+            "display_name": "Holstein Milk",
+            "type": "liquid",
+            "reference_price": 1000,
+            "current_price": 1000,
+            "min_price": 100,
+            "max_price": 10000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 30
+        },
+        "liquid:milk_jersey": {
+            "display_name": "Jersey Milk",
+            "type": "liquid",
+            "reference_price": 2000,
+            "current_price": 2000,
+            "min_price": 200,
+            "max_price": 20000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 30
+        },
+        "liquid:milk_goat": {
+            "display_name": "Goat Milk",
+            "type": "liquid",
+            "reference_price": 1500,
+            "current_price": 1500,
+            "min_price": 150,
+            "max_price": 15000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 30
+        },
+        "liquid:milk_sheep": {
+            "display_name": "Sheep Milk",
+            "type": "liquid",
+            "reference_price": 1500,
+            "current_price": 1500,
+            "min_price": 150,
+            "max_price": 15000,
+            "quantity_sold": 0,
+            "last_sold_time": 0,
+            "quantity_factor": 30
+        }
+    },
     "Region Generals": {
         "Gramados Farming": {
             "stock_multiplier": 1,
@@ -1203,6 +1402,16 @@
             "stock_multiplier": 1,
             "stock_flexibility": 1,
             "variety_bonus": 0.2
+        },
+        "Monsalac Cheesemaking": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1,
+            "variety_bonus": 0.1
+        },
+        "Monsalac Milk": {
+            "stock_multiplier": 1,
+            "stock_flexibility": 1,
+            "variety_bonus": -0.9
         }
     }
 }
