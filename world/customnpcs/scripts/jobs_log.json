@@ -337,19 +337,29 @@
                 "JobID": 51,
                 "JobName": "Farmer",
                 "StartTime": 2272776282,
-                "Region": "Greenfield"
+                "Region": "Greenfield",
+                "Type": "Advanced"
             },
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2351850720,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "56": {
+                "JobID": 56,
+                "JobName": "Lumberjack",
+                "StartTime": 2377574304,
+                "Region": "Greenfield",
+                "Type": "Starter"
             },
             "154": {
                 "JobID": 154,
                 "JobName": "Farmer",
                 "StartTime": 2337866239,
-                "Region": "Farmiston"
+                "Region": "Farmiston",
+                "Type": "Advanced"
             }
         }
     },
@@ -539,6 +549,13 @@
                 "StartTime": 2376932675,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "211": {
+                "JobID": 211,
+                "JobName": "Farmer",
+                "StartTime": 2377572983,
+                "Region": "Monsalac",
+                "Type": "Advanced"
             }
         }
     }
