@@ -1,12 +1,12 @@
 {
     "Region_Job_Limits": {
         "Gramados": {
-            "Starter": 1,
+            "Starter": 2,
             "Advanced": 3,
             "Prestige": 1
         },
         "Greenfield": {
-            "Starter": 2,
+            "Starter": 1,
             "Advanced": 2,
             "Prestige": 1
         },
@@ -16,18 +16,18 @@
             "Prestige": 0
         },
         "Allenis": {
-            "Starter": 1,
-            "Advanced": 2,
+            "Starter": 0,
+            "Advanced": 1,
             "Prestige": 1
         },
         "Monsalac": {
             "Starter": 1,
-            "Advanced": 2,
+            "Advanced": 3,
             "Prestige": 1
         },
         "Solterra": {
             "Starter": 1,
-            "Advanced": 2,
+            "Advanced": 3,
             "Prestige": 1
         }
     },
