@@ -58,14 +58,14 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p2.0 - Get Hired for a Job",
-    "AvailabilityDialog": 2,
+    "DialogTitle": "p2 - Get Hired for a Job",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 379,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
     "DialogText": "Now that you’ve seen what Gramados has to offer, it’s time to get you hired! Select one of the jobs below, and I’ll assign it to you immediately. Remember, you can only pick one starter job on this island, but you’re free to take a different starter job on another island later.",
     "AvailabilityQuest4Id": -1,
@@ -84,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731781789556L,
+        "TimePast": 1738801690162L,
         "Time": 0L,
         "Subject": ""
     }

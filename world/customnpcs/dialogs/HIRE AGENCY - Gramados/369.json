@@ -58,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.0 - welcome",
+    "DialogTitle": "p0 - welcome",
     "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -92,7 +92,7 @@ Also, keep in mind: you can only have one starter job per region. But you’re f
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731780696321L,
+        "TimePast": 1738801364813L,
         "Time": 0L,
         "Subject": ""
     }

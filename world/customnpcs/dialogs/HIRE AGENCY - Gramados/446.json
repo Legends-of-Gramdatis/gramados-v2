@@ -1,13 +1,43 @@
 {
-    "DialogShowWheel": 0b,
+    "DialogShowWheel": 1b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 441,
+                "Title": "I want to quit Gramados Lumberjack",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 445,
+                "Title": "I want to quit Gramados Terracotta Factory",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 436,
+                "Title": "I want to quit Gramados Concrete Factory",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 378,
+    "DialogId": 446,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p3.2 - Cancel Quit Starter Job",
+    "DialogTitle": "p3.1 - Confirm Job Quitting",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,7 +67,8 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "No problem! Let me know if there’s anything else I can help with.",
+    "DialogText": "What job do you wish to quit?
+(only possible if you have had that job for over 24h)",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +85,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1738801342561L,
+        "TimePast": 1738801750862L,
         "Time": 0L,
         "Subject": ""
     }

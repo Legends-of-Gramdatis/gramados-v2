@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - Tour of the Starter Worksites",
+    "DialogTitle": "p1 - Tour of the Starter Worksites",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -54,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731781846673L,
+        "TimePast": 1738801369213L,
         "Time": 0L,
         "Subject": ""
     }
