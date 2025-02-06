@@ -151,12 +151,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 5b,
+                "id": "variedcommodities:plans",
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e100G"
+                            "§e1K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -206,7 +206,7 @@
                     }
                 },
                 "id": "variedcommodities:plans",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -260,7 +260,7 @@
                     }
                 },
                 "id": "variedcommodities:plans",
-                "Count": 2b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -344,43 +344,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 19b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:barrier",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§cDue to some bugs from this pack, this trade is disabled until the issue is solved."
-                        ],
-                        "Name": "§4Temporary Disabled"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 21b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:barrier",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§cDue to some bugs from this pack, this trade is disabled until the issue is solved."
-                        ],
-                        "Name": "§4Temporary Disabled"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 22b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -455,7 +419,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:unuparts.unuparts_part_unu_barrel_wooden",
+                "id": "mts:ivv.crate",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -485,7 +449,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:unuparts.unuparts_part_unu_barrel_metal_grey",
+                "id": "mts:ivv.crate_metallic",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -495,7 +459,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.backpack_black",
+                "id": "mts:ivv.backpack_blue",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -525,7 +489,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.backpack_blue",
+                "id": "mts:unuparts.unuparts_part_unu_barrel_wooden",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -555,7 +519,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.crate",
+                "id": "mts:unuparts.unuparts_part_unu_barrel_metal_grey",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -585,7 +549,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.crate_metallic",
+                "id": "mts:unuparts.unuparts_part_unu_barrel_metal_red",
                 "Count": 1b,
                 "Damage": 0s
             },
