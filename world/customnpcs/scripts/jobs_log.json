@@ -550,11 +550,25 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
+            "154": {
+                "JobID": 154,
+                "JobName": "Farmer",
+                "StartTime": 2377680133,
+                "Region": "Farmiston",
+                "Type": "Advanced"
+            },
             "211": {
                 "JobID": 211,
                 "JobName": "Farmer",
                 "StartTime": 2377572983,
                 "Region": "Monsalac",
+                "Type": "Advanced"
+            },
+            "342": {
+                "JobID": 342,
+                "JobName": "Farmer",
+                "StartTime": 2377662253,
+                "Region": "Gramados",
                 "Type": "Advanced"
             }
         }
