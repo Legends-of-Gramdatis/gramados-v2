@@ -2,6 +2,24 @@
     "TraderCurrency": {
         "NpcMiscInv": [
             {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
                 "Slot": 1b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -182,24 +200,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e100G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -229,6 +229,24 @@
                     "display": {
                         "Lore": [
                             "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e20G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -278,6 +296,16 @@
     "TraderSold": {
         "NpcMiscInv": [
             {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "growthcraft_bees:bees_wax",
+                "Count": 16b,
+                "Damage": 0s
+            },
+            {
                 "Slot": 1b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -305,7 +333,7 @@
                 },
                 "id": "growthcraft_bees:bees_wax",
                 "Count": 16b,
-                "Damage": 0s
+                "Damage": 14s
             },
             {
                 "Slot": 4b,
@@ -335,7 +363,7 @@
                 },
                 "id": "growthcraft_bees:bees_wax",
                 "Count": 16b,
-                "Damage": 14s
+                "Damage": 15s
             },
             {
                 "Slot": 7b,
@@ -365,7 +393,7 @@
                 },
                 "id": "growthcraft_bees:bees_wax",
                 "Count": 16b,
-                "Damage": 15s
+                "Damage": 4s
             },
             {
                 "Slot": 10b,
@@ -376,16 +404,6 @@
                 "id": "growthcraft_cellar:brew_kettle",
                 "Count": 1b,
                 "Damage": 0s
-            },
-            {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "growthcraft_bees:bees_wax",
-                "Count": 16b,
-                "Damage": 4s
             },
             {
                 "Slot": 13b,
@@ -404,6 +422,16 @@
                     }
                 },
                 "id": "growthcraft:salt",
+                "Count": 64b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:bowl",
                 "Count": 64b,
                 "Damage": 0s
             },
