@@ -236,6 +236,24 @@
                 "Damage": 0s
             },
             {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
                 "Slot": 16b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -455,6 +473,16 @@
                     }
                 },
                 "id": "mts:ivv.screwdriver",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:lead",
                 "Count": 1b,
                 "Damage": 0s
             },
