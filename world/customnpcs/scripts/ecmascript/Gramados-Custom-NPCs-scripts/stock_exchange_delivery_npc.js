@@ -536,7 +536,7 @@ function updateStockPrices(region, delivery, player) {
 
                 var proportion = delivery[types][item]["count"] / stock_exchange_instance[item].quantity_factor;
                 var _PRICE_EVOLUTION = proportion * _PRICE_EVOLUTION_FACTOR;
-                var newPrice = stock_exchange_instance[item].current_price * ((1 - _PRICE_EVOLUTION) * stock_exchange_generals[region]["stock_flexibility"]);
+                var newPrice = stock_exchange_instance[item].current_price * (1 - (_PRICE_EVOLUTION * stock_exchange_generals[region]["stock_flexibility"]));
 
                 newPrice = Math.floor(newPrice);
 
