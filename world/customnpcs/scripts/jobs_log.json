@@ -1,18 +1,42 @@
 {
-    "Region_To_ID": {
-        "Gramados": 379,
-        "Greenfield": 380,
-        "Farmiston": 382,
-        "Allenis": 381,
-        "Monsalac": 383
+    "Region_Job_Limits": {
+        "Gramados": {
+            "Starter": 1,
+            "Advanced": 3,
+            "Prestige": 1
+        },
+        "Greenfield": {
+            "Starter": 2,
+            "Advanced": 2,
+            "Prestige": 1
+        },
+        "Farmiston": {
+            "Starter": 1,
+            "Advanced": 2,
+            "Prestige": 0
+        },
+        "Allenis": {
+            "Starter": 1,
+            "Advanced": 2,
+            "Prestige": 1
+        },
+        "Monsalac": {
+            "Starter": 1,
+            "Advanced": 2,
+            "Prestige": 1
+        },
+        "Solterra": {
+            "Starter": 1,
+            "Advanced": 2,
+            "Prestige": 1
+        }
     },
-    "Regions_To_Quit_ID": {
-        "Gramados": 384
-    },
-    "Starter_Jobs": [
+    "Jobs": [
         {
             "JobID": 59,
             "JobLock": 60,
+            "JobQuit": 441,
+            "Type": "Starter",
             "JobName": "Lumberjack",
             "Region": "Gramados",
             "Perms": [
@@ -22,6 +46,8 @@
         {
             "JobID": 54,
             "JobLock": 55,
+            "JobQuit": 436,
+            "Type": "Starter",
             "JobName": "Concrete Factory Worker",
             "Region": "Gramados",
             "Perms": [
@@ -31,6 +57,8 @@
         {
             "JobID": 154,
             "JobLock": 155,
+            "JobQuit": 437,
+            "Type": "Advanced",
             "JobName": "Farmer",
             "Region": "Farmiston",
             "Perms": []
@@ -38,6 +66,8 @@
         {
             "JobID": 342,
             "JobLock": 343,
+            "JobQuit": 438,
+            "Type": "Advanced",
             "JobName": "Farmer",
             "Region": "Gramados",
             "Perms": []
@@ -45,13 +75,17 @@
         {
             "JobID": 233,
             "JobLock": 234,
-            "JobName": "Farmer",
+            "JobQuit": 426,
+            "Type": "Prestige",
+            "JobName": "Brewer",
             "Region": "Allenis",
             "Perms": []
         },
         {
             "JobID": 51,
             "JobLock": 53,
+            "JobQuit": 439,
+            "Type": "Advanced",
             "JobName": "Farmer",
             "Region": "Greenfield",
             "Perms": []
@@ -59,13 +93,17 @@
         {
             "JobID": 211,
             "JobLock": 212,
+            "JobQuit": 440,
+            "Type": "Advanced",
             "JobName": "Farmer",
-            "Region": "MonsalacUnlimited",
+            "Region": "Monsalac",
             "Perms": []
         },
         {
             "JobID": 56,
             "JobLock": 57,
+            "JobQuit": 442,
+            "Type": "Starter",
             "JobName": "Lumberjack",
             "Region": "Greenfield",
             "Perms": [
@@ -75,25 +113,112 @@
         {
             "JobID": 63,
             "JobLock": 64,
+            "JobQuit": 443,
+            "Type": "Advanced",
             "JobName": "Mechanic",
-            "Region": "FarmistonUnlimited",
+            "Region": "Farmiston",
             "Perms": []
         },
         {
             "JobID": 66,
             "JobLock": 65,
+            "JobQuit": 444,
+            "Type": "Advanced",
             "JobName": "Mechanic",
-            "Region": "GramadosUnlimited",
+            "Region": "Gramados",
             "Perms": []
         },
         {
             "JobID": 61,
             "JobLock": 62,
+            "JobQuit": 445,
+            "Type": "Starter",
             "JobName": "Terracotta Factory Worker",
             "Region": "Gramados",
             "Perms": [
                 "permission_regions.Gramados_material_factory_terracotta"
             ]
+        },
+        {
+            "JobID": 416,
+            "JobLock": 417,
+            "JobQuit": 427,
+            "Type": "Prestige",
+            "JobName": "Brewer",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 408,
+            "JobLock": 412,
+            "JobQuit": 428,
+            "Type": "Advanced",
+            "JobName": "Farmer",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 419,
+            "JobLock": 418,
+            "JobQuit": 429,
+            "Type": "Starter",
+            "JobName": "Fisherman",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 411,
+            "JobLock": 415,
+            "JobQuit": 430,
+            "Type": "Starter",
+            "JobName": "Lumberjack",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 409,
+            "JobLock": 413,
+            "JobQuit": 431,
+            "Type": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 420,
+            "JobLock": 421,
+            "JobQuit": 432,
+            "Type": "Prestige",
+            "JobName": "Musician",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 410,
+            "JobLock": 414,
+            "JobQuit": 433,
+            "Type": "Prestige",
+            "JobName": "Shopkeeper",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 422,
+            "JobLock": 423,
+            "JobQuit": 434,
+            "Type": "Advanced",
+            "JobName": "Stonemasson",
+            "Region": "Solterra",
+            "Perms": []
+        },
+        {
+            "JobID": 424,
+            "JobLock": 425,
+            "JobQuit": 435,
+            "Type": "Starter",
+            "JobName": "Terracotta",
+            "Region": "Solterra",
+            "Perms": []
         }
     ],
     "e6f54888-a9dc-4514-af06-f72d1cc035b1": {
@@ -116,31 +241,7 @@
                 "JobID": 66,
                 "JobName": "Mechanic",
                 "StartTime": 2374672642,
-                "Region": "GramadosUnlimited"
-            }
-        }
-    },
-    "d0603f61-f4f7-4006-b731-cceab2a2b6a5": {
-        "Name": "TheOddlySeagull",
-        "JobHistory": {},
-        "ActiveJobs": {
-            "59": {
-                "JobID": 59,
-                "JobName": "Lumberjack",
-                "StartTime": 2245219184,
                 "Region": "Gramados"
-            },
-            "65": {
-                "JobID": 65,
-                "JobName": "Mechanic",
-                "StartTime": 2372861762,
-                "Region": "GramadosUnlimited"
-            },
-            "154": {
-                "JobID": 154,
-                "JobName": "Farmer",
-                "StartTime": 2375922859,
-                "Region": "Farmiston"
             }
         }
     },
@@ -289,13 +390,22 @@
                 "JobID": 56,
                 "JobName": "Lumberjack",
                 "StartTime": 2373644527,
-                "Region": "Greenfield"
+                "Region": "Greenfield",
+                "Type": "Starter"
             },
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
                 "StartTime": 2373644527,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "211": {
+                "JobID": 211,
+                "JobName": "Farmer",
+                "StartTime": 2376905192,
+                "Region": "Monsalac",
+                "Type": "Advanced"
             }
         }
     },
@@ -401,6 +511,24 @@
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2374461669,
                 "Region": "Gramados"
+            }
+        }
+    },
+    "a9dd8246-5614-434d-96a6-14bc51c18371": {
+        "Name": "FLYnG_PANDaA",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "d0603f61-f4f7-4006-b731-cceab2a2b6a5": {
+        "Name": "TheOddlySeagull",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2376932675,
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     }
