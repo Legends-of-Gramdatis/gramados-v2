@@ -1310,13 +1310,13 @@
             "max_price": 5000,
             "quantity_sold": 0,
             "last_sold_time": 0,
-            "quantity_factor": 30
+            "quantity_factor": 60
         },
         "liquid:milk_holstein": {
             "display_name": "Holstein Milk",
             "type": "liquid",
             "reference_price": 1000,
-            "current_price": 917,
+            "current_price": 1000,
             "min_price": 100,
             "max_price": 10000,
             "quantity_sold": 0,
@@ -1327,7 +1327,7 @@
             "display_name": "Jersey Milk",
             "type": "liquid",
             "reference_price": 2000,
-            "current_price": 1900,
+            "current_price": 2000,
             "min_price": 200,
             "max_price": 20000,
             "quantity_sold": 0,
