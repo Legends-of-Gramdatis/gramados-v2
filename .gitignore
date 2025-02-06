@@ -64,6 +64,7 @@ world/customnpcs/scripts/allenis_north_region.json
 world/customnpcs/scripts/world_data*.json
 world/customnpcs/scripts/forge_scripts.json
 world/customnpcs/scripts/testing.json
+world/customnpcs/scripts/stock_spying.json
 
 gramados_stocks/*
 myenv/*
