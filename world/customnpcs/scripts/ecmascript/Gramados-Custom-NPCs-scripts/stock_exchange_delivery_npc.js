@@ -80,20 +80,7 @@ var crates_ids = [
     "mts:iav.iav_storage_l_crate_6"
 ];
 
-/*
-    When you add a new region, be sure to add the region name to the switch_region() function along with the _REGIONS array.
-*/
-var _REGIONS = [
-    "Gramados Farming",
-    "Gramados Lumber",
-    "Gramados Industrial Concrete",
-    "Gramados Industrial Terracotta",
-    "Greenfield Farming",
-    "Greenfield Brewing",
-    "Greenfield Lumber",
-    "Farmiston",
-    "Allenis"
-];
+var _REGIONS = [];
 
 var NPC_REGION = "Gramados Farming";
 var region_specifics = {};
@@ -105,6 +92,16 @@ var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json"; // Pa
 
 var npc; // Global variable to store the NPC instance
 var world; // Get the world where the NPC is located
+
+// Function to get the list of available regions from json
+function listRegions() {
+    // Load the stock exchange data
+    var data = load_data();
+    // Get the list of keys from "Region Generals" object
+    _REGIONS = Object.keys(data).filter(function (key) {
+        return key !== "Region Generals";
+    });
+}
 
 
 // Load the stock exchange data when the NPC is initialized
@@ -120,6 +117,7 @@ function init(event) {
         NPC_REGION = stored_data.get("region");
         switch_region();
     } else {
+        listRegions();
         npc.say("I am not set up yet. Please use a command block renamed to the stock I manage.");
         npc.say("Valid names: " + _REGIONS.join(", "));
         switch_region();
@@ -171,6 +169,16 @@ function switch_region() {
         region_specifics = {
             helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Allenis Farmer job.",
             jobId: 233
+        }
+    } else if (NPC_REGION == "Monsalac Cheesemaking") {
+        region_specifics = {
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Monsalac Farmer job.",
+            jobId: 211
+        }
+    } else if (NPC_REGION == "Monsalac Milk") {
+        region_specifics = {
+            helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Monsalac Farmer job.",
+            jobId: 211
         }
     } else {
         region_specifics = {
