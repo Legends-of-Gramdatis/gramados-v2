@@ -229,26 +229,44 @@
                 "JobID": 51,
                 "JobName": "Farmer",
                 "StartTime": 982114756,
-                "Region": "Greenfield"
+                "Region": "Greenfield",
+                "Type": "Advanced"
             },
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 982114756,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2378074069,
+                "Region": "Gramados",
+                "Type": "Starter"
             },
             "66": {
                 "JobID": 66,
                 "JobName": "Mechanic",
                 "StartTime": 2374672642,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Advanced"
             }
         }
     },
     "5fb2c4e1-2833-4a95-bd52-acde1cccce9f": {
         "Name": "Beastatio",
         "JobHistory": {},
-        "ActiveJobs": {}
+        "ActiveJobs": {
+            "56": {
+                "JobID": 56,
+                "JobName": "Lumberjack",
+                "StartTime": 2377973108,
+                "Region": "Greenfield",
+                "Type": "Starter"
+            }
+        }
     },
     "62bbc150-0fba-41b3-a8fd-e52f443ae9f1": {
         "Name": "hellcat1609",
