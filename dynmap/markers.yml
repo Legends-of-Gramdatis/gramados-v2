@@ -863,6 +863,14 @@ sets:
                 y: 74.0
                 z: -879.0
                 label: Buglaton Town Hall
+            marker_12:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -4672.0
+                y: 80.0
+                z: 6817.0
+                label: Caldero Town Hall
         lines: {
             }
         layerprio: 0
@@ -2648,6 +2656,14 @@ sets:
                 y: 71.0
                 z: -4882.0
                 label: The Peace Meadows Bell Tower
+            marker_21:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -4669.0
+                y: 77.0
+                z: 6759.0
+                label: Caldero Church
         lines: {}
         layerprio: 0
     Bridges:
