@@ -17,6 +17,7 @@ For the vehicles that aren't listed, here are the prices:
 - AliceMotors Kitsune: 25000 g
 - AliceMotors Yumi: 21500 g
 - AliceMotors Utesu: 21500 g
+- Alicemotors NRV 300zx: 45000 g
 
 ## UNU Vehicles
 - UNU Wolf: 45000 g (+10k for each .50 Cal MMG)
