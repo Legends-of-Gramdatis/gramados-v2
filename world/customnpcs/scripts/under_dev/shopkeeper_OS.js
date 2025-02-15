@@ -212,8 +212,7 @@ function openShop(player, shopId) {
     if (
         ensureShopExists(player, shopId, serverShops) &&
         ensureShopDataComplete(player, shopId, serverShops, true).valid
-    )
-    {
+    ) {
         var shopData = serverShops[shopId];
 
         // check permissions
@@ -612,11 +611,11 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
     }
 
     // Critical properties (delete shop if missing)
-    if (!shopData.property || !shopData.property.location || 
-        shopData.property.location.x == null || 
-        shopData.property.location.y == null || 
+    if (!shopData.property || !shopData.property.location ||
+        shopData.property.location.x == null ||
+        shopData.property.location.y == null ||
         shopData.property.location.z == null) {
-        
+
         missing.push("location");
         critical = true;
         valid = false;
@@ -874,7 +873,7 @@ function getPermissions(player, playerShops, shopID) {
         permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
         permissions.push(PERMISSION_TAKE_MONEY);
     } else if (playerShops[shopID].roles.stock_keepers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP); 
+        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
         permissions.push(PERMISSION_MANAGE_STOCK);
     } else if (playerShops[shopID].roles.assistants.includes(player.getName())) {
         permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
