@@ -86,6 +86,14 @@ function chat(event) {
         }
 
         createShop(player, type, region, sub_region, convertUnderscore(name));
+    } else if (message.startsWith("$shop delete")) {    
+        var args = message.split(" ");
+        if (args.length === 3) {
+            var shopId = parseInt(args[2]);
+            deleteShop(player, shopId);
+        } else {
+            player.message("Invalid command! Usage: $shop delete <ID>");
+        }
     } else if (message.startsWith("$shop set")) {
         var args = message.split(" ");
         if (args.length < 3) {
@@ -319,6 +327,21 @@ function createShop(player, type, region, sub_region, display_name) {
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
     player.message("Shop created with ID: " + shopId);
+}
+
+// ------------------------------------------------------------------------------------------------------------
+// Delete a shop
+// ------------------------------------------------------------------------------------------------------------
+function deleteShop(player, shopId) {
+    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!serverShops) {
+        player.message("No shop data found! Contact an admin!");
+        return;
+    }
+
+    delete serverShops[shopId];
+    saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+    player.message("Shop deleted!");
 }
 
 // ------------------------------------------------------------------------------------------------------------
