@@ -284,3 +284,8 @@ The region (Island) where the shop is located.
 
 #### sub_region (string):
 The sub-region (town or district) where the shop is located.
+
+## GUI
+### Shopkeeper GUI
+The GUI will be opennable from the shop's cashier.  
+It allows to visually manage the shop's stock, prices, and more. The GUI is still in very early development, as it doesn't even have official sketches yet. I will update this document when the GUI the part before the GUI is done.
