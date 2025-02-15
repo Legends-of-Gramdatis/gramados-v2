@@ -64,10 +64,10 @@ function chat(event) {
 
         We will split each arguments, then loop through them to check if they are valid
         */
-        var name = "unspecified";
-        var type = "unspecified";
-        var region = "unspecified";
-        var sub_region = "unspecified";
+        var name = null;
+        var type = null;
+        var region = null;
+        var sub_region = null;
 
         if (args.length > 2) {
             for (var i = 2; i < args.length; i++) {
@@ -274,9 +274,9 @@ function createShop(player, type, region, sub_region, display_name) {
 
     var shopId = 1;
     while (serverShops[shopId]) {
-        // world.broadcast("Shop ID " + shopId + " already exists!");
+        world.broadcast("Shop ID " + shopId + " already exists!");
         shopId++;
-        // world.broadcast("Trying ID " + shopId + "...");
+        world.broadcast("Trying ID " + shopId + "...");
     }
 
     serverShops[shopId] = {
@@ -295,9 +295,9 @@ function createShop(player, type, region, sub_region, display_name) {
         },
         property: {
             location: {
-                x: player.getX(),
-                y: player.getY(),
-                z: player.getZ()
+                x: Math.floor(player.getX()),
+                y: Math.floor(player.getY()),
+                z: Math.floor(player.getZ())
             },
             stock_room: [
             ],
@@ -749,6 +749,9 @@ function shopExists(shopId, playerShops) {
 
 // Function to convert a "_" separated string to a " " separated string
 function convertUnderscore(string) {
+    if (!string) {
+        return null;
+    }
     return string.replace(/_/g, " ");
 }
 
