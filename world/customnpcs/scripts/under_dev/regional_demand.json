@@ -1,0 +1,32 @@
+{
+    "Local Demands": {
+        "Solterra": {
+            "Countryside": {
+                "entries": [
+                    {
+                        "name": "essential_goods_food_drinks",
+                        "wheight": 10
+                    }
+                ],
+                "wealth_level": "low",
+                "demand_multiplier": 1.2
+            },
+            "Caldero": {
+            }
+        },
+        "Gramados": {
+            "Countryside": {
+            },
+            "Gramados_City": {
+            },
+            "Petrolton": {
+            }
+        },
+        "Monsalac": {
+            "Countryside": {
+            },
+            "Chaseals": {
+            }
+        }
+    }
+}
