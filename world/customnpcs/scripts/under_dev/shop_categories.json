@@ -1,0 +1,69 @@
+{
+    "entries": [
+        {
+            "display_name": "Essencial Goods - Food & Drinks",
+            "name": "essential_goods_food_drinks",
+            "items": [
+                {
+                    "id": "harvestcraft:caramelitem",
+                    "damage": 0,
+                    "name": "Caramel",
+                    "VAT": "reduced",
+                    "price": 150
+                },
+                {
+                    "id": "harvestcraft:colasodaitem",
+                    "damage": 0,
+                    "name": "Cola Soda",
+                    "VAT": "reduced",
+                    "price": 250
+                },
+                {
+                    "id": "growthcraft_milk:bottlefluid_milk",
+                    "damage": 0,
+                    "name": "Milk Bottle",
+                    "VAT": "reduced",
+                    "price": 200
+                },
+                {
+                    "id": "minecraft:egg",
+                    "damage": 0,
+                    "name": "Egg",
+                    "VAT": "reduced",
+                    "price": 50
+                }
+            ]
+        },
+        {
+            "display_name": "Kitchen Tools",
+            "name": "kitchen_tools",
+            "items": [
+                {
+                    "id": "harvestcraft:cuttingboarditem:0",
+                    "name": "Cutting Board",
+                    "VAT": "standard",
+                    "price": 100
+                },
+                {
+                    "id": "harvestcraft:potitem:0",
+                    "name": "Pot",
+                    "VAT": "standard",
+                    "price": 100
+                },
+                {
+                    "id": "harvestcraft:skilletitem:0",
+                    "name": "Skillet",
+                    "VAT": "standard",
+                    "price": 100
+                },
+                {
+                    "id": "harvestcraft:saucepanitem:0",
+                    "name": "Saucepan",
+                    "VAT": "standard",
+                    "price": 100
+                }
+            ]
+        }
+
+    ]
+}
