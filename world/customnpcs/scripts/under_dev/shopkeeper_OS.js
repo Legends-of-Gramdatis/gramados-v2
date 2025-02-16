@@ -237,6 +237,20 @@ function chat(event) {
         } else {
             player.message("Invalid command! Usage: $shop close <ID>");
         }
+    } else if (message.startsWith("$shop add stock")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var price = parseInt(args[3]);
+            addStock(player, price);
+        }
+
+        addStock(player, price);
+    } else if (message.startsWith("$shop remove stock")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var item = args[3];
+            removeStock(player, item);
+        }
     } else if (message === "$shop help") {
         player.message("Available commands:");
         player.message("$shop open - Open the shop");
@@ -255,36 +269,6 @@ function chat(event) {
         player.message("type - The type of the shop");
         player.message("region - The region of the shop");
     } else if (message.startsWith("$shop info")) {
-        var args = message.split(" ");
-        if (args.length === 3) {
-            var shopId = parseInt(args[2]);
-            if (isOwner(player, shopId)) {
-                shopInfo(player, shopId);
-            } else {
-                player.message("You can only get info from shops you own!");
-            }
-        } else {
-            player.message("Invalid command! Usage: $shop info <ID>");
-        }
-    } else if (message.startsWith("$shop add stock")) {
-        var args = message.split(" ");
-        if (args.length === 4) {
-            var price = parseInt(args[3]);
-            addStock(player, price);
-        }
-
-        addStock(player, price);
-    } else if (message.startsWith("$shop remove stock")) {
-        var args = message.split(" ");
-        if (args.length === 4) {
-            var item = args[3];
-            removeStock(player, item);
-        }
-    } else if (message === "$shop list stock") {
-        listStock(player);
-    } else if (message === "$shop list items") {
-        listItems(player);
-    } else if (message === "$shop list available items") {
         listAvailableItems(player);
     } else if (message === "$shop list") {
         listShops(player);
