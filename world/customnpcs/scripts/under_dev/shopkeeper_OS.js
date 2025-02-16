@@ -301,13 +301,18 @@ function chat(event) {
 // Open the shop
 // ------------------------------------------------------------------------------------------------------------
 function openShop(player, shopId, serverShops) {
-
     // Check integrity
     if (
         ensureShopExists(player, shopId, serverShops) &&
         ensureShopDataComplete(player, shopId, serverShops, true).valid
     ) {
         var shopData = serverShops[shopId];
+
+        // Check if player is the owner
+        if (shopData.roles.owner !== player.getName()) {
+            player.message("You don't own this shop!");
+            return false;
+        }
 
         // Check if shop is closed
         if (shopData.shop.is_open) {
@@ -316,7 +321,11 @@ function openShop(player, shopId, serverShops) {
         }
 
         // Check if player has another shop of similar type and region/subregion open
-        var playerShops = listShops(player);
+        var playerShops = listShops(player, serverShops);
+        if (playerShops.length === 0) {
+            player.message("You don't have any shops!");
+            return false;
+        }
         for (var i = 0; i < playerShops.length; i++) {
             var otherShopId = playerShops[i];
             var otherShop = serverShops[otherShopId];
@@ -356,6 +365,12 @@ function closeShop(player, shopId) {
     // Check integrity
     if (ensureShopExists(player, shopId, serverShops)) {
         var shopData = serverShops[shopId];
+
+        // Check if player is the owner
+        if (shopData.roles.owner !== player.getName()) {
+            player.message("You don't own this shop!");
+            return false;
+        }
 
         // Check if shop is open
         if (!shopData.shop.is_open) {
@@ -860,6 +875,7 @@ function listShops(player, serverShops) {
 
     var shops = [];
     for (var shopId in serverShops) {
+
         if (serverShops[shopId].roles.owner === player.getName()) {
             shops.push(shopId);
         }
