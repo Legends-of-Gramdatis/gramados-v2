@@ -392,7 +392,7 @@ function createShop(player, type, region, sub_region, display_name, money) {
             main_room: [],
             region: region,
             sub_region: sub_region,
-            stock_room_size: 0 // Initial value
+            stock_room_size: 0
         },
         shop: {
             display_name: display_name,
