@@ -2,105 +2,9 @@
     "ScriptEnabled": 1b,
     "ScriptConsole": [
         {
-            "Long": 1739693878919L,
-            "String": "tab 2:
-javax.script.ScriptException: TypeError: Cannot read property \"ActiveJobs\" from undefined in <eval> at line number 204
-	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
-	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
-	at noppes.npcs.EventHooks.onPlayerLogin(EventHooks.java:380)
-	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:294)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_487_ScriptPlayerEventHandler_invoke_PlayerLoggedInEvent.invoke(.dynamic)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
-	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
-	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
-	at net.minecraftforge.fml.common.FMLCommonHandler.firePlayerLoggedIn(FMLCommonHandler.java:575)
-	at net.minecraft.server.management.PlayerList.initializeConnectionToPlayer(PlayerList.java:219)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.completeServerSideConnection(NetworkDispatcher.java:255)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher.access$100(NetworkDispatcher.java:72)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:205)
-	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
-	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
-	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
-	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
-	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
-	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
-	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
-	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: <eval>:204 TypeError: Cannot read property \"ActiveJobs\" from undefined
-	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
-	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
-	at jdk.nashorn.internal.scripts.Script$Recompilation$80$7583A$\\^eval\\_.check_all_jobs(<eval>:204)
-	at jdk.nashorn.internal.scripts.Script$Recompilation$77$276A$\\^eval\\_.init(<eval>:17)
-	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
-	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
-	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
-	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
-	... 27 more"
-        },
-        {
-            "Long": 1739697062248L,
-            "String": "tab 2:
-javax.script.ScriptException: TypeError: Cannot read property \"ActiveJobs\" from undefined in <eval> at line number 204
-	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
-	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
-	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
-	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
-	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
-	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
-	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
-	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
-	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
-	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
-	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
-	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
-	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
-	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
-	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
-	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
-	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
-	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: <eval>:204 TypeError: Cannot read property \"ActiveJobs\" from undefined
-	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
-	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
-	at jdk.nashorn.internal.scripts.Script$Recompilation$560$7583A$\\^eval\\_.check_all_jobs(<eval>:204)
-	at jdk.nashorn.internal.scripts.Script$Recompilation$557$276A$\\^eval\\_.init(<eval>:17)
-	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
-	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
-	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
-	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
-	... 27 more"
-        },
-        {
-            "Long": 1739702338615L,
-            "String": "tab 3:
-javax.script.ScriptException: ReferenceError: \"playerShops\" is not defined in <eval> at line number 90
+            "Long": 1739715595281L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: Cannot read property \"3\" from undefined in <eval> at line number 874
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
@@ -126,12 +30,57 @@ javax.script.ScriptException: ReferenceError: \"playerShops\" is not defined in 
 	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
 	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
 	at java.lang.Thread.run(Thread.java:750)
-Caused by: <eval>:90 ReferenceError: \"playerShops\" is not defined
+Caused by: <eval>:874 TypeError: Cannot read property \"3\" from undefined
 	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
-	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
-	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
-	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
-	at jdk.nashorn.internal.scripts.Script$Recompilation$2000$709A$\\^eval\\_.chat(<eval>:90)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$1115$30098AA$\\^eval\\_.shopExists(<eval>:874)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$1114$709A$\\^eval\\_.chat(<eval>:89)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739715780098L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: Cannot read property \"shop\" from undefined in <eval> at line number 101
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:101 TypeError: Cannot read property \"shop\" from undefined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.get(Undefined.java:157)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$1244$709A$\\^eval\\_.chat(<eval>:101)
 	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
 	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
 	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
@@ -183,6 +132,12 @@ function init(event) {
 function chat(event) {
     var player = event.player;
     var message = event.message;
+    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+
+    if (!playerShops) {
+        player.message(\"No shops found!\");
+        return;
+    }
 
     /*
     List of shop commands (for dev purposes):
@@ -238,6 +193,10 @@ function chat(event) {
         var args = message.split(\" \");
         if (args.length === 3) {
             var shopId = parseInt(args[2]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message(\"Invalid shop ID: \" + args[2]);
+                return;
+            }
             deleteShop(player, shopId);
         } else {
             player.message(\"Invalid command! Usage: $shop delete <ID>\");
@@ -250,19 +209,14 @@ function chat(event) {
         }
 
         var shopId = parseInt(args[3]);
-        if (isNaN(shopId)) {
-            player.message(\"Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]\");
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message(\"Invalid shop ID: \" + args[3]);
             player.message(\"Use \\\"_\\\" for spaces in the values\");
             return;
         }
 
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message(\"No shops found!\");
-            return;
-        }
-
         var shop = playerShops[shopId];
+
         var name = shop.shop.display_name || null;
         var type = shop.shop.type || null;
         var region = shop.property.region || null;
@@ -280,14 +234,25 @@ function chat(event) {
                         type = value.value;
                         break;
                     case \"region\":
+                        if (!checkRegionExists(value.value)) {
+                            player.message(\"Invalid region: \" + value.value);
+                            return;
+                        }
                         region = value.value;
                         break;
                     case \"sub_region\":
+                        if (!checkSubRegionExists(region, value.value)) {
+                            player.message(\"Invalid sub-region: \" + value.value);
+                            return;
+                        }
                         sub_region = value.value;
                         break;
                     case \"money\":
                         money = parseInt(value.value) || 0;
                         break;
+                    default:
+                        player.message(\"Unknown property: \" + value.propertyName);
+                        return;
                 }
             }
         } else {
@@ -311,14 +276,8 @@ function chat(event) {
         }
 
         var shopId = parseInt(args[3]);
-        if (isNaN(shopId)) {
-            player.message(\"Invalid command! Usage: $shop property add <ID> [stock_room=<region>] [main_room=<region>]\");
-            return;
-        }
-
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message(\"No shops found!\");
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message(\"Invalid shop ID: \" + args[3]);
             return;
         }
 
@@ -349,12 +308,6 @@ function chat(event) {
         var shopId = parseInt(args[3]);
         if (isNaN(shopId)) {
             player.message(\"Invalid command! Usage: $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]\");
-            return;
-        }
-
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message(\"No shops found!\");
             return;
         }
 
@@ -1239,6 +1192,18 @@ function removeRoom(roomArray, value) {
         }
     }
     return false;
+}
+
+function checkRegionExists(region) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand[\"Local Demands\"];
+    return shopDemand && shopDemand[region];
+}
+
+function checkSubRegionExists(region, subRegion) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand[\"Local Demands\"];
+    return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }",
             "Console": [
             ],
