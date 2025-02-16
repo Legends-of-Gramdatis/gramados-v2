@@ -26,24 +26,6 @@ function chat(event) {
         return;
     }
 
-    /*
-    List of shop commands (for dev purposes):
-
-    $shop open <ID> - Open the shop
-    $shop close <ID> - Close the shop
-    $shop create <type> - Create a new shop
-    $shop set <property> <value> - Set a shop property
-    $shop help - Show available commands
-    $shop help properties - Show available properties
-    $shop info - Show shop info
-    $shop add stock <price> - Add hand held itemstack to shop stock with price per item
-    $shop remove stock <item> - Remove item from shop stock (using item name)
-    $shop list stock - List all items in shop stock
-    $shop list available items - List all items in player inventory that can be sold in the shop
-    $shop list - list all teh shops the player has
-    $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]
-    */
-
     if (message.startsWith("$shop create")) {
         var args = message.split(" ");
         var name = null;
@@ -324,16 +306,10 @@ function openShop(player, shopId, serverShops) {
             }
         }
 
-        // check permissions (this will come later)
-        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
         shopData.shop.is_open = true;
         saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
         player.message("Shop opened!");
         return true;
-        // } else {
-        //     player.message("You don't have permission to open this shop!");
-        //     return false;
-        // }
     } else {
         player.message("Shop cannot be opened!");
         return false;
@@ -362,16 +338,10 @@ function closeShop(player, shopId) {
             return false;
         }
 
-        // check permissions (this will come later)
-        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
         shopData.shop.is_open = false;
         saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
         player.message("Shop closed!");
         return true;
-        // } else {
-        //     player.message("You don't have permission to close this shop!");
-        //     return false;
-        // }
     } else {
         player.message("Shop cannot be closed!");
         return false;
@@ -381,7 +351,6 @@ function closeShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Create a shop
 // ------------------------------------------------------------------------------------------------------------
-// Create a new shop instance with first available ID
 function createShop(player, type, region, sub_region, display_name, money) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
@@ -418,10 +387,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
                 y: Math.floor(player.getY()),
                 z: Math.floor(player.getZ())
             },
-            stock_room: [
-            ],
-            main_room: [
-            ],
+            stock_room: [],
+            main_room: [],
             region: region,
             sub_region: sub_region
         },
@@ -438,7 +405,6 @@ function createShop(player, type, region, sub_region, display_name, money) {
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-    // player.message("Shop created with ID: " + shopId);
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -459,15 +425,6 @@ function deleteShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Set a shop property
 // ------------------------------------------------------------------------------------------------------------
-// function that will set multiple properties from a list of arguments
-function setShopProperties(player, shopId, args) {
-    // navigate through all arguments
-    for (var i = 0; i < args.length; i++) {
-        player.message("Setting property " + args[i]);
-        setShopProperty(player, shopId, args[i]);
-    }
-}
-
 function setShopProperty(player, property, value) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
@@ -493,9 +450,7 @@ function setShopProperty(player, property, value) {
             break;
         case "display_name":
             var shop = playerShops[shopId];
-            // replace "_" with " " in the display name
             value = value.replace(/_/g, " ");
-            // replace """ with "" in the display name
             value = value.replace(/""/g, "\"");
             shop.display_name = value;
             saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
@@ -505,6 +460,7 @@ function setShopProperty(player, property, value) {
             player.message("Invalid property!");
     }
 }
+
 // Set the type of the shop
 function setShopType(player, type) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
@@ -519,20 +475,13 @@ function setShopType(player, type) {
         return;
     }
 
-    // Check if shop type is valid (if one of teh entries in shop_categories.json has the "name" tag equal to the type)
     var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
     if (!shopCategories) {
         player.message("Shop categories not found!");
         return;
     }
 
-    var validType = false;
-    for (var i = 0; i < shopCategories["entries"].length; i++) {
-        if (shopCategories["entries"][i].name === type) {
-            validType = true;
-            break;
-        }
-    }
+    var validType = shopCategories["entries"].some(entry => entry.name === type);
 
     if (!validType) {
         player.message("Invalid shop type!");
@@ -544,12 +493,9 @@ function setShopType(player, type) {
         player.message("Shop type set!");
     }
 }
+
 // Set the region of the shop
 function setShopRegion(player, region) {
-    // The "region" argument is composed of two parts: the region name and the sub-region.
-    // Example: "Solterra-Countryside" or "Gramados-Gramados_City"
-    // We need to check the main region and its sub region exist in teh shop demand json
-
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
         player.message("No shops found!");
@@ -562,32 +508,23 @@ function setShopRegion(player, region) {
         return;
     }
 
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand["Local Demands"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)["Local Demands"];
     if (!shopDemand) {
         player.message("Shop demand not found!");
         return;
     }
 
-    var regionParts = region.split("-");
-    var mainRegion = regionParts[0];
-    var subRegion = regionParts[1];
-
-    if (!shopDemand[mainRegion]) {
-        player.message("Invalid main region! Available main regions: " + Object.keys(shopDemand).join(", "));
+    var [mainRegion, subRegion] = region.split("-");
+    if (!shopDemand[mainRegion] || !shopDemand[mainRegion][subRegion]) {
+        player.message("Invalid region or sub-region!");
         return;
-    } else if (!shopDemand[mainRegion][subRegion]) {
-        player.message("Invalid sub region! Available sub regions: " + Object.keys(shopDemand[mainRegion]).join(", "));
-        return;
-    } else {
-        var shop = playerShops[shopId];
-        shop.region = mainRegion;
-        shop.sub_region = subRegion;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        player.message("Shop region set!");
     }
 
-
+    var shop = playerShops[shopId];
+    shop.region = mainRegion;
+    shop.sub_region = subRegion;
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message("Shop region set!");
 }
 
 // Set the sub-region of the shop
@@ -604,17 +541,10 @@ function setShopSubRegion(player, subRegion) {
         return;
     }
 
-    // check validity of sub-region
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand["Local Demands"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)["Local Demands"];
     var region = shopDemand[getShopFromID(shopId).region];
-    if (!region) {
-        player.message("Invalid region!");
-        return;
-    }
-
-    if (!region[subRegion]) {
-        player.message("Invalid sub-region! Available sub-regions: " + Object.keys(region).join(", "));
+    if (!region || !region[subRegion]) {
+        player.message("Invalid sub-region!");
         return;
     }
 
@@ -640,8 +570,6 @@ function shopInfo(player, shopId) {
     }
 }
 
-
-
 // ############################################################################################################
 // UTILITIES
 // ############################################################################################################
@@ -654,7 +582,7 @@ function getShopId(player) {
     }
 
     for (var shopId in playerShops) {
-        if (playerShops[shopId].owner === player.getName()) {
+        if (playerShops[shopId].roles.owner === player.getName()) {
             return shopId;
         }
     }
@@ -664,22 +592,15 @@ function getShopId(player) {
 
 // function to convert price
 function convertPrice(price) {
-    // price is for example 6g5c for 6 grons and 5 cents. It should return 605
-    var priceParts = price.split("g");
-    var grons = parseInt(priceParts[0]);
-    var cents = priceParts[1].split("c");
-    cents = parseInt(cents[0]);
-    return grons * 100 + cents;
+    var [grons, cents] = price.split("g");
+    cents = parseInt(cents.split("c")[0]);
+    return parseInt(grons) * 100 + cents;
 }
 
 // function to get shop info from ID
 function getShopFromID(shopId) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        return null;
-    }
-
-    return playerShops[shopId];
+    return playerShops ? playerShops[shopId] : null;
 }
 
 // function to check if item is valid according to shop type
@@ -689,56 +610,19 @@ function isValidItem(shopType, item) {
         return false;
     }
 
-    for (var i = 0; i < shopCategories["entries"].length; i++) {
-        if (shopCategories["entries"][i].name === shopType) {
-            var items = shopCategories["entries"][i].items;
-            for (var j = 0; j < items.length; j++) {
-                if (items[j]["id"] === item) {
-                    return true;
-                }
-            }
-        }
-    }
-
-    return false;
+    return shopCategories["entries"].some(entry => entry.name === shopType && entry.items.some(i => i.id === item));
 }
 
 // Function to check ownership of a shop to a player
 function isOwner(player, shopId) {
-    // player.message("Checking ownership of " + shopId);
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        return false;
-    }
-
-    // check if shop exists
-    if (!playerShops[shopId]) {
+    if (!playerShops || !playerShops[shopId]) {
         player.message("Shop not found!");
         listShops(player);
         return false;
     }
 
-    if (playerShops[shopId].owner === player.getName()) {
-        return true;
-    }
-
-    return false;
-}
-
-// Function to check ownership of a shop to a player
-function isOwner2(player, shopId, playerShops) {
-    // check if shop exists
-    if (!playerShops[shopId]) {
-        player.message("Shop not found!");
-        listShops(player);
-        return false;
-    }
-
-    if (playerShops[shopId].owner === player.getName()) {
-        return true;
-    }
-
-    return false;
+    return playerShops[shopId].roles.owner === player.getName();
 }
 
 // function to check if a shop instance isn't missing any data (update proof)
@@ -748,13 +632,11 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
     var missing = [];
     var shopData = playerShops[shopID];
 
-    // Ensure shopData exists
     if (!shopData) {
         if (log) player.message("Shop ID " + shopID + " is missing!");
         return { valid: false, critical: true, missing: ["shopData"] };
     }
 
-    // Critical properties (delete shop if missing)
     if (!shopData.property || !shopData.property.location ||
         shopData.property.location.x == null ||
         shopData.property.location.y == null ||
@@ -765,7 +647,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         valid = false;
     }
 
-    // Non-critical but required properties (set to null if missing)
     if (!shopData.roles || !shopData.roles.owner) {
         missing.push("owner");
         valid = false;
@@ -797,7 +678,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         shopData.shop.display_name = null;
     }
 
-    // Other properties (set defaults)
     shopData.roles = shopData.roles || {
         enabled: false,
         owner: null,
@@ -824,7 +704,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         reputation_history: []
     };
 
-    // Log errors and handle missing data
     if (!valid) {
         if (critical) {
             delete playerShops[shopID];
@@ -856,10 +735,8 @@ function ensureShopExists(player, shopId, playerShops) {
 
 // Function to get a list of all shops a given player owns
 function listShops(player, serverShops) {
-
     var shops = [];
     for (var shopId in serverShops) {
-
         if (serverShops[shopId].roles.owner === player.getName()) {
             shops.push(shopId);
         }
@@ -876,46 +753,26 @@ function listShops(player, serverShops) {
 
 // Function to check if a shop with given ID exists or not
 function shopExists(shopId, playerShops) {
-
-    if (playerShops[shopId]) {
-        // world.broadcast("Shop " + shopId + " exists!");
-        return true;
-    }
-
-    world.broadcast("Shop " + shopId + " does not exist!");
-    return false;
+    return !!playerShops[shopId];
 }
 
 // Function to convert a "_" separated string to a " " separated string
 function convertUnderscore(string) {
-    if (!string) {
-        return null;
-    }
-    return string.replace(/_/g, " ");
+    return string ? string.replace(/_/g, " ") : null;
 }
 
 // Function to check if region / sub_region are compatible
 function checkRegionSubRegion(region, subRegion) {
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand["Local Demands"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)["Local Demands"];
     if (!shopDemand) {
         return false;
     }
 
-    // If region or sub_region are "unspecified", return true
     if (region === "unspecified" || subRegion === "unspecified") {
         return true;
     }
 
-    if (!shopDemand[region]) {
-        return false;
-    }
-
-    if (!shopDemand[region][subRegion]) {
-        return false;
-    }
-
-    return true;
+    return shopDemand[region] && shopDemand[region][subRegion];
 }
 
 // Function to check if a shop has this name already
@@ -925,13 +782,7 @@ function checkShopName(name) {
         return false;
     }
 
-    for (var shopId in playerShops) {
-        if (playerShops[shopId].display_name === name) {
-            return true;
-        }
-    }
-
-    return false;
+    return Object.values(playerShops).some(shop => shop.display_name === name);
 }
 
 // Function to check is a player already owns a shop of this type in this region
@@ -941,62 +792,13 @@ function checkShopTypeRegion(player, type, region, subRegion) {
         return false;
     }
 
-    for (var shopId in playerShops) {
-        var shop = playerShops[shopId];
-        if (shop.owner === player.getName() && shop.type === type && shop.region === region && shop.sub_region === subRegion) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// Function to edit region property
-function editRegionProperty(playerShops, shopID, region) {
-    //  Check if shop of this ID exists
-    if (!shopExists(shopID, playerShops)) {
-        return;
-    }
-
-    // Check if region is compatible with sub_region
-    var subRegion = playerShops[shopID].sub_region;
-    if (!checkRegionSubRegion(region, subRegion)) {
-        player.message("Invalid region / sub-region combination!");
-        return;
-    }
-}
-
-// Function to edit sub-region property
-function editSubRegionProperty(playerShops, shopID, subRegion) {
-    //  Check if shop of this ID exists
-    if (!shopExists(shopID, playerShops)) {
-        return;
-    }
-
-    // Check if region is compatible with sub_region
-    var region = playerShops[shopID].region;
-    if (!checkRegionSubRegion(region, subRegion)) {
-        player.message("Invalid region / sub-region combination!");
-        return;
-    }
+    return Object.values(playerShops).some(shop => shop.owner === player.getName() && shop.type === type && shop.region === region && shop.sub_region === subRegion);
 }
 
 // Function to get the list of permissions a player has in a shop
 function getPermissions(player, playerShops, shopID) {
-    /*
-    Reminder:
-    open / close shop: allowed to owner, mlanager, cashier, stock keeper, assistant
-    set prices: allowed to owner, manager
-    manage permissions: allowed to owner, manager
-    take money from cash register: allowed to owner, manager, cashier
-    manage stock: allowed to owner, manager, stock keeper
-
-    this function will return the list of permission a player has depending on their role in the shop
-    */
-
     var permissions = [];
 
-    // Check if player is owner
     if (playerShops[shopID].roles.owner === player.getName()) {
         permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
         permissions.push(PERMISSION_SET_PRICES);
@@ -1025,32 +827,19 @@ function getPermissions(player, playerShops, shopID) {
 // Function to get permissions of a player in a shop
 function checkPermissions(player, shopID, playerShops, permission) {
     var permissions = getPermissions(player, playerShops, shopID);
-    for (var i = 0; i < permissions.length; i++) {
-        if (permissions[i] === permission) {
-            return true;
-        }
-    }
-
-    return false;
+    return permissions.includes(permission);
 }
 
 // Function to sanitize a string (if "", set to null)
 function sanitizeString(string) {
-    if (string === "") {
-        return null;
-    } else {
-        return string;
-    }
+    return string === "" ? null : string;
 }
 
 // Function to get a property from a string (propertyname=value)
 function getProperty(string) {
-    
     var parts = string.split("=");
-
     var propertyName = parts[0];
     var value = sanitizeString(parts[1]);
-
     return { propertyName: propertyName, value: value };
 }
 
