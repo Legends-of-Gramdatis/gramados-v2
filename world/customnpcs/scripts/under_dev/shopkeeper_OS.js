@@ -19,6 +19,12 @@ function init(event) {
 function chat(event) {
     var player = event.player;
     var message = event.message;
+    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+
+    if (!playerShops) {
+        player.message("No shops found!");
+        return;
+    }
 
     /*
     List of shop commands (for dev purposes):
@@ -74,6 +80,10 @@ function chat(event) {
         var args = message.split(" ");
         if (args.length === 3) {
             var shopId = parseInt(args[2]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[2]);
+                return;
+            }
             deleteShop(player, shopId);
         } else {
             player.message("Invalid command! Usage: $shop delete <ID>");
@@ -86,19 +96,14 @@ function chat(event) {
         }
 
         var shopId = parseInt(args[3]);
-        if (isNaN(shopId)) {
-            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message("Invalid shop ID: " + args[3]);
             player.message("Use \"_\" for spaces in the values");
             return;
         }
 
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message("No shops found!");
-            return;
-        }
-
         var shop = playerShops[shopId];
+
         var name = shop.shop.display_name || null;
         var type = shop.shop.type || null;
         var region = shop.property.region || null;
@@ -116,14 +121,25 @@ function chat(event) {
                         type = value.value;
                         break;
                     case "region":
+                        if (!checkRegionExists(value.value)) {
+                            player.message("Invalid region: " + value.value);
+                            return;
+                        }
                         region = value.value;
                         break;
                     case "sub_region":
+                        if (!checkSubRegionExists(region, value.value)) {
+                            player.message("Invalid sub-region: " + value.value);
+                            return;
+                        }
                         sub_region = value.value;
                         break;
                     case "money":
                         money = parseInt(value.value) || 0;
                         break;
+                    default:
+                        player.message("Unknown property: " + value.propertyName);
+                        return;
                 }
             }
         } else {
@@ -147,14 +163,8 @@ function chat(event) {
         }
 
         var shopId = parseInt(args[3]);
-        if (isNaN(shopId)) {
-            player.message("Invalid command! Usage: $shop property add <ID> [stock_room=<region>] [main_room=<region>]");
-            return;
-        }
-
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message("No shops found!");
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message("Invalid shop ID: " + args[3]);
             return;
         }
 
@@ -185,12 +195,6 @@ function chat(event) {
         var shopId = parseInt(args[3]);
         if (isNaN(shopId)) {
             player.message("Invalid command! Usage: $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]");
-            return;
-        }
-
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!playerShops) {
-            player.message("No shops found!");
             return;
         }
 
@@ -1075,4 +1079,16 @@ function removeRoom(roomArray, value) {
         }
     }
     return false;
+}
+
+function checkRegionExists(region) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region];
+}
+
+function checkSubRegionExists(region, subRegion) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }
