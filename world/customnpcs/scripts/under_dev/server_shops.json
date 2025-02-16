@@ -23,10 +23,11 @@
                 "Devland_Countryside_ShopTest1_Shop:1"
             ],
             "main_room": [
-                "Devland_Countryside_ShopTest1_Shop:2"
+                "Devland_Countryside_ShopTest1_Shop:0"
             ],
             "region": "Devland",
-            "sub_region": "Countryside"
+            "sub_region": "Countryside",
+            "stock_room_size": 36
         },
         "shop": {
             "display_name": "Seagull's Devland Test Shop",
