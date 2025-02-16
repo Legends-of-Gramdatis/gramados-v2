@@ -514,7 +514,10 @@ function setShopRegion(player, region) {
         return;
     }
 
-    var [mainRegion, subRegion] = region.split("-");
+    var regionParts = region.split("-");
+    var mainRegion = regionParts[0];
+    var subRegion = regionParts[1];
+
     if (!shopDemand[mainRegion] || !shopDemand[mainRegion][subRegion]) {
         player.message("Invalid region or sub-region!");
         return;
@@ -592,7 +595,8 @@ function getShopId(player) {
 
 // function to convert price
 function convertPrice(price) {
-    var [grons, cents] = price.split("g");
+    var grons = price.split("g")[0];
+    var cents = price.split("g")[1];
     cents = parseInt(cents.split("c")[0]);
     return parseInt(grons) * 100 + cents;
 }
