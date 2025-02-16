@@ -9,7 +9,7 @@ A player can open the shop if:
 - The palyer has correct permission to open the shop
 - The shop is closed
 - The player doesn't have another shop of similar type and region and subregion open
-- The shop's intergity is valid (has a name, region, subregion, type, stock_room and main_room)
+- The shop's integrity is valid (has a name, region, subregion, type, stock_room and main_room)
 
 ### shop close
 When a shop is closed, NPCs will not buy items from the shop. If you are out of stock, the reputation will not lower.
