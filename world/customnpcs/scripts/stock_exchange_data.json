@@ -870,8 +870,8 @@
             "current_price": 21,
             "min_price": 5,
             "max_price": 500,
-            "quantity_sold": 212110,
-            "last_sold_time": 2393860375,
+            "quantity_sold": 226926,
+            "last_sold_time": 2394893210,
             "quantity_factor": 10000
         },
         "harvestcraft:barleyitem:0": {
