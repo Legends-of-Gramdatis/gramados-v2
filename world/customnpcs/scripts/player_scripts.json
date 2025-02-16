@@ -87,6 +87,371 @@ Caused by: <eval>:101 TypeError: Cannot read property \"shop\" from undefined
 	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
 	... 23 more"
+        },
+        {
+            "Long": 1739720938315L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^ in <eval> at line number 517 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerInteract(EventHooks.java:310)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:128)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_491_ScriptPlayerEventHandler_invoke_RightClickBlock.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onRightClickBlock(ForgeHooks.java:1137)
+	at net.minecraft.server.management.PlayerInteractionManager.func_187251_a(PlayerInteractionManager.java:433)
+	at net.minecraft.network.NetHandlerPlayServer.func_184337_a(NetHandlerPlayServer.java:741)
+	at net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock.func_148833_a(SourceFile:55)
+	at net.minecraft.network.play.client.CPacketPlayerTryUseItemOnBlock.func_148833_a(SourceFile:11)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 29 more"
+        },
+        {
+            "Long": 1739720938913L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^ in <eval> at line number 517 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
+        },
+        {
+            "Long": 1739721004141L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^ in <eval> at line number 517 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
+        },
+        {
+            "Long": 1739721004662L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^ in <eval> at line number 517 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected ident but found [
+    var [mainRegion, subRegion] = region.split(\"-\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
+        },
+        {
+            "Long": 1739721058593L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:598:8 Expected ident but found [
+    var [grons, cents] = price.split(\"g\");
+        ^ in <eval> at line number 598 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:598:8 Expected ident but found [
+    var [grons, cents] = price.split(\"g\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
+        },
+        {
+            "Long": 1739721059086L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:598:8 Expected ident but found [
+    var [grons, cents] = price.split(\"g\");
+        ^ in <eval> at line number 598 at column number 8
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:598:8 Expected ident but found [
+    var [grons, cents] = price.split(\"g\");
+        ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.AbstractParser.expectValue(AbstractParser.java:363)
+	at jdk.nashorn.internal.parser.AbstractParser.getIdent(AbstractParser.java:431)
+	at jdk.nashorn.internal.parser.Parser.variableStatement(Parser.java:1075)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:884)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.functionBody(Parser.java:2901)
+	at jdk.nashorn.internal.parser.Parser.functionExpression(Parser.java:2663)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:875)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
         }
     ],
     "Scripts": [
@@ -138,24 +503,6 @@ function chat(event) {
         player.message(\"No shops found!\");
         return;
     }
-
-    /*
-    List of shop commands (for dev purposes):
-
-    $shop open <ID> - Open the shop
-    $shop close <ID> - Close the shop
-    $shop create <type> - Create a new shop
-    $shop set <property> <value> - Set a shop property
-    $shop help - Show available commands
-    $shop help properties - Show available properties
-    $shop info - Show shop info
-    $shop add stock <price> - Add hand held itemstack to shop stock with price per item
-    $shop remove stock <item> - Remove item from shop stock (using item name)
-    $shop list stock - List all items in shop stock
-    $shop list available items - List all items in player inventory that can be sold in the shop
-    $shop list - list all teh shops the player has
-    $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]
-    */
 
     if (message.startsWith(\"$shop create\")) {
         var args = message.split(\" \");
@@ -350,6 +697,20 @@ function chat(event) {
         } else {
             player.message(\"Invalid command! Usage: $shop close <ID>\");
         }
+    } else if (message.startsWith(\"$shop add stock\")) {
+        var args = message.split(\" \");
+        if (args.length === 4) {
+            var price = parseInt(args[3]);
+            addStock(player, price);
+        }
+
+        addStock(player, price);
+    } else if (message.startsWith(\"$shop remove stock\")) {
+        var args = message.split(\" \");
+        if (args.length === 4) {
+            var item = args[3];
+            removeStock(player, item);
+        }
     } else if (message === \"$shop help\") {
         player.message(\"Available commands:\");
         player.message(\"$shop open - Open the shop\");
@@ -368,36 +729,6 @@ function chat(event) {
         player.message(\"type - The type of the shop\");
         player.message(\"region - The region of the shop\");
     } else if (message.startsWith(\"$shop info\")) {
-        var args = message.split(\" \");
-        if (args.length === 3) {
-            var shopId = parseInt(args[2]);
-            if (isOwner(player, shopId)) {
-                shopInfo(player, shopId);
-            } else {
-                player.message(\"You can only get info from shops you own!\");
-            }
-        } else {
-            player.message(\"Invalid command! Usage: $shop info <ID>\");
-        }
-    } else if (message.startsWith(\"$shop add stock\")) {
-        var args = message.split(\" \");
-        if (args.length === 4) {
-            var price = parseInt(args[3]);
-            addStock(player, price);
-        }
-
-        addStock(player, price);
-    } else if (message.startsWith(\"$shop remove stock\")) {
-        var args = message.split(\" \");
-        if (args.length === 4) {
-            var item = args[3];
-            removeStock(player, item);
-        }
-    } else if (message === \"$shop list stock\") {
-        listStock(player);
-    } else if (message === \"$shop list items\") {
-        listItems(player);
-    } else if (message === \"$shop list available items\") {
         listAvailableItems(player);
     } else if (message === \"$shop list\") {
         listShops(player);
@@ -453,16 +784,10 @@ function openShop(player, shopId, serverShops) {
             }
         }
 
-        // check permissions (this will come later)
-        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
         shopData.shop.is_open = true;
         saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
         player.message(\"Shop opened!\");
         return true;
-        // } else {
-        //     player.message(\"You don't have permission to open this shop!\");
-        //     return false;
-        // }
     } else {
         player.message(\"Shop cannot be opened!\");
         return false;
@@ -491,16 +816,10 @@ function closeShop(player, shopId) {
             return false;
         }
 
-        // check permissions (this will come later)
-        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
         shopData.shop.is_open = false;
         saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
         player.message(\"Shop closed!\");
         return true;
-        // } else {
-        //     player.message(\"You don't have permission to close this shop!\");
-        //     return false;
-        // }
     } else {
         player.message(\"Shop cannot be closed!\");
         return false;
@@ -510,7 +829,6 @@ function closeShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Create a shop
 // ------------------------------------------------------------------------------------------------------------
-// Create a new shop instance with first available ID
 function createShop(player, type, region, sub_region, display_name, money) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
@@ -547,10 +865,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
                 y: Math.floor(player.getY()),
                 z: Math.floor(player.getZ())
             },
-            stock_room: [
-            ],
-            main_room: [
-            ],
+            stock_room: [],
+            main_room: [],
             region: region,
             sub_region: sub_region
         },
@@ -567,7 +883,6 @@ function createShop(player, type, region, sub_region, display_name, money) {
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-    // player.message(\"Shop created with ID: \" + shopId);
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -588,15 +903,6 @@ function deleteShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Set a shop property
 // ------------------------------------------------------------------------------------------------------------
-// function that will set multiple properties from a list of arguments
-function setShopProperties(player, shopId, args) {
-    // navigate through all arguments
-    for (var i = 0; i < args.length; i++) {
-        player.message(\"Setting property \" + args[i]);
-        setShopProperty(player, shopId, args[i]);
-    }
-}
-
 function setShopProperty(player, property, value) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
@@ -622,9 +928,7 @@ function setShopProperty(player, property, value) {
             break;
         case \"display_name\":
             var shop = playerShops[shopId];
-            // replace \"_\" with \" \" in the display name
             value = value.replace(/_/g, \" \");
-            // replace \"\"\" with \"\" in the display name
             value = value.replace(/\"\"/g, \"\\\"\");
             shop.display_name = value;
             saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
@@ -634,6 +938,7 @@ function setShopProperty(player, property, value) {
             player.message(\"Invalid property!\");
     }
 }
+
 // Set the type of the shop
 function setShopType(player, type) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
@@ -648,20 +953,13 @@ function setShopType(player, type) {
         return;
     }
 
-    // Check if shop type is valid (if one of teh entries in shop_categories.json has the \"name\" tag equal to the type)
     var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
     if (!shopCategories) {
         player.message(\"Shop categories not found!\");
         return;
     }
 
-    var validType = false;
-    for (var i = 0; i < shopCategories[\"entries\"].length; i++) {
-        if (shopCategories[\"entries\"][i].name === type) {
-            validType = true;
-            break;
-        }
-    }
+    var validType = shopCategories[\"entries\"].some(entry => entry.name === type);
 
     if (!validType) {
         player.message(\"Invalid shop type!\");
@@ -673,12 +971,9 @@ function setShopType(player, type) {
         player.message(\"Shop type set!\");
     }
 }
+
 // Set the region of the shop
 function setShopRegion(player, region) {
-    // The \"region\" argument is composed of two parts: the region name and the sub-region.
-    // Example: \"Solterra-Countryside\" or \"Gramados-Gramados_City\"
-    // We need to check the main region and its sub region exist in teh shop demand json
-
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
         player.message(\"No shops found!\");
@@ -691,8 +986,7 @@ function setShopRegion(player, region) {
         return;
     }
 
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand[\"Local Demands\"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)[\"Local Demands\"];
     if (!shopDemand) {
         player.message(\"Shop demand not found!\");
         return;
@@ -702,21 +996,16 @@ function setShopRegion(player, region) {
     var mainRegion = regionParts[0];
     var subRegion = regionParts[1];
 
-    if (!shopDemand[mainRegion]) {
-        player.message(\"Invalid main region! Available main regions: \" + Object.keys(shopDemand).join(\", \"));
+    if (!shopDemand[mainRegion] || !shopDemand[mainRegion][subRegion]) {
+        player.message(\"Invalid region or sub-region!\");
         return;
-    } else if (!shopDemand[mainRegion][subRegion]) {
-        player.message(\"Invalid sub region! Available sub regions: \" + Object.keys(shopDemand[mainRegion]).join(\", \"));
-        return;
-    } else {
-        var shop = playerShops[shopId];
-        shop.region = mainRegion;
-        shop.sub_region = subRegion;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        player.message(\"Shop region set!\");
     }
 
-
+    var shop = playerShops[shopId];
+    shop.region = mainRegion;
+    shop.sub_region = subRegion;
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message(\"Shop region set!\");
 }
 
 // Set the sub-region of the shop
@@ -733,17 +1022,10 @@ function setShopSubRegion(player, subRegion) {
         return;
     }
 
-    // check validity of sub-region
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand[\"Local Demands\"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)[\"Local Demands\"];
     var region = shopDemand[getShopFromID(shopId).region];
-    if (!region) {
-        player.message(\"Invalid region!\");
-        return;
-    }
-
-    if (!region[subRegion]) {
-        player.message(\"Invalid sub-region! Available sub-regions: \" + Object.keys(region).join(\", \"));
+    if (!region || !region[subRegion]) {
+        player.message(\"Invalid sub-region!\");
         return;
     }
 
@@ -769,8 +1051,6 @@ function shopInfo(player, shopId) {
     }
 }
 
-
-
 // ############################################################################################################
 // UTILITIES
 // ############################################################################################################
@@ -783,7 +1063,7 @@ function getShopId(player) {
     }
 
     for (var shopId in playerShops) {
-        if (playerShops[shopId].owner === player.getName()) {
+        if (playerShops[shopId].roles.owner === player.getName()) {
             return shopId;
         }
     }
@@ -793,22 +1073,16 @@ function getShopId(player) {
 
 // function to convert price
 function convertPrice(price) {
-    // price is for example 6g5c for 6 grons and 5 cents. It should return 605
-    var priceParts = price.split(\"g\");
-    var grons = parseInt(priceParts[0]);
-    var cents = priceParts[1].split(\"c\");
-    cents = parseInt(cents[0]);
-    return grons * 100 + cents;
+    var grons = price.split(\"g\")[0];
+    var cents = price.split(\"g\")[1];
+    cents = parseInt(cents.split(\"c\")[0]);
+    return parseInt(grons) * 100 + cents;
 }
 
 // function to get shop info from ID
 function getShopFromID(shopId) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        return null;
-    }
-
-    return playerShops[shopId];
+    return playerShops ? playerShops[shopId] : null;
 }
 
 // function to check if item is valid according to shop type
@@ -818,56 +1092,19 @@ function isValidItem(shopType, item) {
         return false;
     }
 
-    for (var i = 0; i < shopCategories[\"entries\"].length; i++) {
-        if (shopCategories[\"entries\"][i].name === shopType) {
-            var items = shopCategories[\"entries\"][i].items;
-            for (var j = 0; j < items.length; j++) {
-                if (items[j][\"id\"] === item) {
-                    return true;
-                }
-            }
-        }
-    }
-
-    return false;
+    return shopCategories[\"entries\"].some(entry => entry.name === shopType && entry.items.some(i => i.id === item));
 }
 
 // Function to check ownership of a shop to a player
 function isOwner(player, shopId) {
-    // player.message(\"Checking ownership of \" + shopId);
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        return false;
-    }
-
-    // check if shop exists
-    if (!playerShops[shopId]) {
+    if (!playerShops || !playerShops[shopId]) {
         player.message(\"Shop not found!\");
         listShops(player);
         return false;
     }
 
-    if (playerShops[shopId].owner === player.getName()) {
-        return true;
-    }
-
-    return false;
-}
-
-// Function to check ownership of a shop to a player
-function isOwner2(player, shopId, playerShops) {
-    // check if shop exists
-    if (!playerShops[shopId]) {
-        player.message(\"Shop not found!\");
-        listShops(player);
-        return false;
-    }
-
-    if (playerShops[shopId].owner === player.getName()) {
-        return true;
-    }
-
-    return false;
+    return playerShops[shopId].roles.owner === player.getName();
 }
 
 // function to check if a shop instance isn't missing any data (update proof)
@@ -877,13 +1114,11 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
     var missing = [];
     var shopData = playerShops[shopID];
 
-    // Ensure shopData exists
     if (!shopData) {
         if (log) player.message(\"Shop ID \" + shopID + \" is missing!\");
         return { valid: false, critical: true, missing: [\"shopData\"] };
     }
 
-    // Critical properties (delete shop if missing)
     if (!shopData.property || !shopData.property.location ||
         shopData.property.location.x == null ||
         shopData.property.location.y == null ||
@@ -894,7 +1129,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         valid = false;
     }
 
-    // Non-critical but required properties (set to null if missing)
     if (!shopData.roles || !shopData.roles.owner) {
         missing.push(\"owner\");
         valid = false;
@@ -926,7 +1160,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         shopData.shop.display_name = null;
     }
 
-    // Other properties (set defaults)
     shopData.roles = shopData.roles || {
         enabled: false,
         owner: null,
@@ -953,7 +1186,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
         reputation_history: []
     };
 
-    // Log errors and handle missing data
     if (!valid) {
         if (critical) {
             delete playerShops[shopID];
@@ -985,10 +1217,8 @@ function ensureShopExists(player, shopId, playerShops) {
 
 // Function to get a list of all shops a given player owns
 function listShops(player, serverShops) {
-
     var shops = [];
     for (var shopId in serverShops) {
-
         if (serverShops[shopId].roles.owner === player.getName()) {
             shops.push(shopId);
         }
@@ -1005,46 +1235,26 @@ function listShops(player, serverShops) {
 
 // Function to check if a shop with given ID exists or not
 function shopExists(shopId, playerShops) {
-
-    if (playerShops[shopId]) {
-        // world.broadcast(\"Shop \" + shopId + \" exists!\");
-        return true;
-    }
-
-    world.broadcast(\"Shop \" + shopId + \" does not exist!\");
-    return false;
+    return !!playerShops[shopId];
 }
 
 // Function to convert a \"_\" separated string to a \" \" separated string
 function convertUnderscore(string) {
-    if (!string) {
-        return null;
-    }
-    return string.replace(/_/g, \" \");
+    return string ? string.replace(/_/g, \" \") : null;
 }
 
 // Function to check if region / sub_region are compatible
 function checkRegionSubRegion(region, subRegion) {
-    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
-    shopDemand = shopDemand[\"Local Demands\"];
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)[\"Local Demands\"];
     if (!shopDemand) {
         return false;
     }
 
-    // If region or sub_region are \"unspecified\", return true
     if (region === \"unspecified\" || subRegion === \"unspecified\") {
         return true;
     }
 
-    if (!shopDemand[region]) {
-        return false;
-    }
-
-    if (!shopDemand[region][subRegion]) {
-        return false;
-    }
-
-    return true;
+    return shopDemand[region] && shopDemand[region][subRegion];
 }
 
 // Function to check if a shop has this name already
@@ -1054,13 +1264,7 @@ function checkShopName(name) {
         return false;
     }
 
-    for (var shopId in playerShops) {
-        if (playerShops[shopId].display_name === name) {
-            return true;
-        }
-    }
-
-    return false;
+    return Object.values(playerShops).some(shop => shop.display_name === name);
 }
 
 // Function to check is a player already owns a shop of this type in this region
@@ -1070,62 +1274,13 @@ function checkShopTypeRegion(player, type, region, subRegion) {
         return false;
     }
 
-    for (var shopId in playerShops) {
-        var shop = playerShops[shopId];
-        if (shop.owner === player.getName() && shop.type === type && shop.region === region && shop.sub_region === subRegion) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-// Function to edit region property
-function editRegionProperty(playerShops, shopID, region) {
-    //  Check if shop of this ID exists
-    if (!shopExists(shopID, playerShops)) {
-        return;
-    }
-
-    // Check if region is compatible with sub_region
-    var subRegion = playerShops[shopID].sub_region;
-    if (!checkRegionSubRegion(region, subRegion)) {
-        player.message(\"Invalid region / sub-region combination!\");
-        return;
-    }
-}
-
-// Function to edit sub-region property
-function editSubRegionProperty(playerShops, shopID, subRegion) {
-    //  Check if shop of this ID exists
-    if (!shopExists(shopID, playerShops)) {
-        return;
-    }
-
-    // Check if region is compatible with sub_region
-    var region = playerShops[shopID].region;
-    if (!checkRegionSubRegion(region, subRegion)) {
-        player.message(\"Invalid region / sub-region combination!\");
-        return;
-    }
+    return Object.values(playerShops).some(shop => shop.owner === player.getName() && shop.type === type && shop.region === region && shop.sub_region === subRegion);
 }
 
 // Function to get the list of permissions a player has in a shop
 function getPermissions(player, playerShops, shopID) {
-    /*
-    Reminder:
-    open / close shop: allowed to owner, mlanager, cashier, stock keeper, assistant
-    set prices: allowed to owner, manager
-    manage permissions: allowed to owner, manager
-    take money from cash register: allowed to owner, manager, cashier
-    manage stock: allowed to owner, manager, stock keeper
-
-    this function will return the list of permission a player has depending on their role in the shop
-    */
-
     var permissions = [];
 
-    // Check if player is owner
     if (playerShops[shopID].roles.owner === player.getName()) {
         permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
         permissions.push(PERMISSION_SET_PRICES);
@@ -1154,32 +1309,19 @@ function getPermissions(player, playerShops, shopID) {
 // Function to get permissions of a player in a shop
 function checkPermissions(player, shopID, playerShops, permission) {
     var permissions = getPermissions(player, playerShops, shopID);
-    for (var i = 0; i < permissions.length; i++) {
-        if (permissions[i] === permission) {
-            return true;
-        }
-    }
-
-    return false;
+    return permissions.includes(permission);
 }
 
 // Function to sanitize a string (if \"\", set to null)
 function sanitizeString(string) {
-    if (string === \"\") {
-        return null;
-    } else {
-        return string;
-    }
+    return string === \"\" ? null : string;
 }
 
 // Function to get a property from a string (propertyname=value)
 function getProperty(string) {
-    
     var parts = string.split(\"=\");
-
     var propertyName = parts[0];
     var value = sanitizeString(parts[1]);
-
     return { propertyName: propertyName, value: value };
 }
 
