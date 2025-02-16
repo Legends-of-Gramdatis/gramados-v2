@@ -20,14 +20,10 @@
                 "z": 3619
             },
             "stock_room": [
-                "region_name_1",
-                "region_name_2",
-                "region_name_3"
+                "Devland_Countryside_ShopTest1_Shop:1"
             ],
             "main_room": [
-                "region_name_1",
-                "region_name_2",
-                "region_name_3"
+                "Devland_Countryside_ShopTest1_Shop:0"
             ],
             "region": "Gramados",
             "sub_region": "Gramados_City"
