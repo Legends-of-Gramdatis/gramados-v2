@@ -35,6 +35,7 @@ function chat(event) {
     $shop list stock - List all items in shop stock
     $shop list available items - List all items in player inventory that can be sold in the shop
     $shop list - list all teh shops the player has
+    $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]
     */
 
     if (message.startsWith("$shop create")) {
@@ -43,6 +44,7 @@ function chat(event) {
         var type = null;
         var region = null;
         var sub_region = null;
+        var money = 0;
 
         if (args.length > 2) {
             for (var i = 2; i < args.length; i++) {
@@ -60,11 +62,14 @@ function chat(event) {
                     case "sub_region":
                         sub_region = value.value;
                         break;
+                    case "money":
+                        money = parseInt(value.value) || 0;
+                        break;
                 }
             }
         }
 
-        createShop(player, type, region, sub_region, convertUnderscore(name));
+        createShop(player, type, region, sub_region, convertUnderscore(name), money);
     } else if (message.startsWith("$shop delete")) {    
         var args = message.split(" ");
         if (args.length === 3) {
@@ -76,20 +81,20 @@ function chat(event) {
     } else if (message.startsWith("$shop property set")) {
         var args = message.split(" ");
         if (args.length < 4) {
-            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
             return;
         }
 
         var shopId = parseInt(args[3]);
-
         if (isNaN(shopId)) {
-            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
             player.message("Use \"_\" for spaces in the values");
             return;
         }
 
         var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!isOwner2(player, shopId, playerShops)) {
+        if (!playerShops) {
+            player.message("No shops found!");
             return;
         }
 
@@ -98,43 +103,117 @@ function chat(event) {
         var type = shop.shop.type || null;
         var region = shop.property.region || null;
         var sub_region = shop.property.sub_region || null;
+        var money = shop.inventory.stored_cash || 0;
 
         if (args.length > 4) {
             for (var i = 4; i < args.length; i++) {
-                var arg = args[i];
-                if (arg.startsWith("name=")) {
-                    name = arg.split("=")[1];
-                } else if (arg.startsWith("type=")) {
-                    type = arg.split("=")[1];
-                } else if (arg.startsWith("region=")) {
-                    region = arg.split("=")[1];
-                } else if (arg.startsWith("sub_region=")) {
-                    sub_region = arg.split("=")[1];
+                var value = getProperty(args[i]);
+                switch (value.propertyName) {
+                    case "name":
+                        name = value.value;
+                        break;
+                    case "type":
+                        type = value.value;
+                        break;
+                    case "region":
+                        region = value.value;
+                        break;
+                    case "sub_region":
+                        sub_region = value.value;
+                        break;
+                    case "money":
+                        money = parseInt(value.value) || 0;
+                        break;
                 }
             }
         } else {
-            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
             player.message("Use \"_\" for spaces in the values");
-        }
-
-        // If empty string (""), set to null
-        if (name === "") {
-            name = null;
-        }
-        if (type === "") {
-            type = null;
-        }
-        if (region === "") {
-            region = null;
-        }
-        if (sub_region === "") {
-            sub_region = null;
         }
 
         shop.shop.display_name = convertUnderscore(name);
         shop.shop.type = type;
         shop.property.region = region;
         shop.property.sub_region = sub_region;
+        shop.inventory.stored_cash = money;
+
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Shop properties updated!");
+    } else if (message.startsWith("$shop property add")) {
+        var args = message.split(" ");
+        if (args.length < 4) {
+            player.message("Invalid command! Usage: $shop property add <ID> [stock_room=<region>] [main_room=<region>]");
+            return;
+        }
+
+        var shopId = parseInt(args[3]);
+        if (isNaN(shopId)) {
+            player.message("Invalid command! Usage: $shop property add <ID> [stock_room=<region>] [main_room=<region>]");
+            return;
+        }
+
+        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+        if (!playerShops) {
+            player.message("No shops found!");
+            return;
+        }
+
+        var shop = playerShops[shopId];
+        if (args.length > 4) {
+            for (var i = 4; i < args.length; i++) {
+                var value = getProperty(args[i]);
+                switch (value.propertyName) {
+                    case "stock_room":
+                        shop.property.stock_room.push(value.value);
+                        break;
+                    case "main_room":
+                        shop.property.main_room.push(value.value);
+                        break;
+                }
+            }
+        }
+
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Shop properties updated!");
+    } else if (message.startsWith("$shop property remove")) {
+        var args = message.split(" ");
+        if (args.length < 4) {
+            player.message("Invalid command! Usage: $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]");
+            return;
+        }
+
+        var shopId = parseInt(args[3]);
+        if (isNaN(shopId)) {
+            player.message("Invalid command! Usage: $shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]");
+            return;
+        }
+
+        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+        if (!playerShops) {
+            player.message("No shops found!");
+            return;
+        }
+
+        var shop = playerShops[shopId];
+        if (args.length > 4) {
+            for (var i = 4; i < args.length; i++) {
+                var value = getProperty(args[i]);
+                switch (value.propertyName) {
+                    case "stock_room":
+                        if (!removeRoom(shop.property.stock_room, value.value)) {
+                            player.message("Region " + value.value + " not found in stock_room!");
+                            player.message("Available regions: " + shop.property.stock_room.join(", "));
+                        }
+                        break;
+                    case "main_room":
+                        if (!removeRoom(shop.property.main_room, value.value)) {
+                            player.message("Region " + value.value + " not found in main_room!");
+                            player.message("Available regions: " + shop.property.main_room.join(", "));
+                        }
+                        break;
+                }
+            }
+        }
 
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         player.message("Shop properties updated!");
@@ -277,7 +356,7 @@ function closeShop(player, shopId) {
 // Create a shop
 // ------------------------------------------------------------------------------------------------------------
 // Create a new shop instance with first available ID
-function createShop(player, type, region, sub_region, display_name) {
+function createShop(player, type, region, sub_region, display_name, money) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
         player.message("No shop data found! Contact an admin!");
@@ -305,7 +384,7 @@ function createShop(player, type, region, sub_region, display_name) {
         inventory: {
             stock: {},
             listed_items: [],
-            stored_cash: 0
+            stored_cash: money || 0
         },
         property: {
             location: {
@@ -979,4 +1058,21 @@ function saveJson(data, filePath) {
 function checkFileExists(filePath) {
     var file = new java.io.File(filePath);
     return file.exists();
+}
+
+function removeRoom(roomArray, value) {
+    var index = parseInt(value);
+    if (!isNaN(index)) {
+        if (index >= 0 && index < roomArray.length) {
+            roomArray.splice(index, 1);
+            return true;
+        }
+    } else {
+        var roomIndex = roomArray.indexOf(value);
+        if (roomIndex !== -1) {
+            roomArray.splice(roomIndex, 1);
+            return true;
+        }
+    }
+    return false;
 }
