@@ -37,7 +37,108 @@ function chat(event) {
     $shop list - list all teh shops the player has
     */
 
-    if (message.startsWith("$shop open")) {
+    if (message.startsWith("$shop create")) {
+        var args = message.split(" ");
+        var name = null;
+        var type = null;
+        var region = null;
+        var sub_region = null;
+
+        if (args.length > 2) {
+            for (var i = 2; i < args.length; i++) {
+                var value = getProperty(args[i]);
+                switch (value.propertyName) {
+                    case "name":
+                        name = value.value;
+                        break;
+                    case "type":
+                        type = value.value;
+                        break;
+                    case "region":
+                        region = value.value;
+                        break;
+                    case "sub_region":
+                        sub_region = value.value;
+                        break;
+                }
+            }
+        }
+
+        createShop(player, type, region, sub_region, convertUnderscore(name));
+    } else if (message.startsWith("$shop delete")) {    
+        var args = message.split(" ");
+        if (args.length === 3) {
+            var shopId = parseInt(args[2]);
+            deleteShop(player, shopId);
+        } else {
+            player.message("Invalid command! Usage: $shop delete <ID>");
+        }
+    } else if (message.startsWith("$shop property set")) {
+        var args = message.split(" ");
+        if (args.length < 4) {
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            return;
+        }
+
+        var shopId = parseInt(args[3]);
+
+        if (isNaN(shopId)) {
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            player.message("Use \"_\" for spaces in the values");
+            return;
+        }
+
+        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+        if (!isOwner2(player, shopId, playerShops)) {
+            return;
+        }
+
+        var shop = playerShops[shopId];
+        var name = shop.shop.display_name || null;
+        var type = shop.shop.type || null;
+        var region = shop.property.region || null;
+        var sub_region = shop.property.sub_region || null;
+
+        if (args.length > 4) {
+            for (var i = 4; i < args.length; i++) {
+                var arg = args[i];
+                if (arg.startsWith("name=")) {
+                    name = arg.split("=")[1];
+                } else if (arg.startsWith("type=")) {
+                    type = arg.split("=")[1];
+                } else if (arg.startsWith("region=")) {
+                    region = arg.split("=")[1];
+                } else if (arg.startsWith("sub_region=")) {
+                    sub_region = arg.split("=")[1];
+                }
+            }
+        } else {
+            player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
+            player.message("Use \"_\" for spaces in the values");
+        }
+
+        // If empty string (""), set to null
+        if (name === "") {
+            name = null;
+        }
+        if (type === "") {
+            type = null;
+        }
+        if (region === "") {
+            region = null;
+        }
+        if (sub_region === "") {
+            sub_region = null;
+        }
+
+        shop.shop.display_name = convertUnderscore(name);
+        shop.shop.type = type;
+        shop.property.region = region;
+        shop.property.sub_region = sub_region;
+
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Shop properties updated!");
+    } else if (message.startsWith("$shop open")) {
         var args = message.split(" ");
         if (args.length === 3) {
             var shopId = parseInt(args[2]);
@@ -52,102 +153,6 @@ function chat(event) {
             closeShop(player, shopId);
         } else {
             player.message("Invalid command! Usage: $shop close <ID>");
-        }
-    } else if (message.startsWith("$shop create")) {
-        var args = message.split(" ");
-        // This command has optionnal aguments: 
-        /*
-        name: the name of the shop
-        type: the type of the shop
-        region: the region of the shop
-        sub_region: the sub region of the shop
-
-        We will split each arguments, then loop through them to check if they are valid
-        */
-        var name = null;
-        var type = null;
-        var region = null;
-        var sub_region = null;
-
-        if (args.length > 2) {
-            for (var i = 2; i < args.length; i++) {
-                // Swith on how they start
-                var arg = args[i];
-                if (arg.startsWith("name=")) {
-                    name = arg.split("=")[1];
-                } else if (arg.startsWith("type=")) {
-                    type = arg.split("=")[1];
-                } else if (arg.startsWith("region=")) {
-                    region = arg.split("=")[1];
-                } else if (arg.startsWith("sub_region=")) {
-                    sub_region = arg.split("=")[1];
-                }
-            }
-        }
-
-        createShop(player, type, region, sub_region, convertUnderscore(name));
-    } else if (message.startsWith("$shop delete")) {    
-        var args = message.split(" ");
-        if (args.length === 3) {
-            var shopId = parseInt(args[2]);
-            deleteShop(player, shopId);
-        } else {
-            player.message("Invalid command! Usage: $shop delete <ID>");
-        }
-    } else if (message.startsWith("$shop set")) {
-        var args = message.split(" ");
-        if (args.length < 3) {
-            player.message("Invalid command! Usage: $shop set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
-            return;
-        }
-
-        // The first argument is the ID
-        var shopId = parseInt(args[2]);
-
-        // If this argument is not a number, return
-        if (isNaN(shopId)) {
-            player.message("Invalid command! Usage: $shop set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
-            player.message("Use \"_\" for spaces in the values");
-            return;
-        }
-
-        // Check if shop exists and if player owns it
-        var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-        if (!isOwner2(player, shopId, playerShops)) {
-            return;
-        }
-
-        // This command has optionnal aguments: 
-        /*
-        name: the name of the shop
-        type: the type of the shop
-        region: the region of the shop
-        sub_region: the sub region of the shop
-
-        We will split each arguments, then loop through them to check if they are valid
-        */
-        var name = playerShops[shopId]["display_name"] || "unspecified";
-        var type = playerShops[shopId]["type"] || "unspecified";
-        var region = playerShops[shopId]["region"] || "unspecified";
-        var sub_region = playerShops[shopId]["sub_region"] || "unspecified";
-
-        if (args.length > 3) {
-            for (var i = 3; i < args.length; i++) {
-                // Swith on how they start
-                var arg = args[i];
-                if (arg.startsWith("name=")) {
-                    name = arg.split("=")[1];
-                } else if (arg.startsWith("type=")) {
-                    type = arg.split("=")[1];
-                } else if (arg.startsWith("region=")) {
-                    region = arg.split("=")[1];
-                } else if (arg.startsWith("sub_region=")) {
-                    sub_region = arg.split("=")[1];
-                }
-            }
-        } else {
-            player.message("Invalid command! Usage: $shop set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>]");
-            player.message("Use \"_\" for spaces in the values");
         }
     } else if (message === "$shop help") {
         player.message("Available commands:");
@@ -286,6 +291,8 @@ function createShop(player, type, region, sub_region, display_name) {
         world.broadcast("Trying ID " + shopId + "...");
     }
 
+    world.broadcast("Creating shop with ID " + shopId + "...");
+
     serverShops[shopId] = {
         roles: {
             enabled: false,
@@ -326,7 +333,7 @@ function createShop(player, type, region, sub_region, display_name) {
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-    player.message("Shop created with ID: " + shopId);
+    // player.message("Shop created with ID: " + shopId);
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -347,6 +354,15 @@ function deleteShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Set a shop property
 // ------------------------------------------------------------------------------------------------------------
+// function that will set multiple properties from a list of arguments
+function setShopProperties(player, shopId, args) {
+    // navigate through all arguments
+    for (var i = 0; i < args.length; i++) {
+        player.message("Setting property " + args[i]);
+        setShopProperty(player, shopId, args[i]);
+    }
+}
+
 function setShopProperty(player, property, value) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
@@ -915,6 +931,26 @@ function checkPermissions(player, shopID, playerShops, permission) {
     }
 
     return false;
+}
+
+// Function to sanitize a string (if "", set to null)
+function sanitizeString(string) {
+    if (string === "") {
+        return null;
+    } else {
+        return string;
+    }
+}
+
+// Function to get a property from a string (propertyname=value)
+function getProperty(string) {
+    
+    var parts = string.split("=");
+
+    var propertyName = parts[0];
+    var value = sanitizeString(parts[1]);
+
+    return { propertyName: propertyName, value: value };
 }
 
 // ############################################################################################################
