@@ -14,8 +14,8 @@ function init(event) {
         job_data = {"Region_Job_Limits": {}, "Jobs": [] };
         save_json(job_data, data_file_path);
     }
-    check_all_jobs(event.player);
     update_job_entries(event.player);
+    check_all_jobs(event.player);
     tell_player_job(event.player);
     update_job_perms(event.player);
     update_job_type_json(event.player);
