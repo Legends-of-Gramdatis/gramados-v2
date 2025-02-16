@@ -69,3 +69,4 @@ world/customnpcs/scripts/stock_spying.json
 gramados_stocks/*
 myenv/*
 world/customnpcs/scripts/test_jsons/*
+world/customnpcs/scripts/under_dev/shopkeeper_OS_OLD.js
