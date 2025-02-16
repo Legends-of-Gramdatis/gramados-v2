@@ -3,25 +3,25 @@
         {
             "display_name": "Essencial Goods - Food & Drinks",
             "name": "essential_goods_food_drinks",
+            "defaults": {
+                "VAT": "reduced"
+            },
             "items": [
                 {
-                    "id": "harvestcraft:caramelitem",
-                    "damage": 0,
+                    "id": "harvestcraft:caramelitem:0",
                     "name": "Caramel",
                     "VAT": "reduced",
                     "price": 150
                 },
                 {
-                    "id": "harvestcraft:colasodaitem",
-                    "damage": 0,
+                    "id": "harvestcraft:colasodaitem:0",
                     "name": "Cola Soda",
                     "VAT": "reduced",
                     "price": 250
                 },
                 {
-                    "id": "growthcraft_milk:bottlefluid_milk",
-                    "damage": 0,
-                    "name": "Milk Bottle",
+                    "id": "harvestcraft:freshmilkitem:0",
+                    "name": "Fresh Milk",
                     "VAT": "reduced",
                     "price": 200
                 },
@@ -63,6 +63,15 @@
                     "price": 100
                 }
             ]
+        },
+        {
+            "display_name": "Monsalac Dairy",
+            "name": "monsalac_dairy",
+            "based_on_stocks": [
+                "Monsalac Cheesemaking",
+                "Monsalac Milk"
+            ]
+
         }
 
     ]
