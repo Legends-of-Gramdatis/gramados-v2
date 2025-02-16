@@ -19,13 +19,17 @@
                 "y": 88,
                 "z": 3619
             },
-            "stock_room": [],
-            "main_room": [],
-            "region": null,
-            "sub_region": null
+            "stock_room": [
+                "Devland_Countryside_ShopTest1_Shop:1"
+            ],
+            "main_room": [
+                "Devland_Countryside_ShopTest1_Shop:2"
+            ],
+            "region": "Devland",
+            "sub_region": "Countryside"
         },
         "shop": {
-            "display_name": "Test Shop",
+            "display_name": "Seagull's Devland Test Shop",
             "type": "essential_goods_food_drinks",
             "is_open": false,
             "is_for_sale": false
