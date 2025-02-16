@@ -19,90 +19,14 @@
                 "y": 88,
                 "z": 3619
             },
-            "stock_room": [
-                "Devland_Countryside_ShopTest1_Shop:1"
-            ],
-            "main_room": [
-                "Devland_Countryside_ShopTest1_Shop:0"
-            ],
-            "region": "Gramados",
-            "sub_region": "Gramados_City"
+            "stock_room": [],
+            "main_room": [],
+            "region": null,
+            "sub_region": null
         },
         "shop": {
-            "display_name": "Seagull's Test Shop",
+            "display_name": "Test Shop",
             "type": "essential_goods_food_drinks",
-            "is_open": false,
-            "is_for_sale": false
-        },
-        "reputation_data": {
-            "reputation": 0,
-            "reputation_history": []
-        }
-    },
-    "2": {
-        "roles": {
-            "enabled": false,
-            "owner": "TheOddlySeagull",
-            "managers": [],
-            "cashiers": [],
-            "stock_keepers": [],
-            "assistants": []
-        },
-        "inventory": {
-            "stock": {},
-            "listed_items": [],
-            "stored_cash": 0
-        },
-        "property": {
-            "location": {
-                "x": 2195,
-                "y": 88,
-                "z": 3618
-            },
-            "stock_room": [],
-            "main_room": [],
-            "region": "Gramados",
-            "sub_region": "Petrolton"
-        },
-        "shop": {
-            "display_name": "The Test Gull",
-            "type": "kitchen_tools",
-            "is_open": false,
-            "is_for_sale": false
-        },
-        "reputation_data": {
-            "reputation": 0,
-            "reputation_history": []
-        }
-    },
-    "3": {
-        "roles": {
-            "enabled": false,
-            "owner": "TheOddlySeagull",
-            "managers": [],
-            "cashiers": [],
-            "stock_keepers": [],
-            "assistants": []
-        },
-        "inventory": {
-            "stock": {},
-            "listed_items": [],
-            "stored_cash": 0
-        },
-        "property": {
-            "location": {
-                "x": 2185,
-                "y": 88,
-                "z": 3619
-            },
-            "stock_room": [],
-            "main_room": [],
-            "region": "Monsalac",
-            "sub_region": "Chaseals"
-        },
-        "shop": {
-            "display_name": "Debug Test Shop",
-            "type": "monsalac_dairy",
             "is_open": false,
             "is_for_sale": false
         },
