@@ -78,5 +78,41 @@
             "reputation": 0,
             "reputation_history": []
         }
+    },
+    "3": {
+        "roles": {
+            "enabled": false,
+            "owner": "TheOddlySeagull",
+            "managers": [],
+            "cashiers": [],
+            "stock_keepers": [],
+            "assistants": []
+        },
+        "inventory": {
+            "stock": {},
+            "listed_items": [],
+            "stored_cash": 0
+        },
+        "property": {
+            "location": {
+                "x": 2185,
+                "y": 88,
+                "z": 3619
+            },
+            "stock_room": [],
+            "main_room": [],
+            "region": "Monsalac",
+            "sub_region": "Chaseals"
+        },
+        "shop": {
+            "display_name": "Debug Test Shop",
+            "type": "monsalac_dairy",
+            "is_open": false,
+            "is_for_sale": false
+        },
+        "reputation_data": {
+            "reputation": 0,
+            "reputation_history": []
+        }
     }
 }
