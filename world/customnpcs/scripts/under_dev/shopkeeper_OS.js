@@ -156,7 +156,7 @@ function chat(event) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case "stock_room":
-                        shop.property.stock_room.push(value.value);
+                        addStockRoom(player, shopId, playerShops, value.value);
                         break;
                     case "main_room":
                         shop.property.main_room.push(value.value);
@@ -186,7 +186,7 @@ function chat(event) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case "stock_room":
-                        if (!removeRoom(shop.property.stock_room, value.value)) {
+                        if (!removeStockRoom(player, shopId, playerShops, value.value)) {
                             player.message("Region " + value.value + " not found in stock_room!");
                             player.message("Available regions: " + shop.property.stock_room.join(", "));
                         }
@@ -219,15 +219,16 @@ function chat(event) {
         } else {
             player.message("Invalid command! Usage: $shop close <ID>");
         }
-    } else if (message.startsWith("$shop add stock")) {
+    } else if (message.startsWith("$shop stock add")) {
         var args = message.split(" ");
         if (args.length === 4) {
-            var price = parseInt(args[3]);
-            addStock(player, price);
+            var shopId = parseInt(args[3]);
+            // calculateStockRoomSize(player, shopId, playerShops);
+        } else {
+            player.message("Invalid command! Usage: $shop stock add <ID> <price>");
         }
-
-        addStock(player, price);
-    } else if (message.startsWith("$shop remove stock")) {
+        
+    } else if (message.startsWith("$shop stock remove")) {
         var args = message.split(" ");
         if (args.length === 4) {
             var item = args[3];
@@ -390,7 +391,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
             stock_room: [],
             main_room: [],
             region: region,
-            sub_region: sub_region
+            sub_region: sub_region,
+            stock_room_size: 0 // Initial value
         },
         shop: {
             display_name: display_name,
@@ -876,6 +878,104 @@ function checkSubRegionExists(region, subRegion) {
     return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }
 
+// function to calculate stock room size
+function calculateStockRoomSize(player, shopId, playerShops) {
+    var world_data = getWorldData();
+    // check if shop has stock room
+    if (playerShops[shopId].property.stock_room.length === 0) {
+        player.message("Shop has no stock room!");
+        return 0;
+    } else {
+        var stock_rooms = playerShops[shopId].property.stock_room;
+        var total_size = 0;
+        for (var i = 0; i < stock_rooms.length; i++) {
+            // split "stock_room" on ":" to get the cuboid name and the sub-cuboid
+            var cuboid = stock_rooms[i].split(":")[0];
+            var sub_cuboid = stock_rooms[i].split(":")[1];
+            player.message("Stock room: " + cuboid + " - " + sub_cuboid);
+            // get the cuboid
+            var cuboid_data = JSON.parse(world_data.get("region_" + cuboid));
+            if (!cuboid_data) {
+                player.message("Cuboid " + cuboid + " not found!");
+                return 0;
+            } else {
+                // player.message("Cuboid " + cuboid + " found!");
+                // player.message("Cuboid data: " + JSON.stringify(cuboid_data));
+                // Check if the cuboid has sub-cuboids
+                if (!cuboid_data.positions) {
+                    player.message("Cuboid " + cuboid + " has no sub-cuboids!");
+                    // player.message("Cuboid data: " + JSON.stringify(cuboid_data));
+                    return 0;
+                } else {
+                    // get the sub-cuboid (a cuboid has an array of "positions" which are the sub-cuboids)
+                    var sub_cuboid_data = cuboid_data.positions[sub_cuboid];
+                    // player.message("Sub-cuboid " + sub_cuboid + " found!");
+                    // get "xyz1" and "xyz2" from the sub-cuboid data
+                    var xyz1 = sub_cuboid_data.xyz1;
+                    var xyz2 = sub_cuboid_data.xyz2;
+                    // player.message("Sub-cuboid data: " + JSON.stringify(sub_cuboid_data));
+                    // player.message("xyz1: " + xyz1);
+                    // player.message("xyz2: " + xyz2);
+                    // divide the coordinates into x1, y1, z1 and x2, y2, z2
+                    var x1 = xyz1[0];
+                    var y1 = xyz1[1];
+                    var z1 = xyz1[2];
+                    var x2 = xyz2[0];
+                    var y2 = xyz2[1];
+                    var z2 = xyz2[2];
+                    // Be sure to start from the smallest coordinate
+                    var temp;
+                    if (x1 > x2) {
+                        temp = x1;
+                        x1 = x2;
+                        x2 = temp;
+                    }
+                    if (y1 > y2) {
+                        temp = y1;
+                        y1 = y2;
+                        y2 = temp;
+                    }
+                    if (z1 > z2) {
+                        temp = z1;
+                        z1 = z2;
+                        z2 = temp;
+                    }
+                    // player.message("x1: " + x1 + ", y1: " + y1 + ", z1: " + z1);
+                    // player.message("x2: " + x2 + ", y2: " + y2 + ", z2: " + z2);
+                    // loop through the cuboid and count the number of air blocks
+                    var count = 0;
+                    for (var x = x1; x <= x2; x++) {
+                        for (var y = y1; y <= y2; y++) {
+                            for (var z = z1; z <= z2; z++) {
+                                if (world.getBlock(x, y, z).isAir()) {
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                    // player.message("Stock room size: " + count + " blocks");
+                    total_size += count;
+                }
+            }
+        }
+        player.message("Total stock room size: " + total_size + " blocks");
+        return total_size;
+    }
+}
+
+function addStockRoom(player, shopId, playerShops, value) {
+    playerShops[shopId].property.stock_room.push(value);
+    playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
+}
+
+function removeStockRoom(player, shopId, playerShops, value) {
+    if (removeRoom(playerShops[shopId].property.stock_room, value)) {
+        playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
+        return true;
+    }
+    return false;
+}
+
 // ############################################################################################################
 // FILE OPERATIONS
 // ############################################################################################################
@@ -902,4 +1002,8 @@ function saveJson(data, filePath) {
 function checkFileExists(filePath) {
     var file = new java.io.File(filePath);
     return file.exists();
+}
+
+function getWorldData() {
+    return world.getStoreddata();
 }

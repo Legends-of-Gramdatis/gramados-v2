@@ -452,6 +452,249 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:598:8 Expected i
 	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
 	... 30 more"
+        },
+        {
+            "Long": 1739722431406L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: stock_room.split is not a function in <eval> at line number 890
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:890 TypeError: stock_room.split is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$4028$30721AAA$\\^eval\\_.calculateStockRoomSize(<eval>:890)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$4026$709A$\\^eval\\_.chat(<eval>:226)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739723046628L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: cuboid_data.getKeys is not a function in <eval> at line number 901
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:901 TypeError: cuboid_data.getKeys is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5191$30721AAA$\\^eval\\_.calculateStockRoomSize(<eval>:901)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5189$709A$\\^eval\\_.chat(<eval>:226)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739723193999L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: cuboid_data.keys is not a function in <eval> at line number 901
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:901 TypeError: cuboid_data.keys is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5406$30721AAA$\\^eval\\_.calculateStockRoomSize(<eval>:901)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5404$709A$\\^eval\\_.chat(<eval>:226)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739723946721L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: xyz1.split is not a function in <eval> at line number 918
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:918 TypeError: xyz1.split is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$6703$30721AAA$\\^eval\\_.calculateStockRoomSize(<eval>:918)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$6701$709A$\\^eval\\_.chat(<eval>:226)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739724704298L,
+            "String": " tab 3:
+javax.script.ScriptException: ReferenceError: \"shopId\" is not defined in <eval> at line number 968
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:968 ReferenceError: \"shopId\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$7892$34639AA$\\^eval\\_.addStockRoom(<eval>:968)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$7887$709A$\\^eval\\_.chat(<eval>:159)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
         }
     ],
     "Scripts": [
@@ -634,7 +877,7 @@ function chat(event) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case \"stock_room\":
-                        shop.property.stock_room.push(value.value);
+                        addStockRoom(player, shopId, playerShops, value.value);
                         break;
                     case \"main_room\":
                         shop.property.main_room.push(value.value);
@@ -664,7 +907,7 @@ function chat(event) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case \"stock_room\":
-                        if (!removeRoom(shop.property.stock_room, value.value)) {
+                        if (!removeStockRoom(player, shopId, playerShops, value.value)) {
                             player.message(\"Region \" + value.value + \" not found in stock_room!\");
                             player.message(\"Available regions: \" + shop.property.stock_room.join(\", \"));
                         }
@@ -697,15 +940,16 @@ function chat(event) {
         } else {
             player.message(\"Invalid command! Usage: $shop close <ID>\");
         }
-    } else if (message.startsWith(\"$shop add stock\")) {
+    } else if (message.startsWith(\"$shop stock add\")) {
         var args = message.split(\" \");
         if (args.length === 4) {
-            var price = parseInt(args[3]);
-            addStock(player, price);
+            var shopId = parseInt(args[3]);
+            // calculateStockRoomSize(player, shopId, playerShops);
+        } else {
+            player.message(\"Invalid command! Usage: $shop stock add <ID> <price>\");
         }
-
-        addStock(player, price);
-    } else if (message.startsWith(\"$shop remove stock\")) {
+        
+    } else if (message.startsWith(\"$shop stock remove\")) {
         var args = message.split(\" \");
         if (args.length === 4) {
             var item = args[3];
@@ -868,7 +1112,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
             stock_room: [],
             main_room: [],
             region: region,
-            sub_region: sub_region
+            sub_region: sub_region,
+            stock_room_size: 0 // Initial value
         },
         shop: {
             display_name: display_name,
@@ -1354,6 +1599,104 @@ function checkSubRegionExists(region, subRegion) {
     return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }
 
+// function to calculate stock room size
+function calculateStockRoomSize(player, shopId, playerShops) {
+    var world_data = getWorldData();
+    // check if shop has stock room
+    if (playerShops[shopId].property.stock_room.length === 0) {
+        player.message(\"Shop has no stock room!\");
+        return 0;
+    } else {
+        var stock_rooms = playerShops[shopId].property.stock_room;
+        var total_size = 0;
+        for (var i = 0; i < stock_rooms.length; i++) {
+            // split \"stock_room\" on \":\" to get the cuboid name and the sub-cuboid
+            var cuboid = stock_rooms[i].split(\":\")[0];
+            var sub_cuboid = stock_rooms[i].split(\":\")[1];
+            player.message(\"Stock room: \" + cuboid + \" - \" + sub_cuboid);
+            // get the cuboid
+            var cuboid_data = JSON.parse(world_data.get(\"region_\" + cuboid));
+            if (!cuboid_data) {
+                player.message(\"Cuboid \" + cuboid + \" not found!\");
+                return 0;
+            } else {
+                // player.message(\"Cuboid \" + cuboid + \" found!\");
+                // player.message(\"Cuboid data: \" + JSON.stringify(cuboid_data));
+                // Check if the cuboid has sub-cuboids
+                if (!cuboid_data.positions) {
+                    player.message(\"Cuboid \" + cuboid + \" has no sub-cuboids!\");
+                    // player.message(\"Cuboid data: \" + JSON.stringify(cuboid_data));
+                    return 0;
+                } else {
+                    // get the sub-cuboid (a cuboid has an array of \"positions\" which are the sub-cuboids)
+                    var sub_cuboid_data = cuboid_data.positions[sub_cuboid];
+                    // player.message(\"Sub-cuboid \" + sub_cuboid + \" found!\");
+                    // get \"xyz1\" and \"xyz2\" from the sub-cuboid data
+                    var xyz1 = sub_cuboid_data.xyz1;
+                    var xyz2 = sub_cuboid_data.xyz2;
+                    // player.message(\"Sub-cuboid data: \" + JSON.stringify(sub_cuboid_data));
+                    // player.message(\"xyz1: \" + xyz1);
+                    // player.message(\"xyz2: \" + xyz2);
+                    // divide the coordinates into x1, y1, z1 and x2, y2, z2
+                    var x1 = xyz1[0];
+                    var y1 = xyz1[1];
+                    var z1 = xyz1[2];
+                    var x2 = xyz2[0];
+                    var y2 = xyz2[1];
+                    var z2 = xyz2[2];
+                    // Be sure to start from the smallest coordinate
+                    var temp;
+                    if (x1 > x2) {
+                        temp = x1;
+                        x1 = x2;
+                        x2 = temp;
+                    }
+                    if (y1 > y2) {
+                        temp = y1;
+                        y1 = y2;
+                        y2 = temp;
+                    }
+                    if (z1 > z2) {
+                        temp = z1;
+                        z1 = z2;
+                        z2 = temp;
+                    }
+                    // player.message(\"x1: \" + x1 + \", y1: \" + y1 + \", z1: \" + z1);
+                    // player.message(\"x2: \" + x2 + \", y2: \" + y2 + \", z2: \" + z2);
+                    // loop through the cuboid and count the number of air blocks
+                    var count = 0;
+                    for (var x = x1; x <= x2; x++) {
+                        for (var y = y1; y <= y2; y++) {
+                            for (var z = z1; z <= z2; z++) {
+                                if (world.getBlock(x, y, z).isAir()) {
+                                    count++;
+                                }
+                            }
+                        }
+                    }
+                    // player.message(\"Stock room size: \" + count + \" blocks\");
+                    total_size += count;
+                }
+            }
+        }
+        player.message(\"Total stock room size: \" + total_size + \" blocks\");
+        return total_size;
+    }
+}
+
+function addStockRoom(player, shopId, playerShops, value) {
+    playerShops[shopId].property.stock_room.push(value);
+    playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
+}
+
+function removeStockRoom(player, shopId, playerShops, value) {
+    if (removeRoom(playerShops[shopId].property.stock_room, value)) {
+        playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
+        return true;
+    }
+    return false;
+}
+
 // ############################################################################################################
 // FILE OPERATIONS
 // ############################################################################################################
@@ -1380,6 +1723,10 @@ function saveJson(data, filePath) {
 function checkFileExists(filePath) {
     var file = new java.io.File(filePath);
     return file.exists();
+}
+
+function getWorldData() {
+    return world.getStoreddata();
 }",
             "Console": [
             ],
