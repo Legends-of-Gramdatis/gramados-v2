@@ -225,7 +225,7 @@ function chat(event) {
         var args = message.split(" ");
         if (args.length === 3) {
             var shopId = parseInt(args[2]);
-            openShop(player, shopId);
+            openShop(player, shopId, playerShops);
         } else {
             player.message("Invalid command! Usage: $shop open <ID>");
         }
@@ -300,9 +300,7 @@ function chat(event) {
 // ------------------------------------------------------------------------------------------------------------
 // Open the shop
 // ------------------------------------------------------------------------------------------------------------
-function openShop(player, shopId) {
-
-    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+function openShop(player, shopId, serverShops) {
 
     // Check integrity
     if (
@@ -311,16 +309,38 @@ function openShop(player, shopId) {
     ) {
         var shopData = serverShops[shopId];
 
-        // check permissions
-        if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
-            shopData.shop.is_open = true;
-            saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-            player.message("Shop opened!");
-            return true;
-        } else {
-            player.message("You don't have permission to open this shop!");
+        // Check if shop is closed
+        if (shopData.shop.is_open) {
+            player.message("Shop is already open!");
             return false;
         }
+
+        // Check if player has another shop of similar type and region/subregion open
+        var playerShops = listShops(player);
+        for (var i = 0; i < playerShops.length; i++) {
+            var otherShopId = playerShops[i];
+            var otherShop = serverShops[otherShopId];
+            if (
+                otherShop.shop.is_open &&
+                otherShop.shop.type === shopData.shop.type &&
+                otherShop.property.region === shopData.property.region &&
+                otherShop.property.sub_region === shopData.property.sub_region
+            ) {
+                player.message("You already have another shop of similar type and region/subregion open!");
+                return false;
+            }
+        }
+
+        // check permissions (this will come later)
+        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
+        shopData.shop.is_open = true;
+        saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Shop opened!");
+        return true;
+        // } else {
+        //     player.message("You don't have permission to open this shop!");
+        //     return false;
+        // }
     } else {
         player.message("Shop cannot be opened!");
         return false;
@@ -334,22 +354,25 @@ function closeShop(player, shopId) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
 
     // Check integrity
-    if (
-        ensureShopExists(player, shopId, serverShops) &&
-        ensureShopDataComplete(player, shopId, serverShops, true).valid
-    ) {
+    if (ensureShopExists(player, shopId, serverShops)) {
         var shopData = serverShops[shopId];
 
-        // check permissions
-        if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
-            shopData.shop.is_open = false;
-            saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-            player.message("Shop closed!");
-            return true;
-        } else {
-            player.message("You don't have permission to close this shop!");
+        // Check if shop is open
+        if (!shopData.shop.is_open) {
+            player.message("Shop is already closed!");
             return false;
         }
+
+        // check permissions (this will come later)
+        // if (checkPermissions(player, shopId, serverShops, PERMISSION_OPEN_CLOSE_SHOP)) {
+        shopData.shop.is_open = false;
+        saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Shop closed!");
+        return true;
+        // } else {
+        //     player.message("You don't have permission to close this shop!");
+        //     return false;
+        // }
     } else {
         player.message("Shop cannot be closed!");
         return false;
@@ -833,22 +856,17 @@ function ensureShopExists(player, shopId, playerShops) {
 }
 
 // Function to get a list of all shops a given player owns
-function listShops(player) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        player.message("No shops found!");
-        return;
-    }
+function listShops(player, serverShops) {
 
     var shops = [];
-    for (var shopId in playerShops) {
-        if (playerShops[shopId].owner === player.getName()) {
+    for (var shopId in serverShops) {
+        if (serverShops[shopId].roles.owner === player.getName()) {
             shops.push(shopId);
         }
     }
 
     if (shops.length === 0) {
-        player.message("No shops found!");
+        player.message("No shops found for " + player.getName() + "!");
     } else {
         player.message("Shops you own: " + shops.join(", "));
     }
@@ -1036,34 +1054,6 @@ function getProperty(string) {
     return { propertyName: propertyName, value: value };
 }
 
-// ############################################################################################################
-// FILE OPERATIONS
-// ############################################################################################################
-
-function loadJson(filePath) {
-    var file = new java.io.File(filePath);
-    if (!file.exists()) {
-        return null;
-    }
-
-    var reader = new java.io.FileReader(file);
-    var json = JSON.parse(org.apache.commons.io.IOUtils.toString(reader));
-    reader.close();
-
-    return json;
-}
-
-function saveJson(data, filePath) {
-    var writer = new java.io.FileWriter(filePath);
-    writer.write(JSON.stringify(data, null, 4));
-    writer.close();
-}
-
-function checkFileExists(filePath) {
-    var file = new java.io.File(filePath);
-    return file.exists();
-}
-
 function removeRoom(roomArray, value) {
     var index = parseInt(value);
     if (!isNaN(index)) {
@@ -1091,4 +1081,32 @@ function checkSubRegionExists(region, subRegion) {
     var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
     shopDemand = shopDemand["Local Demands"];
     return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
+}
+
+// ############################################################################################################
+// FILE OPERATIONS
+// ############################################################################################################
+
+function loadJson(filePath) {
+    var file = new java.io.File(filePath);
+    if (!file.exists()) {
+        return null;
+    }
+
+    var reader = new java.io.FileReader(file);
+    var json = JSON.parse(org.apache.commons.io.IOUtils.toString(reader));
+    reader.close();
+
+    return json;
+}
+
+function saveJson(data, filePath) {
+    var writer = new java.io.FileWriter(filePath);
+    writer.write(JSON.stringify(data, null, 4));
+    writer.close();
+}
+
+function checkFileExists(filePath) {
+    var file = new java.io.File(filePath);
+    return file.exists();
 }
