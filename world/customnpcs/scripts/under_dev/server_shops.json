@@ -31,7 +31,7 @@
         },
         "shop": {
             "display_name": "Seagull's Devland Test Shop",
-            "type": "essential_goods_food_drinks",
+            "type": "code_bugger",
             "is_open": false,
             "is_for_sale": false
         },

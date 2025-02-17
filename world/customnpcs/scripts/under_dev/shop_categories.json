@@ -31,6 +31,15 @@
                     "name": "Egg",
                     "VAT": "reduced",
                     "price": 50
+                },
+                {
+                    "id": "minecraft:potion:0",
+                    "tag": {
+                        "Potion": "minecraft:water"
+                    },
+                    "name": "Water Bottle",
+                    "VAT": "reduced",
+                    "price": 50
                 }
             ]
         },
@@ -72,6 +81,37 @@
                 "Monsalac Milk"
             ]
 
+        },
+        {
+            "display_name": "Bakery",
+            "name": "bakery",
+            "based_on_market": [
+                "baker"
+            ]
+        },
+        {
+            "display_name": "Code Crusher",
+            "name": "code_bugger",
+            "defaults": {
+                "VAT": "reduced"
+            },
+            "based_on_market": [
+                "baker",
+                "boat engines and propellers"
+            ],
+            "based_on_stocks": [
+                "Greenfield Brewing",
+                "Allenis",
+                "Monsalac Milk"
+            ],
+            "items": [
+                {
+                    "id": "harvestcraft:cuttingboarditem:0",
+                    "name": "Cutting Board",
+                    "VAT": "standard",
+                    "price": 100
+                }
+            ]
         }
 
     ]
