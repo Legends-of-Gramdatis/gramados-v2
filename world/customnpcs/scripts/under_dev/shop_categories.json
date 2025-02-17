@@ -100,9 +100,10 @@
                 "boat engines and propellers"
             ],
             "based_on_stocks": [
-                "Greenfield Brewing",
+                "Farmiston",
                 "Allenis",
-                "Monsalac Milk"
+                "Monsalac Milk",
+                "Greenfield Brewing"
             ],
             "items": [
                 {
