@@ -221,11 +221,14 @@ function chat(event) {
         }
     } else if (message.startsWith("$shop stock add")) {
         var args = message.split(" ");
+        var shopId = parseInt(args[3]);
         if (args.length === 4) {
-            var shopId = parseInt(args[3]);
-            // calculateStockRoomSize(player, shopId, playerShops);
+            player.message("Running $shop stock add " + shopId);
+            getAvailableItems(player, getShopFromID(shopId).shop.type);
+        } else if (args.length === 5) {
+            player.message("Running $shop stock add " + shopId + " " + args[4]);
         } else {
-            player.message("Invalid command! Usage: $shop stock add <ID> <price>");
+            player.message("Invalid command! Usage: $shop stock add <ID> or $shop stock add <ID> all");
         }
         
     } else if (message.startsWith("$shop stock remove")) {
@@ -974,6 +977,65 @@ function removeStockRoom(player, shopId, playerShops, value) {
         return true;
     }
     return false;
+}
+
+// function to get hand held items
+function getHandItems(player) {
+    var itemstack = player.getMainhandItem();
+    var edititemstack = itemstack.copy();
+    var count = edititemstack.getStackSize();
+    edititemstack.setStackSize(1);
+    var item = edititemstack.getItemNbt();
+
+    var itemstock = {
+        item: item,
+        count: count
+    };
+
+    player.message("Item: " + itemstock.item.toJsonString());
+    player.message("Count: " + itemstock.count);
+
+    return itemstock;
+}
+
+// function to get the list oif available items from a shop type
+function getAvailableItems(player, shopType) {
+    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    if (!shopCategories) {
+        player.message("Shop categories not found!");
+        return;
+    }
+
+    for (var i = 0; i < shopCategories["entries"].length; i++) {
+        var entry = shopCategories["entries"][i];
+        if (entry.name === shopType) {
+            // If shop entry has "item" list:
+            if (entry.items) {
+                player.message("Available items: ");
+                for (var j = 0; j < entry.items.length; j++) {
+                    player.message(entry.items[j].id);
+                    if (entry.items[j].tag) {
+                        player.message("Tag: " + JSON.stringify(entry.items[j].tag));
+                    }
+                }
+            }
+            // If shop entry has "based_on_stocks" list:
+            if (entry.based_on_stocks) {
+                player.message("Based on stocks: ");
+                for (var j = 0; j < entry.based_on_stocks.length; j++) {
+                    player.message(entry.based_on_stocks[j]);
+                }
+            }
+            // if shop entry has "based_on_market" list:
+            if (entry.based_on_market) {
+                player.message("Based on market: ");
+                for (var j = 0; j < entry.based_on_market.length; j++) {
+                    player.message(entry.based_on_market[j]);
+                }
+            }
+            return;
+        }
+    }
 }
 
 // ############################################################################################################

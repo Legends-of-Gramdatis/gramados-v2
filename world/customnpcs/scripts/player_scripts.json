@@ -3,7 +3,7 @@
     "ScriptConsole": [
         {
             "Long": 1739715595281L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"3\" from undefined in <eval> at line number 874
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -47,7 +47,7 @@ Caused by: <eval>:874 TypeError: Cannot read property \"3\" from undefined
         },
         {
             "Long": 1739715780098L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"shop\" from undefined in <eval> at line number 101
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -90,7 +90,7 @@ Caused by: <eval>:101 TypeError: Cannot read property \"shop\" from undefined
         },
         {
             "Long": 1739720938315L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:517:8 Expected ident but found [
     var [mainRegion, subRegion] = region.split(\"-\");
         ^ in <eval> at line number 517 at column number 8
@@ -150,7 +150,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected i
         },
         {
             "Long": 1739720938913L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:517:8 Expected ident but found [
     var [mainRegion, subRegion] = region.split(\"-\");
         ^ in <eval> at line number 517 at column number 8
@@ -211,7 +211,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected i
         },
         {
             "Long": 1739721004141L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:517:8 Expected ident but found [
     var [mainRegion, subRegion] = region.split(\"-\");
         ^ in <eval> at line number 517 at column number 8
@@ -272,7 +272,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected i
         },
         {
             "Long": 1739721004662L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:517:8 Expected ident but found [
     var [mainRegion, subRegion] = region.split(\"-\");
         ^ in <eval> at line number 517 at column number 8
@@ -333,7 +333,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:517:8 Expected i
         },
         {
             "Long": 1739721058593L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:598:8 Expected ident but found [
     var [grons, cents] = price.split(\"g\");
         ^ in <eval> at line number 598 at column number 8
@@ -394,7 +394,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:598:8 Expected i
         },
         {
             "Long": 1739721059086L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:598:8 Expected ident but found [
     var [grons, cents] = price.split(\"g\");
         ^ in <eval> at line number 598 at column number 8
@@ -455,7 +455,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:598:8 Expected i
         },
         {
             "Long": 1739722431406L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: stock_room.split is not a function in <eval> at line number 890
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -505,7 +505,7 @@ Caused by: <eval>:890 TypeError: stock_room.split is not a function
         },
         {
             "Long": 1739723046628L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: cuboid_data.getKeys is not a function in <eval> at line number 901
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -555,7 +555,7 @@ Caused by: <eval>:901 TypeError: cuboid_data.getKeys is not a function
         },
         {
             "Long": 1739723193999L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: cuboid_data.keys is not a function in <eval> at line number 901
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -605,7 +605,7 @@ Caused by: <eval>:901 TypeError: cuboid_data.keys is not a function
         },
         {
             "Long": 1739723946721L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: xyz1.split is not a function in <eval> at line number 918
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -655,7 +655,7 @@ Caused by: <eval>:918 TypeError: xyz1.split is not a function
         },
         {
             "Long": 1739724704298L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: ReferenceError: \"shopId\" is not defined in <eval> at line number 968
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -689,6 +689,412 @@ Caused by: <eval>:968 ReferenceError: \"shopId\" is not defined
 	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
 	at jdk.nashorn.internal.scripts.Script$Recompilation$7892$34639AA$\\^eval\\_.addStockRoom(<eval>:968)
 	at jdk.nashorn.internal.scripts.Script$Recompilation$7887$709A$\\^eval\\_.chat(<eval>:159)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739787578668L,
+            "String": " tab 3:
+javax.script.ScriptException: <eval>:1018:1 Expected an operand but found error
+}²
+ ^ in <eval> at line number 1018 at column number 1
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:537)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:524)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:1018:1 Expected an operand but found error
+}²
+ ^
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:294)
+	at jdk.nashorn.internal.parser.AbstractParser.error(AbstractParser.java:279)
+	at jdk.nashorn.internal.parser.Parser.unaryExpression(Parser.java:3182)
+	at jdk.nashorn.internal.parser.Parser.expression(Parser.java:3282)
+	at jdk.nashorn.internal.parser.Parser.expressionStatement(Parser.java:1150)
+	at jdk.nashorn.internal.parser.Parser.statement(Parser.java:967)
+	at jdk.nashorn.internal.parser.Parser.sourceElements(Parser.java:773)
+	at jdk.nashorn.internal.parser.Parser.program(Parser.java:709)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:283)
+	at jdk.nashorn.internal.parser.Parser.parse(Parser.java:249)
+	at jdk.nashorn.internal.runtime.Context.compile(Context.java:1284)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:1251)
+	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
+	... 30 more"
+        },
+        {
+            "Long": 1739788040856L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: itemstack.setCount is not a function in <eval> at line number 987
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:987 TypeError: itemstack.setCount is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$2793$35379A$\\^eval\\_.getHandItems(<eval>:987)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$2791$709A$\\^eval\\_.chat(<eval>:227)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 23 more"
+        },
+        {
+            "Long": 1739789200532L,
+            "String": " tab 3:
+java.lang.AssertionError: Failed generating bytecode for <eval>:1009
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getBest(ScriptFunctionData.java:375)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getBestInvoker(ScriptFunctionData.java:237)
+	at jdk.nashorn.internal.runtime.ScriptFunction.findCallMethod(ScriptFunction.java:871)
+	at jdk.nashorn.internal.runtime.ScriptObject.lookup(ScriptObject.java:1825)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:104)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$3834$709A$\\^eval\\_.chat(<eval>:227)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadRuntimeNode(CodeGenerator.java:2817)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$4300(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterRuntimeNode(CodeGenerator.java:1193)
+	at jdk.nashorn.internal.ir.RuntimeNode.accept(RuntimeNode.java:436)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionUnbounded(CodeGenerator.java:568)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadArgs(CodeGenerator.java:1421)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$5100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3$4.loadStack(CodeGenerator.java:1605)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4620)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3.enterAccessNode(CodeGenerator.java:1611)
+	at jdk.nashorn.internal.ir.AccessNode.accept(AccessNode.java:66)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadCallNode(CodeGenerator.java:1434)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$2100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterCallNode(CodeGenerator.java:1002)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:177)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:41)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsObject(CodeGenerator.java:572)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$600(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2$1.loadStack(CodeGenerator.java:870)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterAccessNode(CodeGenerator.java:879)
+	at jdk.nashorn.internal.ir.AccessNode.accept(AccessNode.java:66)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsType(CodeGenerator.java:829)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterVarNode(CodeGenerator.java:3320)
+	at jdk.nashorn.internal.ir.VarNode.accept(VarNode.java:167)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 43 more"
+        },
+        {
+            "Long": 1739789274189L,
+            "String": " tab 3:
+java.lang.AssertionError: Failed generating bytecode for <eval>:1012
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:431)
+	at jdk.nashorn.internal.codegen.CompilationPhase.apply(CompilationPhase.java:624)
+	at jdk.nashorn.internal.codegen.Compiler.compile(Compiler.java:655)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.compileTypeSpecialization(RecompilableScriptFunctionData.java:725)
+	at jdk.nashorn.internal.runtime.RecompilableScriptFunctionData.getBest(RecompilableScriptFunctionData.java:905)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getBest(ScriptFunctionData.java:375)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.getBestInvoker(ScriptFunctionData.java:237)
+	at jdk.nashorn.internal.runtime.ScriptFunction.findCallMethod(ScriptFunction.java:871)
+	at jdk.nashorn.internal.runtime.ScriptObject.lookup(ScriptObject.java:1825)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:104)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$3966$709A$\\^eval\\_.chat(<eval>:227)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: java.lang.AssertionError: jdk.nashorn.internal.ir.BinaryNode
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterDefault(CodeGenerator.java:1226)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBIND(NodeOperatorVisitor.java:744)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:137)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionUnbounded(CodeGenerator.java:568)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadArgs(CodeGenerator.java:1421)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$5100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3$4.loadStack(CodeGenerator.java:1605)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4620)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3.enterAccessNode(CodeGenerator.java:1611)
+	at jdk.nashorn.internal.ir.AccessNode.accept(AccessNode.java:66)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadCallNode(CodeGenerator.java:1434)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$2100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterCallNode(CodeGenerator.java:1002)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:177)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:41)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionAsObject(CodeGenerator.java:572)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$600(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3$4.loadStack(CodeGenerator.java:1598)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4620)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3.enterAccessNode(CodeGenerator.java:1611)
+	at jdk.nashorn.internal.ir.AccessNode.accept(AccessNode.java:66)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadCallNode(CodeGenerator.java:1434)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$2100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterCallNode(CodeGenerator.java:1002)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:177)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:41)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadBinaryOperands(CodeGenerator.java:618)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$7200(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$15.loadStack(CodeGenerator.java:3765)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4620)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadADD(CodeGenerator.java:3772)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterADD(CodeGenerator.java:1019)
+	at jdk.nashorn.internal.ir.visitor.NodeOperatorVisitor.enterBinaryNode(NodeOperatorVisitor.java:109)
+	at jdk.nashorn.internal.ir.BinaryNode.accept(BinaryNode.java:335)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpressionUnbounded(CodeGenerator.java:568)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadArgs(CodeGenerator.java:1421)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$5100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3$4.loadStack(CodeGenerator.java:1605)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4635)
+	at jdk.nashorn.internal.codegen.CodeGenerator$OptimisticOperation.emit(CodeGenerator.java:4620)
+	at jdk.nashorn.internal.codegen.CodeGenerator$3.enterAccessNode(CodeGenerator.java:1611)
+	at jdk.nashorn.internal.ir.AccessNode.accept(AccessNode.java:66)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadCallNode(CodeGenerator.java:1434)
+	at jdk.nashorn.internal.codegen.CodeGenerator.access$2100(CodeGenerator.java:178)
+	at jdk.nashorn.internal.codegen.CodeGenerator$2.enterCallNode(CodeGenerator.java:1002)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:177)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.CallNode.accept(CallNode.java:41)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:857)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadExpression(CodeGenerator.java:833)
+	at jdk.nashorn.internal.codegen.CodeGenerator.loadAndDiscard(CodeGenerator.java:3656)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterExpressionStatement(CodeGenerator.java:1720)
+	at jdk.nashorn.internal.ir.ExpressionStatement.accept(ExpressionStatement.java:63)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterIfNode(CodeGenerator.java:2186)
+	at jdk.nashorn.internal.ir.IfNode.accept(IfNode.java:86)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterForOrWhile(CodeGenerator.java:3422)
+	at jdk.nashorn.internal.codegen.CodeGenerator.enterForNode(CodeGenerator.java:1751)
+	at jdk.nashorn.internal.ir.ForNode.accept(ForNode.java:93)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextStatement.accept(LexicalContextStatement.java:55)
+	at jdk.nashorn.internal.ir.LoopNode.accept(LoopNode.java:36)
+	at jdk.nashorn.internal.ir.Node.accept(Node.java:271)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:185)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.Block.accept(Block.java:439)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:336)
+	at jdk.nashorn.internal.ir.LexicalContextNode$Acceptor.accept(LexicalContextNode.java:57)
+	at jdk.nashorn.internal.ir.LexicalContextExpression.accept(LexicalContextExpression.java:47)
+	at jdk.nashorn.internal.ir.FunctionNode.accept(FunctionNode.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase.transformFunction(CompilationPhase.java:628)
+	at jdk.nashorn.internal.codegen.CompilationPhase.access$100(CompilationPhase.java:55)
+	at jdk.nashorn.internal.codegen.CompilationPhase$BytecodeGenerationPhase.transform(CompilationPhase.java:418)
+	... 43 more"
+        },
+        {
+            "Long": 1739789428004L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: entry.items[j].tag.toJsonString is not a function in <eval> at line number 1016
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:1016 TypeError: entry.items[j].tag.toJsonString is not a function
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Undefined.lookup(Undefined.java:102)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:106)
+	at jdk.nashorn.internal.runtime.linker.NashornLinker.getGuardedInvocation(NashornLinker.java:98)
+	at jdk.internal.dynalink.support.CompositeTypeBasedGuardingDynamicLinker.getGuardedInvocation(CompositeTypeBasedGuardingDynamicLinker.java:176)
+	at jdk.internal.dynalink.support.CompositeGuardingDynamicLinker.getGuardedInvocation(CompositeGuardingDynamicLinker.java:124)
+	at jdk.internal.dynalink.support.LinkerServicesImpl.getGuardedInvocation(LinkerServicesImpl.java:154)
+	at jdk.internal.dynalink.DynamicLinker.relink(DynamicLinker.java:253)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$4233$35950AA$\\^eval\\_.getAvailableItems(<eval>:1016)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$4230$709A$\\^eval\\_.chat(<eval>:227)
 	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
 	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
 	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
@@ -942,11 +1348,14 @@ function chat(event) {
         }
     } else if (message.startsWith(\"$shop stock add\")) {
         var args = message.split(\" \");
+        var shopId = parseInt(args[3]);
         if (args.length === 4) {
-            var shopId = parseInt(args[3]);
-            // calculateStockRoomSize(player, shopId, playerShops);
+            player.message(\"Running $shop stock add \" + shopId);
+            getAvailableItems(player, getShopFromID(shopId).shop.type);
+        } else if (args.length === 5) {
+            player.message(\"Running $shop stock add \" + shopId + \" \" + args[4]);
         } else {
-            player.message(\"Invalid command! Usage: $shop stock add <ID> <price>\");
+            player.message(\"Invalid command! Usage: $shop stock add <ID> or $shop stock add <ID> all\");
         }
         
     } else if (message.startsWith(\"$shop stock remove\")) {
@@ -1113,7 +1522,7 @@ function createShop(player, type, region, sub_region, display_name, money) {
             main_room: [],
             region: region,
             sub_region: sub_region,
-            stock_room_size: 0 // Initial value
+            stock_room_size: 0
         },
         shop: {
             display_name: display_name,
@@ -1695,6 +2104,65 @@ function removeStockRoom(player, shopId, playerShops, value) {
         return true;
     }
     return false;
+}
+
+// function to get hand held items
+function getHandItems(player) {
+    var itemstack = player.getMainhandItem();
+    var edititemstack = itemstack.copy();
+    var count = edititemstack.getStackSize();
+    edititemstack.setStackSize(1);
+    var item = edititemstack.getItemNbt();
+
+    var itemstock = {
+        item: item,
+        count: count
+    };
+
+    player.message(\"Item: \" + itemstock.item.toJsonString());
+    player.message(\"Count: \" + itemstock.count);
+
+    return itemstock;
+}
+
+// function to get the list oif available items from a shop type
+function getAvailableItems(player, shopType) {
+    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    if (!shopCategories) {
+        player.message(\"Shop categories not found!\");
+        return;
+    }
+
+    for (var i = 0; i < shopCategories[\"entries\"].length; i++) {
+        var entry = shopCategories[\"entries\"][i];
+        if (entry.name === shopType) {
+            // If shop entry has \"item\" list:
+            if (entry.items) {
+                player.message(\"Available items: \");
+                for (var j = 0; j < entry.items.length; j++) {
+                    player.message(entry.items[j].id);
+                    if (entry.items[j].tag) {
+                        player.message(\"Tag: \" + JSON.stringify(entry.items[j].tag));
+                    }
+                }
+            }
+            // If shop entry has \"based_on_stocks\" list:
+            if (entry.based_on_stocks) {
+                player.message(\"Based on stocks: \");
+                for (var j = 0; j < entry.based_on_stocks.length; j++) {
+                    player.message(entry.based_on_stocks[j]);
+                }
+            }
+            // if shop entry has \"based_on_market\" list:
+            if (entry.based_on_market) {
+                player.message(\"Based on market: \");
+                for (var j = 0; j < entry.based_on_market.length; j++) {
+                    player.message(entry.based_on_market[j]);
+                }
+            }
+            return;
+        }
+    }
 }
 
 // ############################################################################################################
