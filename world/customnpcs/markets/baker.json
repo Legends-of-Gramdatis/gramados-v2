@@ -44,7 +44,7 @@
                     }
                 },
                 "id": "variedcommodities:coin_iron",
-                "Count": 6b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -98,7 +98,7 @@
                     }
                 },
                 "id": "variedcommodities:coin_iron",
-                "Count": 5b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -152,7 +152,7 @@
                     }
                 },
                 "id": "variedcommodities:coin_iron",
-                "Count": 6b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -206,7 +206,7 @@
                     }
                 },
                 "id": "variedcommodities:coin_iron",
-                "Count": 6b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -316,6 +316,96 @@
                 "id": "harvestcraft:flouritem",
                 "Count": 4b,
                 "Damage": 0s
+            },
+            {
+                "Slot": 20b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 23b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 26b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 29b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 32b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50C"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
             }
         ]
     },
@@ -379,7 +469,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "harvestcraft:peanutbuttercookiesitem",
+                "id": "harvestcraft:buttercookieitem",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -409,7 +499,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "harvestcraft:raisincookiesitem",
+                "id": "harvestcraft:peanutbuttercookiesitem",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -439,7 +529,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "harvestcraft:buttercookieitem",
+                "id": "harvestcraft:raisincookiesitem",
                 "Count": 1b,
                 "Damage": 0s
             },
