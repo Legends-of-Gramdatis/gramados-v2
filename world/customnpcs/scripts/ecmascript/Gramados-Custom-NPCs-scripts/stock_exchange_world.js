@@ -45,34 +45,48 @@ function updateStockPrice(stockValue, regionGeneral) {
 
     // If the stock is "active" (has been sold at least once), update its price
     if (elapsedTime != 0) {
+        var sixHours = _TIMER_COUNTER / 4;
 
-        // Check the stock's last sold time
-        if (elapsedTime >= _TIMER_COUNTER) {
-
-            // Stock wasn't sold for at least 24 hours, increase price
-            var proportion = (_OFFER_AND_DEMAND_FACTOR * 2)
-            // If the region has a flexibility multiplier, apply it
+        if (elapsedTime < sixHours) {
+            // If last sale is less than 6 hours ago, lower the stock price
+            var proportion = _OFFER_AND_DEMAND_FACTOR;
             if (regionGeneral && regionGeneral["stock_flexibility"]) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
-            // Increase the stock price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 + proportion));
+            var percent = 1 - proportion;
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
 
-        } else {
+        } else if (elapsedTime > sixHours*2 && elapsedTime < _TIMER_COUNTER) {
+            // If last sale is between 12 and 24 hours ago, increase the stock price
 
-
-            var proportion = (_OFFER_AND_DEMAND_FACTOR)
-            // If the region has a flexibility multiplier, apply it
+            var proportion = _OFFER_AND_DEMAND_FACTOR;
             if (regionGeneral && regionGeneral["stock_flexibility"]) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
-
-            // Stock was sold recently, decrease price
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * (1 - proportion));
+            var percent = 1 + proportion;
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
+        } else if (elapsedTime > _TIMER_COUNTER && elapsedTime < _TIMER_COUNTER*2) {
+            // If last sale is between 24 and 48 hours ago, randomly increase the stock price
+            /*
+            get 10% of the difference between the reference price and the current price
+            if the difference is negative, make it positive
+            multiply the difference by a random number between 0 and 1
+            */
+            var diff = stockValue["reference_price"] - stockValue["current_price"];
+            if (diff < 0) {
+                diff = -diff;
+            }
+            var proportion = diff / 10;
+            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+                diff *= regionGeneral["stock_flexibility"];
+            }
+            var random = Math.random();
+            var percent = 1 + (proportion * random);
+            stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
         }
     }
 
-    // Add a random factor to the price (between 0 and 10% of the reference price, capped at 100)
+    // If last sale is more than 48 hours ago, randomly adjust the stock price closer to the reference price
     var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * _RANDOM_FACTOR, 100));
 
     /* 
@@ -80,7 +94,7 @@ function updateStockPrice(stockValue, regionGeneral) {
         If the value is higher, the current price is higher than the reference price
         If the value is lower, the current price is lower than the reference price
 
-        Therefor, the stock price will have a higher chance of increasing if the current price is lower than the reference price, but still have a chance of decreasing.
+        Therefore, the stock price will have a higher chance of increasing if the current price is lower than the reference price, but still have a chance of decreasing.
         This decrease chance gets lower as the current price gets closer to the reference price.
 
         We will use the output of this formula to determine if the random factor should be positive or negative.
