@@ -887,7 +887,7 @@
         "minecraft:hay_block:0": {
             "display_name": "Hay Bale",
             "reference_price": 400,
-            "current_price": 610,
+            "current_price": 410,
             "min_price": 90,
             "max_price": 10000,
             "quantity_sold": 1952,
