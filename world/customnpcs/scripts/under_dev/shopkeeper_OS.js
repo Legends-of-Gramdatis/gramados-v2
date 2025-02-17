@@ -4,6 +4,9 @@ var SERVER_SHOPS_JSON_PATH = "world/customnpcs/scripts/under_dev/server_shops.js
 var SHOP_CATEGORIES_JSON_PATH = "world/customnpcs/scripts/under_dev/shop_categories.json";
 var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/under_dev/regional_demand.json";
 
+var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/stock_exchange_data.json"
+var NPC_MARKET_DATA_JSON_PATH = "world/customnpcs/markets/"
+
 var PERMISSION_OPEN_CLOSE_SHOP = "open_close_shop";
 var PERMISSION_SET_PRICES = "set_prices";
 var PERMISSION_MANAGE_PERMISSIONS = "manage_permissions";
@@ -224,6 +227,7 @@ function chat(event) {
         var shopId = parseInt(args[3]);
         if (args.length === 4) {
             player.message("Running $shop stock add " + shopId);
+            getHandItems(player);
             getAvailableItems(player, getShopFromID(shopId).shop.type);
         } else if (args.length === 5) {
             player.message("Running $shop stock add " + shopId + " " + args[4]);
@@ -1006,17 +1010,24 @@ function getAvailableItems(player, shopType) {
         return;
     }
 
+    var items = [];
+
     for (var i = 0; i < shopCategories["entries"].length; i++) {
         var entry = shopCategories["entries"][i];
         if (entry.name === shopType) {
-            // If shop entry has "item" list:
             if (entry.items) {
-                player.message("Available items: ");
                 for (var j = 0; j < entry.items.length; j++) {
-                    player.message(entry.items[j].id);
+
+                    var item = {
+                        id: entry.items[j].id,
+                        value: entry.items[j].price
+                    };
+
                     if (entry.items[j].tag) {
-                        player.message("Tag: " + JSON.stringify(entry.items[j].tag));
+                        item.tag = entry.items[j].tag
                     }
+
+                    items.push(item);
                 }
             }
             // If shop entry has "based_on_stocks" list:
@@ -1024,6 +1035,13 @@ function getAvailableItems(player, shopType) {
                 player.message("Based on stocks: ");
                 for (var j = 0; j < entry.based_on_stocks.length; j++) {
                     player.message(entry.based_on_stocks[j]);
+
+                    var basedOnStocksItems = getBasedOnStocksItems(player, entry.based_on_stocks[j]);
+                    if (basedOnStocksItems) {
+                        for (var k = 0; k < basedOnStocksItems.length; k++) {
+                            items.push(basedOnStocksItems[k]);
+                        }
+                    }
                 }
             }
             // if shop entry has "based_on_market" list:
@@ -1031,11 +1049,186 @@ function getAvailableItems(player, shopType) {
                 player.message("Based on market: ");
                 for (var j = 0; j < entry.based_on_market.length; j++) {
                     player.message(entry.based_on_market[j]);
+
+                    var basedOnMarketItems = getBasedOnMarketItems(player, entry.based_on_market[j]);
+                    if (basedOnMarketItems) {
+                        for (var k = 0; k < basedOnMarketItems.length; k++) {
+                            items.push(basedOnMarketItems[k]);
+                        }
+                    }
                 }
+            }
+
+            for (var j = 0; j < items.length; j++) {
+                player.message("Item: " + items[j].id + ", Price: " + items[j].value);
             }
             return;
         }
     }
+}
+
+// Function to get a list of items for "based_on_stocks" item list types
+function getBasedOnStocksItems(player, stockName) {
+    var stocks = loadJson(STOCK_EXCHANGE_DATA_JSON_PATH);
+    if (!stocks) {
+        player.message("Stocks not found!");
+        return;
+    }
+
+    var items = [];
+
+    var stock = stocks[stockName];
+    // each keys of "stock" is a ressource. There are multiple types of ressources that exist, if the ressource has "type" key specified, it is not a generic type.
+    // Generic ressources are items: the key is the item id. Spit the key on ":", the first value is modid, second value is itemid, third value is meta.
+    // If the ressource has "type" key specified, ignore it
+    for (var ressource in stock) {
+        if (stock[ressource].type) {
+            continue;
+        }
+
+        var item = {
+            id: ressource,
+            value: stock[ressource].current_price
+        };
+
+        items.push(item);
+    }
+
+    return items;
+}
+
+// Function to get a list of items for "based_on_market" item list types
+function getBasedOnMarketItems(player, marketName) {
+    var pathToJson = NPC_MARKET_DATA_JSON_PATH + marketName + ".json";
+    // player.message("Path to json: " + pathToJson);
+    var market = loadJavaJson(player, pathToJson);
+    if (!market) {
+        player.message("Market not found!");
+        return;
+    }
+
+    // player.message("Market: " + marketName);
+
+    var items = [];
+
+    // Get the "TraderCurrency" object
+    var traderCurrency = market["TraderCurrency"]["NpcMiscInv"];
+    var TraderSold = market["TraderSold"]["NpcMiscInv"];
+    var extracted_data = {};
+
+    for (var i = 0; i < 18; i++) {
+        // player.message("Scanning item " + i + " in market " + marketName);
+        var item_1 = null;
+        var item_2 = null;
+        var item_3 = null;
+        var mult_1 = 1;
+        var mult_2 = 1;
+        if (traderCurrency[i] && traderCurrency[i].tag && traderCurrency[i].tag.display && traderCurrency[i].tag.display.Lore) {
+            item_1 = traderCurrency[i].tag.display.Lore[0];
+            mult_1 = traderCurrency[i].Count;
+        }
+        if (traderCurrency[i + 18] && traderCurrency[i + 18].tag && traderCurrency[i + 18].tag.display && traderCurrency[i + 18].tag.display.Lore) {
+            item_2 = traderCurrency[i + 18].tag.display.Lore[0];
+            mult_2 = traderCurrency[i + 18].Count;
+        }
+        if (TraderSold[i] && 
+            !(  TraderSold[i].tag && 
+                TraderSold[i].tag.display && 
+                TraderSold[i].tag.display.Name && 
+                TraderSold[i].tag.display.Name === "§2§lMoney§r"
+            )
+        ) {
+            item_3 = TraderSold[i];
+        }
+        // player.message("input 1: " + item_1);
+        // player.message("input 2: " + item_2);
+        // player.message("output: " + JSON.stringify(item_3));
+
+        extracted_data[i] = {
+            item_1: item_1,
+            mult_1: mult_1,
+            item_2: item_2,
+            mult_2: mult_2,
+            item_3: item_3
+        };
+
+        // player.message("Extracted data: " + JSON.stringify(extracted_data));
+    }
+
+    // loop through the "extracted_data" object
+    for (var key in extracted_data) {
+        var final_item = {};
+
+        // player.message("Key from extracted data: " + key);
+
+        var item = extracted_data[key];
+        if (item.item_3) {
+            var id = item.item_3.id + ":" + item.item_3.Damage;
+            var count = item.item_3.Count;
+
+            // in "tag"
+            if (item.item_3.tag) {
+                final_item.tag = item.item_3.tag;
+            }
+
+            // player.message("Item: " + id + ", Count: " + count);
+        }
+
+        var value_1 = 0;
+        var value_2 = 0;
+        if (item.item_1) {
+            // player.message("Item input 1 is currency: " + JSON.stringify(item.item_1));
+            value_1 = item.item_1;
+            value_1 = value_1.replace(/§e/g, "");
+            if (value_1.indexOf("G") !== -1) {
+                value_1 = value_1.replace("G", "");
+                // player.message("Value 1: " + value_1);
+                // convert to int
+                value_1 = parseInt(value_1);
+                value_1 *= 100;
+            } else if (value_1.indexOf("C") !== -1) {
+                value_1 = value_1.replace("C", "");
+                // player.message("Value 1: " + value_1);
+                // convert to int
+                value_1 = parseInt(value_1);
+            }
+            value_1 *= item.mult_1;
+            // player.message("Value 1: " + value_1);
+        }
+        if (item.item_2) {
+            // player.message("Item input 2 is currency: " + JSON.stringify(item.item_2));
+            value_2 = item.item_2;
+            value_2 = value_2.replace(/§e/g, "");
+            if (value_2.indexOf("G") !== -1) {
+                value_2 = value_2.replace("G", "");
+                // player.message("Value 2: " + value_2);
+                // convert to int
+                value_2 = parseInt(value_2);
+                value_2 *= 100;
+            } else if (value_2.indexOf("C") !== -1) {
+                value_2 = value_2.replace("C", "");
+                // player.message("Value 2: " + value_2);
+                // convert to int
+                value_2 = parseInt(value_2);
+            }
+            value_2 *= item.mult_2;
+            // player.message("Value 2: " + value_2);
+        }
+
+        var final_value = value_1 + value_2;
+        final_value = final_value / count;
+
+        if (final_value > 0) {
+            final_item.id = id;
+            final_item.value = final_value;
+
+            items.push(final_item);
+
+            // player.message("Item: " + final_item.id + ", Value: " + final_item.value);
+        }
+    }
+
+    return items;
 }
 
 // ############################################################################################################
@@ -1068,4 +1261,24 @@ function checkFileExists(filePath) {
 
 function getWorldData() {
     return world.getStoreddata();
+}
+
+// Function to decode java formated json
+function loadJavaJson(player, filePath) {
+    var file = new java.io.File(filePath);
+    if (!file.exists()) {
+        return null;
+    }
+
+    // player.message("Loading json file: " + filePath);
+
+    var reader = new java.io.FileReader(file);
+    var jsonString = org.apache.commons.io.IOUtils.toString(reader);
+    reader.close();
+
+    // Remove letters at the end of number values
+    jsonString = jsonString.replace(/(\d+)[bBsSlLfFdD]/g, '$1');
+
+    var json = JSON.parse(jsonString);
+    return json;
 }
