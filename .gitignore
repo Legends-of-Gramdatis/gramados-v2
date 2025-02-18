@@ -65,6 +65,7 @@ world/customnpcs/scripts/world_data*.json
 world/customnpcs/scripts/forge_scripts.json
 world/customnpcs/scripts/testing.json
 world/customnpcs/scripts/stock_spying.json
+world/customnpcs/scripts/stock_exchange_data.json
 
 gramados_stocks/*
 myenv/*
