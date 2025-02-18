@@ -16,7 +16,7 @@ var PERMISSION_MANAGE_STOCK = "manage_stock";
 var world = API.getIWorld(0);
 
 function init(event) {
-    world.broadcast("(Under dev) Shopkeeper OS initialized!");
+    // world.broadcast("(Under dev) Shopkeeper OS initialized!");
 }
 
 function chat(event) {
@@ -368,12 +368,12 @@ function createShop(player, type, region, sub_region, display_name, money) {
 
     var shopId = 1;
     while (serverShops[shopId]) {
-        world.broadcast("Shop ID " + shopId + " already exists!");
+        // world.broadcast("Shop ID " + shopId + " already exists!");
         shopId++;
-        world.broadcast("Trying ID " + shopId + "...");
+        // world.broadcast("Trying ID " + shopId + "...");
     }
 
-    world.broadcast("Creating shop with ID " + shopId + "...");
+    // world.broadcast("Creating shop with ID " + shopId + "...");
 
     serverShops[shopId] = {
         roles: {
