@@ -66,22 +66,36 @@ function updateStockPrice(stockValue, regionGeneral) {
             var percent = 1 + proportion;
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
         } else if (elapsedTime > _TIMER_COUNTER && elapsedTime < _TIMER_COUNTER*2) {
-            // If last sale is between 24 and 48 hours ago, randomly increase the stock price
-            /*
-            get 10% of the difference between the reference price and the current price
-            if the difference is negative, make it positive
-            multiply the difference by a random number between 0 and 1
-            */
-            var diff = stockValue["reference_price"] - stockValue["current_price"];
-            if (diff < 0) {
-                diff = -diff;
+            // var diff = stockValue["reference_price"] - stockValue["current_price"];
+            // if (diff < 0) {
+            //     diff = diff * -1;
+            // }
+            // var proportion = diff / 4;
+            // if (regionGeneral && regionGeneral["stock_flexibility"]) {
+            //     proportion *= regionGeneral["stock_flexibility"];
+            // }
+            // var random = Math.random();
+            // var percent = 1 + (random * proportion);
+            // stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
+
+            var diff = 0;
+            if (
+                stockValue["current_price"] < 
+                Math.max(stockValue["reference_price"], stockValue["current_price"])
+            ) {
+                diff = maxPrice / stockValue["current_price"];
+            } else {
+                diff = stockValue["current_price"] / maxPrice;
             }
-            var proportion = diff / 10;
+
+            diff--;
+
+            var proportion = diff / 4;
             if (regionGeneral && regionGeneral["stock_flexibility"]) {
-                diff *= regionGeneral["stock_flexibility"];
+                proportion *= regionGeneral["stock_flexibility"];
             }
             var random = Math.random();
-            var percent = 1 + (proportion * random);
+            var percent = 1 + (random * proportion);
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
         }
     }
