@@ -1104,7 +1104,7 @@ Caused by: <eval>:1016 TypeError: entry.items[j].tag.toJsonString is not a funct
         },
         {
             "Long": 1739803013610L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:1118:1 Expected an operand but found &
 }&
  ^ in <eval> at line number 1118 at column number 1
@@ -1161,7 +1161,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:1118:1 Expected 
         },
         {
             "Long": 1739804337567L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:1147:0 Expected } but found eof
 
 ^ in <eval> at line number 1147 at column number 0
@@ -1219,7 +1219,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:1147:0 Expected 
         },
         {
             "Long": 1739804358489L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: SyntaxError: Invalid JSON: <json>:5:25 Expected , or } but found b
                 \"Slot\": 0b,
                          ^ in <eval> at line number 1128
@@ -1286,7 +1286,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <json>:5:25 Expected , 
         },
         {
             "Long": 1739804481386L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: SyntaxError: Invalid JSON: <json>:5:25 Expected , or } but found b
                 \"Slot\": 0b,
                          ^ in <eval> at line number 1131
@@ -1353,7 +1353,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <json>:5:25 Expected , 
         },
         {
             "Long": 1739804602057L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: SyntaxError: Invalid JSON: <json>:5:25 Expected , or } but found b
                 \"Slot\": 0b,
                          ^ in <eval> at line number 1162
@@ -1420,7 +1420,7 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <json>:5:25 Expected , 
         },
         {
             "Long": 1739804988682L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"NpcMiscInv\" from undefined in <eval> at line number 1119
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1465,7 +1465,7 @@ Caused by: <eval>:1119 TypeError: Cannot read property \"NpcMiscInv\" from undef
         },
         {
             "Long": 1739807645833L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"display\" from undefined in <eval> at line number 1134
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1510,7 +1510,7 @@ Caused by: <eval>:1134 TypeError: Cannot read property \"display\" from undefine
         },
         {
             "Long": 1739807764230L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"display\" from undefined in <eval> at line number 1134
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1555,7 +1555,7 @@ Caused by: <eval>:1134 TypeError: Cannot read property \"display\" from undefine
         },
         {
             "Long": 1739808675627L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"display\" from undefined in <eval> at line number 1177
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1600,7 +1600,7 @@ Caused by: <eval>:1177 TypeError: Cannot read property \"display\" from undefine
         },
         {
             "Long": 1739808711531L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"display\" from undefined in <eval> at line number 1176
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1645,7 +1645,7 @@ Caused by: <eval>:1176 TypeError: Cannot read property \"display\" from undefine
         },
         {
             "Long": 1739809462786L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Right hand side of \"in\" cannot be non-Object, found string in <eval> at line number 1173
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1690,7 +1690,7 @@ Caused by: <eval>:1173 TypeError: Right hand side of \"in\" cannot be non-Object
         },
         {
             "Long": 1739809545136L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: value_1.includes is not a function in <eval> at line number 1173
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1741,7 +1741,7 @@ Caused by: <eval>:1173 TypeError: value_1.includes is not a function
         },
         {
             "Long": 1739810047004L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: TypeError: Cannot read property \"display\" from undefined in <eval> at line number 1130
 	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
@@ -1786,7 +1786,7 @@ Caused by: <eval>:1130 TypeError: Cannot read property \"display\" from undefine
         },
         {
             "Long": 1739810812063L,
-            "String": " tab 3:
+            "String": "tab 3:
 javax.script.ScriptException: <eval>:2:13 Expected ; but found :
     \"entries\": [
              ^ in <eval> at line number 2 at column number 13
@@ -1846,6 +1846,52 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:2:13 Expected ; 
 	at jdk.nashorn.internal.runtime.Context.compileScript(Context.java:627)
 	at jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(NashornScriptEngine.java:535)
 	... 30 more"
+        },
+        {
+            "Long": 1740130475106L,
+            "String": " tab 3:
+javax.script.ScriptException: ReferenceError: \"player\" is not defined in <eval> at line number 26
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:392)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:26 ReferenceError: \"player\" is not defined
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:319)
+	at jdk.nashorn.internal.runtime.ECMAErrors.referenceError(ECMAErrors.java:291)
+	at jdk.nashorn.internal.objects.Global.__noSuchProperty__(Global.java:1442)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$755$866A$\\^eval\\_.init(<eval>:26)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	... 27 more"
         }
     ],
     "Scripts": [
@@ -1872,9 +1918,9 @@ Caused by: jdk.nashorn.internal.runtime.ParserException: <eval>:2:13 Expected ; 
         {
             "Script": "var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
-var SERVER_SHOPS_JSON_PATH = \"world/customnpcs/scripts/under_dev/server_shops.json\";
-var SHOP_CATEGORIES_JSON_PATH = \"world/customnpcs/scripts/under_dev/shop_categories.json\";
-var REGIONAL_DEMAND_JSON_PATH = \"world/customnpcs/scripts/under_dev/regional_demand.json\";
+var SERVER_SHOPS_JSON_PATH = \"world/customnpcs/scripts/ecmascript/under_dev/server_shops.json\";
+var SHOP_CATEGORIES_JSON_PATH = \"world/customnpcs/scripts/ecmascript/under_dev/shop_categories.json\";
+var REGIONAL_DEMAND_JSON_PATH = \"world/customnpcs/scripts/ecmascript/under_dev/regional_demand.json\";
 
 var STOCK_EXCHANGE_DATA_JSON_PATH = \"world/customnpcs/scripts/stock_exchange_data.json\"
 var NPC_MARKET_DATA_JSON_PATH = \"world/customnpcs/markets/\"
@@ -1887,8 +1933,14 @@ var PERMISSION_MANAGE_STOCK = \"manage_stock\";
 
 var world = API.getIWorld(0);
 
+load(\"world/customnpcs/scripts/ecmascript/gramados_utils.js\");
+
 function init(event) {
-    world.broadcast(\"(Under dev) Shopkeeper OS initialized!\");
+
+    if (!checkFileExists(SERVER_SHOPS_JSON_PATH)) {
+        world.broadcast(\"No shop data found! Contact an admin!\");
+        return;
+    }
 }
 
 function chat(event) {
@@ -2240,12 +2292,12 @@ function createShop(player, type, region, sub_region, display_name, money) {
 
     var shopId = 1;
     while (serverShops[shopId]) {
-        world.broadcast(\"Shop ID \" + shopId + \" already exists!\");
+        // world.broadcast(\"Shop ID \" + shopId + \" already exists!\");
         shopId++;
-        world.broadcast(\"Trying ID \" + shopId + \"...\");
+        // world.broadcast(\"Trying ID \" + shopId + \"...\");
     }
 
-    world.broadcast(\"Creating shop with ID \" + shopId + \"...\");
+    // world.broadcast(\"Creating shop with ID \" + shopId + \"...\");
 
     serverShops[shopId] = {
         roles: {
@@ -2973,7 +3025,7 @@ function getBasedOnStocksItems(player, stockName) {
 function getBasedOnMarketItems(player, marketName) {
     var pathToJson = NPC_MARKET_DATA_JSON_PATH + marketName + \".json\";
     // player.message(\"Path to json: \" + pathToJson);
-    var market = loadJavaJson(player, pathToJson);
+    var market = loadJavaJson(pathToJson);
     if (!market) {
         player.message(\"Market not found!\");
         return;
@@ -3103,57 +3155,7 @@ function getBasedOnMarketItems(player, marketName) {
     return items;
 }
 
-// ############################################################################################################
-// FILE OPERATIONS
-// ############################################################################################################
-
-function loadJson(filePath) {
-    var file = new java.io.File(filePath);
-    if (!file.exists()) {
-        return null;
-    }
-
-    var reader = new java.io.FileReader(file);
-    var json = JSON.parse(org.apache.commons.io.IOUtils.toString(reader));
-    reader.close();
-
-    return json;
-}
-
-function saveJson(data, filePath) {
-    var writer = new java.io.FileWriter(filePath);
-    writer.write(JSON.stringify(data, null, 4));
-    writer.close();
-}
-
-function checkFileExists(filePath) {
-    var file = new java.io.File(filePath);
-    return file.exists();
-}
-
-function getWorldData() {
-    return world.getStoreddata();
-}
-
-// Function to decode java formated json
-function loadJavaJson(player, filePath) {
-    var file = new java.io.File(filePath);
-    if (!file.exists()) {
-        return null;
-    }
-
-    // player.message(\"Loading json file: \" + filePath);
-
-    var reader = new java.io.FileReader(file);
-    var jsonString = org.apache.commons.io.IOUtils.toString(reader);
-    reader.close();
-
-    // Remove letters at the end of number values
-    jsonString = jsonString.replace(/(\\d+)[bBsSlLfFdD]/g, '$1');
-
-    var json = JSON.parse(jsonString);
-    return json;
-}",
+",
             "Console": [
             ],
             "ScriptList": [
