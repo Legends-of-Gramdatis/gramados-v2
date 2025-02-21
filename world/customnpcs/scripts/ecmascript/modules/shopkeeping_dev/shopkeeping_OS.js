@@ -1,8 +1,8 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
-var SERVER_SHOPS_JSON_PATH = "world/customnpcs/scripts/ecmascript/shopkeeping_dev/server_shops.json";
-var SHOP_CATEGORIES_JSON_PATH = "world/customnpcs/scripts/ecmascript/shopkeeping_dev/shop_categories.json";
-var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/ecmascript/shopkeeping_dev/regional_demand.json";
+var SERVER_SHOPS_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/server_shops.json";
+var SHOP_CATEGORIES_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shop_categories.json";
+var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/regional_demand.json";
 
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/stock_exchange_data.json"
 var NPC_MARKET_DATA_JSON_PATH = "world/customnpcs/markets/"
