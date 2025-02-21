@@ -1,6 +1,56 @@
 {
     "ScriptEnabled": 1b,
     "ScriptConsole": [
+        {
+            "Long": 1740132975187L,
+            "String": " tab 3:
+javax.script.ScriptException: TypeError: Cannot load script from customnpcs/scripts/ecmascript/gramados_utils/utils_files.js in <eval> at line number 18
+	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:454)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:406)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
+	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
+	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
+	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
+	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
+	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
+	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
+	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
+	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
+	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
+	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
+	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: <eval>:18 TypeError: Cannot load script from customnpcs/scripts/ecmascript/gramados_utils/utils_files.js
+	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
+	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
+	at jdk.nashorn.internal.runtime.Context.load(Context.java:868)
+	at jdk.nashorn.internal.objects.Global.load(Global.java:1546)
+	at jdk.nashorn.internal.scripts.Script$1314$\\^eval\\_.:program(<eval>:18)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:637)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:449)
+	... 30 more"
+        }
     ],
     "Scripts": [
         {
@@ -26,9 +76,9 @@
         {
             "Script": "var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
-var SERVER_SHOPS_JSON_PATH = \"world/customnpcs/scripts/ecmascript/shopkeeping_dev/server_shops.json\";
-var SHOP_CATEGORIES_JSON_PATH = \"world/customnpcs/scripts/ecmascript/shopkeeping_dev/shop_categories.json\";
-var REGIONAL_DEMAND_JSON_PATH = \"world/customnpcs/scripts/ecmascript/shopkeeping_dev/regional_demand.json\";
+var SERVER_SHOPS_JSON_PATH = \"world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/server_shops.json\";
+var SHOP_CATEGORIES_JSON_PATH = \"world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shop_categories.json\";
+var REGIONAL_DEMAND_JSON_PATH = \"world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/regional_demand.json\";
 
 var STOCK_EXCHANGE_DATA_JSON_PATH = \"world/customnpcs/scripts/stock_exchange_data.json\"
 var NPC_MARKET_DATA_JSON_PATH = \"world/customnpcs/markets/\"
