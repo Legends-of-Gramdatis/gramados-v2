@@ -66,3 +66,85 @@ function loadJavaJson(filePath) {
     var json = JSON.parse(jsonString);
     return json;
 }
+
+/**
+ * Creates a directory path.
+ * @param {string} path - The directory path.
+ */
+function mkPath(path) {
+    var expath = path.split("/");
+    var curpath = "";
+    for (var ex in expath) {
+        curpath += expath[ex] + "/";
+        var dir = new File(curpath);
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+    }
+}
+
+/**
+ * Reads the contents of a directory.
+ * @param {string} dirPath - The directory path.
+ * @returns {Array<string>} The list of files in the directory.
+ */
+function readDir(dirPath) {
+    var res = [];
+    var files = new File(dirPath).listFiles();
+    for (var id in files) {
+        res.push(files[id].getName());
+    }
+    return res;
+}
+
+/**
+ * Reads the contents of a file as a string.
+ * @param {string} filePath - The file path.
+ * @returns {string} The file contents.
+ */
+function readFileAsString(filePath) {
+    try {
+        var path = Paths.get(filePath);
+        return new String(Files.readAllBytes(path), CHARSET_UTF_8);
+    } catch (exc) {
+        return null;
+    }
+}
+
+/**
+ * Reads the contents of a file.
+ * @param {string} filePath - The file path.
+ * @returns {Array<string>} The file contents as an array of lines.
+ */
+function readFile(filePath) {
+    var path = Paths.get(filePath);
+    try {
+        return Files.readAllLines(path, CHARSET_UTF_8).toArray();
+    } catch (e) {
+        return null;
+    }
+}
+
+/**
+ * Writes text to a file.
+ * @param {string} filePath - The file path.
+ * @param {string} text - The text to write.
+ * @param {number} [offset] - The offset to start writing at.
+ * @param {number} [length] - The length of text to write.
+ */
+function writeToFile(filePath, text, offset, length) {
+    if (typeof (offset) == typeof (undefined) || offset === null) {
+        offset = 0;
+    }
+    if (typeof (length) == typeof (undefined) || length === null) {
+        length = text.length;
+    }
+    var path = Paths.get(filePath);
+    try {
+        var writer = Files.newBufferedWriter(path, CHARSET_UTF_8);
+        writer.write(text, offset, length);
+        writer.close();
+    } catch (exc) {
+        // Handle error
+    }
+}
