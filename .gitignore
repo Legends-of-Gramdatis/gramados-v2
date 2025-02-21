@@ -70,4 +70,4 @@ world/customnpcs/scripts/stock_exchange_data.json
 gramados_stocks/*
 myenv/*
 world/customnpcs/scripts/test_jsons/*
-world/customnpcs/scripts/ecmascript/shopkeeping_dev/shopkeeper_OS_OLD.js
+world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeper_OS_OLD.js
