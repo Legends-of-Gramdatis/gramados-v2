@@ -247,10 +247,20 @@ function chat(event) {
         }
     } else if (message.startsWith("$shop stock remove")) {
         var args = message.split(" ");
-        if (args.length === 4) {
-            var item = args[3];
-            removeStock(player, item);
+        if (args.length >= 4) {
+            var shopId = parseInt(args[3]);
+            var itemId = args[4];
+            var count = args.length === 6 ? parseInt(args[5]) : 64;
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[3]);
+                return;
+            }
+            removeStock(player, shopId, itemId, count, playerShops);
+        } else {
+            player.message("Invalid command! Usage: $shop stock remove <ID> <Item ID> [number]");
         }
+    } else if (message.startsWith("$shop stock eval")) {
+        evalHandItem(player);
     } else if (message === "$shop help") {
         player.message("Available commands:");
         player.message("$shop open - Open the shop");
@@ -1208,7 +1218,7 @@ function addStockFromHand(player, shopId, playerShops) {
 
     var itemId = itemstock.item;
     var itemCount = itemstock.count;
-    var itemTag = itemstock.tag;
+    var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
     if (!shop.inventory.stock[itemId]) {
         shop.inventory.stock[itemId] = { count: 0 };
@@ -1218,8 +1228,10 @@ function addStockFromHand(player, shopId, playerShops) {
     }
 
     var stockItem = shop.inventory.stock[itemId];
-    if (itemTag && stockItem.tag !== itemTag) {
+    if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
         player.message("Item NBT does not match existing stock!");
+        player.message("Item NBT: " + itemTag);
+        player.message("Stock NBT: " + stockItem.tag);
         return;
     }
 
@@ -1254,7 +1266,7 @@ function addAllStockFromInventory(player, shopId, playerShops) {
 
                 var itemId = itemstock.item;
                 var itemCount = itemstock.count;
-                var itemTag = itemstock.tag;
+                var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
                 if (!shop.inventory.stock[itemId]) {
                     shop.inventory.stock[itemId] = { count: 0 };
@@ -1264,8 +1276,10 @@ function addAllStockFromInventory(player, shopId, playerShops) {
                 }
 
                 var stockItem = shop.inventory.stock[itemId];
-                if (itemTag && stockItem.tag !== itemTag) {
+                if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
                     player.message("Item NBT does not match existing stock!");
+                    player.message("Item NBT: " + itemTag);
+                    player.message("Stock NBT: " + stockItem.tag);
                     continue;
                 }
 
@@ -1299,5 +1313,65 @@ function getHandItemsFromStack(itemstack) {
     }
 
     return itemstock;
+}
+
+function removeStock(player, shopId, itemId, count, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items;
+
+    if (!stock[itemId] && !unsalableItems[itemId]) {
+        player.message("Item not found in stock or unsalable items!");
+        return;
+    }
+
+    var stockItem = stock[itemId] || unsalableItems[itemId];
+
+    var id = itemId.split(":")[0] + ":" + itemId.split(":")[1];
+
+    var nbt = {
+        id: id,
+        Count: count,
+        Damage: itemId.split(":")[2]
+    }
+    if (stockItem.tag) {
+        nbt.tag = stockItem.tag;
+    }
+
+    var itemstack = world.createItemFromNbt(API.stringToNbt(JSON.stringify(nbt)));
+    var maxStackSize = itemstack.getMaxStackSize();
+    count = Math.min(count, maxStackSize);
+    itemstack.setStackSize(count);
+
+    if (stockItem.count < count) {
+        player.message("Not enough items in stock!");
+        return;
+    }
+
+    stockItem.count -= count;
+    if (stockItem.count === 0) {
+        if (stock[itemId]) {
+            delete stock[itemId];
+        } else {
+            delete unsalableItems[itemId];
+        }
+    }
+
+    
+
+    player.giveItem(itemstack);
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message("Removed " + count + " items from the shop stock.");
+}
+
+function evalHandItem(player) {
+    var itemstack = player.getMainhandItem();
+    if (itemstack.isEmpty()) {
+        player.message("You are not holding any item!");
+        return;
+    }
+
+    player.message("Itemstack data: " + itemstack.getItemNbt().toJsonString());
 }
 
