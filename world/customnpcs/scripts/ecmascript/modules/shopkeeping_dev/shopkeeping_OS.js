@@ -18,6 +18,7 @@ var world = API.getIWorld(0);
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_utils.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_stockroom.js")
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js")
 
 function init(event) {
     if (!checkFileExists(SERVER_SHOPS_JSON_PATH)) {
@@ -600,7 +601,7 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     }
 
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    // player.message("Price set for item: " + itemIdOrIndex);
+    player.message("Successfully set price for item " + itemIdOrIndex + " to " + getAmountCoin(price));
     // player.message("Reference price: " + referencePrice);
     // player.message("Price: " + price);
 }
@@ -631,14 +632,14 @@ function getReferencePrice(player, itemId, itemTag, shopType) {
 }
 
 function calculatePrice(referencePrice, profit) {
+    if (!profit) {
+        return referencePrice;
+    }
     if (profit.endsWith("%")) {
         var percent = parseFloat(profit.slice(0, -1));
         return Math.round(referencePrice * (1 + percent / 100));
     } else {
-        var parts = profit.split("g");
-        var grons = parseInt(parts[0]) || 0;
-        var cents = parseInt(parts[1].replace("c", "")) || 0;
-        return grons * 100 + cents;
+        return getCoinAmount(profit);
     }
 }
 
