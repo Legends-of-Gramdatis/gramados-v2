@@ -228,13 +228,20 @@ function chat(event) {
         }
     } else if (message.startsWith("$shop stock add")) {
         var args = message.split(" ");
-        var shopId = parseInt(args[3]);
         if (args.length === 4) {
-            player.message("Running $shop stock add " + shopId);
-            getHandItems(player);
-            getAvailableItems(player, getShopFromID(shopId).shop.type);
-        } else if (args.length === 5) {
-            player.message("Running $shop stock add " + shopId + " " + args[4]);
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[3]);
+                return;
+            }
+            addStockFromHand(player, shopId, playerShops);
+        } else if (args.length === 5 && args[4] === "all") {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[3]);
+                return;
+            }
+            addAllStockFromInventory(player, shopId, playerShops);
         } else {
             player.message("Invalid command! Usage: $shop stock add <ID> or $shop stock add <ID> all");
         }
@@ -836,6 +843,44 @@ function getAvailableItems(player, shopType) {
     }
 }
 
+// Function to check if an item is a valid item
+function isValidItem(items, itemstock) {
+    var item = itemstock.item;
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].id === item) {
+            // player.message("Item: " + item + " is valid!");
+            return true;
+        }
+    }
+    // player.message("Item: " + item + " is not valid!");
+    return false;
+}
+
+// Function to add item to stock. Returns the number of items left in player inventory
+function addStock(player, shopId, playerShops, item, count, tag) {
+    
+    // Check if enopugh room in stock room
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    if (stockRoomLeft > 0) {
+        // Check if the item is already registered in stock
+        for (var i = 0; i < playerShops[shopId].inventory.stock.length; i++) {
+            // Chheck if any items even exist in stock
+            if (playerShops[shopId].inventory.stock[i].item === item) {
+                // Check if there is enough room for the entire stack
+                if (playerShops[shopId].inventory.stock[i].count + count <= stockRoomLeft) {
+                    playerShops[shopId].inventory.stock[i].count += count;
+                    return 0;
+                } else {
+                    var left = playerShops[shopId].inventory.stock[i].count + count - stockRoomLeft;
+                    playerShops[shopId].inventory.stock[i].count = stockRoomLeft;
+                    return left;
+                }
+            }
+        }
+    }
+    player.message("Stock room is full!");
+    return count;
+}
 
 // Function that returns the left over space in the stock room
 function getStockRoomLeft(player, shopId, playerShops) {
@@ -1111,3 +1156,137 @@ function addNewEntries(stock, availableItems, unsalableItems) {
         }
     }
 }
+
+function moveUnsalableItems(stock, availableItems, unsalableItems) {
+    for (var itemId in stock) {
+        for (var i = 0; i < availableItems.length; i++) {
+            if (itemId === availableItems[i].id) {
+                break;
+            }
+            if (i === availableItems.length - 1) {
+                if (stock[itemId].count > 0) {
+                    unsalableItems[itemId] = stock[itemId];
+                }
+                delete stock[itemId];
+            }
+        }
+    }
+}
+
+function addStockFromHand(player, shopId, playerShops) {
+    var itemstack = player.getMainhandItem();
+    if (itemstack.isEmpty()) {
+        player.message("You are not holding any item!");
+        return;
+    }
+
+    var itemstock = getHandItems(player);
+    var shop = playerShops[shopId];
+
+    // Check if item is valid
+    if (!isValidItem(getAvailableItems(player, shop.shop.type), itemstock)) {
+        player.message("Item is not valid for this shop type!");
+        return;
+    }
+
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    if (stockRoomLeft <= 0) {
+        player.message("No room left in the stock room!");
+        return;
+    }
+
+    var itemId = itemstock.item;
+    var itemCount = itemstock.count;
+    var itemTag = itemstock.tag;
+
+    if (!shop.inventory.stock[itemId]) {
+        shop.inventory.stock[itemId] = { count: 0 };
+        if (itemTag) {
+            shop.inventory.stock[itemId].tag = itemTag;
+        }
+    }
+
+    var stockItem = shop.inventory.stock[itemId];
+    if (itemTag && stockItem.tag !== itemTag) {
+        player.message("Item NBT does not match existing stock!");
+        return;
+    }
+
+    var roomForItems = Math.min(stockRoomLeft, itemCount);
+    stockItem.count += roomForItems;
+    itemstack.setStackSize(itemCount - roomForItems);
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message("Added " + roomForItems + " items to the shop stock.");
+}
+
+function addAllStockFromInventory(player, shopId, playerShops) {
+    player.message("Adding all items to the shop stock...");
+    var inventory = player.getInventory().getItems();
+    var shop = playerShops[shopId];
+    var availableItems = getAvailableItems(player, shop.shop.type);
+
+    player.message("Inventory size: " + inventory.length);
+
+    for (var i = 0; i < inventory.length; i++) {
+        var itemstack = inventory[i];
+        if (itemstack && !itemstack.isEmpty()) {
+            var itemstock = getHandItemsFromStack(itemstack);
+
+            // Check if item is valid
+            if (isValidItem(availableItems, itemstock)) {
+                var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+                if (stockRoomLeft <= 0) {
+                    player.message("No room left in the stock room!");
+                    return;
+                }
+
+                var itemId = itemstock.item;
+                var itemCount = itemstock.count;
+                var itemTag = itemstock.tag;
+
+                if (!shop.inventory.stock[itemId]) {
+                    shop.inventory.stock[itemId] = { count: 0 };
+                    if (itemTag) {
+                        shop.inventory.stock[itemId].tag = itemTag;
+                    }
+                }
+
+                var stockItem = shop.inventory.stock[itemId];
+                if (itemTag && stockItem.tag !== itemTag) {
+                    player.message("Item NBT does not match existing stock!");
+                    continue;
+                }
+
+                var roomForItems = Math.min(stockRoomLeft, itemCount);
+                stockItem.count += roomForItems;
+                itemstack.setStackSize(itemCount - roomForItems);
+
+                player.message("Added " + roomForItems + " items to the shop stock.");
+            }
+        }
+    }
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+}
+
+function getHandItemsFromStack(itemstack) {
+    var edititemstack = itemstack.copy();
+    var count = edititemstack.getStackSize();
+    edititemstack.setStackSize(1);
+    var item = edititemstack.getItemNbt();
+    var fullItem = item.getString("id") + ":" + item.getShort("Damage");
+
+    var itemstock = {
+        item: fullItem,
+        count: count
+    };
+
+    // If tag exists, add it to the itemstock
+    if (edititemstack.hasNbt()) {
+        itemstock.tag = edititemstack.getNbt().toJsonString();
+    }
+
+    return itemstock;
+}
+
