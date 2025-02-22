@@ -1,56 +1,6 @@
 {
     "ScriptEnabled": 1b,
     "ScriptConsole": [
-        {
-            "Long": 1740132975187L,
-            "String": " tab 3:
-javax.script.ScriptException: TypeError: Cannot load script from customnpcs/scripts/ecmascript/gramados_utils/utils_files.js in <eval> at line number 18
-	at jdk.nashorn.api.scripting.NashornScriptEngine.throwAsScriptException(NashornScriptEngine.java:470)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:454)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:406)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:402)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.eval(NashornScriptEngine.java:155)
-	at javax.script.AbstractScriptEngine.eval(AbstractScriptEngine.java:264)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:152)
-	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
-	at noppes.npcs.EventHooks.onPlayerInit(EventHooks.java:299)
-	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:82)
-	at noppes.npcs.EventHooks.onPlayerTick(EventHooks.java:305)
-	at noppes.npcs.ScriptPlayerEventHandler.onServerTick(ScriptPlayerEventHandler.java:78)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_480_ScriptPlayerEventHandler_onServerTick_PlayerTickEvent.invoke(.dynamic)
-	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
-	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
-	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
-	at net.minecraftforge.fml.common.FMLCommonHandler.onPlayerPreTick(FMLCommonHandler.java:365)
-	at net.minecraft.entity.player.EntityPlayer.TickCentral_TrueOnUpdateTick(EntityPlayer.java:190)
-	at net.minecraft.entity.player.EntityPlayerMP.func_71127_g(EntityPlayerMP.java:382)
-	at net.minecraft.network.NetHandlerPlayServer.TickCentral_TrueITickableUpdate(NetHandlerPlayServer.java:173)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.TickCentral_TrueITickableUpdate(NetworkDispatcher.java:209)
-	at com.github.terminatornl.tickcentral.api.TickHub.trueUpdate(TickHub.java:48)
-	at com.github.terminatornl.laggoggles.Main.redirectUpdate(Main.java:94)
-	at net.minecraftforge.fml.common.network.handshake.NetworkDispatcher$1.func_73660_a(NetworkDispatcher.java)
-	at net.minecraft.network.NetworkManager.func_74428_b(NetworkManager.java:285)
-	at net.minecraft.network.NetworkSystem.func_151269_c(NetworkSystem.java:180)
-	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:790)
-	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
-	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
-	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
-	at java.lang.Thread.run(Thread.java:750)
-Caused by: <eval>:18 TypeError: Cannot load script from customnpcs/scripts/ecmascript/gramados_utils/utils_files.js
-	at jdk.nashorn.internal.runtime.ECMAErrors.error(ECMAErrors.java:57)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:213)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:185)
-	at jdk.nashorn.internal.runtime.ECMAErrors.typeError(ECMAErrors.java:172)
-	at jdk.nashorn.internal.runtime.Context.load(Context.java:868)
-	at jdk.nashorn.internal.objects.Global.load(Global.java:1546)
-	at jdk.nashorn.internal.scripts.Script$1314$\\^eval\\_.:program(<eval>:18)
-	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:637)
-	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
-	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
-	at jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(NashornScriptEngine.java:449)
-	... 30 more"
-        }
     ],
     "Scripts": [
         {
@@ -92,6 +42,7 @@ var PERMISSION_MANAGE_STOCK = \"manage_stock\";
 var world = API.getIWorld(0);
 
 load(\"world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js\");
+load(\"world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_utils.js\")
 
 function init(event) {
 
@@ -99,6 +50,7 @@ function init(event) {
         world.broadcast(\"No shop data found! Contact an admin!\");
         return;
     }
+    updateStockrooms();
 }
 
 function chat(event) {
@@ -177,32 +129,34 @@ function chat(event) {
         var sub_region = shop.property.sub_region || null;
         var money = shop.inventory.stored_cash || 0;
 
+
         if (args.length > 4) {
             for (var i = 4; i < args.length; i++) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case \"name\":
-                        name = value.value;
+                        shop.shop.display_name = convertUnderscore(value.value);
                         break;
                     case \"type\":
-                        type = value.value;
+                        shop.shop.type = value.value;
+                        initStockRoom(player, shopId, playerShops);
                         break;
                     case \"region\":
                         if (!checkRegionExists(value.value)) {
                             player.message(\"Invalid region: \" + value.value);
                             return;
                         }
-                        region = value.value;
+                        shop.property.region = value.value;
                         break;
                     case \"sub_region\":
                         if (!checkSubRegionExists(region, value.value)) {
                             player.message(\"Invalid sub-region: \" + value.value);
                             return;
                         }
-                        sub_region = value.value;
+                        shop.property.sub_region = value.value;
                         break;
                     case \"money\":
-                        money = parseInt(value.value) || 0;
+                        shop.inventory.stored_cash = parseInt(value.value) || 0;
                         break;
                     default:
                         player.message(\"Unknown property: \" + value.propertyName);
@@ -213,12 +167,6 @@ function chat(event) {
             player.message(\"Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]\");
             player.message(\"Use \\\"_\\\" for spaces in the values\");
         }
-
-        shop.shop.display_name = convertUnderscore(name);
-        shop.shop.type = type;
-        shop.property.region = region;
-        shop.property.sub_region = sub_region;
-        shop.inventory.stored_cash = money;
 
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         player.message(\"Shop properties updated!\");
@@ -306,17 +254,23 @@ function chat(event) {
         }
     } else if (message.startsWith(\"$shop stock add\")) {
         var args = message.split(\" \");
-        var shopId = parseInt(args[3]);
         if (args.length === 4) {
-            player.message(\"Running $shop stock add \" + shopId);
-            getHandItems(player);
-            getAvailableItems(player, getShopFromID(shopId).shop.type);
-        } else if (args.length === 5) {
-            player.message(\"Running $shop stock add \" + shopId + \" \" + args[4]);
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message(\"Invalid shop ID: \" + args[3]);
+                return;
+            }
+            addStockFromHand(player, shopId, playerShops);
+        } else if (args.length === 5 && args[4] === \"all\") {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message(\"Invalid shop ID: \" + args[3]);
+                return;
+            }
+            addAllStockFromInventory(player, shopId, playerShops);
         } else {
             player.message(\"Invalid command! Usage: $shop stock add <ID> or $shop stock add <ID> all\");
         }
-        
     } else if (message.startsWith(\"$shop stock remove\")) {
         var args = message.split(\" \");
         if (args.length === 4) {
@@ -450,12 +404,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
 
     var shopId = 1;
     while (serverShops[shopId]) {
-        // world.broadcast(\"Shop ID \" + shopId + \" already exists!\");
         shopId++;
-        // world.broadcast(\"Trying ID \" + shopId + \"...\");
     }
-
-    // world.broadcast(\"Creating shop with ID \" + shopId + \"...\");
 
     serverShops[shopId] = {
         roles: {
@@ -492,7 +442,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
         reputation_data: {
             reputation: 0,
             reputation_history: []
-        }
+        },
+        upgrades: []
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
@@ -549,39 +500,6 @@ function setShopProperty(player, property, value) {
             break;
         default:
             player.message(\"Invalid property!\");
-    }
-}
-
-// Set the type of the shop
-function setShopType(player, type) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        player.message(\"No shops found!\");
-        return;
-    }
-
-    var shopId = getShopId(player);
-    if (!shopId) {
-        player.message(\"No shop found!\");
-        return;
-    }
-
-    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
-    if (!shopCategories) {
-        player.message(\"Shop categories not found!\");
-        return;
-    }
-
-    var validType = shopCategories[\"entries\"].some(entry => entry.name === type);
-
-    if (!validType) {
-        player.message(\"Invalid shop type!\");
-        return;
-    } else {
-        var shop = playerShops[shopId];
-        shop.type = type;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        player.message(\"Shop type set!\");
     }
 }
 
@@ -698,164 +616,6 @@ function getShopFromID(shopId) {
     return playerShops ? playerShops[shopId] : null;
 }
 
-// function to check if item is valid according to shop type
-function isValidItem(shopType, item) {
-    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
-    if (!shopCategories) {
-        return false;
-    }
-
-    return shopCategories[\"entries\"].some(entry => entry.name === shopType && entry.items.some(i => i.id === item));
-}
-
-// Function to check ownership of a shop to a player
-function isOwner(player, shopId) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops || !playerShops[shopId]) {
-        player.message(\"Shop not found!\");
-        listShops(player);
-        return false;
-    }
-
-    return playerShops[shopId].roles.owner === player.getName();
-}
-
-// function to check if a shop instance isn't missing any data (update proof)
-function ensureShopDataComplete(player, shopID, playerShops, log) {
-    var valid = true;
-    var critical = false;
-    var missing = [];
-    var shopData = playerShops[shopID];
-
-    if (!shopData) {
-        if (log) player.message(\"Shop ID \" + shopID + \" is missing!\");
-        return { valid: false, critical: true, missing: [\"shopData\"] };
-    }
-
-    if (!shopData.property || !shopData.property.location ||
-        shopData.property.location.x == null ||
-        shopData.property.location.y == null ||
-        shopData.property.location.z == null) {
-
-        missing.push(\"location\");
-        critical = true;
-        valid = false;
-    }
-
-    if (!shopData.roles || !shopData.roles.owner) {
-        missing.push(\"owner\");
-        valid = false;
-        shopData.roles = shopData.roles || {};
-        shopData.roles.owner = null;
-    }
-    if (!shopData.shop || !shopData.shop.type) {
-        missing.push(\"type\");
-        valid = false;
-        shopData.shop = shopData.shop || {};
-        shopData.shop.type = null;
-    }
-    if (!shopData.property || !shopData.property.region) {
-        missing.push(\"region\");
-        valid = false;
-        shopData.property = shopData.property || {};
-        shopData.property.region = null;
-    }
-    if (!shopData.property || !shopData.property.sub_region) {
-        missing.push(\"sub_region\");
-        valid = false;
-        shopData.property = shopData.property || {};
-        shopData.property.sub_region = null;
-    }
-    if (!shopData.shop || !shopData.shop.display_name) {
-        missing.push(\"display_name\");
-        valid = false;
-        shopData.shop = shopData.shop || {};
-        shopData.shop.display_name = null;
-    }
-
-    shopData.roles = shopData.roles || {
-        enabled: false,
-        owner: null,
-        managers: [],
-        cashiers: [],
-        stock_keepers: [],
-        assistants: []
-    };
-
-    shopData.inventory = shopData.inventory || {
-        stock: {},
-        listed_items: [],
-        stored_cash: 0
-    };
-
-    shopData.property.stock_room = shopData.property.stock_room || [];
-    shopData.property.main_room = shopData.property.main_room || [];
-
-    shopData.shop.is_open = shopData.shop.is_open || false;
-    shopData.shop.is_for_sale = shopData.shop.is_for_sale || false;
-
-    shopData.reputation_data = shopData.reputation_data || {
-        reputation: 0,
-        reputation_history: []
-    };
-
-    if (!valid) {
-        if (critical) {
-            delete playerShops[shopID];
-            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-            if (log) {
-                player.message(\"⚠️ Shop \" + shopID + \" is missing critical data and has been removed!\");
-                player.message(\"Missing: \" + missing.join(\", \"));
-            }
-        } else if (log) {
-            player.message(\"⚠️ Shop is missing required data: \" + missing.join(\", \"));
-        }
-    }
-
-    return { valid: valid, critical: critical, missing: missing };
-}
-
-// function to check \"player_shops.json\" data integrity
-function ensureShopExists(player, shopId, playerShops) {
-    if (!playerShops) {
-        player.message(\"No shop data found! Contact an admin!\");
-        return false;
-    } else if (!shopExists(shopId, playerShops)) {
-        player.message(\"Shop of ID \" + shopId + \" not found! Check your shop ID!\");
-        return false;
-    } else {
-        return true;
-    }
-}
-
-// Function to get a list of all shops a given player owns
-function listShops(player, serverShops) {
-    var shops = [];
-    for (var shopId in serverShops) {
-        if (serverShops[shopId].roles.owner === player.getName()) {
-            shops.push(shopId);
-        }
-    }
-
-    if (shops.length === 0) {
-        player.message(\"No shops found for \" + player.getName() + \"!\");
-    } else {
-        player.message(\"Shops you own: \" + shops.join(\", \"));
-    }
-
-    return shops;
-}
-
-// Function to check if a shop with given ID exists or not
-function shopExists(shopId, playerShops) {
-    return !!playerShops[shopId];
-}
-
-// Function to convert a \"_\" separated string to a \" \" separated string
-function convertUnderscore(string) {
-    return string ? string.replace(/_/g, \" \") : null;
-}
-
 // Function to check if region / sub_region are compatible
 function checkRegionSubRegion(region, subRegion) {
     var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH)[\"Local Demands\"];
@@ -888,46 +648,6 @@ function checkShopTypeRegion(player, type, region, subRegion) {
     }
 
     return Object.values(playerShops).some(shop => shop.owner === player.getName() && shop.type === type && shop.region === region && shop.sub_region === subRegion);
-}
-
-// Function to get the list of permissions a player has in a shop
-function getPermissions(player, playerShops, shopID) {
-    var permissions = [];
-
-    if (playerShops[shopID].roles.owner === player.getName()) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_SET_PRICES);
-        permissions.push(PERMISSION_MANAGE_PERMISSIONS);
-        permissions.push(PERMISSION_TAKE_MONEY);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.managers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_SET_PRICES);
-        permissions.push(PERMISSION_MANAGE_PERMISSIONS);
-        permissions.push(PERMISSION_TAKE_MONEY);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.cashiers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_TAKE_MONEY);
-    } else if (playerShops[shopID].roles.stock_keepers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.assistants.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-    }
-
-    return permissions;
-}
-
-// Function to get permissions of a player in a shop
-function checkPermissions(player, shopID, playerShops, permission) {
-    var permissions = getPermissions(player, playerShops, shopID);
-    return permissions.includes(permission);
-}
-
-// Function to sanitize a string (if \"\", set to null)
-function sanitizeString(string) {
-    return string === \"\" ? null : string;
 }
 
 // Function to get a property from a string (propertyname=value)
@@ -1072,14 +792,23 @@ function getHandItems(player) {
     var count = edititemstack.getStackSize();
     edititemstack.setStackSize(1);
     var item = edititemstack.getItemNbt();
+    var fullItem = item.getString(\"id\") + \":\" + item.getShort(\"Damage\");
 
     var itemstock = {
-        item: item,
+        item: fullItem,
         count: count
     };
 
-    player.message(\"Item: \" + itemstock.item.toJsonString());
-    player.message(\"Count: \" + itemstock.count);
+    // If tag exists, add it to the itemstock
+    if (edititemstack.hasNbt()) {
+        itemstock.tag = edititemstack.getNbt().toJsonString();
+    }
+
+    // player.message(\"Item: \" + itemstock.item);
+    // player.message(\"Count: \" + itemstock.count);
+    // if (itemstock.tag) {
+    //     player.message(\"Tag: \" + itemstock.tag);
+    // }
 
     return itemstock;
 }
@@ -1141,12 +870,185 @@ function getAvailableItems(player, shopType) {
                 }
             }
 
-            for (var j = 0; j < items.length; j++) {
-                player.message(\"Item: \" + items[j].id + \", Price: \" + items[j].value);
-            }
-            return;
+            // for (var j = 0; j < items.length; j++) {
+            //     player.message(\"Item: \" + items[j].id + \", Price: \" + items[j].value);
+            // }
+            return items;
         }
     }
+}
+
+// Function to check if an item is a valid item
+function isValidItem(items, itemstock) {
+    var item = itemstock.item;
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].id === item) {
+            // player.message(\"Item: \" + item + \" is valid!\");
+            return true;
+        }
+    }
+    // player.message(\"Item: \" + item + \" is not valid!\");
+    return false;
+}
+
+// Function to move an item from player inventory to shop stock
+// function moveHandItemToStock(player, shopId, playerShops) {
+
+//     var itemstock = getHandItems(player);
+//     var shop = playerShops[shopId];
+
+//     // Check if item is valid:
+//     if (!isValidItem(getAvailableItems(player, shop.shop.type), itemstock)) {
+//         player.message(\"Item is not valid!\");
+//         return;
+//     } else {
+//         player.message(\"Item is valid!\");
+
+//         // See how much room is left in the stock room
+//         var stockRoomSize = shop.property.stock_room_size;
+//         var stockRoomUsed = 0;
+//         for (var i = 0; i < shop.inventory.stock.length; i++) {
+//             stockRoomUsed += shop.inventory.stock[i].count;
+//         }
+//         var stockRoomLeft = stockRoomSize - stockRoomUsed;
+
+//         player.message(\"Stock room size: \" + stockRoomSize);
+//         player.message(\"Stock room used: \" + stockRoomUsed);
+//         player.message(\"Stock room left: \" + stockRoomLeft);
+
+//         if (stockRoomLeft > 0) {
+//             // Check if there is enough room in the stock room for an entire stack
+//             if (stockRoomLeft > itemstock.count) {
+//                 // If item alrteady registered in stock, add to the count
+//                 for (var i = 0; i < shop.inventory.stock.length; i++) {
+//                     if (shop.inventory.stock[i].item === itemstock.item) {
+//                         shop.inventory.stock[i].count += itemstock.count;
+//                         player.message(\"Item added to stock!\");
+//                         player.getMainhandItem().setStackSize(0);
+//                         return;
+//                     }
+//                 }
+//                 // If it is not, add it to the stock
+//                 shop.inventory.stock.push(itemstock);
+//                 player.message(\"Item added to stock!\");
+//                 player.getMainhandItem().setStackSize(0);
+//             } else {
+//                 // Fill teh stock room with as much as possible
+//                 var itemstockCopy = itemstock;
+//                 itemstockCopy.count = stockRoomLeft;
+//                 shop.inventory.stock.push(itemstockCopy);
+//                 player.message(\"Stock room is full!\");
+//                 player.getMainhandItem().setStackSize(itemstock.count - stockRoomLeft);
+
+//             }
+
+
+    
+//         var item = itemstock.item;
+//         var count = itemstock.count;
+//         var tag = itemstock.tag;
+//         var shopInventory = shop.inventory;
+//     }
+// }
+
+// Function to add item to stock. Returns the number of items left in player inventory
+function addStock(player, shopId, playerShops, item, count, tag) {
+    
+    // Check if enopugh room in stock room
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    if (stockRoomLeft > 0) {
+        // Check if the item is already registered in stock
+        for (var i = 0; i < playerShops[shopId].inventory.stock.length; i++) {
+            // Chheck if any items even exist in stock
+            if (playerShops[shopId].inventory.stock[i].item === item) {
+                // Check if there is enough room for the entire stack
+                if (playerShops[shopId].inventory.stock[i].count + count <= stockRoomLeft) {
+                    playerShops[shopId].inventory.stock[i].count += count;
+                    return 0;
+                } else {
+                    var left = playerShops[shopId].inventory.stock[i].count + count - stockRoomLeft;
+                    playerShops[shopId].inventory.stock[i].count = stockRoomLeft;
+                    return left;
+                }
+            }
+        }
+    }
+    player.message(\"Stock room is full!\");
+    return count;
+}
+
+// Function that returns the left over space in the stock room
+function getStockRoomLeft(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var stockRoomUsed = 0;
+
+    var stockRoomSize = shop.property.stock_room_size;
+    // Get room upgrades if any
+    for (var i = 0; i < shop.upgrades.length; i++) {
+        // If the upgrade has a \"module\" called \"stock_space\" (module being a dictionary)
+        player.message(\"Upgrade: \" + JSON.stringify(shop.upgrades[i]));
+        var modules = shop.upgrades[i].modules;
+        player.message(\"Modules: \" + JSON.stringify(modules));
+        if (shop.upgrades[i].modules.stock_space) {
+            player.message(\"Stock space: \" + shop.upgrades[i].modules.stock_space);
+            stockRoomSize *= (1 + shop.upgrades[i].modules.stock_space);
+        }
+    }
+    stockRoomSize = Math.floor(stockRoomSize *  64);
+    // Can store 64 items per 1 cubic meter, before upgrades
+    
+
+    for (var key in stock) {
+        stockRoomUsed += stock[key].count;
+    }
+
+    // Check for any unsalable items
+    var unsalableItems = shop.inventory.unsalable_items;
+    for (var key in unsalableItems) {
+        stockRoomUsed += unsalableItems[key].count;
+    }
+
+    player.message(\"Stock room size: \" + stockRoomSize);
+    player.message(\"Stock room used: \" + stockRoomUsed);
+    player.message(\"Stock room left: \" + (stockRoomSize - stockRoomUsed));
+
+    return stockRoomSize - stockRoomUsed;
+}
+
+// Function to initialise the stock room
+function initStockRoom(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items || {};
+
+    // Move existing stock to unsalable items if not in the new available items list
+    for (var itemId in stock) {
+        if (stock[itemId].count > 0) {
+            unsalableItems[itemId] = stock[itemId];
+        }
+        delete stock[itemId];
+    }
+
+    // Initialize stock with all available items, at count 0
+    var availableItems = getAvailableItems(player, shop.shop.type);
+    for (var i = 0; i < availableItems.length; i++) {
+        var itemId = availableItems[i].id;
+        if (unsalableItems[itemId]) {
+            stock[itemId] = unsalableItems[itemId];
+            delete unsalableItems[itemId];
+        } else {
+            stock[itemId] = { count: 0 };
+            if (availableItems[i].tag) {
+                stock[itemId].tag = availableItems[i].tag;
+            }
+        }
+    }
+
+    shop.inventory.unsalable_items = unsalableItems;
+
+    player.message(\"Stock room initialised!\");
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
 }
 
 // Function to get a list of items for \"based_on_stocks\" item list types
@@ -1311,6 +1213,187 @@ function getBasedOnMarketItems(player, marketName) {
     }
 
     return items;
+}
+
+function updateStockrooms() {
+    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!serverShops) {
+        world.broadcast(\"No shop data found! Contact an admin!\");
+        return;
+    }
+
+    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    if (!shopCategories) {
+        world.broadcast(\"Shop categories not found! Contact an admin!\");
+        return;
+    }
+
+    for (var shopId in serverShops) {
+        updateShopStockroom(serverShops, shopId);
+    }
+
+    saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+}
+
+function updateShopStockroom(serverShops, shopId) {
+    var shop = serverShops[shopId];
+    var shopType = shop.shop.type;
+    var availableItems = getAvailableItems(null, shopType);
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items || {};
+
+    addNewEntries(stock, availableItems, unsalableItems);
+    moveUnsalableItems(stock, availableItems, unsalableItems);
+
+    shop.inventory.unsalable_items = unsalableItems;
+}
+
+function addNewEntries(stock, availableItems, unsalableItems) {
+    for (var i = 0; i < availableItems.length; i++) {
+        var itemId = availableItems[i].id;
+        if (unsalableItems[itemId]) {
+            stock[itemId] = unsalableItems[itemId];
+            delete unsalableItems[itemId];
+        } else if (!stock[itemId]) {
+            stock[itemId] = { count: 0 };
+            if (availableItems[i].tag) {
+                stock[itemId].tag = availableItems[i].tag;
+            }
+        }
+    }
+}
+
+function moveUnsalableItems(stock, availableItems, unsalableItems) {
+    for (var itemId in stock) {
+        for (var i = 0; i < availableItems.length; i++) {
+            if (itemId === availableItems[i].id) {
+                break;
+            }
+            if (i === availableItems.length - 1) {
+                if (stock[itemId].count > 0) {
+                    unsalableItems[itemId] = stock[itemId];
+                }
+                delete stock[itemId];
+            }
+        }
+    }
+}
+
+function addStockFromHand(player, shopId, playerShops) {
+    var itemstack = player.getMainhandItem();
+    if (itemstack.isEmpty()) {
+        player.message(\"You are not holding any item!\");
+        return;
+    }
+
+    var itemstock = getHandItems(player);
+    var shop = playerShops[shopId];
+
+    // Check if item is valid
+    if (!isValidItem(getAvailableItems(player, shop.shop.type), itemstock)) {
+        player.message(\"Item is not valid for this shop type!\");
+        return;
+    }
+
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    if (stockRoomLeft <= 0) {
+        player.message(\"No room left in the stock room!\");
+        return;
+    }
+
+    var itemId = itemstock.item;
+    var itemCount = itemstock.count;
+    var itemTag = itemstock.tag;
+
+    if (!shop.inventory.stock[itemId]) {
+        shop.inventory.stock[itemId] = { count: 0 };
+        if (itemTag) {
+            shop.inventory.stock[itemId].tag = itemTag;
+        }
+    }
+
+    var stockItem = shop.inventory.stock[itemId];
+    if (itemTag && stockItem.tag !== itemTag) {
+        player.message(\"Item NBT does not match existing stock!\");
+        return;
+    }
+
+    var roomForItems = Math.min(stockRoomLeft, itemCount);
+    stockItem.count += roomForItems;
+    itemstack.setStackSize(itemCount - roomForItems);
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message(\"Added \" + roomForItems + \" items to the shop stock.\");
+}
+
+function addAllStockFromInventory(player, shopId, playerShops) {
+    player.message(\"Adding all items to the shop stock...\");
+    var inventory = player.getInventory().getItems();
+    var shop = playerShops[shopId];
+    var availableItems = getAvailableItems(player, shop.shop.type);
+
+    player.message(\"Inventory size: \" + inventory.length);
+
+    for (var i = 0; i < inventory.length; i++) {
+        var itemstack = inventory[i];
+        if (itemstack && !itemstack.isEmpty()) {
+            var itemstock = getHandItemsFromStack(itemstack);
+
+            // Check if item is valid
+            if (isValidItem(availableItems, itemstock)) {
+                var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+                if (stockRoomLeft <= 0) {
+                    player.message(\"No room left in the stock room!\");
+                    return;
+                }
+
+                var itemId = itemstock.item;
+                var itemCount = itemstock.count;
+                var itemTag = itemstock.tag;
+
+                if (!shop.inventory.stock[itemId]) {
+                    shop.inventory.stock[itemId] = { count: 0 };
+                    if (itemTag) {
+                        shop.inventory.stock[itemId].tag = itemTag;
+                    }
+                }
+
+                var stockItem = shop.inventory.stock[itemId];
+                if (itemTag && stockItem.tag !== itemTag) {
+                    player.message(\"Item NBT does not match existing stock!\");
+                    continue;
+                }
+
+                var roomForItems = Math.min(stockRoomLeft, itemCount);
+                stockItem.count += roomForItems;
+                itemstack.setStackSize(itemCount - roomForItems);
+
+                player.message(\"Added \" + roomForItems + \" items to the shop stock.\");
+            }
+        }
+    }
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+}
+
+function getHandItemsFromStack(itemstack) {
+    var edititemstack = itemstack.copy();
+    var count = edititemstack.getStackSize();
+    edititemstack.setStackSize(1);
+    var item = edititemstack.getItemNbt();
+    var fullItem = item.getString(\"id\") + \":\" + item.getShort(\"Damage\");
+
+    var itemstock = {
+        item: fullItem,
+        count: count
+    };
+
+    // If tag exists, add it to the itemstock
+    if (edititemstack.hasNbt()) {
+        itemstock.tag = edititemstack.getNbt().toJsonString();
+    }
+
+    return itemstock;
 }
 
 ",
