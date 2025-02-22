@@ -180,3 +180,7 @@ function checkPermissions(player, shopID, playerShops, permission) {
     var permissions = getPermissions(player, playerShops, shopID);
     return permissions.includes(permission);
 }
+
+function convertUnderscore(str) {
+    return str.replace(/_/g, " ");
+}
