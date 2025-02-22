@@ -29,7 +29,29 @@
                     }
                 }
             },
-            "listed_items": [],
+            "listed_items": {
+                "harvestcraft:caramelitem:0": {
+                    "price": 1500,
+                    "reference_price": 1000,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:freshmilkitem:0": {
+                    "price": 250,
+                    "reference_price": 200,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "minecraft:potion:0": {
+                    "price": 75,
+                    "reference_price": 50,
+                    "discount": 0,
+                    "sale_count": 0,
+                    "tag": {
+                        "Potion": "minecraft:water"
+                    }
+                }
+            },
             "stored_cash": 0,
             "unsalable_items": {
                 "harvestcraft:cuttingboarditem:0": {
