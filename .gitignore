@@ -71,4 +71,4 @@ gramados_stocks/*
 myenv/*
 world/customnpcs/scripts/test_jsons/*
 world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeper_OS_OLD.js
-# world/customnpcs/scripts/player_scripts.json
+world/customnpcs/scripts/player_scripts.json
