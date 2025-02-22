@@ -71,6 +71,7 @@
         "reputation_data": {
             "reputation": 0,
             "reputation_history": []
-        }
+        },
+        "upgrades": []
     }
 }
