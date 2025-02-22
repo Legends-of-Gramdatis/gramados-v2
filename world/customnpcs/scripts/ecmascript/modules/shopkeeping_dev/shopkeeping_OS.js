@@ -16,6 +16,7 @@ var PERMISSION_MANAGE_STOCK = "manage_stock";
 var world = API.getIWorld(0);
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_utils.js")
 
 function init(event) {
 
