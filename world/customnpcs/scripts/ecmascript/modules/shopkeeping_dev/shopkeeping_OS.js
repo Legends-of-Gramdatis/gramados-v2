@@ -24,6 +24,7 @@ function init(event) {
         world.broadcast("No shop data found! Contact an admin!");
         return;
     }
+    updateStockrooms();
 }
 
 function chat(event) {
@@ -112,7 +113,7 @@ function chat(event) {
                         break;
                     case "type":
                         shop.shop.type = value.value;
-                        //initStockRoom(player, shopId, playerShops);
+                        initStockRoom(player, shopId, playerShops);
                         break;
                     case "region":
                         if (!checkRegionExists(value.value)) {
@@ -830,12 +831,73 @@ function getAvailableItems(player, shopType) {
                 }
             }
 
-            for (var j = 0; j < items.length; j++) {
-                player.message("Item: " + items[j].id + ", Price: " + items[j].value);
-            }
-            return;
+            return items;
         }
     }
+}
+
+
+// Function that returns the left over space in the stock room
+function getStockRoomLeft(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var stockRoomUsed = 0;
+
+    var stockRoomSize = shop.property.stock_room_size;
+    stockRoomSize = Math.floor(stockRoomSize *  64);
+    // Can store 64 items per 1 cubic meter, before upgrades
+    
+
+    for (var key in stock) {
+        stockRoomUsed += stock[key].count;
+    }
+
+    // Check for any unsalable items
+    var unsalableItems = shop.inventory.unsalable_items;
+    for (var key in unsalableItems) {
+        stockRoomUsed += unsalableItems[key].count;
+            }
+
+    player.message("Stock room size: " + stockRoomSize);
+    player.message("Stock room used: " + stockRoomUsed);
+    player.message("Stock room left: " + (stockRoomSize - stockRoomUsed));
+
+    return stockRoomSize - stockRoomUsed;
+        }
+
+// Function to initialise the stock room
+function initStockRoom(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items || {};
+
+    // Move existing stock to unsalable items if not in the new available items list
+    for (var itemId in stock) {
+        if (stock[itemId].count > 0) {
+            unsalableItems[itemId] = stock[itemId];
+        }
+        delete stock[itemId];
+    }
+
+    // Initialize stock with all available items, at count 0
+    var availableItems = getAvailableItems(player, shop.shop.type);
+    for (var i = 0; i < availableItems.length; i++) {
+        var itemId = availableItems[i].id;
+        if (unsalableItems[itemId]) {
+            stock[itemId] = unsalableItems[itemId];
+            delete unsalableItems[itemId];
+        } else {
+            stock[itemId] = { count: 0 };
+            if (availableItems[i].tag) {
+                stock[itemId].tag = availableItems[i].tag;
+            }
+        }
+    }
+
+    shop.inventory.unsalable_items = unsalableItems;
+
+    player.message("Stock room initialised!");
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
 }
 
 // Function to get a list of items for "based_on_stocks" item list types
@@ -1002,3 +1064,50 @@ function getBasedOnMarketItems(player, marketName) {
     return items;
 }
 
+function updateStockrooms() {
+    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!serverShops) {
+        world.broadcast("No shop data found! Contact an admin!");
+        return;
+    }
+
+    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    if (!shopCategories) {
+        world.broadcast("Shop categories not found! Contact an admin!");
+        return;
+    }
+
+    for (var shopId in serverShops) {
+        updateShopStockroom(serverShops, shopId);
+    }
+
+    saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+}
+
+function updateShopStockroom(serverShops, shopId) {
+    var shop = serverShops[shopId];
+    var shopType = shop.shop.type;
+    var availableItems = getAvailableItems(null, shopType);
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items || {};
+
+    addNewEntries(stock, availableItems, unsalableItems);
+    moveUnsalableItems(stock, availableItems, unsalableItems);
+
+    shop.inventory.unsalable_items = unsalableItems;
+}
+
+function addNewEntries(stock, availableItems, unsalableItems) {
+    for (var i = 0; i < availableItems.length; i++) {
+        var itemId = availableItems[i].id;
+        if (unsalableItems[itemId]) {
+            stock[itemId] = unsalableItems[itemId];
+            delete unsalableItems[itemId];
+        } else if (!stock[itemId]) {
+            stock[itemId] = { count: 0 };
+            if (availableItems[i].tag) {
+                stock[itemId].tag = availableItems[i].tag;
+            }
+        }
+    }
+}
