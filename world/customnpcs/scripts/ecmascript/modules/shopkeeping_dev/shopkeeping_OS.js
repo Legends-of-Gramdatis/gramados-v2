@@ -108,7 +108,7 @@ function chat(event) {
                 var value = getProperty(args[i]);
                 switch (value.propertyName) {
                     case "name":
-                        name = value.value;
+                        shop.shop.display_name = convertUnderscore(value.value);
                         break;
                     case "type":
                         shop.shop.type = value.value;
@@ -119,17 +119,17 @@ function chat(event) {
                             player.message("Invalid region: " + value.value);
                             return;
                         }
-                        region = value.value;
+                        shop.property.region = value.value;
                         break;
                     case "sub_region":
                         if (!checkSubRegionExists(region, value.value)) {
                             player.message("Invalid sub-region: " + value.value);
                             return;
                         }
-                        sub_region = value.value;
+                        shop.property.sub_region = value.value;
                         break;
                     case "money":
-                        money = parseInt(value.value) || 0;
+                        shop.inventory.stored_cash = parseInt(value.value) || 0;
                         break;
                     default:
                         player.message("Unknown property: " + value.propertyName);
@@ -408,7 +408,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
         reputation_data: {
             reputation: 0,
             reputation_history: []
-        }
+        },
+        upgrades: []
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
@@ -579,16 +580,6 @@ function convertPrice(price) {
 function getShopFromID(shopId) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     return playerShops ? playerShops[shopId] : null;
-}
-
-// function to check if item is valid according to shop type
-function isValidItem(shopType, item) {
-    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
-    if (!shopCategories) {
-        return false;
-    }
-
-    return shopCategories["entries"].some(entry => entry.name === shopType && entry.items.some(i => i.id === item));
 }
 
 // Function to check if region / sub_region are compatible
@@ -767,14 +758,17 @@ function getHandItems(player) {
     var count = edititemstack.getStackSize();
     edititemstack.setStackSize(1);
     var item = edititemstack.getItemNbt();
+    var fullItem = item.getString("id") + ":" + item.getShort("Damage");
 
     var itemstock = {
-        item: item,
+        item: fullItem,
         count: count
     };
 
-    player.message("Item: " + itemstock.item.toJsonString());
-    player.message("Count: " + itemstock.count);
+    // If tag exists, add it to the itemstock
+    if (edititemstack.hasNbt()) {
+        itemstock.tag = edititemstack.getNbt().toJsonString();
+    }
 
     return itemstock;
 }
