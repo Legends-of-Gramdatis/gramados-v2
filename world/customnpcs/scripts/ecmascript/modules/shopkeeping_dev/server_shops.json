@@ -9,9 +9,42 @@
             "assistants": []
         },
         "inventory": {
-            "stock": {},
+            "stock": {
+                "harvestcraft:caramelitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:colasodaitem:0": {
+                    "count": 512
+                },
+                "harvestcraft:freshmilkitem:0": {
+                    "count": 0
+                },
+                "minecraft:egg": {
+                    "count": 0
+                },
+                "minecraft:potion:0": {
+                    "count": 0,
+                    "tag": {
+                        "Potion": "minecraft:water"
+                    }
+                }
+            },
             "listed_items": [],
-            "stored_cash": 0
+            "stored_cash": 0,
+            "unsalable_items": {
+                "harvestcraft:cuttingboarditem:0": {
+                    "count": 9
+                },
+                "harvestcraft:potitem:0": {
+                    "count": 3
+                },
+                "harvestcraft:skilletitem:0": {
+                    "count": 8
+                },
+                "harvestcraft:saucepanitem:0": {
+                    "count": 1
+                }
+            }
         },
         "property": {
             "location": {
@@ -31,7 +64,7 @@
         },
         "shop": {
             "display_name": "Seagull's Devland Test Shop",
-            "type": "code_bugger",
+            "type": "essential_goods_food_drinks",
             "is_open": false,
             "is_for_sale": false
         },
