@@ -889,6 +889,17 @@ function getStockRoomLeft(player, shopId, playerShops) {
     var stockRoomUsed = 0;
 
     var stockRoomSize = shop.property.stock_room_size;
+    // Get room upgrades if any
+    for (var i = 0; i < shop.upgrades.length; i++) {
+        // If the upgrade has a "module" called "stock_space" (module being a dictionary)
+        player.message("Upgrade: " + JSON.stringify(shop.upgrades[i]));
+        var modules = shop.upgrades[i].modules;
+        player.message("Modules: " + JSON.stringify(modules));
+        if (shop.upgrades[i].modules.stock_space) {
+            player.message("Stock space: " + shop.upgrades[i].modules.stock_space);
+            stockRoomSize *= (1 + shop.upgrades[i].modules.stock_space);
+        }
+    }
     stockRoomSize = Math.floor(stockRoomSize *  64);
     // Can store 64 items per 1 cubic meter, before upgrades
     
@@ -901,14 +912,14 @@ function getStockRoomLeft(player, shopId, playerShops) {
     var unsalableItems = shop.inventory.unsalable_items;
     for (var key in unsalableItems) {
         stockRoomUsed += unsalableItems[key].count;
-            }
+    }
 
     player.message("Stock room size: " + stockRoomSize);
     player.message("Stock room used: " + stockRoomUsed);
     player.message("Stock room left: " + (stockRoomSize - stockRoomUsed));
 
     return stockRoomSize - stockRoomUsed;
-        }
+}
 
 // Function to initialise the stock room
 function initStockRoom(player, shopId, playerShops) {
