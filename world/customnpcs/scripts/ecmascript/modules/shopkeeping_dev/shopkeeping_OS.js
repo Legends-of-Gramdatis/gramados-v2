@@ -102,6 +102,7 @@ function chat(event) {
         var sub_region = shop.property.sub_region || null;
         var money = shop.inventory.stored_cash || 0;
 
+
         if (args.length > 4) {
             for (var i = 4; i < args.length; i++) {
                 var value = getProperty(args[i]);
@@ -110,7 +111,8 @@ function chat(event) {
                         name = value.value;
                         break;
                     case "type":
-                        type = value.value;
+                        shop.shop.type = value.value;
+                        //initStockRoom(player, shopId, playerShops);
                         break;
                     case "region":
                         if (!checkRegionExists(value.value)) {
@@ -138,12 +140,6 @@ function chat(event) {
             player.message("Invalid command! Usage: $shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
             player.message("Use \"_\" for spaces in the values");
         }
-
-        shop.shop.display_name = convertUnderscore(name);
-        shop.shop.type = type;
-        shop.property.region = region;
-        shop.property.sub_region = sub_region;
-        shop.inventory.stored_cash = money;
 
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         player.message("Shop properties updated!");
@@ -241,7 +237,6 @@ function chat(event) {
         } else {
             player.message("Invalid command! Usage: $shop stock add <ID> or $shop stock add <ID> all");
         }
-        
     } else if (message.startsWith("$shop stock remove")) {
         var args = message.split(" ");
         if (args.length === 4) {
@@ -375,12 +370,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
 
     var shopId = 1;
     while (serverShops[shopId]) {
-        // world.broadcast("Shop ID " + shopId + " already exists!");
         shopId++;
-        // world.broadcast("Trying ID " + shopId + "...");
     }
-
-    // world.broadcast("Creating shop with ID " + shopId + "...");
 
     serverShops[shopId] = {
         roles: {
@@ -474,39 +465,6 @@ function setShopProperty(player, property, value) {
             break;
         default:
             player.message("Invalid property!");
-    }
-}
-
-// Set the type of the shop
-function setShopType(player, type) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops) {
-        player.message("No shops found!");
-        return;
-    }
-
-    var shopId = getShopId(player);
-    if (!shopId) {
-        player.message("No shop found!");
-        return;
-    }
-
-    var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
-    if (!shopCategories) {
-        player.message("Shop categories not found!");
-        return;
-    }
-
-    var validType = shopCategories["entries"].some(entry => entry.name === type);
-
-    if (!validType) {
-        player.message("Invalid shop type!");
-        return;
-    } else {
-        var shop = playerShops[shopId];
-        shop.type = type;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        player.message("Shop type set!");
     }
 }
 
