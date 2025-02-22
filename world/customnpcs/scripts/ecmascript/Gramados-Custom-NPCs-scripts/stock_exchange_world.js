@@ -100,7 +100,7 @@ function updateStockPrice(stockValue, regionGeneral) {
         }
     }
     
-    var cap = Math.max(stockValue["reference_price"] * 0.1, 20);
+    var cap = Math.max(stockValue["reference_price"] * 0.055, 20);
 
     // If last sale is more than 48 hours ago, randomly adjust the stock price closer to the reference price
     var randomFactor = Math.floor(Math.min(Math.random() * stockValue["reference_price"] * _RANDOM_FACTOR, cap));
