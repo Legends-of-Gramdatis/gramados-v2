@@ -261,29 +261,23 @@ function chat(event) {
         }
     } else if (message.startsWith("$shop stock eval")) {
         evalHandItem(player);
-    } else if (message === "$shop help") {
-        player.message("Available commands:");
-        player.message("$shop open - Open the shop");
-        player.message("$shop close - Close the shop");
-        player.message("$shop create - Create a new shop");
-        player.message("$shop set <property> <value> - Set a shop property");
-        player.message("$shop info - Show shop info");
-        player.message("$shop help properties - Show available properties");
-        player.message("$shop add stock <price> - Add hand held itemstack to shop stock with price per item");
-        player.message("$shop remove stock <item> - Remove item from shop stock (using item name)");
-        player.message("$shop list stock - List all items in shop stock");
-        player.message("$shop list items - List all items in player inventory");
-        player.message("$shop list available items - List all items in player inventory that can be sold in the shop");
-    } else if (message === "$shop help properties") {
-        player.message("Available properties:");
-        player.message("type - The type of the shop");
-        player.message("region - The region of the shop");
-    } else if (message.startsWith("$shop info")) {
-        listAvailableItems(player);
-    } else if (message === "$shop list") {
-        listShops(player);
-    } else if (message.startsWith("$shop")) {
-        player.message("Invalid command! Type $shop help for available commands.");
+    } else if (message.startsWith("$shop price set")) {
+        var args = message.split(" ");
+        if (args.length < 5) {
+            player.message("Invalid command! Usage: $shop price set <shopID> <itemID OR item index> <profit>");
+            return;
+        }
+
+        var shopId = parseInt(args[3]);
+        var itemIdOrIndex = args[4];
+        var profit = args[5];
+
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message("Invalid shop ID: " + args[3]);
+            return;
+        }
+
+        setPrice(player, shopId, itemIdOrIndex, profit, playerShops);
     }
 }
 
@@ -402,7 +396,7 @@ function createShop(player, type, region, sub_region, display_name, money) {
         },
         inventory: {
             stock: {},
-            listed_items: [],
+            listed_items: {},
             stored_cash: money || 0
         },
         property: {
@@ -563,6 +557,88 @@ function shopInfo(player, shopId) {
     var shop = playerShops[shopId];
     for (var property in shop) {
         player.message(property + ": " + shop[property]);
+    }
+}
+
+// ------------------------------------------------------------------------------------------------------------
+// Set price of an item in the shop
+// ------------------------------------------------------------------------------------------------------------
+function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
+    var shop = playerShops[shopId];
+    var item = null;
+    var itemTag = null;
+
+    if (isNaN(itemIdOrIndex)) {
+        item = shop.inventory.stock[itemIdOrIndex];
+    } else {
+        var index = parseInt(itemIdOrIndex);
+        var keys = Object.keys(shop.inventory.stock);
+        if (index >= 0 && index < keys.length) {
+            item = shop.inventory.stock[keys[index]];
+            itemIdOrIndex = keys[index];
+            itemTag = item.tag;
+        }
+    }
+
+    if (!item) {
+        player.message("Invalid item ID or index: " + itemIdOrIndex);
+        return;
+    }
+
+    var referencePrice = getReferencePrice(player, itemIdOrIndex, itemTag, shop.shop.type);
+    var price = calculatePrice(referencePrice, profit);
+
+    shop.inventory.listed_items[itemIdOrIndex] = {
+        price: price,
+        reference_price: referencePrice,
+        discount: 0,
+        sale_count: 0
+    };
+
+    if (itemTag) {
+        shop.inventory.listed_items[itemIdOrIndex].tag = itemTag;
+    }
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    // player.message("Price set for item: " + itemIdOrIndex);
+    // player.message("Reference price: " + referencePrice);
+    // player.message("Price: " + price);
+}
+
+function getReferencePrice(player, itemId, itemTag, shopType) {
+    // player.message("Getting reference price for item: " + itemId);
+    var shopCategories = getAvailableItems(player, shopType);
+    // player.message("Shop categories: " + JSON.stringify(shopCategories));
+
+    for (var i = 0; i < shopCategories.length; i++) {
+        // player.message("Checking item: " + shopCategories[i].id + " - " + shopCategories[i].value);
+        if (shopCategories[i].id === itemId) {
+            // player.message("Item found!");
+            if (shopCategories[i].tag) {
+                // player.message("Item has tag: " + shopCategories[i].tag);
+                // player.message("Item tag: " + itemTag);
+                if (JSON.stringify(shopCategories[i].tag) === JSON.stringify(itemTag)) {
+                    return shopCategories[i].value;
+                }
+            } else {
+                // player.message("No tag found!");
+                return shopCategories[i].value;
+            }
+        }
+    }
+
+    return 0;
+}
+
+function calculatePrice(referencePrice, profit) {
+    if (profit.endsWith("%")) {
+        var percent = parseFloat(profit.slice(0, -1));
+        return Math.round(referencePrice * (1 + percent / 100));
+    } else {
+        var parts = profit.split("g");
+        var grons = parseInt(parts[0]) || 0;
+        var cents = parseInt(parts[1].replace("c", "")) || 0;
+        return grons * 100 + cents;
     }
 }
 
