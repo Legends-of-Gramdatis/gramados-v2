@@ -1,6 +1,46 @@
 {
     "ScriptEnabled": 1b,
     "ScriptConsole": [
+        {
+            "Long": 1740252240102L,
+            "String": " tab 3:
+noppes.npcs.api.CustomNPCsException: Failed converting [object Object]
+	at noppes.npcs.api.wrapper.WrapperNpcAPI.stringToNbt(WrapperNpcAPI.java:239)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5528$45530AAA$\\^eval\\_.addAllStockFromInventory(<eval>:1279)
+	at jdk.nashorn.internal.scripts.Script$Recompilation$5526$1200A$\\^eval\\_.chat(<eval>:244)
+	at jdk.nashorn.internal.runtime.ScriptFunctionData.invoke(ScriptFunctionData.java:639)
+	at jdk.nashorn.internal.runtime.ScriptFunction.invoke(ScriptFunction.java:494)
+	at jdk.nashorn.internal.runtime.ScriptRuntime.apply(ScriptRuntime.java:393)
+	at jdk.nashorn.api.scripting.ScriptObjectMirror.callMember(ScriptObjectMirror.java:199)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeImpl(NashornScriptEngine.java:386)
+	at jdk.nashorn.api.scripting.NashornScriptEngine.invokeFunction(NashornScriptEngine.java:190)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:169)
+	at noppes.npcs.controllers.ScriptContainer.run(ScriptContainer.java:126)
+	at noppes.npcs.controllers.data.PlayerScriptData.runScript(PlayerScriptData.java:88)
+	at noppes.npcs.EventHooks.onPlayerChat(EventHooks.java:391)
+	at noppes.npcs.ScriptPlayerEventHandler.invoke(ScriptPlayerEventHandler.java:312)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler_485_ScriptPlayerEventHandler_invoke_ServerChatEvent.invoke(.dynamic)
+	at net.minecraftforge.fml.common.eventhandler.ASMEventHandler.invoke(ASMEventHandler.java:90)
+	at com.github.terminatornl.laggoggles.tickcentral.EventBusTransformer.redirectEvent(EventBusTransformer.java:67)
+	at net.minecraftforge.fml.common.eventhandler.EventBus.post(EventBus.java:182)
+	at net.minecraftforge.common.ForgeHooks.onServerChatEvent(ForgeHooks.java:732)
+	at net.minecraft.network.NetHandlerPlayServer.func_147354_a(NetHandlerPlayServer.java:946)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:37)
+	at net.minecraft.network.play.client.CPacketChatMessage.func_148833_a(SourceFile:9)
+	at net.minecraft.network.PacketThreadUtil$1.run(SourceFile:13)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at net.minecraft.util.Util.func_181617_a(SourceFile:46)
+	at net.minecraft.server.MinecraftServer.func_71190_q(MinecraftServer.java:723)
+	at net.minecraft.server.dedicated.DedicatedServer.func_71190_q(DedicatedServer.java:397)
+	at net.minecraft.server.MinecraftServer.func_71217_p(MinecraftServer.java:668)
+	at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:526)
+	at java.lang.Thread.run(Thread.java:750)
+Caused by: noppes.npcs.util.NBTJsonUtil$JsonException: Not properly incapsulated between { }: Line: 1, Pos: 0, Text: [object Object]
+	at noppes.npcs.util.NBTJsonUtil.Convert(NBTJsonUtil.java:41)
+	at noppes.npcs.api.wrapper.WrapperNpcAPI.stringToNbt(WrapperNpcAPI.java:237)
+	... 30 more"
+        }
     ],
     "Scripts": [
         {
@@ -273,10 +313,20 @@ function chat(event) {
         }
     } else if (message.startsWith(\"$shop stock remove\")) {
         var args = message.split(\" \");
-        if (args.length === 4) {
-            var item = args[3];
-            removeStock(player, item);
+        if (args.length >= 4) {
+            var shopId = parseInt(args[3]);
+            var itemId = args[4];
+            var count = args.length === 6 ? parseInt(args[5]) : 64;
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message(\"Invalid shop ID: \" + args[3]);
+                return;
+            }
+            removeStock(player, shopId, itemId, count, playerShops);
+        } else {
+            player.message(\"Invalid command! Usage: $shop stock remove <ID> <Item ID> [number]\");
         }
+    } else if (message.startsWith(\"$shop stock eval\")) {
+        evalHandItem(player);
     } else if (message === \"$shop help\") {
         player.message(\"Available commands:\");
         player.message(\"$shop open - Open the shop\");
@@ -804,12 +854,6 @@ function getHandItems(player) {
         itemstock.tag = edititemstack.getNbt().toJsonString();
     }
 
-    // player.message(\"Item: \" + itemstock.item);
-    // player.message(\"Count: \" + itemstock.count);
-    // if (itemstock.tag) {
-    //     player.message(\"Tag: \" + itemstock.tag);
-    // }
-
     return itemstock;
 }
 
@@ -870,9 +914,6 @@ function getAvailableItems(player, shopType) {
                 }
             }
 
-            // for (var j = 0; j < items.length; j++) {
-            //     player.message(\"Item: \" + items[j].id + \", Price: \" + items[j].value);
-            // }
             return items;
         }
     }
@@ -890,66 +931,6 @@ function isValidItem(items, itemstock) {
     // player.message(\"Item: \" + item + \" is not valid!\");
     return false;
 }
-
-// Function to move an item from player inventory to shop stock
-// function moveHandItemToStock(player, shopId, playerShops) {
-
-//     var itemstock = getHandItems(player);
-//     var shop = playerShops[shopId];
-
-//     // Check if item is valid:
-//     if (!isValidItem(getAvailableItems(player, shop.shop.type), itemstock)) {
-//         player.message(\"Item is not valid!\");
-//         return;
-//     } else {
-//         player.message(\"Item is valid!\");
-
-//         // See how much room is left in the stock room
-//         var stockRoomSize = shop.property.stock_room_size;
-//         var stockRoomUsed = 0;
-//         for (var i = 0; i < shop.inventory.stock.length; i++) {
-//             stockRoomUsed += shop.inventory.stock[i].count;
-//         }
-//         var stockRoomLeft = stockRoomSize - stockRoomUsed;
-
-//         player.message(\"Stock room size: \" + stockRoomSize);
-//         player.message(\"Stock room used: \" + stockRoomUsed);
-//         player.message(\"Stock room left: \" + stockRoomLeft);
-
-//         if (stockRoomLeft > 0) {
-//             // Check if there is enough room in the stock room for an entire stack
-//             if (stockRoomLeft > itemstock.count) {
-//                 // If item alrteady registered in stock, add to the count
-//                 for (var i = 0; i < shop.inventory.stock.length; i++) {
-//                     if (shop.inventory.stock[i].item === itemstock.item) {
-//                         shop.inventory.stock[i].count += itemstock.count;
-//                         player.message(\"Item added to stock!\");
-//                         player.getMainhandItem().setStackSize(0);
-//                         return;
-//                     }
-//                 }
-//                 // If it is not, add it to the stock
-//                 shop.inventory.stock.push(itemstock);
-//                 player.message(\"Item added to stock!\");
-//                 player.getMainhandItem().setStackSize(0);
-//             } else {
-//                 // Fill teh stock room with as much as possible
-//                 var itemstockCopy = itemstock;
-//                 itemstockCopy.count = stockRoomLeft;
-//                 shop.inventory.stock.push(itemstockCopy);
-//                 player.message(\"Stock room is full!\");
-//                 player.getMainhandItem().setStackSize(itemstock.count - stockRoomLeft);
-
-//             }
-
-
-    
-//         var item = itemstock.item;
-//         var count = itemstock.count;
-//         var tag = itemstock.tag;
-//         var shopInventory = shop.inventory;
-//     }
-// }
 
 // Function to add item to stock. Returns the number of items left in player inventory
 function addStock(player, shopId, playerShops, item, count, tag) {
@@ -1303,7 +1284,7 @@ function addStockFromHand(player, shopId, playerShops) {
 
     var itemId = itemstock.item;
     var itemCount = itemstock.count;
-    var itemTag = itemstock.tag;
+    var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
     if (!shop.inventory.stock[itemId]) {
         shop.inventory.stock[itemId] = { count: 0 };
@@ -1313,8 +1294,10 @@ function addStockFromHand(player, shopId, playerShops) {
     }
 
     var stockItem = shop.inventory.stock[itemId];
-    if (itemTag && stockItem.tag !== itemTag) {
+    if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
         player.message(\"Item NBT does not match existing stock!\");
+        player.message(\"Item NBT: \" + itemTag);
+        player.message(\"Stock NBT: \" + stockItem.tag);
         return;
     }
 
@@ -1349,7 +1332,7 @@ function addAllStockFromInventory(player, shopId, playerShops) {
 
                 var itemId = itemstock.item;
                 var itemCount = itemstock.count;
-                var itemTag = itemstock.tag;
+                var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
                 if (!shop.inventory.stock[itemId]) {
                     shop.inventory.stock[itemId] = { count: 0 };
@@ -1359,8 +1342,10 @@ function addAllStockFromInventory(player, shopId, playerShops) {
                 }
 
                 var stockItem = shop.inventory.stock[itemId];
-                if (itemTag && stockItem.tag !== itemTag) {
+                if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
                     player.message(\"Item NBT does not match existing stock!\");
+                    player.message(\"Item NBT: \" + itemTag);
+                    player.message(\"Stock NBT: \" + stockItem.tag);
                     continue;
                 }
 
@@ -1394,6 +1379,66 @@ function getHandItemsFromStack(itemstack) {
     }
 
     return itemstock;
+}
+
+function removeStock(player, shopId, itemId, count, playerShops) {
+    var shop = playerShops[shopId];
+    var stock = shop.inventory.stock;
+    var unsalableItems = shop.inventory.unsalable_items;
+
+    if (!stock[itemId] && !unsalableItems[itemId]) {
+        player.message(\"Item not found in stock or unsalable items!\");
+        return;
+    }
+
+    var stockItem = stock[itemId] || unsalableItems[itemId];
+
+    var id = itemId.split(\":\")[0] + \":\" + itemId.split(\":\")[1];
+
+    var nbt = {
+        id: id,
+        Count: count,
+        Damage: itemId.split(\":\")[2]
+    }
+    if (stockItem.tag) {
+        nbt.tag = stockItem.tag;
+    }
+
+    var itemstack = world.createItemFromNbt(API.stringToNbt(JSON.stringify(nbt)));
+    var maxStackSize = itemstack.getMaxStackSize();
+    count = Math.min(count, maxStackSize);
+    itemstack.setStackSize(count);
+
+    if (stockItem.count < count) {
+        player.message(\"Not enough items in stock!\");
+        return;
+    }
+
+    stockItem.count -= count;
+    if (stockItem.count === 0) {
+        if (stock[itemId]) {
+            delete stock[itemId];
+        } else {
+            delete unsalableItems[itemId];
+        }
+    }
+
+    
+
+    player.giveItem(itemstack);
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message(\"Removed \" + count + \" items from the shop stock.\");
+}
+
+function evalHandItem(player) {
+    var itemstack = player.getMainhandItem();
+    if (itemstack.isEmpty()) {
+        player.message(\"You are not holding any item!\");
+        return;
+    }
+
+    player.message(\"Itemstack data: \" + itemstack.getItemNbt().toJsonString());
 }
 
 ",
