@@ -1,0 +1,66 @@
+{
+    "upgrades": [
+        {
+            "id": "better_crates_1",
+            "name": "Better Crates",
+            "modules": {
+                "stock_space": 0.1
+            },
+            "cost": 20000
+        },
+        {
+            "id": "better_crates_2",
+            "name": "Even Better Crates",
+            "modules": {
+                "stock_space": 0.2
+            },
+            "cost": 50000,
+            "requires": [
+                "better_crates_1"
+            ],
+            "required_reputation": 100
+        },
+        {
+            "id": "local_advertising",
+            "name": "Local Advertising",
+            "modules": {
+                "attendence": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 3,
+                "next_purchase": 10
+            },
+            "cost": 20000
+        },
+        {
+            "id": "degustation",
+            "name": "Degustation",
+            "modules": {
+                "reputation": 0.15,
+                "sales": 0.07,
+                "stock_consumption": 0.3
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 1,
+                "next_purchase": 5
+            },
+            "cost": 20000
+        },
+        {
+            "id": "promotion_1",
+            "name": "Small Promotion",
+            "modules": {
+                "sales": 0.25,
+                "item_price": -0.2
+            },
+            "repeatable": {
+                "last_purchase": 562974,
+                "lasts_for": 7,
+                "next_purchase": 1000
+            },
+            "cost": 20000
+        }
+    ]
+}
