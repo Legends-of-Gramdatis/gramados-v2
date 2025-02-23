@@ -339,6 +339,19 @@ function chat(event) {
         } else {
             player.message("Invalid command! Usage: $shop money put <ID>");
         }
+    } else if (message.startsWith("$shop money take")) {
+        var args = message.split(" ");
+        if (args.length === 5) {
+            var shopId = parseInt(args[3]);
+            var value = getCoinAmount(args[4]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[3]);
+                return;
+            }
+            takeMoneyFromShop(player, shopId, value, playerShops);
+        } else {
+            player.message("Invalid command! Usage: $shop money take <ID> <value>");
+        }
     }
 }
 
@@ -1098,5 +1111,22 @@ function putMoneyInShop(player, shopId, playerShops) {
     } else {
         player.message("No money found in your inventory!");
     }
+}
+
+function takeMoneyFromShop(player, shopId, value, playerShops) {
+    var shop = playerShops[shopId];
+    if (shop.finances.stored_cash < value) {
+        player.message("Not enough money in the shop's inventory!");
+        return;
+    }
+
+    shop.finances.stored_cash -= value;
+    var moneyItems = generateMoney(world, value, "money");
+    for (var i = 0; i < moneyItems.length; i++) {
+        player.giveItem(moneyItems[i]);
+    }
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    player.message("Successfully took " + getAmountCoin(value) + " from shop " + shopId);
 }
 
