@@ -393,7 +393,58 @@ function chat(event) {
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop money take <ID> <value>");
         }
-    } 
+    } else if (message.startsWith("$shop reputation add")) {
+        var args = message.split(" ");
+        if (args.length === 5) {
+            var shopId = parseInt(args[3]);
+            var amount = parseInt(args[4]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            if (isNaN(amount)) {
+                tellPlayer(player, "&cInvalid amount: &e" + args[4]);
+                return;
+            }
+            addShopReputation(player, shopId, amount, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation add <ID> <Amount>");
+        }
+    } else if (message.startsWith("$shop reputation remove")) {
+        var args = message.split(" ");
+        if (args.length === 5) {
+            var shopId = parseInt(args[3]);
+            var amount = parseInt(args[4]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            if (isNaN(amount)) {
+                tellPlayer(player, "&cInvalid amount: &e" + args[4]);
+                return;
+            }
+            addShopReputation(player, shopId, -amount, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation remove <ID> <Amount>");
+        }
+    } else if (message.startsWith("$shop reputation log")) {
+        var args = message.split(" ");
+        if (args.length === 4 || args.length === 5) {
+            var shopId = parseInt(args[3]);
+            var hours = args.length === 5 ? parseInt(args[4]) : 24;
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            if (isNaN(hours)) {
+                tellPlayer(player, "&cInvalid time: &e" + args[4]);
+                return;
+            }
+            logShopReputation(player, shopId, hours, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation log <ID> [time]");
+        }
+    }
 }
 
 // ############################################################################################################
@@ -1128,5 +1179,60 @@ function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
     } else {
         tellPlayer(player, "&cFailed to add money to your pouch!");
     }
+}
+
+function addShopReputation(player, shopId, amount, playerShops) {
+    var shop = playerShops[shopId];
+    shop.reputation_data.reputation += amount;
+    addReputationHistoryEntry(shop, amount > 0 ? "Reputation added through command" : "Reputation removed through command", amount);
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    tellPlayer(player, "&aShop reputation updated!");
+}
+
+function addReputationHistoryEntry(shop, reason, amount) {
+    var entry = {
+        time: new Date().toISOString(),
+        reason: reason,
+        amount: amount,
+        reputation: shop.reputation_data.reputation
+    };
+    shop.reputation_data.reputation_history.push(entry);
+}
+
+function logShopReputation(player, shopId, hours, playerShops) {
+    var shop = playerShops[shopId];
+    var currentReputation = shop.reputation_data.reputation;
+    var reputationAgo = getReputationAgo(player, shop, hours);
+
+    if (reputationAgo === null) {
+        tellPlayer(player, "&cShop not old enough to have data.");
+        return;
+    }
+
+    var changePercent = calculateReputationChangePercent(reputationAgo, currentReputation);
+    tellPlayer(player, "&aCurrent reputation: &e" + currentReputation);
+    tellPlayer(player, "&aReputation change in the last " + hours + " hours: &e" + changePercent + "%");
+}
+
+function getReputationAgo(player, shop, hours) {
+    var now = new Date();
+    var timeAgo = new Date(now.getTime() - hours * 60 * 60 * 1000);
+
+    for (var i = shop.reputation_data.reputation_history.length - 1; i >= 0; i--) {
+        var entry = shop.reputation_data.reputation_history[i];
+        var entryTime = new Date(entry.time);
+        if (entryTime <= timeAgo) {
+            // tellPlayer(player, "&cEntry time: " + entryTime);
+            // tellPlayer(player, "&cTime ago: " + timeAgo);
+            // tellPlayer(player, "&cEntry reputation: " + entry.reputation);
+            return entry.reputation;
+        }
+    }
+
+    return null;
+}
+
+function calculateReputationChangePercent(oldReputation, newReputation) {
+    return Math.round(((newReputation - oldReputation) / oldReputation) * 10000) / 100;
 }
 
