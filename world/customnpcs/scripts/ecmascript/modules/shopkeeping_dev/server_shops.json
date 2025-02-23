@@ -52,7 +52,6 @@
                     }
                 }
             },
-            "stored_cash": 0,
             "unsalable_items": {
                 "harvestcraft:cuttingboarditem:0": {
                     "count": 9
@@ -94,6 +93,10 @@
             "reputation": 0,
             "reputation_history": []
         },
-        "upgrades": []
+        "upgrades": [],
+        "finances": {
+            "stored_cash": 0,
+            "default_margin": 0.25
+        }
     }
 }
