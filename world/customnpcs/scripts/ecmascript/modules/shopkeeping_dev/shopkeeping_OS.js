@@ -102,8 +102,7 @@ function chat(event) {
         var type = shop.shop.type || null;
         var region = shop.property.region || null;
         var sub_region = shop.property.sub_region || null;
-        var money = shop.inventory.stored_cash || 0;
-
+        var money = shop.finances.stored_cash || 0;
 
         if (args.length > 4) {
             for (var i = 4; i < args.length; i++) {
@@ -131,7 +130,7 @@ function chat(event) {
                         shop.property.sub_region = value.value;
                         break;
                     case "money":
-                        shop.inventory.stored_cash = parseInt(value.value) || 0;
+                        shop.finances.stored_cash = parseInt(value.value) || 0;
                         break;
                     default:
                         player.message("Unknown property: " + value.propertyName);
@@ -278,7 +277,56 @@ function chat(event) {
             return;
         }
 
+        if (profit === "default") {
+            var shop = playerShops[shopId];
+            if (!shop.finances.default_margin) {
+                player.message("No default margin set for this shop!");
+                return;
+            }
+            profit = shop.finances.default_margin * 100 + "%";
+        }
+
         setPrice(player, shopId, itemIdOrIndex, profit, playerShops);
+    } else if (message.startsWith("$shop price default")) {
+        var args = message.split(" ");
+        if (args.length < 4) {
+            player.message("Invalid command! Usage: $shop price default <shopID> <percentage>");
+            return;
+        }
+
+        // Replace any % with ⁒
+        for (var i = 0; i < args.length; i++) {
+            args[i] = args[i].replace("%", "⁒");
+        }
+
+        var shopId = parseInt(args[3]);
+        var defaultMargin = args[4];
+
+        if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+            player.message("Invalid shop ID: " + args[3]);
+            return;
+        }
+
+        if (!defaultMargin) {
+            player.message("Invalid command! Usage: $shop price default <shopID> <percentage>");
+            return;
+        }
+
+        if (!defaultMargin.endsWith("⁒")) {
+            player.message("Invalid percentage format! Use a percentage value (e.g., 10⁒)");
+            return;
+        }
+
+        var percent = parseFloat(defaultMargin.slice(0, -1));
+        if (isNaN(percent)) {
+            player.message("Invalid percentage value!");
+            return;
+        }
+
+        var shop = playerShops[shopId];
+        shop.finances.default_margin = percent / 100;
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Default margin set to " + percent + "⁒ for shop " + shopId);
     }
 }
 
@@ -398,7 +446,11 @@ function createShop(player, type, region, sub_region, display_name, money) {
         inventory: {
             stock: {},
             listed_items: {},
-            stored_cash: money || 0
+            unsalable_items: {}
+        },
+        finances: {
+            stored_cash: money || 0,
+            default_margin: null
         },
         property: {
             location: {
