@@ -693,7 +693,7 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     }
 
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    tellPlayer(player, "&aSuccessfully set price for item &e" + itemIdOrIndex + " &ato " + getAmountCoin(price));
+    tellPlayer(player, "&aSuccessfully set price for item &e" + itemIdOrIndex + " &ato &r:money:&e" + getAmountCoin(price));
     // tellPlayer(player, "Reference price: " + referencePrice);
     // tellPlayer(player, "Price: " + price);
 }
@@ -852,9 +852,9 @@ function getAvailableItems(player, shopType) {
             }
             // if shop entry has "based_on_market" list:
             if (entry.based_on_market) {
-                tellPlayer(player, "&eBased on market: ");
+                // tellPlayer(player, "&eBased on market: ");
                 for (var j = 0; j < entry.based_on_market.length; j++) {
-                    tellPlayer(player, "&e" + entry.based_on_market[j]);
+                    // tellPlayer(player, "&e" + entry.based_on_market[j]);
 
                     var basedOnMarketItems = getBasedOnMarketItems(player, entry.based_on_market[j]);
                     if (basedOnMarketItems) {
@@ -1037,7 +1037,7 @@ function putMoneyInShop(player, shopId, playerShops) {
     if (totalMoney > 0) {
         shop.finances.stored_cash += totalMoney;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        tellPlayer(player, "&aSuccessfully added &e" + getAmountCoin(totalMoney) + " &ato shop &e" + shopId);
+        tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(totalMoney) + " &ato shop &e" + shopId);
     } else {
         tellPlayer(player, "&cNo money found in your inventory!");
     }
@@ -1057,7 +1057,7 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
     }
 
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    tellPlayer(player, "&aSuccessfully took &e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
+    tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
 }
 
 function removeOutdatedListedItems(player, shop, newType) {
