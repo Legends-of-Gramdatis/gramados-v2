@@ -1,10 +1,19 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
-load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js")
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
-var gramados_json = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
-var _COINITEMS = gramados_json._COINITEMS;
-var _COINTABLE = gramados_json._COINTABLE;
-var VIRTUAL_CURRENCIES = gramados_json.VIRTUAL_CURRENCIES;
+var gramadosData = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
+
+var coinItems = convertCoinItems(gramadosData._COINITEMS);
+var coinTable = gramadosData._COINTABLE;
+var virtualCurrencies = gramadosData.VIRTUAL_CURRENCIES;
+var coinItemName = gramadosData._COINITEMNAME;
+var coinItemPrefix = gramadosData._COINITEM_PREFIX;
+var lowValueId = gramadosData.LOWVALUE_ID;
+var midValueId = gramadosData.MIDVALUE_ID;
+var highValueId = gramadosData.HIGHVALUE_ID;
+var ultraValueId = gramadosData.ULTRAVALUE_ID;
 
 /**
  * Converts a price string to an integer value in cents.
@@ -21,17 +30,17 @@ function convertPrice(price) {
 /**
  * Gets the monetary value of an item stack.
  * @param {Object} stack - The item stack.
- * @param {Object} w - The world object.
+ * @param {Object} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {number} - The monetary value of the item stack.
  */
-function getItemMoney(stack, w, currencyType) {
-    for (var ival in _COINITEMS) {
-        var ci = _COINITEMS[ival];
-        var cm = genMoney(w, getCoinAmount(ival), currencyType)[0] || null;
-        if (cm != null) {
-            if (isItemEqual(stack, cm)) {
-                return getCoinAmount(ival);
+function getItemMoney(stack, world, currencyType) {
+    for (var coinKey in coinItems) {
+        var coinItem = coinItems[coinKey];
+        var generatedMoney = generateMoney(world, getCoinAmount(coinKey), currencyType)[0] || null;
+        if (generatedMoney != null) {
+            if (isItemEqual(stack, generatedMoney)) {
+                return getCoinAmount(coinKey);
             }
         }
     }
@@ -41,12 +50,12 @@ function getItemMoney(stack, w, currencyType) {
 /**
  * Checks if an item stack is a form of money.
  * @param {Object} stack - The item stack.
- * @param {Object} w - The world object.
+ * @param {Object} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {boolean} - True if the item stack is money, false otherwise.
  */
-function isItemMoney(stack, w, currencyType) {
-    return getItemMoney(stack, w, currencyType) > 0;
+function isItemMoney(stack, world, currencyType) {
+    return getItemMoney(stack, world, currencyType) > 0;
 }
 
 /**
@@ -55,25 +64,23 @@ function isItemMoney(stack, w, currencyType) {
  * @returns {string} - The coin string (e.g., "10g50c").
  */
 function getAmountCoin(amount) {
-    var rstr = '';
-    var ams = sign(amount);
-    if (ams == -1) { rstr = '-'; }
+    var resultString = '';
+    var amountSign = sign(amount);
+    if (amountSign == -1) { resultString = '-'; }
     amount = Math.abs(amount);
-    var ckeys = Object.keys(_COINTABLE);
-    for (var i = ckeys.length - 1; i >= 0; i--) {
-
+    var coinKeys = Object.keys(coinTable);
+    for (var i = coinKeys.length - 1; i >= 0; i--) {
         var add = 0;
-        while (amount >= _COINTABLE[ckeys[i]]) {
+        while (amount >= coinTable[coinKeys[i]]) {
             add++;
-            amount -= _COINTABLE[ckeys[i]];
+            amount -= coinTable[coinKeys[i]];
         }
         if (add > 0) {
-            rstr += add.toString() + ckeys[i].toUpperCase();
+            resultString += add.toString() + coinKeys[i].toUpperCase();
         }
     }
-
-    if (rstr == '') { rstr = '0G'; }
-    return rstr;
+    if (resultString == '') { resultString = '0G'; }
+    return resultString;
 }
 
 /**
@@ -82,58 +89,56 @@ function getAmountCoin(amount) {
  * @returns {number} - The amount in cents.
  */
 function getCoinAmount(str) {
-    var arx = /([\d]+)([a-zA-Z]+)/g;
-    var amounts = str.match(arx) || [];
+    var regex = /([\d]+)([a-zA-Z]+)/g;
+    var amounts = str.match(regex) || [];
     var amount = 0;
-    var sgn = 1;
-    if (str.substr(0, 1) == '-') { sgn = -1; }
-
+    var sign = 1;
+    if (str.substr(0, 1) == '-') { sign = -1; }
     for (var a in amounts) {
-        var _am = amounts[a];
-        var _amnum = parseInt(_am.replace(arx, '$1'));
-        var _amunit = _am.replace(arx, '$2').toLowerCase();
-        var coinkeys = Object.keys(_COINTABLE);
-        if (coinkeys.indexOf(_amunit) > -1) {
-            amount += _amnum * _COINTABLE[_amunit];
+        var match = amounts[a];
+        var number = parseInt(match.replace(regex, '$1'));
+        var unit = match.replace(regex, '$2').toLowerCase();
+        var coinKeys = Object.keys(coinTable);
+        if (coinKeys.indexOf(unit) > -1) {
+            amount += number * coinTable[unit];
         }
     }
-    return amount * sgn;
+    return amount * sign;
 }
 
 /**
  * Generates money items based on the amount and currency type.
- * @param {Object} w - The world object.
+ * @param {Object} world - The world object.
  * @param {number} amount - The amount in cents.
  * @param {string} currencyType - The type of currency.
  * @returns {Array} - An array of generated money items.
  */
-function genMoney(w, amount, currencyType) {
+function generateMoney(world, amount, currencyType) {
     if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
-    var am = amount
-    var coinams = Object.keys(_COINITEMS);
+    var remainingAmount = amount;
+    var coinAmounts = Object.keys(coinItems);
     var currency = getCurrency(currencyType);
 
-    var nmItems = [];
-    for (var i = coinams.length - 1; i >= 0; i--) {
-        var coincount = 0;
-        var coinval = getCoinAmount(coinams[i]);
-        if (coinval > 0) {
-            while (am >= coinval) {
-                coincount++;
-                am -= coinval;
+    var generatedItems = [];
+    for (var i = coinAmounts.length - 1; i >= 0; i--) {
+        var coinCount = 0;
+        var coinValue = getCoinAmount(coinAmounts[i]);
+        if (coinValue > 0) {
+            while (remainingAmount >= coinValue) {
+                coinCount++;
+                remainingAmount -= coinValue;
             }
         }
-        if (coincount > 0) {
-            var coinitem = w.createItem(_COINITEMS[coinams[i]], 0, coincount);
-            coinitem.setCustomName(ccs(currency.displayPrefix + currency.displayName + '&r'));
-            coinitem.setLore([
-                ccs('&e' + getAmountCoin(getCoinAmount(coinams[i].toUpperCase())))
+        if (coinCount > 0) {
+            var coinItem = world.createItem(coinItems[coinAmounts[i]], 0, coinCount);
+            coinItem.setCustomName(ccs(currency.displayPrefix + currency.displayName + '&r'));
+            coinItem.setLore([
+                ccs('&e' + getAmountCoin(getCoinAmount(coinAmounts[i].toUpperCase())))
             ]);
-            nmItems.push(coinitem);
+            generatedItems.push(coinItem);
         }
     }
-
-    return nmItems;
+    return generatedItems;
 }
 
 /**
@@ -142,22 +147,21 @@ function genMoney(w, amount, currencyType) {
  * @returns {Object|null} - The currency object or null if not found.
  */
 function getCurrency(type) {
-    for (var i in VIRTUAL_CURRENCIES) {
-        var currency = VIRTUAL_CURRENCIES[i];
+    for (var i in virtualCurrencies) {
+        var currency = virtualCurrencies[i];
         if (currency.name != type) {
             continue;
         }
         return currency;
         break;
     }
-
     return null;
 }
 
 /**
- * 
- * @param {number} referencePrice - The amount in cents.
- * @param {string} profit - The modifier to apply to the reference price. (e.g., "10%" or "10g50c")
+ * Calculates the price based on a reference price and a profit modifier.
+ * @param {number} referencePrice - The reference price in cents.
+ * @param {string} profit - The profit modifier (e.g., "10%" or "10g50c").
  * @returns {number} - The calculated price in cents.
  */
 function calculatePrice(referencePrice, profit) {
@@ -170,4 +174,39 @@ function calculatePrice(referencePrice, profit) {
     } else {
         return referencePrice + getCoinAmount(profit);
     }
+}
+
+/**
+ * Retrieves money from a player's inventory.
+ * @param {Object} player - The player object.
+ * @param {Object} world - The world object.
+ * @param {string} currencyType - The type of currency.
+ * @returns {number} - The total amount of money retrieved in cents.
+ */
+function getMoneyFromPlayerInventory(player, world, currencyType) {
+    var currencyType = currencyType || 'money';
+    var totalAmount = 0;
+    var moneyItems = getPlayerInvFromNbt(player.getEntityNbt(), world, function (item, itemNbt, world) {
+        return isItemMoney(item, world, currencyType);
+    });
+    for (var i in moneyItems) {
+        var moneyItem = moneyItems[i];
+        var itemValue = getItemMoney(moneyItem, world, currencyType) * moneyItem.getStackSize();
+        totalAmount += itemValue;
+        player.removeItem(moneyItem, moneyItem.getStackSize());
+    }
+    return totalAmount;
+}
+
+/**
+ * Converts the coin items from JSON format to the required format.
+ * @param {Object} jsonCoinItems - The coin items from JSON.
+ * @returns {Object} - The converted coin items.
+ */
+function convertCoinItems(jsonCoinItems) {
+    var converted = {};
+    for (var key in jsonCoinItems) {
+        converted[key] = gramadosData[jsonCoinItems[key]];
+    }
+    return converted;
 }
