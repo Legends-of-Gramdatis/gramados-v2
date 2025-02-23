@@ -1,3 +1,10 @@
+var gramados_json = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
+
+var _RAWCOLORS = gramados_json._RAWCOLORS;
+var _RAWEFFECTS = gramados_json._RAWEFFECTS;
+var _RAWCODES = gramados_json._RAWCODES;
+var CHAT_EMOTES = gramados_json.CHAT_EMOTES;
+
 /**
  * Sends a formatted message to the player.
  * @param {IPlayer} player - The player to send the message to.
