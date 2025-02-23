@@ -327,6 +327,18 @@ function chat(event) {
         shop.finances.default_margin = percent / 100;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         player.message("Default margin set to " + percent + "⁒ for shop " + shopId);
+    } else if (message.startsWith("$shop money put")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                player.message("Invalid shop ID: " + args[3]);
+                return;
+            }
+            putMoneyInShop(player, shopId, playerShops);
+        } else {
+            player.message("Invalid command! Usage: $shop money put <ID>");
+        }
     }
 }
 
@@ -1070,5 +1082,21 @@ function evalHandItem(player) {
     }
 
     player.message("Itemstack data: " + itemstack.getItemNbt().toJsonString());
+}
+
+function putMoneyInShop(player, shopId, playerShops) {
+    player.message("Putting money in shop " + shopId);
+    var shop = playerShops[shopId];
+    var totalMoney = 0;
+
+    totalMoney += getMoneyFromPlayerInventory(player, world);
+
+    if (totalMoney > 0) {
+        shop.finances.stored_cash += totalMoney;
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        player.message("Successfully added " + getAmountCoin(totalMoney) + " to shop " + shopId);
+    } else {
+        player.message("No money found in your inventory!");
+    }
 }
 
