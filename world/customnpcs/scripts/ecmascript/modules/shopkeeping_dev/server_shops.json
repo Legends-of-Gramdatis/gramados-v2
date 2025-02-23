@@ -10,52 +10,151 @@
         },
         "inventory": {
             "stock": {
-                "harvestcraft:caramelitem:0": {
-                    "count": 0
-                },
-                "harvestcraft:colasodaitem:0": {
-                    "count": 512
-                },
-                "harvestcraft:freshmilkitem:0": {
-                    "count": 0
-                },
-                "minecraft:egg": {
-                    "count": 0
-                },
-                "minecraft:potion:0": {
-                    "count": 0,
-                    "tag": {
-                        "Potion": "minecraft:water"
-                    }
-                }
-            },
-            "listed_items": {
-                "harvestcraft:caramelitem:0": {
-                    "price": 1500,
-                    "reference_price": 1000,
-                    "discount": 0,
-                    "sale_count": 0
-                },
-                "harvestcraft:freshmilkitem:0": {
-                    "price": 250,
-                    "reference_price": 200,
-                    "discount": 0,
-                    "sale_count": 0
-                },
-                "minecraft:potion:0": {
-                    "price": 75,
-                    "reference_price": 50,
-                    "discount": 0,
-                    "sale_count": 0,
-                    "tag": {
-                        "Potion": "minecraft:water"
-                    }
-                }
-            },
-            "unsalable_items": {
                 "harvestcraft:cuttingboarditem:0": {
                     "count": 9
                 },
+                "minecraft:wheat:0": {
+                    "count": 0
+                },
+                "minecraft:wheat_seeds:0": {
+                    "count": 0
+                },
+                "harvestcraft:cornitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:barleyitem:0": {
+                    "count": 0
+                },
+                "minecraft:hay_block:0": {
+                    "count": 0
+                },
+                "minecraft:chicken:0": {
+                    "count": 0
+                },
+                "minecraft:egg:0": {
+                    "count": 0
+                },
+                "minecraft:feather:0": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:1": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:2": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:3": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:4": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:5": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:1": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:2": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:3": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:4": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:5": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:1": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:2": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:3": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:9": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:10": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:11": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:17": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:18": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:19": {
+                    "count": 0
+                },
+                "harvestcraft:toastitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:raspberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:croissantitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:pumpkinbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:blueberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:buttercookieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:walnutraisinbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:cherrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:peanutbuttercookiesitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:datenutbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:strawberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:raisincookiesitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:banananutbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:applepieitem:0": {
+                    "count": 0
+                },
+                "minecraft:cookie:0": {
+                    "count": 0
+                },
+                "minecraft:bread:0": {
+                    "count": 0
+                },
+                "harvestcraft:festivalbreaditem:0": {
+                    "count": 0
+                }
+            },
+            "listed_items": {
+                "minecraft:bread:0": {
+                    "price": 360,
+                    "reference_price": 300,
+                    "discount": 0,
+                    "sale_count": 0
+                }
+            },
+            "unsalable_items": {
                 "harvestcraft:potitem:0": {
                     "count": 3
                 },
@@ -64,6 +163,9 @@
                 },
                 "harvestcraft:saucepanitem:0": {
                     "count": 1
+                },
+                "harvestcraft:colasodaitem:0": {
+                    "count": 512
                 }
             }
         },
@@ -85,7 +187,7 @@
         },
         "shop": {
             "display_name": "Seagull's Devland Test Shop",
-            "type": "essential_goods_food_drinks",
+            "type": "code_bugger",
             "is_open": false,
             "is_for_sale": false
         },
