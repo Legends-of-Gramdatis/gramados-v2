@@ -342,6 +342,32 @@ function chat(event) {
         shop.finances.default_margin = percent / 100;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         tellPlayer(player, "&aDefault margin set to &e" + percent + "⁒ &afor shop &e" + shopId);
+    } else if (message.startsWith("$shop money put pouch")) {
+        var args = message.split(" ");
+        if (args.length === 6) {
+            var shopId = parseInt(args[4]);
+            var value = getCoinAmount(args[5]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[4]);
+                return;
+            }
+            putMoneyInShopFromPouch(player, shopId, value, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop money put pouch <ID> <value>");
+        }
+    } else if (message.startsWith("$shop money take pouch")) {
+        var args = message.split(" ");
+        if (args.length === 6) {
+            var shopId = parseInt(args[4]);
+            var value = getCoinAmount(args[5]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[4]);
+                return;
+            }
+            takeMoneyFromShopToPouch(player, shopId, value, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop money take pouch <ID> <value>");
+        }
     } else if (message.startsWith("$shop money put")) {
         var args = message.split(" ");
         if (args.length === 4) {
@@ -367,7 +393,7 @@ function chat(event) {
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop money take <ID> <value>");
         }
-    }
+    } 
 }
 
 // ############################################################################################################
@@ -1074,6 +1100,33 @@ function removeOutdatedListedItems(player, shop, newType) {
         if (!found) {
             delete shop.inventory.listed_items[itemId];
         }
+    }
+}
+
+function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
+    if (getMoneyFromPlayerPouch(player, value)) {
+        var shop = playerShops[shopId];
+        shop.finances.stored_cash += value;
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(value) + " &ato shop &e" + shopId);
+    } else {
+        tellPlayer(player, "&cNot enough money in your pouch!");
+    }
+}
+
+function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
+    var shop = playerShops[shopId];
+    if (shop.finances.stored_cash < value) {
+        tellPlayer(player, "&cNot enough money in the shop's inventory!");
+        return;
+    }
+
+    shop.finances.stored_cash -= value;
+    if (addMoneyToPlayerPouch(player, value)) {
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
+    } else {
+        tellPlayer(player, "&cFailed to add money to your pouch!");
     }
 }
 
