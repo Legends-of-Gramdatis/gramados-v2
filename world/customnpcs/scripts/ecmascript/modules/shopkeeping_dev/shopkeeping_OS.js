@@ -21,11 +21,12 @@ load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_st
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js")
 
 function init(event) {
+    var player = event.player;
     if (!checkFileExists(SERVER_SHOPS_JSON_PATH)) {
         world.broadcast("No shop data found! Contact an admin!");
         return;
     }
-    updateStockrooms();
+    updateStockrooms(player);
 }
 
 function chat(event) {
@@ -114,6 +115,7 @@ function chat(event) {
                     case "type":
                         shop.shop.type = value.value;
                         initStockRoom(player, shopId, playerShops);
+                        removeOutdatedListedItems(player, shop, value.value);
                         break;
                     case "region":
                         if (!checkRegionExists(value.value)) {
@@ -1128,5 +1130,22 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
 
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
     player.message("Successfully took " + getAmountCoin(value) + " from shop " + shopId);
+}
+
+function removeOutdatedListedItems(player, shop, newType) {
+    var availableItems = getAvailableItems(player, newType);
+
+    for (var itemId in shop.inventory.listed_items) {
+        var found = false;
+        for (var i = 0; i < availableItems.length; i++) {
+            if (itemId === availableItems[i].id) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            delete shop.inventory.listed_items[itemId];
+        }
+    }
 }
 
