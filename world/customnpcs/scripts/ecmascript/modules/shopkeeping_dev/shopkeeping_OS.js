@@ -631,18 +631,6 @@ function getReferencePrice(player, itemId, itemTag, shopType) {
     return 0;
 }
 
-function calculatePrice(referencePrice, profit) {
-    if (!profit) {
-        return referencePrice;
-    }
-    if (profit.endsWith("%")) {
-        var percent = parseFloat(profit.slice(0, -1));
-        return Math.round(referencePrice * (1 + percent / 100));
-    } else {
-        return getCoinAmount(profit);
-    }
-}
-
 // ############################################################################################################
 // UTILITIES
 // ############################################################################################################

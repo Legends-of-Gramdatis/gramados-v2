@@ -153,3 +153,21 @@ function getCurrency(type) {
 
     return null;
 }
+
+/**
+ * 
+ * @param {number} referencePrice - The amount in cents.
+ * @param {string} profit - The modifier to apply to the reference price. (e.g., "10%" or "10g50c")
+ * @returns {number} - The calculated price in cents.
+ */
+function calculatePrice(referencePrice, profit) {
+    if (!profit) {
+        return referencePrice;
+    }
+    if (profit.endsWith("%")) {
+        var percent = parseFloat(profit.slice(0, -1));
+        return Math.round(referencePrice * (1 + percent / 100));
+    } else {
+        return referencePrice + getCoinAmount(profit);
+    }
+}
