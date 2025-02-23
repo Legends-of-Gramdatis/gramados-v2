@@ -5,27 +5,103 @@
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "essential_goods_household",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
                     }
                 ],
                 "wealth_level": "low",
-                "demand_multiplier": 1.2
+                "demand_multiplier": 0.9
             },
             "Caldero": {
+                "entries": [
+                    {
+                        "name": "essential_goods_food_drinks",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "essential_goods_household",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    }
+                ],
+                "wealth_level": "average",
+                "demand_multiplier": 1.0
             }
         },
         "Gramados": {
             "Countryside": {
+                "entries": [
+                    {
+                        "name": "essential_goods_food_drinks",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "essential_goods_household",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    }
+                ],
+                "wealth_level": "average/low",
+                "demand_multiplier": 0.9
             },
             "Gramados_City": {
+                "entries": [
+                    {
+                        "name": "jewelry",
+                        "wheight": 10,
+                        "bulk_multiplier": 0.25
+                    }
+                ],
+                "wealth_level": "high",
+                "demand_multiplier": 1.0
             },
             "Petrolton": {
             }
         },
         "Monsalac": {
             "Countryside": {
+                "entries": [
+                    {
+                        "name": "essential_goods_food_drinks",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "essential_goods_household",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "monsalac_dairy",
+                        "wheight": 5,
+                        "bulk_multiplier": 0.7
+                    }
+                ],
+                "wealth_level": "average",
+                "demand_multiplier": 1.2
             },
             "Chaseals": {
+                "entries": [
+                    {
+                        "name": "essential_goods_food_drinks",
+                        "wheight": 10,
+                        "bulk_multiplier": 1.5
+                    },
+                    {
+                        "name": "essential_goods_household",
+                        "wheight": 15,
+                        "bulk_multiplier": 1.5
+                    }
+                ],
+                "wealth_level": "average/high",
+                "demand_multiplier": 1.0
             }
         },
         "Devland": {
