@@ -17,10 +17,10 @@
                     "count": 0
                 },
                 "harvestcraft:croissantitem:0": {
-                    "count": 192
+                    "count": 182
                 },
                 "harvestcraft:pumpkinbreaditem:0": {
-                    "count": 0
+                    "count": 64
                 },
                 "harvestcraft:blueberrypieitem:0": {
                     "count": 0
@@ -35,7 +35,7 @@
                     "count": 0
                 },
                 "harvestcraft:peanutbuttercookiesitem:0": {
-                    "count": 0
+                    "count": 8
                 },
                 "harvestcraft:datenutbreaditem:0": {
                     "count": 0
@@ -44,28 +44,40 @@
                     "count": 0
                 },
                 "harvestcraft:raisincookiesitem:0": {
-                    "count": 0
+                    "count": 316
                 },
                 "harvestcraft:banananutbreaditem:0": {
-                    "count": 0
+                    "count": 64
                 },
                 "harvestcraft:applepieitem:0": {
                     "count": 0
                 },
                 "minecraft:cookie:0": {
-                    "count": 0
+                    "count": 478
                 },
                 "minecraft:bread:0": {
-                    "count": 0
+                    "count": 595
                 },
                 "harvestcraft:festivalbreaditem:0": {
-                    "count": 0
+                    "count": 64
                 }
             },
             "listed_items": {
                 "minecraft:bread:0": {
-                    "price": 360,
+                    "price": 375,
                     "reference_price": 300,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "minecraft:cookie:0": {
+                    "price": 250,
+                    "reference_price": 200,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:festivalbreaditem:0": {
+                    "price": 625,
+                    "reference_price": 500,
                     "discount": 0,
                     "sale_count": 0
                 }
