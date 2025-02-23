@@ -20,6 +20,7 @@ load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_ut
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_stockroom.js")
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js")
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js")
+load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_grading.js")
 
 function init(event) {
     var player = event.player;
@@ -444,6 +445,19 @@ function chat(event) {
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation log <ID> [time]");
         }
+    } else if (message.startsWith("$shop reputation eval")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            evalShopReputation(player, shopId, playerShops);
+            calculateShopScore(player, shopId, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation eval <ID>");
+        }
     }
 }
 
@@ -595,6 +609,11 @@ function createShop(player, type, region, sub_region, display_name, money) {
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
+
+    // Initialize stock room if type is specified
+    if (type) {
+        initStockRoom(player, shopId, serverShops);
+    }
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -1235,4 +1254,115 @@ function getReputationAgo(player, shop, hours) {
 function calculateReputationChangePercent(oldReputation, newReputation) {
     return Math.round(((newReputation - oldReputation) / oldReputation) * 10000) / 100;
 }
+
+function evalShopReputation(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var currentReputation = shop.reputation_data.reputation;
+    tellPlayer(player, "&aCurrent reputation: &e" + currentReputation);
+
+    var region = shop.property.region;
+    var subRegion = shop.property.sub_region;
+    var shopType = shop.shop.type;
+
+    var demandMultiplier = getRegionalDemandMultiplier(region, subRegion);
+    var shopTypeDemand = getDemandForShopType(region, subRegion, shopType);
+    var wealthLevel = getWealthLevel(region, subRegion);
+    var competitorCount = getCompetitorShopCount(region, subRegion, shopType, playerShops);
+    var bulkMultiplier = getBulkPurchaseMultiplier(region, subRegion);
+
+    tellPlayer(player, "&aRegional demand multiplier: &e" + demandMultiplier);
+    tellPlayer(player, "&aDemand for shop type: &e" + shopTypeDemand);
+    tellPlayer(player, "&aWealth level of the region: &e" + wealthLevel);
+    tellPlayer(player, "&aCompetitor shop count: &e" + competitorCount);
+    tellPlayer(player, "&aBulk purchase multiplier: &e" + bulkMultiplier);
+
+    var listedItems = shop.inventory.listed_items;
+    for (var itemId in listedItems) {
+        var listedItem = listedItems[itemId];
+        var referencePrice = getReferencePrice(player, itemId, listedItem.tag, shop.shop.type);
+        var referencePriceAtListing = listedItem.reference_price;
+        var margin = calculateMargin(referencePrice, listedItem.price);
+        var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
+
+        tellPlayer(player, "&aItem: &e" + itemId);
+        tellPlayer(player, "&aReference price: &e" + getAmountCoin(referencePrice));
+        tellPlayer(player, "&aReference price at listing: &e" + getAmountCoin(referencePriceAtListing));
+        tellPlayer(player, "&aListed price: &e" + getAmountCoin(listedItem.price));
+        tellPlayer(player, "&aMargin: &e" + margin + "%");
+        tellPlayer(player, "&aStock count: &e" + stockCount);
+    }
+}
+
+function calculateShopScore(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    var currentReputation = shop.reputation_data.reputation;
+
+    // Logarithmic Reputation Scaling
+    var scaledReputation = 500 / (Math.log(currentReputation + 10) / Math.log(2));
+
+    // Regional Factors
+    var region = shop.property.region;
+    var subRegion = shop.property.sub_region;
+    var shopType = shop.shop.type;
+
+    var demandMultiplier = getRegionalDemandMultiplier(region, subRegion);
+    var shopTypeDemand = getDemandForShopType(region, subRegion, shopType);
+    var wealthLevel = getWealthLevel(region, subRegion);
+    var competitorCount = getCompetitorShopCount(region, subRegion, shopType, playerShops);
+    var bulkMultiplier = getBulkPurchaseMultiplier(region, subRegion);
+
+    // Pricing Score Calculation
+    var totalPricingScore = 0;
+    var totalItems = 0;
+
+    var listedItems = shop.inventory.listed_items;
+    var totalStockValue = 0;
+    var expectedStockValue = 0; // Placeholder for an ideal value per shop type
+
+    for (var itemId in listedItems) {
+        var listedItem = listedItems[itemId];
+        var referencePrice = getReferencePrice(player, itemId, listedItem.tag, shop.shop.type);
+        var listedPrice = listedItem.price;
+        var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
+
+        // Pricing Score
+        var priceRatio = listedPrice / referencePrice;
+        var itemPricingScore = Math.max(0, 100 - Math.abs(priceRatio - 1) * 100);
+
+        totalPricingScore += itemPricingScore;
+        totalItems++;
+
+        // Bulk Value Calculation
+        totalStockValue += stockCount * listedPrice;
+    }
+
+    var pricingScore = totalItems > 0 ? totalPricingScore / totalItems : 50; // Default to 50 if no items listed
+
+    // Bulk Value Score
+    var bulkValueScore = totalStockValue / (expectedStockValue || 1); // Avoid division by zero
+
+    // Regional Demand Score
+    var demandScore = (shopTypeDemand * wealthLevel * demandMultiplier) / (competitorCount || 1);
+
+    // Weighted Score Calculation
+    var W1 = 0.4, W2 = 0.3, W3 = 0.2, W4 = 0.1; // Weights for each factor
+    var shopScore = (W1 * scaledReputation) + (W2 * pricingScore) + (W3 * bulkValueScore) + (W4 * demandScore);
+
+    tellPlayer(player, "&aScaled Reputation: &e" + scaledReputation.toFixed(2));
+    tellPlayer(player, "&aPricing Score: &e" + pricingScore.toFixed(2));
+    tellPlayer(player, "&aBulk Value Score: &e" + bulkValueScore.toFixed(2));
+    tellPlayer(player, "&aDemand Score: &e" + demandScore.toFixed(2));
+
+    // Feedback Message
+    var feedback = "";
+    if (shopScore > 80) feedback = "Your shop is thriving! Keep up the great work!";
+    else if (shopScore > 60) feedback = "Your shop is doing well, but there's room for optimization.";
+    else if (shopScore > 40) feedback = "Your shop is struggling. Check pricing and stock variety.";
+    else feedback = "Your shop is failing! Consider adjusting prices, stock, and reputation strategies.";
+
+    // Display Results
+    tellPlayer(player, "&aShop Score: &e" + shopScore.toFixed(2));
+    tellPlayer(player, "&aFeedback: &e" + feedback);
+}
+
 
