@@ -5,32 +5,32 @@
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "essential_goods_household",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     }
                 ],
-                "wealth_level": "low",
+                "wealth_level": 0.5,
                 "demand_multiplier": 0.9
             },
             "Caldero": {
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "essential_goods_household",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     }
                 ],
-                "wealth_level": "average",
+                "wealth_level": 1.0,
                 "demand_multiplier": 1.0
             }
         },
@@ -39,30 +39,33 @@
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "essential_goods_household",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     }
                 ],
-                "wealth_level": "average/low",
+                "wealth_level": 0.75,
                 "demand_multiplier": 0.9
             },
             "Gramados_City": {
                 "entries": [
                     {
                         "name": "jewelry",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 0.25
                     }
                 ],
-                "wealth_level": "high",
+                "wealth_level": 1.5,
                 "demand_multiplier": 1.0
             },
             "Petrolton": {
+                "entries": [],
+                "wealth_level": 1.0,
+                "demand_multiplier": 1.0
             }
         },
         "Monsalac": {
@@ -70,44 +73,50 @@
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "essential_goods_household",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "monsalac_dairy",
-                        "wheight": 5,
+                        "weight": 5,
                         "bulk_multiplier": 0.7
                     }
                 ],
-                "wealth_level": "average",
+                "wealth_level": 1.0,
                 "demand_multiplier": 1.2
             },
             "Chaseals": {
                 "entries": [
                     {
                         "name": "essential_goods_food_drinks",
-                        "wheight": 10,
+                        "weight": 10,
                         "bulk_multiplier": 1.5
                     },
                     {
                         "name": "essential_goods_household",
-                        "wheight": 15,
+                        "weight": 15,
                         "bulk_multiplier": 1.5
                     }
                 ],
-                "wealth_level": "average/high",
+                "wealth_level": 1.25, 
                 "demand_multiplier": 1.0
             }
         },
         "Devland": {
             "Countryside": {
+                "entries": [],
+                "wealth_level": 0.5,
+                "demand_multiplier": 0.8
             },
             "Code_Crusher": {
+                "entries": [],
+                "wealth_level": 1.0,
+                "demand_multiplier": 1.0
             }
         }
     }
