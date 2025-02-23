@@ -3,44 +3,15 @@
         {
             "display_name": "Essencial Goods - Food & Drinks",
             "name": "essential_goods_food_drinks",
-            "defaults": {
-                "VAT": "reduced"
-            },
-            "items": [
-                {
-                    "id": "harvestcraft:caramelitem:0",
-                    "name": "Caramel",
-                    "VAT": "reduced",
-                    "price": 150
-                },
-                {
-                    "id": "harvestcraft:colasodaitem:0",
-                    "name": "Cola Soda",
-                    "VAT": "reduced",
-                    "price": 250
-                },
-                {
-                    "id": "harvestcraft:freshmilkitem:0",
-                    "name": "Fresh Milk",
-                    "VAT": "reduced",
-                    "price": 200
-                },
-                {
-                    "id": "minecraft:egg",
-                    "damage": 0,
-                    "name": "Egg",
-                    "VAT": "reduced",
-                    "price": 50
-                },
-                {
-                    "id": "minecraft:potion:0",
-                    "tag": {
-                        "Potion": "minecraft:water"
-                    },
-                    "name": "Water Bottle",
-                    "VAT": "reduced",
-                    "price": 50
-                }
+            "based_on_market": [
+                "general_store - food and beverage"
+            ]
+        },
+        {
+            "display_name": "Essencial Goods - Household",
+            "name": "essential_goods_household",
+            "based_on_market": [
+                "general_store - household essentials"
             ]
         },
         {
@@ -50,26 +21,53 @@
                 {
                     "id": "harvestcraft:cuttingboarditem:0",
                     "name": "Cutting Board",
-                    "VAT": "standard",
                     "price": 100
                 },
                 {
                     "id": "harvestcraft:potitem:0",
                     "name": "Pot",
-                    "VAT": "standard",
                     "price": 100
                 },
                 {
                     "id": "harvestcraft:skilletitem:0",
                     "name": "Skillet",
-                    "VAT": "standard",
                     "price": 100
                 },
                 {
                     "id": "harvestcraft:saucepanitem:0",
                     "name": "Saucepan",
-                    "VAT": "standard",
                     "price": 100
+                }
+            ]
+        },
+        {
+            "display_name": "Jewelry",
+            "name": "jewelry",
+            "items": [
+                {
+                    "id": "variedcommodities:pendant:0",
+                    "name": "Pendant",
+                    "price": 10000
+                },
+                {
+                    "id": "variedcommodities:necklace:0",
+                    "name": "Necklace",
+                    "price": 25000
+                },
+                {
+                    "id": "variedcommodities:ring:0",
+                    "name": "Ring",
+                    "price": 30000
+                },
+                {
+                    "id": "variedcommodities:statuette:0",
+                    "name": "Statuette",
+                    "price": 15000
+                },
+                {
+                    "id": "variedcommodities:tablet:0",
+                    "name": "Tablet",
+                    "price": 17500
                 }
             ]
         },
@@ -92,9 +90,6 @@
         {
             "display_name": "Code Crusher",
             "name": "code_bugger",
-            "defaults": {
-                "VAT": "reduced"
-            },
             "based_on_market": [
                 "baker",
                 "boat engines and propellers"
@@ -109,9 +104,15 @@
                 {
                     "id": "harvestcraft:cuttingboarditem:0",
                     "name": "Cutting Board",
-                    "VAT": "standard",
                     "price": 100
                 }
+            ]
+        },
+        {
+            "display_name": "Farmiston Bulk Cereal",
+            "name": "farmiston_bulk_cereal",
+            "based_on_stocks": [
+                "Farmiston"
             ]
         }
 

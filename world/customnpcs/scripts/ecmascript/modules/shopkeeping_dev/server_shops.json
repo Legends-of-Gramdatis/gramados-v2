@@ -80,6 +80,18 @@
                     "reference_price": 500,
                     "discount": 0,
                     "sale_count": 0
+                },
+                "harvestcraft:peanutbuttercookiesitem:0": {
+                    "price": 580,
+                    "reference_price": 200,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:cherrypieitem:0": {
+                    "price": 1461,
+                    "reference_price": 500,
+                    "discount": 0,
+                    "sale_count": 0
                 }
             },
             "unsalable_items": {
@@ -123,55 +135,55 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 4120,
+            "reputation": 412,
             "reputation_history": [
                 {
                     "time": "2025-01-23T18:12:43.542Z",
                     "reason": "Reputation added",
-                    "amount": 100,
-                    "reputation": 100
+                    "amount": 10,
+                    "reputation": 10
                 },
                 {
                     "time": "2025-01-25T18:19:21.453Z",
                     "reason": "Reputation removed through command",
-                    "amount": -90,
-                    "reputation": 10
+                    "amount": -9,
+                    "reputation": 1
                 },
                 {
                     "time": "2025-02-10T18:19:27.192Z",
                     "reason": "Reputation added through command",
-                    "amount": 110,
-                    "reputation": 100
+                    "amount": 11,
+                    "reputation": 10
                 },
                 {
                     "time": "2025-02-15T18:31:04.138Z",
                     "reason": "Reputation added through command",
-                    "amount": 1000,
-                    "reputation": 1100
+                    "amount": 100,
+                    "reputation": 110
                 },
                 {
                     "time": "2025-02-20T18:31:04.799Z",
                     "reason": "Reputation added through command",
-                    "amount": 1000,
-                    "reputation": 2100
+                    "amount": 100,
+                    "reputation": 210
                 },
                 {
                     "time": "2025-02-22T18:31:05.547Z",
                     "reason": "Reputation added through command",
-                    "amount": 1000,
-                    "reputation": 3100
+                    "amount": 100,
+                    "reputation": 310
                 },
                 {
                     "time": "2025-02-23T18:31:06.345Z",
                     "reason": "Reputation added through command",
-                    "amount": 1000,
-                    "reputation": 4100
+                    "amount": 100,
+                    "reputation": 410
                 },
                 {
                     "time": "2025-02-23T20:45:23.853Z",
                     "reason": "Reputation added through command",
-                    "amount": 20,
-                    "reputation": 4120
+                    "amount": 2,
+                    "reputation": 412
                 }
             ]
         },
@@ -180,5 +192,96 @@
             "stored_cash": 18813460,
             "default_margin": 0.25
         }
+    },
+    "2": {
+        "roles": {
+            "enabled": false,
+            "owner": "TheOddlySeagull",
+            "managers": [],
+            "cashiers": [],
+            "stock_keepers": [],
+            "assistants": []
+        },
+        "inventory": {
+            "stock": {
+                "variedcommodities:pendant:0": {
+                    "count": 3
+                },
+                "variedcommodities:necklace:0": {
+                    "count": 3
+                },
+                "variedcommodities:ring:0": {
+                    "count": 1
+                },
+                "variedcommodities:statuette:0": {
+                    "count": 4
+                },
+                "variedcommodities:tablet:0": {
+                    "count": 3
+                }
+            },
+            "listed_items": {
+                "variedcommodities:pendant:0": {
+                    "price": 15000,
+                    "reference_price": 10000,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "variedcommodities:necklace:0": {
+                    "price": 37500,
+                    "reference_price": 25000,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "variedcommodities:ring:0": {
+                    "price": 45000,
+                    "reference_price": 30000,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "variedcommodities:statuette:0": {
+                    "price": 22500,
+                    "reference_price": 15000,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "variedcommodities:tablet:0": {
+                    "price": 26250,
+                    "reference_price": 17500,
+                    "discount": 0,
+                    "sale_count": 0
+                }
+            },
+            "unsalable_items": {}
+        },
+        "finances": {
+            "stored_cash": 0,
+            "default_margin": 0.5
+        },
+        "property": {
+            "location": {
+                "x": 2184,
+                "y": 88,
+                "z": 3622
+            },
+            "stock_room": [
+                "Devland_Countryside_ShopTest2_Shop:0"
+            ],
+            "main_room": [],
+            "region": "Gramados",
+            "sub_region": "Gramados_City",
+            "stock_room_size": 60
+        },
+        "shop": {
+            "display_name": "Test Jewelry",
+            "type": "jewelry",
+            "is_open": false,
+            "is_for_sale": false
+        },
+        "reputation_data": {
+            "reputation": 0,
+            "reputation_history": []
+        },
+        "upgrades": []
     }
 }
