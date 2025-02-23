@@ -4,6 +4,7 @@ var _RAWCOLORS = gramados_json._RAWCOLORS;
 var _RAWEFFECTS = gramados_json._RAWEFFECTS;
 var _RAWCODES = gramados_json._RAWCODES;
 var CHAT_EMOTES = gramados_json.CHAT_EMOTES;
+var CHAT_CMD_RGX = gramados_json.CHAT_CMD_RGX;
 
 /**
  * Sends a formatted message to the player.
@@ -163,31 +164,31 @@ function escCcs(str, esc_formats) {
 }
 
 /**
- * Gets a formatted chat message.
- * @param {IPlayer} player - The player sending the message.
- * @param {string} team - The team name.
- * @param {string} color - The color code.
+ * Formats a chat message with the given parameters.
+ * @param {string} playerName - The name of the player.
+ * @param {string} teamName - The name of the team.
+ * @param {string} colorCode - The color code for the message.
  * @param {string} message - The message content.
- * @returns {string} The formatted chat message.
+ * @returns {string} - The formatted chat message.
  */
-function getChatMessage(player, team, color, message) {
+function formatChatMessage(playerName, teamName, colorCode, message) {
     var curTimeStr = new Date().toLocaleTimeString("fr-FR").split(":");
     curTimeStr.pop();
     curTimeStr = curTimeStr.join(":");
-    var ccode = getColorId(color);
-    return "[" + curTimeStr + "] &l&" + ccode + "[&" + ccode + team + "&r &" + ccode + player + "&l&" + ccode + "] -> &r" + message;
+    var ccode = getColorId(colorCode);
+    return "[" + curTimeStr + "] &l&" + ccode + "[&" + ccode + teamName + "&r &" + ccode + playerName + "&l&" + ccode + "] -> &r" + message;
 }
 
 /**
- * Gets a formatted chat tag.
- * @param {IPlayer} player - The player.
- * @param {string} team - The team name.
- * @param {string} color - The color code.
- * @returns {string} The formatted chat tag.
+ * Gets the chat tag for a player.
+ * @param {string} playerName - The name of the player.
+ * @param {string} teamName - The name of the team.
+ * @param {string} colorCode - The color code for the tag.
+ * @returns {string} - The formatted chat tag.
  */
-function getChatTag(player, team, color) {
-    var ccode = getColorId(color);
-    return "&" + ccode + "&l[&" + ccode + "&o" + team + "&r &" + ccode + player + "&" + ccode + "&l]";
+function getChatTag(playerName, teamName, colorCode) {
+    var ccode = getColorId(colorCode);
+    return "&" + ccode + "&l[&" + ccode + "&o" + teamName + "&r &" + ccode + playerName + "&" + ccode + "&l]";
 }
 
 /**
@@ -225,12 +226,8 @@ function parseEmotes(str, allwd, replaceOld) {
  * @returns {string} The formatted string.
  */
 function strf(str, toRaw, allowed) {
-    if (typeof (toRaw) == typeof (undefined) || toRaw === null) {
-        toRaw = false;
-    }
-    if (typeof (allowed) == typeof (undefined) || allowed === null) {
-        allowed = _RAWCODES;
-    }
+    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = true; }
+    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
     return strrawformat(str, toRaw, allowed);
 }
 
@@ -242,9 +239,7 @@ function strf(str, toRaw, allowed) {
  * @returns {string} The formatted string.
  */
 function strrawformat(str, toRaw, allowed) {
-    if (typeof (toRaw) == typeof (undefined) || toRaw === null) {
-        toRaw = false;
-    }
+    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = false; }
     var rf = [];
     var txt = '';
     var ri = -1;
@@ -258,43 +253,66 @@ function strrawformat(str, toRaw, allowed) {
     str = str + '&r ';
 
     for (var i = 0; i < str.length; i++) {
-        var ch = str.charAt(i);
-        if (ch == '&') {
+        var c = str.substr(i, 1);
+        if (c == '&' || i == str.length - 1) {
+            //Check if new section has to be made
+            if (txt.length > 0) {
+                ri++;
+                var cmds = [];
+
+                rf.push([txt, txtColor, isItalic, isBold, isUnderlined, isStrike, isObf]);
+                isItalic = false;
+                isBold = false;
+                isUnderlined = false;
+                isStrike = false;
+                isObf = false;
+                txtColor = 'white';
+                txt = '';
+            }
             isCode = true;
-        } else if (isCode) {
-            isCode = false;
-            if (allowed.indexOf(ch) > -1) {
-                switch (ch) {
-                    case 'r':
-                        txtColor = 'white';
-                        isItalic = false;
-                        isBold = false;
-                        isStrike = false;
-                        isUnderlined = false;
-                        isObf = false;
-                        break;
-                    case 'o':
+            continue;
+        } else {
+            if (!isCode) {
+                txt += c.toString();
+            } else {
+                //Check Colors
+                if (typeof (_RAWCOLORS[c]) != typeof (undefined)) {
+                    txtColor = _RAWCOLORS[c];
+                }
+                //Check Markup
+                switch (c.toString()) {
+                    case 'o': {
                         isItalic = true;
                         break;
-                    case 'l':
+                    }
+                    case 'l': {
                         isBold = true;
                         break;
-                    case 'm':
-                        isStrike = true;
-                        break;
-                    case 'n':
+                    }
+                    case 'n': {
                         isUnderlined = true;
                         break;
-                    case 'k':
+                    }
+                    case 'm': {
+                        isStrike = true;
+                        break;
+                    }
+                    case 'k': {
                         isObf = true;
                         break;
-                    default:
-                        txtColor = getColorName(ch);
+                    }
+                    case 'r': {
+                        isItalic = false;
+                        isBold = false;
+                        isUnderlined = false;
+                        isStrike = false;
+                        isObf = false;
+                        txtColor = 'white';
                         break;
+                    }
                 }
+                isCode = false;
             }
-        } else {
-            txt += ch;
         }
     }
 
@@ -309,32 +327,99 @@ function strrawformat(str, toRaw, allowed) {
  * @returns {string} The formatted string.
  */
 function rawformat(str_pieces, fullraw, allowed) {
-    if (typeof (fullraw) == typeof (undefined) || fullraw === null) {
-        fullraw = false;
-    }
-    if (typeof (allowed) == typeof (undefined) || allowed === null) {
-        allowed = _RAWCODES;
-    }
+    if (typeof (fullraw) == typeof (undefined) || fullraw === null) { fullraw = true; }
+    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
     if (allowed == null) {
-        allowed = _RAWCODES;
+        allowed = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS)).concat(['x', 'y']);
+
     }
     var txt = '';
-    if (fullraw) {
-        txt += '{"text":"';
-    }
+    if (fullraw) { txt += '[""'; }
 
     for (var i in str_pieces) {
-        var piece = str_pieces[i];
-        if (fullraw) {
-            txt += piece.text.replace(/"/g, '\\"');
-        } else {
-            txt += piece.text;
+        var p = str_pieces[i];
+        var ntext = p[0].replace(/\"/g, '\\"');
+        var nm = ntext.match(CHAT_CMD_RGX) || [];
+        if (nm.length > 0) {
+            p[7] = nm[1];
+            p[8] = nm[2];
+            p[9] = nm[3];
+            p[10] = nm[4];
+            ntext = ntext.replace(nm[0], '');
         }
+        var pc = '{"text":"' + ntext + '"';
+        if (p[1]) {
+            if (allowed.indexOf(getColorId(p[1])) == -1) {
+                p[1] = 'white';
+            }
+
+            pc += ',"color":"' + p[1].toString() + '"';
+
+        }
+        if (p[2]) {
+            if (allowed.indexOf('o') > -1) {
+                pc += ',"italic":true';
+            }
+        }
+        if (p[3]) {
+            if (allowed.indexOf('l') > -1) {
+                pc += ',"bold":true';
+            }
+        }
+        if (p[4]) {
+            if (allowed.indexOf('n') > -1) {
+                pc += ',"underlined":true';
+            }
+        }
+        if (p[5]) {
+            if (allowed.indexOf('m') > -1) {
+                pc += ',"strikethrough":true';
+            }
+        }
+        if (p[6]) {
+            if (allowed.indexOf('k') > -1) {
+                pc += ',"obfuscated":true';
+            }
+        }
+
+        if (p[7] && p[8]) { pc += ',"clickEvent":{"action":"' + p[7] + '","value":"' + p[8] + '"}'; }
+        if (p[9] && p[10]) { pc += ',"hoverEvent":{"action":"' + p[9] + '","value":"' + ccs((p[10] || "").replace(/\$/g, '\u00A7'), allowed) + '"}'; }
+        pc += '}';
+
+
+        txt += (fullraw ? ',' : '') + pc.toString();
     }
 
     if (fullraw) {
-        txt += '"}';
+        txt += ']';
     }
 
     return txt;
+}
+
+/**
+ * Executes a command as a player.
+ * @param {IPlayer} player - The player executing the command.
+ * @param {string} command - The command to execute.
+ * @param {string} [as_player] - The player to execute the command as.
+ * @returns {boolean} The result of the command execution.
+ */
+function executeCommand(player, command, as_player) {
+    if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
+    if (as_player == null) { as_player = player.getName(); }
+    var cmd = API.createNPC(player.world.getMCWorld());
+
+    return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
+
+}
+
+/**
+ * Executes a command globally.
+ * @param {string} command - The command to execute.
+ * @param {number} [dim=0] - The dimension to execute the command in.
+ * @returns {boolean} The result of the command execution.
+ */
+function executeCommandGlobal(command, dim) {
+    if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
+    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
 }
