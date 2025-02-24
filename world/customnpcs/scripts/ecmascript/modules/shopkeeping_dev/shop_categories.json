@@ -3,6 +3,13 @@
         {
             "display_name": "Essencial Goods - Food & Drinks",
             "name": "essential_goods_food_drinks",
+            "general_ref": {
+                "base_markup": 30,
+                "item_variety_per_visit": 3,
+                "item_variety_variance": 0.5,
+                "items_per_type": 5,
+                "items_per_type_variance": 0.5
+            },
             "based_on_market": [
                 "general_store - food and beverage"
             ]
@@ -10,6 +17,13 @@
         {
             "display_name": "Essencial Goods - Household",
             "name": "essential_goods_household",
+            "general_ref": {
+                "base_markup": 40,
+                "item_variety_per_visit": 2,
+                "item_variety_variance": 0.4,
+                "items_per_type": 3,
+                "items_per_type_variance": 0.5
+            },
             "based_on_market": [
                 "general_store - household essentials"
             ]
@@ -17,6 +31,13 @@
         {
             "display_name": "Kitchen Tools",
             "name": "kitchen_tools",
+            "general_ref": {
+                "base_markup": 70,
+                "item_variety_per_visit": 1,
+                "item_variety_variance": 0.3,
+                "items_per_type": 1,
+                "items_per_type_variance": 0.2
+            },
             "items": [
                 {
                     "id": "harvestcraft:cuttingboarditem:0",
@@ -43,6 +64,13 @@
         {
             "display_name": "Jewelry",
             "name": "jewelry",
+            "general_ref": {
+                "base_markup": 100,
+                "item_variety_per_visit": 1,
+                "item_variety_variance": 0.3,
+                "items_per_type": 1,
+                "items_per_type_variance": 0
+            },
             "items": [
                 {
                     "id": "variedcommodities:pendant:0",
@@ -74,6 +102,13 @@
         {
             "display_name": "Monsalac Dairy",
             "name": "monsalac_dairy",
+            "general_ref": {
+                "base_markup": 50,
+                "item_variety_per_visit": 2,
+                "item_variety_variance": 0.4,
+                "items_per_type": 4,
+                "items_per_type_variance": 0.4
+            },
             "based_on_stocks": [
                 "Monsalac Cheesemaking",
                 "Monsalac Milk"
@@ -83,6 +118,13 @@
         {
             "display_name": "Bakery",
             "name": "bakery",
+            "general_ref": {
+                "base_markup": 30,
+                "item_variety_per_visit": 3,
+                "item_variety_variance": 0.5,
+                "items_per_type": 2,
+                "items_per_type_variance": 0.5
+            },
             "based_on_market": [
                 "baker"
             ]
@@ -111,6 +153,13 @@
         {
             "display_name": "Farmiston Bulk Cereal",
             "name": "farmiston_bulk_cereal",
+            "general_ref": {
+                "base_markup": 15,
+                "item_variety_per_visit": 1,
+                "item_variety_variance": 0.1,
+                "items_per_type": 1000,
+                "items_per_type_variance": 0.3
+            },
             "based_on_stocks": [
                 "Farmiston"
             ]
