@@ -564,3 +564,20 @@ function calculateStockRoomSize(player, shopId, playerShops) {
         return total_size;
     }
 }
+
+function removeOutdatedListedItems(player, shop, newType) {
+    var availableItems = getAvailableItems(player, newType);
+
+    for (var itemId in shop.inventory.listed_items) {
+        var found = false;
+        for (var i = 0; i < availableItems.length; i++) {
+            if (itemId === availableItems[i].id) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            delete shop.inventory.listed_items[itemId];
+        }
+    }
+}

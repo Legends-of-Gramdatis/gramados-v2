@@ -1169,23 +1169,6 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
     tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
 }
 
-function removeOutdatedListedItems(player, shop, newType) {
-    var availableItems = getAvailableItems(player, newType);
-
-    for (var itemId in shop.inventory.listed_items) {
-        var found = false;
-        for (var i = 0; i < availableItems.length; i++) {
-            if (itemId === availableItems[i].id) {
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
-            delete shop.inventory.listed_items[itemId];
-        }
-    }
-}
-
 function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
     if (getMoneyFromPlayerPouch(player, value)) {
         var shop = playerShops[shopId];
