@@ -82,14 +82,38 @@
                     "sale_count": 0
                 },
                 "harvestcraft:peanutbuttercookiesitem:0": {
-                    "price": 580,
+                    "price": 250,
                     "reference_price": 200,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "harvestcraft:cherrypieitem:0": {
-                    "price": 1461,
+                    "price": 625,
                     "reference_price": 500,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:banananutbreaditem:0": {
+                    "price": 625,
+                    "reference_price": 500,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:raisincookiesitem:0": {
+                    "price": 250,
+                    "reference_price": 200,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:croissantitem:0": {
+                    "price": 313,
+                    "reference_price": 250,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "harvestcraft:pumpkinbreaditem:0": {
+                    "price": 688,
+                    "reference_price": 550,
                     "discount": 0,
                     "sale_count": 0
                 }
