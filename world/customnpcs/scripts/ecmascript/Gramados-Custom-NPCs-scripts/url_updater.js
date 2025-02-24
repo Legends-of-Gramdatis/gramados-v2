@@ -4,7 +4,7 @@ function interact(event) {
     // get all NPC entities in the world
     var entities = event.player.world.getAllEntities(2);
 
-    //event.player.message("&6There are " + entities.length + " NPCs in the world!");
+    event.player.message("&6There are " + entities.length + " NPCs in the world!");
 
     for (var i = 0; i < entities.length; i++) {
         var entity = entities[i];
