@@ -960,7 +960,7 @@ function getAvailableItems(player, shopType) {
                 for (var j = 0; j < entry.based_on_market.length; j++) {
                     // tellPlayer(player, "&e" + entry.based_on_market[j]);
 
-                    var basedOnMarketItems = getBasedOnMarketItems(player, entry.based_on_market[j]);
+                    var basedOnMarketItems = getBasedOnMarketItems(player, entry.based_on_market[j], shopType);
                     if (basedOnMarketItems) {
                         for (var k = 0; k < basedOnMarketItems.length; k++) {
                             items.push(basedOnMarketItems[k]);
@@ -993,16 +993,18 @@ function isValidItem(items, itemstock) {
 }
 
 // Function to get a list of items for "based_on_market" item list types
-function getBasedOnMarketItems(player, marketName) {
+function getBasedOnMarketItems(player, marketName, shopType) {
     var pathToJson = NPC_MARKET_DATA_JSON_PATH + marketName + ".json";
-    // tellPlayer(player, "Path to json: " + pathToJson);
     var market = loadJavaJson(pathToJson);
     if (!market) {
         tellPlayer(player, "&cMarket not found!");
         return;
     }
 
-    // tellPlayer(player, "Market: " + marketName);
+    var shop_category = getCategoryJson(shopType)
+    var markup = shop_category.general_ref.base_markup;
+    markup = markup / 100;
+    // tellPlayer(player, "&6In getBasedOnMarketItems, markup: " + markup + ", shopType: " + shopType + ", marketName: " + marketName);
 
     var items = [];
 
@@ -1111,7 +1113,10 @@ function getBasedOnMarketItems(player, marketName) {
         }
 
         var final_value = value_1 + value_2;
-        final_value = final_value / count;
+        final_value /= count;
+        // tellPlayer(player, "&6Final value: " + final_value + ", after markup");
+        final_value /= (1 + markup);
+        // tellPlayer(player, "&6Final value: " + final_value + ", before markup: Fabrication cost");
 
         if (final_value > 0) {
             final_item.id = id;
@@ -1312,13 +1317,18 @@ function calculateShopScore(player, shopId, playerShops) {
     var stockroomPenalty = 0;  // Penalty for out-of-stock listed items
 
     var listedItems = shop.inventory.listed_items;
-    var totalStockValue = 0;
-    var expectedStockValue = 0; // Placeholder for an ideal value per shop type
 
     var recommendations = [];
 
-    // Reputation Factor for Margin Calculation
-    var reputationFactor = Math.min(1 + (currentReputation / 1000), 2);  // Higher reputation = more margin flexibility
+    var shop_categories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    var shop_entry = null;
+    for (var i = 0; i < shop_categories["entries"].length; i++) {
+        var entry = shop_categories["entries"][i];
+        if (entry.name === shopType) {
+            shop_entry = entry;
+            break;
+        }
+    }
 
     // Improved Pricing Recommendation Logic
     for (var itemId in listedItems) {
@@ -1327,43 +1337,46 @@ function calculateShopScore(player, shopId, playerShops) {
         var listedPrice = listedItem.price;
         var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
 
-        // Calculate price ratio
-        var priceRatio = listedPrice / referencePrice;
-        var itemPricingScore = Math.max(0, 100 - Math.abs(priceRatio - 1) * 100);
+        // Calculate margin grade using getMarginGrade
+        var marginGradeData = getMarginGrade(player, listedPrice, referencePrice, currentReputation, shop_entry.general_ref.base_markup);
+        var marginGrade = marginGradeData.grade;
+        // tellPlayer(player, "&6Margin Grade for item " + itemId + ": &e" + marginGrade.toFixed(2) + "%");
+
+        // Add margin grade to total pricing score
+        totalPricingScore += marginGrade;
+        totalItems++;
 
         // **Recommendations**:
-        if (priceRatio < (0.8 * reputationFactor)) {
-            // If price is too low (adjusted for reputation)
-            if (stockCount < 10) {
-                // Don't suggest price increase if stock is very low, prioritize restocking
-                recommendations.push("&e - Item " + itemId + " is priced too low. Consider increasing the price once you have more stock.");
+        if (marginGradeData.comment === "Overpriced") {
+            if (marginGradeData.grade < 75) {
+                tellPlayer(player, "&6 marginGradeData.grade < 75: " + marginGradeData.grade);
+                if (marginGradeData.grade < 25) {
+                    recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &4heavily overpriced&7. Lower the price immediately.");
+                } else if (marginGradeData.grade < 50) {
+                    recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &coverpriced&7. Consider lowering the price.");
+                } else {
+                    recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &eslightly overpriced&7. Consider lowering the price.");
+                }
+                var perfectPrice = referencePrice * (1 + marginGradeData.perfect_margin / 100);
+                recommendations.push("&l   :arrow_r: &7&r:lit: &bConsider setting the price to &r:money:&e" + getAmountCoin(perfectPrice) + "&b for a &e" + marginGradeData.perfect_margin.toFixed(2) + "%&b margin.");
             } else {
-                recommendations.push("&c - Item " + itemId + " is priced too low. Consider increasing the price to match demand.");
+                tellPlayer(player, "&6 marginGradeData.grade > 75: " + marginGradeData.grade);
+                recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &awell-priced&7 but could benefit from a small price reduction.");
             }
-        } else if (priceRatio > (1.2 * reputationFactor)) {
-            // If price is too high (adjusted for reputation)
-            if (demandMultiplier < 1.0) {
-                // In low demand, suggest lowering price
-                recommendations.push("&4 - Item " + itemId + " is priced too high for the current demand. Consider reducing the price.");
-            } else if (competitorCount > 0) {
-                // If there are competitors, suggest pricing more competitively
-                recommendations.push("&c - Item " + itemId + " is priced too high compared to competitors. Consider lowering the price.");
+        } else if (marginGradeData.comment === "Underpriced") {
+            // recommendations.push("&a - Item " + itemId + " is underpriced. Consider raising the price.");
+            if (marginGradeData.grade < 60) {
+                recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &eunderpriced&7. You could raise the price.");
             } else {
-                // In high demand, allow premium pricing
-                recommendations.push("&e - Item " + itemId + " is priced high, but demand supports it. No need to lower the price.");
+                recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &awell-priced&7 but could benefit from a small price increase.");
             }
         } else {
-            // If the price is within an acceptable range
-            if (demandMultiplier >= 1.2) {
-                recommendations.push("&a - Item " + itemId + " is well-priced for current demand. Keep up the good work!");
-            } else {
-                recommendations.push("&7 - Item " + itemId + " is well-priced but could benefit from a small adjustment if demand rises.");
-            }
+            recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&7 is &2perfectly priced&7.");
         }
 
         // If item out of stock, give a critical recommendation
         if (stockCount === 0) {
-            recommendations.push("&4 - Item " + itemId + " is out of stock! Restock immediately to avoid losing customers.");
+            recommendations.push("&l :arrow_r: &7Item &f" + itemId + "&4 is out of stock! Restock immediately &7to avoid losing customers.");
             stockroomPenalty += 2; // Increase penalty for each out-of-stock item
         }
     }
@@ -1371,7 +1384,7 @@ function calculateShopScore(player, shopId, playerShops) {
     var pricingScore = totalItems > 0 ? (totalPricingScore / totalItems) - stockroomPenalty : 50; // Default to 50 if no items listed
     pricingScore = Math.max(pricingScore, 0);  // Prevent the score from going below 0
 
-    // **Proportion of Listed Items Score** (replaces bulkValueScore)
+    // Proportion of Listed Items Score
     var possibleItemsCount = getPossibleItemsForShopType(player, shopType); // Returns max items that could be listed for the shop type
     var listedItemProportion = Object.keys(listedItems).length / possibleItemsCount;
     var listItemProportionScore = Math.min(100, listedItemProportion * 100); // Ensures the score caps at 100%
@@ -1379,12 +1392,27 @@ function calculateShopScore(player, shopId, playerShops) {
     // Regional Demand Score
     var demandScore = (shopTypeDemand * wealthLevel * demandMultiplier) / (competitorCount || 1);
 
+    // Stocked Listed Items Score
+    var unstockedListedItems = 0;
+    for (var itemId in listedItems) {
+        if (shop.inventory.stock[itemId]) {
+            // If item out of stock, add to unstockedListedItems
+            if (shop.inventory.stock[itemId].count === 0) {
+                unstockedListedItems++;
+            }
+        }
+    }
+    var stockedListedItemsScore = 1 - (unstockedListedItems / Object.keys(listedItems).length);
+    stockedListedItemsScore *= 100;
+
     // Weighted Score Calculation
-    var W1 = 0.4, W2 = 0.3, W3 = 0.2, W4 = 0.1; // Weights for each factor
-    var shopScore = (W1 * scaledReputation) + (W2 * pricingScore) + (W3 * listItemProportionScore) + (W4 * demandScore);
+    var W1 = 4, W2 = 3, W3 = 1, W4 = 1, W5 = 5;
+    var shopScore = (W1 * scaledReputation) + (W2 * marginGrade) + (W3 * listItemProportionScore) + (W4 * demandScore) + (W5 * stockedListedItemsScore);
+    shopScore /= (W1 + W2 + W3 + W4 + W5);
 
     tellPlayer(player, "&eScaled Reputation: &a" + scaledReputation.toFixed(2));
-    tellPlayer(player, "&ePricing Score: &a" + pricingScore.toFixed(2));
+    tellPlayer(player, "&ePricing Score: &a" + marginGrade.toFixed(2));
+    tellPlayer(player, "&eStocked Listed Items Score: &a" + stockedListedItemsScore.toFixed(2));
     tellPlayer(player, "&eListed Item Proportion Score: &a" + listItemProportionScore.toFixed(2));
     tellPlayer(player, "&eDemand Score: &a" + demandScore.toFixed(2));
 
@@ -1401,7 +1429,7 @@ function calculateShopScore(player, shopId, playerShops) {
 
     // Detailed Recommendations
     var recommendationMessages = [
-        "&eRecommendations for improving your shop:"
+        "&6Recommendations for improving your shop:"
     ];
     // Add the recommendations to the message array
     recommendations.forEach(function (recommendation) {
@@ -1409,8 +1437,6 @@ function calculateShopScore(player, shopId, playerShops) {
     });
     tellPlayer(player, recommendationMessages.join("\n"));  // Send the recommendations as a single message
 }
-
-
 
 function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
     var shop = playerShops[shopId];
