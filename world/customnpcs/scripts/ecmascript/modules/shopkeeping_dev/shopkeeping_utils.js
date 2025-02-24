@@ -184,3 +184,17 @@ function checkPermissions(player, shopID, playerShops, permission) {
 function convertUnderscore(str) {
     return str.replace(/_/g, " ");
 }
+
+// function to get shop category json from type
+function getCategoryJson(shopType) {
+    var shop_categories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+    var shop_entry = null;
+    for (var i = 0; i < shop_categories["entries"].length; i++) {
+        var entry = shop_categories["entries"][i];
+        if (entry.name === shopType) {
+            shop_entry = entry;
+            return shop_entry;
+        }
+    }
+    return shop_entry;
+}
