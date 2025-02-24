@@ -1318,10 +1318,10 @@ function calculateShopScore(player, shopId, playerShops) {
     // Pricing Score Calculation
     var totalPricingScore = 0;
     var totalItems = 0;
-
-    var listedItems = shop.inventory.listed_items;
     var totalStockValue = 0;
     var expectedStockValue = 0; // Placeholder for an ideal value per shop type
+
+    var listedItems = shop.inventory.listed_items;
 
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
@@ -1329,23 +1329,25 @@ function calculateShopScore(player, shopId, playerShops) {
         var listedPrice = listedItem.price;
         var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
 
-        // Pricing Score
+        // **Stockroom Inventory Check** - Penalty for listed items with no stock
+        var itemStockPenalty = stockCount === 0 ? 0.5 : 1; // Apply a penalty of 50% if stock is zero
+
+        // Pricing Score Calculation with penalty
         var priceRatio = listedPrice / referencePrice;
-        var itemPricingScore = Math.max(0, 100 - Math.abs(priceRatio - 1) * 100);
+        var itemPricingScore = Math.max(0, (100 - Math.abs(priceRatio - 1) * 100)) * itemStockPenalty;
 
         totalPricingScore += itemPricingScore;
         totalItems++;
 
-        // Bulk value can be removed now, moving on to item count
         totalStockValue += stockCount * listedPrice;
     }
 
     var pricingScore = totalItems > 0 ? totalPricingScore / totalItems : 50; // Default to 50 if no items listed
 
-    // **New Proportion of Listed Items Score** (replaces bulkValueScore)
-    var possibleItemsCount = getPossibleItemsForShopType(shopType); // Returns max items that could be listed for the shop type
+    // Proportion of Listed Items Score
+    var possibleItemsCount = getPossibleItemsForShopType(player, shopType); // Returns max items that could be listed for the shop type
     var listedItemProportion = totalItems / possibleItemsCount;
-    var listItemProportionScore = Math.min(100, listedItemProportion * 100); // Ensures the score caps at 100%
+    var listItemProportionScore = Math.min(100, listedItemProportion * 100); // Caps score at 100%
 
     // Regional Demand Score
     var demandScore = (shopTypeDemand * wealthLevel * demandMultiplier) / (competitorCount || 1);
@@ -1353,6 +1355,12 @@ function calculateShopScore(player, shopId, playerShops) {
     // Weighted Score Calculation
     var W1 = 0.4, W2 = 0.3, W3 = 0.2, W4 = 0.1; // Weights for each factor
     var shopScore = (W1 * scaledReputation) + (W2 * pricingScore) + (W3 * listItemProportionScore) + (W4 * demandScore);
+
+    // Debug Outputs
+    tellPlayer(player, "&aScaled Reputation: &e" + scaledReputation.toFixed(2));
+    tellPlayer(player, "&aPricing Score: &e" + pricingScore.toFixed(2));
+    tellPlayer(player, "&aListed Item Proportion Score: &e" + listItemProportionScore.toFixed(2));
+    tellPlayer(player, "&aDemand Score: &e" + demandScore.toFixed(2));
 
     // Feedback Message
     var feedback = "";
@@ -1365,6 +1373,7 @@ function calculateShopScore(player, shopId, playerShops) {
     tellPlayer(player, "&aShop Score: &e" + shopScore.toFixed(2));
     tellPlayer(player, "&aFeedback: &e" + feedback);
 }
+
 
 
 
