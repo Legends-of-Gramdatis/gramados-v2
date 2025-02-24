@@ -245,33 +245,33 @@
                 }
             },
             "listed_items": {
-                "variedcommodities:pendant:0": {
-                    "price": 15000,
-                    "reference_price": 10000,
-                    "discount": 0,
-                    "sale_count": 0
-                },
                 "variedcommodities:necklace:0": {
-                    "price": 37500,
+                    "price": 47500,
                     "reference_price": 25000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:ring:0": {
-                    "price": 45000,
+                    "price": 75000,
                     "reference_price": 30000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:statuette:0": {
-                    "price": 22500,
+                    "price": 90000,
                     "reference_price": 15000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:tablet:0": {
-                    "price": 26250,
+                    "price": 24500,
                     "reference_price": 17500,
+                    "discount": 0,
+                    "sale_count": 0
+                },
+                "variedcommodities:pendant:0": {
+                    "price": 11000,
+                    "reference_price": 10000,
                     "discount": 0,
                     "sale_count": 0
                 }
@@ -303,7 +303,7 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 0,
+            "reputation": 100,
             "reputation_history": []
         },
         "upgrades": []
