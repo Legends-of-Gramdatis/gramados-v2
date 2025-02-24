@@ -323,11 +323,6 @@ function chat(event) {
             return;
         }
 
-        // Replace any % with ⁒
-        for (var i = 0; i < args.length; i++) {
-            args[i] = args[i].replace("%", "⁒");
-        }
-
         var shopId = parseInt(args[3]);
         var defaultMargin = args[4];
 
@@ -341,8 +336,8 @@ function chat(event) {
             return;
         }
 
-        if (!defaultMargin.endsWith("⁒")) {
-            tellPlayer(player, "&cInvalid percentage format! Use a percentage value (e.g., 10⁒)");
+        if (!defaultMargin.endsWith("%")) {
+            tellPlayer(player, "&cInvalid percentage format! Use a percentage value (e.g., 10%)");
             return;
         }
 
@@ -355,7 +350,7 @@ function chat(event) {
         var shop = playerShops[shopId];
         shop.finances.default_margin = percent / 100;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        tellPlayer(player, "&aDefault margin set to &e" + percent + "⁒ &afor shop &e" + shopId);
+        tellPlayer(player, "&aDefault margin set to &e" + defaultMargin + " &afor shop &e" + shopId);
     } else if (message.startsWith("$shop money put pouch")) {
         var args = message.split(" ");
         if (args.length === 6) {
