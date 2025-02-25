@@ -57,7 +57,7 @@
         {
             "id": "marketing_campaign",
             "name": "Marketing Campaign",
-            "description": "Launch a comprehensive marketing campaign to increase brand awareness and attract new customers. Unlock new marketing events and strategies.",
+            "description": "Launch a comprehensive marketing campaign to increase brand awareness and attract new customers. Unlocks new marketing events and strategies.",
             "modules": {},
             "cost": 70000,
             "min_reputation": 200
