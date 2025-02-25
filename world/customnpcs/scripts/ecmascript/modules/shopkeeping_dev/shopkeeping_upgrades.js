@@ -20,26 +20,26 @@ function listAllUpgrades(player) {
         var upgrade = upgrades.upgrades[i];
 
 
-        var entry = "&6" + upgrade.name + "&f: \n &7" + upgrade.description + "\n &6Cost: &r:money:&e" + getAmountCoin(upgrade.cost);
+        var entry = "&3:arrow_r:" + upgrade.name + ": \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "&6, Min Reputation: &e:sun:" + (upgrade.min_reputation || 0) + "\n&b-----------------------------------------";
         messageUpgrades.push(entry);
     }
 
-    tellPlayer(player, "&bUpgrades: ");
+    tellPlayer(player, "&b=========================================\n&bUpgrades: \n&b=========================================");
     storytellPlayer(player, messageUpgrades);
 }
 
 // function to display a formatted list of events
 function listAllEvents(player) {
-    var upgrades = loadUpgradesAndEvents(player);
+    var events = loadUpgradesAndEvents(player);
 
     var messageEvents = [];
 
-    for (var i = 0; i < upgrades.events.length; i++) {
-        var event = upgrades.events[i];
-        var entry = "&6" + event.name + "&f: \n &7" + event.description + "\n &6Cost: &r:money:&e" + getAmountCoin(event.cost);
+    for (var i = 0; i < events.events.length; i++) {
+        var event = events.events[i];
+        var entry = "&3:arrow_r:" + event.name + ": \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "&6, Min Reputation: &e:sun:" + (event.min_reputation || 0) + "\n&b-----------------------------------------";
         messageEvents.push(entry);
     }
-    tellPlayer(player, "&b=========================================\n&bUpgrades: \n&b=========================================");
+    tellPlayer(player, "&b=========================================\n&bEvents: \n&b=========================================");
     storytellPlayer(player, messageEvents);
 }
 
@@ -48,7 +48,7 @@ function listShopUpgrades(player, shopId) {
     var upgrades = loadUpgradesAndEvents(player);
 
     var messageUpgrades = [];
-    var messageEvents = [];
+    var proportion = 0;
 
     for (var i = 0; i < upgrades.upgrades.length; i++) {
         var upgrade = upgrades.upgrades[i];
@@ -57,13 +57,16 @@ function listShopUpgrades(player, shopId) {
         if (canTakeUpgrade.canTake) {
             var entry = "&2:check: &a" + upgrade.name + ": \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
             messageUpgrades.push(entry);
+            proportion++;
         } else {
             var entry = "&4:cross: &c" + upgrade.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&c:thumbsdown: Shop can't take this upgrade! \n&b-----------------------------------------";
             messageUpgrades.push(entry);
         }
     }
 
-    tellPlayer(player, "&b=========================================\n&bUpgrades: \n&b=========================================");
+    // make a proportion of available upgrades (x/y)
+    var availableUpgrades = "&a" + proportion + "&b/" + upgrades.upgrades.length;
+    tellPlayer(player, "&b=========================================\n&bPossible Upgrades: " + availableUpgrades + "\n&b=========================================");
     storytellPlayer(player, messageUpgrades);
 }
 
@@ -72,6 +75,7 @@ function listShopEvents(player, shopId) {
     var upgrades = loadUpgradesAndEvents(player);
 
     var messageEvents = [];
+    var proportion = 0;
 
     for (var i = 0; i < upgrades.events.length; i++) {
         var event = upgrades.events[i];
@@ -80,13 +84,17 @@ function listShopEvents(player, shopId) {
         if (canTakeUpgrade.canTake) {
             var entry = "&2:check: &a" + event.name + ": \n&7" + event.description + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
             messageEvents.push(entry);
+            proportion++;
         } else {
             var entry = "&4:cross: &c" + event.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + event.description + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
             messageEvents.push(entry);
         }
     }
 
-    tellPlayer(player, "&b=========================================\n&bEvents: \n&b=========================================");
+    // make a proportion of available events (x/y)
+    var availableEvents = "&a" + proportion + "&b/" + upgrades.events.length;
+
+    tellPlayer(player, "&b=========================================\n&bPossible Events: " + availableEvents + "\n&b=========================================");
     storytellPlayer(player, messageEvents);
 }
 
