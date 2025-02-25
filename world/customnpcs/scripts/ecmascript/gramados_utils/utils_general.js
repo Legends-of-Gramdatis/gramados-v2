@@ -63,3 +63,14 @@ function getPlayerInvFromNbt(playerNbt, world, filterFn) {
 
     return playerItems;
 }
+
+/**
+ * Checks if an array contains a specific item.
+ * @param {Array} array - The array to check.
+ * @param {*} item - The item to search for.
+ * @returns {boolean} - True if the item is in the array, false otherwise.
+ */
+function includes(array, item) {
+    // tellPlayer(player, "&6Checking if item " + item + " is in array " + array);
+    return array.indexOf(item) > -1;
+}
