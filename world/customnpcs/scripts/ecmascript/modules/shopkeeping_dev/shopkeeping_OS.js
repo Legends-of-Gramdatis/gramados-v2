@@ -453,7 +453,7 @@ function chat(event) {
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation log <ID> [time]");
         }
-    } else if (message.startsWith("$shop reputation eval")) {
+    } else if (message.startsWith("$shop reputation expertise")) {
         var args = message.split(" ");
         if (args.length === 4) {
             var shopId = parseInt(args[3]);
@@ -464,7 +464,7 @@ function chat(event) {
             // evalShopReputation(player, shopId, playerShops);
             calculateShopScore(player, shopId, playerShops);
         } else {
-            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation eval <ID>");
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation expertise <ID>");
         }
     }
 }
