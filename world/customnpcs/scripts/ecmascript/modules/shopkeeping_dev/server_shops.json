@@ -279,7 +279,7 @@
             "unsalable_items": {}
         },
         "finances": {
-            "stored_cash": 0,
+            "stored_cash": 3500000,
             "default_margin": 0.5
         },
         "property": {
@@ -303,9 +303,10 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 100,
+            "reputation": 642,
             "reputation_history": []
         },
-        "upgrades": []
+        "upgrades": [],
+        "events": []
     }
 }
