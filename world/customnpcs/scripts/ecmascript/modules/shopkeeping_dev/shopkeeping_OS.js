@@ -478,7 +478,20 @@ function chat(event) {
             }
             listShopUpgrades(player, shopId);
         } else {
-            listUpgrades(player);
+            listAllUpgrades(player);
+        }
+    } else if (message.startsWith("$shop event list")) {
+        // If it has an extra argument, list the events for a specific shop
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            listShopEvents(player, shopId);
+        } else {
+            listAllEvents(player);
         }
     }
 }
