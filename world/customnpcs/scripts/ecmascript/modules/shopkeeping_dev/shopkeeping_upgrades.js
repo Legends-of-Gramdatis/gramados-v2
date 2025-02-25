@@ -1,5 +1,3 @@
-var UPGRADES_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shop_upgrades.json";
-
 // function that gets the list of upgrades from json
 function loadUpgradesAndEvents(player) {
     var jsonUpgrades = loadJson(UPGRADES_JSON_PATH);
@@ -55,11 +53,11 @@ function listShopUpgrades(player, shopId) {
         var canTakeUpgrade = canShopTakeUpgrade(player, shopId, upgrade);
 
         if (canTakeUpgrade.canTake) {
-            var entry = "&2:check: &a" + upgrade.name + ": \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
+            var entry = "&2:check: &a" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
             messageUpgrades.push(entry);
             proportion++;
         } else {
-            var entry = "&4:cross: &c" + upgrade.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&c:thumbsdown: Shop can't take this upgrade! \n&b-----------------------------------------";
+            var entry = "&4:cross: &c" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&c:thumbsdown: Shop can't take this upgrade! \n&b-----------------------------------------";
             messageUpgrades.push(entry);
         }
     }
@@ -82,11 +80,11 @@ function listShopEvents(player, shopId) {
         var canTakeUpgrade = canShopTakeUpgrade(player, shopId, event);
 
         if (canTakeUpgrade.canTake) {
-            var entry = "&2:check: &a" + event.name + ": \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
+            var entry = "&2:check: &a" + event.name + " &8(ID: " + event.id + ")&a : \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
             messageEvents.push(entry);
             proportion++;
         } else {
-            var entry = "&4:cross: &c" + event.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
+            var entry = "&4:cross: &c" + event.name + " &8(ID: " + event.id + ")&a : \n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
             messageEvents.push(entry);
         }
     }
