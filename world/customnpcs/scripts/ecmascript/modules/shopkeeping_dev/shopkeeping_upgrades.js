@@ -82,11 +82,11 @@ function listShopEvents(player, shopId) {
         var canTakeUpgrade = canShopTakeUpgrade(player, shopId, event);
 
         if (canTakeUpgrade.canTake) {
-            var entry = "&2:check: &a" + event.name + ": \n&7" + event.description + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
+            var entry = "&2:check: &a" + event.name + ": \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
             messageEvents.push(entry);
             proportion++;
         } else {
-            var entry = "&4:cross: &c" + event.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + event.description + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
+            var entry = "&4:cross: &c" + event.name + ":" + "\n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
             messageEvents.push(entry);
         }
     }
