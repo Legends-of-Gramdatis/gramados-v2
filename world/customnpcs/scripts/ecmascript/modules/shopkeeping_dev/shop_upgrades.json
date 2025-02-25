@@ -1,30 +1,11 @@
 {
     "upgrades": [
         {
-            "id": "better_crates_1",
-            "name": "Better Crates",
-            "modules": {
-                "stock_space": 0.1
-            },
-            "cost": 20000
-        },
-        {
-            "id": "better_crates_2",
-            "name": "Even Better Crates",
-            "modules": {
-                "stock_space": 0.2
-            },
-            "cost": 50000,
-            "requires": [
-                "better_crates_1"
-            ],
-            "required_reputation": 100
-        },
-        {
             "id": "local_advertising",
             "name": "Local Advertising",
+            "description": "A small marketing push in the surrounding area draws in more customers, increasing attendance by 10%.",
             "modules": {
-                "attendence": 0.1
+                "attendance": 0.1
             },
             "repeatable": {
                 "last_purchase": 0,
@@ -34,33 +15,227 @@
             "cost": 20000
         },
         {
-            "id": "degustation",
-            "name": "Degustation",
+            "id": "tv_advertising",
+            "name": "TV Advertising",
+            "description": "Advertise your shop on local TV, targeting a larger audience and increasing customer flow by 25%. However, the cost of production and airing is steep.",
             "modules": {
-                "reputation": 0.15,
-                "sales": 0.07,
-                "stock_consumption": 0.3
+                "customer_flow": 0.25
             },
             "repeatable": {
                 "last_purchase": 0,
-                "lasts_for": 1,
-                "next_purchase": 5
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 50000,
+            "min_reputation": 400
+        },
+        {
+            "id": "social_media_campaign",
+            "name": "Social Media Campaign",
+            "description": "Run a targeted ad campaign on social media platforms, gaining attention from younger, tech-savvy customers. Boosts customer flow by 20%.",
+            "modules": {
+                "customer_flow": 0.2
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 5,
+                "next_purchase": 48
+            },
+            "cost": 35000,
+            "min_reputation": 300
+        },
+        {
+            "id": "sponsorship_deals",
+            "name": "Sponsorship Deals",
+            "description": "Sponsor a local event or sports team, bringing your brand into the public eye and increasing reputation. Increases customer loyalty and foot traffic by 10%.",
+            "modules": {
+                "customer_loyalty": 0.1,
+                "customer_flow": 0.15,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 12,
+                "next_purchase": 96
+            },
+            "cost": 75000,
+            "min_reputation": 500
+        },
+        {
+            "id": "outdoor_billboards",
+            "name": "Outdoor Billboards",
+            "description": "Place large billboards near busy areas to increase your shop's visibility and boost customer flow by 30%. Great for attracting a wide audience, though costly.",
+            "modules": {
+                "customer_flow": 0.3
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 60000,
+            "min_reputation": 500
+        },
+        {
+            "id": "radio_advertising",
+            "name": "Radio Advertising",
+            "description": "Advertise your shop through local radio stations, reaching a wide audience. Increases customer flow by 15%, but can be expensive depending on the time slot.",
+            "modules": {
+                "customer_flow": 0.15
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 5,
+                "next_purchase": 48
+            },
+            "cost": 35000,
+            "min_reputation": 300
+        },
+        {
+            "id": "event_coverage",
+            "name": "Event Coverage",
+            "description": "Get your shop covered by local media outlets during events. The publicity boosts customer flow and reputation, bringing more people to your store.",
+            "modules": {
+                "customer_flow": 0.2,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 50000,
+            "min_reputation": 400
+        }
+    ],
+    "events": [
+        {
+            "id": "grand_opening_redux",
+            "name": "Grand Opening Redux",
+            "description": "A massive relaunch event, complete with decorations, discounts, and free samples. The buzz draws in huge crowds, but profit margins take a temporary hit.",
+            "modules": {
+                "customer_flow": 0.4,
+                "item_price": -0.15,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 6,
+                "next_purchase": 168
+            },
+            "max_reputation": 500,
+            "cost": 30000
+        },
+        {
+            "id": "midnight_madness",
+            "name": "Midnight Madness Sale",
+            "description": "A late-night shopping event offering massive discounts! Attracts deal-hunters, but only for a short time.",
+            "modules": {
+                "sales_boost": 0.6,
+                "price_modifier": -0.35
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 3,
+                "next_purchase": 24
             },
             "cost": 20000
         },
         {
-            "id": "promotion_1",
-            "name": "Small Promotion",
+            "id": "influencer_partnership",
+            "name": "Influencer Partnership",
+            "description": "A famous influencer features your shop, skyrocketing your reputation and increasing foot traffic!",
             "modules": {
-                "sales": 0.25,
-                "item_price": -0.2
+                "reputation": 0.2,
+                "customer_flow": 0.15
             },
             "repeatable": {
-                "last_purchase": 562974,
-                "lasts_for": 7,
-                "next_purchase": 1000
+                "last_purchase": 0,
+                "lasts_for": 12,
+                "next_purchase": 48
             },
-            "cost": 20000
+            "cost": 50000,
+            "min_reputation": 300
+        },
+        {
+            "id": "seasonal_festival",
+            "name": "Seasonal Festival Booth",
+            "description": "Set up a special shop booth during a local festival. High sales potential, but you must provide extra stock.",
+            "modules": {
+                "sales_boost": 0.5,
+                "stock_consumption": 0.1,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 8,
+                "next_purchase": 120
+            },
+            "max_reputation": 750,
+            "cost": 40000
+        },
+        {
+            "id": "limited_edition_drops",
+            "name": "Limited Edition Drops",
+            "description": "Sell exclusive, time-limited items at a premium! Generates hype and attracts VIP customers.",
+            "modules": {
+                "sales_boost": 0.3,
+                "item_price": 0.15
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 6,
+                "next_purchase": 72
+            },
+            "cost": 75000,
+            "min_reputation": 600
+        },
+        {
+            "id": "mystery_grab_bags",
+            "name": "Mystery Grab Bags",
+            "description": "Offer surprise grab bags with random items! Some customers get great deals, while others get common items.",
+            "modules": {
+                "customer_flow": 0.25,
+                "price_modifier": -0.1,
+                "random_stock_clearance": 0.05
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 5,
+                "next_purchase": 36
+            },
+            "cost": 25000
+        },
+        {
+            "id": "charity_event",
+            "name": "Charity Event",
+            "description": "Host a charity event, donating a portion of profits to a good cause. Customers appreciate your generosity, boosting reputation!",
+            "modules": {
+                "reputation": 0.5,
+                "sales_boost": -0.1,
+                "charity_donation": 0.05
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 10,
+                "next_purchase": 120
+            },
+            "cost": 35000
+        },
+        {
+            "id": "flash_sale",
+            "name": "Flash Sale!",
+            "description": "A sudden and aggressive sale drives a massive influx of buyers! Sales increase by 50%, but to entice customers, all prices are slashed by 30%.",
+            "modules": {
+                "sales_boost": 0.5,
+                "price_modifier": -0.3
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 2,
+                "next_purchase": 96
+            },
+            "cost": 25000
         }
     ]
 }
