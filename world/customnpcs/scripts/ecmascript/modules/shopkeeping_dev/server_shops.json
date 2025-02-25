@@ -211,9 +211,11 @@
                 }
             ]
         },
-        "upgrades": [],
+        "upgrades": [
+            "marketing_campaign"
+        ],
         "finances": {
-            "stored_cash": 18813460,
+            "stored_cash": 18743460,
             "default_margin": 0.25
         }
     },
@@ -279,7 +281,7 @@
             "unsalable_items": {}
         },
         "finances": {
-            "stored_cash": 3500000,
+            "stored_cash": 2780000,
             "default_margin": 0.5
         },
         "property": {
@@ -294,7 +296,7 @@
             "main_room": [],
             "region": "Gramados",
             "sub_region": "Gramados_City",
-            "stock_room_size": 60
+            "stock_room_size": 66
         },
         "shop": {
             "display_name": "Test Jewelry",
@@ -306,7 +308,20 @@
             "reputation": 642,
             "reputation_history": []
         },
-        "upgrades": [],
-        "events": []
+        "upgrades": [
+            "better_crates_1"
+        ],
+        "events": [
+            {
+                "id": "local_advertising",
+                "start_date": 2410468,
+                "duration": 3
+            },
+            {
+                "id": "event_coverage",
+                "start_date": 2410509680,
+                "duration": 7
+            }
+        ]
     }
 }
