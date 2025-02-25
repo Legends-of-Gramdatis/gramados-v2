@@ -1,115 +1,6 @@
 {
     "upgrades": [
         {
-            "id": "local_advertising",
-            "name": "Local Advertising",
-            "description": "A small marketing push in the surrounding area draws in more customers, increasing attendance by 10%.",
-            "modules": {
-                "attendance": 0.1
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 3,
-                "next_purchase": 10
-            },
-            "cost": 20000
-        },
-        {
-            "id": "tv_advertising",
-            "name": "TV Advertising",
-            "description": "Advertise your shop on local TV, targeting a larger audience and increasing customer flow by 25%. However, the cost of production and airing is steep.",
-            "modules": {
-                "customer_flow": 0.25
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 7,
-                "next_purchase": 72
-            },
-            "cost": 50000,
-            "min_reputation": 400
-        },
-        {
-            "id": "social_media_campaign",
-            "name": "Social Media Campaign",
-            "description": "Run a targeted ad campaign on social media platforms, gaining attention from younger, tech-savvy customers. Boosts customer flow by 20%.",
-            "modules": {
-                "customer_flow": 0.2
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 5,
-                "next_purchase": 48
-            },
-            "cost": 35000,
-            "min_reputation": 300
-        },
-        {
-            "id": "sponsorship_deals",
-            "name": "Sponsorship Deals",
-            "description": "Sponsor a local event or sports team, bringing your brand into the public eye and increasing reputation. Increases customer loyalty and foot traffic by 10%.",
-            "modules": {
-                "customer_loyalty": 0.1,
-                "customer_flow": 0.15,
-                "reputation": 0.1
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 12,
-                "next_purchase": 96
-            },
-            "cost": 75000,
-            "min_reputation": 500
-        },
-        {
-            "id": "outdoor_billboards",
-            "name": "Outdoor Billboards",
-            "description": "Place large billboards near busy areas to increase your shop's visibility and boost customer flow by 30%. Great for attracting a wide audience, though costly.",
-            "modules": {
-                "customer_flow": 0.3
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 7,
-                "next_purchase": 72
-            },
-            "cost": 60000,
-            "min_reputation": 500
-        },
-        {
-            "id": "radio_advertising",
-            "name": "Radio Advertising",
-            "description": "Advertise your shop through local radio stations, reaching a wide audience. Increases customer flow by 15%, but can be expensive depending on the time slot.",
-            "modules": {
-                "customer_flow": 0.15
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 5,
-                "next_purchase": 48
-            },
-            "cost": 35000,
-            "min_reputation": 300
-        },
-        {
-            "id": "event_coverage",
-            "name": "Event Coverage",
-            "description": "Get your shop covered by local media outlets during events. The publicity boosts customer flow and reputation, bringing more people to your store.",
-            "modules": {
-                "customer_flow": 0.2,
-                "reputation": 0.1
-            },
-            "repeatable": {
-                "last_purchase": 0,
-                "lasts_for": 7,
-                "next_purchase": 72
-            },
-            "cost": 50000,
-            "min_reputation": 400
-        }
-    ],
-    "events": [
-        {
             "id": "grand_opening_redux",
             "name": "Grand Opening Redux",
             "description": "A massive relaunch event, complete with decorations, discounts, and free samples. The buzz draws in huge crowds, but profit margins take a temporary hit.",
@@ -236,6 +127,167 @@
                 "next_purchase": 96
             },
             "cost": 25000
+        },
+        {
+            "id": "better_crates_1",
+            "name": "Better Crates",
+            "description": "Invest in sturdier and more efficient storage solutions, increasing storage capacity by 10%.",
+            "modules": {
+                "storage_capacity": 0.1
+            },
+            "cost": 100000,
+            "min_reputation": 200
+        },
+        {
+            "id": "better_crates_2",
+            "name": "Even Better Crates",
+            "description": "Advanced storage techniques and optimized stacking allow for 20% more inventory space.",
+            "modules": {
+                "storage_capacity": 0.2
+            },
+            "cost": 300000,
+            "requires": ["better_crates_1"],
+            "min_reputation": 400
+        },
+        {
+            "id": "better_crates_3",
+            "name": "Masterful Storage Engineering",
+            "description": "A complete overhaul of storage methods allows for a 30% increase in storage capacity, making your shop a model of efficiency.",
+            "modules": {
+                "storage_capacity": 0.3
+            },
+            "cost": 1000000,
+            "requires": ["better_crates_1", "better_crates_2"],
+            "min_reputation": 800
+        },
+        {
+            "id": "vip_memberships",
+            "name": "VIP Memberships",
+            "description": "Offer exclusive VIP memberships to loyal customers, increasing repeat visits and overall customer flow by 10%.",
+            "modules": {
+                "customer_loyalty": 0.2,
+                "customer_flow": 0.1
+            },
+            "cost": 100000,
+            "min_reputation": 600
+        },
+        {
+            "id": "luxury_experience",
+            "name": "Luxury Experience",
+            "description": "Redesign your shop into a high-end establishment, allowing for premium pricing as customers become more willing to pay extra for quality and exclusivity.",
+            "modules": {
+                "price_tolerance": 0.15
+            },
+            "cost": 1580000,
+            "min_reputation": 800,
+            "requires": ["vip_memberships"]
+        },
+        {
+            "id": "local_advertising",
+            "name": "Local Advertising",
+            "description": "A small marketing push in the surrounding area draws in more customers, increasing attendance by 10%.",
+            "modules": {
+                "attendance": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 3,
+                "next_purchase": 10
+            },
+            "cost": 20000
+        },
+        {
+            "id": "tv_advertising",
+            "name": "TV Advertising",
+            "description": "Advertise your shop on local TV, targeting a larger audience and increasing customer flow by 25%. However, the cost of production and airing is steep.",
+            "modules": {
+                "customer_flow": 0.25
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 50000,
+            "min_reputation": 400
+        },
+        {
+            "id": "social_media_campaign",
+            "name": "Social Media Campaign",
+            "description": "Run a targeted ad campaign on social media platforms, gaining attention from younger, tech-savvy customers. Boosts customer flow by 20%.",
+            "modules": {
+                "customer_flow": 0.2
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 5,
+                "next_purchase": 48
+            },
+            "cost": 35000,
+            "min_reputation": 300
+        },
+        {
+            "id": "sponsorship_deals",
+            "name": "Sponsorship Deals",
+            "description": "Sponsor a local event or sports team, bringing your brand into the public eye and increasing reputation. Increases customer loyalty and foot traffic by 10%.",
+            "modules": {
+                "customer_loyalty": 0.1,
+                "customer_flow": 0.15,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 12,
+                "next_purchase": 96
+            },
+            "cost": 75000,
+            "min_reputation": 500
+        },
+        {
+            "id": "outdoor_billboards",
+            "name": "Outdoor Billboards",
+            "description": "Place large billboards near busy areas to increase your shop's visibility and boost customer flow by 30%. Great for attracting a wide audience, though costly.",
+            "modules": {
+                "customer_flow": 0.3
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 60000,
+            "min_reputation": 500
+        },
+        {
+            "id": "radio_advertising",
+            "name": "Radio Advertising",
+            "description": "Advertise your shop through local radio stations, reaching a wide audience. Increases customer flow by 15%, but can be expensive depending on the time slot.",
+            "modules": {
+                "customer_flow": 0.15
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 5,
+                "next_purchase": 48
+            },
+            "cost": 35000,
+            "min_reputation": 300
+        },
+        {
+            "id": "event_coverage",
+            "name": "Event Coverage",
+            "description": "Get your shop covered by local media outlets during events. The publicity boosts customer flow and reputation, bringing more people to your store.",
+            "modules": {
+                "customer_flow": 0.2,
+                "reputation": 0.1
+            },
+            "repeatable": {
+                "last_purchase": 0,
+                "lasts_for": 7,
+                "next_purchase": 72
+            },
+            "cost": 50000,
+            "min_reputation": 400
         }
     ]
 }
