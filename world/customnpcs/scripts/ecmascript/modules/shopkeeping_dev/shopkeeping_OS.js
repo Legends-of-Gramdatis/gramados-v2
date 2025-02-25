@@ -21,6 +21,7 @@ load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_st
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js")
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_grading.js")
+load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_upgrades.js")
 
 function init(event) {
     var player = event.player;
@@ -465,6 +466,19 @@ function chat(event) {
             calculateShopScore(player, shopId, playerShops);
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation expertise <ID>");
+        }
+    } else if (message.startsWith("$shop upgrade list")) {
+        // If it has an extra argument, list the upgrades for a specific shop
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            listShopUpgrades(player, shopId);
+        } else {
+            listUpgrades(player);
         }
     }
 }
