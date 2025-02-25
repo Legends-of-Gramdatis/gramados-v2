@@ -116,7 +116,7 @@ function getMarginGrade(player, listed_price, reference_price, shop_reputation, 
 
     var marginGrade = Math.round((perfect_margin / margin) * 100);
 
-    tellPlayer(player, "&6Margin grade: &5" + marginGrade + ", with perfect margin: &5" + perfect_margin.toFixed(2) + "%, current margin: &5" + margin + "%");
+    // tellPlayer(player, "&6Margin grade: &5" + marginGrade + ", with perfect margin: &5" + perfect_margin.toFixed(2) + "%, current margin: &5" + margin + "%");
 
     if (margin > perfect_margin * 1.01) {
         return_value.comment = "Overpriced";
