@@ -1,6 +1,70 @@
 {
     "upgrades": [
         {
+            "id": "better_crates_1",
+            "name": "Better Crates",
+            "description": "Invest in sturdier and more efficient storage solutions, increasing storage capacity by 10%.",
+            "modules": {
+                "storage_capacity": 0.1
+            },
+            "cost": 100000,
+            "min_reputation": 200
+        },
+        {
+            "id": "better_crates_2",
+            "name": "Even Better Crates",
+            "description": "Advanced storage techniques and optimized stacking allow for 20% more inventory space.",
+            "modules": {
+                "storage_capacity": 0.2
+            },
+            "cost": 300000,
+            "requires": ["better_crates_1"],
+            "min_reputation": 400
+        },
+        {
+            "id": "better_crates_3",
+            "name": "Masterful Storage Engineering",
+            "description": "A complete overhaul of storage methods allows for a 30% increase in storage capacity, making your shop a model of efficiency.",
+            "modules": {
+                "storage_capacity": 0.3
+            },
+            "cost": 1000000,
+            "requires": ["better_crates_1", "better_crates_2"],
+            "min_reputation": 800
+        },
+        {
+            "id": "vip_memberships",
+            "name": "VIP Memberships",
+            "description": "Offer exclusive VIP memberships to loyal customers, increasing repeat visits and overall customer flow by 10%.",
+            "modules": {
+                "customer_loyalty": 0.2,
+                "customer_flow": 0.1
+            },
+            "cost": 100000,
+            "min_reputation": 600
+        },
+        {
+            "id": "luxury_experience",
+            "name": "Luxury Experience",
+            "description": "Redesign your shop into a high-end establishment, allowing for premium pricing as customers become more willing to pay extra for quality and exclusivity.",
+            "modules": {
+                "price_tolerance": 0.15
+            },
+            "cost": 1580000,
+            "min_reputation": 800,
+            "requires": ["vip_memberships"]
+        },
+        {
+            "id": "marketing_campaign",
+            "name": "Marketing Campaign",
+            "description": "Launch a comprehensive marketing campaign to increase brand awareness and attract new customers. Unlock new marketing events and strategies.",
+            "modules": {},
+            "cost": 70000,
+            "min_reputation": 200
+        }
+    ],
+    "events": [
+        {
             "id": "grand_opening_redux",
             "name": "Grand Opening Redux",
             "description": "A massive relaunch event, complete with decorations, discounts, and free samples. The buzz draws in huge crowds, but profit margins take a temporary hit.",
@@ -129,72 +193,18 @@
             "cost": 25000
         },
         {
-            "id": "better_crates_1",
-            "name": "Better Crates",
-            "description": "Invest in sturdier and more efficient storage solutions, increasing storage capacity by 10%.",
-            "modules": {
-                "storage_capacity": 0.1
-            },
-            "cost": 100000,
-            "min_reputation": 200
-        },
-        {
-            "id": "better_crates_2",
-            "name": "Even Better Crates",
-            "description": "Advanced storage techniques and optimized stacking allow for 20% more inventory space.",
-            "modules": {
-                "storage_capacity": 0.2
-            },
-            "cost": 300000,
-            "requires": ["better_crates_1"],
-            "min_reputation": 400
-        },
-        {
-            "id": "better_crates_3",
-            "name": "Masterful Storage Engineering",
-            "description": "A complete overhaul of storage methods allows for a 30% increase in storage capacity, making your shop a model of efficiency.",
-            "modules": {
-                "storage_capacity": 0.3
-            },
-            "cost": 1000000,
-            "requires": ["better_crates_1", "better_crates_2"],
-            "min_reputation": 800
-        },
-        {
-            "id": "vip_memberships",
-            "name": "VIP Memberships",
-            "description": "Offer exclusive VIP memberships to loyal customers, increasing repeat visits and overall customer flow by 10%.",
-            "modules": {
-                "customer_loyalty": 0.2,
-                "customer_flow": 0.1
-            },
-            "cost": 100000,
-            "min_reputation": 600
-        },
-        {
-            "id": "luxury_experience",
-            "name": "Luxury Experience",
-            "description": "Redesign your shop into a high-end establishment, allowing for premium pricing as customers become more willing to pay extra for quality and exclusivity.",
-            "modules": {
-                "price_tolerance": 0.15
-            },
-            "cost": 1580000,
-            "min_reputation": 800,
-            "requires": ["vip_memberships"]
-        },
-        {
             "id": "local_advertising",
             "name": "Local Advertising",
-            "description": "A small marketing push in the surrounding area draws in more customers, increasing attendance by 10%.",
+            "description": "A small marketing push in the surrounding area draws in more customers, increasing attendance by 5%.",
             "modules": {
-                "attendance": 0.1
+                "customer_flow": 0.05
             },
             "repeatable": {
                 "last_purchase": 0,
                 "lasts_for": 3,
                 "next_purchase": 10
             },
-            "cost": 20000
+            "cost": 10000
         },
         {
             "id": "tv_advertising",
@@ -209,7 +219,8 @@
                 "next_purchase": 72
             },
             "cost": 50000,
-            "min_reputation": 400
+            "min_reputation": 400,
+            "requires": ["marketing_campaign"]
         },
         {
             "id": "social_media_campaign",
@@ -224,7 +235,8 @@
                 "next_purchase": 48
             },
             "cost": 35000,
-            "min_reputation": 300
+            "min_reputation": 300,
+            "requires": ["marketing_campaign"]
         },
         {
             "id": "sponsorship_deals",
@@ -241,7 +253,8 @@
                 "next_purchase": 96
             },
             "cost": 75000,
-            "min_reputation": 500
+            "min_reputation": 500,
+            "requires": ["marketing_campaign"]
         },
         {
             "id": "outdoor_billboards",
@@ -256,7 +269,8 @@
                 "next_purchase": 72
             },
             "cost": 60000,
-            "min_reputation": 500
+            "min_reputation": 500,
+            "requires": ["marketing_campaign"]
         },
         {
             "id": "radio_advertising",
@@ -271,7 +285,8 @@
                 "next_purchase": 48
             },
             "cost": 35000,
-            "min_reputation": 300
+            "min_reputation": 300,
+            "requires": ["marketing_campaign"]
         },
         {
             "id": "event_coverage",
@@ -287,7 +302,8 @@
                 "next_purchase": 72
             },
             "cost": 50000,
-            "min_reputation": 400
+            "min_reputation": 400,
+            "requires": ["marketing_campaign"]
         }
     ]
 }
