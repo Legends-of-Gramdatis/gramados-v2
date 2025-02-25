@@ -565,6 +565,13 @@ function calculateStockRoomSize(player, shopId, playerShops) {
     }
 }
 
+/**
+ * Removes all items no longer available from the listed items.
+ * @param {IPlayer} player - The player.
+ * @param {Object} shop - The shop.
+ * @param {string} newType - The new shop type.
+ * @returns {boolean} True if the items were removed, false otherwise.
+ */
 function removeOutdatedListedItems(player, shop, newType) {
     var availableItems = getAvailableItems(player, newType);
 
@@ -579,5 +586,41 @@ function removeOutdatedListedItems(player, shop, newType) {
         if (!found) {
             delete shop.inventory.listed_items[itemId];
         }
+    }
+
+    return true;
+}
+
+/**
+ * Removes an item from the listed items.
+ * @param {IPlayer} player - The player.
+ * @param {number} shopId - The shop ID.
+ * @param {string} itemIdOrIndex - The item ID or index.
+ * @param {Object} playerShops - The player's shops.
+ * @returns {boolean} True if the item was removed, false otherwise
+ */
+function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
+    var shop = playerShops[shopId];
+    var itemId = itemIdOrIndex;
+
+    if (!isNaN(itemIdOrIndex)) {
+        var index = parseInt(itemIdOrIndex);
+        var keys = Object.keys(shop.inventory.listed_items);
+        if (index >= 0 && index < keys.length) {
+            itemId = keys[index];
+        } else {
+            tellPlayer(player, "&cInvalid item index: &e" + itemIdOrIndex);
+            return false;
+        }
+    }
+
+    if (shop.inventory.listed_items[itemId]) {
+        delete shop.inventory.listed_items[itemId];
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        tellPlayer(player, "&aSuccessfully removed item &e" + itemId + " &afrom the listed items.");
+        return true;
+    } else {
+        tellPlayer(player, "&cItem &e" + itemId + " &cis not listed in the shop.");
+        return false;
     }
 }
