@@ -67,15 +67,12 @@ function getStockRoomLeft(player, shopId, playerShops) {
     var shop = playerShops[shopId];
     var stock = shop.inventory.stock;
     var stockRoomUsed = 0;
-    var stockRoomSize = shop.property.stock_room_size;
 
-    for (var i = 0; i < shop.upgrades.length; i++) {
-        var modules = shop.upgrades[i].modules;
-        if (shop.upgrades[i].modules.stock_space) {
-            stockRoomSize *= (1 + shop.upgrades[i].modules.stock_space);
-        }
+    var upgrades = loadJson(UPGRADES_JSON_PATH).upgrades;
+    if (!upgrades) {
+        world.broadcast("&cShop upgrades not found! Contact an admin!");
+        return;
     }
-    stockRoomSize = Math.floor(stockRoomSize * 64);
 
     for (var key in stock) {
         stockRoomUsed += stock[key].count;
@@ -90,7 +87,7 @@ function getStockRoomLeft(player, shopId, playerShops) {
     // tellPlayer(player, "&aStock room used: &e" + stockRoomUsed);
     // tellPlayer(player, "&aStock room left: &e" + (stockRoomSize - stockRoomUsed));
 
-    return stockRoomSize - stockRoomUsed;
+    return getStockRoomSize(player, shopId, playerShops) - stockRoomUsed;
 }
 
 /**
@@ -104,12 +101,6 @@ function getStockRoomSize(player, shopId, playerShops) {
     var shop = playerShops[shopId];
     var stockRoomSize = shop.property.stock_room_size;
 
-    for (var i = 0; i < shop.upgrades.length; i++) {
-        var modules = shop.upgrades[i].modules;
-        if (shop.upgrades[i].modules.stock_space) {
-            stockRoomSize *= (1 + shop.upgrades[i].modules.stock_space);
-        }
-    }
     stockRoomSize = Math.floor(stockRoomSize * 64);
 
     return stockRoomSize;
@@ -494,7 +485,7 @@ function calculateStockRoomSize(player, shopId, playerShops) {
             // split "stock_room" on ":" to get the cuboid name and the sub-cuboid
             var cuboid = stock_rooms[i].split(":")[0];
             var sub_cuboid = stock_rooms[i].split(":")[1];
-            tellPlayer(player, "&eStock room: &a" + cuboid + " - " + sub_cuboid);
+            // tellPlayer(player, "&eStock room: &a" + cuboid + " - " + sub_cuboid);
             // get the cuboid
             var cuboid_data = JSON.parse(world_data.get("region_" + cuboid));
             if (!cuboid_data) {
@@ -560,7 +551,21 @@ function calculateStockRoomSize(player, shopId, playerShops) {
                 }
             }
         }
-        tellPlayer(player, "&aTotal stock room size: &e" + total_size + " &ablocks");
+        // Apply upgrades to stock room size
+        var shop = playerShops[shopId];
+        var message = "&aTotal stock room size: &e" + total_size + " blocks&a, allowing for &e" + total_size * 64 + " slots";
+        for (var i = 0; i < shop.upgrades.length; i++) {
+            // tellPlayer(player, "&eUpgrade: &a" + shop.upgrades[i]);
+            var upgrade_data = findJsonEntry(loadJson(UPGRADES_JSON_PATH).upgrades, "id", shop.upgrades[i]);
+            // tellPlayer(player, "&aUpgrade data: &e" + JSON.stringify(upgrade_data));
+            if (upgrade_data && upgrade_data.modules && upgrade_data.modules.storage_capacity) {
+                total_size *= (1 + upgrade_data.modules.storage_capacity);
+            }
+        }
+        total_size = Math.floor(total_size);
+        // Add the number of slots to message
+        message += "\n&aTotal slots after upgrades: &e" + total_size * 64 + " slots";
+        tellPlayer(player, message);
         return total_size;
     }
 }
