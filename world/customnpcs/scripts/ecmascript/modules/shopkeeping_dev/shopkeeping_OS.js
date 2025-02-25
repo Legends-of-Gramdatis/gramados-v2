@@ -493,6 +493,34 @@ function chat(event) {
         } else {
             listAllEvents(player);
         }
+    } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
+        tellPlayer(player, "&b=========================================");
+        tellPlayer(player, "&bShop Commands:");
+        tellPlayer(player, "&b=========================================");
+        tellPlayer(player, "&e$shop create <name> <type> <region> <sub_region> [money]");
+        tellPlayer(player, "&e$shop delete <ID>");
+        tellPlayer(player, "&e$shop property set <ID> [name=<name>] [type=<type>] [region=<region>] [sub_region=<sub_region>] [money=<money>]");
+        tellPlayer(player, "&e$shop property add <ID> [stock_room=<region>] [main_room=<region>]");
+        tellPlayer(player, "&e$shop property remove <ID> [stock_room=<index_or_name>] [main_room=<index_or_name>]");
+        tellPlayer(player, "&e$shop open <ID>");
+        tellPlayer(player, "&e$shop close <ID>");
+        tellPlayer(player, "&e$shop stock add <ID>");
+        tellPlayer(player, "&e$shop stock remove <ID> <Item ID or index> [number]");
+        tellPlayer(player, "&e$shop stock eval");
+        tellPlayer(player, "&e$shop price set <shopID> <itemID OR item index> <profit>");
+        tellPlayer(player, "&e$shop price remove <shopID> <itemID OR item index>");
+        tellPlayer(player, "&e$shop price default <shopID> <percentage>");
+        tellPlayer(player, "&e$shop money put pouch <ID> <value>");
+        tellPlayer(player, "&e$shop money take pouch <ID> <value>");
+        tellPlayer(player, "&e$shop money put <ID>");
+        tellPlayer(player, "&e$shop money take <ID> <value>");
+        tellPlayer(player, "&e$shop reputation add <ID> <Amount>");
+        tellPlayer(player, "&e$shop reputation remove <ID> <Amount>");
+        tellPlayer(player, "&e$shop reputation log <ID> [time]");
+        tellPlayer(player, "&e$shop reputation expertise <ID>");
+        tellPlayer(player, "&e$shop upgrade list [ID]");
+        tellPlayer(player, "&e$shop event list [ID]");
+        tellPlayer(player, "&b=========================================");
     }
 }
 
