@@ -23,7 +23,7 @@ var GUI, GRID = 16;
 var TEXTURE_PATH_BUTTONS = "minecraft:textures/gui/wine_aging_shelf_gui_buttons.png"; // placeholder
 var TEXTURE_PATH_BACKGROUND = "minecraft:textures/gui/wine_export_gui.png"; // placeholder
 var npc;
-var DOMAIN_FILE_PATH = "world/customnpcs/scripts/allenis_north_region.json";
+var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 var allenis_data;
 var SELL_BUTTON = 11, EXIT_BUTTON = 12, LABEL_WINE_NAME = 13, LABEL_WINE_PRICE = 14, LABEL_WINE_DOMAIN = 15, LABEL_WINE_AGE = 16;
 

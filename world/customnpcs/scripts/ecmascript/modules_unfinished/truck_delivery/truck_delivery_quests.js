@@ -9,8 +9,8 @@ var player;
 
 var destinations = [];
 
-var FILE_PATH = "world/customnpcs/scripts/truck_destinations.json";
-var PHONE_FILE_PATH = "world/customnpcs/scripts/players_phone.json";
+var FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/truck_delivery/truck_destinations.json";
+var PHONE_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/smartphone/players_phone.json";
 
 
 

@@ -566,7 +566,7 @@ function updateStockPrices(region, delivery, player) {
         } else if (types == "ageable_booze") {
 
             // Load Domain Data
-            var allenis_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
+            var allenis_data = load_json("world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
 
             for (var item in delivery[types]) {
 
@@ -612,7 +612,7 @@ function updateStockPrices(region, delivery, player) {
             }
 
 
-            save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+            save_json(allenis_data, "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
         } else {
             npc.say("Invalid delivery type: " + types);
         }
@@ -935,7 +935,7 @@ function readAgeableBooze(item_data) {
 function getDomainMultiplier(domain_name) {
     var multiplier = 1;
 
-    var allenis_data = load_json("world/customnpcs/scripts/allenis_north_region.json");
+    var allenis_data = load_json("world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
 
     // npc.say("Region data: " + JSON.stringify(allenis_data));
 
@@ -957,7 +957,7 @@ function getDomainMultiplier(domain_name) {
         allenis_data.domains[it_domain] = domain;
     }
 
-    save_json(allenis_data, "world/customnpcs/scripts/allenis_north_region.json");
+    save_json(allenis_data, "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
 
     // npc.say("Domain Multiplier: " + multiplier);
 
@@ -1003,15 +1003,15 @@ function check_file_exists(file_path) {
     return file.exists();
 }
 
-// Function to load "spy_json/stock_spying.json"
+// Function to load "json_spy/stock_spying.json"
 function load_spy_data() {
-    var spy_data = load_json("world/customnpcs/scripts/spy_json/stock_spying.json");
+    var spy_data = load_json("world/customnpcs/scripts/json_spy/stock_spying.json");
     return spy_data;
 }
 
-// Function to save "spy_json/stock_spying.json"
+// Function to save "json_spy/stock_spying.json"
 function save_spy_data(data) {
-    save_json(data, "world/customnpcs/scripts/spy_json/stock_spying.json");
+    save_json(data, "world/customnpcs/scripts/json_spy/stock_spying.json");
 }
 
 // Funtion to add the delivery into the spy data

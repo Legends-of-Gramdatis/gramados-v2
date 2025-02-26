@@ -10,7 +10,7 @@ This script is used to create a new point that will be stored in world data to b
 var GUI, GRID_H = 16, GRID_W = 16, GRID_BORDER = 2;
 
 // file path for the destinations
-//var FILE_PATH = "world/customnpcs/scripts/truck_destinations.json";
+//var FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/truck_delivery/truck_destinations.json";
 var FILE_PATH_NEW = "world/customnpcs/scripts/trucker_job_data.json";
 var destinations = [];
 

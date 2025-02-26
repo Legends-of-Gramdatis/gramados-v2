@@ -7,6 +7,8 @@ var TEXTURE_PATH_BUTTONS = "minecraft:textures/gui/wine_aging_shelf_gui_buttons.
 var TEXTURE_PATH_BACKGROUND = "minecraft:textures/gui/wine_aging_shelf_gui.png";
 var block;
 
+
+
 function init(event) {
     if (event.block.storeddata.get("stored_bottles") == null) {
         var stored_bottles = [];
@@ -43,7 +45,7 @@ function handleNonWineItem(event, item, stored_bottles) {
     } else if (item.getName() == "minecraft:command_block") {
         event.player.message("Cleaning up broken bottles...");
         stored_bottles = cleanup(event, stored_bottles);
-    } else if (item.getName() != "minecraft:air") {
+    } else {
         event.player.message("You can't place " + item.getDisplayName() + " in the shelf to age. You can only place Growthcraft wine bottles.");
     }
 
@@ -145,7 +147,7 @@ function customGuiButton(event) {
     block.storeddata.put("stored_bottles", JSON.stringify(stored_bottles));
 }
 
-// Function to generate the item from the NBT
+//function to generate the item from the nbt
 function createBottleFromNBT(event, nbt) {
     var item = event.player.getWorld().createItem(nbt.id, parseInt(nbt.Damage), 1);
     item.setStackSize(1);
@@ -159,7 +161,7 @@ function createBottleFromNBT(event, nbt) {
     return item;
 }
 
-// Function to generate the NBT from the item
+//function to generate the nbt from the item
 function createNBTFromBottle(item, event) {
     var nbt = item.getItemNbt();
     var lore = item.getLore();
@@ -172,13 +174,21 @@ function createNBTFromBottle(item, event) {
     }
 
     for (var i = 0; i < lore.length; i++) {
-        var parts = lore[i].split(": ");
-        if (lore[i].contains("Bottle Age") || lore[i].contains("Age (in ticks)")) {
-            nbt.setString("Age", parts[1]);
-        } else if (lore[i].contains("Bottling Date")) {
-            nbt.setString("BottlingDate", parts[1]);
-        } else if (lore[i].contains("Domain")) {
-            nbt.setString("Domain", parts[1]);
+        if (lore[i].contains("Bottle Age")) {
+            var age = lore[i].split(": ");
+            nbt.setString("Age", age[1]); // Convert to string
+        }
+        if (lore[i].contains("Bottling Date")) {
+            var bottling_date = lore[i].split(": ");
+            nbt.setString("BottlingDate", bottling_date[1]);
+        }
+        if (lore[i].contains("Age (in ticks)")) {
+            var age_ticks = lore[i].split(": ");
+            nbt.setString("Age", age_ticks[1]); // Convert to string
+        }
+        if (lore[i].contains("Domain")) {
+            var domain = lore[i].split(": ");
+            nbt.setString("Domain", domain[1]);
         }
     }
 
@@ -197,6 +207,61 @@ function ticksToMCTime(ticks) {
     return years + "/" + months + "/" + days + " ( + " + hours + "h)";
 }
 
+// Function to convert MC time to ticks
+function MCTimeToTicks(event, days, months, years, hours, minutes, seconds) {
+
+    event.player.message("Botting Date: " + days + "/" + months + "/" + years + " " + hours + ":" + minutes + ":" + seconds);
+
+    // Get system date
+    var date = new Date();
+    var current_day = date.getDate();
+    var current_month = date.getMonth() + 1;
+    var current_year = date.getFullYear();
+    var current_hour = date.getHours();
+    var current_minute = date.getMinutes();
+    var current_second = date.getSeconds();
+
+    event.player.message("Current Date: " + current_day + "/" + current_month + "/" + current_year + " " + current_hour + ":" + current_minute + ":" + current_second);
+
+    // Get elapsed time
+    var elapsed_years = current_year - years;
+    var elapsed_months = current_month - months;
+    var elapsed_days = current_day - days;
+    var elapsed_hours = current_hour - hours;
+    var elapsed_minutes = current_minute - minutes;
+    var elapsed_seconds = current_second - seconds;
+
+    if (elapsed_seconds < 0) {
+        elapsed_seconds = 60 + elapsed_seconds;
+        elapsed_minutes--;
+    }
+    if (elapsed_minutes < 0) {
+        elapsed_minutes = 60 + elapsed_minutes;
+        elapsed_hours--;
+    }
+    if (elapsed_hours < 0) {
+        elapsed_hours = 24 + elapsed_hours;
+        elapsed_days--;
+    }
+    if (elapsed_days < 0) {
+        elapsed_days = 30 + elapsed_days;
+        elapsed_months--;
+    }
+    if (elapsed_months < 0) {
+        elapsed_months = 12 + elapsed_months;
+        elapsed_years--;
+    }
+
+    event.player.message("Elapsed Time: " + elapsed_days + "/" + elapsed_months + "/" + elapsed_years + " " + elapsed_hours + ":" + elapsed_minutes + ":" + elapsed_seconds);
+
+    // Get how much time that is in ticks (20 ticks = 1 second, 1 hour = 72000 ticks)
+    var ticks = (elapsed_years * 360 * 72000 * 24) + (elapsed_months * 30 * 72000 * 24) + (elapsed_days * 72000 * 24) + (elapsed_hours * 72000) + (elapsed_minutes * 1200) + (elapsed_seconds * 20);
+
+    event.player.message("Ticks: " + ticks);
+
+    return ticks;
+}
+
 // Function to get the date in DD/MM/YYYY HH:MM:SS format
 function getIRLDate() {
     var date = new Date();
@@ -208,27 +273,41 @@ function getIRLDate() {
     var seconds = date.getSeconds();
 
     // Add a 0 to the left of the number if it is less than 10
-    if (day < 10) day = "0" + day;
-    if (month < 10) month = "0" + month;
-    if (hours < 10) hours = "0" + hours;
-    if (minutes < 10) minutes = "0" + minutes;
-    if (seconds < 10) seconds = "0" + seconds;
+    if (day < 10) {
+        day = "0" + day;
+    }
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
 
     return day + "/" + month + "/" + year + " " + hours + ":" + minutes + ":" + seconds;
 }
 
-// Function to clean up broken bottles
+// function to clean up broken bottles
 function cleanup(event, stored_bottles) {
     for (var i = 0; i < 32; i++) {
         if (stored_bottles[i] != null) {
             var bottle_nbt = JSON.parse(stored_bottles[i]);
+            // event.player.message("Checking bottle: " + JSON.stringify(bottle_nbt));
             if (bottle_nbt.id == null || bottle_nbt.Damage == null) {
                 stored_bottles[i] = null;
             } else {
                 var age_string = bottle_nbt.BottlingDate;
+                // event.player.message("Age string: " + age_string);
                 bottle_nbt.Age = MCTimeToTicks(event, parseInt(age_string.split("/")[0]), parseInt(age_string.split("/")[1]), parseInt(age_string.split("/")[2]), parseInt(age_string.split(":")[0]), parseInt(age_string.split(":")[1]), parseInt(age_string.split(":")[2]));
                 bottle_nbt.Date = parseInt(bottle_nbt.Date);
                 stored_bottles[i] = JSON.stringify(bottle_nbt);
+                // event.player.message("Bottle is fine: " + JSON.stringify(bottle_nbt));
             }
         }
     }
@@ -237,7 +316,7 @@ function cleanup(event, stored_bottles) {
 
 // Function to setup a domain name linked to the shelf
 function setupDomain(event, player_name) {
-    var allenis_data = load_data(event, "world/customnpcs/scripts/allenis_north_region.json");
+    var allenis_data = load_data(event, "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
 
     if (allenis_data == null) {
         event.player.message("ERROR: Domain Data is inexistant!");
@@ -256,8 +335,9 @@ function setupDomain(event, player_name) {
     event.block.storeddata.put("domain", player_domain);
 }
 
-// Function to load allenis data
+// function to load allenis data
 function load_data(event, data_file_path) {
+    // Check if the file exists, and create it if it doesn't
     if (!check_file_exists(data_file_path)) {
         event.player.message("ERROR: Domain Data is inexistant!");
         return null;
@@ -265,17 +345,23 @@ function load_data(event, data_file_path) {
         var ips = new java.io.FileInputStream(data_file_path);
         var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
         var readFile = fileReader.read();
+        var data;
         var start = "";
         while (readFile != -1) {
-            start += String.fromCharCode(readFile);
+            data = String.fromCharCode(readFile);
+            start = start + data;
             readFile = fileReader.read();
         }
 
-        return JSON.parse(start);
+        var json_data = JSON.parse(start);
+
+        //npc.say("Loaded data: " + JSON.stringify(json_data));
+
+        return json_data;
     }
 }
 
-// Function to check if a file exists
+// function to check if a file exists
 function check_file_exists(file_path) {
     var file = new java.io.File(file_path);
     return file.exists();

@@ -16,7 +16,7 @@ function init(event) {
     }
     update_job_entries(event.player);
     check_all_jobs(event.player);
-    tell_player_job(event.player);
+    // tell_player_job(event.player);
     update_job_perms(event.player);
     update_job_type_json(event.player);
 }

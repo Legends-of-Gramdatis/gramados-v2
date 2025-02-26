@@ -60,16 +60,16 @@ autostart.stamp
 !dynmap/markers.yml
 
 # stored data
-world/customnpcs/scripts/allenis_north_region.json
+world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json
 world/customnpcs/scripts/world_data*.json
 world/customnpcs/scripts/forge_scripts.json
 world/customnpcs/scripts/testing.json
-world/customnpcs/scripts/spy_json/stock_spying.json
+world/customnpcs/scripts/json_spy/stock_spying.json
 world/customnpcs/scripts/stock_exchange_data.json
 
 gramados_stocks/*
 myenv/*
-world/customnpcs/scripts/test_jsons/*
-world/customnpcs/scripts/backup_json/*
+world/customnpcs/scripts/json_tests/*
+world/customnpcs/scripts/json_backups/*
 world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeper_OS_OLD.js
 world/customnpcs/scripts/player_scripts.json

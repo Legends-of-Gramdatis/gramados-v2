@@ -6,8 +6,8 @@ var BUTTON_CLOSE = 1;
 var EMERGENCY_RESET = 2;
 
 // file path for the destinations
-var FILE_PATH = "world/customnpcs/scripts/players_phone.json";
-var PHONE_FILE_PATH = "world/customnpcs/scripts/players_phone.json";
+var FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/smartphone/players_phone.json";
+var PHONE_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/smartphone/players_phone.json";
 
 
 
