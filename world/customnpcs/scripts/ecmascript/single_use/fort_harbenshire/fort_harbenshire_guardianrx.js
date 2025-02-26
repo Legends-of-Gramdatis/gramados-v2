@@ -50,6 +50,7 @@ function init(event) {
         [-5283, 88, -843, "On Glass Dome, Above North West Stairs"],
         [-5216, 77, -825, "In First Floor Of Ruined Barracks Building"],
         [-5217, 88, -833, "On Roof Of Ruined Barracks Building"],
+        [-5259, 72, -827, "In the middle of the courtyard"],
     ];
 }
 

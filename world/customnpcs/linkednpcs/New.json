@@ -29,7 +29,7 @@
                                 ],
                                 "ScriptList": [
                                     {
-                                        "Line": "gramados-custom-npcs-scripts/open_gramados_bank_gate.js"
+                                        "Line": "single_use/bank/open_gramados_bank_gate.js"
                                     }
                                 ]
                             }
