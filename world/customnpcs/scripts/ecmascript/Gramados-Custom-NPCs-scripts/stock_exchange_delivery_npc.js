@@ -1003,15 +1003,15 @@ function check_file_exists(file_path) {
     return file.exists();
 }
 
-// Function to load "stock_spying.json"
+// Function to load "spy_json/stock_spying.json"
 function load_spy_data() {
-    var spy_data = load_json("world/customnpcs/scripts/stock_spying.json");
+    var spy_data = load_json("world/customnpcs/scripts/spy_json/stock_spying.json");
     return spy_data;
 }
 
-// Function to save "stock_spying.json"
+// Function to save "spy_json/stock_spying.json"
 function save_spy_data(data) {
-    save_json(data, "world/customnpcs/scripts/stock_spying.json");
+    save_json(data, "world/customnpcs/scripts/spy_json/stock_spying.json");
 }
 
 // Funtion to add the delivery into the spy data
