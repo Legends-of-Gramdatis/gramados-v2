@@ -1,7 +1,7 @@
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
 
-var data_file_path = "world/customnpcs/scripts/jobs_log.json";
+var data_file_path = "world/customnpcs/scripts/ecmascript/modules/jobs/jobs_log.json";
 
 var job_data;
 var tick_counter_max = 1;
