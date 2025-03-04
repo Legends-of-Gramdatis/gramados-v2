@@ -56,6 +56,12 @@ function listShopUpgrades(player, shopId, playerShops) {
     var messageUpgrades3 = [];
     var proportion = 0;
 
+    if (!shop.upgrades) {
+        shop.upgrades = [];
+        playerShops[shopId] = shop;
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    }
+
     for (var i = 0; i < upgrades.upgrades.length; i++) {
         var upgrade = upgrades.upgrades[i];
         var canTakeUpgrade = canShopTakeUpgrade(player, shopId, upgrade);
@@ -98,6 +104,12 @@ function listShopEvents(player, shopId, playerShops) {
     var messageEvents2 = [];
     var messageEvents3 = [];
     var proportion = 0;
+
+    if (!shop.events) {
+        shop.events = [];
+        playerShops[shopId] = shop;
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    }
 
     var running = shop.events.length;
 
@@ -237,4 +249,92 @@ function hasDependentUpgrades(player, upgrade, availableUpgrades) {
     // tellPlayer(player, "&aShop has the required upgrades!");
 
     return true;
+}
+
+function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
+    var shop = playerShops[shopId];
+    var upgrades = loadUpgradesAndEvents(player).upgrades;
+    var upgrade = findJsonEntry(upgrades, "id", upgradeId);
+
+    if (!upgrade) {
+        tellPlayer(player, "&cUpgrade not found: &e" + upgradeId);
+        return;
+    }
+
+    if (includes(shop.upgrades, upgradeId)) {
+        tellPlayer(player, "&cUpgrade already taken: &e" + upgradeId);
+        return;
+    }
+
+    var canTake = canShopTakeUpgrade(player, shopId, upgrade);
+    if (!canTake.canTake) {
+        tellPlayer(player, "&cCannot take upgrade: &e" + upgradeId);
+        for (var i = 0; i < canTake.messages.length; i++) {
+            tellPlayer(player, "&c- " + canTake.messages[i]);
+        }
+        return;
+    }
+
+    if (shop.finances.stored_cash < upgrade.cost) {
+        tellPlayer(player, "&cNot enough money in the shop's cash register!");
+        return;
+    }
+
+    shop.upgrades.push(upgradeId);
+    shop.finances.stored_cash -= upgrade.cost;
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    tellPlayer(player, "&aSuccessfully applied upgrade: &e" + upgrade.name);
+
+    // Update storage room size if the upgrade affects storage capacity
+    if (upgrade.modules && upgrade.modules.storage_capacity) {
+        shop.property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
+        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        tellPlayer(player, "&aStorage room size updated!");
+    }
+}
+
+function takeShopEvent(player, shopId, eventId, playerShops) {
+    var shop = playerShops[shopId];
+    var events = loadUpgradesAndEvents(player).events;
+    var event = findJsonEntry(events, "id", eventId);
+
+    if (!event) {
+        tellPlayer(player, "&cEvent not found: &e" + eventId);
+        return;
+    }
+
+    // if shop has no event entry, create one
+    if (!shop.events) {
+        shop.events = [];
+    }
+
+    if (findJsonSubEntry(shop.events, "id", eventId)) {
+        tellPlayer(player, "&cEvent already running: &e" + eventId);
+        return;
+    }
+
+    var canTake = canShopStartEvent(shopId, playerShops, event);
+    if (!canTake.canTake) {
+        tellPlayer(player, "&cCannot start event: &e" + eventId);
+        for (var i = 0; i < canTake.messages.length; i++) {
+            tellPlayer(player, "&c- " + canTake.messages[i]);
+        }
+        return;
+    }
+
+    if (shop.finances.stored_cash < event.cost) {
+        tellPlayer(player, "&cNot enough money in the shop's cash register!");
+        return;
+    }
+
+    var serverTickCount = world.getTotalTime();
+    shop.events.push({
+        id: eventId,
+        start_date: serverTickCount,
+        duration: event.repeatable.lasts_for
+    });
+    shop.finances.stored_cash -= event.cost;
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    tellPlayer(player, "&aSuccessfully started event: &e" + event.name);
+    tellPlayer(player, "&aCost: &r:money:&e" + getAmountCoin(event.cost));
 }
