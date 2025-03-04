@@ -215,9 +215,16 @@
             "marketing_campaign"
         ],
         "finances": {
-            "stored_cash": 18743460,
+            "stored_cash": 18713460,
             "default_margin": 0.25
-        }
+        },
+        "events": [
+            {
+                "id": "grand_opening_redux",
+                "start_date": 2421971952,
+                "duration": 6
+            }
+        ]
     },
     "2": {
         "roles": {
