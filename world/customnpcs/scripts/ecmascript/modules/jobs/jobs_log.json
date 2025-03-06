@@ -397,11 +397,25 @@
         "Name": "cowboycosmic",
         "JobHistory": {},
         "ActiveJobs": {
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2426114242,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
             "65": {
                 "JobID": 65,
                 "JobName": "Mechanic",
                 "StartTime": 2286151954,
                 "Region": "Gramados"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2426114242,
+                "Region": "Gramados",
+                "Type": "Advanced"
             }
         }
     },
@@ -621,6 +635,11 @@
     },
     "95a5b47c-a37f-4ac2-94da-5a55ef88da8c": {
         "Name": "Nucleosse",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "ebbdeeb3-5d9f-40c0-bbe0-ff1e56170d72": {
+        "Name": "ServerOverflow6",
         "JobHistory": {},
         "ActiveJobs": {}
     }
