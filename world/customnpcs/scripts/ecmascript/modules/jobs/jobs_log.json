@@ -349,6 +349,13 @@
     "e1aa77ce-559b-4c38-8462-5ece25dbf0fe": {
         "Name": "SinaBloodsaw",
         "JobHistory": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2351850720,
+                "EndTime": 2426509695,
+                "Region": "Gramados"
+            },
             "65": {
                 "JobID": 65,
                 "JobName": "Mechanic",
@@ -365,18 +372,18 @@
                 "Region": "Greenfield",
                 "Type": "Advanced"
             },
-            "54": {
-                "JobID": 54,
-                "JobName": "Concrete Factory Worker",
-                "StartTime": 2351850720,
-                "Region": "Gramados",
-                "Type": "Starter"
-            },
             "56": {
                 "JobID": 56,
                 "JobName": "Lumberjack",
                 "StartTime": 2377574304,
                 "Region": "Greenfield",
+                "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2426509995,
+                "Region": "Gramados",
                 "Type": "Starter"
             },
             "154": {
