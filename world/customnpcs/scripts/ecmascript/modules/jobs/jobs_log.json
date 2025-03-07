@@ -354,7 +354,8 @@
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2351850720,
                 "EndTime": 2426509695,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             },
             "65": {
                 "JobID": 65,
