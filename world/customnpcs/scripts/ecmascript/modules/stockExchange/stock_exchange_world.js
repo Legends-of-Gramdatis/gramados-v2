@@ -78,6 +78,7 @@ function updateStockPrice(stockValue, regionGeneral) {
             // var percent = 1 + (random * proportion);
             // stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
 
+            var maxPrice = stockValue["max_price"];
             var diff = 0;
             if (
                 stockValue["current_price"] < 
