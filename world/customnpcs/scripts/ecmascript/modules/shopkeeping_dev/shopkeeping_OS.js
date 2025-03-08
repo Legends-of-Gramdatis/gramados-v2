@@ -74,6 +74,11 @@ function chat(event) {
             }
         }
 
+        if (!name || !type || !region || !sub_region) {
+            tellPlayer(player, "&cMissing parameters! Usage: &e$shop create name=<name> type=<type> region=<region> sub_region=<sub_region> [money=<money>]");
+            return;
+        }
+
         createShop(player, type, region, sub_region, convertUnderscore(name), money);
     } else if (message.startsWith("$shop delete")) {    
         var args = message.split(" ");
@@ -86,6 +91,24 @@ function chat(event) {
             deleteShop(player, shopId);
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop delete <ID>");
+        }
+    } else if (message.startsWith("$shop type switch")) {
+        var args = message.split(" ");
+        if (args.length === 5) {
+            var shopId = parseInt(args[3]);
+            var newType = args[4];
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
+                return;
+            }
+            var shop = playerShops[shopId];
+            shop.shop.type = newType;
+            initStockRoom(player, shopId, playerShops);
+            removeOutdatedListedItems(player, shop, newType);
+            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+            tellPlayer(player, "&aShop type switched to &e" + newType + " &afor shop &e" + shopId);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop type switch <ID> <NewType>");
         }
     } else if (message.startsWith("$shop property set")) {
         var args = message.split(" ");
