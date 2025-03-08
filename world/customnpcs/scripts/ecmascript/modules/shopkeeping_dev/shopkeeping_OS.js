@@ -543,6 +543,73 @@ function chat(event) {
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop event take <shopID> <eventID>");
         }
+    } else if (message.startsWith("$shop sell")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[2]);
+            var salePrice = getCoinAmount(args[3]);
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[2]);
+                return;
+            }
+            var shop = playerShops[shopId];
+            // check ownership
+            if (shop.roles.owner !== player.getName()) {
+                tellPlayer(player, "&cYou do not own shop &e" + shopId);
+                return;
+            }
+            var regionValue = getRegionValue(player, array_merge(shop.property.stock_room, shop.property.main_room));
+            if (salePrice < (regionValue + shop.finances.stored_cash)) {
+                tellPlayer(player, "&cSale price must be at least &e" + getAmountCoin(regionValue + shop.finances.stored_cash));
+                if (shop.finances.stored_cash > 0) {
+                    tellPlayer(player, "&cCurrent stored cash in shop: &e" + getAmountCoin(shop.finances.stored_cash));
+                }
+                return;
+            }
+            shop.real_estate.sale_price = salePrice;
+            shop.real_estate.is_for_sale = true;
+            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+            tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &e" + getAmountCoin(salePrice));
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop sell <ID> <price>");
+        }
+    } else if (message.startsWith("$shop buy")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[2]);
+            var buyerName = args[3];
+            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+                tellPlayer(player, "&cInvalid shop ID: &e" + args[2]);
+                return;
+            }
+            var shop = playerShops[shopId];
+            if (!shop.real_estate.is_for_sale) {
+                tellPlayer(player, "&cShop &e" + shopId + " &cis not for sale!");
+                return;
+            }
+            if (shop.roles.owner === buyerName) {
+                tellPlayer(player, "&cYou can't buy a shop you are selling!");
+                return;
+            }
+            var salePrice = shop.real_estate.sale_price;
+            var buyer = world.getPlayer(buyerName);
+            if (!buyer) {
+                tellPlayer(player, "&cBuyer &e" + buyerName + " &cis not online!");
+                return;
+            }
+            if (!getMoneyFromPlayerPouch(buyer, salePrice)) {
+                tellPlayer(player, "&cBuyer &e" + buyerName + " &cdoes not have enough money!");
+                return;
+            }
+            shop.roles.owner = buyerName;
+            shop.real_estate.is_for_sale = false;
+            shop.real_estate.last_sold_date = new Date().getTime();
+            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+            tellPlayer(player, "&aShop &e" + shopId + " &ahas been sold to &e" + buyerName);
+            tellPlayer(buyer, "&aYou have bought shop &e" + shopId + " &afor &e" + getAmountCoin(salePrice));
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop buy <ID> <buyer>");
+        }
     } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
         tellPlayer(player, "&b=========================================");
         tellPlayer(player, "&bShop Commands:");
@@ -720,7 +787,13 @@ function createShop(player, type, region, sub_region, display_name, money) {
             reputation: 0,
             reputation_history: []
         },
-        upgrades: []
+        upgrades: [],
+        real_estate: {
+            sale_price: 0,
+            is_for_sale: false,
+            last_sold_date: 0,
+            commercial_premises_value: 0
+        }
     };
 
     saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
@@ -1243,4 +1316,48 @@ function getReputationAgo(player, shop, hours) {
 
 function calculateReputationChangePercent(oldReputation, newReputation) {
     return Math.round(((newReputation - oldReputation) / oldReputation) * 10000) / 100;
+}
+
+function getRegionValue(player, entries) {
+
+    // tellPlayer(player, "Entries: " + JSON.stringify(entries));
+
+
+    // loop through all entries, an only keep the part before the ":". If multiple entries have the same part before the ":", do not duplicate it.
+    var regions = [];
+    for (var i = 0; i < entries.length; i++) {
+        var region = entries[i].split(":")[0];
+        if (regions.indexOf(region) === -1) {
+            regions.push(region);
+        }
+    }
+
+    // tellPlayer(player, "Regions: " + JSON.stringify(regions));
+
+    // loop through all regions, and get their value from world data
+    var value = 0
+    for (var i = 0; i < regions.length; i++) {
+        value += getRegionValueFromWorld(player, regions[i]);
+    }
+
+    return value;
+}
+
+function getRegionValueFromWorld(player, region) {
+    // tellPlayer(player, "Getting region value for: " + region + " as " + "region_" + region);
+    var worldData = getWorldData();
+    var region_json = JSON.parse(worldData.get(["region_" + region]));
+    if (region_json
+        && region_json.saleType
+        && region_json.saleType === "buy"
+        && region_json.salePrice) 
+        {
+            // tellPlayer(player, "Region value: " + region_json.salePrice);
+            return region_json.salePrice;
+        }
+    // tellPlayer(player, "Region not found or not for sale!");
+    // tellPlayer(player, JSON.stringify(region_json));
+    // tellPlayer(player, JSON.stringify(region_json.saleType));
+    // tellPlayer(player, JSON.stringify(region_json.salePrice));
+    return 0;
 }
