@@ -8,12 +8,6 @@ var UPGRADES_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeepin
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/stock_exchange_data.json"
 var NPC_MARKET_DATA_JSON_PATH = "world/customnpcs/markets/"
 
-var PERMISSION_OPEN_CLOSE_SHOP = "open_close_shop";
-var PERMISSION_SET_PRICES = "set_prices";
-var PERMISSION_MANAGE_PERMISSIONS = "manage_permissions";
-var PERMISSION_TAKE_MONEY = "take_money";
-var PERMISSION_MANAGE_STOCK = "manage_stock";
-
 var world = API.getIWorld(0);
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
@@ -24,6 +18,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js")
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_grading.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_upgrades.js")
+load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_permissions.js")
 
 function init(event) {
     var player = event.player;
@@ -103,6 +98,11 @@ function chat(event) {
                 return;
             }
             var shop = playerShops[shopId];
+
+            if (!hasPermission(player.getName(), shop, PERMISSION_TYPE_SWITCH)) {
+                tellPlayer(player, "&cYou don't have permission to switch shop types!");
+                return;
+            }
             shop.shop.type = newType;
             initStockRoom(player, shopId, playerShops);
             removeOutdatedListedItems(player, shop, newType);
@@ -297,7 +297,7 @@ function chat(event) {
                     return;
                 }
             }
-            removeStock(player, shopId, itemId, count, playerShops);
+            removeStock(player, shop, itemId, count, playerShops);
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop stock remove <ID> <Item ID or index> [number]");
         }
@@ -352,6 +352,17 @@ function chat(event) {
         var shopId = parseInt(args[3]);
         var defaultMargin = args[4];
 
+        var shop = playerShops[shopId];
+        if (!shop) {
+            tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+            return;
+        }
+
+        if (!hasPermission(player.getName(), shop, PERMISSION_SET_PRICES)) {
+            tellPlayer(player, "&cYou don't have permission to set prices for this shop!");
+            return;
+        }
+
         if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
             tellPlayer(player, "&cInvalid shop ID: &e" + args[3]);
             return;
@@ -372,8 +383,6 @@ function chat(event) {
             tellPlayer(player, "&cInvalid percentage value!");
             return;
         }
-
-        var shop = playerShops[shopId];
         shop.finances.default_margin = percent / 100;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         tellPlayer(player, "&aDefault margin set to &e" + defaultMargin + " &afor shop &e" + shopId);
@@ -550,52 +559,7 @@ function chat(event) {
             var shopId = parseInt(args[2]);
             var salePrice = args[3];
 
-            if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
-                tellPlayer(player, "&cInvalid shop ID: &e" + args[2]);
-                return;
-            }
-
-            var shop = playerShops[shopId];
-
-            // check ownership
-            if (shop.roles.owner !== player.getName()) {
-                tellPlayer(player, "&cYou do not own shop &e" + shopId);
-                return;
-            }
-
-            if (salePrice.toLowerCase() === "cancel") {
-                shop.real_estate.is_for_sale = false;
-                saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-                tellPlayer(player, "&aShop &e" + shopId + " &ais no longer for sale.");
-                return;
-            }
-
-            salePrice = getCoinAmount(salePrice);
-            var regionValue = getPremisesValue(player, getShopRegions(player, array_merge(shop.property.stock_room, shop.property.main_room)));
-            if (salePrice < (regionValue + shop.finances.stored_cash)) {
-                tellPlayer(player, "&cSale price must be at least &r:money:&e" + getAmountCoin(regionValue + shop.finances.stored_cash));
-                if (shop.finances.stored_cash > 0) {
-                    tellPlayer(player, "&cCurrent stored cash in shop: &r:money:&e" + getAmountCoin(shop.finances.stored_cash));
-                }
-                return;
-            }
-
-            if (shop.real_estate.is_for_sale) {
-                tellPlayer(player, "&cShop &e" + shopId + " &cis already for sale at &r:money:&e" + getAmountCoin(shop.real_estate.sale_price));
-                return;
-            }
-
-            var currentTime = world.getTotalTime();
-            if (currentTime - shop.real_estate.last_sold_date < 7 * 24 * 60 * 60 * 20) {
-                tellPlayer(player, "&cYou cannot sell this shop within 1 week of buying it!");
-                return;
-            }
-
-            shop.real_estate.sale_price = salePrice;
-            shop.real_estate.is_for_sale = true;
-            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-            tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
-            tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
+            sellShop(player, shopId, salePrice, playerShops);
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop sell <ID> <price|cancel>");
         }
@@ -667,18 +631,23 @@ function chat(event) {
 // Open the shop
 // ------------------------------------------------------------------------------------------------------------
 function openShop(player, shopId, serverShops) {
+    var shop = serverShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return false;
+    }
+
+    if (!hasPermission(player.getName(), shop, PERMISSION_OPEN_CLOSE_SHOP)) {
+        tellPlayer(player, "&cYou don't have permission to open this shop!");
+        tellPlayer(player, "&7Your current roles: &e" + getPlayerRolesFromShop(player.getName(), shop));
+        return false;
+    }
     // Check integrity
     if (
         ensureShopExists(player, shopId, serverShops) &&
         ensureShopDataComplete(player, shopId, serverShops, true).valid
     ) {
         var shopData = serverShops[shopId];
-
-        // Check if player is the owner
-        if (shopData.roles.owner !== player.getName()) {
-            tellPlayer(player, "&cYou don't own this shop!");
-            return false;
-        }
 
         // Check if shop is closed
         if (shopData.shop.is_open) {
@@ -687,9 +656,9 @@ function openShop(player, shopId, serverShops) {
         }
 
         // Check if player has another shop of similar type and region/subregion open
-        var playerShops = listShops(player, serverShops);
+        var playerShops = listShops(player, shopData.roles.owner, serverShops);
         if (playerShops.length === 0) {
-            tellPlayer(player, "&cYou don't have any shops!");
+            tellPlayer(player, "&cShop owner doesn't have any shops!");
             return false;
         }
         for (var i = 0; i < playerShops.length; i++) {
@@ -701,7 +670,7 @@ function openShop(player, shopId, serverShops) {
                 otherShop.property.region === shopData.property.region &&
                 otherShop.property.sub_region === shopData.property.sub_region
             ) {
-                tellPlayer(player, "&cYou already have another shop of similar type and region/subregion open!");
+                tellPlayer(player, "&cThe owner already has a shop of the same type and region/subregion open!");
                 return false;
             }
         }
@@ -721,16 +690,19 @@ function openShop(player, shopId, serverShops) {
 // ------------------------------------------------------------------------------------------------------------
 function closeShop(player, shopId) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
-
+    var shop = serverShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return false;
+    }
+    
+    if (!hasPermission(player.getName(), shop, PERMISSION_OPEN_CLOSE_SHOP)) {
+        tellPlayer(player, "&cYou don't have permission to close this shop!");
+        return false;
+    }
     // Check integrity
     if (ensureShopExists(player, shopId, serverShops)) {
         var shopData = serverShops[shopId];
-
-        // Check if player is the owner
-        if (shopData.roles.owner !== player.getName()) {
-            tellPlayer(player, "&cYou don't own this shop!");
-            return false;
-        }
 
         // Check if shop is open
         if (!shopData.shop.is_open) {
@@ -765,12 +737,7 @@ function createShop(player, type, region, sub_region, display_name, money) {
 
     serverShops[shopId] = {
         roles: {
-            enabled: false,
-            owner: player.getName(),
-            managers: [],
-            cashiers: [],
-            stock_keepers: [],
-            assistants: []
+            owner: [player.getName()]
         },
         inventory: {
             stock: {},
@@ -855,6 +822,16 @@ function shopInfo(player, shopId) {
 // Set price of an item in the shop
 // ------------------------------------------------------------------------------------------------------------
 function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
+    var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+
+    if (!hasPermission(player.getName(), shop, PERMISSION_SET_PRICES)) {
+        tellPlayer(player, "&cYou don't have permission to set prices for this shop!");
+        return;
+    }
     var shop = playerShops[shopId];
     var item = null;
     var itemTag = null;
@@ -1220,8 +1197,16 @@ function evalHandItem(player) {
 }
 
 function putMoneyInShop(player, shopId, playerShops) {
-    tellPlayer(player, "&aPutting money in shop &e" + shopId);
     var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+        tellPlayer(player, "&cYou don't have permission to put money in this shop!");
+        return;
+    }
+    tellPlayer(player, "&aPutting money in shop &e" + shopId);
     var totalMoney = 0;
 
     totalMoney += getMoneyFromPlayerInventory(player, world);
@@ -1237,6 +1222,14 @@ function putMoneyInShop(player, shopId, playerShops) {
 
 function takeMoneyFromShop(player, shopId, value, playerShops) {
     var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+        tellPlayer(player, "&cYou don't have permission to take money from this shop!");
+        return;
+    }
     if (shop.finances.stored_cash < value) {
         tellPlayer(player, "&cNot enough money in the shop's inventory!");
         return;
@@ -1253,8 +1246,16 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
 }
 
 function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
+    var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+        tellPlayer(player, "&cYou don't have permission to put money in this shop!");
+        return;
+    }
     if (getMoneyFromPlayerPouch(player, value)) {
-        var shop = playerShops[shopId];
         shop.finances.stored_cash += value;
         saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
         tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(value) + " &ato shop &e" + shopId);
@@ -1264,6 +1265,15 @@ function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
 }
 
 function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
+    var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+        tellPlayer(player, "&cYou don't have permission to take money from this shop!");
+        return;
+    }
     var shop = playerShops[shopId];
     if (shop.finances.stored_cash < value) {
         tellPlayer(player, "&cNot enough money in the shop's inventory!");
@@ -1389,4 +1399,50 @@ function buyShop(player, shopId, buyerName, playerShops) {
     tellPlayer(player, "&aShop &e" + shopId + " &ahas been sold to &e" + buyerName);
     tellPlayer(buyer, "&aYou have bought shop &e" + shopId + " &afor &r:money:&e" + getAmountCoin(salePrice));
     tellPlayer(buyer, "&7Note: The shop's reputation has decreased by &e10%&7.");
+}
+
+function sellShop(player, shopId, salePrice, playerShops) {
+    if (!hasPermission(player.getName(), shop, PERMISSION_SELL_SHOP)) {
+        tellPlayer(player, "&cYou don't have permission to sell this shop!");
+        return;
+    }
+
+    if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
+        tellPlayer(player, "&cInvalid shop ID: &e" + args[2]);
+        return;
+    }
+
+    var shop = playerShops[shopId];
+    if (shop.real_estate.is_for_sale) {
+        if (salePrice.toLowerCase() === "cancel") {
+            shop.real_estate.is_for_sale = false;
+            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+            tellPlayer(player, "&aShop &e" + shopId + " &ais no longer for sale.");
+            return;
+        } else if (salePrice.toLowerCase() === "info") {
+            tellPlayer(player, "&aShop &e" + shopId + " &ais for sale at &r:money:&e" + getAmountCoin(shop.real_estate.sale_price));
+            return;
+        }
+    }
+
+    var regionValue = getPremisesValue(player, getShopRegions(player, array_merge(shop.property.stock_room, shop.property.main_room)));
+    if (salePrice < (regionValue + shop.finances.stored_cash)) {
+        tellPlayer(player, "&cSale price must be at least &r:money:&e" + getAmountCoin(regionValue + shop.finances.stored_cash));
+        if (shop.finances.stored_cash > 0) {
+            tellPlayer(player, "&cCurrent stored cash in shop: &r:money:&e" + getAmountCoin(shop.finances.stored_cash));
+        }
+        return;
+    }
+
+    var currentTime = world.getTotalTime();
+    if (currentTime - shop.real_estate.last_sold_date < 7 * 24 * 60 * 60 * 20) {
+        tellPlayer(player, "&cYou cannot sell this shop within 1 week of buying it!");
+        return;
+    }
+
+    shop.real_estate.sale_price = getCoinAmount(salePrice);
+    shop.real_estate.is_for_sale = true;
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
+    tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
 }

@@ -17,19 +17,19 @@ function ensureShopExists(player, shopId, playerShops) {
 }
 
 // Function to get a list of all shops a given player owns
-function listShops(player, serverShops) {
+function listShops(player, ownername, serverShops) {
     var shops = [];
     for (var shopId in serverShops) {
-        if (serverShops[shopId].roles.owner === player.getName()) {
+        if (serverShops[shopId].roles.owner === ownername) {
             shops.push(shopId);
         }
     }
 
     if (shops.length === 0) {
-        player.message("No shops found for " + player.getName() + "!");
-    } else {
+        player.message("No shops found for " + ownername + "!");
+    } /*else {
         player.message("Shops you own: " + shops.join(", "));
-    }
+    }*/
 
     return shops;
 }
@@ -37,18 +37,6 @@ function listShops(player, serverShops) {
 // Function to check if a shop with given ID exists or not
 function shopExists(shopId, playerShops) {
     return !!playerShops[shopId];
-}
-
-// Function to check ownership of a shop to a player
-function isOwner(player, shopId) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops || !playerShops[shopId]) {
-        player.message("Shop not found!");
-        listShops(player);
-        return false;
-    }
-
-    return playerShops[shopId].roles.owner === player.getName();
 }
 
 // function to check if a shop instance isn't missing any data (update proof)
@@ -144,41 +132,6 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
     }
 
     return { valid: valid, critical: critical, missing: missing };
-}
-
-// Function to get the list of permissions a player has in a shop
-function getPermissions(player, playerShops, shopID) {
-    var permissions = [];
-
-    if (playerShops[shopID].roles.owner === player.getName()) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_SET_PRICES);
-        permissions.push(PERMISSION_MANAGE_PERMISSIONS);
-        permissions.push(PERMISSION_TAKE_MONEY);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.managers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_SET_PRICES);
-        permissions.push(PERMISSION_MANAGE_PERMISSIONS);
-        permissions.push(PERMISSION_TAKE_MONEY);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.cashiers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_TAKE_MONEY);
-    } else if (playerShops[shopID].roles.stock_keepers.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-        permissions.push(PERMISSION_MANAGE_STOCK);
-    } else if (playerShops[shopID].roles.assistants.includes(player.getName())) {
-        permissions.push(PERMISSION_OPEN_CLOSE_SHOP);
-    }
-
-    return permissions;
-}
-
-// Function to get permissions of a player in a shop
-function checkPermissions(player, shopID, playerShops, permission) {
-    var permissions = getPermissions(player, playerShops, shopID);
-    return permissions.includes(permission);
 }
 
 function convertUnderscore(str) {

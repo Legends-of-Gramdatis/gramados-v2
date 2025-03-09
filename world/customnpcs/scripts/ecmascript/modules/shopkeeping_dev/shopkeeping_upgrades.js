@@ -253,6 +253,14 @@ function hasDependentUpgrades(player, upgrade, availableUpgrades) {
 
 function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
     var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_UPGRADE)) {
+        tellPlayer(player, "&cYou don't have permission to take upgrades for this shop!");
+        return;
+    }
     var upgrades = loadUpgradesAndEvents(player).upgrades;
     var upgrade = findJsonEntry(upgrades, "id", upgradeId);
 
@@ -295,6 +303,14 @@ function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
 
 function takeShopEvent(player, shopId, eventId, playerShops) {
     var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_EVENT)) {
+        tellPlayer(player, "&cYou don't have permission to take events for this shop!");
+        return;
+    }
     var events = loadUpgradesAndEvents(player).events;
     var event = findJsonEntry(events, "id", eventId);
 

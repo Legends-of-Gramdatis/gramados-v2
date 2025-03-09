@@ -237,6 +237,17 @@ function moveUnsalableItems(stock, availableItems, unsalableItems) {
  * @param {Object} playerShops - The player's shops.
  */
 function addStockFromHand(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop not found!");
+        return;
+    }
+
+    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
+        tellPlayer(player, "&cYou don't have permission to add stock to this shop!");
+        return;
+    }
+
     var itemstack = player.getMainhandItem();
     if (itemstack.isEmpty()) {
         tellPlayer(player, "&cYou are not holding any item!");
@@ -295,6 +306,16 @@ function addStockFromHand(player, shopId, playerShops) {
  * @param {Object} playerShops - The player's shops.
  */
 function addAllStockFromInventory(player, shopId, playerShops) {
+    var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop not found!");
+        return;
+    }
+    
+    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
+        tellPlayer(player, "&cYou don't have permission to add stock to this shop!");
+        return;
+    }
     // tellPlayer(player, "&aAdding all items to the shop stock...");
     var inventory = player.getInventory().getItems();
     var shop = playerShops[shopId];
@@ -357,8 +378,11 @@ function addAllStockFromInventory(player, shopId, playerShops) {
  * @param {number} count - The number of items to remove.
  * @param {Object} playerShops - The player's shops.
  */
-function removeStock(player, shopId, itemId, count, playerShops) {
-    var shop = playerShops[shopId];
+function removeStock(player, shop, itemId, count, playerShops) {
+    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
+        tellPlayer(player, "&cYou don't have permission to remove stock from this shop!");
+        return;
+    }
     var stock = shop.inventory.stock;
     var unsalableItems = shop.inventory.unsalable_items;
 
@@ -386,7 +410,7 @@ function removeStock(player, shopId, itemId, count, playerShops) {
     itemstack.setStackSize(count);
 
     if (stockItem.count < count) {
-        tellPlayer(player, "&cNot enough items in stock!");
+        tellPlayer(player, "&cNot enough items in stock! There are less than &e" + count + " &citems in stock.");
         return;
     }
 
@@ -606,6 +630,15 @@ function removeOutdatedListedItems(player, shop, newType) {
  */
 function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
     var shop = playerShops[shopId];
+    if (!shop) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        return;
+    }
+
+    if (!hasPermission(player.getName(), shop, PERMISSION_SET_PRICES)) {
+        tellPlayer(player, "&cYou don't have permission to remove items from the listed items!");
+        return;
+    }
     var itemId = itemIdOrIndex;
 
     if (!isNaN(itemIdOrIndex)) {
