@@ -232,8 +232,8 @@
             }
         ],
         "real_estate": {
-            "sale_price": 100000000,
-            "is_for_sale": true,
+            "sale_price": 30000000,
+            "is_for_sale": false,
             "last_sold_date": 0,
             "commercial_premises_value": 0
         }
@@ -324,7 +324,7 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 642,
+            "reputation": 587.8,
             "reputation_history": []
         },
         "upgrades": [
@@ -345,8 +345,8 @@
         "real_estate": {
             "sale_price": 3000000,
             "is_for_sale": false,
-            "last_sold_date": 1741509234417,
-            "commercial_premises_value": 0
+            "last_sold_date": 2430551000,
+            "commercial_premises_value": 2430551000
         }
     }
 }
