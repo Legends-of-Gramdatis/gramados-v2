@@ -629,3 +629,36 @@ function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
         return false;
     }
 }
+
+/**
+ * Calculates the total value of the premises based on the regions.
+ * @param {IPlayer} player - The player.
+ * @param {Array} regions - The list of regions.
+ * @returns {number} The total value of the premises.
+ */
+function getPremisesValue(player, regions) {
+    var value = 0
+    for (var i = 0; i < regions.length; i++) {
+        value += getRegionPrice(regions[i], player);
+    }
+
+    return value;
+}
+
+/**
+ * Retrieves the unique regions from the given entries.
+ * @param {IPlayer} player - The player.
+ * @param {Array} entries - The list of entries.
+ * @returns {Array} The list of unique regions.
+ */
+function getShopRegions(player, entries) {
+    var regions = [];
+    for (var i = 0; i < entries.length; i++) {
+        var region = entries[i].split(":")[0];
+        if (regions.indexOf(region) === -1) {
+            regions.push(region);
+        }
+    }
+
+    return regions;
+}
