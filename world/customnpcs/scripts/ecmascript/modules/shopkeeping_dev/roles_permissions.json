@@ -1,0 +1,39 @@
+{
+    "roles": {
+        "owner": {
+            "permissions": [
+                "open_close_shop",
+                "set_prices",
+                "manage_permissions",
+                "take_money",
+                "manage_stock",
+                "sell_shop",
+                "type_switch",
+                "take_upgrade",
+                "take_event"
+            ]
+        },
+        "manager": {
+            "permissions": [
+                "open_close_shop",
+                "set_prices",
+                "manage_stock",
+                "take_money",
+                "take_event"
+            ]
+        },
+        "cashier": {
+            "permissions": [
+                "take_money"
+            ]
+        },
+        "stock_keeper": {
+            "permissions": [
+                "manage_stock"
+            ]
+        },
+        "assistant": {
+            "permissions": []
+        }
+    }
+}
