@@ -617,6 +617,15 @@ function chat(event) {
         var args = message.split(" ");
         var shopId = args[3];
         listShopPrices(player, shopId);
+    } else if (message.startsWith("$shop info")) {
+        var args = message.split(" ");
+        var shopId = args[2];
+        // if command has an "item" argument, show item info
+        if (args.length === 4 && args[3] === "item") {
+            displayShopInfo(player, shopId, true);
+        } else {
+            displayShopInfo(player, shopId);
+        }
     } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
         tellPlayer(player, "&b=========================================");
         tellPlayer(player, "&bShop Commands:");

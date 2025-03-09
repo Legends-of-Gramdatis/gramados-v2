@@ -735,3 +735,78 @@ function listShopPrices(player, shopId) {
         }
     }
 }
+
+/**
+ * Displays a full recap of the shop.
+ * @param {IPlayer} player - The player.
+ * @param {number} shopId - The shop ID.
+ * @param {boolean} extended - Whether to show extended information.
+ */
+function displayShopInfo(player, shopId, extended) {
+    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!playerShops || !playerShops[shopId]) {
+        tellPlayer(player, "&cShop not found!");
+        return;
+    }
+
+    var shop = playerShops[shopId];
+    var stockRoomSize = getStockRoomSize(player, shopId, playerShops);
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    var stockRoomUsed = stockRoomSize - stockRoomLeft;
+    var percentageFilled = (stockRoomUsed / stockRoomSize) * 100;
+
+    tellPlayer(player, "&b=========================================");
+    tellPlayer(player, "&bShop Info for Shop ID: &e" + shopId);
+    tellPlayer(player, "&b=========================================");
+    tellPlayer(player, "&aDisplay Name: &e" + shop.shop.display_name);
+    tellPlayer(player, "&aType: &e" + shop.shop.type);
+    tellPlayer(player, "&aRegion: &e" + shop.property.region);
+    tellPlayer(player, "&aSub-Region: &e" + shop.property.sub_region);
+    tellPlayer(player, "&aLocation: &e(" + shop.property.location.x + ", " + shop.property.location.y + ", " + shop.property.location.z + ")");
+    tellPlayer(player, "&aOwner: &e" + shop.roles.owner);
+    tellPlayer(player, "&aManagers: &e" + shop.roles.managers.join(", "));
+    tellPlayer(player, "&aCashiers: &e" + shop.roles.cashiers.join(", "));
+    tellPlayer(player, "&aStock Keepers: &e" + shop.roles.stock_keepers.join(", "));
+    tellPlayer(player, "&aAssistants: &e" + shop.roles.assistants.join(", "));
+    tellPlayer(player, "&aReputation: &e" + shop.reputation_data.reputation);
+    tellPlayer(player, "&aStored Cash: &e" + getAmountCoin(shop.finances.stored_cash));
+    tellPlayer(player, "&aDefault Margin: &e" + (shop.finances.default_margin * 100) + "%");
+    tellPlayer(player, "&aStock Room Size: &e" + stockRoomSize);
+    tellPlayer(player, "&aStock Room Used: &e" + stockRoomUsed);
+    tellPlayer(player, "&aStock Room Left: &e" + stockRoomLeft);
+    tellPlayer(player, "&aPercentage Filled: &e" + percentageFilled.toFixed(2) + "%");
+
+    tellPlayer(player, "&aUpgrades:");
+    for (var i = 0; i < shop.upgrades.length; i++) {
+        tellPlayer(player, "&e- " + shop.upgrades[i]);
+    }
+
+    tellPlayer(player, "&aEvents:");
+    for (var i = 0; i < shop.events.length; i++) {
+        var event = shop.events[i];
+        tellPlayer(player, "&e- " + event.id + " (Start Date: " + event.start_date + ", Duration: " + event.duration + ")");
+    }
+
+    if (extended) {
+
+        tellPlayer(player, "&aStocked Items:");
+        for (var itemId in shop.inventory.stock) {
+            var item = shop.inventory.stock[itemId];
+            tellPlayer(player, "&e" + itemId + ": &a" + item.count);
+        }
+
+        tellPlayer(player, "&aUnsalable Items:");
+        for (var itemId in shop.inventory.unsalable_items) {
+            var item = shop.inventory.unsalable_items[itemId];
+            tellPlayer(player, "&e" + itemId + ": &a" + item.count);
+        }
+
+        tellPlayer(player, "&aListed Items:");
+        for (var itemId in shop.inventory.listed_items) {
+            var listedItem = shop.inventory.listed_items[itemId];
+            tellPlayer(player, "&e" + itemId + ": &aPrice: &r:money:&e" + getAmountCoin(listedItem.price) + " &aStock: &e" + (shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0));
+        }
+    }
+
+    tellPlayer(player, "&b=========================================");
+}
