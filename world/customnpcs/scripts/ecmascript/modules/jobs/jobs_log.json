@@ -293,6 +293,13 @@
             }
         },
         "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2431386862,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
             "56": {
                 "JobID": 56,
                 "JobName": "Lumberjack",
