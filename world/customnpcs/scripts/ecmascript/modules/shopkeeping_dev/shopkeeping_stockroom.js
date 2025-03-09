@@ -662,3 +662,42 @@ function getShopRegions(player, entries) {
 
     return regions;
 }
+
+/**
+ * Lists the stock information for a shop.
+ * @param {IPlayer} player - The player.
+ * @param {number} shopId - The shop ID.
+ * @param {boolean} showItems - Whether to show the list of stocked items.
+ */
+function listShopStock(player, shopId, showItems) {
+    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!playerShops || !playerShops[shopId]) {
+        tellPlayer(player, "&cShop not found!");
+        return;
+    }
+
+    var shop = playerShops[shopId];
+    var stockRoomSize = getStockRoomSize(player, shopId, playerShops);
+    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    var stockRoomUsed = stockRoomSize - stockRoomLeft;
+    var percentageFilled = (stockRoomUsed / stockRoomSize) * 100;
+
+    tellPlayer(player, "&aStock Room Info for Shop ID: &e" + shopId);
+    tellPlayer(player, "&aTotal Stock Room Size: &e" + stockRoomSize);
+    tellPlayer(player, "&aStock Room Used: &e" + stockRoomUsed);
+    tellPlayer(player, "&aStock Room Left: &e" + stockRoomLeft);
+    tellPlayer(player, "&aPercentage Filled: &e" + percentageFilled.toFixed(2) + "%");
+
+    if (showItems) {
+        tellPlayer(player, "&aStocked Items:");
+        for (var itemId in shop.inventory.stock) {
+            var item = shop.inventory.stock[itemId];
+            tellPlayer(player, "&e" + itemId + ": &a" + item.count);
+        }
+        tellPlayer(player, "&aUnsalable Items:");
+        for (var itemId in shop.inventory.unsalable_items) {
+            var item = shop.inventory.unsalable_items[itemId];
+            tellPlayer(player, "&e" + itemId + ": &a" + item.count);
+        }
+    }
+}
