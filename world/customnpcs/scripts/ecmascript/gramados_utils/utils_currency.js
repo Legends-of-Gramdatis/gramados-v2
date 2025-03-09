@@ -233,24 +233,36 @@ function getMoneyFromPlayerPouch(player, value) {
 }
 
 /**
- * Adds money to a player's pouch.
+ * Adds money to the current player's pouch.
  * @param {Object} player - The player object.
  * @param {number} value - The value to add in cents.
  * @returns {boolean} - True if the money was successfully added, false otherwise.
  */
-function addMoneyToPlayerPouch(player, value) {
-    // player.message("Adding " + getAmountCoin(value) + " to your pouch.");
+function addMoneyToCurrentPlayerPouch(player, value) {
     var worldData = getWorldData();
     var playerIndex = player.getDisplayName();
     playerIndex = "player_" + playerIndex;
-    // player.message("Player index: " + playerIndex);
     var playerData = JSON.parse(worldData.get(playerIndex));
-    // player.message("Player data: " + JSON.stringify(playerData));
     var money = playerData["money"];
-    // player.message("Current money: " + money + " Adding: " + value);
     money = money + value;
     playerData["money"] = money;
-    // player.message("New money: " + money + " JSON: " + JSON.stringify(playerData));
+    worldData.put(playerIndex, JSON.stringify(playerData));
+    return true;
+}
+
+/**
+ * Adds money to a specified player's pouch by name.
+ * @param {string} playerName - The name of the player.
+ * @param {number} value - The value to add in cents.
+ * @returns {boolean} - True if the money was successfully added, false otherwise.
+ */
+function addMoneyToPlayerPouchByName(playerName, value) {
+    var worldData = getWorldData();
+    var playerIndex = "player_" + playerName;
+    var playerData = JSON.parse(worldData.get(playerIndex));
+    var money = playerData["money"];
+    money = money + value;
+    playerData["money"] = money;
     worldData.put(playerIndex, JSON.stringify(playerData));
     return true;
 }
