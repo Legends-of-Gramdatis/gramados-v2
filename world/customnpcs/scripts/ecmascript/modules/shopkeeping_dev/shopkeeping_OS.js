@@ -580,10 +580,22 @@ function chat(event) {
                 return;
             }
 
+            if (shop.real_estate.is_for_sale) {
+                tellPlayer(player, "&cShop &e" + shopId + " &cis already for sale at &r:money:&e" + getAmountCoin(shop.real_estate.sale_price));
+                return;
+            }
+
+            var currentTime = world.getTotalTime();
+            if (currentTime - shop.real_estate.last_sold_date < 7 * 24 * 60 * 60 * 20) {
+                tellPlayer(player, "&cYou cannot sell this shop within 1 week of buying it!");
+                return;
+            }
+
             shop.real_estate.sale_price = salePrice;
             shop.real_estate.is_for_sale = true;
             saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
             tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
+            tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop sell <ID> <price|cancel>");
         }
@@ -1344,11 +1356,19 @@ function buyShop(player, shopId, buyerName, playerShops) {
     // Give money to the seller
     addMoneyToPlayerPouchByName(seller, salePrice);
 
+    // Decrease reputation by 10%
+    var originalReputation = 100;
+    var currentReputation = shop.reputation_data.reputation;
+    var reputationDecrease = (currentReputation - originalReputation) * 0.1;
+    shop.reputation_data.reputation -= reputationDecrease;
+
     shop.roles.owner = buyerName;
     shop.real_estate.is_for_sale = false;
-    shop.real_estate.last_sold_date = new Date().getTime();
+    shop.real_estate.last_sold_date = world.getTotalTime();
+    shop.real_estate.commercial_premises_value = getPremisesValue(player, regions);
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
 
     tellPlayer(player, "&aShop &e" + shopId + " &ahas been sold to &e" + buyerName);
     tellPlayer(buyer, "&aYou have bought shop &e" + shopId + " &afor &r:money:&e" + getAmountCoin(salePrice));
+    tellPlayer(buyer, "&7Note: The shop's reputation has decreased by &e10%&7.");
 }
