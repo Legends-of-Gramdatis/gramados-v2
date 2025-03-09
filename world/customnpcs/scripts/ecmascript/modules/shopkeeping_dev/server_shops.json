@@ -232,7 +232,7 @@
             }
         ],
         "real_estate": {
-            "sale_price": 6400000,
+            "sale_price": 100000000,
             "is_for_sale": true,
             "last_sold_date": 0,
             "commercial_premises_value": 0
@@ -343,9 +343,9 @@
             }
         ],
         "real_estate": {
-            "sale_price": 10000000,
+            "sale_price": 3000000,
             "is_for_sale": false,
-            "last_sold_date": 1741475664738,
+            "last_sold_date": 1741509234417,
             "commercial_premises_value": 0
         }
     }
