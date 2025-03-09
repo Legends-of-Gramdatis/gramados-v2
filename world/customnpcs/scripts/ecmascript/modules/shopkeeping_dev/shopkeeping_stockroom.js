@@ -701,3 +701,37 @@ function listShopStock(player, shopId, showItems) {
         }
     }
 }
+
+/**
+ * Lists the prices of all listed items and their stock, and unlisted items with their Wholesale Values.
+ * @param {IPlayer} player - The player.
+ * @param {number} shopId - The shop ID.
+ */
+function listShopPrices(player, shopId) {
+    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    if (!playerShops || !playerShops[shopId]) {
+        tellPlayer(player, "&cShop not found!");
+        return;
+    }
+
+    var shop = playerShops[shopId];
+    var listedItems = shop.inventory.listed_items;
+    var stockItems = shop.inventory.stock;
+    var availableItems = getAvailableItems(player, shop.shop.type);
+
+    tellPlayer(player, "&aListed Items for Shop ID: &e" + shopId);
+    for (var itemId in listedItems) {
+        var listedItem = listedItems[itemId];
+        var stockCount = stockItems[itemId] ? stockItems[itemId].count : 0;
+        tellPlayer(player, "&e" + itemId + ": &aPrice: &r:money:&e" + getAmountCoin(listedItem.price) + " &aStock: &e" + stockCount);
+    }
+
+    tellPlayer(player, "&aUnlisted Items with Wholesale Values:");
+    for (var i = 0; i < availableItems.length; i++) {
+        var item = availableItems[i];
+        if (!listedItems[item.id]) {
+            var stockCount = stockItems[item.id] ? stockItems[item.id].count : 0;
+            tellPlayer(player, "&e" + item.id + ": &aWholesale Value: &r:money:&e" + getAmountCoin(item.value) + " &aStock: &e" + stockCount);
+        }
+    }
+}

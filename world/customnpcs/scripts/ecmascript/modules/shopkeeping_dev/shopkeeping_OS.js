@@ -613,6 +613,10 @@ function chat(event) {
         var shopId = args[3];
         var showItems = args.length > 4 && args[4] === "items";
         listShopStock(player, shopId, showItems);
+    } else if (message.startsWith("$shop price list")) {
+        var args = message.split(" ");
+        var shopId = args[3];
+        listShopPrices(player, shopId);
     } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
         tellPlayer(player, "&b=========================================");
         tellPlayer(player, "&bShop Commands:");
