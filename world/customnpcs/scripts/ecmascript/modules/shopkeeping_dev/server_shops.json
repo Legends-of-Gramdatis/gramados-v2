@@ -240,9 +240,6 @@
         "roles": {
             "enabled": false,
             "owner": [
-                "TheOnlySeagull"
-            ],
-            "manager": [
                 "TheOddlySeagull"
             ]
         },
@@ -266,31 +263,31 @@
             },
             "listed_items": {
                 "variedcommodities:necklace:0": {
-                    "price": 47500,
+                    "price": 108723,
                     "reference_price": 25000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:ring:0": {
-                    "price": 75000,
+                    "price": 130467,
                     "reference_price": 30000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:statuette:0": {
-                    "price": 90000,
+                    "price": 65234,
                     "reference_price": 15000,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:tablet:0": {
-                    "price": 24500,
+                    "price": 76106,
                     "reference_price": 17500,
                     "discount": 0,
                     "sale_count": 0
                 },
                 "variedcommodities:pendant:0": {
-                    "price": 110000,
+                    "price": 43489,
                     "reference_price": 10000,
                     "discount": 0,
                     "sale_count": 0
@@ -299,8 +296,8 @@
             "unsalable_items": {}
         },
         "finances": {
-            "stored_cash": 2745000,
-            "default_margin": 0.2
+            "stored_cash": 765000,
+            "default_margin": 3.3489
         },
         "property": {
             "location": {
@@ -314,7 +311,7 @@
             "main_room": [],
             "region": "Gramados",
             "sub_region": "Gramados_City",
-            "stock_room_size": 66
+            "stock_room_size": 79
         },
         "shop": {
             "display_name": "Test Jewelry",
@@ -323,11 +320,14 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 587.8,
+            "reputation": 800,
             "reputation_history": []
         },
         "upgrades": [
-            "better_crates_1"
+            "better_crates_1",
+            "better_crates_2",
+            "vip_memberships",
+            "luxury_experience"
         ],
         "events": [
             {
