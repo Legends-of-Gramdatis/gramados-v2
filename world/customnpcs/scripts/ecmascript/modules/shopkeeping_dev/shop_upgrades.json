@@ -35,7 +35,7 @@
         {
             "id": "vip_memberships",
             "name": "VIP Memberships",
-            "description": "Offer exclusive VIP memberships to loyal customers, increasing repeat visits and overall customer flow by 10%.",
+            "description": "Offer exclusive VIP memberships to loyal customers, increasing repeat visits and overall customer flow.",
             "modules": {
                 "customer_loyalty": 0.2,
                 "customer_flow": 0.1
