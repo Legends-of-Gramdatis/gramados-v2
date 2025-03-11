@@ -266,4 +266,3 @@ function addMoneyToPlayerPouchByName(playerName, value) {
     worldData.put(playerIndex, JSON.stringify(playerData));
     return true;
 }
-
