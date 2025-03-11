@@ -126,3 +126,16 @@ function findJsonSubEntry(jsonarray, key, value) {
 
     return null;
 }
+
+/**
+ * Gets a value from a JSON object by key.
+ * @param {Object} json - The JSON object to search.
+ * @param {string} key - The key to search for.
+ * @returns {*} - The value if found, null otherwise.
+ */
+function getJsonValue(json, key) {
+    if (json[key]) {
+        return json[key];
+    }
+    return null;
+}
