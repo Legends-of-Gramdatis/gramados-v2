@@ -129,8 +129,8 @@ function readFile(filePath) {
  * Writes text to a file.
  * @param {string} filePath - The file path.
  * @param {string} text - The text to write.
- * @param {number} [offset] - The offset to start writing at.
- * @param {number} [length] - The length of text to write.
+ * @param {number} [offset=0] - The offset to start writing at.
+ * @param {number} [length=text.length] - The length of text to write.
  */
 function writeToFile(filePath, text, offset, length) {
     if (typeof (offset) == typeof (undefined) || offset === null) {
@@ -145,6 +145,6 @@ function writeToFile(filePath, text, offset, length) {
         writer.write(text, offset, length);
         writer.close();
     } catch (exc) {
-        // Handle error
+        return false;
     }
 }
