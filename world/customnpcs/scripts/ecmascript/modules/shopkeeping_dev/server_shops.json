@@ -296,7 +296,7 @@
             "unsalable_items": {}
         },
         "finances": {
-            "stored_cash": 365000,
+            "stored_cash": 65000,
             "default_margin": 3.3489
         },
         "property": {
@@ -311,13 +311,12 @@
             "main_room": [],
             "region": "Gramados",
             "sub_region": "Gramados_City",
-            "stock_room_size": 60
+            "stock_room_size": 78
         },
         "shop": {
             "display_name": "Test Jewelry",
             "type": "jewelry",
-            "is_open": true,
-            "is_for_sale": false
+            "is_open": true
         },
         "reputation_data": {
             "reputation": 800,
