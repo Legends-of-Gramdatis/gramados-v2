@@ -94,14 +94,14 @@ function getBulkPurchaseMultiplier(region, subRegion) {
 
 /**
  * Calculates the margin grade for a listed item.
- * @param {IPlayer} player - The player.
  * @param {number} listed_price - The listed price of the item.
  * @param {number} reference_price - The reference price of the item.
  * @param {number} shop_reputation - The reputation of the shop.
  * @param {number} reference_margin - The reference margin.
+ * @param {number} margin_tolerance - The margin tolerance.
  * @returns {Object} The margin grade data.
  */
-function getMarginGrade(player, listed_price, reference_price, shop_reputation, reference_margin) {
+function getMarginGrade(listed_price, reference_price, shop_reputation, reference_margin, margin_tolerance) {
     var return_value = {};
     var mr = reference_margin;
     var marginMax = 3;
@@ -110,13 +110,11 @@ function getMarginGrade(player, listed_price, reference_price, shop_reputation, 
 
     var up = marginMax * mr;
     var down = 1 + Math.exp(-k*(shop_reputation-r));
-    var perfect_margin = up / down;
+    var perfect_margin = (up / down) * margin_tolerance;
 
     var margin = calculateMargin(reference_price, listed_price);
 
     var marginGrade = Math.round((perfect_margin / margin) * 100);
-
-    // tellPlayer(player, "&6Margin grade: &5" + marginGrade + ", with perfect margin: &5" + perfect_margin.toFixed(2) + "%, current margin: &5" + margin + "%");
 
     if (margin > perfect_margin * 1.01) {
         return_value.comment = "Overpriced";
@@ -222,13 +220,17 @@ function calculateShopScore(player, shopId, playerShops) {
         }
     }
 
+    var priceTolerance = getModuleValue(shop, "price_tolerance");
+    // tellPlayer(player, "&eTotal price tolerance: &a" + priceTolerance);
+    priceTolerance += 1;
+
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
         var referencePrice = getReferencePrice(player, itemId, listedItem.tag, shop.shop.type);
         var listedPrice = listedItem.price;
         var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
 
-        var marginGradeData = getMarginGrade(player, listedPrice, referencePrice, currentReputation, shop_entry.general_ref.base_markup);
+        var marginGradeData = getMarginGrade(listedPrice, referencePrice, currentReputation, shop_entry.general_ref.base_markup, priceTolerance);
         var marginGrade = marginGradeData.grade;
 
         totalPricingScore += marginGrade;
