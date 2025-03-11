@@ -75,6 +75,12 @@ function includes(array, item) {
     return array.indexOf(item) > -1;
 }
 
+/**
+ * Checks if any of the specified items are included in the array.
+ * @param {Array} array - The array to check.
+ * @param {Array} items - The items to search for.
+ * @returns {boolean} - True if any item is in the array, false otherwise.
+ */
 function includeSome(array, items) {
     for (var i = 0; i < items.length; i++) {
         if (includes(array, items[i])) {
@@ -103,6 +109,13 @@ function findJsonEntry(json, key, value) {
     return null;
 }
 
+/**
+ * Finds a sub-entry in a JSON array by a specific key and value.
+ * @param {Object[]} jsonarray - The JSON array to search.
+ * @param {string} key - The key to search for.
+ * @param {*} value - The value to search for.
+ * @returns {Object} - The JSON object if found, null otherwise.
+ */
 function findJsonSubEntry(jsonarray, key, value) {
     // for each json in the array, see if the key exists and if it does, check if the value matches
     for (var i = 0; i < jsonarray.length; i++) {
