@@ -6,7 +6,7 @@
  */
 function calculateMargin(referencePrice, listedPrice) {
     if (referencePrice === 0) {
-        return listedPrice > 0 ? 100 : -100;
+        return 0;
     }
     return ((listedPrice - referencePrice) / referencePrice * 100).toFixed(2);
 }
@@ -291,7 +291,7 @@ function calculateShopScore(player, shopId, playerShops) {
     shopScore /= (W1 + W2 + W3 + W4 + W5);
 
     tellPlayer(player, "&eScaled Reputation: &a" + scaledReputation.toFixed(2));
-    tellPlayer(player, "&ePricing Score: &a" + marginGrade.toFixed(2));
+    tellPlayer(player, "&ePricing Score: &a" + pricingScore.toFixed(2));
     tellPlayer(player, "&eStocked Listed Items Score: &a" + stockedListedItemsScore.toFixed(2));
     tellPlayer(player, "&eListed Item Proportion Score: &a" + listItemProportionScore.toFixed(2));
     tellPlayer(player, "&eDemand Score: &a" + demandScore.toFixed(2));
