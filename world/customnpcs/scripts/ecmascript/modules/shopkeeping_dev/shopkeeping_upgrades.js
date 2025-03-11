@@ -396,3 +396,50 @@ function takeShopEvent(player, shopId, eventId, playerShops) {
     tellPlayer(player, "&aSuccessfully started event: &e" + event.name);
     tellPlayer(player, "&aCost: &r:money:&e" + getAmountCoin(event.cost));
 }
+
+/**
+ * Checks if an event is currently running.
+ * @param {Object} event - The event object.
+ * @param {number} currentTime - The current time.
+ * @returns {boolean} True if the event is running, otherwise false.
+ */
+function isEventRunning(event, currentTime) {
+    var eventEndTime = event.start_date + (event.duration * 72000);
+    return currentTime < eventEndTime;
+}
+
+/**
+ * Gets the total value of a specific module from all upgrades and running events.
+ * @param {Object} shop - The shop object.
+ * @param {string} moduleName - The name of the module.
+ * @returns {number} The total value of the module.
+ */
+function getModuleValue(shop, moduleName) {
+    var totalValue = 0;
+    var currentTime = world.getTotalTime();
+    var upgradesData = loadJson(UPGRADES_JSON_PATH);
+
+    // tellPlayer(player, "&eCalculating module value for: &r" + moduleName + " &efor shop: &r" + shop.shop.display_name + " &ethat has &r" + shop.upgrades.length + " &eupgrades and &r" + shop.events.length + " &eevents.");
+    // Sum values from upgrades
+    for (var i = 0; i < shop.upgrades.length; i++) {
+        // tellPlayer(player, "&eChecking upgrade: &r" + shop.upgrades[i]);
+        var upgradeName = shop.upgrades[i];
+        var upgrade = findJsonEntry(upgradesData.upgrades, "id", upgradeName);
+        // tellPlayer(player, "&eFound upgrade: &r" + upgrade.name);
+        // tellPlayer(player, "&eUpgrade has modules: &r" + JSON.stringify(upgrade.modules));
+        if (getJsonValue(upgrade.modules, moduleName) !== null) {
+            // tellPlayer(player, "&eFound module: &r" + moduleName + " &ewith value: &r" + upgrade.modules[moduleName]);
+            totalValue += upgrade.modules[moduleName];
+        }
+    }
+
+    // Sum values from running events
+    for (var i = 0; i < shop.events.length; i++) {
+        var event = shop.events[i];
+        if (isEventRunning(event, currentTime) && event.modules && event.modules[moduleName]) {
+            totalValue += event.modules[moduleName];
+        }
+    }
+
+    return totalValue;
+}
