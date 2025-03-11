@@ -314,3 +314,109 @@ function getQuartRotation(dir) {
 function getHalfRotation(angle) {
     return Math.floor((fixAngle(angle) + 90) / 180) % 2;
 }
+
+/**
+ * Generates a random number within a specified range and sums it a given number of times.
+ * @param {number} min - The minimum value.
+ * @param {number} max - The maximum value.
+ * @param {number} count - The number of times to sum the random values.
+ * @returns {number} The sum of the random values.
+ */
+function random_ranges(min, max, count) {
+    var total = 0;
+    for (var i = 0; i < count; i++) { total += random_range(min, max); }
+    return total;
+}
+
+/**
+ * Generates a random integer within a specified range.
+ * @param {number} min - The minimum value.
+ * @param {number} max - The maximum value.
+ * @returns {number} The random integer.
+ */
+function rrandom_range(min, max) {
+    return Math.round(random_range(min, max));
+}
+
+/**
+ * Generates a random number within a specified range.
+ * @param {number} min - The minimum value.
+ * @param {number} max - The maximum value.
+ * @returns {number} The random number.
+ */
+function random_range(min, max) {
+    var minimum = Math.min(min, max);
+    var maximum = Math.max(min, max);
+    var difference = maximum - minimum;
+    return (minimum + (Math.random() * difference));
+}
+
+/**
+ * Picks a specified number of elements from an array based on their chances.
+ * @param {Array} array - The array to pick from. Elements can be single values or arrays with the value and its chance.
+ * @param {number} count - The number of elements to pick.
+ * @returns {Array} The picked elements.
+ * @example
+ * // Example usage:
+ * var items = [['apple', 3], ['banana', 1], 'cherry'];
+ * var pickedItems = pickchance(items, 2);
+ * console.log(pickedItems); // Might output: ['apple', 'cherry']
+ */
+function pickchance(array, count) {
+    var weightedArray = [];
+    for (var i in array) {
+        if (!isArray(array[i])) {
+            weightedArray.push(array[i]);
+        } else {
+            for (var j = 0; j < array[i][1]; j++) {
+                weightedArray.push(array[i][0]);
+            }
+        }
+    }
+    return pick(weightedArray, count);
+}
+
+/**
+ * Checks if the given object is an array.
+ * @param {object} obj - The object to check.
+ * @returns {boolean} True if the object is an array, false otherwise.
+ */
+function isArray(obj) {
+    if (typeof (obj) === 'object') {
+        for (var key in obj) {
+            if (isNaN(key)) {
+                return false;
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Picks a specified number of unique elements from an array.
+ * @param {Array} array - The array to pick from.
+ * @param {number} count - The number of elements to pick.
+ * @returns {Array|*} The picked elements or a single element if count is 1.
+ * @example
+ * // Example usage:
+ * var fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+ * var pickedFruits = pick(fruits, 3);
+ * console.log(pickedFruits); // Might output: ['banana', 'date', 'apple']
+ */
+function pick(array, count) {
+    if (typeof (count) == typeof (undefined) || count === null) { count = 1; }
+    var index = Math.floor(Math.random() * array.length);
+    count = Math.min(array.length, count);
+    if (count == 1) {
+        return array[index];
+    } else {
+        var picks = [];
+        while (picks.length < count) {
+            index = Math.floor(Math.random() * array.length);
+            if (picks.indexOf(array[index]) == -1) { picks.push(array[index]); }
+        }
+        return picks;
+    }
+}
