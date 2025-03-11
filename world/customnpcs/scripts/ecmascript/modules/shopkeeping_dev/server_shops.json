@@ -296,7 +296,7 @@
             "unsalable_items": {}
         },
         "finances": {
-            "stored_cash": 765000,
+            "stored_cash": 365000,
             "default_margin": 3.3489
         },
         "property": {
@@ -311,7 +311,7 @@
             "main_room": [],
             "region": "Gramados",
             "sub_region": "Gramados_City",
-            "stock_room_size": 79
+            "stock_room_size": 60
         },
         "shop": {
             "display_name": "Test Jewelry",
@@ -324,10 +324,10 @@
             "reputation_history": []
         },
         "upgrades": [
-            "better_crates_1",
-            "better_crates_2",
             "vip_memberships",
-            "luxury_experience"
+            "luxury_experience",
+            "better_crates_1",
+            "better_crates_2"
         ],
         "events": [
             {
