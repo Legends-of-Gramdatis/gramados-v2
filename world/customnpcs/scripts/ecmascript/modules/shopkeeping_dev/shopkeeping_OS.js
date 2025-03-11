@@ -20,6 +20,10 @@ load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_gr
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_upgrades.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_permissions.js")
 
+/**
+ * Initializes the shopkeeping system.
+ * @param {Object} event - The event object.
+ */
 function init(event) {
     var player = event.player;
     if (!checkFileExists(SERVER_SHOPS_JSON_PATH)) {
@@ -29,6 +33,10 @@ function init(event) {
     updateStockrooms(player);
 }
 
+/**
+ * Handles chat commands related to shopkeeping.
+ * @param {Object} event - The chat event object.
+ */
 function chat(event) {
     var player = event.player;
     var message = event.message;
@@ -630,6 +638,13 @@ function chat(event) {
 // ------------------------------------------------------------------------------------------------------------
 // Open the shop
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Opens a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop to open.
+ * @param {Object} serverShops - The server shops data.
+ * @returns {boolean} - True if the shop was opened successfully, false otherwise.
+ */
 function openShop(player, shopId, serverShops) {
     var shop = serverShops[shopId];
     if (!shop) {
@@ -688,6 +703,12 @@ function openShop(player, shopId, serverShops) {
 // ------------------------------------------------------------------------------------------------------------
 // Close the shop
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Closes a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop to close.
+ * @returns {boolean} - True if the shop was closed successfully, false otherwise.
+ */
 function closeShop(player, shopId) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     var shop = serverShops[shopId];
@@ -723,6 +744,15 @@ function closeShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Create a shop
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Creates a new shop.
+ * @param {Object} player - The player object.
+ * @param {string} type - The type of the shop.
+ * @param {string} region - The region of the shop.
+ * @param {string} sub_region - The sub-region of the shop.
+ * @param {string} display_name - The display name of the shop.
+ * @param {number} money - The initial money for the shop.
+ */
 function createShop(player, type, region, sub_region, display_name, money) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
@@ -790,6 +820,11 @@ function createShop(player, type, region, sub_region, display_name, money) {
 // ------------------------------------------------------------------------------------------------------------
 // Delete a shop
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Deletes a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop to delete.
+ */
 function deleteShop(player, shopId) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
@@ -805,6 +840,11 @@ function deleteShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Shop info
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Displays information about a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ */
 function shopInfo(player, shopId) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!playerShops) {
@@ -821,6 +861,14 @@ function shopInfo(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 // Set price of an item in the shop
 // ------------------------------------------------------------------------------------------------------------
+/**
+ * Sets the price of an item in the shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {string|number} itemIdOrIndex - The item ID or index.
+ * @param {string} profit - The profit margin.
+ * @param {Object} playerShops - The player shops data.
+ */
 function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -873,6 +921,14 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     // tellPlayer(player, "Price: " + price);
 }
 
+/**
+ * Gets the reference price of an item.
+ * @param {Object} player - The player object.
+ * @param {string} itemId - The item ID.
+ * @param {Object} itemTag - The item tag.
+ * @param {string} shopType - The type of the shop.
+ * @returns {number} - The reference price of the item.
+ */
 function getReferencePrice(player, itemId, itemTag, shopType) {
     // tellPlayer(player, "Getting reference price for item: " + itemId);
     var shopCategories = getAvailableItems(player, shopType);
@@ -902,13 +958,21 @@ function getReferencePrice(player, itemId, itemTag, shopType) {
 // UTILITIES
 // ############################################################################################################
 
-// function to get shop info from ID
+/**
+ * Gets shop information from the ID.
+ * @param {number} shopId - The ID of the shop.
+ * @returns {Object|null} - The shop data or null if not found.
+ */
 function getShopFromID(shopId) {
     var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
     return playerShops ? playerShops[shopId] : null;
 }
 
-// Function to get a property from a string (propertyname=value)
+/**
+ * Parses a property string into an object.
+ * @param {string} string - The property string (propertyname=value).
+ * @returns {Object} - The parsed property object.
+ */
 function getProperty(string) {
     var parts = string.split("=");
     var propertyName = parts[0];
@@ -916,6 +980,12 @@ function getProperty(string) {
     return { propertyName: propertyName, value: value };
 }
 
+/**
+ * Removes a room from the room array.
+ * @param {Array} roomArray - The array of rooms.
+ * @param {string|number} value - The room index or name.
+ * @returns {boolean} - True if the room was removed, false otherwise.
+ */
 function removeRoom(roomArray, value) {
     var index = parseInt(value);
     if (!isNaN(index)) {
@@ -933,19 +1003,34 @@ function removeRoom(roomArray, value) {
     return false;
 }
 
+/**
+ * Checks if a region exists.
+ * @param {string} region - The region name.
+ * @returns {boolean} - True if the region exists, false otherwise.
+ */
 function checkRegionExists(region) {
     var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
     shopDemand = shopDemand["Local Demands"];
     return shopDemand && shopDemand[region];
 }
 
+/**
+ * Checks if a sub-region exists within a region.
+ * @param {string} region - The region name.
+ * @param {string} subRegion - The sub-region name.
+ * @returns {boolean} - True if the sub-region exists, false otherwise.
+ */
 function checkSubRegionExists(region, subRegion) {
     var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
     shopDemand = shopDemand["Local Demands"];
     return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }
 
-// function to get hand held items
+/**
+ * Gets the items held in the player's hand.
+ * @param {Object} player - The player object.
+ * @returns {Object} - The item stack data.
+ */
 function getHandItems(player) {
     var itemstack = player.getMainhandItem();
     var edititemstack = itemstack.copy();
@@ -967,7 +1052,12 @@ function getHandItems(player) {
     return itemstock;
 }
 
-// function to get the list oif available items from a shop type
+/**
+ * Gets the list of available items for a shop type.
+ * @param {Object} player - The player object.
+ * @param {string} shopType - The type of the shop.
+ * @returns {Array} - The list of available items.
+ */
 function getAvailableItems(player, shopType) {
     var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
     if (!shopCategories) {
@@ -1029,12 +1119,23 @@ function getAvailableItems(player, shopType) {
     }
 }
 
+/**
+ * Gets the possible items for a shop type.
+ * @param {Object} player - The player object.
+ * @param {string} shopType - The type of the shop.
+ * @returns {number} - The number of possible items.
+ */
 function getPossibleItemsForShopType(player, shopType) {
     var items = getAvailableItems(player, shopType);
     return items.length;
 }
 
-// Function to check if an item is a valid item
+/**
+ * Checks if an item is valid.
+ * @param {Array} items - The list of items.
+ * @param {Object} itemstock - The item stock data.
+ * @returns {boolean} - True if the item is valid, false otherwise.
+ */
 function isValidItem(items, itemstock) {
     var item = itemstock.item;
     for (var i = 0; i < items.length; i++) {
@@ -1047,7 +1148,13 @@ function isValidItem(items, itemstock) {
     return false;
 }
 
-// Function to get a list of items for "based_on_market" item list types
+/**
+ * Gets the list of items for a "based_on_market" item list type.
+ * @param {Object} player - The player object.
+ * @param {string} marketName - The market name.
+ * @param {string} shopType - The type of the shop.
+ * @returns {Array} - The list of items.
+ */
 function getBasedOnMarketItems(player, marketName, shopType) {
     var pathToJson = NPC_MARKET_DATA_JSON_PATH + marketName + ".json";
     var market = loadJavaJson(pathToJson);
@@ -1186,6 +1293,10 @@ function getBasedOnMarketItems(player, marketName, shopType) {
     return items;
 }
 
+/**
+ * Evaluates the item held in the player's hand.
+ * @param {Object} player - The player object.
+ */
 function evalHandItem(player) {
     var itemstack = player.getMainhandItem();
     if (itemstack.isEmpty()) {
@@ -1196,6 +1307,12 @@ function evalHandItem(player) {
     tellPlayer(player, "Itemstack data: " + itemstack.getItemNbt().toJsonString());
 }
 
+/**
+ * Puts money into a shop from the player's inventory.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {Object} playerShops - The player shops data.
+ */
 function putMoneyInShop(player, shopId, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -1220,6 +1337,13 @@ function putMoneyInShop(player, shopId, playerShops) {
     }
 }
 
+/**
+ * Takes money from a shop and gives it to the player.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {number} value - The amount of money to take.
+ * @param {Object} playerShops - The player shops data.
+ */
 function takeMoneyFromShop(player, shopId, value, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -1245,6 +1369,13 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
     tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
 }
 
+/**
+ * Puts money into a shop from the player's pouch.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {number} value - The amount of money to put.
+ * @param {Object} playerShops - The player shops data.
+ */
 function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -1264,6 +1395,13 @@ function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
     }
 }
 
+/**
+ * Takes money from a shop and puts it into the player's pouch.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {number} value - The amount of money to take.
+ * @param {Object} playerShops - The player shops data.
+ */
 function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -1289,6 +1427,13 @@ function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
     }
 }
 
+/**
+ * Adds reputation to a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {number} amount - The amount of reputation to add.
+ * @param {Object} playerShops - The player shops data.
+ */
 function addShopReputation(player, shopId, amount, playerShops) {
     var shop = playerShops[shopId];
     shop.reputation_data.reputation += amount;
@@ -1297,6 +1442,12 @@ function addShopReputation(player, shopId, amount, playerShops) {
     tellPlayer(player, "&aShop reputation updated!");
 }
 
+/**
+ * Adds a reputation history entry to a shop.
+ * @param {Object} shop - The shop data.
+ * @param {string} reason - The reason for the reputation change.
+ * @param {number} amount - The amount of reputation change.
+ */
 function addReputationHistoryEntry(shop, reason, amount) {
     var entry = {
         time: new Date().toISOString(),
@@ -1307,6 +1458,13 @@ function addReputationHistoryEntry(shop, reason, amount) {
     shop.reputation_data.reputation_history.push(entry);
 }
 
+/**
+ * Logs the reputation of a shop over a period of time.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {number} hours - The number of hours to log.
+ * @param {Object} playerShops - The player shops data.
+ */
 function logShopReputation(player, shopId, hours, playerShops) {
     var shop = playerShops[shopId];
     var currentReputation = shop.reputation_data.reputation;
@@ -1322,6 +1480,13 @@ function logShopReputation(player, shopId, hours, playerShops) {
     tellPlayer(player, "&aReputation change in the last " + hours + " hours: &e" + changePercent + "%");
 }
 
+/**
+ * Gets the reputation of a shop from a certain time ago.
+ * @param {Object} player - The player object.
+ * @param {Object} shop - The shop data.
+ * @param {number} hours - The number of hours ago.
+ * @returns {number|null} - The reputation from the specified time ago, or null if not found.
+ */
 function getReputationAgo(player, shop, hours) {
     var now = new Date();
     var timeAgo = new Date(now.getTime() - hours * 60 * 60 * 1000);
@@ -1340,10 +1505,23 @@ function getReputationAgo(player, shop, hours) {
     return null;
 }
 
+/**
+ * Calculates the percentage change in reputation.
+ * @param {number} oldReputation - The old reputation value.
+ * @param {number} newReputation - The new reputation value.
+ * @returns {number} - The percentage change in reputation.
+ */
 function calculateReputationChangePercent(oldReputation, newReputation) {
     return Math.round(((newReputation - oldReputation) / oldReputation) * 10000) / 100;
 }
 
+/**
+ * Buys a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {string} buyerName - The name of the buyer.
+ * @param {Object} playerShops - The player shops data.
+ */
 function buyShop(player, shopId, buyerName, playerShops) {
     if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
         tellPlayer(player, "&cInvalid shop ID: &e" + shopId);
@@ -1378,7 +1556,7 @@ function buyShop(player, shopId, buyerName, playerShops) {
     // Transfer ownership of regions
     var regions = getShopRegions(player, array_merge(shop.property.stock_room, shop.property.main_room));
     for (var i = 0; i < regions.length; i++) {
-        transferRegion(player, regions[i], buyerName);
+        transferRegion(player.getName(), regions[i], buyerName);
     }
 
     // Give money to the seller
@@ -1401,6 +1579,13 @@ function buyShop(player, shopId, buyerName, playerShops) {
     tellPlayer(buyer, "&7Note: The shop's reputation has decreased by &e10%&7.");
 }
 
+/**
+ * Sells a shop.
+ * @param {Object} player - The player object.
+ * @param {number} shopId - The ID of the shop.
+ * @param {string} salePrice - The sale price of the shop.
+ * @param {Object} playerShops - The player shops data.
+ */
 function sellShop(player, shopId, salePrice, playerShops) {
     if (!hasPermission(player.getName(), shop, PERMISSION_SELL_SHOP)) {
         tellPlayer(player, "&cYou don't have permission to sell this shop!");

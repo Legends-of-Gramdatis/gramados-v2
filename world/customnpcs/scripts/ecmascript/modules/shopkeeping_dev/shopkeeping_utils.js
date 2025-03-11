@@ -1,9 +1,19 @@
-// Function to sanitize a string (if "", set to null)
+/**
+ * Function to sanitize a string (if "", set to null)
+ * @param {string} string - The string to sanitize.
+ * @returns {string|null} - The sanitized string or null.
+ */
 function sanitizeString(string) {
     return string === "" ? null : string;
 }
 
-// function to check "player_shops.json" data integrity
+/**
+ * Function to check "player_shops.json" data integrity
+ * @param {object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {object} playerShops - The player shops data.
+ * @returns {boolean} - True if the shop exists, false otherwise.
+ */
 function ensureShopExists(player, shopId, playerShops) {
     if (!playerShops) {
         player.message("No shop data found! Contact an admin!");
@@ -16,7 +26,13 @@ function ensureShopExists(player, shopId, playerShops) {
     }
 }
 
-// Function to get a list of all shops a given player owns
+/**
+ * Function to get a list of all shops a given player owns
+ * @param {object} player - The player object.
+ * @param {string} ownername - The name of the shop owner.
+ * @param {object} serverShops - The server shops data.
+ * @returns {Array} - A list of shop IDs owned by the player.
+ */
 function listShops(player, ownername, serverShops) {
     var shops = [];
     for (var shopId in serverShops) {
@@ -34,12 +50,24 @@ function listShops(player, ownername, serverShops) {
     return shops;
 }
 
-// Function to check if a shop with given ID exists or not
+/**
+ * Function to check if a shop with given ID exists or not
+ * @param {string} shopId - The ID of the shop.
+ * @param {object} playerShops - The player shops data.
+ * @returns {boolean} - True if the shop exists, false otherwise.
+ */
 function shopExists(shopId, playerShops) {
     return !!playerShops[shopId];
 }
 
-// function to check if a shop instance isn't missing any data (update proof)
+/**
+ * Function to check if a shop instance isn't missing any data (update proof)
+ * @param {object} player - The player object.
+ * @param {string} shopID - The ID of the shop.
+ * @param {object} playerShops - The player shops data.
+ * @param {boolean} log - Whether to log messages to the player.
+ * @returns {object} - An object containing validity, critical status, and missing data.
+ */
 function ensureShopDataComplete(player, shopID, playerShops, log) {
     var valid = true;
     var critical = false;
@@ -134,11 +162,20 @@ function ensureShopDataComplete(player, shopID, playerShops, log) {
     return { valid: valid, critical: critical, missing: missing };
 }
 
+/**
+ * Function to convert underscores to spaces in a string
+ * @param {string} str - The string to convert.
+ * @returns {string} - The converted string.
+ */
 function convertUnderscore(str) {
     return str.replace(/_/g, " ");
 }
 
-// function to get shop category json from type
+/**
+ * Function to get shop category json from type
+ * @param {string} shopType - The type of the shop.
+ * @returns {object|null} - The shop category entry or null if not found.
+ */
 function getCategoryJson(shopType) {
     var shop_categories = loadJson(SHOP_CATEGORIES_JSON_PATH);
     var shop_entry = null;

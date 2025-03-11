@@ -1,15 +1,63 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
+/**
+ * Permission to open or close the shop.
+ * @constant {string}
+ */
 var PERMISSION_OPEN_CLOSE_SHOP = "open_close_shop";
+
+/**
+ * Permission to set prices in the shop.
+ * @constant {string}
+ */
 var PERMISSION_SET_PRICES = "set_prices";
+
+/**
+ * Permission to manage shop permissions.
+ * @constant {string}
+ */
 var PERMISSION_MANAGE_PERMISSIONS = "manage_permissions";
+
+/**
+ * Permission to take money from the shop.
+ * @constant {string}
+ */
 var PERMISSION_TAKE_MONEY = "take_money";
+
+/**
+ * Permission to manage shop stock.
+ * @constant {string}
+ */
 var PERMISSION_MANAGE_STOCK = "manage_stock";
+
+/**
+ * Permission to sell the shop.
+ * @constant {string}
+ */
 var PERMISSION_SELL_SHOP = "sell_shop";
+
+/**
+ * Permission to switch shop type.
+ * @constant {string}
+ */
 var PERMISSION_TYPE_SWITCH = "type_switch";
+
+/**
+ * Permission to take upgrades for the shop.
+ * @constant {string}
+ */
 var PERMISSION_TAKE_UPGRADE = "take_upgrade";
+
+/**
+ * Permission to take events for the shop.
+ * @constant {string}
+ */
 var PERMISSION_TAKE_EVENT = "take_event";
 
+/**
+ * Path to the permissions JSON file.
+ * @constant {string}
+ */
 var PERMISSIONS_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/roles_permissions.json";
 
 /**

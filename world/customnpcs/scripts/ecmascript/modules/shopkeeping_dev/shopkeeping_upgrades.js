@@ -1,4 +1,8 @@
-// function that gets the list of upgrades from json
+/**
+ * Loads the list of upgrades and events from a JSON file.
+ * @param {Object} player - The player object.
+ * @returns {Object} The JSON object containing upgrades and events.
+ */
 function loadUpgradesAndEvents(player) {
     var jsonUpgrades = loadJson(UPGRADES_JSON_PATH);
     if (!jsonUpgrades) {
@@ -8,16 +12,16 @@ function loadUpgradesAndEvents(player) {
     return jsonUpgrades;
 }
 
-// function to display a formatted list of upgrades
+/**
+ * Displays a formatted list of all upgrades to the player.
+ * @param {Object} player - The player object.
+ */
 function listAllUpgrades(player) {
     var upgrades = loadUpgradesAndEvents(player);
-
     var messageUpgrades = [];
 
     for (var i = 0; i < upgrades.upgrades.length; i++) {
         var upgrade = upgrades.upgrades[i];
-
-
         var entry = "&3:arrow_r:" + upgrade.name + ": \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "&6, Min Reputation: &e:sun:" + (upgrade.min_reputation || 0) + "\n&b-----------------------------------------";
         messageUpgrades.push(entry);
     }
@@ -26,10 +30,12 @@ function listAllUpgrades(player) {
     storytellPlayer(player, messageUpgrades);
 }
 
-// function to display a formatted list of events
+/**
+ * Displays a formatted list of all events to the player.
+ * @param {Object} player - The player object.
+ */
 function listAllEvents(player) {
     var events = loadUpgradesAndEvents(player);
-
     var messageEvents = [];
 
     for (var i = 0; i < events.events.length; i++) {
@@ -41,10 +47,14 @@ function listAllEvents(player) {
     storytellPlayer(player, messageEvents);
 }
 
-// function to display a formatted list of upgrades with availability for a shop
+/**
+ * Displays a formatted list of upgrades with availability for a specific shop.
+ * @param {Object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {Object} playerShops - The JSON object containing all player shops.
+ */
 function listShopUpgrades(player, shopId, playerShops) {
     var upgrades = loadUpgradesAndEvents(player);
-
     var shop = playerShops[shopId];
     if (!shop) {
         tellPlayer(player, "&4Shop not found! Contact an admin!");
@@ -90,10 +100,14 @@ function listShopUpgrades(player, shopId, playerShops) {
     tellPlayer(player, "&o&bUpgrades: " + availableUpgrades + "\n&b-----------------------------------------");
 }
 
-// function to display a formatted list of events with availability for a shop
+/**
+ * Displays a formatted list of events with availability for a specific shop.
+ * @param {Object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {Object} playerShops - The JSON object containing all player shops.
+ */
 function listShopEvents(player, shopId, playerShops) {
     var upgrades = loadUpgradesAndEvents(player);
-
     var shop = playerShops[shopId];
     if (!shop) {
         tellPlayer(player, "&4Shop not found! Contact an admin!");
@@ -149,9 +163,13 @@ function listShopEvents(player, shopId, playerShops) {
     tellPlayer(player, "&o&bEvents: " + availableEvents + "\n&b-----------------------------------------");
 }
 
-
-
-// function to tell if yes or no the shop can take taht upgrade
+/**
+ * Determines if a shop can take a specific upgrade.
+ * @param {Object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {Object} upgrade - The upgrade object.
+ * @returns {Object} An object containing a boolean 'canTake' and an array of 'messages'.
+ */
 function canShopTakeUpgrade(player, shopId, upgrade) {
     var result = {
         "canTake" : true,
@@ -198,6 +216,13 @@ function canShopTakeUpgrade(player, shopId, upgrade) {
     return result;
 }
 
+/**
+ * Determines if a shop can start a specific event.
+ * @param {string} shopId - The ID of the shop.
+ * @param {Object} playerShops - The JSON object containing all player shops.
+ * @param {Object} event - The event object.
+ * @returns {Object} An object containing a boolean 'canTake' and an array of 'messages'.
+ */
 function canShopStartEvent(shopId, playerShops, event) {
     var shop = playerShops[shopId];
     var currentTime = world.getTotalTime();
@@ -230,7 +255,13 @@ function canShopStartEvent(shopId, playerShops, event) {
     return { canTake: messages.length === 0, messages: messages };
 }
 
-// Function to see if one upgarde has dependent upgrades and if they are satisfied
+/**
+ * Checks if a shop has the required dependent upgrades for a specific upgrade.
+ * @param {Object} player - The player object.
+ * @param {Object} upgrade - The upgrade object.
+ * @param {Array} availableUpgrades - The list of available upgrades.
+ * @returns {boolean} True if all dependent upgrades are satisfied, otherwise false.
+ */
 function hasDependentUpgrades(player, upgrade, availableUpgrades) {
     if (!upgrade.requires) {
         return true;
@@ -241,16 +272,20 @@ function hasDependentUpgrades(player, upgrade, availableUpgrades) {
     for (var i = 0; i < dependency_count; i++) {
         var dependency = dependencies[i];
         if (!includes(availableUpgrades, dependency)) {
-            // tellPlayer(player, "&cShop doesn't have the required upgrades!");
             return false;
         }
     }
 
-    // tellPlayer(player, "&aShop has the required upgrades!");
-
     return true;
 }
 
+/**
+ * Applies a specific upgrade to a shop.
+ * @param {Object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {string} upgradeId - The ID of the upgrade.
+ * @param {Object} playerShops - The JSON object containing all player shops.
+ */
 function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {
@@ -301,6 +336,13 @@ function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
     }
 }
 
+/**
+ * Starts a specific event for a shop.
+ * @param {Object} player - The player object.
+ * @param {string} shopId - The ID of the shop.
+ * @param {string} eventId - The ID of the event.
+ * @param {Object} playerShops - The JSON object containing all player shops.
+ */
 function takeShopEvent(player, shopId, eventId, playerShops) {
     var shop = playerShops[shopId];
     if (!shop) {

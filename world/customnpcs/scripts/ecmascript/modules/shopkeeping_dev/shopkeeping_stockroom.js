@@ -373,7 +373,7 @@ function addAllStockFromInventory(player, shopId, playerShops) {
 /**
  * Removes stock from the player's shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
+ * @param {Object} shop - The shop.
  * @param {string} itemId - The item ID.
  * @param {number} count - The number of items to remove.
  * @param {Object} playerShops - The player's shops.
@@ -626,7 +626,7 @@ function removeOutdatedListedItems(player, shop, newType) {
  * @param {number} shopId - The shop ID.
  * @param {string} itemIdOrIndex - The item ID or index.
  * @param {Object} playerShops - The player's shops.
- * @returns {boolean} True if the item was removed, false otherwise
+ * @returns {boolean} True if the item was removed, false otherwise.
  */
 function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
     var shop = playerShops[shopId];

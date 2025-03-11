@@ -2,6 +2,12 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 
+/**
+ * Retrieves the price of a region.
+ * @param {string} region - The region name.
+ * @param {IPlayer} player - The player.
+ * @returns {number} The price of the region.
+ */
 function getRegionPrice(region, player) {
     var worldData = getWorldData();
     var region_json = JSON.parse(worldData.get(["region_" + region]));
@@ -21,6 +27,12 @@ function getRegionPrice(region, player) {
     return 0;
 }
 
+/**
+ * Transfers a region from one player to another.
+ * @param {IPlayer} player - The player initiating the transfer.
+ * @param {string} region - The region name.
+ * @param {string} target - The target player.
+ */
 function transferRegion(player, region, target) {
     var worldData = getWorldData();
     var region_json = JSON.parse(worldData.get(["region_" + region]));
