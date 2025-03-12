@@ -139,3 +139,12 @@ function getJsonValue(json, key) {
     }
     return null;
 }
+
+/**
+ * Checks if a player is an operator (OP).
+ * @param {IPlayer} player - The player to check.
+ * @returns {boolean} - True if the player is an operator, false otherwise.
+ */
+function isPlayerOp(player) {
+    return player.hasPermission("minecraft.command.op");
+}
