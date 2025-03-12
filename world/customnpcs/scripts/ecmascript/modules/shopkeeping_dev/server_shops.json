@@ -163,7 +163,7 @@
             "is_for_sale": false
         },
         "reputation_data": {
-            "reputation": 412,
+            "reputation": 426,
             "reputation_history": [
                 {
                     "time": "2025-01-23T18:12:43.542Z",
@@ -212,6 +212,90 @@
                     "reason": "Reputation added through command",
                     "amount": 2,
                     "reputation": 412
+                },
+                {
+                    "time": "2025-03-12T16:25:10.092Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 413
+                },
+                {
+                    "time": "2025-03-12T16:25:23.242Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 414
+                },
+                {
+                    "time": "2025-03-12T16:33:59.442Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 415
+                },
+                {
+                    "time": "2025-03-12T16:34:02.639Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 416
+                },
+                {
+                    "time": "2025-03-12T16:34:48.486Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 417
+                },
+                {
+                    "time": "2025-03-12T16:36:15.282Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 418
+                },
+                {
+                    "time": "2025-03-12T16:36:57.061Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 419
+                },
+                {
+                    "time": "2025-03-12T16:37:05.759Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 420
+                },
+                {
+                    "time": "2025-03-12T16:48:12.660Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 421
+                },
+                {
+                    "time": "2025-03-12T16:48:24.969Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 422
+                },
+                {
+                    "time": "2025-03-12T16:49:08.908Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 423
+                },
+                {
+                    "time": "2025-03-12T16:49:46.899Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 424
+                },
+                {
+                    "time": "2025-03-12T16:50:43.383Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 425
+                },
+                {
+                    "time": "2025-03-12T16:50:57.512Z",
+                    "reason": "Reputation added through command",
+                    "amount": 1,
+                    "reputation": 426
                 }
             ]
         },
@@ -311,7 +395,7 @@
             "main_room": [],
             "region": "Gramados",
             "sub_region": "Gramados_City",
-            "stock_room_size": 78
+            "stock_room_size": 96
         },
         "shop": {
             "display_name": "Test Jewelry",
@@ -326,7 +410,8 @@
             "vip_memberships",
             "luxury_experience",
             "better_crates_1",
-            "better_crates_2"
+            "better_crates_2",
+            "better_crates_3"
         ],
         "events": [
             {
