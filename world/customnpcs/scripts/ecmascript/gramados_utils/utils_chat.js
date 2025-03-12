@@ -19,7 +19,7 @@ function tellPlayer(player, rawtext) {
 /**
  * Sends a formatted message to a target player.
  * @param {IPlayer} player - The player sending the message.
- * @param {IPlayer} target - The target player to send the message to.
+ * @param {string} target - The target player name to send the message to.
  * @param {string} rawtext - The raw text message.
  * @returns {boolean} The result of the command execution.
  */
@@ -32,7 +32,7 @@ function tellTarget(player, target, rawtext) {
  * @param {IPlayer} player - The player to send the title to.
  * @param {string} rawtext - The raw text message.
  * @param {string} [type="actionbar"] - The type of title message.
- * @param {IPlayer} [target] - The target player to send the title to.
+ * @param {string} [target] - The target player name to send the title to.
  * @returns {boolean} The result of the command execution.
  */
 function tellPlayerTitle(player, rawtext, type, target) {

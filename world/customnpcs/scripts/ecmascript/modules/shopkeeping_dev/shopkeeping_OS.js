@@ -640,7 +640,7 @@ function chat(event) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Opens a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop to open.
  * @param {Object} serverShops - The server shops data.
  * @returns {boolean} - True if the shop was opened successfully, false otherwise.
@@ -705,7 +705,7 @@ function openShop(player, shopId, serverShops) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Closes a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop to close.
  * @returns {boolean} - True if the shop was closed successfully, false otherwise.
  */
@@ -746,7 +746,7 @@ function closeShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Creates a new shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} type - The type of the shop.
  * @param {string} region - The region of the shop.
  * @param {string} sub_region - The sub-region of the shop.
@@ -754,6 +754,10 @@ function closeShop(player, shopId) {
  * @param {number} money - The initial money for the shop.
  */
 function createShop(player, type, region, sub_region, display_name, money) {
+    if (!isPlayerOp(player)) {
+        tellPlayer(player, "&cYou don't have permission to create shops!");
+        return;
+    }
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
@@ -822,10 +826,14 @@ function createShop(player, type, region, sub_region, display_name, money) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Deletes a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop to delete.
  */
 function deleteShop(player, shopId) {
+    if (!isPlayerOp(player)) {
+        tellPlayer(player, "&cYou don't have permission to create shops!");
+        return;
+    }
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
@@ -842,7 +850,7 @@ function deleteShop(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Displays information about a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  */
 function shopInfo(player, shopId) {
@@ -863,7 +871,7 @@ function shopInfo(player, shopId) {
 // ------------------------------------------------------------------------------------------------------------
 /**
  * Sets the price of an item in the shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {string|number} itemIdOrIndex - The item ID or index.
  * @param {string} profit - The profit margin.
@@ -923,7 +931,7 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
 
 /**
  * Gets the reference price of an item.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} itemId - The item ID.
  * @param {Object} itemTag - The item tag.
  * @param {string} shopType - The type of the shop.
@@ -987,6 +995,10 @@ function getProperty(string) {
  * @returns {boolean} - True if the room was removed, false otherwise.
  */
 function removeRoom(roomArray, value) {
+    if (!isPlayerOp(player)) {
+        tellPlayer(player, "&cYou don't have permission to create shops!");
+        return;
+    }
     var index = parseInt(value);
     if (!isNaN(index)) {
         if (index >= 0 && index < roomArray.length) {
@@ -1028,7 +1040,7 @@ function checkSubRegionExists(region, subRegion) {
 
 /**
  * Gets the items held in the player's hand.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @returns {Object} - The item stack data.
  */
 function getHandItems(player) {
@@ -1054,7 +1066,7 @@ function getHandItems(player) {
 
 /**
  * Gets the list of available items for a shop type.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopType - The type of the shop.
  * @returns {Array} - The list of available items.
  */
@@ -1121,7 +1133,7 @@ function getAvailableItems(player, shopType) {
 
 /**
  * Gets the possible items for a shop type.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopType - The type of the shop.
  * @returns {number} - The number of possible items.
  */
@@ -1150,7 +1162,7 @@ function isValidItem(items, itemstock) {
 
 /**
  * Gets the list of items for a "based_on_market" item list type.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} marketName - The market name.
  * @param {string} shopType - The type of the shop.
  * @returns {Array} - The list of items.
@@ -1295,7 +1307,7 @@ function getBasedOnMarketItems(player, marketName, shopType) {
 
 /**
  * Evaluates the item held in the player's hand.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  */
 function evalHandItem(player) {
     var itemstack = player.getMainhandItem();
@@ -1309,7 +1321,7 @@ function evalHandItem(player) {
 
 /**
  * Puts money into a shop from the player's inventory.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {Object} playerShops - The player shops data.
  */
@@ -1339,7 +1351,7 @@ function putMoneyInShop(player, shopId, playerShops) {
 
 /**
  * Takes money from a shop and gives it to the player.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {number} value - The amount of money to take.
  * @param {Object} playerShops - The player shops data.
@@ -1371,7 +1383,7 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
 
 /**
  * Puts money into a shop from the player's pouch.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {number} value - The amount of money to put.
  * @param {Object} playerShops - The player shops data.
@@ -1397,7 +1409,7 @@ function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
 
 /**
  * Takes money from a shop and puts it into the player's pouch.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {number} value - The amount of money to take.
  * @param {Object} playerShops - The player shops data.
@@ -1429,7 +1441,7 @@ function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
 
 /**
  * Adds reputation to a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {number} amount - The amount of reputation to add.
  * @param {Object} playerShops - The player shops data.
@@ -1460,7 +1472,7 @@ function addReputationHistoryEntry(shop, reason, amount) {
 
 /**
  * Logs the reputation of a shop over a period of time.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {number} hours - The number of hours to log.
  * @param {Object} playerShops - The player shops data.
@@ -1482,7 +1494,7 @@ function logShopReputation(player, shopId, hours, playerShops) {
 
 /**
  * Gets the reputation of a shop from a certain time ago.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {Object} shop - The shop data.
  * @param {number} hours - The number of hours ago.
  * @returns {number|null} - The reputation from the specified time ago, or null if not found.
@@ -1517,7 +1529,7 @@ function calculateReputationChangePercent(oldReputation, newReputation) {
 
 /**
  * Buys a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {string} buyerName - The name of the buyer.
  * @param {Object} playerShops - The player shops data.
@@ -1581,7 +1593,7 @@ function buyShop(player, shopId, buyerName, playerShops) {
 
 /**
  * Sells a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop.
  * @param {string} salePrice - The sale price of the shop.
  * @param {Object} playerShops - The player shops data.

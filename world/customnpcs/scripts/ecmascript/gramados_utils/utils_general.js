@@ -146,5 +146,16 @@ function getJsonValue(json, key) {
  * @returns {boolean} - True if the player is an operator, false otherwise.
  */
 function isPlayerOp(player) {
-    return player.hasPermission("minecraft.command.op");
+    var playerName = player.getName();
+    // /home/mouette/gramados-v2/ops.json
+    var ops = loadJson("ops.json");
+    // tellPlayer(player, "&6Checking if player " + playerName + " is an OP");
+    if (ops) {
+        if (findJsonSubEntry(ops, "name", playerName)) {
+            return true;
+        }
+    } else {
+        tellPlayer(player, "&cNo ops.json file found! Contact an admin!");
+    }
+    return false;
 }

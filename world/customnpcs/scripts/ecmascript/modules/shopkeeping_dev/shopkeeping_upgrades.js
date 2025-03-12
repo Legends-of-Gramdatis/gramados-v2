@@ -1,6 +1,6 @@
 /**
  * Loads the list of upgrades and events from a JSON file.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @returns {Object} The JSON object containing upgrades and events.
  */
 function loadUpgradesAndEvents(player) {
@@ -14,7 +14,7 @@ function loadUpgradesAndEvents(player) {
 
 /**
  * Displays a formatted list of all upgrades to the player.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  */
 function listAllUpgrades(player) {
     var upgrades = loadUpgradesAndEvents(player);
@@ -32,7 +32,7 @@ function listAllUpgrades(player) {
 
 /**
  * Displays a formatted list of all events to the player.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  */
 function listAllEvents(player) {
     var events = loadUpgradesAndEvents(player);
@@ -49,7 +49,7 @@ function listAllEvents(player) {
 
 /**
  * Displays a formatted list of upgrades with availability for a specific shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {Object} playerShops - The JSON object containing all player shops.
  */
@@ -102,7 +102,7 @@ function listShopUpgrades(player, shopId, playerShops) {
 
 /**
  * Displays a formatted list of events with availability for a specific shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {Object} playerShops - The JSON object containing all player shops.
  */
@@ -165,7 +165,7 @@ function listShopEvents(player, shopId, playerShops) {
 
 /**
  * Determines if a shop can take a specific upgrade.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {Object} upgrade - The upgrade object.
  * @returns {Object} An object containing a boolean 'canTake' and an array of 'messages'.
@@ -257,7 +257,7 @@ function canShopStartEvent(shopId, playerShops, event) {
 
 /**
  * Checks if a shop has the required dependent upgrades for a specific upgrade.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {Object} upgrade - The upgrade object.
  * @param {Array} availableUpgrades - The list of available upgrades.
  * @returns {boolean} True if all dependent upgrades are satisfied, otherwise false.
@@ -281,7 +281,7 @@ function hasDependentUpgrades(player, upgrade, availableUpgrades) {
 
 /**
  * Applies a specific upgrade to a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {string} upgradeId - The ID of the upgrade.
  * @param {Object} playerShops - The JSON object containing all player shops.
@@ -338,7 +338,7 @@ function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
 
 /**
  * Starts a specific event for a shop.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {string} eventId - The ID of the event.
  * @param {Object} playerShops - The JSON object containing all player shops.

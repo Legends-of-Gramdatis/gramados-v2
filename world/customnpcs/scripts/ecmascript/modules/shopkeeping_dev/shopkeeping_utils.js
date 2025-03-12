@@ -9,7 +9,7 @@ function sanitizeString(string) {
 
 /**
  * Function to check "player_shops.json" data integrity
- * @param {object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopId - The ID of the shop.
  * @param {object} playerShops - The player shops data.
  * @returns {boolean} - True if the shop exists, false otherwise.
@@ -28,7 +28,7 @@ function ensureShopExists(player, shopId, playerShops) {
 
 /**
  * Function to get a list of all shops a given player owns
- * @param {object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} ownername - The name of the shop owner.
  * @param {object} serverShops - The server shops data.
  * @returns {Array} - A list of shop IDs owned by the player.
@@ -62,7 +62,7 @@ function shopExists(shopId, playerShops) {
 
 /**
  * Function to check if a shop instance isn't missing any data (update proof)
- * @param {object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {string} shopID - The ID of the shop.
  * @param {object} playerShops - The player shops data.
  * @param {boolean} log - Whether to log messages to the player.

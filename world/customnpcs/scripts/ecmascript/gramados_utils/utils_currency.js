@@ -30,7 +30,7 @@ function convertPrice(price) {
 /**
  * Gets the monetary value of an item stack.
  * @param {Object} stack - The item stack.
- * @param {Object} world - The world object.
+ * @param {IWorld} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {number} - The monetary value of the item stack.
  */
@@ -50,7 +50,7 @@ function getItemMoney(stack, world, currencyType) {
 /**
  * Checks if an item stack is a form of money.
  * @param {Object} stack - The item stack.
- * @param {Object} world - The world object.
+ * @param {IWorld} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {boolean} - True if the item stack is money, false otherwise.
  */
@@ -108,7 +108,7 @@ function getCoinAmount(str) {
 
 /**
  * Generates money items based on the amount and currency type.
- * @param {Object} world - The world object.
+ * @param {IWorld} world - The world object.
  * @param {number} amount - The amount in cents.
  * @param {string} currencyType - The type of currency.
  * @returns {Array} - An array of generated money items.
@@ -178,8 +178,8 @@ function calculatePrice(referencePrice, profit) {
 
 /**
  * Retrieves money from a player's inventory.
- * @param {Object} player - The player object.
- * @param {Object} world - The world object.
+ * @param {IPlayer} player - The player.
+ * @param {IWorld} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {number} - The total amount of money retrieved in cents.
  */
@@ -213,7 +213,7 @@ function convertCoinItems(jsonCoinItems) {
 
 /**
  * Retrieves the money from a player's pouch.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} value - The value to retrieve in cents.
  * @returns {boolean} - True if the money was successfully retrieved, false otherwise.
  */
@@ -234,7 +234,7 @@ function getMoneyFromPlayerPouch(player, value) {
 
 /**
  * Adds money to the current player's pouch.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player.
  * @param {number} value - The value to add in cents.
  * @returns {boolean} - True if the money was successfully added, false otherwise.
  */
