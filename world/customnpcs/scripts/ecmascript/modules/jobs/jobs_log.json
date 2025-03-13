@@ -419,12 +419,6 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
-            "65": {
-                "JobID": 65,
-                "JobName": "Mechanic",
-                "StartTime": 2286151954,
-                "Region": "Gramados"
-            },
             "66": {
                 "JobID": 66,
                 "JobName": "Mechanic",
@@ -442,7 +436,22 @@
     "4e7c8fec-c005-43d7-9132-2dcf1a379e8c": {
         "Name": "SilveradoTDS",
         "JobHistory": {},
-        "ActiveJobs": {}
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2437067126,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2436983686,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
     },
     "bd6c0c13-6608-4757-933b-7a82a6aac295": {
         "Name": "Peter_Kitsune",
