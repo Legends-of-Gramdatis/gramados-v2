@@ -5,7 +5,7 @@ var SHOP_CATEGORIES_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/sho
 var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/regional_demand.json";
 var UPGRADES_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shop_upgrades.json";
 
-var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/stock_exchange_data.json"
+var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/stock_exchange.json"
 var NPC_MARKET_DATA_JSON_PATH = "world/customnpcs/markets/"
 
 var world = API.getIWorld(0);

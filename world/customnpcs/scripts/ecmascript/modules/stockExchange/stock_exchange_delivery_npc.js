@@ -96,7 +96,7 @@ var stock_exchange_instance;
 var stock_exchange_generals;
 
 var _PRICE_EVOLUTION_FACTOR = 0.001; // 0.1% price increase or decrease
-var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange_data.json"; // Path to the JSON file
+var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json"; // Path to the JSON file
 
 var npc; // Global variable to store the NPC instance
 var world; // Get the world where the NPC is located
