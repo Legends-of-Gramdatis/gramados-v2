@@ -167,7 +167,7 @@ function evalShopReputation(player, shopId, playerShops) {
     var listedItems = shop.inventory.listed_items;
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
-        var referencePrice = getReferencePrice(player, itemId, listedItem.tag, shop.shop.type);
+        var referencePrice = getReferencePrice(player, itemId, listedItem.tag);
         var referencePriceAtListing = listedItem.reference_price;
         var margin = calculateMargin(referencePrice, listedItem.price);
         var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
@@ -226,7 +226,7 @@ function calculateShopScore(player, shopId, playerShops) {
 
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
-        var referencePrice = getReferencePrice(player, itemId, listedItem.tag, shop.shop.type);
+        var referencePrice = getReferencePrice(player, itemId, listedItem.tag);
         var listedPrice = listedItem.price;
         var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
 
