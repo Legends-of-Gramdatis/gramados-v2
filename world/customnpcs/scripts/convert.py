@@ -21,14 +21,14 @@ for market, items in stock_market_data.items():
             if item_id in global_prices:
                 if new_value < global_prices[item_id]["value"]:
                     global_prices[item_id]["value"] = new_value
-                    global_prices[item_id]["based_on_market"] = market
+                    global_prices[item_id]["based_on_stock"] = market
             else:
                 # Otherwise, add new item entry
                 global_prices[item_id] = {
                     "display_name": item_data["display_name"],
                     "value": new_value,  # Convert price to cents
                     "allow_market_override": True,  # Allows price to change per market
-                    "based_on_market": market  # Tracks the original market source
+                    "based_on_stock": market  # Tracks the original market source
                 }
 
 # Save the output to global_prices.json
