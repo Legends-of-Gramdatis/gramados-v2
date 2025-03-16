@@ -2,47 +2,17 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": 112,
     "Options": [
-        {
-            "OptionSlot": 0,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 335,
-                "Title": "What's the issue?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Not interested sorry.",
-                "DialogColor": 14737632,
-                "OptionType": 2
-            }
-        },
-        {
-            "OptionSlot": 2,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "[Report Danniel to the Police]",
-                "DialogColor": 14737632,
-                "OptionType": 2
-            }
-        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 41,
-    "AvailabilityQuest": 1,
+    "DialogId": 447,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 2,
+    "AvailabilityQuest2": 0,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -57,20 +27,20 @@
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
-    "AvailabilityFaction": 2,
-    "DialogTitle": "p1.1 - Start",
+    "AvailabilityFaction": 0,
+    "DialogTitle": "p0 - Unavailable ML",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
-    "AvailabilityFactionId": 6,
+    "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, you must be the one with the Marksman License I've heard about. I’m Clayton Harlow, owner of this place. Good timing too, because I’ve got a serious problem on my hands.",
+    "DialogText": "Hold it right there. I don’t do business with just anyone—especially not when it comes to firearms. You’ll need an official Marksman License before we can talk. Get one, and maybe we’ll have something to discuss.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": 11,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -84,7 +54,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1742134278483L,
+        "TimePast": 1742134178783L,
         "Time": 0L,
         "Subject": ""
     }
