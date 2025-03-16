@@ -1,4 +1,5 @@
 var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
+var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exchange_data.json";
 
 /**
  * Gets the price of an item by its ID and NBT.
@@ -16,9 +17,21 @@ function getPrice(itemId, itemTag) {
         if (globalPrices[i].id === itemId) {
             if (globalPrices[i].tag) {
                 if (JSON.stringify(globalPrices[i].tag) === JSON.stringify(itemTag)) {
+                    if (globalPrices[i].stock_link) {
+                        var stockPrices = loadJson(STOCK_EXCHANGE_DATA_JSON_PATH);
+                        if (stockPrices[globalPrices[i].stock_link]) {
+                            return stockPrices[globalPrices[i].stock_link].current_price;
+                        }
+                    }
                     return globalPrices[i].price;
                 }
             } else {
+                if (globalPrices[i].stock_link) {
+                    var stockPrices = loadJson(STOCK_EXCHANGE_DATA_JSON_PATH);
+                    if (stockPrices[globalPrices[i].stock_link]) {
+                        return stockPrices[globalPrices[i].stock_link].current_price;
+                    }
+                }
                 return globalPrices[i].price;
             }
         }
