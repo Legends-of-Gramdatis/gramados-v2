@@ -19,6 +19,8 @@ icons:
         label: civil_services_restroom
     civil_services_school:
         label: civil_services_school
+    civil_services_worship:
+        label: civil_services_worship
     ent&lei_misc:
         label: ent&lei_misc
     ent&lei_amusement_park:
@@ -1596,6 +1598,14 @@ sets:
                 y: 69.0
                 z: -2484.0
                 label: Trilnat Auto Charging Station
+            marker_25:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -4859.0
+                y: 72.0
+                z: 6326.0
+                label: Ruta Gas
         lines: {
             }
         layerprio: 0
@@ -2056,27 +2066,35 @@ sets:
             marker_1:
                 world: world
                 markup: false
-                x: -2796.0
                 icon: shopping_market
+                x: -2796.0
                 y: 95.0
                 z: 902.0
                 label: Petrolton Market
             marker_2:
                 world: world
                 markup: false
-                x: -1308.0 
                 icon: shopping_market
+                x: -1308.0 
                 y: 87.0
                 z: -1385.0
                 label: Allen Point Local Market
             marker_3:
                 world: world
                 markup: false
-                x: 194.0
                 icon: shopping_market
+                x: 194.0
                 y: 71.0
                 z: -896.0
                 label: Springfield Market
+            marker_4:
+                world: world
+                markup: false
+                icon: shopping_market
+                x: -4724.0
+                y: 76.0
+                z: 6899.0
+                label: La Alhóndiga de Caldero
         lines: {
             }
         layerprio: 0
@@ -2318,8 +2336,22 @@ sets:
                 y: 71.0
                 z: -2933.0
                 label: Highward Bay
-
-            
+            marker_25:
+                world: world
+                markup: false
+                icon: outdoor_garden_park
+                x: -4696.0
+                y: 80.0
+                z: 6816.0
+                label: Jardín de la Guardia
+            marker_26:
+                world: world
+                markup: false
+                icon: outdoor_misc
+                x: -4704.0
+                y: 80.0
+                z: 6876.0
+                label: Paseo Caldero
         lines: {}
         layerprio: 0
     Parkings:
@@ -2659,11 +2691,19 @@ sets:
             marker_21:
                 world: world
                 markup: false
-                icon: ent&lei_historic
+                icon: civil_services_worship
                 x: -4669.0
                 y: 77.0
                 z: 6759.0
-                label: Caldero Church
+                label: Parroquia del Salvador
+            marker_22:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -4722.0
+                y: 80.0
+                z: 6798.0
+                label: Palacio de la Guardia
         lines: {}
         layerprio: 0
     Bridges:
