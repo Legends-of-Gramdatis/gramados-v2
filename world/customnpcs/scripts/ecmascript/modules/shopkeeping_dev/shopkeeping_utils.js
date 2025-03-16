@@ -196,25 +196,25 @@ function getCategoryJson(shopType) {
  * @param {IPlayer} player - The player.
  * @param {string} itemId - The item ID.
  * @param {Object} itemTag - The item tag.
- * @param {string} shopType - The type of the shop.
  * @returns {number} - The reference price of the item.
  */
-function getReferencePrice(player, itemId, itemTag, shopType) {
+function getReferencePrice(player, itemId, itemTag) {
+    // tellPlayer(player, "&cGetting reference price for " + itemId + ", loading json from " + GLOBAL_PRICES_JSON_PATH);
     var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
     if (!globalPrices) {
         tellPlayer(player, "&cGlobal prices not found!");
         return 0;
     }
 
-    for (var i = 0; i < globalPrices.length; i++) {
-        if (globalPrices[i].id === itemId) {
-            if (globalPrices[i].tag) {
-                if (JSON.stringify(globalPrices[i].tag) === JSON.stringify(itemTag)) {
-                    return globalPrices[i].price;
-                }
-            } else {
-                return globalPrices[i].price;
+    // global price a json object. Every key is the item id and the value is a json object with "value", "display_name", and sometimes (optionnal) "tag"
+    if (globalPrices[itemId]) {
+        var item = globalPrices[itemId];
+        if (item.tag) {
+            if (JSON.stringify(item.tag) === JSON.stringify(itemTag)) {
+                return item.value;
             }
+        } else {
+            return item.value;
         }
     }
 
