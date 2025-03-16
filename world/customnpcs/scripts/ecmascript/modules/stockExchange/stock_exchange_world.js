@@ -42,41 +42,34 @@ function updateStockPrice(stockValue, regionGeneral) {
     var lastSoldTime = stockValue["last_sold_time"];
     var currentTime = world.getTotalTime();
     var elapsedTime = lastSoldTime > 0 ? currentTime - lastSoldTime : 0;
+    // world.broadcast("Elapsed time since last sale for " + stockValue["display_name"] + ": " + elapsedTime);
 
     // If the stock is "active" (has been sold at least once), update its price
     if (elapsedTime != 0) {
-        var sixHours = _TIMER_COUNTER / 4;
+        var sixHours = _TIMER_COUNTER / 4; // 432000
 
-        if (elapsedTime < sixHours) {
+        if (elapsedTime < sixHours) { // Less than 432000
+            // world.broadcast("Stock " + stockValue["display_name"] + " is in phase 1! (less than 6 hours)");
             // If last sale is less than 6 hours ago, lower the stock price
             var proportion = _OFFER_AND_DEMAND_FACTOR;
-            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+            if (regionGeneral && regionGeneral["stock_flexibility"] != null) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
             var percent = 1 - proportion;
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
 
-        } else if (elapsedTime > sixHours*2 && elapsedTime < _TIMER_COUNTER) {
+        } else if (elapsedTime > sixHours*2 && elapsedTime < _TIMER_COUNTER) { // Between 864000 and 1728000
+            // world.broadcast("Stock " + stockValue["display_name"] + " is in phasse 2! (between 12 and 24 hours)");
             // If last sale is between 12 and 24 hours ago, increase the stock price
 
             var proportion = _OFFER_AND_DEMAND_FACTOR;
-            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+            if (regionGeneral && regionGeneral["stock_flexibility"] != null) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
             var percent = 1 + proportion;
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
-        } else if (elapsedTime > _TIMER_COUNTER && elapsedTime < _TIMER_COUNTER*2) {
-            // var diff = stockValue["reference_price"] - stockValue["current_price"];
-            // if (diff < 0) {
-            //     diff = diff * -1;
-            // }
-            // var proportion = diff / 4;
-            // if (regionGeneral && regionGeneral["stock_flexibility"]) {
-            //     proportion *= regionGeneral["stock_flexibility"];
-            // }
-            // var random = Math.random();
-            // var percent = 1 + (random * proportion);
-            // stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
+        } else if (elapsedTime > _TIMER_COUNTER && elapsedTime < _TIMER_COUNTER*2) { // Between 1728000 and 3456000
+            // world.broadcast("Stock " + stockValue["display_name"] + " is in phase 3! (between 24 and 48 hours)");
 
             var maxPrice = stockValue["max_price"];
             var diff = 0;
@@ -92,7 +85,7 @@ function updateStockPrice(stockValue, regionGeneral) {
             diff--;
 
             var proportion = diff / 4;
-            if (regionGeneral && regionGeneral["stock_flexibility"]) {
+            if (regionGeneral && regionGeneral["stock_flexibility"] != null) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
             var random = Math.random();
@@ -100,6 +93,8 @@ function updateStockPrice(stockValue, regionGeneral) {
             stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
         }
     }
+
+    // world.broadcast("Applying random factor to stock " + stockValue["name"] + "...");
     
     var cap = Math.max(stockValue["reference_price"] * 0.055, 20);
 
