@@ -724,5 +724,73 @@
         "value": 50000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
+    },
+    "harvestcraft:toastitem:0": {
+        "display_name": "toastitem",
+        "value": 346
+    },
+    "harvestcraft:raspberrypieitem:0": {
+        "display_name": "raspberrypieitem",
+        "value": 423
+    },
+    "harvestcraft:croissantitem:0": {
+        "display_name": "croissantitem",
+        "value": 192
+    },
+    "harvestcraft:pumpkinbreaditem:0": {
+        "display_name": "pumpkinbreaditem",
+        "value": 423
+    },
+    "harvestcraft:blueberrypieitem:0": {
+        "display_name": "blueberrypieitem",
+        "value": 423
+    },
+    "harvestcraft:buttercookieitem:0": {
+        "display_name": "buttercookieitem",
+        "value": 76
+    },
+    "harvestcraft:walnutraisinbreaditem:0": {
+        "display_name": "walnutraisinbreaditem",
+        "value": 538
+    },
+    "harvestcraft:cherrypieitem:0": {
+        "display_name": "cherrypieitem",
+        "value": 384
+    },
+    "harvestcraft:peanutbuttercookiesitem:0": {
+        "display_name": "peanutbuttercookiesitem",
+        "value": 153
+    },
+    "harvestcraft:datenutbreaditem:0": {
+        "display_name": "datenutbreaditem",
+        "value": 384
+    },
+    "harvestcraft:strawberrypieitem:0": {
+        "display_name": "strawberrypieitem",
+        "value": 384
+    },
+    "harvestcraft:raisincookiesitem:0": {
+        "display_name": "raisincookiesitem",
+        "value": 153
+    },
+    "harvestcraft:banananutbreaditem:0": {
+        "display_name": "banananutbreaditem",
+        "value": 384
+    },
+    "harvestcraft:applepieitem:0": {
+        "display_name": "applepieitem",
+        "value": 384
+    },
+    "minecraft:cookie:0": {
+        "display_name": "cookie",
+        "value": 153
+    },
+    "minecraft:bread:0": {
+        "display_name": "bread",
+        "value": 230
+    },
+    "harvestcraft:festivalbreaditem:0": {
+        "display_name": "festivalbreaditem",
+        "value": 384
     }
 }
