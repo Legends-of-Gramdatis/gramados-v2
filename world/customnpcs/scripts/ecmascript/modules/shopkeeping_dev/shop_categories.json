@@ -40,24 +40,16 @@
             },
             "items": [
                 {
-                    "id": "harvestcraft:cuttingboarditem:0",
-                    "name": "Cutting Board",
-                    "price": 100
+                    "id": "harvestcraft:cuttingboarditem:0"
                 },
                 {
-                    "id": "harvestcraft:potitem:0",
-                    "name": "Pot",
-                    "price": 100
+                    "id": "harvestcraft:potitem:0"
                 },
                 {
-                    "id": "harvestcraft:skilletitem:0",
-                    "name": "Skillet",
-                    "price": 100
+                    "id": "harvestcraft:skilletitem:0"
                 },
                 {
-                    "id": "harvestcraft:saucepanitem:0",
-                    "name": "Saucepan",
-                    "price": 100
+                    "id": "harvestcraft:saucepanitem:0"
                 }
             ]
         },
@@ -73,29 +65,19 @@
             },
             "items": [
                 {
-                    "id": "variedcommodities:pendant:0",
-                    "name": "Pendant",
-                    "price": 10000
+                    "id": "variedcommodities:pendant:0"
                 },
                 {
-                    "id": "variedcommodities:necklace:0",
-                    "name": "Necklace",
-                    "price": 25000
+                    "id": "variedcommodities:necklace:0"
                 },
                 {
-                    "id": "variedcommodities:ring:0",
-                    "name": "Ring",
-                    "price": 30000
+                    "id": "variedcommodities:ring:0"
                 },
                 {
-                    "id": "variedcommodities:statuette:0",
-                    "name": "Statuette",
-                    "price": 15000
+                    "id": "variedcommodities:statuette:0"
                 },
                 {
-                    "id": "variedcommodities:tablet:0",
-                    "name": "Tablet",
-                    "price": 17500
+                    "id": "variedcommodities:tablet:0"
                 }
             ]
         },
@@ -144,9 +126,7 @@
             ],
             "items": [
                 {
-                    "id": "harvestcraft:cuttingboarditem:0",
-                    "name": "Cutting Board",
-                    "price": 100
+                    "id": "harvestcraft:cuttingboarditem:0"
                 }
             ]
         },
