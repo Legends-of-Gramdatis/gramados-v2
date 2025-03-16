@@ -1,3 +1,5 @@
+var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
+
 /**
  * Function to sanitize a string (if "", set to null)
  * @param {string} string - The string to sanitize.
@@ -187,4 +189,34 @@ function getCategoryJson(shopType) {
         }
     }
     return shop_entry;
+}
+
+/**
+ * Gets the reference price of an item.
+ * @param {IPlayer} player - The player.
+ * @param {string} itemId - The item ID.
+ * @param {Object} itemTag - The item tag.
+ * @param {string} shopType - The type of the shop.
+ * @returns {number} - The reference price of the item.
+ */
+function getReferencePrice(player, itemId, itemTag, shopType) {
+    var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
+    if (!globalPrices) {
+        tellPlayer(player, "&cGlobal prices not found!");
+        return 0;
+    }
+
+    for (var i = 0; i < globalPrices.length; i++) {
+        if (globalPrices[i].id === itemId) {
+            if (globalPrices[i].tag) {
+                if (JSON.stringify(globalPrices[i].tag) === JSON.stringify(itemTag)) {
+                    return globalPrices[i].price;
+                }
+            } else {
+                return globalPrices[i].price;
+            }
+        }
+    }
+
+    return 0;
 }
