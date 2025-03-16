@@ -37,462 +37,692 @@
     },
     "forestry:fruits:3": {
         "display_name": "Forestry Lemon",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "harvestcraft:lemonitem:0": {
         "display_name": "Lemon",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "harvestcraft:orangeitem:0": {
         "display_name": "Orange",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "harvestcraft:grapefruititem:0": {
         "display_name": "Grapefruit",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "harvestcraft:pomegranateitem:0": {
         "display_name": "Pomegranate",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "harvestcraft:limeitem:0": {
         "display_name": "Lime",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Farming"
     },
     "forestry:logs.5:0": {
         "display_name": "Pine Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "minecraft:log:1": {
         "display_name": "Spruce Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "forestry:logs.0:1": {
         "display_name": "Teak Wood",
-        "value": 400
+        "value": 400,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "forestry:logs.6:1": {
         "display_name": "Ipe Wood",
-        "value": 300
+        "value": 300,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "forestry:logs.3:1": {
         "display_name": "Walnut Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "forestry:logs.5:3": {
         "display_name": "Citrus Wood",
-        "value": 1000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Lumber"
     },
     "immersiveengineering:stone_decoration:5": {
         "display_name": "Concrete Block",
-        "value": 3000
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Concrete"
     },
     "immersiveengineering:stone_device:5": {
         "display_name": "Concrete Chunk",
-        "value": 2250
+        "value": 2250,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Concrete"
     },
     "immersiveengineering:stone_decoration_slab:5": {
         "display_name": "Concrete Slab",
-        "value": 1500
+        "value": 1500,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Concrete"
     },
     "immersiveengineering:stone_device:4": {
         "display_name": "Concrete Panel",
-        "value": 750
+        "value": 750,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Concrete"
     },
     "immersiveengineering:stone_device:3": {
         "display_name": "Concrete Sheet",
-        "value": 375
+        "value": 375,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Concrete"
     },
     "minecraft:brick:0": {
         "display_name": "Brick",
-        "value": 300
+        "value": 300,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Terracotta"
     },
     "minecraft:hardened_clay:0": {
         "display_name": "Terracotta",
-        "value": 3000
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Terracotta"
     },
     "minecraft:brick_block:0": {
         "display_name": "Brick Block",
-        "value": 6000
+        "value": 6000,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Terracotta"
     },
     "minecraft:flower_pot:0": {
         "display_name": "Flower Pot",
-        "value": 600
+        "value": 600,
+        "allow_market_override": true,
+        "based_on_market": "Gramados Industrial Terracotta"
     },
     "harvestcraft:onionitem:0": {
         "display_name": "Onion",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:garlicitem:0": {
         "display_name": "Garlic",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:chilipepperitem:0": {
         "display_name": "Chili Pepper",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:tomatoitem:0": {
         "display_name": "Tomato",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:eggplantitem:0": {
         "display_name": "Eggplant",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:bellpepperitem:0": {
         "display_name": "Bell Pepper",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "minecraft:potato:0": {
         "display_name": "Potato",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:gigapickleitem:0": {
         "display_name": "Gigapickle",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:zucchiniitem:0": {
         "display_name": "Zucchini",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:wintersquashitem:0": {
         "display_name": "Winter Squash",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:harvestpumpkinitem:0": {
         "display_name": "Harvest Pumpkin",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "minecraft:melon:0": {
         "display_name": "Melon",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:caulifloweritem:0": {
         "display_name": "Cauliflower",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:cabbageitem:0": {
         "display_name": "Cabbage",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:broccoliitem:0": {
         "display_name": "Broccoli",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:brusselsproutitem:0": {
         "display_name": "Brussels Sprout",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:cucumberitem:0": {
         "display_name": "Cucumber",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:beetitem:0": {
         "display_name": "Beet",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:leekitem:0": {
         "display_name": "Leek",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:peasitem:0": {
         "display_name": "Peas",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "minecraft:carrot:0": {
         "display_name": "Carrot",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:rhubarbitem:0": {
         "display_name": "Rhubarb",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:scallionitem:0": {
         "display_name": "Scallion",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "minecraft:beetroot:0": {
         "display_name": "Beetroot",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:parsnipitem:0": {
         "display_name": "Parsnip",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:cornitem:0": {
         "display_name": "Corn",
-        "value": 40
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:barleyitem:0": {
         "display_name": "Barley",
-        "value": 40
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:spiceleafitem:0": {
         "display_name": "Spice Leaf",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:lettuceitem:0": {
         "display_name": "Lettuce",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:beanitem:0": {
         "display_name": "Bean",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:grapeitem:0": {
         "display_name": "Grape",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:sweetpotatoitem:0": {
         "display_name": "Sweet Potato",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:soybeanitem:0": {
         "display_name": "Soybean",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:lentilitem:0": {
         "display_name": "Lentil",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "minecraft:apple:0": {
         "display_name": "Apple",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:cherryitem:0": {
         "display_name": "Cherry",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "harvestcraft:figitem:0": {
         "display_name": "Fig",
-        "value": 20
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Farming"
     },
     "growthcraft_apples:applecider:1": {
         "display_name": "Apple Cider",
-        "value": 800
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_apples:applecider:2": {
         "display_name": "Apple Cider (Potent)",
-        "value": 1000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_apples:applecider:3": {
         "display_name": "Apple Cider (Extended)",
-        "value": 1000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_apples:applecider:4": {
         "display_name": "Silken Nectar",
-        "value": 4000
+        "value": 4000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_apples:applecider:5": {
         "display_name": "Apple Cider (Intoxicated)",
-        "value": 4000
+        "value": 4000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_bees:mead:1": {
         "display_name": "Mead",
-        "value": 1200
+        "value": 1200,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_bees:mead:2": {
         "display_name": "Mead (Potent)",
-        "value": 1500
+        "value": 1500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_bees:mead:3": {
         "display_name": "Mead (Extended)",
-        "value": 1500
+        "value": 1500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_bees:mead:4": {
         "display_name": "Magical Mead",
-        "value": 6000
+        "value": 6000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_bees:mead:5": {
         "display_name": "Intoxicated Mead",
-        "value": 6000
+        "value": 6000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:1": {
         "display_name": "Purple Grape Wine",
-        "value": 1000
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:2": {
         "display_name": "Purple Grape Wine (Potent)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:3": {
         "display_name": "Purple Grape Wine (Extended)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:9": {
         "display_name": "Green Grape Wine",
-        "value": 1000
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:10": {
         "display_name": "Green Grape Wine (Potent)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:11": {
         "display_name": "Green Grape Wine (Extended)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:17": {
         "display_name": "Red Grape Wine",
-        "value": 1000
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:18": {
         "display_name": "Red Grape Wine (Potent)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "growthcraft_grapes:grapewine:19": {
         "display_name": "Red Grape Wine (Extended)",
-        "value": 2000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Brewing"
     },
     "minecraft:log:0": {
         "display_name": "Oak Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "minecraft:log:2": {
         "display_name": "Birch Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "forestry:logs.6:3": {
         "display_name": "Cocobolo Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "forestry:logs.5:2": {
         "display_name": "Maple Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "forestry:logs.5:1": {
         "display_name": "Plum Wood",
-        "value": 1000
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "minecraft:log2:1": {
         "display_name": "Dark Oak Wood",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Greenfield Lumber"
     },
     "minecraft:wheat:0": {
         "display_name": "Wheat",
-        "value": 40
+        "value": 40,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "minecraft:wheat_seeds:0": {
         "display_name": "Wheat Seeds",
-        "value": 25
+        "value": 25,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "minecraft:hay_block:0": {
         "display_name": "Hay Bale",
-        "value": 400
+        "value": 400,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "minecraft:chicken:0": {
         "display_name": "Raw Chicken",
-        "value": 500
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "minecraft:egg:0": {
         "display_name": "Egg",
-        "value": 100
+        "value": 100,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "minecraft:feather:0": {
         "display_name": "Feather",
-        "value": 10
+        "value": 10,
+        "allow_market_override": true,
+        "based_on_market": "Farmiston"
     },
     "growthcraft_grapes:grapewine:4": {
         "display_name": "Purple Ambrosia",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:5": {
         "display_name": "Purple Port Wine",
-        "value": 3000
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:6": {
         "display_name": "Purple Grape Wine (Intoxicated)",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:7": {
         "display_name": "Purple Grape Wine (Poisoned)",
-        "value": 2000
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:12": {
         "display_name": "Green Ambrosia",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:13": {
         "display_name": "Green Port Wine",
-        "value": 3000
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:14": {
         "display_name": "Green Grape Wine (Intoxicated)",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:15": {
         "display_name": "Green Grape Wine (Poisoned)",
-        "value": 2000
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:20": {
         "display_name": "Red Ambrosia",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:21": {
         "display_name": "Red Port Wine",
-        "value": 3000
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:22": {
         "display_name": "Red Grape Wine (Intoxicated)",
-        "value": 5000
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "growthcraft_grapes:grapewine:23": {
         "display_name": "Red Grape Wine (Poisoned)",
-        "value": 2000
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_market": "Allenis"
     },
     "animania:holstein_cheese_wheel:0": {
         "display_name": "Holstein Cheese Wheel",
-        "value": 14000
+        "value": 14000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "animania:jersey_cheese_wheel:0": {
         "display_name": "Jersey Cheese Wheel",
-        "value": 18000
+        "value": 18000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "animania:goat_cheese_wheel:0": {
         "display_name": "Goat Cheese Wheel",
-        "value": 16000
+        "value": 16000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "animania:sheep_cheese_wheel:0": {
         "display_name": "Sheep Cheese Wheel",
-        "value": 16000
+        "value": 16000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_waxed:25": {
         "display_name": "Cheddar Cheese Wheel",
-        "value": 53000
+        "value": 53000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:25": {
         "display_name": "Gorgonzola Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:57": {
         "display_name": "Emmentaler Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:89": {
         "display_name": "Appenzeller Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:121": {
         "display_name": "Asiago Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:153": {
         "display_name": "Parmesan Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_waxed:57": {
         "display_name": "Monterey Cheese Wheel",
-        "value": 53000
+        "value": 53000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_waxed:121": {
         "display_name": "Provolone Cheese Wheel",
-        "value": 53000
+        "value": 53000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_waxed:89": {
         "display_name": "Gouda Cheese Wheel",
-        "value": 53000
+        "value": 53000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_aged:185": {
         "display_name": "Casu Marzu Cheese Wheel",
-        "value": 50000
+        "value": 50000,
+        "allow_market_override": true,
+        "based_on_market": "Monsalac Cheesemaking"
     }
 }
