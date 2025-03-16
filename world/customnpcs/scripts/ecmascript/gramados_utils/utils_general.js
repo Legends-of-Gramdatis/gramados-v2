@@ -145,17 +145,17 @@ function getJsonValue(json, key) {
  * @param {IPlayer} player - The player to check.
  * @returns {boolean} - True if the player is an operator, false otherwise.
  */
-function isPlayerOp(player) {
-    var playerName = player.getName();
-    // /home/mouette/gramados-v2/ops.json
-    var ops = loadJson("ops.json");
-    // tellPlayer(player, "&6Checking if player " + playerName + " is an OP");
-    if (ops) {
-        if (findJsonSubEntry(ops, "name", playerName)) {
-            return true;
-        }
-    } else {
-        tellPlayer(player, "&cNo ops.json file found! Contact an admin!");
-    }
-    return false;
-}
+// function isPlayerOp(player) {
+//     var playerName = player.getName();
+//     // /home/mouette/gramados-v2/ops.json
+//     var ops = loadJson("ops.json");
+//     // tellPlayer(player, "&6Checking if player " + playerName + " is an OP");
+//     if (ops) {
+//         if (findJsonSubEntry(ops, "name", playerName)) {
+//             return true;
+//         }
+//     } else {
+//         tellPlayer(player, "&cNo ops.json file found! Contact an admin!");
+//     }
+//     return false;
+// }

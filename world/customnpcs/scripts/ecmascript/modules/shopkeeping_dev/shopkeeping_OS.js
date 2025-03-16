@@ -754,10 +754,6 @@ function closeShop(player, shopId) {
  * @param {number} money - The initial money for the shop.
  */
 function createShop(player, type, region, sub_region, display_name, money) {
-    if (!isPlayerOp(player)) {
-        tellPlayer(player, "&cYou don't have permission to create shops!");
-        return;
-    }
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
@@ -830,10 +826,6 @@ function createShop(player, type, region, sub_region, display_name, money) {
  * @param {number} shopId - The ID of the shop to delete.
  */
 function deleteShop(player, shopId) {
-    if (!isPlayerOp(player)) {
-        tellPlayer(player, "&cYou don't have permission to create shops!");
-        return;
-    }
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
@@ -909,7 +901,7 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
         return;
     }
 
-    var referencePrice = getReferencePrice(player, itemIdOrIndex, itemTag, shop.shop.type);
+    var referencePrice = getReferencePrice(player, itemIdOrIndex, itemTag);
     var price = calculatePrice(referencePrice, profit);
 
     shop.inventory.listed_items[itemIdOrIndex] = {
@@ -927,39 +919,6 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     tellPlayer(player, "&aSuccessfully set price for item &e" + itemIdOrIndex + " &ato &r:money:&e" + getAmountCoin(price));
     // tellPlayer(player, "Reference price: " + referencePrice);
     // tellPlayer(player, "Price: " + price);
-}
-
-/**
- * Gets the reference price of an item.
- * @param {IPlayer} player - The player.
- * @param {string} itemId - The item ID.
- * @param {Object} itemTag - The item tag.
- * @param {string} shopType - The type of the shop.
- * @returns {number} - The reference price of the item.
- */
-function getReferencePrice(player, itemId, itemTag, shopType) {
-    // tellPlayer(player, "Getting reference price for item: " + itemId);
-    var shopCategories = getAvailableItems(player, shopType);
-    // tellPlayer(player, "Shop categories: " + JSON.stringify(shopCategories));
-
-    for (var i = 0; i < shopCategories.length; i++) {
-        // tellPlayer(player, "Checking item: " + shopCategories[i].id + " - " + shopCategories[i].value);
-        if (shopCategories[i].id === itemId) {
-            // tellPlayer(player, "Item found!");
-            if (shopCategories[i].tag) {
-                // tellPlayer(player, "Item has tag: " + shopCategories[i].tag);
-                // tellPlayer(player, "Item tag: " + itemTag);
-                if (JSON.stringify(shopCategories[i].tag) === JSON.stringify(itemTag)) {
-                    return shopCategories[i].value;
-                }
-            } else {
-                // tellPlayer(player, "No tag found!");
-                return shopCategories[i].value;
-            }
-        }
-    }
-
-    return 0;
 }
 
 // ############################################################################################################
@@ -995,10 +954,6 @@ function getProperty(string) {
  * @returns {boolean} - True if the room was removed, false otherwise.
  */
 function removeRoom(roomArray, value) {
-    if (!isPlayerOp(player)) {
-        tellPlayer(player, "&cYou don't have permission to create shops!");
-        return;
-    }
     var index = parseInt(value);
     if (!isNaN(index)) {
         if (index >= 0 && index < roomArray.length) {
@@ -1226,6 +1181,12 @@ function getBasedOnMarketItems(player, marketName, shopType) {
         // tellPlayer(player, "Extracted data: " + JSON.stringify(extracted_data));
     }
 
+    var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
+    if (!globalPrices) {
+        tellPlayer(player, "&cGlobal prices not found!");
+        return;
+    }
+
     // loop through the "extracted_data" object
     for (var key in extracted_data) {
         var final_item = {};
@@ -1298,9 +1259,18 @@ function getBasedOnMarketItems(player, marketName, shopType) {
 
             items.push(final_item);
 
-            // tellPlayer(player, "Item: " + final_item.id + ", Value: " + final_item.value);
+            // Update global prices if the item is not already present
+            if (!globalPrices[final_item.id]) {
+                globalPrices[final_item.id] = {
+                    display_name: final_item.id.split(":")[1],
+                    value: Math.floor(final_item.value)
+                };
+            }
         }
     }
+
+    // Save the updated global prices
+    saveJson(globalPrices, GLOBAL_PRICES_JSON_PATH);
 
     return items;
 }
