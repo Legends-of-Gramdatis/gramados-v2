@@ -706,5 +706,25 @@
         "Name": "TheTiger2011",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "39d6fea6-3eb5-443b-b7f1-ce3405291c86": {
+        "Name": "Darkura2001",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "51": {
+                "JobID": 51,
+                "JobName": "Farmer",
+                "StartTime": 2444339429,
+                "Region": "Greenfield",
+                "Type": "Advanced"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2444339429,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
     }
 }
