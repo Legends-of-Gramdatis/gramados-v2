@@ -275,7 +275,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 498,
+    "HurtByTimestamp": 3163,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -323,7 +323,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Police",
+    "Name": "Police Arrest Clone",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
@@ -556,7 +556,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 2,
     "Title": "officer",
-    "TotalTicksAlive": 3391735L,
+    "TotalTicksAlive": 3394921L,
     "Rotation": [
         313.8651f,
         0.0f
