@@ -1,22 +1,4 @@
 {
-    "UNI": [
-        "0",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f"
-    ],
     "CHAT_EMOTES": {
         "check": "\u9366",
         "hp": "\u9390",
@@ -328,38 +310,6 @@
         "argBool": "&c{dataType} must be true or false!",
         "undoBtnText": "Undo",
         "refreshBtnText": "Refresh"
-    },
-    "CONFIG_SERVER": {
-        "NAME": "TestServer",
-        "TITLE": "&5&lTestServer",
-        "PREFIX": "&5&l",
-        "BAR_OPEN": "&r&l[=======] &r",
-        "BAR_CLOSE": "&r&l [=======]&r",
-        "DEFAULT_PERM_TEAMS": [
-            "Owner",
-            "Developer"
-        ],
-        "DEFAULT_PERM_PLAYERS": [],
-        "DEFAULT_TEAM_JOIN": "Player",
-        "DEVELOPMENT_MODE": false,
-        "USE_DISK": "DEFAULT",
-        "LICENSE_KEY": "",
-        "FILE_DISKS": {
-            "DEFAULT": {
-                "path": "{worldname}/customnpcs/scripts/world_data.json"
-            },
-            "CST_DATA": {
-                "path": "CustomServerTools/data/data.json"
-            }
-        },
-        "CHAT_COLOR_CURRENCY": "credit",
-        "MONEY_POUCH_SCRIPT": null,
-        "REGION_TYPES": {
-            "garden": {
-                "build": [],
-                "interact": []
-            }
-        }
     },
     "_RAWCOLORS": {
         "0": "black",
