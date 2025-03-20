@@ -415,7 +415,7 @@ function isEventRunning(event, currentTime) {
  * @returns {number} The total value of the module.
  */
 function getModuleValue(shop, moduleName) {
-    var totalValue = 0;
+    var totalValue = 1;
     var currentTime = world.getTotalTime();
     var upgradesData = loadJson(UPGRADES_JSON_PATH);
 
