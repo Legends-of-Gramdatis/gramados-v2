@@ -56,7 +56,7 @@ function updateStockPrice(stockValue, regionGeneral) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
             var percent = 1 - proportion;
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
+            stockValue["current_price"] = Math.round(stockValue["current_price"] * percent);
 
         } else if (elapsedTime > sixHours*2 && elapsedTime < _TIMER_COUNTER) { // Between 864000 and 1728000
             // world.broadcast("Stock " + stockValue["display_name"] + " is in phasse 2! (between 12 and 24 hours)");
@@ -67,7 +67,7 @@ function updateStockPrice(stockValue, regionGeneral) {
                 proportion *= regionGeneral["stock_flexibility"];
             }
             var percent = 1 + proportion;
-            stockValue["current_price"] = Math.floor(stockValue["current_price"] * percent);
+            stockValue["current_price"] = Math.round(stockValue["current_price"] * percent);
         } else if (elapsedTime > _TIMER_COUNTER && elapsedTime < _TIMER_COUNTER*2) { // Between 1728000 and 3456000
             // world.broadcast("Stock " + stockValue["display_name"] + " is in phase 3! (between 24 and 48 hours)");
 

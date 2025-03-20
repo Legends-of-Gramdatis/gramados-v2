@@ -552,7 +552,7 @@ function updateStockPrices(region, delivery, player) {
                 var _PRICE_EVOLUTION = proportion * _PRICE_EVOLUTION_FACTOR;
                 var newPrice = stock_exchange_instance[item].current_price * (1 - (_PRICE_EVOLUTION * stock_exchange_generals[region]["stock_flexibility"]));
 
-                newPrice = Math.floor(newPrice);
+                newPrice = Math.round(newPrice);
 
                 if (newPrice < stock_exchange_instance[item].min_price) {
                     stock_exchange_instance[item].current_price = stock_exchange_instance[item].min_price;
@@ -600,7 +600,7 @@ function updateStockPrices(region, delivery, player) {
                 for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
                     var newPrice = stock_exchange_instance[generic_id].current_price * ((1 - _PRICE_EVOLUTION_FACTOR) * stock_exchange_generals[region]["stock_flexibility"]);
 
-                    stock_exchange_instance[generic_id].current_price = Math.floor(
+                    stock_exchange_instance[generic_id].current_price = Math.round(
                         Math.max(
                             newPrice,
                             stock_exchange_instance[generic_id].min_price
