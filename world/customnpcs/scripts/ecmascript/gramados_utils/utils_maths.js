@@ -420,3 +420,12 @@ function pick(array, count) {
         return picks;
     }
 }
+
+/**
+ * Calculates the base-10 logarithm of a number.
+ * @param {number} value - The number to calculate the logarithm for.
+ * @returns {number} The base-10 logarithm of the number.
+ */
+function log10(value) {
+    return Math.log(value) / Math.LN10;
+}
