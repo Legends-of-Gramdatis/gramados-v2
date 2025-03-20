@@ -227,8 +227,6 @@ function calculateShopScore(player, shopId, playerShops, enableMessages) {
     }
 
     var priceTolerance = getModuleValue(shop, "price_tolerance");
-    // tellPlayer(player, "&eTotal price tolerance: &a" + priceTolerance);
-    priceTolerance += 1;
 
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];

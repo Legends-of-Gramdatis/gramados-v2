@@ -605,14 +605,16 @@ function chat(event) {
         } else {
             displayShopInfo(player, shopId);
         }
-    } else if (message.startsWith("$shop stat consumer")) {
+    } else if (message.startsWith("$shop stat consumer flow")) {
         var args = message.split(" ");
-        if (args.length === 4) {
-            var shopId = parseInt(args[3]);
-            handleShopStatConsumer(player, shopId, playerShops);
+        if (args.length === 5) {
+            var shopId = parseInt(args[4]);
+            handleShopStatConsumerFlow(player, shopId, playerShops);
         } else {
-            tellPlayer(player, "&cInvalid command! Usage: &e$shop stat consumer <ID>");
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop stat consumer flow <ID>");
         }
+    } else if (message.startsWith("$shop stat consumer")) {
+        tellPlayer(player, "&cInvalid command! Did you mean &e$shop stat consumer flow <ID>&c?");
     } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
         tellPlayer(player, "&b=========================================");
         tellPlayer(player, "&bShop Commands:");
@@ -1604,20 +1606,30 @@ function sellShop(player, shopId, salePrice, playerShops) {
 }
 
 /**
- * Handles the "$shop stat consumer" command.
+ * Handles the "$shop stat consumer flow" command.
  * @param {IPlayer} player - The player.
  * @param {number} shopId - The shop ID.
  * @param {Object} playerShops - The player shops data.
  */
-function handleShopStatConsumer(player, shopId, playerShops) {
+function handleShopStatConsumerFlow(player, shopId, playerShops) {
     try {
-        var result = getDailyConsumersForShop(player, shopId, playerShops);
-        var totalRoomSize = result.totalRoomSize;
-        var dailyConsumers = result.dailyConsumers;
+        var consumerData = getDailyConsumersForShop(player, shopId, playerShops);
 
-        tellPlayer(player, "&aShop ID: &e" + shopId);
-        tellPlayer(player, "&aTotal Room Size: &e" + totalRoomSize + " air blocks");
-        tellPlayer(player, "&aExpected NPCs in 1 day: &e" + dailyConsumers);
+        tellPlayer(player, "&aShop ID: &e" + consumerData.shopId);
+        tellPlayer(player, "&aMain Room Size: &e" + consumerData.mainRoomSize + " m²");
+        tellPlayer(player, "&aShop Rating: &e" + consumerData.shopRating + "/100");
+        tellPlayer(player, "&aCustomer Flow Multiplier: &e" + consumerData.customerFlowMultiplier.toFixed(2));
+        tellPlayer(player, "&aExpected NPCs in 1 day: &e" + consumerData.dailyConsumers);
+
+        if (consumerData.contributingFactors.length > 0) {
+            tellPlayer(player, "&aContributing Factors:");
+            for (var i = 0; i < consumerData.contributingFactors.length; i++) {
+                var factor = consumerData.contributingFactors[i];
+                tellPlayer(player, "&e- " + factor.type + ": &a" + factor.name + " &e(Value: " + factor.value + ")");
+            }
+        } else {
+            tellPlayer(player, "&aNo upgrades or events are currently affecting customer flow.");
+        }
     } catch (error) {
         tellPlayer(player, "&c" + error.message);
     }

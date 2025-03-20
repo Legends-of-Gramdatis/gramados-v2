@@ -24,11 +24,11 @@ function calculateDailyConsumers(shopRating, publicSpaceSize, customerFlowMultip
 }
 
 /**
- * Calculates the number of NPCs visiting a shop in one day.
+ * Calculates the number of NPCs visiting a shop in one day and provides detailed feedback data.
  * @param {IPlayer} player - The player.
  * @param {number} shopId - The shop ID.
  * @param {Object} playerShops - The player shops data.
- * @returns {number} The estimated number of NPCs visiting the shop in one day.
+ * @returns {Object} A JSON object containing detailed feedback data.
  */
 function getDailyConsumersForShop(player, shopId, playerShops) {
     if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
@@ -39,9 +39,46 @@ function getDailyConsumersForShop(player, shopId, playerShops) {
     var mainRooms = shop.property.main_room || [];
     var totalPublicSpaceSize = getCuboidListSize(player, mainRooms);
 
-    var shopRating = calculateShopScore(player, shopId, playerShops, false);
+    var shopRating = calculateShopScore(player, shopId, playerShops, false).toFixed(2);
     var customerFlowMultiplier = getModuleValue(shop, "customer_flow") || 1;
     var dailyConsumers = calculateDailyConsumers(shopRating, totalPublicSpaceSize, customerFlowMultiplier);
 
-    return dailyConsumers;
+    // Gather details about upgrades and events affecting customer flow
+    var upgradesData = loadJson(UPGRADES_JSON_PATH);
+    var currentTime = world.getTotalTime();
+    var contributingFactors = [];
+
+    // Check upgrades
+    for (var i = 0; i < shop.upgrades.length; i++) {
+        var upgrade = findJsonEntry(upgradesData.upgrades, "id", shop.upgrades[i]);
+        if (upgrade && upgrade.modules && upgrade.modules.customer_flow) {
+            contributingFactors.push({
+                name: upgrade.name,
+                type: "Upgrade",
+                value: upgrade.modules.customer_flow
+            });
+        }
+    }
+
+    // Check running events
+    for (var i = 0; i < shop.events.length; i++) {
+        var event = shop.events[i];
+        var eventData = findJsonEntry(upgradesData.events, "id", event.id);
+        if (eventData && isEventRunning(event, currentTime) && eventData.modules && eventData.modules.customer_flow) {
+            contributingFactors.push({
+                name: eventData.name,
+                type: "Event",
+                value: eventData.modules.customer_flow
+            });
+        }
+    }
+
+    return {
+        shopId: shopId,
+        mainRoomSize: totalPublicSpaceSize,
+        shopRating: shopRating,
+        customerFlowMultiplier: customerFlowMultiplier,
+        dailyConsumers: dailyConsumers,
+        contributingFactors: contributingFactors
+    };
 }
