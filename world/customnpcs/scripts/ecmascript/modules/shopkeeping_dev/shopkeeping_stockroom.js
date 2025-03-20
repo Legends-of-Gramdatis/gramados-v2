@@ -497,93 +497,35 @@ function getHandItemsFromStack(itemstack) {
  * @returns {number} The stock room size.
  */
 function calculateStockRoomSize(player, shopId, playerShops) {
-    var world_data = getWorldData();
+    var worldData = getWorldData();
     var shop = playerShops[shopId];
     if (shop.property.stock_room.length === 0) {
-        tellPlayer(player, "&cShop has no stock room!");
+        tellPlayer(player, "&cNo stock rooms defined for this shop!");
         return 0;
     }
 
-    var total_size = 0;
+    var totalSize = 0;
     for (var i = 0; i < shop.property.stock_room.length; i++) {
-        // split "stock_room" on ":" to get the cuboid name and the sub-cuboid
-        var cuboid = shop.property.stock_room[i].split(":")[0];
-        var sub_cuboid = shop.property.stock_room[i].split(":")[1];
-        // tellPlayer(player, "&eStock room: &a" + cuboid + " - " + sub_cuboid);
-        // get the cuboid
-        var cuboid_data = JSON.parse(world_data.get("region_" + cuboid));
-        if (!cuboid_data) {
-            tellPlayer(player, "&cCuboid &e" + cuboid + " &cnot found!");
-            return 0;
-        } else {
-            // tellPlayer(player, "Cuboid " + cuboid + " found!");
-            // tellPlayer(player, "Cuboid data: " + JSON.stringify(cuboid_data));
-            // Check if the cuboid has sub-cuboids
-            if (!cuboid_data.positions) {
-                tellPlayer(player, "&cCuboid &e" + cuboid + " &chas no sub-cuboids!");
-                // tellPlayer(player, "Cuboid data: " + JSON.stringify(cuboid_data));
-                return 0;
-            } else {
-                // get the sub-cuboid (a cuboid has an array of "positions" which are the sub-cuboids)
-                var sub_cuboid_data = cuboid_data.positions[sub_cuboid];
-                // tellPlayer(player, "Sub-cuboid " + sub_cuboid + " found!");
-                // get "xyz1" and "xyz2" from the sub-cuboid data
-                var xyz1 = sub_cuboid_data.xyz1;
-                var xyz2 = sub_cuboid_data.xyz2;
-                // tellPlayer(player, "Sub-cuboid data: " + JSON.stringify(sub_cuboid_data));
-                // tellPlayer(player, "xyz1: " + xyz1);
-                // tellPlayer(player, "xyz2: " + xyz2);
-                // divide the coordinates into x1, y1, z1 and x2, y2, z2
-                var x1 = xyz1[0];
-                var y1 = xyz1[1];
-                var z1 = xyz1[2];
-                var x2 = xyz2[0];
-                var y2 = xyz2[1];
-                var z2 = xyz2[2];
-                // Be sure to start from the smallest coordinate
-                var temp;
-                if (x1 > x2) {
-                    temp = x1;
-                    x1 = x2;
-                    x2 = temp;
-                }
-                if (y1 > y2) {
-                    temp = y1;
-                    y1 = y2;
-                    y2 = temp;
-                }
-                if (z1 > z2) {
-                    temp = z1;
-                    z1 = z2;
-                    z2 = temp;
-                }
-                // tellPlayer(player, "x1: " + x1 + ", y1: " + y1 + ", z1: " + z1);
-                // tellPlayer(player, "x2: " + x2 + ", y2: " + y2 + ", z2: " + z2);
-                // loop through the cuboid and count the number of air blocks
-                var count = 0;
-                for (var x = x1; x <= x2; x++) {
-                    for (var y = y1; y <= y2; y++) {
-                        for (var z = z1; z <= z2; z++) {
-                            if (world.getBlock(x, y, z).isAir()) {
-                                count++;
-                            }
-                        }
-                    }
-                }
-                // tellPlayer(player, "Stock room size: " + count + " blocks");
-                total_size += count;
-            }
+        var stockRoom = shop.property.stock_room[i];
+        var parts = stockRoom.split(":");
+        var cuboidId = parts[0];
+        var subCuboidId = parts.length > 1 ? parts[1] : null;
+
+        try {
+            totalSize += calculateCuboidSize(worldData, cuboidId, subCuboidId);
+        } catch (error) {
+            tellPlayer(player, "&cError calculating size for stock room: &e" + stockRoom + " &c- " + error.message);
         }
     }
 
     // Apply upgrades to stock room size
-    var upgradeStockRoomSize = getModuleValue(shop, "storage_capacity") + 1; 
+    var upgradeStockRoomSize = getModuleValue(shop, "storage_capacity") + 1;
     tellPlayer(player, "&aStock room size upgrade level: &e" + upgradeStockRoomSize);
-    total_size *= upgradeStockRoomSize;
+    totalSize *= upgradeStockRoomSize;
 
-    total_size = Math.floor(total_size);
-    tellPlayer(player, "&aTotal stock room size: &e" + total_size * 64 + " slots");
-    return total_size;
+    totalSize = Math.floor(totalSize);
+    tellPlayer(player, "&aTotal stock room size: &e" + totalSize * 64 + " slots");
+    return totalSize;
 }
 
 /**
