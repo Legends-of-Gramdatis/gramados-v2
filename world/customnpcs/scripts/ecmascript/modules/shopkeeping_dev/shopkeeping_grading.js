@@ -186,8 +186,14 @@ function evalShopReputation(player, shopId, playerShops) {
  * @param {IPlayer} player - The player.
  * @param {number} shopId - The shop ID.
  * @param {Object} playerShops - The player shops data.
+ * @param {boolean} [enableMessages=true] - Whether to enable chat messages (tellPlayer).
+ * @returns {number} The calculated shop score.
  */
-function calculateShopScore(player, shopId, playerShops) {
+function calculateShopScore(player, shopId, playerShops, enableMessages) {
+    if (enableMessages === undefined) {
+        enableMessages = true
+    }
+
     var shop = playerShops[shopId];
     var currentReputation = shop.reputation_data.reputation;
 
@@ -292,11 +298,13 @@ function calculateShopScore(player, shopId, playerShops) {
     var shopScore = (W1 * scaledReputation) + (W2 * marginGrade) + (W3 * listItemProportionScore) + (W4 * demandScore) + (W5 * stockedListedItemsScore);
     shopScore /= (W1 + W2 + W3 + W4 + W5);
 
-    tellPlayer(player, "&eScaled Reputation: &a" + scaledReputation.toFixed(2));
-    tellPlayer(player, "&ePricing Score: &a" + pricingScore.toFixed(2));
-    tellPlayer(player, "&eStocked Listed Items Score: &a" + stockedListedItemsScore.toFixed(2));
-    tellPlayer(player, "&eListed Item Proportion Score: &a" + listItemProportionScore.toFixed(2));
-    tellPlayer(player, "&eDemand Score: &a" + demandScore.toFixed(2));
+    if (enableMessages) {
+        tellPlayer(player, "&eScaled Reputation: &a" + scaledReputation.toFixed(2));
+        tellPlayer(player, "&ePricing Score: &a" + pricingScore.toFixed(2));
+        tellPlayer(player, "&eStocked Listed Items Score: &a" + stockedListedItemsScore.toFixed(2));
+        tellPlayer(player, "&eListed Item Proportion Score: &a" + listItemProportionScore.toFixed(2));
+        tellPlayer(player, "&eDemand Score: &a" + demandScore.toFixed(2));
+    }
 
     var feedback = "";
     if (shopScore > 80) feedback = "&aYour shop is thriving! Keep up the great work!";
@@ -304,14 +312,18 @@ function calculateShopScore(player, shopId, playerShops) {
     else if (shopScore > 40) feedback = "&cYour shop is struggling. Check pricing and stock variety.";
     else feedback = "&4Your shop is failing! Consider adjusting prices, stock, and reputation strategies.";
 
-    tellPlayer(player, "&eShop Score: &a" + shopScore.toFixed(2));
-    tellPlayer(player, feedback);
+    if (enableMessages) {
+        tellPlayer(player, "&eShop Score: &a" + shopScore.toFixed(2));
+        tellPlayer(player, feedback);
 
-    var recommendationMessages = [
-        "&6Recommendations for improving your shop:"
-    ];
-    recommendations.forEach(function (recommendation) {
-        recommendationMessages.push(recommendation);
-    });
-    tellPlayer(player, recommendationMessages.join("\n"));
+        var recommendationMessages = [
+            "&6Recommendations for improving your shop:"
+        ];
+        recommendations.forEach(function (recommendation) {
+            recommendationMessages.push(recommendation);
+        });
+        tellPlayer(player, recommendationMessages.join("\n"));
+    }
+
+    return shopScore;
 }
