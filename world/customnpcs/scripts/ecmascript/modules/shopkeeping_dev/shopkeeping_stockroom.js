@@ -519,7 +519,7 @@ function calculateStockRoomSize(player, shopId, playerShops) {
     }
 
     // Apply upgrades to stock room size
-    var upgradeStockRoomSize = getModuleValue(shop, "storage_capacity") + 1;
+    var upgradeStockRoomSize = getModuleValue(shop, "storage_capacity");
     tellPlayer(player, "&aStock room size upgrade level: &e" + upgradeStockRoomSize);
     totalSize *= upgradeStockRoomSize;
 
@@ -784,4 +784,29 @@ function displayShopInfo(player, shopId, extended) {
     }
 
     tellPlayer(player, "&b=========================================");
+}
+
+/**
+ * Calculates the total size of a list of cuboids.
+ * @param {IPlayer} player - The player.
+ * @param {Array<string>} cuboidList - The list of cuboid identifiers.
+ * @returns {number} The total size of the cuboids.
+ */
+function getCuboidListSize(player, cuboidList) {
+    var totalSize = 0;
+
+    for (var i = 0; i < cuboidList.length; i++) {
+        var room = cuboidList[i];
+        var parts = room.split(":");
+        var cuboidId = parts[0];
+        var subCuboidId = parts.length > 1 ? parts[1] : null;
+
+        try {
+            totalSize += calculateCuboidFloorSpace(player, cuboidId, subCuboidId);
+        } catch (error) {
+            throw new Error("Error calculating size for room: " + room + " - " + error.message);
+        }
+    }
+
+    return totalSize;
 }
