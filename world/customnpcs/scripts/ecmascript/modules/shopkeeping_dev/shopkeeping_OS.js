@@ -19,6 +19,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_grading.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_upgrades.js")
 load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_permissions.js")
+load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_world.js")
 
 /**
  * Initializes the shopkeeping system.
@@ -205,6 +206,12 @@ function chat(event) {
                         break;
                     case "main_room":
                         shop.property.main_room.push(value.value);
+                        tellPlayer(player, "&aMain room added: &e" + value.value);
+                        var decomposed_cuboid_name = value.value.split(":");
+                        var cuboid_name = decomposed_cuboid_name[0];
+                        var sub_cuboid_id = decomposed_cuboid_name[1];
+                        var size = calculateCuboidSize(player, cuboid_name, [sub_cuboid_id]);
+                        tellPlayer(player, "&aMain room size: &e" + size + " air blocks");
                         break;
                 }
             }
@@ -505,7 +512,7 @@ function chat(event) {
                 return;
             }
             // evalShopReputation(player, shopId, playerShops);
-            calculateShopScore(player, shopId, playerShops);
+            calculateShopScore(player, shopId, playerShops, true);
         } else {
             tellPlayer(player, "&cInvalid command! Usage: &e$shop reputation expertise <ID>");
         }
@@ -597,6 +604,14 @@ function chat(event) {
             displayShopInfo(player, shopId, true);
         } else {
             displayShopInfo(player, shopId);
+        }
+    } else if (message.startsWith("$shop stat consumer")) {
+        var args = message.split(" ");
+        if (args.length === 4) {
+            var shopId = parseInt(args[3]);
+            handleShopStatConsumer(player, shopId, playerShops);
+        } else {
+            tellPlayer(player, "&cInvalid command! Usage: &e$shop stat consumer <ID>");
         }
     } else if (message.startsWith("$shop") || message.startsWith("$shop help")) {
         tellPlayer(player, "&b=========================================");
@@ -1586,4 +1601,24 @@ function sellShop(player, shopId, salePrice, playerShops) {
     saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
     tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
     tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
+}
+
+/**
+ * Handles the "$shop stat consumer" command.
+ * @param {IPlayer} player - The player.
+ * @param {number} shopId - The shop ID.
+ * @param {Object} playerShops - The player shops data.
+ */
+function handleShopStatConsumer(player, shopId, playerShops) {
+    try {
+        var result = getDailyConsumersForShop(player, shopId, playerShops);
+        var totalRoomSize = result.totalRoomSize;
+        var dailyConsumers = result.dailyConsumers;
+
+        tellPlayer(player, "&aShop ID: &e" + shopId);
+        tellPlayer(player, "&aTotal Room Size: &e" + totalRoomSize + " air blocks");
+        tellPlayer(player, "&aExpected NPCs in 1 day: &e" + dailyConsumers);
+    } catch (error) {
+        tellPlayer(player, "&c" + error.message);
+    }
 }
