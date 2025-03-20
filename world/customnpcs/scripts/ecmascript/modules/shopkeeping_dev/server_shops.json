@@ -392,7 +392,9 @@
             "stock_room": [
                 "Devland_Countryside_ShopTest2_Shop:0"
             ],
-            "main_room": [],
+            "main_room": [
+                "Devland_Countryside_ShopTest2_Shop:1"
+            ],
             "region": "Gramados",
             "sub_region": "Gramados_City",
             "stock_room_size": 96
