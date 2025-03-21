@@ -146,18 +146,18 @@
                 "y": 88,
                 "z": 3619
             },
+            "region": "Devland",
+            "sub_region": "Countryside",
+            "stock_room_size": 36,
             "stock_room": [
                 "Devland_Countryside_ShopTest1_Shop:1"
             ],
             "main_room": [
                 "Devland_Countryside_ShopTest1_Shop:0"
-            ],
-            "region": "Devland",
-            "sub_region": "Countryside",
-            "stock_room_size": 36
+            ]
         },
         "shop": {
-            "display_name": "Seagull's Devland Test Shop",
+            "display_name": "Seagull's Test Bakery",
             "type": "bakery",
             "is_open": false,
             "is_for_sale": false
@@ -303,7 +303,7 @@
             "marketing_campaign"
         ],
         "finances": {
-            "stored_cash": 18713460,
+            "stored_cash": 1000000,
             "default_margin": 0.2
         },
         "events": [
