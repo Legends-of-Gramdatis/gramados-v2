@@ -2,6 +2,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 
+var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/regional_demand.json";
+
 /**
  * Retrieves the price of a region.
  * @param {string} region - The region name.
@@ -192,4 +194,27 @@ function calculateSubCuboidFloorSpace(subCuboid, processedBlocks) {
     }
 
     return totalFloorSpace;
+}
+
+/**
+ * Checks if a region exists.
+ * @param {string} region - The region name.
+ * @returns {boolean} - True if the region exists, false otherwise.
+ */
+function checkRegionExists(region) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region];
+}
+
+/**
+ * Checks if a sub-region exists within a region.
+ * @param {string} region - The region name.
+ * @param {string} subRegion - The sub-region name.
+ * @returns {boolean} - True if the sub-region exists, false otherwise.
+ */
+function checkSubRegionExists(region, subRegion) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
 }
