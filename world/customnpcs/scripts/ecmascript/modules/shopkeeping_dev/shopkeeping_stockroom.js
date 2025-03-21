@@ -1,52 +1,23 @@
 /**
- * Adds a stock room to the player's shop.
- * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
- * @param {string} value - The stock room value.
- */
-function addStockRoom(player, shopId, playerShops, value) {
-    playerShops[shopId].property.stock_room.push(value);
-    playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
-}
-
-/**
- * Removes a stock room from the player's shop.
- * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
- * @param {string} value - The stock room value.
- * @returns {boolean} True if the stock room was removed, false otherwise.
- */
-function removeStockRoom(player, shopId, playerShops, value) {
-    if (removeRoom(playerShops[shopId].property.stock_room, value)) {
-        playerShops[shopId].property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
-        return true;
-    }
-    return false;
-}
-
-/**
  * Adds stock to the player's shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  * @param {string} item - The item to add.
  * @param {number} count - The number of items to add.
  * @param {string} tag - The item tag.
  * @returns {number} The number of items left in the player's inventory.
  */
-function addStock(player, shopId, playerShops, item, count, tag) {
-    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+function addStock(player, shopData, item, count, tag) {
+    var stockRoomLeft = getStockRoomLeft(player, shopData);
     if (stockRoomLeft > 0) {
-        for (var i = 0; i < playerShops[shopId].inventory.stock.length; i++) {
-            if (playerShops[shopId].inventory.stock[i].item === item) {
-                if (playerShops[shopId].inventory.stock[i].count + count <= stockRoomLeft) {
-                    playerShops[shopId].inventory.stock[i].count += count;
+        for (var i = 0; i < shopData.inventory.stock.length; i++) {
+            if (shopData.inventory.stock[i].item === item) {
+                if (shopData.inventory.stock[i].count + count <= stockRoomLeft) {
+                    shopData.inventory.stock[i].count += count;
                     return 0;
                 } else {
-                    var left = playerShops[shopId].inventory.stock[i].count + count - stockRoomLeft;
-                    playerShops[shopId].inventory.stock[i].count = stockRoomLeft;
+                    var left = shopData.inventory.stock[i].count + count - stockRoomLeft;
+                    shopData.inventory.stock[i].count = stockRoomLeft;
                     return left;
                 }
             }
@@ -59,13 +30,11 @@ function addStock(player, shopId, playerShops, item, count, tag) {
 /**
  * Returns the remaining space in the stock room.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  * @returns {number} The remaining space in the stock room.
  */
-function getStockRoomLeft(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    var stock = shop.inventory.stock;
+function getStockRoomLeft(player, shopData) {
+    var stock = shopData.inventory.stock;
     var stockRoomUsed = 0;
 
     var upgrades = loadJson(UPGRADES_JSON_PATH).upgrades;
@@ -78,44 +47,34 @@ function getStockRoomLeft(player, shopId, playerShops) {
         stockRoomUsed += stock[key].count;
     }
 
-    var unsalableItems = shop.inventory.unsalable_items;
+    var unsalableItems = shopData.inventory.unsalable_items;
     for (var key in unsalableItems) {
         stockRoomUsed += unsalableItems[key].count;
     }
 
-    // tellPlayer(player, "&aStock room size: &e" + stockRoomSize);
-    // tellPlayer(player, "&aStock room used: &e" + stockRoomUsed);
-    // tellPlayer(player, "&aStock room left: &e" + (stockRoomSize - stockRoomUsed));
-
-    return getStockRoomSize(player, shopId, playerShops) - stockRoomUsed;
+    return getStockRoomSize(player, shopData) - stockRoomUsed;
 }
 
 /**
  * Returns the stock room size for the player's shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  * @returns {number} The stock room size.
  */
-function getStockRoomSize(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    var stockRoomSize = shop.property.stock_room_size;
-
+function getStockRoomSize(player, shopData) {
+    var stockRoomSize = shopData.property.stock_room_size;
     stockRoomSize = Math.floor(stockRoomSize * 64);
-
     return stockRoomSize;
 }
 
 /**
  * Initializes the stock room for the player's shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  */
-function initStockRoom(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    var stock = shop.inventory.stock;
-    var unsalableItems = shop.inventory.unsalable_items || {};
+function initStockRoom(player, shopData) {
+    var stock = shopData.inventory.stock;
+    var unsalableItems = shopData.inventory.unsalable_items || {};
 
     for (var itemId in stock) {
         if (stock[itemId].count > 0) {
@@ -124,7 +83,7 @@ function initStockRoom(player, shopId, playerShops) {
         delete stock[itemId];
     }
 
-    var availableItems = getAvailableItems(player, shop.shop.type);
+    var availableItems = getAvailableItems(player, shopData.shop.type);
     for (var i = 0; i < availableItems.length; i++) {
         var itemId = availableItems[i].id;
         if (unsalableItems[itemId]) {
@@ -138,10 +97,10 @@ function initStockRoom(player, shopId, playerShops) {
         }
     }
 
-    shop.inventory.unsalable_items = unsalableItems;
+    shopData.inventory.unsalable_items = unsalableItems;
 
     tellPlayer(player, "&aStock room initialised!");
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    // saveJson(shopData, SERVER_SHOPS_JSON_PATH);
 }
 
 /**
@@ -492,21 +451,19 @@ function getHandItemsFromStack(itemstack) {
 /**
  * Calculates the stock room size.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  * @returns {number} The stock room size.
  */
-function calculateStockRoomSize(player, shopId, playerShops) {
+function calculateStockRoomSize(player, shopData) {
     var worldData = getWorldData();
-    var shop = playerShops[shopId];
-    if (shop.property.stock_room.length === 0) {
+    if (shopData.property.stock_room.length === 0) {
         tellPlayer(player, "&cNo stock rooms defined for this shop!");
         return 0;
     }
 
     var totalSize = 0;
-    for (var i = 0; i < shop.property.stock_room.length; i++) {
-        var stockRoom = shop.property.stock_room[i];
+    for (var i = 0; i < shopData.property.stock_room.length; i++) {
+        var stockRoom = shopData.property.stock_room[i];
         var parts = stockRoom.split(":");
         var cuboidId = parts[0];
         var subCuboidId = parts.length > 1 ? parts[1] : null;
@@ -519,7 +476,7 @@ function calculateStockRoomSize(player, shopId, playerShops) {
     }
 
     // Apply upgrades to stock room size
-    var upgradeStockRoomSize = getModuleValue(shop, "storage_capacity");
+    var upgradeStockRoomSize = getModuleValue(shopData, "storage_capacity");
     tellPlayer(player, "&aStock room size upgrade level: &e" + upgradeStockRoomSize);
     totalSize *= upgradeStockRoomSize;
 
