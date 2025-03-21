@@ -191,6 +191,33 @@ function getCategoryJson(shopType) {
     return shop_entry;
 }
 
+// /**
+//  * Retrieves shop type data from "shop_categories.json".
+//  * @param {string} shopType - The type of the shop.
+//  * @returns {Object|null} An object containing shop type data or null if not found.
+//  */
+// function getShopTypeData(shopType) {
+//     var shopCategories = loadJson(SHOP_CATEGORIES_JSON_PATH);
+//     if (!shopCategories) {
+//         throw new Error("Shop categories not found! Contact an admin.");
+//     }
+
+//     for (var i = 0; i < shopCategories.entries.length; i++) {
+//         var entry = shopCategories.entries[i];
+//         if (entry.name === shopType) {
+//             return {
+//                 base_markup: entry.general_ref.base_markup || 0,
+//                 item_variety_per_visit: entry.general_ref.item_variety_per_visit || 0,
+//                 item_variety_variance: entry.general_ref.item_variety_variance || 0,
+//                 items_per_type: entry.general_ref.items_per_type || 0,
+//                 items_per_type_variance: entry.general_ref.items_per_type_variance || 0
+//             };
+//         }
+//     }
+
+//     return null;
+// }
+
 /**
  * Gets the reference price of an item.
  * @param {IPlayer} player - The player.
