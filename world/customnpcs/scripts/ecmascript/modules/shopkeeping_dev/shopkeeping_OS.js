@@ -49,9 +49,70 @@ function chat(event) {
         return;
     }
 
-    if (message.startsWith("$shop")) {
+    if (message.startsWith("$shopop")) {
+        handleShopOPCommand(player, message, playerShops);
+    } else if (message.startsWith("$shop")) {
         handleShopCommand(player, message, playerShops);
     }
+}
+
+/**
+ * Handles OP shopkeeping commands.
+ * @param {Object} player - The player.
+ * @param {string} message - The chat message.
+ * @param {Object} playerShops - The player shops data.
+ */
+function handleShopOPCommand(player, message, playerShops) {
+    var parts = message.split(" ");
+    var command = parts[1];
+
+    switch (command) {
+        // $shopop delete <ID>
+        // $shopop create name=<name> type=<type> region=<region> sub_region=<sub_region> [money=<money>]
+        case "create":
+            var name = null;
+            var type = null;
+            var region = null;
+            var sub_region = null;
+            var money = null;
+
+            for (var i = 2; i < parts.length; i++) {
+                var property = getProperty(parts[i]);
+                switch (property.propertyName) {
+                    case "name":
+                        name = property.value;
+                        break;
+                    case "type":
+                        type = property.value;
+                        break;
+                    case "region":
+                        region = property.value;
+                        break;
+                    case "sub_region":
+                        sub_region = property.value;
+                        break;
+                    case "money":
+                        money = parseInt(property.value);
+                        break;
+                    default:
+                        tellPlayer(player, "&cInvalid property: " + property.propertyName);
+                        tellPlayer(player, "&eUsage: $shopop create name=<name> type=<type> region=<region> sub_region=<sub_region> [money=<money>]");
+                }
+            }
+
+            createShop(player, playerShops, type, region, sub_region, name, money);
+            tellPlayer(player, "&aShop created!");
+            break;
+        case "delete":
+            var shopId = parseInt(parts[2]);
+            deleteShop(player, shopId, playerShops);
+            break;
+
+        default:
+            tellPlayer(player, "&cInvalid shopop command: " + command);
+    }
+
+    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
 }
 
 /**
@@ -65,6 +126,12 @@ function handleShopCommand(player, message, playerShops) {
     var command = parts[1];
     var shopId = parseInt(parts[2]);
 
+    if (command === undefined) {
+        tellPlayer(player, "&cYou must specify a shop command!");
+        tellPlayer(player, "&eUsage: $shop <ID> [open|close|attribute|stock|price|money|reputation|upgrade|event|sell|buy|info|stat]");
+        return;
+    }
+
     if (shopId === undefined || isNaN(shopId)) {
         tellPlayer(player, "&cInvalid shop ID: " + parts[2]);
         return;
@@ -77,6 +144,12 @@ function handleShopCommand(player, message, playerShops) {
     }
 
     switch (command) {
+        case "open":
+            openShop(player, shopId, playerShops);
+            break;
+        case "close":
+            closeShop(player, shopId, playerShops);
+            break;
         case "attribute":
             switch (parts[3]) {
                 case "set":
@@ -156,6 +229,242 @@ function handleShopCommand(player, message, playerShops) {
                     tellPlayer(player, "&cInvalid attribute command: " + parts[3]);
             }
             break;
+        case "stock":
+            switch (parts[3]) {
+                case "add":
+                    // Usage: $shop stock <ID> add or $shop stock <ID> add all
+                    // shop stock <ID> add add item from hotbar
+                    // shop stock <ID> add all add all items from inventory
+
+                    switch (parts[4]) {
+                        case "all":
+                            addStockFromInventory(player, specified_shop);
+                            break;
+                        default:
+                            addStockFromHand(player, specified_shop);
+                    }
+                    break;
+                case "remove":
+                    // Usage: $shop stock <ID> remove <itemID> or $shop stock <ID> remove <itemIndex> or $shop stock <ID> remove all
+                    // shop stock <ID> remove <itemID> remove item by ID
+                    // shop stock <ID> remove <itemIndex> remove item by index
+                    // shop stock <ID> remove all remove all items
+                    switch (parts[4]) {
+                        case "all":
+                            removeAllStock(player, specified_shop);
+                            break;
+                        default:
+                            removeStock(player, specified_shop, parts[4], parts.length === 6 ? parseInt(parts[5]) : 64);
+                    }
+                    break;
+                case "info":
+                    switch (parts[4]) {
+                        case "items":
+                            listShopStock(player, specified_shop, true);
+                            break;
+                        default:
+                            listShopStock(player, specified_shop, false);
+                    }
+                    break;
+                // case "eval":
+                //     evalHandItem(player);
+                //     break;
+                default:
+                    tellPlayer(player, "&cInvalid stock command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop stock <ID> [add|remove|info]");
+            }
+            break;
+        case "price":
+            // $shop price <ID> set <itemID OR item index> <profit>
+            // $shop price <ID> list
+            // $shop price <ID> remove <itemID OR item index>
+            // $shop price <ID> default <percentage>
+            switch (parts[3]) {
+                case "set":
+                    // $shop price <ID> set <itemID OR item index> <profit|"default">
+                    switch (parts[5]) {
+                        case "default":
+                            setPrice(player, specified_shop, parts[4], getShopDefaultMarginPercent(player, specified_shop));
+                            break;
+                        default:
+                            setPrice(player, specified_shop, parts[4], parts[5]);
+                    }
+                    break;
+                case "list":
+                    listShopPrices(player, specified_shop);
+                    break;
+                case "remove":
+                    removeListedItem(player, specified_shop, parts[4]);
+                    break;
+                case "default":
+                    // $shop price default <shopID> <percentage>
+                    setShopDefaultMarginPercent(player, specified_shop, parts[4]);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid price command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop price <ID> [set|list|remove|default]");
+            }
+            break;
+        case "money":
+            // $shop money <ID> put
+            // $shop money <ID> take <amount>
+            // $shop money <ID> put pouch <amount>
+            // $shop money <ID> take pouch <amount>
+            switch (parts[3]) {
+                case "put":
+                    switch (parts[4]) {
+                        case "pouch":
+                            putMoneyInShopFromPouch(player, specified_shop, parts[5]);
+                            break;
+                        default:
+                            putMoneyInShop(player, specified_shop);
+                    }
+                    break;
+                case "take":
+                    switch (parts[4]) {
+                        case "pouch":
+                            takeMoneyFromShopToPouch(player, specified_shop, parts[5]);
+                            break;
+                        default:
+                            takeMoneyFromShop(player, specified_shop);
+                    }
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid money command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop money <ID> [put|take] [pouch <amount>]");
+            }
+            break;
+        case "reputation":
+            // $shop reputation <ID> add <reputation>
+            // $shop reputation <ID> remove <reputation>
+            // $shop reputation <ID> log
+            // $shop reputation <ID> expertise
+            switch (parts[3]) {
+                case "add":
+                    addShopReputation(player, specified_shop, parseInt(parts[4]));
+                    break;
+                case "remove":
+                    addShopReputation(player, specified_shop, parseInt(-parts[4]));
+                    break;
+                case "log":
+                    logShopReputation(player, specified_shop);
+                    break;
+                case "expertise":
+                    calculateShopScore(player, specified_shop, playerShops, true);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid reputation command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop reputation <ID> [add|remove|log|expertise]");
+            }
+            break;
+        case "type":
+            // $shop type <ID> switch <type>
+            switch (parts[3]) {
+                case "switch":
+                    setShopType(player, specified_shop, parts[4]);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid type command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop type <ID> switch <type>");
+            }
+            break;
+        case "upgrade":
+            // $shop upgrade <ID> list all : lists all upgrades from teh server (no shop ID needed)
+            // $shop upgrade <ID> list : lists all upgrades and their availability for the shop
+            // $shop upgrade <ID> take <upgradeID>
+            // $shop upgrade <ID> remove <upgradeID>
+            switch (parts[3]) {
+                case "list":
+                    if (parts[4] === "all") {
+                        listAllUpgrades(player);
+                    } else {
+                        listShopUpgrades(player, specified_shop);
+                    }
+                    break;
+                case "take":
+                    takeShopUpgrade(player, specified_shop, parts[4]);
+                    break;
+                case "remove":
+                    removeShopUpgrade(player, specified_shop, parts[4]);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid upgrade command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop upgrade <ID> [list|take|remove]");
+            }
+            break;
+        case "event":
+            // $shop event <ID> list all : lists all events from the server (no shop ID needed)
+            // $shop event <ID> list : lists all events and their availability for the shop
+            // $shop event <ID> take <eventID>
+            // $shop event <ID> remove <eventID>
+            switch (parts[3]) {
+                case "list":
+                    if (parts[4] === "all") {
+                        listAllEvents(player);
+                    } else {
+                        listShopEvents(player, specified_shop);
+                    }
+                    break;
+                case "take":
+                    takeShopEvent(player, specified_shop, parts[4]);
+                    break;
+                case "remove":
+                    removeShopEvent(player, specified_shop, parts[4]);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid event command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop event <ID> [list|take|remove]");
+            }
+            break;
+        case "sell":
+            // Sets a shop for sale
+            // $shop sell <ID> <price>
+            // $shop sell <ID> cancel
+            // $shop sell <ID> info
+            switch (parts[3]) {
+                case "cancel":
+                    cancelShopSale(player, specified_shop);
+                    break;
+                case "info":
+                    getShopSaleInfo(player, specified_shop);
+                    break;
+                default:
+                    setShopForSale(player, specified_shop, parts[3]);
+            }
+            break;
+        case "buy":
+            // $shop buy <ID> : you buy shop
+            // $shop buy <ID> [buyer] : buyer buys shop
+            switch (parts[3]) {
+                case undefined:
+                    buyShop(player, specified_shop, player.getName());
+                    break;
+                default:
+                    buyShop(player, specified_shop, parts[3]);
+            }
+            break;
+        case "info":
+            // $shop info <ID>
+            // $shop info <ID> item
+            switch (parts[3]) {
+                case "item":
+                    displayShopInfo(player, specified_shop, true);
+                    break;
+                default:
+                    displayShopInfo(player, specified_shop, false);
+            }
+            break;
+        case "stat":
+            // $shop stat <ID> daily_consumers
+            switch (parts[3]) {
+                case "daily_consumers":
+                    handleShopStatConsumerFlow(player, specified_shop, playerShops);
+                    break;
+                default:
+                    tellPlayer(player, "&cInvalid stat command: " + parts[3]);
+                    tellPlayer(player, "&eUsage: $shop stat <ID> [daily_consumers]");
+            }
+            break;
         default:
             tellPlayer(player, "&cInvalid shop command: " + command);
     }
@@ -232,8 +541,7 @@ function openShop(player, shopId, serverShops) {
  * @param {number} shopId - The ID of the shop to close.
  * @returns {boolean} - True if the shop was closed successfully, false otherwise.
  */
-function closeShop(player, shopId) {
-    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+function closeShop(player, shopId, serverShops) {
     var shop = serverShops[shopId];
     if (!shop) {
         tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
@@ -255,7 +563,6 @@ function closeShop(player, shopId) {
         }
 
         shopData.shop.is_open = false;
-        saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
         tellPlayer(player, "&aShop closed!");
         return true;
     } else {
@@ -273,8 +580,7 @@ function closeShop(player, shopId) {
  * @param {string} display_name - The display name of the shop.
  * @param {number} money - The initial money for the shop.
  */
-function createShop(player, type, region, sub_region, display_name, money) {
-    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+function createShop(player, serverShops, type, region, sub_region, display_name, money) {
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
         return;
@@ -284,6 +590,8 @@ function createShop(player, type, region, sub_region, display_name, money) {
     while (serverShops[shopId]) {
         shopId++;
     }
+
+    display_name = convertUnderscore(display_name);
 
     serverShops[shopId] = {
         roles: {
@@ -317,7 +625,7 @@ function createShop(player, type, region, sub_region, display_name, money) {
             is_for_sale: false
         },
         reputation_data: {
-            reputation: 0,
+            reputation: 100,
             reputation_history: []
         },
         upgrades: [],
@@ -329,11 +637,9 @@ function createShop(player, type, region, sub_region, display_name, money) {
         }
     };
 
-    saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
-
     // Initialize stock room if type is specified
     if (type) {
-        initStockRoom(player, shopId, serverShops);
+        initStockRoom(player, serverShops[shopId]);
     }
 }
 
@@ -342,15 +648,19 @@ function createShop(player, type, region, sub_region, display_name, money) {
  * @param {IPlayer} player - The player.
  * @param {number} shopId - The ID of the shop to delete.
  */
-function deleteShop(player, shopId) {
-    var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+function deleteShop(player, shopId, serverShops) {
     if (!serverShops) {
         tellPlayer(player, "&cNo shop data found! Contact an admin!");
         return;
     }
 
+    if (!serverShops[shopId]) {
+        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
+        tellPlayer(player, "&eUsage: $shopop delete <ID>");
+        return;
+    }
+
     delete serverShops[shopId];
-    saveJson(serverShops, SERVER_SHOPS_JSON_PATH);
     tellPlayer(player, "&aShop deleted!");
 }
 
@@ -374,34 +684,28 @@ function shopInfo(player, shopId) {
 
 /**
  * Sets the price of an item in the shop.
- * @param {IPlayer} player - The player.
+ * @param {IPlayer} player - Thea player.
  * @param {number} shopId - The ID of the shop.
  * @param {string|number} itemIdOrIndex - The item ID or index.
  * @param {string} profit - The profit margin.
  * @param {Object} playerShops - The player shops data.
  */
-function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
+function setPrice(player, shopData, itemIdOrIndex, profit) {
 
-    if (!hasPermission(player.getName(), shop, PERMISSION_SET_PRICES)) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_SET_PRICES)) {
         tellPlayer(player, "&cYou don't have permission to set prices for this shop!");
         return;
     }
-    var shop = playerShops[shopId];
     var item = null;
     var itemTag = null;
 
     if (isNaN(itemIdOrIndex)) {
-        item = shop.inventory.stock[itemIdOrIndex];
+        item = shopData.inventory.stock[itemIdOrIndex];
     } else {
         var index = parseInt(itemIdOrIndex);
-        var keys = Object.keys(shop.inventory.stock);
+        var keys = Object.keys(shopData.inventory.stock);
         if (index >= 0 && index < keys.length) {
-            item = shop.inventory.stock[keys[index]];
+            item = shopData.inventory.stock[keys[index]];
             itemIdOrIndex = keys[index];
             itemTag = item.tag;
         }
@@ -415,7 +719,7 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     var referencePrice = getReferencePrice(player, itemIdOrIndex, itemTag);
     var price = calculatePrice(referencePrice, profit);
 
-    shop.inventory.listed_items[itemIdOrIndex] = {
+    shopData.inventory.listed_items[itemIdOrIndex] = {
         price: price,
         reference_price: referencePrice,
         discount: 0,
@@ -423,13 +727,9 @@ function setPrice(player, shopId, itemIdOrIndex, profit, playerShops) {
     };
 
     if (itemTag) {
-        shop.inventory.listed_items[itemIdOrIndex].tag = itemTag;
+        shopData.inventory.listed_items[itemIdOrIndex].tag = itemTag;
     }
-
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
     tellPlayer(player, "&aSuccessfully set price for item &e" + itemIdOrIndex + " &ato &r:money:&e" + getAmountCoin(price));
-    // tellPlayer(player, "Reference price: " + referencePrice);
-    // tellPlayer(player, "Price: " + price);
 }
 
 /**
@@ -515,9 +815,9 @@ function getAvailableItems(player, shopType) {
             }
             // If shop entry has "based_on_stocks" list:
             if (entry.based_on_stocks) {
-                tellPlayer(player, "&eBased on stocks: ");
+                // tellPlayer(player, "&eBased on stocks: ");
                 for (var j = 0; j < entry.based_on_stocks.length; j++) {
-                    tellPlayer(player, "&e" + entry.based_on_stocks[j]);
+                    // tellPlayer(player, "&e" + entry.based_on_stocks[j]);
 
                     var basedOnStocksItems = getBasedOnStocksItems(player, entry.based_on_stocks[j]);
                     if (basedOnStocksItems) {
@@ -756,25 +1056,19 @@ function evalHandItem(player) {
  * @param {number} shopId - The ID of the shop.
  * @param {Object} playerShops - The player shops data.
  */
-function putMoneyInShop(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+function putMoneyInShop(player, shopData) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_MONEY)) {
         tellPlayer(player, "&cYou don't have permission to put money in this shop!");
         return;
     }
-    tellPlayer(player, "&aPutting money in shop &e" + shopId);
+    tellPlayer(player, "&aPutting money in shop &e" + shopData.shop.display_name);
     var totalMoney = 0;
 
     totalMoney += getMoneyFromPlayerInventory(player, world);
 
     if (totalMoney > 0) {
-        shop.finances.stored_cash += totalMoney;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(totalMoney) + " &ato shop &e" + shopId);
+        shopData.finances.stored_cash += totalMoney;
+        tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(totalMoney) + " &ato shop &e" + shopData.shop.display_name);
     } else {
         tellPlayer(player, "&cNo money found in your inventory!");
     }
@@ -787,29 +1081,25 @@ function putMoneyInShop(player, shopId, playerShops) {
  * @param {number} value - The amount of money to take.
  * @param {Object} playerShops - The player shops data.
  */
-function takeMoneyFromShop(player, shopId, value, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+function takeMoneyFromShop(player, shopData, value) {
+
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_MONEY)) {
         tellPlayer(player, "&cYou don't have permission to take money from this shop!");
         return;
     }
-    if (shop.finances.stored_cash < value) {
+
+    if (shopData.finances.stored_cash < value) {
         tellPlayer(player, "&cNot enough money in the shop's inventory!");
         return;
     }
 
-    shop.finances.stored_cash -= value;
+    shopData.finances.stored_cash -= value;
     var moneyItems = generateMoney(world, value, "money");
     for (var i = 0; i < moneyItems.length; i++) {
         player.giveItem(moneyItems[i]);
     }
 
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
+    tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopData.shop.display_name);
 }
 
 /**
@@ -819,20 +1109,14 @@ function takeMoneyFromShop(player, shopId, value, playerShops) {
  * @param {number} value - The amount of money to put.
  * @param {Object} playerShops - The player shops data.
  */
-function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+function putMoneyInShopFromPouch(player, shopData, value) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_MONEY)) {
         tellPlayer(player, "&cYou don't have permission to put money in this shop!");
         return;
     }
-    if (getMoneyFromPlayerPouch(player, value)) {
-        shop.finances.stored_cash += value;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        tellPlayer(player, "&aSuccessfully added &r:money:&e" + getAmountCoin(value) + " &ato shop &e" + shopId);
+    if (getMoneyFromPlayerPouch(player, getCoinAmount(value))) {
+        shopData.finances.stored_cash += getCoinAmount(value);
+        tellPlayer(player, "&aSuccessfully added &r:money:&e" + value + " &ato shop &e" + shopData.shop.display_name);
     } else {
         tellPlayer(player, "&cNot enough money in your pouch!");
     }
@@ -845,26 +1129,20 @@ function putMoneyInShopFromPouch(player, shopId, value, playerShops) {
  * @param {number} value - The amount of money to take.
  * @param {Object} playerShops - The player shops data.
  */
-function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_MONEY)) {
+function takeMoneyFromShopToPouch(player, shopData, value) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_MONEY)) {
         tellPlayer(player, "&cYou don't have permission to take money from this shop!");
         return;
     }
-    var shop = playerShops[shopId];
-    if (shop.finances.stored_cash < value) {
+
+    if (shopData.finances.stored_cash < getCoinAmount(value)) {
         tellPlayer(player, "&cNot enough money in the shop's inventory!");
         return;
     }
 
-    shop.finances.stored_cash -= value;
-    if (addMoneyToCurrentPlayerPouch(player, value)) {
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-        tellPlayer(player, "&aSuccessfully took &r:money:&e" + getAmountCoin(value) + " &afrom shop &e" + shopId);
+    shopData.finances.stored_cash -= getCoinAmount(value);
+    if (addMoneyToCurrentPlayerPouch(player, parseInt(getCoinAmount(value)))) {
+        tellPlayer(player, "&aSuccessfully took &r:money:&e" + value + " &afrom shop &e" + shopData.shop.display_name);
     } else {
         tellPlayer(player, "&cFailed to add money to your pouch!");
     }
@@ -877,28 +1155,10 @@ function takeMoneyFromShopToPouch(player, shopId, value, playerShops) {
  * @param {number} amount - The amount of reputation to add.
  * @param {Object} playerShops - The player shops data.
  */
-function addShopReputation(player, shopId, amount, playerShops) {
-    var shop = playerShops[shopId];
-    shop.reputation_data.reputation += amount;
-    addReputationHistoryEntry(shop, amount > 0 ? "Reputation added through command" : "Reputation removed through command", amount);
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+function addShopReputation(player, shopData, amount) {
+    shopData.reputation_data.reputation += parseInt(amount);
+    addReputationHistoryEntry(shopData, amount > 0 ? "Reputation added through command" : "Reputation removed through command", amount);
     tellPlayer(player, "&aShop reputation updated!");
-}
-
-/**
- * Adds a reputation history entry to a shop.
- * @param {Object} shop - The shop data.
- * @param {string} reason - The reason for the reputation change.
- * @param {number} amount - The amount of reputation change.
- */
-function addReputationHistoryEntry(shop, reason, amount) {
-    var entry = {
-        time: new Date().toISOString(),
-        reason: reason,
-        amount: amount,
-        reputation: shop.reputation_data.reputation
-    };
-    shop.reputation_data.reputation_history.push(entry);
 }
 
 /**
@@ -908,10 +1168,9 @@ function addReputationHistoryEntry(shop, reason, amount) {
  * @param {number} hours - The number of hours to log.
  * @param {Object} playerShops - The player shops data.
  */
-function logShopReputation(player, shopId, hours, playerShops) {
-    var shop = playerShops[shopId];
-    var currentReputation = shop.reputation_data.reputation;
-    var reputationAgo = getReputationAgo(player, shop, hours);
+function logShopReputation(player, shopData, hours) {
+    var currentReputation = shopData.reputation_data.reputation;
+    var reputationAgo = getReputationAgo(player, shopData, hours);
 
     if (reputationAgo === null) {
         tellPlayer(player, "&cShop not old enough to have data.");
@@ -959,149 +1218,28 @@ function calculateReputationChangePercent(oldReputation, newReputation) {
 }
 
 /**
- * Buys a shop.
- * @param {IPlayer} player - The player.
- * @param {number} shopId - The ID of the shop.
- * @param {string} buyerName - The name of the buyer.
- * @param {Object} playerShops - The player shops data.
- */
-function buyShop(player, shopId, buyerName, playerShops) {
-    if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
-        tellPlayer(player, "&cInvalid shop ID: &e" + shopId);
-        return;
-    }
-
-    var shop = playerShops[shopId];
-    if (!shop.real_estate.is_for_sale) {
-        tellPlayer(player, "&cShop &e" + shopId + " &cis not for sale!");
-        return;
-    }
-
-    if (shop.roles.owner === buyerName) {
-        tellPlayer(player, "&cYou can't buy a shop you are selling!");
-        return;
-    }
-
-    var seller = shop.roles.owner;
-
-    var salePrice = shop.real_estate.sale_price;
-    var buyer = world.getPlayer(buyerName);
-    if (!buyer) {
-        tellPlayer(player, "&cBuyer &e" + buyerName + " &cis not online!");
-        return;
-    }
-
-    if (!getMoneyFromPlayerPouch(buyer, salePrice)) {
-        tellPlayer(player, "&cBuyer &e" + buyerName + " &cdoes not have enough money! Sale price: &r:money:&e" + getAmountCoin(salePrice));
-        return;
-    }
-
-    // Transfer ownership of regions
-    var regions = getShopRegions(player, array_merge(shop.property.stock_room, shop.property.main_room));
-    for (var i = 0; i < regions.length; i++) {
-        transferRegion(player.getName(), regions[i], buyerName);
-    }
-
-    // Give money to the seller
-    addMoneyToPlayerPouchByName(seller, salePrice);
-
-    // Decrease reputation by 10%
-    var originalReputation = 100;
-    var currentReputation = shop.reputation_data.reputation;
-    var reputationDecrease = (currentReputation - originalReputation) * 0.1;
-    shop.reputation_data.reputation -= reputationDecrease;
-
-    shop.roles.owner = buyerName;
-    shop.real_estate.is_for_sale = false;
-    shop.real_estate.last_sold_date = world.getTotalTime();
-    shop.real_estate.commercial_premises_value = getPremisesValue(player, regions);
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-
-    tellPlayer(player, "&aShop &e" + shopId + " &ahas been sold to &e" + buyerName);
-    tellPlayer(buyer, "&aYou have bought shop &e" + shopId + " &afor &r:money:&e" + getAmountCoin(salePrice));
-    tellPlayer(buyer, "&7Note: The shop's reputation has decreased by &e10%&7.");
-}
-
-/**
- * Sells a shop.
- * @param {IPlayer} player - The player.
- * @param {number} shopId - The ID of the shop.
- * @param {string} salePrice - The sale price of the shop.
- * @param {Object} playerShops - The player shops data.
- */
-function sellShop(player, shopId, salePrice, playerShops) {
-    if (!hasPermission(player.getName(), shop, PERMISSION_SELL_SHOP)) {
-        tellPlayer(player, "&cYou don't have permission to sell this shop!");
-        return;
-    }
-
-    if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
-        tellPlayer(player, "&cInvalid shop ID: &e" + args[2]);
-        return;
-    }
-
-    var shop = playerShops[shopId];
-    if (shop.real_estate.is_for_sale) {
-        if (salePrice.toLowerCase() === "cancel") {
-            shop.real_estate.is_for_sale = false;
-            saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-            tellPlayer(player, "&aShop &e" + shopId + " &ais no longer for sale.");
-            return;
-        } else if (salePrice.toLowerCase() === "info") {
-            tellPlayer(player, "&aShop &e" + shopId + " &ais for sale at &r:money:&e" + getAmountCoin(shop.real_estate.sale_price));
-            return;
-        }
-    }
-
-    var regionValue = getPremisesValue(player, getShopRegions(player, array_merge(shop.property.stock_room, shop.property.main_room)));
-    if (salePrice < (regionValue + shop.finances.stored_cash)) {
-        tellPlayer(player, "&cSale price must be at least &r:money:&e" + getAmountCoin(regionValue + shop.finances.stored_cash));
-        if (shop.finances.stored_cash > 0) {
-            tellPlayer(player, "&cCurrent stored cash in shop: &r:money:&e" + getAmountCoin(shop.finances.stored_cash));
-        }
-        return;
-    }
-
-    var currentTime = world.getTotalTime();
-    if (currentTime - shop.real_estate.last_sold_date < 7 * 24 * 60 * 60 * 20) {
-        tellPlayer(player, "&cYou cannot sell this shop within 1 week of buying it!");
-        return;
-    }
-
-    shop.real_estate.sale_price = getCoinAmount(salePrice);
-    shop.real_estate.is_for_sale = true;
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    tellPlayer(player, "&aShop &e" + shopId + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
-    tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
-}
-
-/**
  * Handles the "$shop stat consumer flow" command.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
+ * @param {Object} shopData - The shop data.
  * @param {Object} playerShops - The player shops data.
  */
-function handleShopStatConsumerFlow(player, shopId, playerShops) {
-    try {
-        var consumerData = getDailyConsumersForShop(player, shopId, playerShops);
+function handleShopStatConsumerFlow(player, shopData, playerShops) {
+    var consumerData = getDailyConsumersForShop(player, shopData, playerShops);
 
-        tellPlayer(player, "&aShop ID: &e" + consumerData.shopId);
-        tellPlayer(player, "&aMain Room Size: &e" + consumerData.mainRoomSize + " m²");
-        tellPlayer(player, "&aShop Rating: &e" + consumerData.shopRating + "/100");
-        tellPlayer(player, "&aCustomer Flow Multiplier: &e" + consumerData.customerFlowMultiplier.toFixed(2));
-        tellPlayer(player, "&aExpected NPCs in 1 day: &e" + consumerData.dailyConsumers);
+    tellPlayer(player, "&aShop Name: &e" + shopData.shop.display_name);
+    tellPlayer(player, "&aMain Room Size: &e" + consumerData.mainRoomSize + " m²");
+    tellPlayer(player, "&aShop Rating: &e" + consumerData.shopRating + "/100");
+    tellPlayer(player, "&aCustomer Flow Multiplier: &e" + consumerData.customerFlowMultiplier.toFixed(2));
+    tellPlayer(player, "&aExpected NPCs in 1 day: &e" + consumerData.dailyConsumers);
 
-        if (consumerData.contributingFactors.length > 0) {
-            tellPlayer(player, "&aContributing Factors:");
-            for (var i = 0; i < consumerData.contributingFactors.length; i++) {
-                var factor = consumerData.contributingFactors[i];
-                tellPlayer(player, "&e- " + factor.type + ": &a" + factor.name + " &e(Value: " + factor.value + ")");
-            }
-        } else {
-            tellPlayer(player, "&aNo upgrades or events are currently affecting customer flow.");
+    if (consumerData.contributingFactors.length > 0) {
+        tellPlayer(player, "&aContributing Factors:");
+        for (var i = 0; i < consumerData.contributingFactors.length; i++) {
+            var factor = consumerData.contributingFactors[i];
+            tellPlayer(player, "&e- " + factor.type + ": &a" + factor.name + " &e(Value: " + factor.value + ")");
         }
-    } catch (error) {
-        tellPlayer(player, "&c" + error.message);
+    } else {
+        tellPlayer(player, "&aNo upgrades or events are currently affecting customer flow.");
     }
 }
 
