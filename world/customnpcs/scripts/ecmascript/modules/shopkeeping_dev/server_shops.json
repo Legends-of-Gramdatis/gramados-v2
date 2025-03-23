@@ -330,19 +330,19 @@
         "inventory": {
             "stock": {
                 "variedcommodities:pendant:0": {
-                    "count": 4
+                    "count": 5
                 },
                 "variedcommodities:necklace:0": {
-                    "count": 8
+                    "count": 9
                 },
                 "variedcommodities:ring:0": {
-                    "count": 6
+                    "count": 7
                 },
                 "variedcommodities:statuette:0": {
-                    "count": 8
+                    "count": 9
                 },
                 "variedcommodities:tablet:0": {
-                    "count": 7
+                    "count": 8
                 }
             },
             "listed_items": {
@@ -438,5 +438,226 @@
             "last_sold_date": 0,
             "commercial_premises_value": 0
         }
+    },
+    "3": {
+        "roles": {
+            "owner": "TheOddlySeagull"
+        },
+        "inventory": {
+            "stock": {
+                "harvestcraft:cuttingboarditem:0": {
+                    "count": 0
+                },
+                "minecraft:wheat:0": {
+                    "count": 0
+                },
+                "minecraft:wheat_seeds:0": {
+                    "count": 0
+                },
+                "harvestcraft:cornitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:barleyitem:0": {
+                    "count": 0
+                },
+                "minecraft:hay_block:0": {
+                    "count": 0
+                },
+                "minecraft:chicken:0": {
+                    "count": 0
+                },
+                "minecraft:egg:0": {
+                    "count": 0
+                },
+                "minecraft:feather:0": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:1": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:2": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:3": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:4": {
+                    "count": 0
+                },
+                "growthcraft_apples:applecider:5": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:1": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:2": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:3": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:4": {
+                    "count": 0
+                },
+                "growthcraft_bees:mead:5": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:1": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:2": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:3": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:9": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:10": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:11": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:17": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:18": {
+                    "count": 0
+                },
+                "growthcraft_grapes:grapewine:19": {
+                    "count": 0
+                },
+                "harvestcraft:toastitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:raspberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:croissantitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:pumpkinbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:blueberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:buttercookieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:walnutraisinbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:cherrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:peanutbuttercookiesitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:datenutbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:strawberrypieitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:raisincookiesitem:0": {
+                    "count": 0
+                },
+                "harvestcraft:banananutbreaditem:0": {
+                    "count": 0
+                },
+                "harvestcraft:applepieitem:0": {
+                    "count": 0
+                },
+                "minecraft:cookie:0": {
+                    "count": 0
+                },
+                "minecraft:bread:0": {
+                    "count": 0
+                },
+                "harvestcraft:festivalbreaditem:0": {
+                    "count": 0
+                }
+            },
+            "listed_items": {},
+            "unsalable_items": {}
+        },
+        "finances": {
+            "stored_cash": 140000,
+            "default_margin": 0.2
+        },
+        "property": {
+            "location": {
+                "x": 2197,
+                "y": 88,
+                "z": 3618
+            },
+            "stock_room": [
+                "Gramados_GramadosCity_GrolaStreet_Business:4",
+                "Gramados_GramadosCity_GrolaStreet_Business:5",
+                "Gramados_GramadosCity_GrolaStreet_Business:6",
+                "Gramados_GramadosCity_GrolaStreet_Business:7"
+            ],
+            "main_room": [
+                "Gramados_GramadosCity_GrolaStreet_Business:0",
+                "Gramados_GramadosCity_GrolaStreet_Business:1",
+                "Gramados_GramadosCity_GrolaStreet_Business:2",
+                "Gramados_GramadosCity_GrolaStreet_Business:3"
+            ],
+            "region": "Gramados",
+            "sub_region": "Gramados_City",
+            "stock_room_size": 28
+        },
+        "shop": {
+            "display_name": "Segull's Test Supermarket Of Doom",
+            "type": "code_bugger",
+            "is_open": false,
+            "is_for_sale": false
+        },
+        "reputation_data": {
+            "reputation": 549,
+            "reputation_history": [
+                {
+                    "time": "2025-03-22T21:33:01.419Z",
+                    "reason": "Reputation added through command",
+                    "amount": 10,
+                    "reputation": 110
+                },
+                {
+                    "time": "2025-03-22T21:36:15.425Z",
+                    "reason": "Reputation added through command",
+                    "amount": 10,
+                    "reputation": 120
+                },
+                {
+                    "time": "2025-03-22T21:36:31.666Z",
+                    "reason": "Reputation removed through command",
+                    "amount": -10,
+                    "reputation": 110
+                },
+                {
+                    "time": "2025-03-23T10:03:40.603Z",
+                    "reason": "Reputation added through command",
+                    "amount": 400,
+                    "reputation": 610
+                },
+                {
+                    "time": "2025-03-23T11:30:05.776Z",
+                    "reason": "Shop sold to SinaBloodsaw",
+                    "amount": -61,
+                    "reputation": 610
+                }
+            ]
+        },
+        "upgrades": [],
+        "real_estate": {
+            "sale_price": 30000000,
+            "is_for_sale": false,
+            "last_sold_date": 2454757952,
+            "commercial_premises_value": 28380000
+        },
+        "events": []
     }
 }
