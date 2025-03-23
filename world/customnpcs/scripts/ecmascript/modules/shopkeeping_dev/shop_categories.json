@@ -114,6 +114,13 @@
         {
             "display_name": "Code Crusher",
             "name": "code_bugger",
+            "general_ref": {
+                "base_markup": 30,
+                "item_variety_per_visit": 3,
+                "item_variety_variance": 0.5,
+                "items_per_type": 2,
+                "items_per_type_variance": 0.5
+            },
             "based_on_market": [
                 "baker",
                 "boat engines and propellers"
