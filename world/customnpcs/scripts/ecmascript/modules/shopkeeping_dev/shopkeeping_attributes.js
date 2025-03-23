@@ -163,3 +163,49 @@ function removeRoom(player, shopData, roomType, roomValue) {
     
     return true;
 }
+
+// getDefaultMargin
+/**
+ * Function to get the shop's default margin
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ * @returns {number} - The shop's default margin.
+ */
+function getShopDefaultMarginPercent(player, shopData) {
+    if (!shopData.finances.default_margin) {
+        tellPlayer(player, "&cNo default margin set for this shop! Using 20% as default.");
+        return "20%";
+    }
+    return shopData.finances.default_margin * 100 + "%";
+}
+
+/**
+ * Function to set the shop's default margin
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ * @param {number} margin - The new default margin.
+ */
+function setShopDefaultMarginPercent(player, shopData, margin) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_SET_PRICES)) {
+        tellPlayer(player, "&cYou don't have permission to set prices for this shop!");
+        return;
+    }
+
+    if (!margin) {
+        tellPlayer(player, "&cInvalid command! Usage: &e$shop price <shopID> default <percentage>");
+        return;
+    }
+
+    if (!margin.endsWith("%")) {
+        tellPlayer(player, "&cInvalid percentage format! Use a percentage value (e.g., 10%)");
+        return;
+    }
+
+    var percent = parseFloat(margin.slice(0, -1));
+    if (isNaN(percent)) {
+        tellPlayer(player, "&cInvalid percentage value!");
+        return;
+    }
+    shopData.finances.default_margin = percent / 100;
+    tellPlayer(player, "&aDefault margin set to &e" + margin + " &afor shop &e" + shopData.shop.display_name);
+}
