@@ -189,19 +189,18 @@ function evalShopReputation(player, shopId, playerShops) {
  * @param {boolean} [enableMessages=true] - Whether to enable chat messages (tellPlayer).
  * @returns {number} The calculated shop score.
  */
-function calculateShopScore(player, shopId, playerShops, enableMessages) {
+function calculateShopScore(player, shopData, playerShops, enableMessages) {
     if (enableMessages === undefined) {
         enableMessages = true
     }
 
-    var shop = playerShops[shopId];
-    var currentReputation = shop.reputation_data.reputation;
+    var currentReputation = shopData.reputation_data.reputation;
 
     var scaledReputation = 500 / (Math.log(currentReputation + 10) / Math.log(2));
 
-    var region = shop.property.region;
-    var subRegion = shop.property.sub_region;
-    var shopType = shop.shop.type;
+    var region = shopData.property.region;
+    var subRegion = shopData.property.sub_region;
+    var shopType = shopData.shop.type;
 
     var demandMultiplier = getRegionalDemandMultiplier(region, subRegion);
     var shopTypeDemand = getDemandForShopType(region, subRegion, shopType);
@@ -212,7 +211,7 @@ function calculateShopScore(player, shopId, playerShops, enableMessages) {
     var totalItems = 0;
     var stockroomPenalty = 0;
 
-    var listedItems = shop.inventory.listed_items;
+    var listedItems = shopData.inventory.listed_items;
 
     var recommendations = [];
 
@@ -226,13 +225,13 @@ function calculateShopScore(player, shopId, playerShops, enableMessages) {
         }
     }
 
-    var priceTolerance = getModuleValue(shop, "price_tolerance");
+    var priceTolerance = getModuleValue(shopData, "price_tolerance");
 
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
         var referencePrice = getReferencePrice(player, itemId, listedItem.tag);
         var listedPrice = listedItem.price;
-        var stockCount = shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0;
+        var stockCount = shopData.inventory.stock[itemId] ? shopData.inventory.stock[itemId].count : 0;
 
         var marginGradeData = getMarginGrade(listedPrice, referencePrice, currentReputation, shop_entry.general_ref.base_markup, priceTolerance);
         var marginGrade = marginGradeData.grade;
@@ -283,18 +282,28 @@ function calculateShopScore(player, shopId, playerShops, enableMessages) {
 
     var unstockedListedItems = 0;
     for (var itemId in listedItems) {
-        if (shop.inventory.stock[itemId]) {
-            if (shop.inventory.stock[itemId].count === 0) {
+        if (shopData.inventory.stock[itemId]) {
+            if (shopData.inventory.stock[itemId].count === 0) {
                 unstockedListedItems++;
             }
         }
     }
-    var stockedListedItemsScore = 1 - (unstockedListedItems / Object.keys(listedItems).length);
-    stockedListedItemsScore *= 100;
+    // tellPlayer(player, "&eUnstocked listed items: &a" + unstockedListedItems);
+    // tellPlayer(player, "&eTotal listed items: &a" + Object.keys(listedItems).length);
+
+    var stockedListedItemsScore = 0;
+    if (Object.keys(listedItems).length !== 0) {
+        stockedListedItemsScore = 1 - (unstockedListedItems / Object.keys(listedItems).length);
+        stockedListedItemsScore *= 100;
+    }
 
     var W1 = 4, W2 = 3, W3 = 1, W4 = 1, W5 = 5;
     var shopScore = (W1 * scaledReputation) + (W2 * marginGrade) + (W3 * listItemProportionScore) + (W4 * demandScore) + (W5 * stockedListedItemsScore);
     shopScore /= (W1 + W2 + W3 + W4 + W5);
+
+    if (isNaN(shopScore)) {
+        shopScore = 0;
+    }
 
     if (enableMessages) {
         tellPlayer(player, "&eScaled Reputation: &a" + scaledReputation.toFixed(2));
