@@ -128,6 +128,23 @@ function findJsonSubEntry(jsonarray, key, value) {
 }
 
 /**
+ * Finds the index of a sub-entry in a JSON array by a specific key and value.
+ * @param {Object[]} jsonarray - The JSON array to search.
+ * @param {string} key - The key to search for.
+ * @param {*} value - The value to search for.
+ * @returns {number} - The index of the JSON object if found, -1 otherwise.
+ */
+function findJsonSubEntryIndex(jsonarray, key, value) {
+    for (var i = 0; i < jsonarray.length; i++) {
+        if (jsonarray[i][key] === value) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+/**
  * Gets a value from a JSON object by key.
  * @param {Object} json - The JSON object to search.
  * @param {string} key - The key to search for.
