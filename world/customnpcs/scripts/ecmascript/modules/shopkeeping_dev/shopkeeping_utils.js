@@ -191,6 +191,22 @@ function getCategoryJson(shopType) {
     return shop_entry;
 }
 
+/**
+ * Adds a reputation history entry to a shop.
+ * @param {Object} shop - The shop data.
+ * @param {string} reason - The reason for the reputation change.
+ * @param {number} amount - The amount of reputation change.
+ */
+function addReputationHistoryEntry(shop, reason, amount) {
+    var entry = {
+        time: new Date().toISOString(),
+        reason: reason,
+        amount: amount,
+        reputation: shop.reputation_data.reputation
+    };
+    shop.reputation_data.reputation_history.push(entry);
+}
+
 // /**
 //  * Retrieves shop type data from "shop_categories.json".
 //  * @param {string} shopType - The type of the shop.
@@ -246,4 +262,141 @@ function getReferencePrice(player, itemId, itemTag) {
     }
 
     return 0;
+}
+
+/**
+ * Buys a shop.
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ * @param {string} buyerName - The name of the buyer.
+ */
+function buyShop(player, shopData, buyerName) {
+
+    if (!shopData.real_estate.is_for_sale) {
+        tellPlayer(player, "&cShop &e" + shopData.shop.display_name + " &cis not for sale!");
+        return;
+    }
+
+    if (shopData.roles.owner === buyerName) {
+        tellPlayer(player, "&cYou can't buy a shop you are selling!");
+        return;
+    }
+
+    var seller = shopData.roles.owner;
+
+    var salePrice = shopData.real_estate.sale_price;
+    var buyer = world.getPlayer(buyerName);
+    if (!buyer) {
+        tellPlayer(player, "&cBuyer &e" + buyerName + " &cis not online!");
+        return;
+    }
+
+    if (!getMoneyFromPlayerPouch(buyer, salePrice)) {
+        tellPlayer(player, "&cBuyer &e" + buyerName + " &cdoes not have enough money! Sale price: &r:money:&e" + getAmountCoin(salePrice));
+        return;
+    }
+
+    try {
+        var player_name = player.getName();
+    }
+    catch (error) {
+        var player_name = "Gramados";
+    }
+
+    // Transfer ownership of regions
+    var regions = getShopRegions(player, array_merge(shopData.property.stock_room, shopData.property.main_room));
+    for (var i = 0; i < regions.length; i++) {
+        transferRegion(player, regions[i], buyerName);
+    }
+
+    // Give money to the seller
+    addMoneyToPlayerPouchByName(seller, salePrice);
+
+    // log shop reputation in history
+    addReputationHistoryEntry(shopData, "Shop sold to " + buyerName, -(shopData.reputation_data.reputation * 0.1));
+
+    // Decrease reputation by 10%
+    shopData.reputation_data.reputation *= 0.9;
+
+    shopData.roles.owner = buyerName;
+    shopData.real_estate.is_for_sale = false;
+    shopData.real_estate.last_sold_date = world.getTotalTime();
+    shopData.real_estate.commercial_premises_value = getPremisesValue(player, regions);
+
+    tellPlayer(player, "&aShop &e" + shopData.shop.display_name + " &ahas been sold to &e" + buyerName);
+    tellPlayer(buyer, "&aYou have bought shop &e" + shopData.shop.display_name + " &afor &r:money:&e" + getAmountCoin(salePrice));
+    tellPlayer(buyer, "&7Note: The shop's reputation has decreased by &e10%&7.");
+}
+
+/**
+ * Sells a shop.
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ * @param {string} salePrice - The sale price of the shop.
+ */
+function setShopForSale(player, shopData, salePrice) {
+
+    if (!salePrice) {
+        tellPlayer(player, "&cPlease specify a sale price for the shop!");
+        return;
+    }
+    salePrice = getCoinAmount(salePrice);
+
+    if (!hasPermission(player.getDisplayName(), shopData, PERMISSION_SELL_SHOP)) {
+        tellPlayer(player, "&cYou don't have permission to sell this shop!");
+        return;
+    }
+
+    var regionValue = getPremisesValue(player, getShopRegions(player, array_merge(shopData.property.stock_room, shopData.property.main_room)));
+    if (salePrice < (regionValue + shopData.finances.stored_cash)) {
+        tellPlayer(player, "&cSale price must be at least &r:money:&e" + getAmountCoin(regionValue + shopData.finances.stored_cash));
+        if (shopData.finances.stored_cash > 0) {
+            tellPlayer(player, "&cCurrent stored cash in shop: &r:money:&e" + getAmountCoin(shopData.finances.stored_cash));
+        }
+        tellPlayer(player, "&cCurrent premises value: &r:money:&e" + getAmountCoin(regionValue));
+        return;
+    }
+
+    var currentTime = world.getTotalTime();
+    if (currentTime - shopData.real_estate.last_sold_date < 7 * 24 * 60 * 60 * 20) {
+        tellPlayer(player, "&cYou cannot sell this shop within 1 week of buying it!");
+        return;
+    }
+
+    shopData.real_estate.sale_price = salePrice;
+    shopData.real_estate.is_for_sale = true;
+    tellPlayer(player, "&aShop &e" + shopData.shop.display_name + " &ais now for sale at &r:money:&e" + getAmountCoin(salePrice));
+    tellPlayer(player, "&7Note: If a player buys this shop, its reputation will &edecrease &7by &e10%&7.");
+}
+
+/**
+ * Function to cancel a shop sale
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ */
+function cancelShopSale(player, shopData) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_SELL_SHOP)) {
+        tellPlayer(player, "&cYou don't have permission to sell this shop!");
+        return;
+    }
+
+    if (shopData.real_estate.is_for_sale) {
+        shopData.real_estate.is_for_sale = false;
+        tellPlayer(player, "&aShop &e" + shopData.shop.display_name + " &ais no longer for sale.");
+    } else {
+        tellPlayer(player, "&cShop &e" + shopData.shop.display_name + " &cis not for sale!");
+    }
+}
+
+/**
+ * Function to get the sale info of a shop
+ * @param {IPlayer} player - The player.
+ * @param {object} shopData - The shop data.
+ */
+function getShopSaleInfo(player, shopData) {
+    if (shopData.real_estate.is_for_sale) {
+        tellPlayer(player, "&aShop &e" + shopData.shop.display_name + " &ais for sale at &r:money:&e" + getAmountCoin(shopData.real_estate.sale_price));
+    } else {
+        tellPlayer(player, "&cShop &e" + shopData.shop.display_name + " &cis not for sale!");
+    }
 }

@@ -73,7 +73,7 @@ function getStockRoomSize(player, shopData) {
  * @param {Object} shopData - The shop data.
  */
 function initStockRoom(player, shopData) {
-    var stock = shopData.inventory.stock;
+    var stock = shopData.inventory.stock || {};
     var unsalableItems = shopData.inventory.unsalable_items || {};
 
     for (var itemId in stock) {
@@ -109,6 +109,7 @@ function initStockRoom(player, shopData) {
  */
 function updateStockrooms(player) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
+    tellPlayer(player, "&aUpdating stock rooms for all shops...");
     if (!serverShops) {
         world.broadcast("&cNo shop data found! Contact an admin!");
         return;
@@ -121,6 +122,7 @@ function updateStockrooms(player) {
     }
 
     for (var shopId in serverShops) {
+        tellPlayer(player, "&aUpdating stock room for shop ID: &e" + shopId);
         updateShopStockroom(player, serverShops, shopId);
     }
 
@@ -136,7 +138,7 @@ function updateStockrooms(player) {
 function updateShopStockroom(player, serverShops, shopId) {
     var shop = serverShops[shopId];
     var shopType = shop.shop.type;
-    var availableItems = getAvailableItems(player, shopType);
+    var availableItems = getAvailableItems(player, shopType) || [];
     var stock = shop.inventory.stock;
     var unsalableItems = shop.inventory.unsalable_items || {};
 
@@ -192,17 +194,11 @@ function moveUnsalableItems(stock, availableItems, unsalableItems) {
 /**
  * Adds stock from the player's hand to the shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  */
-function addStockFromHand(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop not found!");
-        return;
-    }
+function addStockFromHand(player, shopData) {
 
-    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_MANAGE_STOCK)) {
         tellPlayer(player, "&cYou don't have permission to add stock to this shop!");
         return;
     }
@@ -214,14 +210,13 @@ function addStockFromHand(player, shopId, playerShops) {
     }
 
     var itemstock = getHandItems(player);
-    var shop = playerShops[shopId];
 
-    if (!isValidItem(getAvailableItems(player, shop.shop.type), itemstock)) {
+    if (!isValidItem(getAvailableItems(player, shopData.shop.type), itemstock)) {
         tellPlayer(player, "&cItem is not valid for this shop type!");
         return;
     }
 
-    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    var stockRoomLeft = getStockRoomLeft(player, shopData);
     if (stockRoomLeft <= 0) {
         tellPlayer(player, "&cNo room left in the stock room!");
         return;
@@ -231,14 +226,14 @@ function addStockFromHand(player, shopId, playerShops) {
     var itemCount = itemstock.count;
     var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
-    if (!shop.inventory.stock[itemId]) {
-        shop.inventory.stock[itemId] = { count: 0 };
+    if (!shopData.inventory.stock[itemId]) {
+        shopData.inventory.stock[itemId] = { count: 0 };
         if (itemTag) {
-            shop.inventory.stock[itemId].tag = itemTag;
+            shopData.inventory.stock[itemId].tag = itemTag;
         }
     }
 
-    var stockItem = shop.inventory.stock[itemId];
+    var stockItem = shopData.inventory.stock[itemId];
     if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
         tellPlayer(player, "&cItem NBT does not match existing stock!");
         // tellPlayer(player, "&cItem NBT: &e" + itemTag);
@@ -250,9 +245,8 @@ function addStockFromHand(player, shopId, playerShops) {
     stockItem.count += roomForItems;
     itemstack.setStackSize(itemCount - roomForItems);
 
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
-    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
-    var stockRoomTotal = getStockRoomSize(player, shopId, playerShops);
+    var stockRoomLeft = getStockRoomLeft(player, shopData);
+    var stockRoomTotal = getStockRoomSize(player, shopData);
     var stockRoomUsed = stockRoomTotal - stockRoomLeft;
     var percentageFilled = (stockRoomUsed / stockRoomTotal) * 100;
     tellPlayer(player, "&aAdded &e" + roomForItems + " &aitems to the shop stock. &aRoom left: &e" + stockRoomLeft + " &a(" + percentageFilled.toFixed(2) + "% filled).");
@@ -261,24 +255,17 @@ function addStockFromHand(player, shopId, playerShops) {
 /**
  * Adds all stock from the player's inventory to the shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
  */
-function addAllStockFromInventory(player, shopId, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop not found!");
-        return;
-    }
+function addStockFromInventory(player, shopData) {
     
-    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_MANAGE_STOCK)) {
         tellPlayer(player, "&cYou don't have permission to add stock to this shop!");
         return;
     }
     // tellPlayer(player, "&aAdding all items to the shop stock...");
     var inventory = player.getInventory().getItems();
-    var shop = playerShops[shopId];
-    var availableItems = getAvailableItems(player, shop.shop.type);
+    var availableItems = getAvailableItems(player, shopData.shop.type);
 
     // tellPlayer(player, "&aInventory size: &e" + inventory.length);
 
@@ -288,7 +275,7 @@ function addAllStockFromInventory(player, shopId, playerShops) {
             var itemstock = getHandItemsFromStack(itemstack);
 
             if (isValidItem(availableItems, itemstock)) {
-                var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+                var stockRoomLeft = getStockRoomLeft(player, shopData);
                 if (stockRoomLeft <= 0) {
                     tellPlayer(player, "&cNo room left in the stock room!");
                     return;
@@ -298,14 +285,14 @@ function addAllStockFromInventory(player, shopId, playerShops) {
                 var itemCount = itemstock.count;
                 var itemTag = itemstock.tag ? JSON.stringify(API.stringToNbt(itemstock.tag)) : null;
 
-                if (!shop.inventory.stock[itemId]) {
-                    shop.inventory.stock[itemId] = { count: 0 };
+                if (!shopData.inventory.stock[itemId]) {
+                    shopData.inventory.stock[itemId] = { count: 0 };
                     if (itemTag) {
-                        shop.inventory.stock[itemId].tag = itemTag;
+                        shopData.inventory.stock[itemId].tag = itemTag;
                     }
                 }
 
-                var stockItem = shop.inventory.stock[itemId];
+                var stockItem = shopData.inventory.stock[itemId];
                 if (itemTag && !API.stringToNbt(stockItem.tag).isEqual(API.stringToNbt(itemTag))) {
                     tellPlayer(player, "&cItem NBT does not match existing stock!");
                     // tellPlayer(player, "&cItem NBT: &e" + itemTag);
@@ -317,36 +304,30 @@ function addAllStockFromInventory(player, shopId, playerShops) {
                 stockItem.count += roomForItems;
                 itemstack.setStackSize(itemCount - roomForItems);
 
-                var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
-                var stockRoomTotal = getStockRoomSize(player, shopId, playerShops);
+                var stockRoomLeft = getStockRoomLeft(player, shopData);
+                var stockRoomTotal = getStockRoomSize(player, shopData);
                 var stockRoomUsed = stockRoomTotal - stockRoomLeft;
                 var percentageFilled = (stockRoomUsed / stockRoomTotal) * 100;
                 tellPlayer(player, "&aAdded &e" + roomForItems + " &aitems to the shop stock. &aRoom left: &e" + stockRoomLeft + " &a(" + percentageFilled.toFixed(2) + "% filled).");
             }
         }
     }
-
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
 }
 
 /**
  * Removes stock from the player's shop.
  * @param {IPlayer} player - The player.
- * @param {Object} shop - The shop.
+ * @param {Object} shopData - The shop data.
  * @param {string} itemId - The item ID.
  * @param {number} count - The number of items to remove.
- * @param {Object} playerShops - The player's shops.
  */
-function removeStock(player, shop, itemId, count, playerShops) {
-    if (!hasPermission(player.getName(), shop, PERMISSION_MANAGE_STOCK)) {
-        tellPlayer(player, "&cYou don't have permission to remove stock from this shop!");
-        return;
-    }
-    var stock = shop.inventory.stock;
-    var unsalableItems = shop.inventory.unsalable_items;
+function removeStockedItem(player, shopData, itemId, count) {
+    var stock = shopData.inventory.stock;
+    var unsalableItems = shopData.inventory.unsalable_items;
 
     if (!stock[itemId] && !unsalableItems[itemId]) {
         tellPlayer(player, "&cItem not found in stock or unsalable items!");
+        tellPlayer(player, "&cAvailable items: &e" + Object.keys(stock).join(", "));
         return;
     }
 
@@ -383,9 +364,53 @@ function removeStock(player, shop, itemId, count, playerShops) {
     }
 
     player.giveItem(itemstack);
-
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
     tellPlayer(player, "&aRemoved &e" + count + " &aitems from the shop stock.");
+}
+
+/**
+ * Removes stock from the player's shop.
+ * @param {IPlayer} player - The player.
+ * @param {Object} shopData - The shop data.
+ * @param {string|number} item_or_index - The item ID or index.
+ * @param {number} count - The number of items to remove.
+ */
+function removeStock(player, shopData, item_or_index, count) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_MANAGE_STOCK)) {
+        tellPlayer(player, "&cYou don't have permission to remove stock from this shop!");
+        return;
+    }
+    if (!isNaN(item_or_index)) {
+        var index = parseInt(item_or_index);
+        var keys = Object.keys(shopData.inventory.stock);
+        if (index >= 0 && index < keys.length) {
+            item_or_index = keys[index];
+        } else {
+            tellPlayer(player, "&cInvalid item index: &e" + item_or_index);
+            return;
+        }
+    }
+
+    removeStockedItem(player, shopData, item_or_index, count);
+}
+
+function removeAllStock(player, shopData) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_MANAGE_STOCK)) {
+        tellPlayer(player, "&cYou don't have permission to remove stock from this shop!");
+        return;
+    }
+
+    var stock = shopData.inventory.stock;
+    var unsalableItems = shopData.inventory.unsalable_items;
+
+    for (var itemId in stock) {
+        var count = stock[itemId].count;
+        removeStockedItem(player, shopData, itemId, count);
+    }
+
+    for (var itemId in unsalableItems) {
+        var count = unsalableItems[itemId].count;
+        removeStockedItem(player, shopData, itemId, count);
+    }
 }
 
 /**
@@ -514,19 +539,14 @@ function removeOutdatedListedItems(player, shop, newType) {
 /**
  * Removes an item from the listed items.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {string} itemIdOrIndex - The item ID or index.
- * @param {Object} playerShops - The player's shops.
+ * @param {Object} shopData - The shop data.
+ * @param {string|number} itemIdOrIndex - The item ID or index.
+ * @param {Object} playerShops - The player shops.
  * @returns {boolean} True if the item was removed, false otherwise.
  */
-function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
+function removeListedItem(player, shopData, itemIdOrIndex) {
 
-    if (!hasPermission(player.getName(), shop, PERMISSION_SET_PRICES)) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_SET_PRICES)) {
         tellPlayer(player, "&cYou don't have permission to remove items from the listed items!");
         return;
     }
@@ -534,7 +554,7 @@ function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
 
     if (!isNaN(itemIdOrIndex)) {
         var index = parseInt(itemIdOrIndex);
-        var keys = Object.keys(shop.inventory.listed_items);
+        var keys = Object.keys(shopData.inventory.listed_items);
         if (index >= 0 && index < keys.length) {
             itemId = keys[index];
         } else {
@@ -543,9 +563,8 @@ function removeListedItem(player, shopId, itemIdOrIndex, playerShops) {
         }
     }
 
-    if (shop.inventory.listed_items[itemId]) {
-        delete shop.inventory.listed_items[itemId];
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    if (shopData.inventory.listed_items[itemId]) {
+        delete shopData.inventory.listed_items[itemId];
         tellPlayer(player, "&aSuccessfully removed item &e" + itemId + " &afrom the listed items.");
         return true;
     } else {
@@ -590,23 +609,16 @@ function getShopRegions(player, entries) {
 /**
  * Lists the stock information for a shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
+ * @param {Object} shopData - The shop data.
  * @param {boolean} showItems - Whether to show the list of stocked items.
  */
-function listShopStock(player, shopId, showItems) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops || !playerShops[shopId]) {
-        tellPlayer(player, "&cShop not found!");
-        return;
-    }
-
-    var shop = playerShops[shopId];
-    var stockRoomSize = getStockRoomSize(player, shopId, playerShops);
-    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+function listShopStock(player, shopData, showItems) {
+    var stockRoomSize = getStockRoomSize(player, shopData);
+    var stockRoomLeft = getStockRoomLeft(player, shopData);
     var stockRoomUsed = stockRoomSize - stockRoomLeft;
     var percentageFilled = (stockRoomUsed / stockRoomSize) * 100;
 
-    tellPlayer(player, "&aStock Room Info for Shop ID: &e" + shopId);
+    tellPlayer(player, "&aStock Room Info for Shop: &e" + shopData.shop.display_name);
     tellPlayer(player, "&aTotal Stock Room Size: &e" + stockRoomSize);
     tellPlayer(player, "&aStock Room Used: &e" + stockRoomUsed);
     tellPlayer(player, "&aStock Room Left: &e" + stockRoomLeft);
@@ -614,13 +626,13 @@ function listShopStock(player, shopId, showItems) {
 
     if (showItems) {
         tellPlayer(player, "&aStocked Items:");
-        for (var itemId in shop.inventory.stock) {
-            var item = shop.inventory.stock[itemId];
+        for (var itemId in shopData.inventory.stock) {
+            var item = shopData.inventory.stock[itemId];
             tellPlayer(player, "&e" + itemId + ": &a" + item.count);
         }
         tellPlayer(player, "&aUnsalable Items:");
-        for (var itemId in shop.inventory.unsalable_items) {
-            var item = shop.inventory.unsalable_items[itemId];
+        for (var itemId in shopData.inventory.unsalable_items) {
+            var item = shopData.inventory.unsalable_items[itemId];
             tellPlayer(player, "&e" + itemId + ": &a" + item.count);
         }
     }
@@ -629,21 +641,15 @@ function listShopStock(player, shopId, showItems) {
 /**
  * Lists the prices of all listed items and their stock, and unlisted items with their Wholesale Values.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
+ * @param {object} shopData - The shop data.
  */
-function listShopPrices(player, shopId) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops || !playerShops[shopId]) {
-        tellPlayer(player, "&cShop not found!");
-        return;
-    }
+function listShopPrices(player, shopData) {
 
-    var shop = playerShops[shopId];
-    var listedItems = shop.inventory.listed_items;
-    var stockItems = shop.inventory.stock;
-    var availableItems = getAvailableItems(player, shop.shop.type);
+    var listedItems = shopData.inventory.listed_items;
+    var stockItems = shopData.inventory.stock;
+    var availableItems = getAvailableItems(player, shopData.shop.type);
 
-    tellPlayer(player, "&aListed Items for Shop ID: &e" + shopId);
+    tellPlayer(player, "&aListed Items for Shop: &e" + shopData.shop.display_name);
     for (var itemId in listedItems) {
         var listedItem = listedItems[itemId];
         var stockCount = stockItems[itemId] ? stockItems[itemId].count : 0;
@@ -663,80 +669,74 @@ function listShopPrices(player, shopId) {
 /**
  * Displays a full recap of the shop.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
+ * @param {object} shopData - The shop data.
  * @param {boolean} extended - Whether to show extended information.
  */
-function displayShopInfo(player, shopId, extended) {
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    if (!playerShops || !playerShops[shopId]) {
-        tellPlayer(player, "&cShop not found!");
-        return;
-    }
+function displayShopInfo(player, shopData, extended) {
 
-    var shop = playerShops[shopId];
-    var stockRoomSize = getStockRoomSize(player, shopId, playerShops);
-    var stockRoomLeft = getStockRoomLeft(player, shopId, playerShops);
+    var stockRoomSize = getStockRoomSize(player, shopData);
+    var stockRoomLeft = getStockRoomLeft(player, shopData);
     var stockRoomUsed = stockRoomSize - stockRoomLeft;
     var percentageFilled = (stockRoomUsed / stockRoomSize) * 100;
 
     tellPlayer(player, "&b=========================================");
-    tellPlayer(player, "&bShop Info for Shop ID: &e" + shopId);
+    tellPlayer(player, "&bShop Info for Shop : &e" + shopData.shop.display_name);
     tellPlayer(player, "&b=========================================");
-    tellPlayer(player, "&aDisplay Name: &e" + shop.shop.display_name);
-    tellPlayer(player, "&aType: &e" + shop.shop.type);
-    tellPlayer(player, "&aRegion: &e" + shop.property.region);
-    tellPlayer(player, "&aSub-Region: &e" + shop.property.sub_region);
-    tellPlayer(player, "&aLocation: &e(" + shop.property.location.x + ", " + shop.property.location.y + ", " + shop.property.location.z + ")");
-    tellPlayer(player, "&aOwner: &e" + shop.roles.owner);
-    if (shop.roles.managers) {
-        tellPlayer(player, "&aManagers: &e" + shop.roles.managers.join(", "));
+    tellPlayer(player, "&aDisplay Name: &e" + shopData.shop.display_name);
+    tellPlayer(player, "&aType: &e" + shopData.shop.type);
+    tellPlayer(player, "&aRegion: &e" + shopData.property.region);
+    tellPlayer(player, "&aSub-Region: &e" + shopData.property.sub_region);
+    tellPlayer(player, "&aLocation: &e(" + shopData.property.location.x + ", " + shopData.property.location.y + ", " + shopData.property.location.z + ")");
+    tellPlayer(player, "&aOwner: &e" + shopData.roles.owner);
+    if (shopData.roles.managers) {
+        tellPlayer(player, "&aManagers: &e" + shopData.roles.managers.join(", "));
     }
-    if (shop.roles.cashiers) {
-        tellPlayer(player, "&aCashiers: &e" + shop.roles.cashiers.join(", "));
+    if (shopData.roles.cashiers) {
+        tellPlayer(player, "&aCashiers: &e" + shopData.roles.cashiers.join(", "));
     }
-    if (shop.roles.stock_keepers) {
-        tellPlayer(player, "&aStock Keepers: &e" + shop.roles.stock_keepers.join(", "));
+    if (shopData.roles.stock_keepers) {
+        tellPlayer(player, "&aStock Keepers: &e" + shopData.roles.stock_keepers.join(", "));
     }
-    if (shop.roles.assistants) {
-        tellPlayer(player, "&aAssistants: &e" + shop.roles.assistants.join(", "));
+    if (shopData.roles.assistants) {
+        tellPlayer(player, "&aAssistants: &e" + shopData.roles.assistants.join(", "));
     }
-    tellPlayer(player, "&aReputation: &e" + shop.reputation_data.reputation);
-    tellPlayer(player, "&aStored Cash: &e" + getAmountCoin(shop.finances.stored_cash));
-    tellPlayer(player, "&aDefault Margin: &e" + (shop.finances.default_margin * 100) + "%");
+    tellPlayer(player, "&aReputation: &e" + shopData.reputation_data.reputation);
+    tellPlayer(player, "&aStored Cash: &e" + getAmountCoin(shopData.finances.stored_cash));
+    tellPlayer(player, "&aDefault Margin: &e" + (shopData.finances.default_margin * 100) + "%");
     tellPlayer(player, "&aStock Room Size: &e" + stockRoomSize);
     tellPlayer(player, "&aStock Room Used: &e" + stockRoomUsed);
     tellPlayer(player, "&aStock Room Left: &e" + stockRoomLeft);
     tellPlayer(player, "&aPercentage Filled: &e" + percentageFilled.toFixed(2) + "%");
 
     tellPlayer(player, "&aUpgrades:");
-    for (var i = 0; i < shop.upgrades.length; i++) {
-        tellPlayer(player, "&e- " + shop.upgrades[i]);
+    for (var i = 0; i < shopData.upgrades.length; i++) {
+        tellPlayer(player, "&e- " + shopData.upgrades[i]);
     }
 
     tellPlayer(player, "&aEvents:");
-    for (var i = 0; i < shop.events.length; i++) {
-        var event = shop.events[i];
+    for (var i = 0; i < shopData.events.length; i++) {
+        var event = shopData.events[i];
         tellPlayer(player, "&e- " + event.id + " (Start Date: " + event.start_date + ", Duration: " + event.duration + ")");
     }
 
     if (extended) {
 
         tellPlayer(player, "&aStocked Items:");
-        for (var itemId in shop.inventory.stock) {
-            var item = shop.inventory.stock[itemId];
+        for (var itemId in shopData.inventory.stock) {
+            var item = shopData.inventory.stock[itemId];
             tellPlayer(player, "&e" + itemId + ": &a" + item.count);
         }
 
         tellPlayer(player, "&aUnsalable Items:");
-        for (var itemId in shop.inventory.unsalable_items) {
-            var item = shop.inventory.unsalable_items[itemId];
+        for (var itemId in shopData.inventory.unsalable_items) {
+            var item = shopData.inventory.unsalable_items[itemId];
             tellPlayer(player, "&e" + itemId + ": &a" + item.count);
         }
 
         tellPlayer(player, "&aListed Items:");
-        for (var itemId in shop.inventory.listed_items) {
-            var listedItem = shop.inventory.listed_items[itemId];
-            tellPlayer(player, "&e" + itemId + ": &aPrice: &r:money:&e" + getAmountCoin(listedItem.price) + " &aStock: &e" + (shop.inventory.stock[itemId] ? shop.inventory.stock[itemId].count : 0));
+        for (var itemId in shopData.inventory.listed_items) {
+            var listedItem = shopData.inventory.listed_items[itemId];
+            tellPlayer(player, "&e" + itemId + ": &aPrice: &r:money:&e" + getAmountCoin(listedItem.price) + " &aStock: &e" + (shopData.inventory.stock[itemId] ? shopData.inventory.stock[itemId].count : 0));
         }
     }
 
@@ -744,26 +744,32 @@ function displayShopInfo(player, shopId, extended) {
 }
 
 /**
- * Calculates the total size of a list of cuboids.
+ * Generates a cuboid group from a list of cuboids.
  * @param {IPlayer} player - The player.
- * @param {Array<string>} cuboidList - The list of cuboid identifiers.
- * @returns {number} The total size of the cuboids.
+ * @param {Array} cuboidList - The list of cuboids.
+ * @returns {Object} The cuboid group.
  */
-function getCuboidListSize(player, cuboidList) {
-    var totalSize = 0;
+function generateCuboidGroup(player, cuboidList) {
+    var cuboids = {};
+
+    // tellPlayer(player, "&aGenerating cuboid group from " + cuboidList.join(", "));
 
     for (var i = 0; i < cuboidList.length; i++) {
         var room = cuboidList[i];
         var parts = room.split(":");
         var cuboidId = parts[0];
-        var subCuboidId = parts.length > 1 ? parts[1] : null;
+        var subCuboidId = parts.length > 1 ? parseInt(parts[1]) : null;
 
-        try {
-            totalSize += calculateCuboidFloorSpace(player, cuboidId, subCuboidId);
-        } catch (error) {
-            throw new Error("Error calculating size for room: " + room + " - " + error.message);
+        // In cuboids, check if entry exists
+        if (!cuboids[cuboidId]) {
+            cuboids[cuboidId] = [];
         }
+
+        // add subcuboid to cuboid
+        cuboids[cuboidId].push(subCuboidId);
     }
 
-    return totalSize;
+    // tellPlayer(player, "&aGenerated cuboid group: &e" + JSON.stringify(cuboids));
+
+    return cuboids;
 }

@@ -50,33 +50,25 @@ function listAllEvents(player) {
 /**
  * Displays a formatted list of upgrades with availability for a specific shop.
  * @param {IPlayer} player - The player.
- * @param {string} shopId - The ID of the shop.
- * @param {Object} playerShops - The JSON object containing all player shops.
+ * @param {Object} shopData - The shop data.
  */
-function listShopUpgrades(player, shopId, playerShops) {
+function listShopUpgrades(player, shopData) {
     var upgrades = loadUpgradesAndEvents(player);
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&4Shop not found! Contact an admin!");
-        return;
-    }
 
     var messageUpgrades1 = [];
     var messageUpgrades2 = [];
     var messageUpgrades3 = [];
     var proportion = 0;
 
-    if (!shop.upgrades) {
-        shop.upgrades = [];
-        playerShops[shopId] = shop;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    if (!shopData.upgrades) {
+        shopData.upgrades = [];
     }
 
     for (var i = 0; i < upgrades.upgrades.length; i++) {
         var upgrade = upgrades.upgrades[i];
-        var canTakeUpgrade = canShopTakeUpgrade(player, shopId, upgrade);
+        var canTakeUpgrade = canShopTakeUpgrade(player, shopData, upgrade);
 
-        if (!includes(shop.upgrades, upgrade.id)) {
+        if (!includes(shopData.upgrades, upgrade.id)) {
             if (canTakeUpgrade.canTake) {
                 var entry = "&2:check: &a" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
                 messageUpgrades2.push(entry);
@@ -91,7 +83,7 @@ function listShopUpgrades(player, shopId, playerShops) {
         }
     }
 
-    var availableUpgrades = "&o&7" + shop.upgrades.length + " Owned &b&o, &c&o" + (upgrades.upgrades.length - shop.upgrades.length - proportion) + " Unavailable &b&o, &a&o" + proportion + " Available";
+    var availableUpgrades = "&o&7" + shopData.upgrades.length + " Owned &b&o, &c&o" + (upgrades.upgrades.length - shopData.upgrades.length - proportion) + " Unavailable &b&o, &a&o" + proportion + " Available";
     tellPlayer(player, "&b=========================================\n&o&bUpgrades: " + availableUpgrades + "\n&b=========================================");
     
     // concatenate the messages in the right order
@@ -103,35 +95,27 @@ function listShopUpgrades(player, shopId, playerShops) {
 /**
  * Displays a formatted list of events with availability for a specific shop.
  * @param {IPlayer} player - The player.
- * @param {string} shopId - The ID of the shop.
- * @param {Object} playerShops - The JSON object containing all player shops.
+ * @param {Object} shopData - The shop data.
  */
-function listShopEvents(player, shopId, playerShops) {
+function listShopEvents(player, shopData) {
     var upgrades = loadUpgradesAndEvents(player);
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&4Shop not found! Contact an admin!");
-        return;
-    }
 
     var messageEvents1 = [];
     var messageEvents2 = [];
     var messageEvents3 = [];
     var proportion = 0;
 
-    if (!shop.events) {
-        shop.events = [];
-        playerShops[shopId] = shop;
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    if (!shopData.events) {
+        shopData.events = [];
     }
 
-    var running = shop.events.length;
+    var running = shopData.events.length;
 
     for (var i = 0; i < upgrades.events.length; i++) {
         var event = upgrades.events[i];
-        var canStartEvent = canShopStartEvent(shopId, playerShops, event);
+        var canStartEvent = canShopStartEvent(shopData, event);
 
-        if (!findJsonSubEntry(shop.events, "id", event.id)) {
+        if (!findJsonSubEntry(shopData.events, "id", event.id)) {
             if (canStartEvent.canTake) {
                 var entry = "&2:check: &a" + event.name + " &8(ID: " + event.id + ")&a : \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
                 messageEvents2.push(entry);
@@ -166,22 +150,14 @@ function listShopEvents(player, shopId, playerShops) {
 /**
  * Determines if a shop can take a specific upgrade.
  * @param {IPlayer} player - The player.
- * @param {string} shopId - The ID of the shop.
+ * @param {Object} shopData - The shop data.
  * @param {Object} upgrade - The upgrade object.
  * @returns {Object} An object containing a boolean 'canTake' and an array of 'messages'.
  */
-function canShopTakeUpgrade(player, shopId, upgrade) {
+function canShopTakeUpgrade(player, shopData, upgrade) {
     var result = {
         "canTake" : true,
         "messages" : []
-    }
-
-    var playerShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    var shopData = playerShops[shopId];
-    if (!shopData) {
-        result.canTake = false;
-        result.messages.push("Shop data not found!");
-        return result;
     }
 
     if (!shopData.upgrades) {
@@ -218,19 +194,17 @@ function canShopTakeUpgrade(player, shopId, upgrade) {
 
 /**
  * Determines if a shop can start a specific event.
- * @param {string} shopId - The ID of the shop.
- * @param {Object} playerShops - The JSON object containing all player shops.
+ * @param {Object} shopData - The shop data.
  * @param {Object} event - The event object.
  * @returns {Object} An object containing a boolean 'canTake' and an array of 'messages'.
  */
-function canShopStartEvent(shopId, playerShops, event) {
-    var shop = playerShops[shopId];
+function canShopStartEvent(shopData, event) {
     var currentTime = world.getTotalTime();
     var messages = [];
 
     // Check if the event is already running
-    for (var i = 0; i < shop.events.length; i++) {
-        var runningEvent = shop.events[i];
+    for (var i = 0; i < shopData.events.length; i++) {
+        var runningEvent = shopData.events[i];
         var eventEndTime = runningEvent.start_date + (runningEvent.duration * 72000);
         if (runningEvent.id === event.id) {
             if (currentTime < eventEndTime) {
@@ -243,13 +217,23 @@ function canShopStartEvent(shopId, playerShops, event) {
     }
 
     // Check if the shop has enough cash
-    if (shop.finances.stored_cash < event.cost) {
+    if (shopData.finances.stored_cash < event.cost) {
         messages.push("Not enough cash to start the event: " + event.name);
     }
 
     // Check if the shop meets the minimum reputation requirement
-    if (event.min_reputation && shop.reputation_data.reputation < event.min_reputation) {
+    if (event.min_reputation && shopData.reputation_data.reputation < event.min_reputation) {
         messages.push("Not enough reputation to start the event: " + event.name);
+    }
+
+    // Check if the shop meets the maximum reputation requirement
+    if (event.max_reputation && shopData.reputation_data.reputation > event.max_reputation) {
+        messages.push("Too much reputation to start the event: " + event.name);
+    }
+
+    // Check if the shop has the required upgrades
+    if (!hasDependentUpgrades(null, event, shopData.upgrades)) {
+        messages.push("Shop doesn't have the required upgrades to start the event: " + event.name);
     }
 
     return { canTake: messages.length === 0, messages: messages };
@@ -282,17 +266,11 @@ function hasDependentUpgrades(player, upgrade, availableUpgrades) {
 /**
  * Applies a specific upgrade to a shop.
  * @param {IPlayer} player - The player.
- * @param {string} shopId - The ID of the shop.
+ * @param {Object} shopData - The shop data.
  * @param {string} upgradeId - The ID of the upgrade.
- * @param {Object} playerShops - The JSON object containing all player shops.
  */
-function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_UPGRADE)) {
+function takeShopUpgrade(player, shopData, upgradeId) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_UPGRADE)) {
         tellPlayer(player, "&cYou don't have permission to take upgrades for this shop!");
         return;
     }
@@ -304,12 +282,12 @@ function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
         return;
     }
 
-    if (includes(shop.upgrades, upgradeId)) {
+    if (includes(shopData.upgrades, upgradeId)) {
         tellPlayer(player, "&cUpgrade already taken: &e" + upgradeId);
         return;
     }
 
-    var canTake = canShopTakeUpgrade(player, shopId, upgrade);
+    var canTake = canShopTakeUpgrade(player, shopData, upgrade);
     if (!canTake.canTake) {
         tellPlayer(player, "&cCannot take upgrade: &e" + upgradeId);
         for (var i = 0; i < canTake.messages.length; i++) {
@@ -318,38 +296,63 @@ function takeShopUpgrade(player, shopId, upgradeId, playerShops) {
         return;
     }
 
-    if (shop.finances.stored_cash < upgrade.cost) {
+    if (shopData.finances.stored_cash < upgrade.cost) {
         tellPlayer(player, "&cNot enough money in the shop's cash register!");
         return;
     }
 
-    shop.upgrades.push(upgradeId);
-    shop.finances.stored_cash -= upgrade.cost;
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    shopData.upgrades.push(upgradeId);
+    shopData.finances.stored_cash -= upgrade.cost;
     tellPlayer(player, "&aSuccessfully applied upgrade: &e" + upgrade.name);
 
     // Update storage room size if the upgrade affects storage capacity
     if (upgrade.modules && upgrade.modules.storage_capacity) {
-        shop.property.stock_room_size = calculateStockRoomSize(player, shopId, playerShops);
-        saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+        shopData.property.stock_room_size = calculateStockRoomSize(player, shopData);
         tellPlayer(player, "&aStorage room size updated!");
     }
+}
+
+// removeShopUpgrade
+/**
+ * Removes a specific upgrade from a shop.
+ * @param {IPlayer} player - The player.
+ * @param {Object} shopData - The shop data.
+ * @param {string} upgradeId - The ID of the upgrade.
+ */
+function removeShopUpgrade(player, shopData, upgradeId) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_UPGRADE)) {
+        tellPlayer(player, "&cYou don't have permission to remove upgrades for this shop!");
+        return;
+    }
+    var upgrades = loadUpgradesAndEvents(player).upgrades;
+    var upgrade = findJsonEntry(upgrades, "id", upgradeId);
+
+    if (!upgrade) {
+        tellPlayer(player, "&cUpgrade not found: &e" + upgradeId);
+        return;
+    }
+
+    if (!includes(shopData.upgrades, upgradeId)) {
+        tellPlayer(player, "&cUpgrade not taken: &e" + upgradeId);
+        return;
+    }
+
+    var index = shopData.upgrades.indexOf(upgradeId);
+    if (index > -1) {
+        shopData.upgrades.splice(index, 1);
+    }
+
+    tellPlayer(player, "&aSuccessfully removed upgrade: &e" + upgrade.name);
 }
 
 /**
  * Starts a specific event for a shop.
  * @param {IPlayer} player - The player.
- * @param {string} shopId - The ID of the shop.
+ * @param {Object} shopData - The shop data.
  * @param {string} eventId - The ID of the event.
- * @param {Object} playerShops - The JSON object containing all player shops.
  */
-function takeShopEvent(player, shopId, eventId, playerShops) {
-    var shop = playerShops[shopId];
-    if (!shop) {
-        tellPlayer(player, "&cShop with ID &e" + shopId + " &cnot found!");
-        return;
-    }
-    if (!hasPermission(player.getName(), shop, PERMISSION_TAKE_EVENT)) {
+function takeShopEvent(player, shopData, eventId) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_EVENT)) {
         tellPlayer(player, "&cYou don't have permission to take events for this shop!");
         return;
     }
@@ -362,16 +365,16 @@ function takeShopEvent(player, shopId, eventId, playerShops) {
     }
 
     // if shop has no event entry, create one
-    if (!shop.events) {
-        shop.events = [];
+    if (!shopData.events) {
+        shopData.events = [];
     }
 
-    if (findJsonSubEntry(shop.events, "id", eventId)) {
+    if (findJsonSubEntry(shopData.events, "id", eventId)) {
         tellPlayer(player, "&cEvent already running: &e" + eventId);
         return;
     }
 
-    var canTake = canShopStartEvent(shopId, playerShops, event);
+    var canTake = canShopStartEvent(shopData, event);
     if (!canTake.canTake) {
         tellPlayer(player, "&cCannot start event: &e" + eventId);
         for (var i = 0; i < canTake.messages.length; i++) {
@@ -380,21 +383,52 @@ function takeShopEvent(player, shopId, eventId, playerShops) {
         return;
     }
 
-    if (shop.finances.stored_cash < event.cost) {
+    if (shopData.finances.stored_cash < event.cost) {
         tellPlayer(player, "&cNot enough money in the shop's cash register!");
         return;
     }
 
     var serverTickCount = world.getTotalTime();
-    shop.events.push({
+    shopData.events.push({
         id: eventId,
         start_date: serverTickCount,
         duration: event.repeatable.lasts_for
     });
-    shop.finances.stored_cash -= event.cost;
-    saveJson(playerShops, SERVER_SHOPS_JSON_PATH);
+    shopData.finances.stored_cash -= event.cost;
     tellPlayer(player, "&aSuccessfully started event: &e" + event.name);
     tellPlayer(player, "&aCost: &r:money:&e" + getAmountCoin(event.cost));
+}
+
+/**
+ * Stops a specific event for a shop.
+ * @param {IPlayer} player - The player.
+ * @param {Object} shopData - The shop data.
+ * @param {string} eventId - The ID of the event.
+ */
+function removeShopEvent(player, shopData, eventId) {
+    if (!hasPermission(player.getName(), shopData, PERMISSION_TAKE_EVENT)) {
+        tellPlayer(player, "&cYou don't have permission to remove events for this shop!");
+        return;
+    }
+    var events = loadUpgradesAndEvents(player).events;
+    var event = findJsonEntry(events, "id", eventId);
+
+    if (!event) {
+        tellPlayer(player, "&cEvent not found: &e" + eventId);
+        return;
+    }
+
+    if (!findJsonSubEntry(shopData.events, "id", eventId)) {
+        tellPlayer(player, "&cEvent not running: &e" + eventId);
+        return;
+    }
+
+    var index = findJsonSubEntryIndex(shopData.events, "id", eventId);
+    if (index > -1) {
+        shopData.events.splice(index, 1);
+    }
+
+    tellPlayer(player, "&aSuccessfully stopped event: &e" + event.name);
 }
 
 /**
@@ -433,12 +467,16 @@ function getModuleValue(shop, moduleName) {
         }
     }
 
-    // Sum values from running events
-    for (var i = 0; i < shop.events.length; i++) {
-        var event = shop.events[i];
-        if (isEventRunning(event, currentTime) && event.modules && event.modules[moduleName]) {
-            totalValue += event.modules[moduleName];
+    if (shop.events) {
+        // Sum values from running events
+        for (var i = 0; i < shop.events.length; i++) {
+            var event = shop.events[i];
+            if (isEventRunning(event, currentTime) && event.modules && event.modules[moduleName]) {
+                totalValue += event.modules[moduleName];
+            }
         }
+    } else {
+        shop.events = [];
     }
 
     return totalValue;

@@ -26,21 +26,17 @@ function calculateDailyConsumers(shopRating, publicSpaceSize, customerFlowMultip
 /**
  * Calculates the number of NPCs visiting a shop in one day and provides detailed feedback data.
  * @param {IPlayer} player - The player.
- * @param {number} shopId - The shop ID.
- * @param {Object} playerShops - The player shops data.
+ * @param {Object} shopData - The shop data.
+ * @param {Object} playerShops - The server shops data.
  * @returns {Object} A JSON object containing detailed feedback data.
  */
-function getDailyConsumersForShop(player, shopId, playerShops) {
-    if (isNaN(shopId) || !shopExists(shopId, playerShops)) {
-        throw new Error("Invalid shop ID: " + shopId);
-    }
+function getDailyConsumersForShop(player, shopData, playerShops) {
+    var mainRooms = shopData.property.main_room || [];
+    // tellPlayer(player, "&6Calculating daily consumers for shop with main rooms: " + mainRooms.join(", "));
+    var totalPublicSpaceSize = calculateCuboidGroupSize(player, generateCuboidGroup(player, mainRooms)).floor_space;
 
-    var shop = playerShops[shopId];
-    var mainRooms = shop.property.main_room || [];
-    var totalPublicSpaceSize = getCuboidListSize(player, mainRooms);
-
-    var shopRating = calculateShopScore(player, shopId, playerShops, false).toFixed(2);
-    var customerFlowMultiplier = getModuleValue(shop, "customer_flow") || 1;
+    var shopRating = calculateShopScore(player, shopData, playerShops, false).toFixed(2);
+    var customerFlowMultiplier = getModuleValue(shopData, "customer_flow") || 1;
     var dailyConsumers = calculateDailyConsumers(shopRating, totalPublicSpaceSize, customerFlowMultiplier);
 
     // Gather details about upgrades and events affecting customer flow
@@ -49,8 +45,8 @@ function getDailyConsumersForShop(player, shopId, playerShops) {
     var contributingFactors = [];
 
     // Check upgrades
-    for (var i = 0; i < shop.upgrades.length; i++) {
-        var upgrade = findJsonEntry(upgradesData.upgrades, "id", shop.upgrades[i]);
+    for (var i = 0; i < shopData.upgrades.length; i++) {
+        var upgrade = findJsonEntry(upgradesData.upgrades, "id", shopData.upgrades[i]);
         if (upgrade && upgrade.modules && upgrade.modules.customer_flow) {
             contributingFactors.push({
                 name: upgrade.name,
@@ -61,8 +57,8 @@ function getDailyConsumersForShop(player, shopId, playerShops) {
     }
 
     // Check running events
-    for (var i = 0; i < shop.events.length; i++) {
-        var event = shop.events[i];
+    for (var i = 0; i < shopData.events.length; i++) {
+        var event = shopData.events[i];
         var eventData = findJsonEntry(upgradesData.events, "id", event.id);
         if (eventData && isEventRunning(event, currentTime) && eventData.modules && eventData.modules.customer_flow) {
             contributingFactors.push({
@@ -74,7 +70,6 @@ function getDailyConsumersForShop(player, shopId, playerShops) {
     }
 
     return {
-        shopId: shopId,
         mainRoomSize: totalPublicSpaceSize,
         shopRating: shopRating,
         customerFlowMultiplier: customerFlowMultiplier,
