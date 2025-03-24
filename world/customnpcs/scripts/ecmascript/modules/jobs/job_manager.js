@@ -7,12 +7,14 @@ var job_data;
 var tick_counter_max = 1;
 var tick_counter = 1;
 
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+
 // Load Job Data on NPC Initialization
 function init(event) {
-    job_data = load_json(data_file_path);
+    job_data = loadJson(data_file_path);
     if (!job_data) {
         job_data = {"Region_Job_Limits": {}, "Jobs": [] };
-        save_json(job_data, data_file_path);
+        saveJson(job_data, data_file_path);
     }
     update_job_entries(event.player);
     check_all_jobs(event.player);
@@ -50,7 +52,7 @@ function update_job_entries(player) {
             "ActiveJobs": {}
         };
 
-        save_json(job_data, data_file_path);
+        saveJson(job_data, data_file_path);
 
         player.message("Welcome to the Gramados Server! You have been registered as a new player! Get a job to start earning money!");
     }
@@ -225,7 +227,7 @@ function check_all_jobs(player) {
 
                     world.broadcast(player.getName() + " has started job \"" + job_name + "\" in " + job_region);
                     update_job_perms(player);
-                    save_json(job_data, data_file_path);
+                    saveJson(job_data, data_file_path);
                 } else {
                     player.message("You have reached the limit for " + job_type + " jobs in " + job_region + "! You cannot join " + job_name + " as you already have " + get_jobs_by_type_in_region(player_uuid, job_region, job_type));
                     player.removeDialog(job_id);
@@ -286,39 +288,9 @@ function quit_job_manager(player) {
             world.broadcast(player.getName() + " has quit their job as " + job["JobName"] + " in " + job["Region"]);
 
             // Save changes
-            save_json(job_data, data_file_path);
+            saveJson(job_data, data_file_path);
         }
     }
-}
-
-// Load JSON
-function load_json(data_file_path) {
-    if (!check_file_exists(data_file_path)) {
-        world.broadcast("ERROR: Job Data is nonexistent!");
-        return null;
-    } else {
-        var ips = new java.io.FileInputStream(data_file_path);
-        var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
-        var start = "";
-        var readFile = fileReader.read();
-        while (readFile != -1) {
-            start += String.fromCharCode(readFile);
-            readFile = fileReader.read();
-        }
-        return JSON.parse(start);
-    }
-}
-
-// Save JSON
-function save_json(data, data_file_path) {
-    var fileWriter = new java.io.FileWriter(data_file_path);
-    fileWriter.write(JSON.stringify(data, null, 4));
-    fileWriter.close();
-}
-
-// Check if File Exists
-function check_file_exists(file_path) {
-    return new java.io.File(file_path).exists();
 }
 
 // Returns the list of jobs you currently have in a given region with the given type
@@ -367,6 +339,6 @@ function update_job_type_json(player) {
     }
 
     if (updated) {
-        save_json(job_data, data_file_path);
+        saveJson(job_data, data_file_path);
     }
 }
