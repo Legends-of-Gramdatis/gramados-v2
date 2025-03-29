@@ -1,3 +1,7 @@
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+
 var gramados_json = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
 
 var _RAWCOLORS = gramados_json._RAWCOLORS;
@@ -6,6 +10,7 @@ var _RAWCODES = gramados_json._RAWCODES;
 var CHAT_EMOTES = gramados_json.CHAT_EMOTES;
 var CHAT_CMD_RGX = gramados_json.CHAT_CMD_RGX;
 
+
 /**
  * Sends a formatted message to the player.
  * @param {IPlayer} player - The player to send the message to.
@@ -13,12 +18,63 @@ var CHAT_CMD_RGX = gramados_json.CHAT_CMD_RGX;
  * @returns {boolean} The result of the command execution.
  */
 function tellPlayer(player, rawtext) {
+    if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+        rawtext = rainbowifyText(rawtext);
+    }
     try {
         return executeCommand(player, "/tellraw " + player.getName() + " " + parseEmotes(strf(rawtext)));
     }
     catch (e) {
         return false;
     }
+}
+
+/**
+ * Applies a rainbow color effect to the given text.
+ * Skips adding color codes to existing color codes (the '&' character).
+ * @param {string} text - The text to rainbowify.
+ * @returns {string} The rainbow-colored text.
+ */
+function rainbowifyText(text) {
+    var rainbowText = '';
+    var colorIndex = 0;
+    var color_keys = getJsonKeys(_RAWCOLORS);
+    var stack = []; // Stack to handle recursive brackets
+    var skipRainbow = false;
+
+    for (var i = 0; i < text.length; i++) {
+        var char = text.charAt(i);
+
+        // Handle opening brackets
+        if ((char === '[' || char === '{') && !skipRainbow) {
+            stack.push(char === '[' ? ']' : '}');
+            skipRainbow = true;
+        }
+
+        // Handle closing brackets
+        if (skipRainbow && stack.length > 0 && char === stack[stack.length - 1]) {
+            stack.pop();
+            if (stack.length === 0) {
+                skipRainbow = false;
+            }
+        }
+
+        if (skipRainbow || ((char === '&' || char === '$') && i + 1 < text.length && (includes(color_keys, text.charAt(i + 1)) || _RAWEFFECTS[text.charAt(i + 1)]))) {
+            // Skip adding color codes to existing color codes or within skip sections or formatting tags
+            rainbowText += char;
+            if (char === '&' || char === '$') {
+                rainbowText += text.charAt(i + 1);
+                i++; // Skip the next character as it's part of the color code or formatting tag
+            }
+        } else {
+            // Get the color code for the current character
+            var colorCode = color_keys[colorIndex % color_keys.length];
+            rainbowText += '&' + colorCode + char;
+            colorIndex++;
+        }
+    }
+
+    return rainbowText; // Return the rainbow text
 }
 
 /**

@@ -10459,14 +10459,64 @@ registerXCommands([
 ]);
 
 
+function includes(array, item) {
+    // tellPlayer(player, "&6Checking if item " + item + " is in array " + array);
+    return array.indexOf(item) > -1;
+}
+function rainbowifyText(text) {
+    var rainbowText = '';
+    var colorIndex = 0;
+    var color_keys = Object.keys(_RAWCOLORS);
+    var stack = []; // Stack to handle recursive brackets
+    var skipRainbow = false;
 
+    for (var i = 0; i < text.length; i++) {
+        var char = text.charAt(i);
+
+        // Handle opening brackets
+        if ((char === '[' || char === '{') && !skipRainbow) {
+            stack.push(char === '[' ? ']' : '}');
+            skipRainbow = true;
+        }
+
+        // Handle closing brackets
+        if (skipRainbow && stack.length > 0 && char === stack[stack.length - 1]) {
+            stack.pop();
+            if (stack.length === 0) {
+                skipRainbow = false;
+            }
+        }
+
+        if (skipRainbow || (char === '&' && i + 1 < text.length && (includes(color_keys, text.charAt(i + 1)) || _RAWEFFECTS[text.charAt(i + 1)]))) {
+            // Skip adding color codes to existing color codes or within skip sections or formatting tags
+            rainbowText += char;
+            if (char === '&' || char === '$') {
+                rainbowText += text.charAt(i + 1);
+                i++; // Skip the next character as it's part of the color code or formatting tag
+            }
+        } else {
+            // Get the color code for the current character
+            var colorCode = color_keys[colorIndex % color_keys.length];
+            rainbowText += '&' + colorCode + char;
+            colorIndex++;
+        }
+    }
+
+    return rainbowText; // Return the rainbow text
+}
 
 //Send player formatted message
 function tellPlayer(player, rawtext) {
+    if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+        rawtext = rainbowifyText(rawtext);
+    }
     return executeCommand(player, "/tellraw " + player.getName() + " " + parseEmotes(strf(rawtext)));
 }
 
 function tellTarget(player, target, rawtext) {
+    if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+        rawtext = rainbowifyText(rawtext);
+    }
     return executeCommand(player, "/tellraw " + target + " " + parseEmotes(strf(rawtext)));
 }
 
@@ -14379,6 +14429,9 @@ function chat(e) {
                             wcnames.push(wchat.name);
                         });
                         var ccpref = parseEmotes('[' + curTimeStr + ']&l[:lang:]{run_command:!chat list ' + wcnames.join(" ") + '|show_text:' + wchats.join("\n") + '}&r ');
+                        if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+                            newmsg = rainbowifyText(newmsg);
+                        }
                         executeCommand(wpl, "/tellraw " + wpl.getName() + " " + strf(ccpref + newmsg));
                         toldPlayers.push(wpl.getName());
                     }
@@ -14392,6 +14445,9 @@ function chat(e) {
                 var wplo = new Player(wpl.getName()).init(data);
                 if (toldPlayers.indexOf(wpl.getName()) == -1 && wplo.getChats(data).length == 0) {
 
+                    if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+                        newmsg = rainbowifyText(newmsg);
+                    }
 
                     executeCommand(wpl, "/tellraw " + wpl.getName() + " " + strf(newmsg)); //send message to players
                     toldPlayers.push(wpl.getName());
