@@ -158,6 +158,16 @@ function getJsonValue(json, key) {
 }
 
 /**
+ * Gets all keys from a JSON object.
+ * 
+ * @param {Object} json - The JSON object to retrieve keys from.
+ * @returns {string[]} - An array of keys in the JSON object.
+ */
+function getJsonKeys(json) {
+    return Object.keys(json);
+}
+
+/**
  * Checks if a player is an operator (OP).
  * @param {IPlayer} player - The player to check.
  * @returns {boolean} - True if the player is an operator, false otherwise.
