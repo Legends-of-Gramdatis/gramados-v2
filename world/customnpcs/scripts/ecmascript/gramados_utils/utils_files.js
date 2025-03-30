@@ -4,16 +4,15 @@
  * @returns {Object|null} The parsed JSON object, or null if the file does not exist.
  */
 function loadJson(filePath) {
-    var file = new java.io.File(filePath);
-    if (!file.exists()) {
-        return null;
+    var fileReader = new java.io.FileReader(filePath);
+    var bufferedReader = new java.io.BufferedReader(fileReader);
+    var content = "";
+    var line;
+    while ((line = bufferedReader.readLine()) !== null) {
+        content += line;
     }
-
-    var reader = new java.io.FileReader(file);
-    var json = JSON.parse(org.apache.commons.io.IOUtils.toString(reader));
-    reader.close();
-
-    return json;
+    bufferedReader.close();
+    return JSON.parse(content);
 }
 
 /**
@@ -22,9 +21,9 @@ function loadJson(filePath) {
  * @param {string} filePath - The path to the file where the JSON object will be saved.
  */
 function saveJson(data, filePath) {
-    var writer = new java.io.FileWriter(filePath);
-    writer.write(JSON.stringify(data, null, 4));
-    writer.close();
+    var fileWriter = new java.io.FileWriter(filePath);
+    fileWriter.write(JSON.stringify(data, null, 4));
+    fileWriter.close();
 }
 
 /**
@@ -147,4 +146,14 @@ function writeToFile(filePath, text, offset, length) {
     } catch (exc) {
         return false;
     }
+}
+
+/**
+ * Creates an empty JSON file at the specified path.
+ * @param {string} filePath - The path to the file.
+ */
+function createJsonFile(filePath) {
+    var fileWriter = new java.io.FileWriter(filePath);
+    fileWriter.write("{}");
+    fileWriter.close();
 }
