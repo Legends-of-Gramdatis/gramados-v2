@@ -103,14 +103,14 @@ function init(e) {
     var playerName = player.getName();
     counter = 0;
 
-    // if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
+    if (new Date().getDate() == 1 && new Date().getMonth() == 3) {
         playerJoin(e);
         // Check if the player has never been swarmed or if the last swarm was more than their saved interval
         var currentTime = new Date().getTime();
         if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
             spawnSusBoxSwarmForPlayer(e, player);
         }
-    // }
+    }
 }
 
 /**
