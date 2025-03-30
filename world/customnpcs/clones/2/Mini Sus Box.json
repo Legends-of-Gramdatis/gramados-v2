@@ -1,0 +1,654 @@
+{
+    "ReturnToStart": 1b,
+    "NpcInv": [
+        {
+            "Slot": 0b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:slime_ball",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:orb_broken",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§dKeep away from those, no one knows their effects."
+                    ],
+                    "Name": "§5Contaminated Spore"
+                }
+            },
+            "Damage": 7s
+        },
+        {
+            "Slot": 2b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:orb_broken",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§dUse with care"
+                    ],
+                    "Name": "§5Contamination Spore"
+                }
+            },
+            "Damage": 5s
+        },
+        {
+            "Slot": 3b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:spell_dark",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§3those spores aren't contagious",
+                        "§3(safe)"
+                    ],
+                    "Name": "§5Contamination spores"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 4b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:gem_amethyst",
+            "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§eA shiny metal token used for arcade games and special event trades.",
+                        "§aExchangeable for Arcade Money at select locations."
+                    ],
+                    "Name": "§dArcade Token"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 5b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:splash_potion",
+            "Count": 1b,
+            "tag": {
+                "CustomPotionEffects": [
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 200,
+                        "Id": 20b,
+                        "Amplifier": 5b
+                    }
+                ],
+                "CustomPotionColor": 0,
+                "HideFlags": 32,
+                "display": {
+                    "Lore": [
+                        "§aRAPR4269"
+                    ],
+                    "Name": "§7Bottle o' virus"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 6b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:splash_potion",
+            "Count": 1b,
+            "tag": {
+                "CustomPotionEffects": [
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 600,
+                        "Id": 2b,
+                        "Amplifier": 5b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 600,
+                        "Id": 15b,
+                        "Amplifier": 1b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 2400,
+                        "Id": 17b,
+                        "Amplifier": 10b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 200,
+                        "Id": 19b,
+                        "Amplifier": 1b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 200,
+                        "Id": 27b,
+                        "Amplifier": 1b
+                    }
+                ],
+                "CustomPotionColor": 4259807,
+                "HideFlags": 32,
+                "display": {
+                    "Lore": [
+                        "§aTEOM2987"
+                    ],
+                    "Name": "§7Bottle o' virus"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 7b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:splash_potion",
+            "Count": 1b,
+            "tag": {
+                "CustomPotionEffects": [
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 2400,
+                        "Id": 15b,
+                        "Amplifier": 1b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 3000,
+                        "Id": 17b,
+                        "Amplifier": 10b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 1200,
+                        "Id": 18b,
+                        "Amplifier": 2b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 6000,
+                        "Id": 19b,
+                        "Amplifier": 1b
+                    }
+                ],
+                "CustomPotionColor": 1519938,
+                "HideFlags": 32,
+                "display": {
+                    "Lore": [
+                        "§aFRTO9985"
+                    ],
+                    "Name": "§7Bottle o' virus"
+                }
+            },
+            "Damage": 0s
+        },
+        {
+            "Slot": 8b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:splash_potion",
+            "Count": 1b,
+            "tag": {
+                "CustomPotionEffects": [
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 1200,
+                        "Id": 15b,
+                        "Amplifier": 1b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 6000,
+                        "Id": 17b,
+                        "Amplifier": 10b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 4000,
+                        "Id": 18b,
+                        "Amplifier": 2b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 2000,
+                        "Id": 19b,
+                        "Amplifier": 1b
+                    },
+                    {
+                        "ShowParticles": 0b,
+                        "Duration": 4000,
+                        "Id": 27b,
+                        "Amplifier": 3b
+                    }
+                ],
+                "CustomPotionColor": 4331265,
+                "HideFlags": 32,
+                "display": {
+                    "Lore": [
+                        "§aPCBT5423"
+                    ],
+                    "Name": "§7Bottle o' virus"
+                }
+            },
+            "Damage": 0s
+        }
+    ],
+    "BossColor": 5,
+    "PotionEffect": 3,
+    "Size": 5,
+    "stopAndInteract": 0b,
+    "Resistances": {
+        "Arrow": 1.0f,
+        "Explosion": 1.0f,
+        "Knockback": 1.0f,
+        "Melee": 1.0f
+    },
+    "BossBar": 0b,
+    "RespawnTime": 0,
+    "NpcAngrySound": "ivv:meme.eeae.subaluwa",
+    "ReactsToFire": 0b,
+    "IgnoreCobweb": 0b,
+    "PositionOffsetZ": 5.0f,
+    "PositionOffsetY": 5.0f,
+    "PositionOffsetX": 5.0f,
+    "LootMode": 0,
+    "TransformHasAI": 0b,
+    "AttackStrenght": 3,
+    "PersistenceRequired": 0b,
+    "id": "customnpcs:customnpc",
+    "IsStatue": 0b,
+    "MovingPatern": 0,
+    "NpcLines": {
+        "Lines": [
+        ]
+    },
+    "DefendFaction": 0b,
+    "FireIndirect": 0,
+    "NpcVisible": 0,
+    "LinkedNpcName": "",
+    "NpcScenes": {
+        "Scenes": [
+        ]
+    },
+    "HitSound": "ivv:gun.firing.laser.handheld",
+    "FindShelter": 2,
+    "Air": 300s,
+    "TacticalVariant": 0,
+    "Orientation": 0,
+    "ScriptLanguage": "ECMAScript",
+    "HandItems": [
+        {
+        },
+        {
+        }
+    ],
+    "KnockBack": 0,
+    "TransformHasJob": 0b,
+    "ArmorDropChances": [
+        0.085f,
+        0.085f,
+        0.085f,
+        0.085f
+    ],
+    "BurnInSun": 1b,
+    "StandingState": 0,
+    "AttackInvisible": 0b,
+    "NpcInteractNPCLines": {
+        "Lines": [
+        ]
+    },
+    "HurtTime": 0s,
+    "WalkingRange": 10,
+    "ShotCount": 2,
+    "pDur": 10,
+    "AttackRange": 2,
+    "NpcKillLines": {
+        "Lines": [
+        ]
+    },
+    "PotionImmune": 0b,
+    "AvoidsSun": 0b,
+    "Texture": "minecraft:textures/entity/slime/slime.png",
+    "NpcJob": 0,
+    "BurstCount": 1,
+    "NpcAttackLines": {
+        "Lines": [
+        ]
+    },
+    "pSpeed": 10,
+    "pArea": 0,
+    "DeathTime": 0s,
+    "pImpact": 0,
+    "MoveState": 5,
+    "pRender3D": 1b,
+    "Motion": [
+        -0.13777623986891555d,
+        -0.0784000015258789d,
+        -8.797710712284135E-4d
+    ],
+    "CombatRegen": 0,
+    "NpcsTimers": [
+    ],
+    "MarkovGender": 0,
+    "pEffect": 5,
+    "DistanceToMelee": 4,
+    "NpcStepSound": "ivv:mts.ivv.horn.anime",
+    "FireRate": 5,
+    "LeftHanded": 0b,
+    "pEffAmp": 0,
+    "OnGround": 1b,
+    "Dimension": 0,
+    "ImmuneToFire": 1b,
+    "NpcKilledLines": {
+        "Lines": [
+        ]
+    },
+    "Fire": -1s,
+    "ArmorItems": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+    ],
+    "DisablePitch": 0b,
+    "pPhysics": 1b,
+    "TransformHasInv": 0b,
+    "NpcInteractLines": {
+        "Lines": [
+        ]
+    },
+    "HurtByTimestamp": 2731,
+    "pSpin": 1b,
+    "NpcHurtSound": "ivv:meme.misc.bonk",
+    "pTrail": 2,
+    "CreatureType": 0,
+    "Attributes": [
+        {
+            "Base": 10.0d,
+            "Name": "generic.maxHealth"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.knockbackResistance"
+        },
+        {
+            "Base": 0.3499999940395355d,
+            "Name": "generic.movementSpeed"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armor"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armorToughness"
+        },
+        {
+            "Base": 1.0d,
+            "Name": "forge.swimSpeed"
+        },
+        {
+            "Base": 32.0d,
+            "Name": "generic.followRange"
+        },
+        {
+            "Base": 3.0d,
+            "Name": "generic.attackDamage"
+        },
+        {
+            "Base": 0.699999988079071d,
+            "Name": "generic.flyingSpeed"
+        }
+    ],
+    "Invulnerable": 0b,
+    "TransformHasDisplay": 0b,
+    "NoFallDamage": 0b,
+    "AbsorptionAmount": 0.0f,
+    "TransformHasRole": 0b,
+    "Name": "Mini Sus Box",
+    "FallDistance": 0.0f,
+    "SkinColor": 16777215,
+    "NpcIdleSound": "ivv:mts.ivv.horn.anime",
+    "Weapons": [
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "variedcommodities:spell_dark",
+            "Count": 1b,
+            "Damage": 0s
+        }
+    ],
+    "NPCDialogOptions": [
+    ],
+    "AggroRange": 16,
+    "DirectLOS": 1b,
+    "HealthRegen": 1,
+    "ForgeCaps": {
+        "fvtm:passenger": {
+        }
+    },
+    "HandDropChances": [
+        0.085f,
+        0.085f
+    ],
+    "NpcModelData": {
+        "LegsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.012000002f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "BodyConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "Eyes": {
+            "Pattern": 0b,
+            "Glint": 1b,
+            "Type": -1b,
+            "PositionY": 1,
+            "SkinColor": 11830381,
+            "PlayerTexture": 0b,
+            "Color": 10791096,
+            "BrowColor": 5982516,
+            "BrowThickness": 4
+        },
+        "EntityClass": "net.minecraft.entity.monster.EntitySlime",
+        "LegParts": {
+            "Pattern": 0b,
+            "Type": 0b,
+            "PlayerTexture": 0b,
+            "Color": 16777215
+        },
+        "Parts": [
+        ],
+        "ArmsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": -0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "ExtraData": {
+            "wasOnGround": 1b
+        },
+        "HeadConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        }
+    },
+    "minDelay": 20,
+    "DoorInteract": 2,
+    "MoveSpeed": 7,
+    "TransformEditingModus": 0b,
+    "UsingSkinUrl": 2b,
+    "Leashed": 0b,
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_slime_susbox.png",
+    "CanSwim": 1b,
+    "GroundSound": "ivv:gun.firing.laser",
+    "MaxHealth": 10,
+    "HideBodyWhenKilled": 0b,
+    "AttackSpeed": 20,
+    "PotionDuration": 5,
+    "maxDelay": 40,
+    "ScriptEnabled": 0b,
+    "Role": 0,
+    "DropChance": [
+        {
+            "Integer": 75,
+            "Slot": 0
+        },
+        {
+            "Integer": 10,
+            "Slot": 1
+        },
+        {
+            "Integer": 5,
+            "Slot": 2
+        },
+        {
+            "Integer": 50,
+            "Slot": 3
+        },
+        {
+            "Integer": 10,
+            "Slot": 4
+        },
+        {
+            "Integer": 5,
+            "Slot": 5
+        },
+        {
+            "Integer": 5,
+            "Slot": 6
+        },
+        {
+            "Integer": 5,
+            "Slot": 7
+        },
+        {
+            "Integer": 5,
+            "Slot": 8
+        }
+    ],
+    "FactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "pDamage": 4,
+    "KilledTime": 0L,
+    "AimWhileShooting": 0b,
+    "CanPickUpLoot": 0b,
+    "AttackOtherFactions": 0b,
+    "CanDrown": 1b,
+    "pSize": 5,
+    "CanSprint": 0b,
+    "CanLeap": 0b,
+    "TransformIsActive": 0b,
+    "ForgeData": {
+        "cnpcmarkdata": {
+            "marks": [
+            ]
+        }
+    },
+    "MovingState": 1,
+    "MovingPos": 0,
+    "PotionAmp": 1,
+    "OnAttack": 0,
+    "TacticalRadius": 8,
+    "FallFlying": 0b,
+    "MaxExp": 10,
+    "OrderedLines": 0b,
+    "PortalCooldown": 0,
+    "pGlows": 1b,
+    "TransformHasAdvanced": 0b,
+    "TransformHasStats": 0b,
+    "MovementType": 0,
+    "FiringSound": "ivv:mts.ivv.horn.anime",
+    "ModRev": 18,
+    "Accuracy": 50,
+    "MinExp": 5,
+    "Armor": [
+    ],
+    "CloakTexture": "",
+    "GlowTexture": "",
+    "MaxFiringRange": 15,
+    "pXlr8": 0b,
+    "MarkovGeneratorId": 0,
+    "Scripts": [
+    ],
+    "Health": 10.0f,
+    "pStick": 1b,
+    "MovingPause": 0b,
+    "NpcDeathSound": "ivv:meme.jixaw.die",
+    "FactionID": 11,
+    "Title": "",
+    "TotalTicksAlive": 67084L,
+    "Rotation": [
+        90.77109f,
+        0.0f
+    ],
+    "ShowName": 1,
+    "npcInteracting": 0b,
+    "UpdateBlocked": 0b,
+    "AvoidsWater": 0b,
+    "NoLivingAnimation": 0b,
+    "SpawnCycle": 3
+}
