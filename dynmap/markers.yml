@@ -1728,11 +1728,11 @@ sets:
             marker_3:
                 world: world
                 markup: false
-                x: -1817.0
                 icon: health_hospital
+                x: -1906.0
                 y: 77.0
-                z: 136.0
-                label: Gramados Great Hospital
+                z: 119.0
+                label: The People's Royal Hospital
             marker_4:
                 world: world
                 markup: false
