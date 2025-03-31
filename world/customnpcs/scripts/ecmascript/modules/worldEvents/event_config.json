@@ -1,0 +1,9 @@
+{
+    "events": [
+        {
+            "name": "April Fools",
+            "startDate": "2023-04-01T00:00:00Z",
+            "endDate": "2023-04-04T23:59:59Z"
+        }
+    ]
+}
