@@ -292,7 +292,7 @@
     "PositionOffsetX": 5.0f,
     "LootMode": 0,
     "TransformHasAI": 0b,
-    "AttackStrenght": 3,
+    "AttackStrenght": 2,
     "PersistenceRequired": 0b,
     "id": "customnpcs:customnpc",
     "IsStatue": 0b,
@@ -364,9 +364,9 @@
     "MoveState": 5,
     "pRender3D": 1b,
     "Motion": [
-        0.09732798115646989d,
+        0.0d,
         -0.0784000015258789d,
-        -0.09749067228701304d
+        0.0d
     ],
     "CombatRegen": 0,
     "NpcsTimers": [
@@ -405,7 +405,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 5171,
+    "HurtByTimestamp": 2098,
     "pSpin": 1b,
     "NpcHurtSound": "ivv:meme.misc.bonk",
     "pTrail": 2,
@@ -440,7 +440,7 @@
             "Name": "generic.followRange"
         },
         {
-            "Base": 3.0d,
+            "Base": 2.0d,
             "Name": "generic.attackDamage"
         },
         {
@@ -606,7 +606,7 @@
         "OptionFaction1Points": 100,
         "DecreaseFaction2Points": 0b
     },
-    "pDamage": 4,
+    "pDamage": 1,
     "KilledTime": 0L,
     "AimWhileShooting": 0b,
     "CanPickUpLoot": 0b,
@@ -912,7 +912,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -981,9 +981,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -1020,7 +1020,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -1055,7 +1055,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -1220,7 +1220,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -1268,9 +1268,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -1568,7 +1568,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -1637,9 +1637,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -1676,7 +1676,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -1711,7 +1711,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -1876,7 +1876,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -1924,9 +1924,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -2223,7 +2223,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -2292,9 +2292,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -2331,7 +2331,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -2366,7 +2366,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -2531,7 +2531,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -2579,9 +2579,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -2881,7 +2881,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -2950,9 +2950,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -2989,7 +2989,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -3024,7 +3024,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -3189,7 +3189,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -3237,9 +3237,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -3538,7 +3538,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -3607,9 +3607,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -3646,7 +3646,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -3681,7 +3681,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -3846,7 +3846,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -3894,9 +3894,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -4193,7 +4193,7 @@
         "PositionOffsetX": 5.0f,
         "LootMode": 0,
         "TransformHasAI": 0b,
-        "AttackStrenght": 3,
+        "AttackStrenght": 2,
         "PersistenceRequired": 0b,
         "id": "customnpcs:customnpc",
         "IsStatue": 0b,
@@ -4262,9 +4262,9 @@
         "MoveState": 5,
         "pRender3D": 1b,
         "Motion": [
-            -0.055457017858947744d,
+            0.0d,
             -0.0784000015258789d,
-            0.13292511281298183d
+            0.0d
         ],
         "CombatRegen": 0,
         "NpcsTimers": [
@@ -4301,7 +4301,7 @@
             "Lines": [
             ]
         },
-        "HurtByTimestamp": 2731,
+        "HurtByTimestamp": 1064,
         "pSpin": 1b,
         "NpcHurtSound": "ivv:meme.misc.bonk",
         "pTrail": 2,
@@ -4336,7 +4336,7 @@
                 "Name": "generic.followRange"
             },
             {
-                "Base": 3.0d,
+                "Base": 2.0d,
                 "Name": "generic.attackDamage"
             },
             {
@@ -4501,7 +4501,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 1,
         "KilledTime": 0L,
         "AimWhileShooting": 0b,
         "CanPickUpLoot": 0b,
@@ -4549,9 +4549,9 @@
         "NpcDeathSound": "ivv:meme.jixaw.die",
         "FactionID": 11,
         "Title": "",
-        "TotalTicksAlive": 67453L,
+        "TotalTicksAlive": 68480L,
         "Rotation": [
-            22.876213f,
+            315.0f,
             0.0f
         ],
         "ShowName": 1,
@@ -4579,9 +4579,9 @@
     "NpcDeathSound": "ivv:meme.jixaw.die",
     "FactionID": 11,
     "Title": "",
-    "TotalTicksAlive": 68659L,
+    "TotalTicksAlive": 70836L,
     "Rotation": [
-        225.32825f,
+        135.0f,
         0.0f
     ],
     "ShowName": 1,
