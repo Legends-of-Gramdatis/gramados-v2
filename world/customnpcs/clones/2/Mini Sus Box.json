@@ -7,8 +7,18 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "minecraft:slime_ball",
+            "id": "variedcommodities:spell_arcane",
             "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§eIt jiggles. It oozes. It §omight§e be sentient.",
+                        "§eFirst appeared in some... §ounusual§e boxes during that §oone§e event in April 2025.",
+                        "§7§oNo one’s sure if it was a prank or a warning."
+                    ],
+                    "Name": "§dPurple Organic Goo"
+                }
+            },
             "Damage": 0s
         },
         {
@@ -17,17 +27,17 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "variedcommodities:orb_broken",
+            "id": "minecraft:slime_ball",
             "Count": 1b,
             "tag": {
                 "display": {
                     "Lore": [
-                        "§dKeep away from those, no one knows their effects."
+                        "§eHeals damage, restores function, and is §odefinitely§e not alive. Probably."
                     ],
-                    "Name": "§5Contaminated Spore"
+                    "Name": "§bBiosynth Gel"
                 }
             },
-            "Damage": 7s
+            "Damage": 0s
         },
         {
             "Slot": 2b,
@@ -35,17 +45,18 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "variedcommodities:orb_broken",
+            "id": "variedcommodities:spell_holy",
             "Count": 1b,
             "tag": {
                 "display": {
                     "Lore": [
-                        "§dUse with care"
+                        "§eThey say staring into its glow for too long might give you enlightenment...",
+                        "§eor just a headache."
                     ],
-                    "Name": "§5Contamination Spore"
+                    "Name": "§bNeonite"
                 }
             },
-            "Damage": 5s
+            "Damage": 0s
         },
         {
             "Slot": 3b,
@@ -58,10 +69,11 @@
             "tag": {
                 "display": {
                     "Lore": [
-                        "§3those spores aren't contagious",
-                        "§3(safe)"
+                        "§bTiny, unsettling, and oddly squishy.",
+                        "§eOriginally 'acquired' from some §oquestionable§e lifeforms.",
+                        "§7§oAre they eggs? Are they spores? Are they planning something? Unclear."
                     ],
-                    "Name": "§5Contamination spores"
+                    "Name": "§5Contamination Spores"
                 }
             },
             "Damage": 0s
@@ -91,24 +103,14 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "minecraft:splash_potion",
+            "id": "minecraft:sugar",
             "Count": 1b,
             "tag": {
-                "CustomPotionEffects": [
-                    {
-                        "ShowParticles": 0b,
-                        "Duration": 200,
-                        "Id": 20b,
-                        "Amplifier": 5b
-                    }
-                ],
-                "CustomPotionColor": 0,
-                "HideFlags": 32,
                 "display": {
                     "Lore": [
-                        "§aRAPR4269"
+                        "§eWarning: Opening this near a fan may result in the accidental construction of something weird."
                     ],
-                    "Name": "§7Bottle o' virus"
+                    "Name": "§bNanopowder"
                 }
             },
             "Damage": 0s
@@ -223,40 +225,16 @@
                 "CustomPotionEffects": [
                     {
                         "ShowParticles": 0b,
-                        "Duration": 1200,
-                        "Id": 15b,
-                        "Amplifier": 1b
-                    },
-                    {
-                        "ShowParticles": 0b,
-                        "Duration": 6000,
-                        "Id": 17b,
-                        "Amplifier": 10b
-                    },
-                    {
-                        "ShowParticles": 0b,
-                        "Duration": 4000,
-                        "Id": 18b,
-                        "Amplifier": 2b
-                    },
-                    {
-                        "ShowParticles": 0b,
-                        "Duration": 2000,
-                        "Id": 19b,
-                        "Amplifier": 1b
-                    },
-                    {
-                        "ShowParticles": 0b,
-                        "Duration": 4000,
-                        "Id": 27b,
-                        "Amplifier": 3b
+                        "Duration": 200,
+                        "Id": 20b,
+                        "Amplifier": 5b
                     }
                 ],
-                "CustomPotionColor": 4331265,
+                "CustomPotionColor": 0,
                 "HideFlags": 32,
                 "display": {
                     "Lore": [
-                        "§aPCBT5423"
+                        "§aRAPR4269"
                     ],
                     "Name": "§7Bottle o' virus"
                 }
@@ -353,7 +331,7 @@
     "MoveState": 5,
     "pRender3D": 1b,
     "Motion": [
-        -0.09637079255766223d,
+        0.0d,
         -0.0784000015258789d,
         0.0d
     ],
@@ -392,7 +370,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 1064,
+    "HurtByTimestamp": 42639,
     "pSpin": 1b,
     "NpcHurtSound": "ivv:meme.misc.bonk",
     "pTrail": 2,
@@ -453,6 +431,16 @@
             },
             "id": "variedcommodities:spell_dark",
             "Count": 1b,
+            "tag": {
+                "display": {
+                    "Lore": [
+                        "§bTiny, unsettling, and oddly squishy.",
+                        "§eOriginally 'acquired' from some §oquestionable§e lifeforms.",
+                        "§7§oAre they eggs? Are they spores? Are they planning something? Unclear."
+                    ],
+                    "Name": "§5Contamination Spores"
+                }
+            },
             "Damage": 0s
         }
     ],
@@ -548,15 +536,15 @@
     "Role": 0,
     "DropChance": [
         {
-            "Integer": 75,
+            "Integer": 50,
             "Slot": 0
         },
         {
-            "Integer": 10,
+            "Integer": 12,
             "Slot": 1
         },
         {
-            "Integer": 5,
+            "Integer": 1,
             "Slot": 2
         },
         {
@@ -572,15 +560,15 @@
             "Slot": 5
         },
         {
-            "Integer": 5,
+            "Integer": 2,
             "Slot": 6
         },
         {
-            "Integer": 5,
+            "Integer": 2,
             "Slot": 7
         },
         {
-            "Integer": 5,
+            "Integer": 2,
             "Slot": 8
         }
     ],
@@ -614,7 +602,7 @@
     "OnAttack": 0,
     "TacticalRadius": 8,
     "FallFlying": 0b,
-    "MaxExp": 10,
+    "MaxExp": 5,
     "OrderedLines": 0b,
     "PortalCooldown": 0,
     "pGlows": 1b,
@@ -624,7 +612,7 @@
     "FiringSound": "ivv:mts.ivv.horn.anime",
     "ModRev": 18,
     "Accuracy": 50,
-    "MinExp": 5,
+    "MinExp": 1,
     "Armor": [
     ],
     "CloakTexture": "",
@@ -640,9 +628,9 @@
     "NpcDeathSound": "ivv:meme.jixaw.die",
     "FactionID": 11,
     "Title": "",
-    "TotalTicksAlive": 68530L,
+    "TotalTicksAlive": 111162L,
     "Rotation": [
-        53.30638f,
+        315.0f,
         0.0f
     ],
     "ShowName": 1,
