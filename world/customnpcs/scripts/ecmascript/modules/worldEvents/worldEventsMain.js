@@ -11,7 +11,6 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/susBoxEvent
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var counter = 0;
-var max_counter = 10000;
 
 var EVENT_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/player_event_log.json";
 var PLAYER_SPAWN_TIME_FILE_PATH = "world/customnpcs/scripts/json_spy/player_spawn_time.json";
@@ -131,10 +130,12 @@ function died(e) {
 function init(e) {
     loadPlayerSpawnData(); // Load spawn times and intervals from file
     var player = e.player;
-    var playerName = player.getName();
-    counter = 9600;
+    // var playerName = player.getName();
 
-    // if (isEventActive()) {
+    counter = 100;
+
+    // playerJoin(e);
+    // if (isEventActive() && counter < 1) {
     //     playerJoin(e);
     //     // Check if the player has never been swarmed or if the last swarm was more than their saved interval
     //     var currentTime = new Date().getTime();
@@ -151,27 +152,27 @@ function init(e) {
 function tick(e) {
     var player = e.player;
     var playerName = player.getName();
-    var currentTime = new Date().getTime();
+    // var currentTime = new Date().getTime();		
 
-    if (isEventActive() && counter === 0) {
+    if (isEventActive() && counter < 1) {
         // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
-        if (playerLastSpawnTime[playerName] && currentTime - playerLastSpawnTime[playerName] >= getRandomSpawnInterval()) {
+        var currentTime = new Date().getTime();
+        if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
             run_aprilfools_event(player);
         }
     }
 
-    if (counter > max_counter) {
-        counter = 0;
+    if (counter > 0) {
+        counter--;
     }
-    counter++;
 }
 
 /**
- * Returns a random spawn interval between 30 and 40 minutes in milliseconds.
+ * Returns a random spawn interval between 10 and 15 minutes in milliseconds.
  * @returns {number} - The random spawn interval in milliseconds.
  */
 function getRandomSpawnInterval() {
-    return (30 * 60 * 1000) + Math.floor(Math.random() * (10 * 60 * 1000)); // 30 to 40 minutes
+    return (10 * 60 * 1000) + Math.floor(Math.random() * (5 * 60 * 1000)); // 10 to 15 minutes
 }
 
 /**
