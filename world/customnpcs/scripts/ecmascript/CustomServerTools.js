@@ -13807,6 +13807,8 @@ function init(e) {
     if (e.player != null) {
         //e.player.getTimers().forceStart(SLOWTICK_TIMER_ID, SLOWTICK_TIMER, true);
 
+        e.player.setSpawnpoint(-1879, 77, 119);
+
         if (CONFIG_SERVER.DEFAULT_TEAM_JOIN != null) {
             var t = sb.getPlayerTeam(e.player.getName());
             if (t == null && sb.hasTeam(CONFIG_SERVER.DEFAULT_TEAM_JOIN)) {
