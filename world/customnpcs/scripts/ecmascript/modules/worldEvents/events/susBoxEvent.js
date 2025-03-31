@@ -5,8 +5,8 @@
  */
 function run_aprilfools_event(player) {
     var playerName = player.getName();
-    var randomCount = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
-    spawn_susbox_swarm(player, player.world, randomCount, 10, 5);
+    var randomCount = Math.floor(Math.random() * 20) + 1; // Random number between 1 and 20
+    spawn_susbox_swarm(player, player.world, randomCount, 20, 5);
     logPlayerEvent(player, "Sus Box Spawned", { count: randomCount });
 
     // Update the last spawn time and generate a new interval for the player
