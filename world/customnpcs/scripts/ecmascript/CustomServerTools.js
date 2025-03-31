@@ -10507,14 +10507,14 @@ function rainbowifyText(text) {
 
 //Send player formatted message
 function tellPlayer(player, rawtext) {
-    if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 2 && new Date().getMonth() == 2)) {
+    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
         rawtext = rainbowifyText(rawtext);
     }
     return executeCommand(player, "/tellraw " + player.getName() + " " + parseEmotes(strf(rawtext)));
 }
 
 function tellTarget(player, target, rawtext) {
-    if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 2 && new Date().getMonth() == 2)) {
+    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
         rawtext = rainbowifyText(rawtext);
     }
     return executeCommand(player, "/tellraw " + target + " " + parseEmotes(strf(rawtext)));
@@ -14431,7 +14431,7 @@ function chat(e) {
                             wcnames.push(wchat.name);
                         });
                         var ccpref = parseEmotes('[' + curTimeStr + ']&l[:lang:]{run_command:!chat list ' + wcnames.join(" ") + '|show_text:' + wchats.join("\n") + '}&r ');
-                        if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 2 && new Date().getMonth() == 2)) {
+                        if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
                             newmsg = rainbowifyText(newmsg);
                         }
                         executeCommand(wpl, "/tellraw " + wpl.getName() + " " + strf(ccpref + newmsg));
@@ -14447,7 +14447,7 @@ function chat(e) {
                 var wplo = new Player(wpl.getName()).init(data);
                 if (toldPlayers.indexOf(wpl.getName()) == -1 && wplo.getChats(data).length == 0) {
 
-                    if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 2 && new Date().getMonth() == 2)) {
+                    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
                         newmsg = rainbowifyText(newmsg);
                     }
 
