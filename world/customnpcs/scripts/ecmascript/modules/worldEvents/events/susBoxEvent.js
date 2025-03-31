@@ -1,14 +1,12 @@
-// load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventInitial.js")
-
 /**
  * Spawns a swarm of "Sus Boxes" for the player and logs the event.
  * @param {Object} e - The event object.
  * @param {Object} player - The player for whom the swarm is spawned.
  */
-function runEvent(e, player) {
+function run_aprilfools_event(player) {
     var playerName = player.getName();
     var randomCount = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
-    spawn_susbox_swarm(e, player, player.world, randomCount, 10, 5);
+    spawn_susbox_swarm(player, player.world, randomCount, 10, 5);
     logPlayerEvent(player, "Sus Box Spawned", { count: randomCount });
 
     // Update the last spawn time and generate a new interval for the player
@@ -26,7 +24,7 @@ function runEvent(e, player) {
  * @param {number} group_radius - The radius within which entities will spawn in a group.
  * @returns {boolean} - Returns true if at least one entity was successfully spawned.
  */
-function spawn_susbox_swarm(event, player, world, count, distance_from_player, group_radius) {
+function spawn_susbox_swarm(player, world, count, distance_from_player, group_radius) {
 
     var abandon_counter = 0;
     var x = Math.floor(player.getX() + Math.random() * distance_from_player - (distance_from_player / 2));

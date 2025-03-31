@@ -1,5 +1,6 @@
 /**
  * Main script for handling world events in the game.
+ * Includes functionality for spawning and cleaning up "Sus Box" entities during specific events.
  */
 
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
@@ -14,12 +15,12 @@ var max_counter = 10000;
 
 var EVENT_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/player_event_log.json";
 var PLAYER_SPAWN_TIME_FILE_PATH = "world/customnpcs/scripts/json_spy/player_spawn_time.json";
-var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 
 var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in milliseconds
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
-var activeEvents = [];
 
+var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
+var eventConfig = loadEventConfig();
 
 /**
  * Logs player events into a JSON file for tracking purposes.
@@ -86,38 +87,41 @@ function loadPlayerSpawnData() {
 
 /**
  * Loads the event configuration from the JSON file.
+ * @returns {Object} - The parsed JSON object containing the event configuration.
  */
 function loadEventConfig() {
     if (!checkFileExists(EVENT_CONFIG_FILE_PATH)) {
-        createJsonFile(EVENT_CONFIG_FILE_PATH, { events: [] });
+        throw new Error("Event configuration file not found: " + EVENT_CONFIG_FILE_PATH);
     }
-    var config = loadJson(EVENT_CONFIG_FILE_PATH);
-    activeEvents = config.events || [];
+    return loadJson(EVENT_CONFIG_FILE_PATH);
 }
 
 /**
- * Checks if the current date falls within the specified date range.
- * @param {Object} event - The event object containing start and end dates.
- * @returns {boolean} - True if the current date is within the range, false otherwise.
+ * Checks if the current date falls within the event's date range.
+ * @returns {boolean} - True if the current date is within the event range, false otherwise.
  */
-function isEventActive(event) {
+function isEventActive() {
     var currentDate = new Date();
-    var startDate = new Date(event.startDate);
-    var endDate = new Date(event.endDate);
-    return currentDate >= startDate && currentDate <= endDate;
+    for (var i = 0; i < eventConfig.events.length; i++) {
+        var event = eventConfig.events[i];
+        var startDate = new Date(event.startDate);
+        var endDate = new Date(event.endDate);
+        if (currentDate >= startDate && currentDate <= endDate) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /**
- * Triggered when an entity dies. Cleans up "Sus Box" entities during active events.
+ * Triggered when an entity dies. Cleans up "Sus Box" entities on April 1st.
  * @param {Object} e - The event object containing information about the death event.
  */
 function died(e) {
-    activeEvents.forEach(event => {
-        if (isEventActive(event) && event.name === "April Fools") {
-            susbox_cleanup(e);
-            logPlayerEvent(e.player, "Sus Box Cleanup", { reason: "Player death during April Fools event" });
-        }
-    });
+    if (isEventActive() || e.player.getName() === "TheOddlySeagull") {
+        susbox_cleanup(e);
+        logPlayerEvent(e.player, "Sus Box Cleanup", { reason: "Player death during event" });
+    }
 }
 
 /**
@@ -125,25 +129,23 @@ function died(e) {
  * @param {Object} e - The event object containing information about the initialization event.
  */
 function init(e) {
-    loadEventConfig();
     loadPlayerSpawnData(); // Load spawn times and intervals from file
     var player = e.player;
     var playerName = player.getName();
     counter = 0;
 
-    activeEvents.forEach(event => {
-        if (isEventActive(event) && event.name === "April Fools") {
-            playerJoin(e);
-            var currentTime = new Date().getTime();
-            if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
-                spawnSusBoxSwarmForPlayer(e, player);
-            }
+    if (isEventActive() || player.getName() === "TheOddlySeagull") {
+        playerJoin(e);
+        // Check if the player has never been swarmed or if the last swarm was more than their saved interval
+        var currentTime = new Date().getTime();
+        if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
+            run_aprilfools_event(player);
         }
-    });
+    }
 }
 
 /**
- * Called on every tick. Handles spawning "Sus Box" entities during active events.
+ * Called on every tick. Handles spawning "Sus Box" entities on April 1st.
  * @param {Object} e - The event object containing information about the tick event.
  */
 function tick(e) {
@@ -151,13 +153,12 @@ function tick(e) {
     var playerName = player.getName();
     var currentTime = new Date().getTime();
 
-    activeEvents.forEach(event => {
-        if (isEventActive(event) && event.name === "April Fools") {
-            if (playerLastSpawnTime[playerName] && currentTime - playerLastSpawnTime[playerName] >= getRandomSpawnInterval()) {
-                spawnSusBoxSwarmForPlayer(e, player);
-            }
+    if (isEventActive() || player.getName() === "TheOddlySeagull") {
+        // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
+        if (playerLastSpawnTime[playerName] && currentTime - playerLastSpawnTime[playerName] >= getRandomSpawnInterval()) {
+            run_aprilfools_event(player);
         }
-    });
+    }
 
     if (counter > max_counter) {
         counter = 0;
@@ -191,15 +192,15 @@ function playerJoin(e) {
     var currentTime = new Date().getTime();
 
     // Debug message: Time left before the next swarm
-    // if (playerLastSpawnTime[playerName]) {
-    //     var timeLeft = (playerSpawnIntervals[playerName] || 30 * 60 * 1000) - (currentTime - playerLastSpawnTime[playerName]);
-    //     if (timeLeft > 0) {
-    //         tellPlayer(player, "&7Time left before next swarm: &e" + Math.ceil(timeLeft / 1000 / 60) + " minutes");
-    //     }
-    // }
+    if (playerLastSpawnTime[playerName]) {
+        var timeLeft = (playerSpawnIntervals[playerName] || 30 * 60 * 1000) - (currentTime - playerLastSpawnTime[playerName]);
+        if (timeLeft > 0) {
+            tellPlayer(player, "&7Time left before next swarm: &e" + Math.ceil(timeLeft / 1000 / 60) + " minutes");
+        }
+    }
 
     // Check if the player has never been swarmed or if the last swarm was more than their saved interval
     if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
-        spawnSusBoxSwarmForPlayer(e, player);
+        run_aprilfools_event(player);
     }
 }
