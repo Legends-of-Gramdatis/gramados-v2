@@ -95,23 +95,21 @@ function spawn_susbox(x, y, z, world) {
 }
 
 /**
- * Cleans up "Sus Box" entities near the player if the player is arrested.
+ * Cleans up "Sus Box" entities near the player when they leave the game or die.
  * @param {Object} event - The event triggering the cleanup.
  */
 function susbox_cleanup(event) {
-    if (arrest_plugin_arrested_player_name == event.player.getDisplayName()) {
-        var player = event.player;
-        var world = player.world;
-        var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
+    var player = event.player;
+    var world = player.world;
+    var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
 
-        tellPlayer(player, "&aNearby entities: &e" + nearby_gentity_list.length);
+    tellPlayer(player, "&aNearby entities: &e" + nearby_gentity_list.length);
 
-        for (var i = 0; i < nearby_gentity_list.length; i++) {
-            var removal_test_entity = nearby_gentity_list[i];
-            tellPlayer(player, "&aEntity: &e" + removal_test_entity.getName());
-            if (removal_test_entity.getName().contains("Sus Box")) {
-                removal_test_entity.despawn();
-            }
+    for (var i = 0; i < nearby_gentity_list.length; i++) {
+        var removal_test_entity = nearby_gentity_list[i];
+        tellPlayer(player, "&aEntity: &e" + removal_test_entity.getName());
+        if (removal_test_entity.getName().contains("Sus Box")) {
+            removal_test_entity.despawn();
         }
     }
 }
