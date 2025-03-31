@@ -106,7 +106,7 @@ function isEventActive() {
         var event = eventConfig.events[i];
         var startDate = new Date(event.startDate);
         var endDate = new Date(event.endDate);
-        if (currentDate >= startDate && currentDate <= endDate) {
+        if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 5 && new Date().getMonth() == 2)) {
             return true;
         }
     }
@@ -134,7 +134,7 @@ function init(e) {
     var playerName = player.getName();
     counter = 0;
 
-    if (isEventActive() || player.getName() === "TheOddlySeagull") {
+    if (isEventActive()) {
         playerJoin(e);
         // Check if the player has never been swarmed or if the last swarm was more than their saved interval
         var currentTime = new Date().getTime();
@@ -153,7 +153,7 @@ function tick(e) {
     var playerName = player.getName();
     var currentTime = new Date().getTime();
 
-    if (isEventActive() || player.getName() === "TheOddlySeagull") {
+    if (isEventActive()) {
         // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
         if (playerLastSpawnTime[playerName] && currentTime - playerLastSpawnTime[playerName] >= getRandomSpawnInterval()) {
             run_aprilfools_event(player);
@@ -176,10 +176,12 @@ function getRandomSpawnInterval() {
 
 /**
  * Triggered when a player leaves the game. Saves their last spawn time and interval to a JSON file.
+ * Also cleans up "Sus Box" entities near the player.
  * @param {Object} e - The event object containing information about the player leaving.
  */
 function logout(e) {
     savePlayerSpawnData();
+    susbox_cleanup(e); // Clean up "Sus Box" entities near the player
 }
 
 /**
@@ -192,12 +194,12 @@ function playerJoin(e) {
     var currentTime = new Date().getTime();
 
     // Debug message: Time left before the next swarm
-    if (playerLastSpawnTime[playerName]) {
-        var timeLeft = (playerSpawnIntervals[playerName] || 30 * 60 * 1000) - (currentTime - playerLastSpawnTime[playerName]);
-        if (timeLeft > 0) {
-            tellPlayer(player, "&7Time left before next swarm: &e" + Math.ceil(timeLeft / 1000 / 60) + " minutes");
-        }
-    }
+    // if (playerLastSpawnTime[playerName]) {
+    //     var timeLeft = (playerSpawnIntervals[playerName] || 30 * 60 * 1000) - (currentTime - playerLastSpawnTime[playerName]);
+    //     if (timeLeft > 0) {
+    //         tellPlayer(player, "&7Time left before next swarm: &e" + Math.ceil(timeLeft / 1000 / 60) + " minutes");
+    //     }
+    // }
 
     // Check if the player has never been swarmed or if the last swarm was more than their saved interval
     if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
