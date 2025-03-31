@@ -109,7 +109,7 @@ function initStockRoom(player, shopData) {
  */
 function updateStockrooms(player) {
     var serverShops = loadJson(SERVER_SHOPS_JSON_PATH);
-    tellPlayer(player, "&aUpdating stock rooms for all shops...");
+    // tellPlayer(player, "&aUpdating stock rooms for all shops...");
     if (!serverShops) {
         world.broadcast("&cNo shop data found! Contact an admin!");
         return;
@@ -122,7 +122,7 @@ function updateStockrooms(player) {
     }
 
     for (var shopId in serverShops) {
-        tellPlayer(player, "&aUpdating stock room for shop ID: &e" + shopId);
+        // tellPlayer(player, "&aUpdating stock room for shop ID: &e" + shopId);
         updateShopStockroom(player, serverShops, shopId);
     }
 
