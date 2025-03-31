@@ -1,8 +1,12 @@
 {
     "lastSpawnTime": {
-        "TheOddlySeagull": 1743447812199
+        "TheOddlySeagull": 1743453598836,
+        "BOTFerris": 1743461895039,
+        "oldbjorn": 1743462189971
     },
     "spawnIntervals": {
-        "TheOddlySeagull": 2032099
+        "TheOddlySeagull": 2293209,
+        "BOTFerris": 766779,
+        "oldbjorn": 861390
     }
 }
