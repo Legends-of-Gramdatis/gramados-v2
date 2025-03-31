@@ -20,6 +20,55 @@
             "details": {
                 "count": 5
             }
+        },
+        {
+            "date": "Mon Mar 31 2025 20:33:56 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 10
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 21:03:32 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 2
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 22:20:38 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 5
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 22:28:01 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 10
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 22:31:07 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 1
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 22:32:43 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 7
+            }
+        },
+        {
+            "date": "Mon Mar 31 2025 22:33:01 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 10
+            }
         }
     ],
     "SinaBloodsaw": []
