@@ -106,7 +106,7 @@ function isEventActive() {
         var event = eventConfig.events[i];
         var startDate = new Date(event.startDate);
         var endDate = new Date(event.endDate);
-        if ((new Date().getDate() > 30 && new Date().getMonth() == 1) || (new Date().getDate() < 5 && new Date().getMonth() == 2)) {
+        if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 5 && new Date().getMonth() == 3)) {
             return true;
         }
     }
@@ -132,16 +132,16 @@ function init(e) {
     loadPlayerSpawnData(); // Load spawn times and intervals from file
     var player = e.player;
     var playerName = player.getName();
-    counter = 0;
+    counter = 9600;
 
-    if (isEventActive()) {
-        playerJoin(e);
-        // Check if the player has never been swarmed or if the last swarm was more than their saved interval
-        var currentTime = new Date().getTime();
-        if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
-            run_aprilfools_event(player);
-        }
-    }
+    // if (isEventActive()) {
+    //     playerJoin(e);
+    //     // Check if the player has never been swarmed or if the last swarm was more than their saved interval
+    //     var currentTime = new Date().getTime();
+    //     if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
+    //         run_aprilfools_event(player);
+    //     }
+    // }
 }
 
 /**
@@ -153,7 +153,7 @@ function tick(e) {
     var playerName = player.getName();
     var currentTime = new Date().getTime();
 
-    if (isEventActive()) {
+    if (isEventActive() && counter === 0) {
         // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
         if (playerLastSpawnTime[playerName] && currentTime - playerLastSpawnTime[playerName] >= getRandomSpawnInterval()) {
             run_aprilfools_event(player);
