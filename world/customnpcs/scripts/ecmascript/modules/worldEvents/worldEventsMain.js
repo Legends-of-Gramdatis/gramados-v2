@@ -19,7 +19,7 @@ var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in m
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
-var eventConfig = loadEventConfig();
+var allEventConfig = loadEventConfig();
 
 /**
  * Logs player events into a JSON file for tracking purposes.
@@ -101,12 +101,14 @@ function loadEventConfig() {
  */
 function isEventActive() {
     var currentDate = new Date();
-    for (var i = 0; i < eventConfig.events.length; i++) {
-        var event = eventConfig.events[i];
-        var startDate = new Date(event.startDate);
-        var endDate = new Date(event.endDate);
-        if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 5 && new Date().getMonth() == 3)) {
-            return true;
+    for (var i = 0; i < allEventConfig.events.length; i++) {
+        var eventConfig = allEventConfig.events[i];
+        if (
+            (currentDate.getDate() > eventConfig.startDate.day
+            && currentDate.getMonth() == eventConfig.startDate.month)
+            || (currentDate.getDate() < eventConfig.endDate.day
+            && currentDate.getMonth() == eventConfig.endDate.month)) {
+                return true;
         }
     }
     return false;
