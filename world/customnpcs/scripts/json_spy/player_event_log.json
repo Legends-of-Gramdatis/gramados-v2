@@ -92,7 +92,22 @@
             }
         }
     ],
-    "SinaBloodsaw": [],
+    "SinaBloodsaw": [
+        {
+            "date": "Tue Apr 01 2025 16:05:04 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 14
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 16:23:37 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 1
+            }
+        }
+    ],
     "oldbjorn": [
         {
             "date": "Mon Mar 31 2025 23:02:43 GMT+0200 (CEST)",
@@ -212,6 +227,34 @@
             "details": {
                 "count": 4
             }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:17:33 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 17
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:28:22 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 8
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:41:05 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 9
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:55:27 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 16
+            }
         }
     ],
     "BOTFerris": [
@@ -277,6 +320,20 @@
             "details": {
                 "reason": "Player death during event"
             }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:11:39 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 12
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:23:37 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 18
+            }
         }
     ],
     "Kitsunami_": [
@@ -292,6 +349,29 @@
             "eventType": "Sus Box Spawned",
             "details": {
                 "count": 1
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:11:41 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 13
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 01:23:02 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 8
+            }
+        }
+    ],
+    "Colt_44_magnum": [
+        {
+            "date": "Tue Apr 01 2025 04:47:35 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 17
             }
         }
     ]

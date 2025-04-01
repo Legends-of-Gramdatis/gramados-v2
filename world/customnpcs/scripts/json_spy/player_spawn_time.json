@@ -2,11 +2,15 @@
     "lastSpawnTime": {
         "TheOddlySeagull": 1743453598836,
         "BOTFerris": 1743461895039,
-        "oldbjorn": 1743462189971
+        "oldbjorn": 1743465327453,
+        "Colt_44_magnum": 1743475655468,
+        "SinaBloodsaw": 1743517417338
     },
     "spawnIntervals": {
         "TheOddlySeagull": 2293209,
         "BOTFerris": 766779,
-        "oldbjorn": 861390
+        "oldbjorn": 763871,
+        "Colt_44_magnum": 765478,
+        "SinaBloodsaw": 1071542
     }
 }
