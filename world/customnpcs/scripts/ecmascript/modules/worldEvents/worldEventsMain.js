@@ -172,7 +172,7 @@ function tick(e) {
  * @returns {number} - The random spawn interval in milliseconds.
  */
 function getRandomSpawnInterval() {
-    return (10 * 60 * 1000) + Math.floor(Math.random() * (5 * 60 * 1000)); // 10 to 15 minutes
+    return (10 * 60 * 1000) + Math.floor(Math.random() * (20 * 60 * 1000)); // 10 to 30 minutes
 }
 
 /**
