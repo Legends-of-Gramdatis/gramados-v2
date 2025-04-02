@@ -118,6 +118,55 @@
             "details": {
                 "count": 20
             }
+        },
+        {
+            "date": "Tue Apr 01 2025 21:31:17 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 18
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 21:48:59 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 2
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 22:17:08 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 17
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 22:42:51 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 10
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:00:17 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 2
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:26:35 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 4
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:49:44 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 14
+            }
         }
     ],
     "SinaBloodsaw": [
@@ -407,6 +456,50 @@
             "eventType": "Sus Box Spawned",
             "details": {
                 "count": 17
+            }
+        }
+    ],
+    "Leyx": [
+        {
+            "date": "Tue Apr 01 2025 22:30:56 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 12
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 22:58:12 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 15
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:20:50 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 11
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:21:47 GMT+0200 (CEST)",
+            "eventType": "Sus Box Cleanup",
+            "details": {
+                "reason": "Player death during event"
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:22:43 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 17
+            }
+        },
+        {
+            "date": "Tue Apr 01 2025 23:49:45 GMT+0200 (CEST)",
+            "eventType": "Sus Box Spawned",
+            "details": {
+                "count": 18
             }
         }
     ]
