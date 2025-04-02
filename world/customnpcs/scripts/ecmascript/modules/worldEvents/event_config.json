@@ -2,8 +2,16 @@
     "events": [
         {
             "name": "April Fools",
-            "startDate": "2025-03-31T22:00:00Z",
-            "endDate": "2025-04-04T23:59:59Z"
+            "startDate": {
+                "year": 2025,
+                "month": 2,
+                "day": 30
+            },
+            "endDate": {
+                "year": 2025,
+                "month": 3,
+                "day": 4
+            }
         }
     ]
 }
