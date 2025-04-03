@@ -1,4 +1,5 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 
 var LOG_FILES = {
     economy: {
@@ -19,7 +20,7 @@ var LOG_FILES = {
  */
 function logToJson(logType, key, data) {
     if (!LOG_FILES[logType] || !LOG_FILES[logType].json) {
-        throw new Error(`Invalid log type: ${logType}`);
+        tellPlayer("Invalid log type: " + logType);
     }
 
     var filePath = LOG_FILES[logType].json;
@@ -40,11 +41,11 @@ function logToJson(logType, key, data) {
  */
 function logToFile(logType, message) {
     if (!LOG_FILES[logType] || !LOG_FILES[logType].log) {
-        throw new Error(`Invalid log type: ${logType}`);
+        tellPlayer("Invalid log type: " + logType);
     }
 
     var filePath = LOG_FILES[logType].log;
-    var logEntry = `[${new Date().toLocaleString()}] ${message}\n`;
+    var logEntry = "[" + new Date().toLocaleString() + "] " + message + "\n";
 
     var fileWriter = new java.io.FileWriter(filePath, true); // 'true' for appending
     fileWriter.write(logEntry);
