@@ -1,10 +1,12 @@
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
 var _OFFER_AND_DEMAND_FACTOR = 0.005; // 0.5% increase/decrease
 var _RANDOM_FACTOR = 0.1; // 10% random factor
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
-var REGION_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
+var DOMAINS_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 
 var world = API.getIWorld(0);
 
@@ -133,7 +135,7 @@ function updateStockPrice(stockValue, regionGeneral) {
 function updateDomainValues() {
     world.broadcast("Updating domain values...");
 
-    var regionData = loadJson(REGION_FILE_PATH);
+    var regionData = loadJson(DOMAINS_FILE_PATH);
     if (!regionData) {
         world.broadcast("ERROR: Domain data not found!");
         return;
@@ -143,7 +145,7 @@ function updateDomainValues() {
         updateDomainReputation(regionData["domains"][domain]);
     }
 
-    saveJson(regionData, REGION_FILE_PATH);
+    saveJson(regionData, DOMAINS_FILE_PATH);
 }
 
 function updateDomainReputation(domainData) {
@@ -160,34 +162,4 @@ function updateDomainReputation(domainData) {
     domainData["reputation"] *= Math.pow(1.05, domainData["bottle_variety"].length);
     domainData["bottle_variety"] = [];
     domainData["reputation"] = Math.max(1, Math.floor(domainData["reputation"] * 1000) / 1000);
-}
-
-function loadJson(filePath) {
-    if (!checkFileExists(filePath)) {
-        npc.say("ERROR: JSON file not found at path: " + filePath);
-        return null;
-    }
-
-    var fileInputStream = new java.io.FileInputStream(filePath);
-    var fileReader = new java.io.InputStreamReader(fileInputStream, "UTF-8");
-    var data = '';
-    var char;
-
-    while ((char = fileReader.read()) != -1) {
-        data += String.fromCharCode(char);
-    }
-
-    fileReader.close();
-    return JSON.parse(data);
-}
-
-function saveJson(data, filePath) {
-    var fileWriter = new java.io.FileWriter(filePath);
-    fileWriter.write(JSON.stringify(data, null, 4)); // Pretty-print JSON with 4 spaces
-    fileWriter.close();
-}
-
-function checkFileExists(filePath) {
-    var file = new java.io.File(filePath);
-    return file.exists();
 }
