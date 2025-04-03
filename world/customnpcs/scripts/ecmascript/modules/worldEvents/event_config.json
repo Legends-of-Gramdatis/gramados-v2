@@ -3,12 +3,10 @@
         {
             "name": "April Fools",
             "startDate": {
-                "year": 2025,
                 "month": 2,
                 "day": 30
             },
             "endDate": {
-                "year": 2025,
                 "month": 3,
                 "day": 4
             }
