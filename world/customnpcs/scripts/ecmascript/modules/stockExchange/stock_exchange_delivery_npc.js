@@ -214,7 +214,7 @@ function interact(event) {
                 clear_crate(item, delivery);
 
                 // Generate money items for the player
-                generateMoney(player.getWorld(), totalEarnings);
+                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
 
                 return; // End interaction
             }
@@ -250,7 +250,7 @@ function interact(event) {
                 clear_barrel(item, delivery);
 
                 // Generate money items for the player
-                generateMoney(player.getWorld(), totalEarnings);
+                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
 
                 return;
             }
@@ -839,6 +839,11 @@ function getDomainMultiplier(domain_name) {
  */
 function add_spy_data(data, player) {
     var playerName = player.getName();
+    var total_item_count = 0;
+    var delivery_keys = getJsonKeys(data.delivery["generic"]);
+    for (var item in delivery_keys) {
+        total_item_count += data.delivery["generic"][delivery_keys[item]]["count"];
+    }
     var logEntry = {
         date: new Date().toLocaleString(),
         player: playerName,
@@ -846,8 +851,21 @@ function add_spy_data(data, player) {
         delivery: data.delivery,
         totalEarnings: data.totalEarnings
     };
+    var logline = playerName + " sold " + total_item_count + " items of " + delivery_keys.length + " different types to " + NPC_REGION + " for " + getAmountCoin(data.totalEarnings);
 
-    // Log to JSON and standard log files
     logToJson("economy", playerName, logEntry);
-    logToFile("economy", `${playerName} sold ${Object.keys(data.delivery).length} types of items to ${NPC_REGION} for ${getAmountCoin(data.totalEarnings)} grons.`);
+    logToFile("economy", logline);
+}
+
+function generateMoneyForPlayer(world, totalCents, player) {
+    // Generate the money items based on total cents
+    var moneyItems = generateMoney(world, totalCents);
+
+    // Drop the generated money items at the player's location
+    for (var i = 0; i < moneyItems.length; i++) {
+        player.dropItem(moneyItems[i]);
+    }
+
+    // Inform the player about the money generated
+    tellPlayer(player, "&aYou received your payment! Total: &r:money:&e" + getAmountCoin(totalCents));
 }
