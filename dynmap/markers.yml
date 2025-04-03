@@ -319,14 +319,6 @@ sets:
             }
         label: Wholesalers
         markers:
-            marker_10:
-                world: world
-                markup: false
-                icon: shopping_wholesale
-                x: 204.0
-                y: 74.0
-                z: -1036.0
-                label: Wine Export Int. Wholesale (sell)
             marker_1:
                 world: world
                 markup: false
@@ -370,8 +362,8 @@ sets:
             marker_6:
                 world: world
                 markup: false
-                x: -6980.0
                 icon: shopping_wholesale
+                x: -6980.0
                 y: 84.0
                 z: -258.0
                 label: Large-Scale Cereal Wholesale (sell)
@@ -447,6 +439,14 @@ sets:
                 y: 72.0
                 z: -463.0
                 label: Summit Cheeseworks - Cheese making ingredients & tools
+            marker_16:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: 204.0
+                y: 74.0
+                z: -1036.0
+                label: Wine Export Int. Wholesale (sell)
 
         lines: {
             }
