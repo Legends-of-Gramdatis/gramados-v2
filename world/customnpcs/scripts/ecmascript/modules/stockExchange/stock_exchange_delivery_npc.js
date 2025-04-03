@@ -1,61 +1,15 @@
-// Define the raw color codes and effects for formatting text
-var _RAWCOLORS = {
-    '0': 'black',
-    '1': 'dark_blue',
-    '2': 'dark_green',
-    '3': 'dark_aqua',
-    '4': 'dark_red',
-    '5': 'dark_purple',
-    '6': 'gold',
-    '7': 'gray',
-    '8': 'dark_gray',
-    '9': 'blue',
-    'a': 'green',
-    'b': 'aqua',
-    'c': 'red',
-    'd': 'light_purple',
-    'e': 'yellow',
-    'f': 'white',
-};
-var _RAWEFFECTS = {
-    'o': 'italic',
-    'l': 'bold',
-    'k': 'magic',
-    'm': 'strike',
-    'n': 'underline',
-    'r': 'reset'
-}
-// Define the constants for coin denominations and their values
-var _COINTABLE = {
-    'c': 1,
-    'g': 100,
-    'k': 100000,
-    'm': 100000000,
-    'b': 100000000000,
-    't': 100000000000000,
-    'q': 100000000000000000,
-    's': 100000000000000000000
-};
-var _COINITEMS = {
-    '1c': 'variedcommodities:coin_iron',
-    '5c': 'variedcommodities:coin_iron',
-    '10c': 'variedcommodities:coin_iron',
-    '20c': 'variedcommodities:coin_iron',
-    '50c': 'variedcommodities:coin_iron',
-    '1g': 'variedcommodities:coin_iron',
-    '2g': 'variedcommodities:coin_iron',
-    '5g': 'variedcommodities:money',
-    '10g': 'variedcommodities:money',
-    '20g': 'variedcommodities:money',
-    '50g': 'variedcommodities:money',
-    '100g': 'variedcommodities:money',
-    '200g': 'variedcommodities:money',
-    '500g': 'variedcommodities:money',
-    '1k': 'variedcommodities:plans',
-    '10k': 'variedcommodities:plans',
-    '100k': 'variedcommodities:plans',
-    '1m': 'variedcommodities:plans',
-};
+// Load utility modules
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+
+// Define JSON paths as constants
+var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
+var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
+var SPY_DATA_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.json";
+var SPY_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.log";
 
 // Initialize variables and constants for the stock exchange
 var crates_ids = [
@@ -88,38 +42,35 @@ var barrels_ids = [
 ];
 
 
-var _REGIONS = [];
+var _REGIONS = []; // List of available regions
+var NPC_REGION = "Gramados Farming"; // Default NPC region
+var region_specifics = {}; // Region-specific settings
+var stock_exchange_instance; // Stock exchange data for the current region
+var stock_exchange_generals; // General stock exchange data
+var _PRICE_EVOLUTION_FACTOR = 0.001; // Price evolution factor (0.1% increase or decrease)
 
-var NPC_REGION = "Gramados Farming";
-var region_specifics = {};
-var stock_exchange_instance;
-var stock_exchange_generals;
+var npc;
+var world;
 
-var _PRICE_EVOLUTION_FACTOR = 0.001; // 0.1% price increase or decrease
-var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json"; // Path to the JSON file
-
-var npc; // Global variable to store the NPC instance
-var world; // Get the world where the NPC is located
-
-// Function to get the list of available regions from json
+/**
+ * Retrieves the list of available regions from the stock exchange JSON file.
+ */
 function listRegions() {
-    // Load the stock exchange data
     var data = load_data();
-    // Get the list of keys from "Region Generals" object
     _REGIONS = Object.keys(data).filter(function (key) {
         return key !== "Region Generals";
     });
 }
 
-
-// Load the stock exchange data when the NPC is initialized
+/**
+ * Initializes the NPC when it is spawned or loaded.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
 function init(event) {
     npc = event.npc;
     world = npc.getWorld();
 
-    // get stored data
     var stored_data = npc.getStoreddata();
-    // npc.say("Stored Data: " + stored_data);
 
     if (stored_data.has("region")) {
         NPC_REGION = stored_data.get("region");
@@ -132,6 +83,9 @@ function init(event) {
     }
 }
 
+/**
+ * Switches the NPC's region and updates region-specific settings.
+ */
 function switch_region() {
     if (NPC_REGION == "Gramados Farming") {
         region_specifics = {
@@ -198,17 +152,16 @@ function switch_region() {
     npc.say("I am ready to trade! Please hold a crate in your hand to begin.");
 }
 
-// When a player interacts with the NPC
+/**
+ * Handles player interaction with the NPC.
+ * @param {Object} event - The event object containing the player instance.
+ */
 function interact(event) {
     var player = event.player;
 
-    // If player is holding a command block, let the player change the NPC's region
     if (player.getMainhandItem().getName() == "minecraft:command_block") {
-        // Get how the command block is renamed
         var commandBlockName = player.getMainhandItem().getDisplayName();
-        // npc.say("Command Block Name: " + commandBlockName);
 
-        // Check if the command block is renamed to a valid region
         if (_REGIONS.indexOf(commandBlockName) > -1) {
             NPC_REGION = commandBlockName;
             switch_region();
@@ -219,16 +172,14 @@ function interact(event) {
         }
     } else {
 
-        // If player has read the hire dialogue
         if (!player.hasReadDialog(region_specifics.jobId)) {
             npc.say(region_specifics.helloPhrase);
             return;
         }
 
         var item = player.getMainhandItem();
-        var stackSize = item.getStackSize(); // Get the number of stacked crates
+        var stackSize = item.getStackSize();
 
-        // Load the stock exchange data for this NPC region
         stock_exchange_instance = load_data()[NPC_REGION];
         stock_exchange_generals = load_data()["Region Generals"];
 
@@ -263,7 +214,7 @@ function interact(event) {
                 clear_crate(item, delivery);
 
                 // Generate money items for the player
-                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
+                generateMoney(player.getWorld(), totalEarnings);
 
                 return; // End interaction
             }
@@ -299,7 +250,7 @@ function interact(event) {
                 clear_barrel(item, delivery);
 
                 // Generate money items for the player
-                generateMoneyForPlayer(player.getWorld(), totalEarnings, player);
+                generateMoney(player.getWorld(), totalEarnings);
 
                 return;
             }
@@ -310,7 +261,12 @@ function interact(event) {
     }
 }
 
-// Function to calculate total earnings from delivered items
+/**
+ * Calculates the total earnings from a delivery based on the region and item types.
+ * @param {Object} delivery - The delivery data containing item counts and types.
+ * @param {string} region - The region name.
+ * @returns {number} The total earnings in the region's currency.
+ */
 function calculateEarnings(delivery, region) {
     var totalEarnings = 0;
     var earningsMultiplier = 1;
@@ -351,7 +307,12 @@ function calculateEarnings(delivery, region) {
     return totalEarnings * earningsMultiplier;
 }
 
-// Function to calculate generic earnings
+/**
+ * Calculates earnings for generic items in a delivery.
+ * @param {Object} generic_delivery_item - The delivery item data.
+ * @param {string} item_key - The item key in the stock exchange data.
+ * @returns {number} The earnings for the generic item.
+ */
 function calculateGenericEarnings(generic_delivery_item, item_key) {
     var totalEarnings = 0;
     var quantity = generic_delivery_item["count"];
@@ -364,7 +325,12 @@ function calculateGenericEarnings(generic_delivery_item, item_key) {
     return totalEarnings;
 }
 
-// Function to calculate ageable booze earnings
+/**
+ * Calculates earnings for ageable booze items in a delivery.
+ * @param {Object} booze_delivery_item - The delivery item data.
+ * @param {string} item_key - The item key in the stock exchange data.
+ * @returns {number} The earnings for the ageable booze item.
+ */
 function calculateAgeableBoozeEarnings(booze_delivery_item, item_key) {
 
     // npc.say("Calculating earnings for ageable booze: " + JSON.stringify(booze_delivery_item));
@@ -396,22 +362,12 @@ function calculateAgeableBoozeEarnings(booze_delivery_item, item_key) {
     return stackValue;
 }
 
-
-// Function to generate money items for the player
-function generateMoneyForPlayer(world, totalCents, player) {
-    // Generate the money items based on total cents
-    var moneyItems = genMoney(world, totalCents);
-
-    // Drop the generated money items at the player's location
-    for (var i = 0; i < moneyItems.length; i++) {
-        player.dropItem(moneyItems[i]);
-    }
-
-    // Inform the player about the money generated
-    npc.say("&aYou received your payment! Total: &r" + getAmountCoin(totalCents));
-}
-
-// Function to read the contents of the crate, accounting for stack size
+/**
+ * Reads the contents of a crate and returns the delivery data.
+ * @param {Object} item - The crate item.
+ * @param {number} stackSize - The stack size of the crate.
+ * @returns {Object} The delivery data.
+ */
 function read_crate_delivery(item, stackSize) {
     var delivery = {}; 
 
@@ -491,7 +447,11 @@ function read_crate_delivery(item, stackSize) {
     return delivery;
 }
 
-// Function to read the contents of the barrel
+/**
+ * Reads the contents of a barrel and returns the delivery data.
+ * @param {Object} item - The barrel item.
+ * @returns {Object} The delivery data.
+ */
 function read_barrel_delivery(item) {
 
     // Read the fluid type from the barrel's inventory
@@ -528,7 +488,12 @@ function read_barrel_delivery(item) {
     return delivery;
 }
 
-// Function to calculate price changes based on supply and time since last sale
+/**
+ * Updates stock prices based on the delivery data and region.
+ * @param {string} region - The region name.
+ * @param {Object} delivery - The delivery data.
+ * @param {Object} player - The player instance.
+ */
 function updateStockPrices(region, delivery, player) {
     var currentTime = world.getTotalTime();
 
@@ -566,7 +531,7 @@ function updateStockPrices(region, delivery, player) {
         } else if (types == "ageable_booze") {
 
             // Load Domain Data
-            var allenis_data = load_json("world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
+            var allenis_data = loadJson(DOMAIN_FILE_PATH);
 
             for (var item in delivery[types]) {
 
@@ -612,7 +577,7 @@ function updateStockPrices(region, delivery, player) {
             }
 
 
-            save_json(allenis_data, "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
+            saveJson(allenis_data, DOMAIN_FILE_PATH);
         } else {
             npc.say("Invalid delivery type: " + types);
         }
@@ -620,8 +585,11 @@ function updateStockPrices(region, delivery, player) {
     save_data(stock_exchange_instance);
 }
 
-
-// Function to clear only sold items from the crate's contents
+/**
+ * Clears sold items from a crate after processing the delivery.
+ * @param {Object} item - The crate item.
+ * @param {Object} delivery - The delivery data.
+ */
 function clear_crate(item, delivery) {
     var inventory = item.getNbt().getCompound("inventory").getList("Items", 10);
 
@@ -676,7 +644,11 @@ function clear_crate(item, delivery) {
     item.getNbt().getCompound("inventory").setList("Items", left_over);
 }
 
-// Function to clear only sold content from the barrel
+/**
+ * Clears sold fluids from a barrel after processing the delivery.
+ * @param {Object} item - The barrel item.
+ * @param {Object} delivery - The delivery data.
+ */
 function clear_barrel(item, delivery) {
     var fluid = item.getNbt().getCompound("tank").getString("currentFluid");
     fluid = "liquid:" + fluid;
@@ -696,10 +668,13 @@ function clear_barrel(item, delivery) {
     }
 }
 
-// Function to load data from a specified JSON file
+/**
+ * Loads stock exchange data from the JSON file.
+ * @returns {Object} The stock exchange data.
+ */
 function load_data() {
     // Check if the file exists, if not, create it
-    if (!check_file_exists(STOCK_FILE_PATH)) {
+    if (!checkFileExists(STOCK_FILE_PATH)) {
         create_json_file(STOCK_FILE_PATH);
         player.message("File created at: " + STOCK_FILE_PATH);
     }
@@ -724,20 +699,30 @@ function load_data() {
     return json_data;
 }
 
-// Function to check if a file exists
-function check_file_exists(file_path) {
+/**
+ * Checks if a file exists at the specified path.
+ * @param {string} file_path - The file path.
+ * @returns {boolean} True if the file exists, false otherwise.
+ */
+function checkFileExists(file_path) {
     var file = new java.io.File(file_path);
     return file.exists();
 }
 
-// Function to create an empty JSON file
+/**
+ * Creates an empty JSON file at the specified path.
+ * @param {string} file_path - The file path.
+ */
 function create_json_file(file_path) {
     var fileWriter = new java.io.FileWriter(file_path);
     fileWriter.write("{}"); // Create an empty JSON object
     fileWriter.close();
 }
 
-// Function to save data to a specified JSON file
+/**
+ * Saves stock exchange data to the JSON file.
+ * @param {Object} data - The stock exchange data to save.
+ */
 function save_data(data) {
     // Load the existing json data
     var json_data = load_data();
@@ -751,132 +736,11 @@ function save_data(data) {
     fileWriter.close();
 }
 
-// This function converts a numeric amount into a coin denomination string.
-// It uses a predefined _COINTABLE, which must be ordered from the lowest ('c') to the highest ('s') value.
-function getAmountCoin(amount) {
-    // Initialize an empty result string to store the final coin breakdown.
-    var result = '';
-
-    // Determine the sign of the amount (positive or negative).
-    var signOfAmount = sign(amount);
-
-    // If the amount is negative, prepend a minus sign.
-    if (signOfAmount == -1) {
-        result = '-';
-    }
-
-    // Use absolute value for further processing, ignoring whether it's negative or positive.
-    amount = Math.abs(amount);
-
-    // Get the coin types from _COINTABLE (assuming the table is already in ascending order).
-    var coinKeys = Object.keys(_COINTABLE);
-
-    // Iterate from the highest denomination down to the lowest.
-    for (var i = coinKeys.length - 1; i >= 0; i--) {
-        var coinCount = 0;
-        var coinValue = _COINTABLE[coinKeys[i]];
-
-        // Calculate how many coins of this type can fit into the amount.
-        if (amount >= coinValue) {
-            coinCount = Math.floor(amount / coinValue); // Determine the number of coins.
-            amount -= coinCount * coinValue;           // Subtract the equivalent value from the amount.
-        }
-
-        // If any of this coin type is used, append it to the result string.
-        if (coinCount > 0) {
-            result += coinCount.toString() + coinKeys[i].toUpperCase();
-        }
-    }
-
-    // If no coins were appended, default to "0C" (0 copper).
-    if (result === '' || result === '-') {
-        result += '0C'; // Even for negative amounts, add 0C (e.g., -0C for no value)
-    }
-
-    return result;
-}
-
-function sign(num) {
-    if (typeof (num) == typeof (undefined) || num === null) { num = 0; }
-    if (num > 0) { return 1; }
-    if (num < 0) { return -1; }
-    return 0;
-}
-
-function ccs(str, af) {
-    if (typeof (af) == typeof (undefined) || af === null) { af = null; }
-    return colorCodeString(str, af);
-}
-
-function colorCodeString(str, allowed_formats) {
-    if (typeof (allowed_formats) == typeof (undefined) || allowed_formats === null) { allowed_formats = null; }
-    if (allowed_formats == null) {
-        allowed_formats = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
-    }
-    allowed_formats = removeFromArray(allowed_formats, ['x', 'y']);
-    return str.replace(new RegExp("&([" + allowed_formats.join("") + "])", 'g'), '\u00A7$1').replace(/&\\/g, '&');
-}
-
-function removeFromArray(arr, vals) {
-    if (typeof (vals) == 'string') { vals = [vals]; }
-    var a = [];
-    arr.forEach(function (el) { a.push(el); });//Copy array
-    for (var v in vals) {
-        var i = arr.indexOf(vals[v]);
-        if (i > -1) {
-            a.splice(i, 1);
-        }
-    }
-
-    return a;
-}
-
-// Existing code for genMoney remains unchanged
-function genMoney(w, amount) {
-    var am = amount;
-    var coinams = Object.keys(_COINITEMS);
-
-    var nmItems = [];
-    for (var i = coinams.length - 1; i >= 0; i--) {
-        var coincount = 0;
-        var coinval = getCoinAmount(coinams[i]);
-        if (coinval > 0) {
-            while (am >= coinval) {
-                coincount++;
-                am -= coinval;
-            }
-        }
-        if (coincount > 0) {
-            var coinitem = w.createItem(_COINITEMS[coinams[i]], 0, coincount);
-            coinitem.setCustomName(ccs('&2&lMoney&r'));
-            coinitem.setLore([
-                ccs('&e' + coinams[i].toUpperCase())
-            ]);
-            nmItems.push(coinitem);
-        }
-    }
-
-    return nmItems;
-}
-
-function getCoinAmount(str) {
-    var arx = /([\d]+)([a-zA-Z]+)/g;
-    var amounts = str.match(arx) || [];
-    var amount = 0;
-
-    for (var a in amounts) {
-        var _am = amounts[a];
-        var _amnum = parseInt(_am.replace(arx, '$1'));
-        var _amunit = _am.replace(arx, '$2').toLowerCase();
-        var coinkeys = Object.keys(_COINTABLE);
-        if (coinkeys.indexOf(_amunit) > -1) {
-            amount += _amnum * _COINTABLE[_amunit];
-        }
-    }
-    return amount;
-}
-
-//function to read an "ageable_booze"
+/**
+ * Reads ageable booze item data from the item's NBT.
+ * @param {Object} item_data - The item data.
+ * @returns {Object} The parsed ageable booze data.
+ */
 function readAgeableBooze(item_data) {
 
     // npc.say("Reading Ageable Booze: " + item_data.toJsonString());
@@ -931,11 +795,15 @@ function readAgeableBooze(item_data) {
     return return_data;
 }
 
-// Function to get domain multiplier
+/**
+ * Retrieves the domain multiplier for a specific domain.
+ * @param {string} domain_name - The domain name.
+ * @returns {number} The domain multiplier.
+ */
 function getDomainMultiplier(domain_name) {
     var multiplier = 1;
 
-    var allenis_data = load_json("world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
+    var allenis_data = loadJson(DOMAIN_FILE_PATH);
 
     // npc.say("Region data: " + JSON.stringify(allenis_data));
 
@@ -957,72 +825,29 @@ function getDomainMultiplier(domain_name) {
         allenis_data.domains[it_domain] = domain;
     }
 
-    save_json(allenis_data, "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json");
+    saveJson(allenis_data, DOMAIN_FILE_PATH);
 
     // npc.say("Domain Multiplier: " + multiplier);
 
     return multiplier;
 }
 
-// function to load domain data
-function load_json(data_file_path) {
-    // Check if the file exists, and create it if it doesn't
-    if (!check_file_exists(data_file_path)) {
-        npc.say("ERROR: Domain Data is inexistant!");
-        return null;
-    } else {
-        var ips = new java.io.FileInputStream(data_file_path);
-        var fileReader = new java.io.InputStreamReader(ips, "UTF-8");
-        var readFile = fileReader.read();
-        var data;
-        var start = "";
-        while (readFile != -1) {
-            data = String.fromCharCode(readFile);
-            start = start + data;
-            readFile = fileReader.read();
-        }
-
-        var json_data = JSON.parse(start);
-
-        // npc.say("Loaded data: " + JSON.stringify(json_data));
-
-        return json_data;
-    }
-}
-
-// Function to save domain data
-function save_json(data, data_file_path) {
-    var fileWriter = new java.io.FileWriter(data_file_path);
-    fileWriter.write(JSON.stringify(data, null, 4)); // Pretty-print JSON with 4 spaces
-    fileWriter.close();
-}
-
-// function to check if a file exists
-function check_file_exists(file_path) {
-    var file = new java.io.File(file_path);
-    return file.exists();
-}
-
-// Function to load "json_spy/stock_spying.json"
-function load_spy_data() {
-    var spy_data = load_json("world/customnpcs/scripts/json_spy/stock_spying.json");
-    return spy_data;
-}
-
-// Function to save "json_spy/stock_spying.json"
-function save_spy_data(data) {
-    save_json(data, "world/customnpcs/scripts/json_spy/stock_spying.json");
-}
-
-// Funtion to add the delivery into the spy data
+/**
+ * Adds delivery data to the spy log and JSON file.
+ * @param {Object} data - The delivery data.
+ * @param {Object} player - The player instance.
+ */
 function add_spy_data(data, player) {
-    var spy_data = load_spy_data();
+    var playerName = player.getName();
+    var logEntry = {
+        date: new Date().toLocaleString(),
+        player: playerName,
+        region: NPC_REGION,
+        delivery: data.delivery,
+        totalEarnings: data.totalEarnings
+    };
 
-    if (!spy_data[player.getName()]) {
-        spy_data[player.getName()] = [];
-    }
-
-    spy_data[player.getName()].push(data);
-
-    save_spy_data(spy_data);
+    // Log to JSON and standard log files
+    logToJson("economy", playerName, logEntry);
+    logToFile("economy", `${playerName} sold ${Object.keys(data.delivery).length} types of items to ${NPC_REGION} for ${getAmountCoin(data.totalEarnings)} grons.`);
 }
