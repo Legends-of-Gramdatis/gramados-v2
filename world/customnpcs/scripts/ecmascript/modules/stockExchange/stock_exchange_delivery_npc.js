@@ -846,7 +846,6 @@ function add_spy_data(data, player) {
     }
     var logEntry = {
         date: new Date().toLocaleString(),
-        player: playerName,
         region: NPC_REGION,
         delivery: data.delivery,
         totalEarnings: data.totalEarnings
