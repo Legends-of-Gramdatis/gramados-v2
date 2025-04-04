@@ -119,7 +119,7 @@ function isEventActive() {
  * @param {Object} e - The event object containing information about the death event.
  */
 function died(e) {
-    if (isEventActive() || e.player.getName() === "TheOddlySeagull") {
+    if (isEventActive()) {
         susbox_cleanup(e);
         logPlayerEvent(e.player, "Sus Box Cleanup", { reason: "Player death during event" });
     }
@@ -132,19 +132,26 @@ function died(e) {
 function init(e) {
     loadPlayerSpawnData(); // Load spawn times and intervals from file
     var player = e.player;
-    // var playerName = player.getName();
 
     counter = 100;
 
-    // playerJoin(e);
-    // if (isEventActive() && counter < 1) {
-    //     playerJoin(e);
-    //     // Check if the player has never been swarmed or if the last swarm was more than their saved interval
-    //     var currentTime = new Date().getTime();
-    //     if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
-    //         run_aprilfools_event(player);
-    //     }
-    // }
+    // Notify the player about active events
+    var activeEvents = [];
+    var currentDate = new Date();
+    for (var i = 0; i < allEventConfig.events.length; i++) {
+        var eventConfig = allEventConfig.events[i];
+        if (
+            (currentDate.getDate() > eventConfig.startDate.day
+            && currentDate.getMonth() == eventConfig.startDate.month)
+            || (currentDate.getDate() < eventConfig.endDate.day
+            && currentDate.getMonth() == eventConfig.endDate.month)) {
+                activeEvents.push(eventConfig.name);
+        }
+    }
+
+    if (activeEvents.length > 0) {
+        tellPlayer(player, "&6Active Events: &e" + activeEvents.join(", "));
+    }
 }
 
 /**
@@ -185,6 +192,7 @@ function getRandomSpawnInterval() {
 function logout(e) {
     savePlayerSpawnData();
     susbox_cleanup(e); // Clean up "Sus Box" entities near the player
+    logPlayerEvent(e.player, "Logout", { reason: "Player left the game" });
 }
 
 /**
