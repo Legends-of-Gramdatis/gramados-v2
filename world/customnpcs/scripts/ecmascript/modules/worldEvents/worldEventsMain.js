@@ -13,7 +13,6 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/susBoxEvent
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var counter = 0;
 
-var EVENT_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/player_event_log.json";
 var PLAYER_SPAWN_TIME_FILE_PATH = "world/customnpcs/scripts/json_spy/player_spawn_time.json";
 
 var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in milliseconds
@@ -21,48 +20,6 @@ var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in m
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var allEventConfig = loadEventConfig();
-
-/**
- * Logs player events into a JSON file for tracking purposes.
- * @param {Object} player - The player involved in the event.
- * @param {string} eventType - The type of event (e.g., "Sus Box Spawned", "Sus Box Cleanup").
- * @param {Object} details - Additional details about the event.
- */
-function logPlayerEvent(player, eventType, details) {
-    var eventLog = loadEventLog();
-
-    if (!eventLog[player.getName()]) {
-        eventLog[player.getName()] = [];
-    }
-
-    eventLog[player.getName()].push({
-        date: new Date().toLocaleString(),
-        eventType: eventType,
-        details: details
-    });
-
-    saveEventLog(eventLog);
-}
-
-/**
- * Loads the player event log from the JSON file.
- * @returns {Object} - The parsed JSON object containing the event log.
- */
-function loadEventLog() {
-    if (!checkFileExists(EVENT_LOG_FILE_PATH)) {
-        createJsonFile(EVENT_LOG_FILE_PATH);
-    }
-
-    return loadJson(EVENT_LOG_FILE_PATH);
-}
-
-/**
- * Saves the player event log to the JSON file.
- * @param {Object} data - The event log data to save.
- */
-function saveEventLog(data) {
-    saveJson(data, EVENT_LOG_FILE_PATH);
-}
 
 /**
  * Saves the playerLastSpawnTime and playerSpawnIntervals data to a JSON file.
@@ -194,7 +151,7 @@ function getRandomSpawnInterval() {
 function logout(e) {
     savePlayerSpawnData();
     susbox_cleanup(e);
-    
+
     var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
     logToFile("events", logline);
 }
