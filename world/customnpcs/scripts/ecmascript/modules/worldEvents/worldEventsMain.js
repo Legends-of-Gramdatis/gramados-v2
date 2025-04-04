@@ -6,6 +6,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/susBoxEvent.js")
 
@@ -121,7 +122,8 @@ function isEventActive() {
 function died(e) {
     if (isEventActive()) {
         susbox_cleanup(e);
-        logPlayerEvent(e.player, "Sus Box Cleanup", { reason: "Player death during event" });
+        var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
+        logToFile("events", logline);
     }
 }
 
@@ -191,8 +193,10 @@ function getRandomSpawnInterval() {
  */
 function logout(e) {
     savePlayerSpawnData();
-    susbox_cleanup(e); // Clean up "Sus Box" entities near the player
-    logPlayerEvent(e.player, "Logout", { reason: "Player left the game" });
+    susbox_cleanup(e);
+    
+    var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
+    logToFile("events", logline);
 }
 
 /**
