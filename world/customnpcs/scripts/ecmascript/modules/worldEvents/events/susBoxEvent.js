@@ -6,8 +6,10 @@
 function run_aprilfools_event(player) {
     var playerName = player.getName();
     var randomCount = Math.floor(Math.random() * 20) + 1; // Random number between 1 and 20
-    spawn_susbox_swarm(player, player.world, randomCount, 20, 5);
-    logPlayerEvent(player, "Sus Box Spawned", { count: randomCount });
+    var success_spawns = spawn_susbox_swarm(player, player.world, randomCount, 20, 5);
+    // logPlayerEvent(player, "Sus Box Spawned", { count: randomCount });
+    var logline = "Spawned " + success_spawns + " Sus Boxes around " + playerName + ".";
+    logToFile("events", logline);
 
     // Update the last spawn time and generate a new interval for the player
     playerLastSpawnTime[playerName] = new Date().getTime();
@@ -22,7 +24,7 @@ function run_aprilfools_event(player) {
  * @param {number} count - The number of entities to spawn.
  * @param {number} distance_from_player - The maximum distance from the player to spawn entities.
  * @param {number} group_radius - The radius within which entities will spawn in a group.
- * @returns {boolean} - Returns true if at least one entity was successfully spawned.
+ * @returns {number} - The number of successfully spawned entities.
  */
 function spawn_susbox_swarm(player, world, count, distance_from_player, group_radius) {
 
@@ -30,7 +32,7 @@ function spawn_susbox_swarm(player, world, count, distance_from_player, group_ra
     var x = Math.floor(player.getX() + Math.random() * distance_from_player - (distance_from_player / 2));
     var y = player.getY();
     var z = Math.floor(player.getZ() + Math.random() * distance_from_player - (distance_from_player / 2));
-    var success = false;
+    var successfull_spawns = 0;
 
     for (var i = 0; i < count; i++) {
         // Chage the coordinates to a random value, in 5 blocks radius
@@ -52,12 +54,12 @@ function spawn_susbox_swarm(player, world, count, distance_from_player, group_ra
 
         if (!world.getBlock(x, y, z).isAir()) {
             spawn_susbox(x, y + 1, z, world);
-            success = true;
+            successfull_spawns++;
             tellPlayer(player, generateWarningMessage());
         }
     }
 
-    return success;
+    return successfull_spawns;
 }
 
 /**
