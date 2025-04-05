@@ -2424,10 +2424,10 @@ sets:
                 world: world
                 markup: false
                 icon: services_parking
-                x: -1812.0
-                y: 77.0
-                z: 92.0
-                label: Gramados Hospital Parking
+                x: -1801.0
+                y: 76.0
+                z: 118.0
+                label: Parking
             marker_9:
                 world: world
                 markup: false
