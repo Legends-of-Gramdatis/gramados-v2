@@ -9,6 +9,10 @@ var LOG_FILES = {
     events: {
         json: "world/customnpcs/scripts/logs/events.json",
         log: "world/customnpcs/scripts/logs/events.log"
+    },
+    smartphones: {
+        json: "world/customnpcs/scripts/logs/smartphones.json",
+        log: "world/customnpcs/scripts/logs/smartphones.log"
     }
 };
 
