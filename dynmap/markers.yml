@@ -2352,6 +2352,46 @@ sets:
                 y: 80.0
                 z: 6876.0
                 label: Paseo Caldero
+            marker_27:
+                world: world
+                markup: false
+                icon: outdoor_hiking
+                x: -6006.0
+                y: 75.0
+                z: 1692.0
+                label: Tulivar North Welcome Centre
+            marker_28:
+                world: world
+                markup: false
+                icon: outdoor_hiking
+                x: -6083.0
+                y: 72.0
+                z: 3077.0
+                label: Tulivar South Welcome Centre
+            marker_29:
+                world: world
+                markup: false
+                icon: outdoor_resort
+                x: -6955.0
+                y: 68.0
+                z: 2027.0
+                label: Tulivar Beach
+            marker_30:
+                world: world
+                markup: false
+                icon: outdoor_campsite
+                x: -6629.0
+                y: 68.0
+                z: 2567.0
+                label: Tulivar Campsite
+            marker_31:
+                world: world
+                markup: false
+                icon: outdoor_campsite
+                x: -5975.0
+                y: 76.0
+                z: 1466.0
+                label: Tulivar Campsite
         lines: {}
         layerprio: 0
     Parkings:
@@ -2704,6 +2744,22 @@ sets:
                 y: 80.0
                 z: 6798.0
                 label: Palacio de la Guardia
+            marker_23:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -6444.0
+                y: 123.0
+                z: 2542.0
+                label: Gramdamus Era Ruins
+            marker_24:
+                world: world
+                markup: false
+                icon: ent&lei_monument
+                x: -6175.0
+                y: 69.0
+                z: 2004.0
+                label: Altar of the High Bloom
         lines: {}
         layerprio: 0
     Bridges:
@@ -2764,6 +2820,22 @@ sets:
                 y: 74.0
                 z: -629.0
                 label: Lemonvale Bridge
+            marker_7:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -5999.0
+                y: 76.0
+                z: 3203.0
+                label: Zenia Bridge
+            marker_8:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -5739.0
+                y: 73.0
+                z: 1757.0
+                label: The Anchorline Bridge
         lines: {}
         layerprio: 0
     Transports:
