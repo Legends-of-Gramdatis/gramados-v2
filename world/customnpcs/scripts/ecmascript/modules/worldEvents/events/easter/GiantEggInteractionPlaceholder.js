@@ -41,6 +41,6 @@ function interact(event) {
     tellPlayer(player, random_line);
 
     // /summon area_effect_cloud ~ ~ ~ {Particle:"witchMagic",Radius:3f,Duration:20,Color:6521855,Motion:[0.0,1.0,0.0]}
-    var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"mobSpellAmbient\",Radius:2.5f,Duration:10,Color:16713909,Motion:[0.0,1.5,0.0]}";
+    var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"mobSpellAmbient\",Radius:15f,Duration:10,Color:16713909,Motion:[0.0,1.5,0.0]}";
     npc.executeCommand(command);
 }
