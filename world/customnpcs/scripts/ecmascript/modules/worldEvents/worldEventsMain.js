@@ -54,19 +54,22 @@ function loadEventConfig() {
 }
 
 /**
- * Checks if the current date falls within the event's date range.
+ * Checks if the current date falls within the specified event's date range.
+ * @param {string} eventName - The name of the event to check.
  * @returns {boolean} - True if the current date is within the event range, false otherwise.
  */
-function isEventActive() {
+function isEventActive(eventName) {
     var currentDate = new Date();
     for (var i = 0; i < allEventConfig.events.length; i++) {
         var eventConfig = allEventConfig.events[i];
         if (
-            (currentDate.getDate() > eventConfig.startDate.day
+            eventConfig.name === eventName &&
+            ((currentDate.getDate() > eventConfig.startDate.day
             && currentDate.getMonth() == eventConfig.startDate.month)
             || (currentDate.getDate() < eventConfig.endDate.day
-            && currentDate.getMonth() == eventConfig.endDate.month)) {
-                return true;
+            && currentDate.getMonth() == eventConfig.endDate.month))
+        ) {
+            return true;
         }
     }
     return false;
@@ -77,7 +80,7 @@ function isEventActive() {
  * @param {Object} e - The event object containing information about the death event.
  */
 function died(e) {
-    if (isEventActive()) {
+    if (isEventActive("April Fools")) {
         susbox_cleanup(e);
         var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
         logToFile("events", logline);
@@ -122,7 +125,7 @@ function tick(e) {
     var playerName = player.getName();
     // var currentTime = new Date().getTime();		
 
-    if (isEventActive() && counter < 1) {
+    if (isEventActive("April Fools") && counter < 1) {
         // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
         var currentTime = new Date().getTime();
         if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
@@ -150,10 +153,12 @@ function getRandomSpawnInterval() {
  */
 function logout(e) {
     savePlayerSpawnData();
-    susbox_cleanup(e);
 
-    var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
-    logToFile("events", logline);
+    if (isEventActive("April Fools")) {
+        susbox_cleanup(e);
+        var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
+        logToFile("events", logline);
+    }
 }
 
 /**
