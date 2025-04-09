@@ -764,5 +764,18 @@
                 "Type": "Prestige"
             }
         }
+    },
+    "94d44dda-509a-4a8d-9a0f-d6e21921715f": {
+        "Name": "MoriUnderGarden",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2482999204,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
     }
 }
