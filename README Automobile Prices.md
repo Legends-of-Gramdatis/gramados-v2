@@ -23,6 +23,7 @@ For the vehicles that aren't listed, here are the prices:
 - UNU Wolf: 45000 g (+10k for each .50 Cal MMG)
 - UNU Amphibious Wolf: 55000 g
 - UNU Burro: 98500 g
+- UNU Concord Wagon: 36200 g
 
 ## BTM Vehicles
 - BTM K400: 145000 g
