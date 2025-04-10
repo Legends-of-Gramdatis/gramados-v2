@@ -9,7 +9,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
-load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/susBoxEvent.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/susBoxEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
@@ -57,7 +57,7 @@ function init(e) {
         if (activeEvents.length > 0) {
             tellPlayer(player, "&6Active Events: &e" + activeEvents.join(", "));
         }
-        
+
         if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
             spawnEasterStarterPack(player);
         }
