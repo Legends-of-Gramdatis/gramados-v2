@@ -13,7 +13,7 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/susBoxEvent
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var counter = 0;
 
-var PLAYER_SPAWN_TIME_FILE_PATH = "world/customnpcs/scripts/json_spy/player_spawn_time.json";
+var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 
 var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in milliseconds
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
@@ -25,20 +25,23 @@ var allEventConfig = loadEventConfig();
  * Saves the playerLastSpawnTime and playerSpawnIntervals data to a JSON file.
  */
 function savePlayerSpawnData() {
-    saveJson({ lastSpawnTime: playerLastSpawnTime, spawnIntervals: playerSpawnIntervals }, PLAYER_SPAWN_TIME_FILE_PATH);
+    saveJson({ lastSpawnTime: playerLastSpawnTime, spawnIntervals: playerSpawnIntervals }, PLAYER_EVENT_DATA);
 }
 
 /**
- * Loads the playerLastSpawnTime and playerSpawnIntervals data from a JSON file.
+ * Loads the player event data from a JSON file.
  */
-function loadPlayerSpawnData() {
-    if (checkFileExists(PLAYER_SPAWN_TIME_FILE_PATH)) {
-        var data = loadJson(PLAYER_SPAWN_TIME_FILE_PATH);
-        playerLastSpawnTime = data.lastSpawnTime || {};
-        playerSpawnIntervals = data.spawnIntervals || {};
+function loadPlayerEventData(event_name, player_name) {
+    if (checkFileExists(PLAYER_EVENT_DATA)) {
+        var all_data = loadJson(PLAYER_EVENT_DATA);
+
+        if (all_data[event_name] && all_data[event_name][player_name]) {
+            return all_data[event_name][player_name];
+        } else {
+            return {};
+        }
     } else {
-        playerLastSpawnTime = {};
-        playerSpawnIntervals = {};
+        return {};
     }
 }
 
@@ -64,9 +67,9 @@ function isEventActive(eventName) {
         var eventConfig = allEventConfig.events[i];
         if (
             eventConfig.name === eventName &&
-            ((currentDate.getDate() > eventConfig.startDate.day
+            ((currentDate.getDate() >= eventConfig.startDate.day
             && currentDate.getMonth() == eventConfig.startDate.month)
-            || (currentDate.getDate() < eventConfig.endDate.day
+            || (currentDate.getDate() <= eventConfig.endDate.day
             && currentDate.getMonth() == eventConfig.endDate.month))
         ) {
             return true;
@@ -92,7 +95,6 @@ function died(e) {
  * @param {Object} e - The event object containing information about the initialization event.
  */
 function init(e) {
-    loadPlayerSpawnData(); // Load spawn times and intervals from file
     var player = e.player;
 
     counter = 100;
@@ -114,6 +116,11 @@ function init(e) {
     if (activeEvents.length > 0) {
         tellPlayer(player, "&6Active Events: &e" + activeEvents.join(", "));
     }
+
+
+    if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
+        var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
+    }
 }
 
 /**
@@ -126,9 +133,12 @@ function tick(e) {
     // var currentTime = new Date().getTime();		
 
     if (isEventActive("April Fools") && counter < 1) {
+        var event_player_data = loadPlayerEventData("April Fools", playerName);
+        playerLastSpawnTime = event_player_data.playerLastSpawnTime;
+        playerSpawnIntervals = event_player_data.playerSpawnIntervals;
         // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
         var currentTime = new Date().getTime();
-        if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
+        if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
             run_aprilfools_event(player);
         }
     }
@@ -166,20 +176,21 @@ function logout(e) {
  * @param {Object} e - The event object containing information about the player joining.
  */
 function playerJoin(e) {
-    var player = e.player;
-    var playerName = player.getName();
-    var currentTime = new Date().getTime();
 
-    // Debug message: Time left before the next swarm
-    // if (playerLastSpawnTime[playerName]) {
-    //     var timeLeft = (playerSpawnIntervals[playerName] || 30 * 60 * 1000) - (currentTime - playerLastSpawnTime[playerName]);
-    //     if (timeLeft > 0) {
-    //         tellPlayer(player, "&7Time left before next swarm: &e" + Math.ceil(timeLeft / 1000 / 60) + " minutes");
-    //     }
-    // }
+    if (isEventActive("April Fools")) {
+        var player = e.player;
+        var currentTime = new Date().getTime();
 
-    // Check if the player has never been swarmed or if the last swarm was more than their saved interval
-    if (!playerLastSpawnTime[playerName] || currentTime - playerLastSpawnTime[playerName] > (playerSpawnIntervals[playerName] || 30 * 60 * 1000)) {
-        run_aprilfools_event(player);
+        var event_player_data = loadPlayerEventData("April Fools", player.getName());
+        playerLastSpawnTime = event_player_data.playerLastSpawnTime;
+        playerSpawnIntervals = event_player_data.playerSpawnIntervals;
+        if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
+            run_aprilfools_event(player);
+        }
+    }
+
+    if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
+        var player = e.player;
+        var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
     }
 }
