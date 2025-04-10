@@ -69,90 +69,94 @@ function init(event) {
 function interact(event) {
     var npc = event.npc;
 
-    if (!npc.getStoreddata().has("active_type")) {
-        regenerate(npc);
-        return;
-    }
-
     // get player hand item
     var player = event.player;
     var item = player.getMainhandItem();
     var item_name = item.getName();
 
     // If player uses a command block to interact with the NPC
-    if (item_name == "minecraft:command_block") {
-        // regenerate the NPC
-        regenerate(npc);
-        // tell the player that the NPC has been regenerated
-        tellPlayer(player, "&6The NPC has been regenerated!");
-    } else if (getTimer(npc) > click_cooldown) {
-        if (npc.getStoreddata().get("active_mode") == "True") {
-            var attempt_success = false;
-            if (npc.getStoreddata().get("tries") > 0) {
-                switch (npc.getStoreddata().get("active_type")) {
-                    case "run":
-                        attempt_success = true;
-                        npc.executeCommand("/playsound variedcommodities:misc.swosh master @a");
-                        break;
-                    case "fly":
-                        if (item_name == "forestry:scoop") {
+    if (!item_name != "customnpcs:npcmobcloner") {
+        if (!npc.getStoreddata().has("active_type")) {
+            regenerate(npc);
+            return;
+        }
+        
+        if (item_name == "minecraft:command_block") {
+            // regenerate the NPC
+            regenerate(npc);
+            // tell the player that the NPC has been regenerated
+            tellPlayer(player, "&6The NPC has been regenerated!");
+        } else if (item_name == "minecraft:barrier") {
+            // Clear any stored data
+            npc.getStoreddata().remove("active_type");
+            npc.getStoreddata().remove("active_mode");
+            npc.getStoreddata().remove("tries");
+            npc.getStoreddata().remove("rarity");
+            npc.getStoreddata().remove("last_interraction");
+
+            var egg_skin_url = "https://legends-of-gramdatis.com/gramados_skins/easter_eggs/easter_egg_0.png";
+            npc.getDisplay().setSkinUrl(egg_skin_url);
+            npc.getDisplay().setName("Easter Egg");
+            npc.getDisplay().setSize(4);
+
+            npc.executeCommand("/playsound ivv:computer.gaming.error master @a");
+
+            tellPlayer(player, "&6The NPC has been cleared!");
+        } else if (getTimer(npc) > click_cooldown) {
+            if (npc.getStoreddata().get("active_mode") == "True") {
+                var attempt_success = false;
+                if (npc.getStoreddata().get("tries") > 0) {
+                    switch (npc.getStoreddata().get("active_type")) {
+                        case "run":
                             attempt_success = true;
-                            npc.executeCommand("/playsound minecraft:block.dispenser.launch master @a");
-                        } else {
-                            tellEggLine(player, egg_wrong_tool_lines);
-                        }
-                        break;
-                    case "teleport":
-                        teleportEgg(player, npc);
-                        attempt_success = true;
-                        break;
-                    default:
-                        break;
-                }
-                if (attempt_success) {
-                    var tries = npc.getStoreddata().get("tries");
-                    tries = Math.max(0, tries - 1);
-                    npc.getStoreddata().put("tries", tries);
-                    tellEggLine(player, egg_missed_attempt_lines);
-                    saveInteractionTime(npc);
-                }
+                            npc.executeCommand("/playsound variedcommodities:misc.swosh master @a");
+                            break;
+                        case "fly":
+                            if (item_name == "forestry:scoop") {
+                                attempt_success = true;
+                                npc.executeCommand("/playsound minecraft:block.dispenser.launch master @a");
+                            } else {
+                                tellEggLine(player, egg_wrong_tool_lines);
+                            }
+                            break;
+                        case "teleport":
+                            teleportEgg(player, npc);
+                            attempt_success = true;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (attempt_success) {
+                        var tries = npc.getStoreddata().get("tries");
+                        tries = Math.max(0, tries - 1);
+                        npc.getStoreddata().put("tries", tries);
+                        tellEggLine(player, egg_missed_attempt_lines);
+                        saveInteractionTime(npc);
+                    }
 
+                } else {
+                    // tellPlayer(player, "&6You have successfully captured the egg!");
+                    tellEggLine(player, egg_success_lines);
+                    npc.executeCommand("/playsound minecraft:block.slime.break master @a");
+                    npc.executeCommand("/playsound immersiveengineering:birthdayparty master @a");
+                    // summon particle effect at the egg location
+                    var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"witchMagic\",Radius:3f,Duration:10,Color:6521855,Motion:[0.0,1.5,0.0]}";
+                    npc.executeCommand(command);
+
+                    var egg_item = generateEggItem(npc.getWorld(), npc);
+                    // give item to player
+                    player.giveItem(egg_item);
+
+                    // regenerate(npc);
+                    npc.despawn();
+                }
             } else {
-                // tellPlayer(player, "&6You have successfully captured the egg!");
-                tellEggLine(player, egg_success_lines);
-                npc.executeCommand("/playsound minecraft:block.slime.break master @a");
-                npc.executeCommand("/playsound immersiveengineering:birthdayparty master @a");
-                // summon particle effect at the egg location
-                var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"witchMagic\",Radius:3f,Duration:10,Color:6521855,Motion:[0.0,1.5,0.0]}";
-                npc.executeCommand(command);
-
-                var egg_item = generateEggItem(npc.getWorld(), npc);
-                // give item to player
-                player.giveItem(egg_item);
-
-                regenerate(npc);
+                npc.getStoreddata().put("active_mode", "True");
+                setupActiveMode(player, npc);
+                tellEggLine(player, egg_activation_lines);
             }
-        } else {
-            npc.getStoreddata().put("active_mode", "True");
-            setupActiveMode(player, npc);
-            tellEggLine(player, egg_activation_lines);
         }
     }
-
-    // tell the current active type
-    // var active_type = npc.getStoreddata().get("active_type");
-    // var active_mode = npc.getStoreddata().get("active_mode");
-    // var tries = npc.getStoreddata().get("tries");
-    // var rarity = npc.getStoreddata().get("rarity");
-    // var egg_name = npc.getDisplay().getName();
-    // tellPlayer(player, "&6Current egg name: " + egg_name);
-    // tellPlayer(player, "&6Current egg rarity: " + rarity);
-    // tellPlayer(player, "&6Current egg size: " + npc.getDisplay().getSize());
-    // tellPlayer(player, "&6Current active type: " + active_type);
-    // tellPlayer(player, "&6Current active mode: " + active_mode);
-    // tellPlayer(player, "&6Current tries: " + tries);
-
-    // npc.damage(100);
 }
 
 // sets up random type
@@ -239,13 +243,13 @@ function getRandomEasterEggSkin(npc, rarity) {
             egg_skins = [6,16,20,21,22,23,24,25,26,27,28,29,30];
             break;
         case "chromashell":
-            egg_skins = [1,2,3,5,7,9,10,12,13];
+            egg_skins = [1,2,3,5,7,9,10,12,13,17,18];
             break;
         case "encrypted":
             egg_skins = [31,32,33,34,35];
             break;
         default:
-            egg_skins = [4,8,11,14,15,17,18,19];
+            egg_skins = [4,8,11,14,15,19];
             break;
     }
     // Get a random egg skin from the list
@@ -420,6 +424,13 @@ function generateEggItem(world, npc) {
     var egg_lore_2 = "&o&aDebug item - may be replaced by Spring, Chromashell, or Encrypted variants in final spawns.";
     var egg_lore_3 = "&e&oPlaceholder from the Easter 2025 event: The Great Eggcryption";
 
+    var egg_size = npc.getDisplay().getSize();
+    if (egg_size > 4) {
+        var egg_lore_4 = "&d&oApproximately " + npc.getDisplay().getSize() + " yolkmarks in diameter - &lthis is a jumbo egg!&r";
+    } else {
+        var egg_lore_4 = "&d&oApproximately &l" + npc.getDisplay().getSize() + "&r&d&o yolkmarks in diameter!&r";
+    }
+
     switch (egg_varient) {
         case "spring":
             egg_item = "minecraft:egg";
@@ -439,7 +450,7 @@ function generateEggItem(world, npc) {
             egg_item = "animania:peacock_egg_blue";
             egg_name = '&bEncrypted Egg&r';
             egg_lore_1 = "&eA sleek, humming capsule with glowing seams. It occasionally emits a mechanical chirp and smells faintly like ozone and marshmallows.";
-            egg_lore_2 = "&o&aRequires decryption by Dr. Jivus at the Abandoned Lab. Consumes 1 Arcade Token.";
+            egg_lore_2 = "&o&aRequires decryption by Dr. Jivus at TJF Research Division - Facility 07 (« The Twingo Plant »). Consumes 1 Arcade Token.";
             egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
             break;
         default:
@@ -451,7 +462,8 @@ function generateEggItem(world, npc) {
     eggItem.setLore([
         ccs(egg_lore_1),
         ccs(egg_lore_2),
-        ccs(egg_lore_3)
+        ccs(egg_lore_3),
+        ccs(egg_lore_4)
     ]);
     return eggItem;
 }
