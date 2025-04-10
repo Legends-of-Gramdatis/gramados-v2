@@ -126,6 +126,10 @@ function interact(event) {
                 var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"witchMagic\",Radius:3f,Duration:10,Color:6521855,Motion:[0.0,1.5,0.0]}";
                 npc.executeCommand(command);
 
+                var egg_item = generateEggItem(npc.getWorld(), npc);
+                // give item to player
+                player.giveItem(egg_item);
+
                 regenerate(npc);
             }
         } else {
@@ -238,7 +242,7 @@ function getRandomEasterEggSkin(npc, rarity) {
             egg_skins = [1,2,3,5,7,9,10,12,13];
             break;
         case "encrypted":
-            egg_skins = [31,32,33,34];
+            egg_skins = [31,32,33,34,35];
             break;
         default:
             egg_skins = [4,8,11,14,15,17,18,19];
@@ -398,4 +402,56 @@ function getTimer(npc) {
     }
     var elapsed_time = current_time - last_interaction_time;
     return elapsed_time;
+}
+
+// Function to generate the item varient of the egg
+function generateEggItem(world, npc) {
+
+    // get egg varient
+    npc.getStoreddata().get("active_type");
+    npc.getStoreddata().get("active_mode");
+    npc.getStoreddata().get("tries");
+    var egg_varient = npc.getStoreddata().get("rarity");
+    npc.getStoreddata().get("last_interraction");
+
+    var egg_item = "animania:peacock_egg_white";
+    var egg_name = "&bEaster Egg&r";
+    var egg_lore_1 = "&eA mysterious egg of undefined rarity. Its shell shifts colors slightly, as if unsure of its purpose. Useful for testing, or when reality forgets how to classify eggs.";
+    var egg_lore_2 = "&o&aDebug item - may be replaced by Spring, Chromashell, or Encrypted variants in final spawns.";
+    var egg_lore_3 = "&e&oPlaceholder from the Easter 2025 event: The Great Eggcryption";
+
+    switch (egg_varient) {
+        case "spring":
+            egg_item = "minecraft:egg";
+            egg_name = '&bSpring Egg&r';
+            egg_lore_1 = "&eA cheerful, lightly speckled egg radiating seasonal joy. It feels warm to the touch-like it's been basking in sunshine and silliness.";
+            egg_lore_2 = "&o&aRight-click to unwrap at Choco Bart's booth.";
+            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            break;
+        case "chromashell":
+            egg_item = "animania:brown_egg";
+            egg_name = '&bChromashell Egg&r';
+            egg_lore_1 = "&eAn elegant egg with an iridescent pastel sheen. Tiny runes shimmer under the surface—this one's been touched by a painter's magic.";
+            egg_lore_2 = "&o&aDeliver to Elula the Egg Artist for colorful surprises.";
+            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            break;
+        case "encrypted":
+            egg_item = "animania:peacock_egg_blue";
+            egg_name = '&bEncrypted Egg&r';
+            egg_lore_1 = "&eA sleek, humming capsule with glowing seams. It occasionally emits a mechanical chirp and smells faintly like ozone and marshmallows.";
+            egg_lore_2 = "&o&aRequires decryption by Dr. Jivus at the Abandoned Lab. Consumes 1 Arcade Token.";
+            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            break;
+        default:
+            break;
+    }
+
+    var eggItem = world.createItem(egg_item, 0, 1);
+    eggItem.setCustomName(ccs(egg_name));
+    eggItem.setLore([
+        ccs(egg_lore_1),
+        ccs(egg_lore_2),
+        ccs(egg_lore_3)
+    ]);
+    return eggItem;
 }
