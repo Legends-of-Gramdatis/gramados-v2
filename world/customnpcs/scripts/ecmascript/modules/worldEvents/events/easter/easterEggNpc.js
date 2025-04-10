@@ -4,6 +4,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var egg_activation_lines = [
     "&6Uh oh... it woke up.",
@@ -82,6 +83,7 @@ function interact(event) {
         }
         
         if (item_name == "minecraft:command_block") {
+            npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
             // regenerate the NPC
             regenerate(npc);
             // tell the player that the NPC has been regenerated
@@ -144,8 +146,9 @@ function interact(event) {
                     npc.executeCommand(command);
 
                     var egg_item = generateEggItem(npc.getWorld(), npc);
-                    // give item to player
                     player.giveItem(egg_item);
+
+                    incremendEggTypeCounter(player, npc.getStoreddata().get("rarity"));
 
                     // regenerate(npc);
                     npc.despawn();
@@ -229,7 +232,8 @@ function regenerate(npc) {
     var random_rotation = Math.floor(Math.random() * 360);
     npc.setRotation(random_rotation);
 
-    npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
+    // npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
+    npc.executeCommand("/playsound minecraft:entity.egg.throw master @a");
 }
 
 // Get a random easter egg skin
@@ -425,7 +429,7 @@ function generateEggItem(world, npc) {
     var egg_lore_3 = "&e&oPlaceholder from the Easter 2025 event: The Great Eggcryption";
 
     var egg_size = npc.getDisplay().getSize();
-    if (egg_size > 4) {
+    if (egg_size > 6) {
         var egg_lore_4 = "&d&oApproximately " + npc.getDisplay().getSize() + " yolkmarks in diameter - &lthis is a jumbo egg!&r";
     } else {
         var egg_lore_4 = "&d&oApproximately &l" + npc.getDisplay().getSize() + "&r&d&o yolkmarks in diameter!&r";
@@ -466,4 +470,47 @@ function generateEggItem(world, npc) {
         ccs(egg_lore_4)
     ]);
     return eggItem;
+}
+
+function incremendEggTypeCounter(player, egg_type) {
+    var event_global_data = loadPlayerEventData("Easter Egg Hunt", "Global Data");
+    var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
+
+    // In player data, see if there is an entry for the egg type
+    if (!event_player_data.egg_types) {
+        event_player_data.egg_types = {};
+    }
+    if (!event_player_data.egg_types[egg_type])
+    {
+        event_player_data.egg_types[egg_type] = {egg_count: 0};
+    }
+    
+    var egg_type_data = event_player_data.egg_types[egg_type];
+    egg_type_data.egg_count++;
+    event_player_data.egg_types[egg_type] = egg_type_data;
+
+    // In player data, get the total egg count
+    var egg_count = event_player_data.egg_count;
+    var global_egg_count = event_global_data.egg_count;
+    if (egg_count == null) {
+        egg_count = 0;
+    }
+    if (global_egg_count == null) {
+        global_egg_count = 0;
+    }
+    // Increment the egg count
+    egg_count++;
+    global_egg_count++;
+    event_player_data.egg_count = egg_count;
+    event_global_data.egg_count = global_egg_count;
+    // Save the data
+    savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
+    savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
+    // Save the player data
+    savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
+    // Save the global data
+    savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
+    // log the egg type
+    var logline = player.getName() + " just caught an " + egg_type + " egg! (" + egg_count + " eggs total)";
+    logToFile("events", logline);
 }
