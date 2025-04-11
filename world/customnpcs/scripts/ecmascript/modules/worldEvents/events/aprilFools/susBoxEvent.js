@@ -55,7 +55,7 @@ function spawn_susbox_swarm(player, world, count, distance_from_player, group_ra
         if (!world.getBlock(x, y, z).isAir()) {
             spawn_susbox(x, y + 1, z, world);
             successfull_spawns++;
-            tellPlayer(player, generateWarningMessage());
+            tellRandomMessage(player, getWarningMessages());
         }
     }
 
@@ -63,11 +63,11 @@ function spawn_susbox_swarm(player, world, count, distance_from_player, group_ra
 }
 
 /**
- * Generates a random warning message about the "Sus Box" event.
- * @returns {string} - A random warning message.
+ * Gets all the warning messages for the "Sus Box" event.
+ * @returns {string} - An array of warning messages.
  */
-function generateWarningMessage() {
-    var messages = [
+function getWarningMessages() {
+    return messages = [
         "&6ALERT! Wild Sus Boxes have appeared! Stay calm... or don't.",
         "&6Warning: Reality has been compromised. A Sus Box is watching you.",
         "&6A highly suspicious entity has materialized! Proceed with extreme curiosity.",
@@ -81,8 +81,6 @@ function generateWarningMessage() {
         "&6Insert Coin to Continue... Oh wait, the Sus Box took the coins.",
         "&6Reality.exe has encountered a problem... A Sus Box has loaded in."
     ];
-    var randomIndex = Math.floor(Math.random() * messages.length);
-    return messages[randomIndex];
 }
 
 /**

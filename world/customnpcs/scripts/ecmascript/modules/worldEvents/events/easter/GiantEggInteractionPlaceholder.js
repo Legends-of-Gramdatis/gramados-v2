@@ -37,8 +37,7 @@ function interact(event) {
     var npc = event.npc;
 
     // tell a random line from the egg_lines array
-    var random_line = egg_lines[Math.floor(Math.random() * egg_lines.length)];
-    tellPlayer(player, random_line);
+    tellRandomMessage(player, egg_lines);
 
     // /summon area_effect_cloud ~ ~ ~ {Particle:"witchMagic",Radius:3f,Duration:20,Color:6521855,Motion:[0.0,1.0,0.0]}
     var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"mobSpellAmbient\",Radius:15f,Duration:10,Color:16713909,Motion:[0.0,1.5,0.0]}";

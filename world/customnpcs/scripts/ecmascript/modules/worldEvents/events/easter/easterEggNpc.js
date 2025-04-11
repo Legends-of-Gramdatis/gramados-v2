@@ -4,6 +4,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var egg_activation_lines = [
@@ -118,7 +119,7 @@ function interact(event) {
                                 attempt_success = true;
                                 npc.executeCommand("/playsound minecraft:block.dispenser.launch master @a");
                             } else {
-                                tellEggLine(player, egg_wrong_tool_lines);
+                                tellRandomMessage(player, egg_wrong_tool_lines);
                             }
                             break;
                         case "teleport":
@@ -132,13 +133,13 @@ function interact(event) {
                         var tries = npc.getStoreddata().get("tries");
                         tries = Math.max(0, tries - 1);
                         npc.getStoreddata().put("tries", tries);
-                        tellEggLine(player, egg_missed_attempt_lines);
+                        tellRandomMessage(player, egg_missed_attempt_lines);
                         saveInteractionTime(npc);
                     }
 
                 } else {
                     // tellPlayer(player, "&6You have successfully captured the egg!");
-                    tellEggLine(player, egg_success_lines);
+                    tellRandomMessage(player, egg_success_lines);
                     npc.executeCommand("/playsound minecraft:block.slime.break master @a");
                     npc.executeCommand("/playsound immersiveengineering:birthdayparty master @a");
                     // summon particle effect at the egg location
@@ -156,7 +157,7 @@ function interact(event) {
             } else {
                 npc.getStoreddata().put("active_mode", "True");
                 setupActiveMode(player, npc);
-                tellEggLine(player, egg_activation_lines);
+                tellRandomMessage(player, egg_activation_lines);
             }
         }
     }
@@ -387,12 +388,6 @@ function isValidTeleportLocation(npc, x, y, z) {
         return false;
     }
     return true;
-}
-
-// Function to tell a random text line from an array
-function tellEggLine(player, lines) {
-    var random_line = lines[Math.floor(Math.random() * lines.length)];
-    tellPlayer(player, random_line);
 }
 
 // function to save the interaction time (world tick count)
