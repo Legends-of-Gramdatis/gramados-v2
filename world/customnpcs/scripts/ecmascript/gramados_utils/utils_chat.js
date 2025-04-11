@@ -503,3 +503,16 @@ function romanize(num) {
     }
     return roman;
 }
+
+/**
+ * Sends a random message to the player from a list of messages.
+ * @param {Object} player - The player to whom the message will be sent.
+ * @param {Array<string>} messages - The list of messages to choose from.
+ * @returns {string} - The message sent to the player.
+ */
+function tellRandomMessage(player, messages) {
+    var randomIndex = Math.floor(Math.random() * messages.length);
+    var message = messages[randomIndex];
+    tellPlayer(player, message);
+    return message;
+}
