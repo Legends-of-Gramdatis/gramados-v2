@@ -103,3 +103,67 @@ function getActiveEventList() {
     }
     return activeEvents;
 }
+
+/**
+ * Initiates a timer for a player in a specific event.
+ * If no timer exists for the player, it sets the current time as the start time.
+ * @param {Object} player - The player object.
+ * @param {string} EventName - The name of the event.
+ */
+function initiateTimer(player, EventName) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    if (event_player_data.playerLastSpawnTime == null) {
+        event_player_data.playerLastSpawnTime = new Date().getTime();
+        savePlayerEventData(EventName, player.getName(), event_player_data);
+        logToFile("events", "Player " + player.getName() + " started the timer for " + EventName);
+    }
+}
+
+/**
+ * Checks if the cooldown period for a player in a specific event is over.
+ * @param {Object} player - The player object.
+ * @param {string} EventName - The name of the event.
+ * @returns {boolean} - True if the cooldown is over, false otherwise.
+ */
+function GetIfCooldownOver(player, EventName) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    if (event_player_data.playerLastSpawnTime != null) {
+        var currentTime = new Date().getTime();
+        var timeElapsed = currentTime - event_player_data.playerLastSpawnTime;
+        var cooldownTime = getCooldownTime(EventName);
+        if (timeElapsed >= cooldownTime) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Retrieves the cooldown time for a specific event.
+ * @param {string} EventName - The name of the event.
+ * @returns {number} - The cooldown time in milliseconds.
+ */
+function getCooldownTime(EventName) {
+    for (var i = 0; i < allEventConfig.events.length; i++) {
+        var eventConfig = allEventConfig.events[i];
+        if (eventConfig.name === EventName) {
+            return eventConfig.cooldownTime;
+        }
+    }
+    return 0;
+}
+
+/**
+ * Sets the cooldown time for a player in a specific event.
+ * @param {Object} player - The player object.
+ * @param {string} EventName - The name of the event.
+ * @param {number} countMinutes - The number of minutes to set as cooldown.
+ */
+function setCooldownTime(player, EventName, countMinutes) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    if (event_player_data.playerLastSpawnTime != null) {
+        var currentTime = new Date().getTime();
+        event_player_data.playerLastSpawnTime = currentTime + (countMinutes * 60 * 1000);
+        savePlayerEventData(EventName, player.getName(), event_player_data);
+    }
+}
