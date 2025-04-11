@@ -5,6 +5,9 @@ var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents
 
 /**
  * Loads the player event data from a JSON file.
+ * @param {string} event_name - The name of the event.
+ * @param {string} player_name - The name of the player.
+ * @returns {Object} - The player event data.
  */
 function loadPlayerEventData(event_name, player_name) {
     if (checkFileExists(PLAYER_EVENT_DATA)) {
@@ -62,7 +65,6 @@ function isEventActive(eventName) {
     return false;
 }
 
-
 /**
  * Checks if any event is currently active.
  * @returns {boolean} - True if any event is active, false otherwise.
@@ -82,6 +84,10 @@ function isAnyEventActive() {
     return false;
 }
 
+/**
+ * Retrieves a list of currently active events.
+ * @returns {Array<string>} - A list of active event names.
+ */
 function getActiveEventList() {
     var activeEvents = [];
     for (var i = 0; i < allEventConfig.events.length; i++) {

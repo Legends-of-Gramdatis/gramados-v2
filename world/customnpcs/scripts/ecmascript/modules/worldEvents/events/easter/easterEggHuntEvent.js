@@ -4,6 +4,12 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 var NearbyEggSpawnedLines = []
 
+/**
+ * Counts the number of nearby eggs around the player.
+ * @param {Object} player - The player around whom eggs are counted.
+ * @param {Object} world - The world object where the player is located.
+ * @returns {number} - The number of nearby eggs.
+ */
 function countNearbyEggs(player, world) {
     var egg_count = 0;
     var radius = 20;
@@ -19,10 +25,27 @@ function countNearbyEggs(player, world) {
     return egg_count;
 }
 
+/**
+ * Spawns a single egg at the specified coordinates.
+ * @param {number} x - The x-coordinate for spawning the egg.
+ * @param {number} y - The y-coordinate for spawning the egg.
+ * @param {number} z - The z-coordinate for spawning the egg.
+ * @param {Object} world - The world object where the egg will be spawned.
+ */
 function spawnEgg(x, y, z, world) {
     world.spawnClone(x, y, z, 2, "Easter Egg");
 }
 
+/**
+ * Spawns a swarm of eggs around the player.
+ * @param {Object} player - The player around whom the eggs will spawn.
+ * @param {Object} world - The world object where the eggs will be spawned.
+ * @param {number} count - The number of eggs to spawn.
+ * @param {number} distance_from_player - The maximum distance from the player to spawn eggs.
+ * @param {number} group_radius - The radius within which eggs will spawn in a group.
+ * @param {boolean} display_message - Whether to display a message to the player.
+ * @returns {number} - The number of successfully spawned eggs.
+ */
 function spawnEggSwarm(player, world, count, distance_from_player, group_radius, display_message) {
 
     var successfull_spawns = 0;
@@ -92,6 +115,10 @@ function spawnEggSwarm(player, world, count, distance_from_player, group_radius,
     return successfull_spawns;
 }
 
+/**
+ * Spawns the Easter starter pack for the player.
+ * @param {Object} player - The player receiving the starter pack.
+ */
 function spawnEasterStarterPack(player) {
     // Load player event data
     var playerName = player.getName();
@@ -144,11 +171,4 @@ function spawnEasterStarterPack(player) {
 
         spawnEggSwarm(player, world, 3, 20, 5, false);
     }
-}
-
-function tellRandomMessage(player, messages) {
-    var randomIndex = Math.floor(Math.random() * messages.length);
-    var message = messages[randomIndex];
-    tellPlayer(player, message);
-    return message;
 }
