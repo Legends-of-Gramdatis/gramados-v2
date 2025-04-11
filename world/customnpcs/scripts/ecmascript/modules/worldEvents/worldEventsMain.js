@@ -9,6 +9,8 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
+load("world/customnpcs/scripts/ecmascript/gramados_sounds/toll_sounds.js");
+
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/susBoxEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 
@@ -60,9 +62,13 @@ function init(e) {
 
         if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
             spawnEasterStarterPack(player);
+            initiateTimer(player, "Easter Egg Hunt");
         }
     }
 }
+
+
+var triggered_debug = false;
 
 /**
  * Called on every tick. Handles spawning "Sus Box" entities on April 1st.
@@ -88,6 +94,19 @@ function tick(e) {
         if (counter > 0) {
             counter--;
         }
+    }
+
+    if (getCurrentlyInHourlyMinutes() && !triggered_debug) {
+        logToFile("events", "\"Hourly Minute\" triggered at " + new Date().toLocaleTimeString() + " by " + e.player.getName());
+        triggered_debug = true;
+    }
+    if (getCurrentlyInQuarterlyMinutes() && !triggered_debug) {
+        logToFile("events", "\"Quarterly Minute\" triggered at " + new Date().toLocaleTimeString() + " by " + e.player.getName());
+        triggered_debug = true;
+    }
+
+    if (new Date().getTime() % 10000 == 0) {
+        triggered_debug = false;
     }
 }
 
