@@ -189,7 +189,7 @@ function setRandomSize(npc) {
     
 
     // Get how many tries it may take to capture this NPC
-    var tries = Math.max(1, 1 + Math.floor(random_size/4));
+    var tries = Math.max(1, Math.round(random_size - 2));
     npc.getStoreddata().put("tries", tries);
 }
 
@@ -421,7 +421,10 @@ function generateEggItem(world, npc) {
     var egg_name = "&bEaster Egg&r";
     var egg_lore_1 = "&eA mysterious egg of undefined rarity. Its shell shifts colors slightly, as if unsure of its purpose. Useful for testing, or when reality forgets how to classify eggs.";
     var egg_lore_2 = "&o&aDebug item - may be replaced by Spring, Chromashell, or Encrypted variants in final spawns.";
-    var egg_lore_3 = "&e&oPlaceholder from the Easter 2025 event: The Great Eggcryption";
+    var egg_lore_5 = "&f&oOpening Method:";
+    var egg_lore_6 = "&7- Delivered to:";
+    var egg_lore_7 = "&7- Found in:";
+    var egg_lore_8 = "&7- Note:";
 
     var egg_size = npc.getDisplay().getSize();
     if (egg_size > 6) {
@@ -434,23 +437,32 @@ function generateEggItem(world, npc) {
         case "spring":
             egg_item = "minecraft:egg";
             egg_name = '&bSpring Egg&r';
-            egg_lore_1 = "&eA cheerful, lightly speckled egg radiating seasonal joy. It feels warm to the touch-like it's been basking in sunshine and silliness.";
-            egg_lore_2 = "&o&aRight-click to unwrap at Choco Bart's booth.";
-            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            egg_lore_1 = "&eA cheerful, lightly speckled egg radiating seasonal joy. It feels warm to the touch - like it's been basking in sunshine and silliness.";
+            egg_lore_2 = "&o&aDeliver it to a licensed Eggcrack Confectioner to open it.";
+            egg_lore_5 = "&f&oOpening Method:";
+            egg_lore_6 = "&7- Delivered to: &lEggcrack Confectioner";
+            egg_lore_7 = "&7- Found in: &oChocolate shops, bakeries, and seasonal food stalls";
+            egg_lore_8 = "&7- Note: &oThese Sweetsmiths specialize in handling soft-shell seasonal eggs using confectionery-based techniques.";
             break;
         case "chromashell":
             egg_item = "animania:brown_egg";
             egg_name = '&bChromashell Egg&r';
-            egg_lore_1 = "&eAn elegant egg with an iridescent pastel sheen. Tiny runes shimmer under the surface—this one's been touched by a painter's magic.";
-            egg_lore_2 = "&o&aDeliver to Elula the Egg Artist for colorful surprises.";
-            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            egg_lore_1 = "&eThe surface ripples with changing colors like sunlight through a prism. Tiny runes shimmer under the surface — this one's been touched by a painter's magic.";
+            egg_lore_2 = "&o&aCan only be safely opened by an Aetheric Botanist.";
+            egg_lore_5 = "&f&oOpening Method:"
+            egg_lore_6 = "&7- Delivered to: &lAetheric Botanist";
+            egg_lore_7 = "&7- Found in: &oGreenhouses, herbalist huts, overgrown ruins, or nature sanctuaries";
+            egg_lore_8 = "&7- Note: &oThese biophiles study strange biological patterns and naturally occurring anomalies. They understand the living shells of these eggs.";
             break;
         case "encrypted":
             egg_item = "animania:peacock_egg_blue";
             egg_name = '&bEncrypted Egg&r';
-            egg_lore_1 = "&eA sleek, humming capsule with glowing seams. It occasionally emits a mechanical chirp and smells faintly like ozone and marshmallows.";
-            egg_lore_2 = "&o&aRequires decryption by Dr. Jivus at TJF Research Division - Facility 07 (« The Twingo Plant »). Consumes 1 Arcade Token.";
-            egg_lore_3 = "&e&oCollected during the Easter 2025 event: The Great Eggcryption";
+            egg_lore_1 = "&eA strange, humming egg with encrypted data patterns embedded into its surface. It occasionally emits a mechanical chirp and smells faintly like ozone and marshmallows.";
+            egg_lore_2 = "&o&aCan be hacked open by a certified Eggcryption Technician... for a price.";
+            egg_lore_5 = "&f&oOpening Method:"
+            egg_lore_6 = "&7- Delivered to: &lEggcryption Technician";
+            egg_lore_7 = "&7- Found in: &oTech shops, digital salvage labs, underground cybermarket outposts";
+            egg_lore_8 = "&7- Note: &oThese Technologists require an Arcade Token to decrypt the egg's contents. Advanced scanning and hacking methods used.";
             break;
         default:
             break;
@@ -461,8 +473,12 @@ function generateEggItem(world, npc) {
     eggItem.setLore([
         ccs(egg_lore_1),
         ccs(egg_lore_2),
-        ccs(egg_lore_3),
-        ccs(egg_lore_4)
+        ccs("&e&oCollected during the Easter 2025 event: The Great Eggcryption"),
+        ccs(egg_lore_4),
+        ccs(egg_lore_5),
+        ccs(egg_lore_6),
+        ccs(egg_lore_7),
+        ccs(egg_lore_8),
     ]);
     return eggItem;
 }
