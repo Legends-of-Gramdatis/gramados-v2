@@ -1,3 +1,5 @@
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+
 /**
  * Compares two IItemStacks to check if they are equal.
  * 
@@ -186,3 +188,11 @@ function getJsonKeys(json) {
 //     }
 //     return false;
 // }
+
+function executeCommand(player, command, as_player) {
+    if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
+    if (as_player == null) { as_player = player.getName(); }
+    var cmd = API.createNPC(player.world.getMCWorld());
+
+    return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
+}
