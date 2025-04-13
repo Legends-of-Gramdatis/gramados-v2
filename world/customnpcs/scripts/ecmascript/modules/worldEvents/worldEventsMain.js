@@ -15,7 +15,6 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
-var counter = 0;
 
 var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in milliseconds
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
@@ -54,33 +53,32 @@ function init(e) {
     var player = e.player;
     var activeEvents = getActiveEventList();
 
-    if (activeEvents.length > 0 || player.getName() == "TheOddlySeagull") {
+    if (activeEvents.length > 0 || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
 
         if (activeEvents.length > 0) {
-            tellPlayer(player, "&6Active Events: &e" + activeEvents.join(", "));
+            tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &e" + activeEvents.join(", ") + " &6&l[&e&lEvent&6&l]");
         }
 
-        if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
+        if (isEventActive("Easter Egg Hunt") || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
             spawnEasterStarterPack(player);
-            initiateTimer(player, "Easter Egg Hunt");
+            resetToll();
         }
     }
 }
 
-
-var triggered_debug = false;
 
 /**
  * Called on every tick. Handles spawning "Sus Box" entities on April 1st.
  * @param {Object} e - The event object containing information about the tick event.
  */
 function tick(e) {
-    if (isAnyEventActive()) {
-        var player = e.player;
+    var player = e.player;
+    if (isAnyEventActive() || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
+        
         var playerName = player.getName();
         // var currentTime = new Date().getTime();		
 
-        if (isEventActive("April Fools") && counter < 1) {
+        if (isEventActive("April Fools")) {
             var event_player_data = loadPlayerEventData("April Fools", playerName);
             playerLastSpawnTime = event_player_data.playerLastSpawnTime;
             playerSpawnIntervals = event_player_data.playerSpawnIntervals;
@@ -91,22 +89,19 @@ function tick(e) {
             }
         }
 
-        if (counter > 0) {
-            counter--;
+        if (isEventActive("Easter Egg Hunt") || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
+            runToll(e);
+
+            if (everyQuarterHours(0)) {
+                // with spawnEggSwarm, spawn a small swarm of eggs
+                var egg_attempt_count = Math.round(Math.random() * 11) + 4;
+                spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 75, true);
+            } else if (everyHours(0)) {
+                // with spawnEggSwarm, spawn a larger swarm of eggs
+                var egg_attempt_count = Math.round(Math.random() * 15) + 15;
+                spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 100, true);
+            }
         }
-    }
-
-    if (getCurrentlyInHourlyMinutes() && !triggered_debug) {
-        logToFile("events", "\"Hourly Minute\" triggered at " + new Date().toLocaleTimeString() + " by " + e.player.getName());
-        triggered_debug = true;
-    }
-    if (getCurrentlyInQuarterlyMinutes() && !triggered_debug) {
-        logToFile("events", "\"Quarterly Minute\" triggered at " + new Date().toLocaleTimeString() + " by " + e.player.getName());
-        triggered_debug = true;
-    }
-
-    if (new Date().getTime() % 10000 == 0) {
-        triggered_debug = false;
     }
 }
 
