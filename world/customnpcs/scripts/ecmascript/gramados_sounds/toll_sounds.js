@@ -1,97 +1,160 @@
+
+var tollTickCounter = 0;
+var lock_counter = false;
+var tolltype = "quarterly"; // "quarterly" or "hourly"
+
+function initToll(type) {
+    if (!lock_counter) {
+        tollTickCounter = 1;
+        tolltype = type;
+        lock_counter = true;
+    }
+}
+
+function resetToll() {
+    tollTickCounter = 0;
+    lock_counter = false;
+    tolltype = "quarterly";
+}
+
 function runToll(event) {
     var player = event.player;
     var world = player.getWorld();
+    if (everyQuarterHours(2)) {
+        initToll("quarterly");
+    } else if (everyHours(2)) {
+        initToll("hourly");
+    }
 
-    if (getCurrentlyInHourlyMinutes()) {
-        playHourlySound(event, world);
-    } else if (getCurrentlyInQuarterlyMinutes()) {
-        playQuarterlySound(event, world);
+    switch (tolltype) {
+        case "quarterly":
+            tollTickCounter = playQuarterlySound(event, world, tollTickCounter);
+            break;
+        case "hourly":
+            tollTickCounter = playHourlySound(event, world, tollTickCounter);
+            break;
+        default:
+            break;
+    }
+
+    if (tollTickCounter > 0) {
+        tollTickCounter++;
+    } else {
+        lock_counter = false;
     }
 }
 
-function getCurrentlyInHourlyMinutes() {
+function everyHours(second_delay) {
     var date = new Date();
-    return (date.getMinutes() >= 0 && date.getMinutes() <= 1);
+    if (second_delay == null) {
+        second_delay = 0;
+    }
+    return (date.getMinutes() == 0 && date.getSeconds() == second_delay);
 }
 
-function getCurrentlyInQuarterlyMinutes() {
+function everyQuarterHours(second_delay) {
     var date = new Date();
+    if (second_delay == null) {
+        second_delay = 0;
+    }
     return (
-        (date.getMinutes() >= 14 && date.getMinutes() <= 15)
-        || (date.getMinutes() >= 29 && date.getMinutes() <= 30)
-        || (date.getMinutes() >= 44 && date.getMinutes() <= 45)
+        (date.getMinutes() == 15 && date.getSeconds() == second_delay)
+        || (date.getMinutes() == 30 && date.getSeconds() == second_delay)
+        || (date.getMinutes() == 45 && date.getSeconds() == second_delay)
     );
 }
 
-function playQuarterlySound(event, world) {
-    var time = world.getTime() % 4000;
-    switch (time) {
-        case 1:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
-            break;
-        case 21:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
-            break;
-        case 41:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
-            break;
-        case 71:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
-            break;
-        case 91:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
-            break;
-        case 111:
-            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
-            break;
-    }
+function getCurrentlyInMinutelySecond() {
+    var date = new Date();
+    return (date.getSeconds() == 0);
 }
 
-function playHourlySound(event, world) {
-    var time = world.getTime() % 4000;
-    switch (time) {
+function playQuarterlySound(event, world, tollTickCounter) {
+    switch (tollTickCounter) {
+        case 1:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
+            // event.player.message("Playing sound 1 at tick " + tollTickCounter);
+            break;
+        case 3:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
+            // event.player.message("Playing sound 2 at tick " + tollTickCounter);
+            break;
+        case 5:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
+            // event.player.message("Playing sound 3 at tick " + tollTickCounter);
+            break;
+        case 8:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
+            // event.player.message("Playing sound 4 at tick " + tollTickCounter);
+            break;
+        case 10:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
+            // event.player.message("Playing sound 5 at tick " + tollTickCounter);
+            break;
+        case 12:
+            world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
+            // event.player.message("Playing sound 6 at tick " + tollTickCounter);
+            break;
+        case 20:
+            tollTickCounter = 0;
+            // event.player.message("Resetting tick count to 0");
+            break;
+    }
+
+    return tollTickCounter;
+}
+
+function playHourlySound(event, world, tollTickCounter) {
+    switch (tollTickCounter) {
         case 1:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
-        case 41:
+        case 5:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
-        case 81:
+        case 9:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
-        case 121:
+        case 13:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
-        case 161:
+        case 17:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
-        case 201:
+        case 21:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 1.0);
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 0.2);
             break;
         
-        case 11:
+        case 2:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
             break;
-        case 31:
+        case 4:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
             break;
-        case 51:
+        case 6:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
             break;
-        case 131:
+        case 14:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 1.0, 10.0);
             break;
-        case 151:
+        case 16:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 0.8, 10.0);
             break;
-        case 171:
+        case 18:
             world.playSoundAt(event.player.getPos(), "ivv:toll", 0.6, 10.0);
+            break;
+
+        case 25:
+            tollTickCounter = 0;
+            // event.player.message("Resetting tick count to 0");
             break;
     }
+
+    return tollTickCounter;
 }
