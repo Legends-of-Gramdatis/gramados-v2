@@ -21,5 +21,24 @@
             "spawnInterval": 1585364
         }
     },
-    "Easter Egg Hunt": {}
+    "Easter Egg Hunt": {
+        "MoriUnderGarden": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 15
+                },
+                "spring": {
+                    "egg_count": 10
+                },
+                "encrypted": {
+                    "egg_count": 2
+                }
+            },
+            "egg_count": 27
+        },
+        "Global Data": {
+            "egg_count": 27
+        }
+    }
 }
