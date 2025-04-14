@@ -75,5 +75,4 @@ world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeper_OS_OLD.js
 world/customnpcs/scripts/player_scripts.json
 GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
-scripts/economy_statistics.py
 reports/*.md
