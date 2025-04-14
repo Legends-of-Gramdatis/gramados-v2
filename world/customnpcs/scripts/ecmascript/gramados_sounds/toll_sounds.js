@@ -9,6 +9,8 @@ function initToll(type) {
         tolltype = type;
         lock_counter = true;
     }
+
+    logToFile("events", "Toll was initialized with type: " + type);
 }
 
 function resetToll() {
