@@ -60,6 +60,8 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
             "&e You're in an egg-rich zone. Pick some up before new ones spawn!"
         ];
         tellRandomMessage(player, tooManyNearbyEggsLines);
+        var logline = e.player.getName() + " tried to spawn eggs but there were too many nearby.";
+        logToFile("events", logline);
     } else {
         var abandon_counter = 0;
 
@@ -80,6 +82,9 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
                 successfull_spawns++;
             }
         }
+
+        var logline = e.player.getName() + " spawned " + successfull_spawns + " eggs.";
+        logToFile("events", logline);
     }
 
     if (successfull_spawns > 0 && display_message) {
@@ -156,5 +161,8 @@ function spawnEasterStarterPack(player) {
         world.playSoundAt(player.getPos(), "ivv:toll", 1.0, 1.0);
 
         spawnEggSwarm(player, world, 3, 5, false);
+
+        var logline = e.player.getName() + " has received the Easter Starter Pack.";
+        logToFile("events", logline);
     }
 }
