@@ -10,9 +10,8 @@ var NearbyEggSpawnedLines = []
  * @param {Object} world - The world object where the player is located.
  * @returns {number} - The number of nearby eggs.
  */
-function countNearbyEggs(player, world) {
+function countNearbyEggs(player, world, radius) {
     var egg_count = 0;
-    var radius = 20;
 
     var nearby_gentity_list = world.getNearbyEntities(player.getPos(), radius, 0);
     for (var i = 0; i < nearby_gentity_list.length; i++) {
@@ -48,7 +47,7 @@ function spawnEgg(x, y, z, world) {
 function spawnEggSwarm(player, world, count, group_radius, display_message) {
     var successfull_spawns = 0;
 
-    if (countNearbyEggs(player, world) > 5) {
+    if (countNearbyEggs(player, world, 30) > 5) {
         var tooManyNearbyEggsLines = [
             "&e Too many eggs nearby! Clean up a few before more can appear.",
             "&e The Egg Council has declared this area \"sufficiently egged.\"",
