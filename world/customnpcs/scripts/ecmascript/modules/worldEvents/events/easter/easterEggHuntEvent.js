@@ -82,9 +82,6 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
                 successfull_spawns++;
             }
         }
-
-        var logline = e.player.getName() + " spawned " + successfull_spawns + " eggs.";
-        logToFile("events", logline);
     }
 
     if (successfull_spawns > 0 && display_message) {
@@ -101,6 +98,7 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
             "&bThe Egg Transmission has begun. Scanners show activity nearby!"
         ];
         tellRandomMessage(player, spawn_message);
+        logToFile("events", e.player.getName() + " spawned " + successfull_spawns + " eggs.");
     }
 
     return successfull_spawns;
