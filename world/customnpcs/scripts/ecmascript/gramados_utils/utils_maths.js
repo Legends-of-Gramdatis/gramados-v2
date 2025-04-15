@@ -429,3 +429,8 @@ function pick(array, count) {
 function log10(value) {
     return Math.log(value) / Math.LN10;
 }
+
+function pickFromArray(array) {
+    var index = Math.floor(Math.random() * array.length);
+    return array[index];
+}
