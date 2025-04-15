@@ -15,7 +15,7 @@ var egg_activation_lines = [
     "&6The egg stares into your soul. Then bolts.",
     "&6You touched the egg. The egg touched back—with legs.",
     "&6Awakened. Confused. Angry. Egg.",
-    "&6This egg just gained sentience and immediately decided you’re a threat.",
+    "&6This egg just gained sentience and immediately decided you're a threat.",
 ]
 
 var egg_missed_attempt_lines = [
