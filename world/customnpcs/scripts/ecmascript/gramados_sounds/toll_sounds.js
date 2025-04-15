@@ -1,12 +1,19 @@
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 
 var tollTickCounter = 0;
-var lock_counter = false;
-var tolltype = "quarterly"; // "quarterly" or "hourly"
+var tolltype = "quarterly";
+
+var lock_toll = false;
+var lock_counter_hour = false;
+var lock_counter_quarter = false;
+var lock_counter_minute = false;
 
 function initToll(type) {
-    if (!lock_counter) {
+    if (!lock_toll) {
         tollTickCounter = 1;
         tolltype = type;
+        lock_toll = true;
     }
 
     // logToFile("events", "Toll was initialized with type: " + type);
@@ -14,7 +21,7 @@ function initToll(type) {
 
 function resetToll() {
     tollTickCounter = 0;
-    lock_counter = false;
+    lock_toll = false;
     tolltype = "quarterly";
 }
 
@@ -48,16 +55,12 @@ function everyHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    if (date.getMinutes() == 0 && date.getSeconds() == second_delay) {
-        if (lock_counter) {
-            return false;
-        } else {
-            lock_counter = true;
-            return true;
-        }
+    if (!lock_counter_hour && date.getMinutes() == 0 && date.getSeconds() == second_delay) {
+        lock_counter_hour = true;
+        return true;
     }
     else {
-        lock_counter = false;
+        lock_counter_hour = false;
         return false;
     }
 }
@@ -68,36 +71,35 @@ function everyQuarterHours(second_delay) {
         second_delay = 0;
     }
     if (
-        (date.getMinutes() == 15 && date.getSeconds() == second_delay)
+        (!lock_counter_quarter && (
+           (date.getMinutes() == 15 && date.getSeconds() == second_delay)
         || (date.getMinutes() == 30 && date.getSeconds() == second_delay)
         || (date.getMinutes() == 45 && date.getSeconds() == second_delay)
-    ) {
-        if (lock_counter) {
-            return false;
-        } else {
-            lock_counter = true;
-            return true;
-        }
+    ))) {
+        lock_counter_quarter = true;
+        return true;
     } else {
-        lock_counter = false;
+        lock_counter_quarter = false;
         return false;
     }
 }
 
-function everyMinute() {
+function everyMinutes() {
     var date = new Date();
-    if (date.getSeconds() == 0) {
-        if (lock_counter) {
-            return false;
-        }
-        else {
-            lock_counter = true;
+    if (!lock_counter_minute && date.getSeconds() == 0) {
+            lock_counter_minute = true;
             return true;
-        }
     } else {
-        lock_counter = false;
+        lock_counter_minute = false;
         return false;
     }
+}
+
+function revealLock(player) {
+    tellPlayer(player, "&7Hour Counter Lock: " + lock_counter_hour);
+    tellPlayer(player, "&7Quarter Counter Lock: " + lock_counter_quarter);
+    tellPlayer(player, "&7Minute Counter Lock: " + lock_counter_minute);
+    tellPlayer(player, "&7Toll Lock: " + lock_toll);
 }
 
 function playQuarterlySound(event, world, tollTickCounter) {
