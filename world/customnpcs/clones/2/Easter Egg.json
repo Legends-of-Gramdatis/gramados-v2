@@ -43,7 +43,7 @@
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
-    "Orientation": 338,
+    "Orientation": 200,
     "ScriptLanguage": "ECMAScript",
     "HandItems": [
         {
@@ -130,7 +130,7 @@
         "Lines": [
         ]
     },
-    "HurtByTimestamp": 665,
+    "HurtByTimestamp": 1000,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -266,7 +266,7 @@
         }
     },
     "minDelay": 20,
-    "DoorInteract": 2,
+    "DoorInteract": 1,
     "MoveSpeed": 0,
     "TransformEditingModus": 0b,
     "UsingSkinUrl": 2b,
@@ -387,9 +387,9 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 16,
     "Title": "",
-    "TotalTicksAlive": 579890L,
+    "TotalTicksAlive": 580995L,
     "Rotation": [
-        338.0f,
+        200.0f,
         0.0f
     ],
     "ShowName": 1,
