@@ -257,39 +257,37 @@ function interact(event) {
         // get the eggcracker type
         var eggcracker_type = npc.getStoreddata().get("eggcracker_type");
         var openning_sound = "minecraft:block.fire.extinguish";
+        var loot_table = "";
         var egg_openning_lines = [];
         switch (eggcracker_type) {
             case "Eggcrack Confectioner":
                 egg_openning_lines = egg_openning_lines_confectioner;
                 openning_sound = "chisel:chisel.wood";
+                loot_table = _LOOTTABLE_EASTEREGG_SPRING;
                 break;
             case "Aetheric Botanist":
                 egg_openning_lines = egg_openning_lines_botanist;
                 openning_sound = "cfm:tap";
+                loot_table = _LOOTTABLE_EASTEREGG_CHROMASHELL;
                 break;
             case "Eggcryption Technician":
                 egg_openning_lines = egg_openning_lines_technician;
                 openning_sound = "ivv:phone.malfunction.paradox.future";
+                loot_table = _LOOTTABLE_EASTEREGG_ENCRYPTED;
                 break;
             default:
                 break;
         }
         tellRandomMessage(player, egg_openning_lines);
-        // play the sound
         npc.executeCommand("/playsound minecraft:entity.villager.yes master @a");
         npc.executeCommand("/playsound " + openning_sound + " master @a");
 
         var item_lore = item.getLore()
         var eggsize = item_lore[3].split(" ")[1].trim();
         eggsize = eggsize.replace("§l", "").replace("§r§d§o", "");
-        // tellPlayer(player, "&aThe egg is " + eggsize + " in size.");
-        // var loot_table = genereate_egg_loot(eggcracker_type);
 
         var loot_pull = Math.max(1, eggsize - 2);
-        // tellPlayer(player, "&eYou have " + loot_pull + " loot pulls from loot table " + _LOOTTABLE_CHOCOLATE + ".");
-        var pulled_loot = multiplePullLootTable(_LOOTTABLE_CHOCOLATE, player, loot_pull);
-        
-        // tellPlayer(player, "&eYou pulled " + JSON.stringify(pulled_loot) + " from the loot table.");
+        var pulled_loot = multiplePullLootTable(loot_table, player, loot_pull);
         
         for (var i = 0; i < pulled_loot.length; i++) {
             player.giveItem(
