@@ -38,22 +38,22 @@
             "egg_count": 27
         },
         "Global Data": {
-            "egg_count": 101
+            "egg_count": 152
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 38
+                    "egg_count": 66
                 },
                 "chromashell": {
-                    "egg_count": 26
+                    "egg_count": 48
                 },
                 "encrypted": {
-                    "egg_count": 10
+                    "egg_count": 11
                 }
             },
-            "egg_count": 74
+            "egg_count": 125
         }
     }
 }
