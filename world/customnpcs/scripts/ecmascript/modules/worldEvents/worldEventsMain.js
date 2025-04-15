@@ -96,10 +96,12 @@ function tick(e) {
                 // with spawnEggSwarm, spawn a small swarm of eggs
                 var egg_attempt_count = Math.round(Math.random() * 7) + 4;
                 spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 75, true);
+                initToll("quarterly");
             } else if (everyHours(0)) {
                 // with spawnEggSwarm, spawn a larger swarm of eggs
                 var egg_attempt_count = Math.round(Math.random() * 15) + 10;
                 spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 100, true);
+                initToll("hourly");
             }
         }
     }
