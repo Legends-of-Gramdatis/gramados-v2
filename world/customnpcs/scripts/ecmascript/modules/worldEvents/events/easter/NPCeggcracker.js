@@ -4,8 +4,12 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js')
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
 
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
+
+var error_lines = {}
 
 var eggcracker_type = [
     "Eggcrack Confectioner",
@@ -67,16 +71,101 @@ var egg_openning_lines_technician = [
     "&aThe encryption fights back. But so do I."
 ]
 
+var  Spring_Egg_Technicians = [
+    "&eUnless that thing's got a firewall, I don't want it.",
+    "&eThis is candy. I'm not paid in chocolate.",
+    "&eTry a sugar alchemist or whatever they call themselves.",
+    "&eDo I look like I debug jellybeans?",
+    "&eSweet, but not encrypted. I deal in danger, not dessert.",
+    "&eYou're about eight layers of frosting too early.",
+    "&eThat egg's cute. I'm looking for corrupted.",
+    "&eIf I can't plug it in, it's not my problem."
+]
+
+var Spring_Egg_Botanists = [
+    "&eNo floral imprint, no chromatic bloom... this is junk food.",
+    "&eYou're looking for someone with a sugar problem, not a spore journal.",
+    "&eMy eggs whisper secrets. Yours... smells like marshmallow.",
+    "&eThat's not infused with anything natural. It's barely organic.",
+    "&eBring me an egg that hums with life, not one that giggles.",
+    "&eThis shell's been dyed, not grown. Try the confectioners.",
+    "&eThis egg's been processed. My eggs are born wild.",
+    "&eThat thing's artificial joy. I work with natural resonance."
+]
+
+var Chromashell_Egg_Confectioners = [
+    "&eHmm... no chocolate, no sprinkles. Are you sure this is food?",
+    "&eThat egg looks like it came out of a swamp, not an oven.",
+    "&eWhat in the jellybean is this?",
+    "&eSorry, love, I only deal in sugar, not moss and mystery.",
+    "&eEugh, that thing's moving. Not in a fun, candy way.",
+    "&eThis egg has bark. Actual bark. No thanks.",
+    "&eTry someone with a compost bin, not a candy counter.",
+    "&eI can't cook this. I don't even think it's safe to taste."
+]
+
+var Chromashell_Egg_Technicians = [
+    "&eNo signal. Just spores. Gross.",
+    "&eLooks more like a seed than a circuit.",
+    "&eIf it grows roots instead of logs, I'm out.",
+    "&eThat's not encrypted-that's alive.",
+    "&eTake your nature egg somewhere with less tech and more sunlight.",
+    "&eI work with data. Not bark and bioluminescence.",
+    "&eI crack codes, not coconuts.",
+    "&eMaybe it has secrets. Maybe it's a mushroom. Either way: not my job."
+]
+
+var Encrypted_Egg_Confectioners = [
+    "&eI said fudge, not firewalls!",
+    "&eThis thing's humming... Is it safe?",
+    "&eWhere's the sugar? The joy? The anything remotely edible?",
+    "&eI bake cookies, not crash programs.",
+    "&eThis egg is judging me. I don't like it.",
+    "&eSweetie, I think you've brought me a weapon.",
+    "&eThere's no recipe for this. Unless it's disaster.",
+    "&eYeah, no. Take that thing back to the lab."
+]
+
+var Encrypted_Egg_Botanists = [
+    "&eThat shell's not from any forest I've walked.",
+    "&eThis thing has firmware. My eggs have petals.",
+    "&eThat's not a natural hum. That's machine talk.",
+    "&eThe forest didn't make this. Some lab-dwelling madman did.",
+    "&eIt's flickering... Why is it flickering?",
+    "&eI touch that, and I sprout wi-fi, don't I?",
+    "&eFind a tech-head. I work with seeds, not servers.",
+    "&eThis isn't a living egg. It's a synthetic riddle."
+]
+
+var not_an_egg = [
+    "&7...That's not an egg.",
+    "&7Unless you're hiding a yolk in there, I can't help you.",
+    "&7Nope. Try again—with something round and eggy.",
+    "&7I open eggs, not... whatever this is.",
+    "&7That item's as useful to me as a screen door on a submarine.",
+    "&7Mmm, interesting. Not relevant, though.",
+    "&7I don't think that belongs in the egg department.",
+    "&7Wrong item, right enthusiasm.",
+    "&7Sorry, this thing doesn't have a shell, code, or goo. Can't help.",
+    "&7That's not on the seasonal egg list. Not even close.",
+    "&7If it doesn't chirp, pulse, or sparkle—it's not my problem.",
+    "&7Come back when it's egg-shaped.",
+    "&7Looks nice. Useless here.",
+    "&7Hmm... Nope. Doesn't qualify as an egg in any universe.",
+    "&7I see what you're going for... but that's not it."
+]
+
+
+
+
+
 function regenerate(npc) {
     // move to next eggcracker type
     var current_type = npc.getStoreddata().get("eggcracker_type");
     var current_index = eggcracker_type.indexOf(current_type);
     var next_index = (current_index + 1) % eggcracker_type.length;
     var next_type = eggcracker_type[next_index];
-    npc.getStoreddata().put("eggcracker_type", next_type);
-    // set the NPC name
     npc.getDisplay().setName(next_type);
-    // switch next_type for title
     var title = "";
     var egg_item = "";
     switch (next_type) {
@@ -98,8 +187,12 @@ function regenerate(npc) {
             break;
     }
 
+    initErrorLines(npc);
+
     npc.getDisplay().setTitle(title);
-    // set the NPC egg item
+    // npc.say("&6&l[&e&lEggcracker&6&l] &eYou have changed the eggcracker type to " + next_type + "!");
+    // npc.say("&6&l[&e&lEggcracker&6&l] &eError lines: " + JSON.stringify(error_lines));
+    npc.getStoreddata().put("eggcracker_type", next_type);
     npc.getStoreddata().put("egg_item", egg_item);
 }
 
@@ -117,6 +210,27 @@ function init(event) {
     if (!npc.getStoreddata().has("egg_item")) {
         npc.getStoreddata().put("egg_item", "minecraft:egg");
     }
+
+    initErrorLines(npc);
+}
+
+function initErrorLines(npc) {
+    switch (npc.getStoreddata().get("eggcracker_type")) {
+        case "Eggcrack Confectioner":
+            error_lines["animania:brown_egg"] = Chromashell_Egg_Confectioners;
+            error_lines["animania:peacock_egg_blue"] = Encrypted_Egg_Confectioners;
+            break;
+        case "Aetheric Botanist":
+            error_lines["minecraft:egg"] = Spring_Egg_Botanists;
+            error_lines["animania:peacock_egg_blue"] = Encrypted_Egg_Botanists;
+            break;
+        case "Eggcryption Technician":
+            error_lines["minecraft:egg"] = Spring_Egg_Technicians;
+            error_lines["animania:brown_egg"] = Chromashell_Egg_Technicians;
+            break;
+        default:
+            break;
+    }
 }
 
 /**
@@ -125,10 +239,11 @@ function init(event) {
  */
 function interact(event) {
     var npc = event.npc;
+    var world = npc.getWorld();
 
     // get player hand item
     var player = event.player;
-    var item = player.getMainhandItem();
+    var item = player.getMainhandItem().copy();
     var item_name = item.getName();
     var egg_item = npc.getStoreddata().get("egg_item");
 
@@ -161,108 +276,41 @@ function interact(event) {
         }
         tellRandomMessage(player, egg_openning_lines);
         // play the sound
+        npc.executeCommand("/playsound minecraft:entity.villager.yes master @a");
         npc.executeCommand("/playsound " + openning_sound + " master @a");
 
         var item_lore = item.getLore()
         var eggsize = item_lore[3].split(" ")[1].trim();
         eggsize = eggsize.replace("§l", "").replace("§r§d§o", "");
-        tellPlayer(player, "&aThe egg is " + eggsize + " in size.");
+        // tellPlayer(player, "&aThe egg is " + eggsize + " in size.");
+        // var loot_table = genereate_egg_loot(eggcracker_type);
+
+        var loot_pull = Math.max(1, eggsize - 2);
+        // tellPlayer(player, "&eYou have " + loot_pull + " loot pulls from loot table " + _LOOTTABLE_CHOCOLATE + ".");
+        var pulled_loot = multiplePullLootTable(_LOOTTABLE_CHOCOLATE, player, loot_pull);
+        
+        // tellPlayer(player, "&eYou pulled " + JSON.stringify(pulled_loot) + " from the loot table.");
+        
+        for (var i = 0; i < pulled_loot.length; i++) {
+            player.giveItem(
+                generateItemStackFromLootEntry(pulled_loot[i], world, player)
+            );
+        }
         // premove egg item from player inventory
-        // item.setStackSize(item.getStackSize() - 1);
+        item.setStackSize(item.getStackSize() - 1);
+        player.setMainhandItem(item);
+
+    } else {
+        // get the error lines
+        // tellPlayer(player, "&eYou have given me a " + item_name + "!");
+        // tellPlayer(player, "&eError lines: " + JSON.stringify(error_lines));
+        if (error_lines.hasOwnProperty(item_name)) {
+            var error_line = error_lines[item_name];
+            tellRandomMessage(player, error_line);
+            npc.executeCommand("/playsound minecraft:entity.villager.no master @a");
+        } else {
+            tellRandomMessage(player, not_an_egg);
+            npc.executeCommand("/playsound minecraft:entity.villager.no master @a");
+        }
     }
 }
-
-function genereate_egg_loot(eggcracker_type) {
-    var loot = [];
-    switch (eggcracker_type) {
-        case "Eggcrack Confectioner":
-            loot = [
-                "minecraft:dye:3",
-                "harvestcraft:cocoapowderitem:0",
-                "harvestcraft:chocolatebaritem:0",
-                "harvestcraft:candiedwalnutsitem:0",
-                "harvestcraft:candiedgingeritem:0",
-                "harvestcraft:candiedsweetpotatoesitem:0",
-                "harvestcraft:candiedlemonitem:0",
-                "harvestcraft:cottoncandyitem:0",
-                "harvestcraft:chocolatesprinklecakeitem:0",
-                "mts:iv_tpp.paint_bucket_chocolate:0",
-                "mts:unuparts.unuparts_decor_unu_paint_chocolate:0",
-                "harvestcraft:chocolateorangeitem:0",
-                "harvestcraft:candiedpecansitem:0",
-                "harvestcraft:maplecandiedbaconitem:0",
-                "harvestcraft:chocolaterollitem:0",
-                "harvestcraft:chocolatecupcakeitem:0",
-                "harvestcraft:chocolatepuddingitem:0",
-                "harvestcraft:chocolatesprinklecakeitem:0",
-                "animania:chocolate_truffle:0",
-                "harvestcraft:chocolatecoconutbaritem:0",
-                "growthcraft_milk:yogurt:1:0",
-                "growthcraft_milk:ice_cream:1:0",
-                "harvestcraft:chocolatedonutitem:0",
-                "harvestcraft:chocolatestrawberryitem:0",
-                "harvestcraft:chocolatemilkshakeitem:0",
-                "harvestcraft:chocolatebaconitem:0",
-                "harvestcraft:cherrycoconutchocolatebaritem:0",
-                "harvestcraft:honeycombchocolatebaritem:0",
-                "harvestcraft:chocolatecaramelfudgeitem:0",
-                "harvestcraft:chocolatemilkitem:0",
-                "harvestcraft:chocolateyogurtitem:0",
-                "harvestcraft:chocolatecherryitem:0",
-                "harvestcraft:chocolateicecreamitem:0",
-                "harvestcraft:hotchocolateitem:0",
-                "harvestcraft:chilichocolateitem:0",
-                "minecraft:cookie:0",
-                "harvestcraft:creamcookieitem:0",
-                "harvestcraft:meringuecookieitem:0",
-                "harvestcraft:marshmellowsitem:0",
-                "harvestcraft:marshmellowchicksitem:0",
-                "minecraft:cake:0",
-            ];
-            break;
-        case "Aetheric Botanist":
-            loot = [
-                "minecraft:dye:0",
-                "minecraft:dye:1",
-                "minecraft:dye:2",
-                "minecraft:dye:3",
-                "minecraft:dye:4",
-                "minecraft:dye:5",
-                "minecraft:dye:6",
-                "minecraft:dye:7",
-                "minecraft:dye:8",
-                "minecraft:dye:9",
-                "minecraft:dye:10",
-                "minecraft:dye:11",
-                "minecraft:dye:12",
-                "minecraft:dye:13",
-                "minecraft:dye:14",
-                "minecraft:dye:15",
-                "minecraft:yellow_flower:0",
-                "minecraft:red_flower:0",
-                "minecraft:red_flower:1",
-                "minecraft:red_flower:2",
-                "minecraft:red_flower:3",
-                "minecraft:red_flower:4",
-                "minecraft:red_flower:5",
-                "minecraft:red_flower:6",
-                "minecraft:red_flower:7",
-                "minecraft:red_flower:8",
-                "minecraft:double_plant:0",
-                "minecraft:double_plant:1",
-                "minecraft:double_plant:4",
-                "minecraft:double_plant:5",
-                "mts:cactusdecor_misc.grass_5x5:0",
-                "mts:cactusdecor_misc.grass_3x3:0"
-            ];
-            break;
-        }
-    return loot;
-}
-
-function getRandomLoot() {
-    var loot = genereate_egg_loot();
-    var randomIndex = Math.floor(Math.random() * loot.length);
-    return loot[randomIndex];
-}
-
