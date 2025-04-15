@@ -56,7 +56,7 @@ function init(e) {
     if (activeEvents.length > 0 || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
 
         if (activeEvents.length > 0) {
-            tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &e" + activeEvents.join(", ") + " &6&l[&e&lEvent&6&l]");
+            tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &a" + activeEvents.join(", &a") + " &6&l[&e&lEvent&6&l]");
         }
 
         if (isEventActive("Easter Egg Hunt") || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
@@ -94,11 +94,11 @@ function tick(e) {
 
             if (everyQuarterHours(0)) {
                 // with spawnEggSwarm, spawn a small swarm of eggs
-                var egg_attempt_count = Math.round(Math.random() * 11) + 4;
+                var egg_attempt_count = Math.round(Math.random() * 7) + 4;
                 spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 75, true);
             } else if (everyHours(0)) {
                 // with spawnEggSwarm, spawn a larger swarm of eggs
-                var egg_attempt_count = Math.round(Math.random() * 15) + 15;
+                var egg_attempt_count = Math.round(Math.random() * 15) + 10;
                 spawnEggSwarm(player, player.getWorld(), egg_attempt_count, 100, true);
             }
         }
