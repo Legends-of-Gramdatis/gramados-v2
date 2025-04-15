@@ -1,0 +1,25 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "food/chocolate_table.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:gem_amethyst",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_nbt",
+                            "tag": "{display:{Name:\"§dArcade Token\",Lore:[\"§eA shiny token gained and used in special events\",\"§aExchangeable for Arcade Money at select locations.\"]}}"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

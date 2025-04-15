@@ -1,0 +1,449 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "minecraft:dye",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:cocoapowderitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatebaritem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:candiedwalnutsitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:candiedgingeritem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:candiedsweetpotatoesitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:candiedlemonitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:cottoncandyitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatesprinklecakeitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolateorangeitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:candiedpecansitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:maplecandiedbaconitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolaterollitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatecupcakeitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatepuddingitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "animania:chocolate_truffle",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatecoconutbaritem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "growthcraft_milk:yogurt",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "growthcraft_milk:ice_cream",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatedonutitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatestrawberryitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatemilkshakeitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatebaconitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:cherrycoconutchocolatebaritem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:honeycombchocolatebaritem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatecaramelfudgeitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatemilkitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolateyogurtitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolatecherryitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chocolateicecreamitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:hotchocolateitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:chilichocolateitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:cookie",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:creamcookieitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:meringuecookieitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:marshmellowsitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:marshmellowchicksitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:cake",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:cherryitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "harvestcraft:strawberryitem",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
