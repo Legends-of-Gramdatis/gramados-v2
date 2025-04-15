@@ -45,6 +45,7 @@ function spawnEgg(x, y, z, world) {
  * @returns {number} - The number of successfully spawned eggs.
  */
 function spawnEggSwarm(player, world, count, group_radius, display_message) {
+    
     var successfull_spawns = 0;
 
     if (countNearbyEggs(player, world, 30) > 5) {
@@ -59,7 +60,7 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
             "&e You're in an egg-rich zone. Pick some up before new ones spawn!"
         ];
         tellRandomMessage(player, tooManyNearbyEggsLines);
-        var logline = e.player.getName() + " tried to spawn eggs but there were too many nearby.";
+        var logline = player.getName() + " tried to spawn eggs but there were too many nearby.";
         logToFile("events", logline);
     } else {
         var abandon_counter = 0;
@@ -76,7 +77,7 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
                 abandon_counter++;
             }
 
-            if (!world.getBlock(x, y, z).isAir()) {
+            if (!world.getBlock(x, y, z).isAir() && world.getBlock(x, y+1, z).isAir()) {
                 spawnEgg(x, y + 1, z, world);
                 successfull_spawns++;
             }
@@ -97,7 +98,7 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
             "&bThe Egg Transmission has begun. Scanners show activity nearby!"
         ];
         tellRandomMessage(player, spawn_message);
-        logToFile("events", e.player.getName() + " spawned " + successfull_spawns + " eggs.");
+        logToFile("events", player.getName() + " spawned " + successfull_spawns + " eggs.");
     }
 
     return successfull_spawns;
@@ -159,7 +160,7 @@ function spawnEasterStarterPack(player) {
 
         spawnEggSwarm(player, world, 3, 5, false);
 
-        var logline = e.player.getName() + " has received the Easter Starter Pack.";
+        var logline = player.getName() + " has received the Easter Starter Pack.";
         logToFile("events", logline);
     }
 }
