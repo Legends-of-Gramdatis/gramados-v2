@@ -1,0 +1,1 @@
+var _LOOTTABLE_CHOCOLATE = "world/loot_tables/food/chocolate/dessert_table.json"
