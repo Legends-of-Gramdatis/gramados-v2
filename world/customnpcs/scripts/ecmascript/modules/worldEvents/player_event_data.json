@@ -38,7 +38,7 @@
             "egg_count": 27
         },
         "Global Data": {
-            "egg_count": 152
+            "egg_count": 153
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -54,6 +54,15 @@
                 }
             },
             "egg_count": 125
+        },
+        "Colt_44_magnum": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         }
     }
 }

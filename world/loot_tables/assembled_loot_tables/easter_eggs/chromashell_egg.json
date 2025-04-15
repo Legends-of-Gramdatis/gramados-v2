@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "botanic/botanic_flowers.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "botanic/botanic_mts_plants.json",
+                    "weight": 8
+                },
+                {
+                    "type": "loot_table",
+                    "path": "dyes.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers_ivl.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/roof_device/car_roof_device_goofy.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "cosmetics/armors/fantasy_armors.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "treasures/treasures_arcade_events.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_nuggets.json",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

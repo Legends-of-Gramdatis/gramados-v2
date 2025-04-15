@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_palm_fan_small_1_1",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_palm_fan_small_1_2",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_palm_fan_small_1_3",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_tree_small_1_1",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_tree_small_1_2",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_vegetation.vegetation_pottable_tree_small_1_3",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

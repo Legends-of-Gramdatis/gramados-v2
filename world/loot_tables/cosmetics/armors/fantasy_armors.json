@@ -1,0 +1,64 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "variedcommodities:cow_leather_head",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:cow_leather_chest",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:cow_leather_legs",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:cow_leather_boots",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:wizard_head",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:wizard_chest",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:wizard_legs",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:assassin_head",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:assassin_chest",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:assassin_legs",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:assassin_boots",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}
