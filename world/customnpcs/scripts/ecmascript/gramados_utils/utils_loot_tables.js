@@ -19,13 +19,13 @@ function pullLootTable(lootTablePath, player) {
         var pool = pools[poolIdx];
         var rolls;
 
-        if (typeof pool.rolls === "number") {
+        if (pool.rolls === undefined) {
+            rolls = 1; // default to 1 roll
+        } else if (typeof pool.rolls === "number") {
             rolls = pool.rolls;
-            // tellPlayer(player, "&eUsing " + rolls + " rolls.");
         } else if (typeof pool.rolls === "object") {
             rolls = rrandom_range(pool.rolls.min, pool.rolls.max);
-            // tellPlayer(player, "&eUsing rrandom_range for rolls: " + rolls);
-        }
+        }        
 
         var entries = pool.entries;
         // tellPlayer(player, "&eProcessing loot pool " + (poolIdx + 1) + " with " + rolls + " rolls.");
@@ -88,7 +88,9 @@ function pullLootTable(lootTablePath, player) {
                     }
 
                     if (func.function === "set_data") {
-                        item.damage = func.data;
+                        item.damage = (typeof func.data === "object")
+                            ? rrandom_range(func.data.min, func.data.max)
+                            : func.data;
                     }
 
                     if (func.function === "set_nbt") {
