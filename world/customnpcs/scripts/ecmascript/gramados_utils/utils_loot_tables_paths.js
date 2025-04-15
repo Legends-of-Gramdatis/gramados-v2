@@ -1,1 +1,1 @@
-var _LOOTTABLE_CHOCOLATE = "world/loot_tables/food/chocolate/dessert_table.json"
+var _LOOTTABLE_CHOCOLATE = "assembled_loot_tables/easter_eggs/spring_egg.json"
