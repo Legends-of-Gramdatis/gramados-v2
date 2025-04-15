@@ -7,10 +7,9 @@ function initToll(type) {
     if (!lock_counter) {
         tollTickCounter = 1;
         tolltype = type;
-        lock_counter = true;
     }
 
-    logToFile("events", "Toll was initialized with type: " + type);
+    // logToFile("events", "Toll was initialized with type: " + type);
 }
 
 function resetToll() {
@@ -41,8 +40,6 @@ function runToll(event) {
 
     if (tollTickCounter > 0) {
         tollTickCounter++;
-    } else {
-        lock_counter = false;
     }
 }
 
@@ -51,7 +48,18 @@ function everyHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    return (date.getMinutes() == 0 && date.getSeconds() == second_delay);
+    if (date.getMinutes() == 0 && date.getSeconds() == second_delay) {
+        if (lock_counter) {
+            return false;
+        } else {
+            lock_counter = true;
+            return true;
+        }
+    }
+    else {
+        lock_counter = false;
+        return false;
+    }
 }
 
 function everyQuarterHours(second_delay) {
@@ -59,16 +67,37 @@ function everyQuarterHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    return (
+    if (
         (date.getMinutes() == 15 && date.getSeconds() == second_delay)
         || (date.getMinutes() == 30 && date.getSeconds() == second_delay)
         || (date.getMinutes() == 45 && date.getSeconds() == second_delay)
-    );
+    ) {
+        if (lock_counter) {
+            return false;
+        } else {
+            lock_counter = true;
+            return true;
+        }
+    } else {
+        lock_counter = false;
+        return false;
+    }
 }
 
-function getCurrentlyInMinutelySecond() {
+function everyMinute() {
     var date = new Date();
-    return (date.getSeconds() == 0);
+    if (date.getSeconds() == 0) {
+        if (lock_counter) {
+            return false;
+        }
+        else {
+            lock_counter = true;
+            return true;
+        }
+    } else {
+        lock_counter = false;
+        return false;
+    }
 }
 
 function playQuarterlySound(event, world, tollTickCounter) {
