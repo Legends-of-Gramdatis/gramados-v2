@@ -1,0 +1,28 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_ancapistan", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_dragstripdemons", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_farlandsorbust", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_flanjeep", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_heresy", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_ingunuity", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_mysteryshack", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_notchsaves", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_pinetree", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_poweredbycreepers", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_prageru", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_sagebrush", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_smptoolbox", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_stanford", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_tedcruz", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_trio", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_unusable", "weight": 1 },
+                { "type": "item", "name": "mts:unuparts.unuparts_part_unu_bumpersticker_violence", "weight": 1 }
+            ]
+        }
+    ]
+  }
+  

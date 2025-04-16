@@ -1,0 +1,19 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers_ivl.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers_unu.json",
+                    "weight": "auto"
+                }
+            ]
+        }
+    ]
+}

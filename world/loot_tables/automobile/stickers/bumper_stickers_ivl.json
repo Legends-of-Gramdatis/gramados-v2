@@ -3,236 +3,52 @@
         {
             "rolls": 1,
             "entries": [
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lgbt_lesbian",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lgbt_gay",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lgbt_bi",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lgbt",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lgbt_trans",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_antitheftss",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_anywhere",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_area51",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_blessthismess",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_blm",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_bttf",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_dogfood",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_dtom",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_nonotch",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_h",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_haveaniceday",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_heart",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_krustyapproved",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_istopfor",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_hut",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_honkunu",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_honktrin",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_honkmai",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_nostickfigure",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_notch",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_nyancat",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_owo",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_pockets",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_ram",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_redsus",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_shrek",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_slamjam",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_slowride",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_smell",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_square_bandage",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_square_warning",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_stickfigure",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_student",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_studentdriver",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_texas",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_towpark",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_trinunu",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_trogdor",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_txs",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_unutrin",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_wishihad",
-                    "weight": 1
-                }
+                { "type": "item", "name": "mts:ivv.sticker_lgbt_lesbian", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_lgbt_gay", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_lgbt_bi", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_lgbt", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_lgbt_trans", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_antitheftss", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_anywhere", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_area51", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_blessthismess", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_blm", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_bttf", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_dogfood", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_dtom", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_nonotch", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_h", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_haveaniceday", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_heart", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_krustyapproved", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_istopfor", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_hut", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_honkunu", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_honktrin", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_honkmai", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_nostickfigure", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_notch", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_nyancat", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_owo", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_pockets", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_ram", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_redsus", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_shrek", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_slamjam", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_slowride", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_smell", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_square_bandage", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_square_warning", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_stickfigure", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_student", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_studentdriver", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_texas", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_towpark", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_trinunu", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_trogdor", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_txs", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_unutrin", "weight": 1 },
+                { "type": "item", "name": "mts:ivv.sticker_wishihad", "weight": 1 }
             ]
         }
     ]
