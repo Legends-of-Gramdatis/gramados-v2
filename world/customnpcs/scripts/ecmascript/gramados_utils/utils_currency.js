@@ -29,7 +29,7 @@ function convertPrice(price) {
 
 /**
  * Gets the monetary value of an item stack.
- * @param {Object} stack - The item stack.
+ * @param {IItemStack} stack - The item stack.
  * @param {IWorld} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {number} - The monetary value of the item stack.
@@ -49,7 +49,7 @@ function getItemMoney(stack, world, currencyType) {
 
 /**
  * Checks if an item stack is a form of money.
- * @param {Object} stack - The item stack.
+ * @param {IItemStack} stack - The item stack.
  * @param {IWorld} world - The world object.
  * @param {string} currencyType - The type of currency.
  * @returns {boolean} - True if the item stack is money, false otherwise.

@@ -27,7 +27,7 @@ function check_trucker_quest(player_name, event) {
 
 /**
  * Checks if the player is close enough to a destination.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player object.
  * @param {Object} destination - The destination coordinates.
  * @returns {boolean} - True if the player is close, false otherwise.
  */

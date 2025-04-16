@@ -506,7 +506,7 @@ function romanize(num) {
 
 /**
  * Sends a random message to the player from a list of messages.
- * @param {Object} player - The player to whom the message will be sent.
+ * @param {IPlayer} player - The player to whom the message will be sent.
  * @param {Array<string>} messages - The list of messages to choose from.
  * @returns {string} - The message sent to the player.
  */

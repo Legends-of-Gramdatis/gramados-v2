@@ -58,7 +58,7 @@ function chat(event) {
 
 /**
  * Handles OP shopkeeping commands.
- * @param {Object} player - The player.
+ * @param {IPlayer} player - The player.
  * @param {string} message - The chat message.
  * @param {Object} playerShops - The player shops data.
  */
@@ -117,7 +117,7 @@ function handleShopOPCommand(player, message, playerShops) {
 
 /**
  * Handles shopkeeping commands.
- * @param {Object} player - The player.
+ * @param {IPlayer} player - The player.
  * @param {string} message - The chat message.
  * @param {Object} playerShops - The player shops data.
  */

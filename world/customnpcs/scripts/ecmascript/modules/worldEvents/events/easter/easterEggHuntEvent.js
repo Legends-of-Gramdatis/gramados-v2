@@ -6,8 +6,8 @@ var NearbyEggSpawnedLines = []
 
 /**
  * Counts the number of nearby eggs around the player.
- * @param {Object} player - The player around whom eggs are counted.
- * @param {Object} world - The world object where the player is located.
+ * @param {IPlayer} player - The player around whom eggs are counted.
+ * @param {IWorld} world - The world object where the player is located.
  * @returns {number} - The number of nearby eggs.
  */
 function countNearbyEggs(player, world, radius) {
@@ -29,7 +29,7 @@ function countNearbyEggs(player, world, radius) {
  * @param {number} x - The x-coordinate for spawning the egg.
  * @param {number} y - The y-coordinate for spawning the egg.
  * @param {number} z - The z-coordinate for spawning the egg.
- * @param {Object} world - The world object where the egg will be spawned.
+ * @param {IWorld} world - The world object where the egg will be spawned.
  */
 function spawnEgg(x, y, z, world) {
     world.spawnClone(x, y, z, 2, "Easter Egg");
@@ -37,8 +37,8 @@ function spawnEgg(x, y, z, world) {
 
 /**
  * Spawns a swarm of eggs around the player.
- * @param {Object} player - The player around whom the eggs will spawn.
- * @param {Object} world - The world object where the eggs will be spawned.
+ * @param {IPlayer} player - The player around whom the eggs will spawn.
+ * @param {IWorld} world - The world object where the eggs will be spawned.
  * @param {number} count - The number of eggs to spawn.
  * @param {number} group_radius - The radius within which eggs will spawn in a group.
  * @param {boolean} display_message - Whether to display a message to the player.
@@ -106,7 +106,7 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
 
 /**
  * Spawns the Easter starter pack for the player.
- * @param {Object} player - The player receiving the starter pack.
+ * @param {IPlayer} player - The player receiving the starter pack.
  */
 function spawnEasterStarterPack(player) {
     // Load player event data

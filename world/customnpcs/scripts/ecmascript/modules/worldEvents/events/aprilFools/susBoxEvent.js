@@ -1,7 +1,7 @@
 /**
  * Spawns a swarm of "Sus Boxes" for the player and logs the event.
  * @param {Object} e - The event object.
- * @param {Object} player - The player for whom the swarm is spawned.
+ * @param {IPlayer} player - The player for whom the swarm is spawned.
  */
 function run_aprilfools_event(player) {
     var playerName = player.getName();
@@ -19,8 +19,8 @@ function run_aprilfools_event(player) {
 /**
  * Spawns a swarm of "Sus Box" entities around the player.
  * @param {Object} event - The event triggering the spawn.
- * @param {Object} player - The player around whom the entities will spawn.
- * @param {Object} world - The world object where entities will be spawned.
+ * @param {IPlayer} player - The player around whom the entities will spawn.
+ * @param {IWorld} world - The world object where entities will be spawned.
  * @param {number} count - The number of entities to spawn.
  * @param {number} distance_from_player - The maximum distance from the player to spawn entities.
  * @param {number} group_radius - The radius within which entities will spawn in a group.
@@ -88,7 +88,7 @@ function getWarningMessages() {
  * @param {number} x - The x-coordinate for spawning the entity.
  * @param {number} y - The y-coordinate for spawning the entity.
  * @param {number} z - The z-coordinate for spawning the entity.
- * @param {Object} world - The world object where the entity will be spawned.
+ * @param {IWorld} world - The world object where the entity will be spawned.
  */
 function spawn_susbox(x, y, z, world) {
     world.spawnClone(x, y, z, 2, "Sus Box");

@@ -107,7 +107,7 @@ function getActiveEventList() {
 /**
  * Initiates a timer for a player in a specific event.
  * If no timer exists for the player, it sets the current time as the start time.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player object.
  * @param {string} EventName - The name of the event.
  */
 function initiateTimer(player, EventName) {
@@ -121,7 +121,7 @@ function initiateTimer(player, EventName) {
 
 /**
  * Checks if the cooldown period for a player in a specific event is over.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player object.
  * @param {string} EventName - The name of the event.
  * @returns {boolean} - True if the cooldown is over, false otherwise.
  */
@@ -155,7 +155,7 @@ function getCooldownTime(EventName) {
 
 /**
  * Sets the cooldown time for a player in a specific event.
- * @param {Object} player - The player object.
+ * @param {IPlayer} player - The player object.
  * @param {string} EventName - The name of the event.
  * @param {number} countMinutes - The number of minutes to set as cooldown.
  */

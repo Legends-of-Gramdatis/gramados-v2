@@ -54,7 +54,7 @@ var click_cooldown = 20;
 
 /**
  * Initializes the NPC when it is spawned or loaded.
- * @aaram {Object} event - The event object containing the NPC instance.
+ * @param {Object} event - The event object containing the NPC instance.
  */
 function init(event) {
     var npc = event.npc;
@@ -66,7 +66,7 @@ function init(event) {
 
 /**
  * Handles player interaction with the NPC.
- * @aaram {Object} event - The event object containing the player instance.
+ * @param {Object} event - The event object containing the player instance.
  */
 function interact(event) {
     var npc = event.npc;
@@ -163,7 +163,10 @@ function interact(event) {
     }
 }
 
-// sets up random type
+/**
+ * Sets a random type for the NPC's behavior.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function setRandomType(npc) {
     var stored_data = npc.getStoreddata();
     var active_types = ["run", "fly", "teleport"];
@@ -173,7 +176,10 @@ function setRandomType(npc) {
     stored_data.put("active_mode", "False");
 }
 
-// Sets random size
+/**
+ * Sets a random size for the NPC and determines the number of tries required to capture it.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function setRandomSize(npc) {
     // There is a chance for the egg to be a giant egg
     var random_type = Math.floor(Math.random() * 10);
@@ -193,7 +199,10 @@ function setRandomSize(npc) {
     npc.getStoreddata().put("tries", tries);
 }
 
-// function to set egg type rarity
+/**
+ * Sets the rarity of the egg type and applies a corresponding skin.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function setEggTypeRarity(npc) {
     // Spring egg are common, chromashell are uncommon, encrypted are rare
     // 5% chance for a rare egg, 40% chance for an uncommon egg, and 55% chance for a common egg
@@ -211,7 +220,10 @@ function setEggTypeRarity(npc) {
     getRandomEasterEggSkin(npc, rarity);
 }
 
-// Regenerate the NPC by resetting its data
+/**
+ * Resets the NPC's data and regenerates its attributes.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function regenerate(npc) {
     // Reset the NPC's data
     npc.getStoreddata().remove("active_type");
@@ -237,7 +249,11 @@ function regenerate(npc) {
     npc.executeCommand("/playsound minecraft:entity.egg.throw neutral @a");
 }
 
-// Get a random easter egg skin
+/**
+ * Assigns a random skin to the NPC based on its rarity.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {string} rarity - The rarity of the egg (e.g., "spring", "chromashell", "encrypted").
+ */
 function getRandomEasterEggSkin(npc, rarity) {
     var egg_skins = [];
     var egg_skin_url = "https://legends-of-gramdatis.com/gramados_skins/easter_eggs/easter_egg_";
@@ -266,7 +282,10 @@ function getRandomEasterEggSkin(npc, rarity) {
     npc.getDisplay().setSkinUrl(skin_url);
 }
 
-// apply the correct name to teh egg
+/**
+ * Applies a name to the NPC based on its rarity.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function applyEggName(npc) {
     var rarity = npc.getStoreddata().get("rarity");
     var egg_name = "Easter Egg";
@@ -288,6 +307,10 @@ function applyEggName(npc) {
     npc.getDisplay().setName(egg_name);
 }
 
+/**
+ * Configures the NPC's AI for inactive mode.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function setupInactiveMode(npc) {
     // Switch off active type
     var ai_interface = npc.getAi();
@@ -301,7 +324,11 @@ function setupInactiveMode(npc) {
     ai_interface.setStandingType(1);
 }
 
-// Function to setup the active mode
+/**
+ * Configures the NPC's AI for active mode based on its type.
+ * @param {IPlayer} player - The player interacting with the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function setupActiveMode(player, npc) {
     // Switch on active type
     var ai_interface = npc.getAi();
@@ -344,7 +371,11 @@ function setupActiveMode(player, npc) {
     }
 }
 
-// Function to teleport the egg in a 10 block radius
+/**
+ * Teleports the NPC to a random location within a 10-block radius.
+ * @param {IPlayer} player - The player interacting with the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function teleportEgg(player, npc) {
     while (true) {
         var x = Math.floor(Math.random() * 20) - 10;
@@ -370,7 +401,14 @@ function teleportEgg(player, npc) {
     npc.executeCommand(sound_command);
 }
 
-// Function to check if the teleport location is valid
+/**
+ * Checks if a given location is valid for teleportation.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {number} x - The X-coordinate of the location.
+ * @param {number} y - The Y-coordinate of the location.
+ * @param {number} z - The Z-coordinate of the location.
+ * @returns {boolean} - True if the location is valid, false otherwise.
+ */
 function isValidTeleportLocation(npc, x, y, z) {
     var world = npc.getWorld();
     // Check if the location is within the world bounds
@@ -390,13 +428,20 @@ function isValidTeleportLocation(npc, x, y, z) {
     return true;
 }
 
-// function to save the interaction time (world tick count)
+/**
+ * Saves the current world tick count as the last interaction time for the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
 function saveInteractionTime(npc) {
     var current_time = npc.getWorld().getTotalTime();
     npc.getStoreddata().put("last_interraction", current_time);
 }
 
-// Get timer
+/**
+ * Calculates the elapsed time since the last interaction with the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @returns {number} - The elapsed time in ticks.
+ */
 function getTimer(npc) {
     var current_time = npc.getWorld().getTotalTime();
     var last_interaction_time = npc.getStoreddata().get("last_interraction");
@@ -407,7 +452,12 @@ function getTimer(npc) {
     return elapsed_time;
 }
 
-// Function to generate the item varient of the egg
+/**
+ * Generates an item variant of the egg based on the NPC's attributes.
+ * @param {IWorld} world - The world instance.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @returns {Object} - The generated egg item.
+ */
 function generateEggItem(world, npc) {
 
     // get egg varient
@@ -483,6 +533,11 @@ function generateEggItem(world, npc) {
     return eggItem;
 }
 
+/**
+ * Increments the player's and global counters for the specified egg type.
+ * @param {IPlayer} player - The player who captured the egg.
+ * @param {string} egg_type - The type of egg captured (e.g., "spring", "chromashell", "encrypted").
+ */
 function incremendEggTypeCounter(player, egg_type) {
     var event_global_data = loadPlayerEventData("Easter Egg Hunt", "Global Data");
     var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());

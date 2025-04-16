@@ -364,7 +364,7 @@ function calculateAgeableBoozeEarnings(booze_delivery_item, item_key) {
 
 /**
  * Reads the contents of a crate and returns the delivery data.
- * @param {Object} item - The crate item.
+ * @param {IItemStack} item - The crate item.
  * @param {number} stackSize - The stack size of the crate.
  * @returns {Object} The delivery data.
  */
@@ -449,7 +449,7 @@ function read_crate_delivery(item, stackSize) {
 
 /**
  * Reads the contents of a barrel and returns the delivery data.
- * @param {Object} item - The barrel item.
+ * @param {IItemStack} item - The barrel item.
  * @returns {Object} The delivery data.
  */
 function read_barrel_delivery(item) {
@@ -492,7 +492,7 @@ function read_barrel_delivery(item) {
  * Updates stock prices based on the delivery data and region.
  * @param {string} region - The region name.
  * @param {Object} delivery - The delivery data.
- * @param {Object} player - The player instance.
+ * @param {IPlayer} player - The player instance.
  */
 function updateStockPrices(region, delivery, player) {
     var currentTime = world.getTotalTime();
@@ -587,7 +587,7 @@ function updateStockPrices(region, delivery, player) {
 
 /**
  * Clears sold items from a crate after processing the delivery.
- * @param {Object} item - The crate item.
+ * @param {IItemStack} item - The crate item.
  * @param {Object} delivery - The delivery data.
  */
 function clear_crate(item, delivery) {
@@ -646,7 +646,7 @@ function clear_crate(item, delivery) {
 
 /**
  * Clears sold fluids from a barrel after processing the delivery.
- * @param {Object} item - The barrel item.
+ * @param {IItemStack} item - The barrel item.
  * @param {Object} delivery - The delivery data.
  */
 function clear_barrel(item, delivery) {
@@ -835,7 +835,7 @@ function getDomainMultiplier(domain_name) {
 /**
  * Adds delivery data to the spy log and JSON file.
  * @param {Object} data - The delivery data.
- * @param {Object} player - The player instance.
+ * @param {IPlayer} player - The player instance.
  */
 function add_spy_data(data, player) {
     var playerName = player.getName();
