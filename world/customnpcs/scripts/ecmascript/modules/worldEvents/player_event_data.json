@@ -38,7 +38,7 @@
             "egg_count": 27
         },
         "Global Data": {
-            "egg_count": 153
+            "egg_count": 245
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -59,10 +59,43 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
+                    "egg_count": 19
+                },
+                "spring": {
+                    "egg_count": 22
+                },
+                "encrypted": {
+                    "egg_count": 7
+                }
+            },
+            "egg_count": 48
+        },
+        "REDISKAPIPISKA": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "spring": {
+                    "egg_count": 1
+                },
+                "chromashell": {
                     "egg_count": 1
                 }
             },
-            "egg_count": 1
+            "egg_count": 2
+        },
+        "cowboycosmic": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "spring": {
+                    "egg_count": 29
+                },
+                "chromashell": {
+                    "egg_count": 10
+                },
+                "encrypted": {
+                    "egg_count": 4
+                }
+            },
+            "egg_count": 43
         }
     }
 }
