@@ -44,6 +44,7 @@ Events are defined in the `event_config.json` file. Example:
 
 ## Files
 
+- **`worldEventsMain.js`**: Main script for managing world events, including initialization, player interactions, and event-specific logic.
 - **`worldEventUtils.js`**: Utility functions for managing events and player data.
 - **`event_config.json`**: Stores event definitions and date ranges.
 - **`player_event_data.json`**: Tracks player-specific event data.

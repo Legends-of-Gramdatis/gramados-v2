@@ -7,6 +7,7 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
 - **Egg Spawning**: Randomly spawns collectible eggs around players.
 - **Player Interaction**: Players can collect eggs using special tools.
 - **Starter Pack**: New participants receive a starter pack with tools and treats.
+- **Dynamic Egg Types**: Eggs come in three types: Spring, Chromashell, and Encrypted, each with unique mechanics and rewards.
 
 ## How It Works
 
@@ -24,13 +25,20 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
 4. **Starter Pack**:
    - New participants receive a starter pack containing a scoop tool and chocolate.
 
-5. **Logging**:
+5. **Egg Types**:
+   - **Spring Eggs**: Common and cheerful, opened by Eggcrack Confectioners.
+   - **Chromashell Eggs**: Uncommon and magical, opened by Aetheric Botanists.
+   - **Encrypted Eggs**: Rare and mysterious, opened by Eggcryption Technicians.
+
+6. **Logging**:
    - All egg spawns and player interactions are logged for tracking purposes.
 
 ## Files
 
 - **`easterEggHuntEvent.js`**: Handles egg spawning and player interactions.
 - **`easterEggNpc.js`**: Defines the behavior of Easter Egg NPCs.
+- **`NPCeggcracker.js`**: Manages interactions with NPCs that open eggs based on their type.
+- **`GiantEggInteractionPlaceholder.js`**: Placeholder script for interactions with giant eggs.
 
 ## Configuration
 
