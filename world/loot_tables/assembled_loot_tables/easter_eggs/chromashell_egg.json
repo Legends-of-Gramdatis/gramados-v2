@@ -20,7 +20,7 @@
                 },
                 {
                     "type": "loot_table",
-                    "path": "automobile/stickers/bumper_stickers_ivl.json",
+                    "path": "automobile/stickers/bumper_stickers.json",
                     "weight": 5
                 },
                 {
