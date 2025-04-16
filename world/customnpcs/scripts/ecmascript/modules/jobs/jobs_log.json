@@ -785,5 +785,10 @@
                 "Type": "Starter"
             }
         }
+    },
+    "0a63b1af-61a7-460d-8652-8302d6806461": {
+        "Name": "REDISKAPIPISKA",
+        "JobHistory": {},
+        "ActiveJobs": {}
     }
 }
