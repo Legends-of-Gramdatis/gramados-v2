@@ -60,11 +60,6 @@
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.sticker_club",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
                     "name": "mts:ivv.sticker_dogfood",
                     "weight": 1
                 },
@@ -75,22 +70,7 @@
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.sticker_lpsa",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_lpsd",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
                     "name": "mts:ivv.sticker_nonotch",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_elon",
                     "weight": 1
                 },
                 {
@@ -110,27 +90,12 @@
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.sticker_hoa",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
                     "name": "mts:ivv.sticker_krustyapproved",
                     "weight": 1
                 },
                 {
                     "type": "item",
                     "name": "mts:ivv.sticker_istopfor",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_ifyaknow2",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_ifyaknow",
                     "weight": 1
                 },
                 {
@@ -151,11 +116,6 @@
                 {
                     "type": "item",
                     "name": "mts:ivv.sticker_honkmai",
-                    "weight": 1
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.sticker_honkdvc",
                     "weight": 1
                 },
                 {
