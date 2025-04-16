@@ -248,7 +248,7 @@ function interact(event) {
     var egg_item = npc.getStoreddata().get("egg_item");
 
     if (item_name == "minecraft:command_block") {
-        npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
+        npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
         // regenerate the NPC
         regenerate(npc);
         // tell the player that the NPC has been regenerated
@@ -279,8 +279,8 @@ function interact(event) {
                 break;
         }
         tellRandomMessage(player, egg_openning_lines);
-        npc.executeCommand("/playsound minecraft:entity.villager.yes master @a");
-        npc.executeCommand("/playsound " + openning_sound + " master @a");
+        npc.executeCommand("/playsound minecraft:entity.villager.yes neutral @a");
+        npc.executeCommand("/playsound " + openning_sound + " neutral @a");
 
         var item_lore = item.getLore()
         var eggsize = item_lore[3].split(" ")[1].trim();
@@ -298,6 +298,9 @@ function interact(event) {
         item.setStackSize(item.getStackSize() - 1);
         player.setMainhandItem(item);
 
+        var logline = player.getName() + " opened an egg with " + eggcracker_type + "!";
+        logToFile("events", logline);
+
     } else {
         // get the error lines
         // tellPlayer(player, "&eYou have given me a " + item_name + "!");
@@ -305,10 +308,10 @@ function interact(event) {
         if (error_lines.hasOwnProperty(item_name)) {
             var error_line = error_lines[item_name];
             tellRandomMessage(player, error_line);
-            npc.executeCommand("/playsound minecraft:entity.villager.no master @a");
+            npc.executeCommand("/playsound minecraft:entity.villager.no neutral @a");
         } else {
             tellRandomMessage(player, not_an_egg);
-            npc.executeCommand("/playsound minecraft:entity.villager.no master @a");
+            npc.executeCommand("/playsound minecraft:entity.villager.no neutral @a");
         }
     }
 }

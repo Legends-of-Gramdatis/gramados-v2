@@ -84,7 +84,7 @@ function interact(event) {
         }
         
         if (item_name == "minecraft:command_block") {
-            npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
+            npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
             // regenerate the NPC
             regenerate(npc);
             // tell the player that the NPC has been regenerated
@@ -102,7 +102,7 @@ function interact(event) {
             npc.getDisplay().setName("Easter Egg");
             npc.getDisplay().setSize(4);
 
-            npc.executeCommand("/playsound ivv:computer.gaming.error master @a");
+            npc.executeCommand("/playsound ivv:computer.gaming.error player @a");
 
             tellPlayer(player, "&6The NPC has been cleared!");
         } else if (getTimer(npc) > click_cooldown) {
@@ -112,12 +112,12 @@ function interact(event) {
                     switch (npc.getStoreddata().get("active_type")) {
                         case "run":
                             attempt_success = true;
-                            npc.executeCommand("/playsound variedcommodities:misc.swosh master @a");
+                            npc.executeCommand("/playsound variedcommodities:misc.swosh neutral @a");
                             break;
                         case "fly":
                             if (item_name == "forestry:scoop") {
                                 attempt_success = true;
-                                npc.executeCommand("/playsound minecraft:block.dispenser.launch master @a");
+                                npc.executeCommand("/playsound minecraft:block.dispenser.launch neutral @a");
                             } else {
                                 tellRandomMessage(player, egg_wrong_tool_lines);
                             }
@@ -140,8 +140,8 @@ function interact(event) {
                 } else {
                     // tellPlayer(player, "&6You have successfully captured the egg!");
                     tellRandomMessage(player, egg_success_lines);
-                    npc.executeCommand("/playsound minecraft:block.slime.break master @a");
-                    npc.executeCommand("/playsound immersiveengineering:birthdayparty master @a");
+                    npc.executeCommand("/playsound minecraft:block.slime.break neutral @a");
+                    npc.executeCommand("/playsound immersiveengineering:birthdayparty player @a");
                     // summon particle effect at the egg location
                     var command = "/summon area_effect_cloud " + npc.getX() + " " + (npc.getY()+0.5) + " " + npc.getZ() + " {Particle:\"witchMagic\",Radius:3f,Duration:10,Color:6521855,Motion:[0.0,1.5,0.0]}";
                     npc.executeCommand(command);
@@ -233,8 +233,8 @@ function regenerate(npc) {
     var random_rotation = Math.floor(Math.random() * 360);
     npc.setRotation(random_rotation);
 
-    // npc.executeCommand("/playsound ivv:computer.gaming.deleted master @a");
-    npc.executeCommand("/playsound minecraft:entity.egg.throw master @a");
+    // npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
+    npc.executeCommand("/playsound minecraft:entity.egg.throw neutral @a");
 }
 
 // Get a random easter egg skin
@@ -514,14 +514,11 @@ function incremendEggTypeCounter(player, egg_type) {
     global_egg_count++;
     event_player_data.egg_count = egg_count;
     event_global_data.egg_count = global_egg_count;
-    // Save the data
+    tellPlayer(player, "&e&oYou have collected &l&6" + egg_count + "&r&e&o eggs out of &l&6" + global_egg_count + "&r&e&o eggs in the world!");
     savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
     savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
-    // Save the player data
     savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
-    // Save the global data
     savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
-    // log the egg type
     var logline = player.getName() + " just caught an " + egg_type + " egg! (" + egg_count + " eggs total)";
     logToFile("events", logline);
 }
