@@ -26,34 +26,34 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 15
+                    "egg_count": 86
                 },
                 "spring": {
-                    "egg_count": 10
+                    "egg_count": 99
                 },
                 "encrypted": {
-                    "egg_count": 2
+                    "egg_count": 18
                 }
             },
-            "egg_count": 27
+            "egg_count": 203
         },
         "Global Data": {
-            "egg_count": 287
+            "egg_count": 697
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 66
+                    "egg_count": 116
                 },
                 "chromashell": {
-                    "egg_count": 48
+                    "egg_count": 90
                 },
                 "encrypted": {
-                    "egg_count": 11
+                    "egg_count": 19
                 }
             },
-            "egg_count": 125
+            "egg_count": 225
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
@@ -86,31 +86,49 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 29
+                    "egg_count": 42
                 },
                 "chromashell": {
-                    "egg_count": 10
+                    "egg_count": 22
                 },
                 "encrypted": {
-                    "egg_count": 4
+                    "egg_count": 7
                 }
             },
-            "egg_count": 43
+            "egg_count": 71
         },
         "oldbjorn": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 23
+                    "egg_count": 66
                 },
                 "chromashell": {
-                    "egg_count": 17
+                    "egg_count": 40
+                },
+                "encrypted": {
+                    "egg_count": 8
+                }
+            },
+            "egg_count": 114
+        },
+        "Kitsunami_": {
+            "has_starter_pack": true
+        },
+        "SilveradoTDS": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "spring": {
+                    "egg_count": 18
+                },
+                "chromashell": {
+                    "egg_count": 14
                 },
                 "encrypted": {
                     "egg_count": 2
                 }
             },
-            "egg_count": 42
+            "egg_count": 34
         }
     }
 }
