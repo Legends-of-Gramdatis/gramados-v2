@@ -58,6 +58,7 @@ autostart.stamp
 *.old
 
 !dynmap/markers.yml
+!world/loot_tables/automobile/*.txt
 
 # stored data
 world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json
@@ -76,6 +77,4 @@ world/customnpcs/scripts/player_scripts.json
 GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
 reports/*.md
-world/loot_tables/automobile/WIP_speciality.md
-world/loot_tables/automobile/WIP.md
 .gitignore
