@@ -26,19 +26,19 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 86
-                },
-                "spring": {
                     "egg_count": 99
                 },
+                "spring": {
+                    "egg_count": 118
+                },
                 "encrypted": {
-                    "egg_count": 18
+                    "egg_count": 23
                 }
             },
-            "egg_count": 203
+            "egg_count": 240
         },
         "Global Data": {
-            "egg_count": 697
+            "egg_count": 737
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -104,13 +104,13 @@
                     "egg_count": 66
                 },
                 "chromashell": {
-                    "egg_count": 40
+                    "egg_count": 41
                 },
                 "encrypted": {
-                    "egg_count": 8
+                    "egg_count": 10
                 }
             },
-            "egg_count": 114
+            "egg_count": 117
         },
         "Kitsunami_": {
             "has_starter_pack": true
