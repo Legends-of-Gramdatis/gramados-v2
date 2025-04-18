@@ -1,0 +1,17 @@
+[
+    {
+        "bankName": "Goldincina Bank",
+        "pos1": {
+            "x": -1915,
+            "y": 70,
+            "z": 199
+        },
+        "pos2": {
+            "x": -1883,
+            "y": 49,
+            "z": 267
+        },
+        "isVaultGateOpened": false,
+        "vauldGateOpenTime": 0
+    }
+]
