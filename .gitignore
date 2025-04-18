@@ -77,4 +77,5 @@ GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
 reports/*.md
 world/loot_tables/automobile/WIP_speciality.md
+world/loot_tables/automobile/WIP.md
 .gitignore
