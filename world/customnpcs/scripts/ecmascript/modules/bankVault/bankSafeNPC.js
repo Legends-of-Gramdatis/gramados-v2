@@ -260,7 +260,7 @@ function generateLoot(world, npc, player) {
                 }
             }
             logline += " at the cost of " + criminalityIncrease + " criminality.";
-            logToFile("economy", logline);
+            logToFile("bank_robbery", logline);
             break;
         case "Bill Rack":
             var money = rrandom_range(10000, 500000);
@@ -270,7 +270,7 @@ function generateLoot(world, npc, player) {
             }
             var logline = player.getName() + " opened a Bill Rack and received " + getAmountCoin(money);
             logline += " at the cost of " + criminalityIncrease + " criminality.";
-            logToFile("economy", logline);
+            logToFile("bank_robbery", logline);
             break;
         case "Safe":
             var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_SAFE, player);
@@ -287,7 +287,7 @@ function generateLoot(world, npc, player) {
                 }
             }
             logline += " at the cost of " + criminalityIncrease + " criminality.";
-            logToFile("economy", logline);
+            logToFile("bank_robbery", logline);
             break;
     }
 
