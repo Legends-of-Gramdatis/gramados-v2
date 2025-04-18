@@ -120,8 +120,12 @@ function checkAndApplyFillCredit(npc) {
 
 function interact(event) {
     var npc = event.npc;
-
     var player = event.player;
+    // var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
+
+    // var bankName = npc.getStoreddata().get("bank_name");
+    // var bank = banksData.find(bank => bank.bankName === bankName);
+
     var item = player.getMainhandItem();
     var item_name = item.getName();
     var fill_level = npc.getStoreddata().get("fill_level");
@@ -177,6 +181,22 @@ function interact(event) {
         }
         npc.executeCommand("/playsound chisel:block.metal.hit block @a");
     }
+
+    // Uncomment the following block to enable knockback and jail logic
+    /*
+    if (!bank || !bank.isVaultGateOpened) {
+        // Knockback the player
+        var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
+        player.setMotion(Math.random() * 2 - 1, 1, Math.random() * 2 - 1);
+        player.getStoreddata().put("knockbackCount", knockbackCount + 1);
+
+        if (knockbackCount >= 4) {
+            jailPlayer(player, "Attempted unauthorized access to the vault.");
+        }
+    } else {
+        tellPlayer(player, "&aThe vault is open. You may proceed.");
+    }
+    */
 }
 
 function regenerate(npc) {
