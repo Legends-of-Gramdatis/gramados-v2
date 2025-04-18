@@ -434,3 +434,20 @@ function pickFromArray(array) {
     var index = Math.floor(Math.random() * array.length);
     return array[index];
 }
+
+/**
+ * Checks if a position is within a zone defined by two points (pos1 and pos2).
+ * The order of pos1 and pos2 does not matter.
+ * 
+ * @param {object} pos - The position to check (e.g., {x: 0, y: 0, z: 0}).
+ * @param {object} pos1 - The first corner of the zone (e.g., {x: 0, y: 0, z: 0}).
+ * @param {object} pos2 - The opposite corner of the zone (e.g., {x: 10, y: 10, z: 10}).
+ * @returns {boolean} - True if the position is within the zone, false otherwise.
+ */
+function isWithinZone(pos, pos1, pos2) {
+    return (
+        pos.x >= Math.min(pos1.x, pos2.x) && pos.x <= Math.max(pos1.x, pos2.x) &&
+        pos.y >= Math.min(pos1.y, pos2.y) && pos.y <= Math.max(pos1.y, pos2.y) &&
+        pos.z >= Math.min(pos1.z, pos2.z) && pos.z <= Math.max(pos1.z, pos2.z)
+    );
+}
