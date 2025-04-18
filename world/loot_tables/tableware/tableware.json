@@ -1,0 +1,19 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "tableware/tableware_ceramics.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "tableware/tableware_glassware.json",
+                    "weight": 3
+                }
+            ]
+        }
+    ]
+}

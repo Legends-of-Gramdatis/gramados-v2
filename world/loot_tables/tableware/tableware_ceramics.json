@@ -1,0 +1,1359 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_glazed_blue",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_glazed_green",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_glazed_orange",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_glazed_white",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_glazed_yellow",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_black",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_blue",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_brown",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_cyan",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_gray",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_green",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_light_blue",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_lime",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_magenta",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_orange",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_pink",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_purple",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_red",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_silver",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_white",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_bare_terracotta_yellow",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_ornate_gwhite_gblue",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_ornate_tblack_tgreen",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_ornate_tblue_tyellow",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_ornate_terracotta_tblack",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_ornate_terracotta_tlightblue",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_ornate_terracotta_tlightblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_glazed_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_glazed_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_glazed_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_glazed_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_glazed_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_bare_terracotta_yellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_ornate_gwhite_gblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_ornate_tblack_tgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_ornate_tblue_tyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_ornate_terracotta_tblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_ornate_terracotta_tlightblue",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

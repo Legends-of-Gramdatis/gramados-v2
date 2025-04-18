@@ -1,0 +1,40 @@
+{
+    "pools": [
+    {
+        "name": "uranium_glass",
+        "rolls": 1,
+        "entries": [
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_saucer_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_saucer_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_saucer_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_saucer_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_saucer_resinyellow", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_platter_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_platter_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_platter_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_platter_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_platter_resinyellow", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_plate_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_plate_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_plate_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_plate_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_plate_resinyellow", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_wine_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_wine_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_wine_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_wine_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_wine_resinyellow", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_flute_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_flute_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_flute_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_flute_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_flute_resinyellow", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_resinblue", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_resingray", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_resingreen", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_resinred", "weight": 1 },
+            { "type": "item", "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_resinyellow", "weight": 1 }
+        ]
+    }
+    ]
+}

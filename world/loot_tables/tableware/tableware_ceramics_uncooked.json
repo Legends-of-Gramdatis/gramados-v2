@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_amphora_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_bowl_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_dolium_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_jar_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_krater_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_mug_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_pitchet_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_plate_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_platter_uncooked",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.ceramics_saucer_uncooked",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}

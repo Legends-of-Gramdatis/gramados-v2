@@ -1,0 +1,79 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "tableware/tableware_glassware_resin.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "tableware/tableware_glassware_uranium.json",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_cocktail_glasswhite",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_flute_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_flute_glasswhite",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_wine_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_glass_wine_glasswhite",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_plate_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_plate_glasswhite",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_platter_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_platter_glasswhite",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_saucer_glassgray",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_ceramics.glassware_saucer_glasswhite",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}
