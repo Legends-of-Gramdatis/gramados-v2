@@ -8,7 +8,7 @@ function init(event){
     item.setDurabilityValue(1);
     item.setDurabilityShow(false);
     item.setCustomName("§6§lBank Key");
-    item.setTexture(0,"variedcommodities:key2");
+    item.setTexture(1,"variedcommodities:key2");
     item.setMaxStackSize(1);
 }
 
