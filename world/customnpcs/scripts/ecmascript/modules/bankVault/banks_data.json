@@ -12,6 +12,53 @@
             "z": 267
         },
         "isVaultGateOpened": false,
-        "vauldGateOpenTime": 0
+        "vaultGateOpenTime": 2499894922,
+        "gate": {
+            "pos1": {
+                "x": -1899,
+                "y": 65,
+                "z": 233
+            },
+            "pos2": {
+                "x": -1899,
+                "y": 63,
+                "z": 232
+            },
+            "block": {
+                "id": "chisel:ironpane",
+                "data": 10
+            }
+        }
+    },
+    {
+        "bankName": "Springfield Bank",
+        "pos1": {
+            "x": 255,
+            "y": 78,
+            "z": -998
+        },
+        "pos2": {
+            "x": 248,
+            "y": 74,
+            "z": -995
+        },
+        "isVaultGateOpened": false,
+        "vaultGateOpenTime": 0,
+        "gate": {
+            "pos1": {
+                "x": 251,
+                "y": 75,
+                "z": -996
+            },
+            "pos2": {
+                "x": 251,
+                "y": 74,
+                "z": -997
+            },
+            "block": {
+                "id": "chisel:ironpane",
+                "data": 4
+            }
+        }
     }
 ]
