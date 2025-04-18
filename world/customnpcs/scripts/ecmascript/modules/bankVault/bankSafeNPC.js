@@ -8,6 +8,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js')
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
+// load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_jail.js');
 
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
