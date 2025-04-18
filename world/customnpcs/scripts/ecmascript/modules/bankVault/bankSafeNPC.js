@@ -123,9 +123,9 @@ function interact(event) {
     var npc = event.npc;
     var player = event.player;
     // var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
-
     // var bankName = npc.getStoreddata().get("bank_name");
-    // var bank = banksData.find(bank => bank.bankName === bankName);
+
+    // var bank = banksData[findJsonSubEntryIndex(banksData, "bankName", bankName)];
 
     var item = player.getMainhandItem();
     var item_name = item.getName();
@@ -163,6 +163,15 @@ function interact(event) {
     } else if (item_name == "customnpcs:npcsoulstoneempty") {
         tellPlayer(player, "&7Picked up vault with soulstone. No data changed.");
     } else if (fill_level > 0) {
+
+        // if (!bank || !bank.isVaultGateOpened) {
+        //     // Knockback the player
+        //     var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
+        //     player.setMotion(Math.random() * 2 - 1, 1, Math.random() * 2 - 1);
+        //     player.getStoreddata().put("knockbackCount", knockbackCount + 1);
+        //     tellPlayer(player, "&7You are stuck in the vault! You must open the gate again to loot the vault.");
+        // } else
+
         if (getTimer(npc) > click_cooldown) {
             npc.executeCommand("/playsound minecraft:block.shulker_box.open block @a");
             loot_safe(event);
@@ -182,22 +191,6 @@ function interact(event) {
         }
         npc.executeCommand("/playsound chisel:block.metal.hit block @a");
     }
-
-    // Uncomment the following block to enable knockback and jail logic
-    /*
-    if (!bank || !bank.isVaultGateOpened) {
-        // Knockback the player
-        var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
-        player.setMotion(Math.random() * 2 - 1, 1, Math.random() * 2 - 1);
-        player.getStoreddata().put("knockbackCount", knockbackCount + 1);
-
-        if (knockbackCount >= 4) {
-            jailPlayer(player, "Attempted unauthorized access to the vault.");
-        }
-    } else {
-        tellPlayer(player, "&aThe vault is open. You may proceed.");
-    }
-    */
 }
 
 function regenerate(npc) {
