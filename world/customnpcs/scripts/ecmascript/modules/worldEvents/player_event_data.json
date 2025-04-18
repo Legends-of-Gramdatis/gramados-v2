@@ -26,19 +26,19 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 99
+                    "egg_count": 102
                 },
                 "spring": {
-                    "egg_count": 118
+                    "egg_count": 126
                 },
                 "encrypted": {
                     "egg_count": 23
                 }
             },
-            "egg_count": 240
+            "egg_count": 251
         },
         "Global Data": {
-            "egg_count": 737
+            "egg_count": 748
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
