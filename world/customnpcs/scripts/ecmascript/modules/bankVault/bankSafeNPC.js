@@ -17,7 +17,7 @@ var safe_type = [
     "Safe"
 ]
 var click_cooldown = 60;
-var regen_cooldown = 20000;
+var regen_cooldown = 40000;
 // var regen_cooldown = 100;
 
 var tickCounter = 0;
@@ -227,6 +227,8 @@ function getTimer(npc) {
 
 function generateLoot(world, npc, player) {
     var full_loot = [];
+    var criminalityIncrease = rrandom_range(10, 20);
+    player.addFactionPoints(6, criminalityIncrease);
 
     switch (npc.getStoreddata().get("safe_type")) {
         case "Gold Rack":
@@ -243,6 +245,7 @@ function generateLoot(world, npc, player) {
                     logline += ", ";
                 }
             }
+            logline += " at the cost of " + criminalityIncrease + " criminality.";
             logToFile("economy", logline);
             break;
         case "Bill Rack":
@@ -252,6 +255,7 @@ function generateLoot(world, npc, player) {
                 player.dropItem(moneyItems[i]);
             }
             var logline = player.getName() + " opened a Bill Rack and received " + getAmountCoin(money);
+            logline += " at the cost of " + criminalityIncrease + " criminality.";
             logToFile("economy", logline);
             break;
         case "Safe":
@@ -268,9 +272,12 @@ function generateLoot(world, npc, player) {
                     logline += ", ";
                 }
             }
+            logline += " at the cost of " + criminalityIncrease + " criminality.";
             logToFile("economy", logline);
             break;
     }
+
+    tellPlayer(player, "&cYour criminality has increased by " + criminalityIncrease + " points!");
 }
 
 function updateSkinURL(npc) {
