@@ -5,10 +5,20 @@ var tollTickCounter = 0;
 var tolltype = "quarterly";
 
 var lock_toll = false;
-var lock_counter_hour = 0;
-var lock_counter_quarter = 0;
-var lock_counter_minute = 0;
+var lock_counter_hour = false;
+var lock_counter_quarter = false;
+var lock_counter_minute = false;
 var lock_counter_30seconds = 0;
+
+function init(event) {
+    lock_toll = false;
+    lock_counter_hour = false;
+    lock_counter_quarter = false;
+    lock_counter_minute = false;
+    lock_counter_30seconds = 0;
+    tollTickCounter = 0;
+    tolltype = "quarterly";
+}
 
 function initToll(type) {
     if (!lock_toll) {
@@ -58,12 +68,15 @@ function everyHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    var currentTimestamp = date.getTime();
     if (date.getMinutes() === 0 && date.getSeconds() === second_delay) {
-        if (currentTimestamp - lock_counter_hour >= 1000) {
-            lock_counter_hour = currentTimestamp;
+        if (!lock_counter_hour) {
+            lock_counter_hour = true;
             return true;
+        } else {
+            return false;
         }
+    } else {
+        lock_counter_hour = false;
     }
     return false;
 }
@@ -78,15 +91,15 @@ function everyQuarterHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    var currentTimestamp = date.getTime();
-    if (
-        (date.getMinutes() % 15 === 0) &&
-        date.getSeconds() === second_delay
-    ) {
-        if (currentTimestamp - lock_counter_quarter >= 1000) {
-            lock_counter_quarter = currentTimestamp;
+    if (date.getMinutes() % 15 === 0 && date.getSeconds() === second_delay) {
+        if (!lock_counter_quarter) {
+            lock_counter_quarter = true;
             return true;
+        } else {
+            return false;
         }
+    } else {
+        lock_counter_quarter = false;
     }
     return false;
 }
@@ -100,12 +113,15 @@ function everyMinutes(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    var currentTimestamp = date.getTime();
     if (date.getSeconds() === second_delay) {
-        if (currentTimestamp - lock_counter_minute >= 1000) {
-            lock_counter_minute = currentTimestamp;
+        if (!lock_counter_minute) {
+            lock_counter_minute = true;
             return true;
+        } else {
+            return false;
         }
+    } else {
+        lock_counter_minute = false;
     }
     return false;
 }
