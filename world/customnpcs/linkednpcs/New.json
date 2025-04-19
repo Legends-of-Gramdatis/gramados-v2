@@ -3,42 +3,57 @@
         "ReturnToStart": 1b,
         "NpcInv": [
             {
-                "Slot": 0b,
+                "Slot": 6b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
-                        "ScriptEnabled": 0b,
-                        "DurabilityValue": 1.0d,
-                        "Scripts": [
-                        ],
-                        "ItemColor": -1,
-                        "MaxStackSize": 64,
-                        "DurabilityShow": 1b,
-                        "ScriptLanguage": "ECMAScript",
-                        "DurabilityColor": -1
                     }
                 },
-                "id": "customnpcs:scripted_item",
+                "id": "flansmod:m249ammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m249ammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m249",
                 "Count": 1b,
                 "tag": {
-                    "ScriptedData": {
-                        "ScriptEnabled": 1b,
-                        "Scripts": [
-                            {
-                                "Script": "",
-                                "Console": [
-                                ],
-                                "ScriptList": [
-                                    {
-                                        "Line": "single_use/bank/open_gramados_bank_gate.js"
-                                    }
-                                ]
-                            }
-                        ],
-                        "ScriptLanguage": "ECMAScript"
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
                     },
-                    "display": {
-                        "Name": "§6§lBank Key"
-                    }
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:m249ammo",
+                            "Count": 1b,
+                            "Damage": 74s
+                        }
+                    ]
                 },
                 "Damage": 0s
             }
@@ -54,14 +69,14 @@
             "Melee": 1.0f
         },
         "BossBar": 2b,
-        "RespawnTime": 600,
+        "RespawnTime": 180,
         "NpcAngrySound": "ivv:robot.anger",
         "ReactsToFire": 0b,
         "IgnoreCobweb": 0b,
         "PositionOffsetZ": 5.0f,
         "PositionOffsetY": 5.0f,
         "PositionOffsetX": 5.0f,
-        "LootMode": 1,
+        "LootMode": 0,
         "TransformHasAI": 0b,
         "AttackStrenght": 5,
         "IsStatue": 0b,
@@ -71,20 +86,20 @@
             ]
         },
         "DefendFaction": 1b,
-        "FireIndirect": 0,
+        "FireIndirect": 2,
         "NpcVisible": 0,
         "NpcScenes": {
             "Scenes": [
             ]
         },
-        "HitSound": "minecraft:entity.arrow.hit",
+        "HitSound": "ivv:gun.bullet.hit",
         "FindShelter": 2,
         "TacticalVariant": 0,
         "Orientation": 270,
         "KnockBack": 4,
         "TransformHasJob": 0b,
         "BurnInSun": 0b,
-        "StandingState": 1,
+        "StandingState": 0,
         "AttackInvisible": 1b,
         "NpcInteractNPCLines": {
             "Lines": [
@@ -93,7 +108,7 @@
         "WalkingRange": 10,
         "ShotCount": 1,
         "pDur": 5,
-        "StartPosNew": [I;-1898,62,230],
+        "StartPosNew": [I;-2851,86,1046],
         "AttackRange": 2,
         "NpcKillLines": {
             "Lines": [
@@ -101,22 +116,22 @@
         },
         "PotionImmune": 0b,
         "AvoidsSun": 0b,
-        "Texture": "customnpcs:textures/entity/machines/robots/robot_gramados_police_on_face.png",
+        "Texture": "customnpcs:textures/entity/humanmale/steve.png",
         "NpcJob": 0,
-        "BurstCount": 1,
+        "BurstCount": 4,
         "NpcAttackLines": {
             "Lines": [
             ]
         },
         "pSpeed": 10,
         "pArea": 0,
-        "pImpact": 0,
+        "pImpact": 1,
         "MoveState": 0,
-        "pRender3D": 1b,
+        "pRender3D": 0b,
         "CombatRegen": 0,
         "MarkovGender": 0,
         "pEffect": 0,
-        "DistanceToMelee": 0,
+        "DistanceToMelee": 2,
         "NpcStepSound": "",
         "FireRate": 5,
         "pEffAmp": 0,
@@ -126,14 +141,14 @@
             ]
         },
         "DisablePitch": 0b,
-        "pPhysics": 1b,
+        "pPhysics": 0b,
         "TransformHasInv": 0b,
         "NpcInteractLines": {
             "Lines": [
             ]
         },
         "pSpin": 0b,
-        "NpcHurtSound": "immersiveengineering:metalpresssmash",
+        "NpcHurtSound": "cfm:bounce",
         "pTrail": 0,
         "CreatureType": 0,
         "TransformHasDisplay": 0b,
@@ -142,22 +157,77 @@
         "Name": "Bank Gate Guard",
         "SkinColor": 16777215,
         "Weapons": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:m249",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:m249ammo",
+                            "Count": 1b,
+                            "Damage": 74s
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:bullet",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:tower_shield",
+                "Count": 1b,
+                "Damage": 0s
+            }
         ],
         "NpcIdleSound": "",
         "NPCDialogOptions": [
         ],
-        "AggroRange": 16,
+        "AggroRange": 24,
         "DirectLOS": 0b,
         "HealthRegen": 1,
-        "minDelay": 20,
+        "minDelay": 5,
         "DoorInteract": 2,
-        "MoveSpeed": 4,
+        "MoveSpeed": 3,
         "TransformEditingModus": 0b,
-        "UsingSkinUrl": 0b,
-        "SkinUrl": "",
+        "UsingSkinUrl": 2b,
+        "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_Steve_Security_1.png",
         "CanSwim": 1b,
-        "GroundSound": "minecraft:block.stone.break",
-        "MaxHealth": 150,
+        "GroundSound": "flansmod:bullethit",
+        "MaxHealth": 350,
         "HideBodyWhenKilled": 1b,
         "AttackSpeed": 20,
         "PotionDuration": 5,
@@ -187,19 +257,19 @@
                 "Slot": 5
             },
             {
-                "Integer": 100,
+                "Integer": 40,
                 "Slot": 6
             },
             {
-                "Integer": 100,
+                "Integer": 20,
                 "Slot": 7
             },
             {
-                "Integer": 100,
+                "Integer": 1,
                 "Slot": 8
             }
         ],
-        "maxDelay": 40,
+        "maxDelay": 60,
         "Role": 0,
         "FactionPoints": {
             "DecreaseFaction1Points": 0b,
@@ -209,7 +279,7 @@
             "OptionFaction1Points": 100,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 5,
         "AimWhileShooting": 0b,
         "AttackOtherFactions": 1b,
         "CanDrown": 1b,
@@ -287,14 +357,54 @@
         "TransformHasAdvanced": 0b,
         "TransformHasStats": 0b,
         "MovementType": 0,
-        "FiringSound": "minecraft:entity.arrow.shoot",
-        "Accuracy": 60,
+        "FiringSound": "flansmod:m249shoot",
+        "Accuracy": 40,
         "MinExp": 0,
         "Armor": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:exoskeletonhelmet",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:juggernautbodybrown",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:juggernautpantsbrown",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:nanorum_boots",
+                "Count": 1b,
+                "Damage": 0s
+            }
         ],
         "CloakTexture": "",
         "GlowTexture": "",
-        "MaxFiringRange": 15,
+        "MaxFiringRange": 24,
         "pXlr8": 0b,
         "MarkovGeneratorId": 2,
         "pStick": 0b,
@@ -302,7 +412,7 @@
         "NpcDeathSound": "ivv:robot.hurt",
         "FactionID": 2,
         "Title": "",
-        "ShowName": 1,
+        "ShowName": 2,
         "npcInteracting": 1b,
         "AvoidsWater": 0b,
         "NoLivingAnimation": 0b,
