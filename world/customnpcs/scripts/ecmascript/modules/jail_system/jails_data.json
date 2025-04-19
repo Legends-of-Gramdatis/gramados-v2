@@ -1,0 +1,10 @@
+{
+    "jails": [
+        {
+            "region": "Gramados",
+            "regionname": ["jail_cell_1"],
+            "capacity": 1,
+            "jail_times": []
+        }
+    ]
+}
