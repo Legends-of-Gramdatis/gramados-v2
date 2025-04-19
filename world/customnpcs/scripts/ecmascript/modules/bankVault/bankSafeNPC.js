@@ -28,6 +28,8 @@ function init(event) {
     var npcPos = npc.getPos();
     var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
 
+    var bankFound = false;
+
     for (var i = 0; i < banksData.length; i++) {
         var bank = banksData[i];
         var pos1 = bank.pos1;
@@ -35,8 +37,15 @@ function init(event) {
 
         if (isWithinZone(npcPos, pos1, pos2)) { // Use the utility function
             npc.getStoreddata().put("bank_name", bank.bankName);
+            bankFound = true;
             break;
         }
+    }
+
+    if (!bankFound) {
+        // Ensure no random bank is created
+        npc.getStoreddata().clear();
+        return;
     }
 
     if (!npc.getStoreddata().has("safe_type") || !npc.getStoreddata().has("fill_level")) {
@@ -122,13 +131,29 @@ function checkAndApplyFillCredit(npc) {
 function interact(event) {
     var npc = event.npc;
     var player = event.player;
-    // var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
-    // var bankName = npc.getStoreddata().get("bank_name");
-
-    // var bank = banksData[findJsonSubEntryIndex(banksData, "bankName", bankName)];
+    var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
+    var bankName = npc.getStoreddata().get("bank_name");
 
     var item = player.getMainhandItem();
     var item_name = item.getName();
+
+    if (item_name === "minecraft:barrier") {
+        // Clear stored data and unlink NPC from the bank
+        npc.getStoreddata().clear();
+        tellPlayer(player, "&cThis vault has been unlinked from any bank.");
+        npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
+        return;
+    }
+
+    if (!bankName) {
+        // Default error message if NPC is not in any secured zone
+        tellPlayer(player, "&cThis vault is not linked to any bank. Please contact an administrator.");
+        npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
+        return;
+    }
+
+    var bank = banksData[findJsonSubEntryIndex(banksData, "bankName", bankName)];
+
     var fill_level = npc.getStoreddata().get("fill_level");
     var credit_refill = npc.getStoreddata().get("credit_refill") || 0;
     var bank_name = npc.getStoreddata().get("bank_name") || "Unknown Bank";
@@ -162,34 +187,33 @@ function interact(event) {
         tellPlayer(player, "&7Vault type: &e" + vault_type);
     } else if (item_name == "customnpcs:npcsoulstoneempty") {
         tellPlayer(player, "&7Picked up vault with soulstone. No data changed.");
-    } else if (fill_level > 0) {
-
-        // if (!bank || !bank.isVaultGateOpened) {
-        //     // Knockback the player
-        //     var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
-        //     player.setMotion(Math.random() * 2 - 1, 1, Math.random() * 2 - 1);
-        //     player.getStoreddata().put("knockbackCount", knockbackCount + 1);
-        //     tellPlayer(player, "&7You are stuck in the vault! You must open the gate again to loot the vault.");
-        // } else
-
-        if (getTimer(npc) > click_cooldown) {
+    } else {
+        if (!bank || !bank.isVaultGateOpened) {
+            // Knockback the player
+            var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
+            player.setMotionX(Math.random() * 2 - 1);
+            player.setMotionY(1);
+            player.setMotionZ(Math.random() * 2 - 1);
+            player.getStoreddata().put("knockbackCount", knockbackCount + 1);
+            npc.executeCommand("/playsound ivv:gun.explode.techno block @a");
+            tellPlayer(player, "&7You are stuck in the vault! You must open the gate again to loot the vault.");
+            player.damage(5);
+        } else if (fill_level > 0 && getTimer(npc) > click_cooldown) {
             npc.executeCommand("/playsound minecraft:block.shulker_box.open block @a");
             loot_safe(event);
-        } else {
-            npc.executeCommand("/playsound minecraft:block.anvil.hit block @a");
+        } else if (fill_level === 0) {
+            // Display tips and tricks only when the vault is empty and the gate is open
+            if (rrandom_range(0, 50) == 1) {
+                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a clock to check the time).");
+            } else if (rrandom_range(0, 100) == 1) {
+                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a crowbar to check the vault status).");
+            } else if (rrandom_range(0, 150) == 1) {
+                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a phone to check the bank ownership and vault type).");
+            } else {
+                tellPlayer(player, "&7This vault is empty! Come back later.");
+            }
+            npc.executeCommand("/playsound chisel:block.metal.hit block @a");
         }
-    } else {
-        // Display tips with varying rarity
-        if (item_name !== "minecraft:clock" && rrandom_range(0, 50) == 1) {
-            tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a clock to check the time).");
-        } else if (item_name !== "variedcommodities:crowbar" && rrandom_range(0, 100) == 1) {
-            tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a crowbar to check the vault status).");
-        } else if (item_name !== "variedcommodities:phone" && rrandom_range(0, 150) == 1) {
-            tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a phone to check the bank ownership and vault type).");
-        } else {
-            tellPlayer(player, "&7This vault is empty! Come back later.");
-        }
-        npc.executeCommand("/playsound chisel:block.metal.hit block @a");
     }
 }
 
@@ -248,7 +272,7 @@ function generateLoot(world, npc, player) {
         case "Gold Rack":
             var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_GOLDRACK, player);
             for (var i = 0; i < full_loot.length; i++) {
-                player.giveItem(
+                player.dropItem(
                     generateItemStackFromLootEntry(full_loot[i], world, player)
                 );
             }
@@ -275,7 +299,7 @@ function generateLoot(world, npc, player) {
         case "Safe":
             var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_SAFE, player);
             for (var i = 0; i < full_loot.length; i++) {
-                player.giveItem(
+                player.dropItem(
                     generateItemStackFromLootEntry(full_loot[i], world, player)
                 );
             }
