@@ -38,13 +38,13 @@
             "egg_count": 281
         },
         "Global Data": {
-            "egg_count": 898
+            "egg_count": 910
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 153
+                    "egg_count": 154
                 },
                 "chromashell": {
                     "egg_count": 120
@@ -53,7 +53,7 @@
                     "egg_count": 27
                 }
             },
-            "egg_count": 300
+            "egg_count": 301
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
@@ -101,19 +101,25 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 67
+                    "egg_count": 73
                 },
                 "chromashell": {
-                    "egg_count": 48
+                    "egg_count": 51
                 },
                 "encrypted": {
-                    "egg_count": 12
+                    "egg_count": 13
                 }
             },
-            "egg_count": 127
+            "egg_count": 137
         },
         "Kitsunami_": {
-            "has_starter_pack": true
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         },
         "SilveradoTDS": {
             "has_starter_pack": true,
