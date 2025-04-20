@@ -337,11 +337,16 @@ function spawnBell(npc) {
     var z = spawnPos.getZ() + (Math.random() * 20 - 10);
 
     // Summon the bell as a falling block
-    var command = "/summon falling_block " + x + " " + y + " " + z + " {BlockState:{Name:\"<chisel:gold\"},Time:1,DropItem:0}";
+    var command = "/summon falling_block " + x + " " + y + " " + z + " {BlockState:{Name:\"chisel:gold\"},Time:1,DropItem:0}";
     npc.executeCommand(command);
 
-    // Apply effects to players near the bell's landing position
-    npc.getTimers().start(8, 10, false, { x: x, y: y, z: z }); // Timer to check for player contact
+    // Store the bell's position in the NPC's stored data for later use
+    npc.getStoreddata().put("bellPosX", x);
+    npc.getStoreddata().put("bellPosY", y);
+    npc.getStoreddata().put("bellPosZ", z);
+
+    // Start a timer to check for player contact
+    npc.getTimers().start(8, 10, false); // Timer to check for player contact
 }
 
 /**
@@ -567,14 +572,19 @@ function timer(event) {
 
     if (event.id === 8) { // Check for player contact with the bell
         var world = npc.getWorld();
-        var bellPos = event.data;
-        var nearbyPlayers = world.getNearbyEntities(API.getIPos(bellPos.x, bellPos.y, bellPos.z), 3, 1); // Radius 3, type 1 = players
+        var bellPosX = npc.getStoreddata().get("bellPosX");
+        var bellPosY = npc.getStoreddata().get("bellPosY");
+        var bellPosZ = npc.getStoreddata().get("bellPosZ");
 
-        for (var i = 0; i < nearbyPlayers.length; i++) {
-            var player = nearbyPlayers[i];
-            player.addPotionEffect(2, 100, 4, true); // Slowness IV for 5 seconds
-            player.addPotionEffect(18, 100, 1, true); // Weakness II for 5 seconds
-            npc.executeCommand("/playsound minecraft:block.bell.use master @a " + bellPos.x + " " + bellPos.y + " " + bellPos.z + " 1 1");
+        if (bellPosX !== null && bellPosY !== null && bellPosZ !== null) {
+            var nearbyPlayers = world.getNearbyEntities(API.getIPos(bellPosX, bellPosY, bellPosZ), 3, 1); // Radius 3, type 1 = players
+
+            for (var i = 0; i < nearbyPlayers.length; i++) {
+                var player = nearbyPlayers[i];
+                player.addPotionEffect(2, 100, 4, true); // Slowness IV for 5 seconds
+                player.addPotionEffect(18, 100, 1, true); // Weakness II for 5 seconds
+                npc.executeCommand("/playsound minecraft:block.bell.use master @a " + bellPosX + " " + bellPosY + " " + bellPosZ + " 1 1");
+            }
         }
     }
 }
