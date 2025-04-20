@@ -1,0 +1,63 @@
+{
+    "isEggMode": true,
+    "running_recipes": [],
+    "discovered_recipes": [],
+    "all_recipes": [
+        {
+            "name": "Zap Gamble",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 3,
+            "description": "The statuette sparks-this could go either way!",
+            "duration": 120
+        },
+        {
+            "name": "Chocolate Rain",
+            "spring_yolktype": 4,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 0,
+            "description": "Sweet rain pours from the sky, warming your soul and stomach.",
+            "duration": 120
+        },
+        {
+            "name": "Bunny Bounce",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 5,
+            "encrypted_yolktype": 0,
+            "description": "You feel as light as a bunny-jump safely, traveler!",
+            "duration": 120
+        },
+        {
+            "name": "Minor Calm Offer",
+            "spring_yolktype": 6,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 0,
+            "description": "A healing spirit flickers into the field... use this moment wisely.",
+            "duration": 120
+        },
+        {
+            "name": "Fortune Flash",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 8,
+            "encrypted_yolktype": 0,
+            "description": "A flicker of luck stirs in your favor!",
+            "duration": 120
+        },
+        {
+            "name": "Phase Trigger",
+            "spring_yolktype": 3,
+            "chromashell_yolktype": 3,
+            "encrypted_yolktype": 3,
+            "description": "The statuette glows bright-the rabbit will rest now.",
+            "duration": 120
+        },
+        {
+            "name": "Healing Spirits",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 10,
+            "encrypted_yolktype": 0,
+            "description": "Gentle warmth spreads through the field... healing begins.",
+            "duration": 120
+        }
+    ]
+}
