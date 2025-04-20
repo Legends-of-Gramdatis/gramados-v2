@@ -1,0 +1,526 @@
+{
+    "ReturnToStart": 0b,
+    "NpcInv": [
+        {
+            "Slot": 0b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "minecraft:gunpowder",
+            "Count": 2b,
+            "Damage": 0s
+        }
+    ],
+    "BossColor": 0,
+    "PotionEffect": 0,
+    "Size": 10,
+    "stopAndInteract": 1b,
+    "Resistances": {
+        "Arrow": 2.0f,
+        "Explosion": 2.0f,
+        "Knockback": 2.0f,
+        "Melee": 2.0f
+    },
+    "BossBar": 0b,
+    "RespawnTime": 0,
+    "NpcAngrySound": "",
+    "ReactsToFire": 0b,
+    "IgnoreCobweb": 0b,
+    "PositionOffsetZ": 5.0f,
+    "PositionOffsetY": 5.0f,
+    "PositionOffsetX": 5.0f,
+    "LootMode": 0,
+    "TransformHasAI": 0b,
+    "AttackStrenght": 5,
+    "PersistenceRequired": 0b,
+    "id": "customnpcs:customnpc",
+    "IsStatue": 0b,
+    "MovingPatern": 0,
+    "NpcLines": {
+        "Lines": [
+        ]
+    },
+    "DefendFaction": 0b,
+    "FireIndirect": 0,
+    "NpcVisible": 0,
+    "LinkedNpcName": "",
+    "NpcScenes": {
+        "Scenes": [
+        ]
+    },
+    "HitSound": "minecraft:entity.arrow.hit",
+    "FindShelter": 2,
+    "Air": 300s,
+    "TacticalVariant": 0,
+    "Orientation": 0,
+    "ScriptLanguage": "ECMAScript",
+    "HandItems": [
+        {
+        },
+        {
+        }
+    ],
+    "KnockBack": 0,
+    "TransformHasJob": 0b,
+    "ArmorDropChances": [
+        0.085f,
+        0.085f,
+        0.085f,
+        0.085f
+    ],
+    "BurnInSun": 0b,
+    "StandingState": 1,
+    "AttackInvisible": 0b,
+    "NpcInteractNPCLines": {
+        "Lines": [
+        ]
+    },
+    "HurtTime": 0s,
+    "WalkingRange": 10,
+    "ShotCount": 1,
+    "pDur": 5,
+    "AttackRange": 2,
+    "NpcKillLines": {
+        "Lines": [
+        ]
+    },
+    "PotionImmune": 0b,
+    "AvoidsSun": 0b,
+    "Texture": "minecraft:textures/entity/slime/slime.png",
+    "NpcJob": 0,
+    "BurstCount": 1,
+    "NpcAttackLines": {
+        "Lines": [
+        ]
+    },
+    "pSpeed": 10,
+    "pArea": 0,
+    "DeathTime": 0s,
+    "pImpact": 0,
+    "MoveState": 0,
+    "pRender3D": 1b,
+    "Motion": [
+        0.0d,
+        -0.0784000015258789d,
+        0.0d
+    ],
+    "CombatRegen": 0,
+    "NpcsTimers": [
+    ],
+    "MarkovGender": 0,
+    "pEffect": 0,
+    "DistanceToMelee": 0,
+    "NpcStepSound": "",
+    "FireRate": 5,
+    "LeftHanded": 0b,
+    "pEffAmp": 0,
+    "OnGround": 1b,
+    "Dimension": 0,
+    "ImmuneToFire": 0b,
+    "NpcKilledLines": {
+        "Lines": [
+        ]
+    },
+    "Fire": -1s,
+    "ArmorItems": [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        }
+    ],
+    "DisablePitch": 0b,
+    "pPhysics": 1b,
+    "TransformHasInv": 0b,
+    "NpcInteractLines": {
+        "Lines": [
+        ]
+    },
+    "HurtByTimestamp": 11495,
+    "pSpin": 0b,
+    "NpcHurtSound": "minecraft:entity.creeper.hurt",
+    "pTrail": 0,
+    "CreatureType": 0,
+    "Attributes": [
+        {
+            "Base": 100.0d,
+            "Name": "generic.maxHealth"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.knockbackResistance"
+        },
+        {
+            "Base": 0.05000000074505806d,
+            "Name": "generic.movementSpeed"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armor"
+        },
+        {
+            "Base": 0.0d,
+            "Name": "generic.armorToughness"
+        },
+        {
+            "Base": 1.0d,
+            "Name": "forge.swimSpeed"
+        },
+        {
+            "Base": 32.0d,
+            "Name": "generic.followRange"
+        },
+        {
+            "Base": 5.0d,
+            "Name": "generic.attackDamage"
+        },
+        {
+            "Base": 0.10000000149011612d,
+            "Name": "generic.flyingSpeed"
+        }
+    ],
+    "Invulnerable": 0b,
+    "TransformHasDisplay": 0b,
+    "NoFallDamage": 0b,
+    "AbsorptionAmount": 0.0f,
+    "TransformHasRole": 0b,
+    "Name": "Boomshell",
+    "FallDistance": 0.0f,
+    "SkinColor": 16777215,
+    "NpcIdleSound": "minecraft:entity.creeper.primed",
+    "Weapons": [
+    ],
+    "NPCDialogOptions": [
+    ],
+    "AggroRange": 1,
+    "DirectLOS": 1b,
+    "HealthRegen": 1,
+    "ForgeCaps": {
+        "fvtm:passenger": {
+        }
+    },
+    "HandDropChances": [
+        0.085f,
+        0.085f
+    ],
+    "NpcModelData": {
+        "LegsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.012000002f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "BodyConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "Eyes": {
+            "Pattern": 0b,
+            "Glint": 1b,
+            "Type": -1b,
+            "PositionY": 1,
+            "SkinColor": 11830381,
+            "PlayerTexture": 0b,
+            "Color": 3361970,
+            "BrowColor": 5982516,
+            "BrowThickness": 4
+        },
+        "EntityClass": "net.minecraft.entity.monster.EntitySlime",
+        "LegParts": {
+            "Pattern": 0b,
+            "Type": 0b,
+            "PlayerTexture": 0b,
+            "Color": 16777215
+        },
+        "Parts": [
+        ],
+        "ArmsConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": -0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        },
+        "ExtraData": {
+        },
+        "HeadConfig": {
+            "NotShared": 0b,
+            "ScaleZ": 1.0f,
+            "TransZ": 0.0f,
+            "TransY": 0.0f,
+            "TransX": 0.0f,
+            "ScaleY": 1.0f,
+            "ScaleX": 1.0f
+        }
+    },
+    "minDelay": 20,
+    "DoorInteract": 2,
+    "MoveSpeed": 1,
+    "TransformEditingModus": 0b,
+    "UsingSkinUrl": 2b,
+    "Leashed": 0b,
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/easter_eggs/easter_egg_11.png",
+    "CanSwim": 1b,
+    "GroundSound": "minecraft:block.stone.break",
+    "MaxHealth": 100,
+    "HideBodyWhenKilled": 0b,
+    "AttackSpeed": 20,
+    "PotionDuration": 5,
+    "maxDelay": 40,
+    "ScriptEnabled": 1b,
+    "Role": 0,
+    "DropChance": [
+        {
+            "Integer": 100,
+            "Slot": 0
+        },
+        {
+            "Integer": 100,
+            "Slot": 1
+        },
+        {
+            "Integer": 100,
+            "Slot": 2
+        },
+        {
+            "Integer": 100,
+            "Slot": 3
+        },
+        {
+            "Integer": 100,
+            "Slot": 4
+        },
+        {
+            "Integer": 100,
+            "Slot": 5
+        },
+        {
+            "Integer": 100,
+            "Slot": 6
+        },
+        {
+            "Integer": 100,
+            "Slot": 7
+        },
+        {
+            "Integer": 100,
+            "Slot": 8
+        }
+    ],
+    "FactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "pDamage": 4,
+    "KilledTime": 0L,
+    "AimWhileShooting": 0b,
+    "CanPickUpLoot": 0b,
+    "AttackOtherFactions": 0b,
+    "CanDrown": 1b,
+    "pSize": 5,
+    "CanSprint": 0b,
+    "CanLeap": 0b,
+    "TransformIsActive": 0b,
+    "ForgeData": {
+        "cnpcmarkdata": {
+            "marks": [
+            ]
+        },
+        "CNPCStoredData": {
+        }
+    },
+    "MovingState": 0,
+    "MovingPos": 0,
+    "PotionAmp": 0,
+    "OnAttack": 0,
+    "TacticalRadius": 8,
+    "FallFlying": 0b,
+    "MaxExp": 0,
+    "OrderedLines": 0b,
+    "PortalCooldown": 0,
+    "pGlows": 0b,
+    "TransformHasAdvanced": 0b,
+    "TransformHasStats": 0b,
+    "MovementType": 0,
+    "FiringSound": "minecraft:entity.arrow.shoot",
+    "ModRev": 18,
+    "Accuracy": 60,
+    "MinExp": 0,
+    "Armor": [
+    ],
+    "CloakTexture": "",
+    "GlowTexture": "",
+    "MaxFiringRange": 15,
+    "pXlr8": 0b,
+    "MarkovGeneratorId": 5,
+    "Scripts": [
+        {
+            "Script": "load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+
+var EXPLOSION_RADIUS = 5;
+var MAX_DAMAGE = 20; // Maximum damage dealt at the center of the explosion
+var KNOCKBACK_STRENGTH = 2;
+var DESPAWN_TIMER_ID = 1;
+var EVENT_DATA_JSON = \"world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterBossFight.json\";
+
+/**
+ * Initializes the BoomShell NPC.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
+function init(event) {
+    var npc = event.npc;
+    npc.getStoreddata().put(\"isPrimed\", false);
+}
+
+/**
+ * Handles the NPC's tick updates.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
+function tick(event) {
+    var npc = event.npc;
+    var world = npc.getWorld();
+    var bossFightData = loadJson(EVENT_DATA_JSON);
+
+    // Check if the boss is no longer attacking
+    if (!bossFightData.isAttacking) {
+        explode(npc);
+        return;
+    }
+
+    // Play flame particles above the BoomShell
+    if (rrandom_range(0, 3) == 1) {
+        npc.executeCommand(\"/particle flame \" + npc.getX() + \" \" + (npc.getY() + 1) + \" \" + npc.getZ() + \" 0.2 0.2 0.2 0.01 5\");
+    }
+
+    var nearbyEntities = world.getNearbyEntities(npc.getPos(), EXPLOSION_RADIUS, 1); // 1 = players
+
+    for (var i = 0; i < nearbyEntities.length; i++) {
+        var player = nearbyEntities[i];
+
+        // Skip priming and explosion if the player is in creative mode and holding specific items
+        if (player.getGamemode() === 1) { // 1 = Creative mode
+            var item = player.getMainhandItem();
+            if (item.getName() === \"customnpcs:npcsoulstoneempty\" || item.getName() === \"customnpcs:npcmobcloner\" || item.getName() === \"customnpcs:npcscripter\") {
+                return;
+            }
+        }
+    }
+
+    if (nearbyEntities.length > 0 && !npc.getStoreddata().get(\"isPrimed\")) {
+        // Prime the BoomShell
+        npc.getStoreddata().put(\"isPrimed\", true);
+        npc.executeCommand(\"/playsound minecraft:entity.tnt.primed master @a ~ ~ ~ 1 1\");
+        npc.executeCommand(\"/particle flame \" + npc.getX() + \" \" + (npc.getY() + 1) + \" \" + npc.getZ() + \" 0.2 0.2 0.2 0.1 5\");
+        npc.executeCommand(\"/particle smoke \" + npc.getX() + \" \" + (npc.getY() + 1) + \" \" + npc.getZ() + \" 0.2 0.2 0.2 0.1 5\");
+
+        // Check if the timer is already running before starting it
+        if (!npc.getTimers().has(DESPAWN_TIMER_ID)) {
+            npc.getTimers().start(DESPAWN_TIMER_ID, 40, false); // 2 seconds before explosion
+        }
+    }
+}
+
+/**
+ * Handles the NPC's timer events.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
+function timer(event) {
+    var npc = event.npc;
+
+    if (event.id === DESPAWN_TIMER_ID) {
+        explode(npc);
+    }
+}
+
+/**
+ * Handles the NPC's death or forced despawn.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
+function died(event) {
+    var npc = event.npc;
+    explode(npc);
+}
+
+/**
+ * Triggers the explosion effect.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
+function explode(npc) {
+    var world = npc.getWorld();
+    var npcPos = npc.getPos();
+    var nearbyEntities = world.getNearbyEntities(npcPos, EXPLOSION_RADIUS, 1); // 1 = players
+
+    // Play explosion sound and particles
+    npc.executeCommand(\"/playsound minecraft:entity.generic.explode master @a ~ ~ ~ 1 1\");
+    npc.executeCommand(\"/particle largeexplode \" + npc.getX() + \" \" + npc.getY() + \" \" + npc.getZ() + \" 1 1 1 0.3 2 force\");
+    npc.executeCommand(\"/particle hugeexplosion \" + npc.getX() + \" \" + npc.getY() + \" \" + npc.getZ() + \" 0.5 0.5 0.5 0.2 1 force\");
+    npc.executeCommand(\"/particle flame \" + npc.getX() + \" \" + npc.getY() + \" \" + npc.getZ() + \" 1 1 1 1 50 force\");
+    npc.executeCommand(\"/particle smoke \" + npc.getX() + \" \" + npc.getY() + \" \" + npc.getZ() + \" 1 1 1 0.5 50 force\");
+
+    // Apply damage and knockback to nearby players
+    for (var i = 0; i < nearbyEntities.length; i++) {
+        var player = nearbyEntities[i];
+        var distance = npcPos.distanceTo(player.getPos());
+        if (distance <= EXPLOSION_RADIUS) {
+            var damage = Math.max(0, MAX_DAMAGE * (1 - distance / EXPLOSION_RADIUS));
+            player.damage(damage);
+
+            // Apply knockback
+            var dx = player.getX() - npc.getX();
+            var dz = player.getZ() - npc.getZ();
+            var knockbackFactor = KNOCKBACK_STRENGTH / distance;
+            player.setMotionX(dx * knockbackFactor);
+            player.setMotionY(0.5); // Upward motion
+            player.setMotionZ(dz * knockbackFactor);
+        }
+    }
+
+    // Despawn the NPC
+    npc.despawn();
+}
+",
+            "Console": [
+            ],
+            "ScriptList": [
+            ]
+        }
+    ],
+    "Health": 100.0f,
+    "pStick": 0b,
+    "MovingPause": 1b,
+    "NpcDeathSound": "minecraft:entity.creeper.death",
+    "FactionID": 12,
+    "Title": "",
+    "TotalTicksAlive": 17399L,
+    "Rotation": [
+        0.0f,
+        0.0f
+    ],
+    "ShowName": 1,
+    "npcInteracting": 1b,
+    "UpdateBlocked": 0b,
+    "AvoidsWater": 0b,
+    "NoLivingAnimation": 0b,
+    "SpawnCycle": 3
+}
