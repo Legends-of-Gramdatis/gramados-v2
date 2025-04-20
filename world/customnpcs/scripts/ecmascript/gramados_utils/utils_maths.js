@@ -451,3 +451,23 @@ function isWithinZone(pos, pos1, pos2) {
         pos.z >= Math.min(pos1.z, pos2.z) && pos.z <= Math.max(pos1.z, pos2.z)
     );
 }
+
+function orderPositions(x1, y1, z1, x2, y2, z2) {
+    return {
+        x1: Math.min(x1, x2),
+        y1: Math.min(y1, y2),
+        z1: Math.min(z1, z2),
+        x2: Math.max(x1, x2),
+        y2: Math.max(y1, y2),
+        z2: Math.max(z1, z2)
+    };
+}
+
+// function to convert an ipos to a pos
+function iposToPos(ipos) {
+    return {
+        x: Math.floor(ipos.getX()),
+        y: Math.floor(ipos.getY()),
+        z: Math.floor(ipos.getZ())
+    };
+}
