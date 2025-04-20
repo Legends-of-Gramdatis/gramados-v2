@@ -1,5 +1,8 @@
 {
-    "isEggMode": true,
+    "isEventOver": true,
+    "isEggMode": false,
+    "isAttacking": true,
+    "BunnyStage": 1,
     "running_recipes": [],
     "discovered_recipes": [],
     "all_recipes": [
@@ -7,24 +10,24 @@
             "name": "Zap Gamble",
             "spring_yolktype": 0,
             "chromashell_yolktype": 0,
-            "encrypted_yolktype": 3,
+            "encrypted_yolktype": 4,
             "description": "The statuette sparks-this could go either way!",
-            "duration": 120
+            "duration": 1200
         },
         {
             "name": "Chocolate Rain",
-            "spring_yolktype": 4,
+            "spring_yolktype": 10,
             "chromashell_yolktype": 0,
             "encrypted_yolktype": 0,
-            "description": "Sweet rain pours from the sky, warming your soul and stomach.",
-            "duration": 120
+            "description": "&aSweet rain pours from the sky, warming your soul and stomach.",
+            "duration": 200
         },
         {
             "name": "Bunny Bounce",
             "spring_yolktype": 0,
             "chromashell_yolktype": 5,
             "encrypted_yolktype": 0,
-            "description": "You feel as light as a bunny-jump safely, traveler!",
+            "description": "&aYou feel as light as a bunny! jump safely, traveler!",
             "duration": 120
         },
         {
@@ -33,7 +36,7 @@
             "chromashell_yolktype": 0,
             "encrypted_yolktype": 0,
             "description": "A healing spirit flickers into the field... use this moment wisely.",
-            "duration": 120
+            "duration": 60
         },
         {
             "name": "Fortune Flash",
@@ -41,7 +44,7 @@
             "chromashell_yolktype": 8,
             "encrypted_yolktype": 0,
             "description": "A flicker of luck stirs in your favor!",
-            "duration": 120
+            "duration": 1200
         },
         {
             "name": "Phase Trigger",
@@ -49,7 +52,7 @@
             "chromashell_yolktype": 3,
             "encrypted_yolktype": 3,
             "description": "The statuette glows bright-the rabbit will rest now.",
-            "duration": 120
+            "duration": 300
         },
         {
             "name": "Healing Spirits",
@@ -57,7 +60,33 @@
             "chromashell_yolktype": 10,
             "encrypted_yolktype": 0,
             "description": "Gentle warmth spreads through the field... healing begins.",
-            "duration": 120
+            "duration": 1200
         }
-    ]
+    ],
+    "Arena": {
+        "official": {
+            "pos1": {
+                "x": -6194,
+                "y": 79,
+                "z": 1985
+            },
+            "pos2": {
+                "x": -6156,
+                "y": 64,
+                "z": 2023
+            }
+        },
+        "debug": {
+            "pos1": {
+                "x": 2272,
+                "y": 102,
+                "z": 3610
+            },
+            "pos2": {
+                "x": 2285,
+                "y": 94,
+                "z": 3595
+            }
+        }
+    }
 }
