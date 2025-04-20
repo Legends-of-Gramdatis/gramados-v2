@@ -5,6 +5,13 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
+/**
+ * Pulls a loot table and returns an array of items.
+ *
+ * @param {string} lootTablePath - The path to the loot table file.
+ * @param {IPlayer} player - The player object.
+ * @returns {Array} - An array of items generated from the loot table.
+ */
 function pullLootTable(lootTablePath, player) {
     var loot_table_json = loadJson("world/loot_tables/" + lootTablePath);
     if (loot_table_json == null) {
