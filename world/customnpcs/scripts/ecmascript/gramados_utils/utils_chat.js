@@ -516,3 +516,17 @@ function tellRandomMessage(player, messages) {
     tellPlayer(player, message);
     return message;
 }
+
+/**
+ * Sends a message to all players near the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {string} message - The message to send.
+ * @param {number} radius - The radius within which to send the message.
+ */
+function tellNearbyPlayers(npc, message, radius) {
+    var world = npc.getWorld();
+    var nearbyEntities = world.getNearbyEntities(npc.getPos(), radius, 1); // 1 = players
+    for (var i = 0; i < nearbyEntities.length; i++) {
+        tellPlayer(nearbyEntities[i], message);
+    }
+}
