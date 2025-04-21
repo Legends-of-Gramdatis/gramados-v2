@@ -160,6 +160,22 @@ function handleSleepMode(npc) {
         if (SLEEP_MODE_TIMER === 0) {
             npc.getStoreddata().put("mode", 1); // Transition to active mode
             tellNearbyPlayers(npc, "&6&l[Altar Status] &bThe altar bunny is ready to accept offerings again!");
+        } else {
+            // Damage players in the safe zone
+            var bossFightData = loadJson(EVENT_DATA_JSON);
+            var safeZone = bossFightData.safe_zone;
+            var world = npc.getWorld();
+            var nearbyPlayers = world.getNearbyEntities(npc.getPos(), 50, 1); // Get players within a 50-block radius
+
+            for (var i = 0; i < nearbyPlayers.length; i++) {
+                var player = nearbyPlayers[i];
+                var playerPos = player.getPos();
+
+                if (isWithinZone(iposToPos(playerPos), safeZone.pos1, safeZone.pos2)) {
+                    player.damage(1); // Apply minor damage
+                    tellPlayer(player, "&cThe altar's energy is overwhelming! Leave the area immediately!");
+                }
+            }
         }
     }
 }
@@ -218,6 +234,8 @@ function handleInactiveMode(npc, bossFightData) {
 }
 
 function applyModifiersAndEvents(npc, bossFightData) {
+    var safeZone = bossFightData.safe_zone;
+
     if (!bossFightData.isEggMode) {
         if (bossFightData.running_recipes.length > 0) {
             for (var i = 0; i < bossFightData.running_recipes.length; i++) {
@@ -225,17 +243,17 @@ function applyModifiersAndEvents(npc, bossFightData) {
                 switch (recipe.name) {
                     case "Chocolate Rain":
                         if (rrandom_range(0, 5) == 1) {
-                            makeChocolateRain(npc, recipe, bossFightData);
+                            makeChocolateRain(npc, recipe, bossFightData, safeZone);
                         }
                         break;
                     case "Bunny Bounce":
-                        applyBunnyBounceEffect(npc, recipe, bossFightData);
+                        applyBunnyBounceEffect(npc, recipe, bossFightData, safeZone);
                         break;
                     case "Zap Gamble":
-                        triggerZapOrbEvent(npc, recipe, bossFightData);
+                        triggerZapOrbEvent(npc, recipe, bossFightData, safeZone);
                         break;
                     case "Healing Spirits":
-                        applyHealingSpiritsEffect(npc, recipe, bossFightData);
+                        applyHealingSpiritsEffect(npc, recipe, bossFightData, safeZone);
                         break;
                     default:
                         break;
@@ -444,7 +462,7 @@ function getEggType(item) {
     }
 }
 
-function makeChocolateRain(npc, recipe, bossFightData) {
+function makeChocolateRain(npc, recipe, bossFightData, safeZone) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
         tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
@@ -469,6 +487,10 @@ function makeChocolateRain(npc, recipe, bossFightData) {
         var itemY = startY; // Use the highest Y value
         var itemZ = Math.floor(Math.random() * (pos2.z - pos1.z + 1)) + pos1.z;
 
+        if (isWithinZone({ x: itemX, y: itemY, z: itemZ }, safeZone.pos1, safeZone.pos2)) {
+            continue; // Skip spawning items in the safe zone
+        }
+
         var command = "/summon item " + itemX + " " + itemY + " " + itemZ + " {Item:{id:\"" + itemName + "\",Count:" + itemCount + ",Damage:" + itemDamage + "}}";
         npc.executeCommand(command);
 
@@ -478,7 +500,7 @@ function makeChocolateRain(npc, recipe, bossFightData) {
     }
 }
 
-function applyBunnyBounceEffect(npc, recipe, bossFightData) {
+function applyBunnyBounceEffect(npc, recipe, bossFightData, safeZone) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
 
@@ -494,13 +516,10 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
             var player = nearbyPlayers[i];
             var playerPos = player.getPos();
 
-            // Check if the player is within the arena bounds using isWithinZone
-            if (isWithinZone(iposToPos(playerPos), pos1, pos2)) {
-                // Apply effects: Slow Falling and Jump Boost
-                player.addPotionEffect(25, 2, 1, true); // Levitation (ID 25), duration 2 seconds, amplifier 2
-                player.addPotionEffect(8, 60, 1, true);  // Jump Boost (ID 8), duration 60 seconds, amplifier 2
-                player.addPotionEffect(1, 60, 2, true);  // Speed (ID 1), duration 60 seconds, amplifier 3
-            }
+            // Apply effects: Slow Falling and Jump Boost
+            player.addPotionEffect(25, 2, 1, true); // Levitation (ID 25), duration 2 seconds, amplifier 2
+            player.addPotionEffect(8, 60, 1, true);  // Jump Boost (ID 8), duration 60 seconds, amplifier 2
+            player.addPotionEffect(1, 60, 2, true);  // Speed (ID 1), duration 60 seconds, amplifier 3
         }
 
         // Notify players in the arena
@@ -514,8 +533,9 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
  * @param {ICustomNpc} npc - The NPC instance.
  * @param {Object} recipe - The recipe object.
  * @param {Object} bossFightData - The boss fight data.
+ * @param {Object} safeZone - The safe zone coordinates.
  */
-function triggerZapOrbEvent(npc, recipe, bossFightData) {
+function triggerZapOrbEvent(npc, recipe, bossFightData, safeZone) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
         var zapOrbDuration = 120; // Duration in seconds
@@ -552,7 +572,7 @@ function triggerZapOrbEvent(npc, recipe, bossFightData) {
     }
 }
 
-function applyHealingSpiritsEffect(npc, recipe, bossFightData) {
+function applyHealingSpiritsEffect(npc, recipe, bossFightData, safeZone) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
 
@@ -573,10 +593,12 @@ function applyHealingSpiritsEffect(npc, recipe, bossFightData) {
         var playerPos = player.getPos();
 
         // Check if the player is within the arena bounds
-        if (isWithinZone(iposToPos(playerPos), pos1, pos2)) {
-            // Apply regeneration effect
-            player.addPotionEffect(10, 40, 0, true); // Regeneration (ID 10), duration 2 seconds, amplifier 1
+        if (isWithinZone(iposToPos(playerPos), safeZone.pos1, safeZone.pos2)) {
+            continue; // Skip applying effects to players in the safe zone
         }
+
+        // Apply regeneration effect
+        player.addPotionEffect(10, 40, 0, true); // Regeneration (ID 10), duration 2 seconds, amplifier 1
     }
 
     // Play particles to indicate healing
