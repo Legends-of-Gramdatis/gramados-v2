@@ -128,10 +128,12 @@ function interact(event) {
         tellPlayer(player, "&6Model ID: " + model);
         return;
     } else if (itemName === "variedcommodities:spell_dark") {
+        initEggMode(npc);
         eggHatch(npc);
         tellPlayer(player, "&6The Easter Bunny has been turned into a giant egg!");
         return;
     } else if (itemName === "variedcommodities:spell_holy") {
+        initBunnyMode(npc);
         bunnyHatch(npc);
         tellPlayer(player, "&6The Easter Bunny has been revived!");
         return;
@@ -156,8 +158,7 @@ function interact(event) {
         reloadNPC(event);
         return;
     } else if (itemName === "variedcommodities:spell_fire") {
-        destroyFuturaBlocks(npc.getWorld());
-        tellPlayer(player, "&6The power of fire has destroyed the futura blocks!");
+        destroyHatchPillar(npc.getWorld());
         return;
     }
 
@@ -180,8 +181,8 @@ function interact(event) {
             startBoomshellWallAttack(npc);
             tellPlayer(player, "&6The Easter Bunny summons a boomshell wall!");
         } else if (itemName === "variedcommodities:element_earth") {
-            startBellSoundFreezeAttack(npc);
-            tellPlayer(player, "&6The Easter Bunny summons freezing bells!");
+            startChocolatePowderFloodAttack(npc);
+            tellPlayer(player, "&6The Easter Bunny summons a Chocolate Powder Flood!");
         }
     }
 }
@@ -190,7 +191,7 @@ function interact(event) {
  * Destroys one "chisel:futura" block in predefined regions and plays particles.
  * @param {IWorld} world - The world instance.
  */
-function destroyFuturaBlocks(world) {
+function destroyHatchPillar(world) {
     function destroyBlock(x, y, z) {
         var position = API.getIPos(x, y, z);
         world.playSoundAt(position, "minecraft:block.glass.break", 1.0, 1.0);
@@ -210,6 +211,9 @@ function destroyFuturaBlocks(world) {
             }
         }
     }
+    
+    tellNearbyPlayers(npc, "&6The power of fire has destroyed a Hatch Pillar!", 50);
+    logToFile("events", "Easter Bunny Boss: Hatch Pillar destroyed.");
 }
 
 /**
@@ -240,6 +244,8 @@ function startMiniEggSwarmAttack(npc) {
 
     npc.getTimers().start(1, 10, true); // Timer to spawn eggs every 0.5 seconds
     npc.getTimers().start(2, 1200, false); // End the attack after 1 minute
+
+    logToFile("events", "Easter Bunny Boss: Mini Egg Swarm attack started. Total eggs to spawn: " + totalEggsToSpawn);
 }
 
 /**
@@ -270,6 +276,8 @@ function startBoomshellWallAttack(npc) {
 
     npc.getTimers().start(3, 10, true); // Timer to spawn Boomshells every 0.5 seconds
     npc.getTimers().start(4, 200, false); // End the attack after 10 seconds
+
+    logToFile("events", "Easter Bunny Boss: Boomshell Wall attack started. Total boomshells to spawn: " + totalBoomshellsToSpawn);
 }
 
 /**
@@ -302,11 +310,11 @@ function startJumpAttack(npc) {
 }
 
 /**
- * Starts the Bell Sound Freeze attack for the bunny boss.
- * Spawns bells that freeze players on contact and ends the attack after 15 seconds.
+ * Starts the Chocolate Powder Flood attack for the bunny boss.
+ * Spawns chocolate powder blocks that freeze players on contact and ends the attack after 30 seconds.
  * @param {ICustomNpc} npc - The NPC instance.
  */
-function startBellSoundFreezeAttack(npc) {
+function startChocolatePowderFloodAttack(npc) {
     var bossFightData = loadJson(EVENT_DATA_JSON);
 
     if (bossFightData.isAttacking) {
@@ -317,36 +325,98 @@ function startBellSoundFreezeAttack(npc) {
     bossFightData.isAttacking = true;
     saveJson(bossFightData, EVENT_DATA_JSON);
 
-    tellNearbyPlayers(npc, "&6The Bell Sound Freeze attack has started!", 50);
+    tellNearbyPlayers(npc, "&6The Chocolate Powder Flood attack has started!", 50);
 
-    npc.getTimers().start(6, 20, true); // Timer to spawn bells every second
-    npc.getTimers().start(7, 300, false); // End the attack after 15 seconds
+    npc.getTimers().start(6, 20, true); // Timer to spawn blocks every second
+    npc.getTimers().start(7, 260, false);
 }
 
 /**
- * Spawns a bell that freezes players on contact.
+ * Spawns chocolate powder blocks that freeze players on contact.
  * @param {ICustomNpc} npc - The NPC instance.
  */
-function spawnBell(npc) {
+function spawnChocolatePowder(npc) {
+    var numberOfBlocks = 15; // Increased from previous value
+    var bossFightData = loadJson(EVENT_DATA_JSON);
+
+    // Stop spawning if the attack is no longer active
+    if (!bossFightData.isAttacking) {
+        npc.getTimers().stop(6);
+        return;
+    }
+
     var world = npc.getWorld();
-    var spawnPos = npc.getPos();
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
 
-    // Randomize bell spawn position within a 10-block radius
-    var x = spawnPos.getX() + (Math.random() * 20 - 10);
-    var y = spawnPos.getY() + 10; // Spawn 10 blocks above the NPC
-    var z = spawnPos.getZ() + (Math.random() * 20 - 10);
+    // Determine the highest Y position in the arena
+    var highestY = Math.max(pos1.y, pos2.y);
 
-    // Summon the bell as a falling block
-    var command = "/summon falling_block " + x + " " + y + " " + z + " {BlockState:{Name:\"chisel:gold\"},Time:1,DropItem:0}";
-    npc.executeCommand(command);
+    for (var i = 0; i < numberOfBlocks; i++) {
+        // Randomize block spawn position within the arena
+        var x = Math.floor(Math.random() * (Math.max(pos1.x, pos2.x) - Math.min(pos1.x, pos2.x) + 1)) + Math.min(pos1.x, pos2.x);
+        var z = Math.floor(Math.random() * (Math.max(pos1.z, pos2.z) - Math.min(pos1.z, pos2.z) + 1)) + Math.min(pos1.z, pos2.z);
 
-    // Store the bell's position in the NPC's stored data for later use
-    npc.getStoreddata().put("bellPosX", x);
-    npc.getStoreddata().put("bellPosY", y);
-    npc.getStoreddata().put("bellPosZ", z);
+        // Place the block at the highest Y position
+        world.setBlock(x, highestY, z, "minecraft:concrete_powder", 12);
 
-    // Start a timer to check for player contact
-    npc.getTimers().start(8, 10, false); // Timer to check for player contact
+        // Play sound when spawning the block
+        npc.executeCommand("/playsound minecraft:block.sand.place block @a " + x + " " + highestY + " " + z + " 1 1");
+
+        // Spawn small particles at the block's location
+        spawnParticles(world, API.getIPos(x, highestY, z), "blockcrack");
+
+        // Apply slowness and weakness to players in a 5-block radius
+        var players = getPlayersInRadius(world, API.getIPos(x, highestY, z), 5);
+        for (var j = 0; j < players.length; j++) {
+            var player = players[j];
+            applyEffect(player, "slowness", 7, 5); // Level 8, duration 5 seconds
+            applyEffect(player, "weakness", 1, 5); // Level 1, duration 5 seconds
+        }
+    }
+}
+
+/**
+ * Utility function to spawn particles.
+ * @param {IPos} position - The position to spawn particles.
+ * @param {string} effect - The particle effect to spawn.
+ */
+function spawnParticles(world, position, effect) {
+    var command = "/particle " + effect + " " + position.getX() + " " + position.getY() + " " + position.getZ() + " 0.5 0.5 0.5 0.1 10 force @a 172";
+    API.executeCommand(world, command);
+}
+
+/**
+ * Utility function to get players in a radius.
+ * @param {IPos} position - The center position.
+ * @param {number} radius - The radius to search for players.
+ * @returns {Array} - List of players within the radius.
+ */
+function getPlayersInRadius(world, position, radius) {
+    return world.getNearbyEntities(position, radius, 1); // Type 1 = players
+}
+
+/**
+ * Utility function to apply effects to a player.
+ * @param {IPlayer} player - The player to apply the effect to.
+ * @param {string} effect - The effect to apply.
+ * @param {number} level - The level of the effect.
+ * @param {number} duration - The duration of the effect in ticks.
+ */
+function applyEffect(player, effect, level, duration) {
+    switch (effect) {
+        case "slowness":
+            player.addPotionEffect(2, duration, level, true);
+            break;
+        case "weakness":
+            player.addPotionEffect(18, duration, level, true);
+            break;
+        case "blindness":
+            player.addPotionEffect(15, duration, level, true);
+            break;
+    }
 }
 
 /**
@@ -355,9 +425,145 @@ function spawnBell(npc) {
  */
 function tick(event) {
     var npc = event.npc;
+    var bossFightData = loadJson(EVENT_DATA_JSON);
+
+    // Ensure the bunny boss stays within the arena
+    keepBossInArena(npc, bossFightData);
+
+    // Handle players leaving the arena during combat
+    if (bossFightData.isAttacking) {
+        handlePlayersExitingArena(npc, bossFightData);
+    }
 
     handleJumpAttack(npc);
     handleModifiersAndEvents(npc);
+}
+
+/**
+ * Ensures the bunny boss stays within the arena bounds.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} bossFightData - The boss fight data.
+ */
+function keepBossInArena(npc, bossFightData) {
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
+
+    var x = Math.max(Math.min(npc.getX(), Math.max(pos1.x, pos2.x)), Math.min(pos1.x, pos2.x));
+    var y = Math.max(Math.min(npc.getY(), Math.max(pos1.y, pos2.y)), Math.min(pos1.y, pos2.y));
+    var z = Math.max(Math.min(npc.getZ(), Math.max(pos1.z, pos2.z)), Math.min(pos1.z, pos2.z));
+
+    if (x !== npc.getX() || y !== npc.getY() || z !== npc.getZ()) {
+        npc.setPosition(x, y, z);
+
+        // Apply motion to push the bunny back into the arena
+        var centerX = (pos1.x + pos2.x) / 2;
+        var centerZ = (pos1.z + pos2.z) / 2;
+
+        var dx = centerX - npc.getX();
+        var dz = centerZ - npc.getZ();
+        var distance = Math.sqrt(dx * dx + dz * dz);
+
+        if (distance > 0) {
+            var motionX = (dx / distance) * 0.5;
+            var motionY = 0.2; // Slight upward motion
+            var motionZ = (dz / distance) * 0.5;
+
+            npc.setMotionX(motionX);
+            npc.setMotionY(motionY);
+            npc.setMotionZ(motionZ);
+        }
+
+        // Trigger shockwave effect
+        triggerShockwave(npc);
+    }
+}
+
+/**
+ * Triggers a shockwave effect when the bunny boss hits the edge of the arena.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
+function triggerShockwave(npc) {
+    var world = npc.getWorld();
+    var shockwaveRadius = 10;
+    var shockwaveDamage = 1;
+
+    // Play sound and particles
+    npc.executeCommand("/playsound ivv:mts.ivv.engine.t42.backfire master @a ~ ~ ~ 1 1");
+    npc.executeCommand("/particle reddust " + npc.getX() + " " + npc.getY() + " " + npc.getZ() + " 1 1 1 0.1 20 force");
+
+    // Apply damage and knockback to nearby players
+    var nearbyPlayers = world.getNearbyEntities(npc.getPos(), shockwaveRadius, 1); // Type 1 = players
+    for (var i = 0; i < nearbyPlayers.length; i++) {
+        var player = nearbyPlayers[i];
+        var dx = player.getX() - npc.getX();
+        var dz = player.getZ() - npc.getZ();
+        var direction = Math.atan2(-dz, -dx) * (180 / Math.PI) + 90; // Reverse direction to push players away
+
+        // Apply knockback
+        player.knockback(2, direction);
+
+        // Only damage the player if their health is above 50%
+        if (player.getHealth() > player.getMaxHealth() * 0.5) {
+            player.damage(shockwaveDamage);
+        }
+
+        // Disorient players holding guns
+        var heldItem = player.getMainhandItem();
+        if (heldItem && heldItem.getName().startsWith("flansmod:")) {
+            applyEffect(player, "blindness", 0, 5); // Level 1, duration 5 seconds
+            tellPlayer(player, "&cThe shockwave disoriented you! Guns are heavy, and you lost focus!");
+        }
+    }
+}
+
+/**
+ * Handles players exiting the arena during combat.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} bossFightData - The boss fight data.
+ */
+function handlePlayersExitingArena(npc, bossFightData) {
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
+
+    var world = npc.getWorld();
+    var nearbyPlayers = world.getNearbyEntities(npc.getPos(), 50, 1); // Get players within a radius
+
+    for (var i = 0; i < nearbyPlayers.length; i++) {
+        var player = nearbyPlayers[i];
+        var playerPos = player.getPos();
+
+        // Check if the player is outside the arena bounds
+        if (!isWithinZone(iposToPos(playerPos), pos1, pos2)) {
+            // Calculate the center of the arena
+            var centerX = (pos1.x + pos2.x) / 2;
+            var centerZ = (pos1.z + pos2.z) / 2;
+
+            // Calculate knockback direction towards the center
+            var dx = centerX - player.getX();
+            var dz = centerZ - player.getZ();
+            var distance = Math.sqrt(dx * dx + dz * dz);
+            if (distance > 0) {
+                var knockbackX = (dx / distance) * 1.5;
+                var knockbackY = 0.5; // Upward motion
+                var knockbackZ = (dz / distance) * 1.5;
+                player.setMotionX(knockbackX);
+                player.setMotionY(knockbackY);
+                player.setMotionZ(knockbackZ);
+            }
+
+            // Apply damage
+            player.damage(2);
+
+            // Play zap sound and particles
+            var command = "/particle reddust " + player.getX() + " " + player.getY() + " " + player.getZ() + " 0.5 0.5 0.5 0.1 20 force";
+            npc.executeCommand(command);
+            npc.executeCommand("/playsound ivv:mts.ivv.engine.damage.hiss master @a " + player.getX() + " " + player.getY() + " " + player.getZ() + " 1 1");
+        }
+    }
 }
 
 /**
@@ -558,34 +764,60 @@ function timer(event) {
         npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
     }
 
-    if (event.id === 6) { // Bell spawning timer
-        spawnBell(npc);
+    if (event.id === 6) { // Chocolate powder spawning timer
+        spawnChocolatePowder(npc);
     }
 
-    if (event.id === 7) { // End Bell Sound Freeze attack timer
+    if (event.id === 7) { // End Chocolate Powder Flood attack timer
         bossFightData.isAttacking = false;
         saveJson(bossFightData, EVENT_DATA_JSON);
 
-        tellNearbyPlayers(npc, "&6The Bell Sound Freeze attack has ended!", 50);
-        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
-    }
+        tellNearbyPlayers(npc, "&6The Chocolate Powder Flood attack has ended!", 50);
 
-    if (event.id === 8) { // Check for player contact with the bell
+        // Replace all chocolate powder blocks in the arena
+        var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+        var arena = bossFightData.Arena[arenaType];
+        var pos1 = arena.pos1;
+        var pos2 = arena.pos2;
+
         var world = npc.getWorld();
-        var bellPosX = npc.getStoreddata().get("bellPosX");
-        var bellPosY = npc.getStoreddata().get("bellPosY");
-        var bellPosZ = npc.getStoreddata().get("bellPosZ");
+        for (var x = Math.min(pos1.x, pos2.x); x <= Math.max(pos1.x, pos2.x); x++) {
+            for (var y = Math.min(pos1.y, pos2.y); y <= Math.max(pos1.y, pos2.y); y++) {
+                for (var z = Math.min(pos1.z, pos2.z); z <= Math.max(pos1.z, pos2.z); z++) {
+                    var block = world.getBlock(x, y, z);
+                    if (block.getName() === "minecraft:concrete_powder" && block.getMetadata() === 12) {
+                        world.setBlock(x, y, z, "minecraft:air", 0);
 
-        if (bellPosX !== null && bellPosY !== null && bellPosZ !== null) {
-            var nearbyPlayers = world.getNearbyEntities(API.getIPos(bellPosX, bellPosY, bellPosZ), 3, 1); // Radius 3, type 1 = players
+                        // Spawn particles when cleaning up the blocks
+                        var particleCommand = "/particle blockcrack " + x + " " + y + " " + z + " 0.5 0.5 0.5 0.1 10 force @a 172";
+                        npc.executeCommand(particleCommand);
 
-            for (var i = 0; i < nearbyPlayers.length; i++) {
-                var player = nearbyPlayers[i];
-                player.addPotionEffect(2, 100, 4, true); // Slowness IV for 5 seconds
-                player.addPotionEffect(18, 100, 1, true); // Weakness II for 5 seconds
-                npc.executeCommand("/playsound minecraft:block.bell.use master @a " + bellPosX + " " + bellPosY + " " + bellPosZ + " 1 1");
+                        // Apply knockback to players near the block
+                        var nearbyPlayers = world.getNearbyEntities(API.getIPos(x, y, z), 3, 1); // Radius 3, type 1 = players
+                        for (var i = 0; i < nearbyPlayers.length; i++) {
+                            var player = nearbyPlayers[i];
+                            var dx = player.getX() - x;
+                            var dz = player.getZ() - z;
+                            var distance = Math.sqrt(dx * dx + dz * dz);
+                            if (distance > 0) {
+                                var knockbackX = (dx / distance) * 0.5;
+                                var knockbackY = 0.3; // Upward motion
+                                var knockbackZ = (dz / distance) * 0.5;
+                                player.setMotionX(knockbackX);
+                                player.setMotionY(knockbackY);
+                                player.setMotionZ(knockbackZ);
+                            }
+                        }
+                    }
+                }
             }
         }
+
+        // Kill remaining falling blocks
+        npc.executeCommand("/kill @e[type=falling_block]");
+
+        npc.executeCommand("/playsound minecraft:entity.illusion_illager.cast_spell master @a ~ ~ ~ 1 1");
+        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
     }
 }
 
@@ -628,7 +860,8 @@ function died(event) {
     npc.executeCommand(command);
 
     initEggMode(npc);
-    destroyFuturaBlocks(world);
+    destroyHatchPillar(world);
+    logToFile("events", "Easter Bunny Boss: Died. Bunny Stage: " + data.BunnyStage);
 }
 
 /**
@@ -684,10 +917,11 @@ function initBunnyMode(npc) {
     npc.getDisplay().setSize(14 + globalData.BunnyStage * 2);
     npc.getDisplay().setHasLivingAnimation(true);
     npc.getAi().setWalkingSpeed(7);
-    npc.getAi().setWanderingRange(10);
+    // npc.getAi().setWanderingRange(10);
+    npc.getAi().setWanderingRange(5);
     npc.getAi().setStandingType(0);
     npc.getAi().setMovingType(1);
-    npc.getAi().setRetaliateType(1);
+    npc.getAi().setRetaliateType(2);
     updateHealth(npc);
     updateSounds(npc);
 }
@@ -717,6 +951,7 @@ function bunnyHatch(npc) {
 
     world.playSoundAt(npc.getPos(), "minecraft:entity.wither.break_block", 10.0, 1.0);
     world.playSoundAt(npc.getPos(), "minecraft:entity.wither.spawn", 10.0, 1.0);
+    logToFile("events", "Easter Bunny Boss: Bunny mode activated.");
 }
 
 /**
@@ -736,6 +971,7 @@ function eggHatch(npc) {
     world.playSoundAt(npc.getPos(), "minecraft:block.lava.ambient", 1.0, 1.0);
     var command = "/particle blockcrack " + x + " " + y + " " + z + " 3 2 3 5.0 300 force @a 10";
     npc.executeCommand(command);
+    logToFile("events", "Easter Bunny Boss: Egg mode activated.");
 }
 
 /**
@@ -743,6 +979,7 @@ function eggHatch(npc) {
  * @param {ICustomNpc} npc - The NPC instance.
  */
 function freezeRabbit(npc) {
+    logToFile("events", "Easter Bunny Boss: Frozen.");
     npc.getDisplay().setSkinUrl("https://legends-of-gramdatis.com/gramados_skins/tmp/rabbit_easter_frozen.png");
     npc.getAi().setWalkingSpeed(0);
     npc.getAi().setWanderingRange(1);
@@ -756,6 +993,7 @@ function freezeRabbit(npc) {
  * @param {ICustomNpc} npc - The NPC instance.
  */
 function unfreezeRabbit(npc) {
+    logToFile("events", "Easter Bunny Boss: Unfrozen.");
     npc.getDisplay().setSkinUrl("https://legends-of-gramdatis.com/gramados_skins/tmp/rabbit_easter.png");
     npc.getAi().setWalkingSpeed(7);
     npc.getAi().setWanderingRange(10);
