@@ -1,17 +1,82 @@
 {
-    "isEventOver": true,
-    "isEggMode": false,
+    "isEventRunning": true,
+    "isEggMode": true,
     "isAttacking": false,
-    "BunnyStage": 1,
+    "BunnyStage": 6,
     "running_recipes": [],
-    "discovered_recipes": [],
-    "all_recipes": [
+    "discovered_recipes": [
+        {
+            "name": "Healing Spirits",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 10,
+            "encrypted_yolktype": 0,
+            "description": "&aGentle warmth spreads through the field... healing begins.",
+            "duration": 1200
+        },
+        {
+            "name": "Bunny Bounce",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 5,
+            "encrypted_yolktype": 0,
+            "description": "&aYou feel as light as a bunny! jump safely, traveler!",
+            "duration": 120
+        },
         {
             "name": "Zap Gamble",
             "spring_yolktype": 0,
             "chromashell_yolktype": 0,
             "encrypted_yolktype": 4,
-            "description": "The statuette sparks-this could go either way!",
+            "description": "&aThe statuette sparks-this could go either way!",
+            "duration": 240
+        },
+        {
+            "name": "Phase Trigger",
+            "spring_yolktype": 3,
+            "chromashell_yolktype": 3,
+            "encrypted_yolktype": 3,
+            "description": "&aThe statuette glows bright-the rabbit will rest now.",
+            "duration": 100
+        },
+        {
+            "name": "Chocolate Rain",
+            "spring_yolktype": 10,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 0,
+            "description": "&aSweet rain pours from the sky, warming your soul and stomach.",
+            "duration": 200
+        },
+        {
+            "name": "Minor Calm Offer",
+            "spring_yolktype": 6,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 0,
+            "description": "&aA healing spirit flickers into the field... use this moment wisely.",
+            "duration": 20
+        }
+    ],
+    "all_recipes": [
+        {
+            "name": "Phase Trigger",
+            "spring_yolktype": 3,
+            "chromashell_yolktype": 3,
+            "encrypted_yolktype": 3,
+            "description": "&aThe statuette glows bright-the rabbit will rest now.",
+            "duration": 100
+        },
+        {
+            "name": "Healing Spirits",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 10,
+            "encrypted_yolktype": 0,
+            "description": "&aGentle warmth spreads through the field... healing begins.",
+            "duration": 1200
+        },
+        {
+            "name": "Zap Gamble",
+            "spring_yolktype": 0,
+            "chromashell_yolktype": 0,
+            "encrypted_yolktype": 4,
+            "description": "&aThe statuette sparks-this could go either way!",
             "duration": 240
         },
         {
@@ -35,35 +100,11 @@
             "spring_yolktype": 6,
             "chromashell_yolktype": 0,
             "encrypted_yolktype": 0,
-            "description": "A healing spirit flickers into the field... use this moment wisely.",
-            "duration": 60
-        },
-        {
-            "name": "Fortune Flash",
-            "spring_yolktype": 0,
-            "chromashell_yolktype": 8,
-            "encrypted_yolktype": 0,
-            "description": "A flicker of luck stirs in your favor!",
-            "duration": 1200
-        },
-        {
-            "name": "Phase Trigger",
-            "spring_yolktype": 3,
-            "chromashell_yolktype": 3,
-            "encrypted_yolktype": 3,
-            "description": "The statuette glows bright-the rabbit will rest now.",
-            "duration": 300
-        },
-        {
-            "name": "Healing Spirits",
-            "spring_yolktype": 0,
-            "chromashell_yolktype": 10,
-            "encrypted_yolktype": 0,
-            "description": "Gentle warmth spreads through the field... healing begins.",
-            "duration": 1200
+            "description": "&aA healing spirit flickers into the field... use this moment wisely.",
+            "duration": 20
         }
     ],
-    "use_arena": "debug",
+    "use_arena": "official",
     "Arena": {
         "official": {
             "pos1": {

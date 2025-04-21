@@ -1,8 +1,12 @@
-/*
-    Player Arrest Plugin
-*/
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+var EVENT_DATA_JSON = "world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterBossFight.json";
 
-var arrest_plugin_API = Java.type('noppes.npcs.api.NpcAPI').Instance()
+
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var arrest_plugin_counter = 0;
 var arrest_plugin_max_counter = 10000;
 var arrest_plugin_arrested_player_name = "";
@@ -221,7 +225,9 @@ function arrest_plugin_tick(event) {
 
     arrest_plugin_counter++;
 
-    if (arrest_plugin_counter >= arrest_plugin_max_counter) {
+    var noarrest = loadJson(EVENT_DATA_JSON);
+
+    if (!noarrest.isEventRunning && arrest_plugin_counter >= arrest_plugin_max_counter) {
         arrest_plugin_counter = 0;
         isFriendOfCriminals(event);
     }

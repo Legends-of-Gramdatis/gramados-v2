@@ -35,6 +35,9 @@ var EGG_MODE_LINES = [
     "&6Something is waiting. You're just not sure if it's excited... or hungry."
 ]
 
+var ATTACK_COOLDOWN_BASE = 40; // Base cooldown in seconds
+var TICKS_PER_SECOND = 20; // Minecraft ticks per second
+
 /**
  * Initializes the Easter Bunny Boss NPC.
  * @param {Object} event - The event object containing the NPC instance.
@@ -56,6 +59,33 @@ function init(event) {
     if (!data.isEggMode) {
         bunnyHatch(npc);
     }
+
+    // Provide tutorial message to players
+    provideTutorialMessage(npc);
+}
+
+/**
+ * Sends a tutorial message in chat explaining the basics of the altar and the rabbit.
+ * Sets the player's respawn point to a specific location.
+ * @param {ICustomNpc} npc - The NPC instance.
+ */
+function provideTutorialMessage(npc) {
+    var world = npc.getWorld();
+    var players = world.getNearbyEntities(npc.getPos(), 50, 1); // Get players within a 50-block radius
+
+    for (var i = 0; i < players.length; i++) {
+        var player = players[i];
+        npc.executeCommand("/spawnpoint " + player.getName() + " -6175 69 2030");
+        logToFile("events", player.getName() + " has been set to spawnpoint at Easter Bunny Boss.");
+    }
+
+    tellNearbyPlayers(npc, "&6&l[Event Tutorial] &eWelcome to the Easter Event!", 50);
+    tellNearbyPlayers(npc, "&e1. &aCollect eggs scattered around the world and bring them to the altar.", 50);
+    tellNearbyPlayers(npc, "&e2. &aOffer eggs at the altar to activate recipes and gain buffs or effects.", 50);
+    tellNearbyPlayers(npc, "&e3. &aThe Easter Bunny Boss will attack in waves. Defeat it to progress!", 50);
+    tellNearbyPlayers(npc, "&e4. &aWatch out for special attacks like Mini Egg Swarms and Boomshell Walls!", 50);
+    tellNearbyPlayers(npc, "&e5. &aUse teamwork and strategy to overcome the challenges and claim victory!", 50);
+    tellNearbyPlayers(npc, "&6Good luck, and may the eggs be ever in your favor!", 50);
 }
 
 /**
@@ -122,6 +152,7 @@ function interact(event) {
     var player = event.player;
     var item = player.getMainhandItem();
     var itemName = item.getName();
+    var bossFightData = loadJson(EVENT_DATA_JSON);
 
     if (itemName === "variedcommodities:bandit_mask") {
         var model = npc.getDisplay().getModel();
@@ -158,7 +189,7 @@ function interact(event) {
         reloadNPC(event);
         return;
     } else if (itemName === "variedcommodities:spell_fire") {
-        destroyHatchPillar(npc.getWorld());
+        destroyHatchPillar(npc);
         return;
     }
 
@@ -188,32 +219,38 @@ function interact(event) {
 }
 
 /**
- * Destroys one "chisel:futura" block in predefined regions and plays particles.
- * @param {IWorld} world - The world instance.
+ * Replaces one "chisel:futura" block within the arena region with "chisel:wool_gray".
+ * @param {ICustomNpc} npc - The NPC instance.
  */
-function destroyHatchPillar(world) {
-    function destroyBlock(x, y, z) {
-        var position = API.getIPos(x, y, z);
-        world.playSoundAt(position, "minecraft:block.glass.break", 1.0, 1.0);
-        world.setBlock(x, y, z, "chisel:wool_gray", 0);
-        var particleCommand = "/particle blockcrack " + x + " " + y + " " + z + " 3 1 3 0.5 100 force @a 201";
-        API.executeCommand(world, particleCommand);
-    }
+function destroyHatchPillar(npc) {
+    var world = npc.getWorld();
+    var bossFightData = loadJson(EVENT_DATA_JSON);
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
 
-    for (var x = 2285; x >= 2273; x--) {
-        for (var y = 100; y >= 94; y--) {
-            for (var z = 3608; z >= 3594; z--) {
+    for (var x = Math.min(pos1.x, pos2.x); x <= Math.max(pos1.x, pos2.x); x++) {
+        for (var y = Math.min(pos1.y, pos2.y); y <= Math.max(pos1.y, pos2.y); y++) {
+            for (var z = Math.min(pos1.z, pos2.z); z <= Math.max(pos1.z, pos2.z); z++) {
                 var block = world.getBlock(x, y, z);
                 if (block.getName() === "chisel:futura" && block.getMetadata() === 4) {
-                    destroyBlock(x, y, z);
-                    return;
+                    world.setBlock(x, y, z, "chisel:wool_gray", 0);
+                    world.playSoundAt(API.getIPos(x, y, z), "minecraft:block.glass.break", 1.0, 1.0);
+
+                    var particleCommand = "/particle blockcrack " + x + " " + y + " " + z + " 0.5 0.5 0.5 0.1 10 normal @a";
+                    API.executeCommand(world, particleCommand);
+
+                    tellNearbyPlayers(npc, "&6The power of fire has altered a Hatch Pillar block within the arena!", 50);
+                    logToFile("events", "Easter Bunny Boss: Altered one Hatch Pillar block at (" + x + ", " + y + ", " + z + ").");
+                    return; // Exit after replacing one block
                 }
             }
         }
     }
-    
-    tellNearbyPlayers(npc, "&6The power of fire has destroyed a Hatch Pillar!", 50);
-    logToFile("events", "Easter Bunny Boss: Hatch Pillar destroyed.");
+
+    tellNearbyPlayers(npc, "&6No Hatch Pillar blocks remain to be altered in the arena!", 50);
+    logToFile("events", "Easter Bunny Boss: No Hatch Pillar blocks found to alter.");
 }
 
 /**
@@ -236,7 +273,7 @@ function startMiniEggSwarmAttack(npc) {
 
     var world = npc.getWorld();
     var spawnPos = npc.getPos();
-    var totalEggsToSpawn = Math.floor(Math.random() * (10 - 3 + 1)) + 3 + Math.floor(Math.random() * (4 - 1 + 1)) + 1 * bossFightData.BunnyStage;
+    var totalEggsToSpawn = rrandom_range(5, 15) + (rrandom_range(3, 10) * bossFightData.BunnyStage);
     var eggsSpawned = 0;
 
     npc.getStoreddata().put("totalEggsToSpawn", totalEggsToSpawn);
@@ -250,7 +287,7 @@ function startMiniEggSwarmAttack(npc) {
 
 /**
  * Starts the Boomshell Wall attack for the bunny boss.
- * Spawns a random number of Boomshells with slight motion and ends the attack after 10 seconds.
+ * Spawns a random number of Boomshells with larger motion for greater spread and ends the attack after 10 seconds.
  * @param {ICustomNpc} npc - The NPC instance.
  */
 function startBoomshellWallAttack(npc) {
@@ -269,7 +306,7 @@ function startBoomshellWallAttack(npc) {
     var world = npc.getWorld();
     var spawnPos = npc.getPos();
     var bunnyStage = bossFightData.BunnyStage || 0;
-    var totalBoomshellsToSpawn = Math.floor(Math.random() * 3) + 3 + bunnyStage; // 1-3 + 1 per stage
+    var totalBoomshellsToSpawn = rrandom_range(4, 8) + (bunnyStage * rrandom_range(2, 5));
 
     npc.getStoreddata().put("totalBoomshellsToSpawn", totalBoomshellsToSpawn);
     npc.getStoreddata().put("boomshellsSpawned", 0);
@@ -336,7 +373,7 @@ function startChocolatePowderFloodAttack(npc) {
  * @param {ICustomNpc} npc - The NPC instance.
  */
 function spawnChocolatePowder(npc) {
-    var numberOfBlocks = 15; // Increased from previous value
+    var numberOfBlocks = 30; // Increased from previous value
     var bossFightData = loadJson(EVENT_DATA_JSON);
 
     // Stop spawning if the attack is no longer active
@@ -384,7 +421,7 @@ function spawnChocolatePowder(npc) {
  * @param {string} effect - The particle effect to spawn.
  */
 function spawnParticles(world, position, effect) {
-    var command = "/particle " + effect + " " + position.getX() + " " + position.getY() + " " + position.getZ() + " 0.5 0.5 0.5 0.1 10 force @a 172";
+    var command = "/particle " + effect + " " + position.getX() + " " + position.getY() + " " + position.getZ() + " 0.5 0.5 0.5 0.1 10 normal @a 172";
     API.executeCommand(world, command);
 }
 
@@ -437,6 +474,57 @@ function tick(event) {
 
     handleJumpAttack(npc);
     handleModifiersAndEvents(npc);
+
+    // Handle autonomous attacks
+    handleAutonomousAttacks(npc, bossFightData);
+}
+
+/**
+ * Handles autonomous attacks for the bunny boss.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} bossFightData - The boss fight data.
+ */
+function handleAutonomousAttacks(npc, bossFightData) {
+    if (!bossFightData.isEventRunning || isEggMode() || bossFightData.isAttacking) {
+        return; // Disable automatic attacks if the event is not running or in egg mode
+    }
+
+    var storedData = npc.getStoreddata();
+    var lastAttackTime = storedData.get("lastAttackTime") || 0;
+    var currentTime = npc.getWorld().getTotalTime();
+
+    var bunnyStage = bossFightData.BunnyStage || 0;
+    var cooldown = ATTACK_COOLDOWN_BASE - (bunnyStage * 10); // Reduce cooldown by 10 seconds per stage
+    var cooldownTicks = cooldown * TICKS_PER_SECOND;
+
+    if (currentTime - lastAttackTime >= cooldownTicks) {
+        if (Math.random() < 0.1) { // 10% chance to start an attack each tick
+            startRandomAttack(npc, bossFightData);
+            storedData.put("lastAttackTime", currentTime);
+        }
+    }
+}
+
+/**
+ * Starts a random attack for the bunny boss.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} bossFightData - The boss fight data.
+ */
+function startRandomAttack(npc, bossFightData) {
+    var attacks = [
+        startJumpAttack,
+        startMiniEggSwarmAttack,
+        startBoomshellWallAttack,
+        startChocolatePowderFloodAttack
+    ];
+
+    var randomAttack = attacks[Math.floor(Math.random() * attacks.length)];
+    try {
+        randomAttack(npc);
+        logToFile("events", "Easter Bunny Boss: Started a random attack - " + randomAttack.name);
+    } catch (error) {
+        logToFile("events", "Error starting random attack: " + error.message);
+    }
 }
 
 /**
@@ -487,11 +575,11 @@ function keepBossInArena(npc, bossFightData) {
 function triggerShockwave(npc) {
     var world = npc.getWorld();
     var shockwaveRadius = 10;
-    var shockwaveDamage = 1;
+    var shockwaveDamage = 2;
 
     // Play sound and particles
     npc.executeCommand("/playsound ivv:mts.ivv.engine.t42.backfire master @a ~ ~ ~ 1 1");
-    npc.executeCommand("/particle reddust " + npc.getX() + " " + npc.getY() + " " + npc.getZ() + " 1 1 1 0.1 20 force");
+    npc.executeCommand("/particle reddust " + npc.getX() + " " + npc.getY() + " " + npc.getZ() + " 1 1 1 0.1 20 normal");
 
     // Apply damage and knockback to nearby players
     var nearbyPlayers = world.getNearbyEntities(npc.getPos(), shockwaveRadius, 1); // Type 1 = players
@@ -505,7 +593,7 @@ function triggerShockwave(npc) {
         player.knockback(2, direction);
 
         // Only damage the player if their health is above 50%
-        if (player.getHealth() > player.getMaxHealth() * 0.5) {
+        if (player.getHealth() > player.getMaxHealth() * 0.25) {
             player.damage(shockwaveDamage);
         }
 
@@ -538,30 +626,36 @@ function handlePlayersExitingArena(npc, bossFightData) {
 
         // Check if the player is outside the arena bounds
         if (!isWithinZone(iposToPos(playerPos), pos1, pos2)) {
-            // Calculate the center of the arena
-            var centerX = (pos1.x + pos2.x) / 2;
-            var centerZ = (pos1.z + pos2.z) / 2;
+            // If the player is above the arena, push them down
+            if (player.getY() > Math.max(pos1.y, pos2.y)) {
+                player.setMotionY(-1.0); // Push the player downward
+                tellPlayer(player, "&cYou are too high above the arena! Returning you to the ground.");
+            } else {
+                // Calculate the center of the arena
+                var centerX = (pos1.x + pos2.x) / 2;
+                var centerZ = (pos1.z + pos2.z) / 2;
 
-            // Calculate knockback direction towards the center
-            var dx = centerX - player.getX();
-            var dz = centerZ - player.getZ();
-            var distance = Math.sqrt(dx * dx + dz * dz);
-            if (distance > 0) {
-                var knockbackX = (dx / distance) * 1.5;
-                var knockbackY = 0.5; // Upward motion
-                var knockbackZ = (dz / distance) * 1.5;
-                player.setMotionX(knockbackX);
-                player.setMotionY(knockbackY);
-                player.setMotionZ(knockbackZ);
+                // Calculate knockback direction towards the center
+                var dx = centerX - player.getX();
+                var dz = centerZ - player.getZ();
+                var distance = Math.sqrt(dx * dx + dz * dz);
+                if (distance > 0) {
+                    var knockbackX = (dx / distance) * 1.5;
+                    var knockbackY = 0.5; // Upward motion
+                    var knockbackZ = (dz / distance) * 1.5;
+                    player.setMotionX(knockbackX);
+                    player.setMotionY(knockbackY);
+                    player.setMotionZ(knockbackZ);
+                }
+
+                // Apply damage
+                player.damage(2);
+
+                // Play zap sound and particles
+                var command = "/particle reddust " + player.getX() + " " + player.getY() + " " + player.getZ() + " 0.5 0.5 0.5 0.1 20 normal";
+                npc.executeCommand(command);
+                npc.executeCommand("/playsound ivv:mts.ivv.engine.damage.hiss master @a " + player.getX() + " " + player.getY() + " " + player.getZ() + " 1 1");
             }
-
-            // Apply damage
-            player.damage(2);
-
-            // Play zap sound and particles
-            var command = "/particle reddust " + player.getX() + " " + player.getY() + " " + player.getZ() + " 0.5 0.5 0.5 0.1 20 force";
-            npc.executeCommand(command);
-            npc.executeCommand("/playsound ivv:mts.ivv.engine.damage.hiss master @a " + player.getX() + " " + player.getY() + " " + player.getZ() + " 1 1");
         }
     }
 }
@@ -588,8 +682,47 @@ function handleJumpAttack(npc) {
 
         if (jumpAttackTicks === 0) {
             npc.getAi().setNavigationType(0);
-            spawnKnockbackParticles(npc);
+            spawnKnockbackParticles(npc, 20);
             npc.executeCommand("/playsound ivv:gun.explode neutral @a");
+        }
+    }
+}
+
+/**
+ * Spawns knockback particles around the NPC.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {number} radius - The radius of the knockback effect.
+ */
+function spawnKnockbackParticles(npc, radius) {
+    var world = npc.getWorld();
+    var x = npc.getX();
+    var y = npc.getY();
+    var z = npc.getZ();
+
+    while (world.getBlock(x, y, z).isAir() && y > 0) {
+        y--;
+    }
+    var blockBelow = world.getBlock(x, y - 1, z);
+    if (!blockBelow.isAir()) {
+        var command = "/summon area_effect_cloud " + x + " " + (y + 0.5) + " " + z +
+            " {Particle:\"mobSpell\",Radius:" + radius + "f,Duration:" + PARTICLE_DURATION +
+            ",Color:" + PARTICLE_COLOR + ",Motion:" + JSON.stringify(PARTICLE_MOTION) + "}";
+        npc.executeCommand(command);
+    }
+
+    var nearbyEntities = world.getNearbyEntities(npc.getPos(), radius, 1);
+    for (var i = 0; i < nearbyEntities.length; i++) {
+        var player = nearbyEntities[i];
+        var dx = player.getX() - npc.getX();
+        var dz = player.getZ() - npc.getZ();
+        var distance = Math.sqrt(dx * dx + dz * dz);
+        if (distance > 0) {
+            var knockbackX = (dx / distance) * 2;
+            var knockbackY = 1;
+            var knockbackZ = (dz / distance) * 2;
+            player.setMotionX(knockbackX);
+            player.setMotionY(knockbackY);
+            player.setMotionZ(knockbackZ);
         }
     }
 }
@@ -648,44 +781,6 @@ function hasFreezingRecipe(data) {
 }
 
 /**
- * Spawns knockback particles around the NPC.
- * @param {ICustomNpc} npc - The NPC instance.
- */
-function spawnKnockbackParticles(npc) {
-    var world = npc.getWorld();
-    var x = npc.getX();
-    var y = npc.getY();
-    var z = npc.getZ();
-
-    while (world.getBlock(x, y, z).isAir() && y > 0) {
-        y--;
-    }
-    var blockBelow = world.getBlock(x, y - 1, z);
-    if (!blockBelow.isAir()) {
-        var command = "/summon area_effect_cloud " + x + " " + (y + 0.5) + " " + z +
-            " {Particle:\"mobSpell\",Radius:" + PARTICLE_RADIUS + "f,Duration:" + PARTICLE_DURATION +
-            ",Color:" + PARTICLE_COLOR + ",Motion:" + JSON.stringify(PARTICLE_MOTION) + "}";
-        npc.executeCommand(command);
-    }
-
-    var nearbyEntities = world.getNearbyEntities(npc.getPos(), PARTICLE_RADIUS, 1);
-    for (var i = 0; i < nearbyEntities.length; i++) {
-        var player = nearbyEntities[i];
-        var dx = player.getX() - npc.getX();
-        var dz = player.getZ() - npc.getZ();
-        var distance = Math.sqrt(dx * dx + dz * dz);
-        if (distance > 0) {
-            var knockbackX = (dx / distance) * 2;
-            var knockbackY = 1;
-            var knockbackZ = (dz / distance) * 2;
-            player.setMotionX(knockbackX);
-            player.setMotionY(knockbackY);
-            player.setMotionZ(knockbackZ);
-        }
-    }
-}
-
-/**
  * Handles the timer events for the bunny boss.
  * @param {Object} event - The event object containing the NPC instance.
  */
@@ -693,131 +788,136 @@ function timer(event) {
     var npc = event.npc;
     var bossFightData = loadJson(EVENT_DATA_JSON);
 
-    if (event.id === 1) { // Egg spawning timer
-        var world = npc.getWorld();
-        var spawnPos = npc.getPos();
-        var eggsSpawned = npc.getStoreddata().get("eggsSpawned");
-        var totalEggsToSpawn = npc.getStoreddata().get("totalEggsToSpawn");
+    try {
+        if (event.id === 1) { // Egg spawning timer
+            var world = npc.getWorld();
+            var spawnPos = npc.getPos();
+            var eggsSpawned = npc.getStoreddata().get("eggsSpawned");
+            var totalEggsToSpawn = npc.getStoreddata().get("totalEggsToSpawn");
 
-        if (eggsSpawned < totalEggsToSpawn) {
-            var eggsToSpawnThisTick = Math.min(Math.floor(Math.random() * 2) + 1, totalEggsToSpawn - eggsSpawned);
+            if (eggsSpawned < totalEggsToSpawn) {
+                var eggsToSpawnThisTick = Math.min(rrandom_range(1, 3), totalEggsToSpawn - eggsSpawned);
 
-            for (var i = 0; i < eggsToSpawnThisTick; i++) {
-                var egg = world.spawnClone(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 2, "Scrambler");
-                egg.executeCommand("/playsound ivv:gun.firing.laser neutral @a");
-                if (egg) {
-                    egg.setMotionX((Math.random() * 1.5 - 0.75));
-                    egg.setMotionY(Math.random() * 1 + 0.5);
-                    egg.setMotionZ(Math.random() * 1.5 - 0.75);
+                for (var i = 0; i < eggsToSpawnThisTick; i++) {
+                    var egg = world.spawnClone(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 2, "Scrambler");
+                    egg.executeCommand("/playsound ivv:gun.firing.laser neutral @a");
+                    if (egg) {
+                        egg.setMotionX((Math.random() * 1.5 - 0.75));
+                        egg.setMotionY(Math.random() * 1 + 0.5);
+                        egg.setMotionZ(Math.random() * 1.5 - 0.75);
+                    }
                 }
+
+                eggsSpawned += eggsToSpawnThisTick;
+                npc.getStoreddata().put("eggsSpawned", eggsSpawned);
+            } else {
+                npc.getTimers().stop(1);
             }
-
-            eggsSpawned += eggsToSpawnThisTick;
-            npc.getStoreddata().put("eggsSpawned", eggsSpawned);
-        } else {
-            npc.getTimers().stop(1);
         }
-    }
 
-    if (event.id === 2) { // End Mini Egg Swarm attack timer
-        bossFightData.isAttacking = false;
-        saveJson(bossFightData, EVENT_DATA_JSON);
+        if (event.id === 2) { // End Mini Egg Swarm attack timer
+            bossFightData.isAttacking = false;
+            saveJson(bossFightData, EVENT_DATA_JSON);
 
-        tellNearbyPlayers(npc, "&6The Mini Egg Swarm attack has ended!", 50);
-        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
-    }
+            tellNearbyPlayers(npc, "&6The Mini Egg Swarm attack has ended!", 50);
+            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
+        }
 
-    if (event.id === 3) { // Boomshell spawning timer
-        var world = npc.getWorld();
-        var spawnPos = npc.getPos();
-        var boomshellsSpawned = npc.getStoreddata().get("boomshellsSpawned");
-        var totalBoomshellsToSpawn = npc.getStoreddata().get("totalBoomshellsToSpawn");
+        if (event.id === 3) { // Boomshell spawning timer
+            var world = npc.getWorld();
+            var spawnPos = npc.getPos();
+            var boomshellsSpawned = npc.getStoreddata().get("boomshellsSpawned");
+            var totalBoomshellsToSpawn = npc.getStoreddata().get("totalBoomshellsToSpawn");
 
-        if (boomshellsSpawned < totalBoomshellsToSpawn) {
-            var boomshell = world.spawnClone(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 2, "Boomshell");
-            if (boomshell) {
-                boomshell.setMotionX((Math.random() - 0.75));
-                boomshell.setMotionY(Math.random() + 0.5);
-                boomshell.setMotionZ(Math.random() - 0.75);
+            if (boomshellsSpawned < totalBoomshellsToSpawn) {
+                var boomshell = world.spawnClone(spawnPos.getX(), spawnPos.getY(), spawnPos.getZ(), 2, "Boomshell");
+                if (boomshell) {
+                    // Increase motion values for greater spread
+                    boomshell.setMotionX((Math.random() * 3 - 1.5)); // Larger horizontal motion
+                    boomshell.setMotionY(Math.random() * 1.5 + 0.5); // Higher vertical motion
+                    boomshell.setMotionZ(Math.random() * 3 - 1.5); // Larger horizontal motion
+                }
+
+                boomshellsSpawned++;
+                npc.getStoreddata().put("boomshellsSpawned", boomshellsSpawned);
+            } else {
+                npc.getTimers().stop(3);
             }
-
-            boomshellsSpawned++;
-            npc.getStoreddata().put("boomshellsSpawned", boomshellsSpawned);
-        } else {
-            npc.getTimers().stop(3);
         }
-    }
 
-    if (event.id === 4) { // End Boomshell Wall attack timer
-        bossFightData.isAttacking = false;
-        saveJson(bossFightData, EVENT_DATA_JSON);
+        if (event.id === 4) { // End Boomshell Wall attack timer
+            bossFightData.isAttacking = false;
+            saveJson(bossFightData, EVENT_DATA_JSON);
 
-        tellNearbyPlayers(npc, "&6The Boomshell Wall attack has ended!", 50);
-        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
-    }
+            tellNearbyPlayers(npc, "&6The Boomshell Wall attack has ended!", 50);
+            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
+        }
 
-    if (event.id === 5) { // End Jump Attack timer
-        bossFightData.isAttacking = false;
-        saveJson(bossFightData, EVENT_DATA_JSON);
+        if (event.id === 5) { // End Jump Attack timer
+            bossFightData.isAttacking = false;
+            saveJson(bossFightData, EVENT_DATA_JSON);
 
-        tellNearbyPlayers(npc, "&6The Jump Attack has ended!", 50);
-        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
-    }
+            tellNearbyPlayers(npc, "&6The Jump Attack has ended!", 50);
+            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
+        }
 
-    if (event.id === 6) { // Chocolate powder spawning timer
-        spawnChocolatePowder(npc);
-    }
+        if (event.id === 6) { // Chocolate powder spawning timer
+            spawnChocolatePowder(npc);
+        }
 
-    if (event.id === 7) { // End Chocolate Powder Flood attack timer
-        bossFightData.isAttacking = false;
-        saveJson(bossFightData, EVENT_DATA_JSON);
+        if (event.id === 7) { // End Chocolate Powder Flood attack timer
+            bossFightData.isAttacking = false;
+            saveJson(bossFightData, EVENT_DATA_JSON);
 
-        tellNearbyPlayers(npc, "&6The Chocolate Powder Flood attack has ended!", 50);
+            tellNearbyPlayers(npc, "&6The Chocolate Powder Flood attack has ended!", 50);
 
-        // Replace all chocolate powder blocks in the arena
-        var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
-        var arena = bossFightData.Arena[arenaType];
-        var pos1 = arena.pos1;
-        var pos2 = arena.pos2;
+            // Replace all chocolate powder blocks in the arena
+            var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+            var arena = bossFightData.Arena[arenaType];
+            var pos1 = arena.pos1;
+            var pos2 = arena.pos2;
 
-        var world = npc.getWorld();
-        for (var x = Math.min(pos1.x, pos2.x); x <= Math.max(pos1.x, pos2.x); x++) {
-            for (var y = Math.min(pos1.y, pos2.y); y <= Math.max(pos1.y, pos2.y); y++) {
-                for (var z = Math.min(pos1.z, pos2.z); z <= Math.max(pos1.z, pos2.z); z++) {
-                    var block = world.getBlock(x, y, z);
-                    if (block.getName() === "minecraft:concrete_powder" && block.getMetadata() === 12) {
-                        world.setBlock(x, y, z, "minecraft:air", 0);
+            var world = npc.getWorld();
+            for (var x = Math.min(pos1.x, pos2.x); x <= Math.max(pos1.x, pos2.x); x++) {
+                for (var y = Math.min(pos1.y, pos2.y); y <= Math.max(pos1.y, pos2.y); y++) {
+                    for (var z = Math.min(pos1.z, pos2.z); z <= Math.max(pos1.z, pos2.z); z++) {
+                        var block = world.getBlock(x, y, z);
+                        if (block.getName() === "minecraft:concrete_powder" && block.getMetadata() === 12) {
+                            world.setBlock(x, y, z, "minecraft:air", 0);
 
-                        // Spawn particles when cleaning up the blocks
-                        var particleCommand = "/particle blockcrack " + x + " " + y + " " + z + " 0.5 0.5 0.5 0.1 10 force @a 172";
-                        npc.executeCommand(particleCommand);
+                            // Spawn particles when cleaning up the blocks
+                            var particleCommand = "/particle blockcrack " + x + " " + y + " " + z + " 0.5 0.5 0.5 0.1 10 normal @a 172";
+                            npc.executeCommand(particleCommand);
 
-                        // Apply knockback to players near the block
-                        var nearbyPlayers = world.getNearbyEntities(API.getIPos(x, y, z), 3, 1); // Radius 3, type 1 = players
-                        for (var i = 0; i < nearbyPlayers.length; i++) {
-                            var player = nearbyPlayers[i];
-                            var dx = player.getX() - x;
-                            var dz = player.getZ() - z;
-                            var distance = Math.sqrt(dx * dx + dz * dz);
-                            if (distance > 0) {
-                                var knockbackX = (dx / distance) * 0.5;
-                                var knockbackY = 0.3; // Upward motion
-                                var knockbackZ = (dz / distance) * 0.5;
-                                player.setMotionX(knockbackX);
-                                player.setMotionY(knockbackY);
-                                player.setMotionZ(knockbackZ);
+                            // Apply knockback to players near the block
+                            var nearbyPlayers = world.getNearbyEntities(API.getIPos(x, y, z), 3, 1); // Radius 3, type 1 = players
+                            for (var i = 0; i < nearbyPlayers.length; i++) {
+                                var player = nearbyPlayers[i];
+                                var dx = player.getX() - x;
+                                var dz = player.getZ() - z;
+                                var distance = Math.sqrt(dx * dx + dz * dz);
+                                if (distance > 0) {
+                                    var knockbackX = (dx / distance) * 0.5;
+                                    var knockbackY = 0.3; // Upward motion
+                                    var knockbackZ = (dz / distance) * 0.5;
+                                    player.setMotionX(knockbackX);
+                                    player.setMotionY(knockbackY);
+                                    player.setMotionZ(knockbackZ);
+                                }
                             }
                         }
                     }
                 }
             }
+
+            // Kill remaining falling blocks
+            npc.executeCommand("/kill @e[type=falling_block]");
+
+            npc.executeCommand("/playsound minecraft:entity.illusion_illager.cast_spell master @a ~ ~ ~ 1 1");
+            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
         }
-
-        // Kill remaining falling blocks
-        npc.executeCommand("/kill @e[type=falling_block]");
-
-        npc.executeCommand("/playsound minecraft:entity.illusion_illager.cast_spell master @a ~ ~ ~ 1 1");
-        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
+    } catch (error) {
+        logToFile("events", "Error in timer event (ID: " + event.id + "): " + error.message);
     }
 }
 
@@ -842,9 +942,13 @@ function died(event) {
 
         if (data.BunnyStage > 3) {
             npc.despawn();
-            data.isEventOver = true;
+            data.isEventRunning = true;
             data.BunnyStage = 0;
             world.playSoundAt(death_pos, "minecraft:entity.enderdragon.death", 10.0, 1.0);
+            tellNearbyPlayers(npc, "&cThe Easter Bunny has been defeated once and for all! The event is over!");
+        } else {
+            tellNearbyPlayers(npc, "&6The Easter Bunny has been defeated, but it seems to be preparing for something...");
+            tellNearbyPlayers(npc, "&cStage " + data.BunnyStage + " has begun! The bunny is stronger than before!");
         }
     }
 
@@ -856,12 +960,56 @@ function died(event) {
         ",Color:" + PARTICLE_COLOR + ",Motion:" + JSON.stringify(PARTICLE_MOTION) + "}";
     npc.executeCommand(command);
     world.playSoundAt(death_pos, "minecraft:entity.enderdragon.growl", 10.0, 1.0);
-    var command = "/particle blockcrack " + x + " " + y + " " + z + " 1 1 1 0.5 100 force @a 201";
+    var command = "/particle blockcrack " + x + " " + y + " " + z + " 1 1 1 0.5 100 normal @a 201";
     npc.executeCommand(command);
 
+    // Run all cleanups
     initEggMode(npc);
-    destroyHatchPillar(world);
+    destroyHatchPillar(npc);
+    cleanupRemainingEntities(world);
+    cleanupArena(world);
+
     logToFile("events", "Easter Bunny Boss: Died. Bunny Stage: " + data.BunnyStage);
+}
+
+/**
+ * Cleans up remaining entities like eggs and boomshells in the world.
+ * @param {IWorld} world - The world instance.
+ */
+function cleanupRemainingEntities(world) {
+    var entities = world.getNearbyEntities(API.getIPos(0, 0, 0), 10000, 2); // Type 2 = NPCs
+    for (var i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.getName() === "Scrambler" || entity.getName() === "Boomshell") {
+            entity.despawn();
+        }
+    }
+    logToFile("events", "Cleaned up remaining Scramblers and Boomshells.");
+}
+
+/**
+ * Cleans up the arena by removing temporary blocks like chocolate powder.
+ * @param {IWorld} world - The world instance.
+ */
+function cleanupArena(world) {
+    var data = loadJson(EVENT_DATA_JSON);
+    var arenaType = data["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = data.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
+
+    for (var x = Math.min(pos1.x, pos2.x); x <= Math.max(pos1.x, pos2.x); x++) {
+        for (var y = Math.min(pos1.y, pos2.y); y <= Math.max(pos1.y, pos2.y); y++) {
+            for (var z = Math.min(pos1.z, pos2.z); z <= Math.max(pos1.z, pos2.z); z++) {
+                var block = world.getBlock(x, y, z);
+                if (block.getName() === "minecraft:concrete_powder" && block.getMetadata() === 12) {
+                    world.setBlock(x, y, z, "minecraft:air", 0);
+                }
+            }
+        }
+    }
+    API.executeCommand(world, "/kill @e[type=falling_block]");
+    logToFile("events", "Cleaned up the arena by removing temporary blocks.");
 }
 
 /**
@@ -887,6 +1035,10 @@ function initEggMode(npc) {
     globalData.running_recipes = [];
     saveJson(globalData, EVENT_DATA_JSON);
 
+    // Cleanup remaining entities and arena
+    cleanupRemainingEntities(world);
+    cleanupArena(world);
+
     npc.setFaction(16);
     npc.getDisplay().setSkinUrl("https://legends-of-gramdatis.com/gramados_skins/easter_eggs/easter_egg_19.png");
     npc.getDisplay().setModel("customnpcs:npcslime");
@@ -896,7 +1048,7 @@ function initEggMode(npc) {
     npc.getAi().setWanderingRange(1);
     npc.getAi().setStandingType(1);
     npc.getAi().setMovingType(0);
-    npc.getAi().setRetaliateType(3);
+    npc.getAi().setRetaliateType(2);
     updateHealth(npc);
     updateSounds(npc);
 }
@@ -911,17 +1063,17 @@ function initBunnyMode(npc) {
         globalData.isEggMode = false;
         saveJson(globalData, EVENT_DATA_JSON);
     }
-    npc.setFaction(12);
+    npc.setFaction(11);
     npc.getDisplay().setSkinUrl("https://legends-of-gramdatis.com/gramados_skins/tmp/rabbit_easter.png");
     npc.getDisplay().setModel("animania:buck_jack");
     npc.getDisplay().setSize(14 + globalData.BunnyStage * 2);
     npc.getDisplay().setHasLivingAnimation(true);
     npc.getAi().setWalkingSpeed(7);
-    // npc.getAi().setWanderingRange(10);
-    npc.getAi().setWanderingRange(5);
+    npc.getAi().setWanderingRange(14);
+    // npc.getAi().setWanderingRange(5);
     npc.getAi().setStandingType(0);
     npc.getAi().setMovingType(1);
-    npc.getAi().setRetaliateType(2);
+    npc.getAi().setRetaliateType(3);
     updateHealth(npc);
     updateSounds(npc);
 }
@@ -951,6 +1103,7 @@ function bunnyHatch(npc) {
 
     world.playSoundAt(npc.getPos(), "minecraft:entity.wither.break_block", 10.0, 1.0);
     world.playSoundAt(npc.getPos(), "minecraft:entity.wither.spawn", 10.0, 1.0);
+    tellNearbyPlayers(npc, "&dThe Easter Bunny has returned in its Bunny form! Prepare for battle!");
     logToFile("events", "Easter Bunny Boss: Bunny mode activated.");
 }
 
@@ -969,8 +1122,9 @@ function eggHatch(npc) {
 
     world.playSoundAt(npc.getPos(), "minecraft:entity.zombie_horse.death", 5.0, 1.0);
     world.playSoundAt(npc.getPos(), "minecraft:block.lava.ambient", 1.0, 1.0);
-    var command = "/particle blockcrack " + x + " " + y + " " + z + " 3 2 3 5.0 300 force @a 10";
+    var command = "/particle blockcrack " + x + " " + y + " " + z + " 3 2 3 5.0 300 normal @a 10";
     npc.executeCommand(command);
+    tellNearbyPlayers(npc, "&eThe Easter Bunny has retreated into its Egg form. Something is brewing...");
     logToFile("events", "Easter Bunny Boss: Egg mode activated.");
 }
 
@@ -985,6 +1139,8 @@ function freezeRabbit(npc) {
     npc.getAi().setWanderingRange(1);
     npc.getAi().setStandingType(1);
     npc.getStats().setResistance(3, 2.0);
+    npc.getStats().setResistance(0, 1.8);
+    npc.getStats().setResistance(1, 1.8);
     npc.executeCommand("/playsound minecraft:entity.illusion_illager.prepare_mirror neutral @a");
 }
 
@@ -999,6 +1155,8 @@ function unfreezeRabbit(npc) {
     npc.getAi().setWanderingRange(10);
     npc.getAi().setStandingType(0);
     npc.getStats().setResistance(3, 1.0);
+    npc.getStats().setResistance(0, 1.0);
+    npc.getStats().setResistance(1, 1.0);
     npc.executeCommand("/playsound minecraft:entity.illusion_illager.cast_spell neutral @a");
 }
 

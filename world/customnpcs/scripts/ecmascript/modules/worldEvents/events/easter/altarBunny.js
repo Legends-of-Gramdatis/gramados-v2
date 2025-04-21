@@ -234,6 +234,9 @@ function applyModifiersAndEvents(npc, bossFightData) {
                     case "Zap Gamble":
                         triggerZapOrbEvent(npc, recipe, bossFightData);
                         break;
+                    case "Healing Spirits":
+                        applyHealingSpiritsEffect(npc, recipe, bossFightData);
+                        break;
                     default:
                         break;
                 }
@@ -244,6 +247,7 @@ function applyModifiersAndEvents(npc, bossFightData) {
 
 /**
  * Processes recipes based on the current yolkmarks in storage.
+ * Logs details about discovered recipes and their yolkmarks.
  * @param {ICustomNpc} npc - The altar bunny NPC instance.
  */
 function processRecipes(npc, bossFightData) {
@@ -264,10 +268,6 @@ function processRecipes(npc, bossFightData) {
             encryptedYolk >= recipe.encrypted_yolktype &&
             !includes(triggeredRecipes, recipe.name)) { // Check if recipe is already triggered
             
-            // Debugging logs
-            // npc.say("&6Processing recipe: " + recipe.name);
-            // npc.say("&6Yolkmarks - Spring: " + springYolk + ", Chromashell: " + chromashellYolk + ", Encrypted: " + encryptedYolk);
-
             // Deduct yolkmarks
             springYolk -= recipe.spring_yolktype;
             chromashellYolk -= recipe.chromashell_yolktype;
@@ -283,10 +283,12 @@ function processRecipes(npc, bossFightData) {
             }
             if (!alreadyDiscovered) {
                 discoveredRecipes.push(recipe);
+                logToFile("events", "Discovered Recipe: " + recipe.name + " | Spring: " + recipe.spring_yolktype + ", Chromashell: " + recipe.chromashell_yolktype + ", Encrypted: " + recipe.encrypted_yolktype);
             }
 
             // Add to running recipes
             runningRecipes.push({ name: recipe.name, duration: recipe.duration, first_trigger: false });
+            logToFile("events", "Running Recipe: " + recipe.name + " | Duration: " + recipe.duration);
 
             // Mark recipe as triggered
             triggeredRecipes.push(recipe.name);
@@ -495,7 +497,7 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
             // Check if the player is within the arena bounds using isWithinZone
             if (isWithinZone(iposToPos(playerPos), pos1, pos2)) {
                 // Apply effects: Slow Falling and Jump Boost
-                player.addPotionEffect(25, 5, 1, true); // Levitation (ID 25), duration 5 seconds, amplifier 2
+                player.addPotionEffect(25, 2, 1, true); // Levitation (ID 25), duration 2 seconds, amplifier 2
                 player.addPotionEffect(8, 60, 1, true);  // Jump Boost (ID 8), duration 60 seconds, amplifier 2
                 player.addPotionEffect(1, 60, 2, true);  // Speed (ID 1), duration 60 seconds, amplifier 3
             }
@@ -508,7 +510,9 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
 
 /**
  * Handles the "Zap Orb" event with a 50/50 gamble.
+ * Spawns one Zap Orb per player near their position.
  * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} recipe - The recipe object.
  * @param {Object} bossFightData - The boss fight data.
  */
 function triggerZapOrbEvent(npc, recipe, bossFightData) {
@@ -516,30 +520,67 @@ function triggerZapOrbEvent(npc, recipe, bossFightData) {
         recipe.first_trigger = true;
         var zapOrbDuration = 120; // Duration in seconds
         var zapOrbName = "Zap Orb"; // Name of the NPC to spawn
-        var zapOrbPos = npc.getPos(); // Spawn position based on the altar bunny's position
 
-        // 50/50 gamble
-        if (Math.random() < 0.5) {
-            // Good effects for nearby players
-            var players = npc.getWorld().getNearbyEntities(zapOrbPos, 50, 1); // Radius of 50 blocks
-            for (var i = 0; i < players.length; i++) {
-                var player = players[i];
+        // Notify players in the area
+        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+
+        var players = npc.getWorld().getNearbyEntities(npc.getPos(), 50, 1); // Radius of 50 blocks, type 1 = players
+        for (var i = 0; i < players.length; i++) {
+            var player = players[i];
+            var playerPos = player.getPos();
+
+            // 50/50 gamble for each player
+            if (Math.random() < 0.5) {
+                // Good effects for the player
                 player.addPotionEffect(1, 120, 2, true); // Speed III
                 player.addPotionEffect(5, 120, 1, true); // Strength II
                 player.addPotionEffect(11, 120, 1, true); // Resistance II
-            }
 
-            // Notify players about the good effects
-            tellNearbyPlayers(npc, "&aYou feel a surge of power coursing through you!", 50);
-        } else {
-            // Spawn the Zap Orb NPC
-            var zapOrb = npc.getWorld().spawnClone(zapOrbPos.x, zapOrbPos.y + 1, zapOrbPos.z, 2, zapOrbName);
-            if (zapOrb) {
-                zapOrb.getTimers().start(1, zapOrbDuration * 20, false); // Despawn after 120 seconds
-            }
+                // Notify the player about the good effects
+                tellPlayer(player, "&aYou feel a surge of power coursing through you!");
+            } else {
+                // Spawn the Zap Orb NPC near the player
+                var zapOrb = npc.getWorld().spawnClone(playerPos.getX(), playerPos.getY() + 1, playerPos.getZ(), 2, zapOrbName);
+                if (zapOrb) {
+                    zapOrb.getTimers().start(1, zapOrbDuration * 20, false); // Despawn after 120 seconds
+                }
 
-            // Notify players about the Zap Orb
-            tellNearbyPlayers(npc, "&eA Zap Orb has appeared! Harness its power!", 50);
+                // Notify the player about the Zap Orb
+                tellPlayer(player, "&eA Zap Orb has appeared near you! Harness its power!");
+            }
         }
     }
+}
+
+function applyHealingSpiritsEffect(npc, recipe, bossFightData) {
+    if (recipe.first_trigger == false) {
+        recipe.first_trigger = true;
+
+        // Notify players in the area
+        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+    }
+
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
+    var pos1 = arena.pos1;
+    var pos2 = arena.pos2;
+
+    var world = npc.getWorld();
+    var nearbyPlayers = world.getNearbyEntities(npc.getPos(), 50, 1); // Get players within a radius
+
+    for (var i = 0; i < nearbyPlayers.length; i++) {
+        var player = nearbyPlayers[i];
+        var playerPos = player.getPos();
+
+        // Check if the player is within the arena bounds
+        if (isWithinZone(iposToPos(playerPos), pos1, pos2)) {
+            // Apply regeneration effect
+            player.addPotionEffect(10, 40, 0, true); // Regeneration (ID 10), duration 2 seconds, amplifier 1
+        }
+    }
+
+    // Play particles to indicate healing
+    var command = "/particle heart " + npc.getX() + " " + (npc.getY() + 1) + " " + npc.getZ() +
+        " 1 1 1 0.1 10 force";
+    npc.executeCommand(command);
 }
