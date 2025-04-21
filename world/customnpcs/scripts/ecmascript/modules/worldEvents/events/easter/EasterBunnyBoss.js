@@ -93,9 +93,11 @@ function provideTutorialMessage(npc) {
  * @param {ICustomNpc} npc - The NPC instance.
  */
 function updateHealth(npc) {
+    var data = loadJson(EVENT_DATA_JSON);
     if (!isEggMode()) {
         var globalData = loadPlayerEventData("Easter Egg Hunt", "Global Data");
         var totalEggs = globalData.egg_count || 0;
+        totalEggs = Math.floor(totalEggs * (1 + data.BunnyStage * 0.25)); // Increase health by 25% per stage
         npc.getDisplay().setName(ccs("&dEaster Bunny Boss &c❤ " + totalEggs));
         npc.getDisplay().setBossbar(1);
         npc.getStats().setMaxHealth(totalEggs);
@@ -542,6 +544,12 @@ function keepBossInArena(npc, bossFightData) {
     var y = Math.max(Math.min(npc.getY(), Math.max(pos1.y, pos2.y)), Math.min(pos1.y, pos2.y));
     var z = Math.max(Math.min(npc.getZ(), Math.max(pos1.z, pos2.z)), Math.min(pos1.z, pos2.z));
 
+    var safeZone = bossFightData.safe_zone;
+    var pos = npc.getPos();
+    if (isWithinZone(iposToPos(pos), safeZone.pos1, safeZone.pos2)) {
+        return; // Allow the boss to stay in the safe zone
+    }
+
     if (x !== npc.getX() || y !== npc.getY() || z !== npc.getZ()) {
         npc.setPosition(x, y, z);
 
@@ -620,9 +628,16 @@ function handlePlayersExitingArena(npc, bossFightData) {
     var world = npc.getWorld();
     var nearbyPlayers = world.getNearbyEntities(npc.getPos(), 50, 1); // Get players within a radius
 
+    var safeZone = bossFightData.safe_zone;
+
     for (var i = 0; i < nearbyPlayers.length; i++) {
         var player = nearbyPlayers[i];
         var playerPos = player.getPos();
+
+        // Skip applying effects if the player is in the safe zone
+        if (isWithinZone(iposToPos(playerPos), safeZone.pos1, safeZone.pos2)) {
+            continue;
+        }
 
         // Check if the player is outside the arena bounds
         if (!isWithinZone(iposToPos(playerPos), pos1, pos2)) {
@@ -938,12 +953,12 @@ function died(event) {
         data.isEggMode = true;
         data.isAttacking = false;
         data.running_recipes = [];
-        saveJson(data, EVENT_DATA_JSON);
 
         if (data.BunnyStage > 3) {
             npc.despawn();
             data.isEventRunning = true;
             data.BunnyStage = 0;
+            saveJson(data, EVENT_DATA_JSON);
             world.playSoundAt(death_pos, "minecraft:entity.enderdragon.death", 10.0, 1.0);
             tellNearbyPlayers(npc, "&cThe Easter Bunny has been defeated once and for all! The event is over!");
         } else {
