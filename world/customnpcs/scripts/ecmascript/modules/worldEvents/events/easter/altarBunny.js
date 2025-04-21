@@ -231,6 +231,9 @@ function applyModifiersAndEvents(npc, bossFightData) {
                     case "Bunny Bounce":
                         applyBunnyBounceEffect(npc, recipe, bossFightData);
                         break;
+                    case "Zap Gamble":
+                        triggerZapOrbEvent(npc, recipe, bossFightData);
+                        break;
                     default:
                         break;
                 }
@@ -440,13 +443,13 @@ function getEggType(item) {
 }
 
 function makeChocolateRain(npc, recipe, bossFightData) {
-
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
         tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
     }
-    var arena = bossFightData.Arena.debug; // Use the debug arena; switch to "official" if needed
 
+    var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+    var arena = bossFightData.Arena[arenaType];
     var pos1 = arena.pos1;
     var pos2 = arena.pos2;
     var startY = Math.max(pos1.y, pos2.y); // Use the highest Y value
@@ -477,7 +480,8 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
 
-        var arena = bossFightData.Arena.debug; // Use the debug arena; switch to "official" if needed
+        var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
+        var arena = bossFightData.Arena[arenaType];
         var pos1 = arena.pos1;
         var pos2 = arena.pos2;
 
@@ -499,5 +503,43 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData) {
 
         // Notify players in the arena
         tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+    }
+}
+
+/**
+ * Handles the "Zap Orb" event with a 50/50 gamble.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} bossFightData - The boss fight data.
+ */
+function triggerZapOrbEvent(npc, recipe, bossFightData) {
+    if (recipe.first_trigger == false) {
+        recipe.first_trigger = true;
+        var zapOrbDuration = 120; // Duration in seconds
+        var zapOrbName = "Zap Orb"; // Name of the NPC to spawn
+        var zapOrbPos = npc.getPos(); // Spawn position based on the altar bunny's position
+
+        // 50/50 gamble
+        if (Math.random() < 0.5) {
+            // Good effects for nearby players
+            var players = npc.getWorld().getNearbyEntities(zapOrbPos, 50, 1); // Radius of 50 blocks
+            for (var i = 0; i < players.length; i++) {
+                var player = players[i];
+                player.addPotionEffect(1, 120, 2, true); // Speed III
+                player.addPotionEffect(5, 120, 1, true); // Strength II
+                player.addPotionEffect(11, 120, 1, true); // Resistance II
+            }
+
+            // Notify players about the good effects
+            tellNearbyPlayers(npc, "&aYou feel a surge of power coursing through you!", 50);
+        } else {
+            // Spawn the Zap Orb NPC
+            var zapOrb = npc.getWorld().spawnClone(zapOrbPos.x, zapOrbPos.y + 1, zapOrbPos.z, 2, zapOrbName);
+            if (zapOrb) {
+                zapOrb.getTimers().start(1, zapOrbDuration * 20, false); // Despawn after 120 seconds
+            }
+
+            // Notify players about the Zap Orb
+            tellNearbyPlayers(npc, "&eA Zap Orb has appeared! Harness its power!", 50);
+        }
     }
 }
