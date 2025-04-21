@@ -391,7 +391,7 @@
     "pStick": 0b,
     "MovingPause": 0b,
     "NpcDeathSound": "minecraft:item.shield.break",
-    "FactionID": 12,
+    "FactionID": 11,
     "Title": "",
     "TotalTicksAlive": 34676L,
     "Rotation": [

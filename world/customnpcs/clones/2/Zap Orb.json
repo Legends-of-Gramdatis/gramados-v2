@@ -580,7 +580,7 @@
     "pStick": 0b,
     "MovingPause": 1b,
     "NpcDeathSound": "ivv:phone.malfunction.paradox.future",
-    "FactionID": 12,
+    "FactionID": 11,
     "Title": "",
     "TotalTicksAlive": 20222L,
     "Rotation": [

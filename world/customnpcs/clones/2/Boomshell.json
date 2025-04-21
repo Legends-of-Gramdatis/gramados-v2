@@ -510,7 +510,7 @@ function explode(npc) {
     "pStick": 0b,
     "MovingPause": 1b,
     "NpcDeathSound": "minecraft:entity.creeper.death",
-    "FactionID": 12,
+    "FactionID": 11,
     "Title": "",
     "TotalTicksAlive": 17399L,
     "Rotation": [
