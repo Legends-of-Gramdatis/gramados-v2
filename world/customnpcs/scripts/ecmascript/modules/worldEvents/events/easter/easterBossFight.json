@@ -2,58 +2,9 @@
     "isEventRunning": true,
     "isEggMode": true,
     "isAttacking": false,
-    "BunnyStage": 6,
+    "BunnyStage": 0,
     "running_recipes": [],
-    "discovered_recipes": [
-        {
-            "name": "Healing Spirits",
-            "spring_yolktype": 0,
-            "chromashell_yolktype": 10,
-            "encrypted_yolktype": 0,
-            "description": "&aGentle warmth spreads through the field... healing begins.",
-            "duration": 1200
-        },
-        {
-            "name": "Bunny Bounce",
-            "spring_yolktype": 0,
-            "chromashell_yolktype": 5,
-            "encrypted_yolktype": 0,
-            "description": "&aYou feel as light as a bunny! jump safely, traveler!",
-            "duration": 120
-        },
-        {
-            "name": "Zap Gamble",
-            "spring_yolktype": 0,
-            "chromashell_yolktype": 0,
-            "encrypted_yolktype": 4,
-            "description": "&aThe statuette sparks-this could go either way!",
-            "duration": 240
-        },
-        {
-            "name": "Phase Trigger",
-            "spring_yolktype": 3,
-            "chromashell_yolktype": 3,
-            "encrypted_yolktype": 3,
-            "description": "&aThe statuette glows bright-the rabbit will rest now.",
-            "duration": 100
-        },
-        {
-            "name": "Chocolate Rain",
-            "spring_yolktype": 10,
-            "chromashell_yolktype": 0,
-            "encrypted_yolktype": 0,
-            "description": "&aSweet rain pours from the sky, warming your soul and stomach.",
-            "duration": 200
-        },
-        {
-            "name": "Minor Calm Offer",
-            "spring_yolktype": 6,
-            "chromashell_yolktype": 0,
-            "encrypted_yolktype": 0,
-            "description": "&aA healing spirit flickers into the field... use this moment wisely.",
-            "duration": 20
-        }
-    ],
+    "discovered_recipes": [],
     "all_recipes": [
         {
             "name": "Phase Trigger",
@@ -129,6 +80,18 @@
                 "y": 94,
                 "z": 3595
             }
+        }
+    },
+    "safe_zone": {
+        "pos1": {
+            "x": -6181,
+            "y": 68,
+            "z": 2025
+        },
+        "pos2": {
+            "x": -6169,
+            "y": 71,
+            "z": 2033
         }
     }
 }
