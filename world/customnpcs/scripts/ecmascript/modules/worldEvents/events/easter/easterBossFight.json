@@ -1,7 +1,7 @@
 {
     "isEventOver": true,
     "isEggMode": false,
-    "isAttacking": true,
+    "isAttacking": false,
     "BunnyStage": 1,
     "running_recipes": [],
     "discovered_recipes": [],
@@ -12,7 +12,7 @@
             "chromashell_yolktype": 0,
             "encrypted_yolktype": 4,
             "description": "The statuette sparks-this could go either way!",
-            "duration": 1200
+            "duration": 240
         },
         {
             "name": "Chocolate Rain",
@@ -63,6 +63,7 @@
             "duration": 1200
         }
     ],
+    "use_arena": "debug",
     "Arena": {
         "official": {
             "pos1": {
