@@ -30,6 +30,7 @@ function tick(event) {
     // Check if the boss is no longer attacking
     if (!bossFightData.isAttacking) {
         explode(npc);
+        logToFile("events", "A Boomshell has exploded because the boss is no longer attacking.");
         return;
     }
 

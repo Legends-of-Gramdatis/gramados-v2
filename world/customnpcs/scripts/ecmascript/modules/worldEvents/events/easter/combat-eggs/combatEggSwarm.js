@@ -37,5 +37,6 @@ function tick(event) {
     var bossFightData = loadJson(EVENT_DATA_JSON);
     if (!bossFightData.isAttacking) {
         npc.despawn();
+        logToFile("events", "A mini-egg has despawned because the boss is no longer attacking.");
     }
 }
