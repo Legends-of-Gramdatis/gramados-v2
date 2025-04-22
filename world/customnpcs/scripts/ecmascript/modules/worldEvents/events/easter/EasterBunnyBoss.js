@@ -4,6 +4,7 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
 var PARTICLE_RADIUS = 10;
 var PARTICLE_COLOR = 16711935; // Pink
@@ -48,10 +49,13 @@ function init(event) {
     if (!data) {
         data = {
             BunnyStage: 0,
-            isEggMode: false
+            isEggMode: false,
+            triggeredStages: {}
         };
         saveJson(data, EVENT_DATA_JSON);
     }
+
+    handleAutomaticTriggers(npc, data);
 
     if (data.isEggMode) {
         eggHatch(npc);
@@ -62,6 +66,46 @@ function init(event) {
 
     // Provide tutorial message to players
     provideTutorialMessage(npc);
+}
+
+/**
+ * Handles automatic triggers for bunny stages and egg mode transitions.
+ * @param {ICustomNpc} npc - The NPC instance.
+ * @param {Object} data - The boss fight data.
+ */
+function handleAutomaticTriggers(npc, data) {
+    var currentTime = getCurrentTime(); // Assume this function gets the current time as { hour, minute, day, month }.
+    
+    // npc.say("Current Time: " + currentTime.hour + ":" + currentTime.minute + " " + currentTime.day + "/" + currentTime.month);
+    var stageTimes = [
+        { stage: 0, start: { hour: 13, minute: 0, day: 21, month: 4 }, end: { hour: 15, minute: 0, day: 21, month: 4 } },
+        { stage: 1, start: { hour: 19, minute: 0, day: 21, month: 4 }, end: { hour: 21, minute: 0, day: 21, month: 4 } },
+        { stage: 2, start: { hour: 23, minute: 0, day: 21, month: 4 }, end: { hour: 1, minute: 0, day: 22, month: 4 } },
+        { stage: 3, start: { hour: 3, minute: 0, day: 22, month: 4 }, end: { hour: 5, minute: 0, day: 22, month: 4 } }/*,
+        { stage: 0, start: { hour: 22, minute: 30, day: 21, month: 4 }, end: { hour: 23, minute: 0, day: 21, month: 4 }, debug: true }*/
+    ];
+
+    for (var i = 0; i < stageTimes.length; i++) {
+        var stageTime = stageTimes[i];
+        var isWithin = isTimeBetween(currentTime, stageTime.start, stageTime.end);
+        // npc.say("Stage " + stageTime.stage + " is within time: " + isWithin);
+
+        // Handle one-hour pre-trigger for egg mode
+        var oneHourBefore = { hour: stageTime.start.hour - 1, minute: stageTime.start.minute, day: stageTime.start.day, month: stageTime.start.month };
+        if (isTimeBetween(currentTime, oneHourBefore, stageTime.start) && !data.isEggMode) {
+            initEggMode(npc);
+            logToFile("events", "Forced egg mode one hour before stage " + stageTime.stage + ".");
+        }
+
+        // Handle stage trigger
+        if (isWithin && !data.triggeredStages[stageTime.stage]) {
+            data.BunnyStage = stageTime.stage;
+            data.triggeredStages[stageTime.stage] = true;
+            saveJson(data, EVENT_DATA_JSON);
+            bunnyHatch(npc);
+            logToFile("events", "Triggered bunny stage " + stageTime.stage + ".");
+        }
+    }
 }
 
 /**
