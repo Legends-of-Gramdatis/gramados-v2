@@ -265,7 +265,7 @@ function getTimer(npc) {
 
 function generateLoot(world, npc, player) {
     var full_loot = [];
-    var criminalityIncrease = rrandom_range(10, 20);
+    var criminalityIncrease = rrandom_range(1, 5);
     player.addFactionPoints(6, criminalityIncrease);
 
     switch (npc.getStoreddata().get("safe_type")) {
