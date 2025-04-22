@@ -38,7 +38,7 @@
             "egg_count": 281
         },
         "Global Data": {
-            "egg_count": 963
+            "egg_count": 987
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -86,31 +86,31 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 42
+                    "egg_count": 55
                 },
                 "chromashell": {
-                    "egg_count": 22
+                    "egg_count": 28
                 },
                 "encrypted": {
                     "egg_count": 9
                 }
             },
-            "egg_count": 73
+            "egg_count": 92
         },
         "oldbjorn": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 84
+                    "egg_count": 87
                 },
                 "chromashell": {
-                    "egg_count": 57
+                    "egg_count": 59
                 },
                 "encrypted": {
                     "egg_count": 15
                 }
             },
-            "egg_count": 156
+            "egg_count": 161
         },
         "Kitsunami_": {
             "has_starter_pack": true,
