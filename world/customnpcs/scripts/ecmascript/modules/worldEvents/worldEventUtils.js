@@ -2,6 +2,18 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
+var allEventConfig = loadEventConfig();
+
+/**
+ * Loads the event configuration from the JSON file.
+ * @returns {Object} - The parsed JSON object containing the event configuration.
+ */
+function loadEventConfig() {
+    if (!checkFileExists(EVENT_CONFIG_FILE_PATH)) {
+        throw new Error("Event configuration file not found: " + EVENT_CONFIG_FILE_PATH);
+    }
+    return loadJson(EVENT_CONFIG_FILE_PATH);
+}
 
 /**
  * Loads the player event data from a JSON file.

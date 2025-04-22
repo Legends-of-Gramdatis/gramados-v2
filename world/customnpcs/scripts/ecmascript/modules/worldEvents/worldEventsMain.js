@@ -20,18 +20,6 @@ var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in m
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
-var allEventConfig = loadEventConfig();
-
-/**
- * Loads the event configuration from the JSON file.
- * @returns {Object} - The parsed JSON object containing the event configuration.
- */
-function loadEventConfig() {
-    if (!checkFileExists(EVENT_CONFIG_FILE_PATH)) {
-        throw new Error("Event configuration file not found: " + EVENT_CONFIG_FILE_PATH);
-    }
-    return loadJson(EVENT_CONFIG_FILE_PATH);
-}
 
 /**
  * Triggered when an entity dies. Cleans up "Sus Box" entities on April 1st.
