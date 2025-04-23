@@ -523,7 +523,7 @@ function generateEggItem(world, npc) {
     eggItem.setLore([
         ccs(egg_lore_1),
         ccs(egg_lore_2),
-        ccs("&e&oCollected during the Easter 2025 event: The Great Eggcryption"),
+        ccs("&e&oCollected &e&l&oafter&r&e&o the Easter 2025 event: The Great Eggcryption"),
         ccs(egg_lore_4),
         ccs(egg_lore_5),
         ccs(egg_lore_6),
