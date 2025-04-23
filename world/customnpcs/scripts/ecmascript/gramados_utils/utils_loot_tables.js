@@ -6,10 +6,10 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
 /**
- * Pulls a loot table and returns an array of items.
- *
+ * Simulates pulling items from a loot table.
+ * Iterates through pools and rolls to generate loot based on the loot table's configuration.
  * @param {string} lootTablePath - The path to the loot table file.
- * @param {IPlayer} player - The player object.
+ * @param {IPlayer} player - The player interacting with the loot table.
  * @returns {Array} - An array of items generated from the loot table.
  */
 function pullLootTable(lootTablePath, player) {
@@ -38,29 +38,24 @@ function pullLootTable(lootTablePath, player) {
         // tellPlayer(player, "&eProcessing loot pool " + (poolIdx + 1) + " with " + rolls + " rolls.");
 
         for (var r = 0; r < rolls; r++) {
-            // Preprocess weights, especially for "auto"
+            // Preprocess weights, especially for "auto" and "autorec"
             for (var i = 0; i < entries.length; i++) {
                 var entry = entries[i];
-                if (entry.weight === "auto") {
+                
+                if (entry.weight === "auto" || entry.weight === "autorec") {
                     if (entry.type === "loot_table" && entry.path) {
-                        var subLootJson = loadJson("world/loot_tables/" + entry.path);
-                        if (subLootJson && subLootJson.pools) {
-                            var subEntryCount = 0;
-                            for (var p = 0; p < subLootJson.pools.length; p++) {
-                                subEntryCount += subLootJson.pools[p].entries.length;
-                            }
-                            entry.weight = subEntryCount > 0 ? subEntryCount : 1;
-                            // tellPlayer(player, "&7Auto-weight resolved to " + entry.weight + " for: " + entry.path);
-                        } else {
-                            entry.weight = 1;
-                            tellPlayer(player, "&cFailed to load sub-loot-table for auto-weight: " + entry.path);
-                        }
+                        var subWeight = (entry.weight === "auto")
+                            ? resolveDirectWeight(entry.path)
+                            : resolveRecursiveWeight(entry.path);
+
+                        entry.weight = subWeight > 0 ? subWeight : 1;
                     } else {
                         entry.weight = 1;
-                        tellPlayer(player, "&c'auto' weight used on non-loot_table entry. Defaulting to 1.");
+                        tellPlayer(player, "&c'" + entry.weight + "' weight used on non-loot_table entry. Defaulting to 1.");
                     }
                 }
             }
+
 
             // Now that all weights are resolved, pick one
             var selected = weightedRandom(entries);
@@ -110,9 +105,18 @@ function pullLootTable(lootTablePath, player) {
         }
     }
 
+    logToFile("loot_tables", "Loot table pulled: " + lootTablePath);
+
     return generatedLoot;
 }
 
+/**
+ * Performs multiple pulls from a loot table and aggregates the results.
+ * @param {string} lootTablePath - The path to the loot table file.
+ * @param {IPlayer} player - The player interacting with the loot table.
+ * @param {number} lootCount - The number of times to pull from the loot table.
+ * @returns {Array} - An array containing all items generated from the multiple pulls.
+ */
 function multiplePullLootTable(lootTablePath, player, lootCount) {
     var full_loot = [];
     for (var i = 0; i < lootCount; i++) {
@@ -122,9 +126,17 @@ function multiplePullLootTable(lootTablePath, player, lootCount) {
             full_loot = full_loot.concat(loot);
         }
     }
+    logToFile("loot_tables", "Loot table pulled: " + lootTablePath + " x" + lootCount);
+
     return full_loot;
 }
 
+/**
+ * Selects an entry from a list based on weighted probabilities.
+ * @param {Array} entries - An array of objects, each containing a `weight` property that determines its probability of being selected.
+ * @returns {Object} - The selected entry based on the weighted random calculation.
+ * @throws {Error} - If no entries are provided or if the total weight is zero.
+ */
 function weightedRandom(entries) {
     var totalWeight = 0;
     for (var i = 0; i < entries.length; i++) {
@@ -141,7 +153,13 @@ function weightedRandom(entries) {
     return entries[0]; // fallback
 }
 
-// function to generate an itemstack out of a loot table entry
+/**
+ * Generates an item stack from a loot table entry.
+ * @param {Object} entry - The loot table entry containing item details.
+ * @param {IWorld} world - The world object to create the item in.
+ * @param {IPlayer} player - The player interacting with the loot table.
+ * @returns {Object} - The generated item stack.
+ */
 function generateItemStackFromLootEntry(entry, world, player) {
     var itemstack = world.createItem(
         entry.id,
@@ -156,11 +174,63 @@ function generateItemStackFromLootEntry(entry, world, player) {
     return itemstack;
 }
 
-// function to set nbt
+/**
+ * Sets NBT data to an item stack.
+ * @param {Object} itemstack - The item stack to modify.
+ * @param {INbt} nbt - The NBT data to set on the item stack.
+ * @param {IPlayer} player - The player interacting with the item stack.
+ * @returns {Object} - The modified item stack with the NBT data applied.
+ */
 function setNbtToItemStack(itemstack, nbt, player) {
     var world = player.getWorld();
     var item_nbt = itemstack.getItemNbt();
     item_nbt.setCompound("tag", nbt);
     // tellPlayer(player, "&7Setting NBT: " + item_nbt.toJsonString());
     return world.createItemFromNbt(item_nbt);
+}
+
+/**
+ * Resolves the direct weight of a loot table by counting its entries.
+ * @param {string} path - The path to the loot table file.
+ * @returns {number} - The total weight of the loot table entries.
+ */
+function resolveDirectWeight(path) {
+    var lootJson = loadJson("world/loot_tables/" + path);
+    if (!lootJson || !lootJson.pools) return 1;
+
+    var count = 0;
+    for (var i = 0; i < lootJson.pools.length; i++) {
+        count += lootJson.pools[i].entries.length;
+    }
+    return count;
+}
+
+/**
+ * Resolves the recursive weight of a loot table, including nested loot tables.
+ * Prevents circular loops by tracking visited paths.
+ * @param {string} path - The path to the loot table file.
+ * @param {Array} [visited] - An array of visited paths to prevent circular references.
+ * @returns {number} - The total recursive weight of the loot table.
+ */
+function resolveRecursiveWeight(path, visited) {
+    visited = visited || [];
+    if (visited.indexOf(path) !== -1) return 0; // prevent circular loops
+    visited.push(path);
+
+    var lootJson = loadJson("world/loot_tables/" + path);
+    if (!lootJson || !lootJson.pools) return 0;
+
+    var total = 0;
+    for (var p = 0; p < lootJson.pools.length; p++) {
+        var entries = lootJson.pools[p].entries;
+        for (var e = 0; e < entries.length; e++) {
+            var entry = entries[e];
+            if (entry.type === "loot_table" && entry.path) {
+                total += resolveRecursiveWeight(entry.path, visited);
+            } else {
+                total += 1;
+            }
+        }
+    }
+    return total;
 }
