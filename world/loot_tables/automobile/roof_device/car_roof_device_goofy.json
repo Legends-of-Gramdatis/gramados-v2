@@ -6,17 +6,52 @@
                 {
                     "type": "item",
                     "name": "mts:ivv.reindeerantler",
-                    "weight": 1
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_baseballcap",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_birthdayhat",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_bucket",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_burger",
+                    "weight": 5
                 },
                 {
                     "type": "item",
                     "name": "mts:ivv.vh_leaf",
-                    "weight": 1
+                    "weight": 5
                 },
                 {
                     "type": "item",
                     "name": "mts:ivv.vh_propcap",
-                    "weight": 1
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_stetson",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_tophat",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.vh_windkey",
+                    "weight": 5
                 }
             ]
         }
