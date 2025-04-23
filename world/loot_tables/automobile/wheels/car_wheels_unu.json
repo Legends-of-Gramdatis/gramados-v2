@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_oversized.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_common_offroad.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_common_standard.json",
+                    "weight": 9
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_vintage.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

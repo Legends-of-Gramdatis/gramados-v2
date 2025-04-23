@@ -1,0 +1,19 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_other_common.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_other_oversized.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

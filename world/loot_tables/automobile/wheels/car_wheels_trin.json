@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_oversized.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_common.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_txs.json",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
