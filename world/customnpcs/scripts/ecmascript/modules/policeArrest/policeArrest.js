@@ -3,44 +3,31 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
-var EVENT_DATA_JSON = "world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterBossFight.json";
-
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_factions.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var arrest_plugin_counter = 0;
 var arrest_plugin_max_counter = 10000;
 var arrest_plugin_arrested_player_name = "";
 
-// function to check if the player is a friend of the Criminals
-function isFriendOfCriminals(event) {
-    var player = event.player
-    var world = player.world;
-    // check if the player is friendly to Criminal
-    if (player.getFactionPoints(6) > 1800) {
-        attempt_arrrest(event, player, world);
-        arrest_plugin_arrested_player_name = player.getDisplayName();
-    }
-}
-
-function attempt_arrrest(event, player, world) {
-    player.message("&4You have been arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
-    //var name = player.getDisplayName();
-    //setup_police_arrest(event, player, world);
+function attempt_arrest(event, player, world) {
 
     var success = false;
+    var criminality = player.getFactionPoints(FACTION_ID_CRIMINAL);
 
-    if (player.getFactionPoints(6) >= 1800 && player.getFactionPoints(6) < 2000) {
-        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
-    } else if (player.getFactionPoints(6) >= 2000 && player.getFactionPoints(6) < 2500) {
-        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
-        success = success || spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
-    } else if (player.getFactionPoints(6) >= 2500 && player.getFactionPoints(6) < 3000) {
-        success = spawn_arrest(event, player, world, "police", Math.floor(Math.random() * 3) + 2, 10, 5);
+    if (criminality >= 1800 && criminality < 2000) {
+        success = spawn_arrest(event, player, world, "police", rrandom_range(2, 3), 10, 5);
+    } else if (criminality >= 2000 && criminality < 2500) {
+        success = spawn_arrest(event, player, world, "police", rrandom_range(2, 3), 10, 5);
+        success = success || spawn_arrest(event, player, world, "police", rrandom_range(2, 3), 10, 5);
+    } else if (criminality >= 2500 && criminality < 3000) {
+        success = spawn_arrest(event, player, world, "police", rrandom_range(2, 3), 10, 5);
         success = success || spawn_spo_fireteam(event, player, world);
-    } else if (player.getFactionPoints(6) >= 3000 && player.getFactionPoints(6) < 4000) {
+    } else if (criminality >= 3000 && criminality < 4000) {
         success = spawn_spo_fireteam(event, player, world);
         success = success || spawn_spo_squad(event, player, world);
-    } else if (player.getFactionPoints(6) >= 4000 && player.getFactionPoints(6) < 5000) {
+    } else if (criminality >= 4000 && criminality < 5000) {
         success = spawn_spo_fireteam(event, player, world);
         success = success || spawn_spo_squad(event, player, world);
         success = success || spawn_spo_squad(event, player, world);
@@ -51,7 +38,8 @@ function attempt_arrrest(event, player, world) {
     }
 
     if (success) {
-        player.message("&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
+        tallPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
+        logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
     }
 }
 
@@ -166,6 +154,8 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
         }
     }
 
+    logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities. Spawned " + count + " NPCs of type " + type);
+
     return success;
 }
 
@@ -194,16 +184,16 @@ function spawn_sniper_spo_NPC(x, y, z, world) {
     world.spawnClone(x, y, z, 9, "SPO Sniper Arrest Clone");
 }
 
-// If player dies, remove the police
-function arrest_plugin_player_death(event) {
+// If player dies, remove the arrest
+function died(event) {
     if (arrest_plugin_arrested_player_name == event.player.getDisplayName()) {
         var player = event.player;
         var world = player.world;
         var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
-        event.player.message("Nearby entities: " + nearby_gentity_list.length);
+        // event.player.message("Nearby entities: " + nearby_gentity_list.length);
         for (var i = 0; i < nearby_gentity_list.length; i++) {
             var removal_test_entity = nearby_gentity_list[i];
-            event.player.message("Entity: " + removal_test_entity.getName());
+            // event.player.message("Entity: " + removal_test_entity.getName());
             if (removal_test_entity.getName().contains("Arrest Clone")) {
                 removal_test_entity.despawn();
             }
@@ -212,35 +202,27 @@ function arrest_plugin_player_death(event) {
         //tell the player that his arrestation is done
         player.message("&4Your arrest has been completed. You are now free to go.");
         // remove 100 faction points from the player
-        player.addFactionPoints(6, -100);
+        player.addFactionPoints(FACTION_ID_CRIMINAL, -100);
+        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones.");
     }
 }
 
-function arrest_plugin_init(event) {
+function init(event) {
     // set a random counter based on the current time
     arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
 }
 
-function arrest_plugin_tick(event) {
+function tick(event) {
 
     arrest_plugin_counter++;
 
-    var noarrest = loadJson(EVENT_DATA_JSON);
-
-    if (!noarrest.isEventRunning && arrest_plugin_counter >= arrest_plugin_max_counter) {
+    if (!isAnyEventActive() && arrest_plugin_counter >= arrest_plugin_max_counter) {
         arrest_plugin_counter = 0;
-        isFriendOfCriminals(event);
+        var player = event.player
+        var world = player.world;
+        if (isCriminal(player)) {
+            attempt_arrest(event, player, world);
+            arrest_plugin_arrested_player_name = player.getDisplayName();
+        }
     }
-}
-
-function died(e) {
-    arrest_plugin_player_death(e);
-}
-
-function init(e) {
-    arrest_plugin_init(e);
-}
-
-function tick(e) {
-    arrest_plugin_tick(e);
 }
