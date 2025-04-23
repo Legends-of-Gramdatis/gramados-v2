@@ -21,6 +21,17 @@
                 "month": 3,
                 "day": 21
             }
+        },
+        {
+            "name": "Easter Boss Fight",
+            "startDate": {
+                "month": 3,
+                "day": 21
+            },
+            "endDate": {
+                "month": 3,
+                "day": 22
+            }
         }
     ]
 }
