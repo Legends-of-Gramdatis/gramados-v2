@@ -58,7 +58,7 @@ autostart.stamp
 *.old
 
 !dynmap/markers.yml
-!world/loot_tables/automobile/*.txt
+!tools/*loottables.txt
 
 # stored data
 world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json
