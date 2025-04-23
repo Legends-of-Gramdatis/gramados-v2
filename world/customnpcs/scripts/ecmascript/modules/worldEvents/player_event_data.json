@@ -38,7 +38,7 @@
             "egg_count": 281
         },
         "Global Data": {
-            "egg_count": 999
+            "egg_count": 1036
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -101,25 +101,28 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 95
+                    "egg_count": 104
                 },
                 "chromashell": {
-                    "egg_count": 61
+                    "egg_count": 64
                 },
                 "encrypted": {
                     "egg_count": 17
                 }
             },
-            "egg_count": 173
+            "egg_count": 185
         },
         "Kitsunami_": {
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
                     "egg_count": 1
+                },
+                "spring": {
+                    "egg_count": 1
                 }
             },
-            "egg_count": 1
+            "egg_count": 2
         },
         "SilveradoTDS": {
             "has_starter_pack": true,
@@ -128,19 +131,19 @@
                     "egg_count": 24
                 },
                 "chromashell": {
-                    "egg_count": 19
+                    "egg_count": 20
                 },
                 "encrypted": {
                     "egg_count": 2
                 }
             },
-            "egg_count": 45
+            "egg_count": 46
         },
         "BOTFerris": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 32
+                    "egg_count": 45
                 },
                 "chromashell": {
                     "egg_count": 13
@@ -149,7 +152,21 @@
                     "egg_count": 3
                 }
             },
-            "egg_count": 48
+            "egg_count": 61
+        },
+        "SinaBloodsaw": {
+            "egg_types": {
+                "spring": {
+                    "egg_count": 5
+                },
+                "encrypted": {
+                    "egg_count": 2
+                },
+                "chromashell": {
+                    "egg_count": 3
+                }
+            },
+            "egg_count": 10
         }
     }
 }
