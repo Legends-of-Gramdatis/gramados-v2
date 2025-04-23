@@ -1169,7 +1169,6 @@
 "<mts:ivv.billboard_trin>"
 "<mts:ivv.blocktire>"
 "<mts:ivv.bluebox>"
-"<mts:ivv.blueprint_acive>"
 "<mts:ivv.boat_acacia>"
 "<mts:ivv.boat_birch>"
 "<mts:ivv.boat_darkoak>"

@@ -736,6 +736,7 @@
 "<mts:ivv.hoverwheel_compact>"
 "<mts:ivv.hoverwheel_standard>"
 "<mts:ivv.hoverwheel_xl>"
+"<mts:ivv.blueprint_acive>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_electric>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_c>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_f>"
