@@ -43,7 +43,7 @@
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
     "OptionFactions2": -1,
-    "AvailabilityFaction2Id": 7,
+    "AvailabilityFaction2Id": 6,
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 1b,
@@ -74,7 +74,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1581708317296L,
+        "TimePast": 1745428005762L,
         "Time": 0L,
         "Subject": ""
     }
