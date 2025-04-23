@@ -1,0 +1,164 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_dcc",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_dmb",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_gfnm",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_ka",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_mci",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_ml",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.painting_vg",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_3",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_5",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_7",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_8",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting2_9",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_3",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_5",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_7",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting3_8",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_3",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_5",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusdecor_advertising.painting_7",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

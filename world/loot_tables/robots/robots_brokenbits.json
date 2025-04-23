@@ -1,0 +1,129 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_arm",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_arm_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_arm_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_arm_old_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_head",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_head_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_head_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_head_old_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_laying",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_laying_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_laying_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_laying_old_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_leg",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_leg_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_leg_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_leg_old_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_sitting",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_sitting_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_sitting_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_sitting_old_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_torso",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_torso_junk",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_torso_old",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.robotjunk_torso_old_junk",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
