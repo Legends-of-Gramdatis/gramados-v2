@@ -2,7 +2,7 @@ import os
 import json
 
 # CONFIGURATION
-LOOT_TABLE_DIR = '~/gramados-v2/world/loot_tables/automobile/wheels'
+LOOT_TABLE_DIR = '/home/mouette/gramados-v2/world/loot_tables/automobile/wheels'
 TARGET_COUNT = 4
 OVERWRITE_EXISTING_COUNT = False
 
