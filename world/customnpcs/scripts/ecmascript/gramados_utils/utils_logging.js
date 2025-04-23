@@ -21,6 +21,10 @@ var LOG_FILES = {
     bank_robbery: {
         json: "world/customnpcs/scripts/logs/bank_robbery.json",
         log: "world/customnpcs/scripts/logs/bank_robbery.log"
+    }, 
+    loot_tables: {
+        json: "world/customnpcs/scripts/logs/loot_tables.json",
+        log: "world/customnpcs/scripts/logs/loot_tables.log"
     }
 };
 
