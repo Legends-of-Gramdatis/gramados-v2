@@ -335,7 +335,7 @@ function random_ranges(min, max, count) {
  * @returns {number} The random integer.
  */
 function rrandom_range(min, max) {
-    return Math.round(random_range(min, max));
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
