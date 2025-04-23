@@ -1,13 +1,9 @@
-/**
- * Main script for handling world events in the game.
- * Includes functionality for spawning and cleaning up "Sus Box" entities during specific events.
- */
-
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js");
 
 load("world/customnpcs/scripts/ecmascript/gramados_sounds/toll_sounds.js");
 

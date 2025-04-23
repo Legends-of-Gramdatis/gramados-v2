@@ -1,8 +1,11 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
 
+var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 var allEventConfig = loadEventConfig();
+
 
 /**
  * Loads the event configuration from the JSON file.
