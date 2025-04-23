@@ -25,6 +25,9 @@ For the vehicles that aren't listed, here are the prices:
 - UNU Burro: 98500 g
 - UNU Concord Wagon: 36200 g
 
+## DKZ
+DKZ 410 Rodimus: 68000 g - Restomod
+
 ## BTM Vehicles
 - BTM K400: 145000 g
 - BTK X23: 119500 g
