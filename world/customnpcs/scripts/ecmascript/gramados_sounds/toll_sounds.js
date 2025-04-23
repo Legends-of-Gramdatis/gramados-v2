@@ -10,16 +10,6 @@ var lock_counter_quarter = false;
 var lock_counter_minute = false;
 var lock_counter_30seconds = 0;
 
-function init(event) {
-    lock_toll = false;
-    lock_counter_hour = false;
-    lock_counter_quarter = false;
-    lock_counter_minute = false;
-    lock_counter_30seconds = 0;
-    tollTickCounter = 0;
-    tolltype = "quarterly";
-}
-
 function initToll(type) {
     if (!lock_toll) {
         tollTickCounter = 1;
