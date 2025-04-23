@@ -5,14 +5,323 @@
             "entries": [
                 {
                     "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_amber",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_bloodred",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_buttercup",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_caramel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_carminred",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
                     "name": "mts:iv_tpp.paint_bucket_chocolate",
-                    "weight": 1,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 0
-                        }
-                    ]
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_citruslime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_coldspruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_darkpinkcandy",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_deepblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_electricblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_emerald",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_fireorange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_firered",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_fuchsia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_glacierwhite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_grape",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_honey",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_irongray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_ivory",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_jetblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_lapenderblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_lemonyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_midnightpurple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_militarygreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_milkcoffee",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_oakgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_oceanblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_orangered",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_pinkcandy",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_plum",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_pureblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_purewhite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_ruby",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_sage",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_sand",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_sandstone",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_sapphire",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_skyblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_slimelime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_softgreen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_spruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_steelblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_sunshineyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_teal",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_tomato",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_tungsten",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_turquoise",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_vibrantpurple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_vibrantred",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_bucket_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.paint_empty_bucket",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_coal",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_diamond",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_driveschool",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_emerald",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_gold",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_iron",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_lapislazuli",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_quartz",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_redstone",
+                    "weight": 2
                 }
             ]
         }

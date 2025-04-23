@@ -1,0 +1,89 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_light_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.paintcan_yellow",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

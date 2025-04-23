@@ -5,13 +5,28 @@
             "entries": [
                 {
                     "type": "loot_table",
-                    "path": "colorful/car_paints/car_paints_trin.json",
-                    "weight": 1
+                    "path": "automobile/car_paints/car_paints_ivl.json",
+                    "weight": "auto"
                 },
                 {
                     "type": "loot_table",
-                    "path": "colorful/car_paints/car_paints_unu.json",
-                    "weight": 1
+                    "path": "automobile/car_paints/car_paints_mts.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints_smf.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints_trin.json",
+                    "weight": "auto"
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints_unu.json",
+                    "weight": "auto"
                 }
             ]
         }

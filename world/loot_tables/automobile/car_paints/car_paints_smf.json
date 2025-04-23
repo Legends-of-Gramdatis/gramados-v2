@@ -1,0 +1,104 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_ashen",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_azure",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_camo_dunkelgelb",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_camo_gelbbraun",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_camo_olivegrun",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_camo_rotbrauneins",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_celestial",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_golden",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_iridescent",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_keppel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_lunar",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_lux",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_phosphorescent",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_russet",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_scarlet",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_solar",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_verdant",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:syndicatemotorfoundry.paintcan_violet",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
