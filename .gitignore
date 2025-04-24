@@ -80,3 +80,4 @@ reports/*.md
 .gitignore
 documentation/region creation/*
 tools/wth is that?*
+world/customnpcs/linkednpcs/New.json
