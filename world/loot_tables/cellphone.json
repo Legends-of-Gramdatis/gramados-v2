@@ -1,90 +1,87 @@
 {
     "pools": [
         {
-            "rolls": {
-                "min": 0,
-                "max": 2
-            },
+            "rolls": 1,
             "entries": [
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_arm",
+                    "name": "mts:ivv.cellphone",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_arm_junk",
+                    "name": "mts:ivv.cellphone_black",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_arm_old",
+                    "name": "mts:ivv.cellphone_blue",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_arm_old_junk",
+                    "name": "mts:ivv.cellphone_gold",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_head",
+                    "name": "mts:ivv.cellphone_green",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_head_junk",
+                    "name": "mts:ivv.cellphone_pink",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_head_old",
+                    "name": "mts:ivv.cellphone_red",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_head_old_junk",
+                    "name": "mts:ivv.cellphone_white",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_leg",
-                    "weight": 5
+                    "name": "mts:ivv.phone_black",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_leg_junk",
-                    "weight": 5
+                    "name": "mts:ivv.phone_blue",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_leg_old",
-                    "weight": 5
+                    "name": "mts:ivv.phone_gold",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_leg_old_junk",
-                    "weight": 5
+                    "name": "mts:ivv.phone_pink",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_torso",
-                    "weight": 5
+                    "name": "mts:ivv.phone_red",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_torso_junk",
-                    "weight": 5
+                    "name": "mts:ivv.phone_white",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_torso_old",
-                    "weight": 5
+                    "name": "variedcommodities:phone",
+                    "weight": 2
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.robotjunk_torso_old_junk",
-                    "weight": 5
+                    "name": "mts:ivv.businessphone",
+                    "weight": 1
                 }
             ]
         }

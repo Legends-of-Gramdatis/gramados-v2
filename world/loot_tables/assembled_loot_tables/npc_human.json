@@ -1,0 +1,17 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 0,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "cellphone.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
