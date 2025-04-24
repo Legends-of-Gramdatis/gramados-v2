@@ -2,88 +2,6 @@
     "ReturnToStart": 1b,
     "NpcInv": [
         {
-            "Slot": 0b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "variedcommodities:money",
-            "Count": 1b,
-            "tag": {
-                "display": {
-                    "Lore": [
-                        "§e50G"
-                    ],
-                    "Name": "§2§lMoney§r"
-                }
-            },
-            "Damage": 0s
-        },
-        {
-            "Slot": 1b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "variedcommodities:money",
-            "Count": 1b,
-            "tag": {
-                "display": {
-                    "Lore": [
-                        "§e10G"
-                    ],
-                    "Name": "§2§lMoney§r"
-                }
-            },
-            "Damage": 0s
-        },
-        {
-            "Slot": 2b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "variedcommodities:money",
-            "Count": 1b,
-            "tag": {
-                "display": {
-                    "Lore": [
-                        "§e100G"
-                    ],
-                    "Name": "§2§lMoney§r"
-                }
-            },
-            "Damage": 0s
-        },
-        {
-            "Slot": 3b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "variedcommodities:money",
-            "Count": 1b,
-            "tag": {
-                "display": {
-                    "Lore": [
-                        "§e5G"
-                    ],
-                    "Name": "§2§lMoney§r"
-                }
-            },
-            "Damage": 0s
-        },
-        {
-            "Slot": 4b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "variedcommodities:phone",
-            "Count": 1b,
-            "Damage": 0s
-        },
-        {
             "Slot": 5b,
             "ForgeCaps": {
                 "customnpcs:itemscripteddata": {
@@ -174,7 +92,7 @@
     "DefendFaction": 1b,
     "FireIndirect": 0,
     "NpcVisible": 0,
-    "LinkedNpcName": "",
+    "LinkedNpcName": "Police Officer",
     "NpcScenes": {
         "Scenes": [
         ]
@@ -231,9 +149,9 @@
     "MoveState": 0,
     "pRender3D": 1b,
     "Motion": [
-        -0.020323486324389854d,
+        0.0d,
         -0.0784000015258789d,
-        -0.02117811794763556d
+        0.0d
     ],
     "CombatRegen": 0,
     "NpcsTimers": [
@@ -268,14 +186,9 @@
     "TransformHasInv": 0b,
     "NpcInteractLines": {
         "Lines": [
-            {
-                "Line": "Hello @p",
-                "Song": "",
-                "Slot": 0
-            }
         ]
     },
-    "HurtByTimestamp": 86,
+    "HurtByTimestamp": 631,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -460,27 +373,27 @@
     "AttackSpeed": 20,
     "PotionDuration": 5,
     "maxDelay": 20,
-    "ScriptEnabled": 0b,
+    "ScriptEnabled": 1b,
     "Role": 0,
     "DropChance": [
         {
-            "Integer": 10,
+            "Integer": 100,
             "Slot": 0
         },
         {
-            "Integer": 25,
+            "Integer": 100,
             "Slot": 1
         },
         {
-            "Integer": 1,
+            "Integer": 100,
             "Slot": 2
         },
         {
-            "Integer": 75,
+            "Integer": 100,
             "Slot": 3
         },
         {
-            "Integer": 10,
+            "Integer": 100,
             "Slot": 4
         },
         {
@@ -501,10 +414,10 @@
         }
     ],
     "FactionPoints": {
-        "DecreaseFaction1Points": 1b,
+        "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 5,
-        "OptionFactions1": 2,
-        "OptionFactions2": 6,
+        "OptionFactions1": 6,
+        "OptionFactions2": -1,
         "OptionFaction1Points": 5,
         "DecreaseFaction2Points": 0b
     },
@@ -549,22 +462,32 @@
     "pXlr8": 0b,
     "MarkovGeneratorId": 0,
     "Scripts": [
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/npclinker/policenpc.js"
+                }
+            ]
+        }
     ],
     "Health": 20.0f,
     "pStick": 0b,
     "MovingPause": 1b,
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 2,
-    "Title": "officer",
-    "TotalTicksAlive": 3391170L,
+    "Title": "",
+    "TotalTicksAlive": 7141659L,
     "Rotation": [
-        107.546936f,
+        135.0f,
         0.0f
     ],
     "ShowName": 0,
     "npcInteracting": 1b,
     "UpdateBlocked": 0b,
-    "AvoidsWater": 0b,
+    "AvoidsWater": 1b,
     "NoLivingAnimation": 0b,
     "SpawnCycle": 0
 }
