@@ -60,5 +60,36 @@
                 "data": 4
             }
         }
+    },
+    {
+        "bankName": "Pendulum Capital",
+        "pos1": {
+            "x": -2834,
+            "y": 91,
+            "z": 1060
+        },
+        "pos2": {
+            "x": -2862,
+            "y": 85,
+            "z": 1045
+        },
+        "isVaultGateOpened": false,
+        "vaultGateOpenTime": 1200,
+        "gate": {
+            "pos1": {
+                "x": -1049,
+                "y": 88,
+                "z": 233
+            },
+            "pos2": {
+                "x": -1047,
+                "y": 86,
+                "z": 232
+            },
+            "block": {
+                "id": "chisel:ironpane",
+                "data": 6
+            }
+        }
     }
 ]
