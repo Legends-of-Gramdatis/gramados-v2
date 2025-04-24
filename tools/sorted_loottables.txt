@@ -91,6 +91,7 @@
 "<mts:iv_tcp_v3_parts.trin_pilocrap_fender_r_turquoise>"
 "<mts:iv_tcp_v3_parts.trin_pilocrap_hood_turquoise>"
 ## Devom
+"<mts:ivv.tda>"
 "<mts:ivv.devomcage>"
 "<mts:ivv.devomvinyl>"
 ## Geneic UNU
@@ -115,17 +116,38 @@
 "<mts:unuparts.unuparts_bodypart_unu_truckbed_tanker_vintage>"
 "<mts:unuparts.unuparts_bodypart_unu_trunklid_default>"
 "<mts:unuparts.unuparts_bodypart_unu_windshield_default>"
+## generic IVL
+"<mts:ivv.cardoor>"
+"<mts:ivv.bodypanel>"
 ## Trin Rodeo
 "<mts:iv_tcp_v3_parts.generic_rodeo_cabrio_roof_black>"
 "<mts:iv_tcp_v3_parts.generic_rodeo_cabrio_roof_brown>"
 "<mts:iv_tcp_v3_parts.generic_rodeo_cabrio_roof_red>"
 "<mts:iv_tcp_v3_parts.generic_rodeo_cabrio_roof_white>"
+## baron
+"<mts:ivv.baron_doorrear_suicide>"
+## broker
+"<mts:ivv.broker_grille_mitchell>"
+"<mts:ivv.broker_grille_mitchell_alt>"
+## caine
+"<mts:ivv.caine_bumperback>"
+"<mts:ivv.caine_fender>"
+"<mts:ivv.caine_hood_cut>"
+"<mts:ivv.caine_hood_scoop>"
+"<mts:ivv.caine_trunk>"
+## coronet
+"<mts:ivv.coronet_bumperfront>"
+"<mts:ivv.coronet_fasciafront>"
+"<mts:ivv.coronet_grille>"
+"<mts:ivv.coronet_hood>"
+## corsair
+"<mts:ivv.corsair_spoiler_activeaero>"
 ## IDK
 "<mts:bjornscustoms.bodypart_tilt_hood_k400>"
 "<mts:bjornscustoms.unupmc_bodypart_unu_door_freightmaster_front_windowed>"
-"<mts:ivv.bodypanel>"
 "<mts:ivv.bodypanel_armor>"
 "<mts:ivv.bodypanel_flexible>"
+"<mts:ivv.bbqgrillghost>"
 
 ## Attributer
 "<mts:syndicatemotorfoundry.kit_attributer_sidecar>"
@@ -671,6 +693,8 @@
 "<mts:alicemotors.military_wheel_1>"
 "<mts:potatpacc.wheel>"
 "<mts:potatpacc.bleriotwheel>"
+
+"<mts:ivv.blocktire>" // ijref
 ### IDK - to discuss
 "<mts:dkzpartspack.dkz_rolladon_frontwheel>"
 "<mts:dkzpartspack.dkz_rolladon_rearwheel>"
@@ -756,6 +780,7 @@
 "<mts:iav.iav_wheel_aircraft_6>"
 "<mts:iav.iav_wheel_aircraft_biplane>"
 ## Wheel Parts
+### Rims
 "<mts:ivv.rim_4spoke>"
 "<mts:ivv.rim_5spoke>"
 "<mts:ivv.rim_6spoke>"
@@ -765,6 +790,13 @@
 "<mts:ivv.rim_futuristic>"
 "<mts:ivv.rim_hypnodish>"
 "<mts:ivv.rim_wire>"
+### Tires
+"<mts:ivv.1gianttire>"
+"<mts:ivv.1gianttireworn>"
+"<mts:ivv.bigtire>"
+"<mts:ivv.bigtirebudd>"
+"<mts:ivv.bigtirerace>"
+"<mts:ivv.bigtireworn>"
 ## Wheel Parts (TRIN DECORS)
 "<mts:iv_tpp.rim_2d2_0_steel>"
 "<mts:iv_tpp.rim_3d5_0_steel>"
@@ -798,6 +830,8 @@
 "<mts:iv_tpp.tire_txs_race_7d14_red>"
 
 # Cyber Garage
+"<mts:ivv.vr6>" // experimental early engine
+"<mts:ivv.bluebox>" // experimental engine, basically a time machine, mid to late future quest reward
 "<mts:dkzpartspack.wheel_standard_hover_antigrav>"
 "<mts:dkzpartspack.wheel_standard_hover_silver>"
 "<mts:ivv.hoverwheel_baby>"
@@ -805,6 +839,8 @@
 "<mts:ivv.hoverwheel_standard>"
 "<mts:ivv.hoverwheel_xl>"
 "<mts:ivv.blueprint_acive>"
+"<mts:ivv.acivebox>" // self driving computer
+"<mts:ivv.core>" // temporal core
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_electric>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_c>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_f>"
@@ -814,6 +850,9 @@
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_speed_kph>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_speed_mph>"
 "<mts:iv_tpp.trin_car-boat_gauge_cyber_tachometer>"
+## weapons
+"<mts:ivv.antigravammo>"
+"<mts:ivv.antigravgun>"
 
 # Truck beds
 "<mts:iv_tpp.truck_bed_containerholder>"
@@ -829,6 +868,8 @@
 "<mts:iv_tpp.truck_bed_woodenflatbed>"
 "<mts:ivv.containerbed>"
 "<mts:ivv.towbed>"
+"<mts:ivv.bed_chest_diamondplate>"
+"<mts:ivv.bed_chest_iron>"
 "<mts:warkparts.wark_bed_container_hold>"
 "<mts:warkparts.wark_bed_container_hold_double>"
 "<mts:warkparts.wark_bed_dryvan>"
@@ -920,6 +961,10 @@
 //"<mts:ivv.backpack_red>"
 //"<mts:ivv.backpack_white>"
 //"<mts:ivv.backpack_yellow>"
+"<mts:ivv.briefcase>"
+"<mts:ivv.briefcase_blue>"
+"<mts:ivv.briefcase_ivlabs>"
+"<mts:ivv.briefcase_red>"
 ## Crates
 "<mts:iv_tpp.animal_crate>"
 "<mts:iv_tpp.roof_crate_carbon_fiber>"
@@ -941,13 +986,15 @@
 "<mts:iav.iav_storage_l_crate_3>"
 "<mts:iav.iav_storage_l_crate_5>"
 "<mts:iav.iav_storage_l_crate_6>"
-"<mts:ivv.crate>"
-"<mts:ivv.crate_metallic>"
 "<mts:mtsofficialpack.crate>"
 "<mts:mtsofficialpack.crate_blue>"
 "<mts:mtsofficialpack.crate_green>"
 "<mts:mtsofficialpack.crate_red>"
 "<mts:mtsofficialpack.crate_white>"
+"<mts:ivv.crate>"
+"<mts:ivv.crate_metallic>"
+"<mts:ivv.box>"
+"<mts:ivv.chest>"
 ## Barrels
 "<mts:unuparts.unuparts_part_unu_barrel_jerrycan>"
 "<mts:unuparts.unuparts_part_unu_barrel_jerrycan_desert>"
@@ -1113,6 +1160,7 @@
 "<mts:ivv.v90torqueline>"
 "<mts:ivv.v91performante>"
 "<mts:ivv.v96performante>"
+"<mts:ivv.compact_electricmotor>"
 
 ## Alicemotors
 "<mts:alicemotors.v8d>"
@@ -1302,6 +1350,22 @@
 "<mts:ivv.carseat_tan>"
 "<mts:ivv.carseat_white>"
 "<mts:ivv.truckseat>"
+"<mts:ivv.carrierseat>"
+"<mts:ivv.carrierseat_blue>"
+"<mts:ivv.carrierseat_brown>"
+"<mts:ivv.carrierseat_cyan>"
+"<mts:ivv.carrierseat_gray>"
+"<mts:ivv.carrierseat_green>"
+"<mts:ivv.carrierseat_light_blue>"
+"<mts:ivv.carrierseat_lime>"
+"<mts:ivv.carrierseat_magenta>"
+"<mts:ivv.carrierseat_orange>"
+"<mts:ivv.carrierseat_pink>"
+"<mts:ivv.carrierseat_purple>"
+"<mts:ivv.carrierseat_red>"
+"<mts:ivv.carrierseat_silver>"
+"<mts:ivv.carrierseat_white>"
+"<mts:ivv.carrierseat_yellow>"
 "<mts:mtsofficialpack.carseat_black>"
 "<mts:mtsofficialpack.carseat_brown>"
 "<mts:mtsofficialpack.carseat_grey>"
@@ -1387,6 +1451,30 @@
 "<mts:iv_tpp.trin_boat_v8_white>"
 
 # Gauges
+## IVL
+"<mts:ivv.clusterclassic>"
+"<mts:ivv.clustermodern>"
+"<mts:ivv.clock>"
+"<mts:ivv.clock_dark>"
+"<mts:ivv.2gear>"
+"<mts:ivv.2gear_dark>"
+"<mts:ivv.1gear>"
+"<mts:ivv.1gear_dark>"
+"<mts:ivv.classicfuel>"
+"<mts:ivv.classicfueltemp>"
+"<mts:ivv.classicgear>"
+"<mts:ivv.classicgearneedle>"
+"<mts:ivv.classickey>"
+"<mts:ivv.classicmph>"
+"<mts:ivv.classicmphround>"
+"<mts:ivv.classicmphscrolling>"
+"<mts:ivv.classicodomiles>"
+"<mts:ivv.classicoil>"
+"<mts:ivv.classicoilpower>"
+"<mts:ivv.classicpower>"
+"<mts:ivv.classictach>"
+"<mts:ivv.classictemp>"
+"<mts:ivv.compass>"
 ## Trin
 "<mts:iv_tpp.trin_car-boat_gauge_blue_electric>"
 "<mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c>"
@@ -1502,8 +1590,17 @@
 "<mts:potatpacc.instrument_aircraft_turncoord>"
 "<mts:potatpacc.instrument_aircraft_turnslip>"
 "<mts:potatpacc.instrument_aircraft_verticalspeed>"
+## IVL
+"<mts:ivv.tach>"
 
 # Parts
+## IVL
+"<mts:ivv.boot>" // on wheels
+### Tuning
+"<mts:ivv.camber_baby>"
+"<mts:ivv.camber_compact>"
+"<mts:ivv.camber_standard>"
+"<mts:ivv.camber_xl>"
 ## UNU Tires
 "<mts:unuparts.unuparts_part_unu_tire_compact>"
 "<mts:unuparts.unuparts_part_unu_tire_compact_blackwall>"
@@ -1699,7 +1796,7 @@
 "<mts:iv_tpp.led_light_y>"
 "<mts:iv_tpp.ledlightbar_2_rb_1>"
 "<mts:iv_tpp.ledlightbar_rgb_6>"
-## Trin dashboards
+## Dashboards
 "<mts:iv_tpp_v4_tests.dashboard_console_bottom_highend_b>"
 "<mts:iv_tpp_v4_tests.dashboard_console_bottom_highend_g>"
 "<mts:iv_tpp_v4_tests.dashboard_console_bottom_highend_r>"
@@ -1755,6 +1852,9 @@
 "<mts:iv_tpp_v4_tests.dashboard_console_main_modern_nr_t>"
 "<mts:iv_tpp_v4_tests.dashboard_console_main_modern_nr_w>"
 "<mts:iv_tpp_v4_tests.dashboard_console_main_rallye_nr>"
+"<mts:ivv.dashboardchime_angel>"
+"<mts:ivv.dashboardchime_sable>"
+"<mts:ivv.dashboardchime_tofu>"
 ## axles
 "<mts:bjornscustoms.2wd_dually_front_axle>"
 "<mts:bjornscustoms.4x4_front_axle_custom>"
@@ -1762,6 +1862,10 @@
 "<mts:bjornscustoms.4x4_front_dually_axle_custom>"
 "<mts:bjornscustoms.4x4_rear_dually_axle_custom>"
 ## Cosmetics
+"<mts:ivv.antenna>"
+"<mts:ivv.antenna_hf>"
+"<mts:ivv.antenna_sharkfin>"
+### Goofy
 "<mts:ivv.catears_black>"
 "<mts:ivv.catears_blue>"
 "<mts:ivv.catears_brown>"
@@ -1792,6 +1896,19 @@
 "<mts:ivv.cattail_silver>"
 "<mts:ivv.cattail_white>"
 "<mts:ivv.cattail_yellow>"
+"<mts:ivv.bow_black>"
+"<mts:ivv.bow_blue>"
+"<mts:ivv.bow_green>"
+"<mts:ivv.bow_pink>"
+"<mts:ivv.bow_red>"
+"<mts:ivv.bow_white>"
+"<mts:ivv.bow_yellow>"
+"<mts:ivv.va_headphones>"
+"<mts:ivv.whiskers>"
+"<mts:ivv.tongue>"
+"<mts:ivv.tongue_red>"
+
+### particles
 "<mts:ivv.particle_exhaust>"
 "<mts:ivv.particle_exhaust_bubble>"
 "<mts:ivv.particle_exhaust_diesel>"
@@ -1801,7 +1918,13 @@
 "<mts:ivv.particle_exhaust_pride_rainbow>"
 "<mts:ivv.particle_exhaust_pride_trans>"
 "<mts:ivv.particle_exhaust_smog>"
-"<mts:ivv.va_headphones>"
+
+### devom specific...
+"<mts:ivv.accessory_devom_skirt_black>"
+"<mts:ivv.accessory_devom_skirt_blue>"
+"<mts:ivv.accessory_devom_skirt_orange>"
+"<mts:ivv.accessory_devom_skirt_pink>"
+"<mts:ivv.accessory_devom_skirt_white>"
 
 ### hats
 //"<mts:ivv.reindeerantler>"
@@ -1909,9 +2032,17 @@
 "<mts:mtsofficialpack.spring>"
 "<mts:mtsofficialpack.sparkplug>"
 "<mts:mtsofficialpack.screws>"
+"<mts:ivv.strut>"
+"<mts:ivv.climatecompressor>"
+"<mts:ivv.bolt>"
+"<mts:ivv.capacitor>"
+"<mts:ivv.circuit>"
 
 ## Crafting Parts DECORS
 "<mts:iv_tpp.trin_ornament>"
+"<mts:ivv.brain_modern>"
+"<mts:ivv.brain_old>"
+"<mts:ivv.battery>"
 
 # Propellers
 "<mts:unuparts.unuparts_part_unu_propeller_2d054>"
@@ -1921,9 +2052,15 @@
 "<mts:unuparts.unuparts_part_unu_propeller_4d100>"
 "<mts:unuparts.unuparts_part_unu_propeller_w3d004>"
 "<mts:unuparts.unuparts_part_unu_propeller_w4d011>"
+"<mts:ivv.custom_fanblade_oddball_12blade>"
+"<mts:ivv.custom_fanblade_oddball_1blade>"
+"<mts:ivv.custom_fanblade_oddball_24blade>"
 
 
 # Items
+
+## Manuals
+"<mts:ivv.book_ownersmanual>"
 
 ## Tools
 "<mts:syndicatemotorfoundry.screwdriver>"
@@ -1937,6 +2074,9 @@
 "<mts:syndicatemotorfoundry.scannerwrench>"
 "<mts:syndicatemotorfoundry.wrench>"
 "<mts:dkzpartspack.lug_wrench>"
+"<mts:mts.paintgun>"
+"<mts:syndicatemotorfoundry.scannerpaintgun>"
+"<mts:ivv.book_scanner>"
 
 ## Phones
 //"<mts:ivv.cellphone>"
@@ -1956,8 +2096,42 @@
 //"<variedcommodities:phone>"
 //"<mts:ivv.businessphone>"
 
+## Food
+"<mts:ivv.yulelog>"
+"<mts:ivv.charcuberie>"
+"<mts:ivv.antifood>" // substracts food
+"<mts:ivv.burger>"
+
+## Prop
+"<mts:ivv.weed>"
+"<mts:ivv.boombox>"
+"<mts:ivv.cassette_0magic>"
+"<mts:ivv.cassette_fmm>"
+"<mts:ivv.cassette_tmms>"
+"<mts:ivv.dd40>" // WD40
+"<mts:ivv.credit>" // ijref (money from future)
+### IVV lighters
+"<mts:ivv.butanepack>"
+
+## Melee weapon
+"<mts:ivv.alastor_staff>" // ijref
+"<mts:ivv.bonk>"
+"<mts:ivv.bowieknife>"
+"<mts:ivv.fryingpan>"
+"<mts:ivv.fryingpan_gold>"
+"<mts:ivv.battleaxe>"
+
 
 # Decors
+
+## tech
+"<mts:ivv.screen>"
+"<mts:ivv.screen_dark>"
+"<mts:ivv.computergaming>"
+"<mts:ivv.computernew>"
+"<mts:ivv.computerold>"
+"<mts:ivv.computeroldbudget>"
+"<mts:ivv.bigtv>"
 
 ## Art
 //"<mts:ivv.painting_dcc>"
@@ -2080,7 +2254,7 @@
 "<mts:iav.iav_flag_car_dkz>"
 "<mts:iav.iav_flag_car_shsr>"
 
-## robots
+## Robots
 "<mts:ivv.robot>"
 "<mts:ivv.robot_damaged>"
 "<mts:ivv.robot_hashimsbrain>"
@@ -2167,8 +2341,13 @@
 //"<mts:ivv.robotjunk_head_old>"
 //"<mts:ivv.robotjunk_head_old_junk>"
 
+## Creatures
+"<mts:ivv.dalek>"
+"<mts:ivv.dalek_classic>"
+"<mts:ivv.dalek_pink>"
+"<mts:ivv.dalek_red>"
+
 ## Random unsorted
-"<mts:ivv.trashcan>"
 "<mts:unuparts.unuparts_decor_unu_cutout_derrick>"
 "<mts:unuparts.unuparts_decor_unu_debug_textscale>"
 "<mts:unuparts.unuparts_decor_unu_dynometer>"
@@ -2187,6 +2366,54 @@
 "<mts:bjornscustoms.forsalesignstand>"
 "<mts:ivv.toiletpaper_pile>"
 "<mts:ivv.toiletpaper_roll>"
+"<mts:ivv.babycm_black>"
+"<mts:ivv.babycm_blue>"
+"<mts:ivv.babycm_brown>"
+"<mts:ivv.babycm_carrot>"
+"<mts:ivv.babycm_cyan>"
+"<mts:ivv.babycm_green>"
+"<mts:ivv.babycm_lime>"
+"<mts:ivv.babycm_pink>"
+"<mts:ivv.babycm_purple>"
+"<mts:ivv.babycm_red>"
+"<mts:ivv.babycm_white>"
+"<mts:ivv.babycm_yellow>"
+"<mts:ivv.deadbody_black>"
+"<mts:ivv.deadbody_blue>"
+"<mts:ivv.deadbody_brown>"
+"<mts:ivv.deadbody_carrot>"
+"<mts:ivv.deadbody_cyan>"
+"<mts:ivv.deadbody_green>"
+"<mts:ivv.deadbody_lime>"
+"<mts:ivv.deadbody_pink>"
+"<mts:ivv.deadbody_purple>"
+"<mts:ivv.deadbody_red>"
+"<mts:ivv.deadbody_white>"
+"<mts:ivv.deadbody_yellow>"
+"<mts:ivv.trashcan>"
+"<mts:ivv.cutout_db>"
+"<mts:ivv.cutout_e>"
+"<mts:ivv.cutout_gd>"
+"<mts:ivv.clockdecor>"
+"<mts:ivv.bronco>"
+"<mts:ivv.8ball>"
+"<mts:ivv.anchor>"
+"<mts:ivv.bankerlamp>"
+"<mts:ivv.cratedecor>"
+"<mts:ivv.cratedecor_metallic>"
+"<mts:ivv.decor_container_black>"
+"<mts:ivv.decor_container_blue>"
+"<mts:ivv.decor_container_coke>"
+"<mts:ivv.decor_container_green>"
+"<mts:ivv.decor_container_pootis>"
+"<mts:ivv.decor_container_red>"
+"<mts:ivv.jackdecor>"
+"<mts:ivv.teddy_bear>"
+"<mts:ivv.teddy_devom>"
+"<mts:ivv.teddy_donbruce>"
+"<mts:ivv.teddy_neko>"
+"<mts:ivv.teddy_robot>"
+"<mts:ivv.button>"
 
 ## Street decor
 "<mts:unuparts.unuparts_signalcontroller_unu_standard>"
@@ -2222,16 +2449,34 @@
 "<mts:mtsofficialpack.pole_flashingsignal_yellow>"
 "<mts:mtsofficialpack.pole_streetlight>"
 "<mts:mtsofficialpack.pole_trafficsignal>"
+"<mts:ivv.billboard_custom>"
+"<mts:ivv.billboard_fnh>"
+"<mts:ivv.billboard_gary>"
+"<mts:ivv.billboard_gr>"
+"<mts:ivv.billboard_ivv>"
+"<mts:ivv.billboard_roblox>"
+"<mts:ivv.billboard_satellite>"
+"<mts:ivv.billboard_smell>"
+"<mts:ivv.billboard_sontarha>"
+"<mts:ivv.billboard_trin>"
 
-# Speciality IDK how to sort items (probably no loot tables)
+## particles and effects
+"<mts:ivv.effect_boom>"
+"<mts:ivv.effect_fire>"
+"<mts:ivv.effect_nuke>"
+"<mts:ivv.effect_water>"
 
-## Benches
+# Benches
+## Crafting
 "<mts:ivv.benchcraftingengines>"
 "<mts:ivv.benchcraftingmachine>"
 "<mts:ivv.benchcraftingmachine_furnace>"
 "<mts:ivv.benchcraftingmachine_mts>"
 "<mts:ivv.benchcraftingvehiclelift>"
 "<mts:ivv.benchcraftingwheels>"
+"<mts:ivv.benchcarlift_ramp>"
+"<mts:ivv.benchcarlift_twopost>"
+"<mts:ivv.3dprinter>"
 "<mts:unuparts.unuparts_crafting_unu_assemblytable>"
 "<mts:mts.custombench>"
 "<mts:mts.decorbench>"
@@ -2246,8 +2491,16 @@
 "<mts:randallag.effectorbench>"
 "<mts:ivv.benchengine>"
 "<mts:ivv.benchgun>"
-"<mts:mts.paintgun>"
-"<mts:syndicatemotorfoundry.scannerpaintgun>"
+
+## Fuel
+"<mts:ivv.charger>"
+"<mts:ivv.chargeralt_bell>"
+"<mts:ivv.chargeralt_blue>"
+"<mts:ivv.chargeralt_gray>"
+"<mts:ivv.chargeralt_ivl>"
+"<mts:ivv.chargeralt_red>"
+
+# Speciality IDK how to sort items (probably no loot tables)
 
 ## Trin BBQ
 "<mts:iv_tpp.bbq_engine_charcoal>"
@@ -2370,12 +2623,20 @@
 "<mts:ivv.invisipaint>"
 "<mts:ivv.invisiroad>"
 "<mts:ivv.theinvisitire>"
+"<mts:ivv.bodyrollcompact>"
+"<mts:ivv.bodyrolllarge>"
+"<mts:ivv.bodyrollstandard>"
+"<mts:ivv.bikephysmotor>"
 "<mts:mts.invisible_seat>"
 "<mts:mts.invisible_standing>"
 "<mts:mts.invisible_wheel>"
+"<mts:ivv.ssd_chase>"
+"<mts:ivv.ssd_ftl>"
+"<mts:ivv.ssd_wanderslow>"
 
 # Weaponry
 ## Guns & Ammo
+### IVV
 "<mts:ivv.sniperrifle>"
 "<mts:ivv.sniperrifleammo>"
 "<mts:ivv.swiftshotgun>"
@@ -2384,7 +2645,7 @@
 "<mts:ivv.shotgun>"
 "<mts:ivv.shotgunammo>"
 "<mts:ivv.shotgunammoclip>"
-"<mts:ivv.shotgunammoexplosive>"
+"<mts:ivv.shotgunammoexplosive>" // destructive
 "<mts:ivv.shotgunammoslug>"
 "<mts:ivv.railgun>"
 "<mts:ivv.railgunammo>"
@@ -2394,12 +2655,79 @@
 "<mts:ivv.revolver_gold>"
 "<mts:ivv.revolverammo>"
 "<mts:ivv.revolverammoclip>"
-### IVV
+"<mts:ivv.scar>"
+"<mts:ivv.scarammo>"
+"<mts:ivv.screenammo>"
+"<mts:ivv.screenammo_dark>"
+"<mts:ivv.watergun>"
+"<mts:ivv.watergunammo>"
+"<mts:ivv.watergunammoglue>"
+"<mts:ivv.watergunammonapalm>"
+"<mts:ivv.watergunammooil>"
+"<mts:ivv.dragunov>"
+"<mts:ivv.dragunovammo>"
+"<mts:ivv.aac>"
+"<mts:ivv.aacammo>"
+"<mts:ivv.assaultrifle>"
+"<mts:ivv.assaultrifleammo>"
+"<mts:ivv.assaultriflecustom>"
+"<mts:ivv.bullpuprifle>"
+"<mts:ivv.bullpuprifleammo>"
+"<mts:ivv.clusterfuck>"
+"<mts:ivv.clusterfuckammo>"
+"<mts:ivv.flaregun>"
+"<mts:ivv.flaregunammo>"
+"<mts:ivv.flaregunmortarammo>"
+"<mts:ivv.flintlock>"
+"<mts:ivv.flintlockammo>"
+"<mts:ivv.gigapistol>" // OP
+"<mts:ivv.gigapistolammo>" // OP & destructive
+"<mts:ivv.rocket>" // OP
+"<mts:ivv.rocketammo>" // OP
+"<mts:ivv.rocketdumbammo>" // OP
+"<mts:ivv.rocketfastammo>" // OP
+"<mts:ivv.rocketincindammo>" // OP
+"<mts:ivv.rocketnuclearammo>" // OP
+"<mts:ivv.pistoldevnullammo>" // OP & destructive - BUT REALLY
+"<mts:ivv.kolibri>"
+"<mts:ivv.kolibriammo>"
+"<mts:ivv.lmg>" // destructive
+"<mts:ivv.lmgammo>" // destructive
+"<mts:ivv.lmgammoap>" // destructive
+"<mts:ivv.loosecannon>"
+"<mts:ivv.loosecannonammo>"
+"<mts:ivv.machinegun>"
+"<mts:ivv.machinerifle>"
+"<mts:ivv.machinerifleammo>"
+"<mts:ivv.mafiosogun>"
+"<mts:ivv.mafiosogunammo>"
+"<mts:ivv.mafiosogunammoextended>"
+"<mts:ivv.mgammo>"
+"<mts:ivv.mgammoap>"
+"<mts:ivv.mgammoexplosive>" // destructive
+"<mts:ivv.mgammolight>"
+"<mts:ivv.minigun>"
+"<mts:ivv.minigunammo>"
+"<mts:ivv.minigunammoexplosive>" // destructive
+"<mts:ivv.megatronp38>"
+"<mts:ivv.megatronp38ammo>"
+"<mts:ivv.mp7>"
+"<mts:ivv.mp7ammo>"
+"<mts:ivv.pistol>"
+"<mts:ivv.pistolammo>"
+"<mts:ivv.pistolammoextended>"
+"<mts:ivv.pistolauto>"
+"<mts:ivv.im_a_toaster>" // ijref
+"<mts:ivv.classicrifle>"
+"<mts:ivv.classicrifleammo>"
 ## Gun Parts
 "<mts:ivv.silencer>"
 ## Bombs / Shells
 
 # Vehicles (probably no loot tables)
+## Inside jokes, no touchy
+"<mts:ivv.boatmobile_ooferine>"
+
 ## AliceMotor
 "<mts:alicemotors.nrv_mini_bunnocc_black_g>"
 "<mts:alicemotors.nrv_mini_bunnocc_black_s>"
@@ -2700,6 +3028,44 @@
 "<mts:ivv.kobold_pink>"
 "<mts:ivv.kobold_red>"
 "<mts:ivv.kobold_white>"
+"<mts:ivv.bike_black>"
+"<mts:ivv.bike_blue>"
+"<mts:ivv.bike_dkz>"
+"<mts:ivv.bike_green>"
+"<mts:ivv.bike_grey>"
+"<mts:ivv.bike_indigo>"
+"<mts:ivv.bike_orange>"
+"<mts:ivv.bike_pink>"
+"<mts:ivv.bike_purple>"
+"<mts:ivv.bike_red>"
+"<mts:ivv.bike_white>"
+"<mts:ivv.bike_yellow>"
+"<mts:ivv.boat_acacia>"
+"<mts:ivv.boat_birch>"
+"<mts:ivv.boat_darkoak>"
+"<mts:ivv.boat_jungle>"
+"<mts:ivv.boat_oak>"
+"<mts:ivv.boat_spruce>"
+"<mts:ivv.carrus_black>"
+"<mts:ivv.carrus_blue>"
+"<mts:ivv.carrus_brown>"
+"<mts:ivv.carrus_red>"
+"<mts:ivv.carrus_tan>"
+"<mts:ivv.carrus_white>"
+"<mts:ivv.colada_black>"
+"<mts:ivv.colada_blue>"
+"<mts:ivv.colada_brown>"
+"<mts:ivv.colada_gray>"
+"<mts:ivv.colada_green>"
+"<mts:ivv.colada_ivlabs>"
+"<mts:ivv.colada_ivltest>"
+"<mts:ivv.colada_minimod>"
+"<mts:ivv.colada_policeblack>"
+"<mts:ivv.colada_policeblue>"
+"<mts:ivv.colada_red>"
+"<mts:ivv.colada_taxi>"
+"<mts:ivv.colada_taxigramados>"
+"<mts:ivv.colada_white>"
 
 ## MTS OFFICIAL PACK
 "<mts:mtsofficialpack.comanche_blue>"
