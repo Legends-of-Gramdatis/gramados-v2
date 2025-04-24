@@ -1,0 +1,375 @@
+{
+    "NPCData": {
+        "ReturnToStart": 1b,
+        "NpcInv": [
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarov",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                        }
+                    ]
+                },
+                "Damage": 0s
+            }
+        ],
+        "BossColor": 0,
+        "PotionEffect": 0,
+        "Size": 5,
+        "stopAndInteract": 1b,
+        "Resistances": {
+            "Arrow": 1.0f,
+            "Explosion": 1.0f,
+            "Knockback": 1.0f,
+            "Melee": 1.0f
+        },
+        "BossBar": 0b,
+        "RespawnTime": 600,
+        "NpcAngrySound": "",
+        "ReactsToFire": 0b,
+        "IgnoreCobweb": 0b,
+        "PositionOffsetZ": 5.0f,
+        "PositionOffsetY": 5.0f,
+        "PositionOffsetX": 5.0f,
+        "LootMode": 0,
+        "TransformHasAI": 0b,
+        "AttackStrenght": 5,
+        "IsStatue": 0b,
+        "MovingPatern": 0,
+        "NpcLines": {
+            "Lines": [
+            ]
+        },
+        "DefendFaction": 1b,
+        "FireIndirect": 0,
+        "NpcVisible": 0,
+        "NpcScenes": {
+            "Scenes": [
+            ]
+        },
+        "HitSound": "minecraft:entity.arrow.hit",
+        "FindShelter": 2,
+        "TacticalVariant": 0,
+        "Orientation": 0,
+        "KnockBack": 0,
+        "TransformHasJob": 0b,
+        "BurnInSun": 0b,
+        "StandingState": 0,
+        "AttackInvisible": 0b,
+        "NpcInteractNPCLines": {
+            "Lines": [
+            ]
+        },
+        "WalkingRange": 32,
+        "ShotCount": 1,
+        "pDur": 5,
+        "StartPosNew": [I;2344,97,3558],
+        "AttackRange": 2,
+        "NpcKillLines": {
+            "Lines": [
+            ]
+        },
+        "PotionImmune": 0b,
+        "AvoidsSun": 0b,
+        "Texture": "http://novask.in/1477273163.png",
+        "NpcJob": 0,
+        "BurstCount": 1,
+        "NpcAttackLines": {
+            "Lines": [
+            ]
+        },
+        "pSpeed": 10,
+        "pArea": 0,
+        "pImpact": 0,
+        "MoveState": 0,
+        "pRender3D": 1b,
+        "CombatRegen": 0,
+        "MarkovGender": 0,
+        "pEffect": 0,
+        "DistanceToMelee": 2,
+        "NpcStepSound": "",
+        "FireRate": 5,
+        "pEffAmp": 0,
+        "ImmuneToFire": 0b,
+        "NpcKilledLines": {
+            "Lines": [
+            ]
+        },
+        "DisablePitch": 0b,
+        "pPhysics": 1b,
+        "TransformHasInv": 0b,
+        "NpcInteractLines": {
+            "Lines": [
+            ]
+        },
+        "pSpin": 0b,
+        "NpcHurtSound": "minecraft:entity.player.hurt",
+        "pTrail": 0,
+        "CreatureType": 0,
+        "TransformHasDisplay": 0b,
+        "NoFallDamage": 0b,
+        "TransformHasRole": 0b,
+        "Name": "Police",
+        "SkinColor": 16777215,
+        "Weapons": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarov",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:makarovammo",
+                            "Count": 1b,
+                            "Damage": 2s
+                        }
+                    ]
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:bullet",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ],
+        "NpcIdleSound": "",
+        "NPCDialogOptions": [
+        ],
+        "AggroRange": 16,
+        "DirectLOS": 1b,
+        "HealthRegen": 1,
+        "minDelay": 15,
+        "DoorInteract": 1,
+        "MoveSpeed": 5,
+        "TransformEditingModus": 0b,
+        "UsingSkinUrl": 2b,
+        "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_Police.png",
+        "CanSwim": 1b,
+        "GroundSound": "minecraft:entity.arrow.hit",
+        "MaxHealth": 20,
+        "HideBodyWhenKilled": 1b,
+        "AttackSpeed": 20,
+        "PotionDuration": 5,
+        "DropChance": [
+            {
+                "Integer": 100,
+                "Slot": 0
+            },
+            {
+                "Integer": 100,
+                "Slot": 1
+            },
+            {
+                "Integer": 100,
+                "Slot": 2
+            },
+            {
+                "Integer": 100,
+                "Slot": 3
+            },
+            {
+                "Integer": 100,
+                "Slot": 4
+            },
+            {
+                "Integer": 50,
+                "Slot": 5
+            },
+            {
+                "Integer": 25,
+                "Slot": 6
+            },
+            {
+                "Integer": 10,
+                "Slot": 7
+            },
+            {
+                "Integer": 1,
+                "Slot": 8
+            }
+        ],
+        "maxDelay": 20,
+        "Role": 0,
+        "FactionPoints": {
+            "DecreaseFaction1Points": 0b,
+            "OptionFaction2Points": 5,
+            "OptionFactions1": 6,
+            "OptionFactions2": -1,
+            "OptionFaction1Points": 5,
+            "DecreaseFaction2Points": 0b
+        },
+        "pDamage": 4,
+        "AimWhileShooting": 1b,
+        "AttackOtherFactions": 1b,
+        "CanDrown": 1b,
+        "pSize": 5,
+        "CanSprint": 0b,
+        "CanLeap": 0b,
+        "TransformIsActive": 0b,
+        "ModelData": {
+            "LegsConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.012000002f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "BodyConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "Eyes": {
+                "Pattern": 0b,
+                "Glint": 1b,
+                "Type": -1b,
+                "PositionY": 1,
+                "SkinColor": 11830381,
+                "PlayerTexture": 0b,
+                "Color": 10066329,
+                "BrowColor": 5982516,
+                "BrowThickness": 4
+            },
+            "LegParts": {
+                "Pattern": 0b,
+                "Type": 0b,
+                "PlayerTexture": 0b,
+                "Color": 16777215
+            },
+            "Parts": [
+            ],
+            "ArmsConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": -0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            },
+            "ExtraData": {
+            },
+            "HeadConfig": {
+                "NotShared": 0b,
+                "ScaleZ": 1.0f,
+                "TransZ": 0.0f,
+                "TransY": 0.0f,
+                "TransX": 0.0f,
+                "ScaleY": 1.0f,
+                "ScaleX": 1.0f
+            }
+        },
+        "MovingState": 1,
+        "MovingPos": 0,
+        "PotionAmp": 0,
+        "OnAttack": 0,
+        "TacticalRadius": 8,
+        "MaxExp": 5,
+        "OrderedLines": 0b,
+        "pGlows": 0b,
+        "TransformHasAdvanced": 0b,
+        "TransformHasStats": 0b,
+        "MovementType": 0,
+        "FiringSound": "customnpcs:gun.pistol.shot",
+        "Accuracy": 75,
+        "MinExp": 3,
+        "Armor": [
+        ],
+        "CloakTexture": "",
+        "GlowTexture": "",
+        "MaxFiringRange": 32,
+        "pXlr8": 0b,
+        "MarkovGeneratorId": 0,
+        "pStick": 0b,
+        "MovingPause": 1b,
+        "NpcDeathSound": "minecraft:entity.player.hurt",
+        "FactionID": 2,
+        "Title": "",
+        "ShowName": 0,
+        "npcInteracting": 1b,
+        "AvoidsWater": 1b,
+        "NoLivingAnimation": 0b,
+        "SpawnCycle": 0
+    },
+    "LinkedName": "Police Officer"
+}
