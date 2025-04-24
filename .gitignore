@@ -78,3 +78,4 @@ GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
 reports/*.md
 .gitignore
+documentation/region creation/*
