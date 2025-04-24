@@ -157,10 +157,9 @@ function weightedRandom(entries) {
  * Generates an item stack from a loot table entry.
  * @param {Object} entry - The loot table entry containing item details.
  * @param {IWorld} world - The world object to create the item in.
- * @param {IPlayer} player - The player interacting with the loot table.
  * @returns {Object} - The generated item stack.
  */
-function generateItemStackFromLootEntry(entry, world, player) {
+function generateItemStackFromLootEntry(entry, world) {
     var itemstack = world.createItem(
         entry.id,
         entry.damage || 0,
@@ -169,7 +168,7 @@ function generateItemStackFromLootEntry(entry, world, player) {
     if (entry.nbt) {
         var nbt = API.stringToNbt(entry.nbt);
         // set nbt to itemstack
-        itemstack = setNbtToItemStack(itemstack, nbt, player);
+        itemstack = setNbtToItemStack(itemstack, nbt, world);
     }
     return itemstack;
 }
@@ -181,8 +180,7 @@ function generateItemStackFromLootEntry(entry, world, player) {
  * @param {IPlayer} player - The player interacting with the item stack.
  * @returns {Object} - The modified item stack with the NBT data applied.
  */
-function setNbtToItemStack(itemstack, nbt, player) {
-    var world = player.getWorld();
+function setNbtToItemStack(itemstack, nbt, world) {
     var item_nbt = itemstack.getItemNbt();
     item_nbt.setCompound("tag", nbt);
     // tellPlayer(player, "&7Setting NBT: " + item_nbt.toJsonString());
