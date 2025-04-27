@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 346,
-                "Title": "What’s special about Gramados commands?",
+                "Title": "What's special about Gramados commands?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -66,7 +66,7 @@ Before you start, let me guide you through some basics so you can get the most o
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731780636501L,
+        "TimePast": 1745779477960L,
         "Time": 0L,
         "Subject": ""
     }
