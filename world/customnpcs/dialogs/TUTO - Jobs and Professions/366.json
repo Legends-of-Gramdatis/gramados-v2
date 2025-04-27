@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 367,
-                "Title": "Yes, I’d like to see where each job is.",
+                "Title": "Yes, I'd like to see where each job is.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,7 +27,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Actually, I’ll look around on my own.",
+                "Title": "Actually, I'll look around on my own.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -67,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, so you’re interested in finding where all the starter jobs are located! Great choice—it’s a good way to get familiar with Gramados and find the work that suits you best.",
+    "DialogText": "Ah, so you're interested in finding where all the starter jobs are located! Great choice—it's a good way to get familiar with Gramados and find the work that suits you best.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

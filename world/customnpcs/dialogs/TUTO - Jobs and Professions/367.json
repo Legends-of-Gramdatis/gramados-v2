@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Wonderful! I’ll take you on a short tour through Gramados to each hiring agency. Each stop will introduce you to a job, give you an idea of what’s required, and point out the resources nearby. You’ll meet the Hiring Managers at each location—they’re experts in their fields and can answer any questions.
+    "DialogText": "Wonderful! I'll take you on a short tour through Gramados to each hiring agency. Each stop will introduce you to a job, give you an idea of what's required, and point out the resources nearby. You'll meet the Hiring Managers at each location—they're experts in their fields and can answer any questions.
 
-Your first stop will be the Gramados City Hiring Agency, just a few blocks west. Once there, ask the Hiring Manager about the Lumberjack position—it’s a popular choice for newcomers. When you’re done there, follow the markers to the next locations!",
+Your first stop will be the Gramados City Hiring Agency, just a few blocks west. Once there, ask the Hiring Manager about the Lumberjack position—it's a popular choice for newcomers. When you're done there, follow the markers to the next locations!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

@@ -37,7 +37,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 398,
-                "Title": "What’s this stock market you mentioned?",
+                "Title": "What's this stock market you mentioned?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 399,
-                "Title": "What’s the deal with banks as structures?",
+                "Title": "What's the deal with banks as structures?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -57,7 +57,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 349,
-                "Title": "I’ve heard enough for now.",
+                "Title": "I've heard enough for now.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -97,7 +97,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Gramados has a dynamic economy where Grons and cents are the lifeblood of your journey. Money management is crucial! Here, you’ll learn about how to handle your finances, open bank accounts, take loans, and even navigate the simulated stock market.",
+    "DialogText": "Gramados has a dynamic economy where Grons and cents are the lifeblood of your journey. Money management is crucial! Here, you'll learn about how to handle your finances, open bank accounts, take loans, and even navigate the simulated stock market.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

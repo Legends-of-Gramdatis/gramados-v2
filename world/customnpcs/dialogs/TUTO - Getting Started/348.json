@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 349,
-                "Title": "I’m ready to get started!",
+                "Title": "I'm ready to get started!",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I can help you with that! Gramados has a range of systems, and I can direct you to resources for each one. Just choose a branch below, and I’ll point you to the best place to start learning.",
+    "DialogText": "I can help you with that! Gramados has a range of systems, and I can direct you to resources for each one. Just choose a branch below, and I'll point you to the best place to start learning.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

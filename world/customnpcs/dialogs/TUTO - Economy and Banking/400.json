@@ -60,7 +60,7 @@
     "DialogText": "In Gramados, you keep your inventory when you die, but money is an exception.
 
 - Coins and bills will drop entirely on death, making them lootable by others.
-- If you store money in your pouch, only 50% of the pouch’s content will drop.
+- If you store money in your pouch, only 50% of the pouch's content will drop.
 
 To minimize losses, always keep your funds in your pouch using !deposit or !depositall. This ensures that only part of your money is at risk during an untimely demise!
 

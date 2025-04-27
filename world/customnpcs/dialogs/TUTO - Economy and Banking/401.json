@@ -69,7 +69,7 @@
     "OptionFaction2Points": 100,
     "DialogText": "Managing your bank account is simple:
 
-- Use !bank remove <code> to delete a bank if it’s no longer needed.
+- Use !bank remove <code> to delete a bank if it's no longer needed.
 - Use !bank setDisplayName <code> <name> to give your bank a new name.
 - Use !bank setDesc <code> <description> to add more details about your account.",
     "AvailabilityQuest4Id": -1,

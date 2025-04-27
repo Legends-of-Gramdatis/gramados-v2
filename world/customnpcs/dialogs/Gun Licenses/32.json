@@ -67,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ok great! Just so you know: it isn’t an easy thing to get. First, I must know you faction level, and I think you are clean on that part of the test. You need Civility-neutral faction to get a pistol license, Civility-neutral faction and Criminality-neutral or below faction for light-rifle, and Civility-friendly faction for shotguns.
+    "DialogText": "Ok great! Just so you know: it isn't an easy thing to get. First, I must know you faction level, and I think you are clean on that part of the test. You need Civility-neutral faction to get a pistol license, Civility-neutral faction and Criminality-neutral or below faction for light-rifle, and Civility-friendly faction for shotguns.
 What license do you need?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,

@@ -27,7 +27,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 365,
-                "Title": "What’s the benefit of founding an industry?",
+                "Title": "What's the benefit of founding an industry?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -77,9 +77,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you’re ambitious, you can go beyond traditional jobs and found your own industry in Gramados. This route lets you establish your own production lines and potentially introduce new goods into the economy. You’ll work closely with Staff to set up your industry, so it’s a collaborative effort to bring something unique to the world.
+    "DialogText": "If you're ambitious, you can go beyond traditional jobs and found your own industry in Gramados. This route lets you establish your own production lines and potentially introduce new goods into the economy. You'll work closely with Staff to set up your industry, so it's a collaborative effort to bring something unique to the world.
 
-Starting an industry is a big investment. You’ll need to buy or construct a facility, gather the necessary materials, and design a production process. This isn’t a typical job—you’re building a business from the ground up.",
+Starting an industry is a big investment. You'll need to buy or construct a facility, gather the necessary materials, and design a production process. This isn't a typical job—you're building a business from the ground up.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

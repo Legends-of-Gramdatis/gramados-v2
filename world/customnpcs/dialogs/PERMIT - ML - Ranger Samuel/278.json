@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks for the directions. I’ll head there and then report back to Marcus Eldridge.",
+                "Title": "Thanks for the directions. I'll head there and then report back to Marcus Eldridge.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,11 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Excellent work! The White Stag is a rare and elusive creature. I’m sure it’ll make for a fine trophy. I’ll make sure the gun is in good shape for the next hunter.
+    "DialogText": "Excellent work! The White Stag is a rare and elusive creature. I'm sure it'll make for a fine trophy. I'll make sure the gun is in good shape for the next hunter.
 
-Now that you’ve completed the hunt, you’ll need to take the White Stag’s carcass to a taxidermist to have it preserved properly. The taxidermist is located on Feldpard Island at the Truck Stop. It’s on the south side of the island, right after the bridge leading to Feldpard Island.
+Now that you've completed the hunt, you'll need to take the White Stag's carcass to a taxidermist to have it preserved properly. The taxidermist is located on Feldpard Island at the Truck Stop. It's on the south side of the island, right after the bridge leading to Feldpard Island.
 
-Once you’ve done that, be sure to return to Marcus Eldridge at the Gramados Town Hall to report your progress and find out what comes next.
+Once you've done that, be sure to return to Marcus Eldridge at the Gramados Town Hall to report your progress and find out what comes next.
 
 Good luck with the taxidermist, and I look forward to hearing how it all turns out.",
     "AvailabilityQuest4Id": -1,

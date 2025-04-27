@@ -47,7 +47,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 366,
-                "Title": "I’d like to take a tour to locate each starter job across Gramados.",
+                "Title": "I'd like to take a tour to locate each starter job across Gramados.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -97,9 +97,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Gramados offers many paths to prosperity, whether you want to take on a steady job, start a specialized profession, or even found your own industry. Each type of job has its own challenges, demands, and rewards, but all of them play a part in Gramados’ economy.
+    "DialogText": "Gramados offers many paths to prosperity, whether you want to take on a steady job, start a specialized profession, or even found your own industry. Each type of job has its own challenges, demands, and rewards, but all of them play a part in Gramados' economy.
 
-To help you navigate, let’s break things down into three main categories of jobs: Starter Jobs, Established Professions, and Founding Your Own Industry.",
+To help you navigate, let's break things down into three main categories of jobs: Starter Jobs, Established Professions, and Founding Your Own Industry.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -116,7 +116,7 @@ To help you navigate, let’s break things down into three main categories of jo
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731856480963L,
+        "TimePast": 1745775729410L,
         "Time": 0L,
         "Subject": ""
     }

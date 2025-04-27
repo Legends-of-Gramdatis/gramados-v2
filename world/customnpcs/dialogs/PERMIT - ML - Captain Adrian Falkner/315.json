@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks, Captain. I’ll head over to Guardian-RX now.",
+                "Title": "Thanks, Captain. I'll head over to Guardian-RX now.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Glad you asked. In addition to the Dragunov you used at the range, here’s the AA-12 shotgun. It’s fully automatic and should come in handy when things get chaotic. Use it wisely, and remember to scavenge for ammo around the ruins if you run low.",
+    "DialogText": "Glad you asked. In addition to the Dragunov you used at the range, here's the AA-12 shotgun. It's fully automatic and should come in handy when things get chaotic. Use it wisely, and remember to scavenge for ammo around the ruins if you run low.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 255,
-                "Title": "I’m here to learn the basics of aiming and shooting.",
+                "Title": "I'm here to learn the basics of aiming and shooting.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, you must be the one Marcus mentioned. @p, right? I’ve been expecting you. What brings you to the Lodge today?",
+    "DialogText": "Ah, you must be the one Marcus mentioned. @p, right? I've been expecting you. What brings you to the Lodge today?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": 68,

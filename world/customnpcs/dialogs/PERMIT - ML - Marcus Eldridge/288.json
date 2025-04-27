@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 289,
-                "Title": "Sounds like a challenge, but I’m ready.",
+                "Title": "Sounds like a challenge, but I'm ready.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "It certainly is. Once you arrive, seek out Lord Ardocor at the estate. He’ll give you the details and the weapon you’ll need for the tournament.",
+    "DialogText": "It certainly is. Once you arrive, seek out Lord Ardocor at the estate. He'll give you the details and the weapon you'll need for the tournament.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

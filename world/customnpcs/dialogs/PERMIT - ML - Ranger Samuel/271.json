@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 272,
-                "Title": "Sounds like a real challenge. What’s the plan?",
+                "Title": "Sounds like a real challenge. What's the plan?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, there you are {player}! I've been expecting you. Ready to put those skills to the test? Out here, it’s just you, the wilderness, and the hunt. The White Stag is no ordinary game—legend has it that it’s elusive, almost ghostly. But with the right tool, you might just be able to catch it.",
+    "DialogText": "Ah, there you are {player}! I've been expecting you. Ready to put those skills to the test? Out here, it's just you, the wilderness, and the hunt. The White Stag is no ordinary game—legend has it that it's elusive, almost ghostly. But with the right tool, you might just be able to catch it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": 80,

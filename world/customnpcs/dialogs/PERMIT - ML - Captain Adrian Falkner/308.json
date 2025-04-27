@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 309,
-                "Title": "Got it. I’ll head to the range.",
+                "Title": "Got it. I'll head to the range.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "It is. But you didn’t come all this way for an easy pass. You’re here to prove you’ve got what it takes to handle high-pressure situations and defend a critical target.
+    "DialogText": "It is. But you didn't come all this way for an easy pass. You're here to prove you've got what it takes to handle high-pressure situations and defend a critical target.
 
-Inside the keep, you’ll find the range. Once you’re ready, step in and take your shots. Afterward, come back to me, and I’ll explain the next phase.",
+Inside the keep, you'll find the range. Once you're ready, step in and take your shots. Afterward, come back to me, and I'll explain the next phase.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 268,
-                "Title": "What’s next?",
+                "Title": "What's next?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "That’s great to hear. Darius doesn’t praise just anyone, so if he’s pleased with your progress, that means you’re on the right track. With the basics covered, you’re ready to move on to something more challenging.",
+    "DialogText": "That's great to hear. Darius doesn't praise just anyone, so if he's pleased with your progress, that means you're on the right track. With the basics covered, you're ready to move on to something more challenging.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

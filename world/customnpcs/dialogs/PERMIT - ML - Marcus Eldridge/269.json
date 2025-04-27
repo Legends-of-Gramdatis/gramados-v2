@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 270,
-                "Title": "I understand. I’ll make my way there and prove myself.",
+                "Title": "I understand. I'll make my way there and prove myself.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ranger Samuel is stationed in the middle of Pinoros Forest. It’s a very thick pine forest on a hill in the south of Gramados Island. You’ll need to take the road that leads to the southernmost point of the island. Along the way, you’ll find a small picnic stop called Pinoros Picnic Stop where you can park. From there, follow the small hiking path that leads to the Pinoros Hunting Hut. It’s a wooden hut in the forest equipped with the basics for hunters—just enough to sleep, cook, and enjoy a feast with what they’ve hunted. That’s where you’ll find Ranger Samuel, ready to get you started on your next challenge.",
+    "DialogText": "Ranger Samuel is stationed in the middle of Pinoros Forest. It's a very thick pine forest on a hill in the south of Gramados Island. You'll need to take the road that leads to the southernmost point of the island. Along the way, you'll find a small picnic stop called Pinoros Picnic Stop where you can park. From there, follow the small hiking path that leads to the Pinoros Hunting Hut. It's a wooden hut in the forest equipped with the basics for hunters—just enough to sleep, cook, and enjoy a feast with what they've hunted. That's where you'll find Ranger Samuel, ready to get you started on your next challenge.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

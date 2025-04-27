@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 317,
-                "Title": "It was intense, but I managed. I’m just hoping it was enough.",
+                "Title": "It was intense, but I managed. I'm just hoping it was enough.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -49,7 +49,7 @@
     "OptionFaction2Points": 100,
     "DialogText": "Good to see you again, and thanks for returning the guns. Always good to keep the armory well-stocked.
 
-So... how do you think it went out there? I won't lie, that was no walk in the park, but you made it through. Guardian-RX is still standing, so that’s already something to be proud of.",
+So... how do you think it went out there? I won't lie, that was no walk in the park, but you made it through. Guardian-RX is still standing, so that's already something to be proud of.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": 109,

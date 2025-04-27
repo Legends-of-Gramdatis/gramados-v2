@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Gramados uses a unique command system based on ‘!’ rather than the usual ‘/’. This makes things simpler for the backend. For example, type !help to see a list of all available commands or !menu to browse the main features. You’ll also use these commands to manage your money, communicate, and more.",
+    "DialogText": "Gramados uses a unique command system based on ‘!' rather than the usual ‘/'. This makes things simpler for the backend. For example, type !help to see a list of all available commands or !menu to browse the main features. You'll also use these commands to manage your money, communicate, and more.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

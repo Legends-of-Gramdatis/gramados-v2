@@ -57,7 +57,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Good question! Currently, none of these special currencies—Vote Money, Arcade Money, or Shop Money—can be exchanged for Grons. They’re meant to be used in their own unique ways and can’t be transferred into the main economy.
+    "DialogText": "Good question! Currently, none of these special currencies—Vote Money, Arcade Money, or Shop Money—can be exchanged for Grons. They're meant to be used in their own unique ways and can't be transferred into the main economy.
 
 This keeps each currency valuable in its own right and makes it easier to distinguish their purposes.",
     "AvailabilityQuest4Id": -1,

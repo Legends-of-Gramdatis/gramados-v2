@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thank you. I’ll give it my all.",
+                "Title": "Thank you. I'll give it my all.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Good. I expect nothing less. Remember, it’s not just about your shooting skill—it’s about focus and control. Keep your composure and make each shot count. When you’re finished, return to me and we’ll see how you fared. May your aim be steady and true.",
+    "DialogText": "Good. I expect nothing less. Remember, it's not just about your shooting skill—it's about focus and control. Keep your composure and make each shot count. When you're finished, return to me and we'll see how you fared. May your aim be steady and true.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

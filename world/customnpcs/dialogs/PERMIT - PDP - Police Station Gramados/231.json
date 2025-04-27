@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 232,
-                "Title": "Thank you, Officer Reynolds. I’m glad I could help.",
+                "Title": "Thank you, Officer Reynolds. I'm glad I could help.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Ah, @p, just the person I wanted to see. I’ve read through your reports, and I must say, you’ve done an outstanding job. From assisting victims to recovering that stolen collection car, you’ve demonstrated exceptional diligence and a strong sense of duty. The community is safer because of your efforts.",
+    "DialogText": "Ah, @p, just the person I wanted to see. I've read through your reports, and I must say, you've done an outstanding job. From assisting victims to recovering that stolen collection car, you've demonstrated exceptional diligence and a strong sense of duty. The community is safer because of your efforts.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": 59,

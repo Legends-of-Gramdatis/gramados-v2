@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 285,
-                "Title": "What’s next?",
+                "Title": "What's next?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Good work. The White Stag isn’t easy prey. You’ve shown great patience, precision, and control—all traits that define a true marksman. But your journey isn’t over yet. There’s another challenge ahead—one that tests your skill against the best in the region.",
+    "DialogText": "Good work. The White Stag isn't easy prey. You've shown great patience, precision, and control—all traits that define a true marksman. But your journey isn't over yet. There's another challenge ahead—one that tests your skill against the best in the region.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

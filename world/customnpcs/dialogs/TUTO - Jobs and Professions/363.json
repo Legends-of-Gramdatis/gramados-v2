@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "To begin, you’ll need a factory or industrial space that you can convert into your production line. Whether it’s processing raw materials, creating manufactured goods, or something else, you’ll have to discuss your plans with Staff. They’ll help you set up any custom systems required for your industry, including a wholesale point where you can sell your products.",
+    "DialogText": "To begin, you'll need a factory or industrial space that you can convert into your production line. Whether it's processing raw materials, creating manufactured goods, or something else, you'll have to discuss your plans with Staff. They'll help you set up any custom systems required for your industry, including a wholesale point where you can sell your products.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

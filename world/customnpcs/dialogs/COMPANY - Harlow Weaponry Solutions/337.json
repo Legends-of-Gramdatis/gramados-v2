@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 338,
-                "Title": "I’ll handle it. Anything else I need to know?",
+                "Title": "I'll handle it. Anything else I need to know?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Last we tracked them, they were camped out near Minchally Block. Be careful—these aren’t amateurs, they know their way around weapons.",
+    "DialogText": "Last we tracked them, they were camped out near Minchally Block. Be careful—these aren't amateurs, they know their way around weapons.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

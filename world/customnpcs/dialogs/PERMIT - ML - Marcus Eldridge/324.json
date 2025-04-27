@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks, Marcus. I’ll be ready.",
+                "Title": "Thanks, Marcus. I'll be ready.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Exactly. And one last thing: people talk, especially in these parts. So, keep that reputation sharp. You never know who’s watching.
+    "DialogText": "Exactly. And one last thing: people talk, especially in these parts. So, keep that reputation sharp. You never know who's watching.
 
-Alright then, off you go. We’ll be in touch soon. Don’t be a stranger.",
+Alright then, off you go. We'll be in touch soon. Don't be a stranger.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

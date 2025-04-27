@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 299,
-                "Title": "I’m glad to have performed well, but I hope Eli doesn’t take it too hard.",
+                "Title": "I'm glad to have performed well, but I hope Eli doesn't take it too hard.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -57,9 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Thank you for returning the firearm in such excellent condition! It's always a pleasure to lend my weapons to a skilled marksman like yourself. Now, let’s discuss your performance in the tournament. I see you managed to secure 3rd place, just narrowly beating Eli Thompson by a single point.
+    "DialogText": "Thank you for returning the firearm in such excellent condition! It's always a pleasure to lend my weapons to a skilled marksman like yourself. Now, let's discuss your performance in the tournament. I see you managed to secure 3rd place, just narrowly beating Eli Thompson by a single point.
 
-Eli isn’t known for his grace in defeat. I wouldn’t be surprised if he sulks in a corner somewhere, nursing his bruised ego. He tends to take things a bit too personally, but it seems you’ve proven your worth on the field. Your marksmanship skills are truly commendable!",
+Eli isn't known for his grace in defeat. I wouldn't be surprised if he sulks in a corner somewhere, nursing his bruised ego. He tends to take things a bit too personally, but it seems you've proven your worth on the field. Your marksmanship skills are truly commendable!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

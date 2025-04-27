@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 274,
-                "Title": "Understood. I won’t let it slip away.",
+                "Title": "Understood. I won't let it slip away.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "The White Stag roams deep within the Pinoros Forest. You’ll need to be patient and keep your eyes peeled. The dense pines can make it tricky to spot, but that’s part of the challenge. Take this rifle, head into the forest, and good luck. Bring the Stag’s carcass back here when you’re done, and we’ll get it to the taxidermist. And remember, you’ve only got one shot at this.",
+    "DialogText": "The White Stag roams deep within the Pinoros Forest. You'll need to be patient and keep your eyes peeled. The dense pines can make it tricky to spot, but that's part of the challenge. Take this rifle, head into the forest, and good luck. Bring the Stag's carcass back here when you're done, and we'll get it to the taxidermist. And remember, you've only got one shot at this.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

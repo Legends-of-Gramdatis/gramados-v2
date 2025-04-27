@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "What’s the stock market about?",
+                "Title": "What's the stock market about?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Banks have an autopay feature, great for regular payments. Here’s how it works:
+    "DialogText": "Banks have an autopay feature, great for regular payments. Here's how it works:
 
 - Add someone to autopay with !myBank addAutopay <bank> <player> <amount>.
 - Change the autopay amount with !myBank changeAutopayAmount <bank> <player> <amount>.

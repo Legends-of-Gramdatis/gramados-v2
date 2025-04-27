@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 394,
-                "Title": "I’m done with this topic.",
+                "Title": "I'm done with this topic.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -59,7 +59,7 @@
     "OptionFaction2Points": 100,
     "DialogText": "Criminality is a system tracking your illegal activities. If you rob banks or evade loans, your criminality score rises.
 
-High scores can trigger police investigations, and if you’re caught, you may face fines, arrests, or a SWAT raid by the SPO. Proceed carefully if you choose the criminal path!",
+High scores can trigger police investigations, and if you're caught, you may face fines, arrests, or a SWAT raid by the SPO. Proceed carefully if you choose the criminal path!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

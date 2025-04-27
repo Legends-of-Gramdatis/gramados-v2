@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks again, Captain. I’ll be on my way.",
+                "Title": "Thanks again, Captain. I'll be on my way.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "No problem. You’ve earned it. Well, that wraps it up for you here at Fort Harbenshire. You've got what you need. Best of luck with your results. Now get to that post office, and good luck with Eldridge once you have your score.",
+    "DialogText": "No problem. You've earned it. Well, that wraps it up for you here at Fort Harbenshire. You've got what you need. Best of luck with your results. Now get to that post office, and good luck with Eldridge once you have your score.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

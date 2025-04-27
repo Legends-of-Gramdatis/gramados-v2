@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thanks. I’ll keep in touch.",
+                "Title": "Thanks. I'll keep in touch.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Oh? You got those guns back? That’s more than I expected! You’re going above and beyond, and I like that.
+    "DialogText": "Oh? You got those guns back? That's more than I expected! You're going above and beyond, and I like that.
 
-Tell you what, I’ll bump up the reward to 15,000 Grons. And hey, I might need someone like you again. You stay in touch, alright?",
+Tell you what, I'll bump up the reward to 15,000 Grons. And hey, I might need someone like you again. You stay in touch, alright?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

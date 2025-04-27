@@ -57,7 +57,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Managing your money efficiently is key. Your pouch holds Grons and cents, but you’ll also find money in physical forms. Here’s what you can do with commands:
+    "DialogText": "Managing your money efficiently is key. Your pouch holds Grons and cents, but you'll also find money in physical forms. Here's what you can do with commands:
 
 - !mymoney: Check your current balance.
 - !deposit: Move money from your main hand into your pouch.

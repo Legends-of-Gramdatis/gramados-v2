@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 286,
-                "Title": "A tournament? Sounds interesting. What’s the goal?",
+                "Title": "A tournament? Sounds interesting. What's the goal?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Every year, the Ardocor family hosts an exclusive shooting tournament at Suncrest Estate, their ancestral manor. It’s more than just a competition—it’s a tradition steeped in history. The tournament brings together marksmen from all over, and only those who can prove their worth make it to the top. This is your next step.",
+    "DialogText": "Every year, the Ardocor family hosts an exclusive shooting tournament at Suncrest Estate, their ancestral manor. It's more than just a competition—it's a tradition steeped in history. The tournament brings together marksmen from all over, and only those who can prove their worth make it to the top. This is your next step.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

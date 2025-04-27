@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Alright, now that you’ve had some practice at the range, it’s time for the next step of your exam. Head over to the ruined barracks on the southwest side of the fort. You'll find a robot named Guardian-RX waiting for you there. He’s programmed for defense simulations, and your job is to protect him from incoming threats.",
+    "DialogText": "Alright, now that you've had some practice at the range, it's time for the next step of your exam. Head over to the ruined barracks on the southwest side of the fort. You'll find a robot named Guardian-RX waiting for you there. He's programmed for defense simulations, and your job is to protect him from incoming threats.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": 104,
