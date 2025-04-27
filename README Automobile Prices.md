@@ -18,6 +18,7 @@ For the vehicles that aren't listed, here are the prices:
 - AliceMotors Yumi: 21500 g
 - AliceMotors Utesu: 21500 g
 - Alicemotors NRV 300zx: 45000 g
+- Alicemotors E-bike 4 wheel enclosed: 6200 g (no papers)
 
 ## UNU Vehicles
 - UNU Wolf: 45000 g (+10k for each .50 Cal MMG)
