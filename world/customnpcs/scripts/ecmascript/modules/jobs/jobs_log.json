@@ -372,6 +372,14 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2450080304,
+                "EndTime": 2513353566,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
             "61": {
                 "JobID": 61,
                 "JobName": "Terracotta Factory Worker",
@@ -403,10 +411,10 @@
                 "Region": "Greenfield",
                 "Type": "Starter"
             },
-            "59": {
-                "JobID": 59,
-                "JobName": "Lumberjack",
-                "StartTime": 2450080304,
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2513353566,
                 "Region": "Gramados",
                 "Type": "Starter"
             },
@@ -582,7 +590,8 @@
                 "JobID": 59,
                 "JobName": "Lumberjack",
                 "StartTime": 2359358757,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     },
@@ -629,6 +638,13 @@
                 "JobID": 59,
                 "JobName": "Lumberjack",
                 "StartTime": 2376932675,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2513429620,
                 "Region": "Gramados",
                 "Type": "Starter"
             },
