@@ -74,17 +74,17 @@
             "z": 1045
         },
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 1200,
+        "vaultGateOpenTime": 2513666682,
         "gate": {
             "pos1": {
-                "x": -1049,
+                "x": -2852,
                 "y": 88,
-                "z": 233
+                "z": 1048
             },
             "pos2": {
-                "x": -1047,
+                "x": -2852,
                 "y": 86,
-                "z": 232
+                "z": 1048
             },
             "block": {
                 "id": "chisel:ironpane",
