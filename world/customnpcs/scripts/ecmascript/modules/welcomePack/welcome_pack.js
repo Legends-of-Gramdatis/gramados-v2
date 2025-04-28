@@ -7,7 +7,14 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 var WELCOME_PACK_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/welcomePack/welcome_pack.json";
 
 /**
- * Gifts a bicycle to the player if they haven't received it yet.
+ * @description
+ * This function is called when a player joins the server for the first time.
+ * It gifts the player a bike from the loot table and logs the event.
+ * It also checks if the player has already been gifted to avoid duplication.
+ * If the player has already been gifted, it does nothing.
+ * If the player has not been gifted, it pulls a bike from the loot table,
+ * gives it to the player, and adds the player to the gifted list.
+ * Finally, it saves the updated gifted list to a JSON file.
  */
 function init(event) {
     var player = event.player;
@@ -16,7 +23,6 @@ function init(event) {
 
     // Check if the player has already been gifted
     if (includes(giftedPlayers.giftedMTSItems, player.getUUID())) {
-        // player.message("&eYou have already received your welcome bike!");
         return;
     }
 
