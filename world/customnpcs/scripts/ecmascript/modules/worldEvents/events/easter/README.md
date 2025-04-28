@@ -1,6 +1,6 @@
-# Easter Egg Hunt Event (In Development)
+# Easter Egg Hunt Event
 
-The Easter Egg Hunt event brings a festive atmosphere to the Gramados server with collectible eggs, unique rewards, and whimsical interactions.
+The Easter Egg Hunt event brings a festive atmosphere to the Gramados server with collectible eggs, unique rewards, whimsical interactions, and a challenging boss fight.
 
 ## Features
 
@@ -8,11 +8,12 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
 - **Player Interaction**: Players can collect eggs using special tools.
 - **Starter Pack**: New participants receive a starter pack with tools and treats.
 - **Dynamic Egg Types**: Eggs come in three types: Spring, Chromashell, and Encrypted, each with unique mechanics and rewards.
+- **Boss Fight**: Engage in a multi-stage battle against the Easter Bunny Boss with unique attacks and mechanics.
 
 ## How It Works
 
 1. **Event Activation**:
-   - The event is active from March 14 to March 21, as defined in `event_config.json`.
+   - The event is active from March 14 to March 22, as defined in `event_config.json`.
 
 2. **Egg Spawning**:
    - Eggs spawn randomly around players in clusters.
@@ -30,8 +31,13 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
    - **Chromashell Eggs**: Uncommon and magical, opened by Aetheric Botanists.
    - **Encrypted Eggs**: Rare and mysterious, opened by Eggcryption Technicians.
 
-6. **Logging**:
-   - All egg spawns and player interactions are logged for tracking purposes.
+6. **Boss Fight**:
+   - The Easter Bunny Boss alternates between "Egg Mode" and "Bunny Mode."
+   - Players must defeat the boss in multiple stages, each with increasing difficulty.
+   - Unique attacks include Mini Egg Swarms, Boomshell Walls, and Chocolate Powder Floods.
+
+7. **Logging**:
+   - All egg spawns, player interactions, and boss fight events are logged for tracking purposes.
 
 ## Files
 
@@ -39,6 +45,7 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
 - **`easterEggNpc.js`**: Defines the behavior of Easter Egg NPCs.
 - **`NPCeggcracker.js`**: Manages interactions with NPCs that open eggs based on their type.
 - **`GiantEggInteractionPlaceholder.js`**: Placeholder script for interactions with giant eggs.
+- **`EasterBunnyBoss.js`**: Manages the Easter Bunny Boss fight mechanics.
 
 ## Configuration
 
@@ -53,7 +60,7 @@ The event's date range is defined in `event_config.json`:
     },
     "endDate": {
         "month": 3,
-        "day": 21
+        "day": 22
     }
 }
 ```

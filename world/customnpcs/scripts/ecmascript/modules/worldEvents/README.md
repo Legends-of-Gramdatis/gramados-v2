@@ -6,7 +6,7 @@ This module implements a dynamic world events system for the Gramados modded Min
 
 - **Event Management**: Supports multiple events with configurable start and end dates.
 - **Player Interaction**: Tracks player-specific event data and interactions.
-- **Dynamic Event Behavior**: Includes unique mechanics for each event, such as spawning entities or granting rewards.
+- **Dynamic Event Behavior**: Includes unique mechanics for each event, such as spawning entities, granting rewards, or engaging in boss fights.
 - **Logging and Persistence**: Logs event-related actions and persists player data across sessions.
 
 ## Event Configuration
@@ -19,11 +19,11 @@ Events are defined in the `event_config.json` file. Example:
         {
             "name": "April Fools",
             "startDate": {
-                "month": 2,
+                "month": 3,
                 "day": 30
             },
             "endDate": {
-                "month": 3,
+                "month": 4,
                 "day": 4
             }
         },
@@ -35,7 +35,7 @@ Events are defined in the `event_config.json` file. Example:
             },
             "endDate": {
                 "month": 3,
-                "day": 21
+                "day": 22
             }
         }
     ]
@@ -48,6 +48,7 @@ Events are defined in the `event_config.json` file. Example:
 - **`worldEventUtils.js`**: Utility functions for managing events and player data.
 - **`event_config.json`**: Stores event definitions and date ranges.
 - **`player_event_data.json`**: Tracks player-specific event data.
+- **`EasterBunnyBoss.js`**: Manages the Easter Bunny Boss fight mechanics.
 
 ## How It Works
 

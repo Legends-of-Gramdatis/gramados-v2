@@ -6,7 +6,8 @@ The April Fools event introduces chaos and hilarity to the Gramados server with 
 
 - **Sus Box Spawning**: Randomly spawns "Sus Boxes" near players during the event.
 - **Player Interaction**: Players can interact with "Sus Boxes" for unpredictable outcomes.
-- **Cleanup Mechanism**: Automatically despawns "Sus Boxes" when players leave or die.
+- **Cleanup Mechanism**: Automatically despawns "Sus Boxes" when players leave, die, or after a set interval.
+- **Logging**: Tracks all "Sus Box" spawns, interactions, and cleanups for debugging and analytics.
 
 ## How It Works
 
@@ -19,10 +20,10 @@ The April Fools event introduces chaos and hilarity to the Gramados server with 
 
 3. **Player Interaction**:
    - Players receive humorous messages when interacting with "Sus Boxes."
-   - "Sus Boxes" despawn when players leave the game or die.
+   - "Sus Boxes" despawn when players leave the game, die, or after a set duration.
 
 4. **Logging**:
-   - All "Sus Box" spawns and interactions are logged for tracking purposes.
+   - All "Sus Box" spawns, interactions, and cleanups are logged for tracking purposes.
 
 ## Files
 
@@ -36,11 +37,11 @@ The event's date range is defined in `event_config.json`:
 {
     "name": "April Fools",
     "startDate": {
-        "month": 2,
+        "month": 3,
         "day": 30
     },
     "endDate": {
-        "month": 3,
+        "month": 4,
         "day": 4
     }
 }
