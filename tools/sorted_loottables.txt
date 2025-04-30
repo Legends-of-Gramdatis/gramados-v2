@@ -853,6 +853,18 @@
 ## weapons
 "<mts:ivv.antigravammo>"
 "<mts:ivv.antigravgun>"
+## Crafting
+"<mts:ivv.scanner>"
+"<mts:ivv.scanner_0custom>"
+"<mts:ivv.scanner_ace>"
+"<mts:ivv.scanner_blue>"
+"<mts:ivv.scanner_green>"
+"<mts:ivv.scanner_karr>"
+"<mts:ivv.scanner_orange>"
+"<mts:ivv.scanner_white>"
+## Materials
+"<mts:ivv.tcalloy>"
+"<mts:ivv.tcblock>"
 
 # Truck beds
 "<mts:iv_tpp.truck_bed_containerholder>"
@@ -1255,6 +1267,7 @@
 "<mts:dkzpartspack.dkz_v8valvecover_unu>"
 "<mts:bjornscustoms.v8standardexhaust_custom>"
 "<mts:bjornscustoms.v8standardfan_custom>"
+"<mts:ivv.intakemanifold_turbofire_exchange>"
 
 # Seats
 "<mts:iv_tpp.trin_seat_1_beige>"
@@ -1707,6 +1720,11 @@
 "<mts:unuparts.unuparts_part_unu_tread_small>"
 "<mts:unuparts.unuparts_part_unu_tread_standard>"
 "<mts:unuparts.unuparts_part_unu_turboencabulator>"
+## shifter
+"<mts:ivv.mymovie_absent>"
+"<mts:ivv.mymovie_blue>"
+"<mts:ivv.mymovie_green>"
+"<mts:ivv.mymovie_red>"
 ## bull bars
 "<mts:iv_tpp.bull_bar_l_p>"
 "<mts:iv_tpp.bull_bar_s_p>"
@@ -1865,6 +1883,21 @@
 "<mts:ivv.antenna>"
 "<mts:ivv.antenna_hf>"
 "<mts:ivv.antenna_sharkfin>"
+"<mts:ivv.smellytree_black>"
+"<mts:ivv.smellytree_blue>"
+"<mts:ivv.smellytree_brown>"
+"<mts:ivv.smellytree_gray>"
+"<mts:ivv.smellytree_green>"
+"<mts:ivv.smellytree_light_blue>"
+"<mts:ivv.smellytree_lime>"
+"<mts:ivv.smellytree_magenta>"
+"<mts:ivv.smellytree_orange>"
+"<mts:ivv.smellytree_pink>"
+"<mts:ivv.smellytree_purple>"
+"<mts:ivv.smellytree_red>"
+"<mts:ivv.smellytree_silver>"
+"<mts:ivv.smellytree_white>"
+"<mts:ivv.smellytree_yellow>"
 ### Goofy
 "<mts:ivv.catears_black>"
 "<mts:ivv.catears_blue>"
@@ -1903,6 +1936,21 @@
 "<mts:ivv.bow_red>"
 "<mts:ivv.bow_white>"
 "<mts:ivv.bow_yellow>"
+"<mts:ivv.mirrorbow_black>"
+"<mts:ivv.mirrorbow_blue>"
+"<mts:ivv.mirrorbow_brown>"
+"<mts:ivv.mirrorbow_gray>"
+"<mts:ivv.mirrorbow_green>"
+"<mts:ivv.mirrorbow_light_blue>"
+"<mts:ivv.mirrorbow_lime>"
+"<mts:ivv.mirrorbow_magenta>"
+"<mts:ivv.mirrorbow_orange>"
+"<mts:ivv.mirrorbow_pink>"
+"<mts:ivv.mirrorbow_purple>"
+"<mts:ivv.mirrorbow_red>"
+"<mts:ivv.mirrorbow_silver>"
+"<mts:ivv.mirrorbow_white>"
+"<mts:ivv.mirrorbow_yellow>"
 "<mts:ivv.va_headphones>"
 "<mts:ivv.whiskers>"
 "<mts:ivv.tongue>"
@@ -2037,6 +2085,8 @@
 "<mts:ivv.bolt>"
 "<mts:ivv.capacitor>"
 "<mts:ivv.circuit>"
+"<mts:ivv.ecu>"
+"<mts:ivv.frame>"
 
 ## Crafting Parts DECORS
 "<mts:iv_tpp.trin_ornament>"
@@ -2074,10 +2124,12 @@
 //"<mts:ivv.sonicwrench>"
 //"<mts:syndicatemotorfoundry.wrench>"
 //"<mts:dkzpartspack.lug_wrench>"
+"<mts:ivv.powerdrill>"
 "<mts:syndicatemotorfoundry.scannerwrench>"
 "<mts:mts.paintgun>"
 "<mts:syndicatemotorfoundry.scannerpaintgun>"
 "<mts:ivv.book_scanner>"
+"<mts:ivv.emp>"
 
 ## Phones
 //"<mts:ivv.cellphone>"
@@ -2634,6 +2686,7 @@
 "<mts:ivv.ssd_chase>"
 "<mts:ivv.ssd_ftl>"
 "<mts:ivv.ssd_wanderslow>"
+"<mts:ivv.levelstats>"
 
 # Weaponry
 ## Guns & Ammo
@@ -2721,6 +2774,10 @@
 "<mts:ivv.im_a_toaster>" // ijref
 "<mts:ivv.classicrifle>"
 "<mts:ivv.classicrifleammo>"
+"<mts:ivv.staser_dw>"
+"<mts:ivv.staser_nes>"
+"<mts:ivv.staserammo>"
+"<mts:ivv.staserammood>" // OP & destructive
 ## Gun Parts
 "<mts:ivv.silencer>"
 ## Bombs / Shells
@@ -3067,6 +3124,12 @@
 "<mts:ivv.colada_taxi>"
 "<mts:ivv.colada_taxigramados>"
 "<mts:ivv.colada_white>"
+"<mts:ivv.runabout_black>"
+"<mts:ivv.runabout_green>"
+"<mts:ivv.runabout_purple>"
+"<mts:ivv.runabout_red>"
+"<mts:ivv.runabout_white>"
+"<mts:ivv.runabout_yellow>"
 
 ## MTS OFFICIAL PACK
 "<mts:mtsofficialpack.comanche_blue>"
