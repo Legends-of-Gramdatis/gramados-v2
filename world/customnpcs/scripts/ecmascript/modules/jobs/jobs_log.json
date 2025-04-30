@@ -40,7 +40,7 @@
             "JobName": "Lumberjack",
             "Region": "Gramados",
             "Perms": [
-                "permission_regions.gramados_lumberjack"
+                "permission_regions.Gramados_PinorosForest_RoyalSawmill"
             ]
         },
         {
@@ -107,7 +107,7 @@
             "JobName": "Lumberjack",
             "Region": "Greenfield",
             "Perms": [
-                "permission_regions.Springfield_lumberjack"
+                "permission_regions.Greenfield_Springfild_TimberCreekSawmill"
             ]
         },
         {
