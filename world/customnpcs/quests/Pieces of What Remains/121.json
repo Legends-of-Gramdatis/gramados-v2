@@ -1,0 +1,58 @@
+{
+    "CompleterNpc": "Marcel",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 1b,
+    "Title": "The First Piece",
+    "Text": "Marcel's station wagon is in bad shape, but he hasn't given up on it. Neither will I. He told me there's a van near the old general store in Drabus Strip that might have a whitewall wheel just like his.
+
+It's owned by a guy named Old Remy. Hopefully, he’s willing to part with it. Probably won’t be free though.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1745952540176L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 1b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.normaltireworn_whitewall",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I handed Marcel the whitewall. He held it like something sacred - like a piece of his old life, not just a tire. I didn’t say anything. Didn’t need to. The way his hands shook said enough. One piece back in place.",
+    "NextQuestTitle": ""
+}

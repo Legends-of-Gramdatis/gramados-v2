@@ -1,0 +1,77 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": 122,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thanks my man.",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 456,
+    "AvailabilityQuest": 1,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 2,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Remy Wrench Return 1",
+    "AvailabilityDialog": 2,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "/give @dp mts:ivv.normaltireworn_whitewall 1",
+    "AvailabilityDialogId": 456,
+    "OptionFaction2Points": 100,
+    "DialogText": "...Well I’ll be damned. That’s her. Still got the little dent from when she fell under the lift, see?
+Didn’t think you’d actually find it. Most folks don’t bother with a place that’s already been left behind.
+This wrench’s fixed more than engines. Held my whole damn shop together once. Feels good to hold it again, even just for a bit.
+
+You’re helpin’ more than you know, kid. Not just Marcel and his old clunker… This street needs folks who still care.
+
+Take the wheel. One of the last I had in decent shape. Marcel’s right to trust you. Go put it to use.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": 123,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1745967668085L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

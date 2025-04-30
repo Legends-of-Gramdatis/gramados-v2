@@ -1,0 +1,60 @@
+{
+    "CompleterNpc": "Marcel",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 1b,
+    "Title": "Ashes of a Song",
+    "Text": "Marcel didn’t ask me to, but something in the way he spoke about the music — and that burnt house down Drabus Street — made me want to look.
+There might still be something left among the ashes. A cassette, a sound, a feeling...
+Something to remind him of better days.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 10,
+        "OptionFactions1": 2,
+        "OptionFactions2": 3,
+        "OptionFaction1Points": 10,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1745966168084L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 1b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.cassette_tmms",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "The tape smells faintly of smoke and dust, but the label’s still there, worn but legible.
+Marcel holds it like it’s made of glass. He doesn’t say much. Just nods, once, like a memory settled into place.
+Some things can’t be fixed. But they can be remembered.",
+    "NextQuestTitle": ""
+}

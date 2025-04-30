@@ -1,0 +1,66 @@
+{
+    "CompleterNpc": "Old Remy",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "One Last Fix",
+    "Text": "Remy handed me an old key and pointed toward the garage where he once worked. It’s boarded up and mostly collapsed, but somewhere inside, there’s a tool he left behind—a wrench that meant a lot to him. He says I’ll know it when I see it. I hope the place hasn’t swallowed it completely.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1745965050385L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:wrench",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8A heavy, oil-stained tool with a smooth grip.",
+                            "§8The initials §oR.D.§8 are carved faintly near the handle.",
+                            "§7\"It fixed more than cars—it held a life together.\""
+                        ],
+                        "Name": "§7§lOld Remy's Wrench"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "There’s a weight to the wrench, more than just the metal. When I give it back to Remy, he holds it like it’s a piece of himself. His silence says more than thanks ever could. I don’t think this is just about cars anymore. He’s remembering the better times—one last fix before letting go.",
+    "NextQuestTitle": ""
+}
