@@ -41,6 +41,20 @@ function getPrice(itemId, itemTag) {
 }
 
 /**
+ * Gets the price of an item stack by its ID and NBT.
+ * @param {IItemStack} stack - The item stack.
+ * @returns {number} - The price of the item stack.
+ */
+function getPriceFromItemStack(stack) {
+    var itemId = stack.getItemId();
+    var itemTag = stack.getItemNbt();
+    if (itemTag) {
+        itemTag = itemTag.getCompound("tag");
+    }
+    return getPrice(itemId, itemTag);
+}
+
+/**
  * Gets the name of an item by its ID and NBT.
  * @param {string} itemId - The item ID.
  * @param {Object} itemTag - The item NBT.
