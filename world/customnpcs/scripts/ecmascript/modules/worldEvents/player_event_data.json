@@ -38,22 +38,22 @@
             "egg_count": 281
         },
         "Global Data": {
-            "egg_count": 1089
+            "egg_count": 1100
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 173
+                    "egg_count": 181
                 },
                 "chromashell": {
                     "egg_count": 145
                 },
                 "encrypted": {
-                    "egg_count": 31
+                    "egg_count": 34
                 }
             },
-            "egg_count": 349
+            "egg_count": 360
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
