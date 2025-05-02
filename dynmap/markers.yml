@@ -1606,6 +1606,14 @@ sets:
                 y: 72.0
                 z: 6326.0
                 label: Ruta Gas
+            marker_26:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -4531.0
+                y: 76.0
+                z: 5165.0
+                label: BalkanPetrol Fuel Station
         lines: {
             }
         layerprio: 0
