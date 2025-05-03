@@ -38,7 +38,7 @@
             "egg_count": 281
         },
         "Global Data": {
-            "egg_count": 1100
+            "egg_count": 1101
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -178,6 +178,14 @@
                 }
             },
             "egg_count": 5
+        },
+        "Mr_Mulle": {
+            "egg_types": {
+                "spring": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         }
     }
 }
