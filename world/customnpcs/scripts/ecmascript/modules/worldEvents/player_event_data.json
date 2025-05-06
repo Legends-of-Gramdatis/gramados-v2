@@ -26,7 +26,7 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 110
+                    "egg_count": 111
                 },
                 "spring": {
                     "egg_count": 143
@@ -35,10 +35,10 @@
                     "egg_count": 28
                 }
             },
-            "egg_count": 281
+            "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1101
+            "egg_count": 1102
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
