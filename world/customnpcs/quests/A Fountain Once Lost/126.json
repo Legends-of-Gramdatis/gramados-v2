@@ -1,0 +1,76 @@
+{
+    "CompleterNpc": "Fuente de los Ecos",
+    "NextQuestId": 127,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 1b,
+    "Title": "Repair the Fountain",
+    "Text": "With the new valve in hand, I should return to the fountain and install it.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 20,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1747691922624L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 1b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:lead_pipe",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:iron_nugget",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "engineersdecor:straight_pipe_valve",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "The water is flowing again! That should cheer up Ernesto.",
+    "NextQuestTitle": "Report Back to Ernesto"
+}

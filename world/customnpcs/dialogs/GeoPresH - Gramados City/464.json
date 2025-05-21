@@ -1,0 +1,75 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 465,
+                "Title": "[Continue]",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 464,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Citrus Alley p2",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "But progress cast long shadows. By the turn of the 20th century, global market shifts and rising industrial competition began to erode the district’s dominance. Then, in 1915, disaster struck. The original Citrus Hall, left poorly maintained after decades of heavy use, collapsed catastrophically during the peak harvest season. Over 70 workers, merchants, and visitors lost their lives beneath the rubble and dust in what is now remembered as The Citrus Fall. The industry never recovered. Citrus Alley, once fragrant and golden, fell silent.
+
+For a decade, this place stood in mourning. The groves withered. Trade slowed. Buildings crumbled.
+
+But from grief came rebirth. In 1925, a collective civic effort brought new life to the district. A reconstructed Citrus Hall rose, not as a warehouse, but as a marketplace and public monument. The surrounding district was reimagined - old packing plants turned into shops and restaurants, a civic center built atop former orchards, and an old hilltop factory reawakened as The Fabric, a now-renowned nightlife destination. A new marina was established, attracting tourism and commerce once more. Even the mooring mast built in the air-travel craze of the 1930s still stands as a museum, reminding citizens of ambitions once held high.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1747414650272L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}

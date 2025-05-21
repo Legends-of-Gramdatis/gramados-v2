@@ -1,0 +1,62 @@
+{
+    "CompleterNpc": "Ernesto Ramiros",
+    "NextQuestId": 125,
+    "QuestLocation3": "",
+    "RandomReward": 1b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Investigate the Silent Fountain",
+    "Text": "The fountain at the south end of Paseo Caldero has stopped working. I should go examine it to see what’s wrong.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1747691840822L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:tallgrass",
+                "Count": 1b,
+                "Damage": 1s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:stick",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "I found a damaged valve and some lodged debris — it looks fixable with basic tools and a new part.",
+    "NextQuestTitle": "Get a Replacement Valve",
+    "QuestLocation": "Fuente de los Ecos"
+}
