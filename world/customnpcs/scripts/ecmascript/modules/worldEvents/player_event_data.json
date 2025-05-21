@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1103
+            "egg_count": 1105
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -47,13 +47,13 @@
                     "egg_count": 181
                 },
                 "chromashell": {
-                    "egg_count": 145
+                    "egg_count": 146
                 },
                 "encrypted": {
                     "egg_count": 34
                 }
             },
-            "egg_count": 360
+            "egg_count": 361
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
@@ -180,6 +180,14 @@
             "egg_count": 5
         },
         "Mr_Mulle": {
+            "egg_types": {
+                "spring": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
+        },
+        "Ketiryu": {
             "egg_types": {
                 "spring": {
                     "egg_count": 1
