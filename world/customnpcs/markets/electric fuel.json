@@ -26,7 +26,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 60b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -43,12 +43,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e2K"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -80,7 +80,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 60b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -102,7 +102,7 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e5G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -134,7 +134,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 60b,
+                "Count": 6b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -152,11 +152,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 6b,
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -188,11 +188,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 60b,
+                "Count": 6b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e5G"
+                            "§e10G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -206,11 +206,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 6b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -228,7 +228,43 @@
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e5G"
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 4b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -259,12 +295,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:plans",
+                "id": "variedcommodities:money",
                 "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e2K"
+                            "§e10G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -278,7 +314,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 1b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -374,7 +410,7 @@
                     }
                 },
                 "id": "forestry:bituminous_peat",
-                "Count": 1b,
+                "Count": 64b,
                 "Damage": 0s
             },
             {
@@ -383,9 +419,9 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 9b,
-                "Damage": 1s
+                "id": "immersiveengineering:metal_device0",
+                "Count": 1b,
+                "Damage": 5s
             },
             {
                 "Slot": 3b,
@@ -408,7 +444,7 @@
                     }
                 },
                 "id": "forestry:peat",
-                "Count": 1b,
+                "Count": 64b,
                 "Damage": 0s
             },
             {
@@ -417,9 +453,9 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 9b,
-                "Damage": 0s
+                "id": "immersiveengineering:metal_device1",
+                "Count": 1b,
+                "Damage": 6s
             },
             {
                 "Slot": 6b,
@@ -437,9 +473,9 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forestry:bituminous_peat",
+                "id": "minecraft:coal",
                 "Count": 64b,
-                "Damage": 0s
+                "Damage": 1s
             },
             {
                 "Slot": 8b,
@@ -447,9 +483,9 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 64b,
-                "Damage": 1s
+                "id": "engineersdecor:straight_pipe_valve",
+                "Count": 1b,
+                "Damage": 0s
             },
             {
                 "Slot": 9b,
@@ -471,7 +507,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "forestry:peat",
+                "id": "minecraft:coal",
                 "Count": 64b,
                 "Damage": 0s
             },
@@ -481,8 +517,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:coal",
-                "Count": 64b,
+                "id": "engineersdecor:straight_pipe_valve_redstone",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
@@ -491,9 +527,29 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "immersiveengineering:metal_device1",
+                "id": "cfm:item_crow_bar",
                 "Count": 1b,
-                "Damage": 6s
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:coal",
+                "Count": 9b,
+                "Damage": 1s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:metal_device0",
+                "Count": 1b,
+                "Damage": 4s
             },
             {
                 "Slot": 15b,
@@ -554,9 +610,9 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "immersiveengineering:metal_device0",
-                "Count": 1b,
-                "Damage": 5s
+                "id": "minecraft:coal",
+                "Count": 9b,
+                "Damage": 0s
             },
             {
                 "Slot": 17b,
@@ -564,7 +620,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "cfm:item_crow_bar",
+                "id": "engineersdecor:passive_fluid_accumulator",
                 "Count": 1b,
                 "Damage": 0s
             }
