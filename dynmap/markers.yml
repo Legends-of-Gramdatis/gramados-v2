@@ -256,6 +256,14 @@ sets:
                 y: 73.0
                 z: -426.0
                 label: Shepherd's Forge - Tool Shop
+            marker_6:
+                world: world
+                markup: false
+                x: -4751.0
+                y: 73.0
+                z: 6960.0
+                icon: shopping_hardware
+                label: Solterra Ferretería - Hardware Store
         lines: {
             }
         layerprio: 0
@@ -650,6 +658,14 @@ sets:
                 y: 97.0
                 z: 608.0
                 label: Whole Life Go - Food Market Cafe
+            marker_20:
+                world: world
+                markup: false
+                icon: food&drink_food
+                x: -4636.0
+                y: 77.0
+                z: 6842.0
+                label: El Sabor del Alba
         lines: {
             }
         layerprio: 0
@@ -1237,82 +1253,90 @@ sets:
                 world: world
                 markup: false
                 x: -1001.0
-                icon: shopping_garage
                 y: 76.0
                 z: 233.0
-                label: Available Repair Shop 9
+                icon: shopping_garage
+                label: Repair Shop
             marker_1:
                 world: world
                 markup: false
                 x: -2034.0
-                icon: shopping_garage
                 y: 77.0
                 z: 361.0
-                label: Available Repair Shop 1
+                icon: shopping_garage
+                label: Repair Shop
             marker_2:
                 world: world
                 markup: false
                 x: -2111.0
-                icon: shopping_garage
                 y: 76.0
                 z: 147.0
-                label: Available Repair Shop 2
+                icon: shopping_garage
+                label: Repair Shop
             marker_3:
                 world: world
                 markup: false
                 x: -2112.0
-                icon: shopping_garage
                 y: 76.0
                 z: 103.0
+                icon: shopping_garage
                 label: Ferris Wheel Automobile repair
             marker_4:
                 world: world
                 markup: false
                 x: -1338.0
-                icon: shopping_garage
                 y: 74.0
                 z: 262.0
-                label: Available Repair Shop 4
+                icon: shopping_garage
+                label: Repair Shop
             marker_5:
                 world: world
                 markup: false
                 x: -2000.0
-                icon: shopping_garage
                 y: 75.0
                 z: -482.0
-                label: Available Repair Shop 5
+                icon: shopping_garage
+                label: Repair Shop
             marker_6:
                 world: world
                 markup: false
                 x: 1053.0
-                icon: shopping_garage
                 y: 91.0
                 z: -1179.0
+                icon: shopping_garage
                 label: Blockingham Repair Shop
             marker_7:
                 world: world
                 markup: false
                 x: 47.0
-                icon: shopping_garage
                 y: 86.0
                 z: -1043.0
+                icon: shopping_garage
                 label: Springfield Garage
             marker_8:
                 world: world
                 markup: false
                 x: -1173.0
-                icon: shopping_garage
                 y: 78.0
                 z: -93.0
-                label: Available Repair Shop 7
+                icon: shopping_garage
+                label: Repair Shop
             marker_9:
                 world: world
                 markup: false
                 x: -4488.0
-                icon: shopping_garage
                 y: 71.0
                 z: -361.0
-                label: Available Repair Shop 8
+                icon: shopping_garage
+                label: Repair Shop
+            marker_11:
+                world: world
+                markup: false
+                x: -4713.0
+                y: 78.0
+                z: 6723.0
+                icon: shopping_garage
+                label: Capilla del Arranque (Repair Shop)
         lines: {
             }
         layerprio: 0
@@ -1933,6 +1957,14 @@ sets:
                 y: 79.0
                 z: -3.0
                 label: Silorose Hospital
+            marker_28:
+                world: world
+                markup: false
+                icon: health_misc
+                x: -4519.0
+                y: 73.0
+                z: 6845.0
+                label: Casa de los Servicios Unidos (Multi-Service Facility)
         lines: {
             }
         layerprio: 0
@@ -2400,6 +2432,14 @@ sets:
                 y: 76.0
                 z: 1466.0
                 label: Tulivar Campsite
+            marker_32:
+                world: world
+                markup: false
+                icon: outdoor_garden_park
+                x: -6854.0
+                y: 81.0
+                z: -172.0
+                label: Silorose's Communal Vegetable Garden.
         lines: {}
         layerprio: 0
     Parkings:
@@ -2768,6 +2808,38 @@ sets:
                 y: 69.0
                 z: 2004.0
                 label: Altar of the High Bloom
+            marker_25:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -5573.0
+                y: 74.0
+                z: 6455.0
+                label: El Claustro de Albaíra
+            marker_26:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -4712.0
+                y: 76.0
+                z: 6903.0
+                label: Fuente de los Ecos 
+            marker_27:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -4537.0
+                y: 74.0
+                z: 7093.0
+                label: Capilla de las Hojas Caídas
+            marker_28:
+                world: world
+                markup: false
+                icon: ent&lei_monument
+                x: -4730.0
+                y: 80.0
+                z: 6783.0
+                label: The Bell of the Sixth Wind
         lines: {}
         layerprio: 0
     Bridges:
