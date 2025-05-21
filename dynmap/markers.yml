@@ -2840,6 +2840,14 @@ sets:
                 y: 80.0
                 z: 6783.0
                 label: The Bell of the Sixth Wind
+            marker_29:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -3524.0
+                y: 69.0
+                z: -2518.0
+                label: Trilnat Church
         lines: {}
         layerprio: 0
     Bridges:
@@ -3076,6 +3084,14 @@ sets:
                 y: 92.0
                 z: -1242
                 label: Applecidory Brewery
+            marker_9:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -3397.0
+                y: 70.0
+                z: -2526.0
+                label: Ateliers de la Roche Brune
         lines: {}
         layerprio: 0
 
