@@ -9,7 +9,7 @@
 The Trin story begins in **Trilnat Village**, a modest stone-built settlement on the east coast of **Feldpard Island**. Inspired by the rural French countryside, Trilnat was isolated and economically fragile. Its economy revolved around three humble pillars:
 
 * A **small feldspar mine**
-* A **struggling porcelain factory**
+* A **struggling porcelain factory**, known as **Ateliers de la Roche Brune**
 * Basic **subsistence farming**
 
 Among Trilnat’s residents were the ancestors of **Seagull Trin**, a character who now lives in **Drabus Strip, Gramados City**.
@@ -35,7 +35,7 @@ But Seagull himself stood out: a gifted **tinkerer and mechanic**, known for fix
 
 The breakthrough came when a **car crashed near Trilnat**, and Seagull managed to **salvage the engine**. With that, he began crafting a **makeshift truck** using scrap wood and metal. Crude as it was, the vehicle moved.
 
-Despite its rough build, Seagull saw a need—and filled it. He offered **transport services** for the mine and the porcelain factory, becoming a **local logistics pioneer**.
+Despite its rough build, Seagull saw a need—and filled it. He offered **transport services** for the mine and **Ateliers de la Roche Brune**, becoming a **local logistics pioneer**.
 
 ---
 
@@ -53,7 +53,7 @@ During his next delivery, a **wealthy investor** noticed Seagull’s truck and o
 
 Impressed, the investor backed further expansion. This marked the founding of the **Trin brand**, beginning with its first official model: the **Trin Trumon**, a compact utility truck inspired by 1930s design.
 
-With this backing, the Trin family **purchased the bankrupt porcelain factory**, converting part of it into a workshop.
+With this backing, the Trin family **purchased the bankrupt Ateliers de la Roche Brune**, converting part of it into a workshop.
 
 ---
 
@@ -87,4 +87,4 @@ In the **1980s**, Trin hit the market with **affordable, stylish vehicles** on a
 
 It worked.
 
-Trin rose from near-bankruptcy to become a **worldwide name**, built on scrap metal, a salvaged engine, and the determination of a rural mechanic from Trilnat.
+Trin rose from near-bankruptcy to become a **worldwide name**, built on scrap metal, a salvaged engine, and the determination of a rural mechanic from Trilnat—and born within the walls of a forgotten porcelain factory: **Ateliers de la Roche Brune**.
