@@ -1,0 +1,57 @@
+{
+    "CompleterNpc": "Julien Fournelet",
+    "NextQuestId": 129,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Tools of the Trade",
+    "Text": "Julien mentioned there's an old pitchfork in the mill room behind the counter. I should go grab it before dealing with the Granivoles.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748080406118L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:stone_trident",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Name": "§rPitchfork"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "I found the pitchfork just where he said it’d be. Let’s deal with those Granivoles.",
+    "NextQuestTitle": "Granivole Trouble",
+    "QuestLocation": "the mill room (behind the counter)"
+}

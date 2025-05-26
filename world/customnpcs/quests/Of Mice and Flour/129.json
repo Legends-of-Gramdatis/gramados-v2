@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Julien Fournelet",
+    "NextQuestId": 131,
+    "RandomReward": 0b,
+    "QuestRepeat": 1,
+    "QuestCompletion": 1,
+    "Title": "Granivole Trouble",
+    "Text": "Julien needs help clearing out some grain-eating Granivoles. I need to take out at least five of them lurking in the storage area.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 5,
+            "Slot": "Granivole"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748208242827L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Those grain-munching fiends won't be back tonight. I should let Julien know the job’s done.",
+    "NextQuestTitle": "Report Back to Julien"
+}
