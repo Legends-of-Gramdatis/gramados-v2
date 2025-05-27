@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Trin Maintenance Rep",
-    "NextQuestId": 139,
+    "CompleterNpc": "Almard Feros",
+    "NextQuestId": 142,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "To the Depot",
-    "Text": "The repair technician gave me access to the old Trin depot, just past the pond and near the family home. I should check it out.",
+    "Title": "Brick Among Clay",
+    "Text": "Almard Feros. Retired Trin worker, original line crew. The maintenance rep back in Trilnat says he’s my best shot at getting answers. He lives in Buglaton’s east side — brick rowhouse, surrounded by painted ones. I should look for that odd one out.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748368114672L,
+        "TimePast": 1748379310895L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "The doors creaked open. Smells like dust, grease, and memories. Let’s see what I can find.",
-    "NextQuestTitle": "Scrapyard of History",
-    "QuestLocation": "Old Trin Assembly Depot"
+    "CompleteText": "Found it. Brick house, untouched facade. Smells faintly like oil and steel. Time to knock and hope he's in the mood to talk.",
+    "NextQuestTitle": "Old Hands, Faded Blueprints",
+    "QuestLocation": "Almard Feros' brick rowhouse - Buglaton"
 }

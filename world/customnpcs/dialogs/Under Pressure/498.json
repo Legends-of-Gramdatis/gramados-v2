@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 135,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 494,
-                "Title": "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too.",
+                "Dialog": 499,
+                "Title": "Where can I find him?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 493,
-    "AvailabilityQuest": 1,
+    "DialogId": 498,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TMR1.1 Greeting",
+    "DialogTitle": "TMR2.3 The Lead",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?",
+    "DialogText": "Maybe. But there’s one guy who might know more than all of us put together.
+
+Name’s Almard Feros. Used to work Trin’s original line here in Trilnat before they moved the major ops to Rivetshore. He helped assemble the first batch of Trumons, Footpathers, the works. Eventually transferred to the Rivetshore plant when it opened in '66.
+
+He’d know if that part ever made it into production — or if it was just one of Seagull’s mad experiments.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369221273L,
+        "TimePast": 1748369143721L,
         "Time": 0L,
         "Subject": ""
     }

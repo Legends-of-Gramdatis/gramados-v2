@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 135,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 494,
-                "Title": "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too.",
+                "Dialog": 504,
+                "Title": "So this is the part the boiler needs?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 493,
-    "AvailabilityQuest": 1,
+    "DialogId": 503,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TMR1.1 Greeting",
+    "DialogTitle": "AF1.4 Realization",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,15 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?",
+    "DialogText": "*He takes the blueprint with trembling fingers.*
+
+...Well I’ll be greased and grounded. This... this is a Type-B Thermo-Reg. Look here — ceramic shell, triple-thread coupling, hexagonal core channel. That’s the real deal.
+
+*He points to a small faded stamp.*
+
+That’s my seal. Stamped this myself back in… '46? Maybe '47?
+
+There were only about 30 of these ever built. Prototypes, too tricky for mass production. Only Seagull ever asked for spares.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +72,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369221273L,
+        "TimePast": 1748380280098L,
         "Time": 0L,
         "Subject": ""
     }

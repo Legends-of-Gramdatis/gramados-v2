@@ -1,9 +1,9 @@
 {
     "CompleterNpc": "Trin Maintenance Rep",
     "NextQuestId": 140,
-    "QuestLocation3": "",
+    "QuestLocation3": "Old Trin Assembly Depot Exploration 3",
     "RandomReward": 0b,
-    "QuestLocation2": "",
+    "QuestLocation2": "Old Trin Assembly Depot Exploration 2",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Scrapyard of History",
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748296282459L,
+        "TimePast": 1748368162322L,
         "Time": 0L,
         "Subject": ""
     },
@@ -73,5 +73,5 @@
     },
     "CompleteText": "No regulator, but this old blueprint matches the part’s description. Also found a weird Trin figurine.",
     "NextQuestTitle": "Second Opinion",
-    "QuestLocation": "Old Trin Assembly Depot"
+    "QuestLocation": "Old Trin Assembly Depot Exploration 1"
 }

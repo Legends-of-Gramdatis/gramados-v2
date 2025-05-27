@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Trin Maintenance Rep",
-    "NextQuestId": 141,
+    "CompleterNpc": "Almard Feros",
+    "NextQuestId": 143,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Second Opinion",
-    "Text": "I should return to the repair shop and show them the blueprint. Maybe it’s enough to identify the part.",
+    "Title": "Old Hands, Faded Blueprints",
+    "Text": "I tracked down Almard Feros, a retired Trin mechanic, in Buglaton. If anyone can make sense of this prototype blueprint, it’s him.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,7 +18,7 @@
     "QuestCommand": "",
     "QuestDialogs": [
         {
-            "Integer": 499,
+            "Integer": 505,
             "Slot": 0
         }
     ],
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369621073L,
+        "TimePast": 1748380845053L,
         "Time": 0L,
         "Subject": ""
     },
@@ -40,6 +40,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "They recognized the part immediately. Seems the blueprint's still useful after all.",
-    "NextQuestTitle": "Brick Among Clay"
+    "CompleteText": "Almard recognized the blueprint immediately — it’s a rare thermal regulator prototype. He thinks the only working unit left might be hidden in an old Trin fuel depot nearby…",
+    "NextQuestTitle": "The Fuel Station Job Pt.1"
 }

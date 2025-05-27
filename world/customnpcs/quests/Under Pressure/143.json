@@ -1,13 +1,13 @@
 {
-    "CompleterNpc": "Trin Maintenance Rep",
-    "NextQuestId": 139,
+    "CompleterNpc": "Almard Feros",
+    "NextQuestId": 144,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "To the Depot",
-    "Text": "The repair technician gave me access to the old Trin depot, just past the pond and near the family home. I should check it out.",
+    "Title": "The Fuel Station Job Pt.1",
+    "Text": "Almard pointed me to an old Trin fuel station and depot, northeast of the factory, past the steel mill. It might still have a usable part.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748368114672L,
+        "TimePast": 1748381156944L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "The doors creaked open. Smells like dust, grease, and memories. Let’s see what I can find.",
-    "NextQuestTitle": "Scrapyard of History",
-    "QuestLocation": "Old Trin Assembly Depot"
+    "CompleteText": "Looks like the place. Overgrown forecourt, rusting signage... and definitely not abandoned. I should look for a way in.",
+    "NextQuestTitle": "Through the Back Alley",
+    "QuestLocation": "Depot Kirelli"
 }

@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 135,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 494,
-                "Title": "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too.",
+                "Dialog": 505,
+                "Title": "So it might still be there?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 493,
-    "AvailabilityQuest": 1,
+    "DialogId": 504,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TMR1.1 Greeting",
+    "DialogTitle": "AF1.5 Ramble & Warning",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,19 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?",
+    "DialogText": "Not just any part, @p — this is a rare bird. A headache and a masterpiece. Built to handle inconsistent pressure flow with minimal lag. Overkill for a bakery? Sure. But Seagull had a soft spot for ridiculous fixes.
+
+*He sets the blueprint down gently.*
+
+But you’re outta luck. If your unit blew, it’s firewood now. You won’t find another one in the mail.
+
+Unless…
+
+*He leans in a bit.*
+
+There’s an old Trin fuel station and depot just north of the steel mill. Northeast of the factory — you probably passed it coming in from the rowhouses.
+
+Back in the day, they stocked all kinds of parts for roadside repairs. Later, it doubled as a dump for surplus and rejected gear. Including experimental stuff like this.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369221273L,
+        "TimePast": 1748380291598L,
         "Time": 0L,
         "Subject": ""
     }

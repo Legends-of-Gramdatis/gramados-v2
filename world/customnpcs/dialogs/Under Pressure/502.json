@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 135,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 494,
-                "Title": "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too.",
+                "Dialog": 503,
+                "Title": "Look, I found this blueprint in the Trin warehouse. Matches what broke.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 493,
-    "AvailabilityQuest": 1,
+    "DialogId": 502,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TMR1.1 Greeting",
+    "DialogTitle": "AF1.3 Wait, What?",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,17 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?",
+    "DialogText": "...A bakery boiler? …In Trilnat? Seagull Trin?
+
+*He snorts.*
+
+You been drinking engine coolant or something?
+
+Seagull Trin didn’t do plumbing, kid. He helped design engines, suspension systems, even a few military contracts. But a bakery…?
+
+*He pauses. Thinks.*
+
+...Wait. Hold on.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +74,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369221273L,
+        "TimePast": 1748380269643L,
         "Time": 0L,
         "Subject": ""
     }

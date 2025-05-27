@@ -1,13 +1,13 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 135,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 494,
-                "Title": "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too.",
+                "Dialog": 498,
+                "Title": "So... we're stuck?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 493,
-    "AvailabilityQuest": 1,
+    "DialogId": 497,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "TMR1.1 Greeting",
+    "DialogTitle": "TMR2.2 Technical Insight",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?",
+    "DialogText": "It confirms it, alright. The part you’re missing is a pressure-tolerant thermal regulator, ceramic casing, wide thread. But not just any unit — this one had custom heat channels, probably hand-milled. Prototype-grade.
+
+And those weren’t mass-produced. Hell, this design was used in exactly one application we know of — experimental steam-assist systems in low-output builds. Trin tried them in the late 40s, early 50s… scrapped the project not long after.
+
+We don’t build or stock these anymore. Haven’t for decades.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369221273L,
+        "TimePast": 1748369108322L,
         "Time": 0L,
         "Subject": ""
     }
