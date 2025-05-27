@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Julien Fournelet",
+    "NextQuestId": 135,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Route to Records",
+    "Text": "I need to go to the Trin dealership, just behind the Atelier de la Roche Brune.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748278057508L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I’ve arrived at the dealership. Let’s see if anyone here remembers the old boiler patch. Then I can ask around inside.",
+    "NextQuestTitle": "Speak to the Clerk",
+    "QuestLocation": "Trilnat Trin Dealership"
+}

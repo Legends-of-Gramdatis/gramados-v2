@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Trin Maintenance Rep",
+    "NextQuestId": 137,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Into the Workshop",
+    "Text": "The clerk said someone in the maintenance shop might recognize the part. I should head to the back of the building.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748295226457L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Smells like grease and bureaucracy. Let’s find who’s in charge.",
+    "NextQuestTitle": "Speak to the Specialist",
+    "QuestLocation": "Trin Workshop (Trilnat)"
+}

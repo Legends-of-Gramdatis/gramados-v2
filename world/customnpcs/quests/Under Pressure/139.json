@@ -1,0 +1,77 @@
+{
+    "CompleterNpc": "Trin Maintenance Rep",
+    "NextQuestId": 140,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Scrapyard of History",
+    "Text": "There’s no order here — just heaps of rusted crates and bins. I’ll need to search everything. Maybe there’s something usable.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748296282459L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:blueprint",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Marked in faded ink:",
+                            "§f\"TR-42 Series Pressure Modulator\"",
+                            "§8Assembly Notes:",
+                            "§8- Non-standard fitting",
+                            "§8- Heat-resistant ceramic core",
+                            "§8- Designed by S. Trin, 1947",
+                            "§7[Trin Motors§r 錭 §7Archive Department]",
+                            "§oNot for circulation."
+                        ],
+                        "Name": "§b錯 Prototype Regulator Blueprint"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:iv_tpp.trin_ornament",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "No regulator, but this old blueprint matches the part’s description. Also found a weird Trin figurine.",
+    "NextQuestTitle": "Second Opinion",
+    "QuestLocation": "Old Trin Assembly Depot"
+}

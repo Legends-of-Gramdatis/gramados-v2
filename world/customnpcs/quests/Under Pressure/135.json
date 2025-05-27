@@ -1,0 +1,45 @@
+{
+    "CompleterNpc": "Julien Fournelet",
+    "NextQuestId": 136,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Speak to the Clerk",
+    "Text": "I’ve arrived at the dealership. I should explain the boiler issue — they probably have a replacement part lying around.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 492,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748295074909L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "They remembered hearing about the patch job. Looks like I’ll have to talk to the folks in the repair shop for anything useful.",
+    "NextQuestTitle": "Into the Workshop"
+}
