@@ -20,10 +20,11 @@ A seemingly mundane boiler malfunction at the Moulin-Fournelet bakery in Trilnat
 | 9    | Second Opinion            | Dialogue            | Return to the repair shop with the blueprint and speak to the Trin maintenance rep again.  |
 | 10   | Brick Among Clay          | Dialogue            | In Rivetshore, retired mechanic Almard Feros identifies the part and reveals its function. |
 | 11   | The Fuel Station Job Pt.1 | Location            | Search the outskirts of Buglaton for the dismantled Trin fuel-pump station.                |
-| 12   | The Fuel Station Job Pt.2 | Kill + Loot         | Defeat scavengers squatting inside. Recover a full, working Thermal Regulator.             |
-| 13   | Know What You Fix         | Dialogue (Quiz)     | Back in Trilnat, answer lore questions to adjust the part.                                 |
-| 14   | Heat Returns              | Location + Item Use | Install the refurbished part into the boiler.                                              |
-| 15   | Under Pressure            | Dialogue Closure    | Julien thanks the player. The mill is restored. A new mystery simmers beneath the surface. |
+| 12   | Through the Back Alley    | Location            | Discover the back door and overhear noise coming from inside.                              |
+| 13   | The Fuel Station Job Pt.2 | Kill + Loot         | Defeat scavengers squatting inside. Recover a full, working Thermal Regulator.             |
+| 14   | Know What You Fix         | Dialogue (Quiz)     | Back in Trilnat, answer lore questions to adjust the part.                                 |
+| 15   | Heat Returns              | Location + Item Use | Install the refurbished part into the boiler.                                              |
+| 16   | Under Pressure            | Dialogue Closure    | Julien thanks the player. The mill is restored. A new mystery simmers beneath the surface. |
 
 ---
 
@@ -92,83 +93,37 @@ A seemingly mundane boiler malfunction at the Moulin-Fournelet bakery in Trilnat
 * **Completion**: On reading the new dialogue response
 * **Completion Text**: *They recognized the part immediately. Seems the blueprint's still useful after all.*
 
+#### **\[Quest 10] – Brick Among Clay**
 
-### 🖊️ DIALOGUES
+* **Goal**: Go to location (Almard Feros' house – brick rowhouse in Buglaton)
+* **Completion**: On entering the designated zone (small radius around the front of the house)
+* **Quest Log**: *Almard Feros. Retired Trin worker, original line crew. The maintenance rep back in Trilnat says he’s my best shot at getting answers. He lives in Buglaton’s east side — brick rowhouse, surrounded by painted ones. I should look for that odd one out.*
+* **Completion Text**: *Found it. Brick house, untouched facade. Smells faintly like oil and steel. Time to knock and hope he's in the mood to talk.*
 
-**NPC: Julien Fournelet**
+#### **\[Quest 11] – Old Hands, Faded Blueprints**
 
-**Page – Post-Inspection Briefing**
+* **Goal**: Dialogue with Almard Feros (in his brick rowhouse, Buglaton, Rivetshore)
+* **Completion**: On reading the final page of Almard's dialogue
+* **Quest Log**: *I tracked down Almard Feros, a retired Trin mechanic, in Buglaton. If anyone can make sense of this prototype blueprint, it’s him.*
+* **Completion Text**: *Almard recognized the blueprint immediately — it’s a rare thermal regulator prototype. He thinks the only working unit left might be hidden in an old Trin fuel depot nearby…*
 
-* **Text**:
-  "Soot? Steam leaks? Dammit. I was hoping it was just a fuse.
+#### **\[Quest 12] – The Fuel Station Job Pt.1**
 
-Well, you’ve got good eyes. That thing’s been clunking along since my grandfather’s time. Believe it or not — Seagull Trin himself came through here. Refit the boiler using leftover kiln piping... and a strange regulator no one's made since."
+* **Goal**: Reach the Buglaton fuel station depot area
+* **Quest Log**: *Almard pointed me to an old Trin fuel station and depot, northeast of the factory, past the steel mill. It might still have a usable part.*
+* **Completion**: On entering the depot outer perimeter
+* **Completion Text**: *Looks like the place. Overgrown forecourt, rusting signage... and definitely not abandoned. I should look for a way in.*
 
-"If that part’s busted, we’ve got a problem. But if anyone still has records… it’ll be the Trin dealership by the old Atelier. They handle all the historic requests."
+#### **\[Quest 13] – Through the Back Alley**
 
-* **Player Input**:
+* **Goal**: Reach the marked location behind the depot (van and back door)
+* **Quest Log**: *There’s a van parked by the depot’s rear service alley. Someone's inside — I can hear voices and the clank of tools. Better be ready for trouble.*
+* **Completion**: On getting close to the van and rear entrance
+* **Completion Text**: *The back door is slightly ajar, voices murmuring beyond. I see movement inside. These aren’t random squatters.*
 
-  1. "I'll head there now."
+#### **\[Quest 14] – The Fuel Station Job Pt.2**
 
-####
-
-**NPC: Dealership Clerk**
-
-**Page – Greeting**
-
-* **Text**:
-  "Welcome to Trin of Trilnat! What can I help you with today?"
-
-* **Player Input**:
-
-  1. "I’m here about an old boiler. Bakery in town — Moulin-Fournelet."
-
-**Page – Boiler Enquiry**
-
-* **Text**:
-  "That bakery boiler? You’re serious? I’ve heard the story, yeah — something about Seagull Trin patching it up during a supply shortage. Honestly didn’t think it was still running."
-
-  "We don’t keep those kinds of parts in the front office. But if you’re looking for help, the folks in the repair bay know the older designs better than I do. Head through the big opening in the north wall — it leads straight into the garage."
-
-* **Player Input**:
-
-  1. "On my way."
-
-####
-
-**NPC: Trin Maintenance Rep**
-
-**Page – Greeting**
-
-* **Text**:
-  "You’re the one Julien sent? Alright, come on in. I was told you’ve got an old boiler acting up. What’s the story?"
-
-* **Player Input**:
-
-  1. "It’s a mess. Soot everywhere, steam leaks. Weird old fittings too."
-
-**Page – Description Received**
-
-* **Text**:
-  "Hmm. You’re describing something that sounds a lot like a custom rig. Let me guess — ceramic housing? Over-threaded pipe ends? You’re probably dealing with one of the Seagull-era retrofits."
-
-  "Julien called ahead, said you handled that rat infestation too. That got you some points in our book. Not everyone respects grain stock and gear equally."
-
-* **Player Input**:
-
-  1. "Any chance you’ve got a replacement part for it?"
-
-**Page – Warehouse Access**
-
-* **Text**:
-  "Wish I could say we had one in stock — but no. That part’s a relic. We haven’t used those since before most of our team was even born."
-
-  "You’ve got one last hope: the old Trin assembly depot. It’s from the 1940s, built back when the family still assembled vehicles right here in Trilnat. After the production line shut down in the 90s, it became a sort of catch-all — spare parts, damaged units, prototype leftovers. Nobody’s sorted it in years."
-
-  "You’ll find it just southwest of here, between the pond and the Trin family house. Stone building, matching the rest of the town. Looks quiet on the outside, but inside it’s a scrapyard of history. If that regulator — or even a schematic — survived, it’ll be somewhere in there."
-
-  "Keep your eyes open, and… maybe wear a helmet. Some of those old crates aren’t what I’d call stable."
-
-- **Player Input**:
-
-  1. "Got it. Heading there now."
+* **Goal**: Kill 3 specific NPCs (scavenger mafia members)
+* **Quest Log**: *Time to clear out the depot. Three armed scavengers are inside — a coordinated crew. This won’t be a casual brawl.*
+* **Completion**: On killing: Salvo Kirelli (commander), Bruno Dace, and Rigg Belmondo
+* **Completion Text**: *They went down fighting. No doubt about it — these weren’t just looters. I should look around for what they were protecting.*
