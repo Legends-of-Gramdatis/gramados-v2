@@ -1366,6 +1366,14 @@ sets:
                 y: 72.0
                 z: 141.0
                 label: Filly Mill Bakery
+            marker_3:
+                world: world
+                markup: false
+                icon: food&drink_bakery
+                x: -3569.0
+                y: 67.0
+                z: -2542.0
+                label: Boulangerie du Moulin-Fournelet
         lines: {
             }
         layerprio: 0
@@ -2848,6 +2856,14 @@ sets:
                 y: 69.0
                 z: -2518.0
                 label: Trilnat Church
+            marker_30:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3569.0
+                y: 67.0
+                z: -2552.0
+                label: Moulin-Fournelet
         lines: {}
         layerprio: 0
     Bridges:
