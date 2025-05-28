@@ -217,3 +217,267 @@ Well, you’ve got good eyes. That thing’s been clunking along since my grandf
   1. "Sounds like a party. I’ll check it out."
 
 ---
+
+
+### ✅ **QUIZ SEQUENCE – Named Questions**
+
+---
+
+**Question 1 – Island of Origin**
+**Text**:
+"On which island was the Trin brand founded?"
+
+**Choices**:
+
+1. Gramados Island
+2. Feldpard Island ✅
+3. Solterra Island
+4. Rivetshore Island
+5. Gramados Island
+6. Monsalac Island
+
+---
+
+**Question 2 – Name Meaning**
+**Text**:
+"What does 'Trin' originally refer to?"
+
+**Choices**:
+
+1. A local bird species
+2. A founder's surname ✅
+3. A mechanical part
+4. A steam engine prototype
+
+---
+
+**Question 3 – Founding Years**
+**Text**:
+"What decade was Trin founded?"
+
+**Choices**:
+
+1. 1910s
+2. 1930s ✅
+3. 1950s
+4. 1970s
+
+---
+
+**Question 4 – Seagull’s Signature**
+**Text**:
+"Seagull Trin was known for…?"
+
+**Choices**:
+
+1. Refusing all modern technologies
+2. Designing only luxury vehicles
+3. Rigging improvised solutions during material shortages ✅
+4. Inventing diesel
+
+---
+
+**Question 5 – Boiler Functionality**
+**Text**:
+"What’s the *main* role of a thermal regulator in a boiler?"
+
+**Choices**:
+
+1. Adding steam pressure
+2. Controlling temperature and pressure safely ✅
+3. Distributing water evenly
+4. Measuring external humidity
+
+---
+
+**Question 6 – First Trin Vehicle**
+**Text**:
+"What was the first vehicle built by Trin Motors?"
+
+**Choices**:
+
+1. Trin Footpather
+2. Trin Trumon ✅
+3. Trin Rodeo
+4. Trin Keipan
+
+---
+
+**Question 7 – Assembly Origins**
+**Text**:
+"What was the name of the first Trin assembly facility?"
+
+**Choices**:
+
+1. Atelier de la Grange
+2. Ateliers de la Roche Brune ✅
+3. Rivetshore Cité-Trin
+4. Facility 07 – The Twingo Plant
+
+---
+
+**Question 8 – Ceramics to Chassis**
+**Text**:
+"What was the structure near the Trin family house originally used as?"
+
+**Choices**:
+
+1. A railway depot
+2. A ceramics workshop ✅ *(Ateliers de la Roche Brune)*
+3. A chapel
+4. A stone granary
+
+---
+
+**Question 9 – Refueling Legacy**
+**Text**:
+"What is the name of the old Trin fuel depot and station northeast of Rivetshore Cité-Trin?"
+
+**Choices**:
+
+1. Pump 4-A
+2. Depot Kirelli ✅
+3. TrinRefuel East
+4. Central Fillpoint
+
+---
+
+**Question 10 – Buglaton Boom**
+**Text**:
+"When did Trin Motors open its factory in Rivetshore (Rivetshore Cité-Trin)?"
+
+**Choices**:
+
+1. 1956
+2. 1966 ✅
+3. 1971
+4. 1942
+
+---
+
+**Question 11 – Boiler Core**
+**Text**:
+"What material is the prototype thermal regulator encased in?"
+
+**Choices**:
+
+1. Stainless steel
+2. Cast iron
+3. Ceramic ✅
+4. Aluminum
+
+---
+
+**Question 12 – Inner Workings**
+**Text**:
+"What unusual engineering detail appears on the regulator blueprint?"
+
+**Choices**:
+
+1. Spiral coolant coils
+2. A hexagonal core channel ✅
+3. Triple ignition wires
+4. Fold-out heat wings
+
+---
+
+**Question 13 – Cancelled Potential**
+**Text**:
+"Why wasn’t the Type-B regulator mass-produced?"
+
+**Choices**:
+
+1. Patent conflict
+2. Too expensive
+3. Too tricky for mass production ✅
+4. Prohibited by law
+
+---
+
+**Question 14 – Last Remaining**
+**Text**:
+"Where was the *working* unit of the Type-B thermal regulator discovered?"
+
+**Choices**:
+
+1. Trilnat Trin Dealership
+2. Atelier de la Grange
+3. Depot Kirelli ✅
+4. Buglaton Junkyard
+
+---
+
+**Question 15 – The Kirelli Holdouts**
+**Text**:
+"What kind of group had occupied Depot Kirelli?"
+
+**Choices**:
+
+1. Corrupt engineers
+2. Government inspectors
+3. Mafia scavengers ✅
+4. Local teenagers
+
+---
+
+**Question 16 – Prototype Numbers**
+**Text**:
+"How many Type-B regulators were originally produced?"
+
+**Choices**:
+
+1. About 10
+2. Just 3
+3. Around 30 ✅
+4. Over 200
+
+---
+
+**Question 17 – Special Request**
+**Text**:
+"Who’s the only known person to request multiple spare regulators during production?"
+
+**Choices**:
+
+1. Almard Feros
+2. Seagull Trin ✅
+3. Julien Fournelet’s grandfather
+4. The Ministry of Transport
+
+---
+
+**Question 18 – Signed by History**
+**Text**:
+"Who stamped the blueprint you recovered?"
+
+**Choices**:
+
+1. Julien Fournelet
+2. Seagull Trin
+3. Almard Feros ✅
+4. Bruno Dace
+
+---
+
+**Question 19 – Final Step**
+**Text**:
+"What must be done before installing the part?"
+
+**Choices**:
+
+1. Oil the boiler’s flywheel
+2. Scrub the soot build-up
+3. Calibrate the threading and orientation ✅
+4. Reset the bakery fuseboard
+
+---
+
+### ❌ **FAIL PAGE – Retry Message**
+
+* **Text**:
+  "That’s not it. Think back — or maybe pay more attention next time.
+  You’ll need to start the quiz over from question one."
+
+* **Player Input**:
+
+1. "Alright, let’s try again."
