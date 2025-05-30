@@ -22,7 +22,7 @@
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -56,7 +56,7 @@
 Oh, you're not one of those clipboard vultures. You're too confused looking.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 143,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -70,7 +70,7 @@ Oh, you're not one of those clipboard vultures. You're too confused looking.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748380335796L,
+        "TimePast": 1748508490982L,
         "Time": 0L,
         "Subject": ""
     }

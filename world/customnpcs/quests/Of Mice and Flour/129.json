@@ -2,7 +2,7 @@
     "CompleterNpc": "Julien Fournelet",
     "NextQuestId": 131,
     "RandomReward": 0b,
-    "QuestRepeat": 1,
+    "QuestRepeat": 4,
     "QuestCompletion": 1,
     "Title": "Granivole Trouble",
     "Text": "Julien needs help clearing out some grain-eating Granivoles. I need to take out at least five of them lurking in the storage area.",
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748208242827L,
+        "TimePast": 1748521824221L,
         "Time": 0L,
         "Subject": ""
     },

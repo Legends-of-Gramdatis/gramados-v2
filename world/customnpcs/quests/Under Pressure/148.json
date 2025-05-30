@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Trin Maintenance Rep",
+    "NextQuestId": 149,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Back to Trilnat",
+    "Text": "With the part secured and Almard’s blessing, it’s time to return to the workshop in Trilnat.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748452572889L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Home turf again. Let’s see if the rep thinks the part’s good enough.",
+    "NextQuestTitle": "Wrenches and Wonders",
+    "QuestLocation": "Trin Workshop (Trilnat)"
+}

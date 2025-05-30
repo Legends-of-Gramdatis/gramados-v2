@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 134,
     "Options": [
         {
             "OptionSlot": 0,
@@ -18,11 +18,11 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 492,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -52,7 +52,7 @@
 We don’t keep those kinds of parts in the front office. But if you’re looking for help, the folks in the repair bay know the older designs better than I do. Head through the big opening in the north wall — it leads straight into the garage.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 138,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -66,7 +66,7 @@ We don’t keep those kinds of parts in the front office. But if you’re lookin
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748278401058L,
+        "TimePast": 1748507483681L,
         "Time": 0L,
         "Subject": ""
     }

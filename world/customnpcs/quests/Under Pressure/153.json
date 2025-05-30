@@ -1,0 +1,98 @@
+{
+    "CompleterNpc": "Moulin-Fournelet's Boiler",
+    "NextQuestId": 154,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Heat Returns",
+    "Text": "With everything in place, it’s time to fire up the boiler.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748518661669L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "growthcraft_cellar:barrel_tap",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Pulled from the Moulin-Fournelet boiler.",
+                            "§7Worn, scorched, and visibly cracked — no longer operational.",
+                            "§7—",
+                            "§7Some markings are still legible...",
+                            "§7but age and soot have erased the rest.",
+                            "§cHandle with gloves - shards may still be hot.",
+                            "§8[§f錭 Trin Motors Heritage Division §8]",
+                            "§8 ✩ Decommissioned"
+                        ],
+                        "Name": "§8[§7鍧 Faulty Component §8]"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "growthcraft_cellar:barrel_tap",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7A rare Trin regulator once commissioned by §eSeagull Trin§7 himself.",
+                            "§7Uncatalogued, unreplicated — only a few were ever made.",
+                            "§7—",
+                            "§7Rumored to survive only in deep storage,",
+                            "§7or in places where rust and silence rule.",
+                            "§7—",
+                            "§cRecovered from Depot Kirelli.",
+                            "§7No manual. No warranty. Just legacy.",
+                            "§8[§f錭 Trin Motors Heritage Division §8]",
+                            "§3 ✩ Classified Prototype"
+                        ],
+                        "Name": "§8[§7鏺 Experimental Component §8]"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "The pipes hissed. The flames caught. The heat… returned.",
+    "NextQuestTitle": "Under Pressure"
+}

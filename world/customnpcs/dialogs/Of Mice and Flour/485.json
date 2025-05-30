@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 154,
     "Options": [
     ],
     "AvailabilityScoreboardType": 1,
@@ -8,7 +8,7 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 485,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -18,7 +18,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 132,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -56,7 +56,7 @@ I’ve been meaning to look into it, but there’s only so much I can do while b
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748087785272L,
+        "TimePast": 1748522282624L,
         "Time": 0L,
         "Subject": ""
     }

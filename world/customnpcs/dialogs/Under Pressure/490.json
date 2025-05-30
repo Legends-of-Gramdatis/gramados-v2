@@ -22,7 +22,7 @@
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -51,10 +51,10 @@
 
 Well, you’ve got good eyes. That thing’s been clunking along since my grandfather’s time. Believe it or not — Seagull Trin himself came through here. Refit the boiler using leftover kiln piping... and a strange regulator no one's made since.
 
-If that part’s busted, we’ve got a problem. But if anyone still has records… it’ll be the Trin dealership by the old Atelier. They handle all the historic requests.",
+If that part’s busted, we’ve got a problem. But if anyone still has records… it’ll be the Trin dealership by the old Atelier de la Roche Brune. They handle all the historic requests.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 150,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -68,7 +68,7 @@ If that part’s busted, we’ve got a problem. But if anyone still has records�
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748277615661L,
+        "TimePast": 1748519872818L,
         "Time": 0L,
         "Subject": ""
     }

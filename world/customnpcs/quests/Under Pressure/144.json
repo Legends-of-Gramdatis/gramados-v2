@@ -1,13 +1,13 @@
 {
     "CompleterNpc": "Almard Feros",
-    "NextQuestId": -1,
+    "NextQuestId": 145,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Through the Back Alley",
-    "Text": "",
+    "Text": "There’s a van parked by the depot’s rear service alley. Someone's inside — I can hear voices and the clank of tools. Better be ready for trouble.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748381183197L,
+        "TimePast": 1748509364584L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "",
-    "NextQuestTitle": "",
+    "CompleteText": "The back door is slightly ajar, voices murmuring beyond. I see movement inside. These aren’t random squatters.",
+    "NextQuestTitle": "The Fuel Station Job Pt.2",
     "QuestLocation": "Depot Kirelli Backdoor"
 }

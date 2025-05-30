@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 129,
     "Options": [
         {
             "OptionSlot": 0,
@@ -28,7 +28,7 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 489,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 6,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -49,13 +49,13 @@
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
     "DialogTitle": "Back Again, Friend",
-    "AvailabilityDialog": 0,
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 479,
     "OptionFaction2Points": 100,
     "DialogText": "Ah! My reliable pest expert. You’ve no idea how much easier the mornings are since you started helping out.
 
@@ -76,7 +76,7 @@ There’s scratching upstairs again. Think it’s time for another sweep?",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748086136121L,
+        "TimePast": 1748521693671L,
         "Time": 0L,
         "Subject": ""
     }

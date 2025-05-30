@@ -6,10 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Got it. Heading there now.",
+                "Dialog": 542,
+                "Title": "Where is this Atelier de la Grange?",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -49,11 +49,7 @@
     "OptionFaction2Points": 100,
     "DialogText": "Wish I could say we had one in stock — but no. That part’s a relic. We haven’t used those since before most of our team was even born.
 
-You’ve got one last hope: the old Trin assembly depot. It’s from the 1940s, built back when the family still assembled vehicles right here in Trilnat. After the production line shut down in the 90s, it became a sort of catch-all — spare parts, damaged units, prototype leftovers. Nobody’s sorted it in years.
-
-You’ll find it just southwest of here, between the pond and the Trin family house. Stone building, matching the rest of the town. Looks quiet on the outside, but inside it’s a scrapyard of history. If that regulator — or even a schematic — survived, it’ll be somewhere in there.
-
-Keep your eyes open, and… maybe wear a helmet. Some of those old crates aren’t what I’d call stable.",
+You’ve got one last hope: the old Trin assembly depot, Atelier de la Grange. It’s from the 1940s, built back when the family still assembled vehicles right here in Trilnat. After the production line shut down in the 90s, it became a sort of catch-all — spare parts, damaged units, prototype leftovers. Nobody’s sorted it in years.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -70,7 +66,7 @@ Keep your eyes open, and… maybe wear a helmet. Some of those old crates aren�
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748294870658L,
+        "TimePast": 1748530868431L,
         "Time": 0L,
         "Subject": ""
     }

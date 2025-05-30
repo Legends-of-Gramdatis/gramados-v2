@@ -1,0 +1,125 @@
+{
+    "CompleterNpc": "Dealership Clerk",
+    "NextQuestId": 146,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "The Fuel Station Job Pt.2",
+    "Text": "Time to clear out the depot. Three armed scavengers are inside — a coordinated crew. This won’t be a casual brawl.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Value": 1,
+            "Slot": "Bruno Dace"
+        },
+        {
+            "Value": 1,
+            "Slot": "Rigg Belmondo"
+        },
+        {
+            "Value": 1,
+            "Slot": "Salvo Kirelli"
+        }
+    ],
+    "ModRev": 18,
+    "Type": 2,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748511043126L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "growthcraft_cellar:barrel_tap",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7A rare Trin regulator once commissioned by §eSeagull Trin§7 himself.",
+                            "§7Uncatalogued, unreplicated — only a few were ever made.",
+                            "§7—",
+                            "§7Rumored to survive only in deep storage,",
+                            "§7or in places where rust and silence rule.",
+                            "§7—",
+                            "§cRecovered from Depot Kirelli.",
+                            "§7No manual. No warranty. Just legacy.",
+                            "§8[§f錭 Trin Motors Heritage Division §8]",
+                            "§3 ✩ Classified Prototype"
+                        ],
+                        "Name": "§8[§7鏺 Experimental Component §8]"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:wrench",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8Stamped: \"Depot Kirelli / Heavy Bench Use Only\"",
+                            "§8-",
+                            "§fDried oil, faint dents. Too sharp to be just a tool.",
+                            "§cFeels... personal."
+                        ],
+                        "Name": "§7Industrial-grade, shaft-heavy adjustable wrench"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:paper",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Date: §f12/03/1992",
+                            "§7Suspect: §cS. Kirelli",
+                            "§7Charge: §fSmuggling proprietary parts via Trin transport lanes",
+                            "§8-",
+                            "§7\"Claimed depot access was 'a family tradition'.\"",
+                            "§7\"Confiscated: thermal regulator casing, marked 'T-Beta'.\"",
+                            "§8Ink smudged. The rest is illegible..."
+                        ],
+                        "Name": "§8Extract from Rivetshore Municipal Records"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "They went down fighting. No doubt about it — these weren’t just looters. I should look around for what they were protecting.",
+    "NextQuestTitle": "Back to the Source"
+}

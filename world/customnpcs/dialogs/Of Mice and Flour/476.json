@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 131,
     "Options": [
         {
             "OptionSlot": 0,
@@ -28,7 +28,7 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 476,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -78,7 +78,7 @@ Nasty little things. They’ve chewed straight through sacks of grain. I spotted
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748087647321L,
+        "TimePast": 1748507039282L,
         "Time": 0L,
         "Subject": ""
     }

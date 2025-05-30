@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 139,
     "Options": [
         {
             "OptionSlot": 0,
@@ -18,11 +18,11 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 496,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 0,
+    "AvailabilityQuest2": 2,
     "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
@@ -52,7 +52,7 @@
 They didn’t just toss these around. Whoever drew this was either working on something unique or desperate.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
-    "AvailabilityQuest2Id": -1,
+    "AvailabilityQuest2Id": 143,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -66,7 +66,7 @@ They didn’t just toss these around. Whoever drew this was either working on so
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369095322L,
+        "TimePast": 1748508120233L,
         "Time": 0L,
         "Subject": ""
     }

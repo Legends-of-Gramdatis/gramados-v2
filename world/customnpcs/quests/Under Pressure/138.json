@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "To the Depot",
-    "Text": "The repair technician gave me access to the old Trin depot, just past the pond and near the family home. I should check it out.",
+    "Text": "The repair technician gave me access to the old Trin depot, Atelier de la Grange, just past the pond and near the family home. I should check it out.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748368114672L,
+        "TimePast": 1748507870132L,
         "Time": 0L,
         "Subject": ""
     },
@@ -38,5 +38,5 @@
     },
     "CompleteText": "The doors creaked open. Smells like dust, grease, and memories. Let’s see what I can find.",
     "NextQuestTitle": "Scrapyard of History",
-    "QuestLocation": "Old Trin Assembly Depot"
+    "QuestLocation": "Atelier de la Grange"
 }

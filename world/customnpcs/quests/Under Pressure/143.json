@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "The Fuel Station Job Pt.1",
-    "Text": "Almard pointed me to an old Trin fuel station and depot, northeast of the factory, past the steel mill. It might still have a usable part.",
+    "Text": "Almard pointed me to an old Trin fuel station and depot, called Depot Kirelli, Northeast of the Rivetshore Cité-Trin, past the steel mill. It might still have a usable part.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748381156944L,
+        "TimePast": 1748452201094L,
         "Time": 0L,
         "Subject": ""
     },
