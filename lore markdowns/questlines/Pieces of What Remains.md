@@ -1,8 +1,8 @@
 # 📘 **Pieces of What Remains**
 
-Set in the crumbling heart of Drabus Strip, *Pieces of What Remains* is a quiet, emotional side quest about memory, resilience, and the parts of life we choose to preserve. The player meets Marcel, an aging mechanic clinging to the rusted shell of his past — a broken-down station wagon from another era. What begins as a simple errand to find a missing tire unfolds into a deeper journey through forgotten garages, burnt homes, and the invisible weight of time.  
+Set in the crumbling heart of Drabus Strip, *Pieces of What Remains* is a quiet, emotional side quest about memory, resilience, and the parts of life we choose to preserve. The player meets Marcel, an aging mechanic clinging to the rusted shell of his past - a broken-down station wagon from another era. What begins as a simple errand to find a missing tire unfolds into a deeper journey through forgotten garages, burnt homes, and the invisible weight of time.  
 
-This questline doesn't offer fame or fortune. Instead, it asks players to slow down and see value in restoration — not of machines, but of people. Through fragments of memory and small acts of care, players help Marcel reassemble something intangible: dignity, connection, and a sense that the past still matters in a city trying to forget it.  
+This questline doesn't offer fame or fortune. Instead, it asks players to slow down and see value in restoration - not of machines, but of people. Through fragments of memory and small acts of care, players help Marcel reassemble something intangible: dignity, connection, and a sense that the past still matters in a city trying to forget it.  
 
 ---
 
@@ -66,7 +66,7 @@ Heh... sounds like Remy, alright.
 Back in the day, we'd fix up junkers like this with nothing but stubbornness and tape.
 Now? Folks just let things rot.
 
-You know, there was always music in the garage. Not from some fancy radio — just a cassette, always looping.
+You know, there was always music in the garage. Not from some fancy radio - just a cassette, always looping.
 Kept the silence out. Made the rust feel like rhythm instead of decay.
 ```
 **Player Input:**
@@ -77,11 +77,11 @@ Kept the silence out. Made the rust feel like rhythm instead of decay.
 ### Page - Marcel Wheel Return 3
 **Text:**  
 ```
-Heh... I'm not picky. Doesn't have to be the cassette — just something that sounds like back then.
+Heh... I'm not picky. Doesn't have to be the cassette - just something that sounds like back then.
 Warm chords, soft vocals, a touch of longing. Something that remembers, you know?
 
 ...You know that burnt-out house past the corner of Drabus and Old Hay? The one barely standing?
-Kid used to live there — maybe seventeen, tops. Always dragging that boombox around.
+Kid used to live there - maybe seventeen, tops. Always dragging that boombox around.
 ```
 **Player Input:**
 - What happened to him?
@@ -153,7 +153,7 @@ Yeah, I've got the wheel. Salvaged it off a junker long ago. Still holds air, I 
 ```
 Used to work that garage right behind us, before the bank took it and the roof caved in.
 
-In my old locker — green one, near the back wall — I had a wrench. Custom, marked with my name. Still dream about the weight of it in my hand.
+In my old locker - green one, near the back wall - I had a wrench. Custom, marked with my name. Still dream about the weight of it in my hand.
 
 Bring that wrench back to me, and the wheel's yours. Fair?
 ```
