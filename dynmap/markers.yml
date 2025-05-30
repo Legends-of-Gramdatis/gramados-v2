@@ -2864,6 +2864,14 @@ sets:
                 y: 67.0
                 z: -2552.0
                 label: Moulin-Fournelet
+            marker_31:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -3424.0 
+                y: 78.0
+                z: -2486.0
+                label: Atelier de la Grange
         lines: {}
         layerprio: 0
     Bridges:
@@ -3108,6 +3116,14 @@ sets:
                 y: 70.0
                 z: -2526.0
                 label: Ateliers de la Roche Brune
+            marker_10:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -5562.0
+                y: 71.0
+                z: -1692.0
+                label: Depot Kirelli
         lines: {}
         layerprio: 0
 
