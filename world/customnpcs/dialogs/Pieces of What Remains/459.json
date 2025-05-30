@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 460,
-                "Title": "[Continue]",
+                "Title": "What happened to him?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -68,7 +68,7 @@ Kid used to live there — maybe seventeen, tops. Always dragging that boombox a
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745963231827L,
+        "TimePast": 1748629557418L,
         "Time": 0L,
         "Subject": ""
     }

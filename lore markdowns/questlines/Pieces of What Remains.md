@@ -50,7 +50,7 @@ Start with the tire. I heard there's a van parked by the old general store down 
 ### Page - Marcel Wheel Return 1
 **Text:**  
 ```
-Well, would you look at that… that's the right tire, alright. Whitewall and all.
+Well, would you look at that... that's the right tire, alright. Whitewall and all.
 It's been years since I saw one that clean around here.
 Remy let it go?
 ```
@@ -62,7 +62,12 @@ Remy let it go?
 ### Page - Marcel Wheel Return 2
 **Text:**  
 ```
-Heh… sounds like Remy, alright.\nBack in the day, we'd fix up junkers like this with nothing but stubbornness and tape.\nNow? Folks just let things rot.\n\nYou know, there was always music in the garage. Not from some fancy radio — just a cassette, always looping.\nKept the silence out. Made the rust feel like rhythm instead of decay.
+Heh... sounds like Remy, alright.
+Back in the day, we'd fix up junkers like this with nothing but stubbornness and tape.
+Now? Folks just let things rot.
+
+You know, there was always music in the garage. Not from some fancy radio — just a cassette, always looping.
+Kept the silence out. Made the rust feel like rhythm instead of decay.
 ```
 **Player Input:**
 - Sounds like you're missing more than just the car. Maybe I could find something that brings that feeling back?
@@ -72,15 +77,24 @@ Heh… sounds like Remy, alright.\nBack in the day, we'd fix up junkers like thi
 ### Page - Marcel Wheel Return 3
 **Text:**  
 ```
-Heh... I'm not picky. Doesn't have to be the cassette — just something that sounds like back then.\nWarm chords, soft vocals, a touch of longing. Something that remembers, you know?\n\n...You know that burnt-out house past the corner of Drabus and Old Hay? The one barely standing?\nKid used to live there — maybe seventeen, tops. Always dragging that boombox around.
+Heh... I'm not picky. Doesn't have to be the cassette — just something that sounds like back then.
+Warm chords, soft vocals, a touch of longing. Something that remembers, you know?
+
+...You know that burnt-out house past the corner of Drabus and Old Hay? The one barely standing?
+Kid used to live there — maybe seventeen, tops. Always dragging that boombox around.
 ```
 **Player Input:**
-- [Continue]
+- What happened to him?
+---
 
 ### Page - Marcel Wheel Return 4
 **Text:**  
 ```
-He'd sit out on the steps in the evenings, playing tapes. Real quiet stuff. Dreamy, maybe a bit sad. But it fit.\nEven when the wind carried the music crooked, it still sounded... whole.\n\nOne night the house caught fire. Never saw the kid again. Folks say he made it out, moved south. I dunno.\nBut part of me thinks the music's still in there somewhere. Just stuck in the ashes.
+He'd sit out on the steps in the evenings, playing tapes. Real quiet stuff. Dreamy, maybe a bit sad. But it fit.
+Even when the wind carried the music crooked, it still sounded... whole.
+
+One night the house caught fire. Never saw the kid again. Folks say he made it out, moved south. I dunno.
+But part of me thinks the music's still in there somewhere. Just stuck in the ashes.
 ```
 **Player Input:**
 - I'll see if I can find it.
@@ -90,7 +104,9 @@ He'd sit out on the steps in the evenings, playing tapes. Real quiet stuff. Drea
 ### Page - Marcel Cassette Return 1
 **Text:**  
 ```
-You know, it's funny... It's not about fixing things. It's about remembering the parts of life that keep us going, even when we can't put everything back together. This tape... it's more than just a song, it's a piece of who we were.\n\nHere. I've got a few things that might help you out. Don't go thinking this means I'm done with you yet.
+You know, it's funny... It's not about fixing things. It's about remembering the parts of life that keep us going, even when we can't put everything back together. This tape... it's more than just a song, it's a piece of who we were.
+
+Here. I've got a few things that might help you out. Don't go thinking this means I'm done with you yet.
 ```
 **Player Input:**
 - Thanks, Marcel. I think I understand. You've got your way of holding on to the past, even if it's not easy.
@@ -100,7 +116,9 @@ You know, it's funny... It's not about fixing things. It's about remembering the
 ### Page - Marcel Cassette Return 2
 **Text:**  
 ```
-Take this with you. A repair kit. You never know when you'll need it. And this... It's a FRM Upgrade. Helps with your vehicle's engine. Not much for a showy boost, but it'll keep things running smoother when you need it.\n\nLet's keep ‘em all running, huh? Take care of yourself.
+Take this with you. A repair kit. You never know when you'll need it. And this... It's a FRM Upgrade. Helps with your vehicle's engine. Not much for a showy boost, but it'll keep things running smoother when you need it.
+
+Let's keep ‘em all running, huh? Take care of yourself.
 ```
 **Player Input:**
 - I will. And Marcel... thanks for trusting me with this.
@@ -151,7 +169,7 @@ Bring that wrench back to me, and the wheel's yours. Fair?
 Didn't think you'd actually find it. Most folks don't bother with a place that's already been left behind.
 This wrench's fixed more than engines. Held my whole damn shop together once. Feels good to hold it again, even just for a bit.
 
-You're helpin' more than you know, kid. Not just Marcel and his old clunker… This street needs folks who still care.
+You're helpin' more than you know, kid. Not just Marcel and his old clunker... This street needs folks who still care.
 
 Take the wheel. One of the last I had in decent shape. Marcel's right to trust you. Go put it to use.
 ```
