@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Fair enough. I'll find it.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -58,7 +68,7 @@ Bring that wrench back to me, and the wheel’s yours. Fair?",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745956888227L,
+        "TimePast": 1748628729965L,
         "Time": 0L,
         "Subject": ""
     }

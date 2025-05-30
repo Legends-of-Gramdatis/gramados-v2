@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "I will. And Marcel... thanks for trusting me with this.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -56,7 +66,7 @@ Let’s keep ‘em all running, huh? Take care of yourself.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745966679436L,
+        "TimePast": 1748629234416L,
         "Time": 0L,
         "Subject": ""
     }
