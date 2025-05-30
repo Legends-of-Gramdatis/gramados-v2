@@ -89,7 +89,7 @@ A seemingly mundane boiler malfunction at the Moulin-Fournelet bakery in Trilnat
 #### **\[Quest 7] – To the Depot**
 
 * **Goal**: Go to location (Trin family depot/warehouse)
-* **Quest Log**: *The repair technician gave me access to the old Trin depot, just past the pond and near the family home. I should check it out.*
+* **Quest Log**: *The repair technician gave me access to the old Trin depot, Atelier de la Grange, just past the pond and near the family home. I should check it out.*
 * **Completion**: On entering the warehouse area
 * **Completion Text**: *The doors creaked open. Smells like dust, grease, and memories. Let’s see what I can find.*
 
@@ -134,7 +134,7 @@ A seemingly mundane boiler malfunction at the Moulin-Fournelet bakery in Trilnat
 #### **\[Quest 12] – The Fuel Station Job Pt.1**
 
 * **Goal**: Reach the Buglaton fuel station depot area
-* **Quest Log**: *Almard pointed me to an old Trin fuel station and depot, northeast of the factory, past the steel mill. It might still have a usable part.*
+* **Quest Log**: *Almard pointed me to an old Trin fuel station and depot, called Depot Kirelli, Northeast of the Rivetshore Cité-Trin, past the steel mill. It might still have a usable part.*
 * **Completion**: On entering the depot outer perimeter
 * **Completion Text**: *Looks like the place. Overgrown forecourt, rusting signage... and definitely not abandoned. I should look for a way in.*
 
@@ -214,10 +214,8 @@ A seemingly mundane boiler malfunction at the Moulin-Fournelet bakery in Trilnat
 
 #### **\[Quest 21] – Know What You Fix**
 
-(*Already existed*)
-
 * **Goal**: Quiz-style dialogue in the boiler room
-* **Quest Log**: *Time to install the part. But first, let’s test my knowledge — wouldn’t want to mess this up.*
+* **Quest Log**: *The part is ready — now it’s time to install it. I need to interact with the boiler to start the final diagnostic check. Let’s see if I actually understand how this thing works.*
 * **Completion**: On completing the quiz
 * **Completion Text**: *The answers clicked into place. The regulator fit like it always belonged there.*
 
