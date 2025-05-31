@@ -2448,6 +2448,30 @@ sets:
                 y: 81.0
                 z: -172.0
                 label: Silorose's Communal Vegetable Garden.
+            marker_33:
+                world: world
+                markup: false
+                icon: outdoor_hiking
+                x: -1438.0
+                y: 106.0
+                z: -1442.0
+                label: Sentier des Plumes
+            marker_34:
+                world: world
+                markup: false
+                icon: outdoor_hiking
+                x: -2152.0
+                y: 94.0
+                z: -1220.0
+                label: Chemin du Gardien Serein
+            marker_35:
+                world: world
+                markup: false
+                icon: outdoor_park
+                x: -2225.0
+                y: 104.0
+                z: -1290.0
+                label: Bois des Longues Veilles
         lines: {}
         layerprio: 0
     Parkings:
@@ -2872,6 +2896,30 @@ sets:
                 y: 78.0
                 z: -2486.0
                 label: Atelier de la Grange
+            marker_32:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -1489.0
+                y: 122.0
+                z: -1355.0
+                label: Roche des Chants
+            marker_33:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -1521.0
+                y: 109.0
+                z: -1537.0
+                label: Sanctuaire des Plumes
+            marker_34:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2146.0
+                y: 95.0
+                z: -1526.0
+                label: Le Veilleur des Collines
         lines: {}
         layerprio: 0
     Bridges:
@@ -3124,6 +3172,14 @@ sets:
                 y: 71.0
                 z: -1692.0
                 label: Depot Kirelli
+            marker_11:
+                world: world
+                markup: false
+                icon: services_misc
+                x: -1294.0
+                y: 112.0
+                z: -1200.0
+                label: Tour de Cimefoudre - radio tower
         lines: {}
         layerprio: 0
 
