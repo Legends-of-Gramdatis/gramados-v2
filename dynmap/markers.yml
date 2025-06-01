@@ -2899,7 +2899,7 @@ sets:
             marker_32:
                 world: world
                 markup: false
-                icon: ent&lei_historic
+                icon: ent&lei_misc
                 x: -1489.0
                 y: 122.0
                 z: -1355.0
