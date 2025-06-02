@@ -143,7 +143,7 @@ Though largely peaceful today, Allenis carries deep scars from an industrial pas
 
 ## 🌿 Minor Landmarks
 
-### 🪨 **Roche des Chants**
+### 🪨 **Roche des Chants** *(The Stone of Songs)*
 
 * Hidden inside Coalgrove Forest.
 * Carved stone linked to the Soil Wars.
