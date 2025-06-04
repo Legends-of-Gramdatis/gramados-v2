@@ -1,0 +1,75 @@
+{
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": -1,
+    "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 547,
+                "Title": "[Continue]",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
+    ],
+    "AvailabilityScoreboardType": 1,
+    "DialogHideNPC": 0b,
+    "AvailabilityFactionStance": 0,
+    "AvailabilityScoreboard2Value": 1,
+    "DialogId": 546,
+    "AvailabilityQuest": 0,
+    "AvailabilityDialog4": 0,
+    "AvailabilityScoreboardObjective": "",
+    "AvailabilityDialog3": 0,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
+    "AvailabilityScoreboard2Objective": "",
+    "AvailabilityQuest4": 0,
+    "ModRev": 18,
+    "DecreaseFaction1Points": 0b,
+    "DialogQuest": -1,
+    "AvailabilityDialog2": 0,
+    "OptionFactions1": -1,
+    "AvailabilityDayTime": 0,
+    "OptionFactions2": -1,
+    "AvailabilityFaction2Id": -1,
+    "OptionFaction1Points": 100,
+    "AvailabilityScoreboardValue": 1,
+    "DialogDisableEsc": 0b,
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Castle Avencliff",
+    "AvailabilityDialog": 0,
+    "AvailabilityScoreboard2Type": 1,
+    "AvailabilityFaction2": 0,
+    "AvailabilityFactionId": -1,
+    "AvailabilityFaction2Stance": 0,
+    "DialogCommand": "",
+    "AvailabilityDialogId": -1,
+    "OptionFaction2Points": 100,
+    "DialogText": "Standing just inland from the southern shore of Monsalac, Castle Avencliff has twice been engulfed in fire - and twice rebuilt from its ashes.
+
+Originally constructed in the 16th century as the ancestral seat of the Laressier family, the castle was plundered in 1683 during the Grainfire Rebellion. Though restored, it was once again set ablaze in the mid-20th century during a workers’ revolt that left much of the family slain.
+
+Its current form is the result of a late 20th-century restoration led by a wealthy entrepreneur from Gramados Island, founder of the TFJ conglomerate. While the exterior preserves its historic form, the interior was entirely reimagined - blending noble architecture with modern luxury.",
+    "AvailabilityQuest4Id": -1,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
+    "AvailabilityDialog2Id": -1,
+    "AvailabilityDialog3Id": -1,
+    "AvailabilityDialog4Id": -1,
+    "AvailabilityMinPlayerLevel": 0,
+    "DecreaseFaction2Points": 0b,
+    "DialogMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1748942960912L,
+        "Time": 0L,
+        "Subject": ""
+    }
+}
