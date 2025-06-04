@@ -11,7 +11,7 @@ The island divides into several distinct zones:
 * **Northwest**: Home to Chaseals village, once a retreat for the nobility.
 * **Center**: Treacherous highlands with sharp slopes and snowy ridgelines.
 * **South**: Historical center of noble power — the Avencliff Plateau.
-* **East**: Flatter coastal lands where the modern Laressier residence stands.
+* **East**: Flatter coastal lands where Ashwick Manor now stands.
 * **Offshore**: Chaseals Peak, a small separate island with symbolic presence.
 
 ---
@@ -82,15 +82,16 @@ The island divides into several distinct zones:
 
 ---
 
-### 🏡 **Modern Laressier Mansion**
+### 🏡 **Ashwick Manor**
 
-* Modest home on the eastern coast.
-* Constructed by **Marquis Alain Laressier**, survivor of the revolt.
-* Still carries the family name, though no longer central to island life.
+* Modest estate on the eastern coast of Monsalac.
+* Built by **Marquis Alain Laressier** after fleeing the destruction of Castle Avencliff.
+* Situated on a hill overlooking coastal farmland.
+* Symbol of retreat and resilience — a quiet echo of former nobility.
 
 **Lore:**
 
-> The house is quiet. Not forgotten — just quieter than it used to be.
+> The manor no longer commands the land — but it remembers how to endure.
 
 ---
 
