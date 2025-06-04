@@ -889,6 +889,14 @@ sets:
                 y: 80.0
                 z: 6817.0
                 label: Caldero Town Hall
+            marker_13:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -5467.0
+                y: 79.0
+                z: 6766.0
+                label: Cántaro Town Hall
         lines: {
             }
         layerprio: 0
@@ -2920,6 +2928,22 @@ sets:
                 y: 95.0
                 z: -1526.0
                 label: Le Veilleur des Collines
+            marker_35:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3308.0
+                y: 86.0
+                z: -15.0
+                label: Ashwick Manor
+            marker_36:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -5448.0
+                y: 81.0
+                z: 6787.0
+                label: Ermita del Barro Vivo
         lines: {}
         layerprio: 0
     Bridges:
