@@ -53,8 +53,8 @@ icons:
         label: ent&lei_tourist
     food&drink_misc:
         label: food&drink_misc
-    food&drink__wine:
-        label: food&drink__wine
+    food&drink_wine:
+        label: food&drink_wine
     food&drink_bakery:
         label: food&drink_bakery
     food&drink_bar:
@@ -666,6 +666,14 @@ sets:
                 y: 77.0
                 z: 6842.0
                 label: El Sabor del Alba
+            marker_21:
+                world: world
+                markup: false
+                icon: food&drink_cafe
+                x: -4198.0
+                y: 72.0
+                z: 7249.0
+                label: Café del Aceite
         lines: {
             }
         layerprio: 0
@@ -780,6 +788,14 @@ sets:
                 y: 96.0
                 z: 599.0
                 label: Gramatruck Truck Stop Hotel
+            marker_10:
+                world: world
+                markup: false
+                icon: misc_hotel
+                x: -5441.0
+                y: 77.0
+                z: 6678.0
+                label: Hospedería de la Vieja Orden - Hotel
         lines: {
             }
         layerprio: 0
@@ -800,7 +816,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 73.0
                 z: 243.0
-                label: Ardocor Town Hall
+                label: Ardocor
             marker_2:
                 world: world
                 markup: false
@@ -808,7 +824,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 103.0
                 z: -1228.0
-                label: Blockingham Town Hall
+                label: Blockingham
             marker_3:
                 world: world
                 markup: false
@@ -816,7 +832,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 92.0
                 z: 282.0
-                label: Gramados Town Hall
+                label: Gramados
             marker_4:
                 world: world
                 markup: false
@@ -824,7 +840,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 76.0
                 z: -940.0
-                label: Springfield Town Hall
+                label: Springfield
             marker_5:
                 world: world
                 markup: false
@@ -832,7 +848,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 86.0
                 z: -1385.0
-                label: Allen Point Town Hall
+                label: Allen Point
             marker_6:
                 world: world
                 markup: false
@@ -840,7 +856,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 75.0
                 z: -427.0
-                label: Chaseals Town Hall
+                label: Chaseals
             marker_7:
                 world: world
                 markup: false
@@ -848,7 +864,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 69.0
                 z: -5375.0
-                label: Branwen City Town Hall
+                label: Branwen City
             marker_8:
                 world: world
                 markup: false
@@ -856,7 +872,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 98.0
                 z: 1019.0
-                label: Petrolton Town Hall
+                label: Petrolton
             marker_9:
                 world: world
                 markup: false
@@ -864,7 +880,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 82.0
                 z: -67
-                label: Silorose Town Hall
+                label: Silorose
             marker_10:
                 world: world
                 markup: false
@@ -872,7 +888,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 70.0
                 z: -2586.0
-                label: Trilnat Village Town Hall
+                label: Trilnat Village
             marker_11:
                 world: world
                 markup: false
@@ -880,7 +896,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 74.0
                 z: -879.0
-                label: Buglaton Town Hall
+                label: Buglaton
             marker_12:
                 world: world
                 markup: false
@@ -888,7 +904,7 @@ sets:
                 x: -4672.0
                 y: 80.0
                 z: 6817.0
-                label: Caldero Town Hall
+                label: Caldero
             marker_13:
                 world: world
                 markup: false
@@ -896,7 +912,15 @@ sets:
                 x: -5467.0
                 y: 79.0
                 z: 6766.0
-                label: Cántaro Town Hall
+                label: Cántaro
+            marker_14:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -6013.0
+                y: 84.0
+                z: 6266.0
+                label: Lobrega
         lines: {
             }
         layerprio: 0
@@ -1345,6 +1369,14 @@ sets:
                 z: 6723.0
                 icon: shopping_garage
                 label: Capilla del Arranque (Repair Shop)
+            marker_12:
+                world: world
+                markup: false
+                x: -4239.0
+                y: 72.0
+                z: 7224.0
+                icon: shopping_garage
+                label: Taller de Ruta Sur (Repair Shop)
         lines: {
             }
         layerprio: 0
@@ -1654,6 +1686,22 @@ sets:
                 y: 76.0
                 z: 5165.0
                 label: BalkanPetrol Fuel Station
+            marker_27:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -4233.0
+                y: 72.0
+                z: 7267.0
+                label: Gasolinera de la Brisa - Fuel Station
+            marker_28:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -4209.0
+                y: 72.0
+                z: 7269.0
+                label: Gasolinera de la Brisa - Charging Station
         lines: {
             }
         layerprio: 0
@@ -2944,6 +2992,78 @@ sets:
                 y: 81.0
                 z: 6787.0
                 label: Ermita del Barro Vivo
+            marker_37:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -5527.0
+                y: 74.0
+                z: 6766.0
+                label: Los Tres Hornos del Voto
+            marker_38:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -5506.0
+                y: 74.0
+                z: 6744.0
+                label: Capilla del Esmalte Fiel
+            marker_39:
+                world: world
+                markup: false
+                icon: ent&lei_lighthouse
+                x: -6301.0
+                y: 136.0
+                z: 4100.0
+                label: Faro del Sexto Viento - Lighthouse
+            marker_40:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -6242.0
+                y: 78.0
+                z: 4116.0
+                label: Ermita de la Pluma Quieta
+            marker_41:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -6314.0
+                y: 76.0
+                z: 4160.0
+                label: Cresta Norte de Solterra
+            marker_42:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -6046.0
+                y: 86.0
+                z: 6268.0
+                label: Ermita del Retiro Callado
+            marker_43:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -4813.0
+                y: 72.0
+                z: 6313.0
+                label: Ermita del Umbral
+            marker_44:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -4174.0
+                y: 73.0
+                z: 7260.0
+                label: Ermita de la Sombra Larga
+            marker_45:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -5946.0
+                y: 75.0
+                z: -1011.0
+                label: Szent Szárny Katedrálisa - Cathedral
         lines: {}
         layerprio: 0
     Bridges:
