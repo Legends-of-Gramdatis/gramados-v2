@@ -1702,6 +1702,22 @@ sets:
                 y: 72.0
                 z: 7269.0
                 label: Gasolinera de la Brisa - Charging Station
+            marker_29:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -4799.0
+                y: 73.0
+                z: 3307.0
+                label: Smell Oil - Fuel Station
+            marker_30:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -4803.0
+                y: 73.0
+                z: 3323.0
+                label: Smell Oil - Charging Station
         lines: {
             }
         layerprio: 0
