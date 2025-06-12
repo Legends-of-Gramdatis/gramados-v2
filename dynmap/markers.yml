@@ -796,6 +796,14 @@ sets:
                 y: 77.0
                 z: 6678.0
                 label: Hospedería de la Vieja Orden - Hotel
+            marker_11:
+                world: world
+                markup: false
+                icon: misc_hotel
+                x: -4657.0
+                y: 74.0
+                z: 3397.0
+                label: Hotel Zarkazul
         lines: {
             }
         layerprio: 0
@@ -921,6 +929,14 @@ sets:
                 y: 84.0
                 z: 6266.0
                 label: Lobrega
+            marker_15:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -4721.0
+                y: 72.0
+                z: 3325.0
+                label: Arganza
         lines: {
             }
         layerprio: 0
@@ -1757,6 +1773,24 @@ sets:
                 label: Petrolton Library
         lines: {
             }
+        layerprio: 0
+    Government Buildings:
+        hide: false
+        minzoom: 2
+        circles: { }
+        deficon: default
+        areas: { }
+        label: Government Buildings
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -4905.0
+                y: 79.0
+                z: 3337.0
+                label: Ministry of the Substrate
+        lines: { }
         layerprio: 0
     Entertainment & Leisure:
         hide: false
@@ -3340,6 +3374,14 @@ sets:
                 y: 112.0
                 z: -1200.0
                 label: Tour de Cimefoudre - radio tower
+            marker_12:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -4952.0
+                y: 47.0
+                z: 3615.0
+                label: quarry Zundral Hollow
         lines: {}
         layerprio: 0
 
