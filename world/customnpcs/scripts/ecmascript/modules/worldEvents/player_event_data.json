@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1105
+            "egg_count": 1106
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -163,10 +163,10 @@
                     "egg_count": 2
                 },
                 "chromashell": {
-                    "egg_count": 4
+                    "egg_count": 5
                 }
             },
-            "egg_count": 11
+            "egg_count": 12
         },
         "Nop0x": {
             "egg_types": {
