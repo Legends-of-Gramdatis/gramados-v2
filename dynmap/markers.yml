@@ -1790,6 +1790,14 @@ sets:
                 y: 79.0
                 z: 3337.0
                 label: Ministry of the Substrate
+            marker_2:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -4905.0
+                y: 79.0
+                z: 3337.0
+                label: Zarnivik Office - Ministry of Internal Development and Civil Allocation.
         lines: { }
         layerprio: 0
     Entertainment & Leisure:
@@ -2742,6 +2750,14 @@ sets:
                 y: 75.0
                 z: 440.0
                 label: Parking
+            marker_20:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -4395.0
+                y: 79.0
+                z: 3667.0
+                label: Zarnivik Office Parking
         lines: {}
         layerprio: 0
     Historical Sites:
