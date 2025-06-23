@@ -1794,9 +1794,9 @@ sets:
                 world: world
                 markup: false
                 icon: civil_services_Civic_Building
-                x: -4905.0
-                y: 79.0
-                z: 3337.0
+                x: -4355.0
+                y: 84.0
+                z: 3773.0
                 label: Zarnivik Office - Ministry of Internal Development and Civil Allocation.
         lines: { }
         layerprio: 0
