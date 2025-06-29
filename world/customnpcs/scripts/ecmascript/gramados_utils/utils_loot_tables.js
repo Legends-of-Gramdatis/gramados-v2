@@ -285,3 +285,29 @@ function getItemWeightFromLootTable(lootTable, itemId) {
 
     return null;
 }
+
+/**
+ * Retrieves the maximum weight from a loot table.
+ * @param {Object} lootTable - The loot table JSON object.
+ * @returns {number} - The maximum weight found in the loot table, or 0 if no weights are found.
+ */
+function getMaxWeightFromLootTable(lootTable) {
+    if (!lootTable || !lootTable.pools) {
+        return 0;
+    }
+
+    var maxWeight = 0;
+    for (var i = 0; i < lootTable.pools.length; i++) {
+        var pool = lootTable.pools[i];
+        if (pool.entries) {
+            for (var j = 0; j < pool.entries.length; j++) {
+                var entry = pool.entries[j];
+                if (entry.weight && entry.weight > maxWeight) {
+                    maxWeight = entry.weight;
+                }
+            }
+        }
+    }
+
+    return maxWeight;
+}
