@@ -24,6 +24,12 @@ function interact(event) {
         return;
     }
 
+    if (heldItem.getName() == "minecraft:barrier") {
+        stored_data.clear();
+        npc.say("All stored data has been cleared.");
+        return;
+    }
+
     if (!stored_data.has("loot_table")) {
         npc.say("I am not set up yet. Please ask an Administrator to set me up with a loot table.");
         return;
@@ -62,8 +68,9 @@ function interact(event) {
         return;
     }
 
+    var maxWeight = getMaxWeightFromLootTable(lootTable);
     var hoursToFix = hours - 20;
-    var cost = Math.round(hoursToFix * (6 - weight)) * 100;
+    var cost = Math.round(hoursToFix * (maxWeight + 1 - weight)) * 100;
 
     if (!getMoneyFromPlayerPouch(player, cost)) {
         npc.say("You don't have enough money to fix this engine. Cost: " + getAmountCoin(cost));
