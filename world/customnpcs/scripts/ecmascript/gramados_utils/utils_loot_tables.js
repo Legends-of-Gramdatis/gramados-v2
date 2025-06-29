@@ -232,3 +232,56 @@ function resolveRecursiveWeight(path, visited) {
     }
     return total;
 }
+
+/**
+ * Checks if an item is part of a specified loot table.
+ * @param {string} lootTablePath - The path to the loot table file.
+ * @param {string} itemId - The ID of the item to check.
+ * @returns {boolean} - True if the item is in the loot table, false otherwise.
+ */
+function isItemInLootTable(lootTablePath, itemId) {
+    var lootTable = loadJson(lootTablePath);
+    if (!lootTable || !lootTable.pools) {
+        return false;
+    }
+
+    for (var i = 0; i < lootTable.pools.length; i++) {
+        var pool = lootTable.pools[i];
+        if (pool.entries) {
+            for (var j = 0; j < pool.entries.length; j++) {
+                var entry = pool.entries[j];
+                if (entry.name === itemId) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Retrieves the weight of an item from a loot table.
+ * @param {Object} lootTable - The loot table JSON object.
+ * @param {string} itemId - The ID of the item.
+ * @returns {number|null} - The weight of the item, or null if not found.
+ */
+function getItemWeightFromLootTable(lootTable, itemId) {
+    if (!lootTable || !lootTable.pools) {
+        return null;
+    }
+
+    for (var i = 0; i < lootTable.pools.length; i++) {
+        var pool = lootTable.pools[i];
+        if (pool.entries) {
+            for (var j = 0; j < pool.entries.length; j++) {
+                var entry = pool.entries[j];
+                if (entry.name === itemId) {
+                    return entry.weight || null;
+                }
+            }
+        }
+    }
+
+    return null;
+}
