@@ -1,0 +1,184 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v2insolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v3insolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v3median",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v3performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v3vanilla",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4inlineinsolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4inlinetorqueline",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4insolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v4smallfry",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v5",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v5performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6arcade",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage3",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6insolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6torqueline",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8insolvo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8newperformante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8torqueline",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v8turbojet",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v9",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v90performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v90torqueline",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v91performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v96performante",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.compact_electricmotor",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
