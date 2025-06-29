@@ -937,6 +937,14 @@ sets:
                 y: 72.0
                 z: 3325.0
                 label: Arganza
+            marker_16:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -6389.0
+                y: 72.0
+                z: 7249.0
+                label: Brisamar
         lines: {
             }
         layerprio: 0
@@ -3398,6 +3406,14 @@ sets:
                 y: 47.0
                 z: 3615.0
                 label: quarry Zundral Hollow
+            marker_13:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: -4795.0
+                y: 85.0
+                z: 3423.0
+                label: The Hall of the Deep Warrant - Zundral Hollow HQ
         lines: {}
         layerprio: 0
 
