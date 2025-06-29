@@ -1,3 +1,6 @@
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+var world = API.getIWorld(0);
+
 /**
  * Loads a JSON object from a file.
  * @param {string} filePath - The path to the JSON file.
@@ -40,7 +43,7 @@ function checkFileExists(filePath) {
  * Retrieves the stored data from the world.
  * @returns {Object} The stored data from the world.
  */
-function getWorldData() {
+function getWorldData() { 
     return world.getStoreddata();
 }
 
