@@ -1,0 +1,169 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i3_gasoline_normal_aut",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i3_gasoline_turbo_aut",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i4_gasoline_normal_aut",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i4_gasoline_normal_man",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i4_gasoline_turbo_aut",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i4_gasoline_turbo_man",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i5_gasoline_normal_aut",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i5_gasoline_normal_man",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i5_gasoline_turbo_aut",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_i5_gasoline_turbo_man",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v10_gasoline_normal_aut",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v10_gasoline_normal_man",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v10_gasoline_turbo_aut",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v10_gasoline_turbo_man",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v12_gasoline_normal_aut",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v12_gasoline_normal_man",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v12_gasoline_trackprepared_aut",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v12_gasoline_turbo_aut",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v12_gasoline_turbo_man",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v6_gasoline_normal_aut",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v6_gasoline_normal_man",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v6_gasoline_turbo_aut",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v6_gasoline_turbo_man",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v8_gasoline_normal_aut",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v8_gasoline_normal_man",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v8_gasoline_turbo_aut",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.engine_v8_gasoline_turbo_man",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_electric_bike_engine",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_v10_fat_diesel",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_v8_fat_biodiesel",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_v8_fat_diesel",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_v8_fat_gasoline",
+                    "weight": 4
+                }
+            ]
+        }
+    ]
+}
