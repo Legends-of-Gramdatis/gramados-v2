@@ -70,7 +70,7 @@ function interact(event) {
 
     var maxWeight = getMaxWeightFromLootTable(lootTable);
     var hoursToFix = hours - 20;
-    var cost = Math.round(hoursToFix * (maxWeight + 1 - weight)) * 100;
+    var cost = Math.round(hoursToFix * (maxWeight + 1 - weight)) * 300;
 
     if (!getMoneyFromPlayerPouch(player, cost)) {
         npc.say("You don't have enough money to fix this engine. Cost: " + getAmountCoin(cost));
