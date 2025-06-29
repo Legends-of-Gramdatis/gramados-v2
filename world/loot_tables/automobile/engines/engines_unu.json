@@ -1,0 +1,79 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i1m",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_h04_aircooled",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i02_aircooled",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i04_aircooled",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i04_flathead",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i04_standard",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i06_diesel",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i06_flathead",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_i06_standard",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_v06_standard",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_v08_flathead",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_v08_standard",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_v08h",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_engine_v12_standard",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
