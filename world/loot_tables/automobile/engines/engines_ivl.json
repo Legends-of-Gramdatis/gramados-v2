@@ -5,178 +5,238 @@
             "entries": [
                 {
                     "type": "item",
+                    "_comment": "v2, motorcycle engine",
                     "name": "mts:ivv.v2",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v2insolvo",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v3insolvo",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v3median",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v3performante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v3vanilla",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v4",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v4inlineinsolvo",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v4inlinetorqueline",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v4insolvo",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v4performante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
+                    "_comment": "v4, motorcycle engine",
                     "name": "mts:ivv.v4smallfry",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v5",
+                    "_comment": "i2",
+                    "name": "mts:ivv.v2insolvo",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v5performante",
+                    "_comment": "i3",
+                    "name": "mts:ivv.v3insolvo",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v6",
-                    "weight": 5
+                    "_comment": "rare very old i4, ford model a/t/etc motor",
+                    "name": "mts:ivv.v4inlineinsolvo",
+                    "weight": 3
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v6arcade",
-                    "weight": 5
+                    "_comment": "h4, or vw beetle motor",
+                    "name": "mts:ivv.v4insolvo",
+                    "weight": 4
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v6falconstage1",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v6falconstage2",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v6falconstage3",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v6falconstage4",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
+                    "_comment": "v6",
                     "name": "mts:ivv.v6insolvo",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v6performante",
+                    "_comment": "(lore) very old v8, ford flathead",
+                    "name": "mts:ivv.v8insolvo",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "_comment": "i3",
+                    "name": "mts:ivv.v3median",
                     "weight": 5
                 },
                 {
                     "type": "item",
+                    "_comment": "i4",
+                    "name": "mts:ivv.v4",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "_comment": "v6",
+                    "name": "mts:ivv.v6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "_comment": "v8",
+                    "name": "mts:ivv.v8",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "_comment": "v10",
+                    "name": "mts:ivv.v9",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "_comment": "not actuallly a five-cylinder, it is a two-rotor wankel engine",
+                    "name": "mts:ivv.v5",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v3performante",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "_comment": "i4",
+                    "name": "mts:ivv.v4performante",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "_comment": "i5",
+                    "name": "mts:ivv.v5performante",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6performante",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "_comment": "(lore) old v8, dodge mopar-ish",
+                    "name": "mts:ivv.v8performante",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "_comment": "(lore) new v8, ford modular/coyote-ish",
+                    "name": "mts:ivv.v8newperformante",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "_comment": "v10",
+                    "name": "mts:ivv.v90performante",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "_comment": "v12",
+                    "name": "mts:ivv.v91performante",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "_comment": "v16",
+                    "name": "mts:ivv.v96performante",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "_comment": "i4",
+                    "name": "mts:ivv.v4inlinetorqueline",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "_comment": "v6",
                     "name": "mts:ivv.v6torqueline",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v8",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v8insolvo",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v8newperformante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v8performante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
+                    "_comment": "v8",
                     "name": "mts:ivv.v8torqueline",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v8turbojet",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v9",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v90performante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
+                    "_comment": "v10",
                     "name": "mts:ivv.v90torqueline",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.v91performante",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.v96performante",
-                    "weight": 5
+                    "name": "mts:ivv.nano_electricmotor",
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "mts:ivv.compact_electricmotor",
                     "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.standard_electricmotor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.ultra_electricmotor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.industrial_electricmotor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.ultraindustrial_electricmotor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "_comment": "kitt/acive engine, futuristic v8",
+                    "name": "mts:ivv.v8turbojet",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "_comment": "antique steam engine from a train",
+                    "name": "mts:ivv.steamengine",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "_comment": "old f1 event motors, need to be revamped at some point, there will still be 4 seperate stages",
+                    "name": "mts:ivv.v6falconstage1",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage2",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage3",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.v6falconstage4",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "_comment": "meme motor, comes from another universe",
+                    "name": "mts:ivv.v6arcade",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "_comment": "vanilla meme motor, technically possible but uncommon build technique",
+                    "name": "mts:ivv.v3vanilla",
+                    "weight": 2
                 }
             ]
         }
