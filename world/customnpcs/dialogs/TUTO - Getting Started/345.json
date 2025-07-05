@@ -11,6 +11,16 @@
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 349,
+                "Title": "I would like to ask about something more specific.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
         }
     ],
     "AvailabilityScoreboardType": 1,
@@ -66,7 +76,7 @@ Before you start, let me guide you through some basics so you can get the most o
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745779477960L,
+        "TimePast": 1751749931520L,
         "Time": 0L,
         "Subject": ""
     }
