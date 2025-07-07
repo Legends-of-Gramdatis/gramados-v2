@@ -10,6 +10,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var arrest_plugin_counter = 0;
 var arrest_plugin_max_counter = 10000;
 var arrest_plugin_arrested_player_name = "";
+var arrest_plugin_spawn_count = 0; // Tracks the total number of NPCs spawned during an arrest
 
 function attempt_arrest(event, player, world) {
 
@@ -151,6 +152,7 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
                     break;
             }
             success = true;
+            arrest_plugin_spawn_count++; // Increment the spawn count for each NPC spawned
         }
     }
 
@@ -199,11 +201,15 @@ function died(event) {
             }
         }
 
-        //tell the player that his arrestation is done
+        // Tell the player that their arrestation is done
         player.message("&4Your arrest has been completed. You are now free to go.");
-        // remove 100 faction points from the player
-        player.addFactionPoints(FACTION_ID_CRIMINAL, -100);
-        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones.");
+        // Remove faction points proportional to the number of NPCs spawned
+        var reputation_decrease = -10 * arrest_plugin_spawn_count;
+        player.addFactionPoints(FACTION_ID_CRIMINAL, reputation_decrease);
+        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + reputation_decrease);
+
+        // Reset the spawn count after the arrest is completed
+        arrest_plugin_spawn_count = 0;
     }
 }
 
