@@ -872,6 +872,31 @@
     "78761538-f544-4c65-ab84-01c04040a5eb": {
         "Name": "swy777",
         "JobHistory": {},
+        "ActiveJobs": {
+            "54": {
+                "JobID": 54,
+                "JobName": "Concrete Factory Worker",
+                "StartTime": 2634004269,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2635559863,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
+    },
+    "5b91b7d2-aea7-43ba-827b-b689e3d94c0a": {
+        "Name": "ttpaer",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "53a7b6be-6ebc-4093-9504-dd774ac74d37": {
+        "Name": "MajorReis",
+        "JobHistory": {},
         "ActiveJobs": {}
     }
 }
