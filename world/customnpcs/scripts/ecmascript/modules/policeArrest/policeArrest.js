@@ -9,7 +9,7 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var arrest_plugin_counter = 0;
 var arrest_plugin_max_counter = 10000;
-var arrest_plugin_arrested_player_name = "";
+var is_under_arrest = false;
 var arrest_plugin_spawn_count = 0; // Tracks the total number of NPCs spawned during an arrest
 
 function attempt_arrest(event, player, world) {
@@ -41,7 +41,7 @@ function attempt_arrest(event, player, world) {
     if (success) {
         tallPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
-        arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
+        arrest_plugin_spawn_count = 0;
     }
 }
 
@@ -189,7 +189,7 @@ function spawn_sniper_spo_NPC(x, y, z, world) {
 
 // If player dies, remove the arrest
 function died(event) {
-    if (arrest_plugin_arrested_player_name == event.player.getDisplayName()) {
+    if (is_under_arrest) {
         var player = event.player;
         var world = player.world;
         var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
@@ -205,31 +205,30 @@ function died(event) {
         // Tell the player that their arrestation is done
         player.message("&4Your arrest has been completed. You are now free to go.");
         // Remove faction points proportional to the number of NPCs spawned
-        var reputation_decrease = -10 * arrest_plugin_spawn_count;
-        player.addFactionPoints(FACTION_ID_CRIMINAL, reputation_decrease);
+        var reputation_decrease = 10 * arrest_plugin_spawn_count;
+        player.addFactionPoints(FACTION_ID_CRIMINAL, -reputation_decrease);
         logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + reputation_decrease);
 
         // Reset the spawn count after the arrest is completed
         arrest_plugin_spawn_count = 0;
     }
-}
 
-function init(event) {
-    // set a random counter based on the current time
-    arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
+    is_under_arrest = false;
 }
 
 function tick(event) {
 
-    arrest_plugin_counter++;
-
-    if (!isAnyEventActive() && arrest_plugin_counter >= arrest_plugin_max_counter) {
-        arrest_plugin_counter = 0;
-        var player = event.player
-        var world = player.world;
-        if (isCriminal(player)) {
-            attempt_arrest(event, player, world);
-            arrest_plugin_arrested_player_name = player.getDisplayName();
+    if (is_under_arrest) {
+        arrest_plugin_counter++;
+        if (arrest_plugin_counter >= arrest_plugin_max_counter) {
+            arrest_plugin_counter = 0;
+            var cur_player = event.player
+            var world = cur_player.world;
+            attempt_arrest(event, cur_player, world);
         }
+    }
+    else if (!isAnyEventActive() && isCriminal(event.player)) {
+        is_under_arrest = true;
+        arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
     }
 }
