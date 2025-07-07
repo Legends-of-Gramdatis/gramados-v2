@@ -125,7 +125,7 @@ function died(event) {
 
     if (bank && bank.gate) {
         // Notify players in the region
-        notifyPlayersInRegion(world, bank, "&6&l[&e&lBank Vault&6&l] &aThe vault gate is now open for 2:30 minutes!");
+        notifyPlayersInRegion(world, bank, "&6&l[&e&lBank Vault&6&l] &aThe vault gate is now open for " + npc.getStats().getRespawnTime() + " seconds!");
 
         // Open the gate by filling it with air blocks
         var orderedPositions = orderPositions(bank.gate.pos1.x, bank.gate.pos1.y, bank.gate.pos1.z, bank.gate.pos2.x, bank.gate.pos2.y, bank.gate.pos2.z);
