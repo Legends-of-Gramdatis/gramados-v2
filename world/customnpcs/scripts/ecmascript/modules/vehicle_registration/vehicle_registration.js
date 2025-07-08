@@ -60,7 +60,7 @@ function interact(event) {
     var maxHealth = json.maxHealth || 100;
 
     if (vehicleDamage >= maxHealth) {
-        tellPlayer(player, "&c:recycle: This vehicle is totaled and must be fully repaired before registration.");
+        tellPlayer(player, "&c:recycle: This vehicle is totaled and must be functionnal before registration.");
         return;
     }
 
