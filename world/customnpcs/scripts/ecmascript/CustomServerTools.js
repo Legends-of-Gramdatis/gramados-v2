@@ -9021,7 +9021,7 @@ registerXCommands([
                 cost = Math.ceil(dist * 10);
 
                 if (plo.data.money < cost) {
-                    tellPlayer(pl, '&cYou don\'t have enough money (" + getAmountCoin(cost) + ") to take the taxi to destination ' + hname + '!');
+                    tellPlayer(pl, '&cYou don\'t have enough money (' + getAmountCoin(cost) + ') to take the taxi to destination ' + hname + '!');
                     return false;
                 } else {
                     plo.data.money -= cost;
