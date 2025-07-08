@@ -9,8 +9,10 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 var arrest_plugin_counter = 0;
 var arrest_plugin_max_counter = 10000;
-var is_under_arrest = false;
-var arrest_plugin_spawn_count = 0; // Tracks the total number of NPCs spawned during an arrest
+var can_be_arrested = false;
+var is_under_arrest = false; // Tracks if the player is currently under arrest
+var damage_buffer = 0; // Tracks the total number of NPCs spawned during an arrest
+var damage_taken = 0;
 
 function attempt_arrest(event, player, world) {
 
@@ -41,7 +43,9 @@ function attempt_arrest(event, player, world) {
     if (success) {
         tallPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
-        arrest_plugin_spawn_count = 0;
+        damage_buffer = 0;
+        is_under_arrest = true; // Set the arrest status to true
+        can_be_arrested = false; // Prevent further arrests until the current one is resolved
     }
 }
 
@@ -153,7 +157,7 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
                     break;
             }
             success = true;
-            arrest_plugin_spawn_count++; // Increment the spawn count for each NPC spawned
+            damage_buffer = damage_buffer + 10; // Increase the damage buffer for each NPC spawned
         }
     }
 
@@ -187,41 +191,44 @@ function spawn_sniper_spo_NPC(x, y, z, world) {
     world.spawnClone(x, y, z, 9, "SPO Sniper Arrest Clone");
 }
 
+function damaged(event) {
+    if (is_under_arrest) {
+        var player = event.player;
+        if (damage_buffer > 0) {
+            player.addFactionPoints(FACTION_ID_CRIMINAL, -1);
+            damage_buffer--;
+            damage_taken++;
+        }
+    }
+}
+
 // If player dies, remove the arrest
 function died(event) {
-    if (is_under_arrest) {
+    if (can_be_arrested) {
         var player = event.player;
         var world = player.world;
         var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
-        // event.player.message("Nearby entities: " + nearby_gentity_list.length);
         for (var i = 0; i < nearby_gentity_list.length; i++) {
             var removal_test_entity = nearby_gentity_list[i];
-            // event.player.message("Entity: " + removal_test_entity.getName());
             if (removal_test_entity.getName().contains("Arrest Clone")) {
                 removal_test_entity.despawn();
             }
         }
-
-        // Tell the player that their arrestation is done
-        tellPlayer(player, "&4Your arrest has been completed. You are now free to go.");
-        // Remove faction points proportional to the number of NPCs spawned
-        var reputation_decrease = 10 * arrest_plugin_spawn_count;
-        if (reputation_decrease == 0) {
-            reputation_decrease = 100;
-        }
-        player.addFactionPoints(FACTION_ID_CRIMINAL, reputation_decrease * -1);
-        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + reputation_decrease);
+        
+        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + damage_taken + " during the arrest.");
 
         // Reset the spawn count after the arrest is completed
-        arrest_plugin_spawn_count = 0;
+        damage_buffer = 0;
+        damage_taken = 0;
     }
 
-    is_under_arrest = false;
+    can_be_arrested = false;
+    is_under_arrest = false; // Reset the arrest status when the player dies
 }
 
 function tick(event) {
 
-    if (is_under_arrest) {
+    if (can_be_arrested) {
         arrest_plugin_counter++;
         if (arrest_plugin_counter >= arrest_plugin_max_counter) {
             arrest_plugin_counter = 0;
@@ -230,8 +237,38 @@ function tick(event) {
             attempt_arrest(event, cur_player, world);
         }
     }
-    else if (!isAnyEventActive() && isCriminal(event.player)) {
-        is_under_arrest = true;
+    else if (!isAnyEventActive() && isCriminal(event.player) && !is_under_arrest) {
+        can_be_arrested = true;
         arrest_plugin_counter = Math.floor(Math.random() * arrest_plugin_max_counter);
+    }
+
+    if (is_under_arrest) {
+        // If no arrest clones are present, reset the arrest status
+        var world = event.player.world;
+        var nearby_gentity_list = world.getNearbyEntities(event.player.getPos(), 50, 0);
+        var arrest_clone_present = false;
+        for (var i = 0; i < nearby_gentity_list.length; i++) {
+            var entity = nearby_gentity_list[i];
+            if (entity.getName().contains("Arrest Clone")) {
+                arrest_clone_present = true;
+                break;
+            }
+        }
+        if (!arrest_clone_present) {
+            is_under_arrest = false; // Reset the arrest status if no clones are present
+            can_be_arrested = false; // Allow future arrests
+            damage_buffer = 0; // Reset the damage buffer
+            damage_taken = 0; // Reset the damage taken during the arrest
+            tellPlayer(event.player, "&eYou have escaped from arrest! You can now commit crimes again.");
+            // despawn all arrest clones
+            nearby_gentity_list = world.getNearbyEntities(event.player.getPos(), 100, 0);
+            for (var i = 0; i < nearby_gentity_list.length; i++) {
+                var removal_test_entity = nearby_gentity_list[i];
+                if (removal_test_entity.getName().contains("Arrest Clone")) {
+                    removal_test_entity.despawn();
+                }
+            }
+            logToFile("events", "Player " + event.player.getName() + " has escaped from arrest. All arrest clones have been despawned.");
+        }
     }
 }
