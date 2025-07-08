@@ -206,6 +206,9 @@ function died(event) {
         player.message("&4Your arrest has been completed. You are now free to go.");
         // Remove faction points proportional to the number of NPCs spawned
         var reputation_decrease = 10 * arrest_plugin_spawn_count;
+        if (reputation_decrease == 0) {
+            reputation_decrease = 100; // Ensure a minimum reputation decrease
+        }
         player.addFactionPoints(FACTION_ID_CRIMINAL, -reputation_decrease);
         logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + reputation_decrease);
 
