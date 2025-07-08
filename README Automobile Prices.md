@@ -19,6 +19,7 @@ For the vehicles that aren't listed, here are the prices:
 - AliceMotors Utesu: 21500 g
 - Alicemotors NRV 300zx: 45000 g
 - Alicemotors E-bike 4 wheel enclosed: 6200 g (no papers)
+- Alicemotors Bajaj Qute: 15000 g
 
 ## UNU Vehicles
 - UNU Wolf: 45000 g (+10k for each .50 Cal MMG)
