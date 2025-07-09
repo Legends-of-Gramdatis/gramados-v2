@@ -485,7 +485,8 @@
                 "JobID": 59,
                 "JobName": "Lumberjack",
                 "StartTime": 2298282700,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     },
