@@ -29,8 +29,6 @@ world/DIM*
 world/region/*
 world/stats/*
 world/customnpcs/playerdata/*
-# world/customnpcs/scripts/*.json
-world/customnpcs/scripts/ecmascript/Gramados-Custom-NPCs-scripts/test*.js
 dynmap/*
 world/customnpcs/scripts/ecmascript/*/test*.js
 world/customnpcs/scripts/ecmascript/GCNPC*
@@ -62,10 +60,8 @@ autostart.stamp
 
 # stored data
 world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json
-world/customnpcs/scripts/world_data*.json
+# world/customnpcs/scripts/world_data*.json
 world/customnpcs/scripts/forge_scripts.json
-world/customnpcs/scripts/testing.json
-world/customnpcs/scripts/json_spy/stock_spying.json
 world/customnpcs/scripts/stock_exchange.json
 
 gramados_stocks/*
