@@ -74,8 +74,6 @@ GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
 reports/*.md
 reports/*.json
-.gitignore
-documentation/region creation/*
 tools/wth is that?*
 world/customnpcs/linkednpcs/New.json
 tools/decoded_world_data.json
