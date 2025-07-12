@@ -3,7 +3,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
-var gramadosData = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
+var gramadosData = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
 var coinItems = convertCoinItems(gramadosData._COINITEMS);
 var coinTable = gramadosData._COINTABLE;

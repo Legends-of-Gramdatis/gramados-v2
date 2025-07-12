@@ -3,7 +3,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
-var gramados_json = loadJson("world/customnpcs/scripts/configs/gramados_data.json");
+var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
 var _RAWCOLORS = gramados_json._RAWCOLORS;
 var _RAWEFFECTS = gramados_json._RAWEFFECTS;
