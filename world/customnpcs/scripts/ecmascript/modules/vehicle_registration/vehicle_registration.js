@@ -1,5 +1,6 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 
 var API = Java.type("noppes.npcs.api.NpcAPI").Instance();
 
@@ -24,6 +25,14 @@ function interact(event) {
     var jsonStr = rawNbt.toJsonString();
     jsonStr = jsonStr.replace(/(\d+)[bBsSlLfFdD]/g, '$1'); // Remove suffixes
     var json = JSON.parse(jsonStr);
+
+    // Check if player is allowed to register vehicles
+    if (playerHasJobWithTag(player, "Mechanic")) {
+        tellPlayer(player, "&a:check: You are allowed to register vehicles.");
+    } else {
+        tellPlayer(player, "&c:cross: You are not allowed to register vehicles. Please contact a mechanic.");
+        return;
+    }
 
     // ============ Extract Plate ============ //
     var plate = null;
