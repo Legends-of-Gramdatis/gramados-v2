@@ -1312,7 +1312,7 @@ sets:
                 y: 76.0
                 z: 233.0
                 icon: shopping_garage
-                label: Repair Shop
+                label: Kitsuné & Co Auto Repairs
             marker_1:
                 world: world
                 markup: false
