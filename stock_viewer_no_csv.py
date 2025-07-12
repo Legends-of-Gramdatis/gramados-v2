@@ -110,7 +110,11 @@ def generate_region_plot(region, header, rows):
 
     # Plot the sorted data
     for _, timestamps, prices, display_name, display_price in plot_data:
-        plt.plot(timestamps, prices, linestyle='-', label=f'{display_name} (Current: {display_price}g)')
+        try:
+            plt.plot(timestamps, prices, linestyle='-', label=f'{display_name} (Current: {display_price}g)')
+        except Exception as e:
+            print(f'Error plotting data for {display_name}: {e}')
+            continue
 
     # Formatting the plot
     plt.title(f'Stock Prices of {region} Over Time')
