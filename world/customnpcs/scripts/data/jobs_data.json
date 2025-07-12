@@ -129,9 +129,9 @@
             "Perms": []
         },
         {
-            "JobID": 420,
-            "JobLock": 421,
-            "JobQuit": 432,
+            "JobID": 409,
+            "JobLock": 413,
+            "JobQuit": 431,
             "Qualification": "Advanced",
             "Title": "Solterra Mechanic",
             "Types": ["Mechanic"],
