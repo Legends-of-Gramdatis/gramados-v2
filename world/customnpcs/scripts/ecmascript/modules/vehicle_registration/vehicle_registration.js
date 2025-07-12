@@ -55,6 +55,11 @@ function interact(event) {
         tellPlayer(player, "&e:danger: Custom plate format. An extra fee of 1000 grons will be charged for custom plates.");
     }
 
+    if (plate.length > 8) {
+        tellPlayer(player, "&c:cross: The license plate is invalid as it exceeds 8 characters.");
+        return;
+    }
+
     // ============ Extract Vehicle Damage ============ //
     var vehicleDamage = json.damage || 0;
     var maxHealth = json.maxHealth || 100;
@@ -62,6 +67,14 @@ function interact(event) {
     if (vehicleDamage >= maxHealth) {
         tellPlayer(player, "&c:recycle: This vehicle is totaled and must be functionnal before registration.");
         return;
+    }
+
+    // ============ Check Key UUID ============ //
+    var keyUUID = json.keyUUID || null;
+    if (keyUUID) {
+        tellPlayer(player, "&a:check: Vehicle ownership confirmed");
+    } else {
+        tellPlayer(player, "&e:danger: Vehicle ownership is unclear");
     }
 
     // ============ Locate Engine ============ //
@@ -92,6 +105,8 @@ function interact(event) {
     tellPlayer(player, "&aEngine Found: &f" + engine.systemName);
     tellPlayer(player, "&aEngine Damage: &f" + engineDamage);
     tellPlayer(player, "&aEngine Hours: &f" + (engineHours !== null ? engineHours : "N/A"));
+    tellPlayer(player, "&aKey UUID: &f" + (keyUUID || "N/A"));
+
 
     // Proceed to pricing or paperwork from here
 }
