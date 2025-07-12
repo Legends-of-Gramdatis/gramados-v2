@@ -646,7 +646,8 @@
                 "JobName": "Mechanic",
                 "StartTime": 2359358757,
                 "EndTime": 2645279832,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Advanced"
             }
         },
         "ActiveJobs": {
