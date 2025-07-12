@@ -487,6 +487,13 @@
                 "StartTime": 2298282700,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2644236288,
+                "Region": "Gramados",
+                "Type": "Advanced"
             }
         }
     },
