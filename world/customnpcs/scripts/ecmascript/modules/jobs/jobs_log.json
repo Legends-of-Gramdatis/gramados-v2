@@ -640,7 +640,15 @@
     },
     "d0603f61-f4f7-4006-b731-cceab2a2b6a5": {
         "Name": "TheOddlySeagull",
-        "JobHistory": {},
+        "JobHistory": {
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2359358757,
+                "EndTime": 2645279832,
+                "Region": "Gramados"
+            }
+        },
         "ActiveJobs": {
             "59": {
                 "JobID": 59,
@@ -675,6 +683,13 @@
                 "JobName": "Farmer",
                 "StartTime": 2377662253,
                 "Region": "Gramados",
+                "Type": "Advanced"
+            },
+            "409": {
+                "JobID": 409,
+                "JobName": "Mechanic",
+                "StartTime": 2359358757,
+                "Region": "Solterra",
                 "Type": "Advanced"
             }
         }
