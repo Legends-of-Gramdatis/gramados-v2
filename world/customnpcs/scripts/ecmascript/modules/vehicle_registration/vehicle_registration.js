@@ -23,7 +23,15 @@ function interact(event) {
 
     // Convert to JSON and clean it up
     var jsonStr = rawNbt.toJsonString();
-    jsonStr = jsonStr.replace(/(\d+)[bBsSlLfFdD]/g, '$1'); // Remove suffixes
+    jsonStr = jsonStr.replace(/\b(\d+)[bBsSlLfFdD]\b/g, function(match, p1, offset, string) {
+        // Ensure the match is not surrounded by quotes
+        var before = string[offset - 1];
+        var after = string[offset + match.length];
+        if (before !== '"' && after !== '"') {
+            return p1;
+        }
+        return match;
+    });
     var json = JSON.parse(jsonStr);
 
     // Check if player is allowed to register vehicles
@@ -81,9 +89,9 @@ function interact(event) {
     // ============ Check Key UUID ============ //
     var keyUUID = json.keyUUID || null;
     if (keyUUID) {
-        tellPlayer(player, "&a:check: Vehicle ownership confirmed");
+        tellPlayer(player, "&a:check: Vehicle has a valid VIN number.");
     } else {
-        tellPlayer(player, "&e:danger: Vehicle ownership is unclear");
+        tellPlayer(player, "&e:danger: Vehicle has no VIN number. This will require additional paperwork.");
     }
 
     // ============ Locate Engine ============ //
@@ -114,7 +122,7 @@ function interact(event) {
     tellPlayer(player, "&aEngine Found: &f" + engine.systemName);
     tellPlayer(player, "&aEngine Damage: &f" + engineDamage);
     tellPlayer(player, "&aEngine Hours: &f" + (engineHours !== null ? engineHours : "N/A"));
-    tellPlayer(player, "&aKey UUID: &f" + (keyUUID || "N/A"));
+    tellPlayer(player, "&aVehicle VIN: &f" + (keyUUID || "N/A"));
 
 
     // Proceed to pricing or paperwork from here
