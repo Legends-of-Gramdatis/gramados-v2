@@ -18,7 +18,7 @@
                 },
                 {
                     "type": "loot_table",
-                    "path": "treasures/treasures_gold_rack.json",
+                    "path": "treasures/treasures_ingots.json",
                     "weight": 2
                 }
             ]
