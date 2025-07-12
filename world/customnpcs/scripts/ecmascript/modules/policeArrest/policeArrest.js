@@ -41,7 +41,7 @@ function attempt_arrest(event, player, world) {
     }
 
     if (success) {
-        tallPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
+        tellPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
         damage_buffer = 0;
         is_under_arrest = true; // Set the arrest status to true
