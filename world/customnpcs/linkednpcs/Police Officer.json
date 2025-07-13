@@ -8,7 +8,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:makarovammo",
+                "id": "flansmod:r700ammo",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -18,7 +18,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:makarovammo",
+                "id": "flansmod:r700ammo",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -28,7 +28,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:makarovammo",
+                "id": "flansmod:r700ammo",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -38,13 +38,15 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:makarov",
+                "id": "flansmod:r700",
                 "Count": 1b,
                 "tag": {
                     "attachments": {
                         "barrel": {
                         },
                         "grip": {
+                        },
+                        "generic_1": {
                         },
                         "generic_0": {
                         },
@@ -55,6 +57,40 @@
                     },
                     "ammo": [
                         {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 1s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 1s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 0s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 0s
                         }
                     ]
                 },
@@ -111,7 +147,7 @@
         "WalkingRange": 32,
         "ShotCount": 1,
         "pDur": 5,
-        "StartPosNew": [I;2344,97,3558],
+        "StartPosNew": [I;-2902,101,910],
         "AttackRange": 2,
         "NpcKillLines": {
             "Lines": [
@@ -128,7 +164,7 @@
         },
         "pSpeed": 10,
         "pArea": 0,
-        "pImpact": 0,
+        "pImpact": 1,
         "MoveState": 0,
         "pRender3D": 1b,
         "CombatRegen": 0,
@@ -166,13 +202,15 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:makarov",
+                "id": "flansmod:r700",
                 "Count": 1b,
                 "tag": {
                     "attachments": {
                         "barrel": {
                         },
                         "grip": {
+                        },
+                        "generic_1": {
                         },
                         "generic_0": {
                         },
@@ -187,9 +225,36 @@
                                 "customnpcs:itemscripteddata": {
                                 }
                             },
-                            "id": "flansmod:makarovammo",
+                            "id": "flansmod:r700ammo",
                             "Count": 1b,
-                            "Damage": 2s
+                            "Damage": 1s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 1s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 0s
+                        },
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:r700ammo",
+                            "Count": 1b,
+                            "Damage": 0s
                         }
                     ]
                 },
@@ -212,7 +277,7 @@
         "AggroRange": 16,
         "DirectLOS": 1b,
         "HealthRegen": 1,
-        "minDelay": 15,
+        "minDelay": 40,
         "DoorInteract": 1,
         "MoveSpeed": 5,
         "TransformEditingModus": 0b,
@@ -262,7 +327,7 @@
                 "Slot": 8
             }
         ],
-        "maxDelay": 20,
+        "maxDelay": 80,
         "Role": 0,
         "FactionPoints": {
             "DecreaseFaction1Points": 0b,
@@ -272,7 +337,7 @@
             "OptionFaction1Points": 5,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 4,
+        "pDamage": 12,
         "AimWhileShooting": 1b,
         "AttackOtherFactions": 1b,
         "CanDrown": 1b,
@@ -350,8 +415,8 @@
         "TransformHasAdvanced": 0b,
         "TransformHasStats": 0b,
         "MovementType": 0,
-        "FiringSound": "customnpcs:gun.pistol.shot",
-        "Accuracy": 75,
+        "FiringSound": "flansmod:r700shoot",
+        "Accuracy": 80,
         "MinExp": 3,
         "Armor": [
         ],
