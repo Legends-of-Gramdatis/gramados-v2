@@ -1305,14 +1305,6 @@ sets:
             }
         label: Repair Shops
         markers:
-            marker_10:
-                world: world
-                markup: false
-                x: -1001.0
-                y: 76.0
-                z: 233.0
-                icon: shopping_garage
-                label: Kitsuné & Co Auto Repairs
             marker_1:
                 world: world
                 markup: false
@@ -1320,7 +1312,7 @@ sets:
                 y: 77.0
                 z: 361.0
                 icon: shopping_garage
-                label: Repair Shop
+                label: Minchaly Customs (Repair Shop)
             marker_2:
                 world: world
                 markup: false
@@ -1385,6 +1377,14 @@ sets:
                 z: -361.0
                 icon: shopping_garage
                 label: Repair Shop
+            marker_10:
+                world: world
+                markup: false
+                x: -1001.0
+                y: 76.0
+                z: 233.0
+                icon: shopping_garage
+                label: Kitsuné & Co Auto Repairs
             marker_11:
                 world: world
                 markup: false
