@@ -2,8 +2,8 @@ import os
 import json
 
 # CONFIGURATION
-LOOT_TABLE_DIR = '/home/mouette/gramados-v2/world/loot_tables/automobile/wheels'
-TARGET_COUNT = 4
+LOOT_TABLE_DIR = '/home/mouette/gramados-v2/world/loot_tables/automobile/seats/wip'
+TARGET_COUNT = 2
 OVERWRITE_EXISTING_COUNT = False
 
 def update_loot_table(path):
