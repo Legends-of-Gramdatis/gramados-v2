@@ -1,0 +1,104 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_electric",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_f",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_fuel",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_electric",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_fuel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_tachometer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_gear",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

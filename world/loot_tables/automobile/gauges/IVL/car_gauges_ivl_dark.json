@@ -1,0 +1,119 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.clock_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.2gear_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.1gear_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.fuel_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.fueldigital_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.fuelelectric_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.fueltemp_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.fueltempbattoil_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.hours_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.kmh_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.kmhdigital_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.mph_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.mphdigital_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.odo_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.oil_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.power_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.oilpower_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.tach_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.tachdigital_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.tachmarkless_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.tachshifter_dark",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.temp_dark",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,79 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicfuel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicfueltemp",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicgear",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicgearneedle",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classickey",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicmph",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicmphround",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicmphscrolling",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicodomiles",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicoil",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicoilpower",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classicpower",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classictach",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.classictemp",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
