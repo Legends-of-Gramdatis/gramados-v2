@@ -16,7 +16,7 @@ function interact(event) {
 
     // Check if the player has a job with the tag "Mechanic"
     if (!playerHasJobWithTag(player, "Mechanic")) {
-        tellPlayer(player, "&c:cross: Sorry, only Mechanics are authorized to purchase a Junkyard Crate Crowbar. If you are interested, consider taking up the Mechanic job.");
+        storytellPlayer(player, ["&7[&c✖&7] &fHey — this isn't a tourist trap. &cOnly certified mechanics are allowed to buy crowbars around here.","&r&8(If you're serious, maybe consider taking up the Mechanic job.)"]);
         return;
     }
 
@@ -28,7 +28,7 @@ function interact(event) {
 
     // Check if the player has already purchased a crowbar today
     if (purchaseData[playerName] && purchaseData[playerName] >= currentDay) {
-        tellPlayer(player, "&c:cross: You have already purchased a crowbar today. Please come back tomorrow to buy another one.");
+        storytellPlayer(player, ["&7[&c✖&7] &fWoah there, no double-dipping.","&r&fYou've already had your daily crate pull. Come back tomorrow, alright?"]);
         return;
     }
 
@@ -36,13 +36,14 @@ function interact(event) {
         var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player);
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);
-        tellPlayer(player, "&a:check: Thank you for your purchase! Here is your Junkyard Crate Crowbar. Use it to pry open sealed parts crates and discover valuable items inside.");
+        storytellPlayer(player, ["&7[&a✔&7] &fDeal's done. Here's your crowbar — one-use only, so make it count.","&8Check the crates behind the fence. You never know what you'll find."]);
+
 
         // Update the purchase data and save it
         purchaseData[playerName] = currentDay;
         saveJson(purchaseData, jsonFilePath);
     } else {
-        tellPlayer(player, "&c:cross: You need 2500g to buy the crowbar. Make sure you have enough money in your pouch before trying again.");
+        storytellPlayer(player, ["&7[&c✖&7] &fSorry, pal. &cThat crowbar costs 2500g.","&r&8Check your pouch and try again when you've got the funds."]);
         return;
     }
 }
