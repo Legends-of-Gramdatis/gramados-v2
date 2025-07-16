@@ -32,7 +32,7 @@ function interact(event) {
         return;
     }
 
-    if (getMoneyFromPlayerPouch(player, 250000)) {
+    if (getMoneyFromPlayerPouch(player, 150000)) {
         var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player);
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);
@@ -43,7 +43,7 @@ function interact(event) {
         purchaseData[playerName] = currentDay;
         saveJson(purchaseData, jsonFilePath);
     } else {
-        storytellPlayer(player, ["&7[&c✖&7] &fSorry, pal. &cThat crowbar costs 2500g.","&r&8Check your pouch and try again when you've got the funds."]);
+        storytellPlayer(player, ["&7[&c✖&7] &fSorry, pal. &cThat crowbar costs 1500g.","&r&8Check your pouch and try again when you've got the funds."]);
         return;
     }
 }
