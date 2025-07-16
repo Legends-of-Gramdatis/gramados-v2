@@ -177,6 +177,7 @@ def main():
     player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items = calculate_statistics(data)
     os.makedirs(os.path.dirname(output_filepath), exist_ok=True)
     generate_report(player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, output_filepath)
+    print(f"Report generated successfully. You can view it here: {output_filepath}")
 
 if __name__ == "__main__":
     main()
