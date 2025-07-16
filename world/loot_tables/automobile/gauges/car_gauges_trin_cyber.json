@@ -1,0 +1,54 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_electric",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_c",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_enginetemp_f",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_fuel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_oilpressure_bar",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_oilpressure_psi",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_speed_kph",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_speed_mph",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_car-boat_gauge_cyber_tachometer",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
