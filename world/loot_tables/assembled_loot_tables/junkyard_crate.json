@@ -13,8 +13,13 @@
                 },
                 {
                     "type": "loot_table",
+                    "path": "automobile/seats/car_seats.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
                     "path": "automobile/engines/car_engines.json",
-                    "weight": 8
+                    "weight": 7
                 },
                 {
                     "type": "loot_table",
