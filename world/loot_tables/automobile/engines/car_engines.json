@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/engines/car_engines_ivl.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/engines/car_engines_trin.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/engines/car_engines_unu.json",
+                    "weight": 4
+                }
+            ]
+        }
+    ]
+}
