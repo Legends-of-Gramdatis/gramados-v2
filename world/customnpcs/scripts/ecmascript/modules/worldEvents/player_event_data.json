@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1116
+            "egg_count": 1117
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -128,7 +128,7 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 25
+                    "egg_count": 26
                 },
                 "chromashell": {
                     "egg_count": 20
@@ -137,7 +137,7 @@
                     "egg_count": 2
                 }
             },
-            "egg_count": 47
+            "egg_count": 48
         },
         "BOTFerris": {
             "has_starter_pack": true,
