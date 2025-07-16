@@ -75,19 +75,30 @@ def generate_wealth_report(player_wealth_details, decoded_data, output_filepath)
         # Add a section for all regions and their values, sorted by price
         report.write("\n## All Regions and Their Values (sorted by price)\n\n")
         regions = [
-            (value.get("displayName", key), value.get("salePrice", 0) / 100)
+            (value.get("displayName", key), value.get("salePrice", 0) / 100, value.get("owner", "Unowned"))
             for key, value in decoded_data.items() if key.startswith("region_")
         ]
-        for region_name, sale_price in sorted(regions, key=lambda x: x[1], reverse=True):
-            report.write(f"- {region_name}: {sale_price:,.2f} Grons\n")
+        for region_name, sale_price, owner in sorted(regions, key=lambda x: x[1], reverse=True):
+            report.write(f"- {region_name}: {sale_price:,.2f} Grons (Owner: {owner})\n")
 
         # Add a section for regions for sale
         report.write("\n## Regions for Sale\n\n")
         regions_for_sale = [
             (value.get("displayName", key), value.get("salePrice", 0) / 100, value.get("owner", "Unowned"))
-            for key, value in decoded_data.items() if key.startswith("region_") and value.get("forSale", False)
+            for key, value in decoded_data.items() 
+            if key.startswith("region_") and value.get("forSale", False) and value.get("saleType") == "buy"
         ]
-        for region_name, sale_price, owner in sorted(regions_for_sale, key=lambda x: x[1], reverse=True):
+        for region_name, sale_price, owner in sorted(regions_for_sale, key=lambda x: x[0]):
+            report.write(f"- {region_name}: {sale_price:,.2f} Grons (Owner: {owner})\n")
+
+        # Add a section for regions for rent
+        report.write("\n## Regions for Rent\n\n")
+        regions_for_rent = [
+            (value.get("displayName", key), value.get("salePrice", 0) / 100, value.get("owner", "Unowned"))
+            for key, value in decoded_data.items() 
+            if key.startswith("region_") and value.get("forSale", False) and value.get("saleType") == "rent"
+        ]
+        for region_name, sale_price, owner in sorted(regions_for_rent, key=lambda x: x[0]):
             report.write(f"- {region_name}: {sale_price:,.2f} Grons (Owner: {owner})\n")
 
     print(f"Wealth report written to {output_filepath}")
