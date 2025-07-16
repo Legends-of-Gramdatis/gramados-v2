@@ -1,4 +1,5 @@
 import json
+import re
 
 def read_items_from_file(filename):
     with open(filename, "r") as file:
@@ -6,14 +7,34 @@ def read_items_from_file(filename):
         return [line.strip().strip('<>"') for line in file if line.strip()]
 
 def generate_loot_table(items):
+    loot_entries = []
+    for item in items:
+        match = re.match(r"(.+):(\d+)$", item)  # Match items with damage values
+        if match:
+            name, damage = match.groups()
+            loot_entries.append({
+                "type": "item",
+                "name": name,
+                "weight": 5,
+                "functions": [
+                    {
+                        "function": "set_data",
+                        "data": int(damage)
+                    }
+                ]
+            })
+        else:
+            loot_entries.append({
+                "type": "item",
+                "name": item,
+                "weight": 5
+            })
+
     return {
         "pools": [
             {
                 "rolls": 1,
-                "entries": [
-                    {"type": "item", "name": item, "weight": 5}
-                    for item in items
-                ]
+                "entries": loot_entries
             }
         ]
     }
