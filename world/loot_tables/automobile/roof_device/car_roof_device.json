@@ -1,0 +1,14 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/roof_device/car_roof_device_goofy.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
