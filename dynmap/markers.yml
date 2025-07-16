@@ -723,7 +723,7 @@ sets:
                 icon: misc_hotel
                 y: 73.0
                 z: -906.0
-                label: Springfield Starter Hotel
+                label: The Green Stay
             marker_2:
                 world: world
                 markup: false
