@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/bus_seats.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/car_seats.json",
+                    "weight": 16
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/tractor_seats_pan.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

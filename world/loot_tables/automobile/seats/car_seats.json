@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/car_seats_trin.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/car_seats_ocp.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/car_seats_baby_ivv.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/car_seats_ivv.json",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

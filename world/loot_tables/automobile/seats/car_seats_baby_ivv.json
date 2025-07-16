@@ -1,0 +1,89 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_cyan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_light_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_lime",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_magenta",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_orange",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_pink",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_silver",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.carrierseat_yellow",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
