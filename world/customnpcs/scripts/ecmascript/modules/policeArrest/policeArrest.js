@@ -43,7 +43,6 @@ function attempt_arrest(event, player, world) {
     if (success) {
         tellPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
-        damage_buffer = 0;
         is_under_arrest = true; // Set the arrest status to true
         can_be_arrested = false; // Prevent further arrests until the current one is resolved
     }
@@ -257,8 +256,6 @@ function tick(event) {
         if (!arrest_clone_present) {
             is_under_arrest = false; // Reset the arrest status if no clones are present
             can_be_arrested = false; // Allow future arrests
-            damage_buffer = 0; // Reset the damage buffer
-            damage_taken = 0; // Reset the damage taken during the arrest
             tellPlayer(event.player, "&eYou have escaped from arrest! You can now commit crimes again.");
             // despawn all arrest clones
             nearby_gentity_list = world.getNearbyEntities(event.player.getPos(), 100, 0);
