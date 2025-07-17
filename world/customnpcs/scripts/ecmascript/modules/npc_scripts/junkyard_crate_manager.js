@@ -37,7 +37,7 @@ function interact(event) {
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);
         storytellPlayer(player, ["&7[&a✔&7] &fDeal's done. Here's your crowbar — one-use only, so make it count.","&8Check the crates behind the fence. You never know what you'll find."]);
-
+        logToFile("economy", playerName + " purchased a Junkyard Crate Crowbar for 1500g.");
 
         // Update the purchase data and save it
         purchaseData[playerName] = currentDay;

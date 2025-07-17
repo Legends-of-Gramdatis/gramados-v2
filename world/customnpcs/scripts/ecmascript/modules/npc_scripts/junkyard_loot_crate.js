@@ -63,9 +63,15 @@ function lootCrate(player, item, npc) {
     item.setStackSize(item.getStackSize() - 1);
     player.setMainhandItem(item);
     var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE, player);
+    var logline = player.getName() + " opened a Junkyard Crate and received: ";
     for (var i = 0; i < loot.length; i++) {
         npc.dropItem(
             generateItemStackFromLootEntry(loot[i], world)
         );
+        logline += loot[i].id + ":" + loot[i].damage + " x" + loot[i].count;
+        if (i < loot.length - 1) {
+            logline += ", ";
+        }
     }
+    logToFile("economy", logline);
 }
