@@ -574,6 +574,6 @@ function incremendEggTypeCounter(player, egg_type) {
     savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
     savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
     savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
-    var logline = player.getName() + " just caught an " + egg_type + " egg! (" + egg_count + " eggs total)";
+    var logline = player.getName() + " just caught a " + egg_type + " egg! (" + egg_count + " eggs total)";
     logToFile("events", logline);
 }
