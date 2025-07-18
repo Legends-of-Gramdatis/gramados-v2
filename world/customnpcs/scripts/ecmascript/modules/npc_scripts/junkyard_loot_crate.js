@@ -73,5 +73,5 @@ function lootCrate(player, item, npc) {
             logline += ", ";
         }
     }
-    logToFile("economy", logline);
+    logToFile("mechanics", logline);
 }

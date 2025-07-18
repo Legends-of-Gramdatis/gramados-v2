@@ -1,6 +1,7 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var API = Java.type("noppes.npcs.api.NpcAPI").Instance();
 
@@ -79,4 +80,6 @@ function interact(event) {
 
     itemNbt.setDouble("hours", 20);
     npc.say("Your engine has been fixed for " + getAmountCoin(cost) + ".");
+    var logline = "Player " + player.getName() + " fixed an engine with " + hours + " runtime hours for " + getAmountCoin(cost) + ".";
+    logToFile("mechanics", logline);
 }

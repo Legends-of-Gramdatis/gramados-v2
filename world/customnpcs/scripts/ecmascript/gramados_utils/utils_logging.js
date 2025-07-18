@@ -25,6 +25,10 @@ var LOG_FILES = {
     loot_tables: {
         json: "world/customnpcs/scripts/logs/loot_tables.json",
         log: "world/customnpcs/scripts/logs/loot_tables.log"
+    }, 
+    mechanics: {
+        json: "world/customnpcs/scripts/logs/mechanics.json",
+        log: "world/customnpcs/scripts/logs/mechanics.log"
     }
 };
 
