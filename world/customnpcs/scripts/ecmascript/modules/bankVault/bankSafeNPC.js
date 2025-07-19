@@ -18,11 +18,15 @@ var safe_type = [
     "Safe"
 ]
 var click_cooldown = 60;
-var regen_cooldown = 40000;
+var regen_cooldown = 80000;
 // var regen_cooldown = 100;
 
 var tickCounter = 0;
 
+/**
+ * Initializes the NPC by linking it to a bank and setting up its stored data.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
 function init(event) {
     var npc = event.npc;
     var npcPos = npc.getPos();
@@ -71,6 +75,10 @@ function init(event) {
     }
 }
 
+/**
+ * Handles periodic updates for the NPC, such as checking and applying fill credits.
+ * @param {Object} event - The event object containing the NPC instance.
+ */
 function tick(event) {
     var npc = event.npc;
     tickCounter++;
@@ -94,6 +102,10 @@ function tick(event) {
     }
 }
 
+/**
+ * Checks and applies fill credits to the NPC's stored data if conditions are met.
+ * @param {Object} npc - The NPC instance.
+ */
 function checkAndApplyFillCredit(npc) {
     var bankName = npc.getStoreddata().get("bank_name");
     if (!bankName) return;
@@ -128,6 +140,10 @@ function checkAndApplyFillCredit(npc) {
     }
 }
 
+/**
+ * Handles player interactions with the NPC, performing actions based on the item used.
+ * @param {Object} event - The event object containing the NPC and player instances.
+ */
 function interact(event) {
     var npc = event.npc;
     var player = event.player;
@@ -217,6 +233,11 @@ function interact(event) {
     }
 }
 
+/**
+ * Regenerates the NPC's safe type and resets its fill level.
+ * @param {Object} npc - The NPC instance.
+ * @returns {string} - The new safe type.
+ */
 function regenerate(npc) {
     var current_type = npc.getStoreddata().get("safe_type");
     var current_index = safe_type.indexOf(current_type);
@@ -234,11 +255,19 @@ function regenerate(npc) {
     return next_type;
 }
 
+/**
+ * Saves the current interaction time to the NPC's stored data.
+ * @param {Object} npc - The NPC instance.
+ */
 function saveInteractionTime(npc) {
     var current_time = npc.getWorld().getTotalTime();
     npc.getStoreddata().put("last_interraction", current_time);
 }
 
+/**
+ * Handles the looting of the safe by the player, reducing the fill level and generating loot.
+ * @param {Object} event - The event object containing the NPC and player instances.
+ */
 function loot_safe(event) {
     var npc = event.npc;
     var player = event.player;
@@ -253,6 +282,11 @@ function loot_safe(event) {
     generateLoot(npc.getWorld(), npc, player);
 }
 
+/**
+ * Calculates the elapsed time since the last interaction with the NPC.
+ * @param {Object} npc - The NPC instance.
+ * @returns {number} - The elapsed time in ticks.
+ */
 function getTimer(npc) {
     var current_time = npc.getWorld().getTotalTime();
     var last_interaction_time = npc.getStoreddata().get("last_interraction");
@@ -263,6 +297,12 @@ function getTimer(npc) {
     return elapsed_time;
 }
 
+/**
+ * Generates loot for the player based on the NPC's safe type and logs the event.
+ * @param {Object} world - The world instance.
+ * @param {Object} npc - The NPC instance.
+ * @param {Object} player - The player instance.
+ */
 function generateLoot(world, npc, player) {
     var full_loot = [];
     var criminalityIncrease = rrandom_range(1, 5);
@@ -318,6 +358,10 @@ function generateLoot(world, npc, player) {
     tellPlayer(player, "&cYour criminality has increased by " + criminalityIncrease + " points!");
 }
 
+/**
+ * Updates the NPC's skin URL based on its safe type and fill level.
+ * @param {Object} npc - The NPC instance.
+ */
 function updateSkinURL(npc) {
     var current_type = npc.getStoreddata().get("safe_type");
     var fill_level = npc.getStoreddata().get("fill_level");
