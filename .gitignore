@@ -74,12 +74,13 @@ GramdatisServer-1.0-alpha-all.jar.OLD
 world/customnpcs/scripts/logs/*
 reports/*.md
 reports/*.json
-tools/wth is that?*
 world/customnpcs/linkednpcs/New.json
-tools/decoded_world_data.json
 lore markdowns/Private Lore Recap.md
 lore markdowns/TO SORT MESS/*.md
 DiscordIntegration-Data/*
 world/customnpcs/scripts/data/junkyard_purchases.json
+world/customnpcs/scripts/data/parts_orders.json
+
 tools/__pycache__/*
+tools/wth is that?*
 tools/output*.json
