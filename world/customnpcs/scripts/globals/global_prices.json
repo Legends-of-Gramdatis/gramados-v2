@@ -792,5 +792,419 @@
     "harvestcraft:festivalbreaditem:0": {
         "display_name": "festivalbreaditem",
         "value": 384
+    },
+    "mts:iv_tpp.paint_bucket_glacierwhite:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_silver:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_teal:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_white:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.paint_bucket_irongray:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.paint_bucket_oceanblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_ivory:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_tungsten:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_electricblue:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sand:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_jetblack:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_sapphire:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sandstone:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_deepblack:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_lapenderblue:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sage:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_skyblue:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_softgreen:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_emerald:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_lemonyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_tomato:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_oakgreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_buttercup:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_ruby:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_spruce:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_sunshineyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_firered:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_coldspruce:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_honey:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_bloodred:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_militarygreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_fireorange:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_carminred:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_steelblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_orangered:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_milkcoffee:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_brown:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_grape:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_chocolate:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_pink:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_turquoise:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_caramel:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_fuchsia:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_slimelime:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_amber:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantred:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_citruslime:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_midnightpurple:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_pinkcandy:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_plum:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.wrap_roll_coal:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wrap_roll_lapislazuli:0": {
+        "value": 110000
+    },
+    "mts:iv_tpp.paint_double_bucket_bubblegum:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.wrap_roll_iron:0": {
+        "value": 150000
+    },
+    "mts:iv_tpp.wrap_roll_quartz:0": {
+        "value": 120000
+    },
+    "mts:iv_tpp.paint_double_bucket_forest:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wrap_roll_gold:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.wrap_roll_redstone:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.paint_double_bucket_redandblack:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wrap_roll_diamond:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.paint_double_bucket_shagbark:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wrap_roll_emerald:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.paint_double_bucket_steelblueandteal:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wrap_roll_driveschool:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
+        "value": 50000
+    },
+    "minecraft:dye:0": {
+        "value": 2000
+    },
+    "minecraft:dye:6": {
+        "value": 2000
+    },
+    "minecraft:dye:12": {
+        "value": 2000
+    },
+    "minecraft:dye:1": {
+        "value": 2000
+    },
+    "minecraft:dye:7": {
+        "value": 2000
+    },
+    "minecraft:dye:13": {
+        "value": 2000
+    },
+    "minecraft:dye:2": {
+        "value": 2000
+    },
+    "minecraft:dye:8": {
+        "value": 2000
+    },
+    "minecraft:dye:14": {
+        "value": 2000
+    },
+    "minecraft:dye:3": {
+        "value": 2000
+    },
+    "minecraft:dye:9": {
+        "value": 2000
+    },
+    "minecraft:dye:15": {
+        "value": 2000
+    },
+    "minecraft:dye:4": {
+        "value": 2000
+    },
+    "minecraft:dye:10": {
+        "value": 2000
+    },
+    "minecraft:dye:5": {
+        "value": 2000
+    },
+    "minecraft:dye:11": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_apple:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_crimson:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_manilla:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_aqua:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_emerald:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_mint:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_blackthorne:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ford:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_navy:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_charcoal:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ivory:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ocean:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_chocolate:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_jade:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_olive:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_coral:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_lemon:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_redsands:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_saddle:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_sea:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_seaweed:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_silver:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_spaghetti:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_tungsten:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_black:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_cyan:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_red:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_magenta:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_green:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_orange:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_brown:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_pink:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_white:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_lime:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_purple:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_yellow:0": {
+        "value": 20000
+    },
+    "mts:syndicatemotorfoundry.paintcan_ashen:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_golden:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_celestial:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_dark:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_violet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_phosphorescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lux:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_keppel:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_iridescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_verdant:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_russet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_scarlet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lunar:0": {
+        "value": 20000
+    },
+    "mts:syndicatemotorfoundry.paintcan_azure:0": {
+        "value": 10000
+    },
+    "mts:syndicatemotorfoundry.paintcan_solar:0": {
+        "value": 20000
     }
 }
