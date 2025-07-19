@@ -10,11 +10,6 @@
                 },
                 {
                     "type": "loot_table",
-                    "path": "automobile/car_paints/car_paints_mts.json",
-                    "weight": 2
-                },
-                {
-                    "type": "loot_table",
                     "path": "automobile/car_paints/car_paints_trin.json",
                     "weight": 6
                 },

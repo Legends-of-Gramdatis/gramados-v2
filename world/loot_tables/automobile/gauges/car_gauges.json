@@ -1,0 +1,14 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/gauges/car_gauges_trin.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
