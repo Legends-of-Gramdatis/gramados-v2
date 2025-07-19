@@ -2,7 +2,7 @@ import json
 
 # Load stock market JSON (replace with your actual file)
 stock_market_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/stock_exchange.json"
-global_prices_path = "/home/mouette/gramados-v2/tools/global_prices.json"
+global_prices_path = "/home/mouette/gramados-v2/tools/output_global_prices.json"
 
 with open(stock_market_path, "r") as file:
     stock_market_data = json.load(file)
@@ -31,7 +31,7 @@ for market, items in stock_market_data.items():
                     "based_on_stock": market  # Tracks the original market source
                 }
 
-# Save the output to global_prices.json
+# Save the output to output_global_prices.json
 with open(global_prices_path, "w") as file:
     json.dump(global_prices, file, indent=4)
 

@@ -121,7 +121,7 @@ if __name__ == "__main__":
         "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p9.json"
     ]
     # Path to the global prices file
-    global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
+    global_prices_path = "/home/mouette/gramados-v2/tools/output_global_prices.json"
 
     # # Load and clean the market JSON
     # market_data = load_mc_json(input_json_path)
