@@ -15,6 +15,10 @@ function loadJson(filePath) {
         content += line;
     }
     bufferedReader.close();
+    // if empty, return null
+    if (content.trim() === "") {
+        return null;
+    }
     return JSON.parse(content);
 }
 
