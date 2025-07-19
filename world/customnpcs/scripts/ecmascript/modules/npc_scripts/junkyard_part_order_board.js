@@ -15,7 +15,7 @@ var Paths = Java.type('java.nio.file.Paths');
 var ORDER_DATA_PATH = "world/customnpcs/scripts/data/parts_orders.json";
 var ORDER_ITEM_ID = "variedcommodities:plans";
 var ORDER_ITEM_NAME = "§eVehicle Part Order Form";
-var ORDER_DELAY_HOURS = 0; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
+var ORDER_DELAY_HOURS = 1; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
 
 function interact(event) {
     var player = event.player;
@@ -86,6 +86,12 @@ function generateOrder(player, playerName, world) {
         // tellPlayer(player, "§aYou have received a new order for: §b" + itemStack.getItemName() + "§a x" + entry.count);
         // logToFile("mechanics", "Player " + playerName + " received order for " + itemStack.getItemName() + " x" + entry.count);
         totalPayout += getPriceFromItemStack(itemStack, 10000, true); // Base price of 100.00 grons per item
+        totalPayout *= entry.count; // Multiply by the count of items
+
+        
+        // always allow a margin above part value (between 10 and 20 percent)
+        var margin = Math.random() * 0.1 + 0.1; // Random margin between 10% and 20%
+        totalPayout += Math.floor(totalPayout * margin);
     });
 
     var orderId = "order_" + Math.floor(Math.random() * 1000000);
@@ -141,6 +147,24 @@ function processOrder(npc, player, heldItem, orderData) {
     if (!order) {
         tellPlayer(player, "§cInvalid order ID.");
         return;
+    }
+
+    var currentTime = new Date();
+    var expiryDate = new Date(order.expiryDate);
+    var toleranceTime = expiryDate.getTime() + (expiryDate.getTime() * order.tolerance);
+
+    if (currentTime.getTime() > toleranceTime) {
+        tellPlayer(player, "§cThe order has expired and cannot be completed.");
+        return;
+    }
+
+    // Calculate payout reduction if completed after the original deadline
+    if (currentTime.getTime() > expiryDate.getTime()) {
+        var lateTime = currentTime.getTime() - expiryDate.getTime();
+        var toleranceDuration = toleranceTime - expiryDate.getTime();
+        var latePercentage = lateTime / toleranceDuration;
+        order.payout = Math.floor(order.payout * (1 - latePercentage));
+        tellPlayer(player, "§eThe order was completed late. Payout has been reduced to " + getAmountCoin(order.payout) + ".");
     }
 
     var inventory = player.getInventory().getItems();
