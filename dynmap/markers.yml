@@ -1368,7 +1368,7 @@ sets:
                 y: 78.0
                 z: -93.0
                 icon: shopping_garage
-                label: Repair Shop
+                label: Silver's Auto Repair & Customs (Repair Shop)
             marker_9:
                 world: world
                 markup: false
@@ -2179,7 +2179,7 @@ sets:
                 x: -2008.0
                 y: 77.0
                 z: 59.0
-                label: Gems of Zanzibar - Jewelry
+                label: Gems of Zanzibar - Gems and Precious Metals
             marker_10:
                 world: world
                 markup: false
