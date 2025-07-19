@@ -1,0 +1,37 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 1,
+                "max": 1
+            },
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/car_seats.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/engines/car_engines.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/gauges/car_gauges.json",
+                    "weight": 2
+                }
+            ]
+        }
+    ]
+}
