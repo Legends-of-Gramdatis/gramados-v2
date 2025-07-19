@@ -104,7 +104,7 @@ def generate_wealth_report(player_wealth_details, decoded_data, output_filepath)
     print(f"Wealth report written to {output_filepath}")
 
 if __name__ == "__main__":
-    input_file = "/home/mouette/gramados-v2/tools/decoded_world_data.json"
+    input_file = "/home/mouette/gramados-v2/tools/output_decoded_world_data.json"
     output_file = "/home/mouette/gramados-v2/reports/player_wealth_report.md"
 
     with open(input_file, 'r') as file:

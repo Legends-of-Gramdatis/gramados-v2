@@ -82,3 +82,4 @@ lore markdowns/TO SORT MESS/*.md
 DiscordIntegration-Data/*
 world/customnpcs/scripts/data/junkyard_purchases.json
 tools/__pycache__/*
+tools/output*.json
