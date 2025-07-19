@@ -38,10 +38,11 @@ def convert_price_to_cents(price_str):
     return 0
 
 
-def update_global_prices(market_data, global_prices_path):
+def update_global_prices(market_data, global_prices_path, force_replace=False):
     """
     Updates the global prices JSON file with items from the market JSON data.
-    Prompts the user if an item already exists.
+    Prompts the user if an item already exists unless force_replace is set to True.
+    Skips confirmation if the new price is identical to the old price.
     """
     # Load the existing global prices
     if os.path.exists(global_prices_path):
@@ -83,16 +84,20 @@ def update_global_prices(market_data, global_prices_path):
         # Print the extracted data for debugging
         print(f"Item {item_id} price extracted: {price_in_cents} cents")
 
-        # Ask the user if the item already exists in global prices
+        # Handle duplicates based on force_replace
         if item_id in global_prices:
             old_price = global_prices[item_id]['value']
             print(f"Item {item_id} found with existing price: {old_price} cents")
             print(f"New calculated price: {price_in_cents} cents")
-            # Ask for confirmation
-            choice = input(f"Do you want to keep the new price for {item_id}? (y/n): ").strip().lower()
-            if choice != 'y':
-                print(f"Keeping the old price for {item_id}.")
+            if old_price == price_in_cents:
+                print(f"Price for {item_id} is identical to the existing price. Skipping update.")
                 continue
+            if not force_replace:
+                # Ask for confirmation
+                choice = input(f"Do you want to keep the new price for {item_id}? (y/n): ").strip().lower()
+                if choice != 'y':
+                    print(f"Keeping the old price for {item_id}.")
+                    continue
 
         # Update the global prices with the new price
         global_prices[item_id] = {
@@ -110,18 +115,22 @@ def update_global_prices(market_data, global_prices_path):
 if __name__ == "__main__":
     # Path to the Minecraft broken market JSON
     input_json_path = [
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p1.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p2.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p3.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p4.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p5.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p6.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p7.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p8.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/paint_shop p9.json"
+        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p1.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p3.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/can_engines_alicemotors_ev.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/can_engines_random_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_engine_ivl_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_engines_trin_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_iav_unu_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_ivv_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_trin_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gearboxes_transmissions_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_general_p0.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_trin_generic_p0.json"
     ]
     # Path to the global prices file
-    global_prices_path = "/home/mouette/gramados-v2/tools/output_global_prices.json"
+    global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
 
     # # Load and clean the market JSON
     # market_data = load_mc_json(input_json_path)
@@ -135,5 +144,5 @@ if __name__ == "__main__":
     for path in input_json_path:
         market_data = load_mc_json(path)
         print(f"Loaded market data from {path}: {market_data}")
-        update_global_prices(market_data, global_prices_path)
+        update_global_prices(market_data, global_prices_path, force_replace=False)
     print("All market data processed and global prices updated.")
