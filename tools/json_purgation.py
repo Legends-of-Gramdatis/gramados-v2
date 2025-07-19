@@ -73,7 +73,7 @@ if __name__ == "__main__":
     cleaned_json_data = loadMCjson(input_json_path)
 
     # save in file
-    output_path = "/home/mouette/gramados-v2/tools/cleaned_paint_shop.json"
+    output_path = "/home/mouette/gramados-v2/tools/output_purge.json"
     with open(output_path, 'w') as file:
         json.dump(cleaned_json_data, file, indent=4)
 
