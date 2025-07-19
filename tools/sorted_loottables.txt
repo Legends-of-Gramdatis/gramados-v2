@@ -347,7 +347,7 @@
 //"<mts:iv_tpp.paint_bucket_irongray>"
 //"<mts:iv_tpp.paint_bucket_ivory>"
 //"<mts:iv_tpp.paint_bucket_jetblack>"
-//"<mts:iv_tpp.paint_bucket_lapenderblue>"
+//"<mts:iv_tpp.paint_bucket_lapenverblue>"
 //"<mts:iv_tpp.paint_bucket_lemonyellow>"
 //"<mts:iv_tpp.paint_bucket_midnightpurple>"
 //"<mts:iv_tpp.paint_bucket_militarygreen>"
