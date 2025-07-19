@@ -474,6 +474,13 @@
                 "StartTime": 2436983686,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2657590417,
+                "Region": "Gramados",
+                "Type": "Advanced"
             }
         }
     },
@@ -664,6 +671,13 @@
                 "StartTime": 2513429620,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2657579565,
+                "Region": "Gramados",
+                "Type": "Advanced"
             },
             "154": {
                 "JobID": 154,
@@ -932,5 +946,18 @@
         "Name": "BeanCollector",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "7ae44ce8-01c0-47f9-8be5-844b6d1bc57d": {
+        "Name": "Duckyoski",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2655868426,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
     }
 }
