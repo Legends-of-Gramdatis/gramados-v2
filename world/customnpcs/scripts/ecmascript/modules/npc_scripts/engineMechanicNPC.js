@@ -5,11 +5,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var API = Java.type("noppes.npcs.api.NpcAPI").Instance();
 
-/**
- * Handles NPC interaction to fix engine runtime hours.
- * @param {IPlayer} player - The player interacting with the NPC.
- * @param {INpc} npc - The NPC being interacted with.
- */
 function interact(event) {
     var player = event.player;
     var npc = event.npc;
