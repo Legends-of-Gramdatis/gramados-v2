@@ -120,13 +120,32 @@
             "Perms": []
         },
         {
+            "JobID": 554,
+            "JobLock": 555,
+            "JobQuit": 556,
+            "Type": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Greenfield",
+            "Perms": [
+                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
+            ]
+        },
+        {
             "JobID": 66,
             "JobLock": 65,
             "JobQuit": 444,
             "Type": "Advanced",
             "JobName": "Mechanic",
             "Region": "Gramados",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Gramados_GramadosCity_RustmarkStreet_4_RustmarkGarage_Garage",
+                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage",
+                "region_Gramados_GramadosCity_GrezyatStreet_3_DrabusGarage_Garage",
+                "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
+                "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
+                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage"
+            ]
         },
         {
             "JobID": 61,
@@ -182,7 +201,8 @@
             "Type": "Advanced",
             "JobName": "Mechanic",
             "Region": "Solterra",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": []
         },
         {
             "JobID": 420,
@@ -249,7 +269,7 @@
             "66": {
                 "JobID": 66,
                 "JobName": "Mechanic",
-                "StartTime": 2374672642,
+                "StartTime": 2658842278,
                 "Region": "Gramados",
                 "Type": "Advanced"
             }
@@ -658,52 +678,17 @@
             }
         },
         "ActiveJobs": {
-            "59": {
-                "JobID": 59,
-                "JobName": "Lumberjack",
-                "StartTime": 2376932675,
-                "Region": "Gramados",
-                "Type": "Starter"
-            },
-            "61": {
-                "JobID": 61,
-                "JobName": "Terracotta Factory Worker",
-                "StartTime": 2513429620,
-                "Region": "Gramados",
-                "Type": "Starter"
-            },
             "66": {
                 "JobID": 66,
                 "JobName": "Mechanic",
-                "StartTime": 2657579565,
-                "Region": "Gramados",
-                "Type": "Advanced"
-            },
-            "154": {
-                "JobID": 154,
-                "JobName": "Farmer",
-                "StartTime": 2377680133,
-                "Region": "Farmiston",
-                "Type": "Advanced"
-            },
-            "211": {
-                "JobID": 211,
-                "JobName": "Farmer",
-                "StartTime": 2377572983,
-                "Region": "Monsalac",
-                "Type": "Advanced"
-            },
-            "342": {
-                "JobID": 342,
-                "JobName": "Farmer",
-                "StartTime": 2377662253,
+                "StartTime": 2658859055,
                 "Region": "Gramados",
                 "Type": "Advanced"
             },
             "409": {
                 "JobID": 409,
                 "JobName": "Mechanic",
-                "StartTime": 2359358757,
+                "StartTime": 2658859055,
                 "Region": "Solterra",
                 "Type": "Advanced"
             }
