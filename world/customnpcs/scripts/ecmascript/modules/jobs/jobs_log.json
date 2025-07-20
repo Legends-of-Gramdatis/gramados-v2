@@ -61,7 +61,11 @@
             "Type": "Advanced",
             "JobName": "Farmer",
             "Region": "Farmiston",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Farmiston_Countryside_RechnoyePoleFarm_Farm",
+                "region_Farmiston_Countryside_KrasnayaZemlyaFarm_Farm"
+            ]
         },
         {
             "JobID": 342,
@@ -79,7 +83,10 @@
             "Type": "Prestige",
             "JobName": "Brewer",
             "Region": "Allenis",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Allenis_North_VintnersRoad_SilverleafWinery"
+            ]
         },
         {
             "JobID": 51,
