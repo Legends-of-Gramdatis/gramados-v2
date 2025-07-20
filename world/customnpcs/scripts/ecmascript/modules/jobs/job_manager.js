@@ -9,7 +9,10 @@ var tick_counter = 1;
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
-// Load Job Data on NPC Initialization
+/**
+ * Initializes the job data and updates player job entries.
+ * @param {Object} event - The event object containing player information.
+ */
 function init(event) {
     job_data = loadJson(data_file_path);
     if (!job_data) {
@@ -18,12 +21,15 @@ function init(event) {
     }
     update_job_entries(event.player);
     check_all_jobs(event.player);
-    // tell_player_job(event.player);
+    auto_assign_jobs(event.player); // Added this line
     update_job_perms(event.player);
     update_job_type_json(event.player);
 }
 
-// Tick Function
+/**
+ * Handles periodic job checks and updates.
+ * @param {Object} event - The event object containing player information.
+ */
 function tick(event) {
     if (!job_data) {
         world.broadcast("ERROR: Job data not loaded!");
@@ -33,13 +39,17 @@ function tick(event) {
     if (tick_counter >= tick_counter_max) {
         tick_counter = 0;
         check_all_jobs(event.player);
+        // remove_jobs_on_permission_loss(event.player); // Added this line
         quit_job_manager(event.player);
     } else {
         tick_counter++;
     }
 }
 
-// Function to create a new Player
+/**
+ * Creates a new player entry in the job data if it doesn't exist.
+ * @param {Object} player - The player object.
+ */
 function update_job_entries(player) {
     // Get the UUID of the player
     var player_uuid = player.getUUID();
@@ -58,7 +68,10 @@ function update_job_entries(player) {
     }
 }
 
-// Function to tell the player what job he currently has
+/**
+ * Sends a message to the player about their current job.
+ * @param {Object} player - The player object.
+ */
 function tell_player_job(player) {
     var player_uuid = player.getUUID();
 
@@ -72,7 +85,12 @@ function tell_player_job(player) {
     }
 }
 
-// Function to tell a timestamp between two times
+/**
+ * Calculates the time difference between two timestamps.
+ * @param {number} start_time_ticks - The start time in ticks.
+ * @param {number} end_time_ticks - The end time in ticks.
+ * @returns {string} - The formatted time difference.
+ */
 function get_time(start_time_ticks, end_time_ticks) {
     // 20 ticks = 1 second
     var time_difference = end_time_ticks - start_time_ticks;
@@ -90,7 +108,13 @@ function get_time(start_time_ticks, end_time_ticks) {
     return years + " years, " + months + " months, " + days + " days, " + hours + " hours, " + minutes + " minutes and " + seconds + " seconds";
 }
 
-// Count Active Jobs by Type in a Region
+/**
+ * Counts the number of active jobs of a specific type in a region.
+ * @param {string} player_uuid - The UUID of the player.
+ * @param {string} region - The region name.
+ * @param {string} job_type - The type of job.
+ * @returns {number} - The count of active jobs.
+ */
 function count_jobs_by_type_in_region(player_uuid, region, job_type) {
     var count = 0;
     for (var job in job_data[player_uuid]["ActiveJobs"]) {
@@ -102,7 +126,10 @@ function count_jobs_by_type_in_region(player_uuid, region, job_type) {
     return count;
 }
 
-//function to update job perms
+/**
+ * Updates the job-related permissions for a player.
+ * @param {Object} player - The player object.
+ */
 function update_job_perms(player) {
     var player_uuid = player.getUUID();
 
@@ -111,7 +138,11 @@ function update_job_perms(player) {
     }
 }
 
-// function to add job related perms
+/**
+ * Adds job-related permissions to a player.
+ * @param {Object} player - The player object.
+ * @param {number} job_id - The ID of the job.
+ */
 function add_job_perms(player, job_id) {
 
     // Load world data
@@ -160,7 +191,11 @@ function add_job_perms(player, job_id) {
     }
 }
 
-// function to remove job related perms (when quitting a job)
+/**
+ * Removes job-related permissions from a player.
+ * @param {Object} player - The player object.
+ * @param {number} job_id - The ID of the job.
+ */
 function remove_job_perms(player, job_id) {
     // Load world data
     var world_data = world.getStoreddata();
@@ -195,8 +230,47 @@ function remove_job_perms(player, job_id) {
     }
 }
 
+/**
+ * Automatically assigns jobs to a player based on region ownership.
+ * @param {Object} player - The player object.
+ */
+function auto_assign_jobs(player) {
+    var player_uuid = player.getUUID();
+    var world_data = world.getStoreddata();
 
-// Check All Jobs
+    for (var i = 0; i < job_data["Jobs"].length; i++) {
+        var job = job_data["Jobs"][i];
+
+        if (job["AutoAssignPerms"] && Array.isArray(job["AutoAssignPerms"])) {
+            for (var j = 0; j < job["AutoAssignPerms"].length; j++) {
+                var region = job["AutoAssignPerms"][j];
+                var region_data = JSON.parse(world_data.get(region));
+
+                if (region_data && region_data["owner"] === player.getName()) {
+                    if (!job_data[player_uuid]["ActiveJobs"][job["JobID"]]) {
+                        job_data[player_uuid]["ActiveJobs"][job["JobID"]] = {
+                            "JobID": job["JobID"],
+                            "JobName": job["JobName"],
+                            "StartTime": world.getTotalTime(),
+                            "Region": job["Region"],
+                            "Type": job["Type"]
+                        };
+
+                        world.broadcast(player.getName() + " has been automatically assigned the job \"" + job["JobName"] + "\" in " + job["Region"]);
+                        player.message("You have been granted the job \"" + job["JobName"] + "\" in " + job["Region"] + " because you own the region \"" + region + "\".");
+                        update_job_perms(player);
+                        saveJson(job_data, data_file_path);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Checks and assigns jobs to a player based on various conditions.
+ * @param {Object} player - The player object.
+ */
 function check_all_jobs(player) {
     var player_uuid = player.getUUID();
 
@@ -237,7 +311,10 @@ function check_all_jobs(player) {
     }
 }
 
-// Quit Job Manager
+/**
+ * Manages the process of quitting jobs for a player.
+ * @param {Object} player - The player object.
+ */
 function quit_job_manager(player) {
     var player_uuid = player.getUUID();
 
@@ -293,7 +370,13 @@ function quit_job_manager(player) {
     }
 }
 
-// Returns the list of jobs you currently have in a given region with the given type
+/**
+ * Retrieves the list of jobs a player has in a specific region and type.
+ * @param {string} player_uuid - The UUID of the player.
+ * @param {string} region - The region name.
+ * @param {string} job_type - The type of job.
+ * @returns {string} - A comma-separated list of job names.
+ */
 function get_jobs_by_type_in_region(player_uuid, region, job_type) {
     var jobs = [];
     for (var job in job_data[player_uuid]["ActiveJobs"]) {
@@ -307,7 +390,10 @@ function get_jobs_by_type_in_region(player_uuid, region, job_type) {
     return jobs;
 }
 
-// Function to update the player's job type json if necessary as this is a new feature and not all players have it
+/**
+ * Updates the job type JSON for a player if necessary.
+ * @param {Object} player - The player object.
+ */
 function update_job_type_json(player) {
     var player_uuid = player.getUUID();
 
@@ -340,5 +426,54 @@ function update_job_type_json(player) {
 
     if (updated) {
         saveJson(job_data, data_file_path);
+    }
+}
+
+/**
+ * Removes jobs from a player if they lose the required region ownership.
+ * @param {Object} player - The player object.
+ */
+function remove_jobs_on_permission_loss(player) {
+    var player_uuid = player.getUUID();
+    var world_data = world.getStoreddata();
+
+    if (!Array.isArray(job_data["Jobs"])) {
+        world.broadcast("ERROR: job_data['Jobs'] is not an array or is undefined.");
+        return;
+    }
+
+    for (var job_id in job_data[player_uuid]["ActiveJobs"]) {
+        var active_job = job_data[player_uuid]["ActiveJobs"][job_id];
+        var job = null;
+
+        // Use a normal for loop to find the job
+        for (var i = 0; i < job_data["Jobs"].length; i++) {
+            if (job_data["Jobs"][i]["JobID"] == job_id) {
+                job = job_data["Jobs"][i];
+                break;
+            }
+        }
+
+        if (job && job["AutoAssignPerms"] && Array.isArray(job["AutoAssignPerms"])) {
+            var owns_region = false;
+
+            for (var j = 0; j < job["AutoAssignPerms"].length; j++) {
+                var region = job["AutoAssignPerms"][j];
+                var region_data = JSON.parse(world_data.get(region));
+
+                if (region_data && region_data["owner"] === player.getName()) {
+                    owns_region = true;
+                    break;
+                }
+            }
+
+            if (!owns_region) {
+                // Remove the job
+                delete job_data[player_uuid]["ActiveJobs"][job_id];
+                remove_job_perms(player, job_id);
+                world.broadcast(player.getName() + " has lost the job \"" + active_job["JobName"] + "\" in " + active_job["Region"] + " due to losing ownership of the required region.");
+                saveJson(job_data, data_file_path);
+            }
+        }
     }
 }
