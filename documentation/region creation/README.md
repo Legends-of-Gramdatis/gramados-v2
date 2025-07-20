@@ -2,6 +2,7 @@
 ![alt text](<GFM - Gramados Island (PDN).png>)
 ![alt text](<GFM - Greenfield Island.png>)
 ![alt text](<GFM - Monsalac Island.png>)
+![alt text](<GFM - Solterra Island.png>)
 
 Land value calculation:
 - Land surface: *price* * 0.02
