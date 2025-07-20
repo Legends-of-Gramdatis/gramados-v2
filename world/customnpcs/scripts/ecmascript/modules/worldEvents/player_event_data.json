@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1122
+            "egg_count": 1123
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -143,7 +143,7 @@
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 45
+                    "egg_count": 46
                 },
                 "chromashell": {
                     "egg_count": 13
@@ -152,7 +152,7 @@
                     "egg_count": 3
                 }
             },
-            "egg_count": 61
+            "egg_count": 62
         },
         "SinaBloodsaw": {
             "egg_types": {
