@@ -7306,14 +7306,14 @@ registerXCommands([
 ]);
 
 registerXCommands([
-    ['!jobs create <name> [...display_name]', function (pl, args) {
+    ['!jobs_deprecated create <name> [...display_name]', function (pl, args) {
         var job = new Job(args.name);
         var dname = args.display_name.join(' ');
         var data = pl.world.getStoreddata();
         if (dname != "") {
             job.data.displayName = dname;
         }
-        tellPlayer(pl, "&aJob '" + job.getDisplayName(data) + "&a' created! " + getUndoBtn(["!jobs remove " + job.name], "$cClick to undo"));
+        tellPlayer(pl, "&aJob '" + job.getDisplayName(data) + "&a' created! " + getUndoBtn(["!jobs_deprecated remove " + job.name], "$cClick to undo"));
         job.save(data);
     }, 'jobs.create', [
             {
@@ -7328,7 +7328,7 @@ registerXCommands([
                 "exists": false,
             }
         ]],
-    ['!jobs remove <name>', function (pl, args) {
+    ['!jobs_deprecated remove <name>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.remove(data);
@@ -7341,7 +7341,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs setPay <name> <amount>', function (pl, args) {
+    ['!jobs_deprecated setPay <name> <amount>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7361,7 +7361,7 @@ registerXCommands([
                 "type": "number"
             }
         ]],
-    ['!jobs setPayTime <name> <time>', function (pl, args) {
+    ['!jobs_deprecated setPayTime <name> <time>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7380,7 +7380,7 @@ registerXCommands([
                 "type": "time"
             }
         ]],
-    ['!jobs setOpen <name> <open>', function (pl, args) {
+    ['!jobs_deprecated setOpen <name> <open>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7399,7 +7399,7 @@ registerXCommands([
                 "type": "bool"
             }
         ]],
-    ['!jobs setDisplayName <name> <...display_name>', function (pl, args) {
+    ['!jobs_deprecated setDisplayName <name> <...display_name>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7414,7 +7414,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs list [...matches]', function (pl, args) {
+    ['!jobs_deprecated list [...matches]', function (pl, args) {
         var data = pl.world.getStoreddata();
         var dkeys = data.getKeys();
         tellPlayer(pl, getTitleBar("Job List"));
@@ -7438,7 +7438,7 @@ registerXCommands([
         }
         return true;
     }, 'jobs.list'],
-    ['!jobs info <name>', function (pl, args) {
+    ['!jobs_deprecated info <name>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7458,7 +7458,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs playerList <name>', function (pl, args) {
+    ['!jobs_deprecated playerList <name>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7477,7 +7477,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs addPlayers <name> <...player_names>', function (pl, args) {
+    ['!jobs_deprecated addPlayers <name> <...player_names>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.load(data);
@@ -7498,7 +7498,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs setPlaces <name> <amount>', function (pl, args) {
+    ['!jobs_deprecated setPlaces <name> <amount>', function (pl, args) {
         var am = parseInt(args.amount) || 10;
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
@@ -7517,7 +7517,7 @@ registerXCommands([
                 "type": "number"
             }
         ]],
-    ['!jobs setFireTime <name> <time>', function (pl, args) {
+    ['!jobs_deprecated setFireTime <name> <time>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         job.data.fireTime = args.time;
@@ -7535,7 +7535,7 @@ registerXCommands([
                 "type": "time"
             }
         ]],
-    ['!jobs removePlayers <name> <...players>', function (pl, args) {
+    ['!jobs_deprecated removePlayers <name> <...players>', function (pl, args) {
         var job = new Job(args.name);
         var data = pl.world.getStoreddata();
         for (var p in args.players) {
@@ -7555,7 +7555,7 @@ registerXCommands([
                 "exists": true,
             }
         ]],
-    ['!jobs reload', function (pl, args) {
+    ['!jobs_deprecated reload', function (pl, args) {
         var data = pl.world.getStoreddata();
         var dkeys = data.getKeys();
         var jc = 0;
