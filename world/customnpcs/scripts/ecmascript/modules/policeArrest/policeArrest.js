@@ -156,11 +156,11 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
                     break;
             }
             success = true;
-            damage_buffer = damage_buffer + 10; // Increase the damage buffer for each NPC spawned
         }
     }
 
     logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities. Spawned " + count + " NPCs of type " + type);
+    damage_buffer += count * 10; // Increase the damage buffer for each NPC spawned
 
     return success;
 }
@@ -214,14 +214,15 @@ function died(event) {
             }
         }
         
-        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + damage_taken + " during the arrest.");
+        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + damage_taken + " during the arrest. Buffer left: " + damage_buffer + ".");
 
         // Reset the spawn count after the arrest is completed
-        damage_buffer = 0;
+        // damage_buffer = 0;
         damage_taken = 0;
+
+        can_be_arrested = false;
     }
 
-    can_be_arrested = false;
     is_under_arrest = false; // Reset the arrest status when the player dies
 }
 
