@@ -949,6 +949,13 @@
                 "StartTime": 2655868426,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2659225541,
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     }
