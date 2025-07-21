@@ -14284,11 +14284,12 @@ function died(e) {
         var plo = new Player(pl.getName()).init(data).sync(pl);
         var w = pl.world;
         var sb = w.getScoreboard();
-        if (e.source != null) { //has source
-            if (e.source.getType() == 1) { //Is source a player
-                if (e.source.getName() != pl.getName()) {
-                    var objbounty = sb.getObjective("bounty");
-                    if (objbounty != null) {
+        try {
+            if (e.source != null) { //has source
+                if (e.source.getType() == 1) { //Is source a player
+                    if (e.source.getName() != pl.getName()) {
+                        var objbounty = sb.getObjective("bounty");
+                        if (objbounty != null) {
                         var pscore = objbounty.getScore(pl.getName());
                         var pbounty = pscore.getValue()
 
@@ -14298,9 +14299,13 @@ function died(e) {
                             givePlayerItems(e.source, genMoney(w, pbounty));
                             pscore.setValue(0);
                         }
+                        }
                     }
                 }
             }
+        } catch (exc) {
+            handleError(exc, true, pl.getName());
+            return;
         }
         var loseMoney = Math.ceil(plo.data.money / 2);
         if (loseMoney > 0) {
