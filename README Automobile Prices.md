@@ -38,6 +38,9 @@ DKZ 410 Rodimus: 68000 g - Restomod
 - Syndicate Attributer: 18000 g (+ 3000g import fee, 6k for sidecar)
 - Syndicate Pegasus: 80000 g (+ 30000g Stormwalker kit)
 
+## PMC (imports)
+- Freightmaster: 155000g
+
 ## Other Vehicles
 - Mini cooper bunno cc: 37500 g
 
