@@ -2,7 +2,7 @@
     "pools": [
         {
             "rolls": {
-                "min": 1,
+                "min": 2,
                 "max": 4
             },
             "entries": [
@@ -34,7 +34,7 @@
                 {
                     "type": "loot_table",
                     "path": "automobile/gauges/car_gauges.json",
-                    "weight": 16
+                    "weight": 13
                 }
             ]
         }
