@@ -2,6 +2,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 
 
 function interact(event) {
@@ -63,11 +64,12 @@ function lootCrate(player, item, npc) {
     item.setStackSize(item.getStackSize() - 1);
     player.setMainhandItem(item);
     var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE, player);
+    var value_estimate = 0;
     var logline = player.getName() + " opened a Junkyard Crate and received: ";
     for (var i = 0; i < loot.length; i++) {
-        npc.dropItem(
-            generateItemStackFromLootEntry(loot[i], world)
-        );
+        var stack = generateItemStackFromLootEntry(loot[i], world);
+        value_estimate += getPriceFromItemStack(stack, 10000, false);
+        npc.dropItem(stack);
         logline += loot[i].id + ":" + loot[i].damage + " x" + loot[i].count;
         if (i < loot.length - 1) {
             logline += ", ";
