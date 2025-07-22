@@ -10,6 +10,7 @@ var tick_counter = 1;
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 /**
  * Initializes the job data and updates player job entries.
@@ -57,6 +58,7 @@ function timer(event) {
     if (salary > 0) {
         addMoneyToCurrentPlayerPouch(event.player, salary);
         tellPlayer(event.player, "&a:check: You have received your daily salary of " + getAmountCoin(salary) + "!");
+        logToFile("economy", event.player.getName() + " received daily salary of " + getAmountCoin(salary) + ".");
     }
 }
 
