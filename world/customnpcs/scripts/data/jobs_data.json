@@ -76,7 +76,11 @@
             "Title": "Farmiston Farmer",
             "Types": ["Cereal", "Poultry"],
             "Region": "Farmiston",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Farmiston_Countryside_RechnoyePoleFarm_Farm",
+                "region_Farmiston_Countryside_KrasnayaZemlyaFarm_Farm"
+            ]
         },
         {
             "JobID": 342,
@@ -96,7 +100,10 @@
             "Title": "Allenis Brewer",
             "Types": ["Brewer", "Vineyard"],
             "Region": "Allenis",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Allenis_North_VintnersRoad_SilverleafWinery"
+            ]
         },
         {
             "JobID": 51,
@@ -117,6 +124,18 @@
             "Types": ["Dairy", "Meat"],
             "Region": "Monsalac",
             "Perms": []
+        },
+        {
+            "JobID": 554,
+            "JobLock": 555,
+            "JobQuit": 556,
+            "Qualification": "Advanced",
+            "Title": "Mechanic",
+            "Types": ["Mechanic"],
+            "Region": "Greenfield",
+            "AutoAssignPerms": [
+                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
+            ]
         },
         {
             "JobID": 63,
@@ -146,7 +165,15 @@
             "Title": "Mechanic",
             "Types": ["Mechanic"],
             "Region": "Gramados",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Gramados_GramadosCity_RustmarkStreet_4_RustmarkGarage_Garage",
+                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage",
+                "region_Gramados_GramadosCity_GrezyatStreet_3_DrabusGarage_Garage",
+                "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
+                "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
+                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage"
+            ]
         },
         {
             "JobID": 61,
