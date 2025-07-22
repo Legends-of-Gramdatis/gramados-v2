@@ -8,6 +8,8 @@ var tick_counter_max = 1;
 var tick_counter = 1;
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 
 /**
  * Initializes the job data and updates player job entries.
@@ -24,6 +26,10 @@ function init(event) {
     auto_assign_jobs(event.player); // Added this line
     update_job_perms(event.player);
     update_job_type_json(event.player);
+
+    if (!event.player.getTimers().has(1)) {
+        event.player.getTimers().start(1, 20*60*60*24, true);
+    }
 }
 
 /**
@@ -39,10 +45,18 @@ function tick(event) {
     if (tick_counter >= tick_counter_max) {
         tick_counter = 0;
         check_all_jobs(event.player);
-        // remove_jobs_on_permission_loss(event.player); // Added this line
+        // remove_jobs_on_permission_loss(event.player);
         quit_job_manager(event.player);
     } else {
         tick_counter++;
+    }
+}
+
+function timer(event) {
+    var salary = getAutopayAmountTotal(event.player);
+    if (salary > 0) {
+        addMoneyToCurrentPlayerPouch(event.player, salary);
+        tellPlayer(event.player, "&a:check: You have received your daily salary of " + getAmountCoin(salary) + "!");
     }
 }
 
