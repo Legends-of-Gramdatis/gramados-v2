@@ -220,11 +220,10 @@ function died(event) {
         // Reset the spawn count after the arrest is completed
         // damage_buffer = 0;
         damage_taken = 0;
-
-        can_be_arrested = false;
     }
 
     is_under_arrest = false; // Reset the arrest status when the player dies
+    can_be_arrested = false; // Allow future arrests
 }
 
 function tick(event) {
