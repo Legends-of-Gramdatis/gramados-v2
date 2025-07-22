@@ -63,6 +63,11 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         if not item.get('id'):
             continue
 
+        # Skip items with a display Name of '§2§lMoney§r'
+        if 'tag' in item and 'display' in item['tag'] and item['tag']['display'].get('Name') == '§2§lMoney§r':
+            print(f"Skipping item {item_id} with display Name '§2§lMoney§r'.")
+            continue
+
         # Get the corresponding items from TraderCurrency by matching Slot values
         slot1 = next((item for item in market_data['TraderCurrency']['NpcMiscInv'] if item.get('Slot') == i), None)
         slot2 = next((item for item in market_data['TraderCurrency']['NpcMiscInv'] if item.get('Slot') == i + 18), None)
@@ -82,6 +87,31 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
             except ValueError:
                 print(f"Skipping invalid price in slot2: {slot2['tag']['display']['Lore'][0]}")
 
+        # Handle non-money items in TraderCurrency
+        if slot1 and slot1['id'] != 'minecraft:barrier':
+            if not ('tag' in slot1 and 'display' in slot1['tag'] and slot1['tag']['display'].get('Name') == '§2§lMoney§r'):
+                # Check if the item has a set price in global prices
+                slot1_key = f"{slot1['id']}:{slot1.get('Damage', 0)}"
+                slot1_tag = json.dumps(slot1.get('tag', {}), sort_keys=True)
+                slot1_unique_key = f"{slot1_key}|{slot1_tag}" if slot1_tag != '{}' else slot1_key
+                if slot1_unique_key in global_prices:
+                    price1 += global_prices[slot1_unique_key]['value'] * slot1.get('Count', 1)
+
+        if slot2 and slot2['id'] != 'minecraft:barrier':
+            if not ('tag' in slot2 and 'display' in slot2['tag'] and slot2['tag']['display'].get('Name') == '§2§lMoney§r'):
+                # Check if the item has a set price in global prices
+                slot2_key = f"{slot2['id']}:{slot2.get('Damage', 0)}"
+                slot2_tag = json.dumps(slot2.get('tag', {}), sort_keys=True)
+                slot2_unique_key = f"{slot2_key}|{slot2_tag}" if slot2_tag != '{}' else slot2_key
+                if slot2_unique_key in global_prices:
+                    price2 += global_prices[slot2_unique_key]['value'] * slot2.get('Count', 1)
+
+        # Ignore minecraft:barrier items and only associate money value
+        if slot1 and slot1['id'] == 'minecraft:barrier':
+            price1 = 0
+        if slot2 and slot2['id'] == 'minecraft:barrier':
+            price2 = 0
+
         # Total price for the item
         total_price = price1 + price2
 
@@ -91,25 +121,31 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         # Print the extracted data for debugging
         print(f"Item {item_id} price extracted: {price_in_cents} cents")
 
+        # Generate a unique key combining item_id and serialized tag
+        item_tag = json.dumps(item.get('tag', {}), sort_keys=True)  # Serialize the tag with sorted keys
+        unique_key = f"{item_id}|{item_tag}" if item_tag != '{}' else item_id
+
         # Handle duplicates based on force_replace
-        if item_id in global_prices:
-            old_price = global_prices[item_id]['value']
-            print(f"Item {item_id} found with existing price: {old_price} cents")
+        if unique_key in global_prices:
+            old_price = global_prices[unique_key]['value']
+            print(f"Item {unique_key} found with existing price: {old_price} cents")
             print(f"New calculated price: {price_in_cents} cents")
             if old_price == price_in_cents:
-                print(f"Price for {item_id} is identical to the existing price. Skipping update.")
+                print(f"Price for {unique_key} is identical to the existing price. Skipping update.")
                 continue
             if not force_replace:
                 # Ask for confirmation
-                choice = input(f"Do you want to keep the new price for {item_id}? (y/n): ").strip().lower()
+                choice = input(f"Do you want to keep the new price for {unique_key}? (y/n): ").strip().lower()
                 if choice != 'y':
-                    print(f"Keeping the old price for {item_id}.")
+                    print(f"Keeping the old price for {unique_key}.")
                     continue
 
-        # Update the global prices with the new price
-        global_prices[item_id] = {
+        # Update the global prices with the new price and tag, excluding empty tags
+        global_prices[unique_key] = {
             'value': price_in_cents
         }
+        if item_tag != '{}':
+            global_prices[unique_key]['tag'] = item_tag
 
     # Save the updated global prices
     with open(global_prices_path, 'w') as file:
@@ -122,19 +158,7 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
 if __name__ == "__main__":
     # Path to the Minecraft broken market JSON
     input_json_path = [
-        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p1.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/ivl_dealership_randomness_p3.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/can_engines_alicemotors_ev.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/can_engines_random_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_engine_ivl_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_engines_trin_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_iav_unu_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_ivv_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gauges_trin_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_gearboxes_transmissions_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_general_p0.json",
-        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_trin_generic_p0.json"
+        "/home/mouette/gramados-v2/world/customnpcs/markets/boat engines and propellers.json"
     ]
     # Path to the global prices file
     global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
