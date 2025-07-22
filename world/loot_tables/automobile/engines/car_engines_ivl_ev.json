@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.nano_electricmotor",
+                    "weight": 6
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.compact_electricmotor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.standard_electricmotor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.ultra_electricmotor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.industrial_electricmotor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.ultraindustrial_electricmotor",
+                    "weight": 4
+                }
+            ]
+        }
+    ]
+}
