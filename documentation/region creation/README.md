@@ -3,6 +3,7 @@
 ![alt text](<GFM - Greenfield Island.png>)
 ![alt text](<GFM - Monsalac Island.png>)
 ![alt text](<GFM - Solterra Island.png>)
+![alt text](<GFM - Allenis Island.png>)
 
 Land value calculation:
 - Land surface: *price* * 0.02
