@@ -52,7 +52,8 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         global_prices = {}
 
     # Iterate over the items in TraderSold
-    for i, item in enumerate(market_data['TraderSold']['NpcMiscInv']):
+    for item in market_data['TraderSold']['NpcMiscInv']:
+        i = item.get('Slot')
         # Append Damage value to item_id, defaulting to 0 if not present
         damage = item.get('Damage', 0)
         item_id = f"{item['id']}:{damage}"
@@ -62,18 +63,24 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         if not item.get('id'):
             continue
 
-        # Get the corresponding items from TraderCurrency
-        slot1 = market_data['TraderCurrency']['NpcMiscInv'][i]
-        slot2 = market_data['TraderCurrency']['NpcMiscInv'][i + 18] if i + 18 < len(market_data['TraderCurrency']['NpcMiscInv']) else None
+        # Get the corresponding items from TraderCurrency by matching Slot values
+        slot1 = next((item for item in market_data['TraderCurrency']['NpcMiscInv'] if item.get('Slot') == i), None)
+        slot2 = next((item for item in market_data['TraderCurrency']['NpcMiscInv'] if item.get('Slot') == i + 18), None)
 
         # Extract prices from the slots
         price1 = 0
-        if 'tag' in slot1 and 'display' in slot1['tag'] and 'Lore' in slot1['tag']['display']:
-            price1 = convert_price_to_cents(slot1['tag']['display']['Lore'][0])
+        if slot1 and 'tag' in slot1 and 'display' in slot1['tag'] and 'Lore' in slot1['tag']['display']:
+            try:
+                price1 = convert_price_to_cents(slot1['tag']['display']['Lore'][0]) * slot1.get('Count', 1)
+            except ValueError:
+                print(f"Skipping invalid price in slot1: {slot1['tag']['display']['Lore'][0]}")
 
         price2 = 0
         if slot2 and 'tag' in slot2 and 'display' in slot2['tag'] and 'Lore' in slot2['tag']['display']:
-            price2 = convert_price_to_cents(slot2['tag']['display']['Lore'][0])
+            try:
+                price2 = convert_price_to_cents(slot2['tag']['display']['Lore'][0]) * slot2.get('Count', 1)
+            except ValueError:
+                print(f"Skipping invalid price in slot2: {slot2['tag']['display']['Lore'][0]}")
 
         # Total price for the item
         total_price = price1 + price2
