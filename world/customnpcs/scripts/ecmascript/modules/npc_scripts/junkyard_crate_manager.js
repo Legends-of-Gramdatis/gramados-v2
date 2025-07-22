@@ -14,7 +14,7 @@ function interact(event) {
     var player = event.player;
     var world = npc.getWorld();
     var playerName = player.getName();
-    var jsonFilePath = "world/customnpcs/scripts/data/junkyard_purchases.json";
+    var jsonFilePath = "world/customnpcs/scripts/data_auto/junkyard_purchases.json";
 
     // Check if the player has a job with the tag "Mechanic"
     if (!playerHasJobWithTag(player, "Mechanic")) {

@@ -12,7 +12,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var FileUtils = Java.type('java.nio.file.Files');
 var Paths = Java.type('java.nio.file.Paths');
 
-var ORDER_DATA_PATH = "world/customnpcs/scripts/data/parts_orders.json";
+var ORDER_DATA_PATH = "world/customnpcs/scripts/data_auto/parts_orders.json";
 var ORDER_ITEM_ID = "variedcommodities:plans";
 var ORDER_ITEM_NAME = "§eVehicle Part Order Form";
 var ORDER_DELAY_HOURS = 1; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
