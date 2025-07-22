@@ -17,12 +17,15 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
 
     var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
 
-    if (!globalPrices || !globalPrices[itemId]) {
+    // Generate a unique key combining itemId and serialized itemTag
+    var serializedTag = itemTag ? JSON.stringify(itemTag) : "{}";
+    var uniqueKey = itemId + "|" + serializedTag;
+
+    if (!globalPrices || !globalPrices[uniqueKey]) {
         return defaultPrice;
     }
 
-    
-    var itemData = globalPrices[itemId];
+    var itemData = globalPrices[uniqueKey];
 
     if (itemData.tag && !ignoreNBT) {
         if (JSON.stringify(itemData.tag) === JSON.stringify(itemTag)) {
