@@ -6,7 +6,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 
-var crowbarPrice = 150000; // Price of the crowbar in grams
+var crowbarPrice = 50000; // Price of the crowbar in grams
 
 
 function interact(event) {

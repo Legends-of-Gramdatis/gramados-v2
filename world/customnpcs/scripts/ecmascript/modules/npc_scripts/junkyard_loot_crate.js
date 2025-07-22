@@ -3,6 +3,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 
 
 function interact(event) {
@@ -75,5 +76,6 @@ function lootCrate(player, item, npc) {
             logline += ", ";
         }
     }
+    logline += " (estimated value: " + getAmountCoin(value_estimate) + ")";
     logToFile("mechanics", logline);
 }
