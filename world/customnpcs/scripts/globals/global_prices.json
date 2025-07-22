@@ -1208,31 +1208,31 @@
         "value": 20000
     },
     "mts:ivv.radiocb:0": {
-        "value": 100000
+        "value": 50000
     },
     "mts:ivv.hitch:0": {
-        "value": 1050000
+        "value": 1000000
     },
     "mts:ivv.ivvbumper1:0": {
-        "value": 200000
+        "value": 150000
     },
     "mts:ivv.antenna_hf:0": {
         "value": 10000
     },
     "mts:ivv.hitchadapter:0": {
-        "value": 100000
+        "value": 120000
     },
     "mts:ivv.ivvspoiler1:0": {
         "value": 100000
     },
     "mts:ivv.hitchadapterheavy:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:ivv.ivvspoiler2:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:ivv.hitchadapterxl:0": {
-        "value": 100000
+        "value": 200000
     },
     "mts:ivv.ivvspoiler3:0": {
         "value": 200000
@@ -1244,10 +1244,10 @@
         "value": 1000000
     },
     "mts:ivv.ivvspoiler4:0": {
-        "value": 200000
+        "value": 300000
     },
     "mts:ivv.lidar:0": {
-        "value": 1000000
+        "value": 3000000
     },
     "mts:ivv.hitchnb:0": {
         "value": 200000
@@ -1295,10 +1295,10 @@
         "value": 5000
     },
     "mts:ivv.bodypanel:0": {
-        "value": 10000
+        "value": 30000
     },
     "mts:ivv.fueltank:0": {
-        "value": 20000
+        "value": 60000
     },
     "mts:ivv.antenna_sharkfin:0": {
         "value": 10000
@@ -1307,169 +1307,169 @@
         "value": 10000
     },
     "mts:ivv.fueltank_electric:0": {
-        "value": 100000
+        "value": 400000
     },
     "mts:ivv.oilcan:0": {
         "value": 1000
     },
     "mts:ivv.oilcan_industrial:0": {
-        "value": 1000
+        "value": 1500
     },
     "mts:ivv.oilcan_race:0": {
         "value": 2000
     },
     "mts:alicemotors.nano_ev:0": {
-        "value": 100000
+        "value": 500000
     },
     "mts:alicemotors.micro_ev:0": {
-        "value": 100000
+        "value": 800000
     },
     "mts:alicemotors.macro_ev:0": {
-        "value": 100000
+        "value": 1100000
     },
     "mts:alicemotors.giga_ev:0": {
-        "value": 100000
+        "value": 1500000
     },
     "mts:iav.iav_a_gi4low:0": {
-        "value": 220000
+        "value": 250000
     },
     "mts:iav.iav_a_gi4hi:0": {
-        "value": 200000
+        "value": 300000
     },
     "mts:iav.iav_a_di4:0": {
-        "value": 200000
+        "value": 600000
     },
     "mts:iav.iav_a_gi6low:0": {
-        "value": 100000
+        "value": 280000
     },
     "mts:iav.iav_a_gi6hi:0": {
-        "value": 100000
+        "value": 350000
     },
     "mts:iav.iav_a_gv8hi:0": {
-        "value": 1000000
+        "value": 1200000
     },
     "mts:iav.iav_a_gi2low:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:iav.iav_a_gi2hi:0": {
-        "value": 200000
+        "value": 220000
     },
     "mts:mtsofficialpack.engineamci4:0": {
-        "value": 100000
+        "value": 300000
     },
     "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
-        "value": 20000
+        "value": 80000
     },
     "minecraft:paper:0": {
         "value": 10000
     },
     "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
-        "value": 20000
+        "value": 40000
     },
     "mts:ivv.v3median:0": {
         "value": 100000
     },
     "mts:ivv.v6insolvo:0": {
-        "value": 100000
+        "value": 300000
     },
     "mts:ivv.v4:0": {
-        "value": 100000
+        "value": 200000
     },
     "mts:ivv.v6:0": {
-        "value": 100000
+        "value": 500000
     },
     "mts:ivv.v2:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:ivv.v8:0": {
-        "value": 100000
+        "value": 700000
     },
     "mts:ivv.v4smallfry:0": {
         "value": 100000
     },
     "mts:ivv.v9:0": {
-        "value": 100000
+        "value": 1200000
     },
     "mts:iv_tpp.engine_v6_gasoline_normal_man:0": {
-        "value": 100000
+        "value": 300000
     },
     "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
         "value": 20000
     },
     "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
-        "value": 100000
+        "value": 400000
     },
     "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
         "value": 100000
     },
     "mts:iv_tpp.engine_v6_gasoline_turbo_aut:0": {
-        "value": 100000
+        "value": 600000
     },
     "mts:iv_tpp.engine_i4_gasoline_normal_man:0": {
-        "value": 100000
+        "value": 110000
     },
     "mts:iv_tpp.engine_v8_gasoline_normal_aut:0": {
-        "value": 1000000
+        "value": 1100000
     },
     "mts:iv_tpp.engine_i4_gasoline_turbo_aut:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:iv_tpp.engine_v8_gasoline_normal_man:0": {
-        "value": 1000000
+        "value": 1200000
     },
     "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
-        "value": 100000
+        "value": 200000
     },
     "mts:iv_tpp.engine_v8_gasoline_turbo_aut:0": {
-        "value": 1000000
+        "value": 1500000
     },
     "mts:iv_tpp.engine_v8_gasoline_turbo_man:0": {
-        "value": 1000000
+        "value": 1500000
     },
     "mts:iav.iav_gague_electric_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_battery:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_speedometer_mph:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:iav.iav_gague_fuel_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_fuel:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_speedometer_mphscaled:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:iav.iav_gague_temperature_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_oiltemperature:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_tachometer_manual:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:iav.iav_gague_oilpressure_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_oilpressure:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_tachometer_automatic:0": {
-        "value": 2000
+        "value": 4000
     },
     "mts:iav.iav_gague_tachometer_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:iav.iav_gague_speed_kmh_modern:0": {
-        "value": 2000
+        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_multi:0": {
-        "value": 5000
+        "value": 7000
     },
     "mts:iv_tpp.trin_car-boat_gauge_gear:0": {
         "value": 5000
@@ -1481,16 +1481,16 @@
         "value": 6000
     },
     "mts:ivv.classicgearneedle:0": {
-        "value": 7000
+        "value": 5000
     },
     "mts:ivv.tachdigital:0": {
-        "value": 6000
-    },
-    "mts:ivv.tach:0": {
         "value": 7000
     },
-    "mts:ivv.classictach:0": {
+    "mts:ivv.tach:0": {
         "value": 6000
+    },
+    "mts:ivv.classictach:0": {
+        "value": 5000
     },
     "mts:ivv.fueldigital:0": {
         "value": 7000
@@ -1499,22 +1499,22 @@
         "value": 6000
     },
     "mts:ivv.classicfuel:0": {
-        "value": 7000
+        "value": 5000
     },
     "mts:ivv.hours:0": {
-        "value": 6000
+        "value": 7000
     },
     "mts:ivv.fueltemp:0": {
-        "value": 5000
+        "value": 6000
     },
     "mts:ivv.classicoil:0": {
         "value": 5000
     },
     "mts:ivv.mphdigital:0": {
-        "value": 5000
+        "value": 7000
     },
     "mts:ivv.mph:0": {
-        "value": 5000
+        "value": 6000
     },
     "mts:ivv.classicmphround:0": {
         "value": 5000
@@ -1529,13 +1529,13 @@
         "value": 20000
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_electric:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_electric:0": {
         "value": 5500
@@ -1547,22 +1547,22 @@
         "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_fuel:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi:0": {
-        "value": 5500
+        "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_fuel:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_default_tachometer:0": {
         "value": 5000
@@ -1574,37 +1574,37 @@
         "value": 5000
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph:0": {
-        "value": 5000
+        "value": 5500
     },
     "mts:ivv.gearbox03auto:0": {
         "value": 200000
     },
     "mts:unuparts.unuparts_part_unu_transmission_automatic_3_base:0": {
-        "value": 200000
+        "value": 250000
     },
     "mts:ivv.gearbox04auto:0": {
         "value": 200000
     },
     "mts:ivv.gearboxcvt:0": {
-        "value": 200000
+        "value": 300000
     },
     "mts:unuparts.unuparts_part_unu_transmission_manual_3_base:0": {
-        "value": 100000
+        "value": 120000
     },
     "mts:ivv.gearbox05manual:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:ivv.gearbox06manual:0": {
-        "value": 100000
+        "value": 180000
     },
     "mts:unuparts.unuparts_part_unu_transmission_manual_4_base:0": {
-        "value": 100000
+        "value": 150000
     },
     "mts:ivv.gearbox07manual:0": {
         "value": 200000
@@ -1613,43 +1613,43 @@
         "value": 10000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
-        "value": 10000
+        "value": 50000
     },
     "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
-        "value": 10000
+        "value": 18000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
-        "value": 10000
+        "value": 50000
     },
     "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
         "value": 10000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
-        "value": 10000
+        "value": 50000
     },
     "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:ivv.smalltire:0": {
         "value": 10000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
-        "value": 10000
+        "value": 50000
     },
     "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:ivv.normaltire:0": {
         "value": 20000
     },
     "mts:ivv.bigtire:0": {
-        "value": 20000
+        "value": 30000
     },
     "mts:iav.iav_wheel_standard_hubcap:0": {
         "value": 20000
@@ -1658,54 +1658,84 @@
         "value": 10000
     },
     "mts:iv_tpp.wheel_classic_2d5_0_steel:0": {
-        "value": 11000
+        "value": 10000
     },
     "mts:iv_tpp.wheel_sport_4d14_0_steel:0": {
-        "value": 11000
+        "value": 14000
     },
     "mts:iv_tpp.wheel_classic_4d14_1_chromic:0": {
-        "value": 11000
+        "value": 30000
     },
     "mts:iv_tpp.wheel_classic_3d11_0_steel:0": {
         "value": 11000
     },
     "mts:iv_tpp.wheel_classic_4d16_0_steel:0": {
-        "value": 25000
+        "value": 20000
     },
     "mts:iv_tpp.wheel_offroad_4d14_1_chromic:0": {
-        "value": 15000
+        "value": 40000
     },
     "mts:iv_tpp.wheel_offroad_3d11_0_steel:0": {
-        "value": 15000
+        "value": 11000
     },
     "mts:iv_tpp.wheel_offroad_4d16_0_steel:0": {
-        "value": 20000
+        "value": 22000
     },
     "mts:iv_tpp.wheel_sport_4d14_1_chromic:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:iv_tpp.wheel_sport_3d11_0_steel:0": {
-        "value": 10000
+        "value": 11000
     },
     "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.wheel_classic_4d16_1_chromic:0": {
-        "value": 10000
+        "value": 40000
     },
     "mts:iv_tpp.wheel_classic_4d14_0_steel:0": {
-        "value": 10000
+        "value": 15000
     },
     "mts:iv_tpp.wheel_20h_6w_rim1_or:0": {
-        "value": 20000
+        "value": 40000
     },
     "mts:iv_tpp.wheel_offroad_4d16_1_chromic:0": {
-        "value": 10000
+        "value": 50000
     },
     "mts:iv_tpp.wheel_offroad_4d14_0_steel:0": {
-        "value": 10000
+        "value": 15000
     },
     "mts:iv_tpp.wheel_20h_6w_rim2_or:0": {
         "value": 50000
+    },
+    "mts:iv_tpp.trin_v8_fat_diesel:0": {
+        "value": 900000
+    },
+    "mts:mtsofficialpack.enginedetroitdiesel:0": {
+        "value": 700000
+    },
+    "mts:warkparts.wark_heavyengine_v8:0": {
+        "value": 700000
+    },
+    "mts:iv_tpp.trin_v8_fat_biodiesel:0": {
+        "value": 950000
+    },
+    "mts:warkparts.wark_hugeengine_v16:0": {
+        "value": 2500000
+    },
+    "mts:iv_tpp.trin_v8_fat_gasoline:0": {
+        "value": 650000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
+        "value": 750000
+    },
+    "mts:iv_tpp.trin_v10_fat_diesel:0": {
+        "value": 1150000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
+        "value": 650000
+    },
+    "mts:iav.iav_a_hdv12:0": {
+        "value": 1800000
     }
 }
