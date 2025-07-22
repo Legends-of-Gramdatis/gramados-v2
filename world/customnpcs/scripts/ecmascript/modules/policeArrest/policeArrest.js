@@ -43,8 +43,8 @@ function attempt_arrest(event, player, world) {
     if (success) {
         tellPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
-        is_under_arrest = true; // Set the arrest status to true
-        can_be_arrested = false; // Prevent further arrests until the current one is resolved
+        is_under_arrest = true;
+        can_be_arrested = false;
     }
 }
 
@@ -159,8 +159,9 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
         }
     }
 
-    logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities. Spawned " + count + " NPCs of type " + type);
     damage_buffer += count * 10; // Increase the damage buffer for each NPC spawned
+    logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities. Spawned " + count + " NPCs of type " + type + ", buffering " + damage_buffer + " damage.");
+    
 
     return success;
 }
@@ -203,7 +204,7 @@ function damaged(event) {
 
 // If player dies, remove the arrest
 function died(event) {
-    if (can_be_arrested) {
+    if (is_under_arrest) {
         var player = event.player;
         var world = player.world;
         var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
