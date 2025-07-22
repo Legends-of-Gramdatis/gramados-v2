@@ -78,8 +78,7 @@ world/customnpcs/linkednpcs/New.json
 lore markdowns/Private Lore Recap.md
 lore markdowns/TO SORT MESS/*.md
 DiscordIntegration-Data/*
-world/customnpcs/scripts/data/junkyard_purchases.json
-world/customnpcs/scripts/data/parts_orders.json
+world/customnpcs/scripts/data_auto/*.json
 
 tools/__pycache__/*
 tools/wth is that?*
