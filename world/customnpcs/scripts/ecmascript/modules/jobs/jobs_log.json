@@ -133,7 +133,7 @@
             "Type": "Advanced",
             "JobName": "Mechanic",
             "Region": "Greenfield",
-            "Perms": [
+            "AutoAssignPerms": [
                 "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
             ]
         },
@@ -445,6 +445,13 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2661519946,
+                "Region": "Gramados",
+                "Type": "Advanced"
+            },
             "154": {
                 "JobID": 154,
                 "JobName": "Farmer",
@@ -752,7 +759,15 @@
     "703d919d-1cfa-4983-bba1-1b67162a92fc": {
         "Name": "Kitsunami_",
         "JobHistory": {},
-        "ActiveJobs": {}
+        "ActiveJobs": {
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2661996334,
+                "Region": "Gramados",
+                "Type": "Advanced"
+            }
+        }
     },
     "2f25c0cc-3be0-4d3f-acc8-97e5017b8978": {
         "Name": "Asterius09",
