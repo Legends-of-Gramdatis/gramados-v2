@@ -1,3 +1,5 @@
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+
 /**
  * Gets the job name by its ID.
  * @param {number} jobId - The job ID.
@@ -8,6 +10,21 @@ function getJobName(jobId) {
     for (var i = 0; i < jobsData.length; i++) {
         if (jobsData[i].JobId === jobId) {
             return jobsData[i].Title;
+        }
+    }
+    return null;
+}
+
+/**
+ * Gets the job ID by its name.
+ * @param {string} jobName - The job name.
+ * @returns {number|null} - The job ID or null if not found.
+ */
+function getJobId(jobName) {
+    var jobsData = loadJson("world/customnpcs/scripts/data/jobs_data.json");
+    for (var i = 0; i < jobsData.length; i++) {
+        if (jobsData[i].Title === jobName) {
+            return jobsData[i].JobId;
         }
     }
     return null;
@@ -66,4 +83,50 @@ function getJobIdsWithTag(tag) {
     return jobIds;
 }
 
+/**
+ * Gets the job qualification by job ID.
+ * @param {number} jobId - The job ID.
+ * @returns {string|null} - The job qualification or null if not found.
+ */
+function getJobQualification(jobId) {
+    var jobsData = loadJson("world/customnpcs/scripts/data/jobs_data.json");
+    for (var i = 0; i < jobsData.length; i++) {
+        if (jobsData[i].JobId === jobId) {
+            return jobsData[i].Qualification;
+        }
+    }
+    return null;
+}
+
+
+function playerHasJobWithQualification(player, qualification) {
+    var jobsData = loadJson("world/customnpcs/scripts/data/jobs_data.json");
+    for (var i = 0; i < jobsData.length; i++) {
+        if (jobsData[i].Qualification === qualification && player.hasReadDialog(jobsData[i].JobId)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function getAutopayAmountForID(jobId) {
+    var jobsData = loadJson("world/customnpcs/scripts/data/jobs_data.json");
+    for (var i = 0; i < jobsData.length; i++) {
+        if (jobsData[i].JobId === jobId) {
+            return jobsData[i].AutoPay || 0; // Default to 0 if AutoPay is not defined
+        }
+    }
+    return 0;
+}
+
+function getAutopayAmountTotal(player) {
+    var total = 0;
+    var jobsData = loadJson("world/customnpcs/scripts/data/jobs_data.json");
+    for (var i = 0; i < jobsData.length; i++) {
+        if (player.hasReadDialog(jobsData[i].JobId)) {
+            total += getAutopayAmountForID(jobsData[i].JobId);
+        }
+    }
+    return total;
+}
 
