@@ -1,3 +1,5 @@
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+
 var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exchange_data.json";
 
@@ -9,6 +11,7 @@ var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exch
  * @returns {number} - The price of the item.
  */
 function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
+    // logToFile("dev", "getPrice called with itemId: " + itemId + ", defaultPrice: " + defaultPrice + ", ignoreNBT: " + ignoreNBT);
 
     // if item id doesn't fit with regex modid:itemid:damage (aka missing the :damage)
     if (!/^.+:.+:\d+$/.test(itemId)) {
@@ -18,14 +21,24 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
     var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
 
     // Generate a unique key combining itemId and serialized itemTag
-    var serializedTag = itemTag ? JSON.stringify(itemTag) : "{}";
-    var uniqueKey = itemId + "|" + serializedTag;
+    // var serializedTag = itemTag ? JSON.stringify(itemTag) : "{}";
+    // var uniqueKey = itemId + "|" + serializedTag;
+
+    if (itemTag && !ignoreNBT) {
+        var uniqueKey = itemId + "|" + JSON.stringify(itemTag);
+    } else {
+        var uniqueKey = itemId; // No NBT data, use itemId only
+    }
+
+    // logToFile("dev", "getPrice called for itemId: " + itemId + ", uniqueKey: " + uniqueKey + ", ignoreNBT: " + ignoreNBT);
 
     if (!globalPrices || !globalPrices[uniqueKey]) {
+        // logToFile("dev", "No price found for itemId: " + itemId + ", returning default price: " + defaultPrice);
         return defaultPrice;
     }
 
     var itemData = globalPrices[uniqueKey];
+    // logToFile("dev", "Found itemData for itemId: " + itemId + ", itemData: " + JSON.stringify(itemData));
 
     if (itemData.tag && !ignoreNBT) {
         if (JSON.stringify(itemData.tag) === JSON.stringify(itemTag)) {
@@ -41,9 +54,11 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
         if (itemData.stock_link) {
             var stockPrices = loadJson(STOCK_EXCHANGE_DATA_JSON_PATH);
             if (stockPrices[itemData.stock_link]) {
+                // logToFile("dev", "Stock price lookup for " + itemData.stock_link + ": " + stockPrices[itemData.stock_link].current_price);
                 return stockPrices[itemData.stock_link].current_price;
             }
         }
+        // logToFile("dev", "Returning price for itemId: " + itemId + ", value: " + itemData.value);
         return itemData.value;
     }
 
@@ -67,6 +82,7 @@ function getPriceFromItemStack(stack, defaultPrice, ignoreNBT) {
     } else {
         var itemTag = null; // No NBT data
     }
+    // logToFile("dev", "getPriceFromItemStack called with itemId: " + itemId + ", defaultPrice: " + defaultPrice + ", ignoreNBT: " + ignoreNBT);
     var value = getPrice(itemId, defaultPrice, itemTag, ignoreNBT);
     return value;
 }
