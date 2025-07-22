@@ -794,31 +794,31 @@
         "value": 384
     },
     "mts:iv_tpp.paint_bucket_glacierwhite:0": {
-        "value": 10000
+        "value": 5000
     },
     "mts:iv_tpp.paint_bucket_silver:0": {
-        "value": 10000
+        "value": 5000
     },
     "mts:iv_tpp.paint_bucket_teal:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_white:0": {
-        "value": 15000
+        "value": 10000
     },
     "mts:iv_tpp.paint_bucket_irongray:0": {
-        "value": 15000
+        "value": 10000
     },
     "mts:iv_tpp.paint_bucket_oceanblue:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_ivory:0": {
-        "value": 25000
+        "value": 20000
     },
     "mts:iv_tpp.paint_bucket_tungsten:0": {
-        "value": 10000
+        "value": 15000
     },
     "mts:iv_tpp.paint_bucket_electricblue:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_sand:0": {
         "value": 20000
@@ -827,7 +827,7 @@
         "value": 10000
     },
     "mts:iv_tpp.paint_bucket_sapphire:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_sandstone:0": {
         "value": 20000
@@ -836,13 +836,13 @@
         "value": 5000
     },
     "mts:iv_tpp.paint_bucket_lapenverblue:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_sage:0": {
         "value": 20000
     },
     "mts:iv_tpp.paint_bucket_skyblue:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_softgreen:0": {
         "value": 20000
@@ -902,25 +902,25 @@
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_brown:0": {
-        "value": 30000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_grape:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
-        "value": 25000
+        "value": 30000
     },
     "mts:iv_tpp.paint_bucket_chocolate:0": {
-        "value": 30000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_pink:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_turquoise:0": {
-        "value": 25000
+        "value": 30000
     },
     "mts:iv_tpp.paint_bucket_caramel:0": {
-        "value": 30000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_fuchsia:0": {
         "value": 25000
@@ -929,10 +929,10 @@
         "value": 30000
     },
     "mts:iv_tpp.paint_bucket_amber:0": {
-        "value": 30000
+        "value": 25000
     },
     "mts:iv_tpp.paint_bucket_vibrantred:0": {
-        "value": 25000
+        "value": 30000
     },
     "mts:iv_tpp.paint_bucket_citruslime:0": {
         "value": 30000
@@ -944,22 +944,22 @@
         "value": 30000
     },
     "mts:iv_tpp.paint_bucket_plum:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:iv_tpp.wrap_roll_coal:0": {
-        "value": 30000
+        "value": 125000
     },
     "mts:iv_tpp.wrap_roll_lapislazuli:0": {
-        "value": 110000
+        "value": 140000
     },
     "mts:iv_tpp.paint_double_bucket_bubblegum:0": {
-        "value": 100000
+        "value": 50000
     },
     "mts:iv_tpp.wrap_roll_iron:0": {
-        "value": 150000
+        "value": 110000
     },
     "mts:iv_tpp.wrap_roll_quartz:0": {
-        "value": 120000
+        "value": 130000
     },
     "mts:iv_tpp.paint_double_bucket_forest:0": {
         "value": 50000
@@ -968,25 +968,25 @@
         "value": 200000
     },
     "mts:iv_tpp.wrap_roll_redstone:0": {
-        "value": 100000
+        "value": 130000
     },
     "mts:iv_tpp.paint_double_bucket_redandblack:0": {
         "value": 50000
     },
     "mts:iv_tpp.wrap_roll_diamond:0": {
-        "value": 200000
+        "value": 250000
     },
     "mts:iv_tpp.paint_double_bucket_shagbark:0": {
         "value": 50000
     },
     "mts:iv_tpp.wrap_roll_emerald:0": {
-        "value": 200000
+        "value": 250000
     },
     "mts:iv_tpp.paint_double_bucket_steelblueandteal:0": {
         "value": 50000
     },
     "mts:iv_tpp.wrap_roll_driveschool:0": {
-        "value": 100000
+        "value": 120000
     },
     "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
         "value": 50000
@@ -1199,13 +1199,13 @@
         "value": 15000
     },
     "mts:syndicatemotorfoundry.paintcan_lunar:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:syndicatemotorfoundry.paintcan_azure:0": {
-        "value": 10000
+        "value": 15000
     },
     "mts:syndicatemotorfoundry.paintcan_solar:0": {
-        "value": 20000
+        "value": 25000
     },
     "mts:ivv.radiocb:0": {
         "value": 50000
@@ -1359,9 +1359,6 @@
     },
     "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
         "value": 80000
-    },
-    "minecraft:paper:0": {
-        "value": 10000
     },
     "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
         "value": 40000
@@ -1737,5 +1734,117 @@
     },
     "mts:iav.iav_a_hdv12:0": {
         "value": 1800000
+    },
+    "mts:mts.jerrycan:0": {
+        "value": 5500
+    },
+    "harvestcraft:bbqpotatochipsitem:0": {
+        "value": 700
+    },
+    "mts:mts.jumperpack:0": {
+        "value": 10000
+    },
+    "harvestcraft:potatochipsitem:0": {
+        "value": 300
+    },
+    "harvestcraft:hamsweetpicklesandwichitem:0": {
+        "value": 1200
+    },
+    "mts:mtsofficialpack.nuts:0": {
+        "value": 500
+    },
+    "harvestcraft:leafychickensandwichitem:0": {
+        "value": 700
+    },
+    "mts:mtsofficialpack.rods:0": {
+        "value": 500
+    },
+    "variedcommodities:coin_iron:0": {
+        "value": 0
+    },
+    "harvestcraft:colasodaitem:0": {
+        "value": 350
+    },
+    "harvestcraft:jellybeansitem:0": {
+        "value": 300
+    },
+    "minecraft:bucket:0": {
+        "value": 1000
+    },
+    "harvestcraft:applejuiceitem:0": {
+        "value": 250
+    },
+    "harvestcraft:saltedsunflowerseedsitem:0": {
+        "value": 200
+    },
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"diesel\"}": {
+        "value": 1600,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"diesel\"}"
+    },
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}": {
+        "value": 1700,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}"
+    },
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"ethanol\"}": {
+        "value": 1800,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"ethanol\"}"
+    },
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"gasoline\"}": {
+        "value": 1800,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"gasoline\"}"
+    },
+    "mts:unuparts.unuparts_part_unu_propeller_w3d004:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1g:0": {
+        "value": 500000
+    },
+    "mts:iav.iav_a_outboard_prop:0": {
+        "value": 30000
+    },
+    "mts:iav.iav_a_outboard:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1e:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1prop:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.trin_boat_v8_firered:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_engine_firered:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_iron:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.trin_boat_v8_pureblack:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_engine_pureblack:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_small:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.trin_boat_v8_white:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_engine_white:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_carbonfiber:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_boat_v8_silver:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_engine_silver:0": {
+        "value": 500000
     }
 }
