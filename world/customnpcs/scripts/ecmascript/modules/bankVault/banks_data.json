@@ -43,7 +43,7 @@
             "z": -995
         },
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2660349798,
+        "vaultGateOpenTime": 2661173773,
         "gate": {
             "pos1": {
                 "x": 251,
@@ -73,8 +73,8 @@
             "y": 85,
             "z": 1045
         },
-        "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2659561522,
+        "isVaultGateOpened": true,
+        "vaultGateOpenTime": 2661220432,
         "gate": {
             "pos1": {
                 "x": -2852,
