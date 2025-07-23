@@ -1344,7 +1344,7 @@ sets:
                 y: 75.0
                 z: -482.0
                 icon: shopping_garage
-                label: Repair Shop
+                label: Tangerine Garage (Repair Shop)
             marker_6:
                 world: world
                 markup: false
