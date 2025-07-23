@@ -84,7 +84,7 @@ function getPriceFromItemStack(stack, defaultPrice, ignoreNBT) {
     }
     // logToFile("dev", "getPriceFromItemStack called with itemId: " + itemId + ", defaultPrice: " + defaultPrice + ", ignoreNBT: " + ignoreNBT);
     var value = getPrice(itemId, defaultPrice, itemTag, ignoreNBT);
-    return value;
+    return value * stack.getStackSize();
 }
 
 /**
