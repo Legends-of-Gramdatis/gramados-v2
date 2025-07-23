@@ -4,7 +4,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
-var WELCOME_PACK_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/welcomePack/welcome_pack.json";
+var WELCOME_PACK_JSON_PATH = "world/customnpcs/scripts/data_auto/welcome_pack.json";
 
 /**
  * @description
