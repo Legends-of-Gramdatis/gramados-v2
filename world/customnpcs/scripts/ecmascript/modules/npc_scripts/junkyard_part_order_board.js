@@ -15,7 +15,7 @@ var Paths = Java.type('java.nio.file.Paths');
 var ORDER_DATA_PATH = "world/customnpcs/scripts/data_auto/parts_orders.json";
 var ORDER_ITEM_ID = "variedcommodities:plans";
 var ORDER_ITEM_NAME = "§eVehicle Part Order Form";
-var ORDER_DELAY_HOURS = 1; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
+var ORDER_DELAY_HOURS = 0; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
 
 function interact(event) {
     var player = event.player;
@@ -28,7 +28,8 @@ function interact(event) {
 
     // Check if player is a mechanic
     if (!playerHasJobWithTag(player, "Mechanic")) {
-        tellPlayer(player, "§cOnly mechanics can interact with this board.");
+        tellPlayer(player, "§c:cross: Only mechanics can interact with this board.");
+        npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
 
@@ -53,7 +54,9 @@ function interact(event) {
 
         var currentTime = world.getTotalTime();
         if (ORDER_DELAY_HOURS > 0 && currentTime - playerEntry.lastOrderTime < ORDER_DELAY_HOURS * 60 * 60 * 1000) {
-            tellPlayer(player, "§cYou can only take a new order every " + ORDER_DELAY_HOURS + " hours.");
+            tellPlayer(player, "§c:cross: You can only take a new order every " + ORDER_DELAY_HOURS + " hours.");
+            // minecraft:block.redstone_torch.burnout
+            npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
             return;
         }
 
@@ -65,6 +68,8 @@ function interact(event) {
         orderData.players[playerName] = playerEntry;
 
         player.giveItem(setupOrderNameLore(newOrder, player.getWorld()));
+        tellPlayer(player, "§a:check: You have received a new order! Check your hand for the order form.");
+        npc.executeCommand("/playsound ivv:computer.new.off block @a ~ ~ ~ 10 1");
         saveJson(orderData, ORDER_DATA_PATH);
     }
 }
@@ -131,7 +136,8 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     if (!orderId) {
-        tellPlayer(player, "§cInvalid order ID.");
+        tellPlayer(player, "§c:cross: Invalid order ID.");
+        npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
 
@@ -145,26 +151,108 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     if (!order) {
-        tellPlayer(player, "§cInvalid order ID.");
+        tellPlayer(player, "§c:cross: Invalid order ID.");
+        npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
 
     var currentTime = new Date();
     var expiryDate = new Date(order.expiryDate);
-    var toleranceTime = expiryDate.getTime() + (expiryDate.getTime() * order.tolerance);
+    var lateTime = new Date(expiryDate - new Date(order.generatedDate));
+    var toleranceTime = expiryDate.getTime() + (lateTime * order.tolerance);
+    var toleranceDate = new Date(toleranceTime);
+    // tellPlayer(player, "§6Order ID: §f" + order.id + " §6| Expiry Date: §f" + expiryDate.toISOString() + " §6| Tolerance: §f" + (order.tolerance * 100).toFixed(2) + "% §6| Tolerance Date: §f" + toleranceDate.toISOString() + ".");
+
+    // var days = Math.floor(lateTime / (1000 * 60 * 60 * 24));
+    // var hours = Math.floor((lateTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    // var minutes = Math.floor((lateTime % (1000 * 60 * 60)) / (1000 * 60));
+    // var seconds = Math.floor((lateTime % (1000 * 60)) / 1000);
+    // tellPlayer(player, "§6Tolerance Time: §f" + days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds.");
+    var adjustedPayout = order.payout;
 
     if (currentTime.getTime() > toleranceTime) {
-        tellPlayer(player, "§cThe order has expired and cannot be completed.");
+        tellPlayer(player, "§c:cross: The order has expired and cannot be completed. You had to complete it by " + toleranceDate.toISOString() + ".");
+        npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
+
+        // Cleanup JSON entries
+        var orderIndex = -1;
+        for (var i = 0; i < orderData.orders.length; i++) {
+            if (orderData.orders[i].id === orderId) {
+                orderIndex = i;
+                break;
+            }
+        }
+        if (orderIndex !== -1) {
+            orderData.orders.splice(orderIndex, 1);
+        }
+
+        var playerEntry = orderData.players[order.player];
+        if (playerEntry) {
+            playerEntry.totalOrdersUncompleted++;
+        }
+
+        // Remove the order item from the player's inventory
+        heldItem.setStackSize(heldItem.getStackSize() - 1);
+        if (heldItem.getStackSize() <= 0) {
+            player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
+        }
+
+        saveJson(orderData, ORDER_DATA_PATH);
         return;
     }
 
     // Calculate payout reduction if completed after the original deadline
     if (currentTime.getTime() > expiryDate.getTime()) {
-        var lateTime = currentTime.getTime() - expiryDate.getTime();
-        var toleranceDuration = toleranceTime - expiryDate.getTime();
-        var latePercentage = lateTime / toleranceDuration;
-        order.payout = Math.floor(order.payout * (1 - latePercentage));
-        tellPlayer(player, "§eThe order was completed late. Payout has been reduced to " + getAmountCoin(order.payout) + ".");
+        var generatedDate = new Date(order.generatedDate);
+        var orderDuration = expiryDate.getTime() - generatedDate.getTime(); // Total time between generatedDate and expiryDate
+        var toleranceDuration = orderDuration * order.tolerance; // Tolerance duration based on the multiplier
+        var toleranceEndTime = expiryDate.getTime() + toleranceDuration; // End time including tolerance
+
+        if (currentTime.getTime() > toleranceEndTime) {
+            tellPlayer(player, "§c:cross: The order has expired and cannot be completed. You had to complete it by " + new Date(toleranceEndTime).toISOString() + ".");
+            npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
+
+            // Cleanup JSON entries
+            var orderIndex = -1;
+            for (var i = 0; i < orderData.orders.length; i++) {
+                if (orderData.orders[i].id === orderId) {
+                    orderIndex = i;
+                    break;
+                }
+            }
+            if (orderIndex !== -1) {
+                orderData.orders.splice(orderIndex, 1);
+            }
+
+            var playerEntry = orderData.players[order.player];
+            if (playerEntry) {
+                playerEntry.totalOrdersLate++;
+            }
+
+            // Remove the order item from the player's inventory
+            heldItem.setStackSize(heldItem.getStackSize() - 1);
+            if (heldItem.getStackSize() <= 0) {
+                player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
+            }
+
+            saveJson(orderData, ORDER_DATA_PATH);
+            return;
+        }
+
+        // Calculate payout reduction if completed after the original deadline but within tolerance
+        if (currentTime.getTime() > expiryDate.getTime()) {
+            var lateTime = currentTime.getTime() - expiryDate.getTime(); // Time past the expiryDate
+            var maxLateTime = toleranceDuration; // Maximum allowable late time
+            var lateFactor = lateTime / maxLateTime; // Proportion of lateness within tolerance
+            var reductionFactor = lateFactor / 2; // Reduction is half the lateness proportion
+            var adjustedPayout = Math.max(0, Math.floor(order.payout * (1 - reductionFactor)));
+
+            tellPlayer(player, ":danger: §eThe order is Expired, but remains within tolerance. Payout has been reduced to &r:money:&e" + getAmountCoin(adjustedPayout) + " instead of &r:money:&e" + getAmountCoin(order.payout) + ".");
+            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup block @a ~ ~ ~ 10 1");
+
+            // Use adjustedPayout for payment without modifying order.payout in the JSON
+            order.payout = adjustedPayout;
+        }
     }
 
     var inventory = player.getInventory().getItems();
@@ -172,24 +260,24 @@ function processOrder(npc, player, heldItem, orderData) {
 
     for (var j = 0; j < order.parts.length; j++) {
         var part = order.parts[j];
-        var found = false;
+        var totalCount = 0;
 
         for (var k = 0; k < inventory.length; k++) {
             var itemStack = inventory[k];
-            if (itemStack && itemStack.getName() === part.id && itemStack.getStackSize() >= part.count) {
-                found = true;
-                break;
+            if (itemStack && itemStack.getName() === part.id) {
+                totalCount += itemStack.getStackSize();
             }
         }
 
-        if (!found) {
+        if (totalCount < part.count) {
             hasAllParts = false;
             break;
         }
     }
 
     if (!hasAllParts) {
-        tellPlayer(player, "§cYou do not have all the required parts to complete this order.");
+        tellPlayer(player, "§c:cross: You do not have all the required parts to complete this order.");
+        npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
 
@@ -209,13 +297,12 @@ function processOrder(npc, player, heldItem, orderData) {
     var world = player.getWorld();
 
     // Pay the player
-    player.giveItem(world.createItem("variedcommodities:money", order.payout, 0));
-    tellPlayer(player, "§aOrder completed! You have been paid " + getAmountCoin(order.payout) + ".");
-    var moneyItems = generateMoney(world, order.payout);
+    tellPlayer(player, "&a:check: Order completed! You have been paid &r:money:&a " + getAmountCoin(adjustedPayout) + ".");
+    npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 10 1");
+    var moneyItems = generateMoney(world, adjustedPayout);
     for (var i = 0; i < moneyItems.length; i++) {
         npc.dropItem(moneyItems[i]);
     }
-
 
     // Update order data
     var playerEntry = orderData.players[order.player];
@@ -238,7 +325,7 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     // Decrease the stack size of the order item by 1
-    tellPlayer(player, "§a:check: You have completed the order. The order form will be removed from your hand.");
+    // tellPlayer(player, "§a:check: You have completed the order. The order form will be removed from your hand.");
     heldItem.setStackSize(heldItem.getStackSize() - 1);
     if (heldItem.getStackSize() <= 0) {
         player.setMainhandItem(world.createItem("minecraft:air", 0, 1)); // Remove the item from hand
