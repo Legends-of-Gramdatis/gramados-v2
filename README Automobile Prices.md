@@ -27,6 +27,10 @@ For the vehicles that aren't listed, here are the prices:
 - UNU Burro: 98500 g
 - UNU Concord Wagon: 36200 g
 
+- UNU Mastodon Coupe (colection): 100000g
+- UNU Mastodon Van (colection): 120000g
+- UNU Mastodon Sedan (colection): 150000g
+
 ## DKZ
 DKZ 410 Rodimus: 68000 g - Restomod
 
