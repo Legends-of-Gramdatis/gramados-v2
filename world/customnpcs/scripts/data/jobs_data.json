@@ -126,7 +126,10 @@
             "Title": "Monsalac Milk Farmer",
             "Types": ["Dairy", "Meat"],
             "Region": "Monsalac",
-            "Perms": []
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Monsalac_Countryside_FerrousEstate_Farm"
+            ]
         },
         {
             "JobID": 554,
