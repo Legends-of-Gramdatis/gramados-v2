@@ -279,6 +279,13 @@
                 "StartTime": 2658842278,
                 "Region": "Gramados",
                 "Type": "Advanced"
+            },
+            "211": {
+                "JobID": 211,
+                "JobName": "Farmer",
+                "StartTime": 2664864219,
+                "Region": "Monsalac",
+                "Type": "Advanced"
             }
         }
     },
@@ -361,6 +368,13 @@
                 "JobName": "Farmer",
                 "StartTime": 2377884403,
                 "Region": "Monsalac",
+                "Type": "Advanced"
+            },
+            "554": {
+                "JobID": 554,
+                "JobName": "Mechanic",
+                "StartTime": 2663516091,
+                "Region": "Greenfield",
                 "Type": "Advanced"
             }
         }
@@ -578,13 +592,15 @@
                 "JobID": 51,
                 "JobName": "Farmer",
                 "StartTime": 2330803037,
-                "Region": "Greenfield"
+                "Region": "Greenfield",
+                "Type": "Advanced"
             },
             "54": {
                 "JobID": 54,
                 "JobName": "Concrete Factory Worker",
                 "StartTime": 2330803037,
-                "Region": "Gramados"
+                "Region": "Gramados",
+                "Type": "Starter"
             }
         }
     },
@@ -973,5 +989,10 @@
                 "Type": "Starter"
             }
         }
+    },
+    "cb1dda97-903e-4ae9-878d-0fa269e6fa26": {
+        "Name": "Wulfstan89",
+        "JobHistory": {},
+        "ActiveJobs": {}
     }
 }
