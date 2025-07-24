@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1128
+            "egg_count": 1130
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -216,6 +216,14 @@
                 }
             },
             "egg_count": 8
+        },
+        "AsmithRue": {
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 2
+                }
+            },
+            "egg_count": 2
         }
     }
 }
