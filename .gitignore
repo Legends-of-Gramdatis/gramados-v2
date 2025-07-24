@@ -82,3 +82,4 @@ world/customnpcs/scripts/data_auto/*.json
 tools/__pycache__/*
 tools/wth is that?*
 tools/output*.json
+world/customnpcs/scripts/logs/*
