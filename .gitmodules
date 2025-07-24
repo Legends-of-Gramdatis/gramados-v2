@@ -1,0 +1,3 @@
+[submodule "world/customnpcs/scripts/logs"]
+	path = world/customnpcs/scripts/logs
+	url = git@github.com:Legends-of-Gramdatis/logs.git
