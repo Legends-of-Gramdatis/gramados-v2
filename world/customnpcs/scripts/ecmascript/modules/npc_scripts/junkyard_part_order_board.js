@@ -15,7 +15,7 @@ var Paths = Java.type('java.nio.file.Paths');
 var ORDER_DATA_PATH = "world/customnpcs/scripts/data_auto/parts_orders.json";
 var ORDER_ITEM_ID = "variedcommodities:plans";
 var ORDER_ITEM_NAME = "§eVehicle Part Order Form";
-var ORDER_DELAY_HOURS = 0; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
+var ORDER_DELAY_HOURS = 6; // Configurable variable for time delay between orders (in hours). Set to 0 for unlimited orders.
 
 function interact(event) {
     var player = event.player;
