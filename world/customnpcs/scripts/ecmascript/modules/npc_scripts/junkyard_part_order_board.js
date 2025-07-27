@@ -41,13 +41,28 @@ function interact(event) {
         return;
     }
 
-    // If player is holding a command block (admin action), provide copies of all ongoing orders
-    if (heldItem && heldItem.getName() === "minecraft:command_block") {
-        tellPlayer(player, "§a:check: Admin action detected. Generating copies of all ongoing orders.");
-        orderData.orders.forEach(function(order) {
-            var orderCopy = setupOrderNameLore(order, player.getWorld());
-            player.giveItem(orderCopy);
-        });
+    // If player is holding an item from the _LOOTTABLE_CELLPHONES loot table, display time left
+    if (heldItem && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, heldItem.getName())) {
+        npc.executeCommand("/playsound ivv:phone.business.blip block @a ~ ~ ~ 10 1");
+        var playerEntry = orderData.players[playerName] || {
+            lastOrderTime: 0,
+            totalOrdersGiven: 0,
+            totalOrdersCompleted: 0,
+            totalOrdersCompletedNotAssigned: 0,
+            totalOrdersUncompleted: 0,
+            totalOrdersLate: 0
+        };
+
+        var currentTime = new Date().getTime();
+        var timeLeft = Math.max(0, ORDER_DELAY_HOURS * 60 * 60 * 1000 - (currentTime - playerEntry.lastOrderTime));
+
+        if (timeLeft > 0) {
+            var hours = Math.floor(timeLeft / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            tellPlayer(player, "§e:clock: Time left before you can take a new order: " + hours + " hours and " + minutes + " minutes.");
+        } else {
+            tellPlayer(player, "§a:check: You can take a new order now!");
+        }
         return;
     }
 
@@ -62,10 +77,9 @@ function interact(event) {
             totalOrdersLate: 0
         };
 
-        var currentTime = world.getTotalTime();
+        var currentTime = new Date().getTime();
         if (ORDER_DELAY_HOURS > 0 && currentTime - playerEntry.lastOrderTime < ORDER_DELAY_HOURS * 60 * 60 * 1000) {
-            tellPlayer(player, "§c:cross: You can only take a new order every " + ORDER_DELAY_HOURS + " hours.");
-            // minecraft:block.redstone_torch.burnout
+            tellPlayer(player, "§c:cross: You must wait before generating a new order.");
             npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
             return;
         }
@@ -77,10 +91,8 @@ function interact(event) {
         playerEntry.totalOrdersGiven++;
         orderData.players[playerName] = playerEntry;
 
-        player.giveItem(setupOrderNameLore(newOrder, player.getWorld()));
-        tellPlayer(player, "§a:check: You have received a new order! Check your hand for the order form.");
-        npc.executeCommand("/playsound ivv:computer.new.off block @a ~ ~ ~ 10 1");
         saveJson(orderData, ORDER_DATA_PATH);
+        player.giveItem(setupOrderNameLore(newOrder, player.getWorld()));
     }
 }
 
