@@ -41,6 +41,16 @@ function interact(event) {
         return;
     }
 
+    // If player is holding a command block (admin action), provide copies of all ongoing orders
+    if (heldItem && heldItem.getName() === "minecraft:command_block") {
+        tellPlayer(player, "§a:check: Admin action detected. Generating copies of all ongoing orders.");
+        orderData.orders.forEach(function(order) {
+            var orderCopy = setupOrderNameLore(order, player.getWorld());
+            player.giveItem(orderCopy);
+        });
+        return;
+    }
+
     // If player is not holding an item, generate a new order
     if (heldItem.isEmpty()) {
         var playerEntry = orderData.players[playerName] || {
