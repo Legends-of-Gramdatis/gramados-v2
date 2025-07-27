@@ -8,7 +8,7 @@
             "entries": [
                 {
                     "type": "loot_table",
-                    "path": "cellphone.json",
+                    "path": "assembled_loot_tables/cellphone.json",
                     "weight": 1
                 }
             ]
