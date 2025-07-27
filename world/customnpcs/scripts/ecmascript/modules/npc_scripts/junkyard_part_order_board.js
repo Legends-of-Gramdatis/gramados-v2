@@ -41,6 +41,16 @@ function interact(event) {
         return;
     }
 
+    // If player is holding a command block (admin action), provide copies of all ongoing orders
+    if (heldItem && heldItem.getName() === "minecraft:command_block") {
+        tellPlayer(player, "§a:check: Admin action detected. Generating copies of all ongoing orders.");
+        orderData.orders.forEach(function(order) {
+            var orderCopy = setupOrderNameLore(order, player.getWorld());
+            player.giveItem(orderCopy);
+        });
+        return;
+    }
+
     // If player is holding an item from the _LOOTTABLE_CELLPHONES loot table, display time left
     if (heldItem && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, heldItem.getName())) {
         npc.executeCommand("/playsound ivv:phone.business.blip block @a ~ ~ ~ 10 1");
@@ -93,6 +103,8 @@ function interact(event) {
 
         saveJson(orderData, ORDER_DATA_PATH);
         player.giveItem(setupOrderNameLore(newOrder, player.getWorld()));
+        tellPlayer(player, "§a:check: You have received a new order! Check your hand for the order form.");
+        npc.executeCommand("/playsound ivv:computer.new.off block @a ~ ~ ~ 10 1");
     }
 }
 
