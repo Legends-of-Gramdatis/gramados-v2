@@ -55,7 +55,10 @@ function getItemMoney(stack, world, currencyType) {
  * @returns {boolean} - True if the item stack is money, false otherwise.
  */
 function isItemMoney(stack, world, currencyType) {
-    return getItemMoney(stack, world, currencyType) > 0;
+    if (stack.getDisplayName().equals("§2§lMoney§r")) {
+        return getItemMoney(stack, world, currencyType) > 0;
+    }
+    return false;
 }
 
 /**

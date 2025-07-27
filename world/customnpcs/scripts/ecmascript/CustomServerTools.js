@@ -10876,7 +10876,10 @@ function getItemMoney(stack, w, currencyType) {
 }
 
 function isItemMoney(stack, w, currencyType) {
-    return getItemMoney(stack, w, currencyType) > 0;
+    if (stack.getDisplayName().equals("§2§lMoney§r")) {
+        return getItemMoney(stack, w, currencyType) > 0;
+    }
+    return false;
 }
 
 function genMoney(w, amount, currencyType) {
