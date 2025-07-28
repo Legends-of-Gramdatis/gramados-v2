@@ -30,7 +30,7 @@ The tagline read:
 **“Still more reliable than your cousin’s boat.”**
 It became a cultural touchstone across Gramados.
 
-Production numbers for this first generation were solid. **Several hundred units** rolled off the line and spread across the islands. Though never exported, the Footpather quickly became a staple across Gramados: seen navigating forest trails, market roads, hillside farms, and beachfront access tracks from Solterra’s shrublands to the high slopes of Monsalac.
+Production numbers for this first generation were solid. **Several thousand units** rolled off the line and spread across the islands. Though never exported, the Footpather quickly became a staple across Gramados: seen navigating forest trails, market roads, hillside farms, and beachfront access tracks from Solterra’s shrublands to the high slopes of Monsalac.
 
 ---
 
