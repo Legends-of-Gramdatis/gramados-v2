@@ -2,6 +2,60 @@
     Custom Server Tools
 */
 
+function grantEmote(player, emote) {
+    giveEmote(player, emote);
+    tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
+    var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPosition().getX() + " " + player.getPosition().getY() + " " + player.getPosition().getZ() + " 1 1";
+    API.executeCommand(player.getWorld(), command);
+}
+
+function giveEmote(player, emote) {
+    var world_data = player.getWorld().getStoreddata();
+    var player_json = JSON.parse(world_data.get("player_" + player.getDisplayName()));
+
+    if (!player_json) {
+        player_json = {};
+    }
+
+    player_json.emotes = player_json.emotes || [];
+
+    if (!includes(player_json.emotes, emote)) {
+        player_json.emotes.push(emote);
+        world_data.put("player_" + player.getDisplayName(), JSON.stringify(player_json));
+        return true;
+    }
+    return false;
+}
+
+function grantBadgeAndEmotes(player, badge, emotes) {
+    for (var i = 0; i < emotes.length; i++) {
+        giveEmote(player, emotes[i]);
+    }
+    if (giveBadge(player, badge)) {
+        tellPlayer(player, "&a:check: You have received the '&r" + badge + "&a' badge!&8&o Use !mybadges to see your badges.");
+        var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
+        API.executeCommand(player.getWorld(), command);
+    }
+}
+
+function giveBadge(player, badge) {
+    var world_data = player.getWorld().getStoreddata();
+    var player_json = JSON.parse(world_data.get("player_" + player.getDisplayName()));
+
+    if (!player_json) {
+        player_json = {};
+    }
+
+    player_json.badges = player_json.badges || [];
+
+    if (!includes(player_json.badges, badge)) {
+        player_json.badges.push(badge);
+        world_data.put("player_" + player.getDisplayName(), JSON.stringify(player_json));
+        return true;
+    }
+    return false;
+}
+
 function array_shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -1466,15 +1520,11 @@ var UNI = [
 ];
 var CHAT_EMOTES = {
     "check": "\u9366",
-    "hp": "\u9390",
-    "hphalf": "\u9391",
-    "hpempty": "\u938E",
     "cross": "\u9367",
     "sun": "\u2739",
     "star": "\u2729",
     "recycle": "\u267B",
     "seagull": "\u932A",
-    //emoji
     "cool": "\u9914",
     "shocked": "\u9915",
     "smile": "\u9916",
@@ -1484,7 +1534,10 @@ var CHAT_EMOTES = {
     "crazy": "\u991A",
     "shrug": "\u991B",
     "thonk": "\u950B",
-    //Misc
+    "heart": "\u93E7",
+    "heart_gold": "\u93F2",
+    "heart_wither": "\u93F1",
+    "heart_dark": "\u9416",
     "wifi5": "\u936A",
     "wifi4": "\u936B",
     "wifi3": "\u936C",
@@ -1519,7 +1572,6 @@ var CHAT_EMOTES = {
     "car": "\u950D",
     "computer": "\u950E",
     "factory": "\u950F",
-    //Arrows
     "arrow_u": "\u9920",
     "arrow_ur": "\u9921",
     "arrow_r": "\u9922",
@@ -1528,42 +1580,47 @@ var CHAT_EMOTES = {
     "arrow_dl": "\u9925",
     "arrow_l": "\u9926",
     "arrow_ul": "\u9927",
-    //Mobs
-    "creeper": "\u92C0",
-    "ccreeper": "\u92C1",
-    "skeleton": "\u92C2",
-    "wskeleton": "\u92C3",
-    "spider": "\u92C4",
-    "zombie": "\u92C5",
-    "vzombie": "\u92C6",
-    "slime": "\u92C7",
-    "ghast": "\u92C8",
-    "oghast": "\u92C9",
-    "pigzombie": "\u92CA",
-    "enderman": "\u92CB",
-    "blaze": "\u92CE",
-    "mslime": "\u92CF",
-    "illager": "\u92D1",
-    "pig": "\u92D3",
-    "sheep": "\u92D4",
-    "cow": "\u92D5",
-    "chicken": "\u92D6",
-    "villager": "\u92E5",
-
-    //items
+    "clock_day": "\u9048",
+    "clock_night": "\u904C",
+    "demonic_ingot": "\u93CB",
+    "mithril_ingot": "\u93CC",
     "iron_ingot": "\u90B0",
     "gold_ingot": "\u90B1",
     "brick": "\u90B2",
     "nether_brick": "\u90B3",
-    "coal": "\u90B4",
-    "ccoal": "\u90B5",
     "diamond": "\u90B6",
     "ruby": "\u90B7",
     "emerald": "\u90B8",
+    "sapphire": "\u93FC",
+    "amethyst": "\u93CE",
     "nether_star": "\u90BD",
     "exp": "\u9901",
     "gapple": "\u9902",
-    //blocks items
+    "creamcookie": "\u932C",
+    "cookie": "\u90EB",
+    "cake": "\u90EC",
+    "ppie": "\u90ED",
+    "egg": "\u906C",
+    "meat_prime": "\u95AA",
+    "meat_big": "\u95A8",
+    "meat_medium": "\u95A9",
+    "meat_small": "\u95A7",
+    "meat_gold": "\u95AB",
+    "lit": "\u9200",
+    "hp": "\u9390",
+    "hphalf": "\u9391",
+    "hpempty": "\u938E",
+    "coal": "\u90B4",
+    "ccoal": "\u90B5",
+    "jump_rabbit": "\u93EA",
+    "mossy_log": "\u9466",
+    "fountain": "\u9462",
+    "fountain_desert": "\u9440",
+    "hut_dirt": "\u946B",
+    "hut_wooden": "\u9469",
+    "hut_brick": "\u946A",
+    "castle": "\u946D",
+    "brewers_kit": "\u9453",
     "coal_ore": "\u9220",
     "iron_ore": "\u9221",
     "gold_ore": "\u9222",
@@ -1590,7 +1647,6 @@ var CHAT_EMOTES = {
     "cactus": "\u9276",
     "sponge": "\u927C",
     "tnt": "\u927E",
-    "lit": "\u9200",
     "fire": "\u95AF",
     "water": "\u920B",
     "lava": "\u920E",
@@ -1602,8 +1658,27 @@ var CHAT_EMOTES = {
     "trapdoor": "\u926F",
     "lamp_on": "\u9248",
     "lamp_off": "\u9247",
-
-    //box drawing
+    "creeper": "\u92C0",
+    "ccreeper": "\u92C1",
+    "skeleton": "\u92C2",
+    "wskeleton": "\u92C3",
+    "spider": "\u92C4",
+    "zombie": "\u92C5",
+    "vzombie": "\u92C6",
+    "slime": "\u92C7",
+    "ghast": "\u94D2",
+    "oghast": "\u94D3",
+    "pigzombie": "\u94D4",
+    "enderman": "\u94D5",
+    "blaze": "\u94D8",
+    "silverfish": "\u94D7",
+    "mslime": "\u94D9",
+    "illager": "\u92D1",
+    "pig": "\u92D3",
+    "sheep": "\u92D4",
+    "cow": "\u92D5",
+    "chicken": "\u92D6",
+    "villager": "\u92E5",
     "railsv": "\u91E0",
     "railsh": "\u91E8",
     "rails_ru": "\u91F0",
@@ -1616,63 +1691,42 @@ var CHAT_EMOTES = {
     "drailsv_on": "\u91E5",
     "arailsv_off": "\u91E6",
     "arailsv_on": "\u91E7",
-
     "prailsh_off": "\u91EA",
     "prailsh_on": "\u91EB",
     "drailsh_off": "\u91EC",
     "drailsh_on": "\u91ED",
     "arailsh_off": "\u91EE",
     "arailsh_on": "\u91EF",
-
-    //Foods
-    "creamcookie": "\u932C",
-    "cookie": "\u90EB",
-    "cake": "\u90EC",
-    "ppie": "\u90ED",
-    "meat_prime": "\u95AA",
-    "meat_big": "\u95A8",
-    "meat_medium": "\u95A9",
-    "meat_small": "\u95A7",
-    "meat_gold": "\u95AB",
-
-    //Weapons and tools
     "wooden_sword": "\u9000",
     "wooden_pickaxe": "\u9001",
     "wooden_shovel": "\u9002",
     "wooden_axe": "\u9003",
     "wooden_hoe": "\u9004",
-
     "stone_sword": "\u9005",
     "stone_pickaxe": "\u9006",
     "stone_shovel": "\u9007",
     "stone_axe": "\u9008",
     "stone_hoe": "\u9009",
-
     "golden_sword": "\u900A",
     "golden_pickaxe": "\u900B",
     "golden_shovel": "\u900C",
     "golden_axe": "\u900D",
     "golden_hoe": "\u900E",
-
     "iron_sword": "\u9010",
     "iron_pickaxe": "\u9011",
     "iron_shovel": "\u9012",
     "iron_axe": "\u9013",
     "iron_hoe": "\u9014",
-
     "diamond_sword": "\u9015",
     "diamond_pickaxe": "\u9016",
     "diamond_shovel": "\u9017",
     "diamond_axe": "\u9018",
     "diamond_hoe": "\u9019",
-
-
     "box": "\u2B1B",
-
     "gun": "\u9684",
     "shotgun": "\u950C",
-    "rifle": "\u9683",
-};//config for gramados
+    "rifle": "\u9683"
+};
 
 //Configure your own currency units
 //Units of currency, with own names, with lowest unit being 1
@@ -9791,6 +9845,10 @@ registerXCommands([
             region.save(data);
 
             tellPlayer(pl, '&aSuccessfully rented region for &r:money:&e' + getAmountCoin(region.data.rentPrice) + ' &a for &a&o' + getTimeString(region.data.rentTime) + ' &amore time');
+            // if StarterHotel in region name:
+            if (region.name.toLowerCase().indexOf('starterhotel') > -1) {
+                grantBadgeAndEmotes(pl, "checked_in", ["hut_dirt"]);
+            }
         }
 
 
