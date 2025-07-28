@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js')
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
 
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
@@ -299,6 +300,8 @@ function interact(event) {
         player.setMainhandItem(item);
 
         var logline = player.getName() + " opened an egg with " + eggcracker_type + "!";
+        grantBadgeAndEmotes(player, "easter_hunter", ["egg", "jump_rabbit"]);
+        
         logToFile("events", logline);
 
     } else {

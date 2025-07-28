@@ -195,6 +195,8 @@ function interact(event) {
                 if (Object.keys(delivery).length === 0) {
                     npc.say("This crate doesn't have items I can accept.");
                     return;
+                } else if ("Lumber" in NPC_REGION) {
+                    grantBadgeAndEmotes(player, "Lumberjack", ["mossy_log", "log", "log2", "wood", "wooden_axe", "stone_axe"]);
                 }
 
                 // Calculate total earnings before updating stock prices
