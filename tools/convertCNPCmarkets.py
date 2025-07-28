@@ -125,6 +125,11 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         item_tag = json.dumps(item.get('tag', {}), sort_keys=True)  # Serialize the tag with sorted keys
         unique_key = f"{item_id}|{item_tag}" if item_tag != '{}' else item_id
 
+        # Skip adding items with a value of 0 to the global prices list
+        if price_in_cents == 0:
+            print(f"Item {item_id} has a value of 0 and will not be added to the global prices list.")
+            continue
+
         # Handle duplicates based on force_replace
         if unique_key in global_prices:
             old_price = global_prices[unique_key]['value']
@@ -174,6 +179,6 @@ if __name__ == "__main__":
 
     for path in input_json_path:
         market_data = load_mc_json(path)
-        print(f"Loaded market data from {path}: {market_data}")
+        # print(f"Loaded market data from {path}: {market_data}")
         update_global_prices(market_data, global_prices_path, force_replace=False)
     print("All market data processed and global prices updated.")
