@@ -33,7 +33,7 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
     // logToFile("dev", "getPrice called for itemId: " + itemId + ", uniqueKey: " + uniqueKey + ", ignoreNBT: " + ignoreNBT);
 
     if (!globalPrices || !globalPrices[uniqueKey]) {
-        // logToFile("dev", "No price found for itemId: " + itemId + ", returning default price: " + defaultPrice);
+        logToFile("dev", "No price found for itemId: " + itemId + ", returning default price: " + defaultPrice);
         return defaultPrice;
     }
 
