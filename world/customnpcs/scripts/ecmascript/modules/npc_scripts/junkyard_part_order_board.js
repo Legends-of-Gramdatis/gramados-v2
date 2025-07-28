@@ -69,7 +69,7 @@ function interact(event) {
         if (timeLeft > 0) {
             var hours = Math.floor(timeLeft / (1000 * 60 * 60));
             var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            tellPlayer(player, "§e:clock: Time left before you can take a new order: " + hours + " hours and " + minutes + " minutes.");
+            tellPlayer(player, ":clock_day:&eTime left before you can take a new order: " + hours + " hours and " + minutes + " minutes.");
         } else {
             tellPlayer(player, "§a:check: You can take a new order now!");
         }
@@ -124,7 +124,7 @@ function generateOrder(player, playerName, world) {
         partlog.push(itemStack.getName() + " x" + entry.count);
         // tellPlayer(player, "§aYou have received a new order for: §b" + itemStack.getItemName() + "§a x" + entry.count);
         // logToFile("mechanics", "Player " + playerName + " received order for " + itemStack.getItemName() + " x" + entry.count);
-        totalPayout += getPriceFromItemStack(itemStack, 10000, true); // Base price of 100.00 grons per item
+        totalPayout += getPriceFromItemStack(itemStack, 30000, true); // Base price of 300.00 grons per item
         totalPayout *= entry.count; // Multiply by the count of items
 
         
