@@ -69,3 +69,21 @@ function getCurrentTime() {
         month: month
     };
 }
+
+
+function getAgeTick(world) {
+    return world.getCurrentTime();
+}
+
+function getAgeTickSince(world, startTime) {
+    return world.getCurrentTime() - startTime;
+}
+
+function hasAgeTickPassed(world, startTime, ageTick) {
+    return world.getCurrentTime() - startTime >= ageTick;
+}
+
+function TimeToTick(hours, minutes, seconds) {
+    var targetTime = (hours * 3600 + minutes * 60 + seconds) * 20; // Convert to ticks (20 ticks per second)
+    return targetTime;
+}
