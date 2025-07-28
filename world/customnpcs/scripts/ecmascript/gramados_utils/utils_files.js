@@ -104,20 +104,6 @@ function readDir(dirPath) {
 }
 
 /**
- * Reads the contents of a file as a string.
- * @param {string} filePath - The file path.
- * @returns {string} The file contents.
- */
-function readFileAsString(filePath) {
-    try {
-        var path = Paths.get(filePath);
-        return new String(Files.readAllBytes(path), CHARSET_UTF_8);
-    } catch (exc) {
-        return null;
-    }
-}
-
-/**
  * Reads the contents of a file.
  * @param {string} filePath - The file path.
  * @returns {Array<string>} The file contents as an array of lines.
@@ -127,7 +113,7 @@ function readFile(filePath) {
     try {
         return Files.readAllLines(path, CHARSET_UTF_8).toArray();
     } catch (e) {
-        return null;
+        return [];
     }
 }
 
