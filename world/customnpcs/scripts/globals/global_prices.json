@@ -1759,9 +1759,6 @@
     "mts:mtsofficialpack.rods:0": {
         "value": 500
     },
-    "variedcommodities:coin_iron:0": {
-        "value": 0
-    },
     "harvestcraft:colasodaitem:0": {
         "value": 350
     },
@@ -1846,5 +1843,50 @@
     },
     "mts:iv_tpp.trin_boat_engine_silver:0": {
         "value": 500000
+    },
+    "minecraft:book:0": {
+        "value": 1000
+    },
+    "cfm:item_recipe_book:0": {
+        "value": 2000
+    },
+    "mts:cactusdecor_furniture.book:0": {
+        "value": 1000
+    },
+    "mts:unucivil.unucivil_item_unu_manual_mastodon:0": {
+        "value": 6000
+    },
+    "animania:animania_manual:0": {
+        "value": 3000
+    },
+    "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_item_unu_manual_turboencabulator:0": {
+        "value": 11000
+    },
+    "forestry:book_forester:0": {
+        "value": 3000
+    },
+    "mts:unudecor.unuparts_decor_unu_books_generic1:0": {
+        "value": 2000
+    },
+    "immersiveengineering:tool:3": {
+        "value": 11000
+    },
+    "mts:mts.handbook_car:0": {
+        "value": 6000
+    },
+    "mts:cactusdecor_furniture.book_stack1:0": {
+        "value": 3000
+    },
+    "mts:unuparts.unuparts_item_unu_manual_assembly_vehicle:0": {
+        "value": 51000
+    },
+    "mts:mts.handbook_plane:0": {
+        "value": 6000
+    },
+    "mts:cactusdecor_furniture.book_stack2:0": {
+        "value": 6000
     }
 }
