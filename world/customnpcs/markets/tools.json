@@ -164,6 +164,42 @@
                 "Damage": 0s
             },
             {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 7b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e200G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 2b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e200G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
                 "Slot": 11b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -434,6 +470,26 @@
                         "Name": "§fAdvanced Hoe"
                     }
                 },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:iron_sword",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:tool",
+                "Count": 1b,
                 "Damage": 0s
             },
             {
