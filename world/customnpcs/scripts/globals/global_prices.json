@@ -1,39 +1,318 @@
 {
-    "harvestcraft:cuttingboarditem:0": {
-        "display_name": "Cutting Board",
-        "value": 100
+    "animania:animania_manual:0": {
+        "value": 3000
     },
-    "harvestcraft:potitem:0": {
-        "display_name": "Pot",
-        "value": 100
+    "animania:block_mud:0": {
+        "value": 500
     },
-    "harvestcraft:skilletitem:0": {
-        "display_name": "Skillet",
-        "value": 100
-    },
-    "harvestcraft:saucepanitem:0": {
-        "display_name": "Saucepan",
-        "value": 100
-    },
-    "variedcommodities:pendant:0": {
-        "display_name": "Pendant",
+    "animania:block_nest:0": {
         "value": 10000
     },
-    "variedcommodities:necklace:0": {
-        "display_name": "Necklace",
-        "value": 25000
+    "animania:block_straw:0": {
+        "value": 300
     },
-    "variedcommodities:ring:0": {
-        "display_name": "Ring",
+    "animania:block_trough:0": {
+        "value": 100000
+    },
+    "animania:carving_knife:0": {
+        "value": 60000
+    },
+    "animania:cheese_mold:0": {
+        "value": 10000
+    },
+    "animania:goat_cheese_wheel:0": {
+        "display_name": "Goat Cheese Wheel",
+        "value": 16000,
+        "allow_market_override": true,
+        "based_on_stock": "Monsalac Cheesemaking"
+    },
+    "animania:holstein_cheese_wheel:0": {
+        "display_name": "Holstein Cheese Wheel",
+        "value": 14000,
+        "allow_market_override": true,
+        "based_on_stock": "Monsalac Cheesemaking"
+    },
+    "animania:item_tiller:0": {
+        "value": 200000
+    },
+    "animania:jersey_cheese_wheel:0": {
+        "display_name": "Jersey Cheese Wheel",
+        "value": 18000,
+        "allow_market_override": true,
+        "based_on_stock": "Monsalac Cheesemaking"
+    },
+    "animania:salt_lick:0": {
+        "value": 2000
+    },
+    "animania:sheep_cheese_wheel:0": {
+        "display_name": "Sheep Cheese Wheel",
+        "value": 16000,
+        "allow_market_override": true,
+        "based_on_stock": "Monsalac Cheesemaking"
+    },
+    "cfm:bedside_cabinet_oak:0": {
+        "value": 10000
+    },
+    "cfm:cabinet_kitchen:0": {
+        "value": 20000
+    },
+    "cfm:cabinet_oak:0": {
+        "value": 2000
+    },
+    "cfm:ceiling_light_off:0": {
+        "value": 500
+    },
+    "cfm:chair_oak:0": {
+        "value": 2000
+    },
+    "cfm:counter:0": {
+        "value": 10000
+    },
+    "cfm:counter_drawer:0": {
+        "value": 20000
+    },
+    "cfm:counter_sink:0": {
         "value": 30000
     },
-    "variedcommodities:statuette:0": {
-        "display_name": "Statuette",
+    "cfm:item_crow_bar:0": {
+        "value": 6000
+    },
+    "cfm:item_knife:0": {
+        "value": 50000
+    },
+    "cfm:item_recipe_book:0": {
+        "value": 2000
+    },
+    "cfm:item_soap:0": {
+        "value": 350
+    },
+    "cfm:item_soap_water:0": {
+        "value": 1500
+    },
+    "cfm:item_spatula:0": {
+        "value": 1000
+    },
+    "cfm:modern_bed_bottom:0": {
+        "value": 20000
+    },
+    "cfm:modern_chair:0": {
+        "value": 7000
+    },
+    "cfm:modern_table:0": {
+        "value": 10000
+    },
+    "cfm:table_outdoor:0": {
+        "value": 12000
+    },
+    "chisel:carpet_black:0": {
+        "value": 1000
+    },
+    "chisel:carpet_blue:0": {
+        "value": 1000
+    },
+    "chisel:carpet_blue:1": {
+        "value": 1000
+    },
+    "chisel:carpet_cyan:1": {
+        "value": 1000
+    },
+    "chisel:carpet_gray:1": {
+        "value": 1000
+    },
+    "chisel:carpet_lightblue:0": {
+        "value": 1000
+    },
+    "chisel:carpet_lightblue:1": {
+        "value": 1000
+    },
+    "chisel:carpet_lime:0": {
+        "value": 1000
+    },
+    "chisel:carpet_magenta:0": {
+        "value": 1000
+    },
+    "chisel:carpet_magenta:1": {
+        "value": 1000
+    },
+    "chisel:carpet_orange:0": {
+        "value": 1000
+    },
+    "chisel:carpet_orange:1": {
+        "value": 1000
+    },
+    "chisel:carpet_purple:1": {
+        "value": 1000
+    },
+    "chisel:carpet_red:0": {
+        "value": 1000
+    },
+    "chisel:carpet_red:1": {
+        "value": 1000
+    },
+    "chisel:carpet_white:0": {
+        "value": 1000
+    },
+    "chisel:carpet_white:1": {
+        "value": 1000
+    },
+    "chisel:carpet_yellow:1": {
+        "value": 1000
+    },
+    "engineersdecor:passive_fluid_accumulator:0": {
+        "value": 30000
+    },
+    "engineersdecor:straight_pipe_valve:0": {
+        "value": 10000
+    },
+    "engineersdecor:straight_pipe_valve_redstone:0": {
+        "value": 20000
+    },
+    "flansmod:balaclava:0": {
+        "value": 11000
+    },
+    "flansmod:blacksweater:0": {
+        "value": 31000
+    },
+    "flansmod:blacktrousers:0": {
+        "value": 21000
+    },
+    "flansmod:bulldozerbody:0": {
+        "value": 35000
+    },
+    "flansmod:bulldozerboots:0": {
         "value": 15000
     },
-    "variedcommodities:tablet:0": {
-        "display_name": "Tablet",
-        "value": 17500
+    "flansmod:bulldozerhelmet:0": {
+        "value": 15000
+    },
+    "flansmod:bulldozerlegs:0": {
+        "value": 25000
+    },
+    "flansmod:dragunov:0": {
+        "value": 250000
+    },
+    "flansmod:dragunovammo:0": {
+        "value": 1000
+    },
+    "flansmod:g3:0": {
+        "value": 150000
+    },
+    "flansmod:g3ammo:0": {
+        "value": 2000
+    },
+    "flansmod:juggernautbody:0": {
+        "value": 35000
+    },
+    "flansmod:juggernautboots:0": {
+        "value": 15000
+    },
+    "flansmod:juggernauthelmet:0": {
+        "value": 15000
+    },
+    "flansmod:juggernautpantsbrown:0": {
+        "value": 25000
+    },
+    "flansmod:l96:0": {
+        "value": 350000
+    },
+    "flansmod:m1014ammo:0": {
+        "value": 500
+    },
+    "flansmod:m14:0": {
+        "value": 120000
+    },
+    "flansmod:m14ammo:0": {
+        "value": 2000
+    },
+    "flansmod:m1887ammo:0": {
+        "value": 800
+    },
+    "flansmod:m1911:0": {
+        "value": 60000
+    },
+    "flansmod:m1911ammo:0": {
+        "value": 800
+    },
+    "flansmod:m21:0": {
+        "value": 280000
+    },
+    "flansmod:m21ammo:0": {
+        "value": 1000
+    },
+    "flansmod:m9:0": {
+        "value": 50000
+    },
+    "flansmod:m9ammo:0": {
+        "value": 1500
+    },
+    "flansmod:makarov:0": {
+        "value": 40000
+    },
+    "flansmod:makarovammo:0": {
+        "value": 800
+    },
+    "flansmod:mwammobag:0": {
+        "value": 50000
+    },
+    "flansmod:mwknife:0": {
+        "value": 110000
+    },
+    "flansmod:mwmedicbag:0": {
+        "value": 50000
+    },
+    "flansmod:r870ammo:0": {
+        "value": 500
+    },
+    "flansmod:sg550:0": {
+        "value": 280000
+    },
+    "flansmod:sg550ammo:0": {
+        "value": 2000
+    },
+    "flansmod:sigp226:0": {
+        "value": 70000
+    },
+    "flansmod:sigp226ammo:0": {
+        "value": 1000
+    },
+    "flansmod:sigp232:0": {
+        "value": 70000
+    },
+    "flansmod:usp:0": {
+        "value": 60000
+    },
+    "flansmod:uspammo:0": {
+        "value": 1000
+    },
+    "flansmod:usppoisonammo:0": {
+        "value": 2000
+    },
+    "flansmod:w1200ammo:0": {
+        "value": 400
+    },
+    "forestry:bituminous_peat:0": {
+        "value": 937
+    },
+    "forestry:book_forester:0": {
+        "value": 3000
+    },
+    "forestry:carpenter:0": {
+        "value": 200000
+    },
+    "forestry:centrifuge:0": {
+        "value": 100000
+    },
+    "forestry:engine_biogas:0": {
+        "value": 300000
+    },
+    "forestry:engine_clockwork:0": {
+        "value": 100000
+    },
+    "forestry:engine_peat:0": {
+        "value": 200000
+    },
+    "forestry:fertilizer_bio:0": {
+        "value": 100
     },
     "forestry:fruits:3": {
         "display_name": "Forestry Lemon",
@@ -41,57 +320,9 @@
         "allow_market_override": true,
         "based_on_stock": "Gramados Farming"
     },
-    "harvestcraft:lemonitem:0": {
-        "display_name": "Lemon",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Farming"
-    },
-    "harvestcraft:orangeitem:0": {
-        "display_name": "Orange",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Farming"
-    },
-    "harvestcraft:grapefruititem:0": {
-        "display_name": "Grapefruit",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Farming"
-    },
-    "harvestcraft:pomegranateitem:0": {
-        "display_name": "Pomegranate",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Farming"
-    },
-    "harvestcraft:limeitem:0": {
-        "display_name": "Lime",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Farming"
-    },
-    "forestry:logs.5:0": {
-        "display_name": "Pine Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Lumber"
-    },
-    "minecraft:log:1": {
-        "display_name": "Spruce Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Lumber"
-    },
     "forestry:logs.0:1": {
         "display_name": "Teak Wood",
         "value": 400,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Lumber"
-    },
-    "forestry:logs.6:1": {
-        "display_name": "Ipe Wood",
-        "value": 300,
         "allow_market_override": true,
         "based_on_stock": "Gramados Lumber"
     },
@@ -101,287 +332,95 @@
         "allow_market_override": true,
         "based_on_stock": "Gramados Lumber"
     },
+    "forestry:logs.5:0": {
+        "display_name": "Pine Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Lumber"
+    },
+    "forestry:logs.5:1": {
+        "display_name": "Plum Wood",
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Lumber"
+    },
+    "forestry:logs.5:2": {
+        "display_name": "Maple Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Lumber"
+    },
     "forestry:logs.5:3": {
         "display_name": "Citrus Wood",
         "value": 1000,
         "allow_market_override": true,
         "based_on_stock": "Gramados Lumber"
     },
-    "immersiveengineering:stone_decoration:5": {
-        "display_name": "Concrete Block",
-        "value": 3000,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Concrete"
-    },
-    "immersiveengineering:stone_device:5": {
-        "display_name": "Concrete Chunk",
-        "value": 2250,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Concrete"
-    },
-    "immersiveengineering:stone_decoration_slab:5": {
-        "display_name": "Concrete Slab",
-        "value": 1500,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Concrete"
-    },
-    "immersiveengineering:stone_device:4": {
-        "display_name": "Concrete Panel",
-        "value": 750,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Concrete"
-    },
-    "immersiveengineering:stone_device:3": {
-        "display_name": "Concrete Sheet",
-        "value": 375,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Concrete"
-    },
-    "minecraft:brick:0": {
-        "display_name": "Brick",
+    "forestry:logs.6:1": {
+        "display_name": "Ipe Wood",
         "value": 300,
         "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Terracotta"
+        "based_on_stock": "Gramados Lumber"
     },
-    "minecraft:hardened_clay:0": {
-        "display_name": "Terracotta",
-        "value": 3000,
+    "forestry:logs.6:3": {
+        "display_name": "Cocobolo Wood",
+        "value": 500,
         "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Terracotta"
+        "based_on_stock": "Greenfield Lumber"
     },
-    "minecraft:brick_block:0": {
-        "display_name": "Brick Block",
-        "value": 6000,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Terracotta"
+    "forestry:peat:0": {
+        "value": 468
     },
-    "minecraft:flower_pot:0": {
-        "display_name": "Flower Pot",
-        "value": 600,
-        "allow_market_override": true,
-        "based_on_stock": "Gramados Industrial Terracotta"
+    "forestry:planks.0:15": {
+        "value": 100
     },
-    "harvestcraft:onionitem:0": {
-        "display_name": "Onion",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forestry:planks.1:4": {
+        "value": 600
     },
-    "harvestcraft:garlicitem:0": {
-        "display_name": "Garlic",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forestry:planks.1:6": {
+        "value": 600
     },
-    "harvestcraft:chilipepperitem:0": {
-        "display_name": "Chili Pepper",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forestry:squeezer:0": {
+        "value": 100000
     },
-    "harvestcraft:tomatoitem:0": {
-        "display_name": "Tomato",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}": {
+        "value": 1700,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}"
     },
-    "harvestcraft:eggplantitem:0": {
-        "display_name": "Eggplant",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"biomass\"}": {
+        "value": 2000,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"biomass\"}"
     },
-    "harvestcraft:bellpepperitem:0": {
-        "display_name": "Bell Pepper",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"diesel\"}": {
+        "value": 1600,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"diesel\"}"
     },
-    "minecraft:potato:0": {
-        "display_name": "Potato",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"ethanol\"}": {
+        "value": 1800,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"ethanol\"}"
     },
-    "harvestcraft:gigapickleitem:0": {
-        "display_name": "Gigapickle",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"fluid_booze_apple_cider_fermented\"}": {
+        "value": 11000,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"fluid_booze_apple_cider_fermented\"}"
     },
-    "harvestcraft:zucchiniitem:0": {
-        "display_name": "Zucchini",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"fluid_booze_green_wine\"}": {
+        "value": 11000,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"fluid_booze_green_wine\"}"
     },
-    "harvestcraft:wintersquashitem:0": {
-        "display_name": "Winter Squash",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"gasoline\"}": {
+        "value": 1800,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"gasoline\"}"
     },
-    "harvestcraft:harvestpumpkinitem:0": {
-        "display_name": "Harvest Pumpkin",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"seed.oil\"}": {
+        "value": 2000,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"seed.oil\"}"
     },
-    "minecraft:melon:0": {
-        "display_name": "Melon",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"slop\"}": {
+        "value": 1300,
+        "tag": "{\"Amount\": 1000, \"FluidName\": \"slop\"}"
     },
-    "harvestcraft:caulifloweritem:0": {
-        "display_name": "Cauliflower",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:cabbageitem:0": {
-        "display_name": "Cabbage",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:broccoliitem:0": {
-        "display_name": "Broccoli",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:brusselsproutitem:0": {
-        "display_name": "Brussels Sprout",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:cucumberitem:0": {
-        "display_name": "Cucumber",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:beetitem:0": {
-        "display_name": "Beet",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:leekitem:0": {
-        "display_name": "Leek",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:peasitem:0": {
-        "display_name": "Peas",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "minecraft:carrot:0": {
-        "display_name": "Carrot",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:rhubarbitem:0": {
-        "display_name": "Rhubarb",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:scallionitem:0": {
-        "display_name": "Scallion",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "minecraft:beetroot:0": {
-        "display_name": "Beetroot",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:parsnipitem:0": {
-        "display_name": "Parsnip",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:cornitem:0": {
-        "display_name": "Corn",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:barleyitem:0": {
-        "display_name": "Barley",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:spiceleafitem:0": {
-        "display_name": "Spice Leaf",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:lettuceitem:0": {
-        "display_name": "Lettuce",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:beanitem:0": {
-        "display_name": "Bean",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:grapeitem:0": {
-        "display_name": "Grape",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:sweetpotatoitem:0": {
-        "display_name": "Sweet Potato",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:soybeanitem:0": {
-        "display_name": "Soybean",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:lentilitem:0": {
-        "display_name": "Lentil",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "minecraft:apple:0": {
-        "display_name": "Apple",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:cherryitem:0": {
-        "display_name": "Cherry",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:figitem:0": {
-        "display_name": "Fig",
-        "value": 20,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Farming"
+    "growthcraft:salt:0": {
+        "value": 156
     },
     "growthcraft_apples:applecider:1": {
         "display_name": "Apple Cider",
@@ -413,6 +452,18 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Brewing"
     },
+    "growthcraft_bees:bees_wax:0": {
+        "value": 625
+    },
+    "growthcraft_bees:bees_wax:14": {
+        "value": 625
+    },
+    "growthcraft_bees:bees_wax:15": {
+        "value": 625
+    },
+    "growthcraft_bees:bees_wax:4": {
+        "value": 625
+    },
     "growthcraft_bees:mead:1": {
         "display_name": "Mead",
         "value": 1200,
@@ -443,26 +494,14 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Brewing"
     },
+    "growthcraft_cellar:brew_kettle:0": {
+        "value": 30000
+    },
+    "growthcraft_cellar:culture_jar:0": {
+        "value": 5000
+    },
     "growthcraft_grapes:grapewine:1": {
         "display_name": "Purple Grape Wine",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:2": {
-        "display_name": "Purple Grape Wine (Potent)",
-        "value": 1000,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:3": {
-        "display_name": "Purple Grape Wine (Extended)",
-        "value": 1000,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:9": {
-        "display_name": "Green Grape Wine",
         "value": 800,
         "allow_market_override": true,
         "based_on_stock": "Greenfield Brewing"
@@ -478,117 +517,6 @@
         "value": 1000,
         "allow_market_override": true,
         "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:17": {
-        "display_name": "Red Grape Wine",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:18": {
-        "display_name": "Red Grape Wine (Potent)",
-        "value": 1000,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "growthcraft_grapes:grapewine:19": {
-        "display_name": "Red Grape Wine (Extended)",
-        "value": 1000,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Brewing"
-    },
-    "minecraft:log:0": {
-        "display_name": "Oak Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "minecraft:log:2": {
-        "display_name": "Birch Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "forestry:logs.6:3": {
-        "display_name": "Cocobolo Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "forestry:logs.5:2": {
-        "display_name": "Maple Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "forestry:logs.5:1": {
-        "display_name": "Plum Wood",
-        "value": 1000,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "minecraft:log2:1": {
-        "display_name": "Dark Oak Wood",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Greenfield Lumber"
-    },
-    "minecraft:wheat:0": {
-        "display_name": "Wheat",
-        "value": 40,
-        "allow_market_override": true,
-        "based_on_stock": "Farmiston"
-    },
-    "minecraft:wheat_seeds:0": {
-        "display_name": "Wheat Seeds",
-        "value": 25,
-        "allow_market_override": true,
-        "based_on_stock": "Farmiston"
-    },
-    "minecraft:hay_block:0": {
-        "display_name": "Hay Bale",
-        "value": 400,
-        "allow_market_override": true,
-        "based_on_stock": "Farmiston"
-    },
-    "minecraft:chicken:0": {
-        "display_name": "Raw Chicken",
-        "value": 500,
-        "allow_market_override": true,
-        "based_on_stock": "Farmiston"
-    },
-    "minecraft:egg:0": {
-        "value": 50
-    },
-    "minecraft:feather:0": {
-        "display_name": "Feather",
-        "value": 10,
-        "allow_market_override": true,
-        "based_on_stock": "Farmiston"
-    },
-    "growthcraft_grapes:grapewine:4": {
-        "display_name": "Purple Ambrosia",
-        "value": 5000,
-        "allow_market_override": true,
-        "based_on_stock": "Allenis"
-    },
-    "growthcraft_grapes:grapewine:5": {
-        "display_name": "Purple Port Wine",
-        "value": 3000,
-        "allow_market_override": true,
-        "based_on_stock": "Allenis"
-    },
-    "growthcraft_grapes:grapewine:6": {
-        "display_name": "Purple Grape Wine (Intoxicated)",
-        "value": 5000,
-        "allow_market_override": true,
-        "based_on_stock": "Allenis"
-    },
-    "growthcraft_grapes:grapewine:7": {
-        "display_name": "Purple Grape Wine (Poisoned)",
-        "value": 2000,
-        "allow_market_override": true,
-        "based_on_stock": "Allenis"
     },
     "growthcraft_grapes:grapewine:12": {
         "display_name": "Green Ambrosia",
@@ -614,6 +542,30 @@
         "allow_market_override": true,
         "based_on_stock": "Allenis"
     },
+    "growthcraft_grapes:grapewine:17": {
+        "display_name": "Red Grape Wine",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
+    "growthcraft_grapes:grapewine:18": {
+        "display_name": "Red Grape Wine (Potent)",
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
+    "growthcraft_grapes:grapewine:19": {
+        "display_name": "Red Grape Wine (Extended)",
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
+    "growthcraft_grapes:grapewine:2": {
+        "display_name": "Purple Grape Wine (Potent)",
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
     "growthcraft_grapes:grapewine:20": {
         "display_name": "Red Ambrosia",
         "value": 5000,
@@ -638,33 +590,60 @@
         "allow_market_override": true,
         "based_on_stock": "Allenis"
     },
-    "animania:holstein_cheese_wheel:0": {
-        "display_name": "Holstein Cheese Wheel",
-        "value": 14000,
+    "growthcraft_grapes:grapewine:3": {
+        "display_name": "Purple Grape Wine (Extended)",
+        "value": 1000,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
+    "growthcraft_grapes:grapewine:4": {
+        "display_name": "Purple Ambrosia",
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_stock": "Allenis"
+    },
+    "growthcraft_grapes:grapewine:5": {
+        "display_name": "Purple Port Wine",
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_stock": "Allenis"
+    },
+    "growthcraft_grapes:grapewine:6": {
+        "display_name": "Purple Grape Wine (Intoxicated)",
+        "value": 5000,
+        "allow_market_override": true,
+        "based_on_stock": "Allenis"
+    },
+    "growthcraft_grapes:grapewine:7": {
+        "display_name": "Purple Grape Wine (Poisoned)",
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_stock": "Allenis"
+    },
+    "growthcraft_grapes:grapewine:9": {
+        "display_name": "Green Grape Wine",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Brewing"
+    },
+    "growthcraft_milk:bottlefluid_milk:0": {
+        "value": 225
+    },
+    "growthcraft_milk:cheese_aged:121": {
+        "display_name": "Asiago Cheese Wheel",
+        "value": 50000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
-    "animania:jersey_cheese_wheel:0": {
-        "display_name": "Jersey Cheese Wheel",
-        "value": 18000,
+    "growthcraft_milk:cheese_aged:153": {
+        "display_name": "Parmesan Cheese Wheel",
+        "value": 50000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
-    "animania:goat_cheese_wheel:0": {
-        "display_name": "Goat Cheese Wheel",
-        "value": 16000,
-        "allow_market_override": true,
-        "based_on_stock": "Monsalac Cheesemaking"
-    },
-    "animania:sheep_cheese_wheel:0": {
-        "display_name": "Sheep Cheese Wheel",
-        "value": 16000,
-        "allow_market_override": true,
-        "based_on_stock": "Monsalac Cheesemaking"
-    },
-    "growthcraft_milk:cheese_waxed:25": {
-        "display_name": "Cheddar Cheese Wheel",
-        "value": 53000,
+    "growthcraft_milk:cheese_aged:185": {
+        "display_name": "Casu Marzu Cheese Wheel",
+        "value": 50000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
@@ -686,26 +665,29 @@
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
-    "growthcraft_milk:cheese_aged:121": {
-        "display_name": "Asiago Cheese Wheel",
-        "value": 50000,
+    "growthcraft_milk:cheese_cloth:0": {
+        "value": 100
+    },
+    "growthcraft_milk:cheese_press:0": {
+        "value": 20000
+    },
+    "growthcraft_milk:cheese_vat:0": {
+        "value": 20000
+    },
+    "growthcraft_milk:cheese_waxed:121": {
+        "display_name": "Provolone Cheese Wheel",
+        "value": 53000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
-    "growthcraft_milk:cheese_aged:153": {
-        "display_name": "Parmesan Cheese Wheel",
-        "value": 50000,
+    "growthcraft_milk:cheese_waxed:25": {
+        "display_name": "Cheddar Cheese Wheel",
+        "value": 53000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
     "growthcraft_milk:cheese_waxed:57": {
         "display_name": "Monterey Cheese Wheel",
-        "value": 53000,
-        "allow_market_override": true,
-        "based_on_stock": "Monsalac Cheesemaking"
-    },
-    "growthcraft_milk:cheese_waxed:121": {
-        "display_name": "Provolone Cheese Wheel",
         "value": 53000,
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
@@ -716,225 +698,1359 @@
         "allow_market_override": true,
         "based_on_stock": "Monsalac Cheesemaking"
     },
-    "growthcraft_milk:cheese_aged:185": {
-        "display_name": "Casu Marzu Cheese Wheel",
-        "value": 50000,
-        "allow_market_override": true,
-        "based_on_stock": "Monsalac Cheesemaking"
+    "growthcraft_milk:churn:0": {
+        "value": 10000
     },
-    "harvestcraft:toastitem:0": {
-        "display_name": "toastitem",
-        "value": 346
+    "growthcraft_milk:knife:0": {
+        "value": 40000
     },
-    "harvestcraft:raspberrypieitem:0": {
-        "display_name": "raspberrypieitem",
-        "value": 423
+    "growthcraft_milk:pancheon:0": {
+        "value": 10000
     },
-    "harvestcraft:croissantitem:0": {
-        "display_name": "croissantitem",
-        "value": 192
+    "growthcraft_milk:starter_culture:0": {
+        "value": 250
     },
-    "harvestcraft:pumpkinbreaditem:0": {
-        "display_name": "pumpkinbreaditem",
-        "value": 423
+    "growthcraft_milk:thistle_seed:0": {
+        "value": 15
     },
-    "harvestcraft:blueberrypieitem:0": {
-        "display_name": "blueberrypieitem",
-        "value": 423
+    "growthcraft_milk:yogurt:0": {
+        "value": 390
     },
-    "harvestcraft:buttercookieitem:0": {
-        "display_name": "buttercookieitem",
-        "value": 76
-    },
-    "harvestcraft:walnutraisinbreaditem:0": {
-        "display_name": "walnutraisinbreaditem",
-        "value": 538
-    },
-    "harvestcraft:cherrypieitem:0": {
-        "display_name": "cherrypieitem",
-        "value": 384
-    },
-    "harvestcraft:peanutbuttercookiesitem:0": {
-        "display_name": "peanutbuttercookiesitem",
-        "value": 153
-    },
-    "harvestcraft:datenutbreaditem:0": {
-        "display_name": "datenutbreaditem",
-        "value": 384
-    },
-    "harvestcraft:strawberrypieitem:0": {
-        "display_name": "strawberrypieitem",
-        "value": 384
-    },
-    "harvestcraft:raisincookiesitem:0": {
-        "display_name": "raisincookiesitem",
-        "value": 153
-    },
-    "harvestcraft:banananutbreaditem:0": {
-        "display_name": "banananutbreaditem",
-        "value": 384
+    "harvestcraft:applejuiceitem:0": {
+        "value": 350
     },
     "harvestcraft:applepieitem:0": {
         "display_name": "applepieitem",
         "value": 384
     },
-    "minecraft:cookie:0": {
-        "display_name": "cookie",
-        "value": 153
+    "harvestcraft:aridgarden:0": {
+        "value": 1000
     },
-    "minecraft:bread:0": {
-        "display_name": "bread",
-        "value": 230
+    "harvestcraft:asparagusquicheitem:0": {
+        "value": 450
+    },
+    "harvestcraft:baconcheeseburgeritem:0": {
+        "value": 1700
+    },
+    "harvestcraft:baconmushroomburgeritem:0": {
+        "value": 1700
+    },
+    "harvestcraft:bakewareitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:banananutbreaditem:0": {
+        "display_name": "banananutbreaditem",
+        "value": 384
+    },
+    "harvestcraft:bananasmoothieitem:0": {
+        "value": 300
+    },
+    "harvestcraft:bananasplititem:0": {
+        "value": 1200
+    },
+    "harvestcraft:barleyitem:0": {
+        "display_name": "Barley",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:barleyitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Barley\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Barley\"}}"
+    },
+    "harvestcraft:bbqplatteritem:0": {
+        "value": 1400
+    },
+    "harvestcraft:bbqpotatochipsitem:0": {
+        "value": 700
+    },
+    "harvestcraft:beanitem:0": {
+        "display_name": "Bean",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:beetitem:0": {
+        "display_name": "Beet",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:bellpepperitem:0": {
+        "display_name": "Bell Pepper",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:blackpepperitem:0": {
+        "value": 33
+    },
+    "harvestcraft:bltitem:0": {
+        "value": 1700
+    },
+    "harvestcraft:blueberrymuffinitem:0": {
+        "value": 280
+    },
+    "harvestcraft:blueberrypieitem:0": {
+        "display_name": "blueberrypieitem",
+        "value": 423
+    },
+    "harvestcraft:broccoliitem:0": {
+        "display_name": "Broccoli",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:brownieitem:0": {
+        "value": 400
+    },
+    "harvestcraft:brusselsproutitem:0": {
+        "display_name": "Brussels Sprout",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:bubblywateritem:0": {
+        "value": 200
+    },
+    "harvestcraft:buttercookieitem:0": {
+        "display_name": "buttercookieitem",
+        "value": 76
+    },
+    "harvestcraft:butteritem:0": {
+        "value": 200
+    },
+    "harvestcraft:buttertartitem:0": {
+        "value": 400
+    },
+    "harvestcraft:cabbageitem:0": {
+        "display_name": "Cabbage",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:caramelicecreamitem:0": {
+        "value": 300
+    },
+    "harvestcraft:caramelitem:0": {
+        "value": 50
+    },
+    "harvestcraft:carrotcupcakeitem:0": {
+        "value": 330
+    },
+    "harvestcraft:caulifloweritem:0": {
+        "display_name": "Cauliflower",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:cheeseburgeritem:0": {
+        "value": 1700
+    },
+    "harvestcraft:cheesecakeitem:0": {
+        "value": 1100
+    },
+    "harvestcraft:cheeseitem:0": {
+        "value": 200
+    },
+    "harvestcraft:cheesesteakitem:0": {
+        "value": 1200
+    },
+    "harvestcraft:cherryitem:0": {
+        "display_name": "Cherry",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:cherrypieitem:0": {
+        "display_name": "cherrypieitem",
+        "value": 384
+    },
+    "harvestcraft:cherrysodaitem:0": {
+        "value": 450
+    },
+    "harvestcraft:chickennoodlesoupitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:chilipepperitem:0": {
+        "display_name": "Chili Pepper",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:chocolateicecreamitem:0": {
+        "value": 400
+    },
+    "harvestcraft:chocolatemilkitem:0": {
+        "value": 300
+    },
+    "harvestcraft:chocolatemilkshakeitem:0": {
+        "value": 300
+    },
+    "harvestcraft:coconutsmoothieitem:0": {
+        "value": 300
+    },
+    "harvestcraft:coffeeconlecheitem:0": {
+        "value": 300
+    },
+    "harvestcraft:coffeeitem:0": {
+        "value": 300
+    },
+    "harvestcraft:colasodaitem:0": {
+        "value": 350
+    },
+    "harvestcraft:coleslawitem:0": {
+        "value": 500
+    },
+    "harvestcraft:cookiesandmilkitem:0": {
+        "value": 250
+    },
+    "harvestcraft:cornitem:0": {
+        "display_name": "Corn",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:cornitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Corn\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Corn\"}}"
+    },
+    "harvestcraft:cranberryjuiceitem:0": {
+        "value": 300
+    },
+    "harvestcraft:croissantitem:0": {
+        "display_name": "croissantitem",
+        "value": 192
+    },
+    "harvestcraft:cucumberitem:0": {
+        "display_name": "Cucumber",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:cuttingboarditem:0": {
+        "value": 1000
+    },
+    "harvestcraft:datenutbreaditem:0": {
+        "display_name": "datenutbreaditem",
+        "value": 384
+    },
+    "harvestcraft:delightedmealitem:0": {
+        "value": 1500
+    },
+    "harvestcraft:deluxecheeseburgeritem:0": {
+        "value": 1000
+    },
+    "harvestcraft:earlgreyteaitem:0": {
+        "value": 200
+    },
+    "harvestcraft:eggplantitem:0": {
+        "display_name": "Eggplant",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:espressoitem:0": {
+        "value": 500
     },
     "harvestcraft:festivalbreaditem:0": {
         "display_name": "festivalbreaditem",
         "value": 384
     },
-    "mts:iv_tpp.paint_bucket_glacierwhite:0": {
+    "harvestcraft:figitem:0": {
+        "display_name": "Fig",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:fishsandwichitem:0": {
+        "value": 600
+    },
+    "harvestcraft:flouritem:0": {
+        "value": 50
+    },
+    "harvestcraft:footlongitem:0": {
+        "value": 800
+    },
+    "harvestcraft:friedchickenitem:0": {
+        "value": 1500
+    },
+    "harvestcraft:friedonionsitem:0": {
+        "value": 500
+    },
+    "harvestcraft:friedriceitem:0": {
+        "value": 500
+    },
+    "harvestcraft:friesitem:0": {
+        "value": 300
+    },
+    "harvestcraft:frosteddonutitem:0": {
+        "value": 700
+    },
+    "harvestcraft:frostgarden:0": {
+        "value": 1000
+    },
+    "harvestcraft:garlicitem:0": {
+        "display_name": "Garlic",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:gigapickleitem:0": {
+        "display_name": "Gigapickle",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:gourmetporkburgeritem:0": {
+        "value": 1400
+    },
+    "harvestcraft:grapefruititem:0": {
+        "display_name": "Grapefruit",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Farming"
+    },
+    "harvestcraft:grapefruitsodaitem:0": {
+        "value": 550
+    },
+    "harvestcraft:grapeitem:0": {
+        "display_name": "Grape",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:grapejuiceitem:0": {
+        "value": 350
+    },
+    "harvestcraft:grapesmoothieitem:0": {
+        "value": 300
+    },
+    "harvestcraft:grapesodaitem:0": {
+        "value": 550
+    },
+    "harvestcraft:greenteaitem:0": {
+        "value": 200
+    },
+    "harvestcraft:grilledcheeseitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:grinder:0": {
         "value": 5000
     },
-    "mts:iv_tpp.paint_bucket_silver:0": {
+    "harvestcraft:hamandcheesesandwichitem:0": {
+        "value": 450
+    },
+    "harvestcraft:hamsweetpicklesandwichitem:0": {
+        "value": 1200
+    },
+    "harvestcraft:harvestpumpkinitem:0": {
+        "display_name": "Harvest Pumpkin",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:hotwingsitem:0": {
+        "value": 400
+    },
+    "harvestcraft:jellybeansitem:0": {
+        "value": 300
+    },
+    "harvestcraft:juiceritem:0": {
+        "value": 1000
+    },
+    "harvestcraft:kiwismoothieitem:0": {
+        "value": 300
+    },
+    "harvestcraft:leafychickensandwichitem:0": {
+        "value": 700
+    },
+    "harvestcraft:leekitem:0": {
+        "display_name": "Leek",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:lemonaideitem:0": {
+        "value": 300
+    },
+    "harvestcraft:lemonitem:0": {
+        "display_name": "Lemon",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Farming"
+    },
+    "harvestcraft:lemonlimesodaitem:0": {
+        "value": 650
+    },
+    "harvestcraft:lentilitem:0": {
+        "display_name": "Lentil",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:lettuceitem:0": {
+        "display_name": "Lettuce",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:limeitem:0": {
+        "display_name": "Lime",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Farming"
+    },
+    "harvestcraft:mangojuiceitem:0": {
+        "value": 350
+    },
+    "harvestcraft:mashedpotatoesitem:0": {
+        "value": 500
+    },
+    "harvestcraft:meatloafsandwichitem:0": {
+        "value": 1200
+    },
+    "harvestcraft:melonjuiceitem:0": {
+        "value": 350
+    },
+    "harvestcraft:mixingbowlitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:mochidessertitem:0": {
+        "value": 600
+    },
+    "harvestcraft:mortarandpestleitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:mozzerellasticksitem:0": {
+        "value": 600
+    },
+    "harvestcraft:netherwingsitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:oatsitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Oats\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Oats\"}}"
+    },
+    "harvestcraft:onionitem:0": {
+        "display_name": "Onion",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:orangeitem:0": {
+        "display_name": "Orange",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Farming"
+    },
+    "harvestcraft:orangejuiceitem:0": {
+        "value": 350
+    },
+    "harvestcraft:orangesodaitem:0": {
+        "value": 550
+    },
+    "harvestcraft:parsnipitem:0": {
+        "display_name": "Parsnip",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:pastaitem:0": {
+        "value": 50
+    },
+    "harvestcraft:peachsmoothieitem:0": {
+        "value": 300
+    },
+    "harvestcraft:peanutbuttercookiesitem:0": {
+        "display_name": "peanutbuttercookiesitem",
+        "value": 153
+    },
+    "harvestcraft:peasitem:0": {
+        "display_name": "Peas",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:pistachioicecreamitem:0": {
+        "value": 400
+    },
+    "harvestcraft:pomegranateitem:0": {
+        "display_name": "Pomegranate",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Farming"
+    },
+    "harvestcraft:potatochipsitem:0": {
+        "value": 300
+    },
+    "harvestcraft:potitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:potroastitem:0": {
+        "value": 1700
+    },
+    "harvestcraft:presser:0": {
         "value": 5000
     },
-    "mts:iv_tpp.paint_bucket_teal:0": {
-        "value": 25000
+    "harvestcraft:pumpkinbreaditem:0": {
+        "display_name": "pumpkinbreaditem",
+        "value": 423
     },
-    "mts:iv_tpp.paint_bucket_white:0": {
-        "value": 10000
+    "harvestcraft:raisincookiesitem:0": {
+        "display_name": "raisincookiesitem",
+        "value": 153
     },
-    "mts:iv_tpp.paint_bucket_irongray:0": {
-        "value": 10000
+    "harvestcraft:raspberrypieitem:0": {
+        "value": 1400
     },
-    "mts:iv_tpp.paint_bucket_oceanblue:0": {
-        "value": 25000
+    "harvestcraft:raspberrysmoothieitem:0": {
+        "value": 350
     },
-    "mts:iv_tpp.paint_bucket_ivory:0": {
-        "value": 20000
+    "harvestcraft:rhubarbitem:0": {
+        "display_name": "Rhubarb",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
     },
-    "mts:iv_tpp.paint_bucket_tungsten:0": {
-        "value": 15000
+    "harvestcraft:rootbeersodaitem:0": {
+        "value": 450
     },
-    "mts:iv_tpp.paint_bucket_electricblue:0": {
-        "value": 25000
+    "harvestcraft:ryeitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Rye\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Rye\"}}"
     },
-    "mts:iv_tpp.paint_bucket_sand:0": {
-        "value": 20000
+    "harvestcraft:saltedsunflowerseedsitem:0": {
+        "value": 200
     },
-    "mts:iv_tpp.paint_bucket_jetblack:0": {
-        "value": 10000
+    "harvestcraft:saltitem:0": {
+        "value": 25
     },
-    "mts:iv_tpp.paint_bucket_sapphire:0": {
-        "value": 25000
+    "harvestcraft:saucepanitem:0": {
+        "value": 1000
     },
-    "mts:iv_tpp.paint_bucket_sandstone:0": {
-        "value": 20000
+    "harvestcraft:sausagebeanmeltitem:0": {
+        "value": 1200
     },
-    "mts:iv_tpp.paint_bucket_deepblack:0": {
+    "harvestcraft:scallionitem:0": {
+        "display_name": "Scallion",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:shadedgarden:0": {
+        "value": 1000
+    },
+    "harvestcraft:skilletitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:soggygarden:0": {
+        "value": 1000
+    },
+    "harvestcraft:soybeanitem:0": {
+        "display_name": "Soybean",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:spagettiandmeatballsitem:0": {
+        "value": 1700
+    },
+    "harvestcraft:spiceleafitem:0": {
+        "display_name": "Spice Leaf",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:springsaladitem:0": {
+        "value": 350
+    },
+    "harvestcraft:strawberryjellyitem:0": {
+        "value": 200
+    },
+    "harvestcraft:strawberrymilkshakeitem:0": {
+        "value": 300
+    },
+    "harvestcraft:strawberrypieitem:0": {
+        "display_name": "strawberrypieitem",
+        "value": 384
+    },
+    "harvestcraft:strawberrysmoothieitem:0": {
+        "value": 350
+    },
+    "harvestcraft:strawberrysodaitem:0": {
+        "value": 550
+    },
+    "harvestcraft:sweetpotatoitem:0": {
+        "display_name": "Sweet Potato",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:sweetteaitem:0": {
+        "value": 300
+    },
+    "harvestcraft:tacoitem:0": {
+        "value": 800
+    },
+    "harvestcraft:teaitem:0": {
+        "value": 200
+    },
+    "harvestcraft:toastitem:0": {
+        "display_name": "toastitem",
+        "value": 346
+    },
+    "harvestcraft:tomatoitem:0": {
+        "display_name": "Tomato",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:tropicalgarden:0": {
+        "value": 1000
+    },
+    "harvestcraft:tunafishsandwichitem:0": {
+        "value": 1000
+    },
+    "harvestcraft:vanillaicecreamitem:0": {
+        "value": 400
+    },
+    "harvestcraft:wafflesitem:0": {
+        "value": 300
+    },
+    "harvestcraft:walnutraisinbreaditem:0": {
+        "display_name": "walnutraisinbreaditem",
+        "value": 538
+    },
+    "harvestcraft:waterfilter:0": {
         "value": 5000
     },
-    "mts:iv_tpp.paint_bucket_lapenverblue:0": {
-        "value": 25000
+    "harvestcraft:well:0": {
+        "value": 5000
     },
-    "mts:iv_tpp.paint_bucket_sage:0": {
+    "harvestcraft:windygarden:0": {
+        "value": 1000
+    },
+    "harvestcraft:wintersquashitem:0": {
+        "display_name": "Winter Squash",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:zucchiniitem:0": {
+        "display_name": "Zucchini",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "immersiveengineering:connector:0": {
+        "value": 1000
+    },
+    "immersiveengineering:connector:1": {
+        "value": 2000
+    },
+    "immersiveengineering:connector:10": {
         "value": 20000
     },
-    "mts:iv_tpp.paint_bucket_skyblue:0": {
-        "value": 25000
+    "immersiveengineering:connector:11": {
+        "value": 10000
     },
-    "mts:iv_tpp.paint_bucket_softgreen:0": {
+    "immersiveengineering:connector:2": {
+        "value": 2000
+    },
+    "immersiveengineering:connector:3": {
+        "value": 3000
+    },
+    "immersiveengineering:connector:4": {
+        "value": 3000
+    },
+    "immersiveengineering:connector:5": {
+        "value": 4000
+    },
+    "immersiveengineering:connector:6": {
+        "value": 2000
+    },
+    "immersiveengineering:connector:7": {
         "value": 20000
     },
-    "mts:iv_tpp.paint_bucket_emerald:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_lemonyellow:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_tomato:0": {
+    "immersiveengineering:connector:8": {
         "value": 30000
     },
-    "mts:iv_tpp.paint_bucket_oakgreen:0": {
+    "immersiveengineering:connector:9": {
+        "value": 10000
+    },
+    "immersiveengineering:faraday_suit_chest:0": {
+        "value": 20000
+    },
+    "immersiveengineering:faraday_suit_feet:0": {
+        "value": 10000
+    },
+    "immersiveengineering:faraday_suit_head:0": {
+        "value": 10000
+    },
+    "immersiveengineering:faraday_suit_legs:0": {
+        "value": 30000
+    },
+    "immersiveengineering:hoe_steel:0": {
+        "value": 20000
+    },
+    "immersiveengineering:metal_decoration2:2": {
+        "value": 300000
+    },
+    "immersiveengineering:metal_decoration2:3": {
+        "value": 100000
+    },
+    "immersiveengineering:metal_device0:0": {
+        "value": 100000
+    },
+    "immersiveengineering:metal_device0:1": {
+        "value": 200000
+    },
+    "immersiveengineering:metal_device0:2": {
+        "value": 400000
+    },
+    "immersiveengineering:metal_device0:4": {
+        "value": 40000
+    },
+    "immersiveengineering:metal_device0:5": {
+        "value": 200000
+    },
+    "immersiveengineering:metal_device1:6": {
+        "value": 500
+    },
+    "immersiveengineering:metal_ladder:0": {
+        "value": 156
+    },
+    "immersiveengineering:powerpack:0": {
+        "value": 300000
+    },
+    "immersiveengineering:stone_decoration:5": {
+        "display_name": "Concrete Block",
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Concrete"
+    },
+    "immersiveengineering:stone_decoration_slab:5": {
+        "display_name": "Concrete Slab",
+        "value": 1500,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Concrete"
+    },
+    "immersiveengineering:stone_device:3": {
+        "display_name": "Concrete Sheet",
+        "value": 375,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Concrete"
+    },
+    "immersiveengineering:stone_device:4": {
+        "display_name": "Concrete Panel",
+        "value": 750,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Concrete"
+    },
+    "immersiveengineering:stone_device:5": {
+        "display_name": "Concrete Chunk",
+        "value": 2250,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Concrete"
+    },
+    "immersiveengineering:sword_steel:0": {
+        "value": 65000
+    },
+    "immersiveengineering:tool:0": {
+        "value": 40000
+    },
+    "immersiveengineering:tool:1": {
+        "value": 2000
+    },
+    "immersiveengineering:tool:2": {
+        "value": 10000
+    },
+    "immersiveengineering:tool:3": {
+        "value": 11000
+    },
+    "immersiveengineering:wirecoil:0": {
+        "value": 1000
+    },
+    "immersiveengineering:wirecoil:1": {
+        "value": 2000
+    },
+    "immersiveengineering:wirecoil:2": {
+        "value": 3000
+    },
+    "immersiveengineering:wirecoil:4": {
+        "value": 500
+    },
+    "immersiveengineering:wirecoil:6": {
+        "value": 3000
+    },
+    "immersiveengineering:wirecoil:7": {
+        "value": 4000
+    },
+    "immersiveengineering:wooden_decoration:1": {
+        "value": 625
+    },
+    "immersiveengineering:wooden_device1:3": {
+        "value": 150000
+    },
+    "immersiveengineering:wooden_device1:4": {
+        "value": 50000
+    },
+    "immersivepetroleum:metal_device:1": {
+        "value": 210000
+    },
+    "minecraft:anvil:0": {
+        "value": 100000
+    },
+    "minecraft:apple:0": {
+        "display_name": "Apple",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "minecraft:apple:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Apple\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Apple\"}}"
+    },
+    "minecraft:baked_potato:0": {
+        "value": 200
+    },
+    "minecraft:beetroot:0": {
+        "display_name": "Beetroot",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "minecraft:beetroot:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Beetroot\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Beetroot\"}}"
+    },
+    "minecraft:beetroot_seeds:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}": {
+        "value": 7,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}"
+    },
+    "minecraft:book:0": {
+        "value": 1000
+    },
+    "minecraft:bowl:0": {
+        "value": 31
+    },
+    "minecraft:bread:0": {
+        "display_name": "bread",
+        "value": 230
+    },
+    "minecraft:brick:0": {
+        "display_name": "Brick",
+        "value": 300,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Terracotta"
+    },
+    "minecraft:brick_block:0": {
+        "display_name": "Brick Block",
+        "value": 6000,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Terracotta"
+    },
+    "minecraft:bucket:0": {
+        "value": 1000
+    },
+    "minecraft:carrot:0": {
+        "display_name": "Carrot",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "minecraft:carrot:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Carrot\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Carrot\"}}"
+    },
+    "minecraft:chainmail_boots:0": {
+        "value": 5000
+    },
+    "minecraft:chainmail_chestplate:0": {
+        "value": 25000
+    },
+    "minecraft:chainmail_helmet:0": {
+        "value": 10000
+    },
+    "minecraft:chainmail_leggings:0": {
+        "value": 20000
+    },
+    "minecraft:chest:0": {
+        "value": 2000
+    },
+    "minecraft:chicken:0": {
+        "display_name": "Raw Chicken",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Farmiston"
+    },
+    "minecraft:coal:0": {
+        "value": 93
+    },
+    "minecraft:coal:1": {
+        "value": 93
+    },
+    "minecraft:cookie:0": {
+        "display_name": "cookie",
+        "value": 153
+    },
+    "minecraft:crafting_table:0": {
+        "value": 10000
+    },
+    "minecraft:diamond_hoe:0": {
+        "value": 8000
+    },
+    "minecraft:dye:0": {
+        "value": 2000
+    },
+    "minecraft:dye:1": {
+        "value": 2000
+    },
+    "minecraft:dye:10": {
+        "value": 2000
+    },
+    "minecraft:dye:11": {
+        "value": 2000
+    },
+    "minecraft:dye:12": {
+        "value": 2000
+    },
+    "minecraft:dye:13": {
+        "value": 2000
+    },
+    "minecraft:dye:14": {
+        "value": 2000
+    },
+    "minecraft:dye:15": {
+        "value": 2000
+    },
+    "minecraft:dye:2": {
+        "value": 2000
+    },
+    "minecraft:dye:3": {
+        "value": 2000
+    },
+    "minecraft:dye:4": {
+        "value": 2000
+    },
+    "minecraft:dye:5": {
+        "value": 2000
+    },
+    "minecraft:dye:6": {
+        "value": 2000
+    },
+    "minecraft:dye:7": {
+        "value": 2000
+    },
+    "minecraft:dye:8": {
+        "value": 2000
+    },
+    "minecraft:dye:9": {
+        "value": 2000
+    },
+    "minecraft:egg:0": {
+        "value": 50
+    },
+    "minecraft:end_rod:0": {
+        "value": 10000
+    },
+    "minecraft:feather:0": {
+        "display_name": "Feather",
+        "value": 10,
+        "allow_market_override": true,
+        "based_on_stock": "Farmiston"
+    },
+    "minecraft:flint_and_steel:0": {
+        "value": 3000
+    },
+    "minecraft:flower_pot:0": {
+        "display_name": "Flower Pot",
+        "value": 600,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Terracotta"
+    },
+    "minecraft:glass_bottle:0": {
+        "value": 25
+    },
+    "minecraft:glass_pane:0": {
+        "value": 2000
+    },
+    "minecraft:hardened_clay:0": {
+        "display_name": "Terracotta",
+        "value": 3000,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Industrial Terracotta"
+    },
+    "minecraft:hay_block:0": {
+        "display_name": "Hay Bale",
+        "value": 400,
+        "allow_market_override": true,
+        "based_on_stock": "Farmiston"
+    },
+    "minecraft:iron_axe:0": {
+        "value": 9000
+    },
+    "minecraft:iron_boots:0": {
+        "value": 10000
+    },
+    "minecraft:iron_chestplate:0": {
+        "value": 30000
+    },
+    "minecraft:iron_helmet:0": {
+        "value": 10000
+    },
+    "minecraft:iron_hoe:0": {
+        "value": 4000
+    },
+    "minecraft:iron_leggings:0": {
+        "value": 25000
+    },
+    "minecraft:iron_pickaxe:0": {
+        "value": 4000
+    },
+    "minecraft:iron_shovel:0": {
+        "value": 4000
+    },
+    "minecraft:iron_sword:0": {
+        "value": 60000
+    },
+    "minecraft:ladder:0": {
+        "value": 15
+    },
+    "minecraft:lava_bucket:0": {
+        "value": 41000
+    },
+    "minecraft:lead:0": {
+        "value": 10000
+    },
+    "minecraft:leather_boots:0": {
+        "value": 5000
+    },
+    "minecraft:leather_chestplate:0": {
+        "value": 15000
+    },
+    "minecraft:leather_helmet:0": {
+        "value": 5000
+    },
+    "minecraft:leather_leggings:0": {
+        "value": 10000
+    },
+    "minecraft:lever:0": {
+        "value": 500
+    },
+    "minecraft:log2:1": {
+        "display_name": "Dark Oak Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Lumber"
+    },
+    "minecraft:log:0": {
+        "display_name": "Oak Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Lumber"
+    },
+    "minecraft:log:1": {
+        "display_name": "Spruce Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Gramados Lumber"
+    },
+    "minecraft:log:2": {
+        "display_name": "Birch Wood",
+        "value": 500,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Lumber"
+    },
+    "minecraft:melon:0": {
+        "display_name": "Melon",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "minecraft:melon_seeds:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}": {
+        "value": 7,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}"
+    },
+    "minecraft:planks:0": {
+        "value": 600
+    },
+    "minecraft:planks:1": {
+        "value": 600
+    },
+    "minecraft:planks:2": {
+        "value": 600
+    },
+    "minecraft:potato:0": {
+        "display_name": "Potato",
+        "value": 20,
+        "allow_market_override": true,
+        "based_on_stock": "Greenfield Farming"
+    },
+    "minecraft:potato:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Potato\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Potato\"}}"
+    },
+    "minecraft:pumpkin:0": {
+        "value": 312
+    },
+    "minecraft:pumpkin_seeds:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}": {
+        "value": 7,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}"
+    },
+    "minecraft:rotten_flesh:0": {
+        "value": 312
+    },
+    "minecraft:shears:0": {
+        "value": 4000
+    },
+    "minecraft:stone_shovel:0": {
+        "value": 1000
+    },
+    "minecraft:sugar:0": {
+        "value": 25
+    },
+    "minecraft:wheat:0": {
+        "display_name": "Wheat",
+        "value": 40,
+        "allow_market_override": true,
+        "based_on_stock": "Farmiston"
+    },
+    "minecraft:wheat:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Wheat\"}}": {
+        "value": 23,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Wheat\"}}"
+    },
+    "minecraft:wheat_seeds:0": {
+        "display_name": "Wheat Seeds",
+        "value": 25,
+        "allow_market_override": true,
+        "based_on_stock": "Farmiston"
+    },
+    "minecraft:wheat_seeds:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}": {
+        "value": 7,
+        "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}"
+    },
+    "mts:alicemotors.giga_ev:0": {
+        "value": 1500000
+    },
+    "mts:alicemotors.macro_ev:0": {
+        "value": 1100000
+    },
+    "mts:alicemotors.micro_ev:0": {
+        "value": 800000
+    },
+    "mts:alicemotors.nano_ev:0": {
+        "value": 500000
+    },
+    "mts:cactusdecor_furniture.book:0": {
+        "value": 1000
+    },
+    "mts:cactusdecor_furniture.book_stack1:0": {
+        "value": 3000
+    },
+    "mts:cactusdecor_furniture.book_stack2:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_a_di4:0": {
+        "value": 600000
+    },
+    "mts:iav.iav_a_gi2hi:0": {
+        "value": 220000
+    },
+    "mts:iav.iav_a_gi2low:0": {
+        "value": 150000
+    },
+    "mts:iav.iav_a_gi4hi:0": {
+        "value": 300000
+    },
+    "mts:iav.iav_a_gi4low:0": {
+        "value": 250000
+    },
+    "mts:iav.iav_a_gi6hi:0": {
+        "value": 350000
+    },
+    "mts:iav.iav_a_gi6low:0": {
+        "value": 280000
+    },
+    "mts:iav.iav_a_gv8hi:0": {
+        "value": 1200000
+    },
+    "mts:iav.iav_a_hdv12:0": {
+        "value": 1800000
+    },
+    "mts:iav.iav_a_outboard:0": {
+        "value": 500000
+    },
+    "mts:iav.iav_a_outboard_prop:0": {
+        "value": 30000
+    },
+    "mts:iav.iav_gague_electric_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_gague_fuel_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_gague_oilpressure_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_gague_speed_kmh_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_gague_tachometer_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_gague_temperature_modern:0": {
+        "value": 6000
+    },
+    "mts:iav.iav_storage_l_crate_2:0": {
+        "value": 20000
+    },
+    "mts:iav.iav_storage_l_crate_3:0": {
+        "value": 10000
+    },
+    "mts:iav.iav_storage_l_crate_5:0": {
+        "value": 400000
+    },
+    "mts:iav.iav_storage_l_crate_6:0": {
+        "value": 500000
+    },
+    "mts:iav.iav_wheel_standard:0": {
+        "value": 10000
+    },
+    "mts:iav.iav_wheel_standard_hubcap:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_normal_man:0": {
+        "value": 110000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_turbo_aut:0": {
+        "value": 150000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_man:0": {
+        "value": 1590000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
+        "value": 400000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_normal_man:0": {
+        "value": 300000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_turbo_aut:0": {
+        "value": 600000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_turbo_man:0": {
+        "value": 660000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_normal_aut:0": {
+        "value": 1100000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_normal_man:0": {
+        "value": 1200000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_turbo_aut:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_turbo_man:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.paint_bucket_amber:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_bloodred:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_brown:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_buttercup:0": {
         "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_ruby:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_spruce:0": {
+    "mts:iv_tpp.paint_bucket_caramel:0": {
         "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_sunshineyellow:0": {
+    "mts:iv_tpp.paint_bucket_carminred:0": {
         "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_firered:0": {
+    "mts:iv_tpp.paint_bucket_chocolate:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_citruslime:0": {
         "value": 30000
     },
     "mts:iv_tpp.paint_bucket_coldspruce:0": {
         "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_honey:0": {
-        "value": 30000
+    "mts:iv_tpp.paint_bucket_deepblack:0": {
+        "value": 5000
     },
-    "mts:iv_tpp.paint_bucket_bloodred:0": {
-        "value": 30000
+    "mts:iv_tpp.paint_bucket_electricblue:0": {
+        "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_militarygreen:0": {
+    "mts:iv_tpp.paint_bucket_emerald:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_fireorange:0": {
         "value": 30000
     },
-    "mts:iv_tpp.paint_bucket_carminred:0": {
+    "mts:iv_tpp.paint_bucket_firered:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_fuchsia:0": {
         "value": 25000
     },
-    "mts:iv_tpp.paint_bucket_steelblue:0": {
+    "mts:iv_tpp.paint_bucket_glacierwhite:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_grape:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_honey:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_irongray:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_ivory:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_jetblack:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_lapenverblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_lemonyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_midnightpurple:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_militarygreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_milkcoffee:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_oakgreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_oceanblue:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_orangered:0": {
         "value": 30000
     },
-    "mts:iv_tpp.paint_bucket_milkcoffee:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_brown:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_grape:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_chocolate:0": {
-        "value": 25000
-    },
     "mts:iv_tpp.paint_bucket_pink:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_turquoise:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_caramel:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_fuchsia:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_slimelime:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_amber:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_vibrantred:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_citruslime:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_midnightpurple:0": {
         "value": 25000
     },
     "mts:iv_tpp.paint_bucket_pinkcandy:0": {
@@ -943,157 +2059,754 @@
     "mts:iv_tpp.paint_bucket_plum:0": {
         "value": 25000
     },
-    "mts:iv_tpp.wrap_roll_coal:0": {
-        "value": 125000
+    "mts:iv_tpp.paint_bucket_ruby:0": {
+        "value": 30000
     },
-    "mts:iv_tpp.wrap_roll_lapislazuli:0": {
-        "value": 140000
+    "mts:iv_tpp.paint_bucket_sage:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sand:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sandstone:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sapphire:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_silver:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_skyblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_slimelime:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_softgreen:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_spruce:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_steelblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_sunshineyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_teal:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_tomato:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_tungsten:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.paint_bucket_turquoise:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantred:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_white:0": {
+        "value": 10000
     },
     "mts:iv_tpp.paint_double_bucket_bubblegum:0": {
         "value": 50000
     },
-    "mts:iv_tpp.wrap_roll_iron:0": {
-        "value": 110000
-    },
-    "mts:iv_tpp.wrap_roll_quartz:0": {
-        "value": 130000
-    },
     "mts:iv_tpp.paint_double_bucket_forest:0": {
         "value": 50000
-    },
-    "mts:iv_tpp.wrap_roll_gold:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.wrap_roll_redstone:0": {
-        "value": 130000
     },
     "mts:iv_tpp.paint_double_bucket_redandblack:0": {
         "value": 50000
     },
-    "mts:iv_tpp.wrap_roll_diamond:0": {
-        "value": 250000
-    },
     "mts:iv_tpp.paint_double_bucket_shagbark:0": {
         "value": 50000
-    },
-    "mts:iv_tpp.wrap_roll_emerald:0": {
-        "value": 250000
     },
     "mts:iv_tpp.paint_double_bucket_steelblueandteal:0": {
         "value": 50000
     },
-    "mts:iv_tpp.wrap_roll_driveschool:0": {
-        "value": 120000
-    },
     "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
         "value": 50000
     },
-    "minecraft:dye:0": {
+    "mts:iv_tpp.trin_boat_engine_firered:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_carbonfiber:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_iron:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_small:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.trin_boat_engine_pureblack:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_silver:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_white:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_v8_firered:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_pureblack:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_silver:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_white:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_electric:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_f:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_fuel:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_electric:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_fuel:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_tachometer:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_gear:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_crate1:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.trin_crate1_wooden:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_crate2:0": {
+        "value": 3000
+    },
+    "mts:iv_tpp.trin_stacked_boxes_cardboard:0": {
+        "value": 60000
+    },
+    "mts:iv_tpp.trin_stacked_boxes_cardboard_2:0": {
+        "value": 60000
+    },
+    "mts:iv_tpp.trin_v10_fat_diesel:0": {
+        "value": 1150000
+    },
+    "mts:iv_tpp.trin_v8_fat_biodiesel:0": {
+        "value": 950000
+    },
+    "mts:iv_tpp.trin_v8_fat_diesel:0": {
+        "value": 900000
+    },
+    "mts:iv_tpp.trin_v8_fat_gasoline:0": {
+        "value": 650000
+    },
+    "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.wheel_20h_6w_rim1_or:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_20h_6w_rim2_or:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_classic_2d5_0_steel:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.wheel_classic_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_classic_4d14_0_steel:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.wheel_classic_4d14_1_chromic:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_classic_4d16_0_steel:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.wheel_classic_4d16_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_offroad_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_offroad_4d14_0_steel:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.wheel_offroad_4d14_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_offroad_4d16_0_steel:0": {
+        "value": 22000
+    },
+    "mts:iv_tpp.wheel_offroad_4d16_1_chromic:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_sport_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_sport_4d14_0_steel:0": {
+        "value": 14000
+    },
+    "mts:iv_tpp.wheel_sport_4d14_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wrap_roll_coal:0": {
+        "value": 125000
+    },
+    "mts:iv_tpp.wrap_roll_diamond:0": {
+        "value": 250000
+    },
+    "mts:iv_tpp.wrap_roll_driveschool:0": {
+        "value": 120000
+    },
+    "mts:iv_tpp.wrap_roll_emerald:0": {
+        "value": 250000
+    },
+    "mts:iv_tpp.wrap_roll_gold:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.wrap_roll_iron:0": {
+        "value": 110000
+    },
+    "mts:iv_tpp.wrap_roll_lapislazuli:0": {
+        "value": 140000
+    },
+    "mts:iv_tpp.wrap_roll_quartz:0": {
+        "value": 130000
+    },
+    "mts:iv_tpp.wrap_roll_redstone:0": {
+        "value": 130000
+    },
+    "mts:ivv.1gear:0": {
+        "value": 6000
+    },
+    "mts:ivv.2gear:0": {
+        "value": 7000
+    },
+    "mts:ivv.antenna:0": {
+        "value": 5000
+    },
+    "mts:ivv.antenna_hf:0": {
+        "value": 10000
+    },
+    "mts:ivv.antenna_sharkfin:0": {
+        "value": 10000
+    },
+    "mts:ivv.backpack_blue:0": {
+        "value": 50000
+    },
+    "mts:ivv.backpack_white:0": {
+        "value": 50000
+    },
+    "mts:ivv.battery:0": {
+        "value": 20000
+    },
+    "mts:ivv.bigtire:0": {
+        "value": 30000
+    },
+    "mts:ivv.bodypanel:0": {
+        "value": 30000
+    },
+    "mts:ivv.bodypanel_flexible:0": {
+        "value": 10000
+    },
+    "mts:ivv.box:0": {
         "value": 2000
     },
-    "minecraft:dye:6": {
+    "mts:ivv.butanepack:0": {
+        "value": 37
+    },
+    "mts:ivv.classicfuel:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicgearneedle:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicmphround:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicoil:0": {
+        "value": 5000
+    },
+    "mts:ivv.classictach:0": {
+        "value": 5000
+    },
+    "mts:ivv.climatecompressor:0": {
+        "value": 200000
+    },
+    "mts:ivv.clusterclassic:0": {
+        "value": 20000
+    },
+    "mts:ivv.clustermodern:0": {
+        "value": 20000
+    },
+    "mts:ivv.crate:0": {
+        "value": 100000
+    },
+    "mts:ivv.crate_metallic:0": {
+        "value": 200000
+    },
+    "mts:ivv.dashboardchime_angel:0": {
+        "value": 5000
+    },
+    "mts:ivv.dashboardchime_sable:0": {
+        "value": 5000
+    },
+    "mts:ivv.dashboardchime_tofu:0": {
+        "value": 5000
+    },
+    "mts:ivv.exhaust:0": {
+        "value": 200000
+    },
+    "mts:ivv.fueldigital:0": {
+        "value": 7000
+    },
+    "mts:ivv.fuelelectric:0": {
+        "value": 6000
+    },
+    "mts:ivv.fueltank:0": {
+        "value": 60000
+    },
+    "mts:ivv.fueltank_electric:0": {
+        "value": 400000
+    },
+    "mts:ivv.fueltemp:0": {
+        "value": 6000
+    },
+    "mts:ivv.gearbox03auto:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearbox04auto:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearbox05manual:0": {
+        "value": 150000
+    },
+    "mts:ivv.gearbox06manual:0": {
+        "value": 180000
+    },
+    "mts:ivv.gearbox07manual:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearboxcvt:0": {
+        "value": 300000
+    },
+    "mts:ivv.glovebox:0": {
+        "value": 50000
+    },
+    "mts:ivv.hitch:0": {
+        "value": 1000000
+    },
+    "mts:ivv.hitchadapter:0": {
+        "value": 120000
+    },
+    "mts:ivv.hitchadapterheavy:0": {
+        "value": 150000
+    },
+    "mts:ivv.hitchadapterxl:0": {
+        "value": 200000
+    },
+    "mts:ivv.hitchconnector:0": {
+        "value": 1000000
+    },
+    "mts:ivv.hitchnb:0": {
+        "value": 200000
+    },
+    "mts:ivv.horn_1:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_2:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_3:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_truck:0": {
+        "value": 5000
+    },
+    "mts:ivv.hours:0": {
+        "value": 7000
+    },
+    "mts:ivv.ivvbumper1:0": {
+        "value": 150000
+    },
+    "mts:ivv.ivvspoiler1:0": {
+        "value": 100000
+    },
+    "mts:ivv.ivvspoiler2:0": {
+        "value": 150000
+    },
+    "mts:ivv.ivvspoiler3:0": {
+        "value": 200000
+    },
+    "mts:ivv.ivvspoiler4:0": {
+        "value": 300000
+    },
+    "mts:ivv.jerrycan:0": {
+        "value": 10000
+    },
+    "mts:ivv.lidar:0": {
+        "value": 3000000
+    },
+    "mts:ivv.lightbar_or:0": {
+        "value": 50000
+    },
+    "mts:ivv.lighter:0": {
+        "value": 10000
+    },
+    "mts:ivv.medkit:0": {
+        "value": 5000
+    },
+    "mts:ivv.mph:0": {
+        "value": 6000
+    },
+    "mts:ivv.mphdigital:0": {
+        "value": 7000
+    },
+    "mts:ivv.normaltire:0": {
+        "value": 20000
+    },
+    "mts:ivv.oilcan:0": {
+        "value": 1000
+    },
+    "mts:ivv.oilcan_industrial:0": {
+        "value": 1500
+    },
+    "mts:ivv.oilcan_race:0": {
         "value": 2000
     },
-    "minecraft:dye:12": {
+    "mts:ivv.paintcan_black:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_brown:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_cyan:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_green:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_lime:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_magenta:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_orange:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_pink:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_purple:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_red:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_white:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_yellow:0": {
+        "value": 20000
+    },
+    "mts:ivv.radiator:0": {
+        "value": 50000
+    },
+    "mts:ivv.radiocb:0": {
+        "value": 50000
+    },
+    "mts:ivv.screen:0": {
+        "value": 20000
+    },
+    "mts:ivv.screwdriver:0": {
+        "value": 15000
+    },
+    "mts:ivv.smalltire:0": {
+        "value": 10000
+    },
+    "mts:ivv.strut:0": {
+        "value": 20000
+    },
+    "mts:ivv.tach:0": {
+        "value": 6000
+    },
+    "mts:ivv.tachdigital:0": {
+        "value": 7000
+    },
+    "mts:ivv.tape:0": {
+        "value": 350
+    },
+    "mts:ivv.toiletpaper_roll:0": {
+        "value": 250
+    },
+    "mts:ivv.v1e:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1g:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1prop:0": {
+        "value": 20000
+    },
+    "mts:ivv.v2:0": {
+        "value": 40000
+    },
+    "mts:ivv.v3median:0": {
+        "value": 100000
+    },
+    "mts:ivv.v4:0": {
+        "value": 200000
+    },
+    "mts:ivv.v4smallfry:0": {
+        "value": 100000
+    },
+    "mts:ivv.v6:0": {
+        "value": 500000
+    },
+    "mts:ivv.v6insolvo:0": {
+        "value": 300000
+    },
+    "mts:ivv.v8:0": {
+        "value": 700000
+    },
+    "mts:ivv.v9:0": {
+        "value": 1200000
+    },
+    "mts:mts.handbook_car:0": {
+        "value": 6000
+    },
+    "mts:mts.handbook_plane:0": {
+        "value": 6000
+    },
+    "mts:mts.jerrycan:0": {
+        "value": 5500
+    },
+    "mts:mts.jumperpack:0": {
+        "value": 10000
+    },
+    "mts:mts.paintgun:0": {
+        "value": 50000
+    },
+    "mts:mts.wrench:0": {
+        "value": 20000
+    },
+    "mts:mtsofficialpack.barrel:0": {
+        "value": 10000
+    },
+    "mts:mtsofficialpack.barrel_black:0": {
+        "value": 10000
+    },
+    "mts:mtsofficialpack.engineamci4:0": {
+        "value": 300000
+    },
+    "mts:mtsofficialpack.enginedetroitdiesel:0": {
+        "value": 700000
+    },
+    "mts:mtsofficialpack.nuts:0": {
+        "value": 500
+    },
+    "mts:mtsofficialpack.rods:0": {
+        "value": 500
+    },
+    "mts:syndicatemotorfoundry.paintcan_ashen:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_azure:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_celestial:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_dark:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_golden:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_iridescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_keppel:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lunar:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lux:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_phosphorescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_russet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_scarlet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_solar:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_verdant:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_violet:0": {
+        "value": 15000
+    },
+    "mts:unucivil.unucivil_item_unu_manual_mastodon:0": {
+        "value": 6000
+    },
+    "mts:unudecor.unuparts_decor_unu_books_generic1:0": {
         "value": 2000
     },
-    "minecraft:dye:1": {
-        "value": 2000
-    },
-    "minecraft:dye:7": {
-        "value": 2000
-    },
-    "minecraft:dye:13": {
-        "value": 2000
-    },
-    "minecraft:dye:2": {
-        "value": 2000
-    },
-    "minecraft:dye:8": {
-        "value": 2000
-    },
-    "minecraft:dye:14": {
-        "value": 2000
-    },
-    "minecraft:dye:3": {
-        "value": 2000
-    },
-    "minecraft:dye:9": {
-        "value": 2000
-    },
-    "minecraft:dye:15": {
-        "value": 2000
-    },
-    "minecraft:dye:4": {
-        "value": 2000
-    },
-    "minecraft:dye:10": {
-        "value": 2000
-    },
-    "minecraft:dye:5": {
-        "value": 2000
-    },
-    "minecraft:dye:11": {
+    "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
         "value": 2000
     },
     "mts:unuparts.unuparts_decor_unu_paint_apple:0": {
         "value": 20000
     },
-    "mts:unuparts.unuparts_decor_unu_paint_crimson:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_manilla:0": {
-        "value": 20000
-    },
     "mts:unuparts.unuparts_decor_unu_paint_aqua:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_emerald:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_mint:0": {
         "value": 20000
     },
     "mts:unuparts.unuparts_decor_unu_paint_blackthorne:0": {
         "value": 20000
     },
-    "mts:unuparts.unuparts_decor_unu_paint_ford:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_navy:0": {
-        "value": 20000
-    },
     "mts:unuparts.unuparts_decor_unu_paint_charcoal:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_ivory:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_ocean:0": {
         "value": 20000
     },
     "mts:unuparts.unuparts_decor_unu_paint_chocolate:0": {
         "value": 20000
     },
-    "mts:unuparts.unuparts_decor_unu_paint_jade:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_olive:0": {
-        "value": 20000
-    },
     "mts:unuparts.unuparts_decor_unu_paint_coral:0": {
         "value": 20000
     },
+    "mts:unuparts.unuparts_decor_unu_paint_crimson:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_emerald:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ford:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ivory:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_jade:0": {
+        "value": 20000
+    },
     "mts:unuparts.unuparts_decor_unu_paint_lemon:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_manilla:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_mint:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_navy:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ocean:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_olive:0": {
         "value": 20000
     },
     "mts:unuparts.unuparts_decor_unu_paint_redsands:0": {
         "value": 20000
     },
     "mts:unuparts.unuparts_decor_unu_paint_saddle:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
         "value": 20000
     },
     "mts:unuparts.unuparts_decor_unu_paint_sea:0": {
@@ -1111,1138 +2824,357 @@
     "mts:unuparts.unuparts_decor_unu_paint_tungsten:0": {
         "value": 20000
     },
-    "mts:ivv.paintcan_black:0": {
+    "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
         "value": 20000
-    },
-    "mts:ivv.paintcan_cyan:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_light_blue:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_red:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_light_gray:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_magenta:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_green:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_gray:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_orange:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_brown:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_pink:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_white:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_blue:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_lime:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_purple:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_yellow:0": {
-        "value": 20000
-    },
-    "mts:syndicatemotorfoundry.paintcan_ashen:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_golden:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_celestial:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_dark:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_violet:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_phosphorescent:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_lux:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_keppel:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_iridescent:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_verdant:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_russet:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_scarlet:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_lunar:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_azure:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_solar:0": {
-        "value": 25000
-    },
-    "mts:ivv.radiocb:0": {
-        "value": 50000
-    },
-    "mts:ivv.hitch:0": {
-        "value": 1000000
-    },
-    "mts:ivv.ivvbumper1:0": {
-        "value": 150000
-    },
-    "mts:ivv.antenna_hf:0": {
-        "value": 10000
-    },
-    "mts:ivv.hitchadapter:0": {
-        "value": 120000
-    },
-    "mts:ivv.ivvspoiler1:0": {
-        "value": 100000
-    },
-    "mts:ivv.hitchadapterheavy:0": {
-        "value": 150000
-    },
-    "mts:ivv.ivvspoiler2:0": {
-        "value": 150000
-    },
-    "mts:ivv.hitchadapterxl:0": {
-        "value": 200000
-    },
-    "mts:ivv.ivvspoiler3:0": {
-        "value": 200000
-    },
-    "mts:ivv.lightbar_or:0": {
-        "value": 50000
-    },
-    "mts:ivv.hitchconnector:0": {
-        "value": 1000000
-    },
-    "mts:ivv.ivvspoiler4:0": {
-        "value": 300000
-    },
-    "mts:ivv.lidar:0": {
-        "value": 3000000
-    },
-    "mts:ivv.hitchnb:0": {
-        "value": 200000
-    },
-    "mts:ivv.glovebox:0": {
-        "value": 50000
-    },
-    "mts:ivv.horn_1:0": {
-        "value": 5000
-    },
-    "mts:ivv.dashboardchime_tofu:0": {
-        "value": 5000
-    },
-    "mts:ivv.battery:0": {
-        "value": 20000
-    },
-    "mts:ivv.horn_2:0": {
-        "value": 5000
-    },
-    "mts:ivv.dashboardchime_sable:0": {
-        "value": 5000
-    },
-    "mts:ivv.exhaust:0": {
-        "value": 200000
-    },
-    "mts:ivv.horn_3:0": {
-        "value": 5000
-    },
-    "mts:ivv.dashboardchime_angel:0": {
-        "value": 5000
-    },
-    "mts:ivv.radiator:0": {
-        "value": 50000
-    },
-    "mts:ivv.horn_truck:0": {
-        "value": 5000
-    },
-    "mts:ivv.strut:0": {
-        "value": 20000
-    },
-    "mts:ivv.climatecompressor:0": {
-        "value": 200000
-    },
-    "mts:ivv.antenna:0": {
-        "value": 5000
-    },
-    "mts:ivv.bodypanel:0": {
-        "value": 30000
-    },
-    "mts:ivv.fueltank:0": {
-        "value": 60000
-    },
-    "mts:ivv.antenna_sharkfin:0": {
-        "value": 10000
-    },
-    "mts:ivv.bodypanel_flexible:0": {
-        "value": 10000
-    },
-    "mts:ivv.fueltank_electric:0": {
-        "value": 400000
-    },
-    "mts:ivv.oilcan:0": {
-        "value": 1000
-    },
-    "mts:ivv.oilcan_industrial:0": {
-        "value": 1500
-    },
-    "mts:ivv.oilcan_race:0": {
-        "value": 2000
-    },
-    "mts:alicemotors.nano_ev:0": {
-        "value": 500000
-    },
-    "mts:alicemotors.micro_ev:0": {
-        "value": 800000
-    },
-    "mts:alicemotors.macro_ev:0": {
-        "value": 1100000
-    },
-    "mts:alicemotors.giga_ev:0": {
-        "value": 1500000
-    },
-    "mts:iav.iav_a_gi4low:0": {
-        "value": 250000
-    },
-    "mts:iav.iav_a_gi4hi:0": {
-        "value": 300000
-    },
-    "mts:iav.iav_a_di4:0": {
-        "value": 600000
-    },
-    "mts:iav.iav_a_gi6low:0": {
-        "value": 280000
-    },
-    "mts:iav.iav_a_gi6hi:0": {
-        "value": 350000
-    },
-    "mts:iav.iav_a_gv8hi:0": {
-        "value": 1200000
-    },
-    "mts:iav.iav_a_gi2low:0": {
-        "value": 150000
-    },
-    "mts:iav.iav_a_gi2hi:0": {
-        "value": 220000
-    },
-    "mts:mtsofficialpack.engineamci4:0": {
-        "value": 300000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
-        "value": 80000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
-        "value": 40000
-    },
-    "mts:ivv.v3median:0": {
-        "value": 100000
-    },
-    "mts:ivv.v6insolvo:0": {
-        "value": 300000
-    },
-    "mts:ivv.v4:0": {
-        "value": 200000
-    },
-    "mts:ivv.v6:0": {
-        "value": 500000
-    },
-    "mts:ivv.v2:0": {
-        "value": 40000
-    },
-    "mts:ivv.v8:0": {
-        "value": 700000
-    },
-    "mts:ivv.v4smallfry:0": {
-        "value": 100000
-    },
-    "mts:ivv.v9:0": {
-        "value": 1200000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_normal_man:0": {
-        "value": 300000
-    },
-    "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
-        "value": 400000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_turbo_aut:0": {
-        "value": 600000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_normal_man:0": {
-        "value": 110000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_normal_aut:0": {
-        "value": 1100000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_turbo_aut:0": {
-        "value": 150000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_normal_man:0": {
-        "value": 1200000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_turbo_aut:0": {
-        "value": 1500000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_turbo_man:0": {
-        "value": 1500000
-    },
-    "mts:iav.iav_gague_electric_modern:0": {
-        "value": 6000
     },
     "mts:unuparts.unuparts_instrument_unu_battery:0": {
         "value": 4000
     },
-    "mts:unuparts.unuparts_instrument_unu_speedometer_mph:0": {
+    "mts:unuparts.unuparts_instrument_unu_fuel:0": {
         "value": 4000
     },
-    "mts:iav.iav_gague_fuel_modern:0": {
-        "value": 6000
+    "mts:unuparts.unuparts_instrument_unu_fuel_1:0": {
+        "value": 2000
     },
-    "mts:unuparts.unuparts_instrument_unu_fuel:0": {
+    "mts:unuparts.unuparts_instrument_unu_multi:0": {
+        "value": 7000
+    },
+    "mts:unuparts.unuparts_instrument_unu_oilpressure:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_oiltemperature:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_speedometer_k3:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_instrument_unu_speedometer_mph:0": {
         "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_speedometer_mphscaled:0": {
         "value": 4000
     },
-    "mts:iav.iav_gague_temperature_modern:0": {
-        "value": 6000
+    "mts:unuparts.unuparts_instrument_unu_tachometer_1:0": {
+        "value": 2000
     },
-    "mts:unuparts.unuparts_instrument_unu_oiltemperature:0": {
+    "mts:unuparts.unuparts_instrument_unu_tachometer_automatic:0": {
         "value": 4000
     },
     "mts:unuparts.unuparts_instrument_unu_tachometer_manual:0": {
         "value": 4000
     },
-    "mts:iav.iav_gague_oilpressure_modern:0": {
-        "value": 6000
-    },
-    "mts:unuparts.unuparts_instrument_unu_oilpressure:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_tachometer_automatic:0": {
-        "value": 4000
-    },
-    "mts:iav.iav_gague_tachometer_modern:0": {
-        "value": 6000
-    },
-    "mts:iav.iav_gague_speed_kmh_modern:0": {
-        "value": 6000
-    },
-    "mts:unuparts.unuparts_instrument_unu_multi:0": {
-        "value": 7000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_gear:0": {
-        "value": 5000
-    },
-    "mts:ivv.2gear:0": {
-        "value": 7000
-    },
-    "mts:ivv.1gear:0": {
-        "value": 6000
-    },
-    "mts:ivv.classicgearneedle:0": {
-        "value": 5000
-    },
-    "mts:ivv.tachdigital:0": {
-        "value": 7000
-    },
-    "mts:ivv.tach:0": {
-        "value": 6000
-    },
-    "mts:ivv.classictach:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueldigital:0": {
-        "value": 7000
-    },
-    "mts:ivv.fuelelectric:0": {
-        "value": 6000
-    },
-    "mts:ivv.classicfuel:0": {
-        "value": 5000
-    },
-    "mts:ivv.hours:0": {
-        "value": 7000
-    },
-    "mts:ivv.fueltemp:0": {
-        "value": 6000
-    },
-    "mts:ivv.classicoil:0": {
-        "value": 5000
-    },
-    "mts:ivv.mphdigital:0": {
-        "value": 7000
-    },
-    "mts:ivv.mph:0": {
-        "value": 6000
-    },
-    "mts:ivv.classicmphround:0": {
-        "value": 5000
-    },
-    "mts:ivv.screen:0": {
-        "value": 20000
-    },
-    "mts:ivv.clustermodern:0": {
-        "value": 20000
-    },
-    "mts:ivv.clusterclassic:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_electric:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_electric:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_f:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_fuel:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_fuel:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_tachometer:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph:0": {
-        "value": 5500
-    },
-    "mts:ivv.gearbox03auto:0": {
-        "value": 200000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_automatic_3_base:0": {
-        "value": 250000
-    },
-    "mts:ivv.gearbox04auto:0": {
-        "value": 200000
-    },
-    "mts:ivv.gearboxcvt:0": {
-        "value": 300000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_manual_3_base:0": {
-        "value": 120000
-    },
-    "mts:ivv.gearbox05manual:0": {
-        "value": 150000
-    },
-    "mts:ivv.gearbox06manual:0": {
-        "value": 180000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_manual_4_base:0": {
-        "value": 150000
-    },
-    "mts:ivv.gearbox07manual:0": {
-        "value": 200000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_compact:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
-        "value": 40000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
-        "value": 18000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
-        "value": 40000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
-        "value": 40000
-    },
-    "mts:ivv.smalltire:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
-        "value": 40000
-    },
-    "mts:ivv.normaltire:0": {
-        "value": 20000
-    },
-    "mts:ivv.bigtire:0": {
-        "value": 30000
-    },
-    "mts:iav.iav_wheel_standard_hubcap:0": {
-        "value": 20000
-    },
-    "mts:iav.iav_wheel_standard:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_classic_2d5_0_steel:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_sport_4d14_0_steel:0": {
-        "value": 14000
-    },
-    "mts:iv_tpp.wheel_classic_4d14_1_chromic:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_classic_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_classic_4d16_0_steel:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.wheel_offroad_4d14_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_offroad_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_offroad_4d16_0_steel:0": {
-        "value": 22000
-    },
-    "mts:iv_tpp.wheel_sport_4d14_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_sport_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.wheel_classic_4d16_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_classic_4d14_0_steel:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.wheel_20h_6w_rim1_or:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_offroad_4d16_1_chromic:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_offroad_4d14_0_steel:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.wheel_20h_6w_rim2_or:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_v8_fat_diesel:0": {
-        "value": 900000
-    },
-    "mts:mtsofficialpack.enginedetroitdiesel:0": {
-        "value": 700000
-    },
-    "mts:warkparts.wark_heavyengine_v8:0": {
-        "value": 700000
-    },
-    "mts:iv_tpp.trin_v8_fat_biodiesel:0": {
-        "value": 950000
-    },
-    "mts:warkparts.wark_hugeengine_v16:0": {
-        "value": 2500000
-    },
-    "mts:iv_tpp.trin_v8_fat_gasoline:0": {
-        "value": 650000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
-        "value": 750000
-    },
-    "mts:iv_tpp.trin_v10_fat_diesel:0": {
-        "value": 1150000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
-        "value": 650000
-    },
-    "mts:iav.iav_a_hdv12:0": {
-        "value": 1800000
-    },
-    "mts:mts.jerrycan:0": {
-        "value": 5500
-    },
-    "harvestcraft:bbqpotatochipsitem:0": {
-        "value": 700
-    },
-    "mts:mts.jumperpack:0": {
-        "value": 10000
-    },
-    "harvestcraft:potatochipsitem:0": {
-        "value": 300
-    },
-    "harvestcraft:hamsweetpicklesandwichitem:0": {
-        "value": 1200
-    },
-    "mts:mtsofficialpack.nuts:0": {
-        "value": 500
-    },
-    "harvestcraft:leafychickensandwichitem:0": {
-        "value": 700
-    },
-    "mts:mtsofficialpack.rods:0": {
-        "value": 500
-    },
-    "harvestcraft:colasodaitem:0": {
-        "value": 350
-    },
-    "harvestcraft:jellybeansitem:0": {
-        "value": 300
-    },
-    "minecraft:bucket:0": {
-        "value": 1000
-    },
-    "harvestcraft:applejuiceitem:0": {
-        "value": 250
-    },
-    "harvestcraft:saltedsunflowerseedsitem:0": {
-        "value": 200
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"diesel\"}": {
-        "value": 1600,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"diesel\"}"
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}": {
-        "value": 1700,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"biodiesel\"}"
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"ethanol\"}": {
-        "value": 1800,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"ethanol\"}"
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"gasoline\"}": {
-        "value": 1800,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"gasoline\"}"
-    },
-    "mts:unuparts.unuparts_part_unu_propeller_w3d004:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1g:0": {
-        "value": 500000
-    },
-    "mts:iav.iav_a_outboard_prop:0": {
-        "value": 30000
-    },
-    "mts:iav.iav_a_outboard:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1e:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1prop:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.trin_boat_v8_firered:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_engine_firered:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_medium_iron:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_boat_v8_pureblack:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_engine_pureblack:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_small:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.trin_boat_v8_white:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_engine_white:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_medium_carbonfiber:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_boat_v8_silver:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_engine_silver:0": {
-        "value": 500000
-    },
-    "minecraft:book:0": {
-        "value": 1000
-    },
-    "cfm:item_recipe_book:0": {
-        "value": 2000
-    },
-    "mts:cactusdecor_furniture.book:0": {
-        "value": 1000
-    },
-    "mts:unucivil.unucivil_item_unu_manual_mastodon:0": {
-        "value": 6000
-    },
-    "animania:animania_manual:0": {
-        "value": 3000
-    },
-    "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
-        "value": 2000
+    "mts:unuparts.unuparts_item_unu_manual_assembly_vehicle:0": {
+        "value": 51000
     },
     "mts:unuparts.unuparts_item_unu_manual_turboencabulator:0": {
         "value": 11000
     },
-    "forestry:book_forester:0": {
-        "value": 3000
-    },
-    "mts:unudecor.unuparts_decor_unu_books_generic1:0": {
-        "value": 2000
-    },
-    "immersiveengineering:tool:3": {
-        "value": 11000
-    },
-    "mts:mts.handbook_car:0": {
-        "value": 6000
-    },
-    "mts:cactusdecor_furniture.book_stack1:0": {
-        "value": 3000
-    },
-    "mts:unuparts.unuparts_item_unu_manual_assembly_vehicle:0": {
-        "value": 51000
-    },
-    "mts:mts.handbook_plane:0": {
-        "value": 6000
-    },
-    "mts:cactusdecor_furniture.book_stack2:0": {
-        "value": 6000
-    },
-    "flansmod:mwknife:0": {
-        "value": 110000
-    },
-    "immersiveengineering:sword_steel:0": {
-        "value": 65000
-    },
-    "cfm:item_knife:0": {
-        "value": 50000
-    },
-    "variedcommodities:combat_knive:0": {
-        "value": 50000
-    },
-    "minecraft:iron_sword:0": {
-        "value": 60000
-    },
-    "animania:carving_knife:0": {
-        "value": 60000
-    },
-    "variedcommodities:swiss_army_knife:0": {
-        "value": 60000
-    },
-    "variedcommodities:iron_broadsword:0": {
-        "value": 60000
-    },
-    "growthcraft_milk:knife:0": {
-        "value": 40000
-    },
-    "minecraft:iron_axe:0": {
-        "value": 9000
-    },
-    "cfm:item_crow_bar:0": {
-        "value": 6000
-    },
-    "minecraft:iron_pickaxe:0": {
-        "value": 4000
-    },
-    "variedcommodities:pipe_wrench:0": {
-        "value": 6000
-    },
-    "minecraft:iron_hoe:0": {
-        "value": 4000
-    },
-    "minecraft:iron_shovel:0": {
-        "value": 4000
-    },
-    "variedcommodities:crowbar:0": {
-        "value": 6000
-    },
-    "minecraft:diamond_hoe:0": {
-        "value": 8000
-    },
-    "immersiveengineering:tool:0": {
-        "value": 40000
-    },
-    "mts:mts.paintgun:0": {
-        "value": 50000
-    },
-    "cfm:item_spatula:0": {
-        "value": 1000
-    },
-    "variedcommodities:lighter:0": {
-        "value": 4000
-    },
-    "mts:ivv.screwdriver:0": {
-        "value": 15000
-    },
-    "minecraft:lead:0": {
-        "value": 10000
-    },
-    "minecraft:flint_and_steel:0": {
-        "value": 3000
-    },
-    "mts:mts.wrench:0": {
-        "value": 20000
-    },
-    "flansmod:m1911ammo:0": {
-        "value": 800
-    },
-    "flansmod:w1200ammo:0": {
-        "value": 400
-    },
-    "flansmod:g3ammo:0": {
-        "value": 2000
-    },
-    "flansmod:sigp226ammo:0": {
-        "value": 1000
-    },
-    "flansmod:m1014ammo:0": {
-        "value": 500
-    },
-    "flansmod:sg550ammo:0": {
-        "value": 2000
-    },
-    "flansmod:usppoisonammo:0": {
-        "value": 2000
-    },
-    "flansmod:r870ammo:0": {
-        "value": 500
-    },
-    "flansmod:m14ammo:0": {
-        "value": 2000
-    },
-    "flansmod:makarovammo:0": {
-        "value": 800
-    },
-    "flansmod:uspammo:0": {
-        "value": 1000
-    },
-    "flansmod:m1887ammo:0": {
-        "value": 800
-    },
-    "flansmod:mwammobag:0": {
-        "value": 50000
-    },
-    "flansmod:m9ammo:0": {
-        "value": 1500
-    },
-    "flansmod:mwmedicbag:0": {
-        "value": 50000
-    },
-    "flansmod:m9:0": {
-        "value": 50000
-    },
-    "flansmod:makarov:0": {
-        "value": 40000
-    },
-    "flansmod:m1911:0": {
-        "value": 60000
-    },
-    "flansmod:sigp226:0": {
-        "value": 70000
-    },
-    "flansmod:usp:0": {
-        "value": 60000
-    },
-    "flansmod:sigp232:0": {
-        "value": 70000
-    },
-    "flansmod:m14:0": {
-        "value": 120000
-    },
-    "flansmod:g3:0": {
-        "value": 150000
-    },
-    "flansmod:dragunov:0": {
-        "value": 250000
-    },
-    "flansmod:l96:0": {
-        "value": 350000
-    },
-    "flansmod:sg550:0": {
-        "value": 280000
-    },
-    "flansmod:m21:0": {
-        "value": 280000
-    },
-    "flansmod:m21ammo:0": {
-        "value": 1000
-    },
-    "flansmod:dragunovammo:0": {
-        "value": 1000
-    },
-    "growthcraft_bees:bees_wax:0": {
-        "value": 625
-    },
-    "growthcraft_cellar:culture_jar:0": {
-        "value": 5000
-    },
-    "minecraft:glass_bottle:0": {
-        "value": 25
-    },
-    "growthcraft_bees:bees_wax:14": {
-        "value": 625
-    },
-    "growthcraft_milk:cheese_press:0": {
-        "value": 20000
-    },
-    "growthcraft_milk:cheese_cloth:0": {
-        "value": 100
-    },
-    "growthcraft_bees:bees_wax:15": {
-        "value": 625
-    },
-    "growthcraft_milk:cheese_vat:0": {
-        "value": 20000
-    },
-    "growthcraft_milk:thistle_seed:0": {
-        "value": 15
-    },
-    "growthcraft_bees:bees_wax:4": {
-        "value": 625
-    },
-    "growthcraft_cellar:brew_kettle:0": {
+    "mts:unuparts.unuparts_part_unu_barrel_jerrycan_forrest:0": {
         "value": 30000
-    },
-    "growthcraft_milk:churn:0": {
-        "value": 10000
-    },
-    "growthcraft:salt:0": {
-        "value": 156
-    },
-    "minecraft:bowl:0": {
-        "value": 31
-    },
-    "growthcraft_milk:pancheon:0": {
-        "value": 10000
-    },
-    "growthcraft_milk:starter_culture:0": {
-        "value": 250
-    },
-    "minecraft:rotten_flesh:0": {
-        "value": 312
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"fluid_booze_apple_cider_fermented\"}": {
-        "value": 11000,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"fluid_booze_apple_cider_fermented\"}"
-    },
-    "forge:bucketfilled:0|{\"Amount\": 1000, \"FluidName\": \"fluid_booze_green_wine\"}": {
-        "value": 11000,
-        "tag": "{\"Amount\": 1000, \"FluidName\": \"fluid_booze_green_wine\"}"
-    },
-    "minecraft:pumpkin:0": {
-        "value": 312
-    },
-    "harvestcraft:caramelitem:0": {
-        "value": 50
-    },
-    "growthcraft_milk:bottlefluid_milk:0": {
-        "value": 225
-    },
-    "harvestcraft:coffeeitem:0": {
-        "value": 300
-    },
-    "harvestcraft:butteritem:0": {
-        "value": 200
-    },
-    "harvestcraft:teaitem:0": {
-        "value": 300
-    },
-    "harvestcraft:cheeseitem:0": {
-        "value": 200
-    },
-    "harvestcraft:strawberryjellyitem:0": {
-        "value": 200
-    },
-    "harvestcraft:pastaitem:0": {
-        "value": 50
-    },
-    "harvestcraft:saltitem:0": {
-        "value": 25
-    },
-    "harvestcraft:flouritem:0": {
-        "value": 50
-    },
-    "minecraft:sugar:0": {
-        "value": 25
-    },
-    "mts:ivv.toiletpaper_roll:0": {
-        "value": 250
-    },
-    "mts:ivv.tape:0": {
-        "value": 350
-    },
-    "cfm:item_soap:0": {
-        "value": 350
-    },
-    "minecraft:stone_shovel:0": {
-        "value": 1000
-    },
-    "mts:ivv.lighter:0": {
-        "value": 10000
-    },
-    "cfm:item_soap_water:0": {
-        "value": 1500
-    },
-    "mts:ivv.butanepack:0": {
-        "value": 37
-    },
-    "mts:iv_tpp.trin_crate2:0": {
-        "value": 3000
-    },
-    "mts:ivv.medkit:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_stacked_boxes_cardboard_2:0": {
-        "value": 60000
-    },
-    "mts:ivv.crate:0": {
-        "value": 100000
-    },
-    "mts:ivv.backpack_white:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_stacked_boxes_cardboard:0": {
-        "value": 60000
-    },
-    "mts:ivv.crate_metallic:0": {
-        "value": 200000
-    },
-    "mts:ivv.backpack_blue:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_crate1_wooden:0": {
-        "value": 100000
-    },
-    "mts:iav.iav_storage_l_crate_5:0": {
-        "value": 400000
-    },
-    "mts:unuparts.unuparts_part_unu_barrel_wooden:0": {
-        "value": 300000
-    },
-    "mts:iv_tpp.trin_crate1:0": {
-        "value": 200000
-    },
-    "mts:iav.iav_storage_l_crate_6:0": {
-        "value": 500000
     },
     "mts:unuparts.unuparts_part_unu_barrel_metal_grey:0": {
         "value": 300000
     },
-    "mts:unuparts.unuparts_part_unu_crate_wooden:0": {
-        "value": 100000
-    },
-    "mts:iav.iav_storage_l_crate_2:0": {
-        "value": 20000
-    },
     "mts:unuparts.unuparts_part_unu_barrel_metal_red:0": {
+        "value": 300000
+    },
+    "mts:unuparts.unuparts_part_unu_barrel_wooden:0": {
         "value": 300000
     },
     "mts:unuparts.unuparts_part_unu_crate_metal:0": {
         "value": 200000
     },
-    "mts:iav.iav_storage_l_crate_3:0": {
+    "mts:unuparts.unuparts_part_unu_crate_wooden:0": {
+        "value": 100000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
+        "value": 500000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
+        "value": 80000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
+        "value": 750000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
+        "value": 40000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
+        "value": 650000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v6:0": {
+        "value": 950000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v8:0": {
+        "value": 1250000
+    },
+    "mts:unuparts.unuparts_part_unu_propeller_w3d004:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_automatic_3_base:0": {
+        "value": 250000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_manual_3_base:0": {
+        "value": 120000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_manual_4_base:0": {
+        "value": 150000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_compact:0": {
         "value": 10000
     },
-    "mts:ivv.box:0": {
+    "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
+        "value": 18000
+    },
+    "mts:warkparts.wark_heavyengine_v8:0": {
+        "value": 700000
+    },
+    "mts:warkparts.wark_hugeengine_v16:0": {
+        "value": 2500000
+    },
+    "mw:kcpd_boots:0": {
+        "value": 100000
+    },
+    "mw:kcpd_chest:0": {
+        "value": 100000
+    },
+    "mw:m40gasmask_helmet:0": {
+        "value": 100000
+    },
+    "mw:tactical_helmet:0": {
+        "value": 100000
+    },
+    "mw:umbrella_boots:0": {
+        "value": 100000
+    },
+    "mw:umbrella_chest:0": {
+        "value": 100000
+    },
+    "mw:umbrella_helmet:0": {
+        "value": 100000
+    },
+    "storagedrawers:framingtable:0": {
+        "value": 5000
+    },
+    "variedcommodities:bronze_skirt:0": {
+        "value": 25000
+    },
+    "variedcommodities:chain_skirt:0": {
+        "value": 20000
+    },
+    "variedcommodities:chair:0": {
         "value": 2000
     },
-    "harvestcraft:aridgarden:0": {
+    "variedcommodities:chair:1": {
+        "value": 2000
+    },
+    "variedcommodities:chair:2": {
+        "value": 2000
+    },
+    "variedcommodities:chair:3": {
+        "value": 2000
+    },
+    "variedcommodities:chair:4": {
+        "value": 2000
+    },
+    "variedcommodities:chair:5": {
+        "value": 2000
+    },
+    "variedcommodities:combat_knive:0": {
+        "value": 50000
+    },
+    "variedcommodities:couch_wood:0": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:1": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:2": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:3": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:4": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:5": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wool:0": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:1": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:2": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:3": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:4": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:5": {
+        "value": 4000
+    },
+    "variedcommodities:crate:0": {
+        "value": 4000
+    },
+    "variedcommodities:crowbar:0": {
+        "value": 6000
+    },
+    "variedcommodities:full_bronze_boots:0": {
+        "value": 10000
+    },
+    "variedcommodities:full_bronze_chest:0": {
+        "value": 30000
+    },
+    "variedcommodities:full_bronze_head:0": {
+        "value": 10000
+    },
+    "variedcommodities:full_bronze_legs:0": {
+        "value": 25000
+    },
+    "variedcommodities:full_wooden_boots:0": {
+        "value": 5000
+    },
+    "variedcommodities:full_wooden_chest:0": {
+        "value": 15000
+    },
+    "variedcommodities:full_wooden_head:0": {
+        "value": 5000
+    },
+    "variedcommodities:full_wooden_legs:0": {
+        "value": 10000
+    },
+    "variedcommodities:iron_broadsword:0": {
+        "value": 60000
+    },
+    "variedcommodities:iron_skirt:0": {
+        "value": 25000
+    },
+    "variedcommodities:lamp:0": {
         "value": 1000
     },
-    "harvestcraft:frostgarden:0": {
+    "variedcommodities:leather_skirt:0": {
+        "value": 10000
+    },
+    "variedcommodities:lighter:0": {
+        "value": 4000
+    },
+    "variedcommodities:necklace:0": {
+        "display_name": "Necklace",
+        "value": 25000
+    },
+    "variedcommodities:ninja_chest:0": {
+        "value": 60000
+    },
+    "variedcommodities:ninja_head:0": {
+        "value": 20000
+    },
+    "variedcommodities:ninja_legs:0": {
+        "value": 50000
+    },
+    "variedcommodities:pendant:0": {
+        "display_name": "Pendant",
+        "value": 10000
+    },
+    "variedcommodities:pipe_wrench:0": {
+        "value": 6000
+    },
+    "variedcommodities:ring:0": {
+        "display_name": "Ring",
+        "value": 30000
+    },
+    "variedcommodities:shelf:0": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:1": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:2": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:3": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:4": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:5": {
+        "value": 2000
+    },
+    "variedcommodities:statuette:0": {
+        "display_name": "Statuette",
+        "value": 15000
+    },
+    "variedcommodities:stool:0": {
         "value": 1000
     },
-    "harvestcraft:shadedgarden:0": {
+    "variedcommodities:stool:1": {
         "value": 1000
     },
-    "forestry:fertilizer_bio:0": {
-        "value": 100
-    },
-    "harvestcraft:windygarden:0": {
+    "variedcommodities:stool:2": {
         "value": 1000
     },
-    "harvestcraft:tropicalgarden:0": {
+    "variedcommodities:stool:3": {
         "value": 1000
     },
-    "harvestcraft:soggygarden:0": {
+    "variedcommodities:stool:4": {
         "value": 1000
+    },
+    "variedcommodities:stool:5": {
+        "value": 1000
+    },
+    "variedcommodities:swiss_army_knife:0": {
+        "value": 60000
+    },
+    "variedcommodities:table:0": {
+        "value": 4000
+    },
+    "variedcommodities:table:1": {
+        "value": 10000
+    },
+    "variedcommodities:table:2": {
+        "value": 4000
+    },
+    "variedcommodities:table:3": {
+        "value": 4000
+    },
+    "variedcommodities:table:4": {
+        "value": 4000
+    },
+    "variedcommodities:table:5": {
+        "value": 4000
+    },
+    "variedcommodities:tablet:0": {
+        "display_name": "Tablet",
+        "value": 17500
+    },
+    "variedcommodities:tactical_chest:0": {
+        "value": 100000
+    },
+    "variedcommodities:tactical_head:0": {
+        "value": 100000
+    },
+    "variedcommodities:tall_lamp:0": {
+        "value": 3000
+    },
+    "variedcommodities:tall_lamp:1": {
+        "value": 3000
+    },
+    "variedcommodities:tall_lamp:2": {
+        "value": 4000
+    },
+    "variedcommodities:tall_lamp:3": {
+        "value": 5000
+    },
+    "variedcommodities:tall_lamp:4": {
+        "value": 5000
     }
 }
