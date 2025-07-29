@@ -177,24 +177,28 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
 
 # Example usage:
 if __name__ == "__main__":
-    # Path to the Minecraft broken market JSON
+    # Path to the Minecraft broken market JSON or folder
     input_json_path = [
-        "/home/mouette/gramados-v2/world/customnpcs/markets/herborist.json"
+        "/home/mouette/gramados-v2/world/customnpcs/markets"
     ]
     # Path to the global prices file
     global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
 
-    # # Load and clean the market JSON
-    # market_data = load_mc_json(input_json_path)
-
-    # # Print the loaded and cleaned market data for debugging
-    # print(f"Loaded market data: {market_data}")
-
-    # # Update global prices with the items from the market
-    # update_global_prices(market_data, global_prices_path)
-
     for path in input_json_path:
-        market_data = load_mc_json(path)
-        # print(f"Loaded market data from {path}: {market_data}")
-        update_global_prices(market_data, global_prices_path, force_replace=False)
+        if os.path.isdir(path):
+            # If the path is a folder, iterate through all JSON files in the folder
+            for file_name in os.listdir(path):
+                if file_name.endswith(".json"):
+                    file_path = os.path.join(path, file_name)
+                    confirm = input(f"🔴  Do you want to process the file {file_path}? 🔴 (y/n): ").strip().lower()
+                    if confirm == 'y':
+                        market_data = load_mc_json(file_path)
+                        update_global_prices(market_data, global_prices_path, force_replace=False)
+                    else:
+                        print(f"✔️   Skipping file {file_path}.")
+        else:
+            # If the path is a file, process it directly
+            market_data = load_mc_json(path)
+            update_global_prices(market_data, global_prices_path, force_replace=False)
+
     print("✅  All market data processed and global prices updated.")
