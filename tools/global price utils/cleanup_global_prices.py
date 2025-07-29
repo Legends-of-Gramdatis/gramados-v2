@@ -28,6 +28,12 @@ def cleanup_global_prices(mod_ids, file_path):
             if not any(key.startswith(mod_id + ":") for mod_id in mod_ids)
         }
 
+        # Add ":0" to any key that has only one ":" in it
+        cleaned_prices = {
+            (key + ":0" if key.count(":") == 1 else key): value
+            for key, value in cleaned_prices.items()
+        }
+
         # Sort the cleaned prices alphabetically by key
         cleaned_prices = dict(sorted(cleaned_prices.items()))
 
