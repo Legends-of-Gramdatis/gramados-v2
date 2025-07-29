@@ -10,10 +10,6 @@ var LOG_FILES = {
         json: "world/customnpcs/scripts/logs/events.json",
         log: "world/customnpcs/scripts/logs/events.log"
     },
-    smartphones: {
-        json: "world/customnpcs/scripts/logs/smartphones.json",
-        log: "world/customnpcs/scripts/logs/smartphones.log"
-    },
     jail: {
         json: "world/customnpcs/scripts/logs/jail.json",
         log: "world/customnpcs/scripts/logs/jail.log"
