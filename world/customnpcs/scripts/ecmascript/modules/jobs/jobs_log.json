@@ -708,6 +708,13 @@
             }
         },
         "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2673987717,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
             "66": {
                 "JobID": 66,
                 "JobName": "Mechanic",
