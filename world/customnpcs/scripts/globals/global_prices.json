@@ -2062,6 +2062,12 @@
     "mts:iv_tpp.paint_bucket_plum:0": {
         "value": 25000
     },
+    "mts:iv_tpp.paint_bucket_pureblack:0": {
+        "value": 100
+    },
+    "mts:iv_tpp.paint_bucket_purewhite:0": {
+        "value": 10000
+    },
     "mts:iv_tpp.paint_bucket_ruby:0": {
         "value": 30000
     },
@@ -2136,6 +2142,9 @@
     },
     "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
         "value": 50000
+    },
+    "mts:iv_tpp.paint_empty_bucket:0": {
+        "value": 1000
     },
     "mts:iv_tpp.trin_boat_engine_firered:0": {
         "value": 500000
@@ -2239,112 +2248,112 @@
     "mts:iv_tpp.trin_electric_bike_engine:0": {
         "value": 60000
     },
-    "mts:iv_tpp.trin_seat_1_beige": {
+    "mts:iv_tpp.trin_seat_1_beige:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_black": {
+    "mts:iv_tpp.trin_seat_1_black:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_brown": {
+    "mts:iv_tpp.trin_seat_1_brown:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_gray": {
+    "mts:iv_tpp.trin_seat_1_gray:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_junk": {
+    "mts:iv_tpp.trin_seat_1_junk:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_red": {
+    "mts:iv_tpp.trin_seat_1_red:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_1_white": {
+    "mts:iv_tpp.trin_seat_1_white:0": {
         "value": 57000
     },
-    "mts:iv_tpp.trin_seat_2_beige": {
+    "mts:iv_tpp.trin_seat_2_beige:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_2_black": {
+    "mts:iv_tpp.trin_seat_2_black:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_2_brown": {
+    "mts:iv_tpp.trin_seat_2_brown:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_2_gray": {
+    "mts:iv_tpp.trin_seat_2_gray:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_2_junk": {
+    "mts:iv_tpp.trin_seat_2_junk:0": {
         "value": 50000
     },
-    "mts:iv_tpp.trin_seat_2_red": {
+    "mts:iv_tpp.trin_seat_2_red:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_2_white": {
+    "mts:iv_tpp.trin_seat_2_white:0": {
         "value": 100000
     },
-    "mts:iv_tpp.trin_seat_3_beige": {
+    "mts:iv_tpp.trin_seat_3_beige:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_black": {
+    "mts:iv_tpp.trin_seat_3_black:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_brown": {
+    "mts:iv_tpp.trin_seat_3_brown:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_cheese": {
+    "mts:iv_tpp.trin_seat_3_cheese:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_gray": {
+    "mts:iv_tpp.trin_seat_3_gray:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_junk": {
+    "mts:iv_tpp.trin_seat_3_junk:0": {
         "value": 1500
     },
-    "mts:iv_tpp.trin_seat_3_red": {
+    "mts:iv_tpp.trin_seat_3_red:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_3_white": {
+    "mts:iv_tpp.trin_seat_3_white:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_1": {
+    "mts:iv_tpp.trin_seat_bus_1:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_2": {
+    "mts:iv_tpp.trin_seat_bus_2:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_3": {
+    "mts:iv_tpp.trin_seat_bus_3:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_4": {
+    "mts:iv_tpp.trin_seat_bus_4:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_5": {
+    "mts:iv_tpp.trin_seat_bus_5:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_6": {
+    "mts:iv_tpp.trin_seat_bus_6:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_7": {
+    "mts:iv_tpp.trin_seat_bus_7:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_8": {
+    "mts:iv_tpp.trin_seat_bus_8:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_bus_9": {
+    "mts:iv_tpp.trin_seat_bus_9:0": {
         "value": 15000
     },
-    "mts:iv_tpp.trin_seat_frying_pan_blue": {
+    "mts:iv_tpp.trin_seat_frying_pan_blue:0": {
         "value": 5000
     },
-    "mts:iv_tpp.trin_seat_frying_pan_gray": {
+    "mts:iv_tpp.trin_seat_frying_pan_gray:0": {
         "value": 5000
     },
-    "mts:iv_tpp.trin_seat_frying_pan_green": {
+    "mts:iv_tpp.trin_seat_frying_pan_green:0": {
         "value": 5000
     },
-    "mts:iv_tpp.trin_seat_frying_pan_orange": {
+    "mts:iv_tpp.trin_seat_frying_pan_orange:0": {
         "value": 5000
     },
-    "mts:iv_tpp.trin_seat_frying_pan_red": {
+    "mts:iv_tpp.trin_seat_frying_pan_red:0": {
         "value": 5000
     },
     "mts:iv_tpp.trin_stacked_boxes_cardboard:0": {
@@ -2505,6 +2514,69 @@
     },
     "mts:ivv.butanepack:0": {
         "value": 37
+    },
+    "mts:ivv.carrierseat:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_blue:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_brown:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_cyan:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_gray:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_green:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_light_blue:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_lime:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_magenta:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_orange:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_pink:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_purple:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_red:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_silver:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_white:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_yellow:0": {
+        "value": 25000
+    },
+    "mts:ivv.carseat:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_black:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_gray:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_tan:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_white:0": {
+        "value": 56000
     },
     "mts:ivv.classicfuel:0": {
         "value": 5000
@@ -2743,6 +2815,9 @@
     "mts:ivv.toiletpaper_roll:0": {
         "value": 250
     },
+    "mts:ivv.truckseat:0": {
+        "value": 70000
+    },
     "mts:ivv.v1e:0": {
         "value": 500000
     },
@@ -2800,19 +2875,19 @@
     "mts:mtsofficialpack.barrel_black:0": {
         "value": 10000
     },
-    "mts:mtsofficialpack.carseat_black": {
+    "mts:mtsofficialpack.carseat_black:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.carseat_brown": {
+    "mts:mtsofficialpack.carseat_brown:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.carseat_grey": {
+    "mts:mtsofficialpack.carseat_grey:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.carseat_red": {
+    "mts:mtsofficialpack.carseat_red:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.carseat_white": {
+    "mts:mtsofficialpack.carseat_white:0": {
         "value": 60000
     },
     "mts:mtsofficialpack.engineamci4:0": {
@@ -2827,34 +2902,34 @@
     "mts:mtsofficialpack.rods:0": {
         "value": 500
     },
-    "mts:mtsofficialpack.seatblack": {
+    "mts:mtsofficialpack.seatblack:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatblue": {
+    "mts:mtsofficialpack.seatblue:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatbrown": {
+    "mts:mtsofficialpack.seatbrown:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatcyan": {
+    "mts:mtsofficialpack.seatcyan:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatgrey": {
+    "mts:mtsofficialpack.seatgrey:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatolive": {
+    "mts:mtsofficialpack.seatolive:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatpink": {
+    "mts:mtsofficialpack.seatpink:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatred": {
+    "mts:mtsofficialpack.seatred:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatwhite": {
+    "mts:mtsofficialpack.seatwhite:0": {
         "value": 60000
     },
-    "mts:mtsofficialpack.seatyellow": {
+    "mts:mtsofficialpack.seatyellow:0": {
         "value": 60000
     },
     "mts:mtsofficialpack.wheellarge:0": {
@@ -2863,7 +2938,7 @@
     "mts:mtsofficialpack.wheelmedium:0": {
         "value": 20000
     },
-    "mts:mtsofficialpack.wheelsmall": {
+    "mts:mtsofficialpack.wheelsmall:0": {
         "value": 10000
     },
     "mts:syndicatemotorfoundry.paintcan_ashen:0": {
