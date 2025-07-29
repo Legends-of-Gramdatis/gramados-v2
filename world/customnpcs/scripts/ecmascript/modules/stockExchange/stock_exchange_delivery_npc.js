@@ -4,6 +4,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
 
 // Define JSON paths as constants
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
@@ -195,7 +196,7 @@ function interact(event) {
                 if (Object.keys(delivery).length === 0) {
                     npc.say("This crate doesn't have items I can accept.");
                     return;
-                } else if ("Lumber" in NPC_REGION) {
+                } else if (NPC_REGION.toLowerCase().indexOf('lumber') > -1) {
                     grantBadgeAndEmotes(player, "Lumberjack", ["mossy_log", "log", "log2", "wood", "wooden_axe", "stone_axe"]);
                 }
 
