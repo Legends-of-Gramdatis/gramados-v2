@@ -24,6 +24,7 @@ def add_prices_to_loot_table(loot_table_path, global_prices_path):
             for entry in pool.get("entries", []):
                 if entry.get("type") == "item":
                     item_name = entry.get("name")
+                    item_name = item_name + ":0"
 
                     # Check if the item is already in global prices
                     if item_name not in global_prices:
