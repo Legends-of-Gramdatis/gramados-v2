@@ -333,6 +333,7 @@ function processOrder(npc, player, heldItem, orderData) {
     // Pay the player
     tellPlayer(player, "&a:check: Order completed! You have been paid &r:money:&a " + getAmountCoin(adjustedPayout) + ".");
     npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 10 1");
+    logToFile("mechanics", player.getName() + " completed order " + orderId + " for payout: " + getAmountCoin(adjustedPayout));
     var moneyItems = generateMoney(world, adjustedPayout);
     for (var i = 0; i < moneyItems.length; i++) {
         npc.dropItem(moneyItems[i]);
