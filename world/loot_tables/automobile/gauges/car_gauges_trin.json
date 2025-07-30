@@ -25,16 +25,6 @@
                 },
                 {
                     "type": "item",
-                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
                     "name": "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph",
                     "weight": 3
                 },
@@ -66,16 +56,6 @@
                 {
                     "type": "item",
                     "name": "mts:iv_tpp.trin_car-boat_gauge_default_fuel",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi",
                     "weight": 5
                 },
                 {
