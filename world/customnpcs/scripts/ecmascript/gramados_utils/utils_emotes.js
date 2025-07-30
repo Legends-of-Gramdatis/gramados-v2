@@ -5,10 +5,11 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 function grantEmote(player, emote) {
-    giveEmote(player, emote);
-    tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
-    var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPosition().getX() + " " + player.getPosition().getY() + " " + player.getPosition().getZ() + " 1 1";
-    API.executeCommand(player.getWorld(), command);
+    if (giveEmote(player, emote)) {
+        tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
+        var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
+        API.executeCommand(player.getWorld(), command);
+    }
 }
 
 function giveEmote(player, emote) {
@@ -24,7 +25,7 @@ function giveEmote(player, emote) {
     if (!includes(player_json.emotes, emote)) {
         player_json.emotes.push(emote);
         world_data.put("player_" + player.getDisplayName(), JSON.stringify(player_json));
-        logToFile("event", "Player " + player.getDisplayName() + " received emote: " + emote);
+        logToFile("events", "Player " + player.getDisplayName() + " received emote: " + emote);
         return true;
     }
     return false;
@@ -54,7 +55,7 @@ function giveBadge(player, badge) {
     if (!includes(player_json.badges, badge)) {
         player_json.badges.push(badge);
         world_data.put("player_" + player.getDisplayName(), JSON.stringify(player_json));
-        logToFile("event", "Player " + player.getDisplayName() + " received badge: " + badge);
+        logToFile("events", "Player " + player.getDisplayName() + " received badge: " + badge);
         return true;
     }
     return false;
