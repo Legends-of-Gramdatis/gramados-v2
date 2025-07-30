@@ -63,9 +63,35 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
         if not item.get('id'):
             continue
 
+        # Check if the item is a money item
+        # if 'tag' in item and 'display' in item['tag'] and item['tag']['display'].get('Name') == '§2§lMoney§r':
+        #     # Find the linked item in TraderCurrency
+        #     linked_item = next((linked for linked in market_data['TraderCurrency']['NpcMiscInv'] if linked.get('Slot') == i), None)
+        #     if linked_item:
+        #         linked_damage = linked_item.get('Damage', 0)
+        #         linked_item_id = f"{linked_item['id']}:{linked_damage}"
+        #         linked_count = linked_item['Count']
+
+        #         # Calculate the price per item
+        #         price_in_cents = convert_price_to_cents(item['tag']['display']['Lore'][0]) // linked_count
+
+        #         # Generate a unique key combining item_id and serialized tag
+        #         linked_item_tag = json.dumps(linked_item.get('tag', {}), sort_keys=True)  # Serialize the tag with sorted keys
+        #         unique_key = f"{linked_item_id}|{linked_item_tag}" if linked_item_tag != '{}' else linked_item_id
+
+        #         # Update the global prices with the new price and tag, excluding empty tags
+        #         global_prices[unique_key] = {
+        #             'value': price_in_cents
+        #         }
+        #         if linked_item_tag != '{}':
+        #             global_prices[unique_key]['tag'] = linked_item_tag
+
+        #         print(f"⏏️   Linked item {linked_item_id} price extracted: {price_in_cents} cents")
+        #         continue
+
         # Skip items with a display Name of '§2§lMoney§r'
         if 'tag' in item and 'display' in item['tag'] and item['tag']['display'].get('Name') == '§2§lMoney§r':
-            print(f"ℹ️  Skipping item {item_id} with display Name '§2§lMoney§r'.")
+            print(f"ℹ️   Skipping item {item_id} with display Name '§2§lMoney§r'.")
             continue
 
         # Get the corresponding items from TraderCurrency by matching Slot values
@@ -179,7 +205,7 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
 if __name__ == "__main__":
     # Path to the Minecraft broken market JSON or folder
     input_json_path = [
-        "/home/mouette/gramados-v2/world/customnpcs/markets"
+        "/home/mouette/gramados-v2/world/customnpcs/markets/antiquary_p0.json"
     ]
     # Path to the global prices file
     global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
