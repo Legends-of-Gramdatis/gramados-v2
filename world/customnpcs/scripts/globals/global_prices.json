@@ -2816,7 +2816,7 @@
         "value": 250
     },
     "mts:ivv.truckseat:0": {
-        "value": 70000
+        "value": 100000
     },
     "mts:ivv.v1e:0": {
         "value": 500000
@@ -3419,5 +3419,197 @@
     },
     "variedcommodities:tall_lamp:4": {
         "value": 5000
+    },
+    "minecraft:gold_ingot:0": {
+        "value": 50000
+    },
+    "forestry:apatite:0": {
+        "value": 5000
+    },
+    "minecraft:diamond:0": {
+        "value": 50000
+    },
+    "minecraft:gold_nugget:0": {
+        "value": 5000
+    },
+    "variedcommodities:gem_amethyst:0": {
+        "value": 10000
+    },
+    "immersiveengineering:metal:3": {
+        "value": 10000
+    },
+    "minecraft:emerald:0": {
+        "value": 10000
+    },
+    "variedcommodities:ingot_bronze:0": {
+        "value": 10000
+    },
+    "variedcommodities:gem_ruby:0": {
+        "value": 10000
+    },
+    "minecraft:iron_ingot:0": {
+        "value": 500
+    },
+    "variedcommodities:gem_sapphire:0": {
+        "value": 10000
+    },
+    "variedcommodities:ingot_demonic:0": {
+        "value": 100000
+    },
+    "variedcommodities:crystal:0": {
+        "value": 5000
+    },
+    "variedcommodities:ingot_mithril:0": {
+        "value": 100000
+    },
+    "minecraft:clay_ball:0": {
+        "value": 25
+    },
+    "minecraft:sand:0": {
+        "value": 50
+    },
+    "minecraft:gravel:0": {
+        "value": 50
+    },
+    "minecraft:clay:0": {
+        "value": 250
+    },
+    "minecraft:dirt:0": {
+        "value": 25
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_tungsten:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_ford:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_manilla:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_manilla:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_saddle:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_saddle:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_tungsten:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_ivory:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_manilla:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_apple:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_saddle:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_truck:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_chrome:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.plate_gramados:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.roll_bar_small_gray:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_black:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_white:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_yellow:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_txs:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.car_roof_xl_lightbar_y:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.car_roof_lightbar_y:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.gyro_yellow:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_light_w:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_light_y:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_metal:0": {
+        "value": 10000
+    },
+    "minecraft:skull:0": {
+        "value": 50000
+    },
+    "minecraft:jukebox:0": {
+        "value": 10000
+    },
+    "chisel:bookshelf_birch:1": {
+        "value": 10000
+    },
+    "harvestcraft:candledeco1:0": {
+        "value": 200
+    },
+    "minecraft:noteblock:0": {
+        "value": 1000
+    },
+    "chisel:bookshelf_spruce:7": {
+        "value": 10000
+    },
+    "cfm:candle:0": {
+        "value": 2000
+    },
+    "chisel:bookshelf_darkoak:5": {
+        "value": 10000
+    },
+    "variedcommodities:trading_block:0": {
+        "value": 3000
     }
 }
