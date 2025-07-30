@@ -3,10 +3,11 @@
 */
 
 function grantEmote(player, emote) {
-    giveEmote(player, emote);
-    tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
-    var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPosition().getX() + " " + player.getPosition().getY() + " " + player.getPosition().getZ() + " 1 1";
-    API.executeCommand(player.getWorld(), command);
+    if (giveEmote(player, emote)) {
+        tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
+        var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPosition().getX() + " " + player.getPosition().getY() + " " + player.getPosition().getZ() + " 1 1";
+        API.executeCommand(player.getWorld(), command);
+    }
 }
 
 function giveEmote(player, emote) {
@@ -1582,6 +1583,7 @@ var CHAT_EMOTES = {
     "arrow_ul": "\u9927",
     "clock_day": "\u9048",
     "clock_night": "\u904C",
+    "bed": "\u90A9",
     "demonic_ingot": "\u93CB",
     "mithril_ingot": "\u93CC",
     "iron_ingot": "\u90B0",
@@ -1597,14 +1599,16 @@ var CHAT_EMOTES = {
     "exp": "\u9901",
     "gapple": "\u9902",
     "creamcookie": "\u932C",
+    "bread": "\u90EA",
     "cookie": "\u90EB",
     "cake": "\u90EC",
     "ppie": "\u90ED",
     "egg": "\u906C",
-    "meat_prime": "\u95AA",
-    "meat_big": "\u95A8",
-    "meat_medium": "\u95A9",
+    "fish": "\u90E4",
     "meat_small": "\u95A7",
+    "meat_medium": "\u95A9",
+    "meat_big": "\u95A8",
+    "meat_prime": "\u95AA",
     "meat_gold": "\u95AB",
     "lit": "\u9200",
     "hp": "\u9390",
@@ -1697,6 +1701,7 @@ var CHAT_EMOTES = {
     "drailsh_on": "\u91ED",
     "arailsh_off": "\u91EE",
     "arailsh_on": "\u91EF",
+    "flint_and_steel": "\u9053",
     "wooden_sword": "\u9000",
     "wooden_pickaxe": "\u9001",
     "wooden_shovel": "\u9002",
