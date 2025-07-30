@@ -1,0 +1,458 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 4b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 4b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 8b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 4b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 35b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:barrier",
+                "Count": 18b,
+                "tag": {
+                    "RepairCost": 0,
+                    "display": {
+                        "Name": "§rNot For Sale"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.bikewheel",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:dkzpartspack.dkz_seat_bike",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.v4smallfry",
+                "Count": 1b,
+                "tag": {
+                    "variables1": "engine_amireallyautomatic",
+                    "variables2": "engine_isdualclutch",
+                    "variables0": "horsepower_curve_math",
+                    "variables5": "generic_effect_particle_drip_slow",
+                    "variables6": "builtatlastough_horsepower",
+                    "variables3": "builtatlastough_torque",
+                    "variables4": "engine_obdiii_neutral_revlimit_type",
+                    "builtatlastough_torque": 58.0d,
+                    "generic_effect_particle_drip_slow": 1.0d,
+                    "part_2": {
+                        "packID": "ivv",
+                        "variablescount": 2,
+                        "variables1": "generic_transmission_slushiness",
+                        "generic_transmission_isautomatic": 1.0d,
+                        "generic_transmission_slushiness": 0.25d,
+                        "variables0": "generic_transmission_isautomatic",
+                        "systemName": "gearbox04auto",
+                        "spawnedDefaultParts": 1b,
+                        "subName": ""
+                    },
+                    "scfc_math": 0.2578125d,
+                    "engine_obdiii_torque": 8.443970680236816d,
+                    "engine_checklight": 2.500000118743628E-4d,
+                    "torque_converter_slush": 0.25d,
+                    "engine_obdiii_present": 1.0d,
+                    "builtatlastough_fuel_efficiency": -0.1d,
+                    "engine_obdiii_horsepower": 9.042158126831055d,
+                    "engine_obdiii_displacement": 0.6d,
+                    "engine_obdiii_neutral_revlimit_rpm": 3500.0d,
+                    "horsepower_curve_math": 20.0d,
+                    "temp": 1.607143051400607d,
+                    "engine_amireallyautomatic": 1.0d,
+                    "engine_isdualclutch": 1.0d,
+                    "builtatlastough_horsepower": 47.0d,
+                    "torque_curve_math": 15.0d,
+                    "variablescount": 19,
+                    "variables16": "engine_obdiii_displacement",
+                    "variables17": "engine_obdiii_neutral_revlimit_rpm",
+                    "variables18": "builtatlastough_power_efficiency",
+                    "variables12": "torque_converter_slush",
+                    "variables13": "engine_obdiii_present",
+                    "spawnedDefaultParts": 1b,
+                    "variables14": "builtatlastough_fuel_efficiency",
+                    "variables15": "engine_obdiii_horsepower",
+                    "variables9": "builtatlastough_backfire_type",
+                    "variables7": "torque_curve_math",
+                    "variables10": "engine_obdiii_torque",
+                    "variables8": "scfc_math",
+                    "variables11": "engine_checklight"
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.bikewheelrace",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_part_unu_engine_i1m",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.bikewheeloffroad",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_part_unu_seat_moped",
+                "Count": 1b,
+                "tag": {
+                    "spawnedDefaultParts": 1b
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:iv_tpp.trin_bike_seat",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_part_unu_wheel_scooter",
+                "Count": 1b,
+                "tag": {
+                    "spawnedDefaultParts": 1b
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.horn_1",
+                "Count": 1b,
+                "tag": {
+                    "spawnedDefaultParts": 1b
+                },
+                "Damage": 0s
+            }
+        ]
+    }
+}
