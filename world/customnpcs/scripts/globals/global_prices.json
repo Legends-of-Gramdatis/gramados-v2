@@ -1903,6 +1903,15 @@
     "mts:alicemotors.nano_ev:0": {
         "value": 500000
     },
+    "mts:alicemotors.wheel_20h_12w_rim1_or:0": {
+        "value": 48000
+    },
+    "mts:bjornscustoms.rally_wheel:0": {
+        "value": 32000
+    },
+    "mts:bjornscustoms.rally_wheel_rusted:0": {
+        "value": 20000
+    },
     "mts:cactusdecor_furniture.book:0": {
         "value": 1000
     },
@@ -1911,6 +1920,30 @@
     },
     "mts:cactusdecor_furniture.book_stack2:0": {
         "value": 6000
+    },
+    "mts:cactusvehicles.truck_wheel:0": {
+        "value": 30000
+    },
+    "mts:cactusvehicles.truck_wheel_back:0": {
+        "value": 30000
+    },
+    "mts:cactusvehicles.wheel_compact:0": {
+        "value": 12000
+    },
+    "mts:cactusvehicles.wheel_dogdish:0": {
+        "value": 15000
+    },
+    "mts:cactusvehicles.wheel_large:0": {
+        "value": 18000
+    },
+    "mts:dkzpartspack.dkz_tractor_wheel:0": {
+        "value": 52000
+    },
+    "mts:dkzpartspack.wheel_offroad_standard_custom:0": {
+        "value": 40000
+    },
+    "mts:dkzpartspack.wheel_offroad_standard_custom_silver:0": {
+        "value": 45000
     },
     "mts:iav.iav_a_di4:0": {
         "value": 600000
@@ -2506,6 +2539,12 @@
     "mts:iv_tpp.trin_v8_fat_gasoline:0": {
         "value": 650000
     },
+    "mts:iv_tpp.trinwheel30t10d_c:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.trinwheel30t10d_or:0": {
+        "value": 50000
+    },
     "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
         "value": 25000
     },
@@ -2560,26 +2599,83 @@
     "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
         "value": 40000
     },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_red:0": {
+        "value": 30000
+    },
     "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
         "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_red:0": {
+        "value": 30000
     },
     "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
         "value": 40000
     },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_red:0": {
+        "value": 30000
+    },
     "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
         "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_red:0": {
+        "value": 30000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
         "value": 50000
     },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_gold:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_red:0": {
+        "value": 45000
+    },
     "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
         "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_red:0": {
+        "value": 45000
     },
     "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
         "value": 50000
     },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_red:0": {
+        "value": 45000
+    },
     "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
         "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_red:0": {
+        "value": 45000
     },
     "mts:iv_tpp.wrap_roll_coal:0": {
         "value": 125000
@@ -2607,6 +2703,9 @@
     },
     "mts:iv_tpp.wrap_roll_redstone:0": {
         "value": 130000
+    },
+    "mts:ivairlinerpack.truckwheel:0": {
+        "value": 30000
     },
     "mts:ivv.1gear:0": {
         "value": 6000
@@ -3337,8 +3436,221 @@
     "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
         "value": 10000
     },
+    "mts:unuparts.unuparts_part_unu_wheel_small:0": {
+        "value": 12000
+    },
     "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
         "value": 18000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_apple:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_aqua:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_blackthorne:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_budd:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_charcoal:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_chocolate:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_coral:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_crimson:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_emerald:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ford:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ivory:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_jade:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_lemon:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_manilla:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_mint:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_navy:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ocean:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad:0": {
+        "value": 33000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_desert:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_forrest:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_winter:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_olive:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_red:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_redsands:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_rusty:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_saddle:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_sea:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_seaweed:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_silver:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_spaghetti:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_tungsten:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_unu:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wire:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wire_mitchell:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wireknockoff:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_tractor:0": {
+        "value": 40000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd:0": {
+        "value": 30000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_desert:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_forrest:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_vintage:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_winter:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_yellow:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_dayton:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_apple:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_aqua:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_blackthorne:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_charcoal:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_chocolate:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_coral:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_crimson:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_emerald:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ford:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ivory:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_jade:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_lemon:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_manilla:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_mint:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_navy:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ocean:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_olive:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_redsands:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_saddle:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_sea:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_seaweed:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_silver:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_spaghetti:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_tungsten:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_unu:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wood:0": {
+        "value": 14000
     },
     "mts:warkparts.wark_heavyengine_v8:0": {
         "value": 700000
