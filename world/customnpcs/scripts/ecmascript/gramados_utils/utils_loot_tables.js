@@ -160,17 +160,22 @@ function weightedRandom(entries) {
  * @returns {Object} - The generated item stack.
  */
 function generateItemStackFromLootEntry(entry, world) {
-    var itemstack = world.createItem(
-        entry.id,
-        entry.damage || 0,
-        entry.count || 1
-    );
-    if (entry.nbt) {
-        var nbt = API.stringToNbt(entry.nbt);
-        // set nbt to itemstack
-        itemstack = setNbtToItemStack(itemstack, nbt, world);
+    try {
+        var itemstack = world.createItem(
+            entry.id,
+            entry.damage || 0,
+            entry.count || 1
+        );
+        if (entry.nbt) {
+            var nbt = API.stringToNbt(entry.nbt);
+            // set nbt to itemstack
+            itemstack = setNbtToItemStack(itemstack, nbt, world);
+        }
+        return itemstack;
+    } catch (error) {
+        logToFile("dev", "Failed to create item stack for item: " + JSON.stringify(entry) + ". Error: " + error.message);
+        return null;
     }
-    return itemstack;
 }
 
 /**
