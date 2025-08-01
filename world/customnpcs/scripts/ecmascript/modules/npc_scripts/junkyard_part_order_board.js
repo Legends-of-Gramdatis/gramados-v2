@@ -26,6 +26,9 @@ function interact(event) {
     // Load or initialize order data
     var orderData = loadJson(ORDER_DATA_PATH) || { players: {}, orders: [] };
 
+    // Perform order cleanup
+    // orderCleanup(orderData);
+
     // Check if player is a mechanic
     if (!playerHasJobWithTag(player, "Mechanic")) {
         tellPlayer(player, "§c:cross: Only mechanics can interact with this board.");
@@ -385,4 +388,37 @@ function setupOrderNameLore(order_data, world) {
     lore.push("§8§oOriginal Player: " + order_data.player); // Add original player in a discrete format
     item.setLore(lore);
     return item;
+}
+
+function orderCleanup(orderData) {
+    var currentTime = new Date().getTime();
+
+    // Initialize uncompleted orders list if not present
+    if (!orderData.uncompletedOrders) {
+        orderData.uncompletedOrders = [];
+    }
+
+    // Iterate through orders to check deadlines
+    for (var i = orderData.orders.length - 1; i >= 0; i--) {
+        var order = orderData.orders[i];
+        var expiryDate = new Date(order.expiryDate).getTime();
+        var toleranceTime = expiryDate + ((expiryDate - new Date(order.generatedDate).getTime()) * order.tolerance);
+
+        // If the order is past tolerance time, mark as uncompleted
+        if (currentTime > toleranceTime) {
+            var playerEntry = orderData.players[order.player];
+            if (playerEntry) {
+                playerEntry.totalOrdersUncompleted = (playerEntry.totalOrdersUncompleted || 0) + 1;
+            }
+
+            // Add order ID to uncompleted orders list
+            orderData.uncompletedOrders.push(order.id);
+
+            // Remove the order from the main list
+            orderData.orders.splice(i, 1);
+        }
+    }
+
+    // Save updated order data
+    saveJson(orderData, ORDER_DATA_PATH);
 }
