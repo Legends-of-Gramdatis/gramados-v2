@@ -6,6 +6,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
 
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
@@ -27,7 +28,7 @@ function interact(event) {
     var orderData = loadJson(ORDER_DATA_PATH) || { players: {}, orders: [] };
 
     // Perform order cleanup
-    // orderCleanup(orderData);
+    orderCleanup(orderData);
 
     // Check if player is a mechanic
     if (!playerHasJobWithTag(player, "Mechanic")) {
@@ -167,7 +168,7 @@ function processOrder(npc, player, heldItem, orderData) {
 
     for (var i = 0; i < lore.length; i++) {
         if (lore[i].startsWith("§8§oOrder ID: ")) {
-            orderId = lore[i].replace("§8§oOrder ID: ", "").trim();
+            orderId = lore[i].substring("§8§oOrder ID: ".length);
             break;
         }
     }
@@ -175,6 +176,43 @@ function processOrder(npc, player, heldItem, orderData) {
     if (!orderId) {
         tellPlayer(player, "§c:cross: Invalid order ID.");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
+        return;
+    }
+
+    // Check if the order ID is in the uncompleted orders list
+    if (includes(orderData.uncompletedOrders && orderData.uncompletedOrders, orderId)) {
+        // Remove the order ID from the uncompleted orders list
+        orderData.uncompletedOrders = orderData.uncompletedOrders.filter(function(id) {
+            return id !== orderId;
+        });
+
+        // Generate a compensation cookie
+        var world = player.getWorld();
+        var cookie = world.createItem("minecraft:cookie", 0, 1);
+        cookie.setCustomName("§6Compensation Cookie");
+        cookie.setLore([
+            "§7A sweet treat for your troubles!",
+            "§7Order ID: " + orderId,
+            "§8§o" + player.getName() + " deserves a break!"
+        ]);
+
+        // Give the cookie to the player
+        player.giveItem(cookie);
+
+        // Log the action
+        logToFile("mechanics", player.getName() + " returned outdated order " + orderId + " and received a compensation cookie.");
+
+        // Remove the order item from the player's inventory
+        heldItem.setStackSize(heldItem.getStackSize() - 1);
+        if (heldItem.getStackSize() <= 0) {
+            player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
+        }
+
+        tellPlayer(player, "§a:check: Outdated order returned. Enjoy your compensation cookie!");
+        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup block @a ~ ~ ~ 10 1");
+        saveJson(orderData, ORDER_DATA_PATH);
+
+        grantBadgeAndEmotes(player, "too_late", ["clock_night", "clock_4", "clock_5", "clock_6", "slowness", "dead_bush", "cobweb"]);
         return;
     }
 
