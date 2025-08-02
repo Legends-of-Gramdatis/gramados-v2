@@ -134,6 +134,7 @@ function generateOrder(player, playerName, world) {
     var currentDate = getAgeTick(world);
     var daysToAdd = Math.floor(Math.random() * 4) + 1; // Randomly generate between 1 and 4 days
     var expiryDate = currentDate + IRLDaysToTicks(daysToAdd);
+    
 
     // Adjust payout based on deadline (shorter deadlines increase payout)
     var deadlineMultiplier = 1 + (3 - daysToAdd) * 0.1; // 10% increase per day less than 3
@@ -408,8 +409,10 @@ function setupOrderNameLore(order_data, world) {
         lore.push(parseEmotes("  §8:arrow_r: §o" + part.id ));
     });
 
+    
+
     lore.push("§6Payout: §a" + getAmountCoin(order_data.payout));
-    lore.push("§3Order expires on: §f" + TicksToDate(order_data.expiryDate));
+    lore.push("§3Order expires on: §f" + TicksToDate(world, order_data.expiryDate));
     lore.push("§8§oOrder ID: " + order_data.id); // Add order ID in a discrete format
     lore.push("§8§oOriginal Player: " + order_data.player); // Add original player in a discrete format
     item.setLore(lore);
@@ -427,15 +430,7 @@ function orderCleanup(world, orderData) {
     // Iterate through orders to check deadlines
     for (var i = orderData.orders.length - 1; i >= 0; i--) {
         var order = orderData.orders[i];
-
-        // Convert generatedDate and expiryDate from ISO format to ticks if necessary
-        if (typeof order.generatedDate === "string") {
-            order.generatedDate = new Date(order.generatedDate).getTime() * 20 / 1000; // Convert milliseconds to ticks
-        }
-        if (typeof order.expiryDate === "string") {
-            order.expiryDate = new Date(order.expiryDate).getTime() * 20 / 1000; // Convert milliseconds to ticks
-        }
-
+        
         var expiryDate = order.expiryDate;
         var toleranceTime = expiryDate + ((expiryDate - order.generatedDate) * order.tolerance);
 
