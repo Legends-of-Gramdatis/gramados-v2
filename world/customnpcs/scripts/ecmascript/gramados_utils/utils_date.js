@@ -72,18 +72,73 @@ function getCurrentTime() {
 
 
 function getAgeTick(world) {
-    return world.getCurrentTime();
+    return world.getTotalTime();
 }
 
 function getAgeTickSince(world, startTime) {
-    return world.getCurrentTime() - startTime;
+    return world.getTotalTime() - startTime;
 }
 
 function hasAgeTickPassed(world, startTime, ageTick) {
-    return world.getCurrentTime() - startTime >= ageTick;
+    return world.getTotalTime() - startTime >= ageTick;
 }
 
 function TimeToTick(hours, minutes, seconds) {
     var targetTime = (hours * 3600 + minutes * 60 + seconds) * 20; // Convert to ticks (20 ticks per second)
     return targetTime;
+}
+
+function TimeToMinecraftTick(years, months, days) {
+    var daysInYear = 360; // 12 months * 30 days
+    var totalDays = years * daysInYear + months * 30 + days;
+    return totalDays * 24000; // Convert days to ticks (24000 ticks per day)
+}
+
+function IRLDaysToTicks(days) {
+    return days * 24 * 60 * 60 * 20; // Convert days to ticks (20 ticks per second, 86400 seconds per day)
+}
+
+function TicksToHumanReadable(ticks) {
+    var totalSeconds = Math.floor(ticks / 20); // Convert ticks to seconds
+    var days = Math.floor(totalSeconds / 86400); // Calculate days (86400 seconds in a day)
+    var remainingSeconds = totalSeconds % 86400;
+    var hours = Math.floor(remainingSeconds / 3600); // Calculate hours
+    remainingSeconds %= 3600;
+    var minutes = Math.floor(remainingSeconds / 60); // Calculate minutes
+    var seconds = remainingSeconds % 60; // Remaining seconds
+
+    return days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+}
+
+function TicksToDate(ticks) {
+    function pad(value, length) {
+        value = String(value);
+        while (value.length < length) {
+            value = '0' + value;
+        }
+        return value;
+    }
+
+    var totalSeconds = Math.floor(ticks / 20); // Convert ticks to seconds
+    var date = new Date(totalSeconds * 1000); // Convert seconds to milliseconds
+
+    var day = pad(date.getDate(), 2);
+    var month = pad(date.getMonth() + 1, 2); // Months are zero-based
+    var year = date.getFullYear();
+    var hours = pad(date.getHours(), 2);
+    var minutes = pad(date.getMinutes(), 2);
+    var seconds = pad(date.getSeconds(), 2);
+
+    return day + '/' + month + '/' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+}
+
+function getTimeLeftBeforeTick(world, targetTick) {
+    var currentTick = getAgeTick(world);
+    var ticksLeft = targetTick - currentTick;
+
+    if (ticksLeft <= 0) {
+        return "Time has already passed.";
+    }
+
+    return ticksLeft;
 }
