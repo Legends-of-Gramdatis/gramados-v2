@@ -228,13 +228,13 @@ function processOrder(npc, player, heldItem, orderData) {
     var currentTime = getAgeTick(world);
     var originalDeadline = order.expiryDate;
     var lateTime = originalDeadline - order.generatedDate;
-    var toleranceTime = originalDeadline + (lateTime * order.tolerance);
-    var toleranceDeadline = TicksToHumanReadable(toleranceTime);
+    var toleratedDate = originalDeadline + (lateTime * order.tolerance);
+    var toleranceDeadline = TicksToDate(world, toleratedDate);
     // tellPlayer(player, "&6Order ID: §f" + order.id + " §6| Expiry Date: §f" + expiryDate + " §6| Tolerance: §f" + (order.tolerance * 100).toFixed(2) + "% §6| Tolerance Date: §f" + toleranceDate + ".");
 
     var adjustedPayout = order.payout;
 
-    if (currentTime > toleranceTime) {
+    if (currentTime > toleratedDate) {
         tellPlayer(player, "&c:cross: The order has expired and cannot be completed. You had to complete it by " + toleranceDeadline + ".");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
 
@@ -267,56 +267,17 @@ function processOrder(npc, player, heldItem, orderData) {
 
     // Calculate payout reduction if completed after the original deadline
     if (currentTime > originalDeadline) {
-        var generatedDate = order.generatedDate;
-        var orderDuration = originalDeadline - generatedDate; // Total time between generatedDate and expiryDate
-        var toleranceDuration = orderDuration * order.tolerance; // Tolerance duration based on the multiplier
-        var toleranceEndTime = originalDeadline + toleranceDuration; // End time including tolerance
+        var lateTime = currentTime - originalDeadline;
+        var maxLateTime = toleranceDuration;
+        var lateFactor = lateTime / maxLateTime;
+        var reductionFactor = lateFactor / 2;
+        var adjustedPayout = Math.max(0, Math.floor(order.payout * (1 - reductionFactor)));
 
-        if (currentTime > toleranceEndTime) {
-            tellPlayer(player, "&c:cross: The order has expired and cannot be completed. You had to complete it by " + TicksToHumanReadable(toleranceEndTime) + ".");
-            npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
+        tellPlayer(player, ":danger: §eThe order is Expired, but remains within tolerance. Payout has been reduced to &r:money:&e" + getAmountCoin(adjustedPayout) + " instead of &r:money:&e" + getAmountCoin(order.payout) + ".");
+        npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup block @a ~ ~ ~ 10 1");
 
-            // Cleanup JSON entries
-            var orderIndex = -1;
-            for (var i = 0; i < orderData.orders.length; i++) {
-                if (orderData.orders[i].id === orderId) {
-                    orderIndex = i;
-                    break;
-                }
-            }
-            if (orderIndex !== -1) {
-                orderData.orders.splice(orderIndex, 1);
-            }
-
-            var playerEntry = orderData.players[order.player];
-            if (playerEntry) {
-                playerEntry.totalOrdersLate++;
-            }
-
-            // Remove the order item from the player's inventory
-            heldItem.setStackSize(heldItem.getStackSize() - 1);
-            if (heldItem.getStackSize() <= 0) {
-                player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
-            }
-
-            saveJson(orderData, ORDER_DATA_PATH);
-            return;
-        }
-
-        // Calculate payout reduction if completed after the original deadline but within tolerance
-        if (currentTime > originalDeadline) {
-            var lateTime = currentTime - originalDeadline; // Time past the expiryDate
-            var maxLateTime = toleranceDuration; // Maximum allowable late time
-            var lateFactor = lateTime / maxLateTime; // Proportion of lateness within tolerance
-            var reductionFactor = lateFactor / 2; // Reduction is half the lateness proportion
-            var adjustedPayout = Math.max(0, Math.floor(order.payout * (1 - reductionFactor)));
-
-            tellPlayer(player, ":danger: §eThe order is Expired, but remains within tolerance. Payout has been reduced to &r:money:&e" + getAmountCoin(adjustedPayout) + " instead of &r:money:&e" + getAmountCoin(order.payout) + ".");
-            npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup block @a ~ ~ ~ 10 1");
-
-            // Use adjustedPayout for payment without modifying order.payout in the JSON
-            order.payout = adjustedPayout;
-        }
+        // Use adjustedPayout for payment without modifying order.payout in the JSON
+        order.payout = adjustedPayout;
     }
 
     var inventory = player.getInventory().getItems();
