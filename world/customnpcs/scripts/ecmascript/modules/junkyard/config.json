@@ -2,5 +2,5 @@
     "ORDER_DATA_PATH": "world/customnpcs/scripts/data_auto/parts_orders.json",
     "ORDER_ITEM_ID": "variedcommodities:plans",
     "ORDER_ITEM_NAME": "§eVehicle Part Order Form",
-    "ORDER_DELAY_HOURS": 1
+    "ORDER_DELAY_HOURS": 6
 }
