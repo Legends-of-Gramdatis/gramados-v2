@@ -471,3 +471,17 @@ function iposToPos(ipos) {
         z: Math.floor(ipos.getZ())
     };
 }
+
+/**
+ * Pads a number with leading zeros to a specified length.
+ * @param {number} value - The number to pad.
+ * @param {number} length - The desired length of the output string.
+ * @returns {string} The padded number as a string.
+ */
+function pad(value, length) {
+    value = String(value);
+    while (value.length < length) {
+        value = '0' + value;
+    }
+    return value;
+}
