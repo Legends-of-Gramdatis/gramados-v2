@@ -1006,5 +1006,25 @@
         "Name": "Fire_99",
         "JobHistory": {},
         "ActiveJobs": {}
+    },
+    "68ed5661-bf69-46ce-81df-57656eb02e52": {
+        "Name": "Guardian2799",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2685155225,
+                "Region": "Gramados",
+                "Type": "Starter"
+            },
+            "61": {
+                "JobID": 61,
+                "JobName": "Terracotta Factory Worker",
+                "StartTime": 2685155145,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
     }
 }
