@@ -18,7 +18,11 @@ var config = loadJson("world/customnpcs/scripts/ecmascript/modules/item_expertis
 
 function interact(event) {
     var player = event.player;
-    var npc = event.npc;;
+    var npc = event.npc;
+
+    if (!player.hasReadDialog(560)) {
+        return;
+    }
 
     if (player.getExpLevel() < config.expertise_exp) {
         tellPlayer(player, "§c:cross: You do not have enough levels to proceed with this interaction.");
@@ -47,7 +51,6 @@ function interact(event) {
     if (lore && lore.length > 0) {
         for (var i = 0; i < lore.length; i++) {
             if (lore[0].toLowerCase().indexOf("[appraisal notice]") > -1) {
-                npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 1 1");
                 expertiseItem(npc, heldItem, player, world);
                 return;
             } else if (lore[0].toLowerCase().indexOf("[expertised]") > -1) {
@@ -55,6 +58,10 @@ function interact(event) {
                 npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
                 return;
             }
+
+            tellPlayer(player, "§c:cross: This item cannot be enhanced with gem expertise.");
+            npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
+            return;
         }
     }
 
@@ -64,13 +71,14 @@ function interact(event) {
 
 function generateExpertisableItem(heldItem, player) {
     var itemStack = heldItem.copy();
+    var itemName = itemStack.getName();
     var enhancedItem = world.createItem(itemStack.getName(), itemStack.getItemDamage(), 1);
     itemStack.setStackSize(itemStack.getStackSize() - 1); // Reduce the count by 1
     player.setMainhandItem(itemStack);
 
     enhancedItem.setLore([
         "§7[Appraisal Notice]",
-        parseEmotes("§8Estimated fee: §r:money:§6" + getAmountCoin(getPrice(itemStack.getName(), 50000, null, true) * config.expertise_rate)),
+        parseEmotes("§8Estimated fee: §r:money:§6" + getAmountCoin(getPrice(itemName, 50000, null, true) * config.expertise_rate)),
         "§8Evaluation pending. Expert review required."
     ]);
     return enhancedItem;
@@ -89,7 +97,7 @@ function expertiseItem(npc, itemStack, player, world) {
 
     var fee = parseFloat(feeString[1]) * 100; // Convert to cents
     if (!getMoneyFromPlayerPouch(player, fee)) {
-        tellPlayer(player, "§cYou don't have enough to pay the expertise fee.");
+        tellPlayer(player, "§c:cross: You don't have enough to pay the expertise fee.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
     }
@@ -102,6 +110,7 @@ function expertiseItem(npc, itemStack, player, world) {
         return;
     }
 
+    npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 1 1");
     logToFile("economy", player.getName() + " paid " + getAmountCoin(fee) + " for expertise of item: " + fullId);
 
     // Reduce stack and isolate one item
@@ -124,30 +133,29 @@ function expertiseItem(npc, itemStack, player, world) {
         var weight = 0;
 
         if (v === "purity") {
-            val = Math.round((Math.random() * 0.5 + 0.5) * 100) / 100;
-            score = val * 0.5;
-            weight = 0.4;
-        } else if (v === "clarity") {
-            val = Math.round((Math.random() * 4 + 6) * 10) / 10;
-            score = (val / 10) * 0.4;
-            weight = 0.3;
-        } else if (v === "weight") {
-            val = Math.round((Math.random() * 1.5 + 0.2) * 100) / 100;
-            score = val;
-            weight = 0.5;
-        } else if (v === "color_grade") {
-            var gradeList = [1.0, 0.95, 0.9, 0.85];
-            val = gradeList[Math.floor(Math.random() * gradeList.length)];
-            score = val * 0.3;
-            weight = 0.1;
-        } else if (v === "lightness") {
             val = Math.round((Math.random() * 0.75 + 0.25) * 100) / 100;
             score = val;
-            weight = 0.5;
-        } else if (v === "resonance") {
+            weight = 0.2;
+        } else if (v === "clarity") {
+            val = Math.round((Math.random() * 9 + 1) * 10) / 10;
+            score = val;
+            weight = 5;
+        } else if (v === "weight") {
+            val = Math.round((Math.random() * 9 + 1) * 10) / 10;
+            score = val;
+            weight = 4;
+        } else if (v === "color_grade") {
             val = Math.round((Math.random() * 0.5 + 0.5) * 100) / 100;
-            score = val * 0.7;
-            weight = 0.5;
+            score = val;
+            weight = 0.25;
+        } else if (v === "lightness") {
+            val = Math.round((Math.random() * 99 + 1) * 100) / 100;
+            score = val;
+            weight = 20;
+        } else if (v === "resonance") {
+            val = Math.round((Math.random() * 99 + 1) * 100) / 100;
+            score = val;
+            weight = 20;
         }
 
         qualityScore += score;
