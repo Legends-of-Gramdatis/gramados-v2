@@ -2023,6 +2023,9 @@
     "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
         "value": 20000
     },
+    "mts:iv_tpp.engine_i3_gasoline_turbo_aut:0": {
+        "value": 380000
+    },
     "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
         "value": 100000
     },
@@ -2035,8 +2038,47 @@
     "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
         "value": 200000
     },
+    "mts:iv_tpp.engine_i5_gasoline_normal_aut:0": {
+        "value": 390000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_normal_man:0": {
+        "value": 340000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_turbo_aut:0": {
+        "value": 520000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_turbo_man:0": {
+        "value": 460000
+    },
     "mts:iv_tpp.engine_v10_gasoline_man:0": {
         "value": 1590000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_normal_aut:0": {
+        "value": 1250000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_normal_man:0": {
+        "value": 1100000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_turbo_aut:0": {
+        "value": 1550000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_turbo_man:0": {
+        "value": 1380000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_normal_aut:0": {
+        "value": 1130000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_normal_man:0": {
+        "value": 980000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_trackprepared_aut:0": {
+        "value": 2400000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_turbo_aut:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_turbo_man:0": {
+        "value": 1320000
     },
     "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
         "value": 520000
@@ -3364,17 +3406,47 @@
     "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
         "value": 500000
     },
+    "mts:unuparts.unuparts_part_unu_engine_h04_aircooled:0": {
+        "value": 280000
+    },
     "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
         "value": 80000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_aircooled:0": {
+        "value": 240000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_flathead:0": {
+        "value": 180000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_standard:0": {
+        "value": 260000
     },
     "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
         "value": 750000
     },
+    "mts:unuparts.unuparts_part_unu_engine_i06_flathead:0": {
+        "value": 240000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_standard:0": {
+        "value": 340000
+    },
     "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
         "value": 40000
     },
+    "mts:unuparts.unuparts_part_unu_engine_v06_standard:0": {
+        "value": 480000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08_flathead:0": {
+        "value": 290000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08_standard:0": {
+        "value": 650000
+    },
     "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
         "value": 650000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v12_standard:0": {
+        "value": 980000
     },
     "mts:unuparts.unuparts_part_unu_engine_v6:0": {
         "value": 950000
