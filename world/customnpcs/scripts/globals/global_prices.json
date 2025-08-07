@@ -3863,10 +3863,10 @@
         "value": 10000
     },
     "variedcommodities:ingot_demonic:0": {
-        "value": 100000
+        "value": 200000
     },
     "variedcommodities:ingot_mithril:0": {
-        "value": 100000
+        "value": 200000
     },
     "variedcommodities:iron_broadsword:0": {
         "value": 60000
@@ -3995,5 +3995,14 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "forestry:ingot_tin:0": {
+        "value": 3000
+    },
+    "forestry:ingot_copper:0": {
+        "value": 1000
+    },
+    "immersiveengineering:metal:0": {
+        "value": 1000
     }
 }
