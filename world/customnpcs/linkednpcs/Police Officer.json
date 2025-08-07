@@ -2,100 +2,6 @@
     "NPCData": {
         "ReturnToStart": 1b,
         "NpcInv": [
-            {
-                "Slot": 5b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:r700ammo",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 6b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:r700ammo",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 7b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:r700ammo",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 8b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "flansmod:r700",
-                "Count": 1b,
-                "tag": {
-                    "attachments": {
-                        "barrel": {
-                        },
-                        "grip": {
-                        },
-                        "generic_1": {
-                        },
-                        "generic_0": {
-                        },
-                        "scope": {
-                        },
-                        "stock": {
-                        }
-                    },
-                    "ammo": [
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 1s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 1s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 0s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 0s
-                        }
-                    ]
-                },
-                "Damage": 0s
-            }
         ],
         "BossColor": 0,
         "PotionEffect": 0,
@@ -131,7 +37,7 @@
             "Scenes": [
             ]
         },
-        "HitSound": "minecraft:entity.arrow.hit",
+        "HitSound": "flansmod:bullethit",
         "FindShelter": 2,
         "TacticalVariant": 0,
         "Orientation": 0,
@@ -147,7 +53,7 @@
         "WalkingRange": 32,
         "ShotCount": 1,
         "pDur": 5,
-        "StartPosNew": [I;-2902,101,910],
+        "StartPosNew": [I;-1927,74,43],
         "AttackRange": 2,
         "NpcKillLines": {
             "Lines": [
@@ -155,7 +61,7 @@
         },
         "PotionImmune": 0b,
         "AvoidsSun": 0b,
-        "Texture": "http://novask.in/1477273163.png",
+        "Texture": "customnpcs:textures/entity/humanmale/steve.png",
         "NpcJob": 0,
         "BurstCount": 1,
         "NpcAttackLines": {
@@ -164,7 +70,7 @@
         },
         "pSpeed": 10,
         "pArea": 0,
-        "pImpact": 1,
+        "pImpact": 0,
         "MoveState": 0,
         "pRender3D": 1b,
         "CombatRegen": 0,
@@ -202,15 +108,13 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "flansmod:r700",
+                "id": "flansmod:makarov",
                 "Count": 1b,
                 "tag": {
                     "attachments": {
                         "barrel": {
                         },
                         "grip": {
-                        },
-                        "generic_1": {
                         },
                         "generic_0": {
                         },
@@ -225,36 +129,9 @@
                                 "customnpcs:itemscripteddata": {
                                 }
                             },
-                            "id": "flansmod:r700ammo",
+                            "id": "flansmod:makarovammo",
                             "Count": 1b,
-                            "Damage": 1s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 1s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 0s
-                        },
-                        {
-                            "ForgeCaps": {
-                                "customnpcs:itemscripteddata": {
-                                }
-                            },
-                            "id": "flansmod:r700ammo",
-                            "Count": 1b,
-                            "Damage": 0s
+                            "Damage": 2s
                         }
                     ]
                 },
@@ -277,14 +154,14 @@
         "AggroRange": 16,
         "DirectLOS": 1b,
         "HealthRegen": 1,
-        "minDelay": 40,
+        "minDelay": 15,
         "DoorInteract": 1,
         "MoveSpeed": 5,
         "TransformEditingModus": 0b,
         "UsingSkinUrl": 2b,
         "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/Gramados_Police.png",
         "CanSwim": 1b,
-        "GroundSound": "minecraft:entity.arrow.hit",
+        "GroundSound": "flansmod:bullethit",
         "MaxHealth": 20,
         "HideBodyWhenKilled": 1b,
         "AttackSpeed": 20,
@@ -327,7 +204,7 @@
                 "Slot": 8
             }
         ],
-        "maxDelay": 80,
+        "maxDelay": 20,
         "Role": 0,
         "FactionPoints": {
             "DecreaseFaction1Points": 0b,
@@ -337,7 +214,7 @@
             "OptionFaction1Points": 5,
             "DecreaseFaction2Points": 0b
         },
-        "pDamage": 12,
+        "pDamage": 4,
         "AimWhileShooting": 1b,
         "AttackOtherFactions": 1b,
         "CanDrown": 1b,
@@ -409,15 +286,15 @@
         "PotionAmp": 0,
         "OnAttack": 0,
         "TacticalRadius": 8,
-        "MaxExp": 5,
+        "MaxExp": 2,
         "OrderedLines": 0b,
         "pGlows": 0b,
         "TransformHasAdvanced": 0b,
         "TransformHasStats": 0b,
         "MovementType": 0,
-        "FiringSound": "flansmod:r700shoot",
-        "Accuracy": 80,
-        "MinExp": 3,
+        "FiringSound": "customnpcs:gun.pistol.shot",
+        "Accuracy": 75,
+        "MinExp": 0,
         "Armor": [
         ],
         "CloakTexture": "",
