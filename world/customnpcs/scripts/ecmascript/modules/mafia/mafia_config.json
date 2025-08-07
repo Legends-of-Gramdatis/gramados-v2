@@ -1,0 +1,5 @@
+{
+  "min_rep": 500,
+  "max_rep_purchase": 100,
+  "cost_multiplier": 4
+}
