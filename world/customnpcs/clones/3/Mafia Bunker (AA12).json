@@ -89,7 +89,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
+            "id": "flansmod:aa12ammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -99,8 +99,8 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
-            "Count": 2b,
+            "id": "flansmod:aa12ammo",
+            "Count": 1b,
             "Damage": 0s
         },
         {
@@ -109,8 +109,8 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
-            "Count": 4b,
+            "id": "flansmod:aa12ammo",
+            "Count": 1b,
             "Damage": 0s
         },
         {
@@ -119,7 +119,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:r870",
+            "id": "flansmod:aa12",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -136,18 +136,6 @@
                 },
                 "ammo": [
                     {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
                     }
                 ]
             },
@@ -159,7 +147,7 @@
     "Size": 5,
     "stopAndInteract": 1b,
     "Resistances": {
-        "Arrow": 1.3380282f,
+        "Arrow": 1.5070423f,
         "Explosion": 1.0f,
         "Knockback": 1.3380282f,
         "Melee": 1.0f
@@ -231,7 +219,7 @@
     "AvoidsSun": 0b,
     "Texture": "customnpcs:textures/entity/humanmale/bodyguardsteve.png",
     "NpcJob": 0,
-    "BurstCount": 1,
+    "BurstCount": 5,
     "NpcAttackLines": {
         "Lines": [
         ]
@@ -239,7 +227,7 @@
     "pSpeed": 25,
     "pArea": 0,
     "DeathTime": 0s,
-    "pImpact": 0,
+    "pImpact": 1,
     "MoveState": 0,
     "pRender3D": 1b,
     "Motion": [
@@ -254,7 +242,7 @@
     "pEffect": 0,
     "DistanceToMelee": 2,
     "NpcStepSound": "",
-    "FireRate": 5,
+    "FireRate": 4,
     "LeftHanded": 0b,
     "pEffAmp": 0,
     "OnGround": 1b,
@@ -281,18 +269,18 @@
     "NpcInteractLines": {
         "Lines": [
             {
-                "Line": "Get the hell outta here",
+                "Line": "If you know what's good for you...",
                 "Song": "",
                 "Slot": 0
             },
             {
-                "Line": "screw you",
+                "Line": "Hands off the merchandise.",
                 "Song": "",
                 "Slot": 1
             }
         ]
     },
-    "HurtByTimestamp": 4097,
+    "HurtByTimestamp": 275,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -340,7 +328,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Mafia Shotgunner",
+    "Name": "Mafia Harbringer",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
@@ -351,7 +339,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:r870",
+            "id": "flansmod:aa12",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -367,18 +355,6 @@
                     }
                 },
                 "ammo": [
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
                     {
                     }
                 ]
@@ -468,7 +444,7 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 10,
+    "minDelay": 25,
     "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
@@ -481,7 +457,7 @@
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 15,
+    "maxDelay": 35,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -530,7 +506,7 @@
         "OptionFaction1Points": 5,
         "DecreaseFaction2Points": 1b
     },
-    "pDamage": 6,
+    "pDamage": 5,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -561,13 +537,33 @@
     "MovementType": 0,
     "FiringSound": "flansmod:r870shoot",
     "ModRev": 18,
-    "Accuracy": 75,
+    "Accuracy": 60,
     "MinExp": 1,
     "Armor": [
+        {
+            "Slot": 0b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:gignhelmet",
+            "Count": 1b,
+            "Damage": 0s
+        },
+        {
+            "Slot": 1b,
+            "ForgeCaps": {
+                "customnpcs:itemscripteddata": {
+                }
+            },
+            "id": "flansmod:gignbody",
+            "Count": 1b,
+            "Damage": 0s
+        }
     ],
     "CloakTexture": "",
     "GlowTexture": "",
-    "MaxFiringRange": 20,
+    "MaxFiringRange": 15,
     "pXlr8": 0b,
     "MarkovGeneratorId": 0,
     "Scripts": [
@@ -578,9 +574,9 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5124388L,
+    "TotalTicksAlive": 5133101L,
     "Rotation": [
-        191.14496f,
+        177.81949f,
         0.0f
     ],
     "ShowName": 0,

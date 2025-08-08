@@ -89,7 +89,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
+            "id": "flansmod:ak47ammo",
             "Count": 1b,
             "Damage": 0s
         },
@@ -99,8 +99,8 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
-            "Count": 2b,
+            "id": "flansmod:ak47ammo",
+            "Count": 1b,
             "Damage": 0s
         },
         {
@@ -109,8 +109,8 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:w1200ammo",
-            "Count": 4b,
+            "id": "flansmod:ak47ammo",
+            "Count": 1b,
             "Damage": 0s
         },
         {
@@ -119,7 +119,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:r870",
+            "id": "flansmod:ak47",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -136,18 +136,13 @@
                 },
                 "ammo": [
                     {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:ak47ammo",
+                        "Count": 1b,
+                        "Damage": 0s
                     }
                 ]
             },
@@ -220,7 +215,7 @@
     },
     "HurtTime": 0s,
     "WalkingRange": 5,
-    "ShotCount": 6,
+    "ShotCount": 1,
     "pDur": 5,
     "AttackRange": 2,
     "NpcKillLines": {
@@ -231,7 +226,7 @@
     "AvoidsSun": 0b,
     "Texture": "customnpcs:textures/entity/humanmale/bodyguardsteve.png",
     "NpcJob": 0,
-    "BurstCount": 1,
+    "BurstCount": 3,
     "NpcAttackLines": {
         "Lines": [
         ]
@@ -254,7 +249,7 @@
     "pEffect": 0,
     "DistanceToMelee": 2,
     "NpcStepSound": "",
-    "FireRate": 5,
+    "FireRate": 1,
     "LeftHanded": 0b,
     "pEffAmp": 0,
     "OnGround": 1b,
@@ -292,7 +287,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 4097,
+    "HurtByTimestamp": 4300,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -340,7 +335,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Mafia Shotgunner",
+    "Name": "Mafia Stormer",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
@@ -351,7 +346,7 @@
                 "customnpcs:itemscripteddata": {
                 }
             },
-            "id": "flansmod:r870",
+            "id": "flansmod:ak47",
             "Count": 1b,
             "tag": {
                 "attachments": {
@@ -368,18 +363,13 @@
                 },
                 "ammo": [
                     {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
-                    },
-                    {
+                        "ForgeCaps": {
+                            "customnpcs:itemscripteddata": {
+                            }
+                        },
+                        "id": "flansmod:ak47ammo",
+                        "Count": 1b,
+                        "Damage": 0s
                     }
                 ]
             },
@@ -468,7 +458,7 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 10,
+    "minDelay": 4,
     "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
@@ -481,7 +471,7 @@
     "HideBodyWhenKilled": 1b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 15,
+    "maxDelay": 8,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -530,7 +520,7 @@
         "OptionFaction1Points": 5,
         "DecreaseFaction2Points": 1b
     },
-    "pDamage": 6,
+    "pDamage": 4,
     "KilledTime": 0L,
     "AimWhileShooting": 1b,
     "CanPickUpLoot": 0b,
@@ -559,29 +549,29 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:r870shoot",
+    "FiringSound": "flansmod:ak47shoot",
     "ModRev": 18,
-    "Accuracy": 75,
+    "Accuracy": 80,
     "MinExp": 1,
     "Armor": [
     ],
     "CloakTexture": "",
     "GlowTexture": "",
-    "MaxFiringRange": 20,
+    "MaxFiringRange": 32,
     "pXlr8": 0b,
     "MarkovGeneratorId": 0,
     "Scripts": [
     ],
-    "Health": 20.0f,
+    "Health": 19.0f,
     "pStick": 1b,
     "MovingPause": 1b,
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5124388L,
+    "TotalTicksAlive": 5140949L,
     "Rotation": [
-        191.14496f,
-        0.0f
+        189.44565f,
+        -26.462875f
     ],
     "ShowName": 0,
     "npcInteracting": 1b,
