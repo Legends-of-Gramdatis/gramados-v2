@@ -40,6 +40,9 @@ function notifyPlayersInRegion(world, bank, message) {
     }
 }
 
+var CLOCK_OFFSET = 0; // Offset for the clock sound, can be adjusted
+var ALARM_TRIGGER = 3; // Flag to trigger the alarm sound
+
 function init(event) {
     var npc = event.npc;
     var npcPos = npc.getPos();
@@ -97,20 +100,35 @@ function tick(event) {
         var respawnTimeTicks = npc.getStats().getRespawnTime() * 20; // Convert seconds to ticks
         var oneFourthTime = respawnTimeTicks * 0.25;
         var oneTenthTime = respawnTimeTicks * 0.1;
+        // replace last digit of elapsedTime with 0
+        elapsedTime = Math.floor(elapsedTime / 10) * 10; // Round down to nearest 10 ticks
+        // tellNearbyPlayers(npc, "&0DEBUG: elapsedTime: " + elapsedTime + ", respawnTimeTicks: " + respawnTimeTicks, 20);
 
-        if (elapsedTime <= respawnTimeTicks - oneFourthTime) { // Before the last quarter
-            if (currentTime % 20 === 0) { // Play sound every second
+        if (elapsedTime <= oneFourthTime * 3) { // Before the last quarter
+            if (CLOCK_OFFSET == 0) { // Play sound every second
                 npc.executeCommand("/playsound minecraft:block.note.hat block @a ~ ~ ~ 10 1");
+                // tellNearbyPlayers(npc, "&0DEBUG: Running clock tick before the last quarter for the vault gate. Time left: " + Math.floor((respawnTimeTicks - elapsedTime) / 20) + " seconds.", 20);
             }
         } else if (elapsedTime <= respawnTimeTicks - oneTenthTime) { // Last quarter
-            if (currentTime % 10 === 0) { // Play sound every 10 ticks
+            if (CLOCK_OFFSET == 0 || CLOCK_OFFSET == 1) { // Play sound every 10 ticks
                 npc.executeCommand("/playsound minecraft:block.note.hat block @a ~ ~ ~ 10 1");
+                // tellNearbyPlayers(npc, "&0DEBUG: Running clock tick last quarter for the vault gate. Time left: " + Math.floor((respawnTimeTicks - elapsedTime) / 20) + " seconds.", 20);
             }
         } else { // Last tenth
-            if (currentTime % 10 === 0) { // Play both sounds every 10 ticks
+            if (CLOCK_OFFSET == 0 || CLOCK_OFFSET == 1) {
                 npc.executeCommand("/playsound minecraft:block.note.hat block @a ~ ~ ~ 10 1");
-                npc.executeCommand("/playsound cfm:fire_alarm block @a ~ ~ ~ 10 1");
+                if (ALARM_TRIGGER == 0) {
+                    npc.executeCommand("/playsound cfm:fire_alarm block @a ~ ~ ~ 10 1");
+                    ALARM_TRIGGER = 3; // Reset the alarm trigger
+                } else if (ALARM_TRIGGER > 0) {
+                    ALARM_TRIGGER--;
+                }
             }
+        }
+
+        CLOCK_OFFSET++;
+        if (CLOCK_OFFSET >= 2) { 
+            CLOCK_OFFSET = 0;
         }
     }
 }
@@ -180,7 +198,7 @@ function interact(event) {
         return;
     }
 
-    if (player.getMainhandItem().getName() == "minecraft:isEventRunning") {
+    if (player.getMainhandItem().getName() == "minecraft:command_block") {
         var commandBlockName = player.getMainhandItem().getDisplayName();
 
         switch (commandBlockName) {
