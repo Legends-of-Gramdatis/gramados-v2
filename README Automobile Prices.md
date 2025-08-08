@@ -52,6 +52,7 @@ DKZ 410 Rodimus: 68000 g - Restomod
 
 - mts:ivv.benchengine : 5000g
 - IE windmill: 15000g
+- fuel pump (garage owners only - enough room for installation): 10000g
 
 # Storage:
 
