@@ -10,9 +10,9 @@ var LOG_FILES = {
         json: "world/customnpcs/scripts/logs/events.json",
         log: "world/customnpcs/scripts/logs/events.log"
     },
-    jail: {
-        json: "world/customnpcs/scripts/logs/jail.json",
-        log: "world/customnpcs/scripts/logs/jail.log"
+    mafia: {
+        json: "world/customnpcs/scripts/logs/mafia.json",
+        log: "world/customnpcs/scripts/logs/mafia.log"
     },
     bank_robbery: {
         json: "world/customnpcs/scripts/logs/bank_robbery.json",
