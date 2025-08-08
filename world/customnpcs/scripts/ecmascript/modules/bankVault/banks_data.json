@@ -43,7 +43,7 @@
             "z": -995
         },
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2667961022,
+        "vaultGateOpenTime": 2690559643,
         "gate": {
             "pos1": {
                 "x": 251,
@@ -74,7 +74,7 @@
             "z": 1045
         },
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2668006075,
+        "vaultGateOpenTime": 2691773856,
         "gate": {
             "pos1": {
                 "x": -2852,
@@ -88,6 +88,37 @@
             },
             "block": {
                 "id": "chisel:ironpane",
+                "data": 6
+            }
+        }
+    },
+    {
+        "bankName": "Mafia Vault",
+        "pos1": {
+            "x": -7375,
+            "y": 83,
+            "z": 1892
+        },
+        "pos2": {
+            "x": -7352,
+            "y": 77,
+            "z": 1854
+        },
+        "isVaultGateOpened": false,
+        "vaultGateOpenTime": 2691911139,
+        "gate": {
+            "pos1": {
+                "x": -7356,
+                "y": 78,
+                "z": 1860
+            },
+            "pos2": {
+                "x": -7356,
+                "y": 80,
+                "z": 1858
+            },
+            "block": {
+                "id": "chisel:iron",
                 "data": 6
             }
         }
