@@ -3,10 +3,13 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js')
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
 
 var BANKS_DATA_PATH = "world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json";
+var ENTITYTYPE = 0;
+var exploded_vehicles = [];
 
 function findBank(banksData, npcPos) {
     for (var i = 0; i < banksData.length; i++) {
@@ -88,9 +91,58 @@ function init(event) {
 function tick(event) {
     var npc = event.npc;
     var banksData = loadJson(BANKS_DATA_PATH);
+    var world = npc.getWorld();
 
     var bankName = npc.getStoreddata().get("bank_name");
     var bank = findJsonEntry(banksData, "bankName", bankName); // Use utility function
+
+    var localEntities = world.getNearbyEntities(npc.getPos(), 10, ENTITYTYPE);
+
+    try {
+        for (var i = 0; i < localEntities.length; i++) {
+            if (localEntities[i].getName() === "entity.mts_entity.name") {
+
+                // Close the gate on NPC respawn
+                if (bank.gate) {
+                    var orderedPositions = orderPositions(bank.gate.pos1.x, bank.gate.pos1.y, bank.gate.pos1.z, bank.gate.pos2.x, bank.gate.pos2.y, bank.gate.pos2.z);
+                    var gateBlock = bank.gate.block;
+
+                    for (var x = orderedPositions.x1; x <= orderedPositions.x2; x++) {
+                        for (var y = orderedPositions.y1; y <= orderedPositions.y2; y++) {
+                            for (var z = orderedPositions.z1; z <= orderedPositions.z2; z++) {
+                                world.setBlock(x, y, z, gateBlock.id, gateBlock.data);
+                            }
+                        }
+                    }
+
+                    // Update bank data
+                    bank.isVaultGateOpened = false;
+                    saveJson(banksData, BANKS_DATA_PATH);
+                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lBank Vault&6&l] &aThe vault gate has been closed because a vehicle was detected!");
+                }
+                
+                if (includes(exploded_vehicles, localEntities[i].getUUID())) {
+                    continue;
+                } else {
+                    logToFile("bank_robbery", "Blowing up vehicle: " + localEntities[i].getUUID() + " at " + localEntities[i].getPos());
+                    exploded_vehicles.push(localEntities[i].getUUID());
+                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lMAFIA bunker&6&l] &cYou are not allowed to bring vehicles here!");
+                }
+
+                npc.executeCommand("/playsound ivv:gun.explode.car master @a ~ ~ ~ 1 1");
+                npc.executeCommand("/particle largeexplode " + localEntities[i].getX() + " " + localEntities[i].getY() + " " + localEntities[i].getZ() + " 1 1 1 0.3 2 force");
+                npc.executeCommand("/particle hugeexplosion " + localEntities[i].getX() + " " + localEntities[i].getY() + " " + localEntities[i].getZ() + " 0.5 0.5 0.5 0.2 1 force");
+                npc.executeCommand("/particle flame " + localEntities[i].getX() + " " + localEntities[i].getY() + " " + localEntities[i].getZ() + " 1 1 1 1 50 force");
+                npc.executeCommand("/particle smoke " + localEntities[i].getX() + " " + localEntities[i].getY() + " " + localEntities[i].getZ() + " 1 1 1 0.5 50 force");
+
+                
+                world.explode(localEntities[i].getX(), localEntities[i].getY(), localEntities[i].getZ(), 5, false, false);
+            }
+        }
+    } catch (e) {
+        tellPlayer(npc.getPlayer(), "&cError while checking for vehicles: " + e.message);
+        logToFile("dev", "Error while checking for vehicles: " + e.message);
+    }
 
     if (bank && bank.isVaultGateOpened) {
         var currentTime = npc.getWorld().getTotalTime();
