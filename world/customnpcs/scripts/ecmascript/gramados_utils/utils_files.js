@@ -131,14 +131,12 @@ function writeToFile(filePath, text, offset, length) {
     if (typeof (length) == typeof (undefined) || length === null) {
         length = text.length;
     }
-    var path = Paths.get(filePath);
-    try {
-        var writer = Files.newBufferedWriter(path, CHARSET_UTF_8);
-        writer.write(text, offset, length);
-        writer.close();
-    } catch (exc) {
-        return false;
-    }
+    var fileReader = new java.io.FileWriter(filePath, true);
+    var bufferedWriter = new java.io.BufferedWriter(fileReader);
+    bufferedWriter.write(text, offset, length);
+    bufferedWriter.newLine();
+    bufferedWriter.close();
+    fileReader.close();
 }
 
 /**
