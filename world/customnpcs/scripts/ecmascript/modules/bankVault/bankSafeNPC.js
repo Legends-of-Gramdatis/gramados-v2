@@ -316,7 +316,7 @@ function generateLoot(world, npc, player) {
                     generateItemStackFromLootEntry(full_loot[i], world, player)
                 );
             }
-            var logline = player.getName() + " opened a Gold Rack and received: ";
+            var logline = player.getName() + " opened a Gold Rack in " + npc.getStoreddata().get("bank_name") + " and received: ";
             for (var i = 0; i < full_loot.length; i++) {
                 logline += full_loot[i].id + ":" + full_loot[i].damage + " x" + full_loot[i].count;
                 if (i < full_loot.length - 1) {
@@ -332,7 +332,7 @@ function generateLoot(world, npc, player) {
             for (var i = 0; i < moneyItems.length; i++) {
                 player.dropItem(moneyItems[i]);
             }
-            var logline = player.getName() + " opened a Bill Rack and received " + getAmountCoin(money);
+            var logline = player.getName() + " opened a Bill Rack in " + npc.getStoreddata().get("bank_name") + " and received " + getAmountCoin(money);
             logline += " at the cost of " + criminalityIncrease + " criminality.";
             logToFile("bank_robbery", logline);
             break;
@@ -343,7 +343,7 @@ function generateLoot(world, npc, player) {
                     generateItemStackFromLootEntry(full_loot[i], world, player)
                 );
             }
-            var logline = player.getName() + " broke open a Safe and received: ";
+            var logline = player.getName() + " broke open a Safe in " + npc.getStoreddata().get("bank_name") + " and received: ";
             for (var i = 0; i < full_loot.length; i++) {
                 logline += full_loot[i].id + ":" + full_loot[i].damage + " x" + full_loot[i].count;
                 if (i < full_loot.length - 1) {
