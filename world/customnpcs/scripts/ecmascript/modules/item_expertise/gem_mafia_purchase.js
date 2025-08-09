@@ -121,9 +121,12 @@ function interact(event) {
 
     // Give mafia reputation (if < 2000)
     if (player.getFactionPoints(FACTION_ID_MAFIA) < 2000) {
-        var repGain = Math.floor(estimated / 10000); // 1 per 100g
+        var repGain = Math.floor(estimated / 30000); // 1 per 300g
         if (repGain > 0) {
             player.addFactionPoints(FACTION_ID_MAFIA, repGain);
+        }
+        if (repGain > 20) {
+            repGain = 20; // cap reputation gain to 20
         }
     }
 
