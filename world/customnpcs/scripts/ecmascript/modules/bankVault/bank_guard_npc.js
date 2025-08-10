@@ -124,7 +124,7 @@ function tick(event) {
                 if (includes(exploded_vehicles, localEntities[i].getUUID())) {
                     continue;
                 } else {
-                    logToFile("bank_robbery", "Blowing up vehicle: " + localEntities[i].getUUID() + " at " + localEntities[i].getPos());
+                    logToFile("bank_robbery", "Blowing up vehicle: " + localEntities[i].getUUID() + " at " + localEntities[i].getPos().getX() + ", " + localEntities[i].getPos().getY() + ", " + localEntities[i].getPos().getZ() );
                     exploded_vehicles.push(localEntities[i].getUUID());
                     notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lMAFIA bunker&6&l] &cYou are not allowed to bring vehicles here!");
                 }
@@ -140,7 +140,7 @@ function tick(event) {
             }
         }
     } catch (e) {
-        tellPlayer(npc.getPlayer(), "&cError while checking for vehicles: " + e.message);
+        tellNearbyPlayers(npc, "&cError while checking for vehicles: " + e.message, 20);
         logToFile("dev", "Error while checking for vehicles: " + e.message);
     }
 
