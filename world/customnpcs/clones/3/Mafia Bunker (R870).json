@@ -191,7 +191,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "minecraft:entity.arrow.hit",
+    "HitSound": "minecraft:entity.arrow.hit_player",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -281,18 +281,18 @@
     "NpcInteractLines": {
         "Lines": [
             {
-                "Line": "Get the hell outta here",
+                "Line": "Stay out of trouble.",
                 "Song": "",
                 "Slot": 0
             },
             {
-                "Line": "screw you",
+                "Line": "...",
                 "Song": "",
                 "Slot": 1
             }
         ]
     },
-    "HurtByTimestamp": 4097,
+    "HurtByTimestamp": 14190,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -559,7 +559,7 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:r870shoot",
+    "FiringSound": "immersiveengineering:revolverfire",
     "ModRev": 18,
     "Accuracy": 75,
     "MinExp": 1,
@@ -578,12 +578,12 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5124388L,
+    "TotalTicksAlive": 5166355L,
     "Rotation": [
         191.14496f,
         0.0f
     ],
-    "ShowName": 0,
+    "ShowName": 1,
     "npcInteracting": 1b,
     "UpdateBlocked": 0b,
     "AvoidsWater": 1b,

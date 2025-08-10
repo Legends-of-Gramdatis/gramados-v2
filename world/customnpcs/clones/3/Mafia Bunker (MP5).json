@@ -179,7 +179,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "minecraft:entity.arrow.hit",
+    "HitSound": "minecraft:entity.arrow.hit_player",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -280,7 +280,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 8292,
+    "HurtByTimestamp": 14234,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -462,39 +462,39 @@
     "Role": 0,
     "DropChance": [
         {
-            "Integer": 30,
+            "Integer": 100,
             "Slot": 0
         },
         {
-            "Integer": 10,
+            "Integer": 100,
             "Slot": 1
         },
         {
-            "Integer": 50,
+            "Integer": 100,
             "Slot": 2
         },
         {
-            "Integer": 75,
+            "Integer": 100,
             "Slot": 3
         },
         {
-            "Integer": 10,
+            "Integer": 100,
             "Slot": 4
         },
         {
-            "Integer": 75,
+            "Integer": 100,
             "Slot": 5
         },
         {
-            "Integer": 50,
+            "Integer": 100,
             "Slot": 6
         },
         {
-            "Integer": 25,
+            "Integer": 100,
             "Slot": 7
         },
         {
-            "Integer": 1,
+            "Integer": 100,
             "Slot": 8
         }
     ],
@@ -535,7 +535,7 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:ak47shoot",
+    "FiringSound": "variedcommodities:gun.pistol.shot",
     "ModRev": 18,
     "Accuracy": 80,
     "MinExp": 0,
@@ -574,12 +574,12 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5152495L,
+    "TotalTicksAlive": 5194476L,
     "Rotation": [
         278.1877f,
         0.0f
     ],
-    "ShowName": 0,
+    "ShowName": 1,
     "npcInteracting": 1b,
     "UpdateBlocked": 0b,
     "AvoidsWater": 1b,

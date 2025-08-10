@@ -209,6 +209,11 @@
     "BurstCount": 1,
     "NpcAttackLines": {
         "Lines": [
+            {
+                "Line": "I promise you pain without end!",
+                "Song": "",
+                "Slot": 0
+            }
         ]
     },
     "pSpeed": 25,
@@ -256,18 +261,18 @@
     "NpcInteractLines": {
         "Lines": [
             {
-                "Line": "If you know what's good for you...",
+                "Line": "You shouldn't be in here.",
                 "Song": "",
                 "Slot": 0
             },
             {
-                "Line": "Hands off the merchandise.",
+                "Line": "Level 6 access only.",
                 "Song": "",
                 "Slot": 1
             }
         ]
     },
-    "HurtByTimestamp": 8585,
+    "HurtByTimestamp": 13633,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -588,7 +593,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "'Defender of Wealth'",
-    "TotalTicksAlive": 5206918L,
+    "TotalTicksAlive": 5248627L,
     "Rotation": [
         180.3122f,
         0.0f

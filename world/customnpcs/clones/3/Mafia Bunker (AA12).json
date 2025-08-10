@@ -179,7 +179,7 @@
         "Scenes": [
         ]
     },
-    "HitSound": "minecraft:entity.arrow.hit",
+    "HitSound": "minecraft:entity.arrow.hit_player",
     "FindShelter": 2,
     "Air": 300s,
     "TacticalVariant": 0,
@@ -280,7 +280,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 275,
+    "HurtByTimestamp": 14329,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -535,7 +535,7 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:r870shoot",
+    "FiringSound": "immersiveengineering:revolverfire",
     "ModRev": 18,
     "Accuracy": 60,
     "MinExp": 1,
@@ -574,12 +574,12 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5133101L,
+    "TotalTicksAlive": 5175352L,
     "Rotation": [
         177.81949f,
         0.0f
     ],
-    "ShowName": 0,
+    "ShowName": 1,
     "npcInteracting": 1b,
     "UpdateBlocked": 0b,
     "AvoidsWater": 1b,
