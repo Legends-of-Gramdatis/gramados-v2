@@ -268,7 +268,6 @@ function processOrder(npc, player, heldItem, orderData) {
     // Calculate payout reduction if completed after the original deadline
     if (currentTime > originalDeadline) {
         var lateTime = currentTime - originalDeadline;
-        var maxLateTime = toleranceDuration;
         var lateFactor = lateTime / maxLateTime;
         var reductionFactor = lateFactor / 2;
         var adjustedPayout = Math.max(0, Math.floor(order.payout * (1 - reductionFactor)));
