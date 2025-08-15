@@ -1526,6 +1526,7 @@ var CHAT_EMOTES = {
     "star": "\u2729",
     "recycle": "\u267B",
     "seagull": "\u932A",
+    "slightly_smiling": "\u9500",
     "cool": "\u9914",
     "shocked": "\u9915",
     "smile": "\u9916",

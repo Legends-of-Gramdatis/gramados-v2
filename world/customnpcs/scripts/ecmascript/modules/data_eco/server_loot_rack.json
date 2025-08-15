@@ -1,0 +1,61 @@
+{
+    "type": "data_loot",
+    "pools": [
+        {
+            "rolls": {
+                "min": 3,
+                "max": 5
+            },
+            "entries": [
+                {
+                    "type": "data_entry",
+                    "name": "internal_payroll_records",
+                    "data": {
+                        "text": "Internal payroll records",
+                        "buyer": "Corporate Broker",
+                        "value": 15000,
+                        "faction": "Corporate",
+                        "rep": 0
+                    },
+                    "weight": 3
+                },
+                {
+                    "type": "data_entry",
+                    "name": "minor_security_camera_access",
+                    "data": {
+                        "text": "Minor security camera network access",
+                        "buyer": "Mafia",
+                        "value": 20000,
+                        "faction": "Mafia",
+                        "rep": 5
+                    },
+                    "weight": 2
+                },
+                {
+                    "type": "data_entry",
+                    "name": "archived_email_exchanges",
+                    "data": {
+                        "text": "Archived email exchanges",
+                        "buyer": "Corporate Broker",
+                        "value": 12000,
+                        "faction": "Corporate",
+                        "rep": 0
+                    },
+                    "weight": 3
+                },
+                {
+                    "type": "data_entry",
+                    "name": "prototype_vehicle_schematics",
+                    "data": {
+                        "text": "Prototype vehicle schematics",
+                        "buyer": "Corporate Broker",
+                        "value": 25000,
+                        "faction": "Corporate",
+                        "rep": 0
+                    },
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
