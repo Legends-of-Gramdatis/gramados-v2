@@ -32,7 +32,7 @@ function interact(event) {
 
     // Current real-world timestamp (ms)
     var now = Date.now();
-    var cooldownMs = COOLDOWN_HOURS * 60 * 60 * 1000;
+    var cooldownMs = COOLDOWN_HOURS * 20 * 60 * 60;
 
     // === Phone check (info only)
     if (!player.getMainhandItem().isEmpty() && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, player.getMainhandItem().getName())) {
