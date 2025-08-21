@@ -30,10 +30,16 @@ def calculate_statistics(data):
     market_average_items = {}  # Store average item count per trade for each market
     player_market_daily_totals = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))  # Track daily earnings per market per player
     player_market_days = defaultdict(lambda: defaultdict(set))  # Track unique days of activity per market per player
+    gem_mafia_totals = defaultdict(float)  # Track totals for gem_mafia_purchase
 
     for player, transactions in data.items():
         for transaction in transactions:
-            earnings = transaction["totalEarnings"] / 100  # Convert to grons
+            if transaction.get("type") == "gem_mafia_purchase":
+                gem_mafia_totals[player] += transaction.get("estimated_value", 0) / 100  # Convert to grons
+                player_market_proportions[player]["Gem Mafia Purchase"] += transaction.get("estimated_value", 0) / 100
+                continue  # Skip further processing for gem_mafia_purchase
+
+            earnings = transaction.get("totalEarnings", 0) / 100  # Convert to grons, default to 0 if missing
             region = transaction.get("region", "Unknown")  # Ensure region defaults to "Unknown"
             if not region:  # Handle cases where region might be an empty string
                 region = "Unknown"
@@ -82,8 +88,8 @@ def calculate_statistics(data):
         total_money = sum(markets.values())
         total_trades = sum(player_market_trade_counts[player].values())
         for market in markets:
-            player_market_money_proportions[player][market] = (markets[market] / total_money) * 100
-            player_market_trade_proportions[player][market] = (player_market_trade_counts[player][market] / total_trades) * 100
+            player_market_money_proportions[player][market] = (markets[market] / total_money) * 100 if total_money > 0 else 0
+            player_market_trade_proportions[player][market] = (player_market_trade_counts[player][market] / total_trades) * 100 if total_trades > 0 else 0
 
     # Calculate average revenue per trade for each market
     for market, total_revenue in market_totals.items():
@@ -103,9 +109,9 @@ def calculate_statistics(data):
     # Sort and keep only the bottom 10 trades
     bottom_trades = sorted(bottom_trades, key=lambda x: x[2])[:10]
 
-    return player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items
+    return player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, gem_mafia_totals
 
-def generate_report(player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, output_filepath):
+def generate_report(player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, gem_mafia_totals, output_filepath):
     with open(output_filepath, 'w') as report:
         report.write("# Economy Statistics Report\n\n")
 
@@ -150,6 +156,11 @@ def generate_report(player_totals, market_totals, player_market_money_proportion
             report.write(f"- **{market}**: {avg_items:.2f} items per trade\n")
         report.write("\n")
 
+        report.write("## Gem Mafia Purchase Totals (in grons)\n")
+        for player, total in sorted(gem_mafia_totals.items(), key=lambda x: x[1], reverse=True):
+            report.write(f"- **{player}**: {total:,.2f} Grons\n")
+        report.write("\n")
+
         # End with detailed breakdowns
         report.write("## Player Market Proportions (by Money Gain)\n")
         for player, markets in player_market_money_proportions.items():
@@ -162,7 +173,8 @@ def generate_report(player_totals, market_totals, player_market_money_proportion
         for player, markets in player_market_trade_proportions.items():
             report.write(f"### {player}\n")
             for market, proportion in sorted(markets.items(), key=lambda x: x[1], reverse=True):
-                report.write(f"- **{market}**: {proportion:.2f}%\n")
+                if proportion > 0:  # Exclude 0% entries
+                    report.write(f"- **{market}**: {proportion:.2f}%\n")
             report.write("\n")
 
 def main():
@@ -174,9 +186,9 @@ def main():
     output_filepath = "/home/mouette/gramados-v2/reports/economy_report.md"
     ignore_prebalance = not args.include_prebalance  # Default to ignoring prebalance
     data = load_data(filepath, ignore_prebalance)
-    player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items = calculate_statistics(data)
+    player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, gem_mafia_totals = calculate_statistics(data)
     os.makedirs(os.path.dirname(output_filepath), exist_ok=True)
-    generate_report(player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, output_filepath)
+    generate_report(player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, gem_mafia_totals, output_filepath)
     print(f"Report generated successfully. You can view it here: {output_filepath}")
 
 if __name__ == "__main__":
