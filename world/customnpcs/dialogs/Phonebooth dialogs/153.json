@@ -7,9 +7,9 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Alright, fine... (accept)",
+                "Title": "*hang up* (close)",
                 "DialogColor": 14737632,
-                "OptionType": 2
+                "OptionType": 0
             }
         }
     ],
@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 156,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -47,9 +47,18 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Good, good... why don't we start with a test, to see if your skills truly align with what I've observed?
+    "DialogText": "Good, good... remember, you're the one in public, so it's in your best interests to keep it subtle.
+You're going to start small, and if you finish this task properly, I'll have more rewarding tasks in store for you... but I know the type of person you are.
 
-taskinfo",
+You'll see it through to its end.
+
+Down the road you'll find city hall - lavish at the taxpayer's expense. You will be searching through the desks of a few officials' desks for a document that will help... a friend of ours, so to speak. I want it brought safely and intact to my drop point at the Ghetto.
+Don't mess this up, unless you want to find yourself losing your head.
+
+*click- buzz... buzz... buzz...*
+
+
+",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +75,7 @@ taskinfo",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1729459928629L,
+        "TimePast": 1755538328409L,
         "Time": 0L,
         "Subject": ""
     }

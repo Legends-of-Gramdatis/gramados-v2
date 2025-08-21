@@ -1,0 +1,43 @@
+{
+    "CompleterNpc": "Phonebooth",
+    "NextQuestId": 157,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "Paper Requisition (search)",
+    "Text": "Sneak around Petrolton City Hall to search through desks for a secret document",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 2,
+        "OptionFactions1": 6,
+        "OptionFactions2": 2,
+        "OptionFaction1Points": 2,
+        "DecreaseFaction2Points": 1b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1755539398757L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I've found an envelope marked \"CONFIDENTIAL\", though some of the labels have something to do with farming... who wants documents about agriculture this badly?
+I'll need to bring this to the Ghetto. It must be that dingy looking place on the northern side of Petrolton, but I'll have to search for whoever looks ready for a suspicious delivery.",
+    "NextQuestTitle": "Paper Requisition (delivery)",
+    "QuestLocation": "PetroltonCityHallDesk"
+}
