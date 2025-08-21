@@ -954,6 +954,13 @@
                 "StartTime": 2635559863,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "211": {
+                "JobID": 211,
+                "JobName": "Farmer",
+                "StartTime": 2705738869,
+                "Region": "Monsalac",
+                "Type": "Advanced"
             }
         }
     },
@@ -1029,6 +1036,11 @@
     },
     "09adad22-c7ea-4342-a647-901fbd7fb07e": {
         "Name": "fluffyseakit",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "0849c734-c720-42ee-80c4-94ac892ccd6d": {
+        "Name": "FrozenMCMario",
         "JobHistory": {},
         "ActiveJobs": {}
     }
