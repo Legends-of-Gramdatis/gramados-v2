@@ -1,0 +1,67 @@
+{
+    "CompleterNpc": "Mira Ventroli",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "IgnoreNBT": 0b,
+    "Title": "Valencian Fire Zest",
+    "Text": "Mira told me about the legendary \"Valencian Fire Zest,\" a spicy citrus drink sold at Café Valencia - the small café built into the wall at Citrus Alley plaza. I need to head there, buy the drink, and give it a try.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": 3,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 5,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1756222091709L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:sweetteaitem",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Café Valencia's signature drink.",
+                            "§fA frozen citrus blend with a §epepper twist§f,",
+                            "§fmeant to kick twice - first sweet, then fire.",
+                            "§8\"Burn bright, drink bold.\""
+                        ],
+                        "Name": "§6§lValencian Fire Zest"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 1b,
+    "CompleteText": "got the drink - it’s colder than I expected, and it smells like orange peel, vinegar, and something sharp I can’t name. Mira wasn’t joking. Here goes...",
+    "NextQuestTitle": ""
+}
