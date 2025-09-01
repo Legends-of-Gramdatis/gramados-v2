@@ -17,6 +17,10 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "QuestDialogs": [
+        {
+            "Integer": 205,
+            "Slot": 0
+        }
     ],
     "ModRev": 18,
     "Type": 1,
@@ -28,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728911014419L,
+        "TimePast": 1756459055739L,
         "Time": 0L,
         "Subject": ""
     },
