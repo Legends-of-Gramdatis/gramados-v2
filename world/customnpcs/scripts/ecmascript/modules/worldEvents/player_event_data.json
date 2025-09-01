@@ -38,7 +38,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1133
+            "egg_count": 1137
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -62,13 +62,13 @@
                     "egg_count": 24
                 },
                 "spring": {
-                    "egg_count": 25
+                    "egg_count": 26
                 },
                 "encrypted": {
                     "egg_count": 7
                 }
             },
-            "egg_count": 56
+            "egg_count": 57
         },
         "REDISKAPIPISKA": {
             "has_starter_pack": true,
@@ -198,13 +198,13 @@
         "swy777": {
             "egg_types": {
                 "spring": {
-                    "egg_count": 2
+                    "egg_count": 3
                 },
                 "chromashell": {
                     "egg_count": 2
                 }
             },
-            "egg_count": 4
+            "egg_count": 5
         },
         "Peter_Kitsune": {
             "egg_types": {
@@ -221,6 +221,17 @@
             "egg_types": {
                 "chromashell": {
                     "egg_count": 2
+                }
+            },
+            "egg_count": 2
+        },
+        "DR_Sang": {
+            "egg_types": {
+                "spring": {
+                    "egg_count": 1
+                },
+                "chromashell": {
+                    "egg_count": 1
                 }
             },
             "egg_count": 2

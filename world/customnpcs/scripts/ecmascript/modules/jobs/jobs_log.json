@@ -601,6 +601,13 @@
                 "StartTime": 2330803037,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "154": {
+                "JobID": 154,
+                "JobName": "Farmer",
+                "StartTime": 2727930586,
+                "Region": "Farmiston",
+                "Type": "Advanced"
             }
         }
     },
@@ -1041,6 +1048,29 @@
     },
     "0849c734-c720-42ee-80c4-94ac892ccd6d": {
         "Name": "FrozenMCMario",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "9a96d225-9f3d-4d2e-988c-d93d82bc06d7": {
+        "Name": "DR_Sang",
+        "JobHistory": {},
+        "ActiveJobs": {
+            "59": {
+                "JobID": 59,
+                "JobName": "Lumberjack",
+                "StartTime": 2726432696,
+                "Region": "Gramados",
+                "Type": "Starter"
+            }
+        }
+    },
+    "22fce495-bcfa-4db9-a165-c6044a0fbaaa": {
+        "Name": "Raflen100",
+        "JobHistory": {},
+        "ActiveJobs": {}
+    },
+    "d874a44d-d6c6-4ab8-ba2a-31e7252f62ce": {
+        "Name": "Maksiooo210",
         "JobHistory": {},
         "ActiveJobs": {}
     }
