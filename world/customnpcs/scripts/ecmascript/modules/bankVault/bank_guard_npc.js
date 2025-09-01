@@ -96,7 +96,7 @@ function tick(event) {
     var bankName = npc.getStoreddata().get("bank_name");
     var bank = findJsonEntry(banksData, "bankName", bankName); // Use utility function
 
-    var localEntities = world.getNearbyEntities(npc.getPos(), 10, ENTITYTYPE);
+    var localEntities = world.getNearbyEntities(npc.getPos(), bank.noCarRadius, ENTITYTYPE);
 
     try {
         for (var i = 0; i < localEntities.length; i++) {
