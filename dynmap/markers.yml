@@ -264,6 +264,14 @@ sets:
                 z: 6960.0
                 icon: shopping_hardware
                 label: Solterra Ferretería - Hardware Store
+            marker_7:
+                world: world
+                markup: false
+                icon: shopping_hardware
+                x: -6019.0
+                y: 75.0
+                z: -904.0
+                label: Kovács & Pipes - Plumber Shop
         lines: {
             }
         layerprio: 0
@@ -674,6 +682,14 @@ sets:
                 y: 72.0
                 z: 7249.0
                 label: Café del Aceite
+            marker_22:
+                world: world
+                markup: false
+                icon: food&drink_cafe
+                x: -5473.0
+                y: 80.0
+                z: 6813.0
+                label: Mesa del Sol
         lines: {
             }
         layerprio: 0
@@ -1119,11 +1135,19 @@ sets:
             marker_11:
                 world: world
                 markup: false
-                x: -1921.0
                 icon: shopping_shopping
+                x: -1921.0
                 y: 74.0
                 z: -102.0
                 label: The Woodworker's Workshop
+            marker_12:
+                world: world
+                icon: shopping_shopping
+                markup: false
+                x: -5530.0
+                y: 76.0
+                z: 6860.0
+                label: Casa de Madera - Furniture Store
         lines: {
             }
         layerprio: 0
