@@ -234,7 +234,7 @@
     "pEffect": 0,
     "DistanceToMelee": 2,
     "NpcStepSound": "",
-    "FireRate": 1,
+    "FireRate": 0,
     "LeftHanded": 0b,
     "pEffAmp": 0,
     "OnGround": 1b,
@@ -272,7 +272,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 13633,
+    "HurtByTimestamp": 22822,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -443,20 +443,20 @@
             "ScaleX": 1.0f
         }
     },
-    "minDelay": 2,
+    "minDelay": 1,
     "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
-    "UsingSkinUrl": 0b,
+    "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/mafia/Gramados_steve_mafia_gunwielder_tier7.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 100,
     "HideBodyWhenKilled": 0b,
     "AttackSpeed": 20,
     "PotionDuration": 5,
-    "maxDelay": 2,
+    "maxDelay": 1,
     "ScriptEnabled": 0b,
     "Role": 0,
     "DropChance": [
@@ -534,51 +534,11 @@
     "TransformHasAdvanced": 0b,
     "TransformHasStats": 0b,
     "MovementType": 0,
-    "FiringSound": "flansmod:m249shoot",
+    "FiringSound": "immersiveengineering:revolverfire",
     "ModRev": 18,
     "Accuracy": 60,
     "MinExp": 10,
     "Armor": [
-        {
-            "Slot": 0b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignhelmet",
-            "Count": 1b,
-            "Damage": 0s
-        },
-        {
-            "Slot": 1b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignbody",
-            "Count": 1b,
-            "Damage": 0s
-        },
-        {
-            "Slot": 2b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignpants",
-            "Count": 1b,
-            "Damage": 0s
-        },
-        {
-            "Slot": 3b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignboots",
-            "Count": 1b,
-            "Damage": 0s
-        }
     ],
     "CloakTexture": "",
     "GlowTexture": "",
@@ -593,10 +553,10 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "'Defender of Wealth'",
-    "TotalTicksAlive": 5248627L,
+    "TotalTicksAlive": 6456427L,
     "Rotation": [
         180.3122f,
-        0.0f
+        9.546161f
     ],
     "ShowName": 0,
     "npcInteracting": 1b,

@@ -292,7 +292,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 14190,
+    "HurtByTimestamp": 22241,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -472,9 +472,9 @@
     "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
-    "UsingSkinUrl": 0b,
+    "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/mafia/Gramados_steve_mafia_stripe_tier3_c.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 20,
@@ -578,7 +578,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5166355L,
+    "TotalTicksAlive": 6373678L,
     "Rotation": [
         191.14496f,
         0.0f

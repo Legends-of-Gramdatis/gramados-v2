@@ -280,7 +280,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 15795,
+    "HurtByTimestamp": 22347,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -448,9 +448,9 @@
     "DoorInteract": 1,
     "MoveSpeed": 5,
     "TransformEditingModus": 0b,
-    "UsingSkinUrl": 0b,
+    "UsingSkinUrl": 2b,
     "Leashed": 0b,
-    "SkinUrl": "",
+    "SkinUrl": "https://legends-of-gramdatis.com/gramados_skins/mafia/Gramados_steve_mafia_gunwielder_tier5.png",
     "CanSwim": 1b,
     "GroundSound": "minecraft:block.stone.break",
     "MaxHealth": 20,
@@ -499,11 +499,11 @@
         }
     ],
     "FactionPoints": {
-        "DecreaseFaction1Points": 0b,
+        "DecreaseFaction1Points": 1b,
         "OptionFaction2Points": 10,
-        "OptionFactions1": -1,
-        "OptionFactions2": 7,
-        "OptionFaction1Points": 5,
+        "OptionFactions1": 7,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 20,
         "DecreaseFaction2Points": 1b
     },
     "pDamage": 5,
@@ -540,26 +540,6 @@
     "Accuracy": 80,
     "MinExp": 0,
     "Armor": [
-        {
-            "Slot": 0b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignhelmet",
-            "Count": 1b,
-            "Damage": 0s
-        },
-        {
-            "Slot": 1b,
-            "ForgeCaps": {
-                "customnpcs:itemscripteddata": {
-                }
-            },
-            "id": "flansmod:gignbody",
-            "Count": 1b,
-            "Damage": 0s
-        }
     ],
     "CloakTexture": "",
     "GlowTexture": "",
@@ -574,7 +554,7 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 5194706L,
+    "TotalTicksAlive": 6402520L,
     "Rotation": [
         278.1877f,
         0.0f
