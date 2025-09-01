@@ -407,17 +407,22 @@
                 "id": "forestry:sapling",
                 "Count": 1b,
                 "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8Plant in 2x2"
+                        ]
+                    },
                     "IsAnalyzed": 0b,
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeTeak",
-                                "UID0": "forestry.treeTeak",
+                                "UID1": "forestry.treeWalnut",
+                                "UID0": "forestry.treeWalnut",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
                                 "Slot": 1b
                             },
                             {
@@ -426,13 +431,13 @@
                                 "Slot": 2b
                             },
                             {
-                                "UID1": "forestry.fruitNone",
-                                "UID0": "forestry.fruitNone",
+                                "UID1": "forestry.fruitWalnut",
+                                "UID0": "forestry.fruitWalnut",
                                 "Slot": 3b
                             },
                             {
-                                "UID1": "forestry.yieldLowest",
-                                "UID0": "forestry.yieldLowest",
+                                "UID1": "forestry.yieldAverage",
+                                "UID0": "forestry.yieldAverage",
                                 "Slot": 4b
                             },
                             {
@@ -451,8 +456,8 @@
                                 "Slot": 7b
                             },
                             {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
                                 "Slot": 8b
                             },
                             {
@@ -608,17 +613,22 @@
                 "id": "forestry:sapling",
                 "Count": 64b,
                 "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8Plant in 2x2"
+                        ]
+                    },
                     "IsAnalyzed": 0b,
                     "Genome": {
                         "Chromosomes": [
                             {
-                                "UID1": "forestry.treeTeak",
-                                "UID0": "forestry.treeTeak",
+                                "UID1": "forestry.treeWalnut",
+                                "UID0": "forestry.treeWalnut",
                                 "Slot": 0b
                             },
                             {
-                                "UID1": "forestry.heightSmall",
-                                "UID0": "forestry.heightSmall",
+                                "UID1": "forestry.heightAverage",
+                                "UID0": "forestry.heightAverage",
                                 "Slot": 1b
                             },
                             {
@@ -627,13 +637,13 @@
                                 "Slot": 2b
                             },
                             {
-                                "UID1": "forestry.fruitNone",
-                                "UID0": "forestry.fruitNone",
+                                "UID1": "forestry.fruitWalnut",
+                                "UID0": "forestry.fruitWalnut",
                                 "Slot": 3b
                             },
                             {
-                                "UID1": "forestry.yieldLowest",
-                                "UID0": "forestry.yieldLowest",
+                                "UID1": "forestry.yieldAverage",
+                                "UID0": "forestry.yieldAverage",
                                 "Slot": 4b
                             },
                             {
@@ -652,8 +662,8 @@
                                 "Slot": 7b
                             },
                             {
-                                "UID1": "forestry.i1d",
-                                "UID0": "forestry.i1d",
+                                "UID1": "forestry.i2d",
+                                "UID0": "forestry.i2d",
                                 "Slot": 8b
                             },
                             {
@@ -809,6 +819,11 @@
                 "id": "forestry:sapling",
                 "Count": 1b,
                 "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8Plant in 2x2"
+                        ]
+                    },
                     "IsAnalyzed": 0b,
                     "Genome": {
                         "Chromosomes": [
@@ -1010,6 +1025,11 @@
                 "id": "forestry:sapling",
                 "Count": 64b,
                 "tag": {
+                    "display": {
+                        "Lore": [
+                            "§8Plant in 2x2"
+                        ]
+                    },
                     "IsAnalyzed": 0b,
                     "Genome": {
                         "Chromosomes": [

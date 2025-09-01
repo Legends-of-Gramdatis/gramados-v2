@@ -38,42 +38,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 2b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:coin_iron",
-                "Count": 50b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e1G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 5b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 6b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -206,42 +170,6 @@
                 "id": "immersiveengineering:wooden_decoration",
                 "Count": 16b,
                 "Damage": 1s
-            },
-            {
-                "Slot": 2b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 5b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:coin_iron",
-                "Count": 50b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e1G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
             },
             {
                 "Slot": 6b,
