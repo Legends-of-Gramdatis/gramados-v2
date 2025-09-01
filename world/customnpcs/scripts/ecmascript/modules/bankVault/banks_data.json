@@ -11,8 +11,9 @@
             "y": 49,
             "z": 267
         },
+        "noCarRadius": 10,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2688331167,
+        "vaultGateOpenTime": 2731950960,
         "gate": {
             "pos1": {
                 "x": -1899,
@@ -42,8 +43,9 @@
             "y": 74,
             "z": -995
         },
+        "noCarRadius": 0,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2703653827,
+        "vaultGateOpenTime": 2730263590,
         "gate": {
             "pos1": {
                 "x": 251,
@@ -73,6 +75,7 @@
             "y": 85,
             "z": 1045
         },
+        "noCarRadius": 10,
         "isVaultGateOpened": false,
         "vaultGateOpenTime": 2691773856,
         "gate": {
@@ -104,8 +107,9 @@
             "y": 77,
             "z": 1854
         },
+        "noCarRadius": 10,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2713444161,
+        "vaultGateOpenTime": 2729228814,
         "gate": {
             "pos1": {
                 "x": -7356,
