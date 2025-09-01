@@ -2,22 +2,12 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
-        {
-            "OptionSlot": 0,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Talk",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
-    "AvailabilityFactionStance": 2,
+    "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 566,
+    "DialogId": 581,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -37,17 +27,17 @@
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
-    "AvailabilityFaction": 1,
-    "DialogTitle": "Shotgun Sales Unfriendly",
+    "AvailabilityFaction": 0,
+    "DialogTitle": "Shotgun Sales Neutral",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
-    "AvailabilityFactionId": 7,
+    "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Get out of here!
+    "DialogText": "Ehh? Who might you be? Only those we know may see our selection.
 (Your Mafia reputation is too low to access this trader.)",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
@@ -65,7 +55,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1756545849055L,
+        "TimePast": 1756545857605L,
         "Time": 0L,
         "Subject": ""
     }
