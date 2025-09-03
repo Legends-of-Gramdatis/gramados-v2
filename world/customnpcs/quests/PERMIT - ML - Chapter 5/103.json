@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728907089868L,
+        "TimePast": 1756748217654L,
         "Time": 0L,
         "Subject": ""
     },
@@ -80,7 +80,7 @@
                     }
                 },
                 "id": "flansmod:aa12ammo",
-                "Count": 1b,
+                "Count": 3b,
                 "Damage": 0s
             },
             {
@@ -90,11 +90,11 @@
                     }
                 },
                 "id": "flansmod:dragunovammo",
-                "Count": 2b,
+                "Count": 4b,
                 "Damage": 0s
             }
         ]
     },
     "CompleteText": "Captain Falkner has outlined the next phase of my test: defending a robot (Guardian-RX) at the ruined barracks in the fort. This will simulate real combat conditions with waves of robotic attackers. Time to find the barracks.",
-    "NextQuestTitle": "Step 5: Find the Ruined Barracks and the Defense Robot"
+    "NextQuestTitle": "Step 5: Find the ruined barracks and locate Guardian-RX"
 }

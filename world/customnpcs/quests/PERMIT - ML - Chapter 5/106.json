@@ -26,7 +26,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1728907340818L,
+        "TimePast": 1756748201956L,
         "Time": 0L,
         "Subject": ""
     },
@@ -35,7 +35,7 @@
         ]
     },
     "CompleteText": "The enemy robots have been defeated, and Guardian-RX is still alive. The simulation has ended successfully. Now I need to return to Captain Falkner for the final debriefing.",
-    "NextQuestTitle": "Step 8: Return to Captain Falkner for Debriefing",
+    "NextQuestTitle": "Step 8: Return the weapons to Captain Adrian Falkner",
     "QuestManual": [
         {
             "Value": 1,
