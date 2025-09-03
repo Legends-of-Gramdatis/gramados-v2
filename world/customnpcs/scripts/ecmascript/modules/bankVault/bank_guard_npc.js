@@ -150,10 +150,8 @@ function tick(event) {
         var elapsedTime = currentTime - gateOpenTime;
 
         var respawnTimeTicks = npc.getStats().getRespawnTime() * 20; // Convert seconds to ticks
-        var oneFourthTime = respawnTimeTicks * 0.25;
+        var oneFourthTime = Math.floor(respawnTimeTicks * 0.25);
         var oneTenthTime = respawnTimeTicks * 0.1;
-        // replace last digit of elapsedTime with 0
-        elapsedTime = Math.floor(elapsedTime / 10) * 10; // Round down to nearest 10 ticks
         // tellNearbyPlayers(npc, "&0DEBUG: elapsedTime: " + elapsedTime + ", respawnTimeTicks: " + respawnTimeTicks, 20);
 
         if (elapsedTime <= oneFourthTime * 3) { // Before the last quarter
@@ -214,6 +212,7 @@ function died(event) {
         // Update bank data
         bank.isVaultGateOpened = true;
         bank.vaultGateOpenTime = world.getTotalTime();
+        CLOCK_OFFSET = 0;
         saveJson(banksData, BANKS_DATA_PATH);
     } else {
         notifyPlayersInRegion(world, bank, "&cNo bank data found for this NPC.");
