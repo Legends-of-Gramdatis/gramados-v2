@@ -46,7 +46,7 @@
     "AvailabilityFaction2Id": -1,
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
-    "DialogDisableEsc": 0b,
+    "DialogDisableEsc": 1b,
     "AvailabilityFaction": 0,
     "DialogTitle": "p2 - Post-Completion",
     "AvailabilityDialog": 0,
@@ -74,7 +74,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1729116299165L,
+        "TimePast": 1757172252571L,
         "Time": 0L,
         "Subject": ""
     }

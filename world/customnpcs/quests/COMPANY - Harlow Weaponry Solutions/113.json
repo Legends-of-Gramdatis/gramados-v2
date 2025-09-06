@@ -3,7 +3,7 @@
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
+    "QuestCompletion": 1,
     "Title": "Report to Clayton Harlow",
     "Text": "I've eliminated the 10 bandits in Minchally Block. Now I need to return to Clayton Harlow at Harlow Weaponry Solutions and report the job.",
     "QuestFactionPoints": {
@@ -32,7 +32,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1729116349066L,
+        "TimePast": 1757172534574L,
         "Time": 0L,
         "Subject": ""
     },

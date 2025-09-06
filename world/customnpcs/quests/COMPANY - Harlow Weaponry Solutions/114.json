@@ -3,7 +3,7 @@
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 0,
-    "QuestCompletion": 0,
+    "QuestCompletion": 1,
     "IgnoreNBT": 1b,
     "Title": "Return the Cargo",
     "Text": "I need to return Clayton Harlow the stolen cargo.",
@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1729115126313L,
+        "TimePast": 1757172531571L,
         "Time": 0L,
         "Subject": ""
     },
