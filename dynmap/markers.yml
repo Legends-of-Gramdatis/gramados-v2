@@ -1400,7 +1400,7 @@ sets:
                 y: 71.0
                 z: -361.0
                 icon: shopping_garage
-                label: Repair Shop
+                label: The Chaseals Bench (Repair Shop)
             marker_10:
                 world: world
                 markup: false
