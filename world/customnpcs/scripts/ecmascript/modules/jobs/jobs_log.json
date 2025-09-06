@@ -127,6 +127,17 @@
             "Perms": []
         },
         {
+            "JobID": 583,
+            "JobLock": 584,
+            "JobQuit": 585,
+            "Type": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Monsalac",
+            "AutoAssignPerms": [
+                "Monsalac_Chaseals_OldByreStreet_TheChasealsBench_Garage"
+            ]
+        },
+        {
             "JobID": 554,
             "JobLock": 555,
             "JobQuit": 556,
