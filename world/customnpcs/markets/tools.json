@@ -44,7 +44,7 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 4b,
                 "tag": {
                     "display": {
                         "Lore": [
@@ -98,11 +98,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 4b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e200G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -152,11 +152,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 8b,
+                "Count": 2b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e10G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -206,11 +206,11 @@
                     }
                 },
                 "id": "variedcommodities:money",
-                "Count": 2b,
+                "Count": 3b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§e100G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -326,7 +326,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 29b,
+                "Slot": 23b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -393,13 +393,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:stone_hoe",
+                "id": "minecraft:iron_hoe",
                 "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Name": "§fCheap Hoe"
-                    }
-                },
                 "Damage": 0s
             },
             {
@@ -428,13 +423,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:iron_hoe",
+                "id": "mts:mts.paintgun",
                 "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Name": "§fAverage Hoe"
-                    }
-                },
                 "Damage": 0s
             },
             {
@@ -463,13 +453,8 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:diamond_hoe",
+                "id": "mts:ivv.powerdrill",
                 "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Name": "§fAdvanced Hoe"
-                    }
-                },
                 "Damage": 0s
             },
             {
@@ -498,7 +483,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:mts.paintgun",
+                "id": "mts:mtsofficialpack.blowtorch",
                 "Count": 1b,
                 "Damage": 0s
             },
