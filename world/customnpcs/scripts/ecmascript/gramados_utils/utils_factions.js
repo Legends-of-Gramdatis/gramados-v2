@@ -170,3 +170,35 @@ function getFactionDescription(faction_id) {
     return description
 }
 
+// Returns the display name for a given faction ID
+function getFactionName(faction_id) {
+    switch (faction_id) {
+        case FACTION_ID_FULLFRIENDLY:
+            return "Full Friendly";
+        case FACTION_ID_DEFAULT:
+            return "Neutral";
+        case FACTION_ID_FULLAGGRESSIVE:
+            return "Full Aggressive";
+        case FACTION_ID_CRIMINAL:
+            return "Criminal";
+        case FACTION_ID_CIVILITY:
+            return "Civility";
+        case FACTION_ID_MAFIA:
+            return "Mafia";
+        case FACTION_ID_COMBATNPC_ONE:
+            return "{Combat NPC Team 1}";
+        case FACTION_ID_COMBATNPC_TWO:
+            return "{Combat NPC Team 2}";
+        case FACTION_ID_QUESTNPC:
+            return "Quest NPC";
+        case FACTION_ID_DEV:
+            return "Developer";
+        case FACTION_ID_EDUCATION:
+            return "{Education}";
+        case FACTION_ID_ROADHOG:
+            return "{Roadhog Score}";
+        default:
+            return "Unknown";
+    }
+}
+
