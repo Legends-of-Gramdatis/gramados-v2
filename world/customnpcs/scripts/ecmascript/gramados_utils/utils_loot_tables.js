@@ -245,6 +245,10 @@ function resolveRecursiveWeight(path, visited) {
  * @returns {boolean} - True if the item is in the loot table, false otherwise.
  */
 function isItemInLootTable(lootTablePath, itemId) {
+    // if it doesn't start with "world/loot_tables/", add it
+    if (!lootTablePath.startsWith("world/loot_tables/")) {
+        lootTablePath = "world/loot_tables/" + lootTablePath;
+    }
     var lootTable = loadJson(lootTablePath);
     if (!lootTable || !lootTable.pools) {
         return false;
@@ -255,7 +259,11 @@ function isItemInLootTable(lootTablePath, itemId) {
         if (pool.entries) {
             for (var j = 0; j < pool.entries.length; j++) {
                 var entry = pool.entries[j];
-                if (entry.name === itemId) {
+                if (entry.type === "loot_table" && entry.path) {
+                    if (isItemInLootTable(entry.path, itemId)) {
+                        return true;
+                    }
+                } else if (entry.name === itemId) {
                     return true;
                 }
             }
