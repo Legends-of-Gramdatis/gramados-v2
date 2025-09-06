@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "tools/tools_punching.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "tools/tools_mace.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "tools/tools_warhammer.json",
+                    "weight": 2
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "variedcommodities:bronze_mace",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:demonic_mace",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:diamond_mace",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:emerald_mace",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:frost_mace",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:golden_mace",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:iron_mace",
+                    "weight": 50
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:mithril_mace",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:stone_mace",
+                    "weight": 30
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:wooden_mace",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}

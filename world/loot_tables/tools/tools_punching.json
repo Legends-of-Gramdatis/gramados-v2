@@ -1,0 +1,44 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "variedcommodities:sledge_hammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.sledge",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.hammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.hammer_whammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:tool",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:hammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:baseball_bat",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

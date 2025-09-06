@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "variedcommodities:bronze_warhammer",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:demonic_warhammer",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:diamond_warhammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:emerald_warhammer",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:frost_warhammer",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:golden_warhammer",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:iron_warhammer",
+                    "weight": 50
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:mithril_warhammer",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:stone_warhammer",
+                    "weight": 30
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:wooden_warhammer",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}
