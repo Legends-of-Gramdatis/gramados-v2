@@ -14,6 +14,70 @@ var is_under_arrest = false; // Tracks if the player is currently under arrest
 var damage_buffer = 0; // Tracks the total number of NPCs spawned during an arrest
 var damage_taken = 0;
 
+// Utility: despawn arrest clones near a player within a radius; returns number despawned
+function despawn_arrest_clones(world, player, radius) {
+    var removed = 0;
+    var nearby = world.getNearbyEntities(player.getPos(), radius, 0);
+    for (var i = 0; i < nearby.length; i++) {
+        var ent = nearby[i];
+        if (ent.getName().contains("Arrest Clone")) {
+            ent.despawn();
+            removed++;
+        }
+    }
+    return removed;
+}
+
+// Admin trigger: provoke small police arrests across all criminals when holding specific items
+function admin_provoke_arrests_check(event) {
+    var admin = event.player;
+    if (!admin || !admin.world) return;
+    var world = admin.world;
+
+    var off = admin.getOffhandItem();
+    var main = admin.getMainhandItem();
+
+    // Require offhand mts:ivv.idcard_seagull and mainhand variedcommodities:bandit_mask
+    if (off && main && off.getName && main.getName &&
+        off.getName() === "mts:ivv.idcard_seagull" &&
+        main.getName() === "variedcommodities:bandit_mask") {
+
+        // Remove the entire bandit mask stack from main hand
+        try {
+            admin.setMainhandItem(world.createItem("minecraft:air", 0, 1));
+        } catch (e) {
+            // Fallback: set stack size to 0 if createItem is unavailable
+            try { main.setStackSize(0); } catch (e2) { }
+        }
+
+    // Trigger a normal arrest on all criminal players
+        var players = world.getAllPlayers ? world.getAllPlayers() : [];
+        var targeted = 0;
+        for (var i = 0; i < players.length; i++) {
+            var p = players[i];
+            if (p && isCriminal(p)) {
+        // Snapshot local state so the admin isn't marked under arrest or receive buffers
+        var _prev_is = is_under_arrest;
+        var _prev_can = can_be_arrested;
+        var _prev_buf = damage_buffer;
+        var _prev_taken = damage_taken;
+        attempt_arrest(event, p, world);
+        // Restore state for the admin context
+        is_under_arrest = _prev_is;
+        can_be_arrested = _prev_can;
+        damage_buffer = _prev_buf;
+        damage_taken = _prev_taken;
+                targeted++;
+            }
+        }
+
+        tellPlayer(admin, targeted > 0 ? "&6Provoked police arrests on &e" + targeted + " &6criminal player(s)." : "&7No criminal players found to arrest.");
+        logToFile("events", "Admin " + admin.getName() + " provoked police arrests using Seagull ID + Bandit Mask. Targets: " + targeted + ".");
+    }
+}
+
+// (Removed small/simple spawn helpers; admin trigger now uses standard attempt_arrest)
+
 function attempt_arrest(event, player, world) {
 
     var success = false;
@@ -43,10 +107,14 @@ function attempt_arrest(event, player, world) {
     if (success) {
         tellPlayer(player, "&4You have been spotted and arrested by the police or SPO for your criminal activities! You shall perish in the name of the law!");
         logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities.");
+        // Default criminality loss on standard arrest
+        player.addFactionPoints(FACTION_ID_CRIMINAL, -10);
         is_under_arrest = true;
         can_be_arrested = false;
     }
 }
+
+// (Removed admin-forced spawner variants; using standard attempt_arrest for parity)
 
 // function to spawn a SPO Fireteam
 function spawn_spo_fireteam(event, player, world) {
@@ -161,7 +229,7 @@ function spawn_arrest(event, player, world, type, count, distance_from_player, g
 
     damage_buffer += count * 10; // Increase the damage buffer for each NPC spawned
     logToFile("events", "Player " + player.getName() + " has been arrested by the police or SPO for his criminal activities. Spawned " + count + " NPCs of type " + type + ", buffering " + damage_buffer + " damage.");
-    
+
 
     return success;
 }
@@ -202,31 +270,28 @@ function damaged(event) {
     }
 }
 
+function LogoutEvent(event) {
+    var player = event.player;
+    var world = player.world;
+    despawn_arrest_clones(world, player, 50);
+}
+
 // If player dies, remove the arrest
 function died(event) {
-    if (is_under_arrest) {
-        var player = event.player;
-        var world = player.world;
-        var nearby_gentity_list = world.getNearbyEntities(player.getPos(), 50, 0);
-        for (var i = 0; i < nearby_gentity_list.length; i++) {
-            var removal_test_entity = nearby_gentity_list[i];
-            if (removal_test_entity.getName().contains("Arrest Clone")) {
-                removal_test_entity.despawn();
-            }
-        }
-        
-        logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + damage_taken + " during the arrest. Buffer left: " + damage_buffer + ".");
+    var player = event.player;
+    var world = player.world;
+    despawn_arrest_clones(world, player, 50);
 
-        // Reset the spawn count after the arrest is completed
-        // damage_buffer = 0;
-        damage_taken = 0;
-    }
+    logToFile("events", "Player " + player.getName() + " has been arrested and died. Removing arrest clones. Reputation decreased by " + damage_taken + " during the arrest. Buffer left: " + damage_buffer + ".");
 
+    damage_taken = 0;
     is_under_arrest = false; // Reset the arrest status when the player dies
     can_be_arrested = false; // Allow future arrests
 }
 
 function tick(event) {
+    // Always check admin trigger first; it's lightweight and only acts when the held items match
+    admin_provoke_arrests_check(event);
 
     if (can_be_arrested) {
         arrest_plugin_counter++;
@@ -258,14 +323,8 @@ function tick(event) {
             is_under_arrest = false; // Reset the arrest status if no clones are present
             can_be_arrested = false; // Allow future arrests
             tellPlayer(event.player, "&eYou have escaped from arrest! You can now commit crimes again.");
-            // despawn all arrest clones
-            nearby_gentity_list = world.getNearbyEntities(event.player.getPos(), 100, 0);
-            for (var i = 0; i < nearby_gentity_list.length; i++) {
-                var removal_test_entity = nearby_gentity_list[i];
-                if (removal_test_entity.getName().contains("Arrest Clone")) {
-                    removal_test_entity.despawn();
-                }
-            }
+            // Despawn all arrest clones in a wider radius
+            despawn_arrest_clones(world, event.player, 100);
             logToFile("events", "Player " + event.player.getName() + " has escaped from arrest. All arrest clones have been despawned.");
         }
     }
