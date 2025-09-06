@@ -12,8 +12,10 @@
             "z": 267
         },
         "noCarRadius": 5,
+        "factionRepMode": "increase",
+        "factionRepFactionId": 6,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2736077155,
+        "vaultGateOpenTime": 2740368008,
         "gate": {
             "pos1": {
                 "x": -1899,
@@ -44,8 +46,10 @@
             "z": -995
         },
         "noCarRadius": 0,
+        "factionRepMode": "increase",
+        "factionRepFactionId": 6,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2733089966,
+        "vaultGateOpenTime": 2737745151,
         "gate": {
             "pos1": {
                 "x": 251,
@@ -76,6 +80,8 @@
             "z": 1045
         },
         "noCarRadius": 10,
+        "factionRepMode": "increase",
+        "factionRepFactionId": 6,
         "isVaultGateOpened": false,
         "vaultGateOpenTime": 2734773879,
         "gate": {
@@ -108,8 +114,10 @@
             "z": 1854
         },
         "noCarRadius": 10,
+        "factionRepMode": "decrease",
+        "factionRepFactionId": 7,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 2729228814,
+        "vaultGateOpenTime": 2739665131,
         "gate": {
             "pos1": {
                 "x": -7356,
