@@ -62,7 +62,7 @@ function init(event) {
         npc.getStoreddata().put("npc_type", "robot");
 
         // Notify players in the region
-        notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lBank Vault&6&l] &aGuarding the bank vault...");
+        notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lVault&6&l] &aGuarding the vault...");
 
         // Close the gate on NPC respawn
         if (bank.gate) {
@@ -118,7 +118,7 @@ function tick(event) {
                     // Update bank data
                     bank.isVaultGateOpened = false;
                     saveJson(banksData, BANKS_DATA_PATH);
-                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lBank Vault&6&l] &aThe vault gate has been closed because a vehicle was detected!");
+                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lVault&6&l] &aThe vault gate has been closed because a vehicle was detected!");
                 }
                 
                 if (includes(exploded_vehicles, localEntities[i].getUUID())) {
@@ -126,7 +126,7 @@ function tick(event) {
                 } else {
                     logToFile("bank_robbery", "Blowing up vehicle: " + localEntities[i].getUUID() + " at " + localEntities[i].getPos().getX() + ", " + localEntities[i].getPos().getY() + ", " + localEntities[i].getPos().getZ() );
                     exploded_vehicles.push(localEntities[i].getUUID());
-                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lMAFIA bunker&6&l] &cYou are not allowed to bring vehicles here!");
+                    notifyPlayersInRegion(npc.getWorld(), bank, "&6&l[&e&lVault&6&l] &cYou are not allowed to bring vehicles here!");
                 }
 
                 npc.executeCommand("/playsound ivv:gun.explode.car master @a ~ ~ ~ 1 1");
@@ -193,7 +193,7 @@ function died(event) {
 
     if (bank && bank.gate) {
         // Notify players in the region
-        notifyPlayersInRegion(world, bank, "&6&l[&e&lBank Vault&6&l] &aThe vault gate is now open for " + npc.getStats().getRespawnTime() + " seconds!");
+        notifyPlayersInRegion(world, bank, "&6&l[&e&lVault&6&l] &aThe vault gate is now open for " + npc.getStats().getRespawnTime() + " seconds!");
 
         // Open the gate by filling it with air blocks
         var orderedPositions = orderPositions(bank.gate.pos1.x, bank.gate.pos1.y, bank.gate.pos1.z, bank.gate.pos2.x, bank.gate.pos2.y, bank.gate.pos2.z);
