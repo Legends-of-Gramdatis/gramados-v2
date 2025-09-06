@@ -9,18 +9,20 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js')
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
 // load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_jail.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_factions.js');
 
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var safe_type = [
     "Gold Rack",
     "Bill Rack",
-    "Safe"
+    "Safe",
+    "Server Rack",
+    "Server Secure Rack",
+    "Server Strong Rack"
 ]
 var click_cooldown = 60;
 var regen_cooldown = 80000;
-// var regen_cooldown = 100;
-
 var tickCounter = 0;
 
 /**
@@ -52,7 +54,7 @@ function init(event) {
         return;
     }
 
-    if (!npc.getStoreddata().has("safe_type") || !npc.getStoreddata().has("fill_level")) {
+    if (!npc.getStoreddata().has("safe_type") || !npc.getStoreddata().has("fill_level") || !npc.getStoreddata().has("hack_lock") || !npc.getStoreddata().has("strong_lock")) {
         regenerate(npc);
     } else {
         var current_time = npc.getWorld().getTotalTime();
@@ -130,11 +132,19 @@ function checkAndApplyFillCredit(npc) {
 
     var fill_level = npc.getStoreddata().get("fill_level");
     var credit_refill = npc.getStoreddata().get("credit_refill") || 0;
+    var hack = npc.getStoreddata().get("hack_lock") || 0;
+    var strong = npc.getStoreddata().get("strong_lock") || 0;
 
     if (nearbyPlayers.length === 0 && fill_level < 4 && credit_refill > 0 && !bank.isVaultGateOpened) {
         var newFillLevel = Math.min(fill_level + credit_refill, 4);
         npc.getStoreddata().put("fill_level", newFillLevel);
         npc.getStoreddata().put("credit_refill", 0);
+        if (hack > 0) {
+            npc.getStoreddata().put("hack_lock", 2);
+        }
+        if (strong > 0) {
+            npc.getStoreddata().put("strong_lock", 2);
+        }
         saveJson(banksData, "world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
         updateSkinURL(npc);
     }
@@ -152,6 +162,8 @@ function interact(event) {
 
     var item = player.getMainhandItem();
     var item_name = item.getName();
+
+    var allow_through = event.player.getOffhandItem().getName() == "mts:ivv.idcard_seagull";
 
     if (item_name === "minecraft:barrier") {
         // Clear stored data and unlink NPC from the bank
@@ -197,14 +209,30 @@ function interact(event) {
         tellPlayer(player, "&7Vault Status:");
         tellPlayer(player, "&7- Fill Level: &e" + fill_level + "/4");
         tellPlayer(player, "&7- Credit Refill: &e" + credit_refill);
-    } else if (item_name == "variedcommodities:phone") {
-        npc.executeCommand("/playsound ivv:phone.modern.error player @a");
-        tellPlayer(player, "&7Vault owned by: &e" + bank_name);
-        tellPlayer(player, "&7Vault type: &e" + vault_type);
+    } else if (item_name == "variedcommodities:heart") {
+        npc.executeCommand("/playsound ivv:mts.ivv.dashboard.angel player @a");
+        npc.getStoreddata().put("fill_level", 4);
+
+        var hack = 0;
+        var strong = 0;
+        var type = npc.getStoreddata().get("safe_type");
+
+        if (type === "Server Secure Rack") {
+            hack = 2;
+        } else if (type === "Server Strong Rack") {
+            hack = 2;
+            strong = 3;
+        }
+
+        npc.getStoreddata().put("hack_lock", hack);
+        npc.getStoreddata().put("strong_lock", strong);
+
+        tellPlayer(player, "&aVault fill level set to maximum (4/4).");
+        updateSkinURL(npc);
     } else if (item_name == "customnpcs:npcsoulstoneempty") {
         tellPlayer(player, "&7Picked up vault with soulstone. No data changed.");
     } else {
-        if (!bank || !bank.isVaultGateOpened) {
+        if (!bank || !bank.isVaultGateOpened && !allow_through) {
             // Knockback the player
             var knockbackCount = player.getStoreddata().get("knockbackCount") || 0;
             player.setMotionX(Math.random() * 2 - 1);
@@ -212,9 +240,101 @@ function interact(event) {
             player.setMotionZ(Math.random() * 2 - 1);
             player.getStoreddata().put("knockbackCount", knockbackCount + 1);
             npc.executeCommand("/playsound ivv:gun.explode.techno block @a");
+            npc.executeCommand("/particle lava " + npc.getPos().getX() + " " + npc.getPos().getY() + " " + npc.getPos().getZ() + " 1 1 1 1 10 normal");
             tellPlayer(player, "&7You are stuck in the vault! You must open the gate again to loot the vault.");
             player.damage(5);
+        // Strong Rack: Stage 1 - Armoured removal via blowtorch (20% chance)
+        } else if (vault_type === "Server Strong Rack" && isItemInLootTable(_LOOTTABLE_TOOLS_WELDING, item_name)) {
+            var strong_lock_bt = npc.getStoreddata().get("strong_lock") || 0;
+            if (strong_lock_bt !== 3) {
+                tellPlayer(player, "&7This rack isn't in the armoured state anymore.");
+            } else if (getTimer(npc) <= click_cooldown) {
+                tellPlayer(player, "&7Tool cooling down. Try again soon.");
+            } else {
+                saveInteractionTime(npc);
+                var successBt = rrandom_range(1, 100) <= 20;
+                if (successBt) {
+                    npc.getStoreddata().put("strong_lock", 2);
+                    updateSkinURL(npc);
+                    npc.executeCommand("/playsound minecraft:block.anvil.use player @a");
+                    tellPlayer(player, "&aArmoured layer removed. Now unlock the rack mechanics using appropriate tools such as wrenches.");
+                } else {
+                    npc.executeCommand("/playsound chisel:block.metal.hit player @a");
+                    tellPlayer(player, "&cThe blowtorch didn't cut through this time.");
+                }
+            }
+        // Strong Rack: Stage 2 - Unlocking via wrench (20% chance)
+        } else if (vault_type === "Server Strong Rack" && isItemInLootTable(_LOOTTABLE_TOOLS_PRECISION, item_name)) {
+            var strong_lock_wr = npc.getStoreddata().get("strong_lock") || 0;
+            if (strong_lock_wr !== 2) {
+                tellPlayer(player, "&7You can't use a wrench at this stage.");
+            } else if (getTimer(npc) <= click_cooldown) {
+                tellPlayer(player, "&7Tool cooling down. Try again soon.");
+            } else {
+                saveInteractionTime(npc);
+                var successWr = rrandom_range(1, 100) <= 20;
+                if (successWr) {
+                    npc.getStoreddata().put("strong_lock", 1);
+                    updateSkinURL(npc);
+                    npc.executeCommand("/playsound minecraft:block.piston.extend player @a");
+                    tellPlayer(player, "&aRack unlocked. Hack the built-in computer to release the discs.");
+                } else {
+                    npc.executeCommand("/playsound chisel:block.metal.hit player @a");
+                    tellPlayer(player, "&cThe mechanism resisted your tool.");
+                }
+            }
+        } else if (isItemInLootTable(_LOOTTABLE_BRUTEFORCE, item_name)) {
+            // For Strong Rack, brute force only at the final (hacking) layer
+            if (vault_type === "Server Strong Rack") {
+                var strong_lock_bf = npc.getStoreddata().get("strong_lock") || 0;
+                if (strong_lock_bf >= 2) {
+                    tellPlayer(player, "&cYou must remove the armoured and locked layers before brute forcing the computer.");
+                    npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
+                    return;
+                }
+            }
+            npc.executeCommand("/playsound ivv:gun.explode.car block @a");
+            npc.executeCommand("/particle largesmoke " + npc.getPos().getX() + " " + npc.getPos().getY() + " " + npc.getPos().getZ() + " 1 1 1 0.3 20 normal");
+            npc.executeCommand("/particle flame " + npc.getPos().getX() + " " + npc.getPos().getY() + " " + npc.getPos().getZ() + " 1 1 1 1 5 normal");
+            player.setMotionX((Math.random() - 0.5)/2);
+            player.setMotionY(0.25);
+            player.setMotionZ((Math.random() - 0.5)/2);
+            brute_safe(event);
+        } else if (isItemInLootTable(_LOOTTABLE_CELLPHONES, item_name)) {
+            // Attempt hack on Secure Rack (locked) or Strong Rack (final stage)
+            var hack_lock = npc.getStoreddata().get("hack_lock") || 0;
+            var strong_lock_ph = npc.getStoreddata().get("strong_lock") || 0;
+            var canHackSecure = (vault_type === "Server Secure Rack" && hack_lock === 2);
+            var canHackStrong = (vault_type === "Server Strong Rack" && strong_lock_ph === 1 && hack_lock === 2);
+            if (canHackSecure || canHackStrong) {
+                saveInteractionTime(npc);
+                var success = rrandom_range(1, 100) <= 30;
+                if (success) {
+                    npc.getStoreddata().put("hack_lock", 1);
+                    updateSkinURL(npc);
+                    npc.executeCommand("/playsound ivv:phone.modern.warning player @a");
+                    npc.executeCommand("/particle totem " + npc.getPos().getX() + " " + npc.getPos().getY() + " " + npc.getPos().getZ() + " 1 1 1 0.3 30 normal");
+                    tellPlayer(player, "&aHack successful. Disc removal is now enabled.");
+                } else {
+                    npc.executeCommand("/playsound ivv:phone.modern.error player @a");
+                    tellPlayer(player, "&cHack attempt failed. Try again later.");
+                }
+            } else {
+                npc.executeCommand("/playsound ivv:phone.modern.error player @a");
+            }
         } else if (fill_level > 0 && getTimer(npc) > click_cooldown) {
+            // Prevent disc removal from secure/strong server racks while hack_lock is 2 (locked)
+            var hack_lock = npc.getStoreddata().get("hack_lock") || 0;
+            var isLockedRack = (vault_type === "Server Secure Rack" || vault_type === "Server Strong Rack") && hack_lock === 2;
+            if (isLockedRack) {
+                npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
+                if (vault_type === "Server Strong Rack") {
+                    tellPlayer(player, "&cThe server rack is locked. Remove armour, unlock, then hack it to release the discs.");
+                } else {
+                    tellPlayer(player, "&cThe server rack is locked. Use a phone to hack it or brute force with proper tools.");
+                }
+                return;
+            }
             npc.executeCommand("/playsound minecraft:block.shulker_box.open block @a");
             loot_safe(event);
         } else if (fill_level === 0) {
@@ -223,8 +343,6 @@ function interact(event) {
                 tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a clock to check the time).");
             } else if (rrandom_range(0, 100) == 1) {
                 tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a crowbar to check the vault status).");
-            } else if (rrandom_range(0, 150) == 1) {
-                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a phone to check the bank ownership and vault type).");
             } else {
                 tellPlayer(player, "&7This vault is empty! Come back later.");
             }
@@ -247,6 +365,19 @@ function regenerate(npc) {
 
     npc.getStoreddata().put("safe_type", next_type);
     npc.getStoreddata().put("fill_level", 4);
+
+    var hack = 0;
+    var strong = 0;
+
+    if (next_type === "Server Secure Rack") {
+        hack = 2;
+    } else if (next_type === "Server Strong Rack") {
+        hack = 2;
+        strong = 3;
+    }
+
+    npc.getStoreddata().put("hack_lock", hack);
+    npc.getStoreddata().put("strong_lock", strong);
 
     saveInteractionTime(npc);
 
@@ -283,6 +414,30 @@ function loot_safe(event) {
 }
 
 /**
+ * Handles the brute forcing of the safe by the player, reducing the fill level more significantly and generating loot.
+ * @param {Object} event - The event object containing the NPC and player instances.
+ */
+function brute_safe(event) {
+    var npc = event.npc;
+    var player = event.player;
+
+    // random number between 1 and 4
+    var random_number = rrandom_range(1, 4);
+
+    var fill_level = npc.getStoreddata().get("fill_level");
+
+    if (fill_level > random_number) {
+        fill_level = Math.max(0, fill_level - random_number);
+        generateLoot(npc.getWorld(), npc, player);
+    } else {
+        fill_level = Math.max(0, fill_level - random_number);
+    }
+    npc.getStoreddata().put("fill_level", fill_level);
+    saveInteractionTime(npc);
+    updateSkinURL(npc);
+}
+
+/**
  * Calculates the elapsed time since the last interaction with the NPC.
  * @param {Object} npc - The NPC instance.
  * @returns {number} - The elapsed time in ticks.
@@ -306,7 +461,39 @@ function getTimer(npc) {
 function generateLoot(world, npc, player) {
     var full_loot = [];
     var criminalityIncrease = rrandom_range(1, 5);
-    player.addFactionPoints(6, criminalityIncrease);
+    // Apply faction reputation change based on bank configuration
+    var chosenFactionId = 6; // default criminal
+    var chosenMode = "increase"; // default increase
+    var chosenDelta = criminalityIncrease;
+    var allow_through = player.getOffhandItem().getName() == "mts:ivv.idcard_seagull";
+    if (!allow_through) {
+        try {
+            var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
+            var bankName = npc.getStoreddata().get("bank_name");
+            var bankIndex = findJsonSubEntryIndex(banksData, "bankName", bankName);
+            if (bankIndex != null && bankIndex >= 0) {
+                var bank = banksData[bankIndex];
+                chosenMode = bank.factionRepMode || "increase"; // default increase
+                chosenFactionId = bank.factionRepFactionId != null ? bank.factionRepFactionId : 6; // default criminal id 6
+                chosenDelta = (chosenMode === "decrease") ? -criminalityIncrease : criminalityIncrease;
+                // addFactionPoints accepts negative values to decrease reputation
+                player.addFactionPoints(chosenFactionId, chosenDelta);
+            } else {
+                // Fallback to default behavior
+                player.addFactionPoints(chosenFactionId, chosenDelta);
+            }
+        } catch (e) {
+            // On error, fallback to default behavior and log
+            try { logToFile("dev", "Error applying faction reputation change: " + e.message); } catch (ignored) { }
+            player.addFactionPoints(chosenFactionId, chosenDelta);
+        }
+    }
+
+    // Resolve faction name and message verb
+    var factionName = "Criminal";
+    try { factionName = getFactionName(chosenFactionId) || factionName; } catch (ignored) { }
+    var changeWord = (chosenDelta >= 0) ? "increased" : "decreased";
+    var changePoints = Math.abs(chosenDelta);
 
     switch (npc.getStoreddata().get("safe_type")) {
         case "Gold Rack":
@@ -323,7 +510,7 @@ function generateLoot(world, npc, player) {
                     logline += ", ";
                 }
             }
-            logline += " at the cost of " + criminalityIncrease + " criminality.";
+            logline += " with " + factionName + " reputation " + changeWord + " by " + changePoints + ".";
             logToFile("bank_robbery", logline);
             break;
         case "Bill Rack":
@@ -333,7 +520,7 @@ function generateLoot(world, npc, player) {
                 player.dropItem(moneyItems[i]);
             }
             var logline = player.getName() + " opened a Bill Rack in " + npc.getStoreddata().get("bank_name") + " and received " + getAmountCoin(money);
-            logline += " at the cost of " + criminalityIncrease + " criminality.";
+            logline += " with " + factionName + " reputation " + changeWord + " by " + changePoints + ".";
             logToFile("bank_robbery", logline);
             break;
         case "Safe":
@@ -350,12 +537,74 @@ function generateLoot(world, npc, player) {
                     logline += ", ";
                 }
             }
-            logline += " at the cost of " + criminalityIncrease + " criminality.";
+        case "Server Rack":
+            var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_SERVERRACK, player);
+            for (var i = 0; i < full_loot.length; i++) {
+                player.dropItem(
+                    generateItemStackFromLootEntry(full_loot[i], world, player)
+                );
+            }
+            var logline = player.getName() + " un-racked a Server in " + npc.getStoreddata().get("bank_name") + " and received: ";
+            for (var i = 0; i < full_loot.length; i++) {
+                logline += full_loot[i].id + ":" + full_loot[i].damage + " x" + full_loot[i].count;
+                if (i < full_loot.length - 1) {
+                    logline += ", ";
+                }
+            }
+            if (!allow_through) {
+                logline += " with " + factionName + " reputation " + changeWord + " by " + changePoints + ".";
+            } else {
+                logline += ".";
+            }
+            logToFile("bank_robbery", logline);
+            break;
+        case "Server Secure Rack":
+            var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_SERVERSECURERACK, player);
+            for (var i = 0; i < full_loot.length; i++) {
+                player.dropItem(
+                    generateItemStackFromLootEntry(full_loot[i], world, player)
+                );
+            }
+            var logline = player.getName() + " un-racked a Server in " + npc.getStoreddata().get("bank_name") + " and received: ";
+            for (var i = 0; i < full_loot.length; i++) {
+                logline += full_loot[i].id + ":" + full_loot[i].damage + " x" + full_loot[i].count;
+                if (i < full_loot.length - 1) {
+                    logline += ", ";
+                }
+            }
+            if (!allow_through) {
+                logline += " with " + factionName + " reputation " + changeWord + " by " + changePoints + ".";
+            } else {
+                logline += ".";
+            }
+            logToFile("bank_robbery", logline);
+            break;
+        case "Server Strong Rack":
+            var full_loot = pullLootTable(_LOOTTABLE_BANKVAULT_SERVERSTRONGRACK, player);
+            for (var i = 0; i < full_loot.length; i++) {
+                player.dropItem(
+                    generateItemStackFromLootEntry(full_loot[i], world, player)
+                );
+            }
+            var logline = player.getName() + " un-racked a Server in " + npc.getStoreddata().get("bank_name") + " and received: ";
+            for (var i = 0; i < full_loot.length; i++) {
+                logline += full_loot[i].id + ":" + full_loot[i].damage + " x" + full_loot[i].count;
+                if (i < full_loot.length - 1) {
+                    logline += ", ";
+                }
+            }
+            if (!allow_through) {
+                logline += " with " + factionName + " reputation " + changeWord + " by " + changePoints + ".";
+            } else {
+                logline += ".";
+            }
             logToFile("bank_robbery", logline);
             break;
     }
 
-    tellPlayer(player, "&cYour criminality has increased by " + criminalityIncrease + " points!");
+    if (!allow_through) {
+        tellPlayer(player, "&cYour " + factionName + " reputation has " + changeWord + " by " + changePoints + " points!");
+    }
 }
 
 /**
@@ -365,20 +614,47 @@ function generateLoot(world, npc, player) {
 function updateSkinURL(npc) {
     var current_type = npc.getStoreddata().get("safe_type");
     var fill_level = npc.getStoreddata().get("fill_level");
+    var hack = npc.getStoreddata().get("hack_lock") || 0;
+    var strong = npc.getStoreddata().get("strong_lock") || 0;
 
     var skin_url = "https://legends-of-gramdatis.com/gramados_skins/bank_safe/Gramados_slime_banksafe_";
 
     switch (current_type) {
         case "Gold Rack":
-            skin_url = skin_url + "goldrack_" + fill_level + ".png";
+            skin_url = skin_url + "goldrack_" + fill_level;
             break;
         case "Bill Rack":
-            skin_url = skin_url + "billrack_" + fill_level + ".png";
+            skin_url = skin_url + "billrack_" + fill_level;
             break;
         case "Safe":
-            skin_url = skin_url + "safe_" + fill_level + ".png";
+            skin_url = skin_url + "safe_" + fill_level;
+            break;
+        case "Server Rack":
+            skin_url = skin_url + "serverrack_" + fill_level;
+            break;
+        case "Server Secure Rack":
+            skin_url = skin_url + "serversecurerack_" + fill_level;
+            break;
+        case "Server Strong Rack":
+            skin_url = skin_url + "serverstrongrack_" + fill_level;
             break;
     }
+
+    if (hack === 2) {
+        skin_url += "_unhacked";
+    } else if (hack === 1) {
+        skin_url += "_hacked";
+    }
+
+    if (strong === 3) {
+        skin_url += "_armoured";
+    } else if (strong === 2) {
+        skin_url += "_locked";
+    } else if (strong === 1) {
+        skin_url += "_unlocked";
+    }
+
+    skin_url += ".png";
 
     npc.getDisplay().setSkinUrl(skin_url);
 }
