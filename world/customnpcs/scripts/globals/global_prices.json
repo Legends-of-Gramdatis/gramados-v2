@@ -335,6 +335,12 @@
         "allow_market_override": true,
         "based_on_stock": "Gramados Farming"
     },
+    "forestry:ingot_copper:0": {
+        "value": 1000
+    },
+    "forestry:ingot_tin:0": {
+        "value": 3000
+    },
     "forestry:logs.0:1": {
         "display_name": "Teak Wood",
         "value": 400,
@@ -1411,6 +1417,9 @@
     },
     "immersiveengineering:hoe_steel:0": {
         "value": 20000
+    },
+    "immersiveengineering:metal:0": {
+        "value": 1000
     },
     "immersiveengineering:metal:3": {
         "value": 10000
@@ -3995,14 +4004,5 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
-    },
-    "forestry:ingot_tin:0": {
-        "value": 3000
-    },
-    "forestry:ingot_copper:0": {
-        "value": 1000
-    },
-    "immersiveengineering:metal:0": {
-        "value": 1000
     }
 }
