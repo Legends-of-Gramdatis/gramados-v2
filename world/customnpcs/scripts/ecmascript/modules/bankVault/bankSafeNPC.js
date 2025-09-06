@@ -143,11 +143,73 @@ function checkAndApplyFillCredit(npc) {
             npc.getStoreddata().put("hack_lock", 2);
         }
         if (strong > 0) {
-            npc.getStoreddata().put("strong_lock", 2);
+            npc.getStoreddata().put("strong_lock", 3);
         }
         saveJson(banksData, "world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
         updateSkinURL(npc);
     }
+}
+
+/**
+ * Computes and applies the default security state (hack/casing) based on rack type.
+ * Security terms:
+ *  - hack: hacking security level (0 none, 2 locked, 1 bypassed)
+ *  - casing: physical casing level (0 none, 3 bulkhead, 2 service_plate closed, 1 open)
+ * @param {Object} npc - The NPC instance.
+ * @param {string=} typeOverride - Optional rack type to use instead of stored one.
+ * @returns {{hack:number,casing:number}} The applied security levels.
+ */
+function resetSecurityForType(npc, typeOverride) {
+    var type = typeOverride || npc.getStoreddata().get("safe_type");
+    var hack = 0;
+    var casing = 0;
+    if (type === "Server Rack") {
+        hack = 0; casing = 0;
+    } else if (type === "Server Secure Rack") {
+        hack = 2; casing = 0;
+    } else if (type === "Server Strong Rack") {
+        hack = 2; casing = 3;
+    } else {
+        hack = 0; casing = 0;
+    }
+    npc.getStoreddata().put("hack_lock", hack);
+    npc.getStoreddata().put("strong_lock", casing);
+    return { hack: hack, casing: casing };
+}
+
+/**
+ * Handles admin-only interactions (command block, heart) when the admin ID card is present.
+ * Returns true if the interaction was handled.
+ * @param {Object} event - The event object containing the NPC and player instances.
+ * @returns {boolean}
+ */
+function handleAdminInteract(event) {
+    var npc = event.npc;
+    var player = event.player;
+    var item = player.getMainhandItem();
+    var item_name = item.getName();
+
+    if (item_name == "minecraft:command_block") {
+        npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
+        var new_type = regenerate(npc);
+    tellPlayer(player, "&6&l[ADMIN]&6 &eThe rack has been regenerated to: &l" + new_type);
+        return true;
+    }
+
+    if (item_name == "variedcommodities:heart") {
+        npc.executeCommand("/playsound ivv:mts.ivv.dashboard.angel player @a");
+        npc.getStoreddata().put("fill_level", 4);
+    var applied = resetSecurityForType(npc);
+    tellPlayer(player, "&6&l[ADMIN]&6 &aVault refilled to &e4/4&a and &b&lSecurity&a reset (&d&lHack&a: &e" + applied.hack + "&a, &3&lCasing&a: &e" + applied.casing + "&a).");
+        updateSkinURL(npc);
+        return true;
+    }
+
+    if (item_name == "customnpcs:npcsoulstoneempty") {
+        tellPlayer(player, "&7Picked up vault with soulstone. No data changed.");
+    }
+
+    return false;
 }
 
 /**
@@ -187,12 +249,12 @@ function interact(event) {
     var bank_name = npc.getStoreddata().get("bank_name") || "Unknown Bank";
     var vault_type = npc.getStoreddata().get("safe_type") || "Unknown Type";
 
-    if (item_name == "minecraft:command_block") {
-        npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
-        var new_type = regenerate(npc);
+    // Admin-only interactions behind admin ID card
+    if (allow_through && handleAdminInteract(event)) {
+        return;
+    }
 
-        tellPlayer(player, "&6The rack has been regenerated to: &l" + new_type);
-    } else if (item_name == "minecraft:clock") {
+    if (item_name == "minecraft:clock") {
         var current_time = npc.getWorld().getTotalTime();
         var last_interaction_time = npc.getStoreddata().get("last_interraction") || 0;
         var time_since_last = current_time - last_interaction_time;
@@ -201,36 +263,12 @@ function interact(event) {
         var steps_to_full = 4 - fill_level;
         var time_until_full = steps_to_full > 0 ? steps_to_full * regen_cooldown - time_since_last : 0;
 
-        npc.executeCommand("/playsound minecraft:block.note.hat player @a");
-        tellPlayer(player, "&7Time until next refill: &e" + (time_until_next_fill / 20 / 60).toFixed(1) + " minutes.");
-        tellPlayer(player, "&7Time until fully refilled: &e" + (time_until_full / 20 / 60).toFixed(1) + " minutes.");
+    npc.executeCommand("/playsound minecraft:block.note.hat player @a");
+    tellPlayer(player, "&7Time until next &a&lrefill&7: &e" + (time_until_next_fill / 20 / 60).toFixed(1) + " &7minutes.");
+    tellPlayer(player, "&7Time until &a&lfull&7: &e" + (time_until_full / 20 / 60).toFixed(1) + " &7minutes.");
     } else if (item_name == "variedcommodities:crowbar") {
         npc.executeCommand("/playsound minecraft:entity.zombie.attack_iron_door player @a");
-        tellPlayer(player, "&7Vault Status:");
-        tellPlayer(player, "&7- Fill Level: &e" + fill_level + "/4");
-        tellPlayer(player, "&7- Credit Refill: &e" + credit_refill);
-    } else if (item_name == "variedcommodities:heart") {
-        npc.executeCommand("/playsound ivv:mts.ivv.dashboard.angel player @a");
-        npc.getStoreddata().put("fill_level", 4);
-
-        var hack = 0;
-        var strong = 0;
-        var type = npc.getStoreddata().get("safe_type");
-
-        if (type === "Server Secure Rack") {
-            hack = 2;
-        } else if (type === "Server Strong Rack") {
-            hack = 2;
-            strong = 3;
-        }
-
-        npc.getStoreddata().put("hack_lock", hack);
-        npc.getStoreddata().put("strong_lock", strong);
-
-        tellPlayer(player, "&aVault fill level set to maximum (4/4).");
-        updateSkinURL(npc);
-    } else if (item_name == "customnpcs:npcsoulstoneempty") {
-        tellPlayer(player, "&7Picked up vault with soulstone. No data changed.");
+    tellPlayer(player, "&8&l[Status]&8 &7Fill: &e" + fill_level + "/4 &7| Pending refills: &e" + credit_refill + " &7| Type: &6" + vault_type);
     } else {
         if (!bank || !bank.isVaultGateOpened && !allow_through) {
             // Knockback the player
@@ -247,7 +285,7 @@ function interact(event) {
         } else if (vault_type === "Server Strong Rack" && isItemInLootTable(_LOOTTABLE_TOOLS_WELDING, item_name)) {
             var strong_lock_bt = npc.getStoreddata().get("strong_lock") || 0;
             if (strong_lock_bt !== 3) {
-                tellPlayer(player, "&7This rack isn't in the armoured state anymore.");
+                tellPlayer(player, "&7This rack isn't in the &3&lBulkhead&7 state anymore.");
             } else if (getTimer(npc) <= click_cooldown) {
                 tellPlayer(player, "&7Tool cooling down. Try again soon.");
             } else {
@@ -257,17 +295,17 @@ function interact(event) {
                     npc.getStoreddata().put("strong_lock", 2);
                     updateSkinURL(npc);
                     npc.executeCommand("/playsound minecraft:block.anvil.use player @a");
-                    tellPlayer(player, "&aArmoured layer removed. Now unlock the rack mechanics using appropriate tools such as wrenches.");
+                    tellPlayer(player, "&a&lBulkhead&a removed. Now open the &3&lService Plate&3 using precision tools.");
                 } else {
                     npc.executeCommand("/playsound chisel:block.metal.hit player @a");
-                    tellPlayer(player, "&cThe blowtorch didn't cut through this time.");
+                    tellPlayer(player, "&cThe &3&lBulkhead&c didn't yield this time.");
                 }
             }
         // Strong Rack: Stage 2 - Unlocking via wrench (20% chance)
         } else if (vault_type === "Server Strong Rack" && isItemInLootTable(_LOOTTABLE_TOOLS_PRECISION, item_name)) {
             var strong_lock_wr = npc.getStoreddata().get("strong_lock") || 0;
             if (strong_lock_wr !== 2) {
-                tellPlayer(player, "&7You can't use a wrench at this stage.");
+                tellPlayer(player, "&7You can't open the &3&lService Plate&7 at this stage.");
             } else if (getTimer(npc) <= click_cooldown) {
                 tellPlayer(player, "&7Tool cooling down. Try again soon.");
             } else {
@@ -277,10 +315,10 @@ function interact(event) {
                     npc.getStoreddata().put("strong_lock", 1);
                     updateSkinURL(npc);
                     npc.executeCommand("/playsound minecraft:block.piston.extend player @a");
-                    tellPlayer(player, "&aRack unlocked. Hack the built-in computer to release the discs.");
+                    tellPlayer(player, "&a&lService Plate&a opened. Now attempt a &d&lBypass&d on the onboard computer to release the discs.");
                 } else {
                     npc.executeCommand("/playsound chisel:block.metal.hit player @a");
-                    tellPlayer(player, "&cThe mechanism resisted your tool.");
+                    tellPlayer(player, "&cThe &3&lService Plate&c resisted your tool.");
                 }
             }
         } else if (isItemInLootTable(_LOOTTABLE_BRUTEFORCE, item_name)) {
@@ -288,7 +326,7 @@ function interact(event) {
             if (vault_type === "Server Strong Rack") {
                 var strong_lock_bf = npc.getStoreddata().get("strong_lock") || 0;
                 if (strong_lock_bf >= 2) {
-                    tellPlayer(player, "&cYou must remove the armoured and locked layers before brute forcing the computer.");
+                    tellPlayer(player, "&cYou must remove the &3&lBulkhead&c and open the &3&lService Plate&c before brute forcing the computer.");
                     npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
                     return;
                 }
@@ -299,6 +337,7 @@ function interact(event) {
             player.setMotionX((Math.random() - 0.5)/2);
             player.setMotionY(0.25);
             player.setMotionZ((Math.random() - 0.5)/2);
+            tellPlayer(player, "&c&lBrute-force&c attempt underway. Contents may be damaged.");
             brute_safe(event);
         } else if (isItemInLootTable(_LOOTTABLE_CELLPHONES, item_name)) {
             // Attempt hack on Secure Rack (locked) or Strong Rack (final stage)
@@ -314,13 +353,48 @@ function interact(event) {
                     updateSkinURL(npc);
                     npc.executeCommand("/playsound ivv:phone.modern.warning player @a");
                     npc.executeCommand("/particle totem " + npc.getPos().getX() + " " + npc.getPos().getY() + " " + npc.getPos().getZ() + " 1 1 1 0.3 30 normal");
-                    tellPlayer(player, "&aHack successful. Disc removal is now enabled.");
+                    tellPlayer(player, "&d&lBypass&a Successful. Disc removal is now enabled.");
                 } else {
                     npc.executeCommand("/playsound ivv:phone.modern.error player @a");
-                    tellPlayer(player, "&cHack attempt failed. Try again later.");
+                    tellPlayer(player, "&d&lBypass&c Failed. Try again later.");
                 }
             } else {
                 npc.executeCommand("/playsound ivv:phone.modern.error player @a");
+                // Provide guidance when bypass isn't possible now
+                if (vault_type === "Server Secure Rack") {
+                    if (hack_lock === 1) {
+                        tellPlayer(player, "&7You can't perform a &d&lBypass&7 now; the &d&lHack&7 stage is already completed.");
+                    } else if (hack_lock === 0) {
+                        tellPlayer(player, "&7This rack has no &d&lHack&7 security.");
+                    } else {
+                        tellPlayer(player, "&7You can't perform a &d&lBypass&7 yet.");
+                    }
+                } else if (vault_type === "Server Strong Rack") {
+                    if (strong_lock_ph >= 2) {
+                        tellPlayer(player, "&7You must remove the &3&lBulkhead&7 and open the &3&lService Plate&7 before attempting a &d&lBypass&7.");
+                    } else if (strong_lock_ph === 0) {
+                        // Edge case: casing fully open/none but hack stage not at 2
+                        if (hack_lock === 1) {
+                            tellPlayer(player, "&7You can't perform a &d&lBypass&7 now; the &d&lHack&7 stage is already completed.");
+                        } else if (hack_lock === 0) {
+                            tellPlayer(player, "&7This rack has no &d&lHack&7 security.");
+                        } else {
+                            tellPlayer(player, "&7You can't perform a &d&lBypass&7 yet.");
+                        }
+                    } else if (strong_lock_ph === 1 && hack_lock !== 2) {
+                        if (hack_lock === 1) {
+                            tellPlayer(player, "&7You can't perform a &d&lBypass&7 now; the &d&lHack&7 stage is already completed.");
+                        } else if (hack_lock === 0) {
+                            tellPlayer(player, "&7This rack has no &d&lHack&7 security.");
+                        } else {
+                            tellPlayer(player, "&7You can't perform a &d&lBypass&7 yet.");
+                        }
+                    } else {
+                        tellPlayer(player, "&7You can't perform a &d&lBypass&7 now.");
+                    }
+                } else {
+                    tellPlayer(player, "&7This rack has no &d&lHack&7 security.");
+                }
             }
         } else if (fill_level > 0 && getTimer(npc) > click_cooldown) {
             // Prevent disc removal from secure/strong server racks while hack_lock is 2 (locked)
@@ -329,9 +403,9 @@ function interact(event) {
             if (isLockedRack) {
                 npc.executeCommand("/playsound minecraft:block.anvil.land player @a");
                 if (vault_type === "Server Strong Rack") {
-                    tellPlayer(player, "&cThe server rack is locked. Remove armour, unlock, then hack it to release the discs.");
+                    tellPlayer(player, "&cSecurity active: &3&lCasing&c and &d&lHack&c. Remove the &3&lBulkhead&c, open the &3&lService Plate&c, then perform a &d&lBypass&c to release the discs.");
                 } else {
-                    tellPlayer(player, "&cThe server rack is locked. Use a phone to hack it or brute force with proper tools.");
+                    tellPlayer(player, "&cSecurity active: &d&lHack&c. Use a phone to attempt a &d&lBypass&c or brute-force with proper tools.");
                 }
                 return;
             }
@@ -340,9 +414,9 @@ function interact(event) {
         } else if (fill_level === 0) {
             // Display tips and tricks only when the vault is empty and the gate is open
             if (rrandom_range(0, 50) == 1) {
-                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a clock to check the time).");
+                tellPlayer(player, "&7This vault is empty! Come back later. &8&o(tip: use a clock to check refill timers).");
             } else if (rrandom_range(0, 100) == 1) {
-                tellPlayer(player, "&7This vault is empty! Come back later. &o&8(tip: use a crowbar to check the vault status).");
+                tellPlayer(player, "&7This vault is empty! Come back later. &8&o(tip: use a crowbar to check status).");
             } else {
                 tellPlayer(player, "&7This vault is empty! Come back later.");
             }
@@ -366,18 +440,8 @@ function regenerate(npc) {
     npc.getStoreddata().put("safe_type", next_type);
     npc.getStoreddata().put("fill_level", 4);
 
-    var hack = 0;
-    var strong = 0;
-
-    if (next_type === "Server Secure Rack") {
-        hack = 2;
-    } else if (next_type === "Server Strong Rack") {
-        hack = 2;
-        strong = 3;
-    }
-
-    npc.getStoreddata().put("hack_lock", hack);
-    npc.getStoreddata().put("strong_lock", strong);
+    // Apply default security setup according to rack type
+    resetSecurityForType(npc, next_type);
 
     saveInteractionTime(npc);
 
@@ -603,7 +667,7 @@ function generateLoot(world, npc, player) {
     }
 
     if (!allow_through) {
-        tellPlayer(player, "&cYour " + factionName + " reputation has " + changeWord + " by " + changePoints + " points!");
+        tellPlayer(player, "&cYour &l" + factionName + "&c reputation has &l" + changeWord + "&c by &e" + changePoints + "&c points!");
     }
 }
 
