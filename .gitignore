@@ -84,4 +84,4 @@ tools/wth is that?*
 tools/output*.json
 world/customnpcs/scripts/logs/*
 tools/loot_table.json
-wiki/**/*
+gramados-v2.wiki/**/*
