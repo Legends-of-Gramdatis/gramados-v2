@@ -1,0 +1,64 @@
+{
+    "CompleterNpc": "Maëline Courbe",
+    "NextQuestId": 160,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 5,
+    "QuestCompletion": 1,
+    "Title": "Across the Island",
+    "Text": "Maëline told me about a unique dune at the center of Crystal Cove — the finest glass sand comes from there. I need to travel all the way across Feldpard to the southwest and stand on the dune to collect it.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1757577593133L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "furenikusroads:cement_dust",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Collected from the exact dune where",
+                            "§7the waters of Crystal Cove deposit their",
+                            "§7clearest grains. It shimmers with faint warmth.",
+                            "§r",
+                            "§8✧ Maëline Courbe can craft master glass with this."
+                        ],
+                        "Name": "§e§lPure Sand from Crystal Cove"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "CompleteText": "The wind is still. The sand here glows faintly in the sunlight — fine as powder, warm underfoot, and eerily perfect. I’ve gathered a handful, just as Maëline asked. Time to bring it home.",
+    "NextQuestTitle": "Return to the Atelier",
+    "QuestLocation": "Crystal Cove"
+}
