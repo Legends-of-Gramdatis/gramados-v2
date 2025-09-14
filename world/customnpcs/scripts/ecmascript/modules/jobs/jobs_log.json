@@ -124,7 +124,10 @@
             "Type": "Advanced",
             "JobName": "Mechanic",
             "Region": "Farmiston",
-            "Perms": []
+            "AutoAssignPerms": [
+                "Farmiston_Silorose_ZalivkaStreet_AutoRemSiloroz_Garage",
+                "Farmiston_Silorose_VolnayaProspekt_22_VoznyakTekhservis_Garage"
+            ]
         },
         {
             "JobID": 583,
