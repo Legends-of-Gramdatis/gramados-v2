@@ -641,7 +641,7 @@ sets:
                 icon: food&drink_food
                 y: 79.0
                 z: -326.0
-                label: Silorose Trucker Fast Food
+                label: Siloroz Trucker Fast Food
             marker_17:
                 world: world
                 markup: false
@@ -787,7 +787,7 @@ sets:
                 icon: misc_hotel
                 y: 79.0
                 z: -402
-                label: Silorose Trucker Hotel
+                label: Siloroz Trucker Hotel
             marker_8:
                 world: world
                 markup: false
@@ -904,7 +904,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 82.0
                 z: -67
-                label: Silorose
+                label: Siloroz
             marker_10:
                 world: world
                 markup: false
@@ -1115,7 +1115,7 @@ sets:
                 icon: shopping_shopping
                 y: 82.0
                 z: -122
-                label: Silorose Furniture
+                label: Siloroz Furniture
             marker_9:
                 world: world
                 markup: false
@@ -1148,6 +1148,14 @@ sets:
                 y: 76.0
                 z: 6860.0
                 label: Casa de Madera - Furniture Store
+            marker_13:
+                world: world
+                icon: shopping_shopping
+                markup: false
+                x: -2756.0
+                y: 152.0
+                z: -4010.0
+                label: Atelier de la Verrière - Glass & Glassware
         lines: {
             }
         layerprio: 0
@@ -1425,6 +1433,22 @@ sets:
                 z: 7224.0
                 icon: shopping_garage
                 label: Taller de Ruta Sur (Repair Shop)
+            marker_13:
+                world: world
+                markup: false
+                x: -6949.0
+                y: 76.0
+                z: 54.0
+                icon: shopping_garage
+                label: Voznyak Tekhservis (Repair Shop)
+            marker_14:
+                world: world
+                markup: false
+                x: -6963.0
+                y: 78.0
+                z: -375.0
+                icon: shopping_garage
+                label: AutoRem Siloroz (Repair Shop)
         lines: {
             }
         layerprio: 0
@@ -1982,7 +2006,7 @@ sets:
                 icon: health_misc
                 y: 82.0
                 z: -93.0
-                label: Silorose Multi-Service Facility 
+                label: Siloroz Multi-Service Facility 
             marker_12:
                 world: world
                 markup: false
@@ -2062,7 +2086,7 @@ sets:
                 x: -6977.0
                 y: 80.0
                 z: -85.0
-                label: Silorose Post Office
+                label: Siloroz Post Office
             marker_22:
                 world: world
                 markup: false
@@ -2110,7 +2134,7 @@ sets:
                 x: -6951.0
                 y: 79.0
                 z: -3.0
-                label: Silorose Hospital
+                label: Siloroz Hospital
             marker_28:
                 world: world
                 markup: false
@@ -2155,7 +2179,7 @@ sets:
                 icon: shopping_grocery
                 y: 79.0
                 z: -364.0
-                label: Silorose Trucker General Store
+                label: Siloroz Trucker General Store
             marker_4:
                 world: world
                 markup: false
@@ -2593,7 +2617,7 @@ sets:
                 x: -6854.0
                 y: 81.0
                 z: -172.0
-                label: Silorose's Communal Vegetable Garden.
+                label: Siloroz's Communal Vegetable Garden.
             marker_33:
                 world: world
                 markup: false
@@ -2685,7 +2709,7 @@ sets:
                 x: -6908.0
                 y: 80.0
                 z: -30.0
-                label: Silorose Parking
+                label: Siloroz Parking
             marker_8:
                 world: world
                 markup: false
@@ -2849,7 +2873,7 @@ sets:
                 x: -2964.0
                 y: 163.0
                 z: -3669.0
-                label: Verdance Hall
+                label: Carral Keep
             marker_7:
                 world: world
                 markup: false
