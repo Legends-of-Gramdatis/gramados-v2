@@ -9,7 +9,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
 var crowbarPrice = 50000; // in cents (500g)
-var COOLDOWN_HOURS = 1;   // purchase cooldown in IRL hours
+var COOLDOWN_MINUTES = 10;   // purchase cooldown in IRL minutes
 var jsonFilePath = "world/customnpcs/scripts/data_auto/junkyard_purchases.json";
 
 function interact(event) {
@@ -32,7 +32,7 @@ function interact(event) {
 
     // Current real-world timestamp (ms)
     var now = Date.now();
-    var cooldownMs = COOLDOWN_HOURS * 20 * 60 * 60;
+    var cooldownMs = COOLDOWN_MINUTES * 20 * 60 * 60;
 
     // === Phone check (info only)
     if (!player.getMainhandItem().isEmpty() && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, player.getMainhandItem().getName())) {
