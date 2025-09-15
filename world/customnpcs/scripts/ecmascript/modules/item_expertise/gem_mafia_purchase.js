@@ -1,7 +1,11 @@
+
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
+
+// Load config like in gem_expertise.js
+var config = loadJson("world/customnpcs/scripts/ecmascript/modules/item_expertise/gem_config.json");
 
 var FACTION_ID_MAFIA = 9;
 
@@ -119,9 +123,12 @@ function interact(event) {
         player.giveItem(stacks[s]);
     }
 
+
     // Give mafia reputation (if < 2000)
+    var mafia_rep_per_cents = (config && config.mafia_rep_per_cents) ? config.mafia_rep_per_cents : 30000;
+    var repGain = 0;
     if (player.getFactionPoints(FACTION_ID_MAFIA) < 2000) {
-        var repGain = Math.floor(estimated / 30000); // 1 per 300g
+        repGain = Math.floor(estimated / mafia_rep_per_cents); // configurable value
         if (repGain > 0) {
             player.addFactionPoints(FACTION_ID_MAFIA, repGain);
         }

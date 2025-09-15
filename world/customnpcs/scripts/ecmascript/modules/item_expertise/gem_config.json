@@ -1,6 +1,7 @@
 {
   "expertise_rate": 0.05,
   "expertise_exp": 10,
+  "mafia_rep_per_cents": 20000,
   "items": {
     "variedcommodities:gem_amethyst:0": ["clarity", "purity", "weight", "color_grade"],
     "variedcommodities:gem_ruby:0": ["clarity", "purity", "weight", "color_grade"],
