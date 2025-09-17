@@ -38,11 +38,21 @@ function interact(event) {
 
         if (!data) continue;
 
-        // Only change what's required: switch to rent. Preserve other fields.
-        if (data.saleType !== 'rent' || data.forSale !== false) {
+        // Ensure rent type, and if unowned but not for sale, set forSale=true.
+        var didChange = false;
+
+        if (data.saleType !== 'rent') {
             data.saleType = 'rent';
-            // In existing data, rentable entries have forSale=false
-            data.forSale = false;
+            didChange = true;
+        }
+
+        var hasOwner = !!(data.owner && String(data.owner).length > 0);
+        if (data.forSale === false && !hasOwner) {
+            data.forSale = true;
+            didChange = true;
+        }
+
+        if (didChange) {
             worldData.put(key, JSON.stringify(data));
             changed++;
         }
