@@ -1,0 +1,173 @@
+{
+    "variables1": "door_fr",
+    "variables2": "door_hood",
+    "part_5": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_1",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray"
+    },
+    "variables0": "flBodyroll",
+    "flBodyroll": -5.933519192473369E-13d,
+    "part_4": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_1",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray"
+    },
+    "variables5": "rrBodyroll",
+    "variables6": "rlBodyroll",
+    "variables3": "frBodyroll",
+    "part_9": {
+        "packID": "iv_tpp",
+        "temp": 19.127092121783168d,
+        "systemName": "engine_i4_gasoline_normal_aut",
+        "spawnedDefaultParts": 1b,
+        "subName": ""
+    },
+    "variables4": "door_fl",
+    "part_37": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "part_3": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel"
+    },
+    "part_2": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel"
+    },
+    "rlBodyroll": 5.933519192473369E-13d,
+    "part_39": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "part_1": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel"
+    },
+    "radio": {
+        "volume": 10,
+        "currentURL": ""
+    },
+    "part_0": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel"
+    },
+    "part_11": {
+        "packID": "iv_tpp",
+        "systemName": "plate_gramados",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "textLine0": "ABC-1234"
+    },
+    "part_35": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_text",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "part_36": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "serverDeltaMy": -0.09999999999760746d,
+    "door_fr": 1.0d,
+    "part_10": {
+        "packID": "iv_tpp",
+        "systemName": "plate_gramados",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "textLine0": "ABC-1234"
+    },
+    "door_fl": 1.0d,
+    "fuelTank": {
+        "currentFluid": ""
+    },
+    "door_hood": 1.0d,
+    "frBodyroll": 5.933519192473369E-13d,
+    "part_26": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "dashboard_console_bottom",
+        "spawnedDefaultParts": 1b,
+        "subName": "_lowend_g"
+    },
+    "part_27": {
+        "packID": "iv_tpp",
+        "systemName": "radio_antenna",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray"
+    },
+    "rrBodyroll": -5.933519192473369E-13d,
+    "part_28": {
+        "packID": "iv_tpp",
+        "systemName": "radio_antenna",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray"
+    },
+    "electricPower": 12.0d,
+    "positionx": -7326.5d,
+    "positiony": 112.43750000000003d,
+    "variablescount": 7,
+    "part_44": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_text",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "positionz": 1874.5d,
+    "part_45": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "part_46": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "part_25": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "dashboard_console_main",
+        "spawnedDefaultParts": 1b,
+        "subName": "_lowend_nr_g"
+    },
+    "part_40": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "selectedBeaconName": "",
+    "spawnedDefaultParts": 1b,
+    "part_41": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_large",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    },
+    "anglesy": -166.3803863525391d,
+    "part_42": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec"
+    }
+}

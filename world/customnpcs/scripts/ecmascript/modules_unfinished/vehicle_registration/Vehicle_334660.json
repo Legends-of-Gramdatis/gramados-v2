@@ -1,0 +1,237 @@
+{
+    "variables1": "door_fr",
+    "variables2": "door_hood",
+    "variables0": "flBodyroll",
+    "flBodyroll": -1.0d,
+    "variables5": "rrBodyroll",
+    "variables6": "rlBodyroll",
+    "motiony": -0.049d,
+    "variables3": "frBodyroll",
+    "variables4": "door_fl",
+    "Invulnerable": 0b,
+    "entityid": "EntityVehicleF_Physics",
+    "part_37": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "268bf650-ede1-44de-9dc8-a9d1c71e94b5"
+    },
+    "rlBodyroll": -1.0d,
+    "part_39": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "3b964f16-05a5-454c-b11b-0cea043580c5"
+    },
+    "radio": {
+        "volume": 10,
+        "currentURL": "",
+        "uniqueUUID": "98428396-9bcc-499e-acc6-64580cedbc99"
+    },
+    "FallDistance": 0.0f,
+    "part_35": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_text",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "17e4e93c-126e-482a-8fb7-ae6f876f08ed"
+    },
+    "part_36": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "775e4551-1740-4447-b7f9-db1c3fd0f5e0"
+    },
+    "systemName": "trin_footpather_service",
+    "ForgeCaps": {
+    },
+    "id": "mts:mts_entity",
+    "fuelTank": {
+        "currentFluid": "",
+        "uniqueUUID": "1b6cdfc6-2bef-4474-964f-dcd3232dded5"
+    },
+    "door_hood": 1.0d,
+    "Air": 300s,
+    "frBodyroll": 0.2750625014305115d,
+    "part_26": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "dashboard_console_bottom",
+        "spawnedDefaultParts": 1b,
+        "subName": "_lowend_g",
+        "uniqueUUID": "339ef165-ac5b-4fd4-bff5-28c27f90fc56"
+    },
+    "part_27": {
+        "packID": "iv_tpp",
+        "systemName": "radio_antenna",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "45a15665-8429-4352-9f45-e3d298fd91b9"
+    },
+    "part_28": {
+        "packID": "iv_tpp",
+        "systemName": "radio_antenna",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "c1b72bed-e8cd-43e0-bd71-c1a68275eee8"
+    },
+    "positionx": -7350.522675463945d,
+    "positiony": 114.49253944822861d,
+    "positionz": 1870.5728898185578d,
+    "part_25": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "dashboard_console_main",
+        "spawnedDefaultParts": 1b,
+        "subName": "_lowend_nr_g",
+        "uniqueUUID": "0c8853db-41c7-4c05-8b9f-451aecd93451"
+    },
+    "Pos": [
+        -7350.522675463945d,
+        114.50968944822861d,
+        1870.5728898185578d
+    ],
+    "anglesz": -9.607796956131075d,
+    "spawnedDefaultParts": 1b,
+    "anglesy": -107.28051757812504d,
+    "part_5": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_1",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "041a4ce7-33d1-4032-8a33-2794d4ab7d90"
+    },
+    "part_4": {
+        "packID": "iv_tpp",
+        "systemName": "trin_seat_1",
+        "spawnedDefaultParts": 1b,
+        "subName": "_gray",
+        "uniqueUUID": "ef54bc71-98d5-4b2b-8058-b3554fad11d2"
+    },
+    "part_9": {
+        "packID": "iv_tpp",
+        "temp": 0.15138450775387763d,
+        "systemName": "engine_i4_gasoline_normal_aut",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "uniqueUUID": "e0e281a6-c362-4363-8b68-67b65509ca4c"
+    },
+    "PortalCooldown": 0,
+    "part_3": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "845741c5-774b-4834-821d-a0a7ac4915b7"
+    },
+    "part_2": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "92e1185b-30f3-4c49-ac0a-7162e673f1e0"
+    },
+    "part_1": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "f651de38-b020-49d8-9aca-98e9dc6bfa91"
+    },
+    "serverDeltaRy": -5.6843418860808015E-14d,
+    "part_0": {
+        "packID": "iv_tpp",
+        "systemName": "wheel_classic_4d14",
+        "spawnedDefaultParts": 1b,
+        "subName": "_0_steel",
+        "uniqueUUID": "80cb01c7-21ae-4ad8-8973-ccc0180e6a65"
+    },
+    "serverDeltaRz": -9.607796956131075d,
+    "packID": "iv_tcp_v3_service",
+    "part_11": {
+        "packID": "iv_tpp",
+        "systemName": "plate_gramados",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "textLine0": "ABC-1234",
+        "uniqueUUID": "4bbb3a11-a5b3-4403-95f5-491630d68448"
+    },
+    "serverDeltaMz": 0.07288981855770986d,
+    "serverDeltaMx": -0.0226754639454797d,
+    "serverDeltaMy": 0.9550394482286104d,
+    "door_fr": 1.0d,
+    "part_10": {
+        "packID": "iv_tpp",
+        "systemName": "plate_gramados",
+        "spawnedDefaultParts": 1b,
+        "subName": "",
+        "textLine0": "ABC-1234",
+        "uniqueUUID": "2b018f85-f108-4142-baf3-ba36300e8cea"
+    },
+    "door_fl": 1.0d,
+    "uniqueUUID": "fb4b1ada-ba3a-4c94-9e26-e91b109c3024",
+    "Motion": [
+        0.0d,
+        0.0d,
+        0.0d
+    ],
+    "UUIDLeast": -5960266654982307793L,
+    "OnGround": 0b,
+    "Dimension": 0,
+    "Rotation": [
+        0.0f,
+        0.0f
+    ],
+    "rrBodyroll": 0.3577500283718109d,
+    "UpdateBlocked": 0b,
+    "electricPower": 12.0d,
+    "variablescount": 7,
+    "part_44": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_text",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "ac522a37-b42d-4e56-8522-d0c472bf615b"
+    },
+    "part_45": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "cddf3cc1-94cc-497c-9b96-f2a5d32c29d6"
+    },
+    "part_46": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "20c4468d-1836-4660-804c-d4da55444ae0"
+    },
+    "UUIDMost": 6115580265573468056L,
+    "part_40": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_number",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "953b4f0f-6590-4ba4-b775-7b4eb1a1ea5e"
+    },
+    "selectedBeaconName": "",
+    "part_41": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_large",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "b2c72a36-7f51-4020-8861-90ee0c8f6898"
+    },
+    "subName": "_guec_g",
+    "part_42": {
+        "packID": "iv_tpp_v4_tests",
+        "systemName": "service_sticker_coa_small",
+        "spawnedDefaultParts": 1b,
+        "subName": "_guec",
+        "uniqueUUID": "9455f59c-7b75-452a-ac7b-43d233236f7b"
+    },
+    "Fire": -1s
+}
+
