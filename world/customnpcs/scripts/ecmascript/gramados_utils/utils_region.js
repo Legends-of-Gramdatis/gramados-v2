@@ -1,4 +1,5 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 
@@ -46,10 +47,139 @@ function transferRegion(player, region, target) {
         region_json.owner = target;
         worldData.put(["region_" + region], JSON.stringify(region_json));
         tellPlayer(player, "&aRegion transferred to " + region_json.owner + ".");
-        tellPlayer(target, "&aRegion transferred from " + regionOwner + ".");
+        // Best-effort notify the target if it's an IPlayer, otherwise skip
+        try { if (target && target.getName) { tellPlayer(target, "&aRegion transferred from " + regionOwner + "."); } } catch (e) {}
+        // Update any linked owner signs for this region
+        updateRegionOwnerSigns(region);
     } else {
         tellPlayer(player, "&cRegion not found.");
     }
+}
+
+/**
+ * Returns a normalized owner display name for a region, or "Available" when not owned.
+ * @param {string} region - Region name without the prefix.
+ * @returns {string}
+ */
+function getRegionOwnerName(region) {
+    var worldData = getWorldData();
+    var dataStr = worldData.get("region_" + region);
+    if (!dataStr) return "Available";
+    var data;
+    try { data = JSON.parse(dataStr); } catch (e) { return "Available"; }
+    var owner = data ? data.owner : null;
+    return _normalizeOwnerName(owner);
+}
+
+function _normalizeOwnerName(owner) {
+    if (owner === undefined || owner === null) return "Available";
+    var s = String(owner).trim();
+    if (s.length === 0) return "Available";
+    var low = s.toLowerCase();
+    if (low === "none" || low === "null" || low === "undefined") return "Available";
+    return s;
+}
+
+/**
+ * Reads a sign line text at the given coordinates.
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @param {number} line - 1..4
+ * @returns {string|null}
+ */
+function getSignLineAt(x, y, z, line) {
+    var blk = world.getBlock(x|0, y|0, z|0);
+    if (!blk || !blk.getTileEntity) return null;
+    var te = blk.getTileEntity();
+    if (!te) return null;
+    var li = parseInt(line, 10);
+    if (isNaN(li) || li < 1) li = 1; if (li > 4) li = 4;
+    var key = "Text" + li;
+    var raw = te.getString(key);
+    if (!raw) return "";
+    try {
+        var obj = JSON.parse(raw);
+        if (obj && typeof obj.text === "string") return obj.text;
+    } catch (e) {}
+    return raw;
+}
+
+/**
+ * Sets a sign line text at the given coordinates.
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @param {number} line - 1..4
+ * @param {string} text - Plain text to display
+ * @returns {boolean} true if set attempted
+ */
+function setSignLineAt(x, y, z, line, text) {
+    var blk = world.getBlock(x|0, y|0, z|0);
+    if (!blk || !blk.getTileEntityNBT) return false;
+    var te = blk.getTileEntityNBT();
+    if (!te) return false;
+    var li = parseInt(line, 10);
+    if (isNaN(li) || li < 1) li = 1; if (li > 4) li = 4;
+    var key = "Text" + li;
+    var safe = text == null ? "" : String(text);
+    var json = JSON.stringify({ text: safe });
+    te.setString(key, json);
+    blk.setTileEntityNBT(te);
+    // Force block update to reflect changes visually
+    try { if (blk.update) blk.update(); } catch (e) {}
+    return true;
+}
+
+/**
+ * Adds or updates a region's linked owner sign list with a new sign reference.
+ * Avoids duplicates by (x,y,z,line).
+ * @param {string} region - Region name without prefix
+ * @param {{x:number,y:number,z:number,line?:number}} sign
+ * @returns {boolean}
+ */
+function addRegionOwnerSign(region, sign) {
+    var worldData = getWorldData();
+    var key = "region_" + region;
+    var str = worldData.get(key);
+    if (!str) return false;
+    var data;
+    try { data = JSON.parse(str); } catch (e) { return false; }
+    if (!data.ownerSigns) data.ownerSigns = [];
+    var sx = sign.x|0, sy = sign.y|0, sz = sign.z|0; var sl = (sign.line != null ? (sign.line|0) : 2);
+    var exists = false;
+    for (var i = 0; i < data.ownerSigns.length; i++) {
+        var s = data.ownerSigns[i];
+        if (s && (s.x|0) === sx && (s.y|0) === sy && (s.z|0) === sz && ((s.line != null ? (s.line|0) : 2) === sl)) {
+            exists = true; break;
+        }
+    }
+    if (!exists) data.ownerSigns.push({ x: sx, y: sy, z: sz, line: sl });
+    worldData.put(key, JSON.stringify(data));
+    return true;
+}
+
+/**
+ * Writes the current owner name to all linked owner signs for a region.
+ * @param {string} region - Region name without prefix
+ * @returns {boolean}
+ */
+function updateRegionOwnerSigns(region) {
+    var worldData = getWorldData();
+    var key = "region_" + region;
+    var str = worldData.get(key);
+    if (!str) return false;
+    var data;
+    try { data = JSON.parse(str); } catch (e) { return false; }
+    if (!data.ownerSigns || !data.ownerSigns.length) return false;
+    var ownerName = getRegionOwnerName(region);
+    for (var i = 0; i < data.ownerSigns.length; i++) {
+        var s = data.ownerSigns[i];
+        if (!s) continue;
+        var line = (s.line != null ? s.line : 2);
+        setSignLineAt(s.x, s.y, s.z, line, ownerName);
+    }
+    return true;
 }
 
 /**
@@ -293,4 +423,101 @@ function getCuboidData(cuboid, subCuboidId) {
 
     var subCuboids = cuboidData.positions;
     return subCuboids[subCuboidId];
+}
+
+/**
+ * Checks whether a player's current position lies within ANY sub-cuboid of a region.
+ * @param {IPlayer} player - The player instance.
+ * @param {string} cuboid - The region/cuboid name (without the `region_` prefix).
+ * @returns {boolean} True if the player is inside the region, false otherwise.
+ */
+function isPlayerInCuboid(player, cuboid) {
+    var worldData = getWorldData();
+    var dataStr = worldData.get("region_" + cuboid);
+    if (!dataStr) {
+        return false;
+    }
+    var data = JSON.parse(dataStr);
+    if (!data || !data.positions || !data.positions.length) {
+        return false;
+    }
+    var p = getPlayerPos(player);
+
+    for (var i = 0; i < data.positions.length; i++) {
+        var sub = data.positions[i];
+        if (!sub || !sub.xyz1 || !sub.xyz2) continue;
+        if (isWithinAABB(p, sub.xyz1, sub.xyz2)) return true;
+    }
+    return false;
+}
+
+/**
+ * Checks whether a player's current position lies within a specific sub-cuboid of a region.
+ * @param {IPlayer} player - The player instance.
+ * @param {string} cuboid - The region/cuboid name (without the `region_` prefix).
+ * @param {number|string} subCuboidId - Index of the sub-cuboid within the region's `positions` array.
+ * @returns {boolean} True if the player is inside the specific sub-cuboid, false otherwise.
+ */
+function isPlayerInSubCuboid(player, cuboid, subCuboidId) {
+    var worldData = getWorldData();
+    var dataStr = worldData.get("region_" + cuboid);
+    if (!dataStr) {
+        return false;
+    }
+    var data = JSON.parse(dataStr);
+    if (!data || !data.positions || !data.positions.length) {
+        return false;
+    }
+
+    var idx = parseInt(subCuboidId, 10);
+    if (isNaN(idx) || idx < 0 || idx >= data.positions.length) {
+        return false;
+    }
+
+    var sub = data.positions[idx];
+    if (!sub || !sub.xyz1 || !sub.xyz2) {
+        return false;
+    }
+
+    var p = getPlayerPos(player);
+    return isWithinAABB(p, sub.xyz1, sub.xyz2);
+}
+
+/**
+ * Returns a list of region names for which the player's current position is inside any sub-cuboid.
+ * @param {IPlayer} player - The player instance.
+ * @returns {Array<string>} Array of region names (without the `region_` prefix).
+ */
+function getPlayerCuboids(player) {
+    var worldData = getWorldData();
+    var keys = worldData.getKeys();
+    var res = [];
+    if (!keys) return res;
+    var p = getPlayerPos(player);
+
+    for (var i = 0; i < keys.length; i++) {
+        var key = "" + keys[i];
+        if (key.indexOf("region_") !== 0) continue;
+
+        var dataStr = worldData.get(key);
+        if (!dataStr) continue;
+        
+        var data;
+        try {
+            data = JSON.parse(dataStr);
+        } catch (e) {
+            continue;
+        }
+        if (!data || !data.positions || !data.positions.length) continue;
+
+        for (var j = 0; j < data.positions.length; j++) {
+            var sub = data.positions[j];
+            if (!sub || !sub.xyz1 || !sub.xyz2) continue;
+            if (isWithinAABB(p, sub.xyz1, sub.xyz2)) {
+                res.push(key.substring("region_".length));
+                break; // Only add once per region
+            }
+        }
+    }
+    return res;
 }

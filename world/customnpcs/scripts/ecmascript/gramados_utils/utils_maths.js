@@ -473,6 +473,39 @@ function iposToPos(ipos) {
 }
 
 /**
+ * Converts a numeric array [x, y, z] to a pos object {x, y, z} (floored).
+ * @param {number[]} arr - The [x, y, z] array.
+ * @returns {{x:number,y:number,z:number}} The position object.
+ */
+function arrayToPos(arr) {
+    return {
+        x: Math.floor(arr[0]),
+        y: Math.floor(arr[1]),
+        z: Math.floor(arr[2])
+    };
+}
+
+/**
+ * Returns the integer position of a player as {x, y, z}.
+ * @param {IPlayer} player - The player instance.
+ * @returns {{x:number,y:number,z:number}} The player's position (floored).
+ */
+function getPlayerPos(player) {
+    return iposToPos(player.getPos());
+}
+
+/**
+ * Checks if a position is within an axis-aligned bounding box defined by two [x,y,z] arrays.
+ * @param {{x:number,y:number,z:number}} pos - The position to test.
+ * @param {number[]} xyz1 - First corner [x,y,z].
+ * @param {number[]} xyz2 - Opposite corner [x,y,z].
+ * @returns {boolean} True if inside (inclusive), else false.
+ */
+function isWithinAABB(pos, xyz1, xyz2) {
+    return isWithinZone(pos, arrayToPos(xyz1), arrayToPos(xyz2));
+}
+
+/**
  * Pads a number with leading zeros to a specified length.
  * @param {number} value - The number to pad.
  * @param {number} length - The desired length of the output string.
