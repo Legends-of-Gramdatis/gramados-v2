@@ -742,13 +742,6 @@
                 "StartTime": 2658859055,
                 "Region": "Gramados",
                 "Type": "Advanced"
-            },
-            "409": {
-                "JobID": 409,
-                "JobName": "Mechanic",
-                "StartTime": 2658859055,
-                "Region": "Solterra",
-                "Type": "Advanced"
             }
         }
     },
@@ -1075,6 +1068,13 @@
                 "StartTime": 2726432696,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "554": {
+                "JobID": 554,
+                "JobName": "Mechanic",
+                "StartTime": 2758937300,
+                "Region": "Greenfield",
+                "Type": "Advanced"
             }
         }
     },
