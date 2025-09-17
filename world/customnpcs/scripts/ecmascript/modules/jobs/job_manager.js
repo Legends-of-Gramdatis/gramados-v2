@@ -4,7 +4,7 @@ var world = API.getIWorld(0);
 var data_file_path = "world/customnpcs/scripts/ecmascript/modules/jobs/jobs_log.json";
 
 var job_data;
-var tick_counter_max = 1;
+var tick_counter_max = 10;
 var tick_counter = 1;
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
@@ -27,6 +27,7 @@ function init(event) {
     auto_assign_jobs(event.player); // Added this line
     update_job_perms(event.player);
     update_job_type_json(event.player);
+    remove_jobs_on_permission_loss(event.player);
 
     if (!event.player.getTimers().has(1)) {
         event.player.getTimers().start(1, 20*60*60*24, true);
@@ -46,7 +47,6 @@ function tick(event) {
     if (tick_counter >= tick_counter_max) {
         tick_counter = 0;
         check_all_jobs(event.player);
-        // remove_jobs_on_permission_loss(event.player);
         quit_job_manager(event.player);
     } else {
         tick_counter++;
@@ -487,6 +487,11 @@ function remove_jobs_on_permission_loss(player) {
                 // Remove the job
                 delete job_data[player_uuid]["ActiveJobs"][job_id];
                 remove_job_perms(player, job_id);
+                // remove dialogs
+                player.removeDialog(job["JobID"]);
+                if (job["JobQuit"]) {
+                    player.removeDialog(job["JobQuit"]);
+                }
                 world.broadcast(player.getName() + " has lost the job \"" + active_job["JobName"] + "\" in " + active_job["Region"] + " due to losing ownership of the required region.");
                 saveJson(job_data, data_file_path);
             }
