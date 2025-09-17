@@ -370,25 +370,11 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
-            "66": {
-                "JobID": 66,
-                "JobName": "Mechanic",
-                "StartTime": 2377010664,
-                "Region": "Gramados",
-                "Type": "Advanced"
-            },
             "211": {
                 "JobID": 211,
                 "JobName": "Farmer",
                 "StartTime": 2377884403,
                 "Region": "Monsalac",
-                "Type": "Advanced"
-            },
-            "554": {
-                "JobID": 554,
-                "JobName": "Mechanic",
-                "StartTime": 2663516091,
-                "Region": "Greenfield",
                 "Type": "Advanced"
             }
         }
