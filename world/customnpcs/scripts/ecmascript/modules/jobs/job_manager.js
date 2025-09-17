@@ -484,7 +484,17 @@ function remove_jobs_on_permission_loss(player) {
             }
 
             if (!owns_region) {
-                // Remove the job
+                // Archive the job to history before removal
+                var job_history = {
+                    "JobID": active_job["JobID"],
+                    "JobName": active_job["JobName"],
+                    "StartTime": active_job["StartTime"],
+                    "EndTime": world.getTotalTime(),
+                    "Region": active_job["Region"]
+                };
+                job_data[player_uuid]["JobHistory"][job_id] = job_history;
+
+                // Remove the job from active list
                 delete job_data[player_uuid]["ActiveJobs"][job_id];
                 remove_job_perms(player, job_id);
                 // remove dialogs
