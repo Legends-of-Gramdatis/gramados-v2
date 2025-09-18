@@ -52,6 +52,16 @@ function interact(event) {
             didChange = true;
         }
 
+        if (data.priority !== 2) {
+            data.priority = 2;
+            didChange = true;
+        }
+
+        if (data.salePrice !== 7000) {
+            data.salePrice = 7000; // 70g
+            didChange = true;
+        }
+
         if (didChange) {
             worldData.put(key, JSON.stringify(data));
             changed++;
