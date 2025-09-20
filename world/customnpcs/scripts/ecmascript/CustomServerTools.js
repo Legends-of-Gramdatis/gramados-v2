@@ -811,6 +811,45 @@ function getNbtType(num) {
     return null;
 }
 
+function check_and_update_sign(region, pl) {
+    if (region.data.ownerSigns && region.data.ownerSigns.length) {
+        for (var i = 0; i < region.data.ownerSigns.length; i++) {
+            var s = region.data.ownerSigns[i];
+            if (!s) return false;
+            var line = (s.line != null ? s.line : 2);
+            var blk = pl.getWorld().getBlock(s.x, s.y, s.z);
+            if (!blk || !blk.getTileEntityNBT) {
+                // remove this sign from list
+                region.data.ownerSigns.splice(i, 1);
+                i--;
+                return false;
+            }
+            try {
+                var te = blk.getTileEntityNBT();
+                if (!te) return false;
+
+                var li = parseInt(line, 10);
+                if (isNaN(li) || li < 1) li = 1; if (li > 4) li = 4;
+                var key = "Text" + li;
+                var newText = region.data.owner == null ? "Available" : region.data.owner;
+                newText = region.data.owner == "Gramados" ? "Available" : newText;
+                newText = region.data.forSale ? "Available" : newText;
+                var json = JSON.stringify({ text: newText });
+                te.setString(key, json);
+                blk.setTileEntityNBT(te);
+                // Force block update to reflect changes visually
+                try { if (blk.update) blk.update(); } catch (e) {}
+            } catch (e) {
+                Logger.error("Error updating sign at " + s.x + "," + s.y + "," + s.z + ": " + e);
+                // remove this sign from list
+                region.data.ownerSigns.splice(i, 1);
+                i--;
+                return false;
+            }
+        }
+    }
+}
+
 function getMCModList() {
     var modlist = [];
     var loadmods = Java.type("net.minecraftforge.fml.common.Loader").instance().getModList();
@@ -9417,7 +9456,11 @@ registerXCommands([
         var region = new Region(args.name).init(data);
         var forSale = args.forSale.toString() == 'true';
 
-        region.set('forSale', forSale).save(data);
+        region.set('forSale', forSale)
+
+        check_and_update_sign(region, pl);
+        
+        region.save(data);
 
         tellPlayer(pl, '&aSet region' + (forSale ? '' : ' not') + ' for sale.');
     }, 'region.setForSale', [{
@@ -9568,6 +9611,9 @@ registerXCommands([
             region.data.trusted = [];
         }
         tellPlayer(pl, "&aSet region owner to: " + (region.data.owner == null ? CONFIG_SERVER.TITLE : region.data.owner));
+        
+        check_and_update_sign(region, pl);
+        
         region.save(data);
         return true;
     }, 'region.setOwner', [{
@@ -9642,7 +9688,11 @@ registerXCommands([
     ['!region setSaleType <name> <saleType>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
-        region.set('saleType', args.saleType).save(data);
+        region.set('saleType', args.saleType)
+        
+        check_and_update_sign(region, pl);
+        
+        region.save(data);
 
         tellPlayer(pl, '&aSet sale type of region \'' + region.name + '\' to ' + args.saleType);
     }, 'region.setSaleType', [{
@@ -9769,6 +9819,8 @@ registerXCommands([
             region.data.trusted = [];
             region.data.rentTimeCredit = 0;
 
+            check_and_update_sign(region, pl);
+
 
             p.save(data);
             region.save(data);
@@ -9866,6 +9918,8 @@ registerXCommands([
                 region.data.rentedAt = new Date().getTime();
                 region.data.forSale = false;
             }
+
+            check_and_update_sign(region, pl);
 
             region.data.rentTimeCredit += region.data.rentTime;
             p.save(data)
