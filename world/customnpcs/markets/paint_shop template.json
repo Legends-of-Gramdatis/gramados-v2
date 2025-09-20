@@ -2,18 +2,19 @@
     "TraderCurrency": {
         "NpcMiscInv": [
             {
-                "Slot": 7b,
+                "Slot": 4b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:barrier",
-                "Count": 1b,
+                "id": "variedcommodities:plans",
+                "Count": 5b,
                 "tag": {
                     "display": {
                         "Lore": [
+                            "§e1K"
                         ],
-                        "Name": "§l§l§c§lOut of stock!"
+                        "Name": "§2§lMoney§r"
                     }
                 },
                 "Damage": 0s
@@ -25,20 +26,13 @@
     "TraderSold": {
         "NpcMiscInv": [
             {
-                "Slot": 7b,
+                "Slot": 4b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "minecraft:barrier",
+                "id": "mts:mts.paintgun",
                 "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                        ],
-                        "Name": "§l§l§c§lOut of stock!"
-                    }
-                },
                 "Damage": 0s
             }
         ]
