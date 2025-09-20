@@ -260,6 +260,10 @@ function auto_assign_jobs(player) {
         if (job["AutoAssignPerms"] && Array.isArray(job["AutoAssignPerms"])) {
             for (var j = 0; j < job["AutoAssignPerms"].length; j++) {
                 var region = job["AutoAssignPerms"][j];
+                // ensure region starts with region_
+                if (!region.startsWith("region_")) {
+                    region = "region_" + region;
+                }
                 var region_data = JSON.parse(world_data.get(region));
 
                 if (region_data && region_data["owner"] === player.getName()) {
