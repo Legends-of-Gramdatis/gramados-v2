@@ -165,7 +165,11 @@
                 "region_Gramados_GramadosCity_GrezyatStreet_3_DrabusGarage_Garage",
                 "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
                 "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
-                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage"
+                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage",
+                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage",
+                "Farmiston_Silorose_ZalivkaStreet_AutoRemSiloroz_Garage",
+                "Farmiston_Silorose_VolnayaProspekt_22_VoznyakTekhservis_Garage",
+                "Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership"
             ]
         },
         {
@@ -264,7 +268,16 @@
     ],
     "e6f54888-a9dc-4514-af06-f72d1cc035b1": {
         "Name": "BOTFerris",
-        "JobHistory": {},
+        "JobHistory": {
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2658842278,
+                "EndTime": 2765768291,
+                "Region": "Gramados",
+                "Type": "Advanced"
+            }
+        },
         "ActiveJobs": {
             "51": {
                 "JobID": 51,
@@ -286,13 +299,6 @@
                 "StartTime": 2378074069,
                 "Region": "Gramados",
                 "Type": "Starter"
-            },
-            "66": {
-                "JobID": 66,
-                "JobName": "Mechanic",
-                "StartTime": 2658842278,
-                "Region": "Gramados",
-                "Type": "Advanced"
             },
             "211": {
                 "JobID": 211,
@@ -346,6 +352,22 @@
                 "StartTime": 2353077765,
                 "EndTime": 2367375189,
                 "Region": "Gramados"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2377010664,
+                "EndTime": 2765788500,
+                "Region": "Gramados",
+                "Type": "Advanced"
+            },
+            "554": {
+                "JobID": 554,
+                "JobName": "Mechanic",
+                "StartTime": 2663516091,
+                "EndTime": 2765788500,
+                "Region": "Greenfield",
+                "Type": "Advanced"
             }
         },
         "ActiveJobs": {
@@ -370,25 +392,11 @@
                 "Region": "Gramados",
                 "Type": "Starter"
             },
-            "66": {
-                "JobID": 66,
-                "JobName": "Mechanic",
-                "StartTime": 2377010664,
-                "Region": "Gramados",
-                "Type": "Advanced"
-            },
             "211": {
                 "JobID": 211,
                 "JobName": "Farmer",
                 "StartTime": 2377884403,
                 "Region": "Monsalac",
-                "Type": "Advanced"
-            },
-            "554": {
-                "JobID": 554,
-                "JobName": "Mechanic",
-                "StartTime": 2663516091,
-                "Region": "Greenfield",
                 "Type": "Advanced"
             }
         }
@@ -1068,6 +1076,13 @@
                 "StartTime": 2726432696,
                 "Region": "Gramados",
                 "Type": "Starter"
+            },
+            "66": {
+                "JobID": 66,
+                "JobName": "Mechanic",
+                "StartTime": 2763475703,
+                "Region": "Gramados",
+                "Type": "Advanced"
             },
             "554": {
                 "JobID": 554,
