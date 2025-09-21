@@ -2759,10 +2759,16 @@
         "value": 30000
     },
     "mts:ivv.1gear:0": {
-        "value": 6000
+        "value": 5000
+    },
+    "mts:ivv.1gear_dark:0": {
+        "value": 5000
     },
     "mts:ivv.2gear:0": {
-        "value": 7000
+        "value": 10000
+    },
+    "mts:ivv.2gear_dark:0": {
+        "value": 10000
     },
     "mts:ivv.antenna:0": {
         "value": 5000
@@ -2783,7 +2789,16 @@
         "value": 20000
     },
     "mts:ivv.bigtire:0": {
-        "value": 30000
+        "value": 100000
+    },
+    "mts:ivv.bigtirebudd:0": {
+        "value": 150000
+    },
+    "mts:ivv.bigtirerace:0": {
+        "value": 300000
+    },
+    "mts:ivv.bikewheel:0": {
+        "value": 20000
     },
     "mts:ivv.bodypanel:0": {
         "value": 30000
@@ -2863,26 +2878,62 @@
     "mts:ivv.classicfuel:0": {
         "value": 5000
     },
+    "mts:ivv.classicfueltemp:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicgear:0": {
+        "value": 5000
+    },
     "mts:ivv.classicgearneedle:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicmph:0": {
         "value": 5000
     },
     "mts:ivv.classicmphround:0": {
         "value": 5000
     },
+    "mts:ivv.classicmphscrolling:0": {
+        "value": 5000
+    },
     "mts:ivv.classicoil:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicoilpower:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicpower:0": {
         "value": 5000
     },
     "mts:ivv.classictach:0": {
         "value": 5000
     },
+    "mts:ivv.classictemp:0": {
+        "value": 5000
+    },
     "mts:ivv.climatecompressor:0": {
         "value": 200000
     },
+    "mts:ivv.clock:0": {
+        "value": 5000
+    },
+    "mts:ivv.clock_dark:0": {
+        "value": 5000
+    },
     "mts:ivv.clusterclassic:0": {
-        "value": 20000
+        "value": 50000
     },
     "mts:ivv.clustermodern:0": {
-        "value": 20000
+        "value": 50000
+    },
+    "mts:ivv.compact_electricmotor:0": {
+        "value": 400000
+    },
+    "mts:ivv.compass:0": {
+        "value": 5000
+    },
+    "mts:ivv.containerbed:0": {
+        "value": 150000
     },
     "mts:ivv.crate:0": {
         "value": 100000
@@ -2902,11 +2953,26 @@
     "mts:ivv.exhaust:0": {
         "value": 200000
     },
+    "mts:ivv.flatbed:0": {
+        "value": 100000
+    },
+    "mts:ivv.fuel:0": {
+        "value": 5000
+    },
+    "mts:ivv.fuel_dark:0": {
+        "value": 5000
+    },
     "mts:ivv.fueldigital:0": {
-        "value": 7000
+        "value": 10000
+    },
+    "mts:ivv.fueldigital_dark:0": {
+        "value": 10000
     },
     "mts:ivv.fuelelectric:0": {
-        "value": 6000
+        "value": 5000
+    },
+    "mts:ivv.fuelelectric_dark:0": {
+        "value": 5000
     },
     "mts:ivv.fueltank:0": {
         "value": 60000
@@ -2915,7 +2981,16 @@
         "value": 400000
     },
     "mts:ivv.fueltemp:0": {
-        "value": 6000
+        "value": 5000
+    },
+    "mts:ivv.fueltemp_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltempbattoil:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltempbattoil_dark:0": {
+        "value": 5000
     },
     "mts:ivv.gearbox03auto:0": {
         "value": 200000
@@ -2938,8 +3013,11 @@
     "mts:ivv.glovebox:0": {
         "value": 50000
     },
+    "mts:ivv.handbrake:0": {
+        "value": 50000
+    },
     "mts:ivv.hitch:0": {
-        "value": 1000000
+        "value": 250000
     },
     "mts:ivv.hitchadapter:0": {
         "value": 120000
@@ -2951,7 +3029,7 @@
         "value": 200000
     },
     "mts:ivv.hitchconnector:0": {
-        "value": 1000000
+        "value": 200000
     },
     "mts:ivv.hitchnb:0": {
         "value": 200000
@@ -2969,7 +3047,13 @@
         "value": 5000
     },
     "mts:ivv.hours:0": {
-        "value": 7000
+        "value": 10000
+    },
+    "mts:ivv.hours_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.industrial_electricmotor:0": {
+        "value": 1500000
     },
     "mts:ivv.ivvbumper1:0": {
         "value": 150000
@@ -2989,8 +3073,17 @@
     "mts:ivv.jerrycan:0": {
         "value": 10000
     },
+    "mts:ivv.keyfob:0": {
+        "value": 5000
+    },
+    "mts:ivv.kmh:0": {
+        "value": 5000
+    },
+    "mts:ivv.kmh_dark:0": {
+        "value": 5000
+    },
     "mts:ivv.lidar:0": {
-        "value": 3000000
+        "value": 3500000
     },
     "mts:ivv.lightbar_or:0": {
         "value": 50000
@@ -3001,14 +3094,65 @@
     "mts:ivv.medkit:0": {
         "value": 5000
     },
+    "mts:ivv.microjet:0": {
+        "value": 10000000
+    },
     "mts:ivv.mph:0": {
-        "value": 6000
+        "value": 5000
+    },
+    "mts:ivv.mph_dark:0": {
+        "value": 5000
     },
     "mts:ivv.mphdigital:0": {
-        "value": 7000
+        "value": 10000
+    },
+    "mts:ivv.mphdigital_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.nano_electricmotor:0": {
+        "value": 200000
     },
     "mts:ivv.normaltire:0": {
-        "value": 20000
+        "value": 50000
+    },
+    "mts:ivv.normaltire_rainbow:0": {
+        "value": 80000
+    },
+    "mts:ivv.normaltire_whitewall:0": {
+        "value": 50000
+    },
+    "mts:ivv.normaltire_whitewallthin:0": {
+        "value": 50000
+    },
+    "mts:ivv.normaltirerace:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerace_bluelinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_greenlinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_redlinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_whitewall:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerace_whitewallthin:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerally:0": {
+        "value": 150000
+    },
+    "mts:ivv.normaltiresuper:0": {
+        "value": 2000000
+    },
+    "mts:ivv.oil:0": {
+        "value": 5000
+    },
+    "mts:ivv.oil_dark:0": {
+        "value": 5000
     },
     "mts:ivv.oilcan:0": {
         "value": 1000
@@ -3018,6 +3162,12 @@
     },
     "mts:ivv.oilcan_race:0": {
         "value": 2000
+    },
+    "mts:ivv.oilpower:0": {
+        "value": 5000
+    },
+    "mts:ivv.oilpower_dark:0": {
+        "value": 5000
     },
     "mts:ivv.paintcan_black:0": {
         "value": 20000
@@ -3067,32 +3217,110 @@
     "mts:ivv.paintcan_yellow:0": {
         "value": 20000
     },
+    "mts:ivv.power:0": {
+        "value": 5000
+    },
+    "mts:ivv.power_dark:0": {
+        "value": 5000
+    },
     "mts:ivv.radiator:0": {
         "value": 50000
     },
     "mts:ivv.radiocb:0": {
         "value": 50000
     },
+    "mts:ivv.rim_4spoke:0": {
+        "value": 100000
+    },
+    "mts:ivv.rim_6spoke:0": {
+        "value": 100000
+    },
+    "mts:ivv.rim_futuristic:0": {
+        "value": 400000
+    },
+    "mts:ivv.rim_hypnodish:0": {
+        "value": 500000
+    },
+    "mts:ivv.rim_wire:0": {
+        "value": 300000
+    },
     "mts:ivv.screen:0": {
-        "value": 20000
+        "value": 50000
+    },
+    "mts:ivv.screen_dark:0": {
+        "value": 50000
     },
     "mts:ivv.screwdriver:0": {
         "value": 15000
     },
     "mts:ivv.smalltire:0": {
-        "value": 10000
+        "value": 20000
+    },
+    "mts:ivv.smalltire_rainbow:0": {
+        "value": 50000
+    },
+    "mts:ivv.smalltire_whitewall:0": {
+        "value": 20000
+    },
+    "mts:ivv.smalltire_whitewallthin:0": {
+        "value": 20000
+    },
+    "mts:ivv.smalltirerace:0": {
+        "value": 150000
+    },
+    "mts:ivv.soundbox_jet:0": {
+        "value": 50000
+    },
+    "mts:ivv.soundbox_ufo:0": {
+        "value": 50000
+    },
+    "mts:ivv.soundbox_v8:0": {
+        "value": 50000
+    },
+    "mts:ivv.stakebed:0": {
+        "value": 250000
+    },
+    "mts:ivv.standard_electricmotor:0": {
+        "value": 600000
     },
     "mts:ivv.strut:0": {
         "value": 20000
     },
     "mts:ivv.tach:0": {
-        "value": 6000
+        "value": 5000
+    },
+    "mts:ivv.tach_dark:0": {
+        "value": 5000
     },
     "mts:ivv.tachdigital:0": {
-        "value": 7000
+        "value": 10000
+    },
+    "mts:ivv.tachdigital_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.tachmarkless:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachmarkless_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachshifter:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachshifter_dark:0": {
+        "value": 5000
     },
     "mts:ivv.tape:0": {
         "value": 350
+    },
+    "mts:ivv.tardiskey:0": {
+        "value": 50000
+    },
+    "mts:ivv.temp:0": {
+        "value": 5000
+    },
+    "mts:ivv.temp_dark:0": {
+        "value": 5000
     },
     "mts:ivv.toiletpaper_roll:0": {
         "value": 250
@@ -3100,10 +3328,22 @@
     "mts:ivv.truckseat:0": {
         "value": 100000
     },
+    "mts:ivv.ultra_electricmotor:0": {
+        "value": 1000000
+    },
+    "mts:ivv.ultraindustrial_electricmotor:0": {
+        "value": 2500000
+    },
+    "mts:ivv.ultramotormkii:0": {
+        "value": 5000000
+    },
     "mts:ivv.v1e:0": {
         "value": 500000
     },
     "mts:ivv.v1g:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1heavy:0": {
         "value": 500000
     },
     "mts:ivv.v1prop:0": {
@@ -3112,26 +3352,92 @@
     "mts:ivv.v2:0": {
         "value": 40000
     },
+    "mts:ivv.v2insolvo:0": {
+        "value": 60000
+    },
+    "mts:ivv.v3insolvo:0": {
+        "value": 80000
+    },
     "mts:ivv.v3median:0": {
-        "value": 100000
+        "value": 250000
+    },
+    "mts:ivv.v3performante:0": {
+        "value": 1900000
+    },
+    "mts:ivv.v3vanilla:0": {
+        "value": 400000
     },
     "mts:ivv.v4:0": {
-        "value": 200000
+        "value": 270000
+    },
+    "mts:ivv.v4inlineinsolvo:0": {
+        "value": 100000
+    },
+    "mts:ivv.v4inlinetorqueline:0": {
+        "value": 1200000
+    },
+    "mts:ivv.v4insolvo:0": {
+        "value": 140000
+    },
+    "mts:ivv.v4performante:0": {
+        "value": 2400000
     },
     "mts:ivv.v4smallfry:0": {
         "value": 100000
     },
-    "mts:ivv.v6:0": {
-        "value": 500000
+    "mts:ivv.v5:0": {
+        "value": 1000000
     },
-    "mts:ivv.v6insolvo:0": {
+    "mts:ivv.v5performante:0": {
+        "value": 2900000
+    },
+    "mts:ivv.v6:0": {
         "value": 300000
     },
+    "mts:ivv.v6falconstage1:0": {
+        "value": 10000000
+    },
+    "mts:ivv.v6falconstage2:0": {
+        "value": 15000000
+    },
+    "mts:ivv.v6falconstage3:0": {
+        "value": 20000000
+    },
+    "mts:ivv.v6falconstage4:0": {
+        "value": 40000000
+    },
+    "mts:ivv.v6insolvo:0": {
+        "value": 150000
+    },
+    "mts:ivv.v6performante:0": {
+        "value": 3400000
+    },
     "mts:ivv.v8:0": {
-        "value": 700000
+        "value": 350000
+    },
+    "mts:ivv.v8insolvo:0": {
+        "value": 170000
+    },
+    "mts:ivv.v8newperformante:0": {
+        "value": 3900000
+    },
+    "mts:ivv.v8performante:0": {
+        "value": 5400000
+    },
+    "mts:ivv.v8torqueline:0": {
+        "value": 1600000
+    },
+    "mts:ivv.v90performante:0": {
+        "value": 4900000
+    },
+    "mts:ivv.v90torqueline:0": {
+        "value": 1800000
+    },
+    "mts:ivv.v91performante:0": {
+        "value": 6400000
     },
     "mts:ivv.v9:0": {
-        "value": 1200000
+        "value": 370000
     },
     "mts:mts.handbook_car:0": {
         "value": 6000
