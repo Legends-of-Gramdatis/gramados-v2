@@ -205,7 +205,23 @@ def update_global_prices(market_data, global_prices_path, force_replace=False):
 if __name__ == "__main__":
     # Path to the Minecraft broken market JSON or folder
     input_json_path = [
-        "/home/mouette/gramados-v2/world/customnpcs/markets/antiquary_p0.json"
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_instruments_ivl_1.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_instruments_ivl_2.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_instruments_ivl_3.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_instruments_ivl_4.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_keys_ivl.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_parts_ivl_generic.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_ivl_2.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_ivl_1.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/car_wheels_ivl_rims.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_electronics.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_experimental.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_insolvo.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_median.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_performance.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_performante.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/engines_ivl_torqueline.json",
+        "/home/mouette/gramados-v2/world/customnpcs/markets/truck_ivl_beds.json"
     ]
     # Path to the global prices file
     global_prices_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json"
