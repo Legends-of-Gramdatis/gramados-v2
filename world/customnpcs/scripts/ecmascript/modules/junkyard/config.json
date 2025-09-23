@@ -2,5 +2,12 @@
     "ORDER_DATA_PATH": "world/customnpcs/scripts/data_auto/parts_orders.json",
     "ORDER_ITEM_ID": "variedcommodities:plans",
     "ORDER_ITEM_NAME": "§eVehicle Part Order Form",
-    "ORDER_DELAY_HOURS": 6
+    "ORDER_DELAY_HOURS": 6,
+    "CROWBAR_PRICE_CENTS": 50000,
+    "CROWBAR_COOLDOWN_MINUTES": 10,
+    "JUNKYARD_CRATE_RESET_SECONDS": 60,
+    "ORDER_DEADLINE_DAYS_MIN": 1,
+    "ORDER_DEADLINE_DAYS_MAX": 4,
+    "ORDER_TOLERANCE_MIN": 0.0,
+    "ORDER_TOLERANCE_MAX": 0.3
 }
