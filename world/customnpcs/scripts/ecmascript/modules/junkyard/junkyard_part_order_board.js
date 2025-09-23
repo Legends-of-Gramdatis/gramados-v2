@@ -20,6 +20,10 @@ var ORDER_DATA_PATH = config.ORDER_DATA_PATH;
 var ORDER_ITEM_ID = config.ORDER_ITEM_ID;
 var ORDER_ITEM_NAME = config.ORDER_ITEM_NAME;
 var ORDER_DELAY_HOURS = config.ORDER_DELAY_HOURS;
+var ORDER_DEADLINE_DAYS_MIN = config.ORDER_DEADLINE_DAYS_MIN || 1;
+var ORDER_DEADLINE_DAYS_MAX = config.ORDER_DEADLINE_DAYS_MAX || 4;
+var ORDER_TOLERANCE_MIN = (config.ORDER_TOLERANCE_MIN !== undefined ? config.ORDER_TOLERANCE_MIN : 0.0);
+var ORDER_TOLERANCE_MAX = (config.ORDER_TOLERANCE_MAX !== undefined ? config.ORDER_TOLERANCE_MAX : 0.3);
 
 function interact(event) {
     var player = event.player;
@@ -132,7 +136,12 @@ function generateOrder(player, playerName, world) {
 
     var orderId = "order_" + Math.floor(Math.random() * 1000000);
     var currentDate = getAgeTick(world);
-    var daysToAdd = Math.floor(Math.random() * 4) + 1; // Randomly generate between 1 and 4 days
+    // Clamp inputs to sane ranges and ensure min <= max
+    if (ORDER_DEADLINE_DAYS_MAX < ORDER_DEADLINE_DAYS_MIN) {
+        var tmp = ORDER_DEADLINE_DAYS_MIN; ORDER_DEADLINE_DAYS_MIN = ORDER_DEADLINE_DAYS_MAX; ORDER_DEADLINE_DAYS_MAX = tmp;
+    }
+    var daysSpan = Math.max(0, Math.floor(ORDER_DEADLINE_DAYS_MAX - ORDER_DEADLINE_DAYS_MIN));
+    var daysToAdd = Math.floor(Math.random() * (daysSpan + 1)) + Math.floor(ORDER_DEADLINE_DAYS_MIN); // inclusive range
     var expiryDate = currentDate + IRLDaysToTicks(daysToAdd);
     
 
@@ -140,7 +149,11 @@ function generateOrder(player, playerName, world) {
     var deadlineMultiplier = 1 + (3 - daysToAdd) * 0.1; // 10% increase per day less than 3
     totalPayout = Math.floor(totalPayout * deadlineMultiplier);
 
-    var tolerance = Math.random() * 0.3; // 30% tolerance
+    if (ORDER_TOLERANCE_MAX < ORDER_TOLERANCE_MIN) {
+        var ttmp = ORDER_TOLERANCE_MIN; ORDER_TOLERANCE_MIN = ORDER_TOLERANCE_MAX; ORDER_TOLERANCE_MAX = ttmp;
+    }
+    var tolSpan = Math.max(0, ORDER_TOLERANCE_MAX - ORDER_TOLERANCE_MIN);
+    var tolerance = ORDER_TOLERANCE_MIN + Math.random() * tolSpan; // random in [min, max]
 
     logToFile("mechanics", playerName + " was granted an order: " + partlog.join(", ") + ", Payout: " + getAmountCoin(totalPayout) + ", Tolerance: " + tolerance);
 
