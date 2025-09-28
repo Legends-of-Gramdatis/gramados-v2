@@ -16,7 +16,7 @@ function interact(event) {
         if (isValidKey(item, player)) {
 
             if (!npc.getTimers().has(1)) {
-                tellPlayer(player, "&a:check: You pry open the crate with the crowbar.");
+                tellPlayer(player, "&a:check_mark: You pry open the crate with the crowbar.");
                 npc.executeCommand("/playsound minecraft:entity.zombie.break_door_wood block @a ~ ~ ~ 1 1");
                 var command = "/particle happyVillager " + npc.getX() + " " + (npc.getY() + 1) + " " + npc.getZ() + " 0.5 0.5 0.5 0.1 10";
                 npc.executeCommand(command);
@@ -24,20 +24,20 @@ function interact(event) {
                 npc.getTimers().start(1, 20*60, false);
                 lootCrate(player, item, npc);
             } else {
-                tellPlayer(player, "&c:cross: This crate is already open.");
+                tellPlayer(player, "&c:cross_mark: This crate is already open.");
             }
         } else {
-            tellPlayer(player, "&c:cross: This crowbar is not valid for this crate.");
+            tellPlayer(player, "&c:cross_mark: This crowbar is not valid for this crate.");
             return;
         }
     } else if (itemName === "minecraft:command_block") {
         // reset timer
         npc.getTimers().stop(1);
-        tellPlayer(player, "&a:check: The crate has been reset.");
+        tellPlayer(player, "&a:check_mark: The crate has been reset.");
         npc.executeCommand("/playsound ivv:computer.gaming.deleted player @a");
         npc.getDisplay().setSkinUrl("https://legends-of-gramdatis.com/gramados_skins/Gramados_slime_crate_wooden.png");
     } else {
-        tellPlayer(player, "&c:cross: You need a crowbar to open this crate.");
+        tellPlayer(player, "&c:cross_mark: You need a crowbar to open this crate.");
         return;
     }
 }
@@ -50,7 +50,7 @@ function timer(event) {
 function isValidKey(item, player) {
     var itemLore = item.getLore();
     if (itemLore.length < 3) {
-        tellPlayer(player, "&c:cross: This crowbar is not valid for this crate.");
+        tellPlayer(player, "&c:cross_mark: This crowbar is not valid for this crate.");
         return 0;
     }
     if (itemLore[0] == "§7One-use crowbar to pry open a sealed parts crate."

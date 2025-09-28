@@ -1,7 +1,7 @@
 {
     "CHAT_EMOTES": {
-        "check": "\u9366",
-        "cross": "\u9367",
+        "check_mark": "\u9366",
+        "cross_mark": "\u9367",
         "sun": "\u2739",
         "star": "\u2729",
         "recycle": "\u267B",

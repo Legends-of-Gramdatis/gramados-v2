@@ -21,14 +21,14 @@ function interact(event) {
     var item = player.getMainhandItem();
 
     if (item.isEmpty()) {
-        tellPlayer(player, "§c:cross: You're not holding anything.");
+        tellPlayer(player, "§c:cross_mark: You're not holding anything.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 1 1");
         return;
     }
 
     var lore = item.getLore();
     if (!lore || lore.length === 0 || lore[0].toLowerCase().indexOf("[expertised]") === -1) {
-        tellPlayer(player, "§c:cross: I only deal with properly expertised materials.");
+        tellPlayer(player, "§c:cross_mark: I only deal with properly expertised materials.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 1 1");
         return;
     }
@@ -87,7 +87,7 @@ function interact(event) {
     }
 
     if (!hasValid) {
-        tellPlayer(player, "§c:cross: I can't make sense of this item's markings. Something's off.");
+        tellPlayer(player, "§c:cross_mark: I can't make sense of this item's markings. Something's off.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 1 1");
         return;
     }

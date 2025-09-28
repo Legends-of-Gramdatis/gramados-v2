@@ -8,6 +8,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js')
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
@@ -30,7 +31,7 @@ function interact(event) {
     var npc = event.npc;
 
     if (!playerHasJobWithTag(player, "Mechanic")) {
-        tellPlayer(player, "&c:cross: Only mechanics can interact with this board.");
+        tellPlayer(player, "&c:cross_mark: Only mechanics can interact with this board.");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
@@ -50,7 +51,7 @@ function interact(event) {
         
     } else if (heldItem && heldItem.getName() === "minecraft:command_block") {
 
-        tellPlayer(player, "&5:check: Generating copies of all ongoing orders.");
+        tellPlayer(player, "&5:check_mark: Generating copies of all ongoing orders.");
         npc.executeCommand("/playsound ivv:computer.new.off block @a ~ ~ ~ 10 1");
 
         orderData.orders.forEach(function(order) {
@@ -70,7 +71,7 @@ function interact(event) {
             if (delay > 0 && currentTime - playerEntry.lastOrderTime < delay) {
 
                 npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
-                tellPlayer(player, "&c:cross: You must wait before generating a new order.");
+                tellPlayer(player, "&c:cross_mark: You must wait before generating a new order.");
             
             } else {
 
@@ -87,7 +88,7 @@ function interact(event) {
 
                 player.giveItem(setupOrderNameLore(newOrder, player.getWorld()));
 
-                tellPlayer(player, "&a:check: You have received a new order! Check your hand for the order form.");
+                tellPlayer(player, "&a:check_mark: You have received a new order! Check your hand for the order form.");
                 
             }
 
@@ -101,7 +102,7 @@ function interact(event) {
             if (timeLeft > 0) {
                 tellPlayer(player, ":clock_day:&eTime left before you can take a new order: " + TicksToHumanReadable(timeLeft));
             } else {
-                tellPlayer(player, "&a:check: You can take a new order now!");
+                tellPlayer(player, "&a:check_mark: You can take a new order now!");
             }
             return;
 
@@ -182,7 +183,7 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     if (!orderId) {
-        tellPlayer(player, "&c:cross: Invalid order ID.");
+        tellPlayer(player, "&c:cross_mark: Invalid order ID.");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
@@ -215,7 +216,7 @@ function processOrder(npc, player, heldItem, orderData) {
             player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
         }
 
-        tellPlayer(player, "&a:check: Outdated order returned. Enjoy your compensation cookie!");
+        tellPlayer(player, "&a:check_mark: Outdated order returned. Enjoy your compensation cookie!");
         npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup block @a ~ ~ ~ 10 1");
         saveJson(orderData, ORDER_DATA_PATH);
 
@@ -233,7 +234,7 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     if (!order) {
-        tellPlayer(player, "&c:cross: Invalid order ID.");
+        tellPlayer(player, "&c:cross_mark: Invalid order ID.");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
@@ -248,7 +249,7 @@ function processOrder(npc, player, heldItem, orderData) {
     var adjustedPayout = order.payout;
 
     if (currentTime > toleratedDate) {
-        tellPlayer(player, "&c:cross: The order has expired and cannot be completed. You had to complete it by " + toleranceDeadline + ".");
+        tellPlayer(player, "&c:cross_mark: The order has expired and cannot be completed. You had to complete it by " + toleranceDeadline + ".");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
 
         // Cleanup JSON entries
@@ -280,6 +281,7 @@ function processOrder(npc, player, heldItem, orderData) {
 
     // Calculate payout reduction if completed after the original deadline
     if (currentTime > originalDeadline) {
+        var maxLateTime = lateTime * order.tolerance;
         var lateTime = currentTime - originalDeadline;
         var lateFactor = lateTime / maxLateTime;
         var reductionFactor = lateFactor / 2;
@@ -313,7 +315,7 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     if (!hasAllParts) {
-        tellPlayer(player, "&c:cross: You do not have all the required parts to complete this order.");
+        tellPlayer(player, "&c:cross_mark: You do not have all the required parts to complete this order.");
         npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
         return;
     }
@@ -334,7 +336,7 @@ function processOrder(npc, player, heldItem, orderData) {
     var world = player.getWorld();
 
     // Pay the player
-    tellPlayer(player, "&a:check: Order completed! You have been paid &r:money:&a " + getAmountCoin(adjustedPayout) + ".");
+    tellPlayer(player, "&a:check_mark: Order completed! You have been paid &r:money:&a " + getAmountCoin(adjustedPayout) + ".");
     npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 10 1");
     logToFile("mechanics", player.getName() + " completed order " + orderId + " for payout: " + getAmountCoin(adjustedPayout));
     var moneyItems = generateMoney(world, adjustedPayout);
@@ -363,7 +365,7 @@ function processOrder(npc, player, heldItem, orderData) {
     }
 
     // Decrease the stack size of the order item by 1
-    // tellPlayer(player, "&a:check: You have completed the order. The order form will be removed from your hand.");
+    // tellPlayer(player, "&a:check_mark: You have completed the order. The order form will be removed from your hand.");
     heldItem.setStackSize(heldItem.getStackSize() - 1);
     if (heldItem.getStackSize() <= 0) {
         player.setMainhandItem(world.createItem("minecraft:air", 0, 1)); // Remove the item from hand

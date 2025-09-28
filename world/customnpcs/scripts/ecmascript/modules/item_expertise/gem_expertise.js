@@ -25,7 +25,7 @@ function interact(event) {
     }
 
     if (player.getExpLevel() < config.expertise_exp) {
-        tellPlayer(player, "§c:cross: You do not have enough levels to proceed with this interaction.");
+        tellPlayer(player, "§c:cross_mark: You do not have enough levels to proceed with this interaction.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
     }
@@ -33,7 +33,7 @@ function interact(event) {
     var heldItem = player.getMainhandItem();
 
     if (heldItem.isEmpty()) {
-        tellPlayer(player, "§c:cross: You must hold an item in your main hand to use this expertise.");
+        tellPlayer(player, "§c:cross_mark: You must hold an item in your main hand to use this expertise.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
     }
@@ -42,7 +42,7 @@ function interact(event) {
     var heldItemTxt = heldItem.getName() + ":" + heldItem.getItemDamage();
 
     if (getJsonValue(possible_items, heldItemTxt) == null) {
-        tellPlayer(player, "§c:cross: This item cannot be enhanced with gem expertise.");
+        tellPlayer(player, "§c:cross_mark: This item cannot be enhanced with gem expertise.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
     }
@@ -54,12 +54,12 @@ function interact(event) {
                 expertiseItem(npc, heldItem, player, world);
                 return;
             } else if (lore[0].toLowerCase().indexOf("[expertised]") > -1) {
-                tellPlayer(player, "§c:cross: This item has already been expertised and cannot be enhanced further.");
+                tellPlayer(player, "§c:cross_mark: This item has already been expertised and cannot be enhanced further.");
                 npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
                 return;
             }
 
-            tellPlayer(player, "§c:cross: This item cannot be enhanced with gem expertise.");
+            tellPlayer(player, "§c:cross_mark: This item cannot be enhanced with gem expertise.");
             npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
             return;
         }
@@ -97,7 +97,7 @@ function expertiseItem(npc, itemStack, player, world) {
 
     var fee = parseFloat(feeString[1]) * 100; // Convert to cents
     if (!getMoneyFromPlayerPouch(player, fee)) {
-        tellPlayer(player, "§c:cross: You don't have enough to pay the expertise fee.");
+        tellPlayer(player, "§c:cross_mark: You don't have enough to pay the expertise fee.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
     }

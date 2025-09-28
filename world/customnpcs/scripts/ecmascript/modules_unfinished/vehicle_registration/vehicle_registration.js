@@ -11,13 +11,13 @@ function interact(event) {
     var heldItem = player.getMainhandItem();
 
     if (!heldItem || heldItem.isEmpty()) {
-        tellPlayer(player, "&f:cross: Please hold a vehicle item in your hand.");
+        tellPlayer(player, "&f:cross_mark: Please hold a vehicle item in your hand.");
         return;
     }
 
     var rawNbt = heldItem.getNbt();
     if (!rawNbt) {
-        tellPlayer(player, "&4:cross: This item contains no data.");
+        tellPlayer(player, "&4:cross_mark: This item contains no data.");
         return;
     }
 
@@ -36,9 +36,9 @@ function interact(event) {
 
     // Check if player is allowed to register vehicles
     if (playerHasJobWithTag(player, "Mechanic")) {
-        tellPlayer(player, "&a:check: You are allowed to register vehicles.");
+        tellPlayer(player, "&a:check_mark: You are allowed to register vehicles.");
     } else {
-        tellPlayer(player, "&c:cross: You are not allowed to register vehicles. Please contact a mechanic.");
+        tellPlayer(player, "&c:cross_mark: You are not allowed to register vehicles. Please contact a mechanic.");
         return;
     }
 
@@ -48,7 +48,7 @@ function interact(event) {
 
     // if no "electricPower" key, assume it's not a vehicle
     if (!includes(keys, "electricPower")) {
-        tellPlayer(player, "&c:cross: This item is not a vehicle.");
+        tellPlayer(player, "&c:cross_mark: This item is not a vehicle.");
         return;
     }
 
@@ -64,7 +64,7 @@ function interact(event) {
     }
 
     if (!plate) {
-        tellPlayer(player, "&c:cross: No license plate found on the vehicle.");
+        tellPlayer(player, "&c:cross_mark: No license plate found on the vehicle.");
         return;
     }
 
@@ -73,7 +73,7 @@ function interact(event) {
     }
 
     if (plate.length > 8) {
-        tellPlayer(player, "&c:cross: The license plate is invalid as it exceeds 8 characters.");
+        tellPlayer(player, "&c:cross_mark: The license plate is invalid as it exceeds 8 characters.");
         return;
     }
 
@@ -89,7 +89,7 @@ function interact(event) {
     // ============ Check Key UUID ============ //
     var keyUUID = json.keyUUID || null;
     if (keyUUID) {
-        tellPlayer(player, "&a:check: Vehicle has a valid VIN number.");
+        tellPlayer(player, "&a:check_mark: Vehicle has a valid VIN number.");
     } else {
         tellPlayer(player, "&e:danger: Vehicle has no VIN number. This will require additional paperwork.");
     }
@@ -108,7 +108,7 @@ function interact(event) {
     }
 
     if (!engine) {
-        tellPlayer(player, "&c:cross: No engine found in this vehicle.");
+        tellPlayer(player, "&c:cross_mark: No engine found in this vehicle.");
         return;
     }
 
@@ -116,7 +116,7 @@ function interact(event) {
     var engineDamage = engine.damage || 0;
 
     // ============ Log Result ============ //
-    tellPlayer(player, "&a:check: Vehicle is eligible for registration:");
+    tellPlayer(player, "&a:check_mark: Vehicle is eligible for registration:");
     tellPlayer(player, "&aPlate: &f" + plate);
     tellPlayer(player, "&aVehicle Damage: &f" + vehicleDamage + "/" + maxHealth);
     tellPlayer(player, "&aEngine Found: &f" + engine.systemName);

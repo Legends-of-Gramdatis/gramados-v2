@@ -70,11 +70,11 @@ function listShopUpgrades(player, shopData) {
 
         if (!includes(shopData.upgrades, upgrade.id)) {
             if (canTakeUpgrade.canTake) {
-                var entry = "&2:check: &a" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
+                var entry = "&2:check_mark: &a" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n&7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&a:thumbsup: Shop can take this upgrade!\n&b-----------------------------------------";
                 messageUpgrades2.push(entry);
                 proportion++;
             } else {
-                var entry = "&4:cross: &c" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&c:thumbsdown: Shop can't take this upgrade! \n&b-----------------------------------------";
+                var entry = "&4:cross_mark: &c" + upgrade.name + " &8(ID: " + upgrade.id + ")&a : \n &c- " + canTakeUpgrade.messages.join("\n &c- ") + "\n &7" + upgrade.description + "\n&6Cost: &r:money:&e" + getAmountCoin(upgrade.cost) + "\n&c:thumbsdown: Shop can't take this upgrade! \n&b-----------------------------------------";
                 messageUpgrades3.push(entry);
             }
         } else {
@@ -117,11 +117,11 @@ function listShopEvents(player, shopData) {
 
         if (!findJsonSubEntry(shopData.events, "id", event.id)) {
             if (canStartEvent.canTake) {
-                var entry = "&2:check: &a" + event.name + " &8(ID: " + event.id + ")&a : \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
+                var entry = "&2:check_mark: &a" + event.name + " &8(ID: " + event.id + ")&a : \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
                 messageEvents2.push(entry);
                 proportion++;
             } else {
-                var entry = "&4:cross: &c" + event.name + " &8(ID: " + event.id + ")&c : \n &c- " + canStartEvent.messages.join("\n &c- ") + "\n &7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
+                var entry = "&4:cross_mark: &c" + event.name + " &8(ID: " + event.id + ")&c : \n &c- " + canStartEvent.messages.join("\n &c- ") + "\n &7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&c:thumbsdown: Shop can't start this event! \n&b-----------------------------------------";
                 messageEvents3.push(entry);
             }
         } else {
@@ -129,7 +129,7 @@ function listShopEvents(player, shopData) {
                 var entry = "&7:sun: &7" + event.name + " &8(ID: " + event.id + ")&7 :\n &7" + event.description + "\n&7:thumbsup: Shop is currently running this event! \n&b-----------------------------------------";
                 messageEvents1.push(entry);
             } else {
-                var entry = "&4:cross: &c" + event.name + " &8(ID: " + event.id + ")&c :\n &7" + event.description + "\n&c:thumbsdown: Shop ran this event too recently! \n&b-----------------------------------------";
+                var entry = "&4:cross_mark: &c" + event.name + " &8(ID: " + event.id + ")&c :\n &7" + event.description + "\n&c:thumbsdown: Shop ran this event too recently! \n&b-----------------------------------------";
                 messageEvents1.push(entry);
                 running--;
             }

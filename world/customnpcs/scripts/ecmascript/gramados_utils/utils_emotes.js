@@ -6,7 +6,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 function grantEmote(player, emote) {
     if (giveEmote(player, emote)) {
-        tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
+        tellPlayer(player, "&a:check_mark: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
         var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
         API.executeCommand(player.getWorld(), command);
     }
@@ -36,7 +36,7 @@ function grantBadgeAndEmotes(player, badge, emotes) {
         giveEmote(player, emotes[i]);
     }
     if (giveBadge(player, badge)) {
-        tellPlayer(player, "&a:check: You have received the '&r" + badge + "&a' badge!&8&o Use !mybadges to see your badges.");
+        tellPlayer(player, "&a:check_mark: You have received the '&r" + badge + "&a' badge!&8&o Use !mybadges to see your badges.");
         var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
         API.executeCommand(player.getWorld(), command);
     }

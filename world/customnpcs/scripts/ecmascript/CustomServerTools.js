@@ -4,7 +4,7 @@
 
 function grantEmote(player, emote) {
     if (giveEmote(player, emote)) {
-        tellPlayer(player, "&a:check: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
+        tellPlayer(player, "&a:check_mark: You have received the '&r:" + emote + ":&a' emote!&8&o Use !myemotes to see your emotes.");
         var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPosition().getX() + " " + player.getPosition().getY() + " " + player.getPosition().getZ() + " 1 1";
         API.executeCommand(player.getWorld(), command);
     }
@@ -33,7 +33,7 @@ function grantBadgeAndEmotes(player, badge, emotes) {
         giveEmote(player, emotes[i]);
     }
     if (giveBadge(player, badge)) {
-        tellPlayer(player, "&a:check: You have received the '&r" + badge + "&a' badge!&8&o Use !mybadges to see your badges.");
+        tellPlayer(player, "&a:check_mark: You have received the '&r" + badge + "&a' badge!&8&o Use !mybadges to see your badges.");
         var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
         API.executeCommand(player.getWorld(), command);
     }
@@ -1559,8 +1559,8 @@ var UNI = [
     'f',
 ];
 var CHAT_EMOTES = {
-    "check": "\u9366",
-    "cross": "\u9367",
+    "check_mark": "\u9366",
+    "cross_mark": "\u9367",
     "sun": "\u2739",
     "star": "\u2729",
     "recycle": "\u267B",
@@ -3979,7 +3979,7 @@ function CommandFactory(datahandler, cmdtree) {
                     var typename = dh.type.rangeUpper(0, 1);
                     tellPlayer(pl, getTitleBar(typename + " Info", false));
                     tellPlayer(pl, "[&2:recycle: Refresh{run_command:!" + cdata.cmdtree + " info " + dh.name + "|show_text:$aClick to reload " + cdata.datatype + " info.}&r]\n" +
-                        "&6&l" + typename + " Name: &b" + dh.name + "&r [&4:cross: Remove{run_command:!" + cdata.cmdtree + " remove " + dh.name + "|show_text:$cClick to remove " + dh.type + "}&r]");
+                        "&6&l" + typename + " Name: &b" + dh.name + "&r [&4:cross_mark: Remove{run_command:!" + cdata.cmdtree + " remove " + dh.name + "|show_text:$cClick to remove " + dh.type + "}&r]");
                     if ("getPermission" in dh) {
                         var dhp = dh.getPermission().init(data, false);
                         tellPlayer(pl, "&6&lPermission: &9" + dhp.name + "&r [&e:sun: Info{run_command:!perms info " + dhp.name + "}&r]")
@@ -5360,20 +5360,20 @@ permCommands
         var infoText = "&6&lEnabled: " + (perm.data.enabled ? "&atrue" : "&cfalse");
         infoText += "&r [" +
             (perm.data.enabled ?
-                "&c:cross: Disable{run_command:!perms setEnabled " + perm.name + " false|show_text:$cClick to disable permission.}" :
-                "&a:check: Enable{run_command:!perms setEnabled " + perm.name + " true|show_text:$aClick to enable permission.}"
+                "&c:cross_mark: Disable{run_command:!perms setEnabled " + perm.name + " false|show_text:$cClick to disable permission.}" :
+                "&a:check_mark: Enable{run_command:!perms setEnabled " + perm.name + " true|show_text:$aClick to enable permission.}"
             ) +
             "&r]\n";
-        infoText += "&6&lPermitted Teams: &r(&a:check: Add Teams{suggest_command:!perms addTeams " + perm.name + " }&r)\n";
+        infoText += "&6&lPermitted Teams: &r(&a:check_mark: Add Teams{suggest_command:!perms addTeams " + perm.name + " }&r)\n";
         for (var t in perm.data.teams) {
             var permteam = perm.data.teams[t];
-            infoText += "&e - &r" + permteam + "&r (&c:cross: Remove{run_command:!perms removeTeams " + perm.name + " " + permteam + "|show_text:$cClick to remove team $o" + permteam + "$c from permission $o" + perm.name + "}&r)\n";
+            infoText += "&e - &r" + permteam + "&r (&c:cross_mark: Remove{run_command:!perms removeTeams " + perm.name + " " + permteam + "|show_text:$cClick to remove team $o" + permteam + "$c from permission $o" + perm.name + "}&r)\n";
         }
 
-        infoText += "&6&lPermitted Players: &r(&a:check: Add Players{suggest_command:!perms addPlayers " + perm.name + " }&r)\n";
+        infoText += "&6&lPermitted Players: &r(&a:check_mark: Add Players{suggest_command:!perms addPlayers " + perm.name + " }&r)\n";
         for (var p in perm.data.players) {
             var permpl = perm.data.players[p];
-            infoText += "&e - &r" + permpl + "&r (&c:cross: Remove{run_command:!perms removePlayers " + perm.name + " " + permpl + "}&r)\n";
+            infoText += "&e - &r" + permpl + "&r (&c:cross_mark: Remove{run_command:!perms removePlayers " + perm.name + " " + permpl + "}&r)\n";
         }
         return infoText;
     })
@@ -5460,7 +5460,7 @@ registerXCommands([
 var warpCommands = new CommandFactory("warp");
 warpCommands
     .addInfoText(function (warp) {
-        return "&6&lTeleport Price: &r:money:&e" + getAmountCoin(warp.data.price) + "&r [&a:check: Set{suggest_command:!warp setPrice " + warp.name + " }&r]\n";
+        return "&6&lTeleport Price: &r:money:&e" + getAmountCoin(warp.data.price) + "&r [&a:check_mark: Set{suggest_command:!warp setPrice " + warp.name + " }&r]\n";
     })
     .addInfoText(function (warp) {
         var wpos = warp.data.pos;
@@ -5587,8 +5587,8 @@ badgeCommands
             "&6&lPrice: " + badge.formatPrice() + ' &a[Change]{suggest_command:!badge setPrice ' + badge.name + ' |show_text:$aClick to change the price.}&r\n' +
             "&6&lCurrency: &e" + badge.data.currency + ' &a[Change]{suggest_command:!badge setCurrency ' + badge.name + ' |show_text:$aClick to change the currency.}&r\n' +
             "&6&lEmote Icon:&r :" + badge.data.emote + ": (" + badge.data.emote + ")\n" +
-            '&6&lFor Sale:' + (badge.data.forSale ? '&a:check: Yes &c[Disable]{run_command:!badge setForSale ' + badge.name + ' false|show_text:$cClick to disable ' + badge.name + '}&r' : '&c:cross: No &a[Enable]{run_command:!badge setForSale ' + badge.name + ' true|show_text:$aClick to enable ' + badge.name + '}&r') + '\n' +
-            '&6&lHidden:' + (badge.data.hidden ? '&a:check: Yes &c[Disable]{run_command:!badge setHidden ' + badge.name + ' false|show_text:$cClick to disable ' + badge.name + '}&r' : '&c:cross: No &a[Enable]{run_command:!badge setHidden ' + badge.name + ' true|show_text:$aClick to enable ' + badge.name + '}&r') + '\n' +
+            '&6&lFor Sale:' + (badge.data.forSale ? '&a:check_mark: Yes &c[Disable]{run_command:!badge setForSale ' + badge.name + ' false|show_text:$cClick to disable ' + badge.name + '}&r' : '&c:cross_mark: No &a[Enable]{run_command:!badge setForSale ' + badge.name + ' true|show_text:$aClick to enable ' + badge.name + '}&r') + '\n' +
+            '&6&lHidden:' + (badge.data.hidden ? '&a:check_mark: Yes &c[Disable]{run_command:!badge setHidden ' + badge.name + ' false|show_text:$cClick to disable ' + badge.name + '}&r' : '&c:cross_mark: No &a[Enable]{run_command:!badge setHidden ' + badge.name + ' true|show_text:$aClick to enable ' + badge.name + '}&r') + '\n' +
             "&6&lDescription: &a[Change]{suggest_command:!badge setDesc " + badge.name + "|show_text:$aClick to change description of badge}&r\n" + badge.data.desc + '\n' +
             '&6&lPreview: ' + badge.formatBadge();
     })
@@ -5876,9 +5876,9 @@ registerXCommands([
                     '&e&o' + bank.data.displayName + '\n' +
                     '&f&o' + bank.data.description + '\n' +
                     '&6&lOwner: &e&o' + bank.data.owner + '\n' +
-                    (bank.canWithdraw(pl.getName()) ? '&a[:check: Withdraw]' : '&c[:cross: Withdraw]') + ' ' +
-                    (bank.canDeposit(pl.getName()) ? '&a[:check: Deposit]' : '&c[:cross: Deposit]') + ' ' +
-                    (bank.isAdmin(pl.getName()) ? '&a[:check: Admin]' : '&c[:cross: Admin]') + '\n' +
+                    (bank.canWithdraw(pl.getName()) ? '&a[:check_mark: Withdraw]' : '&c[:cross_mark: Withdraw]') + ' ' +
+                    (bank.canDeposit(pl.getName()) ? '&a[:check_mark: Deposit]' : '&c[:cross_mark: Deposit]') + ' ' +
+                    (bank.isAdmin(pl.getName()) ? '&a[:check_mark: Admin]' : '&c[:cross_mark: Admin]') + '\n' +
                     '\n&6&lCapacity:\n' +
                     '&6Current: &r:money:&e' + getAmountCoin(bank.data.amount) + '&r\n' +
                     progressBar(bank.data.amount, bank.data.cap, 30) + ' &b' + roundDec(100 / bank.data.cap * bank.data.amount) + '%\n' +
@@ -6094,7 +6094,7 @@ registerXCommands([
                     parseInt(params.page || 1),
                     "!myBank info " + bank.name + " -showpage:" + page + " -show:{SHOWLEN} -page:{PAGE} -sort:{SORT}",
                     function (trusted) {
-                        var txt = '&e - &a' + trusted + ' &c[:cross: Remove]{run_command:!myBank removetrusted ' + trustedName.toLowerCase() + ' ' + bank.name + ' ' + trusted + '}&r\n';
+                        var txt = '&e - &a' + trusted + ' &c[:cross_mark: Remove]{run_command:!myBank removetrusted ' + trustedName.toLowerCase() + ' ' + bank.name + ' ' + trusted + '}&r\n';
                         return txt;
                     },
                     function (a, b) {
@@ -6134,7 +6134,7 @@ registerXCommands([
                             '&6&lIncome: &r:money:&e' + getAmountCoin(autopayPlayer.payAmount) + ' &6every &e' + getTimeString(bank.data.autopayInterval) + ' &6passed\n' +
                             '&6&lCollect Money Left: &r:money:&e' + getAmountCoin(autopayPlayer.amount);
 
-                        var txt = '&e - &a' + autopayPlayer.player + ' &r:money:&e' + getAmountCoin(autopayPlayer.payAmount) + ' &5[Info]{*|show_text:' + ccs(hoverTxt) + '}&r &c[:cross: Remove]{run_command:!myBank removeAutopay ' + bank.name + ' ' + autopayPlayer.player + '}&r\n' +
+                        var txt = '&e - &a' + autopayPlayer.player + ' &r:money:&e' + getAmountCoin(autopayPlayer.payAmount) + ' &5[Info]{*|show_text:' + ccs(hoverTxt) + '}&r &c[:cross_mark: Remove]{run_command:!myBank removeAutopay ' + bank.name + ' ' + autopayPlayer.player + '}&r\n' +
                             '&e--: &d[Set Amount]{suggest_command:!myBank changeAutopayAmount ' + bank.name + ' ' + autopayPlayer.player + '|show_text:$dClick to change autopay amount}&r';
                         return txt + '\n';
                     },
@@ -6207,9 +6207,9 @@ registerXCommands([
                     '&e&o' + bank.data.displayName + '\n' +
                     '&f&o' + bank.data.description + '\n' +
                     '&6&lOwner: &e&o' + bank.data.owner + '\n' +
-                    (bank.canWithdraw(pl.getName()) ? '&a[:check: Withdraw]' : '&c[:cross: Withdraw]') + ' ' +
-                    (bank.canDeposit(pl.getName()) ? '&a[:check: Deposit]' : '&c[:cross: Deposit]') + ' ' +
-                    (bank.isAdmin(pl.getName()) ? '&a[:check: Admin]' : '&c[:cross: Admin]') + '\n' +
+                    (bank.canWithdraw(pl.getName()) ? '&a[:check_mark: Withdraw]' : '&c[:cross_mark: Withdraw]') + ' ' +
+                    (bank.canDeposit(pl.getName()) ? '&a[:check_mark: Deposit]' : '&c[:cross_mark: Deposit]') + ' ' +
+                    (bank.isAdmin(pl.getName()) ? '&a[:check_mark: Admin]' : '&c[:cross_mark: Admin]') + '\n' +
                     '\n&6&lCapacity:\n' +
                     '&6Current: &r:money:&e' + getAmountCoin(bank.data.amount) + '&r\n' +
                     progressBar(bank.data.amount, bank.data.cap, 30) + ' &b' + roundDec(100 / bank.data.cap * bank.data.amount) + '%\n' +
@@ -6852,10 +6852,10 @@ registerXCommands([
         tellPlayer(pl, "&eEmote Name: &r" + em.name);
         tellPlayer(pl, "&eEmote: &r:" + em.name + ":");
         tellPlayer(pl, "&ePermission ID: &9&l" + em.getPermission().name + "&r [&6:sun: Info{run_command:!perms info " + em.getPermission().name + "}&r]");
-        tellPlayer(pl, "&eIs Default: &c" + (em.data.default ? "&a:check: Yes" : "&c:cross: No"));
+        tellPlayer(pl, "&eIs Default: &c" + (em.data.default ? "&a:check_mark: Yes" : "&c:cross_mark: No"));
         tellPlayer(pl, "&ePrice: &c" + getAmountCoin(em.data.price));
-        tellPlayer(pl, "&eFor Sale: " + (em.data.forSale ? "&a:check: Yes" : "&c:cross: No"));
-        tellPlayer(pl, "&eHidden: " + (em.data.hidden ? "&c:check: Yes" : "&a:cross: No"));
+        tellPlayer(pl, "&eFor Sale: " + (em.data.forSale ? "&a:check_mark: Yes" : "&c:cross_mark: No"));
+        tellPlayer(pl, "&eHidden: " + (em.data.hidden ? "&c:check_mark: Yes" : "&a:cross_mark: No"));
     }, 'emote.info', [{
         "argname": "name",
         "type": "datahandler",
@@ -6868,7 +6868,7 @@ registerXCommands([
 
         if (!params.accept) {
             var output = '&eDo you want to buy &r:' + em.name + ': (' + em.name + ')&e for &r' + em.showPrice() + '&e?\n' +
-                '&a[:check: Yes]{run_command:!emote buy ' + em.name + ' -accept|show_text:$aClick to buy}&r';
+                '&a[:check_mark: Yes]{run_command:!emote buy ' + em.name + ' -accept|show_text:$aClick to buy}&r';
 
 
             tellPlayer(pl, output);
@@ -7159,7 +7159,7 @@ registerXCommands([
             var codeId = codes[n];
             var code = new GiftCode(codeId).init(data);
             var hoverInfo = "$e$lCode: $r" + code.data.code + "\n$e$lUses left: $r" + code.getUsesLeft();
-            tellPlayer(pl, "&e - &b&l" + code.name + "{*|show_text:" + hoverInfo + "}&r [&6:sun: Info{run_command:!giftcode info " + code.name + "}&r] [&c:cross: Remove{run_command:!giftcode remove " + code.name + "}&r]");
+            tellPlayer(pl, "&e - &b&l" + code.name + "{*|show_text:" + hoverInfo + "}&r [&6:sun: Info{run_command:!giftcode info " + code.name + "}&r] [&c:cross_mark: Remove{run_command:!giftcode remove " + code.name + "}&r]");
         }
     }, 'giftcode.list', []],
     ['!giftcode info <name>', function (pl, args, data) {
@@ -7176,7 +7176,7 @@ registerXCommands([
             for (var i in code.data.items) {
                 var itemData = code.data.items[i];
                 var item = nbtItem(itemData, pl.world);
-                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + item.getDisplayName() + " &2x" + item.getStackSize() + " &r[&c:cross: Remove{run_command:!giftcode removeItem " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + item.getDisplayName() + " &2x" + item.getStackSize() + " &r[&c:cross_mark: Remove{run_command:!giftcode removeItem " + code.name + " " + (parseInt(i) + 1) + "}&r]");
             }
         }
         if (code.data.emotes.length > 0) {
@@ -7184,7 +7184,7 @@ registerXCommands([
             for (var i in code.data.emotes) {
                 var emoteData = code.data.emotes[i];
                 var emote = new Emote(emoteData).init(data);
-                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + emote.name + " &r:" + emote.name + ": [&c:cross: Remove{run_command:!giftcode removeEmote " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + emote.name + " &r:" + emote.name + ": [&c:cross_mark: Remove{run_command:!giftcode removeEmote " + code.name + " " + (parseInt(i) + 1) + "}&r]");
             }
         }
 
@@ -8063,7 +8063,7 @@ registerXCommands([
                 '&a - an &einterest rate of &c' + showInterest + '%\n' +
                 '&a - &e' + showPayTime + ' time&a per payment.\n\n' +
                 '&d[? Loan Info]{run_command:!loan help ' + showAmount + ' ' + showInterest + ' ' + showPayTime + '|show_text:$dClick to show payments info about this loan. It\'s handy to know beforehand.}&r\n' +
-                '&a[:check: Send Request]{run_command:!loan request ' + args.player + ' ' + showAmount + ' ' + showInterest + ' ' + showPayTime + ' -accept|show_text:$aClick to send the request.}&r';
+                '&a[:check_mark: Send Request]{run_command:!loan request ' + args.player + ' ' + showAmount + ' ' + showInterest + ' ' + showPayTime + ' -accept|show_text:$aClick to send the request.}&r';
 
         } else {
             output += '&aSent loan invite to ' + otherp.name + '.';
@@ -8145,7 +8145,7 @@ registerXCommands([
                 '&aInterest: &e' + showInterest + '%\n' +
                 '&aTime per payment: &e' + showPayTime + '\n' +
                 '&d[Loan payments info]{run_command:!loan help ' + showAmount + ' ' + showInterest + ' ' + showPayTime + '|show_text:$dClick here to show what payments ' + otherp.name + ' needs to make.}&r\n' +
-                '&a[:check: Accept Loan Request]{run_command:!loan check ' + otherp.name + ' -accept|show_text:$aClick to accept the loan request.}&r';
+                '&a[:check_mark: Accept Loan Request]{run_command:!loan check ' + otherp.name + ' -accept|show_text:$aClick to accept the loan request.}&r';
 
         } else if (params.accept) {
             p.data.money -= request.amount;
@@ -8286,7 +8286,7 @@ registerXCommands([
                     if (tm != null) {
                         if (perm.data.teams.indexOf(tm.getName()) > -1) {
                             var tcol = '&' + getColorId(tm.getColor());
-                            tellPlayer(pl, "&e    - By team " + tcol + "&o" + tm.getName() + "&r (&c:cross: Revoke Team{run_command:!perms removeTeams " + perm.name + " " + tm.getName() + "|show_text:$cClick to revoke permission " + perm.name + " for team " + tm.getName() + ".}&r)");
+                            tellPlayer(pl, "&e    - By team " + tcol + "&o" + tm.getName() + "&r (&c:cross_mark: Revoke Team{run_command:!perms removeTeams " + perm.name + " " + tm.getName() + "|show_text:$cClick to revoke permission " + perm.name + " for team " + tm.getName() + ".}&r)");
                         }
                     }
                     shownperms++;
@@ -8549,8 +8549,8 @@ registerXCommands([
         var mj = p.getMaxJobs(sb);
         var hc = Object.keys(p.data.homes).length;
         var jc = Object.keys(p.data.jobs).length;
-        tellPlayer(pl, "&6Max Homes: &e" + hc + "/" + (mh == -1 ? "&aInfinite" : mh) + "&r [&a:check: Set{suggest_command:!player setMaxHomes " + p.name + " }&r] [&dView{run_command:!player homes " + p.name + "}&r]");
-        tellPlayer(pl, "&6Max Jobs: &e" + jc + "/" + (mj == -1 ? "&aInfinite" : mj) + "&r [&a:check: Set{suggest_command:!player setMaxJobs " + p.name + " }&r] [&dView{run_command:!player income " + p.name + "}&r]");
+        tellPlayer(pl, "&6Max Homes: &e" + hc + "/" + (mh == -1 ? "&aInfinite" : mh) + "&r [&a:check_mark: Set{suggest_command:!player setMaxHomes " + p.name + " }&r] [&dView{run_command:!player homes " + p.name + "}&r]");
+        tellPlayer(pl, "&6Max Jobs: &e" + jc + "/" + (mj == -1 ? "&aInfinite" : mj) + "&r [&a:check_mark: Set{suggest_command:!player setMaxJobs " + p.name + " }&r] [&dView{run_command:!player income " + p.name + "}&r]");
         var badgetxt = arrayFormat(p.data.badges, "&e - &b{VALUE}", "\n");
         tellPlayer(pl, "&6&lBadges:&r\n" + badgetxt);
         tellPlayer(pl, "&6Unlocks:\n&b" + Object.keys(p.data.unlocks).join(', '))
@@ -8685,7 +8685,7 @@ registerXCommands([
             var output = getTitleBar('Payment to ' + args.player, false) + '\n' +
                 '&6You want to pay ' + showAmount + '&6 to ' + args.player + '\n' +
                 '&6Are you sure?\n' +
-                '&a[:check: Accept]{run_command:' + command + '|show_text:$aClick to pay or do:\n$a$o' + command + '}';
+                '&a[:check_mark: Accept]{run_command:' + command + '|show_text:$aClick to pay or do:\n$a$o' + command + '}';
 
             tellPlayer(pl, output);
         }
@@ -8709,7 +8709,7 @@ registerXCommands([
 
         var output = getTitleBar('Pay Request', false) + '\n' +
             '&a' + pl.getName() + ' has requested you to pay them &r:money:&e' + args.amount + '\n&6For: &e' + args.reason.join(" ") + '\n' +
-            '&a[:check: Accept]{run_command:!money pay ' + pl.getName() + ' ' + args.amount + '|show_text:$aClick to pay}&r\n&cIgnore to deny';
+            '&a[:check_mark: Accept]{run_command:!money pay ' + pl.getName() + ' ' + args.amount + '|show_text:$aClick to pay}&r\n&cIgnore to deny';
 
         tellTarget(pl, args.player, output);
     }, 'money.request', [{
@@ -9093,14 +9093,14 @@ registerXCommands([
         if (Object.keys(plo.data.homes).length > 0) {
             tellPlayer(pl, getTitleBar("Homes"));
             var maxHomeStr = " - &e" + Object.keys(plo.data.homes).length + "/" + (plo.data.maxHomes == -1 ? "&aInfinite" : plo.data.maxHomes) + "&e Homes used";
-            tellPlayer(pl, "[&a:check: Add{suggest_command:!setHome }&r]" + maxHomeStr);
+            tellPlayer(pl, "[&a:check_mark: Add{suggest_command:!setHome }&r]" + maxHomeStr);
             for (var i in plo.data.homes) {
                 var home = plo.data.homes[i];
                 // get home teleportation price
                 var dist = Math.sqrt(Math.pow(home.x - pl.getX(), 2) + Math.pow(home.y - pl.getY(), 2) + Math.pow(home.z - pl.getZ(), 2));
                 var cost = Math.ceil(dist * 10);
 
-                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + getAmountCoin(cost) + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
+                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + getAmountCoin(cost) + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross_mark: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
             }
             return true;
         } else {
@@ -9272,7 +9272,7 @@ registerXCommands([
                     output += '&6&lPermission ID: &9&l' + regperm.name + '&r (&6:sun: Perm Info{run_command:!perms info ' + regperm.name + '}&r)\n';
                     // var rpermname = region.getPermission().name;
                     //tellPlayer(pl, '&6&lRegion Permission: &b&l'+rpermname+'&r '+(region.getPermission().exists(data) ? '(&6:sun: Info{run_command:!perms info '+rpermname+'}&r)'));
-                    output += '&6&lOwner: &r&o' + (region.data.owner == null ? CONFIG_SERVER.TITLE : region.data.owner + '&r (&c:cross: Kick{run_command:!region setOwner ' + region.name + '|show_text:Kick ' + region.data.owner + ' from ' + region.name + '}&r)') + '&r (&a+ Set{suggest_command:!region setOwner ' + region.name + ' |show_text:Set new owner for ' + region.name + '}&r)\n';
+                    output += '&6&lOwner: &r&o' + (region.data.owner == null ? CONFIG_SERVER.TITLE : region.data.owner + '&r (&c:cross_mark: Kick{run_command:!region setOwner ' + region.name + '|show_text:Kick ' + region.data.owner + ' from ' + region.name + '}&r)') + '&r (&a+ Set{suggest_command:!region setOwner ' + region.name + ' |show_text:Set new owner for ' + region.name + '}&r)\n';
 
                     output += '&6&lPriority: &e' + region.data.priority + '&r [&6&lEDIT{suggest_command:!region setPrio ' + region.name + ' }&r]\n';
                     var openVals = [
@@ -9284,7 +9284,7 @@ registerXCommands([
                         var opv = openVals[i];
                         var rov = region.data['all' + opv];
                         output +=
-                            '&6&lOpen ' + opv + ': &b' + (rov ? '&a:check: Yes' : '&c:cross: No') +
+                            '&6&lOpen ' + opv + ': &b' + (rov ? '&a:check_mark: Yes' : '&c:cross_mark: No') +
                             '&r [&' + (rov ? 'cDisable' : 'aEnable') +
                             '{run_command:!region setOpen ' + region.name + ' ' + opv.toLowerCase() + ' ' + (!rov).toString() + '}&r]\n';
                     }
@@ -9297,7 +9297,7 @@ registerXCommands([
                         output += '&6&lPosition List:&r (&cClear{run_command:!region removePos ' + region.name + ' ' + Object.keys(region.data.positions).join(' ') + '}&r)\n';
                         for (var ri in region.data.positions) {
                             var regpos = region.data.positions[ri];
-                            output += '&5&l - #' + ri + '&r &d[Info]{run_command:!region info ' + region.name + ' -showpage:posinfo -posNum:' + ri.toString() + '}&r &c[:cross: Remove]{run_command:!region removePos ' + region.name + ' ' + ri + '}&r\n';
+                            output += '&5&l - #' + ri + '&r &d[Info]{run_command:!region info ' + region.name + ' -showpage:posinfo -posNum:' + ri.toString() + '}&r &c[:cross_mark: Remove]{run_command:!region removePos ' + region.name + ' ' + ri + '}&r\n';
                         }
                     } else {
                         output += '&eRegion has no positions! (This region still can be used for group-rules, like regions with positions set)\n';
@@ -9327,8 +9327,8 @@ registerXCommands([
                     output += '&6&lFor Sale: &r' +
                         (
                             region.data.forSale ?
-                                '&a[:check: Yes] &c[Disable]{run_command:!region setForSale ' + region.name + ' false|show_text:$cClick to disable region for sale.}&r' :
-                                '&c[:cross: No] &a[Enable]{run_command:!region setForSale ' + region.name + ' true|show_text:$aClick to enable region for sale.}&r'
+                                '&a[:check_mark: Yes] &c[Disable]{run_command:!region setForSale ' + region.name + ' false|show_text:$cClick to disable region for sale.}&r' :
+                                '&c[:cross_mark: No] &a[Enable]{run_command:!region setForSale ' + region.name + ' true|show_text:$aClick to enable region for sale.}&r'
                         ) + '\n';
 
                     if (region.data.saleType == 'buy') {
@@ -9963,7 +9963,7 @@ registerXCommands([
             function (region) {
                 var regionInfo = '&dClick to see more details.\n' +
                     '&6&lRegion Name: &b' + region.name + '&r\n' +
-                    (region.data.owner == pl.getName() ? '&a[:check: Owner]' : '&c[:cross: Owner] ' + (region.isTrusted(pl.getName()) ? '&a[:check: Trusted]' : '&c[:cross: Trusted]')) + ' ' + (region.getPermission().init(data).permitsPlayer(pl) ? '&a[:check: Via Permission]' : '&c[:cross: Via Permission]') + '\n' +
+                    (region.data.owner == pl.getName() ? '&a[:check_mark: Owner]' : '&c[:cross_mark: Owner] ' + (region.isTrusted(pl.getName()) ? '&a[:check_mark: Trusted]' : '&c[:cross_mark: Trusted]')) + ' ' + (region.getPermission().init(data).permitsPlayer(pl) ? '&a[:check_mark: Via Permission]' : '&c[:cross_mark: Via Permission]') + '\n' +
                     '&6&lOwner: &r' + (region.data.owner ? '&e' + region.data.owner : CONFIG_SERVER.TITLE) + '\n' +
                     '&dClick to see more details.\n&d&o!myRegion info ' + region.name;
 
@@ -10027,8 +10027,8 @@ registerXCommands([
                             var regionBuyHelpText = '&eBecause you\'re the owner of this region, you can set this region for sale. You can\'t change what the region is worth though.\nIf you feel like your region is worth more now, request a re-tax it at staff.';
                             output += '&6&lFor sale: &d[?]{*|show_text:' + regionBuyHelpText.replaceAll('&', '$') + '}&r ' +
                                 (region.data.forSale ?
-                                    ' &a[:check: Yes] &c[Disable]{run_command:!myRegion setForSale ' + region.name + ' false|show_text:$cClick to disable for sale.}' :
-                                    ' &c[:cross: No] &a[Enable]{run_command:!myRegion setForSale ' + region.name + ' true|show_text:$aClick to enable for sale.}'
+                                    ' &a[:check_mark: Yes] &c[Disable]{run_command:!myRegion setForSale ' + region.name + ' false|show_text:$cClick to disable for sale.}' :
+                                    ' &c[:cross_mark: No] &a[Enable]{run_command:!myRegion setForSale ' + region.name + ' true|show_text:$aClick to enable for sale.}'
                                 ) + '\n';
 
                         }
@@ -10048,7 +10048,7 @@ registerXCommands([
                         (params.page || 1),
                         '!myRegion info ' + region.name + ' {MATCHES} -showpage:trusted -show:{SHOW} -page:{PAGE} -sort:{SORT}',
                         function (trusted) {
-                            return '&e - &b' + trusted + ' &c[:cross: Remove]{run_command:!myRegion removeTrusted ' + region.name + ' ' + trusted + '|show_text:$cClick to remove ' + trusted + ' from trusted list.}&r\n';
+                            return '&e - &b' + trusted + ' &c[:cross_mark: Remove]{run_command:!myRegion removeTrusted ' + region.name + ' ' + trusted + '|show_text:$cClick to remove ' + trusted + ' from trusted list.}&r\n';
                         },
                         function (a, b) {
                             return a.toLowerCase() - b.toLowerCase();
@@ -10279,9 +10279,9 @@ unlockCommands
             "&6&lCurrency: &e" + unlock.data.currency + ' &a[Change]{suggest_command:!unlock setCurrency ' + unlock.name + ' |show_text:$aClick to change the currency.}&r\n' +
             "&6&lPrice: " + unlock.formatPrice() + ' &a[Change]{suggest_command:!unlock setPrice ' + unlock.name + ' |show_text:$aClick to change the price.}&r\n' +
             '&6&lDescription: &e' + unlock.data.description + ' &a[Change]{suggest_command:!unlock setDesc ' + unlock.name + ' |show_text:$aClick to change the description.}&r\n' +
-            '&6&lHidden:' + (unlock.data.hidden ? '&a:check: Yes &c[Disable]{run_command:!unlock setHidden ' + unlock.name + ' false|show_text:$cClick to disable ' + unlock.name + '}&r' : '&c:cross: No &a[Enable]{run_command:!unlock setHidden ' + unlock.name + ' true|show_text:$aClick to enable ' + unlock.name + '}&r') + '\n' +
+            '&6&lHidden:' + (unlock.data.hidden ? '&a:check_mark: Yes &c[Disable]{run_command:!unlock setHidden ' + unlock.name + ' false|show_text:$cClick to disable ' + unlock.name + '}&r' : '&c:cross_mark: No &a[Enable]{run_command:!unlock setHidden ' + unlock.name + ' true|show_text:$aClick to enable ' + unlock.name + '}&r') + '\n' +
             '&6&lColor: &' + unlock.getColor() + unlock.data.color + ' &a[Change]{suggest_command:!unlock setColor ' + unlock.name + ' |show_text:$aClick to change the color.}&r\n' +
-            '&6&lFor Sale:' + (unlock.data.forSale ? '&a:check: Yes &c[Disable]{run_command:!unlock setForSale ' + unlock.name + ' false|show_text:$cClick to disable ' + unlock.name + '}&r' : '&c:cross: No &a[Enable]{run_command:!unlock setForSale ' + unlock.name + ' true|show_text:$aClick to enable ' + unlock.name + '}&r');
+            '&6&lFor Sale:' + (unlock.data.forSale ? '&a:check_mark: Yes &c[Disable]{run_command:!unlock setForSale ' + unlock.name + ' false|show_text:$cClick to disable ' + unlock.name + '}&r' : '&c:cross_mark: No &a[Enable]{run_command:!unlock setForSale ' + unlock.name + ' true|show_text:$aClick to enable ' + unlock.name + '}&r');
     })
     .setListTransformer(function (unlock) {
         return '&e - &b' + unlock.name + ' &5[Info]{run_command:!unlock info ' + unlock.name + '|show_text:$5Click to show info about unlockable}&r\n';
