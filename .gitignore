@@ -73,6 +73,7 @@ world/customnpcs/scripts/player_scripts.json
 GramdatisServer-1.0-alpha-all.jar.OLD
 reports/*.md
 reports/*.json
+reports/*.csv
 world/customnpcs/linkednpcs/New.json
 lore markdowns/Private Lore Recap.md
 lore markdowns/TO SORT MESS/*.md
