@@ -1565,7 +1565,6 @@ var CHAT_EMOTES = {
     "star": "\u2729",
     "recycle": "\u267B",
     "seagull": "\u932A",
-    "slightly_smiling": "\u9500",
     "cool": "\u9914",
     "shocked": "\u9915",
     "smile": "\u9916",
@@ -1683,6 +1682,8 @@ var CHAT_EMOTES = {
     "hut_brick": "\u946A",
     "castle": "\u946D",
     "brewers_kit": "\u9453",
+    "empire_block": "\u9500",
+    "empire_ornate": "\u9501",
     "coal_ore": "\u9220",
     "iron_ore": "\u9221",
     "gold_ore": "\u9222",
@@ -13930,7 +13931,7 @@ function build(e, placeblock) { //Custom event
                         continue;
                     }
 
-                    can = true;
+                        can = true;
                 }
             }
         }
