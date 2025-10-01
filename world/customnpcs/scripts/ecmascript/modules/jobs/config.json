@@ -195,11 +195,7 @@
                 "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
                 "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
                 "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage",
-                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage",
-                "region_Farmiston_Siloroz_ZalivkaStreet_AutoRemSiloroz_Garage",
-                "region_Farmiston_Siloroz_VolnayaProspekt_22_VoznyakTekhservis_Garage",
-                "region_Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership",
-                "region_Monsalac_Chaseals_OldByreStreet_TheChasealsBench_Garage"
+                "region_Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership_Dealership"
             ],
             "Tags": [
                 "Mechanic"
