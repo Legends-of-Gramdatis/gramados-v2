@@ -19,5 +19,5 @@ def decode_world_data(input_filepath, output_filepath):
 
 if __name__ == "__main__":
     input_file = "/home/mouette/gramados-v2/world/customnpcs/scripts/world_data.json"
-    output_file = "/home/mouette/gramados-v2/tools/output_decoded_world_data.json"
+    output_file = "/home/mouette/gramados-v2/reports/output_decoded_world_data.json"
     decode_world_data(input_file, output_file)

@@ -2,7 +2,7 @@ import json
 
 # Load stock market JSON (replace with your actual file)
 stock_market_path = "/home/mouette/gramados-v2/world/customnpcs/scripts/stock_exchange.json"
-global_prices_path = "/home/mouette/gramados-v2/tools/output_global_prices.json"
+global_prices_path = "/home/mouette/gramados-v2/reports/output_global_prices.json"
 
 with open(stock_market_path, "r") as file:
     stock_market_data = json.load(file)

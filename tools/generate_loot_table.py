@@ -44,8 +44,8 @@ def write_loot_table_to_file(loot_table, output_filename):
         json.dump(loot_table, file, indent=4)
 
 if __name__ == "__main__":
-    input_file = "/home/mouette/gramados-v2/tools/items.txt"             # Make sure this matches your .txt file
-    output_file = "/home/mouette/gramados-v2/tools/loot_table.json"      # Output loot table JSON
+    input_file = "/home/mouette/gramados-v2/reports/items.txt"
+    output_file = "/home/mouette/gramados-v2/reports/loot_table.json"
 
     items = read_items_from_file(input_file)
     loot_table = generate_loot_table(items)
