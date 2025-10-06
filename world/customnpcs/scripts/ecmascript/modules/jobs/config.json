@@ -247,7 +247,9 @@
             "Title": "Greenfield Organic Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Greenfield_Countryside_BananaSteal_Farm"
+                "region_Greenfield_Countryside_BananaSteal_Farm",
+                "region_Greenfield_Countryside_FalleafRoad_5_KoolFarm_Farm",
+                "region_Greenfield_Countryside_FootoralPath_SprigtelFarm_Farm"
             ],
             "Tags": [
                 "Farmer",
