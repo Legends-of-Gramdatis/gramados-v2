@@ -1,0 +1,98 @@
+{
+    "indev": true,
+    "beta_players": [
+        "TheOddlySeagull",
+        "Kitsunami_"
+    ],
+    "general": {
+        "moduleEnabled": true,
+        "saveThrottleTicks": 40,
+        "logJson": true
+    },
+    "phases": {
+        "0": {
+            "name": "Immigrant Office",
+            "enabled": true,
+            "stages": {
+                "arrival": {
+                    "region": {
+                        "p1": [-4347, 91, 3727],
+                        "p2": [-4315, 88, 3719],
+                        "fallback": [-4324, 88.5, 3723]
+                    },
+                    "dialog": {
+                        "id": 597,
+                        "npc": "Daren Krovic",
+                        "teleport_delay_seconds": 10,
+                        "state_hotel_tp": {
+                            "pos": [-1884, 88.5, -192],
+                            "yaw": 90,
+                            "pitch": 0
+                        },
+                        "chat": {
+                            "onDialogComplete": "&a:check_mark: Paperwork complete! Please wait while we arrange your transfer...",
+                            "onTimerStart": "&e:hourglass: Processing... You'll be transferred shortly.",
+                            "onTeleport": "&b:airplane_departure: Welcome to Gramados! Enjoy your stay at the State Hotel.",
+                            "onConfine": ":lit: &eYou still need to speak with &6&lDaren Krovic&r&e to finish immigration before leaving.",
+                            "onWelcome": "&b:star: Welcome to Gramados! Please speak with {npc} &bto complete your immigration paperwork."
+                        }
+                    }
+                }
+            }
+        },
+        "1": {
+            "name": "State Hotel",
+            "enabled": true,
+            "stages": {
+                "hotel": {
+                    "hotel_region": {
+                        "p1": [-1858, 72, -175],
+                        "p2": [-1934, 108, -214],
+                        "fallback": [-1884, 88.5, -192]
+                    },
+                    "reminder_interval_seconds": 600,
+                    "room_assign": {
+                        "rooms": [
+                            {
+                                "id": "301",
+                                "region": { "p1": [-1889, 87, -189], "p2": [-1885, 85, -193], "fallback": [-1887, 86, -191] }
+                            },
+                            {
+                                "id": "302",
+                                "region": { "p1": [-1895, 87, -189], "p2": [-1891, 85, -193], "fallback": [-1893, 86, -191] }
+                            },
+                            {
+                                "id": "303",
+                                "region": { "p1": [-1901, 87, -189], "p2": [-1897, 85, -193], "fallback": [-1899, 86, -191] }
+                            }
+                        ]
+                    },
+                    "furniture_loot": {
+                        "beds": "_LOOTTABLE_FURNITURE_BED",
+                        "storage": "_LOOTTABLE_FURNITURE_STORAGE",
+                        "tables": "_LOOTTABLE_FURNITURE_TABLE"
+                    },
+                    "home": {
+                        "setup_delay_seconds": 20,
+                        "lost_moment": {
+                            "teleport": { "pos": [-2100, 70, -150], "yaw": 0, "pitch": 0 },
+                            "radius": 12
+                        }
+                    },
+                    "chat": {
+                        "onArrival": "&bYou've been assigned room &6#{room}&b. Explore the hotel and find it.",
+                        "onReminder": "&eReminder: Your assigned room is &6#{room}&e.",
+                        "onRoomEnter": "&aYou've found your room! Let's make it yours.",
+                        "onFurnitureGiven": "&bHere is some starter furniture. Place it however you like.",
+                        "onHomePrompt": "&eRun &6!setHome&e inside your room to register it as your home.",
+                        "onHomeSet": "&aHome registered! Time for a quick orientation...",
+                        "onLostMomentTeleport": "&cYou got lost outside! Use &6!home&c to return.",
+                        "onLostMomentReminder": "&eUse &6!home&e to return to your room.",
+                        "onReturnHome": "&bGreat! You can view all homes with &6!myHomes&b (max 2 for now).",
+                        "onPhaseComplete": "&aState Hotel orientation complete!"
+                    }
+                }
+            }
+        }
+    }
+}
