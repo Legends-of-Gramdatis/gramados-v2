@@ -14067,9 +14067,7 @@ function login(e) {
 
 
         var pchats = plo.getChats(data);
-        if (pchats.length == 0) {
-            tellPlayer(pl, "[" + CONFIG_SERVER.TITLE + "&r] &eYou are not in a chatchannel yet! &6&nClick here{run_command:!chat list|show_text:$6!chat list}&r&e to join one!");
-        } else {
+        if (pchats.length != 0) {
             var tellchannels = "";
             pchats.forEach(function (pc) {
                 tellchannels += pc.getTag('{run_command:!chat leave ' + pc.name + '|show_text:$eClick to leave channel.}') + '&r ';
