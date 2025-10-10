@@ -1,0 +1,95 @@
+{
+    "classicGhost": {
+        "weight": 70,
+        "minSize": 4,
+        "maxSize": 6,
+        "skins": [
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_gray.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_green.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_pink.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_purple.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_purpledk.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_red.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_ice.png"
+        ],
+        "interactLines": [
+            "&6The ghost tilts its head, as if puzzled by the living.",
+            "&6A gentle 'boo' whispers from the ghost - it seems almost friendly.",
+            "&6The ghost drifts in circles, humming a haunting melody.",
+            "&6You feel like the ghost is smiling at you, despite having no face.",
+            "&6The ghost waves hello... or is it waving through you? Hard to tell.",
+            "&6The ghost raises a sheet and says, 'I'm just here for the boo-fet.'",
+            "&6You hear a faint: 'Don't worry, I'm on ghoul-d behavior today.'",
+            "&6It points at your boots: 'Nice boo-ts.'",
+            "&6The specter waggles a finger: 'No need to be afraid—I'm transparently harmless.'",
+            "&6A soft 'boo' echoes... followed by a giggle: 'Gotcha!'",
+            "&6The ghost mimes sipping tea: 'Spirits? I prefer boo-bbles.'",
+            "&6It drifts through a wall and returns: 'Just doing my haunt-work.'",
+            "&6The ghost tries a scary pose, then shrugs: 'Guess I'm not cut out for fright-shifts.'"
+        ],
+        "deathLines": [
+            "&7With a soft sigh, the ghost dissipates into the air.",
+            "&7The ghost disappears, leaving only a wisp of ectoplasm behind.",
+            "&7A faint giggle echoes as the ghost vanishes without a trace.",
+            "&7The ghost evaporates, a hint of marshmallow scent in its wake.",
+            "&7In a blink, the ghost is gone - poof, like it was never there.",
+            "&7The ghost whispers, 'It's been a boo-tiful time,' and fades.",
+            "&7A final 'boooooo...' dwindles into the breeze.",
+            "&7Only a chill lingers, like the punchline of a deadpan joke.",
+            "&7A swirl of fog spells 'boo' before dispersing.",
+            "&7The specter signs off: 'See you on the other side... of town.'",
+            "&7You catch a last wave—then nothing but moonlight.",
+            "&7The spirit departs on ghoul time, punctual as ever.",
+            "&7A soft chuckle: 'Rest in pieces... of marshmallow.'"
+        ]
+    },
+    "aggressiveGhost": {
+        "weight": 30,
+        "minSize": 5,
+        "maxSize": 7,
+        "skins": [
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_marble_blue.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_marble_red.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_shiny_cloudy.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_shiny_gold.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_shiny_iridescent.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_shiny_rainbow.png",
+            "https://legends-of-gramdatis.com/gramados_skins/spooktober/Gramados_steve_ghost_shiny_white.png"
+        ],
+        "interactLines": [
+            "&6The ghost hisses and lunges forward, eager to attack!",
+            "&6A distorted growl emanates from the ghost as it prepares to strike.",
+            "&6Glowing eyes lock onto you - this spirit is not friendly.",
+            "&6The ghost's form flickers violently, enraged by your presence.",
+            "&6The ghost snarls: 'Prepare to be disem-boo-welled!'",
+            "&6It cracks its knuckles—if it had any: 'Time for a fright workout.'",
+            "&6'You look spirited,' it hisses, 'let me take that from you.'",
+            "&6The air turns icy: 'Boo-hoo? No—boo YOU.'",
+            "&6'This haunt is my turf,' it growls, 'you're just passing through.'",
+            "&6The ghost draws close: 'Scream if you like—I thrive on boos.'",
+            "&6It circles you: 'Don't ghost me now, we just met.'",
+            "&6'I'm a real go-getter,' it grins, 'I go get YOU.'"
+        ],
+        "deathLines": [
+            "&cThe ghost shrieks and bursts into smoky fragments!",
+            "&cA chilling wail marks the ghost's end, fading into silence.",
+            "&cDefeated, the ghost implodes with a final, furious howl.",
+            "&cThe ghost is vanquished, dissolving into dark vapors.",
+            "&cWith a furious hiss, the ghost is un-boo-died.",
+            "&cA thunderous wail snaps short—silence haunts the space.",
+            "&c'Boo-hoo,' it spits, 'fine—I'm out.' Then vanishes.",
+            "&cThe specter cracks like glass, scattering into black frost.",
+            "&cShadows recoil, dragging the spirit into the floor.",
+            "&cA final glare burns, then gutters like a candle.",
+            "&cIt mutters, 'You win... for now,' before dissipating.",
+            "&cThe air releases a pent-up scream and goes still."
+        ]
+    },
+    "spawnIntervalMs": 300000,
+    "despawnTimeMs": 300000,
+    "maxNearbyNPCs": 30,
+    "spawnRadius": 20,
+    "swarmRadius": 6,
+    "minGhosts": 3,
+    "maxGhosts": 5
+}
