@@ -32,6 +32,18 @@
                 "month": 3,
                 "day": 22
             }
+        },
+        {
+            "name": "Spooktober",
+            "startDate": {
+                "month": 9,
+                "day": 9
+            },
+            "endDate": {
+                "month": 9,
+                "day": 31
+            },
+            "cooldownTime": 300000
         }
     ]
 }
