@@ -38,22 +38,22 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1146
+            "egg_count": 1160
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 185
+                    "egg_count": 190
                 },
                 "chromashell": {
-                    "egg_count": 148
+                    "egg_count": 156
                 },
                 "encrypted": {
-                    "egg_count": 34
+                    "egg_count": 35
                 }
             },
-            "egg_count": 367
+            "egg_count": 381
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
@@ -235,6 +235,11 @@
                 }
             },
             "egg_count": 3
+        }
+    },
+    "Spooktober": {
+        "TheOddlySeagull": {
+            "playerLastSpawnTime": 1760133582784
         }
     }
 }
