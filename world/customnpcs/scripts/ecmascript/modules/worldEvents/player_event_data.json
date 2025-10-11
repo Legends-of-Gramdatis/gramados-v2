@@ -239,7 +239,12 @@
     },
     "Spooktober": {
         "TheOddlySeagull": {
-            "playerLastSpawnTime": 1760133582784
+            "playerLastSpawnTime": 1760172208753,
+            "ghostsSpawned": 18,
+            "ghostsHunted": 3
+        },
+        "oldbjorn": {
+            "playerLastSpawnTime": 1760148474409
         }
     }
 }
