@@ -68,8 +68,8 @@ function init(event) {
     if (endDate) {
         npc.getStoreddata().put("event_end", endDate.month + "/" + endDate.day);
     }
-    logToFile("events", "Spawned a ghost NPC (" + ghostType + ") at " + npc.getPos() + 
-                " on " + npc.getStoreddata().get("spawn_date_str"));
+    // logToFile("events", "Spawned a ghost NPC (" + ghostType + ") at " + npc.getPos() + 
+    //             " on " + npc.getStoreddata().get("spawn_date_str"));
 }
 
 /**
