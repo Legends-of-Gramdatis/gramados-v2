@@ -77,6 +77,14 @@ function spawnGhostSwarm(player, world, count, swarmRadius) {
         logToFile("events", "Spawned " + spawned + " ghost(s) around " + targetNpc.getName() + 
                           " for player " + player.getName() + ".");
     }
+    // Track total ghosts spawned per player for Spooktober
+    try {
+        var pdata = loadPlayerEventData("Spooktober", player.getName());
+        pdata.ghostsSpawned = (pdata.ghostsSpawned || 0) + spawned;
+        savePlayerEventData("Spooktober", player.getName(), pdata);
+    } catch (err) {
+        // ignore persistence issues to avoid interrupting gameplay
+    }
     return spawned;
 }
 

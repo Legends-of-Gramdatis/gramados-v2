@@ -179,8 +179,17 @@ function damaged(event) {
         ccs("&dCollected during: &fSpooktober Event"),
         ccs("&8Spawned on: &7" + (npc.getStoreddata().get("spawn_date_str") || "Unknown"))
     ]);
-    // Give to player if killed by a player, otherwise drop on ground
+    // Give to player if hit by a player, otherwise drop on ground
     if (event.source && event.source.getType() == 1) {  // 1 = Player type
+        // Increment player's ghostsHunted counter
+        try {
+            var hunter = event.source;
+            var pdata = loadPlayerEventData("Spooktober", hunter.getName());
+            pdata.ghostsHunted = (pdata.ghostsHunted || 0) + 1;
+            savePlayerEventData("Spooktober", hunter.getName(), pdata);
+        } catch (err) {
+            // ignore persistence errors
+        }
         event.source.giveItem(drop);
     } else {
         world.dropItem(npc.getPos(), drop);
