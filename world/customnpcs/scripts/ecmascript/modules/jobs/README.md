@@ -5,7 +5,7 @@ This module implements a job system for the Gramados modded Minecraft RP server 
 ## Features
 
 - **Job Types**: Jobs are categorized into `Starter`, `Advanced`, and `Prestige` types.
-- **Region-Specific Jobs**: Jobs are tied to specific regions, with limits on the number of active jobs per type in each region.
+- **Region-Specific Jobs**: Jobs are tied to specific regions, with limits on the number of active jobs per type in each region. Players gain eligibility by owning the region or being on its trusted list.
 - **Permissions Management**: Automatically assigns and removes permissions based on active jobs.
 - **Job History**: Tracks the history of jobs players have taken, including start and end times.
 - **Dynamic Updates**: Ensures compatibility with new features by updating player data as needed.
@@ -105,5 +105,13 @@ Jobs are defined in the `Jobs` array in `jobs_log.json`. Example:
 - Enhance job history tracking with more detailed statistics.
 
 ## Credits
+
+## Notes on Trusted Access
+
+- Advanced and other auto-assigned jobs that require a region will be granted automatically if the player either owns the region or is listed in the region's `trusted` array.
+- If a player loses ownership or is removed from the `trusted` list of all qualifying regions for a job, that job will be revoked automatically.
+- The dynamic `jobs.json` stores two extra fields when a job is granted via region access:
+   - `Source`: e.g., `auto-region-owner`, `auto-region-trusted`, or `dialog-join`.
+   - `RegionAccess`: `owner` or `trusted` (only present for region-based grants). These fields are also archived in `JobHistory` when a job ends.
 
 Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.
