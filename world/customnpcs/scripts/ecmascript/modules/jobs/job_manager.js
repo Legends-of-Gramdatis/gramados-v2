@@ -64,6 +64,7 @@ function init(event) {
         }
     } catch (e) { /* no-op */ }
     update_job_type_json(event.player);
+    update_job_access_json(event.player);
 
     if (!event.player.getTimers().has(1)) {
         event.player.getTimers().start(1, 20 * 60 * 60 * 24, true);
@@ -313,13 +314,21 @@ function check_region_triggers(player) {
                 if (!region.startsWith("region_")) {
                     region = "region_" + region;
                 }
-                var region_data = JSON.parse(world_data.get(region));
+                var raw = world_data.get(region);
+                var region_data = raw ? JSON.parse(raw) : null;
 
-                if (region_data && region_data["owner"] === player.getName()) {
-                    // Use unified add flow (checks limits, perms, tags)
-                    if (!job_data[player_uuid]["ActiveJobs"][job["JobID"]]) {
-                        add_job_to_player(player, job, /*source*/"auto-region");
+                var accessType = null;
+                if (region_data) {
+                    if (region_data["owner"] === player.getName()) {
+                        accessType = "owner";
+                    } else if (Array.isArray(region_data["trusted"]) && region_data["trusted"].indexOf(player.getName()) !== -1) {
+                        accessType = "trusted";
                     }
+                }
+
+                if (accessType && !job_data[player_uuid]["ActiveJobs"][job["JobID"]]) {
+                    // Use unified add flow (checks limits, perms, tags)
+                    add_job_to_player(player, job, /*source*/"auto-region-" + accessType);
                 }
             }
         }
@@ -477,6 +486,52 @@ function update_job_type_json(player) {
 }
 
 /**
+ * Backfills RegionAccess (owner/trusted) for active jobs that are tied to regions
+ * without changing their Source unless already present. Saves if any updates.
+ * @param {Object} player
+ */
+function update_job_access_json(player) {
+    var uuid = player.getUUID();
+    var world_data = world.getStoreddata();
+    var updated = false;
+
+    for (var job_id in job_data[uuid]["ActiveJobs"]) {
+        var active = job_data[uuid]["ActiveJobs"][job_id];
+        if (active && (active["RegionAccess"] === undefined || active["RegionAccess"] === null)) {
+            // find job def
+            var jdef = null;
+            for (var i = 0; i < job_config["Jobs"].length; i++) {
+                if (job_config["Jobs"][i]["JobID"] == job_id) { jdef = job_config["Jobs"][i]; break; }
+            }
+            if (!jdef || !Array.isArray(jdef["AutoAssignPerms"])) continue;
+
+            var access = null;
+            for (var k = 0; k < jdef["AutoAssignPerms"].length; k++) {
+                var region = jdef["AutoAssignPerms"][k];
+                if (!region.startsWith("region_")) region = "region_" + region;
+                var raw = world_data.get(region);
+                var rdata = raw ? JSON.parse(raw) : null;
+                if (!rdata) continue;
+                if (rdata["owner"] === player.getName()) { access = "owner"; break; }
+                if (Array.isArray(rdata["trusted"]) && rdata["trusted"].indexOf(player.getName()) !== -1) { access = "trusted"; break; }
+            }
+            if (access) {
+                active["RegionAccess"] = access;
+                if (!active["Source"]) {
+                    // Do not overwrite dialog-based jobs if they set Source themselves later
+                    // But if missing and access implies region grant, annotate minimal source
+                    active["Source"] = "auto-region-" + access;
+                }
+                updated = true;
+            }
+        }
+    }
+    if (updated) {
+        saveJson(job_data, data_file_path);
+    }
+}
+
+/**
  * Removes jobs from a player if they lose the required region ownership.
  * @param {Object} player - The player object.
  */
@@ -502,7 +557,7 @@ function remove_jobs_on_permission_loss(player) {
         }
 
         if (job && job["AutoAssignPerms"] && Array.isArray(job["AutoAssignPerms"])) {
-            var owns_region = false;
+            var has_access = false;
 
             for (var j = 0; j < job["AutoAssignPerms"].length; j++) {
                 var region = job["AutoAssignPerms"][j];
@@ -510,17 +565,18 @@ function remove_jobs_on_permission_loss(player) {
                 if (!region.startsWith("region_")) {
                     region = "region_" + region;
                 }
-                var region_data = JSON.parse(world_data.get(region));
+                var raw = world_data.get(region);
+                var region_data = raw ? JSON.parse(raw) : null;
 
-                if (region_data && region_data["owner"] === player.getName()) {
-                    owns_region = true;
+                if (region_data && (region_data["owner"] === player.getName() || (Array.isArray(region_data["trusted"]) && region_data["trusted"].indexOf(player.getName()) !== -1))) {
+                    has_access = true;
                     break;
                 }
             }
 
-            if (!owns_region) {
-                archive_and_remove_job(player, job_id, job, "perm-loss:region-ownership");
-                tellPlayer(player, "&c:cross_mark: You have lost your job as &b" + active_job["JobName"] + " &cin &e" + active_job["Region"] + "&c because you no longer own the required region.");
+            if (!has_access) {
+                archive_and_remove_job(player, job_id, job, "perm-loss:region-access");
+                tellPlayer(player, "&c:cross_mark: You have lost your job as &b" + active_job["JobName"] + " &cin &e" + active_job["Region"] + "&c because you no longer have access to the required region.");
             }
         }
     }
@@ -587,8 +643,16 @@ function add_job_to_player(player, job, source) {
         "JobName": job["JobName"],
         "StartTime": world.getTotalTime(),
         "Region": job["Region"],
-        "Type": job["Type"]
+        "Type": job["Type"],
+        "Source": source
     };
+
+    // If this was granted by region access, annotate whether by owner or trusted
+    if (source === "auto-region-owner") {
+        job_data[uuid]["ActiveJobs"][id]["RegionAccess"] = "owner";
+    } else if (source === "auto-region-trusted") {
+        job_data[uuid]["ActiveJobs"][id]["RegionAccess"] = "trusted";
+    }
 
     update_job_perms(player);
     // Centralized: ensure job and tag join dialogs are granted, and lock/quit cleared
@@ -599,8 +663,10 @@ function add_job_to_player(player, job, source) {
     saveJson(job_data, data_file_path);
 
     // Message
-    if (source === "auto-region") {
+    if (source === "auto-region-owner") {
         tellPlayer(player, "&a:check_mark: You have been granted the job &b" + job["JobName"] + " &7in &e" + job["Region"] + "&7 because you own the required region.");
+    } else if (source === "auto-region-trusted") {
+        tellPlayer(player, "&a:check_mark: You have been granted the job &b" + job["JobName"] + " &7in &e" + job["Region"] + "&7 because you are trusted in the required region.");
     } else if (source === "dialog-join") {
         tellPlayer(player, "&a:check_mark: You have started working as &b" + job["JobName"] + " &7in &e" + job["Region"] + "&7. Good luck!");
     }
@@ -636,7 +702,9 @@ function archive_and_remove_job(player, job_id, job_def_opt, reason_opt) {
         "StartTime": active_job["StartTime"],
         "EndTime": world.getTotalTime(),
         "Region": active_job["Region"],
-        "Type": job_def ? (job_def["Type"] || active_job["Type"]) : active_job["Type"]
+        "Type": job_def ? (job_def["Type"] || active_job["Type"]) : active_job["Type"],
+        "Source": active_job["Source"] || null,
+        "RegionAccess": active_job["RegionAccess"] || null
     };
 
     // Remove from active
