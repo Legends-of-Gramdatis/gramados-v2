@@ -35,9 +35,65 @@ function spawnGhostSwarm(player, world, count, swarmRadius) {
         return 0;
     }
     if (potentialTargets.length === 0) {
-        // No anchor NPC found near player
-        logToFile("events", player.getName() + " found no NPC for ghosts to haunt.");
-        return 0;
+        // No anchor NPC found near player -> fallback: sometimes haunt the player directly
+        try {
+            var chance = (typeof SPOOKTOBER_CONFIG.noNpcHauntPlayerChancePercent !== 'undefined')
+                ? SPOOKTOBER_CONFIG.noNpcHauntPlayerChancePercent : 0;
+            var roll = Math.random() * 100;
+            if (roll < chance) {
+                var spawnedPlayer = 0;
+                for (var si = 0; si < count; si++) {
+                    var px = Math.floor(playerPos.getX() + Math.random() * (swarmRadius * 2) - swarmRadius);
+                    var pz = Math.floor(playerPos.getZ() + Math.random() * (swarmRadius * 2) - swarmRadius);
+                    var py = Math.floor(playerPos.getY());
+                    // Find ground by dropping down
+                    var dropCountP = 0;
+                    while (world.getBlock(px, py, pz).isAir() && dropCountP < 30) {
+                        py--;
+                        dropCountP++;
+                    }
+                    if (!world.getBlock(px, py, pz).isAir() && world.getBlock(px, py+1, pz).isAir()) {
+                        // Determine ghost type by weight and spawn the appropriate clone
+                        var totalWP = SPOOKTOBER_CONFIG.classicGhost.weight + SPOOKTOBER_CONFIG.aggressiveGhost.weight;
+                        var rollP = Math.floor(Math.random() * totalWP);
+                        var cloneNameP = "Ghost Passive";
+                        if (rollP < SPOOKTOBER_CONFIG.aggressiveGhost.weight) {
+                            cloneNameP = "Ghost Aggressive";
+                        }
+                        world.spawnClone(px, py+1, pz, 2, cloneNameP);
+                        spawnedPlayer++;
+                    }
+                }
+                if (spawnedPlayer > 0) {
+                    var hauntMsgsPlayer = [
+                        "&5A cold shiver runs down your spine... spirits surround you!",
+                        "&5You sense eyes from beyond—the ghosts are haunting you!",
+                        "&5The veil thins around you; shapes coalesce from the mist...",
+                        "&5Whispers circle your ears; specters gather at your side."
+                    ];
+                    tellRandomMessage(player, hauntMsgsPlayer);
+                    logToFile("events", "Spawned " + spawnedPlayer + " ghost(s) around player " + player.getName() + ".");
+                } else {
+                    logToFile("events", "Failed to find valid spots to spawn ghosts around player " + player.getName() + ".");
+                }
+                // Track total ghosts spawned per player for Spooktober
+                try {
+                    var pdataP = loadPlayerEventData("Spooktober", player.getName());
+                    pdataP.ghostsSpawned = (pdataP.ghostsSpawned || 0) + spawnedPlayer;
+                    savePlayerEventData("Spooktober", player.getName(), pdataP);
+                } catch (errP) {
+                    // ignore persistence issues to avoid interrupting gameplay
+                }
+                return spawnedPlayer;
+            } else {
+                logToFile("events", player.getName() + " found no NPC for ghosts to haunt; player-haunt roll failed (" + roll.toFixed(1) + " >= " + chance + ").");
+                return 0;
+            }
+        } catch (fallbackErr) {
+            // If anything goes wrong, fail gracefully with original behavior
+            logToFile("events", "Player-haunt fallback error: " + fallbackErr);
+            return 0;
+        }
     }
     // Choose a random NPC as the haunt target
     var targetNpc = potentialTargets[Math.floor(Math.random() * potentialTargets.length)];

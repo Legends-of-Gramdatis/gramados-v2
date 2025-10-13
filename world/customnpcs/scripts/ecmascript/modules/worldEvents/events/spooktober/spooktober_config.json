@@ -88,8 +88,9 @@
     "spawnIntervalMs": 300000,
     "despawnTimeMs": 300000,
     "maxNearbyNPCs": 40,
-    "spawnRadius": 30,
+    "spawnRadius": 20,
     "swarmRadius": 6,
     "minGhosts": 3,
-    "maxGhosts": 10
+    "maxGhosts": 10,
+    "noNpcHauntPlayerChancePercent": 30
 }
