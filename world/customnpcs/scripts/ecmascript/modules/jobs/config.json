@@ -249,7 +249,16 @@
             "AutoAssignPerms": [
                 "region_Greenfield_Countryside_BananaSteal_Farm",
                 "region_Greenfield_Countryside_FalleafRoad_5_KoolFarm_Farm",
-                "region_Greenfield_Countryside_FootoralPath_SprigtelFarm_Farm"
+                "region_Greenfield_Countryside_FootoralPath_SprigtelFarm_Farm",
+                "region_Greenfield_Countryside_GreleafRoad_AltanticPuffinAcres_Farm",
+                "region_Greenfield_xdg22_farm_house",
+                "region_Greenfield_Countryside_BananaSteal_Farm",
+                "region_Greenfield_farmhouse_farm_cave_2",
+                "region_Greenfield_Countryside_AeromorRoad_2",
+                "region_Greenfield_Countryside_AeromorRoad_3",
+                "region_Greenfield_Countryside_AeromorRoad_4",
+                "region_Greenfield_Countryside_AeromorRoad_5",
+                "region_Greenfield_Countryside_AeromorRoad_6"
             ],
             "Tags": [
                 "Farmer",
