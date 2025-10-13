@@ -1,0 +1,77 @@
+{
+  "global": {
+    "maxReputationPerPlayer": 2000,
+    "lowCivThreshold": 600,
+    "lowCivFloorMultiplier": 0,
+    "minFoodLevelPerItem": 2,
+    "foodUnitsPerCivilityPoint": 10,
+    "messageTiers": [
+      {
+        "minRepGain": 100,
+        "messages": [
+          "&aYour generosity is overwhelming-the entire community will feel this. You'll always be welcome here.",
+          "&aThis is a monumental donation. From all of us: thank you. You've made a real difference today.",
+          "&aWhat an incredible contribution. You're helping keep many folks fed and hopeful."
+        ]
+      },
+      {
+        "minRepGain": 50,
+        "messages": [
+          "&2That's a tremendous help. Many people will benefit from this.",
+          "&2A big donation like this goes a long way-thank you for caring.",
+          "&2Wonderful-this will stock our pantry for days."
+        ]
+      },
+      {
+        "minRepGain": 20,
+        "messages": [
+          "&3A generous contribution-thank you. The community will appreciate it.",
+          "&3This is very helpful. We're grateful for your support.",
+          "&3That's a meaningful donation-thank you for stepping up."
+        ]
+      },
+      {
+        "minRepGain": 5,
+        "messages": [
+          "&eThanks for the solid donation-every bit strengthens our shelves.",
+          "&eAppreciated! This will help more than you think.",
+          "&eThank you-this is exactly what we needed today."
+        ]
+      },
+      {
+        "minRepGain": 1,
+        "messages": [
+          "&7Thank you. It's not a lot, but every donation counts.",
+          "&7We appreciate it-small steps still move us forward.",
+          "&7Thanks-little by little, it all adds up."
+        ]
+      }
+    ]
+  },
+  "facilities": {
+    "Gramados State Hotel": {
+      "acceptedCrates": [
+        "mts:unuparts.unuparts_part_unu_crate_wooden",
+        "mts:unuparts.unuparts_part_unu_crate_metal",
+        "mts:iv_tpp.trin_crate2",
+        "mts:iv_tpp.trin_crate1_wooden",
+        "mts:iv_tpp.trin_crate1_metal",
+        "mts:ivv.backpack_red",
+        "mts:ivv.backpack_blue",
+        "mts:ivv.backpack_green",
+        "mts:ivv.backpack_black",
+        "mts:ivv.backpack_brown",
+        "mts:ivv.backpack_white",
+        "mts:ivv.backpack_yellow",
+        "mts:ivv.crate_metallic",
+        "mts:ivv.crate",
+        "mts:ivv.box",
+        "mts:iav.iav_storage_l_crate_2",
+        "mts:iav.iav_storage_l_crate_3",
+        "mts:iav.iav_storage_l_crate_5",
+        "mts:iav.iav_storage_l_crate_6"
+      ],
+      "baseMultiplier": 1.0
+    }
+  }
+}
