@@ -127,8 +127,8 @@
             "Title": "Farmiston Mass Cereal Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "Farmiston_Countryside_KrasnayaZemlyaFarm_Farm",
-                "Farmiston_Countryside_RechnoyePoleFarm_Farm"
+                "region_Farmiston_Countryside_KrasnayaZemlyaFarm_Farm",
+                "region_Farmiston_Countryside_RechnoyePoleFarm_Farm"
             ],
             "Tags": [
                 "Farmer",
