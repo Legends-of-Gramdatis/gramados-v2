@@ -23,3 +23,7 @@ var _LOOTTABLE_CELLPHONES = "assembled_loot_tables/cellphone.json";
 var _LOOTTABLE_BRUTEFORCE = "tools/tools_bruteforce.json"
 var _LOOTTABLE_TOOLS_PRECISION = "tools/tools_precision.json"
 var _LOOTTABLE_TOOLS_WELDING = "tools/tools_welding.json"
+
+var _LOOTTABLE_FURNITURE_BED = "furniture/furniture_bed.json"
+var _LOOTTABLE_FURNITURE_STORAGE = "furniture/furniture_storage.json"
+var _LOOTTABLE_FURNITURE_TABLE = "furniture/furniture_table.json"
