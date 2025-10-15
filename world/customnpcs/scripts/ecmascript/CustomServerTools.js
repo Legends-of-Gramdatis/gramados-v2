@@ -9168,6 +9168,11 @@ registerXCommands([
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         plo.load(data);
+        // Newcomer grace period check (first 30 days since first login)
+        var nowMs_mh = new Date().getTime();
+        var firstLogin_mh = (plo.data && typeof plo.data.firstLogin === 'number') ? plo.data.firstLogin : nowMs_mh;
+        var graceMs_mh = 30 * 24 * 60 * 60 * 1000; // 30 days
+        var inGrace_mh = (nowMs_mh - firstLogin_mh) < graceMs_mh;
         if (Object.keys(plo.data.homes).length > 0) {
             tellPlayer(pl, getTitleBar("Homes"));
             var maxHomeStr = " - &e" + Object.keys(plo.data.homes).length + "/" + (plo.data.maxHomes == -1 ? "&aInfinite" : plo.data.maxHomes) + "&e Homes used";
@@ -9177,8 +9182,9 @@ registerXCommands([
                 // get home teleportation price
                 var dist = Math.sqrt(Math.pow(home.x - pl.getX(), 2) + Math.pow(home.y - pl.getY(), 2) + Math.pow(home.z - pl.getZ(), 2));
                 var cost = Math.ceil(dist * 10);
+                var costText = inGrace_mh ? 'Free (newcomer)' : getAmountCoin(cost);
 
-                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + getAmountCoin(cost) + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross_mark: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
+                tellPlayer(pl, "&e - &9&o" + i + "&r&r [&bTeleport{run_command:!home " + i + "|show_text:Click to take taxi\n$eCost:$r " + costText + "\n$eX:$c" + home.x + " $eY:$c" + home.y + " $eZ:$c" + home.z + " }&r] [&c:cross_mark: Remove{run_command:!delHome " + i + "|show_text:Click to remove home.}&r]");
             }
             return true;
         } else {
@@ -9218,13 +9224,24 @@ registerXCommands([
                 var dist = Math.sqrt(Math.pow(h.x - pl.getX(), 2) + Math.pow(h.y - pl.getY(), 2) + Math.pow(h.z - pl.getZ(), 2));
                 cost = Math.ceil(dist * 10);
 
-                if (plo.data.money < cost) {
-                    tellPlayer(pl, '&cYou don\'t have enough money (' + getAmountCoin(cost) + ') to take the taxi to destination ' + hname + '!');
-                    return false;
+                // Newcomer grace: free home teleports for first 30 days since first login
+                var nowMs = new Date().getTime();
+                var firstLogin = (plo.data && typeof plo.data.firstLogin === 'number') ? plo.data.firstLogin : nowMs;
+                var graceMs = 30 * 24 * 60 * 60 * 1000; // 30 days
+                var inGrace = (nowMs - firstLogin) < graceMs;
+
+                if (!inGrace) {
+                    if (plo.data.money < cost) {
+                        tellPlayer(pl, '&cYou don\'t have enough money (' + getAmountCoin(cost) + ') to take the taxi to destination ' + hname + '!');
+                        return false;
+                    } else {
+                        plo.data.money -= cost;
+                        plo.save(data);
+                        tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &e' + getAmountCoin(cost));
+                    }
                 } else {
-                    plo.data.money -= cost;
-                    plo.save(data);
-                    tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &e' + getAmountCoin(cost));
+                    // Free teleport within newcomer grace period
+                    tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &eFree (newcomer)');
                 }
 
                 pl.setPosition(h.x, h.y, h.z);
