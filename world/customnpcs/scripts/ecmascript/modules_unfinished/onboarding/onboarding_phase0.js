@@ -4,6 +4,9 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     var changed = false;
     var arrival = phaseCfg.stages && phaseCfg.stages.arrival ? phaseCfg.stages.arrival : null;
     if (!arrival) return false;
+    var intervalMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number' ? globalCfg.general.generic_streamline_interval : 60) * 1000;
+    var longDelayMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number' ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
+    var nowGen = Date.now();
 
     // Detect dialog completion automatically by polling the player's dialog history
     try {
@@ -34,16 +37,16 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                             }
                         }
                         pdata.phase0.rewardsGiven = true;
-                        tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle \& wrench.');
+                        tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.');
                         logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
                     }
                     // Start timer immediately per spec
                     if (!pdata.phase0.timerStarted) {
                         pdata.phase0.timerStarted = true;
                         pdata.phase0.timerStartMs = Date.now();
-                        tellPlayer(player, (dialogMeta.chat && dialogMeta.chat.onDialogComplete) || '&aPaperwork accepted. Preparing transfer...');
-                        // Also show timer start feedback (could be same or separate message)
-                        if (dialogMeta.chat && dialogMeta.chat.onTimerStart) {
+                        tellPlayer(player, dialogMeta.chat.onDialogComplete);
+                        
+                        if (dialogMeta.chat.onTimerStart) {
                             tellPlayer(player, dialogMeta.chat.onTimerStart);
                         }
                         logToFile('onboarding', '[timer-start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
@@ -64,7 +67,16 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             if (!(pdata.phase0 && pdata.phase0.completed)) {
                 var fb = region.fallback;
                 player.setPosition(fb[0] + 0.5, fb[1], fb[2] + 0.5);
-                tellPlayer(player, arrival.dialog.chat.onConfine || "&cReturn to the desk to finish immigration.");
+                // Confine chat: inform player and reset reminder timer to avoid spam
+                var chatCfgC = (arrival.dialog && arrival.dialog.chat) || {};
+                if (!pdata.phase0) pdata.phase0 = {};
+                if (pdata.phase0 && pdata.phase0.timerStarted && !pdata.phase0.completed) {
+                    tellPlayer(player, chatCfgC.onConfineAfterDialog || chatCfgC.onTimerStart || '&e:hourglass: Transfer in progress. Please wait...');
+                } else {
+                    tellPlayer(player, chatCfgC.onConfine || '&cReturn to the desk to finish immigration.');
+                }
+                // Reset the general reminder timer so the loop waits full interval
+                pdata.phase0.lastGeneralReminder = Date.now();
                 logToFile('onboarding', '[confine] ' + player.getName() + ' attempted to exit Phase0 region. Teleported back.');
             }
         }
@@ -91,6 +103,32 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             logToFile('onboarding', '[teleport] ' + player.getName() + ' Phase0 -> State Hotel.');
             if (globalCfg.general && globalCfg.general.logJson) {
                 logToJson('onboarding', 'phase_changes', { player: player.getName(), phase: 0, action: 'teleport_complete', time: new Date().toISOString() });
+            }
+        }
+    }
+
+    // Generic periodic reminders for Phase 0 (start only after long delay from welcome)
+    if (!pdata.phase0) pdata.phase0 = {};
+    if (!pdata.phase0.completed) {
+        var chatCfg0 = (arrival.dialog && arrival.dialog.chat) || {};
+        var welcomeTime = pdata.phase0.welcomeTime || 0;
+        var afterWelcomeDelay = welcomeTime && ((nowGen - welcomeTime) >= longDelayMs);
+        if (afterWelcomeDelay) {
+            // Before dialog: remind to speak with NPC
+            if (!pdata.phase0.dialogRead) {
+                if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
+                    var npcName0 = (arrival.dialog && arrival.dialog.npc) ? arrival.dialog.npc : 'the immigration officer';
+                    tellPlayer(player, ':speech_balloon: &ePlease speak with &6&l' + npcName0 + '&r&e to complete your immigration paperwork.');
+                    pdata.phase0.lastGeneralReminder = nowGen;
+                    changed = true;
+                }
+            } else if (pdata.phase0.timerStarted && !pdata.phase0.completed) {
+                // During transfer timer: remind transfer is in progress
+                if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
+                    tellPlayer(player, chatCfg0.onConfineAfterDialog || chatCfg0.onTimerStart || '&e:hourglass: Transfer in progress. Please wait...');
+                    pdata.phase0.lastGeneralReminder = nowGen;
+                    changed = true;
+                }
             }
         }
     }
