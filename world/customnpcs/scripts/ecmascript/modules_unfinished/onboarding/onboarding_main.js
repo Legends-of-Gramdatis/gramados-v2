@@ -7,12 +7,12 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
+
 // Phase scripts
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase0.js');
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase1.js');
-// Loot utilities (needed for reward generation in phase scripts)
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 
 // === Constants ===
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
@@ -82,6 +82,11 @@ function init(event) {
                 var templ = chatCfg.onWelcome || '&bWelcome! Please speak with {npc}.';
                 var npcFormatted = '&6&l' + npcName + '&r&b';
                 tellPlayer(player, templ.replace('{npc}', npcFormatted));
+                // Record welcome time to gate Phase 0 reminders (avoid immediate spam)
+                if (!pdata.phase0) pdata.phase0 = {};
+                if (!pdata.phase0.welcomeTime) {
+                    pdata.phase0.welcomeTime = Date.now();
+                }
                 logToFile('onboarding', '[welcome] ' + player.getName() + ' login welcome for ' + npcName);
             }
         }
