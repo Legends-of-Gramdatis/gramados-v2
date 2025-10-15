@@ -1,0 +1,57 @@
+{
+    "Gramados Farming": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.05
+    },
+    "Gramados Lumber": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.1
+    },
+    "Gramados Industrial Concrete": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 0,
+        "variety_bonus": -0.025
+    },
+    "Gramados Industrial Terracotta": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 0,
+        "variety_bonus": 0.05
+    },
+    "Greenfield Farming": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.25
+    },
+    "Greenfield Brewing": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.2
+    },
+    "Greenfield Lumber": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.1
+    },
+    "Farmiston": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 0,
+        "variety_bonus": -0.2
+    },
+    "Allenis": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.1
+    },
+    "Monsalac Cheesemaking": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.05
+    },
+    "Monsalac Milk": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": -0.9
+    }
+}
