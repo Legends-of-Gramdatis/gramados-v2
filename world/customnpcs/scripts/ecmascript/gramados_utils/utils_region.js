@@ -46,13 +46,13 @@ function transferRegion(player, region, target) {
         var regionOwner = region_json.owner;
         region_json.owner = target;
         worldData.put(["region_" + region], JSON.stringify(region_json));
-        tellPlayer(player, "&aRegion transferred to " + region_json.owner + ".");
+        // tellPlayer(player, "&aRegion transferred to " + region_json.owner + ".");
         // Best-effort notify the target if it's an IPlayer, otherwise skip
-        try { if (target && target.getName) { tellPlayer(target, "&aRegion transferred from " + regionOwner + "."); } } catch (e) {}
+        // try { if (target && target.getName) { tellPlayer(target, "&aRegion transferred from " + regionOwner + "."); } } catch (e) {}
         // Update any linked owner signs for this region
         updateRegionOwnerSigns(region);
     } else {
-        tellPlayer(player, "&cRegion not found.");
+        tellPlayer(player, "&4[ERROR] &cRegion not found: " + region + ". &ePlease contact an admin.");
     }
 }
 
