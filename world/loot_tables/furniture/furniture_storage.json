@@ -1,0 +1,128 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_acacia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_andesite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_birch",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_dark_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_diorite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_granite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_jungle",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_spruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_stone",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_acacia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_andesite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_birch",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_dark_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_diorite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_granite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_jungle",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_spruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:bedside_cabinet_stone",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:chest",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:cabinet_kitchen",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": {
+                                "min": 0,
+                                "max": 15
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

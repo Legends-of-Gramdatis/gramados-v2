@@ -1,0 +1,148 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "cfm:table_acacia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_andesite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_birch",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_dark_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_diorite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_granite",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_jungle",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_outdoor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_spruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "cfm:table_stone",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_brown",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_tan",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_interior_white",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_acacia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_birch",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_custom",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_darkoak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_jungle",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_oak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_furniture.furniture_table_1x1_wood_spruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "variedcommodities:table",
+                    "weight": 20,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": {
+                                "min": 0,
+                                "max": 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "engineersdecor:treated_wood_side_table",
+                    "weight": 3
+                }
+            ]
+        }
+    ]
+}
