@@ -9,6 +9,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 // Do NOT load onboarding_main.js here (it contains init/tick event handlers and side effects).
 // We'll manually read the config/data JSON files to avoid executing those hooks.
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js'); // for includes()
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js'); // region helpers (getStarterHotelRegions, updateRegionOwnerSigns)
 
 // Local path constants (mirrors onboarding_main.js values)
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
@@ -65,6 +66,41 @@ function interact(e) {
     // Clear session cache if present
     if (typeof _onboarding_sessionWelcomeShown !== 'undefined' && _onboarding_sessionWelcomeShown[player.getName()]) {
         delete _onboarding_sessionWelcomeShown[player.getName()];
+    }
+
+    // Remove player from any Starter Hotel room ownerships to avoid multiple during testing
+    try {
+        var regions = getStarterHotelRegions(); // [{name,data}]
+        var worldData = getWorldData();
+        var removed = 0;
+        var pname = player.getName();
+        for (var i = 0; i < regions.length; i++) {
+            var r = regions[i];
+            var key = 'region_' + r.name;
+            var dataStr = worldData.get(key);
+            if (!dataStr) continue;
+            var data;
+            try { data = JSON.parse(dataStr); } catch (e3) { continue; }
+            var owner = data.owner || data.ownerName || (data.meta && data.meta.owner) || null;
+            if (owner && String(owner) === String(pname)) {
+                // Clear ownership
+                data.owner = null;
+                // normalize potential alt owner fields if present
+                if (data.ownerName) data.ownerName = null;
+                if (data.meta && data.meta.owner) data.meta.owner = null;
+                worldData.put(key, JSON.stringify(data));
+                try { updateRegionOwnerSigns(r.name); } catch (e4) {}
+                removed++;
+            }
+        }
+        if (removed > 0) {
+            tellPlayer(player, '&eRemoved your ownership from &6' + removed + ' &eStarter Hotel room(s).');
+            logToFile('onboarding', '[reset-tool] ' + pname + ' ownership cleared from ' + removed + ' Starter Hotel rooms.');
+        } else {
+            tellPlayer(player, '&7No Starter Hotel rooms owned by you were found to clear.');
+        }
+    } catch (rmErr) {
+        logToFile('onboarding', '[reset-tool-error] clear starter rooms failed for ' + player.getName() + ': ' + rmErr);
     }
 
     tellPlayer(player, '&e:recycle: Onboarding progress reset. Re-log or re-enter area to restart Phase 0.');
