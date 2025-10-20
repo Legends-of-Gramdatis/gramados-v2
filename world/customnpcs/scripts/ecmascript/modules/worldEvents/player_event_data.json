@@ -239,12 +239,14 @@
     },
     "Spooktober": {
         "TheOddlySeagull": {
-            "playerLastSpawnTime": 1760564124248,
-            "ghostsSpawned": 508,
-            "ghostsHunted": 78
+            "playerLastSpawnTime": 1760881938491,
+            "ghostsSpawned": 599,
+            "ghostsHunted": 86
         },
         "oldbjorn": {
-            "playerLastSpawnTime": 1760148474409
+            "playerLastSpawnTime": 1760761141763,
+            "ghostsSpawned": 4,
+            "ghostsHunted": 3
         },
         "Kitsunami_": {
             "playerLastSpawnTime": 1760232015572,
@@ -267,9 +269,9 @@
             "playerLastSpawnTime": 1760370377489
         },
         "AsmithRue": {
-            "playerLastSpawnTime": 1760549879038,
-            "ghostsSpawned": 93,
-            "ghostsHunted": 59
+            "playerLastSpawnTime": 1760645879236,
+            "ghostsSpawned": 98,
+            "ghostsHunted": 61
         }
     }
 }
