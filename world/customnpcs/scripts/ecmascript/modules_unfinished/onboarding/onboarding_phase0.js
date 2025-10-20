@@ -6,6 +6,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     if (!arrival) return false;
     var intervalMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number' ? globalCfg.general.generic_streamline_interval : 60) * 1000;
     var longDelayMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number' ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
+    var shortDelayMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number' ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
     var nowGen = Date.now();
 
     // Detect dialog completion automatically by polling the player's dialog history
@@ -71,9 +72,15 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                 var chatCfgC = (arrival.dialog && arrival.dialog.chat) || {};
                 if (!pdata.phase0) pdata.phase0 = {};
                 if (pdata.phase0 && pdata.phase0.timerStarted && !pdata.phase0.completed) {
+                    // During transfer, allow immediate informative message
                     tellPlayer(player, chatCfgC.onConfineAfterDialog || chatCfgC.onTimerStart || '&e:hourglass: Transfer in progress. Please wait...');
                 } else {
-                    tellPlayer(player, chatCfgC.onConfine || '&cReturn to the desk to finish immigration.');
+                    // Before dialog completion: only show confine message after the short delay since welcome
+                    var welcomeTime0 = pdata.phase0.welcomeTime || 0;
+                    var afterShort = welcomeTime0 && ((nowGen - welcomeTime0) >= shortDelayMs);
+                    if (afterShort) {
+                        tellPlayer(player, chatCfgC.onConfine || '&cReturn to the desk to finish immigration.');
+                    }
                 }
                 // Reset the general reminder timer so the loop waits full interval
                 pdata.phase0.lastGeneralReminder = Date.now();
