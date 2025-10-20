@@ -2183,6 +2183,40 @@ function writeToFile(filePath, text, offset, length) {
 
 
 
+// Onboarding command-run logger (minimal, self-contained; avoids loading external utils)
+// Updates world/customnpcs/scripts/data_auto/onboarding_data.json when:
+// - Player entry exists AND
+// - entry.phase2 exists AND
+// - entry.phase3 does NOT exist
+// Then writes timestamp under phase2["last ran"][cmdKey] = Date.now().
+// If file missing, invalid JSON, or conditions not met, it silently does nothing.
+var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
+function cst_onboarding_log_command(playerName, cmdKey) {
+    try {
+        var f = new File(ONBOARDING_DATA_PATH);
+        if (!f.exists()) { return; }
+        var raw = readFileAsString(ONBOARDING_DATA_PATH);
+        if (!raw || !String(raw).trim()) { return; }
+        var data;
+        try { data = JSON.parse(raw); } catch (e) { return; }
+        if (!data) { return; }
+        var entry = data[playerName];
+        tellPlayer(playerName, "Logging onboarding command: " + cmdKey);
+        if (!entry) { return; }
+        if (!entry.phase2) { return; }
+        if (entry.phase3) { return; }
+        if (typeof entry.phase2 !== 'object') { return; }
+        var p2 = entry.phase2;
+        if (!p2['last ran'] || typeof p2['last ran'] !== 'object') { p2['last ran'] = {}; }
+        p2['last ran'][cmdKey] = Date.now();
+        // Persist back to disk
+        writeToFile(ONBOARDING_DATA_PATH, JSON.stringify(data, null, 2));
+    } catch (e) {
+        // Intentionally swallow to avoid disrupting commands
+    }
+}
+
+
 
 //Check config file
 var CONFIG_FILEPATH = "CustomServerTools/settings.json";
@@ -8818,6 +8852,8 @@ registerXCommands([
         tellPlayer(pl, output);
     }, 'menu'],
     ['!withdraw <amount> [times] [currency]', function (pl, args, data) {
+        // Onboarding log: record last run time for withdraw
+        try { cst_onboarding_log_command(pl.getName(), 'withdraw'); } catch (e) {}
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var times = parseInt(args.times || 1);
@@ -8859,6 +8895,8 @@ registerXCommands([
     }
         ]],
     ['!deposit', function (pl, args, data) {
+        // Onboarding log: record last run time for deposit
+        try { cst_onboarding_log_command(pl.getName(), 'deposit'); } catch (e) {}
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var mItem = pl.getMainhandItem();
@@ -8874,6 +8912,8 @@ registerXCommands([
         return false;
     }, 'deposit'],
     ['!depositAll [currency]', function (pl, args, data) {
+        // Onboarding log: record last run time for depositAll
+        try { cst_onboarding_log_command(pl.getName(), 'depositAll'); } catch (e) {}
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var pnbt = pl.getEntityNbt();
@@ -8910,6 +8950,8 @@ registerXCommands([
 
     }, 'deposit', []],
     ['!myMoney', function (pl, args, data) {
+        // Onboarding log: record last run time for myMoney
+        try { cst_onboarding_log_command(pl.getName(), 'myMoney'); } catch (e) {}
         var pnbt = pl.getEntityNbt();
         var p = new Player(pl.getName()).init(data);
         var mp = p.data.money;
