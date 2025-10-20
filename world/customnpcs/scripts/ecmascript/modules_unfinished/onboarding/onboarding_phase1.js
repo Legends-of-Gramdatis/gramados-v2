@@ -17,16 +17,7 @@ function p1_teleportToFallback(player, region){
     try { player.setPosition(region.fallback[0]+0.5, region.fallback[1], region.fallback[2]+0.5); return true; } catch(e){ return false; }
 }
 
-// Placeholder announcer for future steps/phases/stages.
-// scope: 'phase' | 'stage' | 'step' | 'move' (free-form); status: 'enter' | 'progress' | 'complete'
-function onboarding_phase1_placeholderAnnounce(scope, status, detail, player){
-    try {
-        var who = player ? (player.getName ? player.getName() : '') : '';
-        var msg = '&7[placeholder] &f' + (scope||'phase') + ' ' + (status||'progress') + (detail?(' &7- &f'+detail):'');
-        tellPlayer(player, msg);
-        logToFile('onboarding', '[phase1-placeholder] ' + who + ' => ' + msg.replace(/§./g,''));
-    } catch(e) {}
-}
+// (Removed placeholder announcer; final messages are sent directly with tellPlayer.)
 
 // --- Room selection helpers (no true assignment yet) ---
 var P1_STARTER_HOTEL_FALLBACK_ROOM = 'Gramados_GramadosCity_StarterHotel_301';
@@ -60,9 +51,50 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     if(!pdata.phase1) pdata.phase1 = {};
     var changed = false;
 
-    // Entry message once
+    // Entry: pick a room immediately so we can mention it in the welcome, then show arrival message once
     if(!pdata.phase1.arrivalShown){
-        onboarding_phase1_placeholderAnnounce('phase1', 'enter', 'State Hotel: explore and find your starter room (WIP).', player);
+        // Choose and attempt to assign a starter room if not already picked
+        if(!pdata.phase1.targetRoomId){
+            try {
+                var chosenName0 = p1_pickRandomStarterRoomName() || P1_STARTER_HOTEL_FALLBACK_ROOM;
+                var rid0 = p1_roomIdFromRegionName(chosenName0);
+                if(!rid0){
+                    // Fallback to first configured id if available
+                    var _hotelStage0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel) ? phaseCfg.stages.hotel : null;
+                    var roomsFallback0 = (_hotelStage0 && _hotelStage0.room_assign && _hotelStage0.room_assign.rooms) ? _hotelStage0.room_assign.rooms : [];
+                    rid0 = roomsFallback0.length ? String(roomsFallback0[0].id) : null;
+                }
+                if(rid0){
+                    pdata.phase1.targetRoomName = chosenName0;
+                    pdata.phase1.targetRoomId = String(rid0);
+                    // Try to assign to player if currently available
+                    try {
+                        var owner0 = getRegionOwnerName(pdata.phase1.targetRoomName);
+                        var pname0 = player.getName();
+                        if(owner0 === 'Available'){
+                            transferRegion(player, pdata.phase1.targetRoomName, pname0);
+                            pdata.phase1.roomClaimed = true;
+                        } else if (owner0 === pname0) {
+                            pdata.phase1.roomClaimed = true;
+                        } else {
+                            pdata.phase1.roomClaimed = false;
+                            logToFile('onboarding', '[phase1-claim-room-skip] Selected room ' + pdata.phase1.targetRoomName + ' already owned by ' + owner0 + '.');
+                        }
+                    } catch (claimErrStart) {
+                        pdata.phase1.roomClaimed = false;
+                        logToFile('onboarding', '[phase1-claim-room-error] ' + player.getName() + ' ' + claimErrStart);
+                    }
+                }
+            } catch (selErr0) {
+                logToFile('onboarding', '[phase1-room-select-error] ' + player.getName() + ' ' + selErr0);
+            }
+        }
+        // Welcome + objective
+        if(pdata.phase1.targetRoomId){
+            tellPlayer(player, ':hotel: &bWelcome to the State Hotel.&r &eFind your assigned room &6#' + pdata.phase1.targetRoomId + '&e and enter it.');
+        } else {
+            tellPlayer(player, ':hotel: &bWelcome to the State Hotel.&r &eExplore and find your starter room.');
+        }
         pdata.phase1.arrivalShown = true;
         pdata.phase1.arrivalTime = Date.now();
         changed = true;
@@ -108,42 +140,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
         case 1: // Stage 1: Finding Room
             switch(step){
                 case 1: // Step 1: Looking for the room
-                    // Select a target room if not yet chosen
-                    if(!pdata.phase1.inRoom && !pdata.phase1.targetRoomId){
-                        var chosenName = p1_pickRandomStarterRoomName();
-                        if(chosenName){
-                            var rid = p1_roomIdFromRegionName(chosenName);
-                            if(!rid){
-                                var roomsFallback = (hotelStage.room_assign && hotelStage.room_assign.rooms) || [];
-                                rid = roomsFallback.length ? String(roomsFallback[0].id) : null;
-                            }
-                            if(rid){
-                                pdata.phase1.targetRoomName = chosenName;
-                                pdata.phase1.targetRoomId = String(rid);
-                                // Immediately attempt to assign ownership so player can open the door
-                                try {
-                                    var currentOwner0 = getRegionOwnerName(pdata.phase1.targetRoomName);
-                                    var pname0 = player.getName();
-                                    if (currentOwner0 === 'Available') {
-                                        transferRegion(player, pdata.phase1.targetRoomName, pname0);
-                                        pdata.phase1.roomClaimed = true;
-                                        onboarding_phase1_placeholderAnnounce('step', 'progress', 'Target room selected and assigned to you: #' + rid + '.', player);
-                                    } else if (currentOwner0 === pname0) {
-                                        pdata.phase1.roomClaimed = true; // already owned by player
-                                        onboarding_phase1_placeholderAnnounce('step', 'progress', 'Target room selected (you already own it): #' + rid + '.', player);
-                                    } else {
-                                        pdata.phase1.roomClaimed = false;
-                                        onboarding_phase1_placeholderAnnounce('step', 'progress', 'Target room selected: #' + rid + ' (already owned by ' + currentOwner0 + ').', player);
-                                        logToFile('onboarding', '[phase1-claim-room-skip] Selected room ' + pdata.phase1.targetRoomName + ' already owned by ' + currentOwner0 + '.');
-                                    }
-                                } catch (claimErr0) {
-                                    logToFile('onboarding', '[phase1-claim-room-error] ' + player.getName() + ' ' + claimErr0);
-                                    onboarding_phase1_placeholderAnnounce('step', 'progress', 'Target room selected: #' + rid + '.', player);
-                                }
-                                changed = true;
-                            }
-                        }
-                    }
+                    // Room selection now happens on arrival; just guide and detect entry.
                     // Periodic reminder to find the assigned room (gated by long delay)
                     if(isWithinAABB(ppos, hotelRegion.p1, hotelRegion.p2) && !pdata.phase1.inRoom){
                         var remindMsA = globalCfg.general.generic_streamline_interval * 1000;
@@ -343,8 +340,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
 
                             // Only prompt if player still has capacity (avoid mixed states)
                             if(!pdata.phase1.homeRegistered && (!pdata.phase1.lastSetHomeMsg || (nowC - pdata.phase1.lastSetHomeMsg) > remindMsC)){
-                                var roomLabel = pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '';
-                                onboarding_phase1_placeholderAnnounce('step', 'progress', 'Register this room ' + roomLabel + ' as your home: &e!setHome <name>&7.', player);
+                                var roomLabel = pdata.phase1.targetRoomId ? (' &6#'+pdata.phase1.targetRoomId+'&e') : '';
+                                tellPlayer(player, ':house: &eRegister this room' + roomLabel + ' as your home with &6!setHome <name>&e.');
                                 pdata.phase1.lastSetHomeMsg = nowC;
                                 changed = true;
                             }
@@ -436,12 +433,12 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             if(!pdata.phase1.s3_wasFar){ pdata.phase1.s3_wasFar = true; becameFar = true; changed = true; }
                             if(becameFar){
                                 // Force-show immediately at the exact moment we become far enough
-                                tellPlayer(player, ':arrow_right: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
+                                tellPlayer(player, ':arrow_r: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             } else if(!pdata.phase1.s3_lastMsg || (nowS3 - pdata.phase1.s3_lastMsg) > intervalMs){
                                 // Afterwards, fall back to throttled reminders
-                                tellPlayer(player, ':arrow_right: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
+                                tellPlayer(player, ':arrow_r: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             }
@@ -490,14 +487,14 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         if(!pdata.phase1.s4_timerStart){
                             pdata.phase1.s4_timerStart = Date.now();
                             // Immediate reminder on entering this step
-                            onboarding_phase1_placeholderAnnounce('stage', 'enter', ':map: &eYou feel disoriented. In a moment, you\'ll be moved. Be ready to use &6!home &eto return.', player);
+                            tellPlayer(player, ':map: &eYou feel disoriented. In a moment, you\'ll be moved. Be ready to use &6!home &eto return.');
                             changed = true;
                         }
                         // Periodic reminder while waiting for teleport
                         var gcfg4_1 = (globalCfg && globalCfg.general) ? globalCfg.general : {};
                         var intervalMs4_1 = ((typeof gcfg4_1.generic_streamline_interval === 'number') ? gcfg4_1.generic_streamline_interval : 60) * 1000;
                         if(!pdata.phase1.s4_waitMsg || (Date.now() - pdata.phase1.s4_waitMsg) > intervalMs4_1){
-                            onboarding_phase1_placeholderAnnounce('stage', 'progress', ':hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you\'re lost.', player);
+                            tellPlayer(player, ':hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you\'re lost.');
                             pdata.phase1.s4_waitMsg = Date.now();
                             changed = true;
                         }
@@ -513,7 +510,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.s4_radius = (typeof lmCfg.radius === 'number') ? lmCfg.radius : 12;
                             pdata.phase1.s4_confining = true;
                             pdata.phase1.currentStep = 2;
-                            onboarding_phase1_placeholderAnnounce('stage', 'enter', 'You feel disoriented. Use &e!home&7 to return to your room.', player);
+                            tellPlayer(player, ':map: &eYou feel disoriented. Use &6!home &eto return to your room.');
                             changed = true;
                         }
                     } catch (s4e1) {
@@ -572,13 +569,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 // Teleport to boundary, keep Y to avoid fall/tp loops
                                 player.setPosition(nx, ppos4.y, nz);
                                 if(!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
-                                    onboarding_phase1_placeholderAnnounce('stage', 'progress', ':round_pushpin: &eYou are lost. Use &6!home &eto return to your room.', player);
+                                    tellPlayer(player, ':round_pushpin: &eYou are lost. Use &6!home &eto return to your room.');
                                     pdata.phase1.s4_lastMsg = Date.now();
                                     changed = true;
                                 }
                             } else if(!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
                                 // Gentle reminder while inside the circle
-                                onboarding_phase1_placeholderAnnounce('stage', 'progress', ':round_pushpin: &eTry &6!home &eto get back home.', player);
+                                tellPlayer(player, ':round_pushpin: &eTry &6!home &eto get back home.');
                                 pdata.phase1.s4_lastMsg = Date.now();
                                 changed = true;
                             }
