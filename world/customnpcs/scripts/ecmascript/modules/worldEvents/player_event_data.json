@@ -262,8 +262,9 @@
             "ghostsHunted": 8
         },
         "SinaBloodsaw": {
-            "playerLastSpawnTime": 1760551629646,
-            "ghostsSpawned": 13
+            "playerLastSpawnTime": 1760970767444,
+            "ghostsSpawned": 31,
+            "ghostsHunted": 12
         },
         "BOTFerris": {
             "playerLastSpawnTime": 1760370377489
