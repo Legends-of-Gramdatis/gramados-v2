@@ -414,14 +414,14 @@ function quit_job_manager(player) {
             // Ensure player has worked the job for at least 24 in-game hours (20 ticks per second)
             var min_work_time = 20 * 60 * 60 * 24; // 24 real-time hours in ticks
             if (world.getTotalTime() - active_job["StartTime"] < min_work_time) {
-                tellPlayer(player, "&e:hourglass: You need to work at least &61 day &e(24h) before quitting this job!");
+                tellPlayer(player, ":hourglass:&e You need to work at least &61 day &e(24h) before quitting this job!");
                 player.removeDialog(job["JobQuit"]); // Remove the quit dialogue
                 continue;
             }
             // Unified removal/archive flow
             player.removeDialog(job["JobQuit"]); // clear the quit token now
             archive_and_remove_job(player, job_id, job, "player-quit");
-            tellPlayer(player, "&e:door: You have successfully quit your job as &b" + job["JobName"] + " &ein &e" + job["Region"] + "&e. You can rejoin it later if you wish.");
+            tellPlayer(player, ":door:&e You have successfully quit your job as &b" + job["JobName"] + " &ein &e" + job["Region"] + "&e. You can rejoin it later if you wish.");
         }
     }
 }
@@ -473,7 +473,7 @@ function update_job_type_json(player) {
             for (var i = 0; i < job_config["Jobs"].length; i++) {
                 if (job_config["Jobs"][i]["JobID"] == job) {
                     job_data[player_uuid]["JobHistory"][job]["Type"] = job_config["Jobs"][i]["Type"];
-                    tellPlayer(player, "&e:information_source: Updated job type for your past job &b" + job_data[player_uuid]["JobHistory"][job]["JobName"] + " &eto " + job_config["Jobs"][i]["Type"] + ".");
+                    tellPlayer(player, ":information_source:&e Updated job type for your past job &b" + job_data[player_uuid]["JobHistory"][job]["JobName"] + " &eto " + job_config["Jobs"][i]["Type"] + ".");
                     updated = true;
                 }
             }
