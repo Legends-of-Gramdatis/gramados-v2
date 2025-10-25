@@ -537,14 +537,17 @@ function tellNearbyPlayers(npc, message, radius) {
  * Example visible output: [====================================================]
  * @param {IPlayer} player
  * @param {string} [color] Color code like '&f' (default '&f') applied to the bracket/line
+ * @param {string} [char] Character to use for the bar (default '='). Single-character string expected.
  */
-function tellSeparator(player, color) {
+function tellSeparator(player, color, char) {
     if (typeof color === 'undefined' || color === null) color = '&f';
+    if (typeof char === 'undefined' || char === null || String(char).length === 0) char = '=';
+    char = String(char).charAt(0);
     var visibleLen = 54;
     var inner = visibleLen - 2; // account for '[' and ']'
-    var equals = new Array(inner + 1).join('=');
-    var line = '[' + equals + ']';
-    try { tellPlayer(player, parseEmotes(ccs(color + line))); } catch (e) { /* swallow */ }
+    var pat = new Array(inner + 1).join(char);
+    var line = '[' + pat + ']';
+    tellPlayer(player, color + line);
 }
 
 /**
@@ -554,11 +557,14 @@ function tellSeparator(player, color) {
  * @param {string} title - Title text (may contain & color codes). Will be truncated if too long.
  * @param {string} [sepColor] Color code for the surrounding bars (default '&f')
  * @param {string} [titleColor] Color code for the title text itself (default '&f')
+ * @param {string} [char] Character to use for the bars (default '='). Single-character string expected.
  */
-function tellSeparatorTitle(player, title, sepColor, titleColor) {
+function tellSeparatorTitle(player, title, sepColor, titleColor, char) {
     if (typeof sepColor === 'undefined' || sepColor === null) sepColor = '&f';
     if (typeof titleColor === 'undefined' || titleColor === null) titleColor = '&f';
     if (typeof title === 'undefined' || title === null) title = '';
+    if (typeof char === 'undefined' || char === null || String(char).length === 0) char = '=';
+    char = String(char).charAt(0);
 
     // Helper: compute visible length (strip &x sequences)
     function visibleLength(s) { return String(s).replace(/&./g, '').length; }
@@ -585,17 +591,17 @@ function tellSeparatorTitle(player, title, sepColor, titleColor) {
         visible = v;
     }
 
-    var totalEquals = 47 - visible; // L+R = 47 - T
-    if (totalEquals < 0) totalEquals = 0;
-    var left = Math.floor(totalEquals / 2);
-    var right = totalEquals - left;
-    var leftEq = new Array(left + 1).join('=');
-    var rightEq = new Array(right + 1).join('=');
+    var totalBars = 47 - visible; // L+R = 47 - T
+    if (totalBars < 0) totalBars = 0;
+    var left = Math.floor(totalBars / 2);
+    var right = totalBars - left;
+    var leftBar = new Array(left + 1).join(char);
+    var rightBar = new Array(right + 1).join(char);
 
-    var leftPart = '[' + leftEq + ']';
-    var rightPart = '[' + rightEq + ']';
+    var leftPart = '[' + leftBar + ']';
+    var rightPart = '[' + rightBar + ']';
 
     // Build message: sepColor[left] <space> titleColor title <space> sepColor[right]
     var msg = sepColor + leftPart + ' ' + titleColor + title + ' ' + sepColor + rightPart;
-    try { tellPlayer(player, parseEmotes(ccs(msg))); } catch (e) { /* swallow */ }
+    tellPlayer(player, msg);
 }
