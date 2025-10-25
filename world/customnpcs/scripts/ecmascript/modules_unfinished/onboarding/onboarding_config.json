@@ -34,10 +34,10 @@
                         },
                         "chat": {
                             "onDialogComplete": "&a:check_mark: Paperwork complete! Please wait while we arrange your transfer...",
-                            "onTimerStart": "&e:hourglass: Processing... You'll be transferred shortly.",
-                            "onConfineAfterDialog": "&e:hourglass: Transfer in progress. Please wait inside the office until you're teleported to the State Hotel.",
-                            "onTeleport": "&b:airplane_departure: Welcome to Gramados! Enjoy your stay at the State Hotel.",
-                            "onConfine": ":lit: &eYou still need to speak with &6&lDaren Krovic&r&e to finish immigration before leaving.",
+                            "onTimerStart": ":hourglass:&e Processing... You'll be transferred shortly.",
+                            "onConfineAfterDialog": ":hourglass:&e Transfer in progress. Please wait inside the office until you're teleported to the State Hotel.",
+                            "onTeleport": ":airplane_departure:&b Welcome to Gramados! Enjoy your stay at the State Hotel.",
+                            "onConfine": ":lit:&e You still need to speak with &6&lDaren Krovic&r&e to finish immigration before leaving.",
                             "onWelcome": "&b:star: Welcome to Gramados! Please speak with {npc} &bto complete your immigration paperwork."
                         }
                     }
@@ -67,6 +67,29 @@
                                 "pitch": 0
                             },
                             "radius": 12
+                        }
+                    }
+                }
+            }
+        },
+        "2": {
+            "name": "Economy Basics",
+            "enabled": true,
+            "stages": {
+                "stage1": {
+                    "guide": {
+                        "chat": [
+                            "&eHere's a quick overview of the main currencies you will see:",
+                            "&7(Short descriptions follow; a detailed guide will be added to your inventory.)"
+                        ],
+                        "paper": {
+                            "entries": {
+                                "Arcade Tokens": "Event tokens obtained by participating in server events. Usually exist as items and are not stored in your pouch.",
+                                "Vote Tokens": "Legacy token system for voting; currently deprecated and not supported. You can safely ignore these.",
+                                "Shop Tokens": "Purchased currency used for cosmetics and paid content. Managed separately from in-game money.",
+                                "Money Pouch": "A dematerialized balance representing money stored in your pouch (displayed by !myMoney). Note: keeping money on you may cause losses on death (50% when carried in pouch).",
+                                "Inventory": "Physical money items in your inventory (bills/coins). These drop on death (100% dropped). Use !deposit to move them into your pouch."
+                            }
                         }
                     }
                 }
