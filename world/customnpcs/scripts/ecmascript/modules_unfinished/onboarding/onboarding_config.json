@@ -54,6 +54,32 @@
                         "p2": [-1934, 108, -214],
                         "fallback": [-1884, 88.5, -192]
                     },
+                    "chat": {
+                        "welcome": "&b:star: Welcome to the State Hotel! We'll help you find your room.",
+                        "room_assigned": "&aYour starter room has been assigned: {room}. Walk there to claim it.",
+                        "find_room_prompt": ":compass: &eFind your assigned room {room} and enter it.",
+                        "room_entry": ":key: &aWelcome! This is your room {room}. We'll issue some starter furniture in &6{delay}s&a.",
+                        "stay_in_room": ":door: &ePlease stay inside your room {room} while we prepare your starter furniture.",
+                        "furniture_granted": "&eFurniture has been placed in your room. Check it out!",
+                        "sethome_prompt": "&ePlease run &e!setHome &eto register this room as your home.",
+                        "sethome_success": "&aHome registered. Use &e!home &ato teleport back here.",
+                        "home_tutorial_intro": "&eYou can use &e!myHomes &eand &e!home &eto manage your houses. Try them out.",
+                        "lost_moment_teleport": "&cIt seems you're lost. Teleporting you back to the hotel fallback.",
+                        "lost_moment_warn": ":map: &eYou feel disoriented. In a moment, you'll be moved. Be ready to use &6!home &eto return.",
+                        "lost_moment_wait": ":hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you're lost.",
+                        "lost_moment_use_home": ":map: &eYou feel disoriented. Use &6!home &eto return to your room.",
+                        "confine_reminder": ":hourglass:&e Please stay inside the State Hotel until your room is ready.",
+                        "home_max": "&7You already have the maximum number of homes (&e{max}&7). Skipping home registration.",
+                        "register_room": ":house: &eRegister this room {room} as your home with &6!setHome <name>&e.",
+                        "no_home_yet": "&eIt looks like you don't have any home yet. Use &6!setHome <name> &ein your room first.",
+                        "home_far_try": ":arrow_r: &aYou're far enough now. Try &6!home &ato teleport back to your home.",
+                        "home_open_myhomes": ":house: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
+                        "home_tutorial_complete": "&a:check_mark: Tutorial complete. You used &6!home &ato return near your home.",
+                        "phase1_complete": "&a:check_mark: You found your way back. Phase 1 complete!",
+                        "home_info_max": "&bYou can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes."
+                        ,"lost_confining_found": ":round_pushpin: &eYou are lost. Use &6!home &eto return to your room.",
+                        "lost_confining_reminder": ":round_pushpin: &eTry &6!home &eto get back home."
+                    },
                     "home": {
                         "proximity": {
                             "far": 15,
@@ -77,6 +103,18 @@
             "enabled": true,
             "stages": {
                 "stage1": {
+                    "chat": {
+                        "s1_received": ":moneybag: &aYou received &e40g&a (2x 20g bills). Please run &e!myMoney &ato see your pouch and inventory breakdown.",
+                        "s1_reminder": ":bell: &eReminder: run &e!myMoney &eto check your pouch and inventory.",
+                        "s1_guide_added": ":paper: &aA detailed currency guide has been added to your inventory.",
+                        "s2_prompt": ":handbag: &eHold the money items in your hand and run &e!deposit &eto deposit them into your Money Pouch.",
+                        "s2_deposit_detected": ":check_mark: &aDeposit detected. Your Money Pouch now has more funds.",
+                        "s2_deposit_failure_inv": ":danger: &eIt looks like your inventory still contains your money. Please hold the money in your hand and run &e!deposit &ewith money in hand.",
+                        "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &e!deposit &ewith money in hand.",
+                        "s3_prompt": ":hourglass: &ePlease run &e!myMoney &eagain in a few seconds to confirm your pouch balance.",
+                        "s3_reminder": ":bell: &eReminder: run &e!myMoney &eto confirm your Money Pouch balance.",
+                        "s3_completed": ":white_check_mark: &aConfirmed — your pouch update was recorded. You are all set with Phase 2."
+                    },
                     "guide": {
                         "chat": [
                             "&eHere's a quick overview of the main currencies you will see:",
