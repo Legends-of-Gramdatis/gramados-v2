@@ -2191,28 +2191,39 @@ function writeToFile(filePath, text, offset, length) {
 // Then writes timestamp under phase2["last ran"][cmdKey] = Date.now().
 // If file missing, invalid JSON, or conditions not met, it silently does nothing.
 var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
-function cst_onboarding_log_command(playerName, cmdKey) {
+function cst_onboarding_log_command(player, cmdKey) {
+    // tellPlayer(player,"Debug: cst_onboarding_log_command called for cmdKey '" + cmdKey + "'");
+    var playerName = player.getName();
     try {
-        var f = new File(ONBOARDING_DATA_PATH);
-        if (!f.exists()) { return; }
-        var raw = readFileAsString(ONBOARDING_DATA_PATH);
-        if (!raw || !String(raw).trim()) { return; }
-        var data;
-        try { data = JSON.parse(raw); } catch (e) { return; }
+    // tellPlayer(player,"Debug: Player name is '" + playerName + "'");
+    // Read existing data file
+    var f = new File(ONBOARDING_DATA_PATH);
+    if (!f.exists()) { return; }
+    var raw = readFileAsString(ONBOARDING_DATA_PATH);
+    var rawStr = ('' + raw);
+    if (!raw || !rawStr.trim()) { return; }
+    var data;
+    try { data = JSON.parse(rawStr); } catch (e) { return; }
         if (!data) { return; }
+
+        // Find player entry and ensure they're in phase 2
         var entry = data[playerName];
-        tellPlayer(playerName, "Logging onboarding command: " + cmdKey);
         if (!entry) { return; }
-        if (!entry.phase2) { return; }
-        if (entry.phase3) { return; }
-        if (typeof entry.phase2 !== 'object') { return; }
+        if (entry.phase !== 2) { return; }
+
+        // Ensure phase2 container exists
+        if (!entry.phase2 || typeof entry.phase2 !== 'object') { entry.phase2 = {}; }
         var p2 = entry.phase2;
+
+        // Track last execution time per command key
         if (!p2['last ran'] || typeof p2['last ran'] !== 'object') { p2['last ran'] = {}; }
         p2['last ran'][cmdKey] = Date.now();
+
         // Persist back to disk
         writeToFile(ONBOARDING_DATA_PATH, JSON.stringify(data, null, 2));
+        // tellPlayer(player,"Debug: Logged command execution for onboarding phase 2, cmdKey '" + cmdKey + "'");
     } catch (e) {
-        // Intentionally swallow to avoid disrupting commands
+        tellPlayer(player,"&cException in cst_onboarding_log_command: " + e.message);
     }
 }
 
@@ -8853,7 +8864,7 @@ registerXCommands([
     }, 'menu'],
     ['!withdraw <amount> [times] [currency]', function (pl, args, data) {
         // Onboarding log: record last run time for withdraw
-        try { cst_onboarding_log_command(pl.getName(), 'withdraw'); } catch (e) {}
+        cst_onboarding_log_command(pl, 'withdraw');
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var times = parseInt(args.times || 1);
@@ -8896,7 +8907,7 @@ registerXCommands([
         ]],
     ['!deposit', function (pl, args, data) {
         // Onboarding log: record last run time for deposit
-        try { cst_onboarding_log_command(pl.getName(), 'deposit'); } catch (e) {}
+        cst_onboarding_log_command(pl, 'deposit');
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var mItem = pl.getMainhandItem();
@@ -8912,8 +8923,7 @@ registerXCommands([
         return false;
     }, 'deposit'],
     ['!depositAll [currency]', function (pl, args, data) {
-        // Onboarding log: record last run time for depositAll
-        try { cst_onboarding_log_command(pl.getName(), 'depositAll'); } catch (e) {}
+        cst_onboarding_log_command(pl, 'depositAll');
         var p = new Player(pl.getName()).init(data);
         var w = pl.world;
         var pnbt = pl.getEntityNbt();
@@ -8950,8 +8960,7 @@ registerXCommands([
 
     }, 'deposit', []],
     ['!myMoney', function (pl, args, data) {
-        // Onboarding log: record last run time for myMoney
-        try { cst_onboarding_log_command(pl.getName(), 'myMoney'); } catch (e) {}
+        cst_onboarding_log_command(pl, 'myMoney');
         var pnbt = pl.getEntityNbt();
         var p = new Player(pl.getName()).init(data);
         var mp = p.data.money;
