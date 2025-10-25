@@ -202,6 +202,27 @@ function getMoneyFromPlayerInventory(player, world, currencyType) {
 }
 
 /**
+ * Reads the total amount of money from a player's inventory without removing it.
+ * @param {IPlayer} player - The player.
+ * @param {IWorld} world - The world object.
+ * @param {string} currencyType - The type of currency.
+ * @returns {number} - The total amount of money in cents.
+ */
+function readMoneyFromPlayerInventory(player, world, currencyType) {
+    var currencyType = currencyType || 'money';
+    var totalAmount = 0;
+    var moneyItems = getPlayerInvFromNbt(player.getEntityNbt(), world, function (item, itemNbt, world) {
+        return isItemMoney(item, world, currencyType);
+    });
+    for (var i in moneyItems) {
+        var moneyItem = moneyItems[i];
+        var itemValue = getItemMoney(moneyItem, world, currencyType) * moneyItem.getStackSize();
+        totalAmount += itemValue;
+    }
+    return totalAmount;
+}
+
+/**
  * Converts the coin items from JSON format to the required format.
  * @param {Object} jsonCoinItems - The coin items from JSON.
  * @returns {Object} - The converted coin items.
