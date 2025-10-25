@@ -530,3 +530,72 @@ function tellNearbyPlayers(npc, message, radius) {
         tellPlayer(nearbyEntities[i], message);
     }
 }
+
+/**
+ * Sends a full-width separator line to a player.
+ * The visible separator is 54 characters long (excluding color codes).
+ * Example visible output: [====================================================]
+ * @param {IPlayer} player
+ * @param {string} [color] Color code like '&f' (default '&f') applied to the bracket/line
+ */
+function tellSeparator(player, color) {
+    if (typeof color === 'undefined' || color === null) color = '&f';
+    var visibleLen = 54;
+    var inner = visibleLen - 2; // account for '[' and ']'
+    var equals = new Array(inner + 1).join('=');
+    var line = '[' + equals + ']';
+    try { tellPlayer(player, parseEmotes(ccs(color + line))); } catch (e) { /* swallow */ }
+}
+
+/**
+ * Sends a centered separator with a title to a player. Title is color-aware (color codes don't count)
+ * Visible total is 54 characters. Title is surrounded by single spaces on both sides.
+ * @param {IPlayer} player
+ * @param {string} title - Title text (may contain & color codes). Will be truncated if too long.
+ * @param {string} [sepColor] Color code for the surrounding bars (default '&f')
+ * @param {string} [titleColor] Color code for the title text itself (default '&f')
+ */
+function tellSeparatorTitle(player, title, sepColor, titleColor) {
+    if (typeof sepColor === 'undefined' || sepColor === null) sepColor = '&f';
+    if (typeof titleColor === 'undefined' || titleColor === null) titleColor = '&f';
+    if (typeof title === 'undefined' || title === null) title = '';
+
+    // Helper: compute visible length (strip &x sequences)
+    function visibleLength(s) { return String(s).replace(/&./g, '').length; }
+
+    // Truncate title preserving color codes so visible length <= 47
+    var maxTitleVisible = 47; // 54 - 7 (brackets and spaces and fixed chars)
+    var visible = visibleLength(title);
+    if (visible > maxTitleVisible) {
+        // Walk the string accumulating visible chars while preserving color codes
+        var acc = '';
+        var v = 0;
+        for (var i = 0; i < title.length && v < maxTitleVisible; i++) {
+            var ch = title.charAt(i);
+            if (ch === '&' && i + 1 < title.length) {
+                // keep color code pair
+                acc += ch + title.charAt(i + 1);
+                i++; // skip next char
+                continue;
+            }
+            acc += ch;
+            v++;
+        }
+        title = acc;
+        visible = v;
+    }
+
+    var totalEquals = 47 - visible; // L+R = 47 - T
+    if (totalEquals < 0) totalEquals = 0;
+    var left = Math.floor(totalEquals / 2);
+    var right = totalEquals - left;
+    var leftEq = new Array(left + 1).join('=');
+    var rightEq = new Array(right + 1).join('=');
+
+    var leftPart = '[' + leftEq + ']';
+    var rightPart = '[' + rightEq + ']';
+
+    // Build message: sepColor[left] <space> titleColor title <space> sepColor[right]
+    var msg = sepColor + leftPart + ' ' + titleColor + title + ' ' + sepColor + rightPart;
+    try { tellPlayer(player, parseEmotes(ccs(msg))); } catch (e) { /* swallow */ }
+}
