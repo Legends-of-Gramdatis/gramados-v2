@@ -50,6 +50,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     if(!phaseCfg || !phaseCfg.enabled) return false;
     if(!pdata.phase1) pdata.phase1 = {};
     var changed = false;
+    var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
 
     // Entry: pick a room immediately so we can mention it in the welcome, then show arrival message once
     if(!pdata.phase1.arrivalShown){
@@ -89,11 +90,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                 logToFile('onboarding', '[phase1-room-select-error] ' + player.getName() + ' ' + selErr0);
             }
         }
-        // Welcome + objective
-        if(pdata.phase1.targetRoomId){
-            tellPlayer(player, ':hotel: &bWelcome to the State Hotel.&r &eFind your assigned room &6#' + pdata.phase1.targetRoomId + '&e and enter it.');
+        // Welcome + objective (separator added for clarity)
+        var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
+        tellSeparatorTitle(player, 'Finding Room', '&b', '&e');
+        if (pdata.phase1.targetRoomId) {
+            tellPlayer(player, p1chat.room_assigned.replace('{room}', pdata.phase1.targetRoomId));
         } else {
-            tellPlayer(player, ':hotel: &bWelcome to the State Hotel.&r &eExplore and find your starter room.');
+            tellPlayer(player, p1chat.welcome);
         }
         pdata.phase1.arrivalShown = true;
         pdata.phase1.arrivalTime = Date.now();
@@ -120,13 +123,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
         var afterDelay1 = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((now - pdata.phase1.arrivalTime) >= longDelayMs1) : true;
         // Immediate feedback on teleport, and reset loop timer
         if (didTp) {
-            tellPlayer(player, ':hotel: &ePlease stay inside the State Hotel.');
+            tellPlayer(player, p1chat.confine_reminder);
             pdata.phase1.lastConfineMsg = now; // reset loop so next reminder waits full interval
             changed = true;
             logToFile('onboarding', '[phase1-confine] ' + player.getName() + ' pulled back to hotel fallback.');
         } else if (afterDelay1 && (!pdata.phase1.lastConfineMsg || (now - pdata.phase1.lastConfineMsg) > remindMs)) {
             // Periodic reminder only after long delay from phase arrival
-            tellPlayer(player, ':hotel: &ePlease stay inside the State Hotel.');
+            tellPlayer(player, p1chat.confine_reminder);
             pdata.phase1.lastConfineMsg = now;
             changed = true;
         }
@@ -149,9 +152,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var afterDelayA = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((nowA - pdata.phase1.arrivalTime) >= longDelayMsA) : true;
                         if(afterDelayA && (!pdata.phase1.lastFindRoomMsg || (nowA - pdata.phase1.lastFindRoomMsg) > remindMsA)){
                             if(pdata.phase1.targetRoomId){
-                                tellPlayer(player, ':compass: &eFind your assigned room &6#' + pdata.phase1.targetRoomId + '&e and enter it.');
+                                tellPlayer(player, p1chat.find_room_prompt.replace('{room}', pdata.phase1.targetRoomId));
                             } else {
-                                tellPlayer(player, ':compass: &eFind your assigned room and enter it.');
+                                tellPlayer(player, p1chat.find_room_prompt.replace('{room}', ''));
                             }
                             pdata.phase1.lastFindRoomMsg = nowA;
                             changed = true;
@@ -169,8 +172,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         }
                         pdata.phase1.currentStep = 2;
                         // Inform the player about room entry and incoming furniture on a short timer
+                        tellSeparatorTitle(player, 'Room Setup', '&b', '&e');
                         var shortDelaySec_entry = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5;
-                        tellPlayer(player, ':key: &aWelcome! This is your room ' + (pdata.phase1.targetRoomId ? ('&6#'+pdata.phase1.targetRoomId) : '') + '&a. We\'ll issue some starter furniture in &6' + shortDelaySec_entry + 's&a.');
+                        tellPlayer(player, p1chat.room_entry.replace('{room}', (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '')).replace('{delay}', shortDelaySec_entry));
                         if(!pdata.phase1.furnitureGranted && !pdata.phase1.furnitureTimerStart){ pdata.phase1.furnitureTimerStart = Date.now(); changed = true; }
                         changed = true;
                     }
@@ -182,16 +186,16 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var remindMsB = globalCfg.general.generic_streamline_interval * 1000;
                         var longDelayMsB = (((typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000);
                         var afterDelayB = (pdata.phase1 && pdata.phase1.inRoomSince) ? ((nowB - pdata.phase1.inRoomSince) >= longDelayMsB) : true;
-                        if (corrected) {
-                            // Immediate feedback when trying to exit; reset loop timer
-                            tellPlayer(player, ':door: &ePlease stay inside your room ' + (pdata.phase1.targetRoomId ? ('&6#'+pdata.phase1.targetRoomId) : '') + '&e while we prepare your starter furniture.');
-                            pdata.phase1.lastRoomConfineMsg = nowB;
-                            changed = true;
-                        } else if (afterDelayB && (!pdata.phase1.lastRoomConfineMsg || (nowB - pdata.phase1.lastRoomConfineMsg) > remindMsB)) {
-                            tellPlayer(player, ':door: &eStay inside your room ' + (pdata.phase1.targetRoomId ? ('&6#'+pdata.phase1.targetRoomId) : '') + '&e while we prepare your starter furniture.');
-                            pdata.phase1.lastRoomConfineMsg = nowB;
-                            changed = true;
-                        }
+                            if (corrected) {
+                                // Immediate feedback when trying to exit; reset loop timer
+                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '')));
+                                pdata.phase1.lastRoomConfineMsg = nowB;
+                                changed = true;
+                            } else if (afterDelayB && (!pdata.phase1.lastRoomConfineMsg || (nowB - pdata.phase1.lastRoomConfineMsg) > remindMsB)) {
+                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '')));
+                                pdata.phase1.lastRoomConfineMsg = nowB;
+                                changed = true;
+                            }
                         if(!pdata.phase1.furnitureGranted){
                             if(!pdata.phase1.furnitureTimerStart){ pdata.phase1.furnitureTimerStart = Date.now(); changed = true; }
                             var delaySec = globalCfg.general.generic_streamline_delay_short;
@@ -213,7 +217,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                     }
                                     pdata.phase1.furnitureGranted = true;
                                     pdata.phase1.furnitureGrantedTime = Date.now();
-                                    tellPlayer(player, ':giftchest: &aBasic room furniture issued: bed, storage, and table. Make the space yours!');
+                                    tellPlayer(player, p1chat.furniture_granted);
                                     logToFile('onboarding', '[phase1-furniture] ' + player.getName() + ' granted starter furniture for room ' + (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : pdata.phase1.targetRoomName) + '.');
                                     // Schedule !setHome intro after an extra short delay to avoid overlapping messages
                                     var shortDelayMs_post = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
@@ -244,20 +248,24 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var remindMsC = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
                         var introAt = pdata.phase1.s2_introAvailableAt || 0;
                         var introAllowed = !introAt || nowC >= introAt;
-                        if (corrected2) {
+                            if (corrected2) {
                             // Immediate message on attempted exit; also reset loop timer to avoid double messages
-                            tellPlayer(player, '&eYou must register this room as your home before leaving. Use &6!setHome <name>&e.');
+                            tellSeparatorTitle(player, 'Phase 1 - Home Registration', '&b', '&a');
+                            tellPlayer(player, p1chat.sethome_prompt);
                             pdata.phase1.lastSetHomeMsg = nowC;
                             changed = true;
                         } else if (introAllowed) {
                             // Show intro once, then periodic reminders
                             if (!pdata.phase1.s2_introShown) {
-                                tellPlayer(player, ':house: &eRegister this room as your home with &6!setHome <name>&e.');
+                                tellSeparator(player, '&b');
+                                var roomLabelIntro = pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '';
+                                tellPlayer(player, p1chat.register_room.replace('{room}', roomLabelIntro));
                                 pdata.phase1.s2_introShown = true;
                                 pdata.phase1.lastSetHomeMsg = nowC;
                                 changed = true;
                             } else if (!pdata.phase1.lastSetHomeMsg || (nowC - pdata.phase1.lastSetHomeMsg) > remindMsC) {
-                                tellPlayer(player, ':house: &eRegister this room as your home with &6!setHome <name>&e.');
+                                var roomLabelRem = pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '';
+                                tellPlayer(player, p1chat.register_room.replace('{room}', roomLabelRem));
                                 pdata.phase1.lastSetHomeMsg = nowC;
                                 changed = true;
                             }
@@ -284,7 +292,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 pdata.phase1.homeMax = maxHomes0;
                                 // If no capacity left, skip this step to avoid blocking older players
                                 if(baselineCount >= maxHomes0){
-                                    tellPlayer(player, '&7You already have the maximum number of homes (&e' + maxHomes0 + '&7). Skipping home registration.');
+                                    tellPlayer(player, p1chat.home_max.replace('{max}', String(maxHomes0)));
                                     pdata.phase1.currentStage = 3;
                                     pdata.phase1.currentStep = 1;
                                     // Lifts the room lock by leaving Stage 2
@@ -320,7 +328,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 // Detect new home set
                                 if(typeof pdata.phase1.homeBaselineCount === 'number' && currCount > pdata.phase1.homeBaselineCount){
                                     // Success! Home was registered after prompting
-                                    tellPlayer(player, '&a:check_mark: Home registered successfully. You are free to leave your room.');
+                                    tellSeparatorTitle(player, 'Phase 1 - Home Registered', '&b', '&a');
+                                    tellPlayer(player, p1chat.sethome_success);
                                     pdata.phase1.homeRegistered = true;
                                     pdata.phase1.homeRegisteredTime = Date.now();
                                     // Prepare a short delay before Stage 3 intro to avoid message overlap
@@ -340,8 +349,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
 
                             // Only prompt if player still has capacity (avoid mixed states)
                             if(!pdata.phase1.homeRegistered && (!pdata.phase1.lastSetHomeMsg || (nowC - pdata.phase1.lastSetHomeMsg) > remindMsC)){
-                                var roomLabel = pdata.phase1.targetRoomId ? (' &6#'+pdata.phase1.targetRoomId+'&e') : '';
-                                tellPlayer(player, ':house: &eRegister this room' + roomLabel + ' as your home with &6!setHome <name>&e.');
+                                var roomLabel = pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '';
+                                tellPlayer(player, p1chat.register_room.replace('{room}', roomLabel));
                                 pdata.phase1.lastSetHomeMsg = nowC;
                                 changed = true;
                             }
@@ -367,7 +376,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var introAtS3 = pdata.phase1.s3_introAvailableAt || 0;
                         var introAllowedS3 = !introAtS3 || nowS3 >= introAtS3;
                         if(introAllowedS3 && !pdata.phase1.s3_introShown){
-                            tellPlayer(player, ':house: &eOpen your homes list with &6!myHomes&e. Then walk a bit away from your apartment and try &6!home &eto return.');
+                            tellSeparatorTitle(player, 'Phase 1 - Home Tutorial', '&b', '&9');
+                            tellPlayer(player, p1chat.home_open_myhomes);
                             pdata.phase1.s3_introShown = true;
                             pdata.phase1.s3_lastMsg = nowS3;
                             changed = true;
@@ -395,7 +405,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         // If no homes in data, cannot proceed; remind to set home (safety net)
                         if(homeList.length === 0){
                             if(!pdata.phase1.s3_lastMsg || (nowS3 - pdata.phase1.s3_lastMsg) > intervalMs){
-                                tellPlayer(player, '&eIt looks like you don\'t have any home yet. Use &6!setHome <name> &ein your room first.');
+                                tellPlayer(player, p1chat.no_home_yet);
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             }
@@ -433,19 +443,20 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             if(!pdata.phase1.s3_wasFar){ pdata.phase1.s3_wasFar = true; becameFar = true; changed = true; }
                             if(becameFar){
                                 // Force-show immediately at the exact moment we become far enough
-                                tellPlayer(player, ':arrow_r: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
+                                tellSeparator(player, '&b');
+                                tellPlayer(player, p1chat.home_far_try);
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             } else if(!pdata.phase1.s3_lastMsg || (nowS3 - pdata.phase1.s3_lastMsg) > intervalMs){
                                 // Afterwards, fall back to throttled reminders
-                                tellPlayer(player, ':arrow_r: &aYou\'re far enough now. Try &6!home &ato teleport back to your home.');
+                                tellPlayer(player, p1chat.home_far_try);
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             }
                         } else {
                             // Not far yet: keep giving the base message periodically, but don\'t spam
                             if(!pdata.phase1.s3_lastMsg || (nowS3 - pdata.phase1.s3_lastMsg) > intervalMs){
-                                tellPlayer(player, ':house: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.');
+                                tellPlayer(player, p1chat.home_open_myhomes);
                                 pdata.phase1.s3_lastMsg = nowS3;
                                 changed = true;
                             }
@@ -461,7 +472,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 if(d2h <= nearR2){ nearAny = true; break; }
                             }
                             if(nearAny){
-                                tellPlayer(player, '&a:check_mark: Tutorial complete. You used &6!home &ato return near your home.');
+                                tellSeparatorTitle(player, 'Phase 1 - Tutorial Complete', '&b', '&a');
+                                tellPlayer(player, p1chat.home_tutorial_complete);
                                 pdata.phase1.currentStage = 4; // proceed to completion stage
                                 pdata.phase1.currentStep = 1;
                                 pdata.phase1.s3_completed = true;
@@ -487,19 +499,20 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         if(!pdata.phase1.s4_timerStart){
                             pdata.phase1.s4_timerStart = Date.now();
                             // Immediate reminder on entering this step
-                            tellPlayer(player, ':map: &eYou feel disoriented. In a moment, you\'ll be moved. Be ready to use &6!home &eto return.');
+                            tellSeparatorTitle(player, 'Phase 1 - Lost Moment', '&b', '&c');
+                            tellPlayer(player, p1chat.lost_moment_warn);
                             changed = true;
                         }
                         // Periodic reminder while waiting for teleport
                         var gcfg4_1 = (globalCfg && globalCfg.general) ? globalCfg.general : {};
                         var intervalMs4_1 = ((typeof gcfg4_1.generic_streamline_interval === 'number') ? gcfg4_1.generic_streamline_interval : 60) * 1000;
                         if(!pdata.phase1.s4_waitMsg || (Date.now() - pdata.phase1.s4_waitMsg) > intervalMs4_1){
-                            tellPlayer(player, ':hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you\'re lost.');
+                            tellPlayer(player, p1chat.lost_moment_wait);
                             pdata.phase1.s4_waitMsg = Date.now();
                             changed = true;
                         }
                         var elapsedS = (Date.now() - pdata.phase1.s4_timerStart) / 1000.0;
-                        if(elapsedS >= delaySec){
+                            if(elapsedS >= delaySec){
                             var tp4 = lmCfg.teleport || { pos: [-2100, 70, -150], yaw: 0, pitch: 0 };
                             var p4 = tp4.pos || [-2100, 70, -150];
                             player.setPosition(p4[0] + 0.5, p4[1], p4[2] + 0.5);
@@ -510,7 +523,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.s4_radius = (typeof lmCfg.radius === 'number') ? lmCfg.radius : 12;
                             pdata.phase1.s4_confining = true;
                             pdata.phase1.currentStep = 2;
-                            tellPlayer(player, ':map: &eYou feel disoriented. Use &6!home &eto return to your room.');
+                            tellSeparator(player, '&b');
+                            tellPlayer(player, p1chat.lost_moment_use_home);
                             changed = true;
                         }
                     } catch (s4e1) {
@@ -546,8 +560,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         }
                         if(isNearHome4){
                             pdata.phase1.s4_confining = false; // stop confining
-                            tellPlayer(player, '&a:check_mark: You found your way back. Phase 1 complete!');
-                            tellPlayer(player, '&bYou can view your homes anytime with &6!myHomes&b. By default you can set up to 2 homes.');
+                            tellPlayer(player, p1chat.phase1_complete);
+                            var maxHomesDefault = (pdata.phase1 && pdata.phase1.homeMax) ? pdata.phase1.homeMax : 2;
+                            if(p1chat.home_info_max){ tellPlayer(player, p1chat.home_info_max.replace('{max}', String(maxHomesDefault))); }
                             pdata.phase1.completed = true;
                             pdata.phase1.s4_completed = true;
                             pdata.phase1.s4_completedTime = Date.now();
@@ -569,13 +584,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 // Teleport to boundary, keep Y to avoid fall/tp loops
                                 player.setPosition(nx, ppos4.y, nz);
                                 if(!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
-                                    tellPlayer(player, ':round_pushpin: &eYou are lost. Use &6!home &eto return to your room.');
+                                    tellPlayer(player, p1chat.lost_confining_found);
                                     pdata.phase1.s4_lastMsg = Date.now();
                                     changed = true;
                                 }
                             } else if(!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
                                 // Gentle reminder while inside the circle
-                                tellPlayer(player, ':round_pushpin: &eTry &6!home &eto get back home.');
+                                tellPlayer(player, p1chat.lost_confining_reminder);
                                 pdata.phase1.s4_lastMsg = Date.now();
                                 changed = true;
                             }
