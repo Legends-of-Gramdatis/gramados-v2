@@ -13,6 +13,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths
 // Phase scripts
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase0.js');
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase1.js');
+load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase2.js');
 
 // === Constants ===
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
@@ -79,8 +80,11 @@ function init(event) {
                 if (!pdata.phase0) pdata.phase0 = {};
                 var npcName = arrival.dialog.npc;
                 var chatCfg = arrival.dialog.chat || {};
-                var templ = chatCfg.onWelcome || '&bWelcome! Please speak with {npc}.';
+                var templ = chatCfg.onWelcome;
                 var npcFormatted = '&6&l' + npcName + '&r&b';
+                // Show the Immigrant Office separator title before the welcome message
+                var phaseName0 = (phase0 && phase0.name) ? phase0.name : 'Immigrant Office';
+                tellSeparatorTitle(player, phaseName0, '&6', '&e');
                 tellPlayer(player, templ.replace('{npc}', npcFormatted));
                 // Record welcome time to gate Phase 0 reminders (avoid immediate spam)
                 if (!pdata.phase0) pdata.phase0 = {};
@@ -99,6 +103,21 @@ function tick(event) {
     if (!onboarding_isModuleEnabled()) return;
     if (!onboarding_isBetaAllowed(player)) return;
     var pdata = onboarding_getPlayerData(player);
+    // Phase-start header: show a 3-line header once when player's phase changes
+    if (typeof pdata._lastPhaseSeen === 'undefined' || pdata._lastPhaseSeen !== pdata.phase) {
+        // Determine phase name and colors (use convention; phases may be missing in cfg)
+        var phCfg = _onboarding_cfg && _onboarding_cfg.phases && _onboarding_cfg.phases[String(pdata.phase)];
+        var phaseName = (phCfg && phCfg.name) ? phCfg.name : ('Phase ' + pdata.phase);
+        // color mapping: 0 -> gold, 1 -> aqua, 2 -> dark green, fallback white
+        var phaseColorMap = { '0': '&6', '1': '&b', '2': '&2' };
+        var sepColor = phaseColorMap[String(pdata.phase)] || '&f';
+        // Show header separators (store flag so this is only shown once per transition)
+        // tellSeparator(player, '&f');
+        // tellSeparatorTitle(player, phaseName, sepColor, '&e');
+        // tellSeparator(player, '&f');
+        pdata._lastPhaseSeen = pdata.phase;
+        changed = true;
+    }
     var changed = false;
     switch (pdata.phase) {
         case 0:
@@ -106,6 +125,10 @@ function tick(event) {
             break;
         case 1:
             changed = onboarding_run_phase1(player, pdata, _onboarding_cfg.phases['1'], _onboarding_cfg, _onboarding_players) || false;
+            break;
+        case 2:
+            // Phase 2: economy / pouch onboarding
+            changed = onboarding_run_phase2(player, pdata, _onboarding_cfg.phases['2'], _onboarding_cfg, _onboarding_players) || false;
             break;
         default:
             break;
