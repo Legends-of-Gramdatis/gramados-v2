@@ -239,9 +239,9 @@
     },
     "Spooktober": {
         "TheOddlySeagull": {
-            "playerLastSpawnTime": 1760881938491,
-            "ghostsSpawned": 599,
-            "ghostsHunted": 86
+            "playerLastSpawnTime": 1761404924496,
+            "ghostsSpawned": 687,
+            "ghostsHunted": 100
         },
         "oldbjorn": {
             "playerLastSpawnTime": 1760761141763,
@@ -262,9 +262,9 @@
             "ghostsHunted": 8
         },
         "SinaBloodsaw": {
-            "playerLastSpawnTime": 1760970767444,
-            "ghostsSpawned": 31,
-            "ghostsHunted": 12
+            "playerLastSpawnTime": 1761388973133,
+            "ghostsSpawned": 42,
+            "ghostsHunted": 23
         },
         "BOTFerris": {
             "playerLastSpawnTime": 1760370377489
