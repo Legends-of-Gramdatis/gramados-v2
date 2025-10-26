@@ -92,7 +92,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
         }
         // Welcome + objective (separator added for clarity)
         var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
-        tellSeparatorTitle(player, 'Finding Room', '&b', '&e');
+        tellSeparatorTitle(player, 'Finding Your State Room', '&b', '&e');
         if (pdata.phase1.targetRoomId) {
             tellPlayer(player, p1chat.room_assigned.replace('{room}', pdata.phase1.targetRoomId));
         } else {
@@ -188,11 +188,11 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var afterDelayB = (pdata.phase1 && pdata.phase1.inRoomSince) ? ((nowB - pdata.phase1.inRoomSince) >= longDelayMsB) : true;
                             if (corrected) {
                                 // Immediate feedback when trying to exit; reset loop timer
-                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '')));
+                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', '#'+pdata.phase1.targetRoomId));
                                 pdata.phase1.lastRoomConfineMsg = nowB;
                                 changed = true;
                             } else if (afterDelayB && (!pdata.phase1.lastRoomConfineMsg || (nowB - pdata.phase1.lastRoomConfineMsg) > remindMsB)) {
-                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : '')));
+                                tellPlayer(player, p1chat.stay_in_room.replace('{room}', '#'+pdata.phase1.targetRoomId));
                                 pdata.phase1.lastRoomConfineMsg = nowB;
                                 changed = true;
                             }
@@ -376,7 +376,6 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var introAtS3 = pdata.phase1.s3_introAvailableAt || 0;
                         var introAllowedS3 = !introAtS3 || nowS3 >= introAtS3;
                         if(introAllowedS3 && !pdata.phase1.s3_introShown){
-                            tellSeparatorTitle(player, 'Phase 1 - Home Tutorial', '&b', '&9');
                             tellPlayer(player, p1chat.home_open_myhomes);
                             pdata.phase1.s3_introShown = true;
                             pdata.phase1.s3_lastMsg = nowS3;
@@ -499,7 +498,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         if(!pdata.phase1.s4_timerStart){
                             pdata.phase1.s4_timerStart = Date.now();
                             // Immediate reminder on entering this step
-                            tellSeparatorTitle(player, 'Phase 1 - Lost Moment', '&b', '&c');
+                            tellSeparatorTitle(player, 'Lost Moment', '&b', '&e');
                             tellPlayer(player, p1chat.lost_moment_warn);
                             changed = true;
                         }

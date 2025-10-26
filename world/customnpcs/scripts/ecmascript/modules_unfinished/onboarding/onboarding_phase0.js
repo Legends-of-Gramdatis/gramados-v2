@@ -4,64 +4,51 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     var changed = false;
     var arrival = phaseCfg.stages && phaseCfg.stages.arrival ? phaseCfg.stages.arrival : null;
     if (!arrival) return false;
-    var intervalMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number' ? globalCfg.general.generic_streamline_interval : 60) * 1000;
-    var longDelayMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number' ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
-    var shortDelayMs = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number' ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
+    var intervalMs = globalCfg.general.generic_streamline_interval * 1000;
+    var longDelayMs = globalCfg.general.generic_streamline_delay_long * 1000;
+    var shortDelayMs = globalCfg.general.generic_streamline_delay_short * 1000;
     var nowGen = Date.now();
 
     // Detect dialog completion automatically by polling the player's dialog history
-    try {
-        var dialogMeta = arrival.dialog || {};
-        var dialogId = dialogMeta.id; // Could be numeric or string
-        if (typeof dialogId !== 'undefined' && dialogId !== null) {
-            // Normalize to int if numeric string
-            if (typeof dialogId === 'string' && dialogId.match(/^\d+$/)) { dialogId = parseInt(dialogId, 10); }
-            var hasRead = false;
-            if (!pdata.phase0.dialogRead) {
-                try { hasRead = player.hasReadDialog(dialogId); } catch (ee) { hasRead = false; }
-                if (hasRead) {
-                    pdata.phase0.dialogRead = true;
-                    pdata.phase0.dialogReadTime = Date.now();
-                    logToFile('onboarding', '[dialog-detected] ' + player.getName() + ' read dialog id=' + dialogId);
-                    // Award real bike + wrench via loot tables if not already
-                    if (!pdata.phase0.rewardsGiven) {
-                        var world = player.getWorld();
-                        var lootWrench = pullLootTable(_LOOTTABLE_VEHICLE_WRENCH, player) || [];
-                        var lootBike = pullLootTable(_LOOTTABLE_VEHICLE_BIKE, player) || [];
-                        var combined = lootWrench.concat(lootBike);
-                        for (var li = 0; li < combined.length; li++) {
-                            try {
-                                var stack = generateItemStackFromLootEntry(combined[li], world);
-                                if (stack) { player.giveItem(stack); }
-                            } catch (giErr) {
-                                logToFile('onboarding', '[reward-error] ' + player.getName() + ' loot gen failed: ' + giErr);
-                            }
-                        }
-                        pdata.phase0.rewardsGiven = true;
-                        // Separator for Phase 0 arrival
-                        tellSeparatorTitle(player, 'Arrival', '&6', '&6');
-                        tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.');
-                        logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
+    var dialogMeta = arrival.dialog || {};
+    var dialogId = dialogMeta.id; // Could be numeric or string
+    if (typeof dialogId !== 'undefined' && dialogId !== null) {
+        // Normalize to int if numeric string
+        if (typeof dialogId === 'string' && dialogId.match(/^\d+$/)) { dialogId = parseInt(dialogId, 10); }
+        if (!pdata.phase0.dialogRead) {
+            if (player.hasReadDialog(dialogId)) {
+                pdata.phase0.dialogRead = true;
+                pdata.phase0.dialogReadTime = Date.now();
+                logToFile('onboarding', '[dialog-detected] ' + player.getName() + ' read dialog id=' + dialogId);
+                // Award real bike + wrench via loot tables if not already
+                if (!pdata.phase0.rewardsGiven) {
+                    var world = player.getWorld();
+                    var lootWrench = pullLootTable(_LOOTTABLE_VEHICLE_WRENCH, player) || [];
+                    var lootBike = pullLootTable(_LOOTTABLE_VEHICLE_BIKE, player) || [];
+                    var combined = lootWrench.concat(lootBike);
+                    for (var li = 0; li < combined.length; li++) {
+                        var stack = generateItemStackFromLootEntry(combined[li], world);
+                        if (stack) { player.giveItem(stack); }
                     }
-                    // Start timer immediately per spec
-                    if (!pdata.phase0.timerStarted) {
-                        pdata.phase0.timerStarted = true;
-                        pdata.phase0.timerStartMs = Date.now();
-                        tellSeparatorTitle(player, 'Transfer', '&6', '&6');
-                        tellPlayer(player, dialogMeta.chat.onDialogComplete);
-                        
-                        if (dialogMeta.chat.onTimerStart) {
-                            tellPlayer(player, dialogMeta.chat.onTimerStart);
-                        }
-                        logToFile('onboarding', '[timer-start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
-                    }
-                    changed = true;
+                    pdata.phase0.rewardsGiven = true;
+                    tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.');
+                    logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
                 }
+                // Start timer immediately per spec
+                if (!pdata.phase0.timerStarted) {
+                    pdata.phase0.timerStarted = true;
+                    pdata.phase0.timerStartMs = Date.now();
+                    tellSeparatorTitle(player, 'Transfer', '&6', '&6');
+                    tellPlayer(player, dialogMeta.chat.onDialogComplete);
+                    
+                    if (dialogMeta.chat.onTimerStart) {
+                        tellPlayer(player, dialogMeta.chat.onTimerStart);
+                    }
+                    logToFile('onboarding', '[timer-start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
+                }
+                changed = true;
             }
         }
-    } catch (pollErr) {
-        // Log once maybe? For simplicity log each occurrence (should be rare)
-        // Avoid spamming by only logging if massive error state would occur; left minimal.
     }
     var region = arrival.region;
     if (region) {
@@ -109,7 +96,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             pdata.phase = 1; // advance to next phase (placeholder)
             pdata.phase0.teleportTime = Date.now();
             changed = true;
-            tellSeparatorTitle(player, 'Phase 0 - Teleport', '&6', '&6');
+            // tellSeparatorTitle(player, 'Phase 0 - Teleport', '&6', '&6');
             tellPlayer(player, dcfg2.chat.onTeleport);
             logToFile('onboarding', '[teleport] ' + player.getName() + ' Phase0 -> State Hotel.');
             if (globalCfg.general && globalCfg.general.logJson) {
@@ -127,8 +114,8 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
         if (afterWelcomeDelay) {
             // Before dialog: remind to speak with NPC
             if (!pdata.phase0.dialogRead) {
-                    if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
-                    var npcName0 = (arrival.dialog && arrival.dialog.npc) ? arrival.dialog.npc : null;
+                if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
+                    var npcName0 = arrival.dialog.npc;
                     if (chatCfg0.onWelcome) {
                         tellPlayer(player, chatCfg0.onWelcome.replace('{npc}', npcName0 || ''));
                     } else if (chatCfg0.onConfine) {
