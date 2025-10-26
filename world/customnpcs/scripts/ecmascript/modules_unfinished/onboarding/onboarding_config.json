@@ -14,7 +14,7 @@
     },
     "phases": {
         "0": {
-            "name": "Immigrant Office",
+            "name": "Gramados Arrival",
             "enabled": true,
             "stages": {
                 "arrival": {
@@ -25,7 +25,7 @@
                     },
                     "dialog": {
                         "id": 597,
-                        "npc": "Daren Krovic",
+                        "npc": "&6&lDaren Krovic",
                         "teleport_delay_seconds": 10,
                         "state_hotel_tp": {
                             "pos": [-1884, 88.5, -192],
@@ -37,15 +37,15 @@
                             "onTimerStart": ":hourglass:&e Processing... You'll be transferred shortly.",
                             "onConfineAfterDialog": ":hourglass:&e Transfer in progress. Please wait inside the office until you're teleported to the State Hotel.",
                             "onTeleport": ":airplane_departure:&b Welcome to Gramados! Enjoy your stay at the State Hotel.",
-                            "onConfine": ":lit:&e You still need to speak with &6&lDaren Krovic&r&e to finish immigration before leaving.",
-                            "onWelcome": "&b:star: Welcome to Gramados! Please speak with {npc} &bto complete your immigration paperwork."
+                            "onConfine": ":lit:&e You still need to speak with &6&lDaren Krovic&r&e to finish arrival before leaving.",
+                            "onWelcome": "&b:star: Welcome to Gramados! Please speak with {npc} &r&bto complete your arrival paperwork."
                         }
                     }
                 }
             }
         },
         "1": {
-            "name": "State Hotel",
+            "name": "State Hotel Room and Home",
             "enabled": true,
             "stages": {
                 "hotel": {
@@ -60,25 +60,25 @@
                         "find_room_prompt": ":compass: &eFind your assigned room {room} and enter it.",
                         "room_entry": ":key: &aWelcome! This is your room {room}. We'll issue some starter furniture in &6{delay}s&a.",
                         "stay_in_room": ":door: &ePlease stay inside your room {room} while we prepare your starter furniture.",
-                        "furniture_granted": "&eFurniture has been placed in your room. Check it out!",
-                        "sethome_prompt": "&ePlease run &e!setHome &eto register this room as your home.",
+                        "furniture_granted": ":giftchest: &aYou have been granted some new furniture for your room! you can make the space yours by arranging it as you like.",
+                        "sethome_prompt": ":door: &ePlease register this room {room} as your home with &6!setHome <name>&e before leaving.",
                         "sethome_success": "&aHome registered. Use &e!home &ato teleport back here.",
                         "home_tutorial_intro": "&eYou can use &e!myHomes &eand &e!home &eto manage your houses. Try them out.",
                         "lost_moment_teleport": "&cIt seems you're lost. Teleporting you back to the hotel fallback.",
                         "lost_moment_warn": ":map: &eYou feel disoriented. In a moment, you'll be moved. Be ready to use &6!home &eto return.",
                         "lost_moment_wait": ":hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you're lost.",
-                        "lost_moment_use_home": ":map: &eYou feel disoriented. Use &6!home &eto return to your room.",
+                        "lost_moment_use_home": "&b:star: Here we are, lost in the middle of nowhere, where only ruins remain. Use &6!home &bor &6!home <name> &bto safely return to your home.",
                         "confine_reminder": ":hourglass:&e Please stay inside the State Hotel until your room is ready.",
                         "home_max": "&7You already have the maximum number of homes (&e{max}&7). Skipping home registration.",
                         "register_room": ":house: &eRegister this room {room} as your home with &6!setHome <name>&e.",
                         "no_home_yet": "&eIt looks like you don't have any home yet. Use &6!setHome <name> &ein your room first.",
-                        "home_far_try": ":arrow_r: &aYou're far enough now. Try &6!home &ato teleport back to your home.",
+                        "home_far_try": ":lit: &aYou're far enough now. Try &6!home &ato teleport back to your home.",
                         "home_open_myhomes": ":house: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
-                        "home_tutorial_complete": "&a:check_mark: Tutorial complete. You used &6!home &ato return near your home.",
-                        "phase1_complete": "&a:check_mark: You found your way back. Phase 1 complete!",
-                        "home_info_max": "&bYou can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes."
-                        ,"lost_confining_found": ":round_pushpin: &eYou are lost. Use &6!home &eto return to your room.",
-                        "lost_confining_reminder": ":round_pushpin: &eTry &6!home &eto get back home."
+                        "home_tutorial_complete": "&a:check_mark: You successfully used &6!home &ato return to your home.",
+                        "phase1_complete": "&a:check_mark: You found your way back. Feels good to be home again!",
+                        "home_info_max": "&bYou can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes.",
+                        "lost_confining_found": ":round_pushpin: &eYou are lost. Use &6!home &eto return to your room.",
+                        "lost_confining_reminder": ":lit: &eTry running &6!home &eor &6!home <name> &eto safely return home."
                     },
                     "home": {
                         "proximity": {
@@ -104,7 +104,7 @@
             "stages": {
                 "stage1": {
                     "chat": {
-                        "s1_received": ":moneybag: &aYou received &e40g&a (2x 20g bills). Please run &e!myMoney &ato see your pouch and inventory breakdown.",
+                        "s1_received": "&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &e!myMoney &bto see your pouch and inventory monetary breakdown.",
                         "s1_reminder": ":bell: &eReminder: run &e!myMoney &eto check your pouch and inventory.",
                         "s1_guide_added": ":paper: &aA detailed currency guide has been added to your inventory.",
                         "s2_prompt": ":handbag: &eHold the money items in your hand and run &e!deposit &eto deposit them into your Money Pouch.",
@@ -117,7 +117,7 @@
                     },
                     "guide": {
                         "chat": [
-                            "&eHere's a quick overview of the main currencies you will see:",
+                            "&b:sun: Here's a quick overview of the main currencies you will see:",
                             "&7(Short descriptions follow; a detailed guide will be added to your inventory.)"
                         ],
                         "paper": {
