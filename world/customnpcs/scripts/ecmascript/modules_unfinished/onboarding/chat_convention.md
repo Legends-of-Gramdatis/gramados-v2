@@ -168,11 +168,14 @@ N/A
 :lit: &eTry running &6!home &eor &6!home <name> &eto safely return home.  
 
 **Exiting confinement**  
-:door: &ePlease use &6!home &eor &6!home <name> &eto return to your home quickly.
+:door: &ePlease use &6!home &eor &6!home <name> &eto return to your home quickly.  
 
 **Completion**  
 &a:check_mark: You found your way back. Feels good to be home again!  
+
+## Phase 0 Completion
 &b:sun: You can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes.  
+&b[===]  
 
 # 2 Phase 2 - Economy and Pouch
 
