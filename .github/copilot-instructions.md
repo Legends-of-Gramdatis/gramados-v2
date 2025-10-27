@@ -1,47 +1,93 @@
-# Copilot instructions for Gramados (Minecraft 1.12.2, CustomNPCs/Nashorn)
 
-This repo powers the Gramados RP server via CustomNPCs JavaScript (Nashorn) scripts. Code lives under `world/customnpcs/scripts`. Favor small, targeted edits and reuse utilities.
+# Copilot Instructions for Gramados Custom NPC Scripts
 
-## Architecture and layout
-- Scripts entry root: `world/customnpcs/scripts/ecmascript/`
-  - `gramados_utils/` shared helpers (I/O, chat, logging, regions, currency, loot tables)
-  - `modules/` shipped, stable features; `modules_unfinished/` WIP modules
-  - Each module may include JS, config JSON under its folder, and docs (README.md)
-- Config vs data:
-  - Static config JSON: `world/customnpcs/scripts/data/`
-  - Runtime data JSON: `world/customnpcs/scripts/data_auto/` (generated; read/write via utils)
-- Events: scripts are attached to NPCs/items or run per-player via events: `init(event)`, `tick(event)`, `interact(e)`.
+This directory contains the JavaScript scripts for the **Gramados** Minecraft RP server (version 1.12.2) using the Nashorn engine and the CustomNPCs API. We follow a modular structure to make features reusable and maintainable. **Key principles:**
 
-## Core utilities (use these instead of ad‑hoc code)
-- Files: `utils_files.js` → `loadJson(path)`, `saveJson(obj,path)`, `getWorldData()` (CustomNPCs storeddata)
-- Chat/UI: `utils_chat.js` → `tellPlayer(p, msg)`, `tellSeparatorTitle(p, title, sepColor, titleColor)`, `executeCommand(...)`
-- Logging: `utils_logging.js` → `logToFile(type,msg)`, `logToJson(type,key,obj)`; logs in `world/customnpcs/scripts/logs/`
-- Regions: `utils_region.js` → `isWithinAABB`, `getStarterHotelRegions()`, `getRandomUnownedRegion(...)`, `updateRegionOwnerSigns(name)`, `confinePlayerToRegion(...)`
-- Currency: `utils_currency.js` → `generateMoney(world, cents, "money")`, `addMoneyToCurrentPlayerPouch(...)`
-- Loot tables: `utils_loot_tables.js` → `pullLootTable(tablePath, player)`, `multiplePullLootTable(...)`
+- **Reuse `gramados_utils` scripts** wherever possible to avoid duplication.
+- **Use JSON configuration files** for any global or shared variables. This makes it easy to tweak settings without changing code.
+- **Store dynamic data as JSON** (instead of using entity/block data) so backend scripts (e.g. Python) can generate reports or APIs from them. Such dynamic JSON files are kept under `data_auto` and are `.gitignore`d.
+- **Keep docs in sync with code:** Whenever a JS script is updated, update the corresponding `README.md` or documentation in the same folder to reflect the changes.
 
-## Project conventions and patterns
-- Use JSON configs to parameterize behavior; write ephemeral state to `data_auto`.
-- Chat formatting uses `&` color codes and emoji aliases; see `gramados_utils/utils_chat.js` and onboarding `chat_convention.md`.
-- Teleports: prefer `player.setPosition(x+0.5, y, z+0.5)` and preserve yaw/pitch when needed.
-- Access Minecraft/CustomNPCs via Nashorn: `var API = Java.type('noppes.npcs.api.NpcAPI').Instance();` and `API.getIWorld(0)`.
-- Never `load()` a script that registers event hooks (like `onboarding_main.js`) from a tool/utility; use shared utils + direct JSON access instead (see `onboarding_reset_tool.js`).
+## Repository Structure
 
-## Onboarding module (example of module design)
-- Files: `modules_unfinished/onboarding/` → `onboarding_main.js` (per-player controller), `onboarding_phase*.js`, `onboarding_config.json`.
-- Gating: `onboarding_config.json` has `indev` and `beta_players`; `general.moduleEnabled` toggles module.
-- Data path: `world/customnpcs/scripts/data_auto/onboarding_data.json` (per-player progress). Save via `saveJson` when state changes.
-- Typical flow: detect dialog via `player.hasReadDialog(id)` → grant loot via `pullLootTable(...)` → timed teleport → confine to regions → advance phases.
+The `world/customnpcs/scripts` folder is the root of our scripting system. It contains several directories and files:
 
-## Build/run/debug workflows
-- No build step; scripts are interpreted by CustomNPCs. To run the server on Linux: use `ServerStartLinux.sh` (Java 8 required; reads `settings.cfg`).
-- Quick test loop: edit JS → rejoin server or trigger the script’s event → watch `world/customnpcs/scripts/logs/*.log`.
-- Reset onboarding state for a player using the scripted item `modules_unfinished/onboarding/onboarding_reset_tool.js` (clears dialog token, data file, and room ownerships).
+- `data/` – Global configuration JSON files for various features.
+- `data_auto/` – Dynamic JSON data used by scripts to communicate or track state (e.g. player data, module state). These files are generated/updated at runtime and are gitignored.
+- `ecmascript/` – Main folder for all JavaScript scripts and modules.
+- `globals/` – Additional global JSON configs (to be merged into `data/` eventually).
+- `json_backups/` – Historical JSON backups from over the years (ignored; no need to maintain).
+- `json_tests/` – Experimental JSONs or attempts (ignored).
+- `logs/` – All logs from different modules (ignored).
 
-## When adding or modifying scripts
-- Reuse `gramados_utils` functions; don’t duplicate file I/O, chat, or region math.
-- Keep configurable values in JSON next to the module; load once.
-- Persist only minimal per-player/module state to `data_auto/*.json`; log transitions with `logToJson('onboarding', 'phase_changes', {...})` when relevant.
-- Follow the separator/title chat style: `tellSeparatorTitle(player, 'Title', '&b', '&e')` and short, actionable lines.
+Additionally:
 
-References: `GUIDELINES.md` (repo-wide scripting principles), root `README.md` (server overview), and module READMEs under `world/customnpcs/scripts/ecmascript/modules*/`.
+- `CustomServerTools.js` – A legacy script from our original setup. It is still used but **deprecated and hard to read**. Eventually it will be replaced by the modular scripts.
+- `world_data.json` – The old giant JSON used by `CustomServerTools.js` via the CustomNPCs API. It contains a lot of legacy data (over 1500 lines) and is being phased out in favor of multiple smaller JSON files. It can only be read/modified through the CustomNPCs interface, so we prefer splitting data into new files.
+
+## Script Folders (`ecmascript`)
+
+Inside `ecmascript/`, the scripts are organized by function:
+
+- `deprecated/` – Old historical scripts that are no longer used. **Ignore these.**
+- `gramados_sounds/` – Single-purpose sound player script (used as a template).
+- `gramados_utils/` – Utility scripts organized by theme (jail, jobs, emotes, etc.). **This folder is very important.** Whenever you code a new feature, see if an existing utility function can help you before writing new code.
+- `modules/` – Approved, released modules. Each module is in its own subfolder.
+- `modules_unfinished/` – Work-in-progress (WIP) modules or features not yet released. When a feature is tested and ready, move it from here to `modules/`.
+- `single_use/` – Miscellaneous small scripts (often admin/debug tools or one-off item scripts). These are used manually, not part of any module.
+
+## Modules
+
+All major features are implemented as **modules** (separate subfolders under `modules/` or `modules_unfinished/`). Follow these rules when creating or updating a module:
+
+- **Development flow:** Do all initial work in `modules_unfinished/`. Only move a module to `modules/` when it is fully tested and approved.
+- **Folder contents:** Each module folder should contain its scripts and:
+  - A `README.md` describing the module’s purpose and usage.
+  - A `config.json` (or similarly named) for module configuration values.
+  - If needed, a `setup_guide.md` to explain special setup steps (e.g. placing NPCs or special blocks).
+  - Any other helper scripts or resources specific to that module.
+- **Modularity:** Design the module to be generic and reusable. Use JSON configuration to allow different setups (e.g. the *bankVault* module can create different vaults with different loot & difficulty).
+- **JSON entries:** In the module’s README, explain what each field in the JSON config means (unless the name is self-explanatory). Document default values and ranges if applicable.
+- **Admin Tips:** If the module supports admin/testing commands or interactions, include an **“Admin Tips”** section in the README. This should explain how staff can test or configure the module in-game. For example:
+  - **Offhand ID Card:** Admins should hold the `mts:ivv.idcard_seagull` (identity card item) in the offhand, and another special item in hand.
+  - **Actions:** Describe the special items and their effects. Common cases might be:
+    - A **barrier block** to reset or remove something.
+    - A **command block** or lever to switch configuration modes.
+    - A custom **tool item** to configure or toggle features.
+- **Module README footer:** At the end of each module’s README, include this line exactly:
+
+  `Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.`
+
+- **Legacy modules:** Some existing (especially older) modules or scripts may not follow all of the above rules yet. They will be refactored over time to match these guidelines.
+
+### Example: Bank Vault Module
+
+The *bankVault* module is a good illustration:
+
+- It has its own subfolder in `modules/`.
+- It contains a `bankVault.js` script, a `config.json` describing vault parameters, and a `README.md`.
+- The README explains how to place and configure a new vault via JSON (no code changes needed) and includes **Admin Tips** for testing vault locks, resetting bank state, etc.
+- A `setup_guide.md` helps staff set up vault locations using NPCs or blocks.
+
+## Data and Configuration
+
+- **Config files:** Typically named `config.json` within each module. These should define all tunable parameters (e.g. rates, limits, item IDs). Always load and save via helper utils if available.
+- **Dynamic data:** Use files in `data_auto/` for runtime state. For example, a module might save a JSON of active quests or completed rewards. These are updated by your script and *should not* be committed to Git (since they change every run).
+- **Global data:** Use `data/` for static data like localization texts, loot tables, or global lists (e.g. list of money items, roles, etc.).
+- **Utility usage:** Many utility functions require loading/saving JSON. Use `loadJson(path)` and `saveJson(data, path)` from `utils_files` instead of writing your own file I/O.
+
+## Documentation and Style
+
+- **Update docs promptly:** Whenever you change or add JS code, update the corresponding documentation (the README or setup guide) in the same folder. Users and future developers rely on these docs.
+- **Writing style:** Keep content clear and concise. Use short paragraphs (3–5 sentences) and bullet lists for steps or grouped ideas. The existing documentation uses:
+  - Markdown headings (e.g. `## Subsection`) to divide topics.
+  - Bold text for emphasis (e.g. **Server Features** in the main README).
+  - Inline code formatting for commands, item IDs, config keys, or code snippets (e.g. `like this`).
+  - Numbered lists (`1.`, `2.`) if you need a specific order, otherwise bullet lists (`-` or `*`) are fine.
+  - See examples in the repository README and tutorial files for guidance.
+- **Examples of formatting:**
+  - Refer to commands or special strings in backticks, e.g. hold `mts:ivv.idcard_seagull` in your offhand.
+  - Show JSON keys or code objects in inline code, e.g. `"lootTable": "my_loot_table"`.
+  - For clarity, prefix variable names or commands with context, like `!help` or `mts:ivv.idcard_seagull` so readers see they are commands/items.
+
+Copilot should prioritize consistency with existing style conventions. Match existing documentation and script layout wherever possible.
