@@ -5,7 +5,7 @@ Separators and logging throughout the 10h onboarding
 ## General
 - waiting repeats: &e
 - waiting repeats highlights: &6
-- phase starts: &b:star:
+- phase starts: &b:sun:
 - phase starts highlight: &6&l
 - phase completions: &b
 - stage completion messages: &a
@@ -20,6 +20,8 @@ Separators and logging throughout the 10h onboarding
 - phase titles: &e
 
 ## Phase 2
+- phase separator: &2
+- phase titles: &a
 
 
 ---
@@ -30,7 +32,7 @@ Separators and logging throughout the 10h onboarding
 
 **Start**  
 &6[===] &eGramados Arrival &6[===]  
-&b:star: Welcome to Gramados! Please speak with &6&l{npc} &r&bto complete your arrival paperwork.  
+&b:sun: Welcome to Gramados! Please speak with &6&l{npc} &r&bto complete your arrival paperwork.  
 
 **Repeat reminder**  
 :lit:&e You still need to speak with {npc} &r&eto continue your arrival process.  
@@ -51,7 +53,7 @@ Separators and logging throughout the 10h onboarding
 N/A  
 
 **Exiting confinement**  
-:hourglass:&e Transfer in progress. Please wait inside the office until you're transferred to the State Hotel.  
+:lit:&e Please wait inside the arrival area until your transfer is complete.
 
 **Completion**  
 N/A  
@@ -68,13 +70,13 @@ N/A
 
 **Start**  
 &b[===] &eState Room Assignment &b[===]  
-&b:star: Welcome to the State Hotel! You have been assigned to room &e{room}&b. Please make your way there to settle in.  
+&b:sun: Welcome to the State Hotel! You have been assigned to room &e{room}&b. Please make your way there to settle in.  
 
 **Repeat reminder**  
 :lit: &eFind your assigned room &6{room}&e and enter it.  
 
 **Exiting confinement**  
-:hourglass:&e Please stay inside the State Hotel until you find your room &6{room}&e. 
+:door:&e Please stay inside the State Hotel until you find your room &6{room}&e. 
 
 **Completion**  
 :key: &aWelcome! This is your room &6{room}&a. We'll issue some starter furniture in &6{delay}s&a.  
@@ -99,16 +101,16 @@ N/A
 
 **Start**  
 &b[===] &eHome Registration &b[===]
-&b:star: To register this room as your your home, please run &e!setHome <name> &bin the chat. This will allow you to return here easily later.  
+&b:sun: To register this room as your your home, please run &6!setHome <name> &bin the chat. This will allow you to return here easily later.  
 
 **Repeat reminder**  
 :lit: &eRegister this room {room} as your home with &6!setHome <name>&e.  
 
 **Exiting confinement**  
-:door: &ePlease register this room {room} as your home with &6!setHome <name>&e before leaving.
+:door: &ePlease register this room &6{room}&e as your home with &6!setHome <name>&e before leaving.
 
 **Completion**  
-&a:check_mark: You have successfully registered this room as your home! You can now use &e!home &ato teleport back here anytime. You can also run &e!myHomes &eto see all your registered homes.
+&a:check_mark: You have successfully registered this room as your home! You can now use &6!home &ato teleport back here anytime. You can also run &6!myHomes &ato see all your registered homes.
 
 ## 1.3 Stage 3 - Testing the commands (!myHomes and !home)
 
@@ -117,7 +119,7 @@ N/A
 
 **Start**  
 &b[===] &eHome Command Tutorial &b[===]
-&b:star: You have learned how to set your home. Now, try using &e!myHomes &eand &e!home &eto manage your homes. Start by walking away from your room.
+&b:sun: You have learned how to set your home. Now, try using &6!myHomes &band &6!home &bto manage your homes. Start by walking away from your room.
 
 **Repeat reminder**  
 :lit: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.  
@@ -149,7 +151,7 @@ N/A
 ### 1.4.1 - step 1 - Getting lost
 **Start**  
 &b[===] &eLost Somewhere &b[===]  
-&b:star: You feel disoriented. In &6{delay}s&b, you'll be moved. Be ready to use &6!home &bor &6!home <name> &bto return home.  
+&b:sun: You feel disoriented. In &6{delay}s&b, you'll be moved. Be ready to use &6!home &bor &6!home <name> &bto return home.  
 
 **Repeat reminder**  
 N/A
@@ -162,7 +164,7 @@ N/A
 
 ### 1.4.2 - step 2 - Using !home to return
 **Start**  
-&b:star: Here we are, lost in the middle of nowhere, where only ruins remain. Use &6!home &bor &6!home <name> &bto safely return to your home.  
+&b:sun: Here we are, lost in the middle of nowhere, where only ruins remain. Use &6!home &bor &6!home <name> &bto safely return to your home.  
 
 **Repeat reminder**  
 :lit: &eTry running &6!home &eor &6!home <name> &eto safely return home.  
@@ -186,7 +188,7 @@ N/A
 
 **Start**  
 &6[===] &eYour First Coins &6[===]  
-&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &e!myMoney &bto see your pouch and inventory monetary breakdown.  
+&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &6!myMoney &bto see your pouch and inventory monetary breakdown.  
 
 **Repeat reminder**  
 :lit: &eRun &6!myMoney &eto check your Money Pouch balance.  
@@ -208,9 +210,17 @@ N/A
 &eMoney Pouch: &r:money:&7 - A dematerialized balance representing money stored in your pouch. (In grons) &r:danger:&c 50% of it will drop on death.
 &eInventory: &r:money:&7 - Physical currency items you carry in your inventory. (In grons) &r:danger:&c 100% of it will drop on death.
 
-**Repeat reminder** 
+**Repeat reminder**  
+:lit: &eHold the money items in your hand and run &6!deposit &eto deposit them into your Money Pouch.  
+
 **Exiting confinement**  
+N/A  
+
+**failure**
+:danger: &eIt looks like your inventory still contains your money. Please hold the money in your hand and run &6!deposit &ewith &6&lmoney in hand&r&e.
+
 **Completion**  
+&a:check_mark: You have successfully deposited money into your Money Pouch! Your pouch balance has increased.
 
 
 
