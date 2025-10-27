@@ -29,10 +29,10 @@ Follow this guide to create a secured facility using the BankVault module. The p
 
 - **Purpose**: Controls access by opening the gate on death and closing it on respawn.
 - **Steps**:
-  1. Use the **NPC Cloner (Tab 2)** to spawn a **Gate Guard** within the secured zone. This can be a humanoid guard, a robot, or a control panel-looking NPC that you must “break”.
+  1. Use the **NPC Cloner (Tab 2)** to spawn a **Gate Guard** within the secured zone. This can be a humanoid guard, a robot, or a control‑panel‑looking NPC that you must “break”.
   2. Edit the NPC as needed (e.g., appearance, name).
   3. **Kill the NPC**:
-    - On death, the gate will open, allowing access to the facility interior.
+  - On death, the gate will open, allowing access to the facility interior.
      - The gate will remain open for a duration based on the guard's respawn time.
   4. When the NPC respawns:
     - The gate will automatically close.
@@ -44,7 +44,7 @@ Follow this guide to create a secured facility using the BankVault module. The p
 - **Purpose**: Represents the lootable storage units inside the secured zone.
 - **Steps**:
   1. Use the **NPC Cloner (Tab 2)** to spawn **Rack/Vault NPCs** within the secured zone.
-  2. Configure the rack type using a **command block**:
+  2. Configure the rack type using a **command block** (`minecraft:command_block`) in your main hand:
      - Current options:
        - **Bill Rack**: Money
        - **Gold Rack**: Gold ingots
@@ -72,6 +72,11 @@ Follow this guide to create a secured facility using the BankVault module. The p
 - Players trapped behind the gate after the guard respawns must either die or reopen the gate to exit.
 - Use tools like clocks, crowbars, or phones to interact with the bank system for additional information or functionality.
 - The sound effects during the gate open period are dynamically adjusted based on the guard's respawn time, replacing the previous hardcoded 2:30 minutes.
+
+### Admin Tips
+- To access admin‑only rack actions, hold the `mts:ivv.idcard_seagull` in your offhand when interacting with rack NPCs.
+- Use a `minecraft:barrier` on a guard or rack NPC to unlink it from a facility (clears stored linkage).
+- Use a `variedcommodities:phone` on the guard to print facility gate info (positions/block) to chat.
 
 ### Server Rack Notes
 - Server racks are a family of rack types added for use in banks and regular server rooms.

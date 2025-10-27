@@ -1,126 +1,94 @@
 # BankVault Module (Secured Facilities)
 
-The `bankVault` module now powers generic secured facilities across the server (not just banks). It provides a simple, configurable pattern: define a secured zone and a gate, place a "guard" NPC (can be a person, a robot, or even a control-panel-like NPC), and populate the zone with configurable lootable racks.
+The `bankVault` module powers generic secured facilities across the server (not just banks). Pattern: define a secured zone and a gate, place a guard NPC (can be a person, a robot, or a control‑panel themed NPC), then populate the zone with configurable lootable racks.
 
 ---
 
 ## Features
 
-1. **Secured Zones**:
-   - Define areas where unauthorized players are restricted.
-   - Automatically calculates boundaries based on two positions (`pos1` and `pos2`).
+1. Secured zones
+   - Define a no‑go area with two corners (`pos1`, `pos2`).
+   - All related NPCs must be inside this zone.
 
-2. **Gate Guards (Mandatory for now)**:
-   - An NPC controls access by opening the gate on death and closing it on respawn.
-   - The "guard" may be themed as a panel/terminal you must break; functionally it’s still an NPC.
-   - This requirement may become configurable in the future; currently an NPC and a gate are required.
+2. Gate guards (required for now)
+   - The guard’s death opens the gate; respawn closes it and freezes interactions.
+   - Guard can be skinned as a terminal/panel; functionally it’s still an NPC.
 
-3. **Racks / Vaults**:
-   - Lootable storage units inside the secured zone.
-   - Interactions are only allowed while the guard is down and the gate is open.
-   - Configurable types (extensible):
-     - `Bill Rack` (money)
-     - `Gold Rack` (ingots)
-     - `Safe` (valuables)
-     - `Server Rack`, `Server Secure Rack`, `Server Strong Rack` (software disk tiers; foundation for a future in-game software economy)
+3. Racks / vaults
+   - Lootable storage NPCs inside the zone; interact only while gate is open.
+   - Types (extensible): `Bill Rack`, `Gold Rack`, `Safe`, `Server Rack`, `Server Secure Rack`, `Server Strong Rack`.
 
-4. **Dynamic Timer-Based Sound Effects**:
-   - Sound effects during the vault gate open period are now based on the guard's respawn time.
-   - Faster ticking sounds play during the last quarter of the respawn time.
-   - Alarm sounds play during the last tenth of the respawn time.
+4. Time‑based SFX
+   - During gate open, sounds scale with the guard’s respawn time (faster ticks, end‑alarm).
 
-5. **Security Layers & Actions**:
-   - Racks support multiple layers: you can loot, or disable securities such as hacking locks and physical casing/armor.
-   - This modular design allows adding new rack types easily (e.g., a pharmacy drug rack or a gun rack).
+5. Security layers
+   - Loot or disable security (hacking lock, casing/armor) depending on rack type.
 
-6. **Unlinking NPCs**:
-   - Use the `minecraft:barrier` item on a guard or vault NPC to unlink it from any bank.
-   - This clears all stored data for the NPC, causing it to lose its bank linkage.
-   - The NPC will display an error message when interacted with after being unlinked.
+6. Unlinking
+   - Use a `minecraft:barrier` on a guard or vault NPC to unlink it from any facility.
 
-7. **Player Interaction**:
-   - Players can use tools like clocks, crowbars, and phones to interact with the bank system for additional information or functionality.
-
-8. **Generic Usage**:
-   - The same pattern can be used for banks, mafia vaults, server rooms, laboratories, shop stock rooms, and more.
+7. Player tooling
+   - Phones, clocks, crowbars provide info or actions depending on context.
 
 ---
 
-## File Structure
+## Files
 
-- **`bank_guard_npc.js`**:
-  - Handles the behavior of the gate guard NPC, including gate control, sound effects, and unlinking functionality.
-- **`bankSafeNPC.js`**:
-  - Manages the vault NPCs, including loot generation, refill mechanics, and unlinking functionality.
-- **`banks_data.json`**:
-  - Stores configuration data for all banks, including secured zones, gates, and vaults.
-   - Although fields are named for "banks" (e.g., `bankName`), they represent any secured facility.
+- `bank_guard_npc.js` — Gate control, sounds, unlink behavior.
+- `bankSafeNPC.js` — Rack behavior, refill, security layers, admin operations.
+- `banks_data.json` — Facilities registry: zones, gates, runtime state.
 
 ---
 
-## How It Works
+## How it works
 
-1. **Initialization**:
-   - NPCs automatically configure themselves based on their location within the secured zone.
-   - Banks are registered in `banks_data.json` if they do not already exist.
+1) Initialization
+- NPCs auto‑link to a facility based on position within a secured zone.
+- Missing facilities are registered in `banks_data.json`.
 
-2. **Gate Control**:
-   - Killing the gate guard opens the gate for a duration based on the guard's respawn time.
-   - The gate closes automatically when the guard respawns.
+2) Gate control
+- Kill the guard → gate opens for `respawnTime` seconds; respawn closes it.
 
-3. **Vault Refills**:
-   - Vaults refill over time, with the refill rate configurable via the `regen_cooldown` variable.
+3) Refill and security
+- Racks refill over time (see `regen_cooldown` in code) and expose hacking/casing layers per type.
 
-4. **Sound Effects**:
-   - Dynamic sound effects are played during the gate open period, with increasing urgency as the respawn time approaches.
-
-5. **Unlinking NPCs**:
-   - Use the `minecraft:barrier` item to unlink an NPC from its associated bank.
-   - This clears the NPC's stored data and displays an error message when interacted with.
-
-6. **Server Racks and Software Disks**:
-   - The three new server rack types drop different tiers of software disks.
-   - A fuller economy around these disks is planned; for now, they act as collectible/placeholder items.
+4) Unlink
+- Use `minecraft:barrier` to clear stored linkage on an NPC.
 
 ---
 
-## Configuration
+## Configuration (banks_data.json)
 
-- **Banks/Facilities Data**:
-   - Defined in `banks_data.json`.
-   - Includes secured zone bounds, gate positions and block type, vehicle radius, faction reputation effects, and gate runtime state.
-   - Key fields per entry:
-      - `bankName`: Logical name of the secured facility (not only banks)
-      - `pos1`, `pos2`: Opposite corners of the secured zone
-      - `gate.pos1`, `gate.pos2`: Gate surface bounds
-      - `gate.block.id`, `gate.block.data`: Block to place for the closed gate
-      - `noCarRadius`: Anti-vehicle radius (where applicable)
-      - `factionRepMode`, `factionRepFactionId`: Reputation adjustments on looting
-      - `isVaultGateOpened`, `vaultGateOpenTime`: Runtime state, managed by scripts
+Per‑facility entry fields:
+- `bankName` (string): Logical name of the facility.
+- `pos1`, `pos2` (object): Zone corners `{x,y,z}`; order is arbitrary.
+- `gate.pos1`, `gate.pos2` (object): Gate surface corners.
+- `gate.block.id` (string), `gate.block.data` (int): Closed‑gate block id/data.
+- `noCarRadius` (int, default 0): Radius to deter vehicles near the guard.
+- `factionRepMode` ("increase"|"decrease"): Reputation mode on looting.
+- `factionRepFactionId` (int): Faction affected.
+- `isVaultGateOpened` (bool): Runtime; managed by scripts.
+- `vaultGateOpenTime` (long ticks): Runtime; managed by scripts.
 
-- **Respawn Time**:
-  - Configured per NPC using the `npc.getStats().getRespawnTime()` function.
-  - Determines the duration for which the gate remains open.
-
-- **Rack Types (current)**:
-   - `Bill Rack`: Money
-   - `Gold Rack`: Gold ingots
-   - `Safe`: Assorted valuables
-   - `Server Rack`, `Server Secure Rack`, `Server Strong Rack`: Software disks (increasing security tiers)
+Other tunables are in code:
+- Guard respawn: `npc.getStats().getRespawnTime()` controls open window.
+- Rack refill cadence: `regen_cooldown` in `bankSafeNPC.js`.
 
 ---
 
-## Additional Notes
+## Admin Tips
 
-- Ensure all NPCs (guards and racks) are within the secured zone.
-- Interactions with racks are only possible while the guard is down and the gate is open.
-- Players trapped behind the gate after the guard respawns must either die or reopen the gate to exit.
-- Use the `minecraft:barrier` item to unlink NPCs from their banks/facilities if needed.
-
-### Contributing New Racks
-- The system is designed to be modular and scalable. Community contributions are welcome.
-- Example backlog: a gun rack needs a proposed loot table and balancing input from players with weapon knowledge.
+- Offhand ID Card: hold `mts:ivv.idcard_seagull` in offhand when interacting with rack NPCs to access admin‑only actions.
+- Actions (main hand):
+  - `minecraft:command_block` on rack NPCs: cycle rack type or configure (admin‑only, behind ID card).
+  - `minecraft:barrier` on guard or rack: unlink from facility and clear stored data.
+  - `variedcommodities:phone` on guard: print facility gate info (positions, block) to chat.
+- Placement: ensure guards and racks are spawned within the secured zone or they won’t link.
 
 ---
 
-For detailed setup instructions, refer to the [Setup Guide](./setup_guide.md).
+For step‑by‑step setup, see the [setup guide](./setup_guide.md).
+
+---
+
+Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.
