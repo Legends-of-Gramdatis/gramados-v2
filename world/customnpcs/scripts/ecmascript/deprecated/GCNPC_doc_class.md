@@ -1,0 +1,549 @@
+## Classes
+
+### Player
+
+- `Player(name)`
+  - Description: Represents a player.
+  - Parameters: `name` (string) - The name of the player.
+  - Methods:
+    - `init(data)`
+      - Description: Initializes the player with data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: The initialized player.
+    - `save(data)`
+      - Description: Saves the player data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `getJobCount()`
+      - Description: Gets the count of jobs the player has.
+      - Parameters: None.
+      - Returns: The job count.
+    - `addJob(name)`
+      - Description: Adds a job to the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `hasJob(name)`
+      - Description: Checks if the player has a specific job.
+      - Parameters: `name` (string) - The job name.
+      - Returns: Boolean indicating if the player has the job.
+    - `hasMaxJobs()`
+      - Description: Checks if the player has the maximum number of jobs.
+      - Parameters: None.
+      - Returns: Boolean indicating if the player has the maximum number of jobs.
+    - `getMaxJobs()`
+      - Description: Gets the maximum number of jobs the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of jobs.
+    - `addHome(name, x, y, z)`
+      - Description: Adds a home to the player.
+      - Parameters: `name` (string), `x` (number), `y` (number), `z` (number) - The home name and coordinates.
+      - Returns: The player.
+    - `delHome(name)`
+      - Description: Deletes a home from the player.
+      - Parameters: `name` (string) - The home name.
+      - Returns: The player.
+    - `hasHome(name)`
+      - Description: Checks if the player has a specific home.
+      - Parameters: `name` (string) - The home name.
+      - Returns: Boolean indicating if the player has the home.
+    - `getMaxHomes()`
+      - Description: Gets the maximum number of homes the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of homes.
+    - `getChats(data)`
+      - Description: Gets the chat channels the player is in.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of chat channels.
+    - `getAllowedColors(data, sb)`
+      - Description: Gets the colors the player is allowed to use.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: An array of allowed colors.
+    - `canCreateCommandText(data, sb)`
+      - Description: Checks if the player can create command text.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: Boolean indicating if the player can create command text.
+    - `getBounty(sb)`
+      - Description: Gets the player's bounty.
+      - Parameters: `sb` (Scoreboard) - The scoreboard.
+      - Returns: The bounty.
+    - `getInventory(name)`
+      - Description: Gets the player's inventory.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: The inventory.
+    - `removeInventory(name)`
+      - Description: Removes an inventory from the player.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: Boolean indicating if the inventory was removed.
+    - `hasEmote(name, sb, data)`
+      - Description: Checks if the player has a specific emote.
+      - Parameters: `name` (string), `sb` (Scoreboard), `data` (object) - The emote name, scoreboard, and data object.
+      - Returns: Boolean indicating if the player has the emote.
+    - `getAllowedEmotes(sb, data)`
+      - Description: Gets the emotes the player is allowed to use.
+      - Parameters: `sb` (Scoreboard), `data` (object) - The scoreboard and data object.
+      - Returns: An array of allowed emotes.
+    - `getBanks(data)`
+      - Description: Gets the banks the player can see.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of banks.
+    - `getNameTag(sb, prefix, namesuff, teamsuff, ccChar, data)`
+      - Description: Gets the player's name tag.
+      - Parameters: `sb` (Scoreboard), `prefix` (string), `namesuff` (string), `teamsuff` (string), `ccChar` (string), `data` (object) - The scoreboard, prefix, name suffix, team suffix, color code character, and data object.
+      - Returns: The name tag.
+    - `getBadges(data, onlyShow)`
+      - Description: Gets the player's badges.
+      - Parameters: `data` (object), `onlyShow` (boolean) - The data object and whether to only show badges.
+      - Returns: An array of badges.
+    - `hasBadge(name)`
+      - Description: Checks if the player has a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player has the badge.
+    - `isShowingBadge(name)`
+      - Description: Checks if the player is showing a specific badge
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player is showing the badge.
+    - `delJob(name)`
+      - Description: Deletes a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `getJob(name)`
+      - Description: Gets a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The job.
+    - `getJobs(data)`
+      - Description: Gets all jobs of the player.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of jobs.
+    - `getJobCount()`
+      - Description: Gets the count of jobs the player has.
+      - Parameters: None.
+      - Returns: The job count.
+    - `addJob(name)`
+      - Description: Adds a job to the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `hasJob(name)`
+      - Description: Checks if the player has a specific job.
+      - Parameters: `name` (string) - The job name.
+      - Returns: Boolean indicating if the player has the job.
+    - `hasMaxJobs()`
+      - Description: Checks if the player has the maximum number of jobs.
+      - Parameters: None.
+      - Returns: Boolean indicating if the player has the maximum number of jobs.
+    - `getMaxJobs()`
+      - Description: Gets the maximum number of jobs the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of jobs.
+    - `addHome(name, x, y, z)`
+      - Description: Adds a home to the player.
+      - Parameters: `name` (string), `x` (number), `y` (number), `z` (number) - The home name and coordinates.
+      - Returns: The player.
+    - `delHome(name)`
+      - Description: Deletes a home from the player.
+      - Parameters: `name` (string) - The home name.
+      - Returns: The player.
+    - `hasHome(name)`
+      - Description: Checks if the player has a specific home.
+      - Parameters: `name` (string) - The home name.
+      - Returns: Boolean indicating if the player has the home.
+    - `getMaxHomes()`
+      - Description: Gets the maximum number of homes the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of homes.
+    - `getChats(data)`
+      - Description: Gets the chat channels the player is in.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of chat channels.
+    - `getAllowedColors(data, sb)`
+      - Description: Gets the colors the player is allowed to use.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: An array of allowed colors.
+    - `canCreateCommandText(data, sb)`
+      - Description: Checks if the player can create command text.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: Boolean indicating if the player can create command text.
+    - `getBounty(sb)`
+      - Description: Gets the player's bounty.
+      - Parameters: `sb` (Scoreboard) - The scoreboard.
+      - Returns: The bounty.
+    - `getInventory(name)`
+      - Description: Gets the player's inventory.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: The inventory.
+    - `removeInventory(name)`
+      - Description: Removes an inventory from the player.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: Boolean indicating if the inventory was removed.
+    - `hasEmote(name, sb, data)`
+      - Description: Checks if the player has a specific emote.
+      - Parameters: `name` (string), `sb` (Scoreboard), `data` (object) - The emote name, scoreboard, and data object.
+      - Returns: Boolean indicating if the player has the emote.
+    - `getAllowedEmotes(sb, data)`
+      - Description: Gets the emotes the player is allowed to use.
+      - Parameters: `sb` (Scoreboard), `data` (object) - The scoreboard and data object.
+      - Returns: An array of allowed emotes.
+    - `getBanks(data)`
+      - Description: Gets the banks the player can see.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of banks.
+    - `getNameTag(sb, prefix, namesuff, teamsuff, ccChar, data)`
+      - Description: Gets the player's name tag.
+      - Parameters: `sb` (Scoreboard), `prefix` (string), `namesuff` (string), `teamsuff` (string), `ccChar` (string), `data` (object) - The scoreboard, prefix, name suffix, team suffix, color code character, and data object.
+      - Returns: The name tag.
+    - `getBadges(data, onlyShow)`
+      - Description: Gets the player's badges.
+      - Parameters: `data` (object), `onlyShow` (boolean) - The data object and whether to only show badges.
+      - Returns: An array of badges.
+    - `hasBadge(name)`
+      - Description: Checks if the player has a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player has the badge.
+    - `isShowingBadge(name)`
+      - Description: Checks if the player is showing a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player is showing the badge.
+    - `delJob(name)`
+      - Description: Deletes a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `getJob(name)`
+      - Description: Gets a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The job.
+    - `getJobs(data)`
+      - Description: Gets all jobs of the player.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of jobs.
+    - `getJobCount()`
+      - Description: Gets the count of jobs the player has.
+      - Parameters: None.
+      - Returns: The job count.
+    - `addJob(name)`
+      - Description: Adds a job to the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `hasJob(name)`
+      - Description: Checks if the player has a specific job.
+      - Parameters: `name` (string) - The job name.
+      - Returns: Boolean indicating if the player has the job.
+    - `hasMaxJobs()`
+      - Description: Checks if the player has the maximum number of jobs.
+      - Parameters: None.
+      - Returns: Boolean indicating if the player has the maximum number of jobs.
+    - `getMaxJobs()`
+      - Description: Gets the maximum number of jobs the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of jobs.
+    - `addHome(name, x, y, z)`
+      - Description: Adds a home to the player.
+      - Parameters: `name` (string), `x` (number), `y` (number), `z` (number) - The home name and coordinates.
+      - Returns: The player.
+    - `delHome(name)`
+      - Description: Deletes a home from the player.
+      - Parameters: `name` (string) - The home name.
+      - Returns: The player.
+    - `hasHome(name)`
+      - Description: Checks if the player has a specific home.
+      - Parameters: `name` (string) - The home name.
+      - Returns: Boolean indicating if the player has the home.
+    - `getMaxHomes()`
+      - Description: Gets the maximum number of homes the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of homes.
+    - `getChats(data)`
+      - Description: Gets the chat channels the player is in.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of chat channels.
+    - `getAllowedColors(data, sb)`
+      - Description: Gets the colors the player is allowed to use.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: An array of allowed colors.
+    - `canCreateCommandText(data, sb)`
+      - Description: Checks if the player can create command text.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: Boolean indicating if the player can create command text.
+    - `getBounty(sb)`
+      - Description: Gets the player's bounty.
+      - Parameters: `sb` (Scoreboard) - The scoreboard.
+      - Returns: The bounty.
+    - `getInventory(name)`
+      - Description: Gets the player's inventory.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: The inventory.
+    - `removeInventory(name)`
+      - Description: Removes an inventory from the player.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: Boolean indicating if the inventory was removed.
+    - `hasEmote(name, sb, data)`
+      - Description: Checks if the player has a specific emote.
+      - Parameters: `name` (string), `sb` (Scoreboard), `data` (object) - The emote name, scoreboard, and data object.
+      - Returns: Boolean indicating if the player has the emote.
+    - `getAllowedEmotes(sb, data)`
+      - Description: Gets the emotes the player is allowed to use.
+      - Parameters: `sb` (Scoreboard), `data` (object) - The scoreboard and data object.
+      - Returns: An array of allowed emotes.
+    - `getBanks(data)`
+      - Description: Gets the banks the player can see.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of banks.
+    - `getNameTag(sb, prefix, namesuff, teamsuff, ccChar, data)`
+      - Description: Gets the player's name tag.
+      - Parameters: `sb` (Scoreboard), `prefix` (string), `namesuff` (string), `teamsuff` (string), `ccChar` (string), `data` (object) - The scoreboard, prefix, name suffix, team suffix, color code character, and data object.
+      - Returns: The name tag.
+    - `getBadges(data, onlyShow)`
+      - Description: Gets the player's badges.
+      - Parameters: `data` (object), `onlyShow` (boolean) - The data object and whether to only show badges.
+      - Returns: An array of badges.
+    - `hasBadge(name)`
+      - Description: Checks if the player has a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player has the badge.
+    - `isShowingBadge(name)`
+      - Description: Checks if the player is showing a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player is showing the badge.
+    - `delJob(name)`
+      - Description: Deletes a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `getJob(name)`
+      - Description: Gets a job from the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The job.
+    - `getJobs(data)`
+      - Description: Gets all jobs of the player.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of jobs.
+    - `getJobCount()`
+      - Description: Gets the count of jobs the player has.
+      - Parameters: None.
+      - Returns: The job count.
+    - `addJob(name)`
+      - Description: Adds a job to the player.
+      - Parameters: `name` (string) - The job name.
+      - Returns: The player.
+    - `hasJob(name)`
+      - Description: Checks if the player has a specific job.
+      - Parameters: `name` (string) - The job name.
+      - Returns: Boolean indicating if the player has the job.
+    - `hasMaxJobs()`
+      - Description: Checks if the player has the maximum number of jobs.
+      - Parameters: None.
+      - Returns: Boolean indicating if the player has the maximum number of jobs.
+    - `getMaxJobs()`
+      - Description: Gets the maximum number of jobs the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of jobs.
+    - `addHome(name, x, y, z)`
+      - Description: Adds a home to the player.
+      - Parameters: `name` (string), `x` (number), `y` (number), `z` (number) - The home name and coordinates.
+      - Returns: The player.
+    - `delHome(name)`
+      - Description: Deletes a home from the player.
+      - Parameters: `name` (string) - The home name.
+      - Returns: The player.
+    - `hasHome(name)`
+      - Description: Checks if the player has a specific home.
+      - Parameters: `name` (string) - The home name.
+      - Returns: Boolean indicating if the player has the home.
+    - `getMaxHomes()`
+      - Description: Gets the maximum number of homes the player can have.
+      - Parameters: None.
+      - Returns: The maximum number of homes.
+    - `getChats(data)`
+      - Description: Gets the chat channels the player is in.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of chat channels.
+    - `getAllowedColors(data, sb)`
+      - Description: Gets the colors the player is allowed to use.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: An array of allowed colors.
+    - `canCreateCommandText(data, sb)`
+      - Description: Checks if the player can create command text.
+      - Parameters: `data` (object), `sb` (Scoreboard) - The data object and scoreboard.
+      - Returns: Boolean indicating if the player can create command text.
+    - `getBounty(sb)`
+      - Description: Gets the player's bounty.
+      - Parameters: `sb` (Scoreboard) - The scoreboard.
+      - Returns: The bounty.
+    - `getInventory(name)`
+      - Description: Gets the player's inventory.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: The inventory.
+    - `removeInventory(name)`
+      - Description: Removes an inventory from the player.
+      - Parameters: `name` (string) - The inventory name.
+      - Returns: Boolean indicating if the inventory was removed.
+    - `hasEmote(name, sb, data)`
+      - Description: Checks if the player has a specific emote.
+      - Parameters: `name` (string), `sb` (Scoreboard), `data` (object) - The emote name, scoreboard, and data object.
+      - Returns: Boolean indicating if the player has the emote.
+    - `getAllowedEmotes(sb, data)`
+      - Description: Gets the emotes the player is allowed to use.
+      - Parameters: `sb` (Scoreboard), `data` (object) - The scoreboard and data object.
+      - Returns: An array of allowed emotes.
+    - `getBanks(data)`
+      - Description: Gets the banks the player can see.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of banks.
+    - `getNameTag(sb, prefix, namesuff, teamsuff, ccChar, data)`
+      - Description: Gets the player's name tag.
+      - Parameters: `sb` (Scoreboard), `prefix` (string), `namesuff` (string), `teamsuff` (string), `ccChar` (string), `data` (object) - The scoreboard, prefix, name suffix, team suffix, color code character, and data object.
+      - Returns: The name tag.
+    - `getBadges(data, onlyShow)`
+      - Description: Gets the player's badges.
+      - Parameters: `data` (object), `onlyShow` (boolean) - The data object and whether to only show badges.
+      - Returns: An array of badges.
+    - `hasBadge(name)`
+      - Description: Checks if the player has a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player has the badge.
+    - `isShowingBadge(name)`
+      - Description: Checks if the player is showing a specific badge.
+      - Parameters: `name` (string) - The badge name.
+      - Returns: Boolean indicating if the player is showing the badge.
+
+### Region
+
+- `Region(name)`
+  - Description: Represents a region.
+  - Parameters: `name` (string) - The name of the region.
+  - Methods:
+    - `init(data)`
+      - Description: Initializes the region with data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: The initialized region.
+    - `load(data)`
+      - Description: Loads the region data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `save(data)`
+      - Description: Saves the region data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `remove(data)`
+      - Description: Removes the region.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `set(key, value)`
+      - Description: Sets a property of the region.
+      - Parameters: `key` (string), `value` (any) - The property key and value.
+      - Returns: The region.
+    - `getRentTimeLeft()`
+      - Description: Gets the remaining rent time.
+      - Parameters: None.
+      - Returns: The remaining rent time.
+    - `getAllDataEntries(data)`
+      - Description: Gets all data entries for the region.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of data entries.
+    - `getAllDataIds(data)`
+      - Description: Gets all data IDs for the region.
+      - Parameters: `data` (object) - The data object.
+      - Returns: An array of data IDs.
+    - `addCoord(pos)`
+      - Description: Adds a coordinate to the region.
+      - Parameters: `pos` (Position) - The position.
+      - Returns: The region.
+    - `hasCoord(pos)`
+      - Description: Checks if the region has a specific coordinate.
+      - Parameters: `pos` (Position) - The position.
+      - Returns: Boolean indicating if the region has the coordinate.
+    - `getPermission()`
+      - Description: Gets the region's permission.
+      - Parameters: None.
+      - Returns: The permission object.
+
+### Permission
+
+- `Permission(name)`
+  - Description: Represents a permission.
+  - Parameters: `name` (string) - The name of the permission.
+  - Methods:
+    - `init(data)`
+      - Description: Initializes the permission with data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: The initialized permission.
+    - `exists(data)`
+      - Description: Checks if the permission exists.
+      - Parameters: `data` (object) - The data object.
+      - Returns: Boolean indicating if the permission exists.
+    - `permits(player, sb, data, listenToDisabled)`
+      - Description: Checks if the permission permits a player.
+      - Parameters: `player` (string), `sb` (Scoreboard), `data` (object), `listenToDisabled` (boolean) - The player, scoreboard, data object, and whether to listen to disabled permissions.
+      - Returns: Boolean indicating if the permission permits the player.
+    - `addTeams(teams)`
+      - Description: Adds teams to the permission.
+      - Parameters: `teams` (array) - The teams.
+      - Returns: The permission.
+    - `removeTeams(teams)`
+      - Description: Removes teams from the permission.
+      - Parameters: `teams` (array) - The teams.
+      - Returns: The permission.
+    - `addPlayers(players)`
+      - Description: Adds players to the permission.
+      - Parameters: `players` (array) - The players.
+      - Returns: The permission.
+    - `removePlayers(players)`
+      - Description: Removes players from the permission.
+      - Parameters: `players` (array) - The players.
+      - Returns: The permission.
+    - `permitsPlayer(pl, listenToDisabled)`
+      - Description: Checks if the permission permits a player.
+      - Parameters: `pl` (Player), `listenToDisabled` (boolean) - The player and whether to listen to disabled permissions.
+      - Returns: Boolean indicating if the permission permits the player.
+    - `permits(player, sb, data, listenToDisabled)`
+      - Description: Checks if the permission permits a player.
+      - Parameters: `player` (string), `sb` (Scoreboard), `data` (object), `listenToDisabled` (boolean) - The player, scoreboard, data object, and whether to listen to disabled permissions.
+      - Returns: Boolean indicating if the permission permits the player.
+
+### DataHandler
+
+- `DataHandler(type, name)`
+  - Description: Handles data operations.
+  - Parameters: `type` (string), `name` (string) - The type and name of the data.
+  - Methods:
+    - `addData(data)`
+      - Description: Adds data to the handler.
+      - Parameters: `data` (object) - The data object.
+      - Returns: The data handler.
+    - `getData()`
+      - Description: Gets the data from the handler.
+      - Parameters: None.
+      - Returns: The data object.
+    - `save(data)`
+      - Description: Saves the data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `load(data)`
+      - Description: Loads the data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `remove(data)`
+      - Description: Removes the data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: None.
+    - `init(data)`
+      - Description: Initializes the data handler with data.
+      - Parameters: `data` (object) - The data object.
+      - Returns: The initialized data handler.
+    - `exists(data)`
+      - Description: Checks if the data exists.
+      - Parameters: `data` (object) - The data object.
+      - Returns: Boolean indicating if the data exists.
+    - `set(key, value)`
+      - Description: Sets a property of the data.
+      - Parameters: `key` (string), `value` (any) - The property key and value.
+      - Returns: The data handler.
+    - `get(key)`
+      - Description: Gets a property of the data.
+      - Parameters: `key` (string) - The property key.
+      - Returns: The property value.
+    - `has(key)`
+      - Description: Checks if the data has a specific property.
+      - Parameters: `key` (string) - The property key.
+      - Returns: Boolean indicating if the data has the property.
+    - `clear()`
+      - Description: Clears the data.
+      - Parameters: None.
+      - Returns: None.
