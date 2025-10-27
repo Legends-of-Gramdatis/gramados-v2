@@ -11,6 +11,7 @@
         "logJson": true,
         "generic_streamline_delay_short": 5,
         "generic_streamline_delay_long": 20,
+        "generic_streamline_delay_very_long": 60,
         "generic_streamline_interval": 60
     },
     "phases": {
@@ -34,12 +35,13 @@
                             "pitch": 0
                         },
                         "chat": {
-                            "onDialogComplete": "&a:check_mark: Paperwork complete! Please wait while we arrange your transfer...",
-                            "onTimerStart": ":hourglass:&e Processing... You'll be transferred shortly.",
-                            "onConfineAfterDialog": ":hourglass:&e Transfer in progress. Please wait inside the office until you're teleported to the State Hotel.",
+                            "onDialogComplete": "&a:check_mark: Paperwork ongoing! Please wait &6{delay}s&a while {npc} &aarranges your transfer to the State Hotel.",
+                            "onTimerStart": ":lit:&e Please wait inside the arrival area until your transfer is complete.",
                             "onTeleport": ":airplane_departure:&b Welcome to Gramados! Enjoy your stay at the State Hotel.",
-                            "onConfine": ":lit:&e You still need to speak with &6&lDaren Krovic&r&e to finish arrival before leaving.",
-                            "onWelcome": "&b:star: Welcome to Gramados! Please speak with {npc} &r&bto complete your arrival paperwork."
+                            "onConfine": ":lit:&e You still need to speak with {npc} &r&eto finish arrival before leaving.",
+                            "onWelcome": "&b:sun: Welcome to Gramados! Please speak with {npc} &r&bto complete your arrival paperwork.",
+                            "onRepeat": ":lit:&e You still need to speak with {npc} &r&eto continue your arrival process.",
+                            "onReward": ":giftchest: {npc} &ahas provided you with a new bicycle and a wrench as your first vehicle!"
                         }
                     }
                 }
@@ -56,29 +58,29 @@
                         "fallback": [-1884, 88.5, -192]
                     },
                     "chat": {
-                        "welcome": "&b:star: Welcome to the State Hotel! We'll help you find your room.",
-                        "room_assigned": "&aYour starter room has been assigned: {room}. Walk there to claim it.",
-                        "find_room_prompt": ":compass: &eFind your assigned room {room} and enter it.",
-                        "room_entry": ":key: &aWelcome! This is your room {room}. We'll issue some starter furniture in &6{delay}s&a.",
-                        "stay_in_room": ":door: &ePlease stay inside your room {room} while we prepare your starter furniture.",
+                        "welcome": "&b:sun: Welcome to the State Hotel! You have been assigned to room &6{room}&b. Please make your way there to settle in.",
+                        "register_room_init": "&b:sun: To register this room as your your home, please run &6!setHome <name> &bin the chat. This will allow you to return here easily later.",
+                        "find_room_prompt": ":lit: &eFind your assigned room &6{room}&e and enter it.",
+                        "room_entry": ":key: &aWelcome! This is your room &6{room}&a. We'll issue some starter furniture in &6{delay}s&a",
+                        "stay_in_room": ":door: &ePlease stay inside your room &6{room}&e while we prepare your starter furniture.",
                         "furniture_granted": ":giftchest: &aYou have been granted some new furniture for your room! you can make the space yours by arranging it as you like.",
-                        "sethome_prompt": ":door: &ePlease register this room {room} as your home with &6!setHome <name>&e before leaving.",
-                        "sethome_success": "&aHome registered. Use &e!home &ato teleport back here.",
-                        "home_tutorial_intro": "&eYou can use &e!myHomes &eand &e!home &eto manage your houses. Try them out.",
+                        "sethome_prompt": ":door: &ePlease register this room &6{room}&e as your home with &6!setHome <name>&e before leaving.",
+                        "sethome_success": "&a:check_mark: You have successfully registered this room as your home! You can now use &6!home &ato teleport back here anytime. You can also run &6!myHomes &ato see all your registered homes.",
                         "lost_moment_teleport": "&cIt seems you're lost. Teleporting you back to the hotel fallback.",
-                        "lost_moment_warn": ":map: &eYou feel disoriented. In a moment, you'll be moved. Be ready to use &6!home &eto return.",
-                        "lost_moment_wait": ":hourglass: &ePlease wait... you will be moved shortly. Use &6!home &eonce you're lost.",
-                        "lost_moment_use_home": "&b:star: Here we are, lost in the middle of nowhere, where only ruins remain. Use &6!home &bor &6!home <name> &bto safely return to your home.",
-                        "confine_reminder": ":hourglass:&e Please stay inside the State Hotel until your room is ready.",
+                        "lost_moment_warn": "&b:sun: You feel disoriented. In &6{delay}s&b, you'll be moved. Be ready to use &6!home &bor &6!home <name> &bto return home.",
+                        "lost_moment_use_home": "&b:sun: Here we are, lost in the middle of nowhere, where only ruins remain. Use &6!home &bor &6!home <name> &bto safely return to your home.",
+                        "confine_reminder": ":door:&e Please stay inside the State Hotel until you find your room &6{room}&e.",
                         "home_max": "&7You already have the maximum number of homes (&e{max}&7). Skipping home registration.",
-                        "register_room": ":house: &eRegister this room {room} as your home with &6!setHome <name>&e.",
+                        "register_room_reminder": ":lit: &eRegister this room &6{room}&e as your home with &6!setHome <name>&e.",
                         "no_home_yet": "&eIt looks like you don't have any home yet. Use &6!setHome <name> &ein your room first.",
-                        "home_far_try": ":lit: &aYou're far enough now. Try &6!home &ato teleport back to your home.",
-                        "home_open_myhomes": ":house: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
-                        "home_tutorial_complete": "&a:check_mark: You successfully used &6!home &ato return to your home.",
+                        "home_far_try": "&a:check_mark: You're far enough now. Try &6!home &aor &6!home <name> &ato teleport back to your home.",
+                        "home_far_reminder": ":lit: &eYou're far enough now. Try &6!home &eor &6!home <name> &eto teleport back to your home.",
+                        "home_command_tuto_init": "&b:sun: You have learned how to set your home. Now, try using &6!myHomes &band &6!home &bto manage your homes. Start by walking away from your room.",
+                        "home_open_myhomes": ":lit: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
+                        "home_tutorial_complete": "&a:check_mark: You successfully used &6!home &aor &6!home <name> &ato return to your home!",
                         "phase1_complete": "&a:check_mark: You found your way back. Feels good to be home again!",
                         "home_info_max": "&bYou can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes.",
-                        "lost_confining_found": ":round_pushpin: &eYou are lost. Use &6!home &eto return to your room.",
+                        "lost_confining_found": ":lit: &eTry running &6!home &eor &6!home <name> &eto safely return home.",
                         "lost_confining_reminder": ":lit: &eTry running &6!home &eor &6!home <name> &eto safely return home."
                     },
                     "home": {
@@ -105,21 +107,40 @@
             "stages": {
                 "stage1": {
                     "chat": {
-                        "s1_received": "&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &e!myMoney &bto see your pouch and inventory monetary breakdown.",
-                        "s1_reminder": ":bell: &eReminder: run &e!myMoney &eto check your pouch and inventory.",
+                        "s1_received": "&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &6!myMoney &bto see your pouch and inventory monetary breakdown.",
+                        "s1_completion": "&a:check_mark: You now know how to open your Money Pouch! In &6{delay}s&a, we'll guide you on how to read through it!",
+                        "s1_reminder": ":lit: &eRun &6!myMoney &eto check your Money Pouch balance.",
                         "s1_guide_added": ":paper: &aA detailed currency guide has been added to your inventory.",
-                        "s2_prompt": ":handbag: &eHold the money items in your hand and run &e!deposit &eto deposit them into your Money Pouch.",
-                        "s2_deposit_detected": ":check_mark: &aDeposit detected. Your Money Pouch now has more funds.",
-                        "s2_deposit_failure_inv": ":danger: &eIt looks like your inventory still contains your money. Please hold the money in your hand and run &e!deposit &ewith money in hand.",
+                        "s2_deposit_init": "&b:sun: You can deposit money items from your inventory into your Money Pouch for safer keeping. You have to run &6!deposit &bwith money in hand to do so.",
+                        "s2_deposit_reminder": ":lit: &eHold the money items in your hand and run &6!deposit &eto deposit them into your Money Pouch.",
+                        "s2_deposit_detected": "&a:check_mark: You have successfully deposited money into your Money Pouch! Your pouch balance has increased.",
+                        "s2_deposit_failure_inv": ":danger: &eIt looks like your inventory still contains your money. Please hold the money in your hand and run &6!deposit &ewith &6&lmoney in hand&r&e.",
                         "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &e!deposit &ewith money in hand.",
-                        "s3_prompt": ":hourglass: &ePlease run &e!myMoney &eagain in a few seconds to confirm your pouch balance.",
-                        "s3_reminder": ":bell: &eReminder: run &e!myMoney &eto confirm your Money Pouch balance.",
-                        "s3_completed": ":white_check_mark: &aConfirmed — your pouch update was recorded. You are all set with Phase 2."
+                        "s3_checkpouch_init": "&b:sun: Now that you've deposited money into your pouch, it's time to confirm the update. Please run &6!myMoney &bagain to see your updated pouch balance.",
+                        "s3_checkpouch_reminder": ":hourglass: &ePlease run &e!myMoney &eagain to confirm your pouch balance.",
+                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP."
                     },
                     "guide": {
                         "chat": [
                             "&b:sun: Here's a quick overview of the main currencies you will see:",
-                            "&7(Short descriptions follow; a detailed guide will be added to your inventory.)"
+                            "",
+                            "&dArcade Tokens: :money: &a:check_mark: Won't drop on death.",
+                            "&7  Event tokens obtained by participating in server events.",
+                            "",
+                            "&bVote Tokens: :money: &a:check_mark: Won't drop on death.",
+                            "&7  Legacy token system for voting; currently deprecated and not supported.",
+                            "",
+                            "&2Shop Tokens: :money: &a:check_mark: Won't drop on death.",
+                            "&7  Purchased currency used for cosmetics and paid content.",
+                            "",
+                            "&eMoney Pouch: &r:money:",
+                            "&7  A dematerialized balance representing money stored in your pouch. (In grons)",
+                            "&r:danger:&c 50% of it will drop on death.",
+                            "",
+                            "&eInventory: &r:money:",
+                            "&7  Physical currency items you carry in your inventory. (In grons)",
+                            "&r:danger:&c 100% of it will drop on death.",
+                            ""
                         ],
                         "paper": {
                             "entries": {

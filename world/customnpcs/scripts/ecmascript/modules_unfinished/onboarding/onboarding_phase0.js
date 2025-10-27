@@ -31,19 +31,31 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                         if (stack) { player.giveItem(stack); }
                     }
                     pdata.phase0.rewardsGiven = true;
-                    tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.');
+                    try {
+                        var npcFmt = dialogMeta.npc || '';
+                        var rewardMsg = (dialogMeta.chat && dialogMeta.chat.onReward) ? String(dialogMeta.chat.onReward) : ':giftchest: &aStarter transport issued: bicycle and wrench.';
+                        rewardMsg = rewardMsg.replace('{npc}', npcFmt);
+                        tellPlayer(player, rewardMsg);
+                    } catch (rwErr) { tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.'); }
                     logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
                 }
                 // Start timer immediately per spec
                 if (!pdata.phase0.timerStarted) {
                     pdata.phase0.timerStarted = true;
                     pdata.phase0.timerStartMs = Date.now();
-                    tellSeparatorTitle(player, 'Transfer', '&6', '&6');
-                    tellPlayer(player, dialogMeta.chat.onDialogComplete);
-                    
-                    if (dialogMeta.chat.onTimerStart) {
-                        tellPlayer(player, dialogMeta.chat.onTimerStart);
-                    }
+                    tellSeparatorTitle(player, 'State Hotel Transfer', '&6', '&e');
+                    try {
+                        var delaySec = longDelayMs / 1000;
+                        var npcNameD = dialogMeta.npc || '';
+                        if (dialogMeta.chat && dialogMeta.chat.onDialogComplete) {
+                            var msgA = String(dialogMeta.chat.onDialogComplete).replace('{delay}', String(delaySec)).replace('{npc}', npcNameD);
+                            tellPlayer(player, msgA);
+                        }
+                        // if (dialogMeta.chat && dialogMeta.chat.onTimerStart) {
+                        //     var msgB = String(dialogMeta.chat.onTimerStart).replace('{delay}', String(delaySec)).replace('{npc}', npcNameD);
+                        //     tellPlayer(player, msgB);
+                        // }
+                    } catch (tmErr) { /* ignore */ }
                     logToFile('onboarding', '[timer-start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
                 }
                 changed = true;
@@ -63,13 +75,19 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                 if (!pdata.phase0) pdata.phase0 = {};
                 if (pdata.phase0 && pdata.phase0.timerStarted && !pdata.phase0.completed) {
                     // During transfer, allow immediate informative message
-                    tellPlayer(player, chatCfgC.onConfineAfterDialog || chatCfgC.onTimerStart);
+                    var msgC = chatCfgC.onTimerStart;
+                    if (msgC) {
+                        var npcN = dialogMeta.npc;
+                        tellPlayer(player, String(msgC).replace('{npc}', npcN));
+                    }
                 } else {
                     // Before dialog completion: only show confine message after the short delay since welcome
                     var welcomeTime0 = pdata.phase0.welcomeTime || 0;
                     var afterShort = welcomeTime0 && ((nowGen - welcomeTime0) >= shortDelayMs);
                     if (afterShort) {
-                        tellPlayer(player, chatCfgC.onConfine);
+                        var npcN2 = dialogMeta.npc || '';
+                        var confineMsg = chatCfgC.onConfine ? String(chatCfgC.onConfine) : null;
+                        if (confineMsg) tellPlayer(player, confineMsg.replace('{npc}', npcN2));
                     }
                 }
                 // Reset the general reminder timer so the loop waits full interval
@@ -84,7 +102,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     // Timer countdown -> teleport
     if (pdata.phase0 && pdata.phase0.timerStarted && !pdata.phase0.completed) {
         var dcfg2 = arrival.dialog;
-        var delay = dcfg2.teleport_delay_seconds || 5;
+        var delay = longDelayMs / 1000.0;
         var elapsed = (Date.now() - pdata.phase0.timerStartMs) / 1000.0;
         if (elapsed >= delay) {
             var tp = dcfg2.state_hotel_tp || { pos: [-4300, 90, 3700], yaw: 0, pitch: 0 };
@@ -116,10 +134,9 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             if (!pdata.phase0.dialogRead) {
                 if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
                     var npcName0 = arrival.dialog.npc;
-                    if (chatCfg0.onWelcome) {
-                        tellPlayer(player, chatCfg0.onWelcome.replace('{npc}', npcName0 || ''));
-                    } else if (chatCfg0.onConfine) {
-                        tellPlayer(player, chatCfg0.onConfine.replace('{npc}', npcName0 || ''));
+                    var repeatMsg = chatCfg0.onRepeat || chatCfg0.onWelcome || chatCfg0.onConfine;
+                    if (repeatMsg) {
+                        tellPlayer(player, String(repeatMsg).replace('{npc}', npcName0 || ''));
                     }
                     pdata.phase0.lastGeneralReminder = nowGen;
                     changed = true;
@@ -127,7 +144,9 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             } else if (pdata.phase0.timerStarted && !pdata.phase0.completed) {
                 // During transfer timer: remind transfer is in progress
                 if (!pdata.phase0.lastGeneralReminder || (nowGen - pdata.phase0.lastGeneralReminder) > intervalMs) {
-                    tellPlayer(player, chatCfg0.onConfineAfterDialog || chatCfg0.onTimerStart);
+                    var npcNm = arrival.dialog.npc;
+                    var msgR = chatCfg0.onTimerStart;
+                    if (msgR) tellPlayer(player, String(msgR).replace('{npc}', npcNm));
                     pdata.phase0.lastGeneralReminder = nowGen;
                     changed = true;
                 }
