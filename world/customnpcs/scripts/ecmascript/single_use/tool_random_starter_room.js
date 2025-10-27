@@ -15,29 +15,29 @@ var SHOW_COUNTS = true; // Adds extra debug info (counts of total / unowned)
 var _starterHotelAssignedRooms = {}; // playerName -> regionName
 
 function interact(event) {
-    var player = event.player; if(!player) return;
+    var player = event.player; if (!player) return;
     try {
         var regions = getStarterHotelRegions(); // [{name,data}]
-        if(!regions || !regions.length){
+        if (!regions || !regions.length){
             tellPlayer(player, '&cNo starter hotel regions found.');
             return;
         }
         // Determine fallback dynamically if constant not present among regions
         var fallback = STARTER_HOTEL_FALLBACK_ROOM;
         var hasFallback = false;
-        for(var i=0;i<regions.length;i++){ if(regions[i].name === fallback){ hasFallback=true; break; } }
-        if(!hasFallback) fallback = regions[0].name; // first region becomes fallback
+        for(var i=0;i<regions.length;i++){ if (regions[i].name === fallback){ hasFallback=true; break; } }
+        if (!hasFallback) fallback = regions[0].name; // first region becomes fallback
 
         // Count unowned
         var unownedNames = [];
         for(var j=0;j<regions.length;j++) {
             var d = regions[j].data || {};
             var owner = d.owner || d.ownerName || (d.meta && d.meta.owner) || null;
-            if(!owner) unownedNames.push(regions[j].name);
+            if (!owner) unownedNames.push(regions[j].name);
         }
 
         var chosen = getRandomUnownedRegion(regions, fallback);
-        if(!chosen){
+        if (!chosen){
             tellPlayer(player, '&cUnable to select a room.');
             return;
         }
@@ -45,7 +45,7 @@ function interact(event) {
         var wasFallback = unownedNames.indexOf(chosen) === -1; // if not in unowned list, it is fallback
         var msg = '&aRandom starter hotel room: &e' + chosen + (wasFallback ? ' &7(fallback)' : '');
         tellPlayer(player, msg);
-        if(SHOW_COUNTS){
+        if (SHOW_COUNTS){
             tellPlayer(player, '&7Rooms total: ' + regions.length + ' | Unowned: ' + unownedNames.length);
         }
         logToFile('onboarding', '[room-tool] ' + player.getName() + ' fetched random room: ' + chosen + (wasFallback?' (fallback)':''));
@@ -62,12 +62,12 @@ function getTooltip(event){
 
 // Tick: enforce confinement if a room is assigned.
 function tick(event){
-    var player = event.player; if(!player) return;
+    var player = event.player; if (!player) return;
     var room = _starterHotelAssignedRooms[player.getName()];
-    if(!room) return; // nothing to confine yet
+    if (!room) return; // nothing to confine yet
     var corrected = confinePlayerToRegion(player, room);
     // Light reminder every 40 ticks (~2s) only if a correction happened OR periodic gentle ping every 600 ticks
-    if(corrected || (player.ticksExisted % 600 === 0)){
+    if (corrected || (player.ticksExisted % 600 === 0)){
         tellPlayer(player, '&eYou are assigned to room &6' + room + '&e. Stay inside until setup completes.');
     }
 }

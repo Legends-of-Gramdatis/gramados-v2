@@ -35,7 +35,7 @@ function interact(e) {
     if (!allowed) {
         try {
             var ops = loadJson('ops.json') || [];
-            for (var i=0;i<ops.length;i++){ if(ops[i] && ops[i].name === player.getName()) { allowed = true; break; } }
+            for (var i=0;i<ops.length;i++){ if (ops[i] && ops[i].name === player.getName()) { allowed = true; break; } }
         } catch (e2) {}
     }
     if (!allowed) {
