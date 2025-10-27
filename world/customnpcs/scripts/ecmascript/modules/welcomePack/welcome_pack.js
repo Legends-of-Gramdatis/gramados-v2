@@ -4,6 +4,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
+// TODO: Deprecate this script when the 10h onboarding will be ready.
+
 var WELCOME_PACK_JSON_PATH = "world/customnpcs/scripts/data_auto/welcome_pack.json";
 
 /**
