@@ -49,29 +49,29 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
         case 1: // First coins and understanding pouch
             switch (step) {
                 case 1: { // Give 40g and prompt !myMoney, wait until they run it
-                    if (!pdata.phase2.s1_started) { pdata.phase2.s1_started = true; pdata.phase2.s1_startedAt = now; changed = true; }
+                    if (!pdata.phase2.s1_started) {
+                        pdata.phase2.s1_started = true;
+                        pdata.phase2.s1_startedAt = now;
+                        changed = true;
+                    }
 
                     if (!pdata.phase2.s1_given) {
                         var cents40g = 40 * 100; // 1g=100
-                        try {
-                            var w = player.getWorld();
-                            var stacks = generateMoney(w, cents40g, "money") || [];
-                            for (var i = 0; i < stacks.length; i++) {
-                                try { if (stacks[i]) player.giveItem(stacks[i]); } catch (gi) { player.dropItem(stacks[i]); }
-                            }
-                            pdata.phase2.s1_given = true;
-                            pdata.phase2.s1_givenTime = Date.now();
-                            var s1chat0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                            // Phase 2 colors: &2 separator, &a title
-                            tellSeparatorTitle(player, 'Your First Coins', '&2', '&a');
-                            tellPlayer(player, s1chat0.s1_received);
-                            pdata.phase2.s1_promptTime = Date.now();
-                            pdata.phase2.s1_lastMsg = Date.now();
-                            changed = true;
-                            logToFile('onboarding', '[phase2-s1] ' + player.getName() + ' granted 40g.');
-                        } catch (giveErr) {
-                            logToFile('onboarding', '[phase2-s1-error] failed to grant 40g to ' + player.getName() + ': ' + giveErr);
+                        var w = player.getWorld();
+                        var stacks = generateMoney(w, cents40g, "money") || [];
+                        for (var i = 0; i < stacks.length; i++) {
+                            player.giveItem(stacks[i]);
                         }
+                        pdata.phase2.s1_given = true;
+                        pdata.phase2.s1_givenTime = Date.now();
+                        var s1chat0 = phaseCfg.stages.stage1.chat;
+                        // Phase 2 colors: &2 separator, &a title
+                        tellSeparatorTitle(player, 'Your First Coins', '&2', '&a');
+                        tellPlayer(player, s1chat0.s1_received);
+                        pdata.phase2.s1_promptTime = Date.now();
+                        pdata.phase2.s1_lastMsg = Date.now();
+                        changed = true;
+                        logToFile('onboarding', '[phase2-s1] ' + player.getName() + ' granted 40g.');
                         return changed;
                     }
 
@@ -110,60 +110,47 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                 }
                 case 2: { // Show Understanding Your Pouch when available
                     if (pdata.phase2.s1_myMoneySeen && pdata.phase2.s1_guideAvailableAt && Date.now() >= pdata.phase2.s1_guideAvailableAt && !pdata.phase2.s1_guideGiven) {
-                        try {
-                            // chat messages (configurable)
-                            try {
-                                var guideCfg = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.guide) ? phaseCfg.stages.stage1.guide : null;
-                                if (guideCfg && guideCfg.chat && guideCfg.chat.length) {
-                                    tellSeparatorTitle(player, 'Understanding Your Pouch', '&2', '&a');
-                                    for (var ci = 0; ci < guideCfg.chat.length; ci++) {
-                                        tellPlayer(player, guideCfg.chat[ci]);
-                                    }
-                                }
-                            } catch (messErr) { logToFile('onboarding', '[phase2] chat guide send error: ' + messErr); }
 
-                            // Give paper guide
-                            try {
-                                var world = player.getWorld();
-                                var baseNbt = { id: 'minecraft:paper', Count: 1, Damage: 0 };
-                                var stack = null;
-                                try { stack = world.createItemFromNbt(API.stringToNbt(JSON.stringify(baseNbt))); } catch (cn) { try { stack = world.createItemFromNbt('{id:"minecraft:paper",Count:1b}'); } catch (cn2) { stack = null; } }
-                                if (stack && stack.setStackSize) stack.setStackSize(1);
-                                try { if (stack && stack.setCustomName) stack.setCustomName(parseEmotes(ccs('&6Gramados: Currency Guide'))); } catch (nmEx) {}
+                        // chat messages (configurable)
+                        var guideCfg = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.guide) ? phaseCfg.stages.stage1.guide : null;
+                        tellSeparatorTitle(player, 'Understanding Your Pouch', '&2', '&a');
+                        storytellPlayer(player, guideCfg.chat);
 
-                                var loreLines = [];
-                                var guideCfg2 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.guide) ? phaseCfg.stages.stage1.guide : null;
-                                if (guideCfg2 && guideCfg2.paper && guideCfg2.paper.entries) {
-                                    for (var k in guideCfg2.paper.entries) {
-                                        if (!guideCfg2.paper.entries.hasOwnProperty(k)) continue;
-                                        var text = guideCfg2.paper.entries[k] || '';
-                                        loreLines.push(parseEmotes(ccs('&e' + k)));
-                                        loreLines.push(parseEmotes(ccs('&7' + text)));
-                                        loreLines.push('');
-                                    }
-                                }
-                                if (!loreLines.length) {
-                                    loreLines.push(parseEmotes(ccs('&eMoney')));
-                                    loreLines.push(parseEmotes(ccs('&7Your main in-game currency. Use !myMoney to view your pouch, and !deposit to move items into it.')));
-                                }
-                                if (loreLines.length && loreLines[loreLines.length-1] === '') loreLines.pop();
-                                if (stack && stack.setLore) stack.setLore(loreLines);
-                                if (stack) { try { player.giveItem(stack); } catch (gErr) { try { player.dropItem(stack); } catch (gErr2) {} } }
+                        // Give paper guide
+                        var world = player.getWorld();
+                        var baseNbt = { id: 'minecraft:paper', Count: 1, Damage: 0 };
+                        var stack = null;
+                        try { stack = world.createItemFromNbt(API.stringToNbt(JSON.stringify(baseNbt))); } catch (cn) { try { stack = world.createItemFromNbt('{id:"minecraft:paper",Count:1b}'); } catch (cn2) { stack = null; } }
+                        if (stack && stack.setStackSize) stack.setStackSize(1);
+                        try { if (stack && stack.setCustomName) stack.setCustomName(parseEmotes(ccs('&6Gramados: Currency Guide'))); } catch (nmEx) {}
 
-                                pdata.phase2.s1_guideGiven = true;
-                                pdata.phase2.s1_guideGivenTime = Date.now();
-                                var guideChat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                                tellPlayer(player, guideChat.s1_guide_added);
-                                // Schedule the very-long gate before deposit
-                                pdata.phase2.s2_availableAt = Date.now() + veryLongDelayMs;
-                                pdata.phase2.currentStep = 3;
-                                changed = true;
-                            } catch (createErr) {
-                                logToFile('onboarding', '[phase2-s1-guide-error-create] ' + player.getName() + ' ' + createErr);
+                        var loreLines = [];
+                        var guideCfg2 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.guide) ? phaseCfg.stages.stage1.guide : null;
+                        if (guideCfg2 && guideCfg2.paper && guideCfg2.paper.entries) {
+                            for (var k in guideCfg2.paper.entries) {
+                                if (!guideCfg2.paper.entries.hasOwnProperty(k)) continue;
+                                var text = guideCfg2.paper.entries[k] || '';
+                                loreLines.push(parseEmotes(ccs('&e' + k)));
+                                loreLines.push(parseEmotes(ccs('&7' + text)));
+                                loreLines.push('');
                             }
-                        } catch (e3) {
-                            logToFile('onboarding', '[phase2-s1-guide-error] ' + player.getName() + ' ' + e3);
                         }
+                        if (!loreLines.length) {
+                            loreLines.push(parseEmotes(ccs('&eMoney')));
+                            loreLines.push(parseEmotes(ccs('&7Your main in-game currency. Use !myMoney to view your pouch, and !deposit to move items into it.')));
+                        }
+                        if (loreLines.length && loreLines[loreLines.length-1] === '') loreLines.pop();
+                        if (stack && stack.setLore) stack.setLore(loreLines);
+                        if (stack) { try { player.giveItem(stack); } catch (gErr) { try { player.dropItem(stack); } catch (gErr2) {} } }
+
+                        pdata.phase2.s1_guideGiven = true;
+                        pdata.phase2.s1_guideGivenTime = Date.now();
+                        var guideChat = phaseCfg.stages.stage1.chat;
+                        tellPlayer(player, guideChat.s2_guide_added);
+                        // Schedule the very-long gate before deposit
+                        pdata.phase2.s2_availableAt = Date.now() + veryLongDelayMs;
+                        pdata.phase2.currentStep = 3;
+                        changed = true;
                     }
                     break;
                 }
@@ -183,22 +170,18 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     if (!pdata.phase2.s2_started) {
                         pdata.phase2.s2_started = true;
                         pdata.phase2.s2_startedAt = Date.now();
-                        try {
-                            var wds = getWorldData();
-                            var pKey = 'player_' + player.getName();
-                            var playerStr = wds.get(pKey) || null;
-                            var pjson = playerStr ? JSON.parse(playerStr) : {};
-                            var pouchBefore = (typeof pjson.money === 'number') ? pjson.money : (pjson.money ? Number(pjson.money) : 0);
-                            pdata.phase2.s2_pouchBefore = pouchBefore;
-                            var s2chat0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                            tellSeparatorTitle(player, 'Depositing Money', '&2', '&a');
-                            tellPlayer(player, s2chat0.s2_deposit_init);
-                            pdata.phase2.s2_promptTime = Date.now();
-                            pdata.phase2.s2_lastMsg = Date.now();
-                            changed = true;
-                        } catch (e4) {
-                            logToFile('onboarding', '[phase2-s2-error] read pouch failed for ' + player.getName() + ': ' + e4);
-                        }
+                        var wds = getWorldData();
+                        var pKey = 'player_' + player.getName();
+                        var playerStr = wds.get(pKey) || null;
+                        var pjson = playerStr ? JSON.parse(playerStr) : {};
+                        var pouchBefore = (typeof pjson.money === 'number') ? pjson.money : (pjson.money ? Number(pjson.money) : 0);
+                        pdata.phase2.s2_pouchBefore = pouchBefore;
+                        var s2chat0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        tellSeparatorTitle(player, 'Depositing Money', '&2', '&a');
+                        tellPlayer(player, s2chat0.s2_deposit_init);
+                        pdata.phase2.s2_promptTime = Date.now();
+                        pdata.phase2.s2_lastMsg = Date.now();
+                        changed = true;
                         return changed;
                     }
 
@@ -267,15 +250,13 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
             switch (step) {
                 case 1: {
                     var myMoneyLast2 = null;
-                    try {
-                        var od3 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                        var p3 = od3[player.getName()];
-                        if (p3) {
-                            if (p3['phase2'] && p3['phase2']['last ran'] && p3['phase2']['last ran'].myMoney) myMoneyLast2 = p3['phase2']['last ran'].myMoney;
-                            if (!myMoneyLast2 && p3['last ran'] && p3['last ran'].myMoney) myMoneyLast2 = p3['last ran'].myMoney;
-                            if (!myMoneyLast2 && p3['phase2'] && p3['phase2']['last_ran'] && p3['phase2']['last_ran'].myMoney) myMoneyLast2 = p3['phase2']['last_ran'].myMoney;
-                        }
-                    } catch (e7) { myMoneyLast2 = null; }
+                    var od3 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                    var p3 = od3[player.getName()];
+                    if (p3) {
+                        if (p3['phase2'] && p3['phase2']['last ran'] && p3['phase2']['last ran'].myMoney) myMoneyLast2 = p3['phase2']['last ran'].myMoney;
+                        if (!myMoneyLast2 && p3['last ran'] && p3['last ran'].myMoney) myMoneyLast2 = p3['last ran'].myMoney;
+                        if (!myMoneyLast2 && p3['phase2'] && p3['phase2']['last_ran'] && p3['phase2']['last_ran'].myMoney) myMoneyLast2 = p3['phase2']['last_ran'].myMoney;
+                    }
 
                     if (!pdata.phase2.s3_myMoneySeen) {
                         if (myMoneyLast2 && pdata.phase2.s3_promptTime && myMoneyLast2 >= pdata.phase2.s3_promptTime) {
@@ -284,8 +265,6 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.s3_completed = true;
                             pdata.phase2.s3_completedAt = Date.now();
                             pdata.phase2.completed = true;
-                            var phaseName = phaseCfg.name;
-                            tellSeparatorTitle(player, phaseName, '&2', '&a');
                             var s3chat = phaseCfg.stages.stage1.chat;
                             tellPlayer(player, s3chat.s3_completed);
                             changed = true;
