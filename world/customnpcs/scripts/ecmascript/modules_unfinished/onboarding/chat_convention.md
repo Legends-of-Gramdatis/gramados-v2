@@ -229,7 +229,7 @@ N/A
 N/A  
 
 **Completion**  
-:paper: &aA detailed currency guide has been added to your inventory.  
+:page_facing_up: &aA detailed currency guide has been added to your inventory.  
 
 ## 2.2 Stage 2 - Depositing money into pouch  
 
