@@ -28,7 +28,7 @@ Separators and logging throughout the 10h onboarding
 
 # 0 Phase 0 - Gramados Arrival
 
-## Stage 1 - Initial welcome (one step)
+## 0.1 Stage 1 - Initial welcome (one step)
 
 **Start**  
 &6[===] &eGramados Arrival &6[===]  
@@ -43,7 +43,7 @@ Separators and logging throughout the 10h onboarding
 **Completion**  
 :giftchest: {npc} &ahas provided you with a new bicycle and a wrench as your first vehicle!  
 
-## Stage 2 -  Granted transport and transfer (one step)
+## 0.2 Stage 2 -  Granted transport and transfer (one step)
 
 **Start**  
 &6[===] &eState Hotel Transfer &6[===]  
@@ -146,7 +146,7 @@ N/A
 **Completion**  
 &a:check_mark: You successfully used &6!home &aor &6!home <name> &ato return to your home!  
 
-## 1.4 Stage 4 - Lost Moment – radius confine, use !home to return
+## 1.4 Stage 4 - Lost Somewhere – radius confine, use !home to return
 
 ### 1.4.1 - step 1 - Getting lost
 **Start**  
