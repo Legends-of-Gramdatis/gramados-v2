@@ -10,6 +10,7 @@
         "saveThrottleTicks": 40,
         "logJson": true,
         "generic_streamline_delay_short": 5,
+        "generic_streamline_delay_medium": 10,
         "generic_streamline_delay_long": 20,
         "generic_streamline_delay_very_long": 60,
         "generic_streamline_interval": 60
