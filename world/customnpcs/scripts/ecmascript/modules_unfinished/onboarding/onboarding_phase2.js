@@ -469,13 +469,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s4_redeposit_started = true;
                         pdata.phase2.s4_redeposit_startedAt = Date.now();
                         // Capture baselines
-                        try {
-                            var wdsRD = getWorldData();
-                            var pKeyRD = 'player_' + player.getName();
-                            var playerStrRD = wdsRD.get(pKeyRD) || null;
-                            var pjsonRD = playerStrRD ? JSON.parse(playerStrRD) : {};
-                            pdata.phase2.s4_redeposit_pouchBefore = (typeof pjsonRD.money === 'number') ? pjsonRD.money : (pjsonRD.money ? Number(pjsonRD.money) : 0);
-                        } catch (rd1) { pdata.phase2.s4_redeposit_pouchBefore = 0; }
+                        var wdsRD = getWorldData();
+                        var pKeyRD = 'player_' + player.getName();
+                        var playerStrRD = wdsRD.get(pKeyRD);
+                        var pjsonRD = playerStrRD ? JSON.parse(playerStrRD) : {};
+                        pdata.phase2.s4_redeposit_pouchBefore = pjsonRD.money;
                         pdata.phase2.s4_redeposit_invBefore = readMoneyFromPlayerInventory(player, player.getWorld());
 
                         var s4c3 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
@@ -515,13 +513,14 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Verify effect
-                    var invAfterRD = 0;
-                    try { invAfterRD = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (rd5) { invAfterRD = 0; }
+                    var invAfterRD = readMoneyFromPlayerInventory(player, player.getWorld());
                     var s4c3c = phaseCfg.stages.stage1.chat;
                     if (invAfterRD === 0) {
                         tellPlayer(player, s4c3c.s4_redeposit_completed);
                         pdata.phase2.s4_redeposit_completed = true;
                         pdata.phase2.s4_redeposit_completedAt = Date.now();
+                        // Phase 2 complete, increment step
+                        pdata.phase2.currentStep = 4;
                         changed = true;
                     } else {
                         // Failure: still has money items left, instruct to run again until no more money items on you
