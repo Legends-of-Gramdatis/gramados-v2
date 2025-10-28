@@ -118,7 +118,10 @@
                         "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &6!deposit &ewith money in hand.",
                         "s3_checkpouch_init": "&b:sun: Now that you've deposited money into your pouch, it's time to confirm the update. Please run &6!myMoney &bagain to see your updated pouch balance.",
                         "s3_checkpouch_reminder": ":lit: &ePlease run &6!myMoney &eagain to confirm your pouch balance.",
-                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP."
+                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP.",
+                        "s3b_prompt": ":lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.",
+                        "s3b_reminder": ":lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.",
+                        "s3b_completed": "&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased."
                     },
                     "guide": {
                         "chat": [
@@ -133,13 +136,11 @@
                             "&2Shop Tokens: :money: &a:check_mark: Won't drop on death.",
                             "&7  Purchased currency used for cosmetics and paid content.",
                             "",
-                            "&eMoney Pouch: &r:money:",
+                            "&eMoney Pouch: &r:money: &r:danger:&c 50% of it will drop on death.",
                             "&7  A dematerialized balance representing money stored in your pouch. (In grons)",
-                            "&r:danger:&c 50% of it will drop on death.",
                             "",
-                            "&eInventory: &r:money:",
+                            "&eInventory: &r:money: &r:danger:&c 100% of it will drop on death.",
                             "&7  Physical currency items you carry in your inventory. (In grons)",
-                            "&r:danger:&c 100% of it will drop on death.",
                             ""
                         ],
                         "paper": {

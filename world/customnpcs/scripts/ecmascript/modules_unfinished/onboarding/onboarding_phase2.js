@@ -220,9 +220,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.s2_completed = true;
                             pdata.phase2.s2_completedAt = Date.now();
                             tellPlayer(player, s2chat.s2_deposit_detected);
-                            // Move to Stage 3: Check Your Pouch (with short delay)
-                            pdata.phase2.currentStage = 3;
-                            pdata.phase2.currentStep = 1;
+                            // Move to Step 2 within Stage 2: Check Your Pouch (with short delay)
+                            pdata.phase2.currentStage = 2;
+                            pdata.phase2.currentStep = 2;
                             pdata.phase2.s3_promptTime = Date.now() + shortDelayMs;
                             pdata.phase2.s3_lastMsg = Date.now();
                             tellSeparatorTitle(player, 'Check Your Pouch', '&2', '&a');
@@ -244,11 +244,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     } catch (e6) { logToFile('onboarding', '[phase2-s2-check-error] ' + player.getName() + ' ' + e6); }
                     break;
                 }
-            }
-            break;
-        case 3: // Confirm pouch after deposit
-            switch (step) {
-                case 1: {
+                case 2: { // Check Your Pouch confirmation after short delay
                     var myMoneyLast2 = null;
                     var od3 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
                     var p3 = od3[player.getName()];
@@ -264,11 +260,13 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.s3_myMoneySeenAt = myMoneyLast2;
                             pdata.phase2.s3_completed = true;
                             pdata.phase2.s3_completedAt = Date.now();
-                            pdata.phase2.completed = true;
                             var s3chat = phaseCfg.stages.stage1.chat;
                             tellPlayer(player, s3chat.s3_completed);
+                            // Advance to Stage 3 (Depositing Batch of Money Items)
+                            pdata.phase2.currentStage = 3;
+                            pdata.phase2.currentStep = 1;
                             changed = true;
-                            logToFile('onboarding', '[phase2-s3] ' + player.getName() + ' confirmed pouch after deposit at ' + myMoneyLast2);
+                            logToFile('onboarding', '[phase2-s2-step2] ' + player.getName() + ' confirmed pouch after deposit at ' + myMoneyLast2);
                         } else {
                             var last3 = pdata.phase2.s3_lastMsg || pdata.phase2.s3_promptTime || 0;
                             if ((Date.now() - last3) > intervalMs) {
@@ -279,6 +277,64 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             }
                         }
                     }
+                    break;
+                }
+            }
+            break;
+        case 3: // Depositing Batch of Money Items (depositall)
+            switch (step) {
+                case 1: {
+                    // On first entry, grant 33g34c and show title + prompt
+                    if (!pdata.phase2.s3b_started) {
+                        pdata.phase2.s3b_started = true;
+                        pdata.phase2.s3b_startedAt = Date.now();
+                        try {
+                            var w3 = player.getWorld();
+                            var stacks3 = generateMoney(w3, (33*100 + 34), "money") || [];
+                            for (var i3 = 0; i3 < stacks3.length; i3++) { try { if (stacks3[i3]) player.giveItem(stacks3[i3]); } catch (gex) { try { player.dropItem(stacks3[i3]); } catch (gex2) {} } }
+                        } catch (grantErr) { logToFile('onboarding', '[phase2-s3b-grant-error] ' + player.getName() + ' ' + grantErr); }
+
+                        // Title and prompt (fallback if config key missing)
+                        tellSeparatorTitle(player, 'Depositing Batch of Money Items', '&2', '&a');
+                        var sChat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        var promptMsg = sChat.s3b_prompt || ':lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.';
+                        tellPlayer(player, promptMsg);
+                        pdata.phase2.s3b_promptTime = Date.now();
+                        pdata.phase2.s3b_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Wait for !depositall run (using last ran map)
+                    var depositAllLastRan = null;
+                    try {
+                        var od4 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                        var p4 = od4[player.getName()];
+                        if (p4) {
+                            if (p4['phase2'] && p4['phase2']['last ran'] && p4['phase2']['last ran'].depositall) depositAllLastRan = p4['phase2']['last ran'].depositall;
+                            if (!depositAllLastRan && p4['last ran'] && p4['last ran'].depositall) depositAllLastRan = p4['last ran'].depositall;
+                        }
+                    } catch (e9) { depositAllLastRan = null; }
+
+                    if (!depositAllLastRan || (pdata.phase2.s3b_promptTime && depositAllLastRan < pdata.phase2.s3b_promptTime)) {
+                        var lastBA = pdata.phase2.s3b_lastMsg || pdata.phase2.s3b_promptTime || 0;
+                        if ((Date.now() - lastBA) > intervalMs) {
+                            var sChatR = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                            var reminderMsg = sChatR.s3b_reminder || ':lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.';
+                            tellPlayer(player, reminderMsg);
+                            pdata.phase2.s3b_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        return changed;
+                    }
+
+                    // Completion when depositall detected
+                    pdata.phase2.s3b_completed = true;
+                    pdata.phase2.s3b_completedAt = Date.now();
+                    var sChatC = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                    var completedMsg = sChatC.s3b_completed || '&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased.';
+                    tellPlayer(player, completedMsg);
+                    changed = true;
                     break;
                 }
             }
