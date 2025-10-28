@@ -6,6 +6,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     if (!arrival) return false;
     var intervalMs = globalCfg.general.generic_streamline_interval * 1000;
     var longDelayMs = globalCfg.general.generic_streamline_delay_long * 1000;
+    var mediumDelayMs = globalCfg.general.generic_streamline_delay_medium * 1000;
     var shortDelayMs = globalCfg.general.generic_streamline_delay_short * 1000;
     var nowGen = Date.now();
 
@@ -33,7 +34,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                     pdata.phase0.rewardsGiven = true;
                     try {
                         var npcFmt = dialogMeta.npc || '';
-                        var rewardMsg = (dialogMeta.chat && dialogMeta.chat.onReward) ? String(dialogMeta.chat.onReward) : ':giftchest: &aStarter transport issued: bicycle and wrench.';
+                        var rewardMsg = dialogMeta.chat.onReward;
                         rewardMsg = rewardMsg.replace('{npc}', npcFmt);
                         tellPlayer(player, rewardMsg);
                     } catch (rwErr) { tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.'); }
@@ -45,7 +46,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                     pdata.phase0.timerStartMs = Date.now();
                     tellSeparatorTitle(player, 'State Hotel Transfer', '&6', '&e');
                     try {
-                        var delaySec = longDelayMs / 1000;
+                        var delaySec = mediumDelayMs / 1000;
                         var npcNameD = dialogMeta.npc || '';
                         if (dialogMeta.chat && dialogMeta.chat.onDialogComplete) {
                             var msgA = String(dialogMeta.chat.onDialogComplete).replace('{delay}', String(delaySec)).replace('{npc}', npcNameD);

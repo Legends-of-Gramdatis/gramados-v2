@@ -17,6 +17,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
 
     var now = Date.now();
     var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
+    var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
     var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
     var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
     // New very-long delay for gating Phase 2 start after Phase 1 completion; fallback to long if not set
@@ -147,8 +148,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s1_guideGivenTime = Date.now();
                         var guideChat = phaseCfg.stages.stage1.chat;
                         tellPlayer(player, guideChat.s2_guide_added);
-                        // Schedule the very-long gate before deposit
-                        pdata.phase2.s2_availableAt = Date.now() + veryLongDelayMs;
+                        // Schedule the long gate before deposit
+                        pdata.phase2.s2_availableAt = Date.now() + longDelayMs;
                         pdata.phase2.currentStep = 3;
                         changed = true;
                     }
@@ -262,9 +263,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.s3_completedAt = Date.now();
                             var s3chat = phaseCfg.stages.stage1.chat;
                             tellPlayer(player, s3chat.s3_completed);
-                            // Advance to Stage 3 (Depositing Batch of Money Items)
-                            pdata.phase2.currentStage = 3;
-                            pdata.phase2.currentStep = 1;
+                            // Schedule a long delay before moving to Stage 3 (Depositing Batch of Money Items)
+                            pdata.phase2.s3b_availableAt = Date.now() + longDelayMs;
+                            // Move to a waiting step 3 within Stage 2
+                            pdata.phase2.currentStage = 2;
+                            pdata.phase2.currentStep = 3;
                             changed = true;
                             logToFile('onboarding', '[phase2-s2-step2] ' + player.getName() + ' confirmed pouch after deposit at ' + myMoneyLast2);
                         } else {
@@ -276,6 +279,14 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                                 changed = true;
                             }
                         }
+                    }
+                    break;
+                }
+                case 3: { // Wait long delay then move to Stage 3 (depositall)
+                    if (pdata.phase2.s3b_availableAt && Date.now() >= pdata.phase2.s3b_availableAt) {
+                        pdata.phase2.currentStage = 3;
+                        pdata.phase2.currentStep = 1;
+                        changed = true;
                     }
                     break;
                 }
@@ -294,11 +305,10 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             for (var i3 = 0; i3 < stacks3.length; i3++) { try { if (stacks3[i3]) player.giveItem(stacks3[i3]); } catch (gex) { try { player.dropItem(stacks3[i3]); } catch (gex2) {} } }
                         } catch (grantErr) { logToFile('onboarding', '[phase2-s3b-grant-error] ' + player.getName() + ' ' + grantErr); }
 
-                        // Title and prompt (fallback if config key missing)
+                        // Title and prompt (messages from config only)
                         tellSeparatorTitle(player, 'Depositing Batch of Money Items', '&2', '&a');
                         var sChat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                        var promptMsg = sChat.s3b_prompt || ':lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.';
-                        tellPlayer(player, promptMsg);
+                        tellPlayer(player, sChat.s3b_prompt);
                         pdata.phase2.s3b_promptTime = Date.now();
                         pdata.phase2.s3b_lastMsg = Date.now();
                         changed = true;
@@ -311,8 +321,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         var od4 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
                         var p4 = od4[player.getName()];
                         if (p4) {
-                            if (p4['phase2'] && p4['phase2']['last ran'] && p4['phase2']['last ran'].depositall) depositAllLastRan = p4['phase2']['last ran'].depositall;
-                            if (!depositAllLastRan && p4['last ran'] && p4['last ran'].depositall) depositAllLastRan = p4['last ran'].depositall;
+                            if (p4['phase2'] && p4['phase2']['last ran'] && p4['phase2']['last ran'].depositAll) depositAllLastRan = p4['phase2']['last ran'].depositAll;
+                            if (!depositAllLastRan && p4['last ran'] && p4['last ran'].depositAll) depositAllLastRan = p4['last ran'].depositAll;
                         }
                     } catch (e9) { depositAllLastRan = null; }
 
@@ -320,8 +330,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         var lastBA = pdata.phase2.s3b_lastMsg || pdata.phase2.s3b_promptTime || 0;
                         if ((Date.now() - lastBA) > intervalMs) {
                             var sChatR = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                            var reminderMsg = sChatR.s3b_reminder || ':lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.';
-                            tellPlayer(player, reminderMsg);
+                            tellPlayer(player, sChatR.s3b_reminder);
                             pdata.phase2.s3b_lastMsg = Date.now();
                             changed = true;
                         }
@@ -332,9 +341,194 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     pdata.phase2.s3b_completed = true;
                     pdata.phase2.s3b_completedAt = Date.now();
                     var sChatC = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                    var completedMsg = sChatC.s3b_completed || '&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased.';
-                    tellPlayer(player, completedMsg);
+                    tellPlayer(player, sChatC.s3b_completed);
+                    // Schedule Stage 4 Step 2 (Withdrawing Money) to start after a medium delay
+                    pdata.phase2.s4_step2AvailableAt = Date.now() + mediumDelayMs;
+                    // Move to Stage 4 - Step 1 (validity check) immediately; Step 2 will start when available time hits
+                    pdata.phase2.currentStage = 4;
+                    pdata.phase2.currentStep = 1;
                     changed = true;
+                    break;
+                }
+            }
+            break;
+        case 4: // Withdrawing money from pouch (Stage 4)
+            switch (step) {
+                case 1: { // Check validity: ensure no money items in inventory; then wait for medium delay to Step 2
+                    var invMoneyNow = 0;
+                    try { invMoneyNow = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (vErr) { invMoneyNow = 0; }
+                    if (invMoneyNow > 0) {
+                        // Failure reminder: ask to empty inventory (use depositall)
+                        var s4c1 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        var msgFail = s4c1.s4_validity_failure;
+                        var lastV = pdata.phase2.s4_step1_lastMsg || 0;
+                        if ((Date.now() - lastV) > intervalMs) {
+                            tellPlayer(player, msgFail);
+                            pdata.phase2.s4_step1_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        // Stay in Step 1 until inventory is clean
+                        break;
+                    }
+                    // Inventory is clean; wait for scheduled medium delay to start Step 2
+                    if (pdata.phase2.s4_step2AvailableAt && Date.now() >= pdata.phase2.s4_step2AvailableAt) {
+                        pdata.phase2.currentStep = 2;
+                        changed = true;
+                    }
+                    break;
+                }
+                case 2: { // Withdrawing Money (withdraw 6g)
+                    if (!pdata.phase2.s4_withdraw_started) {
+                        pdata.phase2.s4_withdraw_started = true;
+                        pdata.phase2.s4_withdraw_startedAt = Date.now();
+                        // Snapshot before values for validation
+                        try {
+                            var wdsW = getWorldData();
+                            var pKeyW = 'player_' + player.getName();
+                            var playerStrW = wdsW.get(pKeyW) || null;
+                            var pjsonW = playerStrW ? JSON.parse(playerStrW) : {};
+                            var pouchBeforeW = (typeof pjsonW.money === 'number') ? pjsonW.money : (pjsonW.money ? Number(pjsonW.money) : 0);
+                            pdata.phase2.s4_withdraw_pouchBefore = pouchBeforeW;
+                        } catch (we1) { pdata.phase2.s4_withdraw_pouchBefore = 0; }
+                        try { pdata.phase2.s4_withdraw_invBefore = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (we2) { pdata.phase2.s4_withdraw_invBefore = 0; }
+
+                        // Title and prompt
+                        tellSeparatorTitle(player, 'Withdrawing Money', '&2', '&a');
+                        var s4c2 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        tellPlayer(player, s4c2.s4_withdraw_start);
+                        pdata.phase2.s4_withdraw_promptTime = Date.now();
+                        pdata.phase2.s4_withdraw_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Detect !withdraw command
+                    var withdrawLastRan = null;
+                    try {
+                        var odW = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                        var pW = odW[player.getName()];
+                        if (pW) {
+                            if (pW['phase2'] && pW['phase2']['last ran'] && pW['phase2']['last ran'].withdraw) withdrawLastRan = pW['phase2']['last ran'].withdraw;
+                            if (!withdrawLastRan && pW['last ran'] && pW['last ran'].withdraw) withdrawLastRan = pW['last ran'].withdraw;
+                            if (!withdrawLastRan && pW['phase2'] && pW['phase2']['last_ran'] && pW['phase2']['last_ran'].withdraw) withdrawLastRan = pW['phase2']['last_ran'].withdraw;
+                        }
+                    } catch (we3) { withdrawLastRan = null; }
+
+                    if (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < pdata.phase2.s4_withdraw_promptTime)) {
+                        var lastW = pdata.phase2.s4_withdraw_lastMsg || pdata.phase2.s4_withdraw_promptTime || 0;
+                        if ((Date.now() - lastW) > intervalMs) {
+                            var s4c2r = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                            tellPlayer(player, s4c2r.s4_withdraw_reminder);
+                            pdata.phase2.s4_withdraw_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        break;
+                    }
+
+                    // Verify effect (pouch decreased and inventory increased by ~6g)
+                    var pouchBeforeChk = pdata.phase2.s4_withdraw_pouchBefore || 0;
+                    var invBeforeChk = pdata.phase2.s4_withdraw_invBefore || 0;
+                    var pouchAfterChk = pouchBeforeChk;
+                    var invAfterChk = invBeforeChk;
+                    try {
+                        var wdsWA = getWorldData();
+                        var pKeyWA = 'player_' + player.getName();
+                        var playerStrWA = wdsWA.get(pKeyWA) || null;
+                        var pjsonWA = playerStrWA ? JSON.parse(playerStrWA) : {};
+                        pouchAfterChk = (typeof pjsonWA.money === 'number') ? pjsonWA.money : (pjsonWA.money ? Number(pjsonWA.money) : 0);
+                    } catch (we4) {}
+                    try { invAfterChk = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (we5) {}
+
+                    var expectedCents = 6 * 100; // 6g
+                    var pouchDecreased = (pouchBeforeChk - pouchAfterChk) >= expectedCents;
+                    var invIncreased = (invAfterChk - invBeforeChk) >= expectedCents;
+
+                    var s4c2c = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                    if (pouchDecreased && invIncreased) {
+                        // Success
+                        tellPlayer(player, s4c2c.s4_withdraw_completed);
+                        pdata.phase2.s4_withdraw_completed = true;
+                        pdata.phase2.s4_withdraw_completedAt = Date.now();
+                        // Move to Step 3: Deposit money again
+                        pdata.phase2.currentStep = 3;
+                        changed = true;
+                    } else {
+                        // Ask to try again
+                        var remindMsg2 = s4c2c.s4_withdraw_reminder;
+                        var lastW2 = pdata.phase2.s4_withdraw_lastMsg || 0;
+                        if ((Date.now() - lastW2) > intervalMs) {
+                            tellPlayer(player, remindMsg2);
+                            pdata.phase2.s4_withdraw_lastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    break;
+                }
+                case 3: { // Deposit money again (!deposit or !depositall)
+                    if (!pdata.phase2.s4_redeposit_started) {
+                        pdata.phase2.s4_redeposit_started = true;
+                        pdata.phase2.s4_redeposit_startedAt = Date.now();
+                        // Capture baselines
+                        try {
+                            var wdsRD = getWorldData();
+                            var pKeyRD = 'player_' + player.getName();
+                            var playerStrRD = wdsRD.get(pKeyRD) || null;
+                            var pjsonRD = playerStrRD ? JSON.parse(playerStrRD) : {};
+                            pdata.phase2.s4_redeposit_pouchBefore = (typeof pjsonRD.money === 'number') ? pjsonRD.money : (pjsonRD.money ? Number(pjsonRD.money) : 0);
+                        } catch (rd1) { pdata.phase2.s4_redeposit_pouchBefore = 0; }
+                        pdata.phase2.s4_redeposit_invBefore = readMoneyFromPlayerInventory(player, player.getWorld());
+
+                        var s4c3 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        tellPlayer(player, s4c3.s4_redeposit_start);
+                        pdata.phase2.s4_redeposit_promptTime = Date.now();
+                        pdata.phase2.s4_redeposit_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Detect either deposit or depositall
+                    var dRan = null, daRan = null;
+                    var odRD = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                    var pRD = odRD[player.getName()];
+                    if (pRD) {
+                        if (pRD['phase2'] && pRD['phase2']['last ran']) {
+                            if (pRD['phase2']['last ran'].deposit) dRan = pRD['phase2']['last ran'].deposit;
+                            if (pRD['phase2']['last ran'].depositall) daRan = pRD['phase2']['last ran'].depositall;
+                        }
+                        if (pRD['last ran']) {
+                            if (!dRan && pRD['last ran'].deposit) dRan = pRD['last ran'].deposit;
+                            if (!daRan && pRD['last ran'].depositall) daRan = pRD['last ran'].depositall;
+                        }
+                    }
+
+                    var triggerTime = pdata.phase2.s4_redeposit_promptTime || 0;
+                    var hasDeposited = (dRan && dRan >= triggerTime) || (daRan && daRan >= triggerTime);
+                    if (!hasDeposited) {
+                        var lastRD = pdata.phase2.s4_redeposit_lastMsg || triggerTime || 0;
+                        if ((Date.now() - lastRD) > intervalMs) {
+                            var s4c3r = phaseCfg.stages.stage1.chat;
+                            tellPlayer(player, s4c3r.s4_redeposit_reminder);
+                            pdata.phase2.s4_redeposit_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        break;
+                    }
+
+                    // Verify effect
+                    var invAfterRD = 0;
+                    try { invAfterRD = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (rd5) { invAfterRD = 0; }
+                    var s4c3c = phaseCfg.stages.stage1.chat;
+                    if (invAfterRD === 0) {
+                        tellPlayer(player, s4c3c.s4_redeposit_completed);
+                        pdata.phase2.s4_redeposit_completed = true;
+                        pdata.phase2.s4_redeposit_completedAt = Date.now();
+                        changed = true;
+                    } else {
+                        // Failure: still has money items left, instruct to run again until no more money items on you
+                        tellPlayer(player, s4c3c.s4_redeposit_failure);
+                        pdata.phase2.s4_redeposit_lastMsg = Date.now();
+                        changed = true;
+                    }
                     break;
                 }
             }
