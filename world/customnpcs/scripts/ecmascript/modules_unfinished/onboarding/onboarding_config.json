@@ -119,10 +119,18 @@
                         "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &6!deposit &ewith money in hand.",
                         "s3_checkpouch_init": "&b:sun: Now that you've deposited money into your pouch, it's time to confirm the update. Please run &6!myMoney &bagain to see your updated pouch balance.",
                         "s3_checkpouch_reminder": ":lit: &ePlease run &6!myMoney &eagain to confirm your pouch balance.",
-                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP.",
-                        "s3b_prompt": ":lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.",
+                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! Your pouch balance reflects the recent deposit.",
+                        "s3b_prompt": "&b:sun: What a mess. You have several money items scattered in your inventory. To deposit them all at once, you can simply run &6!depositall &b, this will deposit all money items you have in your inventory into your Money Pouch.",
                         "s3b_reminder": ":lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.",
-                        "s3b_completed": "&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased."
+                        "s3b_completed": "&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased.",
+                        "s4_validity_failure": ":danger: &ePlease empty your inventory of all money items before proceeding with next steps. Use &6!depositall &eto deposit them into your Money Pouch.",
+                        "s4_withdraw_start": "&b:sun: You can withdraw money from your Money Pouch into physical money items in your inventory. To do so, run &6!withdraw 6g &bwith the desired amount to withdraw.",
+                        "s4_withdraw_reminder": ":lit: &ePlease run &6!withdraw 6g &eto withdraw the specified amount from your Money Pouch.",
+                        "s4_withdraw_completed": "&a:check_mark: You have successfully withdrawn &r:money:&e6G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have a &r:money:&e5G &abill and a &r:money:&e1G &acoin.",
+                        "s4_redeposit_start": "&b:sun: Now that you've withdrawn money from your pouch, try depositing it back in. Either by holding the money items in your hand and running &6!deposit &bor by running &6!depositall &bto deposit all money items from your inventory.",
+                        "s4_redeposit_reminder": ":lit: &ePlease run &6!deposit &eor &6!depositall &eto deposit all your money items back into your Money Pouch.",
+                        "s4_redeposit_failure": ":danger: &eYou still have money items in your inventory. Please run &6!deposit &eor &6!depositall &eagain until you have no more money items on you.",
+                        "s4_redeposit_completed": "&a:check_mark: You have successfully deposited your money items back into your Money Pouch! Your pouch balance has increased."
                     },
                     "guide": {
                         "chat": [
