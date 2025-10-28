@@ -110,14 +110,14 @@
                         "s1_received": "&b:sun: You received &r:money:&e40g&b (2x 20g bills). Please run &6!myMoney &bto see your pouch and inventory monetary breakdown.",
                         "s1_completion": "&a:check_mark: You now know how to open your Money Pouch! In &6{delay}s&a, we'll guide you on how to read through it!",
                         "s1_reminder": ":lit: &eRun &6!myMoney &eto check your Money Pouch balance.",
-                        "s1_guide_added": ":paper: &aA detailed currency guide has been added to your inventory.",
+                        "s2_guide_added": ":paper: &aA detailed currency guide has been added to your inventory.",
                         "s2_deposit_init": "&b:sun: You can deposit money items from your inventory into your Money Pouch for safer keeping. You have to run &6!deposit &bwith money in hand to do so.",
                         "s2_deposit_reminder": ":lit: &eHold the money items in your hand and run &6!deposit &eto deposit them into your Money Pouch.",
                         "s2_deposit_detected": "&a:check_mark: You have successfully deposited money into your Money Pouch! Your pouch balance has increased.",
                         "s2_deposit_failure_inv": ":danger: &eIt looks like your inventory still contains your money. Please hold the money in your hand and run &6!deposit &ewith &6&lmoney in hand&r&e.",
-                        "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &e!deposit &ewith money in hand.",
+                        "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &6!deposit &ewith money in hand.",
                         "s3_checkpouch_init": "&b:sun: Now that you've deposited money into your pouch, it's time to confirm the update. Please run &6!myMoney &bagain to see your updated pouch balance.",
-                        "s3_checkpouch_reminder": ":hourglass: &ePlease run &e!myMoney &eagain to confirm your pouch balance.",
+                        "s3_checkpouch_reminder": ":lit: &ePlease run &6!myMoney &eagain to confirm your pouch balance.",
                         "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP."
                     },
                     "guide": {
