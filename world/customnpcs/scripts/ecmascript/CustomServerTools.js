@@ -2229,10 +2229,9 @@ function cst_onboarding_log_command(player, cmdKey) {
     }
 }
 
-// Returns true if player can access advanced money menu:
-// - Player entry exists AND (entry.phase > 2 OR entry.phase2.completed.s4_withdraw_started === true)
-// Fails closed (returns false) on any read/parse error or missing fields.
-function canHaveAdvancedMoneyMenu(player) {
+// Returns true if player has completed the given step in the given phase of onboarding.
+// If any error occurs (file missing, invalid JSON, missing entries, etc), returns false.
+function checkOnboardingAdvancement(player, phaseKey, stepKey) {
     try {
         var playerName = player.getName();
         var raw = readFileAsString(ONBOARDING_DATA_PATH);
@@ -2244,23 +2243,24 @@ function canHaveAdvancedMoneyMenu(player) {
         var data = JSON.parse(rawStr);
         var entry = data[playerName];
 
-        // If player progressed beyond phase 2, allow advanced menu outright
-        if (entry.phase > 2) {
+        // If player progressed beyond phase "phaseKey", consider step complete
+        if (entry.phase > phaseKey) {
             return true;
         }
 
-        // Otherwise check phase2 completion flag safely
-        var p2 = entry.phase2;
-        if (p2 && p2.completed) {
-            var comp = p2.completed;
-            if (comp && comp.s4_withdraw_started === true) {
+        var phaseName = 'phase' + phaseKey;
+
+        // Otherwise check phaseName completion flag
+        var phase = entry[phaseName];
+        if (phase && phase.completed) {
+            if (phase && phase[stepKey] === true) {
                 return true;
             }
         }
 
         return false;
     } catch (e) {
-        // Fail closed: do not show advanced options if anything goes wrong
+        // Fail closed
         return false;
     }
 }
@@ -9014,9 +9014,13 @@ registerXCommands([
 
         var advanced_pouch = ''
         var advanced_inventory = ''
-        if (canHaveAdvancedMoneyMenu(pl)) {
-            advanced_pouch = "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]";
+        
+        if (checkOnboardingAdvancement(pl, '2', 's3b_completed')) {
             advanced_inventory = "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]";
+        }
+
+        if (checkOnboardingAdvancement(pl, '2', 's4_withdraw_completed')) {
+            advanced_pouch = "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]";
         }
 
         tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
