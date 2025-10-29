@@ -2229,6 +2229,42 @@ function cst_onboarding_log_command(player, cmdKey) {
     }
 }
 
+// Returns true if player can access advanced money menu:
+// - Player entry exists AND (entry.phase > 2 OR entry.phase2.completed.s4_withdraw_started === true)
+// Fails closed (returns false) on any read/parse error or missing fields.
+function canHaveAdvancedMoneyMenu(player) {
+    try {
+        var playerName = player.getName();
+        var raw = readFileAsString(ONBOARDING_DATA_PATH);
+        var rawStr = ('' + raw);
+        if (!rawStr || !rawStr.trim()) {
+            return false;
+        }
+
+        var data = JSON.parse(rawStr);
+        var entry = data[playerName];
+
+        // If player progressed beyond phase 2, allow advanced menu outright
+        if (entry.phase > 2) {
+            return true;
+        }
+
+        // Otherwise check phase2 completion flag safely
+        var p2 = entry.phase2;
+        if (p2 && p2.completed) {
+            var comp = p2.completed;
+            if (comp && comp.s4_withdraw_started === true) {
+                return true;
+            }
+        }
+
+        return false;
+    } catch (e) {
+        // Fail closed: do not show advanced options if anything goes wrong
+        return false;
+    }
+}
+
 
 
 //Check config file
@@ -8976,11 +9012,18 @@ registerXCommands([
             tellPlayer(pl, "&6" + crncy.displayName + ": &r" + crncy.prefix + getAmountCoin(p.data[crncy.name]) + crncy.suffix + (crncy.name == 'credit' ? '&r &a[Buy More]{open_url:https://www.paypal.me/TheOddlySeagull|show_text:$aClick or contact TheOddlySeagull on Discord. 1€ = 1G}&r' : ''));
         }*/
 
+        var advanced_pouch = ''
+        var advanced_inventory = ''
+        if (canHaveAdvancedMoneyMenu(pl)) {
+            advanced_pouch = "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]";
+            advanced_inventory = "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]";
+        }
+
         tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
         tellPlayer(pl, "&6Vote Tokens: &b:money:V"+getAmountCoin(p.data.vmoney));
         tellPlayer(pl, "&6Shop Tokens: &2:money:S"+getAmountCoin(p.data.credit));
-        tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]");
-        tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]");
+        tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + advanced_pouch);
+        tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + advanced_inventory);
         tellPlayer(pl, "&cYou carry a total of &r:money:&e" + getAmountCoin(total));
         tellPlayer(pl, "&9You will lose &r:money:&e" + getAmountCoin(mi + Math.round(mp / 2)) + "&9 on death!");
         return true;
