@@ -188,11 +188,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
 
                     // Wait for deposit command run
                     var depositLastRan = null;
-                    var od2 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                    var p2 = od2[player.getName()];
-                    if (p2) {
-                        if (p2['phase2'] && p2['phase2']['last ran'] && p2['phase2']['last ran'].deposit) depositLastRan = p2['phase2']['last ran'].deposit;
-                        if (!depositLastRan && p2['last ran'] && p2['last ran'].deposit) depositLastRan = p2['last ran'].deposit;
+                    var onboard_data = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                    var onboard_data_player = onboard_data[player.getName()];
+                    if (onboard_data_player) {
+                        if (onboard_data_player['phase2'] && onboard_data_player['phase2']['last ran'] && onboard_data_player['phase2']['last ran'].deposit) depositLastRan = onboard_data_player['phase2']['last ran'].deposit;
+                        if (!depositLastRan && onboard_data_player['last ran'] && onboard_data_player['last ran'].deposit) depositLastRan = onboard_data_player['last ran'].deposit;
                     }
 
                     if (!depositLastRan || (pdata.phase2.s2_promptTime && depositLastRan < pdata.phase2.s2_promptTime)) {
@@ -318,11 +318,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     // Wait for !depositall run (using last ran map)
                     var depositAllLastRan = null;
                     try {
-                        var od4 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                        var p4 = od4[player.getName()];
-                        if (p4) {
-                            if (p4['phase2'] && p4['phase2']['last ran'] && p4['phase2']['last ran'].depositAll) depositAllLastRan = p4['phase2']['last ran'].depositAll;
-                            if (!depositAllLastRan && p4['last ran'] && p4['last ran'].depositAll) depositAllLastRan = p4['last ran'].depositAll;
+                        var onboard_data = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                        var onboard_data_player = onboard_data[player.getName()];
+                        if (onboard_data_player) {
+                            if (onboard_data_player['phase2'] && onboard_data_player['phase2']['last ran'] && onboard_data_player['phase2']['last ran'].depositAll) depositAllLastRan = onboard_data_player['phase2']['last ran'].depositAll;
+                            if (!depositAllLastRan && onboard_data_player['last ran'] && onboard_data_player['last ran'].depositAll) depositAllLastRan = onboard_data_player['last ran'].depositAll;
                         }
                     } catch (e9) { depositAllLastRan = null; }
 
