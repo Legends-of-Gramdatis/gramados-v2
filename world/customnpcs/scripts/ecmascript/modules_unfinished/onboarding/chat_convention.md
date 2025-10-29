@@ -366,7 +366,7 @@ N/A
 
 **Start**  
 &2[===] &aMaking Your First Purchase &2[===]
-&b:sun: Now that you've found a waiter, it's time to make your first purchase! Choose any food item you like from their menu and buy it using your Money! Remember, use &6!myMoney &bto check your balance, &6!withdraw <amount> &bor &6!withdraw <denomination> <quantity> &bto withdraw money from your pouch.
+&b:sun: Now that you've found a waiter, it's time to make your first purchase! Choose any food item you like from their menu and buy it using your Money! Remember, you can use &6!myMoney &bto check your balance, &6!withdraw <amount> &bor &6!withdraw <denomination> <quantity> &bto withdraw money from your pouch.
 
 **Repeat reminder**  
 :lit: &ePlease choose a food item from the waiter's menu to purchase.
