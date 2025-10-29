@@ -381,7 +381,20 @@ N/A
 &b:star: You have completed the Economy and Pouch tutorial! You can now manage your Money Pouch and make purchases with ease.  
 &2[===]
 
-# 3 Phase 3 - WIP
+# 3 Phase 3 - Your First Job
+# 4 Phase 4 - Global Economics
+# 5 Phase 5 - Banking System
+
+---
+> From this point, phases are triggered by sets of rules / conditions, rather than a linear sequence. They still require completion of prior phases.
+
+# Trigger Phase 1 - Your First Vehicle
+## Trigger:
+Player has accumulated a wealth of over 20000 grons (sum of: pouch / banks / real estate...)
+
+# Trigger Phase 2 - Your First Property
+## Trigger:
+Player has accumulated a wealth of over 200000 grons (sum of: pouch / banks / real estate...)
 
 # Placeholder
 
