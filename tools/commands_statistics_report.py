@@ -5,6 +5,7 @@ Command Usage Statistics Report
 Parses CustomServerTools command history files and generates a Markdown report
 with the following sections:
 
+- Overall top 10 commands (including admins)
 - Overall top 10 commands (excluding admins: TheOddlySeagull, Runonstof)
 - Global totals: how many times each command was run (ignoring parameters)
 - Per-player totals and average per active year
@@ -228,6 +229,16 @@ def write_report(
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("# Command Usage Report\n\n")
         f.write(f"Generated on: {now_str}\n\n")
+
+        # Overall Top 10 (including admins)
+        f.write("## Top 10 Commands (including admins)\n\n")
+        top10_incl = global_counts.most_common(10)
+        if not top10_incl:
+            f.write("No data found.\n\n")
+        else:
+            for i, (cmd, cnt) in enumerate(top10_incl, 1):
+                f.write(f"{i}. `{cmd}` — {cnt}\n")
+            f.write("\n")
 
         # Overall Top 10 (excluding admins)
         f.write("## Top 10 Commands (excluding admins)\n\n")
