@@ -1710,6 +1710,9 @@ var CHAT_EMOTES = {
     "relic_mask": "\u9573",
     "relic_statuette": "\u9574",
     "lit": "\u9200",
+    "hunger_empty": "\u93D2",
+    "hunger_half": "\u93D1",
+    "hunger_full": "\u93D0",
     "hp": "\u9390",
     "hphalf": "\u9391",
     "hpempty": "\u938E",
@@ -2260,8 +2263,8 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
 
         return false;
     } catch (e) {
-        // Fail closed
-        return true;
+        tellPlayer(player,"&cException in checkOnboardingAdvancement: " + e.message);
+        return false;
     }
 }
 
