@@ -52,6 +52,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     var changed = false;
     var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
 
+    // --- Timer/delay variables (moved to top, phase 2 style) ---
+    var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
+    var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
+    var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
+    var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
+    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
+
     // Entry: pick a room immediately so we can mention it in the welcome, then show arrival message once
     if (!pdata.phase1.arrivalShown){
         // Choose and attempt to assign a starter room if not already picked
@@ -113,10 +120,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     if (!pdata.phase1.hotelLockRevoked && !isWithinAABB(ppos, hotelRegion.p1, hotelRegion.p2)){
         var didTp = p1_teleportToFallback(player, hotelRegion);
         var now = Date.now();
-        var g = (globalCfg && globalCfg.general) ? globalCfg.general : {};
-        var remindMs = (((typeof g.generic_streamline_interval === 'number') ? g.generic_streamline_interval : 600) * 1000);
-        var longDelayMs1 = (((typeof g.generic_streamline_delay_long === 'number') ? g.generic_streamline_delay_long : 20) * 1000);
-        var afterDelay1 = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((now - pdata.phase1.arrivalTime) >= longDelayMs1) : true;
+        var remindMs = intervalMs;
+        var afterDelay1 = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((now - pdata.phase1.arrivalTime) >= longDelayMs) : true;
         // Immediate feedback on teleport, and reset loop timer
         if (didTp) {
             var roomLabelTp = '#'+pdata.phase1.targetRoomId;
@@ -146,11 +151,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                     // Room selection now happens on arrival; just guide and detect entry.
                     // Periodic reminder to find the assigned room (gated by long delay)
                     if (isWithinAABB(ppos, hotelRegion.p1, hotelRegion.p2) && !pdata.phase1.inRoom){
-                        var remindMsA = globalCfg.general.generic_streamline_interval * 1000;
-                        var longDelayMsA = (((typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000);
                         var nowA = Date.now();
-                        var afterDelayA = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((nowA - pdata.phase1.arrivalTime) >= longDelayMsA) : true;
-                        if (afterDelayA && (!pdata.phase1.lastFindRoomMsg || (nowA - pdata.phase1.lastFindRoomMsg) > remindMsA)){
+                        var afterDelayA = (pdata.phase1 && pdata.phase1.arrivalTime) ? ((nowA - pdata.phase1.arrivalTime) >= longDelayMs) : true;
+                        if (afterDelayA && (!pdata.phase1.lastFindRoomMsg || (nowA - pdata.phase1.lastFindRoomMsg) > intervalMs)){
                             tellPlayer(player, p1chat.find_room_prompt.replace('{room}', '#'+pdata.phase1.targetRoomId));
                             pdata.phase1.lastFindRoomMsg = nowA;
                             changed = true;
@@ -179,22 +182,20 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                     if (pdata.phase1.targetRoomName){
                         var corrected = confinePlayerToRegion(player, pdata.phase1.targetRoomName);
                         var nowB = Date.now();
-                        var remindMsB = globalCfg.general.generic_streamline_interval * 1000;
-                        var longDelayMsB = (((typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000);
-                        var afterDelayB = (pdata.phase1 && pdata.phase1.inRoomSince) ? ((nowB - pdata.phase1.inRoomSince) >= longDelayMsB) : true;
+                        var afterDelayB = (pdata.phase1 && pdata.phase1.inRoomSince) ? ((nowB - pdata.phase1.inRoomSince) >= longDelayMs) : true;
                             if (corrected) {
                                 // Immediate feedback when trying to exit; reset loop timer
                                 tellPlayer(player, p1chat.stay_in_room.replace('{room}', '#'+pdata.phase1.targetRoomId));
                                 pdata.phase1.lastRoomConfineMsg = nowB;
                                 changed = true;
-                            } else if (afterDelayB && (!pdata.phase1.lastRoomConfineMsg || (nowB - pdata.phase1.lastRoomConfineMsg) > remindMsB)) {
+                            } else if (afterDelayB && (!pdata.phase1.lastRoomConfineMsg || (nowB - pdata.phase1.lastRoomConfineMsg) > intervalMs)) {
                                 tellPlayer(player, p1chat.stay_in_room.replace('{room}', '#'+pdata.phase1.targetRoomId));
                                 pdata.phase1.lastRoomConfineMsg = nowB;
                                 changed = true;
                             }
                         if (!pdata.phase1.furnitureGranted){
                             if (!pdata.phase1.furnitureTimerStart){ pdata.phase1.furnitureTimerStart = Date.now(); changed = true; }
-                            var delaySec = globalCfg.general.generic_streamline_delay_short;
+                            var delaySec = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5;
                             var elapsedSec = (Date.now() - pdata.phase1.furnitureTimerStart) / 1000.0;
                             if (elapsedSec >= delaySec){
                                 try {
