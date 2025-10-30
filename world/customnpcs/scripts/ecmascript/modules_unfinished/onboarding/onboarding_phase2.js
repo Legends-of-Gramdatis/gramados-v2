@@ -5,6 +5,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_trader.js');
 
 // Local path used to read onboarding data entries made by other commands
 var ONBOARDING_DATA_PATH_LOCAL = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
@@ -19,9 +21,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
     var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
     var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
     var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
-    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
-    // New very-long delay for gating Phase 2 start after Phase 1 completion; fallback to long if not set
     var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
+    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
 
     // Respect the user's instruction to wait generic_streamline_delay_very_long after phase1 completed
     var phase1CompletedAt = null;
@@ -31,9 +32,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
         // If boolean true, fallback to time recorded on creation
         if (phase1CompletedAt === true) phase1CompletedAt = pdata.phase1.completedTime || pdata.phase1.arrivalTime || pdata.phase1.created || null;
     }
-    // If we have a numeric timestamp, require waiting veryLongDelayMs; else allow immediate start
+    // If we have a numeric timestamp, require waiting longDelayMs; else allow immediate start
     if (phase1CompletedAt && typeof phase1CompletedAt === 'number') {
-        if ((now - phase1CompletedAt) < veryLongDelayMs) {
+        if ((now - phase1CompletedAt) < longDelayMs) {
             // not yet time to start phase 2
             return false;
         }
@@ -221,10 +222,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.s2_completed = true;
                             pdata.phase2.s2_completedAt = Date.now();
                             tellPlayer(player, s2chat.s2_deposit_detected);
-                            // Move to Step 2 within Stage 2: Check Your Pouch (with short delay)
+                            // Move to Step 2 within Stage 2: Check Your Pouch (detect immediately after message is shown)
                             pdata.phase2.currentStage = 2;
                             pdata.phase2.currentStep = 2;
-                            pdata.phase2.s3_promptTime = Date.now() + shortDelayMs;
+                            // Anchor detection to the moment we show the message so immediate !myMoney counts
+                            pdata.phase2.s3_promptTime = Date.now();
                             pdata.phase2.s3_lastMsg = Date.now();
                             tellSeparatorTitle(player, 'Check Your Pouch', '&2', '&a');
                             tellPlayer(player, s2chat.s3_checkpouch_init);
@@ -521,7 +523,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         tellPlayer(player, s4c3c.s4_redeposit_completed);
                         pdata.phase2.s4_redeposit_completed = true;
                         pdata.phase2.s4_redeposit_completedAt = Date.now();
-                        // Phase 2 complete, increment step
+                        // Proceed to Step 4: Withdrawing Multiple Items (1g x6)
+                        pdata.phase2.currentStage = 4;
                         pdata.phase2.currentStep = 4;
                         changed = true;
                     } else {
@@ -532,9 +535,355 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
                     break;
                 }
+                case 4: { // Withdrawing Multiple Items: withdraw 1g 6
+                    // Ensure inventory has no money at the start of this step
+                    var invNow4 = 0;
+                    try { invNow4 = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (e40) { invNow4 = 0; }
+                    if (!pdata.phase2.s4_multi_started) {
+                        if (invNow4 > 0) {
+                            // Ask to clear inventory first (reuse validity failure phrasing or custom if provided)
+                            var s4m0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                            var msgV0 = s4m0.s4_validity_failure || s4m0.s4_multi_deposit_first;
+                            var lastV0 = pdata.phase2.s4_multi_lastMsg || 0;
+                            if ((Date.now() - lastV0) > intervalMs) {
+                                tellPlayer(player, msgV0);
+                                pdata.phase2.s4_multi_lastMsg = Date.now();
+                                changed = true;
+                            }
+                            break;
+                        }
+                        // Start step
+                        pdata.phase2.s4_multi_started = true;
+                        pdata.phase2.s4_multi_startedAt = Date.now();
+                        tellSeparatorTitle(player, 'Withdrawing Multiple Items', '&2', '&a');
+                        var s4m = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
+                        tellPlayer(player, s4m.s4_multi_start);
+                        pdata.phase2.s4_multi_promptTime = Date.now();
+                        pdata.phase2.s4_multi_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // If we are in a re-deposit loop after a wrong withdraw, guide until inventory is empty again
+                    if (pdata.phase2.s4_multi_needRedeposit) {
+                        if (invNow4 > 0) {
+                            var s4mFailRpt = phaseCfg.stages.stage1.chat;
+                            var msgRpt = s4mFailRpt.s4_multi_failure_wrong;
+                            var lastRpt = pdata.phase2.s4_multi_lastMsg || 0;
+                            if ((Date.now() - lastRpt) > intervalMs) {
+                                tellPlayer(player, msgRpt);
+                                pdata.phase2.s4_multi_lastMsg = Date.now();
+                                changed = true;
+                            }
+                            break;
+                        } else {
+                            // Inventory clean again -> encourage correct withdraw and reset prompt time
+                            var s4mHint = phaseCfg.stages.stage1.chat;
+                            tellPlayer(player, s4mHint.s4_multi_redeposit_hint);
+                            pdata.phase2.s4_multi_needRedeposit = false;
+                            pdata.phase2.s4_multi_promptTime = Date.now();
+                            pdata.phase2.s4_multi_lastMsg = Date.now();
+                            changed = true;
+                            break;
+                        }
+                    }
+
+                    // Detect !withdraw command
+                    var withdrawLastRan4 = null;
+                    try {
+                        var odW4 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
+                        var pW4 = odW4[player.getName()];
+                        if (pW4) {
+                            if (pW4['phase2'] && pW4['phase2']['last ran'] && pW4['phase2']['last ran'].withdraw) withdrawLastRan4 = pW4['phase2']['last ran'].withdraw;
+                            if (!withdrawLastRan4 && pW4['last ran'] && pW4['last ran'].withdraw) withdrawLastRan4 = pW4['last ran'].withdraw;
+                            if (!withdrawLastRan4 && pW4['phase2'] && pW4['phase2']['last_ran'] && pW4['phase2']['last_ran'].withdraw) withdrawLastRan4 = pW4['phase2']['last_ran'].withdraw;
+                        }
+                    } catch (we34) { withdrawLastRan4 = null; }
+
+                    if (!withdrawLastRan4 || (pdata.phase2.s4_multi_promptTime && withdrawLastRan4 < pdata.phase2.s4_multi_promptTime)) {
+                        var lastM = pdata.phase2.s4_multi_lastMsg || pdata.phase2.s4_multi_promptTime || 0;
+                        if ((Date.now() - lastM) > intervalMs) {
+                            var s4mR = phaseCfg.stages.stage1.chat;
+                            tellPlayer(player, s4mR.s4_multi_reminder);
+                            pdata.phase2.s4_multi_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        break;
+                    }
+
+                    // Evaluate inventory: must be exactly 6 coins of 1G (100 each), total 600
+                    var world4 = player.getWorld();
+                    var totalCents = 0;
+                    var onesCount = 0;
+                    try {
+                        var invArr = player.getInventory();
+                        // some environments expose getItems(); prefer array if present
+                        if (typeof invArr.getItems === 'function') invArr = invArr.getItems();
+                        for (var ii = 0; ii < invArr.length; ii++) {
+                            var st4 = invArr[ii];
+                            if (!st4) continue;
+                            var val = getItemMoney(st4, world4, 'money');
+                            if (val > 0) {
+                                totalCents += (val * st4.getStackSize());
+                                if (val === 100) onesCount += st4.getStackSize();
+                            }
+                        }
+                    } catch (cntErr) {}
+
+                    if (onesCount === 6 && totalCents === 600) {
+                        var s4mC = phaseCfg.stages.stage1.chat;
+                        tellPlayer(player, s4mC.s4_multi_completed);
+                        pdata.phase2.s4_multi_completed = true;
+                        pdata.phase2.s4_multi_completedAt = Date.now();
+                        // Move to next Stage 5
+                        pdata.phase2.currentStage = 5;
+                        pdata.phase2.currentStep = 1;
+                        changed = true;
+                    } else {
+                        // Wrong composition: require depositing all, then try again
+                        var s4mF = phaseCfg.stages.stage1.chat;
+                        tellPlayer(player, s4mF.s4_multi_failure_wrong);
+                        pdata.phase2.s4_multi_needRedeposit = true;
+                        pdata.phase2.s4_multi_lastMsg = Date.now();
+                        changed = true;
+                    }
+                    break;
+                }
+            }
+            break;
+        case 5: // Your first purchase - Step 1: Heading to the Canteen (detect region entry)
+            switch (step) {
+                case 1: {
+                    // On first entry into this step, show title and starting guidance once
+                    if (!pdata.phase2.s5_step1_started) {
+                        pdata.phase2.s5_step1_started = true;
+                        pdata.phase2.s5_step1_startedAt = Date.now();
+                        tellSeparatorTitle(player, 'Heading to the Canteen', '&2', '&a');
+                        var s5c = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage5 && phaseCfg.stages.stage5.chat) ? phaseCfg.stages.stage5.chat : {};
+                        if (s5c.s5_canteen_start) tellPlayer(player, s5c.s5_canteen_start);
+                        pdata.phase2.s5_step1_promptTime = Date.now();
+                        pdata.phase2.s5_step1_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Detect region entry
+                    var inCanteen = isPlayerInCuboid(player, phaseCfg.stages.stage5.canteen_region_name);
+                    var s5chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage5 && phaseCfg.stages.stage5.chat) ? phaseCfg.stages.stage5.chat : {};
+
+                    if (inCanteen) {
+                        if (!pdata.phase2.s5_step1_completed) {
+                            pdata.phase2.s5_step1_completed = true;
+                            pdata.phase2.s5_step1_completedAt = Date.now();
+                            if (s5chat.s5_canteen_completed) tellPlayer(player, s5chat.s5_canteen_completed);
+                            // Advance to Step 2 (Finding waiter)
+                            pdata.phase2.currentStep = 2;
+                            changed = true;
+                        }
+                    } else {
+                        // Periodic reminder to head to the canteen
+                        var lastS5 = pdata.phase2.s5_step1_lastMsg || pdata.phase2.s5_step1_promptTime || 0;
+                        if ((Date.now() - lastS5) > intervalMs) {
+                            if (s5chat.s5_canteen_reminder) tellPlayer(player, s5chat.s5_canteen_reminder);
+                            pdata.phase2.s5_step1_lastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    break;
+                }
+                case 2: { // Step 2: Finding the waiter (confine inside canteen, detect proximity to Raúl Menza)
+                    var s5cfg = phaseCfg.stages.stage5;
+                    var s5chat2 = s5cfg.chat;
+                    var regionName = s5cfg.canteen_region_name;
+                    var waiter = s5cfg.waiter;
+                    var waiterName = waiter.npc_name;
+                    var waiterPos = waiter.position;
+                    var waiterRadius = waiter.radius;
+
+                    // On first entry into Step 2, show title and starting guidance once
+                    if (!pdata.phase2.s5_waiter_started) {
+                        pdata.phase2.s5_waiter_started = true;
+                        pdata.phase2.s5_waiter_startedAt = Date.now();
+                        tellSeparatorTitle(player, 'Find the Waiter', '&2', '&a');
+                        if (s5chat2.s5_waiter_start) {
+                            var msgStart = String(s5chat2.s5_waiter_start).replace('{npc}', waiterName);
+                            tellPlayer(player, msgStart);
+                        }
+                        pdata.phase2.s5_waiter_promptTime = Date.now();
+                        pdata.phase2.s5_waiter_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Keep the player inside the canteen while looking for the waiter
+                    var didConfine = confinePlayerToRegion(player, regionName);
+                    if (didConfine) {
+                        var lastConf = pdata.phase2.s5_waiter_lastConfineMsg || 0;
+                        if ((Date.now() - lastConf) > mediumDelayMs) {
+                            if (s5chat2.s5_waiter_confining) {
+                                var msgConf = String(s5chat2.s5_waiter_confining).replace('{npc}', waiterName);
+                                tellPlayer(player, msgConf);
+                            }
+                            pdata.phase2.s5_waiter_lastConfineMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+
+                    // Detect proximity to the waiter NPC position (3-block radius by default)
+                    var p2 = player.getPos();
+                    var dx = p2.x - waiterPos[0];
+                    var dy = p2.y - waiterPos[1];
+                    var dz = p2.z - waiterPos[2];
+                    var distSq = dx*dx + dy*dy + dz*dz;
+                    var rSq = waiterRadius * waiterRadius;
+
+                    if (distSq <= rSq) {
+                        if (!pdata.phase2.s5_waiter_completed) {
+                            pdata.phase2.s5_waiter_completed = true;
+                            pdata.phase2.s5_waiter_completedAt = Date.now();
+                            if (s5chat2.s5_waiter_completed) {
+                                var msgDone = String(s5chat2.s5_waiter_completed).replace('{npc}', waiterName);
+                                tellPlayer(player, msgDone);
+                            }
+                            var marketPath = s5cfg.market.file;
+                            var marketItems = readMarketItems(marketPath) || [];
+                            var keys = _buildMarketKeys(marketItems);
+                            pdata.phase2.s5_marketKeys = keys;
+                            pdata.phase2.s5_invBaseline = _countItemsByKeys(player, keys);
+                            // Advance to Step 3 (next part of purchase flow)
+                            pdata.phase2.currentStep = 3;
+                            changed = true;
+                        }
+                    } else {
+                        // Periodic reminder while searching
+                        var last2 = pdata.phase2.s5_waiter_lastMsg || pdata.phase2.s5_waiter_promptTime || 0;
+                        if ((Date.now() - last2) > intervalMs) {
+                            if (s5chat2.s5_waiter_reminder) {
+                                var msgRem = String(s5chat2.s5_waiter_reminder).replace('{npc}', waiterName);
+                                tellPlayer(player, msgRem);
+                            }
+                            pdata.phase2.s5_waiter_lastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    break;
+                }
+                case 3: { // Step 3: Purchasing food (compare inventory delta vs baseline for market items)
+                    var s5cfg3 = phaseCfg.stages.stage5;
+                    var s5chat3 = s5cfg3.chat;
+                    var regionName3 = s5cfg3.canteen_region_name;
+                    var waiter3 = s5cfg3.waiter;
+                    var waiterName3 = waiter3.npc_name;
+                    var waiterPos3 = waiter3.position;
+                    var waiterRadius3 = waiter3.radius;
+                    var farRadius = waiter3.far_radius;
+
+                    // On first entry into Step 3
+                    if (!pdata.phase2.s5_purchase_started) {
+                        pdata.phase2.s5_purchase_started = true;
+                        pdata.phase2.s5_purchase_startedAt = Date.now();
+                        tellSeparatorTitle(player, 'Making Your First Purchase', '&2', '&a');
+                        if (s5chat3.s5_purchase_start) tellPlayer(player, s5chat3.s5_purchase_start);
+                        pdata.phase2.s5_purchase_promptTime = Date.now();
+                        pdata.phase2.s5_purchase_lastMsg = Date.now();
+                        changed = true;
+                        return changed;
+                    }
+
+                    // Keep the player inside the canteen until purchase detected (lock lifted afterwards)
+                    if (!pdata.phase2.s5_purchase_completed) {
+                        var didConfine3 = confinePlayerToRegion(player, regionName3);
+                        if (didConfine3) {
+                            var lastConf3 = pdata.phase2.s5_purchase_lastConfineMsg || 0;
+                            if ((Date.now() - lastConf3) > mediumDelayMs) {
+                                if (s5chat3.s5_purchase_confining) tellPlayer(player, s5chat3.s5_purchase_confining);
+                                pdata.phase2.s5_purchase_lastConfineMsg = Date.now();
+                                changed = true;
+                            }
+                        }
+                    }
+
+                    // Distance reminder: if too far from the waiter, remind to return
+                    var p3 = player.getPos();
+                    var dx3 = p3.x - waiterPos3[0];
+                    var dy3 = p3.y - waiterPos3[1];
+                    var dz3 = p3.z - waiterPos3[2];
+                    var distSq3 = dx3*dx3 + dy3*dy3 + dz3*dz3;
+                    if (distSq3 > (farRadius * farRadius)) {
+                        var lastFar = pdata.phase2.s5_purchase_farLastMsg || 0;
+                        if ((Date.now() - lastFar) > intervalMs) {
+                            if (s5chat3.s5_purchase_far_reminder) {
+                                var msgFar = String(s5chat3.s5_purchase_far_reminder).replace('{npc}', waiterName3);
+                                tellPlayer(player, msgFar);
+                            }
+                            pdata.phase2.s5_purchase_farLastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+
+                    // Detect purchase: compare current counts of market items vs baseline
+                    var keys3 = pdata.phase2.s5_marketKeys || [];
+                    var baseline3 = pdata.phase2.s5_invBaseline || {};
+                    var nowCounts = _countItemsByKeys(player, keys3);
+                    var purchasedKeys = [];
+                    for (var ki3 = 0; ki3 < keys3.length; ki3++) {
+                        var key3 = keys3[ki3];
+                        var beforeCount = (typeof baseline3[key3] === 'number') ? baseline3[key3] : 0;
+                        var nowCount = (typeof nowCounts[key3] === 'number') ? nowCounts[key3] : 0;
+                        if (nowCount > beforeCount) purchasedKeys.push(key3);
+                    }
+
+                    if (purchasedKeys.length > 0) {
+                        pdata.phase2.s5_purchase_completed = true;
+                        pdata.phase2.s5_purchase_completedAt = Date.now();
+                        if (s5chat3.s5_purchase_completed) tellPlayer(player, s5chat3.s5_purchase_completed);
+                        // Lock lifted automatically by not confining anymore. Advance to next step placeholder.
+                        pdata.phase2.currentStep = 4; // reserved for future steps
+                        changed = true;
+                    } else {
+                        // Periodic generic reminder to purchase something
+                        var lastPRem = pdata.phase2.s5_purchase_lastMsg || pdata.phase2.s5_purchase_promptTime || 0;
+                        if ((Date.now() - lastPRem) > intervalMs) {
+                            if (s5chat3.s5_purchase_reminder) tellPlayer(player, s5chat3.s5_purchase_reminder);
+                            pdata.phase2.s5_purchase_lastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    break;
+                }
             }
             break;
     }
 
     return changed;
+}
+
+// Helpers: build market keys and count items for those keys using Player.getInventory() (IItemStack[])
+function _buildMarketKeys(items) {
+    var keys = [];
+    for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        if (!it || !it.id) continue;
+        var dmg = (typeof it.damage === 'number') ? it.damage : 0;
+        var key = it.id + '|' + String(dmg);
+        if (keys.indexOf(key) < 0) keys.push(key);
+    }
+    return keys;
+}
+
+function _countItemsByKeys(player, keys) {
+    var counts = {};
+    for (var k = 0; k < keys.length; k++) counts[keys[k]] = 0;
+    var inv = player.getInventory().getItems(); // IItemStack[] of size 36
+    for (var i = 0; i < inv.length; i++) {
+        var st = inv[i];
+        if (!st) continue;
+        var id = st.getName();
+        var dmg = st.getItemDamage();
+        var key = id + '|' + String(dmg);
+        if (counts.hasOwnProperty(key)) {
+            counts[key] += st.getStackSize();
+        }
+    }
+    return counts;
 }
