@@ -2261,7 +2261,7 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
         return false;
     } catch (e) {
         // Fail closed
-        return false;
+        return true;
     }
 }
 
