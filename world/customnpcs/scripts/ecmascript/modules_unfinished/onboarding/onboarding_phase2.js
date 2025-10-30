@@ -282,7 +282,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
                     break;
                 }
-                case 3: { // Wait long delay then move to Stage 3 (depositall)
+                case 3: { // Wait long delay then move to Stage 3 (depositAll)
                     if (pdata.phase2.s3b_availableAt && Date.now() >= pdata.phase2.s3b_availableAt) {
                         pdata.phase2.currentStage = 3;
                         pdata.phase2.currentStep = 1;
@@ -292,7 +292,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                 }
             }
             break;
-        case 3: // Depositing Batch of Money Items (depositall)
+        case 3: // Depositing Batch of Money Items (depositAll)
             switch (step) {
                 case 1: {
                     // On first entry, grant 33g34c and show title + prompt
@@ -315,7 +315,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         return changed;
                     }
 
-                    // Wait for !depositall run (using last ran map)
+                    // Wait for !depositAll run (using last ran map)
                     var depositAllLastRan = null;
                     try {
                         var onboard_data = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
@@ -337,7 +337,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         return changed;
                     }
 
-                    // Completion when depositall detected
+                    // Completion when depositAll detected
                     pdata.phase2.s3b_completed = true;
                     pdata.phase2.s3b_completedAt = Date.now();
                     var sChatC = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
@@ -358,7 +358,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     var invMoneyNow = 0;
                     try { invMoneyNow = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (vErr) { invMoneyNow = 0; }
                     if (invMoneyNow > 0) {
-                        // Failure reminder: ask to empty inventory (use depositall)
+                        // Failure reminder: ask to empty inventory (use depositAll)
                         var s4c1 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
                         var msgFail = s4c1.s4_validity_failure;
                         var lastV = pdata.phase2.s4_step1_lastMsg || 0;
@@ -464,7 +464,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
                     break;
                 }
-                case 3: { // Deposit money again (!deposit or !depositall)
+                case 3: { // Deposit money again (!deposit or !depositAll)
                     if (!pdata.phase2.s4_redeposit_started) {
                         pdata.phase2.s4_redeposit_started = true;
                         pdata.phase2.s4_redeposit_startedAt = Date.now();
@@ -484,20 +484,22 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         return changed;
                     }
 
-                    // Detect either deposit or depositall
+                    // Detect either deposit or depositAll
                     var dRan = null, daRan = null;
                     var odRD = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
                     var pRD = odRD[player.getName()];
                     if (pRD) {
                         if (pRD['phase2'] && pRD['phase2']['last ran']) {
                             if (pRD['phase2']['last ran'].deposit) dRan = pRD['phase2']['last ran'].deposit;
-                            if (pRD['phase2']['last ran'].depositall) daRan = pRD['phase2']['last ran'].depositall;
+                            if (pRD['phase2']['last ran'].depositAll) daRan = pRD['phase2']['last ran'].depositAll;
                         }
                         if (pRD['last ran']) {
                             if (!dRan && pRD['last ran'].deposit) dRan = pRD['last ran'].deposit;
-                            if (!daRan && pRD['last ran'].depositall) daRan = pRD['last ran'].depositall;
+                            if (!daRan && pRD['last ran'].depositAll) daRan = pRD['last ran'].depositAll;
                         }
                     }
+
+                    // tellPlayer(player, '&7DEBUG: dRan=' + dRan + ' daRan=' + daRan + ' promptTime=' + pdata.phase2.s4_redeposit_promptTime);
 
                     var triggerTime = pdata.phase2.s4_redeposit_promptTime || 0;
                     var hasDeposited = (dRan && dRan >= triggerTime) || (daRan && daRan >= triggerTime);
