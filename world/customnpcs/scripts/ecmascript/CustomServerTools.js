@@ -1710,6 +1710,9 @@ var CHAT_EMOTES = {
     "relic_mask": "\u9573",
     "relic_statuette": "\u9574",
     "lit": "\u9200",
+    "hunger_empty": "\u93D2",
+    "hunger_half": "\u93D1",
+    "hunger_full": "\u93D0",
     "hp": "\u9390",
     "hphalf": "\u9391",
     "hpempty": "\u938E",
@@ -2226,6 +2229,42 @@ function cst_onboarding_log_command(player, cmdKey) {
         // tellPlayer(player,"Debug: Logged command execution for onboarding phase 2, cmdKey '" + cmdKey + "'");
     } catch (e) {
         tellPlayer(player,"&cException in cst_onboarding_log_command: " + e.message);
+    }
+}
+
+// Returns true if player has completed the given step in the given phase of onboarding.
+// If any error occurs (file missing, invalid JSON, missing entries, etc), returns false.
+function checkOnboardingAdvancement(player, phaseKey, stepKey) {
+    try {
+        var playerName = player.getName();
+        var raw = readFileAsString(ONBOARDING_DATA_PATH);
+        var rawStr = ('' + raw);
+        if (!rawStr || !rawStr.trim()) {
+            return false;
+        }
+
+        var data = JSON.parse(rawStr);
+        var entry = data[playerName];
+
+        // If player progressed beyond phase "phaseKey", consider step complete
+        if (entry.phase > phaseKey) {
+            return true;
+        }
+
+        var phaseName = 'phase' + phaseKey;
+
+        // Otherwise check phaseName completion flag
+        var phase = entry[phaseName];
+        if (phase && phase.completed) {
+            if (phase && phase[stepKey] === true) {
+                return true;
+            }
+        }
+
+        return false;
+    } catch (e) {
+        tellPlayer(player,"&cException in checkOnboardingAdvancement: " + e.message);
+        return false;
     }
 }
 
@@ -8976,11 +9015,22 @@ registerXCommands([
             tellPlayer(pl, "&6" + crncy.displayName + ": &r" + crncy.prefix + getAmountCoin(p.data[crncy.name]) + crncy.suffix + (crncy.name == 'credit' ? '&r &a[Buy More]{open_url:https://www.paypal.me/TheOddlySeagull|show_text:$aClick or contact TheOddlySeagull on Discord. 1€ = 1G}&r' : ''));
         }*/
 
+        var advanced_pouch = ''
+        var advanced_inventory = ''
+        
+        if (checkOnboardingAdvancement(pl, '2', 's3b_completed')) {
+            advanced_inventory = "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]";
+        }
+
+        if (checkOnboardingAdvancement(pl, '2', 's4_withdraw_completed')) {
+            advanced_pouch = "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]";
+        }
+
         tellPlayer(pl, "&6Arcade Tokens: &d:money:A"+getAmountCoin(p.data.armoney));
         tellPlayer(pl, "&6Vote Tokens: &b:money:V"+getAmountCoin(p.data.vmoney));
         tellPlayer(pl, "&6Shop Tokens: &2:money:S"+getAmountCoin(p.data.credit));
-        tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + "&r [&aWithdraw{suggest_command:!withdraw }&r] [&aWithdraw All{run_command:!withdraw " + getAmountCoin(mp) + "}&r]");
-        tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + "&r [&aDeposit{run_command:!depositAll|show_text:$6Click to deposit all money from inventory.}&r]");
+        tellPlayer(pl, "&6Money Pouch: &r:money:&e" + getAmountCoin(mp) + advanced_pouch);
+        tellPlayer(pl, "&6Inventory: &r:money:&e" + getAmountCoin(mi) + advanced_inventory);
         tellPlayer(pl, "&cYou carry a total of &r:money:&e" + getAmountCoin(total));
         tellPlayer(pl, "&9You will lose &r:money:&e" + getAmountCoin(mi + Math.round(mp / 2)) + "&9 on death!");
         return true;
