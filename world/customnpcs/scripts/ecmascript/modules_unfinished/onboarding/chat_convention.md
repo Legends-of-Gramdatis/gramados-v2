@@ -327,6 +327,12 @@ N/A
 **Repeat reminder**  
 :lit: &ePlease run &6!withdraw 1g 6 &eto withdraw &66&e coins of &r:money:&e1G &efrom your Money Pouch.
 
+**Failure (wrong command)**  
+:danger: &eThat is not what you were meant to run. Try again after depositing all.
+
+**After re-deposit reminder**  
+&eNow that you've deposited again, try &6!withdraw 1g 6 &eonce more.
+
 **Completion**  
 &a:check_mark: You have successfully withdrawn &66&e coins of &r:money:&e1G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have &66&e coins of &r:money:&e1G &a.
 
@@ -370,6 +376,9 @@ N/A
 
 **Repeat reminder**  
 :lit: &ePlease choose a food item from the waiter's menu to purchase.
+
+**Far reminder**  
+:lit: &eYou're too far from &6{npc}&e. Please return to continue your purchase.
 
 **Exiting confinement**  
 :door: &ePlease stay inside the canteen area until you complete your purchase.
