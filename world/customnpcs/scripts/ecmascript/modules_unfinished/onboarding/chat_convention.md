@@ -176,7 +176,7 @@ N/A
 &a:check_mark: You found your way back. Feels good to be home again!  
 
 ## Phase 1 Completion
-&b:sun: You can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes.  
+&b:star: You can view your homes anytime with &6!myHomes&b. By default you can set up to &6{max}&b homes.  
 &b[===]  
 
 # 2 Phase 2 - Economy and Pouch
@@ -264,7 +264,7 @@ N/A
 N/A  
 
 **Completion**  
-&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP.
+&a:check_mark: You have successfully confirmed your Money Pouch update! Your pouch balance reflects the recent deposit.
 
 
 ## 2.3 Stage 3 - Depositing batch of money items  
@@ -302,7 +302,7 @@ N/A
 :lit: &ePlease run &6!withdraw 6g &eto withdraw the specified amount from your Money Pouch.
 
 **Completion**  
-&a:check_mark: You have successfully withdrawn &r:money:&e6G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have a &r:money:&e5G &acoin and a &r:money:&e1G &acoin.
+&a:check_mark: You have successfully withdrawn &r:money:&e6G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have a &r:money:&e5G &abill and a &r:money:&e1G &acoin.
 
 ### 2.4.3 Step 3 - Deposit money again
 
@@ -312,6 +312,12 @@ N/A
 **Repeat reminder**  
 :lit: &ePlease run &6!deposit &eor &6!depositall &eto deposit all your money items back into your Money Pouch.
 
+**Failure**  
+:danger: &eYou still have money items in your inventory. Please run &6!deposit &eor &6!depositall &eagain until you have no more money items on you.
+
+**Completion**  
+&a:check_mark: You have successfully deposited your money items back into your Money Pouch! Your pouch balance has increased.
+
 ### 2.4.4 Step 4 - Withdrawing multiple items
 
 **Start**  
@@ -320,6 +326,12 @@ N/A
 
 **Repeat reminder**  
 :lit: &ePlease run &6!withdraw 1g 6 &eto withdraw &66&e coins of &r:money:&e1G &efrom your Money Pouch.
+
+**Failure (wrong command)**  
+:danger: &eThat is not what you were meant to run. Try again after depositing all.
+
+**After re-deposit reminder**  
+&eNow that you've deposited again, try &6!withdraw 1g 6 &eonce more.
 
 **Completion**  
 &a:check_mark: You have successfully withdrawn &66&e coins of &r:money:&e1G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have &66&e coins of &r:money:&e1G &a.
@@ -360,10 +372,13 @@ N/A
 
 **Start**  
 &2[===] &aMaking Your First Purchase &2[===]
-&b:sun: Now that you've found a waiter, it's time to make your first purchase! Choose any food item you like from their menu and buy it using your Money! Remember, use &6!myMoney &bto check your balance, &6!withdraw <amount> &bor &6!withdraw <denomination> <quantity> &bto withdraw money from your pouch.
+&b:sun: Now that you've found a waiter, it's time to make your first purchase! Choose any food item you like from their menu and buy it using your Money! Remember, you can use &6!myMoney &bto check your balance, &6!withdraw <amount> &bor &6!withdraw <denomination> <quantity> &bto withdraw money from your pouch.
 
 **Repeat reminder**  
 :lit: &ePlease choose a food item from the waiter's menu to purchase.
+
+**Far reminder**  
+:lit: &eYou're too far from &6{npc}&e. Please return to continue your purchase.
 
 **Exiting confinement**  
 :door: &ePlease stay inside the canteen area until you complete your purchase.
@@ -372,10 +387,23 @@ N/A
 &a:check_mark: Congratulations on making your first purchase! Enjoy your meal.
 
 ## Phase 2 Completion
-&b:sun: You have completed the Economy and Pouch tutorial! You can now manage your Money Pouch and make purchases with ease.  
+&b:star: You have completed the Economy and Pouch tutorial! You can now manage your Money Pouch and make purchases with ease.  
 &2[===]
 
-# 3 Phase 3 - WIP
+# 3 Phase 3 - Your First Job
+# 4 Phase 4 - Global Economics
+# 5 Phase 5 - Banking System
+
+---
+> From this point, phases are triggered by sets of rules / conditions, rather than a linear sequence. They still require completion of prior phases.
+
+# Trigger Phase 1 - Your First Vehicle
+## Trigger:
+Player has accumulated a wealth of over 20000 grons (sum of: pouch / banks / real estate...)
+
+# Trigger Phase 2 - Your First Property
+## Trigger:
+Player has accumulated a wealth of over 200000 grons (sum of: pouch / banks / real estate...)
 
 # Placeholder
 

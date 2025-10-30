@@ -10,6 +10,7 @@
         "saveThrottleTicks": 40,
         "logJson": true,
         "generic_streamline_delay_short": 5,
+        "generic_streamline_delay_medium": 10,
         "generic_streamline_delay_long": 20,
         "generic_streamline_delay_very_long": 60,
         "generic_streamline_interval": 60
@@ -118,7 +119,23 @@
                         "s2_deposit_failure_generic": ":danger: &eWe didn't detect any change in your pouch yet. Please try &6!deposit &ewith money in hand.",
                         "s3_checkpouch_init": "&b:sun: Now that you've deposited money into your pouch, it's time to confirm the update. Please run &6!myMoney &bagain to see your updated pouch balance.",
                         "s3_checkpouch_reminder": ":lit: &ePlease run &6!myMoney &eagain to confirm your pouch balance.",
-                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! The rest is still WIP."
+                        "s3_completed": "&a:check_mark: You have successfully confirmed your Money Pouch update! Your pouch balance reflects the recent deposit.",
+                        "s3b_prompt": "&b:sun: What a mess. You have several money items scattered in your inventory. To deposit them all at once, you can simply run &6!depositall &b, this will deposit all money items you have in your inventory into your Money Pouch.",
+                        "s3b_reminder": ":lit: &eRun &6!depositall &eto deposit all money items from your inventory into your Money Pouch.",
+                        "s3b_completed": "&a:check_mark: You have successfully deposited all money items from your inventory into your Money Pouch! Your pouch balance has increased.",
+                        "s4_validity_failure": ":danger: &ePlease empty your inventory of all money items before proceeding with next steps. Use &6!depositall &eto deposit them into your Money Pouch.",
+                        "s4_withdraw_start": "&b:sun: You can withdraw money from your Money Pouch into physical money items in your inventory. To do so, run &6!withdraw 6g &bwith the desired amount to withdraw.",
+                        "s4_withdraw_reminder": ":lit: &ePlease run &6!withdraw 6g &eto withdraw the specified amount from your Money Pouch.",
+                        "s4_withdraw_completed": "&a:check_mark: You have successfully withdrawn &r:money:&e6G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have a &r:money:&e5G &abill and a &r:money:&e1G &acoin.",
+                        "s4_redeposit_start": "&b:sun: Now that you've withdrawn money from your pouch, try depositing it back in. Either by holding the money items in your hand and running &6!deposit &bor by running &6!depositall &bto deposit all money items from your inventory.",
+                        "s4_redeposit_reminder": ":lit: &ePlease run &6!deposit &eor &6!depositall &eto deposit all your money items back into your Money Pouch.",
+                        "s4_redeposit_failure": ":danger: &eYou still have money items in your inventory. Please run &6!deposit &eor &6!depositall &eagain until you have no more money items on you.",
+                        "s4_redeposit_completed": "&a:check_mark: You have successfully deposited your money items back into your Money Pouch! Your pouch balance has increased.",
+                        "s4_multi_start": "&b:sun: Let's say you need to withdraw &66&b coins of &r:money:&e1G &a, and not just &r:money:&e6G &ain total. You can do this by running &6!withdraw 1g 6 &bto withdraw &66&b coins of &r:money:&e1G &a!",
+                        "s4_multi_reminder": ":lit: &ePlease run &6!withdraw 1g 6 &eto withdraw &66&e coins of &r:money:&e1G &efrom your Money Pouch.",
+                        "s4_multi_failure_wrong": ":danger: &eThat is not what you were meant to run. Try again after depositing all.",
+                        "s4_multi_redeposit_hint": "&eNow that you've deposited again, try &6!withdraw 1g 6 &eonce more.",
+                        "s4_multi_completed": "&a:check_mark: You have successfully withdrawn &66&e coins of &r:money:&e1G &afrom your Money Pouch! Check your inventory, it has been updated with the physical money items. It should have &66&e coins of &r:money:&e1G &a."
                     },
                     "guide": {
                         "chat": [
@@ -133,13 +150,11 @@
                             "&2Shop Tokens: :money: &a:check_mark: Won't drop on death.",
                             "&7  Purchased currency used for cosmetics and paid content.",
                             "",
-                            "&eMoney Pouch: &r:money:",
+                            "&eMoney Pouch: &r:money: &r:danger:&c 50% of it will drop on death.",
                             "&7  A dematerialized balance representing money stored in your pouch. (In grons)",
-                            "&r:danger:&c 50% of it will drop on death.",
                             "",
-                            "&eInventory: &r:money:",
+                            "&eInventory: &r:money: &r:danger:&c 100% of it will drop on death.",
                             "&7  Physical currency items you carry in your inventory. (In grons)",
-                            "&r:danger:&c 100% of it will drop on death.",
                             ""
                         ],
                         "paper": {
@@ -151,6 +166,32 @@
                                 "Inventory": "Physical money items in your inventory (bills/coins). These drop on death (100% dropped). Use !deposit to move them into your pouch."
                             }
                         }
+                    }
+                },
+                "stage5": {
+                    "canteen_region_name": "Gramados_GramadosCity_StarterHotelUtils_canteen_hall",
+                    "waiter": {
+                        "npc_name": "Raúl Menza",
+                        "position": [-1891, 78, -200],
+                        "radius": 3,
+                        "far_radius": 6
+                    },
+                    "market": {
+                        "file": "world/customnpcs/markets/food_state_hotel.json"
+                    },
+                    "chat": {
+                        "s5_canteen_start": "&b:sun: It's time to make your first purchase! Head over to the &6State Hotel canteen, floor 1&b and take a look at the traders. You will see items available for purchase along with their prices.",
+                        "s5_canteen_reminder": ":lit: &ePlease head over to the &6State Hotel canteen, floor 1&e to view the available items for purchase.",
+                        "s5_canteen_completed": "&a:check_mark: Now that you are at the canteen, find a waiter and browse their items.",
+                        "s5_waiter_start": "&b:sun: Inside the canteen, look for &6{npc}&b near the counter. Get close to speak with him.",
+                        "s5_waiter_reminder": ":lit: &eFind &6{npc}&e inside the canteen and get within &63 blocks &eto continue.",
+                        "s5_waiter_confining": ":door: &ePlease stay inside the canteen until you've found &6{npc}&e.",
+                        "s5_waiter_completed": "&a:check_mark: You found &6{npc}&a. Let's take a look at what he's offering.",
+                        "s5_purchase_start": "&b:sun: Now that you've found the waiter, choose any food item from his menu and buy it using your money. Use &6!myMoney &bto check your balance, and &6!withdraw <amount> &bif needed.",
+                        "s5_purchase_reminder": ":lit: &ePlease choose a food item from the waiter's menu to purchase.",
+                        "s5_purchase_far_reminder": ":lit: &eYou're too far from &6{npc}&e. Please return to continue your purchase.",
+                        "s5_purchase_confining": ":door: &ePlease stay inside the canteen area until you complete your purchase.",
+                        "s5_purchase_completed": "&a:check_mark: Congratulations on making your first purchase! Enjoy your meal."
                     }
                 }
             }

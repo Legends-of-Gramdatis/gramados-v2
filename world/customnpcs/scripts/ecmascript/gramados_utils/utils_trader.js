@@ -1,5 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
-load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 
 function createTrade(npc, priceitem1, priceitem2, resultitem) {
     var trade_data = {}
@@ -26,63 +27,6 @@ function clearTrade(npc, column, line) {
     npc.getCompound("TraderCurrency").getList("NpcMiscInv", 10).set(slot_base, null)
     npc.getCompound("TraderSold").getList("NpcMiscInv", 10).set(slot_base, null)
 }
-
-/*
-    for (var i = 0; i < 18; i++) {
-        // tellPlayer(player, "Scanning item " + i + " in market " + marketName);
-        var item_1 = null;
-        var item_2 = null;
-        var item_3 = null;
-        var mult_1 = 1;
-        var mult_2 = 1;
-        if (traderCurrency[i] && traderCurrency[i].tag && traderCurrency[i].tag.display && traderCurrency[i].tag.display.Lore) {
-            item_1 = traderCurrency[i].tag.display.Lore[0];
-            mult_1 = traderCurrency[i].Count;
-        }
-        if (traderCurrency[i + 18] && traderCurrency[i + 18].tag && traderCurrency[i + 18].tag.display && traderCurrency[i + 18].tag.display.Lore) {
-            item_2 = traderCurrency[i + 18].tag.display.Lore[0];
-            mult_2 = traderCurrency[i + 18].Count;
-        }
-        if (TraderSold[i] && 
-            !(  TraderSold[i].tag && 
-                TraderSold[i].tag.display && 
-                TraderSold[i].tag.display.Name && 
-                TraderSold[i].tag.display.Name === "§2§lMoney§r"
-            )
-        ) {
-            item_3 = TraderSold[i];
-        }
-        // tellPlayer(player, "input 1: " + item_1);
-        // tellPlayer(player, "input 2: " + item_2);
-        // tellPlayer(player, "output: " + JSON.stringify(item_3));
-
-        extracted_data[i] = {
-            item_1: item_1,
-            mult_1: mult_1,
-            item_2: item_2,
-            mult_2: mult_2,
-            item_3: item_3
-        };
-
-        // tellPlayer(player, "Extracted data: " + JSON.stringify(extracted_data));
-    }
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Populates a trader NPC's trades based on a loot table.
@@ -129,4 +73,62 @@ function clearAllTrades(npc) {
             clearTrade(npc, i, j);
         }
     }
+}
+
+/**
+ * Reads a saved market JSON (NBT-as-JSON) from world/customnpcs/markets and returns
+ * the list of items offered by the market (TraderSold entries), excluding any item
+ * named exactly "§2§lMoney§r".
+ *
+ * The file uses NBT-style numeric suffixes (e.g., 1b, 0s), so we must use loadJavaJson.
+ *
+ * @param {string} marketNameOrPath - Market filename (e.g., 'food_state_hotel' or 'food_state_hotel.json')
+ *                                    or a full/relative path. If only a name is provided, the file is
+ *                                    read from 'world/customnpcs/markets/<name>.json'.
+ * @returns {Array<Object>} Array of normalized item objects: { id, count, damage, name, raw }
+ */
+function readMarketItems(marketNameOrPath) {
+    if (!marketNameOrPath || typeof marketNameOrPath !== 'string') return [];
+
+    // Build file path
+    var filePath = marketNameOrPath;
+    var hasSlash = filePath.indexOf('/') >= 0 || filePath.indexOf('\\') >= 0;
+    if (!hasSlash) {
+        if (filePath.slice(-5).toLowerCase() !== '.json') filePath = filePath + '.json';
+        filePath = 'world/customnpcs/markets/' + filePath;
+    }
+
+    var json = loadJavaJson(filePath);
+    if (!json || !json.TraderSold || !json.TraderSold.NpcMiscInv) return [];
+
+    var list = json.TraderSold.NpcMiscInv;
+    var result = [];
+
+    for (var i = 0; i < list.length; i++) {
+        var it = list[i];
+        if (!it || typeof it !== 'object') continue;
+
+        var id = it.id || null;
+        if (!id) continue;
+
+        // Try to extract a display name if present
+        var name = null;
+        if (it.tag && it.tag.display && (it.tag.display.Name || it.tag.display.name)) {
+            name = it.tag.display.Name || it.tag.display.name;
+        } else if (it.display && (it.display.Name || it.display.name)) {
+            name = it.display.Name || it.display.name;
+        } else if (it.tag && (it.tag.Name || it.tag.name)) {
+            name = it.tag.Name || it.tag.name;
+        }
+
+        // Exclude money placeholder items explicitly by name
+        if (name === '§2§lMoney§r') continue;
+
+        var count = (typeof it.Count !== 'undefined' && it.Count !== null) ? Number(it.Count) : 1;
+        var damage = (typeof it.Damage !== 'undefined' && it.Damage !== null) ? Number(it.Damage) : 0;
+
+        result.push({ id: String(id), count: count, damage: damage, name: name || null, raw: it });
+    }
+
+    return result;
 }
