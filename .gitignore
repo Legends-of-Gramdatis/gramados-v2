@@ -87,3 +87,4 @@ world/customnpcs/scripts/logs/*
 tools/loot_table.json
 gramados-v2.wiki/**/*
 world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/AI recap.md
+dynmap_resourcepack_tmp/*
