@@ -46,6 +46,19 @@ function p1_roomIdFromRegionName(regionName){
     return m ? m[1] : null;
 }
 
+// Read player's homes metadata without try/catch.
+function p1_loadPlayerHomesMeta(player){
+    var wds = getWorldData();
+    var pkey = 'player_' + player.getName();
+    var raw = wds ? wds.get(pkey) : null;
+    var parsed = raw ? JSON.parse(String(raw)) : null;
+    var homes = (parsed && parsed.homes) ? parsed.homes : {};
+    var maxHomes = (parsed && typeof parsed.maxHomes === 'number') ? parsed.maxHomes : 2;
+    var names = [];
+    for (var k in homes){ if (homes.hasOwnProperty(k)) { names.push(k); } }
+    return { homes: homes, maxHomes: maxHomes, names: names, count: names.length };
+}
+
 // Minimal Phase 1 runner (called each per-player tick by onboarding_main)
 function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     if (!phaseCfg || !phaseCfg.enabled) return false;
@@ -54,11 +67,11 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
 
     // --- Timer/delay variables (moved to top, phase 2 style) ---
-    var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
-    var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
-    var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
-    var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
-    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
+    var shortDelayMs = (globalCfg.general.generic_streamline_delay_short ) * 1000;
+    var mediumDelayMs = (globalCfg.general.generic_streamline_delay_medium) * 1000;
+    var longDelayMs = (globalCfg.general.generic_streamline_delay_long) * 1000;
+    var veryLongDelayMs = (globalCfg.general.generic_streamline_delay_very_long) * 1000;
+    var intervalMs = (globalCfg.general.generic_streamline_interval) * 1000;
 
     // Ownership shortcuts: if the player already owns a Starter Hotel room, reuse it for Stage 1;
     // if the player owns any regions (but none are StarterHotel), skip straight to Stage 3.
@@ -80,6 +93,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                 // Stick with their currently owned state room; Stage 1 will proceed normally.
                 pdata.phase1.targetRoomName = ownedStarter;
                 pdata.phase1.targetRoomId = p1_roomIdFromRegionName(ownedStarter);
+                // Seed homes meta upfront so later messages (e.g., home_info_max) have values
+                var metaOwned = p1_loadPlayerHomesMeta(player);
+                pdata.phase1.homesMeta = metaOwned;
+                pdata.phase1.homeCheckInit = true;
+                pdata.phase1.homeBaselineCount = metaOwned.count;
+                pdata.phase1.homeBaselineNames = metaOwned.names;
+                pdata.phase1.homeMax = metaOwned.maxHomes;
             } else {
                 // They already own some region elsewhere: skip the state room flow.
                 pdata.phase1.currentStage = 3; // Using !myHomes and !home
@@ -88,6 +108,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                 pdata.phase1.s3_introAvailableAt = Date.now();
                 pdata.phase1.s3_introShown = false;
                 pdata.phase1.arrivalShown = true; // suppress Stage 1 welcome
+                // Seed homes meta so Stage 3/4 can reference max homes, etc.
+                var metaAny = p1_loadPlayerHomesMeta(player);
+                pdata.phase1.homesMeta = metaAny;
+                pdata.phase1.homeCheckInit = true;
+                pdata.phase1.homeBaselineCount = metaAny.count;
+                pdata.phase1.homeBaselineNames = metaAny.names;
+                pdata.phase1.homeMax = metaAny.maxHomes;
             }
         }
         pdata.phase1.ownershipChecked = true;
@@ -256,7 +283,6 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                     pdata.phase1.s2_introAvailableAt = Date.now() + shortDelayMs_post;
                                     pdata.phase1.s2_introShown = false;
                                     pdata.phase1.lastSetHomeMsg = null;
-                                    // Transition to Stage 2 (commands)
                                     pdata.phase1.currentStage = 2;
                                     pdata.phase1.currentStep = 1;
                                     // No immediate Stage 2 chat to prevent duplicate guidance; intro will fire after short delay
@@ -302,43 +328,27 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         }
                         if (corrected2){ logToFile('onboarding', '[phase1-room-confine] ' + player.getName() + ' pulled back to room ' + roomLabelRem + ' (stage 2).'); }
 
-                        // Initialize home capacity/baseline from live world data (once at step start)
+                        // Initialize home capacity/baseline from cached meta (once at step start)
                         if (!pdata.phase1.homeCheckInit){
-                            try {
-                                var wds = getWorldData();
-                                var pkey = 'player_' + player.getName();
-                                var raw = wds ? wds.get(pkey) : null; // stringified JSON expected
-                                var parsed = null;
-                                if (raw){
-                                    try { parsed = JSON.parse(String(raw)); } catch (jerr) { parsed = null; }
-                                }
-                                var homesMap0 = (parsed && parsed.homes) ? parsed.homes : {};
-                                var maxHomes0 = (parsed && typeof parsed.maxHomes === 'number') ? parsed.maxHomes : 2; // default 2
-                                var baselineCount = 0;
-                                try { baselineCount = Object.keys(homesMap0).length; } catch (kcErr) { baselineCount = 0; }
-                                pdata.phase1.homeCheckInit = true;
-                                pdata.phase1.homeBaselineCount = baselineCount;
-                                pdata.phase1.homeBaselineNames = (function(o){ var a=[]; for(var k in o){ if (o.hasOwnProperty(k)) a.push(k); } return a; })(homesMap0);
-                                pdata.phase1.homeMax = maxHomes0;
-                                // If no capacity left, skip this step to avoid blocking older players
-                                if (baselineCount >= maxHomes0){
-                                    tellPlayer(player, p1chat.home_max.replace('{max}', String(maxHomes0)));
-                                    pdata.phase1.currentStage = 3;
-                                    pdata.phase1.currentStep = 1;
-                                    // Lifts the room lock by leaving Stage 2
-                                    changed = true;
-                                    break; // exit step handling
-                                }
+                            var meta0 = pdata.phase1.homesMeta || p1_loadPlayerHomesMeta(player);
+                            var homesMap0 = meta0.homes;
+                            var maxHomes0 = meta0.maxHomes;
+                            var baselineCount = meta0.count;
+                            pdata.phase1.homesMeta = meta0;
+                            pdata.phase1.homeCheckInit = true;
+                            pdata.phase1.homeBaselineCount = baselineCount;
+                            pdata.phase1.homeBaselineNames = (function(o){ var a=[]; for(var k in o){ if (o.hasOwnProperty(k)) a.push(k); } return a; })(homesMap0);
+                            pdata.phase1.homeMax = maxHomes0;
+                            // If no capacity left, skip this step to avoid blocking older players
+                            if (baselineCount >= maxHomes0){
+                                tellPlayer(player, p1chat.home_max.replace('{max}', String(maxHomes0)));
+                                pdata.phase1.currentStage = 3;
+                                pdata.phase1.currentStep = 1;
+                                // Lifts the room lock by leaving Stage 2
                                 changed = true;
-                            } catch (initErr) {
-                                // If world data cannot be read, still proceed with prompting; assume capacity
-                                pdata.phase1.homeCheckInit = true;
-                                pdata.phase1.homeBaselineCount = 0;
-                                pdata.phase1.homeBaselineNames = [];
-                                pdata.phase1.homeMax = 2;
-                                changed = true;
-                                logToFile('onboarding', '[phase1-home-init-error] ' + player.getName() + ' ' + initErr);
+                                break; // exit step handling
                             }
+                            changed = true;
                         }
 
                         // Periodic reminder to run !setHome <name>
@@ -540,7 +550,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             changed = true;
                         }
                         var elapsedS = (Date.now() - pdata.phase1.s4_timerStart) / 1000.0;
-                            if (elapsedS >= delaySec){
+                        if (elapsedS >= delaySec){
                             var tp4 = lmCfg.teleport || { pos: [-2100, 70, -150], yaw: 0, pitch: 0 };
                             var p4 = tp4.pos || [-2100, 70, -150];
                             player.setPosition(p4[0] + 0.5, p4[1], p4[2] + 0.5);
@@ -589,7 +599,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         if (isNearHome4){
                             pdata.phase1.s4_confining = false;
                             tellPlayer(player, p1chat.phase1_complete);
-                            var maxHomesDefault = (pdata.phase1 && pdata.phase1.homeMax) ? pdata.phase1.homeMax : 2;
+                            var maxHomesDefault = pdata.phase1.homeMax;
                             if (p1chat.home_info_max){ tellPlayer(player, p1chat.home_info_max.replace('{max}', String(maxHomesDefault))); }
                             pdata.phase1.completed = true;
                             pdata.phase1.s4_completed = true;
