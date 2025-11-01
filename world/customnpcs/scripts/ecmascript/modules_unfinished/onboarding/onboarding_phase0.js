@@ -32,12 +32,10 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                         if (stack) { player.giveItem(stack); }
                     }
                     pdata.phase0.rewardsGiven = true;
-                    try {
-                        var npcFmt = dialogMeta.npc || '';
-                        var rewardMsg = dialogMeta.chat.onReward;
-                        rewardMsg = rewardMsg.replace('{npc}', npcFmt);
-                        tellPlayer(player, rewardMsg);
-                    } catch (rwErr) { tellPlayer(player, ':giftchest: &aStarter transport issued: bicycle and wrench.'); }
+                    var npcFmt = dialogMeta.npc || '';
+                    var rewardMsg = dialogMeta.chat.onReward;
+                    rewardMsg = rewardMsg.replace('{npc}', npcFmt);
+                    tellPlayer(player, rewardMsg);
                     logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
                 }
                 // Start timer immediately per spec
@@ -71,6 +69,8 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             if (!(pdata.phase0 && pdata.phase0.completed)) {
                 var fb = region.fallback;
                 player.setPosition(fb[0] + 0.5, fb[1], fb[2] + 0.5);
+                player.setRotation(region.fallback_rotation)
+                player.setPitch(region.fallback_pitch)
                 // Confine chat: inform player and reset reminder timer to avoid spam
                 var chatCfgC = (arrival.dialog && arrival.dialog.chat) || {};
                 if (!pdata.phase0) pdata.phase0 = {};
@@ -109,14 +109,16 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             var tp = dcfg2.state_hotel_tp || { pos: [-4300, 90, 3700], yaw: 0, pitch: 0 };
             var p = tp.pos || [-4300, 90, 3700];
             player.setPosition(p[0] + 0.5, p[1], p[2] + 0.5);
-            try { player.getMCEntity().rotationYaw = tp.yaw || 0; } catch (e) {}
-            try { player.getMCEntity().rotationPitch = tp.pitch || 0; } catch (e) {}
+            player.setRotation(tp.yaw)
+            player.setPitch(tp.pitch)
             pdata.phase0.completed = true;
             pdata.phase = 1; // advance to next phase (placeholder)
             pdata.phase0.teleportTime = Date.now();
             changed = true;
             // tellSeparatorTitle(player, 'Phase 0 - Teleport', '&6', '&6');
             tellPlayer(player, dcfg2.chat.onTeleport);
+            // Phase 0 completion separator (see chat_convention.md -> Phase 0 separator color &6)
+            tellSeparator(player, '&6');
             logToFile('onboarding', '[teleport] ' + player.getName() + ' Phase0 -> State Hotel.');
             if (globalCfg.general && globalCfg.general.logJson) {
                 logToJson('onboarding', 'phase_changes', { player: player.getName(), phase: 0, action: 'teleport_complete', time: new Date().toISOString() });

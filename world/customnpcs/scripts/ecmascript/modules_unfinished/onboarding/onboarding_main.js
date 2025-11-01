@@ -28,17 +28,12 @@ var _onboarding_players = {};        // All players onboarding data
 var _onboarding_current_pdata = null;// Convenience ref for current player
 
 function onboarding_loadConfig() {
-    try {
-        _onboarding_cfg = loadJson(ONBOARDING_CONFIG_PATH) || null;
-        if (!_onboarding_cfg) throw 'empty';
-    } catch (e) {
-        _onboarding_cfg = { indev: true, beta_players: [], general: { moduleEnabled: true }, phases: {} };
-        logToFile('onboarding', '[error] fallback config loaded: ' + e);
-    }
+    _onboarding_cfg = loadJson(ONBOARDING_CONFIG_PATH) || null;
+    if (!_onboarding_cfg) throw 'empty';
 }
 
 function onboarding_loadData() {
-    try { _onboarding_players = loadJson(ONBOARDING_DATA_PATH) || {}; } catch (e) { _onboarding_players = {}; }
+    _onboarding_players = loadJson(ONBOARDING_DATA_PATH);
 }
 
 function onboarding_getPlayerData(player) {

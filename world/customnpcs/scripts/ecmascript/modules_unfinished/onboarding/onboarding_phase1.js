@@ -9,6 +9,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
 // --- Helpers ---
 
@@ -58,6 +59,40 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
     var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
     var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
+
+    // Ownership shortcuts: if the player already owns a Starter Hotel room, reuse it for Stage 1;
+    // if the player owns any regions (but none are StarterHotel), skip straight to Stage 3.
+    if (!pdata.phase1.ownershipChecked) {
+        var ownedDetails = getOwnedRegions(player, { returnDetails: true });
+        var ownedList = (ownedDetails && ownedDetails.regions) ? ownedDetails.regions : [];
+        if (ownedList && ownedList.length > 0) {
+            var starters = getStarterHotelRegions() || [];
+            var ownedStarter = null;
+            for (var si = 0; si < starters.length; si++) {
+                var rn = starters[si] && starters[si].name ? starters[si].name : null;
+                if (!rn) continue;
+                for (var oi = 0; oi < ownedList.length; oi++) {
+                    if (ownedList[oi] === rn) { ownedStarter = rn; break; }
+                }
+                if (ownedStarter) break;
+            }
+            if (ownedStarter) {
+                // Stick with their currently owned state room; Stage 1 will proceed normally.
+                pdata.phase1.targetRoomName = ownedStarter;
+                pdata.phase1.targetRoomId = p1_roomIdFromRegionName(ownedStarter);
+            } else {
+                // They already own some region elsewhere: skip the state room flow.
+                pdata.phase1.currentStage = 3; // Using !myHomes and !home
+                pdata.phase1.currentStep = 1;
+                pdata.phase1.hotelLockRevoked = true; // avoid hotel confinement
+                pdata.phase1.s3_introAvailableAt = Date.now();
+                pdata.phase1.s3_introShown = false;
+                pdata.phase1.arrivalShown = true; // suppress Stage 1 welcome
+            }
+        }
+        pdata.phase1.ownershipChecked = true;
+        changed = true;
+    }
 
     // Entry: pick a room immediately so we can mention it in the welcome, then show arrival message once
     if (!pdata.phase1.arrivalShown){
@@ -552,14 +587,18 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             if (d2h4 <= nearR2_4){ isNearHome4 = true; break; }
                         }
                         if (isNearHome4){
-                            pdata.phase1.s4_confining = false; // stop confining
+                            pdata.phase1.s4_confining = false;
                             tellPlayer(player, p1chat.phase1_complete);
                             var maxHomesDefault = (pdata.phase1 && pdata.phase1.homeMax) ? pdata.phase1.homeMax : 2;
                             if (p1chat.home_info_max){ tellPlayer(player, p1chat.home_info_max.replace('{max}', String(maxHomesDefault))); }
                             pdata.phase1.completed = true;
                             pdata.phase1.s4_completed = true;
                             pdata.phase1.s4_completedTime = Date.now();
-                            pdata.phase = 2; // advance to next phase placeholder
+                            // Move to next phase
+                            pdata.phase = 2;
+                            tellSeparator(player, '&b');
+                            // Phase 1 completion: grant badge and emote to the player
+                            grantBadgeAndEmotes(player, 'checked_in', ['hut_dirt','bed']);
                             changed = true;
                             break;
                         }

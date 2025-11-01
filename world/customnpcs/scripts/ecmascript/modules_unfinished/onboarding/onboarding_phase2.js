@@ -838,7 +838,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s5_purchase_completedAt = Date.now();
                         if (s5chat3.s5_purchase_completed) tellPlayer(player, s5chat3.s5_purchase_completed);
                         // Lock lifted automatically by not confining anymore. Advance to next step placeholder.
-                        pdata.phase2.currentStep = 4; // reserved for future steps
+                        pdata.phase2.currentStep = 4;
+                        tellSeparator(player, '&2')
                         changed = true;
                     } else {
                         // Periodic generic reminder to purchase something
