@@ -20,10 +20,9 @@ function getRegionPrice(region, player) {
     if (region_json
         && region_json.saleType
         && region_json.saleType === "buy"
-        && region_json.salePrice) 
-        {
-            return region_json.salePrice;
-        }
+        && region_json.salePrice) {
+        return region_json.salePrice;
+    }
     // tellPlayer(player, "&cRegion value not found for: " + region);
     // If region_json.saleType === "rent", then let player know price is not considered.
     if (region_json.saleType === "rent") {
@@ -89,7 +88,7 @@ function _normalizeOwnerName(owner) {
  * @returns {string|null}
  */
 function getSignLineAt(x, y, z, line) {
-    var blk = world.getBlock(x|0, y|0, z|0);
+    var blk = world.getBlock(x | 0, y | 0, z | 0);
     if (!blk || !blk.getTileEntity) return null;
     var te = blk.getTileEntity();
     if (!te) return null;
@@ -101,7 +100,7 @@ function getSignLineAt(x, y, z, line) {
     try {
         var obj = JSON.parse(raw);
         if (obj && typeof obj.text === "string") return obj.text;
-    } catch (e) {}
+    } catch (e) { }
     return raw;
 }
 
@@ -115,7 +114,7 @@ function getSignLineAt(x, y, z, line) {
  * @returns {boolean} true if set attempted
  */
 function setSignLineAt(x, y, z, line, text) {
-    var blk = world.getBlock(x|0, y|0, z|0);
+    var blk = world.getBlock(x | 0, y | 0, z | 0);
     if (!blk || !blk.getTileEntityNBT) return false;
     var te = blk.getTileEntityNBT();
     if (!te) return false;
@@ -127,7 +126,7 @@ function setSignLineAt(x, y, z, line, text) {
     te.setString(key, json);
     blk.setTileEntityNBT(te);
     // Force block update to reflect changes visually
-    try { if (blk.update) blk.update(); } catch (e) {}
+    try { if (blk.update) blk.update(); } catch (e) { }
     return true;
 }
 
@@ -146,11 +145,11 @@ function addRegionOwnerSign(region, sign) {
     var data;
     try { data = JSON.parse(str); } catch (e) { return false; }
     if (!data.ownerSigns) data.ownerSigns = [];
-    var sx = sign.x|0, sy = sign.y|0, sz = sign.z|0; var sl = (sign.line != null ? (sign.line|0) : 2);
+    var sx = sign.x | 0, sy = sign.y | 0, sz = sign.z | 0; var sl = (sign.line != null ? (sign.line | 0) : 2);
     var exists = false;
     for (var i = 0; i < data.ownerSigns.length; i++) {
         var s = data.ownerSigns[i];
-        if (s && (s.x|0) === sx && (s.y|0) === sy && (s.z|0) === sz && ((s.line != null ? (s.line|0) : 2) === sl)) {
+        if (s && (s.x | 0) === sx && (s.y | 0) === sy && (s.z | 0) === sz && ((s.line != null ? (s.line | 0) : 2) === sl)) {
             exists = true; break;
         }
     }
@@ -628,7 +627,7 @@ function confinePlayerToRegion(player, regionName) {
         var cy = (p.y < y1 ? y1 : (p.y > y2 ? y2 : p.y));
         var cz = (p.z < z1 ? z1 : (p.z > z2 ? z2 : p.z));
         var dx = p.x - cx; var dy = p.y - cy; var dz = p.z - cz;
-        var distSq = dx*dx + dy*dy + dz*dz;
+        var distSq = dx * dx + dy * dy + dz * dz;
         if (best === null || distSq < best.distSq) {
             best = { distSq: distSq, x: cx, y: cy, z: cz, y1: y1, y2: y2 };
         }
@@ -645,7 +644,7 @@ function confinePlayerToRegion(player, regionName) {
         if (y < lowY || y + 1 > highY) return false; // both blocks must be inside region vertical span
         try {
             var b1 = world.getBlock(bx, y, bz);
-            var b2 = world.getBlock(bx, y+1, bz);
+            var b2 = world.getBlock(bx, y + 1, bz);
             return b1 && b2 && b1.isAir() && b2.isAir();
         } catch (e) { return false; }
     }
@@ -668,4 +667,80 @@ function confinePlayerToRegion(player, regionName) {
     var ty = safeY; // final base Y
     try { player.setPosition(tx, ty, tz); } catch (tpErr) { return false; }
     return true;
+}
+
+/**
+ * Returns the list of regions owned by a player (case-insensitive name match).
+ * Scans CustomNPCs world data entries named `region_*` and checks common owner fields:
+ *  - owner, ownerName, meta.owner (string)
+ *  - owners[], meta.owners[] (array of strings)
+ *
+ * @param {IPlayer|string} playerOrName - Player instance or exact player name.
+ * @param {Object} [options]
+ * @param {boolean} [options.includeData=false] - When true, returns array of {name,data} objects instead of names.
+ * @param {string}  [options.filterContains]    - If set, only include regions whose name contains this substring.
+ * @param {boolean} [options.returnDetails=false] - When true, returns an object with { regions, parseErrors, totalScanned }.
+ * @returns {Array<string>|Array<{name:string,data:Object}>|{regions:Array,parseErrors:number,totalScanned:number}}
+ */
+function getOwnedRegions(playerOrName, options) {
+    var opts = options || {};
+    var includeData = !!opts.includeData;
+    var filterContains = (typeof opts.filterContains === 'string' && opts.filterContains.length > 0) ? opts.filterContains : null;
+    var returnDetails = !!opts.returnDetails;
+
+    var pname = (typeof playerOrName === 'string') ? playerOrName
+        : (playerOrName && playerOrName.getName ? playerOrName.getName() : null);
+    if (!pname) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
+    var pnameLc = String(pname).toLowerCase();
+
+    var worldData;
+    try { worldData = getWorldData(); } catch (e) { worldData = null; }
+    if (!worldData) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
+
+    var keys;
+    try { keys = worldData.getKeys(); } catch (e2) { keys = []; }
+    if (!keys || !keys.length) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
+
+    var out = [];
+    var parseErrors = 0;
+    var scanned = 0;
+
+    for (var i = 0; i < keys.length; i++) {
+        var key = '' + keys[i];
+        if (key.indexOf('region_') !== 0) continue;
+        var regionName = key.substring('region_'.length);
+        if (filterContains && regionName.indexOf(filterContains) === -1) continue;
+        scanned++;
+
+        var dataStr;
+        try { dataStr = worldData.get(key); } catch (gErr) { continue; }
+        if (!dataStr) continue;
+
+        var data;
+        try { data = JSON.parse(dataStr); } catch (e3) { parseErrors++; continue; }
+        if (!data) continue;
+
+        var isOwner = false;
+        var owner = data.owner || data.ownerName || (data.meta && data.meta.owner) || null;
+        if (owner && String(owner).toLowerCase() === pnameLc) {
+            isOwner = true;
+        }
+        if (!isOwner) {
+            var owners = data.owners || (data.meta && data.meta.owners) || null;
+            if (owners && owners.length) {
+                for (var j = 0; j < owners.length; j++) {
+                    var o = owners[j];
+                    if (o && String(o).toLowerCase() === pnameLc) { isOwner = true; break; }
+                }
+            }
+        }
+
+        if (isOwner) {
+            if (includeData) out.push({ name: regionName, data: data });
+            else out.push(regionName);
+        }
+    }
+
+    if (returnDetails) return { regions: out, parseErrors: parseErrors, totalScanned: scanned };
+    return out;
 }
