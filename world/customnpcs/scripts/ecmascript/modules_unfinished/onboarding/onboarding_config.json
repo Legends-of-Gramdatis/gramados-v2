@@ -24,7 +24,9 @@
                     "region": {
                         "p1": [-4347, 91, 3727],
                         "p2": [-4315, 88, 3719],
-                        "fallback": [-4324, 88.5, 3723]
+                        "fallback": [-4324, 88.5, 3723],
+                        "fallback_rotation": 90,
+                        "fallback_pitch": 0
                     },
                     "dialog": {
                         "id": 597,
@@ -140,22 +142,16 @@
                     "guide": {
                         "chat": [
                             "&b:sun: Here's a quick overview of the main currencies you will see:",
-                            "",
                             "&dArcade Tokens: :money: &a:check_mark: Won't drop on death.",
                             "&7  Event tokens obtained by participating in server events.",
-                            "",
                             "&bVote Tokens: :money: &a:check_mark: Won't drop on death.",
                             "&7  Legacy token system for voting; currently deprecated and not supported.",
-                            "",
                             "&2Shop Tokens: :money: &a:check_mark: Won't drop on death.",
                             "&7  Purchased currency used for cosmetics and paid content.",
-                            "",
                             "&eMoney Pouch: &r:money: &r:danger:&c 50% of it will drop on death.",
                             "&7  A dematerialized balance representing money stored in your pouch. (In grons)",
-                            "",
                             "&eInventory: &r:money: &r:danger:&c 100% of it will drop on death.",
-                            "&7  Physical currency items you carry in your inventory. (In grons)",
-                            ""
+                            "&7  Physical currency items you carry in your inventory. (In grons)"
                         ],
                         "paper": {
                             "entries": {
