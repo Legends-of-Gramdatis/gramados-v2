@@ -7,6 +7,7 @@
     ],
     "general": {
         "moduleEnabled": true,
+        "force_full_onboarding": true,
         "saveThrottleTicks": 40,
         "logJson": true,
         "generic_streamline_delay_short": 5,
@@ -133,7 +134,7 @@
                         "s4_redeposit_reminder": ":lit: &ePlease run &6!deposit &eor &6!depositall &eto deposit all your money items back into your Money Pouch.",
                         "s4_redeposit_failure": ":danger: &eYou still have money items in your inventory. Please run &6!deposit &eor &6!depositall &eagain until you have no more money items on you.",
                         "s4_redeposit_completed": "&a:check_mark: You have successfully deposited your money items back into your Money Pouch! Your pouch balance has increased.",
-                        "s4_multi_start": "&b:sun: Let's say you need to withdraw &66&b coins of &r:money:&e1G &b, and not just &r:money:&e6G &bin total. You can do this by running &6!withdraw 1g 6 &bto withdraw &66&b coins of &r:money:&e1G &a!",
+                        "s4_multi_start": "&b:sun: Let's say you need to withdraw &66&b coins of &r:money:&e1G &b, and not just &r:money:&e6G &bin total. You can do this by running &6!withdraw 1g 6 &bto withdraw &66&b coins of &r:money:&e1G &b!",
                         "s4_multi_reminder": ":lit: &ePlease run &6!withdraw 1g 6 &eto withdraw &66&e coins of &r:money:&e1G &efrom your Money Pouch.",
                         "s4_multi_failure_wrong": ":danger: &eThat is not what you were meant to run. Try again after depositing all.",
                         "s4_multi_redeposit_hint": "&eNow that you've deposited again, try &6!withdraw 1g 6 &eonce more.",
