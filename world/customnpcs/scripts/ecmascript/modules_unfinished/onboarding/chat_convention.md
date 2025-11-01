@@ -322,7 +322,7 @@ N/A
 
 **Start**  
 &2[===] &aWithdrawing Multiple Items &2[===]  
-&b:sun: Let's say you need to withdraw &66&b coins of &r:money:&e1G &b, and not just &r:money:&e6G &bin total. You can do this by running &6!withdraw 1g 6 &bto withdraw &66&b coins of &r:money:&e1G &a!  
+&b:sun: Let's say you need to withdraw &66&b coins of &r:money:&e1G &b, and not just &r:money:&e6G &bin total. You can do this by running &6!withdraw 1g 6 &bto withdraw &66&b coins of &r:money:&e1G &b!  
 
 **Repeat reminder**  
 :lit: &ePlease run &6!withdraw 1g 6 &eto withdraw &66&e coins of &r:money:&e1G &efrom your Money Pouch.
