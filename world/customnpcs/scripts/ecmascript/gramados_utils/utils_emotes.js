@@ -12,6 +12,36 @@ function grantEmote(player, emote) {
     }
 }
 
+/**
+ * Grants multiple emotes at once using giveEmote (no per-emote chat).
+ * Sends a single summary message showing all requested emotes in order,
+ * and plays the level-up sound once if at least one emote was newly granted.
+ *
+ * @param {IPlayer} player
+ * @param {string[]} emotes - list of emote ids, e.g., ["hut_dirt", "wave"]
+ * @returns {number} count of newly granted emotes
+ */
+function grantEmotes(player, emotes) {
+    if (!emotes || !emotes.length) return 0;
+    var grantedCount = 0;
+    for (var i = 0; i < emotes.length; i++) {
+        if (giveEmote(player, emotes[i])) {
+            grantedCount++;
+        }
+    }
+    if (grantedCount > 0) {
+        // Build display list using the same order as input
+        var parts = [];
+        for (var j = 0; j < emotes.length; j++) {
+            parts.push("&r:" + emotes[j] + ":&a");
+        }
+        tellPlayer(player, "&a:check_mark: You have received the following emotes: &r" + parts.join("&7, &r") + "&a!&8&o Use !myemotes to see your emotes.");
+        var command = "/playsound minecraft:entity.player.levelup block @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
+        API.executeCommand(player.getWorld(), command);
+    }
+    return grantedCount;
+}
+
 function giveEmote(player, emote) {
     var world_data = player.getWorld().getStoreddata();
     var player_json = JSON.parse(world_data.get("player_" + player.getDisplayName()));
