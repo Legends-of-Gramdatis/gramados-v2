@@ -59,7 +59,7 @@ N/A
 N/A  
 
 ## Phase 0 Completion
-:airplane_departure:&b Welcome to Gramados! Enjoy your stay at the State Hotel.
+:airplane:&b Welcome to Gramados! Enjoy your stay at the State Hotel.
 &6[===]
 
 # 1 Phase 1 - State Hotel Room and Home
