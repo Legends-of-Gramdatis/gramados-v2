@@ -41,7 +41,7 @@
                         "chat": {
                             "onDialogComplete": "&a:check_mark: Paperwork ongoing! Please wait &6{delay}s&a while {npc} &aarranges your transfer to the State Hotel.",
                             "onTimerStart": ":lit:&e Please wait inside the arrival area until your transfer is complete.",
-                            "onTeleport": ":airplane_departure:&b Welcome to Gramados! Enjoy your stay at the State Hotel.",
+                            "onTeleport": ":airplane:&b Welcome to Gramados! Enjoy your stay at the State Hotel.",
                             "onConfine": ":lit:&e You still need to speak with {npc} &r&eto finish arrival before leaving.",
                             "onWelcome": "&b:sun: Welcome to Gramados! Please speak with {npc} &r&bto complete your arrival paperwork.",
                             "onRepeat": ":lit:&e You still need to speak with {npc} &r&eto continue your arrival process.",
