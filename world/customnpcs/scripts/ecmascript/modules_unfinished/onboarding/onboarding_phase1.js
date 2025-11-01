@@ -74,8 +74,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     var intervalMs = (globalCfg.general.generic_streamline_interval) * 1000;
 
     // Ownership shortcuts: if the player already owns a Starter Hotel room, reuse it for Stage 1;
-    // if the player owns any regions (but none are StarterHotel), skip straight to Stage 3.
+    // if the player owns any regions (but none are StarterHotel), skip straight to Stage 3 unless force_full_onboarding is enabled.
     if (!pdata.phase1.ownershipChecked) {
+        var forceFull = !!(globalCfg && globalCfg.general && globalCfg.general.force_full_onboarding);
         var ownedDetails = getOwnedRegions(player, { returnDetails: true });
         var ownedList = (ownedDetails && ownedDetails.regions) ? ownedDetails.regions : [];
         if (ownedList && ownedList.length > 0) {
@@ -101,20 +102,30 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                 pdata.phase1.homeBaselineNames = metaOwned.names;
                 pdata.phase1.homeMax = metaOwned.maxHomes;
             } else {
-                // They already own some region elsewhere: skip the state room flow.
-                pdata.phase1.currentStage = 3; // Using !myHomes and !home
-                pdata.phase1.currentStep = 1;
-                pdata.phase1.hotelLockRevoked = true; // avoid hotel confinement
-                pdata.phase1.s3_introAvailableAt = Date.now();
-                pdata.phase1.s3_introShown = false;
-                pdata.phase1.arrivalShown = true; // suppress Stage 1 welcome
-                // Seed homes meta so Stage 3/4 can reference max homes, etc.
                 var metaAny = p1_loadPlayerHomesMeta(player);
-                pdata.phase1.homesMeta = metaAny;
-                pdata.phase1.homeCheckInit = true;
-                pdata.phase1.homeBaselineCount = metaAny.count;
-                pdata.phase1.homeBaselineNames = metaAny.names;
-                pdata.phase1.homeMax = metaAny.maxHomes;
+                // If forcing the full onboarding, do not skip; only seed meta for later use
+                if (forceFull) {
+                    pdata.phase1.homesMeta = metaAny;
+                    pdata.phase1.homeCheckInit = true;
+                    pdata.phase1.homeBaselineCount = metaAny.count;
+                    pdata.phase1.homeBaselineNames = metaAny.names;
+                    pdata.phase1.homeMax = metaAny.maxHomes;
+                    logToFile('onboarding', '[phase1-force-full] Ownership shortcuts disabled by config for ' + player.getName() + '. Proceeding with full onboarding.');
+                } else {
+                    // They already own some region elsewhere: skip the state room flow.
+                    pdata.phase1.currentStage = 3; // Using !myHomes and !home
+                    pdata.phase1.currentStep = 1;
+                    pdata.phase1.hotelLockRevoked = true; // avoid hotel confinement
+                    pdata.phase1.s3_introAvailableAt = Date.now();
+                    pdata.phase1.s3_introShown = false;
+                    pdata.phase1.arrivalShown = true; // suppress Stage 1 welcome
+                    // Seed homes meta so Stage 3/4 can reference max homes, etc.
+                    pdata.phase1.homesMeta = metaAny;
+                    pdata.phase1.homeCheckInit = true;
+                    pdata.phase1.homeBaselineCount = metaAny.count;
+                    pdata.phase1.homeBaselineNames = metaAny.names;
+                    pdata.phase1.homeMax = metaAny.maxHomes;
+                }
             }
         }
         pdata.phase1.ownershipChecked = true;

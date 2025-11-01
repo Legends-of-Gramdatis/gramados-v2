@@ -7,6 +7,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_trader.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
 // Local path used to read onboarding data entries made by other commands
 var ONBOARDING_DATA_PATH_LOCAL = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
@@ -840,6 +841,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         // Lock lifted automatically by not confining anymore. Advance to next step placeholder.
                         pdata.phase2.currentStep = 4;
                         tellSeparator(player, '&2')
+                        grantEmotes(player, ['hunger_empty', 'hunger_half', 'hunger_full']);
                         changed = true;
                     } else {
                         // Periodic generic reminder to purchase something
