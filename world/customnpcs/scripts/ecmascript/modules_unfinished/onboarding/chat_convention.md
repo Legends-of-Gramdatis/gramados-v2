@@ -390,8 +390,8 @@ N/A
 &b:star: You have completed the Economy and Pouch tutorial! You can now manage your Money Pouch and make purchases with ease.  
 &2[===]
 
-# 3 Phase 3 - Your First Job
-# 4 Phase 4 - Global Economics
+# 3 Phase 3 - Scrap for a Start
+# 4 Phase 4 - Your First Job
 # 5 Phase 5 - Banking System
 
 ---
