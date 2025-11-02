@@ -12136,20 +12136,24 @@ function GiftCode(name) {
             return false;
         }
         //give
+        var newEmotes = 0;
         if (this.data.emotes.length > 0) {
             for (var n in this.data.emotes) {
                 var emote = this.data.emotes[n];
                 if (p.data.emotes.indexOf(emote) == -1) {
                     p.data.emotes.push(emote);
+                    newEmotes++;
                 }
             }
         }
+        var newBadges = 0;
         if (this.data.badges && this.data.badges.length > 0) {
             p.data.badges = p.data.badges || [];
             for (var bn in this.data.badges) {
                 var badge = this.data.badges[bn];
                 if (p.data.badges.indexOf(badge) == -1) {
                     p.data.badges.push(badge);
+                    newBadges++;
                 }
             }
         }
@@ -12162,7 +12166,24 @@ function GiftCode(name) {
         this.data.players.push(pl.getName());
         this.save(data);
         p.save(data);
-        tellPlayer(pl, "&aCode '" + this.name + "&a' activated!");
+        // Fancy reward summary
+        tellPlayer(pl, getTitleBar('&a&lGiftCode Rewards'));
+        tellPlayer(pl, "&aYou redeemed &b" + this.name + "&a!");
+        var rewardParts = [];
+        if (this.data.money > 0) rewardParts.push(":money:&e" + getAmountCoin(this.data.money));
+        if (this.data.items.length > 0) rewardParts.push(":gift:&e" + this.data.items.length + " item(s)");
+        if (newEmotes > 0) rewardParts.push(":medal:&d" + newEmotes + " emote(s)");
+        if (newBadges > 0) rewardParts.push(":medal:&b" + newBadges + " badge(s)");
+        if (rewardParts.length > 0) {
+            tellPlayer(pl, "&6You received: &r" + rewardParts.join(" &7• &r"));
+        }
+        var tips = [];
+        if (newEmotes > 0) tips.push("&d:medal: View emotes{run_command:!myemotes|show_text:$aClick to view your emotes.}");
+        if (newBadges > 0) tips.push("&9:medal: View badges{run_command:!mybadges|show_text:$aClick to view your badges.}");
+        if (tips.length > 0) {
+            tellPlayer(pl, "&r[" + tips.join("&r] [&r") + "&r]");
+        }
+        tellPlayer(pl, "&aCode '&b" + this.name + "&a' activated!");
         return true;
     };
 
