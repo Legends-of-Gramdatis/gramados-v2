@@ -1,0 +1,44 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_crate_wooden",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_crate1_wooden",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.crate",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_crate1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.crate_metallic",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_part_unu_crate_metal",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "storage/crates_trin_stacked_boxes.json",
+                    "weight": 2
+                }
+            ]
+        }
+    ]
+}
