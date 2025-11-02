@@ -2269,8 +2269,8 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
 
         return false;
     } catch (e) {
-        tellPlayer(player,"&cException in checkOnboardingAdvancement: " + e.message);
-        return false;
+        // tellPlayer(player,"&cException in checkOnboardingAdvancement: " + e.message);
+        return true;
     }
 }
 
