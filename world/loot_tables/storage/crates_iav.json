@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iav.iav_storage_l_crate_6",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iav.iav_storage_l_crate_5",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iav.iav_storage_l_crate_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iav.iav_storage_l_crate_3",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
