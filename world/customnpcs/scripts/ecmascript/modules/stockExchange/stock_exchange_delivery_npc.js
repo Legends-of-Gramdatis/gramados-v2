@@ -29,10 +29,16 @@ var crates_ids = [
     "mts:ivv.crate_metallic",
     "mts:ivv.crate",
     "mts:ivv.box",
+    "mts:ivv.chest",
     "mts:iav.iav_storage_l_crate_2",
     "mts:iav.iav_storage_l_crate_3",
     "mts:iav.iav_storage_l_crate_5",
-    "mts:iav.iav_storage_l_crate_6"
+    "mts:iav.iav_storage_l_crate_6",
+    "mts:iv_tpp.trin_stacked_boxes_ornate_gold",
+    "mts:iv_tpp.trin_stacked_boxes_sculpted_light",
+    "mts:iv_tpp.trin_stacked_boxes_ornate_marble",
+    "mts:iv_tpp.trin_stacked_boxes_cardboard_2",
+    "mts:iv_tpp.trin_stacked_boxes_cardboard"
 ];
 var barrels_ids = [
     "mts:unuparts.unuparts_part_unu_barrel_wooden",
