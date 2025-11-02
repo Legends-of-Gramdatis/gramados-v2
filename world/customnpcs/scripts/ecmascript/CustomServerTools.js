@@ -4659,6 +4659,26 @@ registerXCommands([
     }, 'config.reload'],
 ]);
 
+// Emotes maintenance
+registerXCommands([
+    ['!emotes reload', function (pl, args, data) {
+        var w = pl.world;
+        var sdata = w.getStoreddata();
+        var created = 0;
+        for (var c in CHAT_EMOTES) {
+            var ec = new Emote(c);
+            if (!ec.exists(sdata)) {
+                created++;
+            }
+        }
+
+        reloadEmotes(w);
+
+        tellPlayer(pl, "&aReloaded emotes. &e" + created + "&a new emote data entr" + (created == 1 ? "y" : "ies") + " created.");
+        return true;
+    }, 'emotes.reload'],
+]);
+
 registerXCommands([
     ['!item renameLore <slot> [...lore]', function (pl, args) {
         var mItem = pl.getMainhandItem();
@@ -7345,6 +7365,15 @@ registerXCommands([
         tellPlayer(pl, "&6Uses left: &c" + code.getUsesLeft());
         tellPlayer(pl, getTitleBar('Rewards', false));
         tellPlayer(pl, "&6Money: &r:money:&e" + getAmountCoin(code.data.money));
+        if (code.data.badges && code.data.badges.length > 0) {
+            tellPlayer(pl, "&eBadges:");
+            for (var i in code.data.badges) {
+                var badgeName = code.data.badges[i];
+                var badge = new Badge(badgeName).init(data);
+                var preview = badge.formatBadge('', '', null);
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + badge.name + " " + preview + " &r[&c:cross_mark: Remove{run_command:!giftcode removeBadge " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+            }
+        }
         if (code.data.items.length > 0) {
             tellPlayer(pl, "&eItems:");
             for (var i in code.data.items) {
@@ -7502,6 +7531,28 @@ registerXCommands([
                 "type": "currency"
             }
         ]],
+    ['!giftcode addBadge <name> <badge>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        giftcode.load(data);
+        if (!giftcode.data.badges) giftcode.data.badges = [];
+        giftcode.data.badges.push(args.badge);
+        giftcode.save(data);
+        executeXCommand("!giftcode info " + args.name, pl);
+        return true;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true
+            },
+            {
+                "argname": "badge",
+                "type": "datahandler",
+                "datatype": "badge",
+                "exists": true
+            }
+        ]],
     ['!giftcode addEmote <name> <emote>', function (pl, args, data) {
         var giftcode = new GiftCode(args.name);
         giftcode.load(data);
@@ -7521,6 +7572,31 @@ registerXCommands([
                 "type": "datahandler",
                 "datatype": "emote",
                 "exists": true
+            }
+        ]],
+    ['!giftcode removeBadge <name> <id>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        var id = args.id - 1;
+        giftcode.load(data);
+        if (giftcode.data.badges && giftcode.data.badges.length > id) {
+            giftcode.data.badges.splice(id, 1);
+            giftcode.save(data);
+            executeXCommand("!giftcode info " + args.name, pl);
+            return true;
+        }
+        tellPlayer(pl, "&cNo badge with this id!");
+        return false;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "id",
+                "type": "number",
+                "min": 1
             }
         ]],
     ['!giftcode removeEmote <name> <id>', function (pl, args, data) {
@@ -12018,6 +12094,7 @@ function GiftCode(name) {
         "items": [],
         "money": 0,
         "emotes": [],
+        "badges": [],
         "players": [], //redeemed players
     });
 
@@ -12064,6 +12141,15 @@ function GiftCode(name) {
                 var emote = this.data.emotes[n];
                 if (p.data.emotes.indexOf(emote) == -1) {
                     p.data.emotes.push(emote);
+                }
+            }
+        }
+        if (this.data.badges && this.data.badges.length > 0) {
+            p.data.badges = p.data.badges || [];
+            for (var bn in this.data.badges) {
+                var badge = this.data.badges[bn];
+                if (p.data.badges.indexOf(badge) == -1) {
+                    p.data.badges.push(badge);
                 }
             }
         }
