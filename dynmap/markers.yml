@@ -475,7 +475,7 @@ sets:
         deficon: shopping_junkyard
         areas: {
             }
-        label: Junk Yards
+        label: Junk Yards & Dumps
         markers:
             marker_1:
                 world: world
@@ -501,6 +501,22 @@ sets:
                 y: 76.0
                 z: -74.0
                 label: Gramados Great Junk Yard
+            marker_4:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -1046.0
+                y: 75.0
+                z: 12.0
+                label: Cobrex Buying Point
+            marker_5:
+                world: world
+                markup: false
+                icon: shopping_misc
+                x: -1034.0
+                y: 75.0
+                z: -89.0
+                label: FerraSol Recyclers
         lines: {
             }
         layerprio: 0
@@ -3346,6 +3362,14 @@ sets:
                 y: 65.0
                 z: -782.0
                 label: Gramados Marina
+            marker_10:
+                world: world
+                markup: false
+                icon: transport_airport
+                x: -7390.0
+                y: 104.0
+                z: 1996.0
+                label: Greater Gramados Channel Intergalactic Spaceport
         lines: {}
         layerprio: 0
     Factories:
