@@ -397,6 +397,28 @@ N/A
 > **note**: This stage consists in giving the player the scrap items and a random crate.
 > **note**: The player is given the scrap metal items at the start of the stage.
 > **note**: Completion of this stage is triggered when the player is given the crate.
+> **note**: given items:
+```
+immersiveengineering:metal:34
+immersiveengineering:material:2
+immersiveengineering:material:9
+immersiveengineering:material:8
+mts:mtsofficialpack.spring
+variedcommodities:ingot_steel
+immersiveengineering:metal:18
+immersiveengineering:metal:39
+mts:mtsofficialpack.screws
+
+mts:mtsofficialpack.copperwire
+variedcommodities:lead_pipe
+immersiveengineering:metal:15
+immersiveengineering:metal:19
+immersiveengineering:metal
+immersiveengineering:metal:30
+mts:mtsofficialpack.smallarmscartridge
+immersiveengineering:material:3
+immersiveengineering:material:21
+```
 
 **Start**  
 &e[===] &aSalvaged Mess &e[===]  
