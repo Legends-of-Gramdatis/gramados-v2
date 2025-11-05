@@ -280,7 +280,7 @@
             }
         ]
     },
-    "HurtByTimestamp": 75432,
+    "HurtByTimestamp": 14463,
     "pSpin": 0b,
     "NpcHurtSound": "minecraft:entity.player.hurt",
     "pTrail": 0,
@@ -328,7 +328,7 @@
     "NoFallDamage": 0b,
     "AbsorptionAmount": 0.0f,
     "TransformHasRole": 0b,
-    "Name": "Mafia Harbringer",
+    "Name": "Mafia Harbinger",
     "FallDistance": 0.0f,
     "SkinColor": 16777215,
     "NpcIdleSound": "",
@@ -554,9 +554,9 @@
     "NpcDeathSound": "minecraft:entity.player.hurt",
     "FactionID": 7,
     "Title": "",
-    "TotalTicksAlive": 6382870L,
+    "TotalTicksAlive": 7346217L,
     "Rotation": [
-        177.81949f,
+        101.01926f,
         0.0f
     ],
     "ShowName": 1,
