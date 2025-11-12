@@ -194,6 +194,43 @@
                     }
                 }
             }
+        },
+        "3": {
+            "name": "Scrap for a Start",
+            "enabled": true,
+            "stages": {
+                "stage1": {
+                    "required_free_slots": 19,
+                    "items": [
+                        "immersiveengineering:metal:34",
+                        "immersiveengineering:material:2",
+                        "immersiveengineering:material:9",
+                        "immersiveengineering:material:8",
+                        "mts:mtsofficialpack.spring",
+                        "variedcommodities:ingot_steel",
+                        "immersiveengineering:metal:18",
+                        "immersiveengineering:metal:39",
+                        "mts:mtsofficialpack.screws",
+                        "mts:mtsofficialpack.copperwire",
+                        "variedcommodities:lead_pipe",
+                        "immersiveengineering:metal:15",
+                        "immersiveengineering:metal:19",
+                        "immersiveengineering:metal",
+                        "immersiveengineering:metal:30",
+                        "mts:mtsofficialpack.smallarmscartridge",
+                        "immersiveengineering:material:3",
+                        "immersiveengineering:material:21"
+                    ],
+                    "crate": {
+                        "loot_table_path": "storage/crates_generic_27.json"
+                    },
+                    "chat": {
+                        "inventory_free_slots_reminder": ":lit: &ePlease ensure you have at least &6{slots}&e free inventory slots to move on with your onboarding.",
+                        "start": "&b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &b, you will recieve a crate.",
+                        "completion": "&a:check_mark: You have received a crate to pack your scrap materials."
+                    }
+                }
+            }
         }
     }
 }
