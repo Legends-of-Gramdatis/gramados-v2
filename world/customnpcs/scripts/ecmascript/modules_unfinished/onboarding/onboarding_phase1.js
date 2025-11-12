@@ -14,8 +14,10 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 // --- Helpers ---
 
 function p1_teleportToFallback(player, region){
-    if (!region || !region.fallback) return false;
-    try { player.setPosition(region.fallback[0]+0.5, region.fallback[1], region.fallback[2]+0.5); return true; } catch(e){ return false; }
+    if (!region || !region.fallback)
+        return false;
+    player.setPosition(region.fallback[0]+0.5, region.fallback[1], region.fallback[2]+0.5);
+    return true;
 }
 
 // (Removed placeholder announcer; final messages are sent directly with tellPlayer.)
@@ -110,7 +112,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                     pdata.phase1.homeBaselineCount = metaAny.count;
                     pdata.phase1.homeBaselineNames = metaAny.names;
                     pdata.phase1.homeMax = metaAny.maxHomes;
-                    logToFile('onboarding', '[phase1-force-full] Ownership shortcuts disabled by config for ' + player.getName() + '. Proceeding with full onboarding.');
+                    logToFile('onboarding', '[p1.force_full.enabled] Ownership shortcuts disabled by config for ' + player.getName() + '. Proceeding with full onboarding.');
                 } else {
                     // They already own some region elsewhere: skip the state room flow.
                     pdata.phase1.currentStage = 3; // Using !myHomes and !home
@@ -159,21 +161,28 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.roomClaimed = true;
                         } else {
                             pdata.phase1.roomClaimed = false;
-                            logToFile('onboarding', '[phase1-claim-room-skip] Selected room ' + pdata.phase1.targetRoomName + ' already owned by ' + owner0 + '.');
+                            logToFile('onboarding', '[p1.room.claim.skip] Selected room ' + pdata.phase1.targetRoomName + ' already owned by ' + owner0 + '.');
                         }
                     } catch (claimErrStart) {
                         pdata.phase1.roomClaimed = false;
-                        logToFile('onboarding', '[phase1-claim-room-error] ' + player.getName() + ' ' + claimErrStart);
+                        logToFile('onboarding', '[p1.room.claim.error] ' + player.getName() + ' ' + claimErrStart);
                     }
                 }
             } catch (selErr0) {
-                logToFile('onboarding', '[phase1-room-select-error] ' + player.getName() + ' ' + selErr0);
+                logToFile('onboarding', '[p1.room.select.error] ' + player.getName() + ' ' + selErr0);
             }
         }
         // Welcome + objective (separator added for clarity)
         var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
         tellSeparatorTitle(player, 'State Room Assignment', '&b', '&e');
         tellPlayer(player, p1chat.welcome.replace('{room}', '#'+pdata.phase1.targetRoomId));
+        // Log room assignment once at phase entry
+        try {
+            var assignedRoomName = pdata.phase1.targetRoomName || 'unknown';
+            var assignedRoomId = pdata.phase1.targetRoomId || 'unknown';
+            var claimed = !!pdata.phase1.roomClaimed;
+            logToFile('onboarding', '[p1.room.assigned] ' + player.getName() + ' room=' + assignedRoomName + ' (#' + assignedRoomId + '), claimed=' + claimed);
+        } catch (logAssignErr) {}
         pdata.phase1.arrivalShown = true;
         pdata.phase1.arrivalTime = Date.now();
         changed = true;
@@ -202,7 +211,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
             if (confMsgTp) tellPlayer(player, confMsgTp);
             pdata.phase1.lastConfineMsg = now; // reset loop so next reminder waits full interval
             changed = true;
-            logToFile('onboarding', '[phase1-confine] ' + player.getName() + ' pulled back to hotel fallback.');
+            // no log for repeating confinement pulls
         } else if (afterDelay1 && (!pdata.phase1.lastConfineMsg || (now - pdata.phase1.lastConfineMsg) > remindMs)) {
             // Periodic reminder only after long delay from phase arrival
             var roomLabelRm = '#'+pdata.phase1.targetRoomId;
@@ -239,7 +248,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         // Revoke hotel confinement from now on; room lock takes over
                         if (!pdata.phase1.hotelLockRevoked){
                             pdata.phase1.hotelLockRevoked = true;
-                            logToFile('onboarding', '[phase1-hotel-lock-revoked] ' + player.getName() + ' after entering room ' + '#'+pdata.phase1.targetRoomId + '.');
+                            logToFile('onboarding', '[p1.hotel.lock.revoked] ' + player.getName() + ' after entering room ' + '#'+pdata.phase1.targetRoomId + '.');
                             changed = true;
                         }
                         pdata.phase1.currentStep = 2;
@@ -282,13 +291,13 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                             var stack2 = generateItemStackFromLootEntry(combinedLoot2[lj], world2);
                                             if (stack2) { player.giveItem(stack2); }
                                         } catch (giErr2) {
-                                            logToFile('onboarding', '[phase1-furniture-error] ' + player.getName() + ' loot gen failed: ' + giErr2);
+                                            logToFile('onboarding', '[p1.furniture.error] ' + player.getName() + ' loot gen failed: ' + giErr2);
                                         }
                                     }
                                     pdata.phase1.furnitureGranted = true;
                                     pdata.phase1.furnitureGrantedTime = Date.now();
                                     tellPlayer(player, p1chat.furniture_granted);
-                                    logToFile('onboarding', '[phase1-furniture] ' + player.getName() + ' granted starter furniture for room ' + (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : pdata.phase1.targetRoomName) + '.');
+                                    logToFile('onboarding', '[p1.furniture.granted] ' + player.getName() + ' granted starter furniture for room ' + (pdata.phase1.targetRoomId ? ('#'+pdata.phase1.targetRoomId) : pdata.phase1.targetRoomName) + '.');
                                     // Schedule !setHome intro after an extra short delay to avoid overlapping messages
                                     var shortDelayMs_post = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
                                     pdata.phase1.s2_introAvailableAt = Date.now() + shortDelayMs_post;
@@ -299,7 +308,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                     // No immediate Stage 2 chat to prevent duplicate guidance; intro will fire after short delay
                                     changed = true;
                                 } catch (furnErr2) {
-                                    logToFile('onboarding', '[phase1-furniture-error] ' + player.getName() + ' unexpected error: ' + furnErr2);
+                                    logToFile('onboarding', '[p1.furniture.error] ' + player.getName() + ' unexpected error: ' + furnErr2);
                                 }
                             }
                         }
@@ -337,7 +346,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 changed = true;
                             }
                         }
-                        if (corrected2){ logToFile('onboarding', '[phase1-room-confine] ' + player.getName() + ' pulled back to room ' + roomLabelRem + ' (stage 2).'); }
+                        // no log for repeating room confinement pulls
 
                         // Initialize home capacity/baseline from cached meta (once at step start)
                         if (!pdata.phase1.homeCheckInit){
@@ -371,16 +380,16 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 var raw2 = wds2 ? wds2.get(pkey2) : null;
                                 var parsed2 = null;
                                 if (raw2){
-                                    try { parsed2 = JSON.parse(String(raw2)); } catch (jerr2) { parsed2 = null; }
+                                    parsed2 = JSON.parse(String(raw2));
                                 }
                                 var homesMap = (parsed2 && parsed2.homes) ? parsed2.homes : {};
-                                var currCount = 0;
-                                try { currCount = Object.keys(homesMap).length; } catch (kcErr2) { currCount = 0; }
+                                var currCount = Object.keys(homesMap).length;
                                 // Detect new home set
                                 if (typeof pdata.phase1.homeBaselineCount === 'number' && currCount > pdata.phase1.homeBaselineCount){
                                     tellPlayer(player, p1chat.sethome_success);
                                     pdata.phase1.homeRegistered = true;
                                     pdata.phase1.homeRegisteredTime = Date.now();
+                                    logToFile('onboarding', '[p1.home.set.success] ' + player.getName() + ' registered a home (count ' + currCount + ').');
                                     // Prepare a short delay before Stage 3 intro to avoid message overlap
                                     var s3ShortMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
                                     pdata.phase1.s3_introAvailableAt = Date.now() + s3ShortMs;
@@ -393,7 +402,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                     changed = true;
                                 }
                             } catch (pollErr) {
-                                // ignore polling errors; keep prompting
+                                logToFile('onboarding', '[p1.home.poll.error] ' + player.getName() + ' ' + pollErr);
                             }
 
                             // Only prompt if player still has capacity (avoid mixed states)
@@ -524,11 +533,12 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 pdata.phase1.currentStep = 1;
                                 pdata.phase1.s3_completed = true;
                                 pdata.phase1.s3_completedTime = Date.now();
+                                logToFile('onboarding', '[p1.stage3.complete] ' + player.getName() + ' returned near home after being far.');
                                 changed = true;
                             }
                         }
                     } catch (s3Err) {
-                        logToFile('onboarding', '[phase1-stage3-error] ' + player.getName() + ' ' + s3Err);
+                        logToFile('onboarding', '[p1.stage3.error] ' + player.getName() + ' ' + s3Err);
                     }
                     break;
                 default:
@@ -574,10 +584,11 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.currentStep = 2;
                             tellSeparator(player, '&b', '-');
                             tellPlayer(player, p1chat.lost_moment_use_home);
+                            logToFile('onboarding', '[p1.lost.start] ' + player.getName() + ' teleported to lost moment area.');
                             changed = true;
                         }
                     } catch (s4e1) {
-                        logToFile('onboarding', '[phase1-lost-start-error] ' + player.getName() + ' ' + s4e1);
+                        logToFile('onboarding', '[p1.lost.error] ' + player.getName() + ' ' + s4e1);
                     }
                     break;
                 case 2: // Active: confine to radius; complete when near any home
@@ -620,6 +631,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             tellSeparator(player, '&b');
                             // Phase 1 completion: grant badge and emote to the player
                             grantBadgeAndEmotes(player, 'checked_in', ['hut_dirt','bed']);
+                            logToFile('onboarding', '[p1.complete] ' + player.getName() + ' Phase 1 complete -> Phase 2.');
                             changed = true;
                             break;
                         }
@@ -652,7 +664,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             }
                         }
                     } catch (s4e2) {
-                        logToFile('onboarding', '[phase1-lost-active-error] ' + player.getName() + ' ' + s4e2);
+                        logToFile('onboarding', '[p1.lost.error] ' + player.getName() + ' ' + s4e2);
                     }
                     break;
                 default:
