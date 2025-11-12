@@ -847,7 +847,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s5_purchase_completedAt = Date.now();
                         if (s5chat3.s5_purchase_completed) tellPlayer(player, s5chat3.s5_purchase_completed);
                         // Lock lifted automatically by not confining anymore. Advance to next step placeholder.
-                        pdata.phase2.currentStep = 4;
+                        pdata.phase = 3;
+                        pdata.phase2.currentStage = null;
+                        pdata.phase2.currentStep = null;
                         tellSeparator(player, '&2')
                         grantEmotes(player, ['hunger_empty', 'hunger_half', 'hunger_full']);
                         logToFile('onboarding', '[p2.purchase.complete] ' + player.getName() + ' purchased canteen item(s).');
