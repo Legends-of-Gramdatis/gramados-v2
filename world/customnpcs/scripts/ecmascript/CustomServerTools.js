@@ -5903,7 +5903,7 @@ registerXCommands([
     }]],
     ['!myBadges [...matches]', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
-        tellPlayer(pl, getTitleBar('Badges') + '\n' + getNavBar() + '\n' + '&6You can show &a' + p.getCap('badge') + ' &6badges max at a time.');
+        tellPlayer(pl, getTitleBar('Badges') + '\n' + getNavBar(pl) + '\n' + '&6You can show &a' + p.getCap('badge') + ' &6badges max at a time.');
         var output = '';
         var allBadges = new Badge().getAllDataEntries(data);
         var badges = [];
@@ -6057,7 +6057,7 @@ registerXCommands([
             }
         }
 
-        output += getNavBar() + '\n';
+        output += getNavBar(pl) + '\n';
         output += genDataPageList(
             banks,
             args.matches,
@@ -9094,7 +9094,7 @@ registerXCommands([
         var mi = getMoneyItemCount(pnbt, pl.world);
         var total = mp + mi;
         tellPlayer(pl, getTitleBar('Money Pouch'));
-        tellPlayer(pl, getNavBar());
+        tellPlayer(pl, getNavBar(pl));
         tellPlayer(pl, ":danger: &4&oYou will lose 50% of your money pouch on death.&r :danger:");
         /*for (var v in VIRTUAL_CURRENCIES) {
             var crncy = VIRTUAL_CURRENCIES[v];
@@ -10236,7 +10236,7 @@ registerXCommands([
         }
 
         var output = getTitleBar('My Regions', false) + '\n' +
-            getNavBar() + '\n';
+            getNavBar(pl) + '\n';
 
         output += genDataPageList(
             regions,
@@ -10615,7 +10615,7 @@ registerXCommands([
             return !unlock.data.hidden;
         });
 
-        var output = getTitleBar('Unlockables') + '\n' + getNavBar() + '\n';
+        var output = getTitleBar('Unlockables') + '\n' + getNavBar(pl) + '\n';
         output += genDataPageList(
             unlocks,
             args.matches,
@@ -10733,8 +10733,12 @@ function getTitleBar(title, showServerName) {
     return CONFIG_SERVER.BAR_OPEN + (showServerName ? CONFIG_SERVER.TITLE + " " : CONFIG_SERVER.PREFIX) + title + CONFIG_SERVER.BAR_CLOSE;
 }
 
-function getNavBar() {
-    return '&r[== &e[:sun: Menu]{run_command:!menu|show_text:$eClick to show menu or do $o!menu}&r ==]';
+function getNavBar(player) {
+    if (hasPlayerCompletedOnboarding(player)) {
+        return '&r[== &e[:sun: Menu]{run_command:!menu|show_text:$eClick to show menu or do $o!menu}&r ==]';
+    } else {
+        return '';
+    }
 }
 
 function getUndoBtn(undo_cmds, hoverText) {
@@ -13020,7 +13024,7 @@ function formatLoanInfo(loan, params, title, cmdPrefix) {
     var payPercentage = roundDec(100 / loan.getPaybackAmount() * loan.data.paid).toString();
     var output = getTitleBar('Loan ' + title, false) + '\n';
 
-    output += getNavBar() + '\n';
+    // output += getNavBar() + '\n';
 
     if (!params.payments) {
 
