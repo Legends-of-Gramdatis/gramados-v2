@@ -430,7 +430,7 @@ immersiveengineering:material:21
 
 **Start**  
 &e[===] &aSalvaged Mess &e[===]  
-&b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &a, you will recieve a crate.
+&b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &b, you will recieve a crate.
 
 **Repeat reminder**  
 N/A
