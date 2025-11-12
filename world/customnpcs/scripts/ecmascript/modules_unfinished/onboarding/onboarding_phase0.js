@@ -20,7 +20,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             if (player.hasReadDialog(dialogId)) {
                 pdata.phase0.dialogRead = true;
                 pdata.phase0.dialogReadTime = Date.now();
-                logToFile('onboarding', '[dialog-detected] ' + player.getName() + ' read dialog id=' + dialogId);
+                logToFile('onboarding', '[p0.dialog.complete] ' + player.getName() + ' read dialog id=' + dialogId);
                 // Award real bike + wrench via loot tables if not already
                 if (!pdata.phase0.rewardsGiven) {
                     var world = player.getWorld();
@@ -36,7 +36,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                     var rewardMsg = dialogMeta.chat.onReward;
                     rewardMsg = rewardMsg.replace('{npc}', npcFmt);
                     tellPlayer(player, rewardMsg);
-                    logToFile('onboarding', '[rewards] ' + player.getName() + ' granted bike + wrench via loot tables.');
+                    logToFile('onboarding', '[p0.rewards.granted] ' + player.getName() + ' granted bike + wrench via loot tables.');
                 }
                 // Start timer immediately per spec
                 if (!pdata.phase0.timerStarted) {
@@ -55,7 +55,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                         //     tellPlayer(player, msgB);
                         // }
                     } catch (tmErr) { /* ignore */ }
-                    logToFile('onboarding', '[timer-start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
+                    logToFile('onboarding', '[p0.timer.start] ' + player.getName() + ' Phase0 transfer timer started (auto-detected dialog).');
                 }
                 changed = true;
             }
@@ -91,9 +91,8 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                         if (confineMsg) tellPlayer(player, confineMsg.replace('{npc}', npcN2));
                     }
                 }
-                // Reset the general reminder timer so the loop waits full interval
+                // Reset the general reminder timer so the loop waits full interval (no log for looped confine)
                 pdata.phase0.lastGeneralReminder = Date.now();
-                logToFile('onboarding', '[confine] ' + player.getName() + ' attempted to exit Phase0 region. Teleported back.');
             }
         }
     }
@@ -119,10 +118,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
             tellPlayer(player, dcfg2.chat.onTeleport);
             // Phase 0 completion separator (see chat_convention.md -> Phase 0 separator color &6)
             tellSeparator(player, '&6');
-            logToFile('onboarding', '[teleport] ' + player.getName() + ' Phase0 -> State Hotel.');
-            if (globalCfg.general && globalCfg.general.logJson) {
-                logToJson('onboarding', 'phase_changes', { player: player.getName(), phase: 0, action: 'teleport_complete', time: new Date().toISOString() });
-            }
+            logToFile('onboarding', '[p0.teleport.complete] ' + player.getName() + ' Phase0 -> State Hotel.');
         }
     }
 
