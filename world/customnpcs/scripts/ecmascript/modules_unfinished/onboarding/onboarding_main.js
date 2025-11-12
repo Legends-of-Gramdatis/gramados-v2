@@ -40,7 +40,7 @@ function onboarding_getPlayerData(player) {
     var n = player.getName();
     if (!_onboarding_players[n]) {
         _onboarding_players[n] = { created: Date.now(), phase: 0 };
-        logToFile('onboarding', '[init-player] ' + n + ' entry created.');
+    logToFile('onboarding', '[p.init] ' + n + ' entry created.');
         saveJson(_onboarding_players, ONBOARDING_DATA_PATH);
     }
     _onboarding_current_pdata = _onboarding_players[n];
@@ -86,7 +86,7 @@ function init(event) {
                 if (!pdata.phase0.welcomeTime) {
                     pdata.phase0.welcomeTime = Date.now();
                 }
-                logToFile('onboarding', '[welcome] ' + player.getName() + ' login welcome for ' + npcName);
+                logToFile('onboarding', '[p0.welcome] ' + player.getName() + ' login welcome for ' + npcName);
             }
         }
     }
