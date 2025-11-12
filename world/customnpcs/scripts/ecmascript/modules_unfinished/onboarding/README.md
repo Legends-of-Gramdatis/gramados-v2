@@ -9,6 +9,7 @@ This module lives under `modules_unfinished/onboarding/` and will move to `modul
 - Phase 0: Arrival flow, dialog detection, timed transfer to the State Hotel, and confinement until transfer completes.
 - Phase 1: Starter room assignment, confinement to hotel/room until setup is done, registering a home with `!setHome`, and using `!myHomes`/`!home`.
 - Phase 2: Money Pouch tutorial: checking `!myMoney`, depositing/withdrawing, multi-withdraw (`!withdraw 1g 6`), and a first purchase in the canteen.
+- Phase 3: Scrap for a Start: learn crates by packing and selling a mixed scrap crate. Stage 1 gives 18 scrap items and a random crate (loot table is configurable), then guides packing and selling at two facilities.
 - Phase separators appear at the end of each phase with color-coded titles (see “Color/Chat Conventions”).
 - When Phase 1 completes, players receive a badge/emote reward.
 
@@ -94,6 +95,12 @@ Ownership shortcuts may skip step 1–3 and jump to using `!myHomes` and `!home`
 	 - Multi-withdraw: `!withdraw 1g 6` → six 1G coins. Then redeposit again.
 4) First purchase:
 	 - Go to the canteen (configured region), find waiter NPC (configured name/position), stay near him, and buy any food from the configured market file.
+
+### Phase 3 – Scrap for a Start
+
+1) Salvaged Mess: ensure enough free inventory space, then receive 18 configured scrap items and, after a short delay, a random crate from a configurable loot table (`phases["3"].stages.stage1`).
+2) Packing the crate: place the crate, fill it with the given items, then pick it up.
+3) Selling: travel to ferrous and non-ferrous facilities and sell the contents via their traders.
 
 ## Color/Chat Conventions
 
