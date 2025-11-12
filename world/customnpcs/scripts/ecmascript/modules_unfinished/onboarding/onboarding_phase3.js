@@ -265,6 +265,81 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         changed = true;
                     }
                     break;
+                case 3: // 3.2.3 Step 3 - Picking up the filled crate
+                    var focusUUID = pdata.phase3.stage2CrateUUID || '';
+                    if (!focusUUID) {
+                        // No focus -> restart stage2 step1
+                        pdata.phase3.stage2BaselineUUIDs = [];
+                        pdata.phase3.stage2BaselineSetMs = 0;
+                        pdata.phase3.currentStep = 1;
+                        changed = true;
+                        break;
+                    }
+                    var step3Chat = (stage2CfgRoot && stage2CfgRoot.step3 && stage2CfgRoot.step3.chat) ? stage2CfgRoot.step3.chat : null;
+                    // Show start once
+                    if (!pdata.phase3.stage2Step3StartShown) {
+                        if (step3Chat && step3Chat.start) tellPlayer(player, step3Chat.start);
+                        pdata.phase3.stage2Step3StartShown = true;
+                        pdata.phase3.stage2Step3LastReminder = 0;
+                        changed = true;
+                        break; // wait next tick for action
+                    }
+                    // Determine if crate part still exists near player
+                    var nearbySet = _p3s2_scanCrateInventoryUUIDs(player.getWorld(), player.getPos(), radius, lootTablePath2);
+                    var partStillPresent = !!nearbySet[focusUUID];
+                    if (partStillPresent) {
+                        // Remind to pick it up every interval
+                        var lastStep3Rem = pdata.phase3.stage2Step3LastReminder || 0;
+                        if ((Date.now() - lastStep3Rem) >= intervalMs) {
+                            if (step3Chat && step3Chat.reminder) tellPlayer(player, step3Chat.reminder);
+                            pdata.phase3.stage2Step3LastReminder = Date.now();
+                            changed = true;
+                        }
+                        break;
+                    }
+                    // Crate part no longer on ground: verify player holds crate item from loot table
+                    var lootEntries3 = pullLootTable(lootTablePath2, player) || [];
+                    var invItems3 = player.getInventory().getItems();
+                    var crateInInventory = false;
+                    // Build set of acceptable crate item keys id|damage
+                    var crateKeys = {};
+                    for (var ce = 0; ce < lootEntries3.length; ce++) {
+                        var le = lootEntries3[ce];
+                        if (!le || !le.id) continue;
+                        var dmgVal = (typeof le.damage === 'number') ? le.damage : 0;
+                        crateKeys[le.id + '|' + String(dmgVal)] = true;
+                    }
+                    for (var ci = 0; ci < invItems3.length; ci++) {
+                        var st = invItems3[ci];
+                        if (!st || st.isEmpty()) continue;
+                        var iid2 = st.getName();
+                        var dmg2 = st.getItemDamage();
+                        var key2 = iid2 + '|' + String(dmg2);
+                        if (crateKeys[key2]) { crateInInventory = true; break; }
+                    }
+                    if (crateInInventory) {
+                        // Success
+                        if (step3Chat && step3Chat.completion) tellPlayer(player, step3Chat.completion);
+                        pdata.phase3.stage2PickupCompleted = true;
+                        // Advance to future Stage 3 (selling) scaffold
+                        pdata.phase3.currentStage = 3; // not yet implemented
+                        pdata.phase3.currentStep = 1;
+                        changed = true;
+                        break;
+                    } else {
+                        // Failure: crate not on ground and not in inventory (likely misplaced). Reset to Step 1 with failure message at start.
+                        if (step3Chat && step3Chat.failure) tellPlayer(player, step3Chat.failure);
+                        pdata.phase3.stage2ShowFailureStart = true;
+                        pdata.phase3.stage2BaselineUUIDs = [];
+                        pdata.phase3.stage2BaselineSetMs = 0;
+                        pdata.phase3.stage2CrateUUID = '';
+                        pdata.phase3.stage2Step2StartShown = false;
+                        pdata.phase3.stage2Step3StartShown = false;
+                        pdata.phase3.currentStep = 1; // back to placing
+                        changed = true;
+                        break;
+                    }
+                    break;
             }
             break;
         default:

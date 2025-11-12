@@ -236,10 +236,7 @@
                         "start": "&b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.",
                         "reminder": ":lit: &ePlease place the crate on the ground to continue.",
                         "failure": ":danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.",
-                        "completion": "&a:check_mark: You have placed the crate on the ground.",
-                        "fill_start": "&b:sun: Fill the crate with the scrap items you were given. We'll detect when it's fully packed.",
-                        "fill_reminder": ":lit: &eAdd the scrap items to your crate. We'll check again soon.",
-                        "fill_completion": "&a:check_mark: Your crate is packed with the required scrap items."
+                        "completion": "&a:check_mark: You have placed the crate on the ground."
                     },
                     "step2": {
                         "chat": {
@@ -248,6 +245,14 @@
                             "failure": ":danger: &eYou need to fill the crate with all your scrap items before picking it up again. Please place the crate back down and add the remaining scrap items.",
                             "failure_reminder": ":danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.",
                             "completion": "&a:check_mark: You have successfully filled the crate with all your scrap items!"
+                        }
+                    }
+                    ,
+                    "step3": {
+                        "chat": {
+                            "start": "&b:sun: Great job filling the crate! Now, please pick up the crate so you can move it with all its contents.",
+                            "reminder": ":lit: &ePlease pick up the crate to continue.",
+                            "completion": "&a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside."
                         }
                     }
                 }
