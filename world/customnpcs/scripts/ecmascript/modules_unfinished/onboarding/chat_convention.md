@@ -441,6 +441,7 @@ N/A
 ## 3.2 Stage 2 - Packing the Crate
 ### 3.2.1 Step 1 - Placing the crate
 > **note**: Completion of this stage is triggered when the crate entity is detected in world.
+> **note**: If the detected crate is removed too soon (before the adequate Picking up crate stage), the stage is reset, and the failure message shows.
 
 **Start**
 &e[===] &aPacking the mess &e[===]  
@@ -448,6 +449,9 @@ N/A
 
 **Repeat reminder**  
 :lit: &ePlease place the crate on the ground to continue.
+
+**failure**  
+:danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.
 
 **Completion**  
 &a:check_mark: You have placed the crate on the ground.
