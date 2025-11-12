@@ -14,6 +14,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase0.js');
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase1.js');
 load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase2.js');
+load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase3.js');
 
 // === Constants ===
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
@@ -108,6 +109,9 @@ function tick(event) {
             break;
         case 2:
             changed = onboarding_run_phase2(player, pdata, _onboarding_cfg.phases['2'], _onboarding_cfg, _onboarding_players) || false;
+            break;
+        case 3:
+            changed = onboarding_run_phase3(player, pdata, _onboarding_cfg.phases['3'], _onboarding_cfg, _onboarding_players) || false;
             break;
         default:
             break;
