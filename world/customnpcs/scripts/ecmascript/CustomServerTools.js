@@ -2242,9 +2242,9 @@ function cst_onboarding_log_command(player, cmdKey) {
     }
 }
 
-// Returns true if player has completed the given step in the given phase of onboarding.
+// Returns true if player has completed the given stage in the given phase of onboarding.
 // If any error occurs (file missing, invalid JSON, missing entries, etc), returns false.
-function checkOnboardingAdvancement(player, phaseKey, stepKey) {
+function checkOnboardingAdvancement(player, phaseKey, stageKey) {
     try {
         var playerName = player.getName();
         var raw = readFileAsString(ONBOARDING_DATA_PATH);
@@ -2256,7 +2256,7 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
         var data = JSON.parse(rawStr);
         var entry = data[playerName];
 
-        // If player progressed beyond phase "phaseKey", consider step complete
+        // If player progressed beyond phase "phaseKey", consider stage complete
         if (entry.phase > phaseKey) {
             return true;
         }
@@ -2265,10 +2265,8 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
 
         // Otherwise check phaseName completion flag
         var phase = entry[phaseName];
-        if (phase && phase.completed) {
-            if (phase && phase[stepKey] === true) {
-                return true;
-            }
+        if (phase && phase.currentStage && phase.currentStage > stageKey) {
+            return true;
         }
 
         return false;
@@ -10734,7 +10732,7 @@ function getTitleBar(title, showServerName) {
 }
 
 function getNavBar(player) {
-    if (hasPlayerCompletedOnboarding(player)) {
+    if (checkOnboardingAdvancement(player, 2, 4)) {
         return '&r[== &e[:sun: Menu]{run_command:!menu|show_text:$eClick to show menu or do $o!menu}&r ==]';
     } else {
         return '';
