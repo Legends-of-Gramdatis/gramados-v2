@@ -420,6 +420,14 @@ immersiveengineering:material:3
 immersiveengineering:material:21
 ```
 
+### 3.1.1 Step 1 - Empty inventory
+> **note**: This step only consists in telling the player to leave at least 18 inventory slots free. If player already has enough free slots, this step is skipped.
+
+**repeat reminder**  
+:lit: &ePlease ensure you have at least &6{slots}&e free inventory slots to move on with your onboarding.
+
+### 3.1.2 Step 2 - Giving scrap items and crate
+
 **Start**  
 &e[===] &aSalvaged Mess &e[===]  
 &b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &a, you will recieve a crate.
