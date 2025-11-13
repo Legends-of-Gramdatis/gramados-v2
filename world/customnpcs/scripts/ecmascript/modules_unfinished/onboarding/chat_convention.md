@@ -444,7 +444,7 @@ N/A
 > **note**: If the detected crate is removed too soon (before the adequate Picking up crate stage), the stage is reset, and the failure message shows.
 
 **Start**
-&e[===] &aPacking the mess &e[===]  
+&e[===] &aPacking the Crate &e[===]  
 &b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.
 
 **Repeat reminder**  
@@ -470,6 +470,9 @@ N/A
 **failure**  
 :danger: &eYou need to fill the crate with all your scrap items before picking it up again. Please place the crate back down and add the remaining scrap items.
 
+**Failure (world crate missing items)**  
+:danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.
+
 **failure reminder**  
 :danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.
 
@@ -484,6 +487,18 @@ N/A
 
 **Repeat reminder**  
 :lit: &ePlease pick up the crate to continue.
+
+**Failure (world crate missing items)**  
+:danger: &eYou removed a required item from the crate. Please put it back: &6{items}&e.
+
+**Failure (inventory crate missing items)**  
+:danger: &eThe crate you picked up is missing required items: &6{items}&e. Place it down and put them back.
+
+**Failure**  
+:danger: &eWe didn't detect the crate in your inventory. Place it back down and try again.
+
+**Failure reminder**  
+:danger: &eStill no crate detected in your inventory. Place it back down and pick it up again once it's correctly filled.
 
 **Completion**
 &a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside.
