@@ -232,16 +232,20 @@
                 },
                 "stage2": {
                     "radius": 10,
-                    "chat": {
-                        "start": "&b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.",
-                        "reminder": ":lit: &ePlease place the crate on the ground to continue.",
-                        "failure": ":danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.",
-                        "completion": "&a:check_mark: You have placed the crate on the ground."
+                    "step1": {
+                        "chat": {
+                            "start": "&b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.",
+                            "reminder": ":lit: &ePlease place the crate on the ground to continue.",
+                            "failure": ":danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.",
+                            "failure_reminder": ":danger: &eWe still can't detect your crate. Place it on the ground and keep it there until you finish packing it.",
+                            "completion": "&a:check_mark: You have placed the crate on the ground."
+                        }
                     },
                     "step2": {
                         "chat": {
                             "start": "&b:sun: Now that you have placed the crate, it's time to fill it with all the scrap items you received earlier. Please make sure to put all the scrap items into the crate to continue.",
                             "reminder": ":lit: &ePlease fill the crate with all your scrap items to continue.",
+                            "failure_missing_world": ":danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.",
                             "failure": ":danger: &eYou need to fill the crate with all your scrap items before picking it up again. Please place the crate back down and add the remaining scrap items.",
                             "failure_reminder": ":danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.",
                             "completion": "&a:check_mark: You have successfully filled the crate with all your scrap items!"
@@ -252,6 +256,10 @@
                         "chat": {
                             "start": "&b:sun: Great job filling the crate! Now, please pick up the crate so you can move it with all its contents.",
                             "reminder": ":lit: &ePlease pick up the crate to continue.",
+                            "failure_missing_world": ":danger: &eYou removed a required item from the crate. Please put it back: &6{items}&e.",
+                            "failure_missing_inventory": ":danger: &eThe crate you picked up is missing required items: &6{items}&e. Place it down and put them back.",
+                            "failure": ":danger: &eWe didn't detect the crate in your inventory. Place it back down and try again.",
+                            "failure_reminder": ":danger: &eStill no crate detected in your inventory. Place it back down and pick it up again once it's correctly filled.",
                             "completion": "&a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside."
                         }
                     }

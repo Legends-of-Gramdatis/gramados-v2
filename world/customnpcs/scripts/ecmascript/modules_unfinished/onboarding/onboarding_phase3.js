@@ -19,7 +19,28 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
     // --- Timers / delays (reuse generic config values) ---
     var shortDelayMs  = (globalCfg.general.generic_streamline_delay_short) * 1000;
     var mediumDelayMs = (globalCfg.general.generic_streamline_delay_medium) * 1000;
+    var longDelayMs   = (globalCfg.general.generic_streamline_delay_long) * 1000;
     var intervalMs    = (globalCfg.general.generic_streamline_interval) * 1000;
+
+    var now = Date.now();
+
+    // Gate Phase 3 start until long delay after Phase 2 completion (canteen purchase)
+    // Detect Phase 2 completion timestamp heuristically.
+    var p2CompletedAt = null;
+    if (pdata.phase2) {
+        var p2 = pdata.phase2;
+        p2CompletedAt = p2.s5_completedTime || p2.stage5CompletedTime || p2.completedTime || p2.completed || null;
+        if (p2CompletedAt === true) p2CompletedAt = p2.completedTime || p2.s5_completedTime || null;
+    }
+    if (!pdata.phase3._gateP2DelayChecked) {
+        if (p2CompletedAt && typeof p2CompletedAt === 'number') {
+            if ((now - p2CompletedAt) < longDelayMs) {
+                return false; // wait until long delay passes after Phase 2 completion
+            }
+        }
+        pdata.phase3._gateP2DelayChecked = true;
+        changed = true;
+    }
 
     // Initialize stage/step tracking
     if (typeof pdata.phase3.currentStage === 'undefined') { pdata.phase3.currentStage = 1; changed = true; }
@@ -162,14 +183,23 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                 case 1: // 3.2.1 Step 1 - Placing the crate
                     // On first entry to this step: show separator and capture baseline set
                     if (!pdata.phase3.stage2BaselineSetMs) {
-                        // Separator exact: &e[===] &aPacking the mess &e[===]
-                        tellSeparatorTitle(player, 'Packing the mess', '&e', '&a');
+                        // Show separator only the first time Stage 2 is entered (avoid repeat on resets)
+                        if (!pdata.phase3.stage2BannerShown) {
+                            tellSeparatorTitle(player, 'Packing the Crate', '&e', '&a');
+                            pdata.phase3.stage2BannerShown = true;
+                        }
                         var stage2Cfg = (phaseCfg.stages.stage2) ? phaseCfg.stages.stage2 : null;
-                        var stage2Chat = (stage2Cfg && stage2Cfg.chat) ? stage2Cfg.chat : null;
+                        // Stage 2 step1 messages are now under step1.chat (not root chat)
+                        var stage2Chat = (stage2Cfg && stage2Cfg.step1 && stage2Cfg.step1.chat) ? stage2Cfg.step1.chat : null;
                         var showFailureInstead = pdata.phase3.stage2ShowFailureStart ? true : false;
                         if (stage2Chat) {
                             if (showFailureInstead && stage2Chat.failure) {
                                 tellPlayer(player, stage2Chat.failure);
+                                // If a failure reminder was scheduled, send when due and clear
+                                if (pdata.phase3.stage2FailureReminderDueAt && Date.now() >= pdata.phase3.stage2FailureReminderDueAt) {
+                                    if (stage2Chat.failure_reminder) tellPlayer(player, stage2Chat.failure_reminder);
+                                    pdata.phase3.stage2FailureReminderDueAt = 0;
+                                }
                             } else if (stage2Chat.start) {
                                 tellPlayer(player, stage2Chat.start);
                             }
@@ -181,7 +211,8 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         var baseList = Object.keys(baseNow);
                         pdata.phase3.stage2BaselineUUIDs = baseList;
                         pdata.phase3.stage2BaselineSetMs = Date.now();
-                        pdata.phase3.stage2LastReminderMs = 0;
+                        // First reminder should wait full interval after start
+                        pdata.phase3.stage2LastReminderMs = Date.now();
                         changed = true;
                         break; // wait next tick to compare
                     }
@@ -199,22 +230,38 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     if (added.length > 0) {
                         pdata.phase3.stage2CrateUUID = added[0];
                         pdata.phase3.stage2CrateLockedMs = Date.now();
-                        // Completion message for Step 1
-                        var s2ChatRoot = (stage2CfgRoot && stage2CfgRoot.chat) ? stage2CfgRoot.chat : null;
-                        if (s2ChatRoot && s2ChatRoot.completion) tellPlayer(player, s2ChatRoot.completion);
+                        // Cache the corresponding crate item id for later inventory detection
+                        var foundPartForId = _p3s2_findCratePartByUUID(player.getWorld(), player.getPos(), radius, lootTablePath2, pdata.phase3.stage2CrateUUID);
+                        if (foundPartForId) {
+                            var packIDc = foundPartForId.has('packID') ? String(foundPartForId.getString('packID')) : '';
+                            var systemNamec = foundPartForId.has('systemName') ? String(foundPartForId.getString('systemName')) : '';
+                            var subNamec = foundPartForId.has('subName') ? String(foundPartForId.getString('subName')) : '';
+                            if (packIDc && systemNamec) {
+                                pdata.phase3.stage2CrateItemId = 'mts:' + packIDc + '.' + systemNamec + (subNamec ? subNamec : '');
+                            }
+                        }
+                        // Completion message for Step 1 (now under step1.chat)
+                        var s1ChatRoot = (stage2CfgRoot && stage2CfgRoot.step1 && stage2CfgRoot.step1.chat) ? stage2CfgRoot.step1.chat : null;
+                        if (s1ChatRoot && s1ChatRoot.completion) tellPlayer(player, s1ChatRoot.completion);
+                        // Move to Step 2 after a short delay (no separator between steps)
+                        pdata.phase3.stage2Step2AvailableAt = Date.now() + shortDelayMs;
                         pdata.phase3.currentStep = 2; // move to filling
                         changed = true; break;
                     }
                     // Reminder every minute until detection
                     var lastR = pdata.phase3.stage2LastReminderMs || 0;
                     if ((Date.now() - lastR) >= intervalMs) {
-                        var stage2Chat2 = (stage2CfgRoot && stage2CfgRoot.chat) ? stage2CfgRoot.chat : null;
+                        var stage2Chat2 = (stage2CfgRoot && stage2CfgRoot.step1 && stage2CfgRoot.step1.chat) ? stage2CfgRoot.step1.chat : null;
                         if (stage2Chat2 && stage2Chat2.reminder) tellPlayer(player, stage2Chat2.reminder);
                         pdata.phase3.stage2LastReminderMs = Date.now();
                         changed = true;
                     }
                     break;
                 case 2: // 3.2.2 Step 2 - Filling the crate
+                    // Wait short delay between previous completion and this step's start message
+                    if (pdata.phase3.stage2Step2AvailableAt && Date.now() < pdata.phase3.stage2Step2AvailableAt) {
+                        break;
+                    }
                     var focusId = pdata.phase3.stage2CrateUUID || '';
                     if (!focusId) {
                         // Should not happen, re-enter step 1
@@ -241,16 +288,41 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         var step2ChatStart = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : null;
                         if (step2ChatStart && step2ChatStart.start) tellPlayer(player, step2ChatStart.start);
                         pdata.phase3.stage2Step2StartShown = true;
-                        pdata.phase3.stage2Step2LastReminder = 0;
+                        // First reminder should wait full interval after start
+                        pdata.phase3.stage2Step2StartMs = Date.now();
+                        pdata.phase3.stage2Step2LastReminder = Date.now();
                         changed = true; break;
                     }
-                    // Validate crate contents
+                    // Validate crate contents (with missing detection; anti-spam)
                     var part = _p3s2_findCratePartByUUID(player.getWorld(), player.getPos(), radius, lootTablePath2, focusId);
                     if (part) {
                         var allItemsCfg = stage1Cfg.items || [];
+                        // Build current content pairs and missing list
+                        var contentPairsStep2 = _p3s2_extractContentPairsFromPartNbt(part);
+                        var missingStep2 = _p3s2_getMissingRequiredItems(allItemsCfg, contentPairsStep2);
+                        if (missingStep2 && missingStep2.length > 0) {
+                            // Anti-spam: only announce when missing set changes
+                            var missKey2 = missingStep2.slice().sort().join(',');
+                            if (pdata.phase3.stage2Step2LastMissingKey !== missKey2) {
+                                pdata.phase3.stage2Step2LastMissingKey = missKey2;
+                                var names2 = _p3s2_specsToDisplayNames(player.getWorld(), missingStep2);
+                                var step2ChatRoot = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : {};
+                                var msgMiss2 = step2ChatRoot && step2ChatRoot.failure_missing_world ? step2ChatRoot.failure_missing_world : (':danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.');
+                                tellPlayer(player, msgMiss2.replace('{items}', names2.join(', ')));
+                                logToFile('onboarding', '[p3.s2.step2.missing.world] ' + player.getName() + ' missing=[' + names2.join(', ') + ']');
+                                changed = true;
+                            }
+                        } else {
+                            // Clear so future removals are re-announced before completion
+                            if (pdata.phase3.stage2Step2LastMissingKey) {
+                                pdata.phase3.stage2Step2LastMissingKey = '';
+                            }
+                        }
                         if (_p3s2_crateHasAllItems(part, allItemsCfg)) {
                             var step2ChatComp = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : null;
                             if (step2ChatComp && step2ChatComp.completion) tellPlayer(player, step2ChatComp.completion);
+                            // Move to Step 3 after a short delay (no separator between steps)
+                            pdata.phase3.stage2Step3AvailableAt = Date.now() + shortDelayMs;
                             pdata.phase3.currentStep = 3; // scaffold for next step (picking up)
                             pdata.phase3.stage2FilledAt = Date.now();
                             changed = true; break;
@@ -266,6 +338,10 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     }
                     break;
                 case 3: // 3.2.3 Step 3 - Picking up the filled crate
+                    // Wait short delay between previous completion and this step's start message
+                    if (pdata.phase3.stage2Step3AvailableAt && Date.now() < pdata.phase3.stage2Step3AvailableAt) {
+                        break;
+                    }
                     var focusUUID = pdata.phase3.stage2CrateUUID || '';
                     if (!focusUUID) {
                         // No focus -> restart stage2 step1
@@ -280,14 +356,43 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     if (!pdata.phase3.stage2Step3StartShown) {
                         if (step3Chat && step3Chat.start) tellPlayer(player, step3Chat.start);
                         pdata.phase3.stage2Step3StartShown = true;
-                        pdata.phase3.stage2Step3LastReminder = 0;
+                        // First reminder should wait full interval after start
+                        pdata.phase3.stage2Step3StartMs = Date.now();
+                        pdata.phase3.stage2Step3LastReminder = Date.now();
                         changed = true;
                         break; // wait next tick for action
                     }
                     // Determine if crate part still exists near player
                     var nearbySet = _p3s2_scanCrateInventoryUUIDs(player.getWorld(), player.getPos(), radius, lootTablePath2);
                     var partStillPresent = !!nearbySet[focusUUID];
+                    // Debug: log presence status each tick (file-only to avoid chat spam)
+                    logToFile('onboarding', '[p3.s2.step3.tick] ' + player.getName() + ' focusUUID=' + focusUUID + ' present=' + partStillPresent);
                     if (partStillPresent) {
+                        // If crate is present but missing required items (someone removed them), notify once per change
+                        var partNow = _p3s2_findCratePartByUUID(player.getWorld(), player.getPos(), radius, lootTablePath2, focusUUID);
+                        if (partNow) {
+                            var presentPairs = _p3s2_extractContentPairsFromPartNbt(partNow);
+                            var missingReq = _p3s2_getMissingRequiredItems(stage1Cfg.items || [], presentPairs);
+                            if (missingReq && missingReq.length > 0) {
+                                var missKey3 = missingReq.slice().sort().join(',');
+                                if (pdata.phase3.stage2Step3LastMissingKey !== missKey3) {
+                                    pdata.phase3.stage2Step3LastMissingKey = missKey3;
+                                    var names = _p3s2_specsToDisplayNames(player.getWorld(), missingReq);
+                                    var s3chat = (stage2CfgRoot && stage2CfgRoot.step3 && stage2CfgRoot.step3.chat) ? stage2CfgRoot.step3.chat : {};
+                                    var msg = s3chat && s3chat.failure_missing_world ? s3chat.failure_missing_world : (':danger: &eYou removed a required item from the crate. Please put it back: &6{items}&e.');
+                                    tellPlayer(player, msg.replace('{items}', names.join(', ')));
+                                    logToFile('onboarding', '[p3.s2.step3.missing.world] ' + player.getName() + ' missing=[' + names.join(', ') + ']');
+                                    changed = true;
+                                }
+                            } else {
+                                // Clear so future removals are re-announced
+                                if (pdata.phase3.stage2Step3LastMissingKey) {
+                                    pdata.phase3.stage2Step3LastMissingKey = '';
+                                }
+                            }
+                        }
+                        // Reset removal observation window if crate re-appears
+                        pdata.phase3.stage2Step3RemovedAt = 0;
                         // Remind to pick it up every interval
                         var lastStep3Rem = pdata.phase3.stage2Step3LastReminder || 0;
                         if ((Date.now() - lastStep3Rem) >= intervalMs) {
@@ -297,38 +402,43 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         }
                         break;
                     }
-                    // Crate part no longer on ground: verify player holds crate item from loot table
-                    var lootEntries3 = pullLootTable(lootTablePath2, player) || [];
-                    var invItems3 = player.getInventory().getItems();
-                    var crateInInventory = false;
-                    // Build set of acceptable crate item keys id|damage
-                    var crateKeys = {};
-                    for (var ce = 0; ce < lootEntries3.length; ce++) {
-                        var le = lootEntries3[ce];
-                        if (!le || !le.id) continue;
-                        var dmgVal = (typeof le.damage === 'number') ? le.damage : 0;
-                        crateKeys[le.id + '|' + String(dmgVal)] = true;
+                    // Crate part no longer on ground: start short observation window to detect inventory pickup
+                    if (!pdata.phase3.stage2Step3RemovedAt) {
+                        pdata.phase3.stage2Step3RemovedAt = Date.now();
+                        // Clear prior failure reminder flags
+                        pdata.phase3.stage2FailureReminderDueAt = 0;
+                        // Debug: crate removed detection
+                        var obsSec = Math.floor(shortDelayMs/1000);
+                        // tellPlayer(player, '&7[dbg] crate removed from world. Observing inventory for ' + obsSec + 's...');
+                        logToFile('onboarding', '[p3.s2.step3.removed] ' + player.getName() + ' crate disappeared, start observationWindowMs=' + shortDelayMs + ', crateIdHint=' + (pdata.phase3.stage2CrateItemId||'') + ', radius=' + radius);
+                        changed = true;
+                        break;
                     }
-                    for (var ci = 0; ci < invItems3.length; ci++) {
-                        var st = invItems3[ci];
-                        if (!st || st.isEmpty()) continue;
-                        var iid2 = st.getName();
-                        var dmg2 = st.getItemDamage();
-                        var key2 = iid2 + '|' + String(dmg2);
-                        if (crateKeys[key2]) { crateInInventory = true; break; }
-                    }
-                    if (crateInInventory) {
+                    var sinceRemoval = Date.now() - (pdata.phase3.stage2Step3RemovedAt || 0);
+                    var crateIdHint = pdata.phase3.stage2CrateItemId || '';
+                    var requiredList = stage1Cfg.items || [];
+                    var invStatus = _p3s2_findCrateItemStatusInInventory(player, lootTablePath2, crateIdHint, requiredList);
+                    if (invStatus && invStatus.found && invStatus.hasAll) {
                         // Success
-                        if (step3Chat && step3Chat.completion) tellPlayer(player, step3Chat.completion);
+                        tellPlayer(player, step3Chat.completion);
+                        logToFile('onboarding', '[p3.s2.step3.success] ' + player.getName() + ' matching crate found in inventory within observation window.');
                         pdata.phase3.stage2PickupCompleted = true;
                         // Advance to future Stage 3 (selling) scaffold
                         pdata.phase3.currentStage = 3; // not yet implemented
                         pdata.phase3.currentStep = 1;
+                        // Reset transient state
+                        pdata.phase3.stage2Step3RemovedAt = 0;
                         changed = true;
                         break;
-                    } else {
-                        // Failure: crate not on ground and not in inventory (likely misplaced). Reset to Step 1 with failure message at start.
-                        if (step3Chat && step3Chat.failure) tellPlayer(player, step3Chat.failure);
+                    } else if (invStatus && invStatus.found && !invStatus.hasAll) {
+                        // Specific failure: crate in inventory but missing required items
+                        var namesInv = _p3s2_specsToDisplayNames(player.getWorld(), invStatus.missingKeys || []);
+                        var s3chat2 = (stage2CfgRoot && stage2CfgRoot.step3 && stage2CfgRoot.step3.chat) ? stage2CfgRoot.step3.chat : {};
+                        var msg2 = s3chat2 && s3chat2.failure_missing_inventory ? s3chat2.failure_missing_inventory : (':danger: &eThe crate you picked up is missing required items: &6{items}&e. Place it down and put them back.');
+                        tellPlayer(player, msg2.replace('{items}', namesInv.join(', ')));
+                        logToFile('onboarding', '[p3.s2.step3.missing.inventory] ' + player.getName() + ' missing=[' + namesInv.join(', ') + ']');
+                        // Fail immediately and reset to Step 1
+                        pdata.phase3.stage2FailureReminderDueAt = Date.now() + intervalMs;
                         pdata.phase3.stage2ShowFailureStart = true;
                         pdata.phase3.stage2BaselineUUIDs = [];
                         pdata.phase3.stage2BaselineSetMs = 0;
@@ -339,6 +449,28 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         changed = true;
                         break;
                     }
+                    if (sinceRemoval <= shortDelayMs) {
+                        // Still within observation window; keep waiting without failing yet
+                        // Debug: within observation window
+                        var leftMs = (shortDelayMs - sinceRemoval);
+                        logToFile('onboarding', '[p3.s2.step3.wait] ' + player.getName() + ' still observing inventory, msLeft=' + leftMs);
+                        break;
+                    }
+                    // Observation window expired: issue failure and schedule failure reminder
+                    if (step3Chat && step3Chat.failure) tellPlayer(player, step3Chat.failure);
+                    // tellPlayer(player, '&7[dbg] observation window expired; no valid crate found in inventory.');
+                    logToFile('onboarding', '[p3.s2.step3.fail] ' + player.getName() + ' observation window expired; no matching crate detected.');
+                    // Schedule failure reminder after interval
+                    pdata.phase3.stage2FailureReminderDueAt = Date.now() + intervalMs;
+                    pdata.phase3.stage2ShowFailureStart = true;
+                    pdata.phase3.stage2BaselineUUIDs = [];
+                    pdata.phase3.stage2BaselineSetMs = 0;
+                    pdata.phase3.stage2CrateUUID = '';
+                    pdata.phase3.stage2Step2StartShown = false;
+                    pdata.phase3.stage2Step3StartShown = false;
+                    pdata.phase3.currentStep = 1; // back to placing
+                    changed = true;
+                    break;
                     break;
             }
             break;
@@ -366,14 +498,11 @@ function _p3s2_scanCrateInventoryUUIDs(world, pos, radius, lootTablePath) {
 
 function _p3s2_collectCrateInventoryUUIDsFromNbt(nbt, outMap, lootTablePath) {
     if (!nbt) return;
-    // parts are typically indexed part_0..part_63; scan recursively
     for (var i = 0; i < 64; i++) {
         var key = 'part_' + i;
         if (!nbt.has(key)) continue;
         var part = nbt.getCompound(key);
         if (!part) continue;
-
-        // Build mts item id and validate against loot table
         var packID = part.has('packID') ? String(part.getString('packID')) : '';
         var systemName = part.has('systemName') ? String(part.getString('systemName')) : '';
         var subName = part.has('subName') ? String(part.getString('subName')) : '';
@@ -448,10 +577,10 @@ function _p3s2_crateHasAllItems(partNbt, requiredSpecs) {
     var list = inv.getList('Items', 10);
     var size = 0;
     if (list) {
-        if (typeof list.length === 'number') size = list.length; else if (typeof list.size === 'function') size = list.size();
+        if (typeof list.size === 'function') size = list.size(); else if (typeof list.length === 'number') size = list.length;
     }
     for (var i = 0; i < size; i++) {
-        var it = list[i];
+        var it = (list && typeof list.get === 'function') ? list.get(i) : list[i];
         if (!it) continue;
         var iid = it.has('id') ? String(it.getString('id')) : '';
         var dmg = it.has('Damage') ? it.getInteger('Damage') : 0;
@@ -470,4 +599,198 @@ function _p3s2_crateHasAllItems(partNbt, requiredSpecs) {
         if (!present[needKey] || present[needKey] < 1) return false;
     }
     return true;
+}
+
+// Scan player inventory for a crate item matching either a known crateId or any id in the loot table,
+// and verify its embedded inventory contains all required items. Extra items are allowed.
+function _p3s2_crateItemInInventoryHasAll(player, lootTablePath, crateIdHint, requiredSpecs) {
+    var invItems = player.getInventory().getItems();
+    var acceptableIds = {};
+    if (crateIdHint && crateIdHint.length) {
+        acceptableIds[crateIdHint] = true;
+    } else {
+        var loot = pullLootTable(lootTablePath, player) || [];
+        for (var i = 0; i < loot.length; i++) {
+            var le = loot[i];
+            if (!le || !le.id) continue;
+            acceptableIds[le.id] = true; // ignore damage here; MTS crates typically have 0
+        }
+    }
+    for (var j = 0; j < invItems.length; j++) {
+        var st = invItems[j];
+        if (!st || st.isEmpty()) continue;
+        var iid = st.getName();
+        if (!acceptableIds[iid]) continue;
+        // Debug: spotted a candidate crate item in inventory
+        // logToFile('onboarding', '[p3.s2.inv.detect] ' + player.getName() + ' spotted candidate crate in slot=' + j + ' id=' + iid);
+        // tellPlayer(player, '&7[dbg] spotted crate item in inventory: slot=' + j + ' id=' + iid);
+        var nbt = (typeof st.getItemNbt === 'function') ? st.getItemNbt() : (typeof st.getNbt === 'function' ? st.getNbt() : null);
+        if (!nbt) { logToFile('onboarding', '[p3.s2.inv.nobt] ' + player.getName() + ' item has no NBT: id=' + iid + ' slot=' + j); continue; }
+        // Read content of the crate inventory and print a concise summary
+        var contentSummary = '';
+        var contentPairs = [];
+        var totalItems = 0;
+        // Support both top-level and 'tag' wrapped NBT
+        var rootNbt = (nbt.has && nbt.has('tag')) ? nbt.getCompound('tag') : nbt;
+        if (rootNbt && rootNbt.has && rootNbt.has('inventory')) {
+            var inv = rootNbt.getCompound('inventory');
+            if (inv && inv.has('Items')) {
+                var list = inv.getList('Items', 10);
+                var size = 0;
+                if (list) {
+                    if (typeof list.size === 'function') size = list.size(); else if (typeof list.length === 'number') size = list.length;
+                }
+                for (var i2 = 0; i2 < size; i2++) {
+                    var it = (list && typeof list.get === 'function') ? list.get(i2) : list[i2];
+                    if (!it) continue;
+                    var iid2 = it.has('id') ? String(it.getString('id')) : '';
+                    var dmg2 = it.has('Damage') ? it.getInteger('Damage') : 0;
+                    var cnt2 = it.has('Count') ? it.getInteger('Count') : 1;
+                    totalItems += cnt2;
+                    // For matching, we only need id:damage (ignore counts)
+                    contentPairs.push(iid2 + ':' + String(dmg2));
+                }
+            }
+        }
+        contentSummary = contentPairs.join(', ');
+        // tellPlayer(player, '&7[dbg] crate content read: ' + (contentSummary || '(empty)'));
+        // logToFile('onboarding', '[p3.s2.inv.content] ' + player.getName() + ' contentKeys=[' + contentSummary + '] total=' + totalItems);
+
+        tellPlayer(player, '&7[dbg] crate expected items: ' + requiredSpecs.join(', '));
+        // Validate against required specs using a simple comparator
+        if (_p3s2_hasAllRequiredItems(requiredSpecs, contentPairs)) {
+            // tellPlayer(player, '&7[dbg] crate content satisfies all required items.');
+            logToFile('onboarding', '[p3.s2.inv.match] ' + player.getName() + ' crate in slot=' + j + ' matches required specs.');
+            return true;
+        } else {
+            // tellPlayer(player, '&7[dbg] crate content does not yet satisfy required items.');
+            logToFile('onboarding', '[p3.s2.inv.nomatch] ' + player.getName() + ' crate in slot=' + j + ' missing some required items.');
+        }
+    }
+    return false;
+}
+
+// Find status of acceptable crate item in inventory and report missing keys if any.
+function _p3s2_findCrateItemStatusInInventory(player, lootTablePath, crateIdHint, requiredSpecs) {
+    var invItems = player.getInventory().getItems();
+    var acceptableIds = {};
+    if (crateIdHint && crateIdHint.length) acceptableIds[crateIdHint] = true; else {
+        var loot = pullLootTable(lootTablePath, player) || [];
+        for (var i = 0; i < loot.length; i++) { var le = loot[i]; if (le && le.id) acceptableIds[le.id] = true; }
+    }
+    for (var j = 0; j < invItems.length; j++) {
+        var st = invItems[j];
+        if (!st || st.isEmpty()) continue;
+        var iid = st.getName();
+        if (!acceptableIds[iid]) continue;
+        var nbt = (typeof st.getItemNbt === 'function') ? st.getItemNbt() : (typeof st.getNbt === 'function' ? st.getNbt() : null);
+        if (!nbt) continue;
+        var contentPairs = [];
+        var rootNbt = (nbt.has && nbt.has('tag')) ? nbt.getCompound('tag') : nbt;
+        if (rootNbt && rootNbt.has && rootNbt.has('inventory')) {
+            var inv = rootNbt.getCompound('inventory');
+            if (inv && inv.has('Items')) {
+                var list = inv.getList('Items', 10);
+                var size = 0;
+                if (list) { if (typeof list.size === 'function') size = list.size(); else if (typeof list.length === 'number') size = list.length; }
+                for (var i2 = 0; i2 < size; i2++) {
+                    var it = (list && typeof list.get === 'function') ? list.get(i2) : list[i2];
+                    if (!it) continue;
+                    var iid2 = it.has('id') ? String(it.getString('id')) : '';
+                    var dmg2 = it.has('Damage') ? it.getInteger('Damage') : 0;
+                    contentPairs.push(iid2 + ':' + String(dmg2));
+                }
+            }
+        }
+        var missing = _p3s2_getMissingRequiredItems(requiredSpecs || [], contentPairs);
+        if (!missing.length) return { found: true, hasAll: true, slot: j, id: iid };
+        return { found: true, hasAll: false, slot: j, id: iid, missingKeys: missing, contentPairs: contentPairs };
+    }
+    return { found: false };
+}
+
+// Build a list of contentPairs 'mod:id:damage' from a crate entity part NBT.
+function _p3s2_extractContentPairsFromPartNbt(partNbt) {
+    var pairs = [];
+    if (!partNbt || !partNbt.has('inventory')) return pairs;
+    var inv = partNbt.getCompound('inventory');
+    if (!inv || !inv.has('Items')) return pairs;
+    var list = inv.getList('Items', 10);
+    var size = 0;
+    if (list) { if (typeof list.size === 'function') size = list.size(); else if (typeof list.length === 'number') size = list.length; }
+    for (var i = 0; i < size; i++) {
+        var it = (list && typeof list.get === 'function') ? list.get(i) : list[i];
+        if (!it) continue;
+        var iid = it.has('id') ? String(it.getString('id')) : '';
+        var dmg = it.has('Damage') ? it.getInteger('Damage') : 0;
+        pairs.push(iid + ':' + String(dmg));
+    }
+    return pairs;
+}
+
+// Return the list of required keys that are missing from contentPairs (counts aware)
+function _p3s2_getMissingRequiredItems(requiredSpecs, contentPairs) {
+    var present = {};
+    for (var i = 0; i < contentPairs.length; i++) {
+        var key = _p3s2_normalizeSpec(contentPairs[i]);
+        if (key) present[key] = (present[key] || 0) + 1;
+    }
+    var missing = [];
+    for (var r = 0; r < (requiredSpecs || []).length; r++) {
+        var need = _p3s2_normalizeSpec(String(requiredSpecs[r]));
+        if (!need) continue;
+        if (!present[need] || present[need] < 1) missing.push(need); else present[need] = present[need] - 1;
+    }
+    return missing;
+}
+
+// Convert normalized spec keys to display names via world.createItem(id, damage, 1)
+function _p3s2_specsToDisplayNames(world, specs) {
+    var out = [];
+    for (var i = 0; i < (specs || []).length; i++) {
+        var s = String(specs[i]);
+        var parts = s.split(':');
+        if (parts.length < 2) { out.push(s); continue; }
+        var id = parts[0] + ':' + parts[1];
+        var dmg = 0; if (parts.length > 2 && String(parts[2]).match(/^\d+$/)) dmg = parseInt(parts[2], 10);
+        var st = world.createItem(id, dmg, 1);
+        var name = (st && typeof st.getDisplayName === 'function') ? st.getDisplayName() : s;
+        out.push(name);
+    }
+    return out;
+}
+
+// Compare two lists of item keys, ignoring order and extras.
+// requiredSpecs: array of 'mod:id[:damage]' specs.
+// contentPairs: array of 'mod:id:damage' keys from container contents.
+function _p3s2_hasAllRequiredItems(requiredSpecs, contentPairs) {
+    if (!requiredSpecs || !requiredSpecs.length) return false;
+    var present = {};
+    for (var i = 0; i < contentPairs.length; i++) {
+        var key = _p3s2_normalizeSpec(contentPairs[i]);
+        if (key) present[key] = (present[key] || 0) + 1;
+    }
+    for (var r = 0; r < requiredSpecs.length; r++) {
+        var need = _p3s2_normalizeSpec(String(requiredSpecs[r]));
+        if (!need) return false;
+        if (!present[need] || present[need] < 1) return false;
+        // Decrement to support duplicates in requiredSpecs
+        present[need] = present[need] - 1;
+    }
+    return true;
+}
+
+// Normalize 'mod:id[:damage]' or 'mod:id:damage' into 'mod:id:damage'. Defaults damage to 0.
+function _p3s2_normalizeSpec(specStr) {
+    if (!specStr) return null;
+    var s = String(specStr);
+    var parts = s.split(':');
+    if (parts.length < 2) return null;
+    var id = parts[0] + ':' + parts[1];
+    var dmg = 0;
+    if (parts.length > 2) {
+        var d = parts[2];
+        if (String(d).match(/^\d+$/)) dmg = parseInt(d, 10);
+    }
+    return id + ':' + String(dmg);
 }
