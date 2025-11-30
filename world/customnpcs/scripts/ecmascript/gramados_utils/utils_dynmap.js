@@ -17,3 +17,8 @@ function getMarkerXYZ(setName, markerKey) {
     var m = getMarkerData(setName, markerKey);
     return [m.x, m.y, m.z];
 }
+
+function getMarkerName(setName, markerKey) {
+    var m = getMarkerData(setName, markerKey);
+    return m.label;
+}
