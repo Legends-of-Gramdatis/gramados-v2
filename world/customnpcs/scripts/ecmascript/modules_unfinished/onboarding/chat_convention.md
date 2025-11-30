@@ -23,6 +23,9 @@ Separators and logging throughout the 10h onboarding
 - phase separator: &2
 - phase titles: &a
 
+## Phase 3
+- phase separator: &e
+- phase titles: &6
 
 ---
 
@@ -514,11 +517,11 @@ N/A
 &b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.  
 *5 second delay*  
 :map:&6{facility_ferrous} &bis located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:  
-[name:"{facility_ferrous}", x:{facility_ferrous_x}, y:{facility_ferrous_y}, z:{facility_ferrous_z}]  
+[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]  
 
 **Repeat reminder**  
 :lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.
-[name:"{facility_ferrous}", x:{facility_ferrous_x}, y:{facility_ferrous_y}, z:{facility_ferrous_z}]
+[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]
 
 **Completion**
 &a:check_mark: You have arrived at the &6{facility_ferrous} &afacility.
@@ -531,6 +534,9 @@ N/A
 
 **Repeat reminder**  
 :lit: &ePlease approach the trader and right-click them while holding the crate to start the trade.
+
+**Failure**  
+:danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.
 
 **Completion**  
 &a:check_mark: You have successfully sold the ferrous scrap materials from your crate! But the crate is not empty yet.
