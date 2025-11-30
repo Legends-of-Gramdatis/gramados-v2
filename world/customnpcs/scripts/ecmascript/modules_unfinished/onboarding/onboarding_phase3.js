@@ -293,30 +293,29 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         pdata.phase3.stage2Step2LastReminder = Date.now();
                         changed = true; break;
                     }
-                    // Validate crate contents (with missing detection; anti-spam)
+                    // Validate crate contents (show missing list only on item removal)
                     var part = _p3s2_findCratePartByUUID(player.getWorld(), player.getPos(), radius, lootTablePath2, focusId);
                     if (part) {
                         var allItemsCfg = stage1Cfg.items || [];
                         // Build current content pairs and missing list
                         var contentPairsStep2 = _p3s2_extractContentPairsFromPartNbt(part);
                         var missingStep2 = _p3s2_getMissingRequiredItems(allItemsCfg, contentPairsStep2);
-                        if (missingStep2 && missingStep2.length > 0) {
-                            // Anti-spam: only announce when missing set changes
-                            var missKey2 = missingStep2.slice().sort().join(',');
-                            if (pdata.phase3.stage2Step2LastMissingKey !== missKey2) {
-                                pdata.phase3.stage2Step2LastMissingKey = missKey2;
-                                var names2 = _p3s2_specsToDisplayNames(player.getWorld(), missingStep2);
-                                var step2ChatRoot = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : {};
-                                var msgMiss2 = step2ChatRoot && step2ChatRoot.failure_missing_world ? step2ChatRoot.failure_missing_world : (':danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.');
-                                tellPlayer(player, msgMiss2.replace('{items}', names2.join(', ')));
-                                logToFile('onboarding', '[p3.s2.step2.missing.world] ' + player.getName() + ' missing=[' + names2.join(', ') + ']');
-                                changed = true;
-                            }
-                        } else {
-                            // Clear so future removals are re-announced before completion
-                            if (pdata.phase3.stage2Step2LastMissingKey) {
-                                pdata.phase3.stage2Step2LastMissingKey = '';
-                            }
+                        // Count total items (sum of counts) to detect removals
+                        var totalCountNow = _p3s2_countTotalItemsInPartNbt(part);
+                        if (typeof pdata.phase3.stage2Step2LastItemCount !== 'number') {
+                            pdata.phase3.stage2Step2LastItemCount = totalCountNow;
+                        }
+                        if (missingStep2 && missingStep2.length > 0 && totalCountNow < pdata.phase3.stage2Step2LastItemCount) {
+                            var names2 = _p3s2_specsToDisplayNames(player.getWorld(), missingStep2);
+                            var step2ChatRoot = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : {};
+                            var msgMiss2 = step2ChatRoot && step2ChatRoot.failure_missing_world ? step2ChatRoot.failure_missing_world : (':danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.');
+                            tellPlayer(player, msgMiss2.replace('{items}', names2.join(', ')));
+                            logToFile('onboarding', '[p3.s2.step2.missing.world] ' + player.getName() + ' count ' + pdata.phase3.stage2Step2LastItemCount + ' -> ' + totalCountNow + ', missing=[' + names2.join(', ') + ']');
+                            pdata.phase3.stage2Step2LastItemCount = totalCountNow; // update to current to avoid spam
+                            changed = true;
+                        } else if (totalCountNow > pdata.phase3.stage2Step2LastItemCount) {
+                            // Items added -> update baseline silently
+                            pdata.phase3.stage2Step2LastItemCount = totalCountNow;
                         }
                         if (_p3s2_crateHasAllItems(part, allItemsCfg)) {
                             var step2ChatComp = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : null;
@@ -325,6 +324,8 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             pdata.phase3.stage2Step3AvailableAt = Date.now() + shortDelayMs;
                             pdata.phase3.currentStep = 3; // scaffold for next step (picking up)
                             pdata.phase3.stage2FilledAt = Date.now();
+                            // Clear step2 counters
+                            pdata.phase3.stage2Step2LastItemCount = 0;
                             changed = true; break;
                         }
                     }
@@ -742,6 +743,26 @@ function _p3s2_getMissingRequiredItems(requiredSpecs, contentPairs) {
         if (!present[need] || present[need] < 1) missing.push(need); else present[need] = present[need] - 1;
     }
     return missing;
+}
+
+// Sum of item counts in a crate part's inventory (uses NBT 'Count' per entry; defaults to 1 if missing)
+function _p3s2_countTotalItemsInPartNbt(partNbt) {
+    if (!partNbt || !partNbt.has('inventory')) return 0;
+    var inv = partNbt.getCompound('inventory');
+    if (!inv || !inv.has('Items')) return 0;
+    var list = inv.getList('Items', 10);
+    var size = 0;
+    if (list) { if (typeof list.size === 'function') size = list.size(); else if (typeof list.length === 'number') size = list.length; }
+    var total = 0;
+    for (var i = 0; i < size; i++) {
+        var it = (list && typeof list.get === 'function') ? list.get(i) : list[i];
+        if (!it) continue;
+        var cnt = it.has('Count') ? it.getByte('Count') : 1;
+        // getByte returns signed; ensure positive integer handling
+        if (cnt < 0) cnt = 256 + cnt; // wrap to unsigned byte range if needed
+        total += cnt;
+    }
+    return total;
 }
 
 // Convert normalized spec keys to display names via world.createItem(id, damage, 1)
