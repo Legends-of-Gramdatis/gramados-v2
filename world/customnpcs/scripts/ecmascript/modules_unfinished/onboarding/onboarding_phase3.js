@@ -8,6 +8,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_dynmap.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 
 // Runner returns true when pdata changed
 function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
@@ -140,8 +142,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             pdata.phase3.stage1CrateGiven = true;
                             pdata.phase3.stage1CrateGivenTime = Date.now();
                             // Completion message
-                            var completionMsg = stage1Cfg.chat && stage1Cfg.chat.completion ? stage1Cfg.chat.completion : null;
-                            if (completionMsg) tellPlayer(player, completionMsg);
+                            tellPlayer(player, stage1Cfg.chat.completion);
                             logToFile('onboarding', '[p3.stage1.crate] ' + player.getName() + ' awarded crate from ' + ltPath);
                             // Mark completion of stage1 (future stages will advance beyond this)
                             pdata.phase3.stage1Completed = true;
@@ -170,7 +171,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         changed = true;
                         break;
                     }
-                    if ((Date.now() - pdata.phase3.stage2DelayStartMs) >= mediumDelayMs) {
+                    if ((Date.now() - pdata.phase3.stage2DelayStartMs) >= 0) {
                         // Move to step 1: announce and capture baseline
                         pdata.phase3.currentStep = 1;
                         // Clear any previously stored state
@@ -244,7 +245,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         var s1ChatRoot = (stage2CfgRoot && stage2CfgRoot.step1 && stage2CfgRoot.step1.chat) ? stage2CfgRoot.step1.chat : null;
                         if (s1ChatRoot && s1ChatRoot.completion) tellPlayer(player, s1ChatRoot.completion);
                         // Move to Step 2 after a short delay (no separator between steps)
-                        pdata.phase3.stage2Step2AvailableAt = Date.now() + shortDelayMs;
+                        // pdata.phase3.stage2Step2AvailableAt = Date.now() + shortDelayMs;
                         pdata.phase3.currentStep = 2; // move to filling
                         changed = true; break;
                     }
@@ -259,9 +260,9 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     break;
                 case 2: // 3.2.2 Step 2 - Filling the crate
                     // Wait short delay between previous completion and this step's start message
-                    if (pdata.phase3.stage2Step2AvailableAt && Date.now() < pdata.phase3.stage2Step2AvailableAt) {
-                        break;
-                    }
+                    // if (pdata.phase3.stage2Step2AvailableAt && Date.now() < pdata.phase3.stage2Step2AvailableAt) {
+                    //     break;
+                    // }
                     var focusId = pdata.phase3.stage2CrateUUID || '';
                     if (!focusId) {
                         // Should not happen, re-enter step 1
@@ -321,7 +322,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             var step2ChatComp = (stage2CfgRoot && stage2CfgRoot.step2 && stage2CfgRoot.step2.chat) ? stage2CfgRoot.step2.chat : null;
                             if (step2ChatComp && step2ChatComp.completion) tellPlayer(player, step2ChatComp.completion);
                             // Move to Step 3 after a short delay (no separator between steps)
-                            pdata.phase3.stage2Step3AvailableAt = Date.now() + shortDelayMs;
+                            pdata.phase3.stage2Step3AvailableAt = Date.now();
                             pdata.phase3.currentStep = 3; // scaffold for next step (picking up)
                             pdata.phase3.stage2FilledAt = Date.now();
                             // Clear step2 counters
@@ -424,9 +425,10 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         tellPlayer(player, step3Chat.completion);
                         logToFile('onboarding', '[p3.s2.step3.success] ' + player.getName() + ' matching crate found in inventory within observation window.');
                         pdata.phase3.stage2PickupCompleted = true;
-                        // Advance to future Stage 3 (selling) scaffold
-                        pdata.phase3.currentStage = 3; // not yet implemented
-                        pdata.phase3.currentStep = 1;
+                        // Gate Stage 3 start with a medium delay
+                        pdata.phase3.currentStage = 3;
+                        pdata.phase3.currentStep = 0; // waiting gate before Stage 3 step 1
+                        pdata.phase3.stage3DelayStartMs = Date.now();
                         // Reset transient state
                         pdata.phase3.stage2Step3RemovedAt = 0;
                         changed = true;
@@ -475,8 +477,68 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     break;
             }
             break;
+        case 3: // 3.3 Stage 3 - Selling Crate Contents
+            var stage3Cfg = phaseCfg.stages.stage3;
+            var facilities = stage3Cfg.facilities;
+            // Use first facility (FerraSol) by default
+            var fac = facilities[0];
+            var s1chat = stage3Cfg.step1.chat;
+            switch(step){
+                case 0: // Waiting gate before starting Stage 3 messages
+                    if (!pdata.phase3.stage3DelayStartMs) {
+                        pdata.phase3.stage3DelayStartMs = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    if ((Date.now() - pdata.phase3.stage3DelayStartMs) >= mediumDelayMs) {
+                        pdata.phase3.currentStep = 1;
+                        changed = true;
+                    }
+                    break;
+                case 1: // 3.3.1 Step 1 - Heading to the facility
+                    var fac_name = getMarkerName(fac.dynmap_set, fac.dynmap_marker);
+                    var fac_marker = getMarkerXYZ(fac.dynmap_set, fac.dynmap_marker);
+                    if (!pdata.phase3.s3_step1Init) {
+                        tellSeparatorTitle(player, 'Heading to the Selling Facility', '&e', '&6');
+                        tellPlayer(player, s1chat.intro.replace('{facility_ferrous}', fac_name));
+                        pdata.phase3.s3_step1Init = true;
+                        pdata.phase3.s3_step1IntroAt = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    if (!pdata.phase3.s3_step1HintShown) {
+                        var sinceIntro = Date.now() - pdata.phase3.s3_step1IntroAt;
+
+                        if (sinceIntro >= shortDelayMs) {
+                            tellPlayer(player, s1chat.journeymap_hint.replace('{facility_ferrous}', fac_name));
+                            tellPlayer(player, s1chat.journeymap_waypoint.replace('{facility_ferrous}', fac_name).replace('{x}', fac_marker[0]).replace('{y}', fac_marker[1]).replace('{z}', fac_marker[2]));
+                            pdata.phase3.s3_step1HintShown = true;
+                            pdata.phase3.s3_step1LastMsg = Date.now();
+                            changed = true;
+                        }
+                    } else {
+                        var lastMsg = pdata.phase3.s3_step1LastMsg;
+                        if ((Date.now() - lastMsg) >= intervalMs) {
+                            tellPlayer(player, s1chat.reminder.replace('{facility_ferrous}', fac_name));
+                            tellPlayer(player, s1chat.journeymap_waypoint.replace('{facility_ferrous}', fac_name).replace('{x}', fac_marker[0]).replace('{y}', fac_marker[1]).replace('{z}', fac_marker[2]));
+                            pdata.phase3.s3_step1LastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    // Completion when entering facility cuboid
+                    if (isPlayerInCuboid(player, fac.cuboid)) {
+                        tellPlayer(player, s1chat.completion.replace('{facility_ferrous}', fac_name));
+                        pdata.phase3.currentStep = 2; // next step of Stage 3
+                        pdata.phase3.s3_arrivedAt = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            break;
         default:
-            // Future stages not yet implemented
             break;
     }
 
@@ -814,4 +876,15 @@ function _p3s2_normalizeSpec(specStr) {
         if (String(d).match(/^\d+$/)) dmg = parseInt(d, 10);
     }
     return id + ':' + String(dmg);
+}
+
+// Local helper duplicated for inside checks
+function __onboarding_isInside(x, y, z, p1, p2) {
+    var minX = Math.min(p1[0], p2[0]);
+    var maxX = Math.max(p1[0], p2[0]);
+    var minY = Math.min(p1[1], p2[1]);
+    var maxY = Math.max(p1[1], p2[1]);
+    var minZ = Math.min(p1[2], p2[2]);
+    var maxZ = Math.max(p1[2], p2[2]);
+    return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 }
