@@ -1418,9 +1418,6 @@
     "immersiveengineering:hoe_steel:0": {
         "value": 20000
     },
-    "immersiveengineering:metal:0": {
-        "value": 1000
-    },
     "immersiveengineering:metal:3": {
         "value": 10000
     },
@@ -4313,5 +4310,145 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "immersiveengineering:metal:34": {
+        "value": 7500,
+        "ore_override": false,
+        "ore": {
+            "nickel": 0.5
+        }
+    },
+    "mts:mtsofficialpack.screws:0": {
+        "value": 7500,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.012,
+            "nickel": 0.004
+        }
+    },
+    "immersiveengineering:material:2": {
+        "display_name": "Steel Rod",
+        "value": 4000,
+        "ore_override": false,
+        "ore": {
+            "steel": 2
+        }
+    },
+    "immersiveengineering:material:9": {
+        "display_name": "Steel Mechanical Component",
+        "value": 500,
+        "ore_override": true,
+        "ore": {
+            "steel": 0.25
+        }
+    },
+    "immersiveengineering:material:8": {
+        "display_name": "Iron Mechanical Component",
+        "value": 250,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "mts:mtsofficialpack.spring:0": {
+        "value": 250,
+        "ore_override": false,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "variedcommodities:ingot_steel:0": {
+        "value": 2000,
+        "ore_override": false,
+        "ore": {
+            "steel": 1
+        }
+    },
+    "immersiveengineering:metal:18": {
+        "display_name": "Iron Grit",
+        "value": 250,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "immersiveengineering:metal:39": {
+        "display_name": "Iron Plate",
+        "value": 2500,
+        "ore_override": true,
+        "ore": {
+            "iron": 2.5
+        }
+    },
+    "mts:mtsofficialpack.copperwire:0": {
+        "value": 3000,
+        "ore_override": false,
+        "ore": {
+            "copper": 0.5
+        }
+    },
+    "variedcommodities:lead_pipe:0": {
+        "value": 8000,
+        "ore_override": false,
+        "ore": {
+            "lead": 2
+        }
+    },
+    "immersiveengineering:metal:15": {
+        "display_name": "Constantan Grit",
+        "value": 2250,
+        "ore_override": true,
+        "ore": {
+            "constantan": 0.25
+        }
+    },
+    "immersiveengineering:metal:19": {
+        "display_name": "Gold Grit",
+        "value": 3600,
+        "ore_override": false,
+        "ore": {
+            "gold": 0.02
+        }
+    },
+    "immersiveengineering:metal:0": {
+        "display_name": "Copper Ingot",
+        "value": 6000,
+        "ore_override": false,
+        "ore": {
+            "copper": 1
+        }
+    },
+    "immersiveengineering:metal:30": {
+        "display_name": "Copper Plate",
+        "value": 15000,
+        "ore_override": false,
+        "ore": {
+            "copper": 2.5
+        }
+    },
+    "mts:mtsofficialpack.smallarmscartridge:0": {
+        "display_name": "Small Empty Casings",
+        "value": 500,
+        "ore_override": true,
+        "ore": {
+            "copper": 0.05,
+            "lead": 0.05
+        }
+    },
+    "immersiveengineering:material:3": {
+        "display_name": "Aluminum Rod",
+        "value": 6000,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 2
+        }
+    },
+    "immersiveengineering:material:21": {
+        "display_name": "Electrum Wire",
+        "value": 5000,
+        "ore_override": false,
+        "ore": {
+            "electrum": 0.05
+        }
     }
 }
