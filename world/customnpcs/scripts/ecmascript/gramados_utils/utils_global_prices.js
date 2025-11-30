@@ -2,6 +2,46 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exchange_data.json";
+var ORE_MARKET_JSON_PATH = "world/customnpcs/scripts/globals/ore_market.json";
+
+/**
+ * Calculates the scrap (ore composition) value of an item if defined.
+ * The item entry must contain an `ore` object mapping component name -> amount.
+ * Component names are matched against keys in `ore_market.json` as `ore:<component>`.
+ * Returns null when not applicable (no entry, no ore data, or missing market data).
+ * @param {string} itemId - The item ID (may omit :damage; will be normalized).
+ * @param {Object|null} itemTag - Optional NBT tag (used only when pricing entry stored with tag key).
+ * @param {boolean} ignoreNBT - If true, ignore tag when forming lookup key.
+ * @returns {number|null} - Scrap value in cents or null if not applicable.
+ */
+function getScrapValue(itemId, itemTag, ignoreNBT) {
+    // Normalize missing damage suffix
+    if (!/^.+:.+:\d+$/.test(itemId)) {
+        itemId += ":0";
+    }
+
+    var globalPrices;
+    globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
+
+    var uniqueKey = (itemTag && !ignoreNBT) ? (itemId + "|" + JSON.stringify(itemTag)) : itemId;
+    var entry = globalPrices[uniqueKey];
+    if (!entry || !entry.ore || typeof entry.ore !== 'object') { return null; }
+
+    var oreMarket;
+    oreMarket = loadJson(ORE_MARKET_JSON_PATH);
+
+    var unitValue = 0;
+    for (var comp in entry.ore) {
+        if (!entry.ore.hasOwnProperty(comp)) { continue; }
+        var amount = entry.ore[comp];
+        var marketKey = 'ore:' + comp;
+        if (!oreMarket.hasOwnProperty(marketKey)) { continue; }
+        var current = oreMarket[marketKey].current_price || 0;
+        unitValue += (amount * current);
+    }
+    if (unitValue <= 0) { return null; }
+    return Math.round(unitValue);
+}
 
 /**
  * Gets the price of an item by its ID and NBT.
@@ -40,6 +80,14 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
     var itemData = globalPrices[uniqueKey];
     // logToFile("dev", "Found itemData for itemId: " + itemId + ", itemData: " + JSON.stringify(itemData));
 
+    // Ore override: if flagged, try scrap value first
+    if (itemData && itemData.ore_override === true) {
+        var scrap = getScrapValue(itemId, itemTag, ignoreNBT);
+        if (scrap !== null) {
+            return scrap;
+        }
+    }
+
     if (itemData.tag && !ignoreNBT) {
         if (JSON.stringify(itemData.tag) === JSON.stringify(itemTag)) {
             if (itemData.stock_link) {
@@ -58,7 +106,7 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
                 return stockPrices[itemData.stock_link].current_price;
             }
         }
-        // logToFile("dev", "Returning price for itemId: " + itemId + ", value: " + itemData.value);
+        // If ore_override true but scrap not applicable, fall back to value
         return itemData.value;
     }
 

@@ -9,6 +9,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_crate.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js'); // provides getPrice & getScrapValue
 
 // Constants
 var GLOBAL_PRICES_PATH = 'world/customnpcs/scripts/globals/global_prices.json';
@@ -37,20 +38,19 @@ function interact(event) {
         return;
     }
 
+    // Pricing data loaded internally by getPrice; we retain legacy load for existence check fallback
     var pricingData = loadJsonSafe(GLOBAL_PRICES_PATH, {});
-    var oreMarket = loadJsonSafe(ORE_MARKET_PATH, {});
 
     var totalCents = 0;
     var soldMap = {};
 
     var entries = crate_readEntries(held);
-    var crateStack = 1;
-    try { crateStack = held.getStackSize(); } catch (e) { crateStack = 1; }
+    var crateStack = held.getStackSize();
 
     for (var i = 0; i < entries.length; i++) {
         var entry = entries[i];
         var key = entry.id + ':' + entry.damage;
-        var unitCents = priceUnitFromOreOrValue(key, pricingData, oreMarket);
+        var unitCents = getScrapValue(key, entry.tag, false);
         if (unitCents > 0) {
             var qty = entry.count * crateStack;
             totalCents += unitCents * qty;
@@ -69,27 +69,6 @@ function interact(event) {
     crate_clearSold(held, soldMap);
 
     npc.say(ccs('&aPurchased scrap for &6' + getAmountCoin(totalCents) + '&a; paid to your pouch.'));
-}
-
-function priceUnitFromOreOrValue(itemKey, pricingData, oreMarket) {
-    var entry = pricingData.hasOwnProperty(itemKey) ? pricingData[itemKey] : null;
-    if (!entry) { return 0; }
-
-    if (entry.ore) {
-        var unitValue = 0;
-        for (var comp in entry.ore) {
-            var amount = entry.ore[comp];
-            var marketKey = 'ore:' + comp;
-            if (!oreMarket.hasOwnProperty(marketKey)) { continue; }
-            var current = oreMarket[marketKey].current_price || 0;
-            unitValue += (amount * current);
-        }
-        return Math.round(unitValue);
-    }
-    if (typeof entry.value === 'number') {
-        return Math.round(entry.value);
-    }
-    return 0;
 }
 
 function loadJsonSafe(path, def) {
