@@ -250,8 +250,7 @@
                             "failure_reminder": ":danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.",
                             "completion": "&a:check_mark: You have successfully filled the crate with all your scrap items!"
                         }
-                    }
-                    ,
+                    },
                     "step3": {
                         "chat": {
                             "start": "&b:sun: Great job filling the crate! Now, please pick up the crate so you can move it with all its contents.",
@@ -261,6 +260,29 @@
                             "failure": ":danger: &eWe didn't detect the crate in your inventory. Place it back down and try again.",
                             "failure_reminder": ":danger: &eStill no crate detected in your inventory. Place it back down and pick it up again once it's correctly filled.",
                             "completion": "&a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside."
+                        }
+                    }
+                },
+                "stage3": {
+                    "facilities": [
+                        {
+                            "cuboid": "Gramados_GramadosCity_ScraparStreet_FerraSolRecyclers_Facility",
+                            "dynmap_set": "Junk Yards",
+                            "dynmap_marker": "marker_5"
+                        },
+                        {
+                            "cuboid": "Gramados_GramadosCity_CarpoStreet_CobrexBuyingPoint_Facility",
+                            "dynmap_set": "Junk Yards",
+                            "dynmap_marker": "marker_4"
+                        }
+                    ],
+                    "step1": {
+                        "chat": {
+                            "intro": "&b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.",
+                            "journeymap_hint": ":map:&6{facility_ferrous} &bis located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:",
+                            "journeymap_waypoint": "[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]",
+                            "reminder": ":lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.",
+                            "completion": "&a:check_mark: You have arrived at the &6{facility_ferrous} &afacility."
                         }
                     }
                 }
