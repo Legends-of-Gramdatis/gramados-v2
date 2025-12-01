@@ -534,6 +534,52 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         break;
                     }
                     break;
+                case 2: // 3.3.2 Step 2 - Selling the crate's contents (ferrous preset)
+                    var s2chat = (stage3Cfg && stage3Cfg.step2 && stage3Cfg.step2.chat) ? stage3Cfg.step2.chat : null;
+                    if (!pdata.phase3.s3_step2Init) {
+                        if (s2chat && s2chat.start) tellPlayer(player, s2chat.start);
+                        pdata.phase3.s3_step2Init = true;
+                        pdata.phase3.s3_step2LastMsg = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    // Periodic reminder
+                    if (s2chat && s2chat.reminder) {
+                        var lastMsg2 = pdata.phase3.s3_step2LastMsg || 0;
+                        if ((Date.now() - lastMsg2) >= intervalMs) {
+                            tellPlayer(player, s2chat.reminder);
+                            pdata.phase3.s3_step2LastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    var economyLogPath = 'world/customnpcs/scripts/logs/economy.json';
+                    var econ = loadJson(economyLogPath);
+                    var pname = player.getName();
+                    var entries = (econ && econ[pname]) ? econ[pname] : null;
+                    if (!entries || !entries.length) {
+                        break;
+                    }
+                    var foundFerrousSale = false;
+                    for (var ei = 0; ei < entries.length; ei++) {
+                        var rec = entries[ei];
+                        if (!rec) continue;
+                        var t = rec.type;
+                        var p = rec.preset;
+                        if (t === 'scrap_sale' && p === 'ferrous') { foundFerrousSale = true; break; }
+                    }
+                    if (foundFerrousSale) {
+                        // Mark step completion; advance to next step placeholder
+                        pdata.phase3.s3_step2Completed = true;
+                        pdata.phase3.s3_step2CompletedAt = Date.now();
+                        // Announce stage step completion
+                        if (s2chat && s2chat.completion) tellPlayer(player, s2chat.completion);
+                        logToFile('onboarding', '[p3.s3.step2.complete] ' + pname + ' ferrous scrap sale detected in logs.');
+                        pdata.phase3.currentStep = 3; // advance to next step (future implementation)
+                        changed = true;
+                        break;
+                    }
+                    // Otherwise, keep waiting until the log reflects the sale.
+                    break;
                 default:
                     break;
             }

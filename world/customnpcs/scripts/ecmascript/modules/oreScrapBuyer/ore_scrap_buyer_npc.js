@@ -37,7 +37,7 @@ function init(event) {
             CURRENT_PRESET = stored;
             // Friendly RP-ready confirmation
             var presetPretty = (PRESETS_DATA && PRESETS_DATA.presets && PRESETS_DATA.presets[CURRENT_PRESET] && PRESETS_DATA.presets[CURRENT_PRESET].display_name) ? PRESETS_DATA.presets[CURRENT_PRESET].display_name : CURRENT_PRESET;
-            npc.say('&aAll set - I have my instructions. I will accept: ' + presetPretty + '. Hold a crate and I shall appraise it.');
+            // npc.say('&aAll set - I have my instructions. I will accept: ' + presetPretty + '. Hold a crate and I shall appraise it.');
         } else {
             CURRENT_PRESET = null;
             npc.say("&eI'm terribly sorry - I haven't been given my orders. My supervisor never told me which metals to accept. Please ask the server's superiors (admins) to set my preset.");

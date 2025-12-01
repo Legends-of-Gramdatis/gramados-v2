@@ -10,6 +10,7 @@ This module lives under `modules_unfinished/onboarding/` and will move to `modul
 - Phase 1: Starter room assignment, confinement to hotel/room until setup is done, registering a home with `!setHome`, and using `!myHomes`/`!home`.
 - Phase 2: Money Pouch tutorial: checking `!myMoney`, depositing/withdrawing, multi-withdraw (`!withdraw 1g 6`), and a first purchase in the canteen.
 - Phase 3: Scrap for a Start: learn crates by packing and selling a mixed scrap crate. Stage 1 gives 18 scrap items and a random crate (loot table is configurable), then guides packing and selling at two facilities.
+	- Stage 3 Step 2 (Selling): This step completes when the player's economy log (`world/customnpcs/scripts/logs/economy.json`) contains any entry with `type: "scrap_sale"` and `preset: "ferrous"` under their name. No in-game checks are performed; the sale is inferred from the log.
 - Phase separators appear at the end of each phase with color-coded titles (see “Color/Chat Conventions”).
 - When Phase 1 completes, players receive a badge/emote reward.
 

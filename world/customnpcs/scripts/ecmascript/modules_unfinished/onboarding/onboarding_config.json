@@ -284,6 +284,14 @@
                             "reminder": ":lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.",
                             "completion": "&a:check_mark: You have arrived at the &6{facility_ferrous} &afacility."
                         }
+                    },
+                    "step2": {
+                        "chat": {
+                            "start": "&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, it's time to sell your crate filled with ferrous scrap materials. Approach the trader and right-click the trader NPC while holding the crate in your hand to start the trade. The trader will automatically take what they need from the crate and pay you accordingly.",
+                            "reminder": ":lit: &ePlease approach the trader and right-click them while holding the crate to start the trade.",
+                            "failure": ":danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.",
+                            "completion": "&a:check_mark: You have successfully sold the ferrous scrap materials from your crate! But the crate is not empty yet."
+                        }
                     }
                 }
             }
