@@ -279,7 +279,7 @@
                     "step1": {
                         "chat": {
                             "intro": "&b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.",
-                            "journeymap_hint": ":map:&6{facility_ferrous} &bis located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:",
+                            "journeymap_hint": ":map: &6{facility_ferrous} &7is located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:",
                             "journeymap_waypoint": "[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]",
                             "reminder": ":lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.",
                             "completion": "&a:check_mark: You have arrived at the &6{facility_ferrous} &afacility."
@@ -287,10 +287,28 @@
                     },
                     "step2": {
                         "chat": {
-                            "start": "&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, it's time to sell your crate filled with ferrous scrap materials. Approach the trader and right-click the trader NPC while holding the crate in your hand to start the trade. The trader will automatically take what they need from the crate and pay you accordingly.",
-                            "reminder": ":lit: &ePlease approach the trader and right-click them while holding the crate to start the trade.",
+                            "start": "&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, you are able to sell ferrous scrap materials from your crate. Find the trader and right-click him while holding the crate. He will automatically take what he needs from the crate and pay you accordingly.",
+                            "reminder": ":lit: &ePlease find the trader and right-click him while holding the crate.",
                             "failure": ":danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.",
                             "completion": "&a:check_mark: You have successfully sold the ferrous scrap materials from your crate! But the crate is not empty yet."
+                        }
+                    },
+                    "step3": {
+                        "chat": {
+                            "intro": "&b:sun: Now that you have sold the ferrous scrap materials, it's time to sell the remaining non-ferrous scrap from your crate. Please head over to the &6{facility_nonferrous} &bto sell your non-ferrous scrap materials.",
+                            "journeymap_hint": ":map: &6{facility_nonferrous} &7is located at the South-West of Gramados City, near the industrial area. Click here to open it in your Minimap:",
+                            "journeymap_waypoint": "[name:\"{facility_nonferrous}\", x:{x}, y:{y}, z:{z}]",
+                            "reminder": ":lit: &ePlease head over to the &6{facility_nonferrous} &eto sell your non-ferrous scrap materials.",
+                            "completion": "&a:check_mark: You have arrived at the &6{facility_nonferrous} &afacility."
+                        }
+                    },
+                    "step4": {
+                        "chat": {
+                            "start": "&b:sun: Now that you are at the &6{facility_nonferrous} &bfacility, sell the remaining non-ferrous scrap from your crate. Find the trader and right-click them while holding the crate.",
+                            "reminder": ":lit: &ePlease find the trader and right-click them while holding the crate to start the trade.",
+                            "failure": ":danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_nonferrous}&e while keeping the crate in your inventory.",
+                            "completion": "&a:check_mark: You have successfully sold the non-ferrous scrap materials from your crate!",
+                            "phase_completion": "&b:star: You have completed the Scrap for a Start tutorial! You have learned how to pack, deliver, and sell goods using the crate system."
                         }
                     }
                 }

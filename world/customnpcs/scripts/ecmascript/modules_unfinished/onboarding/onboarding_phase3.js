@@ -88,7 +88,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             return changed;
                         }
                         // Start message
-                        tellSeparatorTitle(player, "Salvaged Mess", '&e', '&a');
+                        tellSeparatorTitle(player, "Salvaged Mess", '&e', '&6');
                         var startMsg = stage1Cfg.chat.start;
                         var delaySec = Math.floor(shortDelayMs / 1000);
                         tellPlayer(player, String(startMsg).replace('{delay}', String(delaySec)));
@@ -186,7 +186,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     if (!pdata.phase3.stage2BaselineSetMs) {
                         // Show separator only the first time Stage 2 is entered (avoid repeat on resets)
                         if (!pdata.phase3.stage2BannerShown) {
-                            tellSeparatorTitle(player, 'Packing the Crate', '&e', '&a');
+                            tellSeparatorTitle(player, 'Packing the Crate', '&e', '&6');
                             pdata.phase3.stage2BannerShown = true;
                         }
                         var stage2Cfg = (phaseCfg.stages.stage2) ? phaseCfg.stages.stage2 : null;
@@ -482,6 +482,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
             var facilities = stage3Cfg.facilities;
             // Use first facility (FerraSol) by default
             var fac = facilities[0];
+            var fac2 = facilities.length > 1 ? facilities[1] : null; // Non-ferrous facility
             var s1chat = stage3Cfg.step1.chat;
             switch(step){
                 case 0: // Waiting gate before starting Stage 3 messages
@@ -509,7 +510,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     if (!pdata.phase3.s3_step1HintShown) {
                         var sinceIntro = Date.now() - pdata.phase3.s3_step1IntroAt;
 
-                        if (sinceIntro >= shortDelayMs) {
+                        if (sinceIntro >= mediumDelayMs) {
                             tellPlayer(player, s1chat.journeymap_hint.replace('{facility_ferrous}', fac_name));
                             tellPlayer(player, s1chat.journeymap_waypoint.replace('{facility_ferrous}', fac_name).replace('{x}', fac_marker[0]).replace('{y}', fac_marker[1]).replace('{z}', fac_marker[2]));
                             pdata.phase3.s3_step1HintShown = true;
@@ -535,9 +536,11 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     }
                     break;
                 case 2: // 3.3.2 Step 2 - Selling the crate's contents (ferrous preset)
-                    var s2chat = (stage3Cfg && stage3Cfg.step2 && stage3Cfg.step2.chat) ? stage3Cfg.step2.chat : null;
+                    var fac_name = getMarkerName(fac.dynmap_set, fac.dynmap_marker);
+                    var fac_marker = getMarkerXYZ(fac.dynmap_set, fac.dynmap_marker);
+                    var s2chat = stage3Cfg.step2.chat;
                     if (!pdata.phase3.s3_step2Init) {
-                        if (s2chat && s2chat.start) tellPlayer(player, s2chat.start);
+                        tellPlayer(player, s2chat.start.replace('{facility_ferrous}', fac_name));
                         pdata.phase3.s3_step2Init = true;
                         pdata.phase3.s3_step2LastMsg = Date.now();
                         changed = true;
@@ -560,25 +563,155 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         break;
                     }
                     var foundFerrousSale = false;
+                    var foundIndex = -1;
                     for (var ei = 0; ei < entries.length; ei++) {
                         var rec = entries[ei];
                         if (!rec) continue;
                         var t = rec.type;
                         var p = rec.preset;
-                        if (t === 'scrap_sale' && p === 'ferrous') { foundFerrousSale = true; break; }
+                        var scanned = (typeof rec.scanned_by_onboarding !== 'undefined') ? !!rec.scanned_by_onboarding : false;
+                        if (t === 'scrap_sale' && p === 'ferrous' && !scanned) { foundFerrousSale = true; foundIndex = ei; break; }
                     }
                     if (foundFerrousSale) {
+                        // Tag the matched log entry to allow re-testing without immediate auto-complete
+                        try {
+                            entries[foundIndex].scanned_by_onboarding = true;
+                            saveJson(econ, economyLogPath);
+                        } catch (logErr) {
+                            // Per onboarding rules, avoid try/catch unless necessary; here we log error and continue
+                            logToFile('onboarding', '[p3.s3.step2.tag.error] ' + pname + ' failed to tag economy log: ' + logErr);
+                        }
                         // Mark step completion; advance to next step placeholder
                         pdata.phase3.s3_step2Completed = true;
                         pdata.phase3.s3_step2CompletedAt = Date.now();
                         // Announce stage step completion
                         if (s2chat && s2chat.completion) tellPlayer(player, s2chat.completion);
                         logToFile('onboarding', '[p3.s3.step2.complete] ' + pname + ' ferrous scrap sale detected in logs.');
-                        pdata.phase3.currentStep = 3; // advance to next step (future implementation)
+                        pdata.phase3.currentStep = 3; // advance to Step 3 (non-ferrous heading)
                         changed = true;
                         break;
                     }
                     // Otherwise, keep waiting until the log reflects the sale.
+                    break;
+                case 3: // 3.3.3 Step 3 - Heading to the non-ferrous facility
+                    if (!fac2) { logToFile('onboarding', '[p3.s3.step3.error] Non-ferrous facility missing in config.'); break; }
+                    var s3chat = (stage3Cfg && stage3Cfg.step3 && stage3Cfg.step3.chat) ? stage3Cfg.step3.chat : null;
+                    var fac2_name = getMarkerName(fac2.dynmap_set, fac2.dynmap_marker);
+                    var fac2_marker = getMarkerXYZ(fac2.dynmap_set, fac2.dynmap_marker);
+                    // Gate Step 3 start with a medium delay
+                    if (!pdata.phase3.s3_step3GateStartMs) {
+                        pdata.phase3.s3_step3GateStartMs = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    if ((Date.now() - pdata.phase3.s3_step3GateStartMs) < mediumDelayMs) {
+                        break;
+                    }
+                    if (!pdata.phase3.s3_step3Init) {
+                        tellSeparatorTitle(player, 'Heading to the Selling Facility', '&e', '&6');
+                        if (s3chat && s3chat.intro) tellPlayer(player, s3chat.intro.replace('{facility_nonferrous}', fac2_name));
+                        pdata.phase3.s3_step3Init = true;
+                        pdata.phase3.s3_step3IntroAt = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    if (!pdata.phase3.s3_step3HintShown) {
+                        var sinceIntro3 = Date.now() - pdata.phase3.s3_step3IntroAt;
+                        if (sinceIntro3 >= mediumDelayMs) {
+                            if (s3chat && s3chat.journeymap_hint) tellPlayer(player, s3chat.journeymap_hint.replace('{facility_nonferrous}', fac2_name));
+                            if (s3chat && s3chat.journeymap_waypoint) tellPlayer(player, s3chat.journeymap_waypoint.replace('{facility_nonferrous}', fac2_name).replace('{x}', fac2_marker[0]).replace('{y}', fac2_marker[1]).replace('{z}', fac2_marker[2]));
+                            pdata.phase3.s3_step3HintShown = true;
+                            pdata.phase3.s3_step3LastMsg = Date.now();
+                            changed = true;
+                        }
+                    } else {
+                        var lastMsg3 = pdata.phase3.s3_step3LastMsg || 0;
+                        if ((Date.now() - lastMsg3) >= intervalMs) {
+                            if (s3chat && s3chat.reminder) tellPlayer(player, s3chat.reminder.replace('{facility_nonferrous}', fac2_name));
+                            if (s3chat && s3chat.journeymap_waypoint) tellPlayer(player, s3chat.journeymap_waypoint.replace('{facility_nonferrous}', fac2_name).replace('{x}', fac2_marker[0]).replace('{y}', fac2_marker[1]).replace('{z}', fac2_marker[2]));
+                            pdata.phase3.s3_step3LastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    // Completion when entering non-ferrous facility cuboid
+                    if (isPlayerInCuboid(player, fac2.cuboid)) {
+                        if (s3chat && s3chat.completion) tellPlayer(player, s3chat.completion.replace('{facility_nonferrous}', fac2_name));
+                        pdata.phase3.currentStep = 4; // next: selling non-ferrous
+                        pdata.phase3.s3_arrivedAt2 = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    break;
+                case 4: // 3.3.4 Step 4 - Selling the remaining crate's contents (non-ferrous)
+                    if (!fac2) { logToFile('onboarding', '[p3.s3.step4.error] Non-ferrous facility missing in config.'); break; }
+                    var fac2_name = getMarkerName(fac2.dynmap_set, fac2.dynmap_marker);
+                    var s4chat = stage3Cfg.step4.chat;
+                    // If phase closure is already pending, wait for medium delay, then announce and advance
+                    if (pdata.phase3.s3_phaseClosePending) {
+                        var dueAt = pdata.phase3.s3_phaseCloseDueAt || 0;
+                        if (Date.now() >= dueAt) {
+                            // Announce Phase 3 completion and advance to Phase 4
+                            tellPlayer(player, s4chat.phase_completion);
+                            tellSeparator(player, "&e");
+                            pdata.phase3.stage3Completed = true;
+                            pdata.phase3.completed = true;
+                            pdata.phase3.completedTime = Date.now();
+                            pdata.phase = 4;
+                            if (!pdata.phase4) { pdata.phase4 = { created: Date.now() }; }
+                            // Clear pending flags
+                            pdata.phase3.s3_phaseClosePending = false;
+                            pdata.phase3.s3_phaseCloseDueAt = 0;
+                            logToFile('onboarding', '[p3.complete] ' + player.getName() + ' Phase 3 completed (delayed); advancing to Phase 4.');
+                            changed = true;
+                        }
+                        break;
+                    }
+                    if (!pdata.phase3.s3_step4Init) {
+                        if (s4chat && s4chat.start) tellPlayer(player, s4chat.start.replace('{facility_nonferrous}', fac2_name));
+                        pdata.phase3.s3_step4Init = true;
+                        pdata.phase3.s3_step4LastMsg = Date.now();
+                        changed = true;
+                        break;
+                    }
+                    // Periodic reminder
+                    if (s4chat && s4chat.reminder) {
+                        var lastMsg4 = pdata.phase3.s3_step4LastMsg || 0;
+                        if ((Date.now() - lastMsg4) >= intervalMs) {
+                            tellPlayer(player, s4chat.reminder);
+                            pdata.phase3.s3_step4LastMsg = Date.now();
+                            changed = true;
+                        }
+                    }
+                    // Detect non-ferrous sale in economy logs
+                    var economyLogPath2 = 'world/customnpcs/scripts/logs/economy.json';
+                    var econ2 = loadJson(economyLogPath2);
+                    var pname2 = player.getName();
+                    var entries2 = (econ2 && econ2[pname2]) ? econ2[pname2] : null;
+                    if (!entries2 || !entries2.length) { break; }
+                    var foundNonFerrousSale = false; var foundIndex2 = -1;
+                    for (var ej = 0; ej < entries2.length; ej++) {
+                        var rec2 = entries2[ej]; if (!rec2) continue;
+                        var t2 = rec2.type; var p2 = rec2.preset;
+                        var scanned2 = (typeof rec2.scanned_by_onboarding !== 'undefined') ? !!rec2.scanned_by_onboarding : false;
+                        if (t2 === 'scrap_sale' && p2 === 'non_ferrous' && !scanned2) { foundNonFerrousSale = true; foundIndex2 = ej; break; }
+                    }
+                    if (foundNonFerrousSale) {
+                        try {
+                            entries2[foundIndex2].scanned_by_onboarding = true;
+                            saveJson(econ2, economyLogPath2);
+                        } catch (logErr2) {
+                            logToFile('onboarding', '[p3.s3.step4.tag.error] ' + pname2 + ' failed to tag economy log: ' + logErr2);
+                        }
+                        pdata.phase3.s3_step4Completed = true;
+                        pdata.phase3.s3_step4CompletedAt = Date.now();
+                        if (s4chat && s4chat.completion) tellPlayer(player, s4chat.completion);
+                        logToFile('onboarding', '[p3.s3.step4.complete] ' + pname2 + ' non-ferrous scrap sale detected in logs.');
+                        // Schedule Phase 3 closure after medium delay
+                        pdata.phase3.s3_phaseClosePending = true;
+                        pdata.phase3.s3_phaseCloseDueAt = Date.now() + mediumDelayMs;
+                        changed = true;
+                        break;
+                    }
                     break;
                 default:
                     break;
