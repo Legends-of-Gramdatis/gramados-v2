@@ -14,16 +14,6 @@
 					"label": "!MyHomes command"
 				}
 			]
-		},
-		{
-			"path": "world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase3.js",
-			"bookmarks": [
-				{
-					"line": 37,
-					"column": 0,
-					"label": ""
-				}
-			]
 		}
 	]
 }

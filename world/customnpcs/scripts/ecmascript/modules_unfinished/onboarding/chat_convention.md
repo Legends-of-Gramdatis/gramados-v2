@@ -515,8 +515,7 @@ N/A
 **Start**  
 &e[===] &aHeading to the Selling Facility &e[===]  
 &b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.  
-*5 second delay*  
-:map:&6{facility_ferrous} &bis located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:  
+:map: &6{facility_ferrous} &7is located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:  
 [name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]  
 
 **Repeat reminder**  
@@ -530,10 +529,10 @@ N/A
 > **note**: Completion of this stage is triggered when the trade has been completed. This is detected by checking the trade history json file.
 
 **Start**  
-&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, it's time to sell your crate filled with ferrous scrap materials. Approach the trader and right-click the trader NPC while holding the crate in your hand to start the trade. The trader will automatically take what they need from the crate and pay you accordingly.
+&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, you are able to sell ferrous scrap materials from your crate. Find the trader and right-click him while holding the crate. He will automatically take what he needs from the crate and pay you accordingly.
 
 **Repeat reminder**  
-:lit: &ePlease approach the trader and right-click them while holding the crate to start the trade.
+:lit: &ePlease find the trader and right-click him while holding the crate.
 
 **Failure**  
 :danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.
@@ -547,14 +546,13 @@ N/A
 
 **Start**  
 &e[===] &aHeading to the Non-Ferrous Selling Facility &e[===]  
-&b:sun: Now that you have sold the ferrous scrap materials, it's time to sell the remaining non-ferrous scrap in your crate. Please head over to the &6{facility_nonferrous} &bto sell your non-ferrous scrap materials.  
-*5 second delay*  
-:map:&6{facility_nonferrous} &bis located at the South-West of Gramados City, near the industrial area. Click here to open it in your Minimap:  
-[name:"{facility_nonferrous}", x:{facility_nonferrous_x}, y:{facility_nonferrous_y}, z:{facility_nonferrous_z}]
+&b:sun: Now that you have sold the ferrous scrap materials, it's time to sell the remaining non-ferrous scrap from your crate. Please head over to the &6{facility_nonferrous} &bto sell your non-ferrous scrap materials.  
+:map: &6{facility_nonferrous} &7is located at the South-West of Gramados City, near the industrial area. Click here to open it in your Minimap:  
+[name:"{facility_nonferrous}", x:{x}, y:{y}, z:{z}]
 
 **Repeat reminder**  
 :lit: &ePlease head over to the &6{facility_nonferrous} &eto sell your non-ferrous scrap materials.
-[name:"{facility_nonferrous}", x:{facility_nonferrous_x}, y:{facility_nonferrous_y}, z:{facility_nonferrous_z}]
+[name:"{facility_nonferrous}", x:{x}, y:{y}, z:{z}]
 
 **Completion**
 &a:check_mark: You have arrived at the &6{facility_nonferrous} &afacility.
@@ -563,10 +561,10 @@ N/A
 > **note**: Completion of this step is triggered when the trade has been completed. This is detected by checking the trade history json file.
 
 **Start**  
-&b:sun: Now that you are at the &6{facility_nonferrous} &bfacility, it's time to sell the remaining non-ferrous scrap materials in your crate. Approach the trader and right-click the trader NPC while holding the crate in your hand to start the trade. The trader will automatically take what they need from the crate and pay you accordingly.
+&b:sun: Now that you are at the &6{facility_nonferrous} &bfacility, sell the remaining non-ferrous scrap from your crate. Approach the trader and right-click them while holding the crate.
 
 **Repeat reminder**  
-:lit: &ePlease approach the trader and right-click them while holding the crate to start the trade.
+:lit: &ePlease find the trader and right-click them while holding the crate to start the trade.
 
 **Completion**  
 &a:check_mark: You have successfully sold all the scrap materials from your crate! The crate is now empty.
