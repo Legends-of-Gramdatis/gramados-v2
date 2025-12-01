@@ -6,8 +6,7 @@
       "ores": [
         "ore:iron",
         "ore:steel",
-        "ore:nickel",
-        "ore:lead"
+        "ore:nickel"
       ]
     },
     "non_ferrous": {
@@ -18,7 +17,8 @@
         "ore:copper",
         "ore:aluminum",
         "ore:electrum",
-        "ore:constantan"
+        "ore:constantan",
+        "ore:lead"
       ]
     }
   }
