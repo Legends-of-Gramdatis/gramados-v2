@@ -1,0 +1,25 @@
+{
+  "presets": {
+    "ferrous": {
+      "display_name": "All Ferrous",
+      "description": "Purchases ferrous metals only.",
+      "ores": [
+        "ore:iron",
+        "ore:steel",
+        "ore:nickel",
+        "ore:lead"
+      ]
+    },
+    "non_ferrous": {
+      "display_name": "Non-Ferrous",
+      "description": "Purchases non-ferrous metals only.",
+      "ores": [
+        "ore:gold",
+        "ore:copper",
+        "ore:aluminum",
+        "ore:electrum",
+        "ore:constantan"
+      ]
+    }
+  }
+}
