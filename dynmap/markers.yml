@@ -21,6 +21,10 @@ icons:
         label: civil_services_school
     civil_services_worship:
         label: civil_services_worship
+    compan_misc:
+        label: compan_misc
+    company_domain:
+        label: company_domain
     ent&lei_misc:
         label: ent&lei_misc
     ent&lei_amusement_park:
@@ -977,6 +981,14 @@ sets:
                 y: 72.0
                 z: 7249.0
                 label: Brisamar
+            marker_17:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -4706.0
+                y: 77.0
+                z: -2912.0
+                label: Highward
         lines: {
             }
         layerprio: 0
@@ -3202,6 +3214,14 @@ sets:
                 y: 75.0
                 z: -1011.0
                 label: Szent Szárny Katedrálisa - Cathedral
+            marker_46:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -5815.0
+                y: 74.0
+                z: 6771.0
+                label: Capilla de Pedralba
         lines: {}
         layerprio: 0
     Bridges:
@@ -3486,6 +3506,42 @@ sets:
                 y: 85.0
                 z: 3423.0
                 label: The Hall of the Deep Warrant - Zundral Hollow HQ
+        lines: {}
+        layerprio: 0
+    Wine Domains:
+        hide: false
+        minzoom: 3
+        circles: {
+            }
+        deficon: company_domain
+        areas: {
+            }
+        label: Wine Domains
+        markers:
+            marker_1:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -5833.0
+                y: 74.0
+                z: 6794.0
+                label: Domino de Pedralba
+            marker_2:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -1500.0
+                y: 100.0
+                z: -1708.0
+                label: Chateau Vinor
+            marker_3:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -1496.0
+                y: 89.0
+                z: -1611.0
+                label: Chateau Silverleaf
         lines: {}
         layerprio: 0
 
