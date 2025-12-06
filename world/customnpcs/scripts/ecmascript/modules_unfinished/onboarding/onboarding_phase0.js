@@ -1,3 +1,10 @@
+
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+
 // Phase 0 logic – returns true if data changed.
 function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     if (!phaseCfg || !phaseCfg.enabled) return false;
@@ -64,7 +71,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
     var region = arrival.region;
     if (region) {
         var pos = player.getPos();
-        if (!__onboarding_isInside(pos.x, pos.y, pos.z, region.p1, region.p2)) {
+        if (!isWithinAABB(pos, region.p1, region.p2)) {
             // Only confine if player still in phase 0 and not teleported out
             if (!(pdata.phase0 && pdata.phase0.completed)) {
                 var fb = region.fallback;
@@ -153,15 +160,4 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
         }
     }
     return changed;
-}
-
-// Helpers (duplicated minimally to avoid polluting global scope; main script also defines the same names)
-function __onboarding_isInside(x, y, z, p1, p2) {
-    var minX = Math.min(p1[0], p2[0]);
-    var maxX = Math.max(p1[0], p2[0]);
-    var minY = Math.min(p1[1], p2[1]);
-    var maxY = Math.max(p1[1], p2[1]);
-    var minZ = Math.min(p1[2], p2[2]);
-    var maxZ = Math.max(p1[2], p2[2]);
-    return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 }

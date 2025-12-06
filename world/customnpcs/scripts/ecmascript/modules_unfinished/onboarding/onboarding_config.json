@@ -6,7 +6,7 @@
     ],
     "general": {
         "moduleEnabled": true,
-        "force_full_onboarding": false,
+        "force_full_onboarding": true,
         "saveThrottleTicks": 40,
         "generic_streamline_delay_short": 5,
         "generic_streamline_delay_medium": 10,
@@ -54,6 +54,7 @@
             "enabled": true,
             "stages": {
                 "hotel": {
+                    "fallback_room": "Gramados_GramadosCity_StarterHotel_301",
                     "hotel_region": {
                         "p1": [-1858, 72, -175],
                         "p2": [-1934, 108, -214],

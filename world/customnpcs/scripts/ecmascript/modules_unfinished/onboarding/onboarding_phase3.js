@@ -653,6 +653,8 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             // Announce Phase 3 completion and advance to Phase 4
                             tellPlayer(player, s4chat.phase_completion);
                             tellSeparator(player, "&e");
+                            // placeholder message to tell the player the next phase is still WIP and will be automatically triggered when ready
+                            tellPlayer(player, ':lit: &eThe next phase is currently under development and will be available soon. Stay tuned for updates!');
                             pdata.phase3.stage3Completed = true;
                             pdata.phase3.completed = true;
                             pdata.phase3.completedTime = Date.now();
@@ -1055,15 +1057,4 @@ function _p3s2_normalizeSpec(specStr) {
         if (String(d).match(/^\d+$/)) dmg = parseInt(d, 10);
     }
     return id + ':' + String(dmg);
-}
-
-// Local helper duplicated for inside checks
-function __onboarding_isInside(x, y, z, p1, p2) {
-    var minX = Math.min(p1[0], p2[0]);
-    var maxX = Math.max(p1[0], p2[0]);
-    var minY = Math.min(p1[1], p2[1]);
-    var maxY = Math.max(p1[1], p2[1]);
-    var minZ = Math.min(p1[2], p2[2]);
-    var maxZ = Math.max(p1[2], p2[2]);
-    return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 }

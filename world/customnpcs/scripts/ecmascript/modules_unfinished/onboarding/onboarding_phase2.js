@@ -19,12 +19,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
     if (!pdata.phase2) pdata.phase2 = {};
 
     var now = Date.now();
-    var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
-    var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
-    var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
-    var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
-    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
-
+    var shortDelayMs = globalCfg.general.generic_streamline_delay_short * 1000;
+    var mediumDelayMs = globalCfg.general.generic_streamline_delay_medium * 1000;
+    var longDelayMs = globalCfg.general.generic_streamline_delay_long * 1000;
+    var veryLongDelayMs = globalCfg.general.generic_streamline_delay_very_long * 1000;
+    var intervalMs = globalCfg.general.generic_streamline_interval * 1000;
     // Respect the user's instruction to wait generic_streamline_delay_very_long after phase1 completed
     var phase1CompletedAt = null;
     if (pdata.phase1) {
@@ -642,7 +641,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s4_multi_completed = true;
                         pdata.phase2.s4_multi_completedAt = Date.now();
                         logToFile('onboarding', '[p2.multiwithdraw.complete] ' + player.getName() + ' withdrew 6x1G successfully.');
-                        // Move to next Stage 5
+                        // Schedule Stage 5 to start after medium delay
+                        pdata.phase2.s5_availableAt = Date.now() + mediumDelayMs;
                         pdata.phase2.currentStage = 5;
                         pdata.phase2.currentStep = 1;
                         changed = true;
@@ -661,6 +661,10 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
         case 5: // Your first purchase - Step 1: Heading to the Canteen (detect region entry)
             switch (step) {
                 case 1: {
+                    // Gate Stage 5 start until medium delay after Stage 4 completion
+                    if (pdata.phase2.s5_availableAt && Date.now() < pdata.phase2.s5_availableAt) {
+                        return changed;
+                    }
                     // On first entry into this step, show title and starting guidance once
                     if (!pdata.phase2.s5_step1_started) {
                         pdata.phase2.s5_step1_started = true;

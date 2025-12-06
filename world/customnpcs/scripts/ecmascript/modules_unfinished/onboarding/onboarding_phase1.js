@@ -20,40 +20,25 @@ function p1_teleportToFallback(player, region){
     return true;
 }
 
-// (Removed placeholder announcer; final messages are sent directly with tellPlayer.)
-
-// --- Room selection helpers (no true assignment yet) ---
-var P1_STARTER_HOTEL_FALLBACK_ROOM = 'Gramados_GramadosCity_StarterHotel_301';
-
-function p1_pickRandomStarterRoomName(){
-    try {
-        var regions = getStarterHotelRegions(); // [{name,data}]
-        if (!regions || !regions.length){
-            return null; // will fallback to config-driven pick
-        }
-        var fallback = P1_STARTER_HOTEL_FALLBACK_ROOM;
-        var hasFallback = false;
-        for(var i=0;i<regions.length;i++){ if (regions[i].name === fallback){ hasFallback=true; break; } }
-        if (!hasFallback) fallback = regions[0].name; // first region becomes fallback
-        var chosen = getRandomUnownedRegion(regions, fallback); // returns name
-        return chosen || fallback;
-    } catch(e){
-        return null;
-    }
-}
-
 function p1_roomIdFromRegionName(regionName){
     if (!regionName || typeof regionName !== 'string') return null;
     var m = regionName.match(/(\d+)$/);
     return m ? m[1] : null;
 }
 
-// Read player's homes metadata without try/catch.
+/**
+    * Loads and parses the player's homes metadata from world data.
+    * @param {Object} player - The player object.
+    * @returns {Object} An object containing homes, maxHomes, names, and count.
+    
+    * homes: mapping of home names to coordinates  
+    * maxHomes: maximum number of homes allowed  
+    * names: array of home names  
+    * count: number of homes  
+**/
 function p1_loadPlayerHomesMeta(player){
-    var wds = getWorldData();
-    var pkey = 'player_' + player.getName();
-    var raw = wds ? wds.get(pkey) : null;
-    var parsed = raw ? JSON.parse(String(raw)) : null;
+    var worldData = getWorldData();
+    var parsed = JSON.parse(worldData.get('player_' + player.getName()));
     var homes = (parsed && parsed.homes) ? parsed.homes : {};
     var maxHomes = (parsed && typeof parsed.maxHomes === 'number') ? parsed.maxHomes : 2;
     var names = [];
@@ -66,9 +51,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
     if (!phaseCfg || !phaseCfg.enabled) return false;
     if (!pdata.phase1) pdata.phase1 = {};
     var changed = false;
-    var p1chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.chat) ? phaseCfg.stages.hotel.chat : {};
+    var p1chat = phaseCfg.stages.hotel.chat;
 
-    // --- Timer/delay variables (moved to top, phase 2 style) ---
     var shortDelayMs = (globalCfg.general.generic_streamline_delay_short ) * 1000;
     var mediumDelayMs = (globalCfg.general.generic_streamline_delay_medium) * 1000;
     var longDelayMs = (globalCfg.general.generic_streamline_delay_long) * 1000;
@@ -139,7 +123,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
         // Choose and attempt to assign a starter room if not already picked
         if (!pdata.phase1.targetRoomId){
             try {
-                var chosenName0 = p1_pickRandomStarterRoomName() || P1_STARTER_HOTEL_FALLBACK_ROOM;
+                var chosenName0 = getRandomUnownedRegion(getStarterHotelRegions(), phaseCfg.stages.hotel.fallback_room);
                 var rid0 = p1_roomIdFromRegionName(chosenName0);
                 if (!rid0){
                     // Fallback to first configured id if available
@@ -254,9 +238,12 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         pdata.phase1.currentStep = 2;
                         // Inform the player about room entry and incoming furniture on a short timer
                         tellSeparatorTitle(player, 'Room Setup', '&b', '&e');
-                        var shortDelaySec_entry = (globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5;
+                        var shortDelaySec_entry = shortDelayMs/1000;
                         tellPlayer(player, p1chat.room_entry.replace('{room}', '#'+pdata.phase1.targetRoomId).replace('{delay}', shortDelaySec_entry));
-                        if (!pdata.phase1.furnitureGranted && !pdata.phase1.furnitureTimerStart){ pdata.phase1.furnitureTimerStart = Date.now(); changed = true; }
+                        if (!pdata.phase1.furnitureGranted && !pdata.phase1.furnitureTimerStart){
+                            pdata.phase1.furnitureTimerStart = Date.now();
+                            changed = true;
+                        }
                         changed = true;
                     }
                     break;
@@ -385,7 +372,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 var homesMap = (parsed2 && parsed2.homes) ? parsed2.homes : {};
                                 var currCount = Object.keys(homesMap).length;
                                 // Detect new home set
-                                if (typeof pdata.phase1.homeBaselineCount === 'number' && currCount > pdata.phase1.homeBaselineCount){
+                                if (currCount > pdata.phase1.homeBaselineCount){
                                     tellPlayer(player, p1chat.sethome_success);
                                     pdata.phase1.homeRegistered = true;
                                     pdata.phase1.homeRegisteredTime = Date.now();
@@ -424,10 +411,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
             switch(step){
                 case 1:
                     try {
-                        var gcfg = (globalCfg && globalCfg.general) ? globalCfg.general : {};
-                        var intervalMs = ((typeof gcfg.generic_streamline_interval === 'number') ? gcfg.generic_streamline_interval : 60) * 1000;
-                        var homeCfg = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.home) ? phaseCfg.stages.hotel.home : {};
-                        var prox = homeCfg.proximity || { far: 15, near: 2 };
+                        var homeCfg = phaseCfg.stages.hotel.home;
+                        var prox = homeCfg.proximity;
 
                         // Ensure we at least once showed the initial guidance before switching to distance-specific nudges
                         var nowS3 = Date.now();
@@ -440,25 +425,15 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.s3_lastMsg = nowS3;
                             changed = true;
                         }
-
-                        // Read current list of homes and compute distances
-                        var wds3 = getWorldData();
-                        var pkey3 = 'player_' + player.getName();
-                        var raw3 = wds3 ? wds3.get(pkey3) : null;
-                        var parsed3 = null;
-                        if (raw3){ try { parsed3 = JSON.parse(String(raw3)); } catch (e3p) { parsed3 = null; } }
-                        var homes3 = (parsed3 && parsed3.homes) ? parsed3.homes : {};
+                        var home_data = p1_loadPlayerHomesMeta(player);
+                        var homes3 = home_data.homes;
 
                         // Build array of home positions
                         var homeList = [];
-                        try {
-                            for(var hk in homes3){ if (homes3.hasOwnProperty(hk)){
-                                var h = homes3[hk];
-                                if (h && typeof h.x === 'number' && typeof h.y === 'number' && typeof h.z === 'number'){
-                                    homeList.push({ name: hk, x: h.x, y: h.y, z: h.z });
-                                }
-                            }}
-                        } catch (hlErr) { homeList = []; }
+                        for(var hk in homes3){ if (homes3.hasOwnProperty(hk)){
+                            var h = homes3[hk];
+                            homeList.push({ name: hk, x: h.x, y: h.y, z: h.z });
+                        }}
 
                         // If no homes in data, cannot proceed; remind to set home (safety net)
                         if (homeList.length === 0){
@@ -473,9 +448,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         // Helper: squared distance between current pos and a home
                         var pnow = getPlayerPos(player);
                         var dist2ToHome = function(h){ var dx=pnow.x-h.x, dy=pnow.y-h.y, dz=pnow.z-h.z; return dx*dx+dy*dy+dz*dz; };
-                        // Optional helper (currently unused)
-                        var dist2Between = function(a,b){ var dx=a.x-b.x, dy=a.y-b.y, dz=a.z-b.z; return dx*dx+dy*dy+dz*dz; };
-
+                        
                         // Find closest home
                         var closest = null, minD2 = Number.POSITIVE_INFINITY;
                         for(var i3=0;i3<homeList.length;i3++){
@@ -593,28 +566,25 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                     break;
                 case 2: // Active: confine to radius; complete when near any home
                     try {
-                        var gcfg4 = (globalCfg && globalCfg.general) ? globalCfg.general : {};
-                        var intervalMs4 = ((typeof gcfg4.generic_streamline_interval === 'number') ? gcfg4.generic_streamline_interval : 60) * 1000;
-                        var homeCfg4 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.hotel && phaseCfg.stages.hotel.home) ? phaseCfg.stages.hotel.home : {};
-                        var prox4 = homeCfg4.proximity || { far: 15, near: 2 };
+                        var homeCfg4 = phaseCfg.stages.hotel.home;
+                        var prox4 = homeCfg4.proximity;
 
-                        // Check proximity to any home first; if near, finish and stop confining
-                        var wds4 = getWorldData();
-                        var pkey4 = 'player_' + player.getName();
-                        var raw4 = wds4 ? wds4.get(pkey4) : null;
-                        var parsed4 = null;
-                        if (raw4){ try { parsed4 = JSON.parse(String(raw4)); } catch (e4p) { parsed4 = null; } }
-                        var homes4 = (parsed4 && parsed4.homes) ? parsed4.homes : {};
-                        var homeList4 = [];
-                        try { for(var hk4 in homes4){ if (homes4.hasOwnProperty(hk4)){ var h4 = homes4[hk4]; if (h4 && typeof h4.x==='number' && typeof h4.y==='number' && typeof h4.z==='number'){ homeList4.push({name: hk4, x:h4.x, y:h4.y, z:h4.z}); } } } } catch (ehl4) { homeList4 = []; }
+                        var home_data = p1_loadPlayerHomesMeta(player);
+                        var homes = home_data.homes;
+                        var homeList = [];
+                        for(var hk in homes){ if (homes.hasOwnProperty(hk)){
+                            var h = homes[hk];
+                            homeList.push({ name: hk, x: h.x, y: h.y, z: h.z });
+                        }}
 
                         var ppos4 = getPlayerPos(player);
-                        var nearR2_4 = (typeof prox4.near === 'number' ? prox4.near : 2); nearR2_4 = nearR2_4 * nearR2_4;
+                        var nearR2_4 = prox4.near;
+                        nearR2_4 = nearR2_4 * nearR2_4;
                         var isNearHome4 = false;
-                        for(var ii4=0; ii4<homeList4.length; ii4++){
-                            var dhx = ppos4.x - homeList4[ii4].x;
-                            var dhy = ppos4.y - homeList4[ii4].y;
-                            var dhz = ppos4.z - homeList4[ii4].z;
+                        for(var ii4=0; ii4<homeList.length; ii4++){
+                            var dhx = ppos4.x - homeList[ii4].x;
+                            var dhy = ppos4.y - homeList[ii4].y;
+                            var dhz = ppos4.z - homeList[ii4].z;
                             var d2h4 = dhx*dhx + dhy*dhy + dhz*dhz;
                             if (d2h4 <= nearR2_4){ isNearHome4 = true; break; }
                         }
@@ -622,7 +592,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             pdata.phase1.s4_confining = false;
                             tellPlayer(player, p1chat.phase1_complete);
                             var maxHomesDefault = pdata.phase1.homeMax;
-                            if (p1chat.home_info_max){ tellPlayer(player, p1chat.home_info_max.replace('{max}', String(maxHomesDefault))); }
+                            tellPlayer(player, p1chat.home_info_max.replace('{max}', maxHomesDefault));
                             pdata.phase1.completed = true;
                             pdata.phase1.s4_completed = true;
                             pdata.phase1.s4_completedTime = Date.now();
@@ -648,7 +618,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                 var nz = cz + dz * scale;
                                 // Teleport to boundary, keep Y to avoid fall/tp loops
                                 player.setPosition(nx, ppos4.y, nz);
-                                if (!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
+                                if (!pdata.phase1.s4_lastMsg || (Date.now() - pdata.phase1.s4_lastMsg) > intervalMs){
                                     tellPlayer(player, p1chat.lost_confining_found);
                                     pdata.phase1.s4_lastMsg = Date.now();
                                     changed = true;
@@ -656,7 +626,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                             } else if (!pdata.phase1.s4_lastMsg) {
                                 pdata.phase1.s4_lastMsg = Date.now();
                                 changed = true;
-                            } else if ((Date.now() - pdata.phase1.s4_lastMsg) > intervalMs4){
+                            } else if ((Date.now() - pdata.phase1.s4_lastMsg) > intervalMs){
                                 // Gentle reminder while inside the circle
                                 tellPlayer(player, p1chat.lost_confining_reminder);
                                 pdata.phase1.s4_lastMsg = Date.now();
