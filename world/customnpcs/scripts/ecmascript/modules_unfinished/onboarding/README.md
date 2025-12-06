@@ -32,7 +32,6 @@ Top-level keys:
 	- `moduleEnabled` (boolean): Master toggle.
 	- `force_full_onboarding` (boolean, default false): Forces the full Phase 1 flow even if the player already owns regions. Ownership shortcuts are disabled, but an already-owned Starter Hotel room is still reused when present.
 	- `saveThrottleTicks` (number): Debounce for saving player data.
-	- `logJson` (boolean): If true, logs additional JSON to file.
 	- Timers (seconds):
 		- `generic_streamline_delay_short`, `generic_streamline_delay_medium`, `generic_streamline_delay_long`, `generic_streamline_delay_very_long`
 		- `generic_streamline_interval` (periodic reminder interval)
