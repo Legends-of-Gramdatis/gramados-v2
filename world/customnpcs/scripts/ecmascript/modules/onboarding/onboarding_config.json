@@ -1,12 +1,12 @@
 {
-    "indev": true,
+    "indev": false,
     "beta_players": [
         "TheOddlySeagull",
         "Kitsunami_"
     ],
     "general": {
         "moduleEnabled": true,
-        "force_full_onboarding": true,
+        "force_full_onboarding": false,
         "saveThrottleTicks": 40,
         "generic_streamline_delay_short": 5,
         "generic_streamline_delay_medium": 10,
@@ -78,6 +78,7 @@
                         "no_home_yet": "&eIt looks like you don't have any home yet. Use &6!setHome <name> &ein your room first.",
                         "home_far_try": "&a:check_mark: You're far enough now. Try &6!home &aor &6!home <name> &ato teleport back to your home.",
                         "home_far_reminder": ":lit: &eYou're far enough now. Try &6!home &eor &6!home <name> &eto teleport back to your home.",
+                        "home_command_tuto_init_full": "&b:sun: Since you own other regions in Gramados, we'll skip the state hotel room assignment. However, you still get to learn how to use homes. Let's get started!",
                         "home_command_tuto_init": "&b:sun: You have learned how to set your home. Now, try using &6!myHomes &band &6!home &bto manage your homes. Start by walking away from your room.",
                         "home_open_myhomes": ":lit: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
                         "home_tutorial_complete": "&a:check_mark: You successfully used &6!home &aor &6!home <name> &ato return to your home!",
@@ -311,6 +312,11 @@
                     }
                 }
             }
+        },
+        "4": {
+            "name": "To Be Continued...",
+            "enabled": false,
+            "stages": {}
         }
     }
 }
