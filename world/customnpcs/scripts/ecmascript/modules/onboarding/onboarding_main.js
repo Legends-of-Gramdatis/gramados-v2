@@ -11,13 +11,13 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 
 // Phase scripts
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase0.js');
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase1.js');
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase2.js');
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase3.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase0.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase1.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase2.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase3.js');
 
 // === Constants ===
-var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
+var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 var ONBOARDING_DATA_PATH   = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();

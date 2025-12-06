@@ -61,8 +61,8 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
 
     // Ownership shortcuts: if the player already owns a Starter Hotel room, reuse it for Stage 1;
     // if the player owns any regions (but none are StarterHotel), skip straight to Stage 3 unless force_full_onboarding is enabled.
+    var forceFull = !!(globalCfg && globalCfg.general && globalCfg.general.force_full_onboarding);
     if (!pdata.phase1.ownershipChecked) {
-        var forceFull = !!(globalCfg && globalCfg.general && globalCfg.general.force_full_onboarding);
         var ownedDetails = getOwnedRegions(player, { returnDetails: true });
         var ownedList = (ownedDetails && ownedDetails.regions) ? ownedDetails.regions : [];
         if (ownedList && ownedList.length > 0) {
@@ -111,6 +111,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                     pdata.phase1.homeBaselineCount = metaAny.count;
                     pdata.phase1.homeBaselineNames = metaAny.names;
                     pdata.phase1.homeMax = metaAny.maxHomes;
+                    logToFile('onboarding', '[p1.ownership.skip] ' + player.getName() + ' owns other regions; skipping to Phase 1 Stage 3.');
                 }
             }
         }
@@ -419,6 +420,9 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var introAtS3 = pdata.phase1.s3_introAvailableAt || 0;
                         var introAllowedS3 = !introAtS3 || nowS3 >= introAtS3;
                         if (introAllowedS3 && !pdata.phase1.s3_introShown){
+                            if (forceFull) {
+                                tellPlayer(player, p1chat.home_command_tuto_init_full);
+                            }
                             tellSeparatorTitle(player, 'Home Command Tutorial', '&b', '&e');
                             tellPlayer(player, p1chat.home_command_tuto_init);
                             pdata.phase1.s3_introShown = true;

@@ -12,7 +12,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js'); // 
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js'); // region helpers (getStarterHotelRegions, updateRegionOwnerSigns)
 
 // Local path constants (mirrors onboarding_main.js values)
-var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
+var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 var ONBOARDING_DATA_PATH   = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 var _onboarding_cfg = null;
 
