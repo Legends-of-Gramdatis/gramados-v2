@@ -2,15 +2,12 @@
     "indev": true,
     "beta_players": [
         "TheOddlySeagull",
-        "Kitsunami_",
-        "Colt_44_magnum",
-	    "Triggerman03"
+        "Kitsunami_"
     ],
     "general": {
         "moduleEnabled": true,
-        "force_full_onboarding": true,
+        "force_full_onboarding": false,
         "saveThrottleTicks": 40,
-        "logJson": true,
         "generic_streamline_delay_short": 5,
         "generic_streamline_delay_medium": 10,
         "generic_streamline_delay_long": 20,
