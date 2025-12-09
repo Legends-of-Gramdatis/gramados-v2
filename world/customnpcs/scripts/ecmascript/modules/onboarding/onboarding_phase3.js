@@ -56,6 +56,15 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
 
     switch(stage) {
         case 1: // Salvaged Mess
+            // Add a long delay before starting Stage 1 (Salvaged Mess)
+            if (!pdata.phase3.s1_availableAt) {
+                pdata.phase3.s1_availableAt = now + longDelayMs;
+                changed = true;
+                return changed;
+            }
+            if (Date.now() < pdata.phase3.s1_availableAt) {
+                return changed;
+            }
             switch(step) {
                 case 1: // Ensure free inventory slots
                     var requiredSlots = stage1Cfg.required_free_slots;
