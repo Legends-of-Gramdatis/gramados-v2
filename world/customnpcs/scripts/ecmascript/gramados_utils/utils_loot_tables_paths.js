@@ -13,6 +13,7 @@ var _LOOTTABLE_NPCTYPE_HUMAN = "assembled_loot_tables/npc_human.json"
 
 var _LOOTTABLE_VEHICLE_BIKE = "automobile/vehicles/vehicle_ivl_bike.json";
 var _LOOTTABLE_VEHICLE_WRENCH = "tools/tools_mts_wrench.json";
+var _LOOTTABLE_VEHICLE_KEY = "automobile/keys/car_keys.json";
 
 var _LOOTTABLE_JUNKYARD_CRATE = "assembled_loot_tables/junkyard_crate.json";
 var _LOOTTABLE_JUNKYARD_CRATE_CROWBAR = "tools/tool_growthcraft_crowbar.json";
