@@ -31,9 +31,10 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                 // Award real bike + wrench via loot tables if not already
                 if (!pdata.phase0.rewardsGiven) {
                     var world = player.getWorld();
-                    var lootWrench = pullLootTable(_LOOTTABLE_VEHICLE_WRENCH, player) || [];
-                    var lootBike = pullLootTable(_LOOTTABLE_VEHICLE_BIKE, player) || [];
-                    var combined = lootWrench.concat(lootBike);
+                    var lootWrench = pullLootTable(_LOOTTABLE_VEHICLE_WRENCH, player);
+                    var lootBike = pullLootTable(_LOOTTABLE_VEHICLE_BIKE, player);
+                    var lootKey = pullLootTable(_LOOTTABLE_VEHICLE_KEY, player);
+                    var combined = lootWrench.concat(lootBike).concat(lootKey);
                     for (var li = 0; li < combined.length; li++) {
                         var stack = generateItemStackFromLootEntry(combined[li], world);
                         if (stack) { player.giveItem(stack); }
