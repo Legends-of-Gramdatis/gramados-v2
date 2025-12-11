@@ -78,7 +78,7 @@ def generate_wealth_report(player_wealth_details, decoded_data, output_filepath)
             (value.get("displayName", key), value.get("salePrice", 0) / 100, value.get("owner", "Unowned"))
             for key, value in decoded_data.items() if key.startswith("region_")
         ]
-        for region_name, sale_price, owner in sorted(regions, key=lambda x: x[1], reverse=True):
+        for region_name, sale_price, owner in sorted(regions, key=lambda x: (-x[1], x[0])):
             report.write(f"- {region_name}: {sale_price:,.2f} Grons (Owner: {owner})\n")
 
         # Add a section for regions for sale
