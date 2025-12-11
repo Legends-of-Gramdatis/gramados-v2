@@ -4,7 +4,7 @@ import re
 
 # Define the directory containing the dialogue JSON files
 DIALOGUES_DIR = "/home/mouette/gramados-v2/world/customnpcs/dialogs"
-OUTPUT_FILE = "/home/mouette/gramados-v2/reports/decoded_dialogues.json"
+OUTPUT_FILE = "/home/mouette/gramados-v2/scripts_backend/reports/decoded_dialogues.json"
 
 def clean_json_content(content):
     """

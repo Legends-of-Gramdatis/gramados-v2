@@ -17,7 +17,7 @@ Assumptions and notes:
 - Lines follow the format: [HH:MM:SS] [Username] Issued command: <command and optional params>
 - "Ignore parameters" means we only count the first token of the command string, case-insensitive.
 
-Output path defaults to /home/mouette/gramados-v2/reports/command_usage_report.md
+Output path defaults to /home/mouette/gramados-v2/scripts_backend/reports/command_usage_report.md
 """
 
 from __future__ import annotations
@@ -33,7 +33,7 @@ from typing import Dict, List, Optional, Tuple, Set
 
 
 HISTORY_DIR = "/home/mouette/gramados-v2/CustomServerTools/history"
-OUTPUT_PATH = "/home/mouette/gramados-v2/reports/command_usage_report.md"
+OUTPUT_PATH = "/home/mouette/gramados-v2/scripts_backend/reports/command_usage_report.md"
 CUSTOM_SERVER_TOOLS_JS = "/home/mouette/gramados-v2/world/customnpcs/scripts/ecmascript/CustomServerTools.js"
 
 ADMIN_USERNAMES = {"TheOddlySeagull", "Runonstof"}
