@@ -34,6 +34,17 @@ function saveJson(data, filePath) {
 }
 
 /**
+ * Saves a JSON object to a file without whitespace (compact form).
+ * @param {Object} data - The JSON object to save.
+ * @param {string} filePath - The path to the file where the JSON object will be saved.
+ */
+function saveJsonCompact(data, filePath) {
+    var fileWriter = new java.io.FileWriter(filePath);
+    fileWriter.write(JSON.stringify(data));
+    fileWriter.close();
+}
+
+/**
  * Checks if a file exists at the given path.
  * @param {string} filePath - The path to the file.
  * @returns {boolean} True if the file exists, false otherwise.

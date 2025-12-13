@@ -5,5 +5,7 @@
   "offlineCleanupEnabled": true,
   "offlineCleanupRadius": 96,
   "selfDespawnEnabled": true,
-  "selfDespawnRadius": 32
+  "selfDespawnRadius": 32,
+  "accidentalDelayMs": 1000,
+  "maxDelayMs": 30000
 }
