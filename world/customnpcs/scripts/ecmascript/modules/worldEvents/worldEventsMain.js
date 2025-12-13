@@ -10,6 +10,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_sounds/toll_sounds.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/susBoxEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/spooktober/spooktoberEvent.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/christmas/christmasElfEvent.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
@@ -52,6 +53,10 @@ function init(e) {
             spawnEasterStarterPack(player);
             resetToll();
         }
+    }
+
+    if (isEventActive("Christmas")) {
+        christmas_onPlayerJoin(e.player);
     }
 }
 
@@ -108,6 +113,10 @@ function tick(e) {
         tick_counter = 0;
     }
     tick_counter++;
+
+    if (isEventActive("Christmas")) {
+        christmas_tickFollow(player);
+    }
 }
 
 /**
@@ -129,6 +138,10 @@ function logout(e) {
         susbox_cleanup(e);
         var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
         logToFile("events", logline);
+    }
+
+    if (isEventActive("Christmas")) {
+        christmas_onPlayerLogout(e.player);
     }
 }
 
