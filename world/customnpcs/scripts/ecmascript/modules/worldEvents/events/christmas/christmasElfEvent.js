@@ -18,6 +18,10 @@ var _lastRehomeMs = {}; // per-player throttle
  */
 function christmas_onPlayerJoin(player) {
     try {
+        // Skip creative mode players
+        if (player.getGamemode() != 0) {
+            return;
+        }
         var world = player.getWorld();
         var pos = player.getPos();
         // Guard: if an elf for this player already exists nearby, despawn it to avoid duplicates
@@ -88,6 +92,13 @@ function _christmas_despawnNearbyElves(world, pos, playerName, radius) {
  * For now, kept here for later step where follow logic is implemented.
  */
 function christmas_tickFollow(ownerPlayer) {
+    // Despawn elf if player enters creative mode
+    if (ownerPlayer.getGamemode() != 0) {
+        var world = ownerPlayer.getWorld();
+        var pos = ownerPlayer.getPos();
+        _christmas_despawnNearbyElves(world, pos, ownerPlayer.getName(), 64);
+        return;
+    } 
     var world = ownerPlayer.getWorld();
     var pos = ownerPlayer.getPos();
     // Throttle re-home using configurable interval
@@ -123,6 +134,13 @@ function christmas_tickFollow(ownerPlayer) {
 // Ensure the owner has an elf nearby; if not, spawn one at player position
 function _christmas_respawnIfMissing(world, pos, playerName) {
     try {
+        // Get player to check gamemode
+        var players = world.getAllPlayers();
+        for (var p = 0; p < players.length; p++) {
+            if (players[p].getName() === playerName && players[p].getGamemode() != 0) {
+                return; // Skip creative mode players
+            }
+        }
         var npcs = world.getNearbyEntities(pos, 32, 2);
         var hasElf = false;
         for (var i = 0; i < npcs.length; i++) {

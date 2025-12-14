@@ -18,9 +18,34 @@ var playerLastSpawnTime = {}; // Tracks the last spawn time for each player in m
 var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in milliseconds
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
+var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 
 var tick_counter = 0;
 var max_tick_count = 100;
+
+/**
+ * Checks if a player is in onboarding phases 0-1 (should not receive events)
+ * @param {IPlayer} player - The player to check
+ * @returns {boolean} - True if player is in phases 0-1, false otherwise or if onboarding data unavailable
+ */
+function isPlayerInEarlyOnboarding(player) {
+    if (!checkFileExists(ONBOARDING_DATA_PATH)) {
+        return false; // No onboarding data = events enabled
+    }
+    try {
+        var onboardingData = loadJson(ONBOARDING_DATA_PATH);
+        if (!onboardingData) return false;
+        var playerName = player.getName();
+        var playerData = onboardingData[playerName];
+        if (!playerData) return false; // No player entry = not in onboarding
+        var phase = playerData.phase;
+        // Phases 0 and 1 = early onboarding, no events
+        return (phase === 0 || phase === 1);
+    } catch (e) {
+        // If error reading data, allow events (fail open)
+        return false;
+    }
+}
 
 /**
  * Triggered when an entity dies. Cleans up "Sus Box" entities on April 1st.
@@ -41,15 +66,21 @@ function died(e) {
 function init(e) {
     tick_counter = 0;
     var player = e.player;
+    
+    // Skip events for players in onboarding phases 0-1
+    if (isPlayerInEarlyOnboarding(player)) {
+        return;
+    }
+    
     var activeEvents = getActiveEventList();
 
-    if (activeEvents.length > 0 || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
+    if (activeEvents.length > 0) {
 
         if (activeEvents.length > 0) {
             tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &a" + activeEvents.join(", &a") + " &6&l[&e&lEvent&6&l]");
         }
 
-        if (isEventActive("Easter Egg Hunt") || (player.getName() == "TheOddlySeagull" && player.getMainhandItem().getName() == "minecraft:command_block")) {
+        if (isEventActive("Easter Egg Hunt")) {
             spawnEasterStarterPack(player);
             resetToll();
         }
@@ -67,6 +98,12 @@ function init(e) {
  */
 function tick(e) {
     var player = e.player;
+    
+    // Skip events for players in onboarding phases 0-1
+    if (isPlayerInEarlyOnboarding(player)) {
+        return;
+    }
+    
     if (tick_counter > max_tick_count) {
         if (isAnyEventActive()) {
 

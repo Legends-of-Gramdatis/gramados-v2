@@ -11,6 +11,17 @@ var ACCIDENTAL_DELAY_MS = SELF_CFG.accidentalDelayMs;
 var MAX_DELAY_MS = SELF_CFG.maxDelayMs;
 var DONATION_DATA_PATH = 'world/customnpcs/scripts/data_auto/christmas_elf_donations.json';
 
+// Utility: sanitize Java/NBT JSON numeric suffixes (e.g., 0b, 1L, 2.0f) before JSON.parse
+function _sanitizeJavaJson(jsonString) {
+    if (!jsonString || typeof jsonString !== 'string') return jsonString;
+    // Remove primitive type suffixes used by NBT/Java: b,s,l,f,d (case-insensitive)
+    // Integers with suffixes
+    jsonString = jsonString.replace(/(\b-?\d+)[bBsSlL]/g, '$1');
+    // Floats/doubles with optional decimals and suffixes
+    jsonString = jsonString.replace(/(\b-?\d+(?:\.\d+)?)[fFdD]/g, '$1');
+    return jsonString;
+}
+
 function _christmas_itemSignature(itemStack) {
     var id = itemStack.getName();
     var meta = itemStack.getItemDamage();
@@ -46,6 +57,8 @@ function _christmas_recordDonation(player, itemStack) {
         var nbtData = null;
         if (itemStack.hasNbt()) {
             var nbtStr = itemStack.getNbt().toJsonString();
+            // Clean Java-style numeric suffixes before parsing into standard JSON
+            nbtStr = _sanitizeJavaJson(nbtStr);
             nbtData = JSON.parse(nbtStr);
         }
         items.push({
@@ -160,7 +173,7 @@ function interact(event) {
         npc.say(emptyHandMessages[Math.floor(Math.random() * emptyHandMessages.length)]);
         npc.executeCommand('/playsound customnpcs:human.girl.villager.help player @a[r=12] ' + npc.getPos().getX() + ' ' + npc.getPos().getY() + ' ' + npc.getPos().getZ() + ' 0.8 1.1');
 
-        logToFile('dev', '[christmas] Elf ' + elfName + ' asked ' + player.getName() + ' for materials');
+        // logToFile('dev', '[christmas] Elf ' + elfName + ' asked ' + player.getName() + ' for materials');
         return;
     }
     
