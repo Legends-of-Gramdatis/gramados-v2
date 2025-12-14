@@ -12,6 +12,17 @@
             }
         },
         {
+            "name": "Christmas",
+            "startDate": {
+                "month": 11,
+                "day": 1
+            },
+            "endDate": {
+                "month": 11,
+                "day": 31
+            }
+        },
+        {
             "name": "Easter Egg Hunt",
             "startDate": {
                 "month": 3,
