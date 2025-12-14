@@ -37,13 +37,13 @@ function christmas_onPlayerJoin(player) {
             // Optional: set initial home to player's current position
             elf.setHome(pos.getX(), pos.getY(), pos.getZ());
                 _christmas_spawnEffects(elf);
-            logToFile('dev', '[christmas] Elf spawned for ' + player.getName() + ' at ' + x + ',' + y + ',' + z);
-            logToFile('dev', '[christmas] Elf assigned to player ' + player.getName());
+            logToFile('events', '[christmas] Elf spawned for ' + player.getName() + ' at ' + x + ',' + y + ',' + z);
+            logToFile('events', '[christmas] Elf assigned to player ' + player.getName());
         } else {
-            logToFile('dev', '[christmas] Failed to spawn elf clone for ' + player.getName());
+            logToFile('events', '[christmas] Failed to spawn elf clone for ' + player.getName());
         }
     } catch (err) {
-        logToFile('dev', '[christmas] Error on join for ' + player.getName() + ': ' + err);
+        logToFile('events', '[christmas] Error on join for ' + player.getName() + ': ' + err);
     }
 }
 
@@ -57,12 +57,12 @@ function christmas_onPlayerLogout(player) {
         var pos = player.getPos();
         var count = _christmas_despawnNearbyElves(world, pos, player.getName(), 64);
         if (count > 0) {
-            logToFile('dev', '[christmas] Elf despawned for ' + player.getName() + ' (count=' + count + ')');
+            logToFile('events', '[christmas] Elf despawned for ' + player.getName() + ' (count=' + count + ')');
         } else {
-            logToFile('dev', '[christmas] No elf found to despawn for ' + player.getName() + '');
+            logToFile('events', '[christmas] No elf found to despawn for ' + player.getName() + '');
         }
     } catch (err) {
-        logToFile('dev', '[christmas] Error on logout for ' + player.getName() + ': ' + err);
+        logToFile('events', '[christmas] Error on logout for ' + player.getName() + ': ' + err);
     }
 }
 
@@ -163,13 +163,13 @@ function _christmas_respawnIfMissing(world, pos, playerName) {
                 elf.getDisplay().setName('§aElf of ' + playerName);
                 elf.setHome(pos.getX(), pos.getY(), pos.getZ());
                     _christmas_spawnEffects(elf);
-                logToFile('dev', '[christmas] Respawned missing elf for ' + playerName + ' at ' + x + ',' + y + ',' + z);
+                logToFile('events', '[christmas] Respawned missing elf for ' + playerName + ' at ' + x + ',' + y + ',' + z);
             } else {
-                logToFile('dev', '[christmas] Failed to respawn elf for ' + playerName);
+                logToFile('events', '[christmas] Failed to respawn elf for ' + playerName);
             }
         }
     } catch (err) {
-        logToFile('dev', '[christmas] Error in respawn check for ' + playerName + ': ' + err);
+        logToFile('events', '[christmas] Error in respawn check for ' + playerName + ': ' + err);
     }
 }
 
@@ -194,7 +194,7 @@ function _christmas_despawnOfflineElves(world, pos, onlineNames, radius) {
         var isElf = (name && String(name).toLowerCase().indexOf('elf') >= 0) || (npc.getName() && String(npc.getName()).toLowerCase().indexOf('elf') >= 0);
         if (isElf && owner && !onlineNames[owner]) {
             _christmas_despawnWithEffects(npc);
-            logToFile('dev', '[christmas] Despawned elf of offline player ' + owner);
+            logToFile('events', '[christmas] Despawned elf of offline player ' + owner);
         }
     }
 }
@@ -212,7 +212,7 @@ function _christmas_spawnEffects(npc) {
 function _christmas_despawnWithEffects(npc) {
     var stored = npc.getStoreddata ? npc.getStoreddata() : null;
     var owner = stored ? stored.get(OWNER_KEY) : 'unknown';
-    logToFile('dev', '[christmas] Elf despawn effects for owner ' + owner);
+    logToFile('events', '[christmas] Elf despawn effects for owner ' + owner);
     var pos = npc.getPos();
     var cmdBase = pos.getX() + ' ' + pos.getY() + ' ' + pos.getZ();
     npc.executeCommand('/particle snowshovel ' + cmdBase + ' 0.6 0.9 0.6 0 25');

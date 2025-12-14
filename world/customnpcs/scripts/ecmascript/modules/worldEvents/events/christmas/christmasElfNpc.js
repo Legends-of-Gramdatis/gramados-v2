@@ -95,7 +95,7 @@ function tick(event) {
         }
     }
     if (!ownerNearby) {
-        logToFile('dev', '[christmas] Elf self-despawn: owner ' + owner + ' not nearby.');
+        logToFile('events', '[christmas] Elf self-despawn: owner ' + owner + ' not nearby.');
         _christmas_selfDespawnEffects(npc);
     }
 }
@@ -114,7 +114,7 @@ function _christmas_playSpawnEffects(npc) {
         npc.executeCommand('/playsound minecraft:entity.firework.launch player @a[r=12] ' + cmdBase + ' 0.8 1.2');
         npc.executeCommand('/playsound minecraft:entity.experience_orb.pickup player @a[r=12] ' + cmdBase + ' 0.6 1.5');
     } catch (err) {
-        logToFile('dev', '[christmas] Error playing spawn effects: ' + err);
+        logToFile('events', '[christmas] Error playing spawn effects: ' + err);
     }
 }
 
@@ -127,7 +127,7 @@ function _christmas_playDespawnEffects(npc) {
         npc.executeCommand('/playsound minecraft:entity.chicken.egg player @a[r=12] ' + cmdBase + ' 0.8 1.8');
         npc.executeCommand('/playsound minecraft:entity.bat.takeoff player @a[r=12] ' + cmdBase + ' 0.6 1.6');
     } catch (err) {
-        logToFile('dev', '[christmas] Error playing despawn effects: ' + err);
+        logToFile('events', '[christmas] Error playing despawn effects: ' + err);
     }
 }
 function _christmas_playAcceptEffects(npc) {
@@ -140,7 +140,7 @@ function _christmas_playAcceptEffects(npc) {
         npc.executeCommand('/playsound minecraft:entity.player.levelup player @a[r=12] ' + cmdBase + ' 0.5 1.3');
         npc.executeCommand('/playsound customnpcs:human.girl.villager.heh player @a[r=12] ' + cmdBase + ' 0.8 1.1');
     } catch (err) {
-        logToFile('dev', '[christmas] Error playing accept effects: ' + err);
+        logToFile('events', '[christmas] Error playing accept effects: ' + err);
     }
 }
 function interact(event) {
@@ -173,7 +173,7 @@ function interact(event) {
         npc.say(emptyHandMessages[Math.floor(Math.random() * emptyHandMessages.length)]);
         npc.executeCommand('/playsound customnpcs:human.girl.villager.help player @a[r=12] ' + npc.getPos().getX() + ' ' + npc.getPos().getY() + ' ' + npc.getPos().getZ() + ' 0.8 1.1');
 
-        // logToFile('dev', '[christmas] Elf ' + elfName + ' asked ' + player.getName() + ' for materials');
+        // logToFile('events', '[christmas] Elf ' + elfName + ' asked ' + player.getName() + ' for materials');
         return;
     }
     
@@ -209,7 +209,7 @@ function _christmas_handleItemConfirmation(npc, player) {
         ];
         npc.say(firstMessages[Math.floor(Math.random() * firstMessages.length)]);
         npc.executeCommand('/playsound customnpcs:human.girl.villager.uhuh player @a[r=12] ' + npc.getPos().getX() + ' ' + npc.getPos().getY() + ' ' + npc.getPos().getZ() + ' 0.8 1.1');
-        logToFile('dev', '[christmas] Elf ' + elfName + ' received item offer from ' + pname + ': ' + itemName);
+        logToFile('events', '[christmas] Elf ' + elfName + ' received item offer from ' + pname + ': ' + itemName);
         return;
     }
     
@@ -226,7 +226,7 @@ function _christmas_handleItemConfirmation(npc, player) {
             '&e&lInteresting&r! So you want to give me ' + itemDisplayName + ' &a&linstead&r! \u952A'
         ];
         npc.say(differentMessages[Math.floor(Math.random() * differentMessages.length)]);
-        logToFile('dev', '[christmas] Elf ' + elfName + ' received different item from ' + pname + ': ' + itemName);
+        logToFile('events', '[christmas] Elf ' + elfName + ' received different item from ' + pname + ': ' + itemName);
         return;
     }
     
@@ -238,7 +238,7 @@ function _christmas_handleItemConfirmation(npc, player) {
             '&b&lHold on&r, you clicked too &e&lfast&r! Be careful with ' + itemDisplayName + '! \u9366'
         ];
         npc.say(doubleClickMessages[Math.floor(Math.random() * doubleClickMessages.length)]);
-        logToFile('dev', '[christmas] Elf ' + elfName + ' detected accidental double-click from ' + pname);
+        logToFile('events', '[christmas] Elf ' + elfName + ' detected accidental double-click from ' + pname);
         return;
     }
     
@@ -267,7 +267,7 @@ function _christmas_handleItemConfirmation(npc, player) {
 
         player.setMainhandItem(itemStackClone);
         
-        logToFile('dev', '[christmas] Elf ' + elfName + ' accepted item from ' + pname + ': ' + itemName);
+        logToFile('events', '[christmas] Elf ' + elfName + ' accepted item from ' + pname + ': ' + itemName);
         return;
     }
     
@@ -282,7 +282,7 @@ function _christmas_handleItemConfirmation(npc, player) {
             '&bThe &lmoment&r for ' + itemDisplayName + ' &apassed&r! Try again! \u952A'
         ];
         npc.say(expiredMessages[Math.floor(Math.random() * expiredMessages.length)]);
-        logToFile('dev', '[christmas] Elf ' + elfName + ' confirmation window expired from ' + pname);
+        logToFile('events', '[christmas] Elf ' + elfName + ' confirmation window expired from ' + pname);
         return;
     }
 }
