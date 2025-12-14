@@ -1,16 +1,13 @@
 {
-    "indev": true,
+    "indev": false,
     "beta_players": [
         "TheOddlySeagull",
-        "Kitsunami_",
-        "Colt_44_magnum",
-	    "Triggerman03"
+        "Kitsunami_"
     ],
     "general": {
         "moduleEnabled": true,
-        "force_full_onboarding": true,
+        "force_full_onboarding": false,
         "saveThrottleTicks": 40,
-        "logJson": true,
         "generic_streamline_delay_short": 5,
         "generic_streamline_delay_medium": 10,
         "generic_streamline_delay_long": 20,
@@ -57,6 +54,7 @@
             "enabled": true,
             "stages": {
                 "hotel": {
+                    "fallback_room": "Gramados_GramadosCity_StarterHotel_301",
                     "hotel_region": {
                         "p1": [-1858, 72, -175],
                         "p2": [-1934, 108, -214],
@@ -80,6 +78,7 @@
                         "no_home_yet": "&eIt looks like you don't have any home yet. Use &6!setHome <name> &ein your room first.",
                         "home_far_try": "&a:check_mark: You're far enough now. Try &6!home &aor &6!home <name> &ato teleport back to your home.",
                         "home_far_reminder": ":lit: &eYou're far enough now. Try &6!home &eor &6!home <name> &eto teleport back to your home.",
+                        "home_command_tuto_init_full": "&b:sun: Since you own other regions in Gramados, we'll skip the state hotel room assignment. However, you still get to learn how to use homes. Let's get started!",
                         "home_command_tuto_init": "&b:sun: You have learned how to set your home. Now, try using &6!myHomes &band &6!home &bto manage your homes. Start by walking away from your room.",
                         "home_open_myhomes": ":lit: &eOpen &6!myHomes&e, then walk a few blocks away and try &6!home &eto return.",
                         "home_tutorial_complete": "&a:check_mark: You successfully used &6!home &aor &6!home <name> &ato return to your home!",
@@ -194,6 +193,130 @@
                     }
                 }
             }
+        },
+        "3": {
+            "name": "Scrap for a Start",
+            "enabled": true,
+            "stages": {
+                "stage1": {
+                    "required_free_slots": 19,
+                    "items": [
+                        "immersiveengineering:metal:34",
+                        "immersiveengineering:material:2",
+                        "immersiveengineering:material:9",
+                        "immersiveengineering:material:8",
+                        "mts:mtsofficialpack.spring",
+                        "variedcommodities:ingot_steel",
+                        "immersiveengineering:metal:18",
+                        "immersiveengineering:metal:39",
+                        "mts:mtsofficialpack.screws",
+                        "mts:mtsofficialpack.copperwire",
+                        "variedcommodities:lead_pipe",
+                        "immersiveengineering:metal:15",
+                        "immersiveengineering:metal:19",
+                        "immersiveengineering:metal",
+                        "immersiveengineering:metal:30",
+                        "mts:mtsofficialpack.smallarmscartridge",
+                        "immersiveengineering:material:3",
+                        "immersiveengineering:material:21"
+                    ],
+                    "crate": {
+                        "loot_table_path": "storage/crates_generic_27.json"
+                    },
+                    "chat": {
+                        "inventory_free_slots_reminder": ":lit: &ePlease ensure you have at least &6{slots}&e free inventory slots to move on with your onboarding.",
+                        "start": "&b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &b, you will recieve a crate.",
+                        "completion": "&a:check_mark: You have received a crate to pack your scrap materials."
+                    }
+                },
+                "stage2": {
+                    "radius": 10,
+                    "step1": {
+                        "chat": {
+                            "start": "&b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.",
+                            "reminder": ":lit: &ePlease place the crate on the ground to continue.",
+                            "failure": ":danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.",
+                            "failure_reminder": ":danger: &eWe still can't detect your crate. Place it on the ground and keep it there until you finish packing it.",
+                            "completion": "&a:check_mark: You have placed the crate on the ground."
+                        }
+                    },
+                    "step2": {
+                        "chat": {
+                            "start": "&b:sun: Now that you have placed the crate, it's time to fill it with all the scrap items you received earlier. Please make sure to put all the scrap items into the crate to continue.",
+                            "reminder": ":lit: &ePlease fill the crate with all your scrap items to continue.",
+                            "failure_missing_world": ":danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.",
+                            "failure": ":danger: &eYou need to fill the crate with all your scrap items before picking it up again. Please place the crate back down and add the remaining scrap items.",
+                            "failure_reminder": ":danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.",
+                            "completion": "&a:check_mark: You have successfully filled the crate with all your scrap items!"
+                        }
+                    },
+                    "step3": {
+                        "chat": {
+                            "start": "&b:sun: Great job filling the crate! Now, please pick up the crate so you can move it with all its contents.",
+                            "reminder": ":lit: &ePlease pick up the crate to continue.",
+                            "failure_missing_world": ":danger: &eYou removed a required item from the crate. Please put it back: &6{items}&e.",
+                            "failure_missing_inventory": ":danger: &eThe crate you picked up is missing required items: &6{items}&e. Place it down and put them back.",
+                            "failure": ":danger: &eWe didn't detect the crate in your inventory. Place it back down and try again.",
+                            "failure_reminder": ":danger: &eStill no crate detected in your inventory. Place it back down and pick it up again once it's correctly filled.",
+                            "completion": "&a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside."
+                        }
+                    }
+                },
+                "stage3": {
+                    "facilities": [
+                        {
+                            "cuboid": "Gramados_GramadosCity_ScraparStreet_FerraSolRecyclers_Facility",
+                            "dynmap_set": "Junk Yards",
+                            "dynmap_marker": "marker_5"
+                        },
+                        {
+                            "cuboid": "Gramados_GramadosCity_CarpoStreet_CobrexBuyingPoint_Facility",
+                            "dynmap_set": "Junk Yards",
+                            "dynmap_marker": "marker_4"
+                        }
+                    ],
+                    "step1": {
+                        "chat": {
+                            "intro": "&b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.",
+                            "journeymap_hint": ":map: &6{facility_ferrous} &7is located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:",
+                            "journeymap_waypoint": "[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]",
+                            "reminder": ":lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.",
+                            "completion": "&a:check_mark: You have arrived at the &6{facility_ferrous} &afacility."
+                        }
+                    },
+                    "step2": {
+                        "chat": {
+                            "start": "&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, you are able to sell ferrous scrap materials from your crate. Find the trader and right-click him while holding the crate. He will automatically take what he needs from the crate and pay you accordingly.",
+                            "reminder": ":lit: &ePlease find the trader and right-click him while holding the crate.",
+                            "failure": ":danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.",
+                            "completion": "&a:check_mark: You have successfully sold the ferrous scrap materials from your crate! But the crate is not empty yet."
+                        }
+                    },
+                    "step3": {
+                        "chat": {
+                            "intro": "&b:sun: Now that you have sold the ferrous scrap materials, it's time to sell the remaining non-ferrous scrap from your crate. Please head over to the &6{facility_nonferrous} &bto sell your non-ferrous scrap materials.",
+                            "journeymap_hint": ":map: &6{facility_nonferrous} &7is located at the South-West of Gramados City, near the industrial area. Click here to open it in your Minimap:",
+                            "journeymap_waypoint": "[name:\"{facility_nonferrous}\", x:{x}, y:{y}, z:{z}]",
+                            "reminder": ":lit: &ePlease head over to the &6{facility_nonferrous} &eto sell your non-ferrous scrap materials.",
+                            "completion": "&a:check_mark: You have arrived at the &6{facility_nonferrous} &afacility."
+                        }
+                    },
+                    "step4": {
+                        "chat": {
+                            "start": "&b:sun: Now that you are at the &6{facility_nonferrous} &bfacility, sell the remaining non-ferrous scrap from your crate. Find the trader and right-click them while holding the crate.",
+                            "reminder": ":lit: &ePlease find the trader and right-click them while holding the crate to start the trade.",
+                            "failure": ":danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_nonferrous}&e while keeping the crate in your inventory.",
+                            "completion": "&a:check_mark: You have successfully sold the non-ferrous scrap materials from your crate!",
+                            "phase_completion": "&b:star: You have completed the Scrap for a Start tutorial! You have learned how to pack, deliver, and sell goods using the crate system."
+                        }
+                    }
+                }
+            }
+        },
+        "4": {
+            "name": "To Be Continued...",
+            "enabled": false,
+            "stages": {}
         }
     }
 }

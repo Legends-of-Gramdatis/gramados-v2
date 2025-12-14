@@ -137,5 +137,5 @@ def decode_bank_robbery_log(input_filepath, output_filepath):
 
 if __name__ == "__main__":
     input_file = "/home/mouette/gramados-v2/world/customnpcs/scripts/logs/bank_robbery.log"
-    output_file = "/home/mouette/gramados-v2/reports/bank_robbery_report.md"
+    output_file = "/home/mouette/gramados-v2/scripts_backend/reports/bank_robbery_report.md"
     decode_bank_robbery_log(input_file, output_file)

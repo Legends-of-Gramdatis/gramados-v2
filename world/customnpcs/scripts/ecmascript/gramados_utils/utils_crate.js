@@ -5,6 +5,7 @@
 var _CRATE_IDS = [
     'mts:unuparts.unuparts_part_unu_crate_wooden',
     'mts:unuparts.unuparts_part_unu_crate_metal',
+    'mts:iv_tpp.trin_crate1',
     'mts:iv_tpp.trin_crate2',
     'mts:iv_tpp.trin_crate1_wooden',
     'mts:iv_tpp.trin_crate1_metal',

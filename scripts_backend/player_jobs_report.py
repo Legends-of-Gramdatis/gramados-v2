@@ -16,7 +16,7 @@ except Exception:  # pragma: no cover - runtime fallback
 # File paths (adjustable via CLI if needed)
 CONFIG_PATH = "/home/mouette/gramados-v2/world/customnpcs/scripts/ecmascript/modules/jobs/config.json"
 DATA_PATH = "/home/mouette/gramados-v2/world/customnpcs/scripts/data_auto/jobs.json"
-OUTPUT_PATH = "/home/mouette/gramados-v2/reports/player_jobs_report.md"
+OUTPUT_PATH = "/home/mouette/gramados-v2/scripts_backend/reports/player_jobs_report.md"
 LEVEL_DAT_PATH = "/home/mouette/gramados-v2/world/level.dat"
 
 

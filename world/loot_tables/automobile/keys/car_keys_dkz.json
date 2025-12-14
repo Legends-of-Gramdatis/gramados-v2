@@ -1,0 +1,74 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_blue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_cream",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_creamblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_green",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_militarydesert",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_police",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_promo",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_purple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_raven",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_red",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_redblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:dkzpartspack.type1_key_sky",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

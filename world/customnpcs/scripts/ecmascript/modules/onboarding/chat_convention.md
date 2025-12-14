@@ -23,6 +23,9 @@ Separators and logging throughout the 10h onboarding
 - phase separator: &2
 - phase titles: &a
 
+## Phase 3
+- phase separator: &e
+- phase titles: &6
 
 ---
 
@@ -391,7 +394,186 @@ N/A
 &2[===]
 
 # 3 Phase 3 - Scrap for a Start
-# 4 Phase 4 - Your First Job
+>**note**: Teaches how to pack, deliver, and sell goods using the crate system. Players sell ferrous and non-ferrous scrap at two different facilities, earning their first money and learning how real jobs handle transactions.
+
+## 3.1 Stage 1 - Salvaged Mess
+> **note**: This stage consists in giving the player the scrap items and a random crate.
+> **note**: The player is given the scrap metal items at the start of the stage.
+> **note**: Completion of this stage is triggered when the player is given the crate.
+> **note**: given items:
+```
+immersiveengineering:metal:34
+immersiveengineering:material:2
+immersiveengineering:material:9
+immersiveengineering:material:8
+mts:mtsofficialpack.spring
+variedcommodities:ingot_steel
+immersiveengineering:metal:18
+immersiveengineering:metal:39
+mts:mtsofficialpack.screws
+
+mts:mtsofficialpack.copperwire
+variedcommodities:lead_pipe
+immersiveengineering:metal:15
+immersiveengineering:metal:19
+immersiveengineering:metal
+immersiveengineering:metal:30
+mts:mtsofficialpack.smallarmscartridge
+immersiveengineering:material:3
+immersiveengineering:material:21
+```
+
+### 3.1.1 Step 1 - Empty inventory
+> **note**: This step only consists in telling the player to leave at least 18 inventory slots free. If player already has enough free slots, this step is skipped.
+
+**repeat reminder**  
+:lit: &ePlease ensure you have at least &6{slots}&e free inventory slots to move on with your onboarding.
+
+### 3.1.2 Step 2 - Giving scrap items and crate
+
+**Start**  
+&e[===] &aSalvaged Mess &e[===]  
+&b:sun: You have been given a collection of scrap materials. You will want to sell them to earn some money. In &6{delay}s &b, you will recieve a crate.
+
+**Repeat reminder**  
+N/A
+
+**Completion**  
+&a:check_mark: You have received a crate to pack your scrap materials.
+
+## 3.2 Stage 2 - Packing the Crate
+### 3.2.1 Step 1 - Placing the crate
+> **note**: Completion of this stage is triggered when the crate entity is detected in world.
+> **note**: If the detected crate is removed too soon (before the adequate Picking up crate stage), the stage is reset, and the failure message shows.
+
+**Start**
+&e[===] &aPacking the Crate &e[===]  
+&b:sun: The crate that you received, like any other crates from jobs, can be placed on the ground and picked up again later. This can be done even in protected regions. So be aware that anyone can pick it up if you leave it unattended. Please place the crate on the ground to continue.
+
+**Repeat reminder**  
+:lit: &ePlease place the crate on the ground to continue.
+
+**failure**  
+:danger: &eIt seems like the crate was removed before you could proceed. Please make sure to place the crate on the ground and leave it there until you finish packing it.
+
+**Completion**  
+&a:check_mark: You have placed the crate on the ground.
+
+### 3.2.2 Step 2 - Filling the crate
+> **note**: Completion of this stage is triggered when the crate has all the scrap items inside.
+> **note**: Failure is triggered if player picks the crate up before filling it with all scrap items.
+> **note**: Completion is triggered when all scrap items are detected inside the crate (still in world).
+
+**Start**
+&b:sun: Now that you have placed the crate, it's time to fill it with all the scrap items you received earlier. Please make sure to put all the scrap items into the crate to continue.
+
+**Repeat reminder**  
+:lit: &ePlease fill the crate with all your scrap items to continue.
+
+**failure**  
+:danger: &eYou need to fill the crate with all your scrap items before picking it up again. Please place the crate back down and add the remaining scrap items.
+
+**Failure (world crate missing items)**  
+:danger: &eA required scrap item was removed from the crate. Please place it back: &6{items}&e.
+
+**failure reminder**  
+:danger: &eYou still have scrap items to add to the crate. Please place the crate back down and add the remaining scrap items.
+
+**Completion**  
+&a:check_mark: You have successfully filled the crate with all your scrap items!
+
+### 3.2.3 Step 3 - Picking up the crate
+> **note**: Completion of this stage is triggered when the crate is detected in player's inventory.
+
+**Start**
+&b:sun: Great job filling the crate! Now, please pick up the crate so you can move it with all its contents.
+
+**Repeat reminder**  
+:lit: &ePlease pick up the crate to continue.
+
+**Failure (world crate missing items)**  
+:danger: &eYou removed a required item from the crate. Please put it back: &6{items}&e.
+
+**Failure (inventory crate missing items)**  
+:danger: &eThe crate you picked up is missing required items: &6{items}&e. Place it down and put them back.
+
+**Failure**  
+:danger: &eWe didn't detect the crate in your inventory. Place it back down and try again.
+
+**Failure reminder**  
+:danger: &eStill no crate detected in your inventory. Place it back down and pick it up again once it's correctly filled.
+
+**Completion**
+&a:check_mark: You have picked up the crate successfully! Crates can be kept in your inventory, and can also be placed in vehicles. If the vehicle is locked, the crate will remain safe inside.
+
+## 3.3 Stage 3 - Selling Crate Contents
+
+### 3.3.1 Step 1 - Heading to the facility
+> **note**: Completion of this stage is triggered when player is detected within the selling facility area.
+> **note**: FerraSol Recyclers, -2901.0 ; 97.0 ; 929.0
+
+**Start**  
+&e[===] &aHeading to the Selling Facility &e[===]  
+&b:sun: Now that you have your crate filled with scrap materials, it's time to sell them! Your crate contains both ferrous and non-ferrous scrap, which need to be sold at different facilities. Please head over to the &6{facility_ferrous} &bto sell some of your scrap materials.  
+:map: &6{facility_ferrous} &7is located at the North-East of Gramados City, near the junkyard. Click here to open it in your Minimap:  
+[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]  
+
+**Repeat reminder**  
+:lit: &ePlease head over to the &6{facility_ferrous} &eto sell your ferrous scrap materials.
+[name:\"{facility_ferrous}\", x:{x}, y:{y}, z:{z}]
+
+**Completion**
+&a:check_mark: You have arrived at the &6{facility_ferrous} &afacility.
+
+### 3.3.2 Step 2 - Selling the crate's contents
+> **note**: Completion of this stage is triggered when the trade has been completed. This is detected by checking the trade history json file.
+
+**Start**  
+&b:sun: Now that you are at the &6{facility_ferrous} &bfacility, you are able to sell ferrous scrap materials from your crate. Find the trader and right-click him while holding the crate. He will automatically take what he needs from the crate and pay you accordingly.
+
+**Repeat reminder**  
+:lit: &ePlease find the trader and right-click him while holding the crate.
+
+**Failure**  
+:danger: &eYou need to keep the crate with you until you reach the selling facility. Please head over to &6{facility_ferrous}&e while keeping the crate in your inventory.
+
+**Completion**  
+&a:check_mark: You have successfully sold the ferrous scrap materials from your crate! But the crate is not empty yet.
+
+### 3.3.3 Step 3 - Heading to the non-ferrous facility
+> **note**: Completion of this step is triggered when player is detected within the selling facility area.
+> **note**: Cobrex Buying Point, -1046.0 ; 75.0 ; 12.0
+
+**Start**  
+&e[===] &aHeading to the Non-Ferrous Selling Facility &e[===]  
+&b:sun: Now that you have sold the ferrous scrap materials, it's time to sell the remaining non-ferrous scrap from your crate. Please head over to the &6{facility_nonferrous} &bto sell your non-ferrous scrap materials.  
+:map: &6{facility_nonferrous} &7is located at the South-West of Gramados City, near the industrial area. Click here to open it in your Minimap:  
+[name:"{facility_nonferrous}", x:{x}, y:{y}, z:{z}]
+
+**Repeat reminder**  
+:lit: &ePlease head over to the &6{facility_nonferrous} &eto sell your non-ferrous scrap materials.
+[name:"{facility_nonferrous}", x:{x}, y:{y}, z:{z}]
+
+**Completion**
+&a:check_mark: You have arrived at the &6{facility_nonferrous} &afacility.
+
+### 3.3.4 Step 4 - Selling the remaining crate's contents
+> **note**: Completion of this step is triggered when the trade has been completed. This is detected by checking the trade history json file.
+
+**Start**  
+&b:sun: Now that you are at the &6{facility_nonferrous} &bfacility, sell the remaining non-ferrous scrap from your crate. Approach the trader and right-click them while holding the crate.
+
+**Repeat reminder**  
+:lit: &ePlease find the trader and right-click them while holding the crate to start the trade.
+
+**Completion**  
+&a:check_mark: You have successfully sold all the scrap materials from your crate! The crate is now empty.
+
+## Phase 3 Completion
+&b:star: You have completed the Scrap for a Start tutorial! You have learned how to pack, deliver, and sell goods using the crate system.  
+&e[===]
+
+# 4 Phase 4 - Your First Job  
 # 5 Phase 5 - Banking System
 
 ---

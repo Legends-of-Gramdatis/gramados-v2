@@ -1698,6 +1698,9 @@ var CHAT_EMOTES = {
     "cake": "\u90EC",
     "ppie": "\u90ED",
     "egg": "\u906C",
+    "pumpkins": "\u90F0",
+    "pumpkin": "\u90F1",
+    "squash": "\u90F2",
     "fish": "\u90E4",
     "meat_small": "\u95A7",
     "meat_medium": "\u95A9",
@@ -1714,6 +1717,7 @@ var CHAT_EMOTES = {
     "relic_mask": "\u9573",
     "relic_statuette": "\u9574",
     "lit": "\u9200",
+    "ghost": "\u94DB",
     "hunger_empty": "\u93D2",
     "hunger_half": "\u93D1",
     "hunger_full": "\u93D0",
@@ -1769,7 +1773,7 @@ var CHAT_EMOTES = {
     "chest": "\u92F9",
     "enderchest": "\u92FB",
     "giftchest": "\u92FC",
-    "pumpkin": "\u9270",
+    "pumpkin_block": "\u9270",
     "jacklantern": "\u9271",
     "melon": "\u9274",
     "cactus": "\u9276",
@@ -2238,9 +2242,9 @@ function cst_onboarding_log_command(player, cmdKey) {
     }
 }
 
-// Returns true if player has completed the given step in the given phase of onboarding.
+// Returns true if player has completed the given stage in the given phase of onboarding.
 // If any error occurs (file missing, invalid JSON, missing entries, etc), returns false.
-function checkOnboardingAdvancement(player, phaseKey, stepKey) {
+function checkOnboardingAdvancement(player, phaseKey, stageKey) {
     try {
         var playerName = player.getName();
         var raw = readFileAsString(ONBOARDING_DATA_PATH);
@@ -2252,7 +2256,7 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
         var data = JSON.parse(rawStr);
         var entry = data[playerName];
 
-        // If player progressed beyond phase "phaseKey", consider step complete
+        // If player progressed beyond phase "phaseKey", consider stage complete
         if (entry.phase > phaseKey) {
             return true;
         }
@@ -2261,10 +2265,8 @@ function checkOnboardingAdvancement(player, phaseKey, stepKey) {
 
         // Otherwise check phaseName completion flag
         var phase = entry[phaseName];
-        if (phase && phase.completed) {
-            if (phase && phase[stepKey] === true) {
-                return true;
-            }
+        if (phase && phase.currentStage && phase.currentStage > stageKey) {
+            return true;
         }
 
         return false;
@@ -4655,6 +4657,26 @@ registerXCommands([
     }, 'config.reload'],
 ]);
 
+// Emotes maintenance
+registerXCommands([
+    ['!emotes reload', function (pl, args, data) {
+        var w = pl.world;
+        var sdata = w.getStoreddata();
+        var created = 0;
+        for (var c in CHAT_EMOTES) {
+            var ec = new Emote(c);
+            if (!ec.exists(sdata)) {
+                created++;
+            }
+        }
+
+        reloadEmotes(w);
+
+        tellPlayer(pl, "&aReloaded emotes. &e" + created + "&a new emote data entr" + (created == 1 ? "y" : "ies") + " created.");
+        return true;
+    }, 'emotes.reload'],
+]);
+
 registerXCommands([
     ['!item renameLore <slot> [...lore]', function (pl, args) {
         var mItem = pl.getMainhandItem();
@@ -5879,7 +5901,7 @@ registerXCommands([
     }]],
     ['!myBadges [...matches]', function (pl, args, data) {
         var p = new Player(pl.getName()).init(data);
-        tellPlayer(pl, getTitleBar('Badges') + '\n' + getNavBar() + '\n' + '&6You can show &a' + p.getCap('badge') + ' &6badges max at a time.');
+        tellPlayer(pl, getTitleBar('Badges') + '\n' + getNavBar(pl) + '\n' + '&6You can show &a' + p.getCap('badge') + ' &6badges max at a time.');
         var output = '';
         var allBadges = new Badge().getAllDataEntries(data);
         var badges = [];
@@ -6033,7 +6055,7 @@ registerXCommands([
             }
         }
 
-        output += getNavBar() + '\n';
+        output += getNavBar(pl) + '\n';
         output += genDataPageList(
             banks,
             args.matches,
@@ -7341,6 +7363,15 @@ registerXCommands([
         tellPlayer(pl, "&6Uses left: &c" + code.getUsesLeft());
         tellPlayer(pl, getTitleBar('Rewards', false));
         tellPlayer(pl, "&6Money: &r:money:&e" + getAmountCoin(code.data.money));
+        if (code.data.badges && code.data.badges.length > 0) {
+            tellPlayer(pl, "&eBadges:");
+            for (var i in code.data.badges) {
+                var badgeName = code.data.badges[i];
+                var badge = new Badge(badgeName).init(data);
+                var preview = badge.formatBadge('', '', null);
+                tellPlayer(pl, "&6-&3 [" + (parseInt(i) + 1) + "] " + badge.name + " " + preview + " &r[&c:cross_mark: Remove{run_command:!giftcode removeBadge " + code.name + " " + (parseInt(i) + 1) + "}&r]");
+            }
+        }
         if (code.data.items.length > 0) {
             tellPlayer(pl, "&eItems:");
             for (var i in code.data.items) {
@@ -7498,6 +7529,28 @@ registerXCommands([
                 "type": "currency"
             }
         ]],
+    ['!giftcode addBadge <name> <badge>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        giftcode.load(data);
+        if (!giftcode.data.badges) giftcode.data.badges = [];
+        giftcode.data.badges.push(args.badge);
+        giftcode.save(data);
+        executeXCommand("!giftcode info " + args.name, pl);
+        return true;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true
+            },
+            {
+                "argname": "badge",
+                "type": "datahandler",
+                "datatype": "badge",
+                "exists": true
+            }
+        ]],
     ['!giftcode addEmote <name> <emote>', function (pl, args, data) {
         var giftcode = new GiftCode(args.name);
         giftcode.load(data);
@@ -7517,6 +7570,31 @@ registerXCommands([
                 "type": "datahandler",
                 "datatype": "emote",
                 "exists": true
+            }
+        ]],
+    ['!giftcode removeBadge <name> <id>', function (pl, args, data) {
+        var giftcode = new GiftCode(args.name);
+        var id = args.id - 1;
+        giftcode.load(data);
+        if (giftcode.data.badges && giftcode.data.badges.length > id) {
+            giftcode.data.badges.splice(id, 1);
+            giftcode.save(data);
+            executeXCommand("!giftcode info " + args.name, pl);
+            return true;
+        }
+        tellPlayer(pl, "&cNo badge with this id!");
+        return false;
+    }, 'giftcode.create', [
+            {
+                "argname": "name",
+                "type": "datahandler",
+                "datatype": "giftcode",
+                "exists": true,
+            },
+            {
+                "argname": "id",
+                "type": "number",
+                "min": 1
             }
         ]],
     ['!giftcode removeEmote <name> <id>', function (pl, args, data) {
@@ -9014,7 +9092,7 @@ registerXCommands([
         var mi = getMoneyItemCount(pnbt, pl.world);
         var total = mp + mi;
         tellPlayer(pl, getTitleBar('Money Pouch'));
-        tellPlayer(pl, getNavBar());
+        tellPlayer(pl, getNavBar(pl));
         tellPlayer(pl, ":danger: &4&oYou will lose 50% of your money pouch on death.&r :danger:");
         /*for (var v in VIRTUAL_CURRENCIES) {
             var crncy = VIRTUAL_CURRENCIES[v];
@@ -10156,7 +10234,7 @@ registerXCommands([
         }
 
         var output = getTitleBar('My Regions', false) + '\n' +
-            getNavBar() + '\n';
+            getNavBar(pl) + '\n';
 
         output += genDataPageList(
             regions,
@@ -10535,7 +10613,7 @@ registerXCommands([
             return !unlock.data.hidden;
         });
 
-        var output = getTitleBar('Unlockables') + '\n' + getNavBar() + '\n';
+        var output = getTitleBar('Unlockables') + '\n' + getNavBar(pl) + '\n';
         output += genDataPageList(
             unlocks,
             args.matches,
@@ -10653,8 +10731,12 @@ function getTitleBar(title, showServerName) {
     return CONFIG_SERVER.BAR_OPEN + (showServerName ? CONFIG_SERVER.TITLE + " " : CONFIG_SERVER.PREFIX) + title + CONFIG_SERVER.BAR_CLOSE;
 }
 
-function getNavBar() {
-    return '&r[== &e[:sun: Menu]{run_command:!menu|show_text:$eClick to show menu or do $o!menu}&r ==]';
+function getNavBar(player) {
+    if (checkOnboardingAdvancement(player, 2, 4)) {
+        return '&r[== &e[:sun: Menu]{run_command:!menu|show_text:$eClick to show menu or do $o!menu}&r ==]';
+    } else {
+        return '';
+    }
 }
 
 function getUndoBtn(undo_cmds, hoverText) {
@@ -12014,6 +12096,7 @@ function GiftCode(name) {
         "items": [],
         "money": 0,
         "emotes": [],
+        "badges": [],
         "players": [], //redeemed players
     });
 
@@ -12055,11 +12138,24 @@ function GiftCode(name) {
             return false;
         }
         //give
+        var newEmotes = 0;
         if (this.data.emotes.length > 0) {
             for (var n in this.data.emotes) {
                 var emote = this.data.emotes[n];
                 if (p.data.emotes.indexOf(emote) == -1) {
                     p.data.emotes.push(emote);
+                    newEmotes++;
+                }
+            }
+        }
+        var newBadges = 0;
+        if (this.data.badges && this.data.badges.length > 0) {
+            p.data.badges = p.data.badges || [];
+            for (var bn in this.data.badges) {
+                var badge = this.data.badges[bn];
+                if (p.data.badges.indexOf(badge) == -1) {
+                    p.data.badges.push(badge);
+                    newBadges++;
                 }
             }
         }
@@ -12072,7 +12168,24 @@ function GiftCode(name) {
         this.data.players.push(pl.getName());
         this.save(data);
         p.save(data);
-        tellPlayer(pl, "&aCode '" + this.name + "&a' activated!");
+        // Fancy reward summary
+        tellPlayer(pl, getTitleBar('&a&lGiftCode Rewards'));
+        tellPlayer(pl, "&aYou redeemed &b" + this.name + "&a!");
+        var rewardParts = [];
+        if (this.data.money > 0) rewardParts.push(":money:&e" + getAmountCoin(this.data.money));
+        if (this.data.items.length > 0) rewardParts.push(":gift:&e" + this.data.items.length + " item(s)");
+        if (newEmotes > 0) rewardParts.push(":medal:&d" + newEmotes + " emote(s)");
+        if (newBadges > 0) rewardParts.push(":medal:&b" + newBadges + " badge(s)");
+        if (rewardParts.length > 0) {
+            tellPlayer(pl, "&6You received: &r" + rewardParts.join(" &7• &r"));
+        }
+        var tips = [];
+        if (newEmotes > 0) tips.push("&d:medal: View emotes{run_command:!myemotes|show_text:$aClick to view your emotes.}");
+        if (newBadges > 0) tips.push("&9:medal: View badges{run_command:!mybadges|show_text:$aClick to view your badges.}");
+        if (tips.length > 0) {
+            tellPlayer(pl, "&r[" + tips.join("&r] [&r") + "&r]");
+        }
+        tellPlayer(pl, "&aCode '&b" + this.name + "&a' activated!");
         return true;
     };
 
@@ -12909,7 +13022,7 @@ function formatLoanInfo(loan, params, title, cmdPrefix) {
     var payPercentage = roundDec(100 / loan.getPaybackAmount() * loan.data.paid).toString();
     var output = getTitleBar('Loan ' + title, false) + '\n';
 
-    output += getNavBar() + '\n';
+    // output += getNavBar() + '\n';
 
     if (!params.payments) {
 

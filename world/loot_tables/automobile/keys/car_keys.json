@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/keys/car_keys_dkz.json",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.key",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mts.key",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}

@@ -9,6 +9,8 @@ This module lives under `modules_unfinished/onboarding/` and will move to `modul
 - Phase 0: Arrival flow, dialog detection, timed transfer to the State Hotel, and confinement until transfer completes.
 - Phase 1: Starter room assignment, confinement to hotel/room until setup is done, registering a home with `!setHome`, and using `!myHomes`/`!home`.
 - Phase 2: Money Pouch tutorial: checking `!myMoney`, depositing/withdrawing, multi-withdraw (`!withdraw 1g 6`), and a first purchase in the canteen.
+- Phase 3: Scrap for a Start: learn crates by packing and selling a mixed scrap crate. Stage 1 gives 18 scrap items and a random crate (loot table is configurable), then guides packing and selling at two facilities.
+	- Stage 3 Step 2 (Selling): This step completes when the player's economy log (`world/customnpcs/scripts/logs/economy.json`) contains any entry with `type: "scrap_sale"` and `preset: "ferrous"` under their name. No in-game checks are performed; the sale is inferred from the log.
 - Phase separators appear at the end of each phase with color-coded titles (see “Color/Chat Conventions”).
 - When Phase 1 completes, players receive a badge/emote reward.
 
@@ -30,7 +32,6 @@ Top-level keys:
 	- `moduleEnabled` (boolean): Master toggle.
 	- `force_full_onboarding` (boolean, default false): Forces the full Phase 1 flow even if the player already owns regions. Ownership shortcuts are disabled, but an already-owned Starter Hotel room is still reused when present.
 	- `saveThrottleTicks` (number): Debounce for saving player data.
-	- `logJson` (boolean): If true, logs additional JSON to file.
 	- Timers (seconds):
 		- `generic_streamline_delay_short`, `generic_streamline_delay_medium`, `generic_streamline_delay_long`, `generic_streamline_delay_very_long`
 		- `generic_streamline_interval` (periodic reminder interval)
@@ -94,6 +95,12 @@ Ownership shortcuts may skip step 1–3 and jump to using `!myHomes` and `!home`
 	 - Multi-withdraw: `!withdraw 1g 6` → six 1G coins. Then redeposit again.
 4) First purchase:
 	 - Go to the canteen (configured region), find waiter NPC (configured name/position), stay near him, and buy any food from the configured market file.
+
+### Phase 3 – Scrap for a Start
+
+1) Salvaged Mess: ensure enough free inventory space, then receive 18 configured scrap items and, after a short delay, a random crate from a configurable loot table (`phases["3"].stages.stage1`).
+2) Packing the crate: place the crate, fill it with the given items, then pick it up.
+3) Selling: travel to ferrous and non-ferrous facilities and sell the contents via their traders.
 
 ## Color/Chat Conventions
 

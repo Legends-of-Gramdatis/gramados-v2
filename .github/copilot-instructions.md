@@ -91,3 +91,27 @@ The *bankVault* module is a good illustration:
   - For clarity, prefix variable names or commands with context, like `!help` or `mts:ivv.idcard_seagull` so readers see they are commands/items.
 
 Copilot should prioritize consistency with existing style conventions. Match existing documentation and script layout wherever possible.
+
+# Onboarding Development Rules
+
+These rules apply to all onboarding code and documentation in this folder.
+They are mandatory and should guide all future changes.
+
+- No try/catch by default: Do not wrap logic in `try/catch`. If a `try/catch` is strictly necessary (e.g., third‑party API boundary), you must clearly log the error to a logfile using the standard logging utilities (e.g., `logToFile('onboarding', '...')`) and include enough context to act on it.
+- No config fallbacks: Missing configuration must cause a hard failure. Do not invent defaults or fall back to implicit values. Required keys must exist in `onboarding_config.json`; if they are absent, let the error surface rather than masking it.
+- Keep config and chat_convention identical: When adding or updating chat messages in the config, copy them verbatim from `chat_convention.md`. The strings in `onboarding_config.json` must match the corresponding entries in `chat_convention.md` exactly.
+- Always update the config for new features: Any new feature or flow must be reflected in `onboarding_config.json` with all required toggles, delays, regions, and chat texts. Do not ship functionality that relies on hardcoded values that belong in config.
+- Always update the README: Whenever you implement something new or change behavior, update `README.md` in this folder to document purpose, usage, config keys, and any admin/testing notes. Keep examples and instructions current.
+
+## Practical Guidance
+
+- Validation first: Load the relevant section of `onboarding_config.json` and validate the presence of all required keys before running the feature. If a key is missing, allow the script to error. If you must guard access (e.g., type checks), log and throw — do not substitute defaults.
+- Consistent logging: When handling truly exceptional cases with `try/catch`, always log via the shared logging utility with a stable prefix like `[onboarding.error]` and include the player name (if applicable), phase/stage/step, and the config key(s) involved.
+- Message source of truth: Treat `chat_convention.md` as the sole source for the text of player‑facing messages. When changing texts there, mirror them to the config in the same commit.
+
+Source references:
+- `chat_convention.md` — message and color conventions for all phases.
+- `onboarding_config.json` — required configuration keys and texts for runtime.
+- `README.md` — module overview, setup, and admin/testing guidance.
+
+Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.

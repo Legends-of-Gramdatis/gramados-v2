@@ -183,7 +183,7 @@ def main():
     args = parser.parse_args()
 
     filepath = "/home/mouette/gramados-v2/world/customnpcs/scripts/logs/economy.json"
-    output_filepath = "/home/mouette/gramados-v2/reports/economy_report.md"
+    output_filepath = "/home/mouette/gramados-v2/scripts_backend/reports/economy_report.md"
     ignore_prebalance = not args.include_prebalance  # Default to ignoring prebalance
     data = load_data(filepath, ignore_prebalance)
     player_totals, market_totals, player_market_money_proportions, player_market_trade_proportions, top_trades, bottom_trades, market_average_revenue, player_trade_counts, player_average_items, market_average_items, gem_mafia_totals = calculate_statistics(data)

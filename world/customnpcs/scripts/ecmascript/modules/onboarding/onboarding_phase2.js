@@ -19,12 +19,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
     if (!pdata.phase2) pdata.phase2 = {};
 
     var now = Date.now();
-    var shortDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_short === 'number') ? globalCfg.general.generic_streamline_delay_short : 5) * 1000;
-    var mediumDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_medium === 'number') ? globalCfg.general.generic_streamline_delay_medium : 10) * 1000;
-    var longDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_long === 'number') ? globalCfg.general.generic_streamline_delay_long : 20) * 1000;
-    var veryLongDelayMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_delay_very_long === 'number') ? globalCfg.general.generic_streamline_delay_very_long : (longDelayMs/1000)) * 1000;
-    var intervalMs = ((globalCfg && globalCfg.general && typeof globalCfg.general.generic_streamline_interval === 'number') ? globalCfg.general.generic_streamline_interval : 60) * 1000;
-
+    var shortDelayMs = globalCfg.general.generic_streamline_delay_short * 1000;
+    var mediumDelayMs = globalCfg.general.generic_streamline_delay_medium * 1000;
+    var longDelayMs = globalCfg.general.generic_streamline_delay_long * 1000;
+    var veryLongDelayMs = globalCfg.general.generic_streamline_delay_very_long * 1000;
+    var intervalMs = globalCfg.general.generic_streamline_interval * 1000;
     // Respect the user's instruction to wait generic_streamline_delay_very_long after phase1 completed
     var phase1CompletedAt = null;
     if (pdata.phase1) {
@@ -74,7 +73,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s1_promptTime = Date.now();
                         pdata.phase2.s1_lastMsg = Date.now();
                         changed = true;
-                        logToFile('onboarding', '[phase2-s1] ' + player.getName() + ' granted 40g.');
+                        logToFile('onboarding', '[p2.money.grant] ' + player.getName() + ' granted 40g.');
                         return changed;
                     }
 
@@ -98,7 +97,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             tellPlayer(player, msgCompl);
                             pdata.phase2.currentStep = 2;
                             changed = true;
-                            logToFile('onboarding', '[phase2-s1] ' + player.getName() + ' ran !myMoney detected at ' + myMoneyLastRan1);
+                            logToFile('onboarding', '[p2.mymoney.seen] ' + player.getName() + ' ran !myMoney detected at ' + myMoneyLastRan1);
                         } else {
                             var last1 = pdata.phase2.s1_lastMsg || pdata.phase2.s1_promptTime || 0;
                             if ((Date.now() - last1) > intervalMs) {
@@ -150,6 +149,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s1_guideGivenTime = Date.now();
                         var guideChat = phaseCfg.stages.stage1.chat;
                         tellPlayer(player, guideChat.s2_guide_added);
+                        logToFile('onboarding', '[p2.item.grant] ' + player.getName() + ' granted Currency Guide (paper).');
                         // Schedule the long gate before deposit
                         pdata.phase2.s2_availableAt = Date.now() + longDelayMs;
                         pdata.phase2.currentStep = 3;
@@ -245,7 +245,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                                 return changed;
                             }
                         }
-                    } catch (e6) { logToFile('onboarding', '[phase2-s2-check-error] ' + player.getName() + ' ' + e6); }
+                        logToFile('onboarding', '[p2.deposit.complete] ' + player.getName() + ' deposit detected.');
+                    } catch (e6) { logToFile('onboarding', '[p2.deposit.check.error] ' + player.getName() + ' ' + e6); }
                     break;
                 }
                 case 2: { // Check Your Pouch confirmation after short delay
@@ -272,7 +273,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             pdata.phase2.currentStage = 2;
                             pdata.phase2.currentStep = 3;
                             changed = true;
-                            logToFile('onboarding', '[phase2-s2-step2] ' + player.getName() + ' confirmed pouch after deposit at ' + myMoneyLast2);
+                            logToFile('onboarding', '[p2.deposit.confirm] ' + player.getName() + ' confirmed pouch after deposit at ' + myMoneyLast2);
                         } else {
                             var last3 = pdata.phase2.s3_lastMsg || pdata.phase2.s3_promptTime || 0;
                             if ((Date.now() - last3) > intervalMs) {
@@ -306,7 +307,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             var w3 = player.getWorld();
                             var stacks3 = generateMoney(w3, (33*100 + 34), "money") || [];
                             for (var i3 = 0; i3 < stacks3.length; i3++) { try { if (stacks3[i3]) player.giveItem(stacks3[i3]); } catch (gex) { try { player.dropItem(stacks3[i3]); } catch (gex2) {} } }
-                        } catch (grantErr) { logToFile('onboarding', '[phase2-s3b-grant-error] ' + player.getName() + ' ' + grantErr); }
+                            logToFile('onboarding', '[p2.money.grant] ' + player.getName() + ' granted 33g34c.');
+                        } catch (grantErr) { logToFile('onboarding', '[p2.money.grant.error] ' + player.getName() + ' ' + grantErr); }
 
                         // Title and prompt (messages from config only)
                         tellSeparatorTitle(player, 'Depositing Batch of Money Items', '&2', '&a');
@@ -452,6 +454,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         tellPlayer(player, s4c2c.s4_withdraw_completed);
                         pdata.phase2.s4_withdraw_completed = true;
                         pdata.phase2.s4_withdraw_completedAt = Date.now();
+                        logToFile('onboarding', '[p2.withdraw.complete] ' + player.getName() + ' withdrew ~6g successfully.');
                         // Move to Step 3: Deposit money again
                         pdata.phase2.currentStep = 3;
                         changed = true;
@@ -524,6 +527,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         tellPlayer(player, s4c3c.s4_redeposit_completed);
                         pdata.phase2.s4_redeposit_completed = true;
                         pdata.phase2.s4_redeposit_completedAt = Date.now();
+                        logToFile('onboarding', '[p2.redeposit.complete] ' + player.getName() + ' redeposited all withdrawn money.');
                         // Proceed to Step 4: Withdrawing Multiple Items (1g x6)
                         pdata.phase2.currentStage = 4;
                         pdata.phase2.currentStep = 4;
@@ -636,7 +640,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         tellPlayer(player, s4mC.s4_multi_completed);
                         pdata.phase2.s4_multi_completed = true;
                         pdata.phase2.s4_multi_completedAt = Date.now();
-                        // Move to next Stage 5
+                        logToFile('onboarding', '[p2.multiwithdraw.complete] ' + player.getName() + ' withdrew 6x1G successfully.');
+                        // Schedule Stage 5 to start after medium delay
+                        pdata.phase2.s5_availableAt = Date.now() + mediumDelayMs;
                         pdata.phase2.currentStage = 5;
                         pdata.phase2.currentStep = 1;
                         changed = true;
@@ -655,6 +661,10 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
         case 5: // Your first purchase - Step 1: Heading to the Canteen (detect region entry)
             switch (step) {
                 case 1: {
+                    // Gate Stage 5 start until medium delay after Stage 4 completion
+                    if (pdata.phase2.s5_availableAt && Date.now() < pdata.phase2.s5_availableAt) {
+                        return changed;
+                    }
                     // On first entry into this step, show title and starting guidance once
                     if (!pdata.phase2.s5_step1_started) {
                         pdata.phase2.s5_step1_started = true;
@@ -679,6 +689,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             if (s5chat.s5_canteen_completed) tellPlayer(player, s5chat.s5_canteen_completed);
                             // Advance to Step 2 (Finding waiter)
                             pdata.phase2.currentStep = 2;
+                            logToFile('onboarding', '[p2.canteen.enter] ' + player.getName() + ' entered canteen region.');
                             changed = true;
                         }
                     } else {
@@ -751,6 +762,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             var keys = _buildMarketKeys(marketItems);
                             pdata.phase2.s5_marketKeys = keys;
                             pdata.phase2.s5_invBaseline = _countItemsByKeys(player, keys);
+                            logToFile('onboarding', '[p2.waiter.found] ' + player.getName() + ' found waiter ' + waiterName + '.');
                             // Advance to Step 3 (next part of purchase flow)
                             pdata.phase2.currentStep = 3;
                             changed = true;
@@ -839,9 +851,12 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         pdata.phase2.s5_purchase_completedAt = Date.now();
                         if (s5chat3.s5_purchase_completed) tellPlayer(player, s5chat3.s5_purchase_completed);
                         // Lock lifted automatically by not confining anymore. Advance to next step placeholder.
-                        pdata.phase2.currentStep = 4;
+                        pdata.phase = 3;
+                        pdata.phase2.currentStage = null;
+                        pdata.phase2.currentStep = null;
                         tellSeparator(player, '&2')
                         grantEmotes(player, ['hunger_empty', 'hunger_half', 'hunger_full']);
+                        logToFile('onboarding', '[p2.purchase.complete] ' + player.getName() + ' purchased canteen item(s).');
                         changed = true;
                     } else {
                         // Periodic generic reminder to purchase something

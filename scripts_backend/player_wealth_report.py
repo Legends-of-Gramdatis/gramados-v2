@@ -78,7 +78,7 @@ def generate_wealth_report(player_wealth_details, decoded_data, output_filepath)
             (value.get("displayName", key), value.get("salePrice", 0) / 100, value.get("owner", "Unowned"))
             for key, value in decoded_data.items() if key.startswith("region_")
         ]
-        for region_name, sale_price, owner in sorted(regions, key=lambda x: x[1], reverse=True):
+        for region_name, sale_price, owner in sorted(regions, key=lambda x: (-x[1], x[0])):
             report.write(f"- {region_name}: {sale_price:,.2f} Grons (Owner: {owner})\n")
 
         # Add a section for regions for sale
@@ -104,8 +104,8 @@ def generate_wealth_report(player_wealth_details, decoded_data, output_filepath)
     print(f"Wealth report written to {output_filepath}")
 
 if __name__ == "__main__":
-    input_file = "/home/mouette/gramados-v2/reports/output_decoded_world_data.json"
-    output_file = "/home/mouette/gramados-v2/reports/player_wealth_report.md"
+    input_file = "/home/mouette/gramados-v2/scripts_backend/reports/output_decoded_world_data.json"
+    output_file = "/home/mouette/gramados-v2/scripts_backend/reports/player_wealth_report.md"
 
     with open(input_file, 'r') as file:
         decoded_data = json.load(file)

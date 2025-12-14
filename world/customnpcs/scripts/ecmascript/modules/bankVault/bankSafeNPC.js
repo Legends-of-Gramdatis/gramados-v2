@@ -548,14 +548,14 @@ function generateLoot(world, npc, player) {
             }
         } catch (e) {
             // On error, fallback to default behavior and log
-            try { logToFile("dev", "Error applying faction reputation change: " + e.message); } catch (ignored) { }
+            logToFile("dev", "Error applying faction reputation change: " + e.message);
             player.addFactionPoints(chosenFactionId, chosenDelta);
         }
     }
 
     // Resolve faction name and message verb
     var factionName = "Criminal";
-    try { factionName = getFactionName(chosenFactionId) || factionName; } catch (ignored) { }
+    factionName = getFactionName(chosenFactionId);
     var changeWord = (chosenDelta >= 0) ? "increased" : "decreased";
     var changePoints = Math.abs(chosenDelta);
 

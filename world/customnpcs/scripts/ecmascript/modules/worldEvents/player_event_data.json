@@ -38,13 +38,13 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1160
+            "egg_count": 1162
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
-                    "egg_count": 190
+                    "egg_count": 191
                 },
                 "chromashell": {
                     "egg_count": 156
@@ -53,7 +53,7 @@
                     "egg_count": 35
                 }
             },
-            "egg_count": 381
+            "egg_count": 382
         },
         "Colt_44_magnum": {
             "has_starter_pack": true,
@@ -235,6 +235,14 @@
                 }
             },
             "egg_count": 3
+        },
+        "Blackbird823": {
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         }
     },
     "Spooktober": {

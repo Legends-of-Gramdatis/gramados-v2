@@ -11,12 +11,13 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 
 // Phase scripts
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase0.js');
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase1.js');
-load('world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_phase2.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase0.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase1.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase2.js');
+load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase3.js');
 
 // === Constants ===
-var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/onboarding_config.json';
+var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 var ONBOARDING_DATA_PATH   = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
@@ -40,7 +41,7 @@ function onboarding_getPlayerData(player) {
     var n = player.getName();
     if (!_onboarding_players[n]) {
         _onboarding_players[n] = { created: Date.now(), phase: 0 };
-        logToFile('onboarding', '[init-player] ' + n + ' entry created.');
+    logToFile('onboarding', '[p.init] ' + n + ' entry created.');
         saveJson(_onboarding_players, ONBOARDING_DATA_PATH);
     }
     _onboarding_current_pdata = _onboarding_players[n];
@@ -86,7 +87,7 @@ function init(event) {
                 if (!pdata.phase0.welcomeTime) {
                     pdata.phase0.welcomeTime = Date.now();
                 }
-                logToFile('onboarding', '[welcome] ' + player.getName() + ' login welcome for ' + npcName);
+                logToFile('onboarding', '[p0.welcome] ' + player.getName() + ' login welcome for ' + npcName);
             }
         }
     }
@@ -108,6 +109,9 @@ function tick(event) {
             break;
         case 2:
             changed = onboarding_run_phase2(player, pdata, _onboarding_cfg.phases['2'], _onboarding_cfg, _onboarding_players) || false;
+            break;
+        case 3:
+            changed = onboarding_run_phase3(player, pdata, _onboarding_cfg.phases['3'], _onboarding_cfg, _onboarding_players) || false;
             break;
         default:
             break;
