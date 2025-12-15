@@ -1,0 +1,290 @@
+{
+  "minecraft:wheat_seeds": {
+    "damage": 0,
+    "crop": "minecraft:wheat"
+  },
+  "minecraft:beetroot_seeds": {
+    "damage": 0,
+    "crop": "minecraft:beetroots"
+  },
+  "minecraft:carrot": {
+    "damage": 0,
+    "crop": "minecraft:carrots"
+  },
+  "minecraft:potato": {
+    "damage": 0,
+    "crop": "minecraft:potatoes"
+  },
+  "minecraft:melon_seeds": {
+    "damage": 0,
+    "crop": "minecraft:melon_stem"
+  },
+  "minecraft:pumpkin_seeds": {
+    "damage": 0,
+    "crop": "minecraft:pumpkin_stem"
+  },
+  "harvestcraft:onionseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamonioncrop"
+  },
+  "harvestcraft:tomatoseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamtomatocrop"
+  },
+  "harvestcraft:lettuceseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamlettucecrop"
+  },
+  "harvestcraft:strawberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamstrawberrycrop"
+  },
+  "harvestcraft:garlicseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamgarliccrop"
+  },
+  "harvestcraft:potatoseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pampotatocrop"
+  },
+  "harvestcraft:cornseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcorncrop"
+  },
+  "harvestcraft:gingerseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamgingercrop"
+  },
+  "harvestcraft:beanseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambeancrop"
+  },
+  "harvestcraft:bellpepperseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambellpeppercrop"
+  },
+  "harvestcraft:broccoliseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambrocolicrop"
+  },
+  "harvestcraft:cauliflowerseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcauliflowercrop"
+  },
+  "harvestcraft:cabbageseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcabbagecrop"
+  },
+  "harvestcraft:cucumberseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcucumbercrop"
+  },
+  "harvestcraft:eggplantseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pameggplantcrop"
+  },
+  "harvestcraft:chilipepperseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamchilipeppercrop"
+  },
+  "harvestcraft:zucchiniseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamzucchinicrop"
+  },
+  "harvestcraft:radishseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamradishcrop"
+  },
+  "harvestcraft:ryeseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamryecrop"
+  },
+  "harvestcraft:oatsseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamoatscrop"
+  },
+  "harvestcraft:parsnipseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamparsnipcrop"
+  },
+  "harvestcraft:turnipseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamturnipcrop"
+  },
+  "harvestcraft:sweetpotatoseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamsweetpotatocrop"
+  },
+  "harvestcraft:spiceleafseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamspiceleafcrop"
+  },
+  "harvestcraft:teaseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamteacrop"
+  },
+  "harvestcraft:peasseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pampeascrop"
+  },
+  "harvestcraft:asparagusseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamasparaguscrop"
+  },
+  "harvestcraft:scallionseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamshalotcrop"
+  },
+  "harvestcraft:celleryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcellerycrop"
+  },
+  "harvestcraft:wintersquashseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamwintersquashcrop"
+  },
+  "harvestcraft:cantaloupeseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcantaloupecrop"
+  },
+  "harvestcraft:whitemushroomseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamwhitemushroomcrop"
+  },
+  "harvestcraft:leekseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamleekcrop"
+  },
+  "harvestcraft:bambooshootseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambambooshootcrop"
+  },
+  "harvestcraft:cottonseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcottoncrop"
+  },
+  "harvestcraft:waterchestnutseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamwaterchestnutcrop"
+  },
+  "harvestcraft:kiwiseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamkiwicrop"
+  },
+  "harvestcraft:mustardseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pammustardseedscrop"
+  },
+  "harvestcraft:soybeanseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamsoybeancrop"
+  },
+  "harvestcraft:sesameseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamsesameseedscrop"
+  },
+  "harvestcraft:curryleafseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcurryleafcrop"
+  },
+  "harvestcraft:juniperberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamjuniperberrycrop"
+  },
+  "harvestcraft:kenafseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamkenafcrop"
+  },
+  "harvestcraft:amaranthseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamamaranthcrop"
+  },
+  "harvestcraft:quinoaseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamquinoacrop"
+  },
+  "harvestcraft:milletseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pammilletcrop"
+  },
+  "harvestcraft:barleyseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambarleycrop"
+  },
+  "harvestcraft:huckleberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamhuckleberrycrop"
+  },
+  "harvestcraft:coffeeseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcoffeebeancrop"
+  },
+  "harvestcraft:taroseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamtarocrop"
+  },
+  "harvestcraft:artichokeseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamartichokecrop"
+  },
+  "harvestcraft:elderberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamelderberrycrop"
+  },
+  "harvestcraft:agaveseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamagavecrop"
+  },
+  "harvestcraft:cassavaseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcassavacrop"
+  },
+  "harvestcraft:riceseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamricecrop"
+  },
+  "harvestcraft:seaweedseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamseaweedcrop"
+  },
+  "harvestcraft:rutabagaseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamrutabagacrop"
+  },
+  "harvestcraft:cranberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcranberrycrop"
+  },
+  "harvestcraft:blueberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamblueberrycrop"
+  },
+  "harvestcraft:raspberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamraspberrycrop"
+  },
+  "harvestcraft:blackberryseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamblackberrycrop"
+  },
+  "harvestcraft:cactusfruitseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamcactusfruitcrop"
+  },
+  "harvestcraft:brusselsproutseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambrusselsproutcrop"
+  },
+  "harvestcraft:peanutseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pampeanutcrop"
+  },
+  "harvestcraft:pineappleseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pampineapplecrop"
+  },
+  "harvestcraft:greengrapeseeditem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamgreengrapecrop"
+  }
+}
