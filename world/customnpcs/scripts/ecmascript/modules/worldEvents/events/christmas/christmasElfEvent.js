@@ -22,6 +22,13 @@ function christmas_onPlayerJoin(player) {
         if (player.getGamemode() != 0) {
             return;
         }
+        
+        // Check if elf is disabled (rotten flesh cooldown)
+        var eventData = loadPlayerEventData('Christmas', player.getName());
+        if (eventData.elfDisabledUntil && Date.now() < eventData.elfDisabledUntil) {
+            return; // Elf still disabled
+        }
+        
         var world = player.getWorld();
         var pos = player.getPos();
         // Guard: if an elf for this player already exists nearby, despawn it to avoid duplicates
@@ -134,6 +141,12 @@ function christmas_tickFollow(ownerPlayer) {
 // Ensure the owner has an elf nearby; if not, spawn one at player position
 function _christmas_respawnIfMissing(world, pos, playerName) {
     try {
+        // Check if elf is disabled (rotten flesh cooldown)
+        var eventData = loadPlayerEventData('Christmas', playerName);
+        if (eventData.elfDisabledUntil && Date.now() < eventData.elfDisabledUntil) {
+            return; // Elf still disabled, don't respawn
+        }
+        
         // Get player to check gamemode
         var players = world.getAllPlayers();
         for (var p = 0; p < players.length; p++) {

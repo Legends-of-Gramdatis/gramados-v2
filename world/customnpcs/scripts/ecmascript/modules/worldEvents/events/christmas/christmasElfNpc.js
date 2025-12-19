@@ -143,6 +143,42 @@ function _christmas_playAcceptEffects(npc) {
         logToFile('events', '[christmas] Error playing accept effects: ' + err);
     }
 }
+
+function _christmas_handleRottenFlesh(npc, player) {
+    var pname = player.getName();
+    var owner = npc.getStoreddata().get(OWNER_KEY);
+    
+    // Verify ownership
+    if (pname !== owner) {
+        return;
+    }
+    
+    // Load worldEventUtils to save player event data
+    load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
+    
+    // Set cooldown: 1 hour = 3600000 milliseconds
+    var cooldownEnd = Date.now() + 3600000;
+    var eventData = loadPlayerEventData('Christmas', pname);
+    eventData.elfDisabledUntil = cooldownEnd;
+    savePlayerEventData('Christmas', pname, eventData);
+    
+    // Notify player
+    tellPlayer(player, '&c&l' + (npc.getDisplay().getName() || 'Christmas Elf') + '&r&c: "Ugh! I\'m leaving! Don\'t expect me back for a while!"');
+    
+    // Play negative effects
+    var pos = npc.getPos();
+    var cmdBase = pos.getX() + ' ' + pos.getY() + ' ' + pos.getZ();
+    npc.executeCommand('/particle angryVillager ' + cmdBase + ' 0.5 1 0.5 0 20');
+    npc.executeCommand('/particle smoke ' + cmdBase + ' 0.3 0.5 0.3 0.05 30');
+    npc.executeCommand('/playsound minecraft:entity.villager.no player @a[r=12] ' + cmdBase + ' 1.0 0.8');
+    
+    // Log the event
+    logToFile('events', '[christmas] Player ' + pname + ' gave rotten flesh. Elf disabled for 1 hour.');
+    
+    // Despawn after a short delay
+    npc.despawn();
+}
+
 function interact(event) {
     var player = event.player;
     var npc = event.npc;
@@ -186,6 +222,12 @@ function _christmas_handleItemConfirmation(npc, player) {
     var elfName = npc.getDisplay().getName() || 'Christmas Elf';
     var pname = player.getName();
     var now = Date.now();
+    
+    // Special handling for rotten flesh - despawn elf for 1 hour
+    if (itemName === 'minecraft:rotten_flesh') {
+        _christmas_handleRottenFlesh(npc, player);
+        return;
+    }
     
     // Get display name for the item
     var itemDisplayName = '&6&l' + (player.getMainhandItem().getDisplayName ? player.getMainhandItem().getDisplayName() : itemName) + '&r';
