@@ -282,5 +282,10 @@
             "ghostsSpawned": 98,
             "ghostsHunted": 61
         }
+    },
+    "Christmas": {
+        "dynmie": {
+            "elfDisabledUntil": 1766139619085
+        }
     }
 }
