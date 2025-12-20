@@ -25,9 +25,9 @@ function interact(event) {
         tellPlayer(player, '&e[Test] Mode 1: Plant 10 seeds from inventory (radius ' + RADIUS + ')');
         testPlantFromInventory(player, world, pos, RADIUS, 10);
     } else if (TEST_MODE === 2) {
-        // Mode 2: Unlimited planting (no inventory check)
-        tellPlayer(player, '&e[Test] Mode 2: Unlimited planting (ignores inventory)');
-        testUnlimitedPlanting(player, world, pos, RADIUS);
+        // Mode 2: Unlimited mixed planting from JSON (ignores inventory)
+        tellPlayer(player, '&e[Test] Mode 2: Unlimited mixed crops from JSON');
+        testUnlimitedMixedFromJson(player, world, pos, RADIUS);
     } else if (TEST_MODE === 3) {
         // Mode 3: Random mixed planting from all available seeds
         tellPlayer(player, '&e[Test] Mode 3: Random mixed planting from all seeds in inventory');
@@ -44,7 +44,7 @@ function attack(event) {
     var modeNames = [
         '&aPlant all from inventory',
         '&aPlant 10 from inventory',
-        '&aUnlimited planting (no inv check)',
+        '&aUnlimited mixed from JSON',
         '&aRandom mixed planting'
     ];
     
@@ -114,6 +114,73 @@ function testUnlimitedPlanting(player, world, pos, radius) {
     var leftover = plantCropsOnFarmland(world, pos, radius, testSeed, -1, null, 0);
     
     tellPlayer(player, '&aUnlimited planting complete! Leftover: &6' + leftover + ' &7(should be 0)');
+}
+
+/**
+ * Test unlimited mixed planting from JSON (ignores inventory).
+ * Picks random crop blocks defined in seed_to_crop.json and plants them on farmland.
+ */
+function testUnlimitedMixedFromJson(player, world, pos, radius) {
+    var seedMap = loadSeedToCropMap();
+    if (!seedMap) {
+        tellPlayer(player, '&cFailed to load seed-to-crop map');
+        return;
+    }
+    // Build list of unique crop block ids from the map
+    var cropIds = [];
+    var seen = {};
+    for (var seedId in seedMap) {
+        var entry = seedMap[seedId];
+        if (!entry || typeof entry.crop !== 'string') continue;
+        var cid = entry.crop;
+        if (!seen[cid]) { seen[cid] = true; cropIds.push(cid); }
+    }
+    if (cropIds.length === 0) {
+        tellPlayer(player, '&cNo crop definitions found in JSON');
+        return;
+    }
+
+    tellPlayer(player, '&7Planting unlimited mixed crops from JSON (' + cropIds.length + ' types)');
+
+    var c = { x: Math.floor(pos.x), y: Math.floor(pos.y), z: Math.floor(pos.z) };
+    var r2 = radius * radius;
+    var planted = 0;
+    var byCrop = {};
+
+    for (var dx = -radius; dx <= radius; dx++) {
+        for (var dy = -radius; dy <= radius; dy++) {
+            for (var dz = -radius; dz <= radius; dz++) {
+                if (dx*dx + dy*dy + dz*dz > r2) continue;
+                var x = c.x + dx;
+                var y = c.y + dy;
+                var z = c.z + dz;
+
+                var below = world.getBlock(x, y, z);
+                if (!below || below.getName() !== 'minecraft:farmland') continue;
+                var above = world.getBlock(x, y + 1, z);
+                if (!above || !above.isAir()) continue;
+
+                var ridx = Math.floor(Math.random() * cropIds.length);
+                var cropBlock = cropIds[ridx];
+                try {
+                    world.setBlock(x, y + 1, z, cropBlock, 0);
+                    planted++;
+                    byCrop[cropBlock] = (byCrop[cropBlock] || 0) + 1;
+                } catch (ex) {
+                    tellPlayer(player, '&cError planting crop ' + cropBlock + ': ' + ex);
+                }
+            }
+        }
+    }
+
+    tellPlayer(player, '&aPlanted &6' + planted + ' &amixed crops (unlimited mode)');
+    // Optional: brief breakdown (limit output)
+    var shown = 0;
+    for (var cid in byCrop) {
+        tellPlayer(player, '&7  - ' + cid + ': &6' + byCrop[cid]);
+        shown++;
+        if (shown >= 10) { tellPlayer(player, '&7  …'); break; }
+    }
 }
 
 /**
@@ -220,6 +287,6 @@ function getTooltip(e) {
     e.add('&7Attack: Cycle test mode');
     e.add('&eMode 0: &7Plant all seeds from inventory');
     e.add('&eMode 1: &7Plant 10 seeds from inventory');
-    e.add('&eMode 2: &7Unlimited planting (no inv)');
+    e.add('&eMode 2: &7Unlimited mixed crops from JSON');
     e.add('&eMode 3: &7Random mixed planting');
 }
