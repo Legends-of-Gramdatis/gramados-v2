@@ -513,6 +513,22 @@ function getPlayerCuboids(player) {
 }
 
 /**
+ * Filters a list of cuboid/region names by substring match.
+ * @param {Array<string>} cuboidList
+ * @param {string} needle
+ * @returns {Array<string>}
+ */
+function filterCuboidsByString(cuboidList, needle) {
+    if (!cuboidList || !cuboidList.length || !needle) return [];
+    var out = [];
+    for (var i = 0; i < cuboidList.length; i++) {
+        var name = '' + cuboidList[i];
+        if (name.indexOf(needle) !== -1) out.push(name);
+    }
+    return out;
+}
+
+/**
  * Returns an array of all region entries stored in world data.
  * Each entry: { name: string, data: Object }
  * Safe against malformed JSON; such entries are skipped.
