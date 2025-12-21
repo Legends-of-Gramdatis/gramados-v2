@@ -4,6 +4,7 @@
         "TheOddlySeagull",
         "Kitsunami_"
     ],
+    "blacklist_players": ["Peter_Kitsune"],
     "general": {
         "moduleEnabled": true,
         "force_full_onboarding": false,

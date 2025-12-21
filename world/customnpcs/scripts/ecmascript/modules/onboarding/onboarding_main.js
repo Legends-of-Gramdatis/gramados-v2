@@ -40,8 +40,10 @@ function onboarding_loadData() {
 function onboarding_getPlayerData(player) {
     var n = player.getName();
     if (!_onboarding_players[n]) {
-        _onboarding_players[n] = { created: Date.now(), phase: 0 };
-    logToFile('onboarding', '[p.init] ' + n + ' entry created.');
+        var initialPhase = onboarding_isBlacklisted(player) ? 3 : 0;
+        _onboarding_players[n] = { created: Date.now(), phase: initialPhase };
+        var logMsg = onboarding_isBlacklisted(player) ? '[p.init.blacklist] ' : '[p.init] ';
+        logToFile('onboarding', logMsg + n + ' entry created with phase ' + initialPhase + '.');
         saveJson(_onboarding_players, ONBOARDING_DATA_PATH);
     }
     _onboarding_current_pdata = _onboarding_players[n];
@@ -55,6 +57,12 @@ function onboarding_isBetaAllowed(player) {
     return includes(beta, player.getName());
 }
 
+function onboarding_isBlacklisted(player) {
+    if (!_onboarding_cfg) return false;
+    var blacklist = _onboarding_cfg.blacklist_players || [];
+    return includes(blacklist, player.getName());
+}
+
 function onboarding_isModuleEnabled() {
     return _onboarding_cfg && _onboarding_cfg.general && _onboarding_cfg.general.moduleEnabled;
 }
@@ -66,6 +74,7 @@ function init(event) {
     var player = event.player; if (!player) return;
     if (!onboarding_isModuleEnabled()) return;
     if (!onboarding_isBetaAllowed(player)) return;
+    if (onboarding_isBlacklisted(player)) return; // Skip init for blacklisted players
     var pdata = onboarding_getPlayerData(player);
     var phaseIdx = pdata.phase || 0;
     if (phaseIdx === 0) {
