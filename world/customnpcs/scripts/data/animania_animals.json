@@ -1,0 +1,466 @@
+{
+  "cow": {
+    "breeds": {
+      "angus": {
+        "female": "animania:cow_angus",
+        "male": "animania:bull_angus",
+        "kid": "animania:calf_angus",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "friesian": {
+        "female": "animania:cow_friesian",
+        "male": "animania:bull_friesian",
+        "kid": "animania:calf_friesian",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "hereford": {
+        "female": "animania:cow_hereford",
+        "male": "animania:bull_hereford",
+        "kid": "animania:calf_hereford",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "highland": {
+        "female": "animania:cow_highland",
+        "male": "animania:bull_highland",
+        "kid": "animania:calf_highland",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "holstein": {
+        "female": "animania:cow_holstein",
+        "male": "animania:bull_holstein",
+        "kid": "animania:calf_holstein",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "jersey": {
+        "female": "animania:cow_jersey",
+        "male": "animania:bull_jersey",
+        "kid": "animania:calf_jersey",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "longhorn": {
+        "female": "animania:cow_longhorn",
+        "male": "animania:bull_longhorn",
+        "kid": "animania:calf_longhorn",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "mooshroom": {
+        "female": "animania:cow_mooshroom",
+        "male": "animania:bull_mooshroom",
+        "kid": "animania:calf_mooshroom",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "sheep": {
+    "breeds": {
+      "dorper": {
+        "female": "animania:ewe_dorper",
+        "male": "animania:ram_dorper",
+        "kid": "animania:lamb_dorper",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "dorset": {
+        "female": "animania:ewe_dorset",
+        "male": "animania:ram_dorset",
+        "kid": "animania:lamb_dorset",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "friesian": {
+        "female": "animania:ewe_friesian",
+        "male": "animania:ram_friesian",
+        "kid": "animania:lamb_friesian",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "jacob": {
+        "female": "animania:ewe_jacob",
+        "male": "animania:ram_jacob",
+        "kid": "animania:lamb_jacob",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "merino": {
+        "female": "animania:ewe_merino",
+        "male": "animania:ram_merino",
+        "kid": "animania:lamb_merino",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "suffolk": {
+        "female": "animania:ewe_suffolk",
+        "male": "animania:ram_suffolk",
+        "kid": "animania:lamb_suffolk",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "goat": {
+    "breeds": {
+      "alpine": {
+        "female": "animania:doe_alpine",
+        "male": "animania:buck_alpine",
+        "kid": "animania:kid_alpine",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "angora": {
+        "female": "animania:doe_angora",
+        "male": "animania:buck_angora",
+        "kid": "animania:kid_angora",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "fainting": {
+        "female": "animania:doe_fainting",
+        "male": "animania:buck_fainting",
+        "kid": "animania:kid_fainting",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "kiko": {
+        "female": "animania:doe_kiko",
+        "male": "animania:buck_kiko",
+        "kid": "animania:kid_kiko",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "kinder": {
+        "female": "animania:doe_kinder",
+        "male": "animania:buck_kinder",
+        "kid": "animania:kid_kinder",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "nigerian_dwarf": {
+        "female": "animania:doe_nigerian_dwarf",
+        "male": "animania:buck_nigerian_dwarf",
+        "kid": "animania:kid_nigerian_dwarf",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "pygmy": {
+        "female": "animania:doe_pygmy",
+        "male": "animania:buck_pygmy",
+        "kid": "animania:kid_pygmy",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "rabbit": {
+    "breeds": {
+      "chinchilla": {
+        "female": "animania:doe_chinchilla",
+        "male": "animania:buck_chinchilla",
+        "kid": "animania:kit_chinchilla",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "cottontail": {
+        "female": "animania:doe_cottontail",
+        "male": "animania:buck_cottontail",
+        "kid": "animania:kit_cottontail",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "dutch": {
+        "female": "animania:doe_dutch",
+        "male": "animania:buck_dutch",
+        "kid": "animania:kit_dutch",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "havana": {
+        "female": "animania:doe_havana",
+        "male": "animania:buck_havana",
+        "kid": "animania:kit_havana",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "jack": {
+        "female": "animania:doe_jack",
+        "male": "animania:buck_jack",
+        "kid": "animania:kit_jack",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "lop": {
+        "female": "animania:doe_lop",
+        "male": "animania:buck_lop",
+        "kid": "animania:kit_lop",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "new_zealand": {
+        "female": "animania:doe_new_zealand",
+        "male": "animania:buck_new_zealand",
+        "kid": "animania:kit_new_zealand",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "rex": {
+        "female": "animania:doe_rex",
+        "male": "animania:buck_rex",
+        "kid": "animania:kit_rex",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "pig": {
+    "breeds": {
+      "duroc": {
+        "female": "animania:sow_duroc",
+        "male": "animania:hog_duroc",
+        "kid": "animania:piglet_duroc",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "hampshire": {
+        "female": "animania:sow_hampshire",
+        "male": "animania:hog_hampshire",
+        "kid": "animania:piglet_hampshire",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "large_black": {
+        "female": "animania:sow_large_black",
+        "male": "animania:hog_large_black",
+        "kid": "animania:piglet_large_black",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "large_white": {
+        "female": "animania:sow_large_white",
+        "male": "animania:hog_large_white",
+        "kid": "animania:piglet_large_white",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "old_spot": {
+        "female": "animania:sow_old_spot",
+        "male": "animania:hog_old_spot",
+        "kid": "animania:piglet_old_spot",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "yorkshire": {
+        "female": "animania:sow_yorkshire",
+        "male": "animania:hog_yorkshire",
+        "kid": "animania:piglet_yorkshire",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "chicken": {
+    "breeds": {
+      "leghorn": {
+        "female": "animania:hen_leghorn",
+        "male": "animania:rooster_leghorn",
+        "kid": "animania:chick_leghorn",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "orpington": {
+        "female": "animania:hen_orpington",
+        "male": "animania:rooster_orpington",
+        "kid": "animania:chick_orpington",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "plymouth_rock": {
+        "female": "animania:hen_plymouth_rock",
+        "male": "animania:rooster_plymouth_rock",
+        "kid": "animania:chick_plymouth_rock",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "rhode_island_red": {
+        "female": "animania:hen_rhode_island_red",
+        "male": "animania:rooster_rhode_island_red",
+        "kid": "animania:chick_rhode_island_red",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "wyandotte": {
+        "female": "animania:hen_wyandotte",
+        "male": "animania:rooster_wyandotte",
+        "kid": "animania:chick_wyandotte",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "peafowl": {
+    "breeds": {
+      "blue": {
+        "female": "animania:peahen_blue",
+        "male": "animania:peacock_blue",
+        "kid": "animania:peachick_blue",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "charcoal": {
+        "female": "animania:peahen_charcoal",
+        "male": "animania:peacock_charcoal",
+        "kid": "animania:peachick_charcoal",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "opal": {
+        "female": "animania:peahen_opal",
+        "male": "animania:peacock_opal",
+        "kid": "animania:peachick_opal",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "peach": {
+        "female": "animania:peahen_peach",
+        "male": "animania:peacock_peach",
+        "kid": "animania:peachick_peach",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "purple": {
+        "female": "animania:peahen_purple",
+        "male": "animania:peacock_purple",
+        "kid": "animania:peachick_purple",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "taupe": {
+        "female": "animania:peahen_taupe",
+        "male": "animania:peacock_taupe",
+        "kid": "animania:peachick_taupe",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      },
+      "white": {
+        "female": "animania:peahen_white",
+        "male": "animania:peacock_white",
+        "kid": "animania:peachick_white",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  },
+  "horse": {
+    "breeds": {
+      "draft": {
+        "female": "animania:mare_draft",
+        "male": "animania:stallion_draft",
+        "kid": "animania:foal_draft",
+        "regions": [],
+        "prime": false,
+        "milk_id": null,
+        "wool_id": null
+      }
+    }
+  }
+}
