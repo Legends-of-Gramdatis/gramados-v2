@@ -28,6 +28,7 @@ Top-level keys:
 
 - `indev` (boolean): When true, restricts the module to `beta_players` for safer testing.
 - `beta_players` (string[]): Players allowed to run onboarding while `indev` is true.
+- `blacklist_players` (string[]): Players who skip onboarding entirely and start at the last implemented phase (Phase 3). Use this for players who do not want to go through the onboarding process.
 - `general` (object):
 	- `moduleEnabled` (boolean): Master toggle.
 	- `force_full_onboarding` (boolean, default false): Forces the full Phase 1 flow even if the player already owns regions. Ownership shortcuts are disabled, but an already-owned Starter Hotel room is still reused when present.
