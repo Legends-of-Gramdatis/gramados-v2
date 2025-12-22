@@ -1221,7 +1221,14 @@ sets:
                 y: 114.0
                 z: 600.0
                 label: Gramatruck Hotel Cocktail Bar
-            
+            marker_4:
+                world: world
+                markup: false
+                icon: food&drink_wine
+                x: -5589.0
+                y: 73.0
+                z: 6430.0
+                label: La Copa del Monje - Wine Bar
         lines: {
             }
         layerprio: 0
@@ -3542,6 +3549,14 @@ sets:
                 y: 89.0
                 z: -1611.0
                 label: Chateau Silverleaf
+            marker_4:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -5611.0
+                y: 73.0
+                z: 6451.0
+                label: Viñedos de Albaíra
         lines: {}
         layerprio: 0
 
