@@ -33,6 +33,10 @@ var LOG_FILES = {
     onboarding: {
         json: "world/customnpcs/scripts/logs/onboarding.json",
         log: "world/customnpcs/scripts/logs/onboarding.log"
+    },
+    automobile: {
+        json: "world/customnpcs/scripts/logs/automobile.json",
+        log: "world/customnpcs/scripts/logs/automobile.log"
     }
 };
 
