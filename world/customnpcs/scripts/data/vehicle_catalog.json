@@ -1,0 +1,23 @@
+{
+  "vehicles": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2": {
+      "brand": "Trin",
+      "name": "Footpather Phase 2",
+      "maxHealth": 155,
+      "defaultPlateFormat": "ABC-1234",
+      "licensePlateSystem": "plate_gramados",
+      "extraTitles": [],
+      "paintVariants": ["_sage_g", "_ivory_g", "_oceanblue_g", "_ruby_g", "_sandstone_g", "_softgreen_g", "_steelblue_g"]
+    }
+  },
+  "platePrefixes": {
+    "Trin": {
+      "format": "XXX-0000",
+      "description": "Trin format: 3 letters, dash, 4 numbers"
+    },
+    "UNU": {
+      "format": "XX-00000",
+      "description": "UNU format: 2 letters, dash, 5 numbers"
+    }
+  }
+}
