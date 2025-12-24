@@ -37,18 +37,27 @@ function _christmas_recordDonation(player, itemStack) {
     if (!playerEntry.items) {
         playerEntry.items = [];
     }
-    var signature = _christmas_itemSignature(itemStack);
+    
+    // Get incoming item properties
+    var incomingId = itemStack.getName();
+    var incomingMeta = itemStack.getItemDamage();
+    var incomingNbtStr = '';
+    if (itemStack.hasNbt()) {
+        incomingNbtStr = _sanitizeJavaJson(itemStack.getNbt().toJsonString());
+    }
 
     var items = playerEntry.items;
     var found = false;
     for (var i = 0; i < items.length; i++) {
         var entry = items[i];
         var entryNbtStr = entry.nbt ? JSON.stringify(entry.nbt) : '';
-        var entrySig = entry.id + '|' + entry.meta + '|' + entryNbtStr;
-        if (entrySig === signature) {
-            entry.count += 1;
+        
+        // Match by id, meta, and NBT
+        if (entry.id === incomingId && entry.meta === incomingMeta && entryNbtStr === incomingNbtStr) {
+            entry.count += itemStack.getStackSize();
             items[i] = entry;
             found = true;
+            logToFile('events', '[christmas] Stacked donation for ' + pname + ': ' + incomingId + ' (new count: ' + entry.count + ')');
             break;
         }
     }
@@ -66,8 +75,9 @@ function _christmas_recordDonation(player, itemStack) {
             meta: itemStack.getItemDamage(),
             nbt: nbtData,
             displayName: itemStack.getDisplayName(),
-            count: 1
+            count: itemStack.getStackSize()
         });
+        logToFile('events', '[christmas] New donation recorded for ' + pname + ': ' + incomingId + ' x' + itemStack.getStackSize());
     }
 
     playerEntry.items = items;
