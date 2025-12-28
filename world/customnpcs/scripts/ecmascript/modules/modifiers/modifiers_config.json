@@ -1,0 +1,104 @@
+{
+    "items": {
+        "itemId": "variedcommodities:orb",
+        "usedItemId": "variedcommodities:orb_broken"
+    },
+    "modifiers": [
+        {
+            "type": "cattle pregnancy",
+            "radius": 16,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Fertility :sun:",
+            "description": "&7Blesses the herd so mothers carry new life.",
+            "colorCode": 9
+        },
+        {
+            "type": "cattle gestation",
+            "radius": 12,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Swift Birth :sun:",
+            "description": "&7Hastens the coming of calves, bending time for expectant mothers.",
+            "colorCode": 12
+        },
+        {
+            "type": "cattle milk production",
+            "radius": 12,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Rich Milk :sun:",
+            "description": "&7Fills the herd's udders with rich, flowing milk.",
+            "colorCode": 15
+        },
+        {
+            "type": "cattle baby grow",
+            "radius": 12,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Rapid Growth :sun:",
+            "description": "&7Urges young calves to stand tall and grow in a heartbeat.",
+            "colorCode": 10
+        },
+        {
+            "type": "farmland fertilize",
+            "radius": 10,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Rainfall :sun:",
+            "description": "&7Calls down a gentle rain to soak every furrow.",
+            "colorCode": 6
+        },
+        {
+            "type": "farmland tilt",
+            "radius": 8,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Fresh Soil :sun:",
+            "description": "&7Turns rough ground into neat, welcoming rows of soil.",
+            "colorCode": 3
+        },
+        {
+            "type": "crop harvest",
+            "radius": 8,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Bountiful Harvest :sun:",
+            "description": "&7Signals a generous gathering of the season's crops.",
+            "colorCode": 14
+        },
+        {
+            "type": "crop harvest and plant",
+            "radius": 8,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Cycle Harvest :sun:",
+            "description": "&7Reaps the fields, then sows anew in one graceful motion.",
+            "colorCode": 2
+        },
+        {
+            "type": "crop growth random",
+            "radius": 6,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Wild Growth :sun:",
+            "description": "&7Whispers wild vigor into nearby shoots and stalks.",
+            "colorCode": 10
+        },
+        {
+            "type": "crop growth max",
+            "radius": 6,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Full Bloom :sun:",
+            "description": "&7Brings every crop to glorious, full bloom in an instant.",
+            "colorCode": 11
+        },
+        {
+            "type": "crop rot random",
+            "radius": 6,
+            "isBonus": false,
+            "displayName": "&d:sun: Orb of Withering :sun:",
+            "description": "&7Spreads a creeping wither through the fields.",
+            "colorCode": 8
+        },
+        {
+            "type": "crop rot max",
+            "radius": 6,
+            "isBonus": false,
+            "displayName": "&d:sun: Orb of Blight :sun:",
+            "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again.",
+            "colorCode": 0
+        }
+    ]
+}
