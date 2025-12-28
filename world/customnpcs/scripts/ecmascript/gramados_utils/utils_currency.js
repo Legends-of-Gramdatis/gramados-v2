@@ -290,3 +290,19 @@ function addMoneyToPlayerPouchByName(playerName, value) {
     worldData.put(playerIndex, JSON.stringify(playerData));
     return true;
 }
+
+/**
+ * Checks if an item is an arcade token.
+ * @param {IItemStack} item - The item stack.
+ * @returns {boolean} - True if the item is an arcade token, false otherwise.
+ */
+function isArcadeToken(item) {
+    var item_name = item.getName();
+    if (item_name == "variedcommodities:gem_amethyst") {
+        var displayName = item.getDisplayName();
+        if (displayName == "§dArcade Token") {
+            return true;
+        }
+    }
+    return false;
+}
