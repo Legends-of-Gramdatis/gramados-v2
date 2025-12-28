@@ -80,7 +80,7 @@ function interact(event) {
                 curr_lore[0],
                 curr_lore[1],
                 ccs("&8This modifier has been used and needs to be recharged."),
-                ccs("&6Use an §dArcade Token §6in a container to recharge it.")
+                ccs("&6Use the orb on a chest with §dArcade Token §6inside to recharge it.")
             ];
             usedItemStack.setLore(new_lore);
             player.setMainhandItem(usedItemStack);
