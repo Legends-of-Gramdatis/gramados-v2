@@ -19,9 +19,6 @@ var CHAT_CMD_RGX = gramados_json.CHAT_CMD_RGX;
  * @returns {boolean} The result of the command execution.
  */
 function tellPlayer(player, rawtext) {
-    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
-        rawtext = rainbowifyText(rawtext);
-    }
     try {
         return executeCommand(player, "/tellraw " + player.getName() + " " + parseEmotes(strf(rawtext)));
     }
