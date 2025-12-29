@@ -414,6 +414,23 @@ function player_has_passive_modifier_with_tag(player, tag) {
     return false;
 }
 
+function get_passive_multiplier_for_tag(player, tag) {
+
+    var playerModifiers = get_players_passive_modifiers(player);
+
+    var config_data = loadJson(MODIFIERS_CFG_PATH);
+
+    var totalMultiplier = 1.0;
+
+    for (var i = 0; i < playerModifiers.length; i++) {
+        var entry = findJsonSubEntry(config_data.passive_modifiers, "type", playerModifiers[i].type);
+        if (entry && entry.tags && includes(entry.tags, tag)) {
+            totalMultiplier += entry.multiplier - 1.0;
+        }
+    }
+    return totalMultiplier;
+}
+
 /**
  * Removes any expired passive modifiers from a list.
  *
