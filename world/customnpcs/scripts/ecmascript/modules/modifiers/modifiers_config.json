@@ -100,5 +100,73 @@
             "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again.",
             "colorCode": 0
         }
+    ],
+    "passive_modifiers": [
+        {
+            "type": "stock income 5%",
+            "multiplier": 1.05,
+            "displayName": "&d:sun: Trader's Charm :sun:",
+            "description": "&7Your deals attract favor, yielding modestly richer returns.",
+            "colorCode": 11,
+            "durationMinutes": 180,
+            "tags": [
+                "stock_income"
+            ]
+        },
+        {
+            "type": "stock income 10%",
+            "multiplier": 1.10,
+            "displayName": "&d:sun: Merchant's Blessing :sun:",
+            "description": "&7The market smiles upon you, swelling your coin purse.",
+            "colorCode": 14,
+            "durationMinutes": 120,
+            "tags": [
+                "stock_income"
+            ]
+        },
+        {
+            "type": "stock income 25%",
+            "multiplier": 1.25,
+            "displayName": "&d:sun: Baron's Fortune :sun:",
+            "description": "&7Wealth flows to you as if drawn by noble decree.",
+            "colorCode": 1,
+            "durationMinutes": 75,
+            "tags": [
+                "stock_income"
+            ]
+        },
+        {
+            "type": "stock income 50%",
+            "multiplier": 1.50,
+            "displayName": "&d:sun: Magnate's Crown :sun:",
+            "description": "&7Every trade you strike turns to pure gold.",
+            "colorCode": 13,
+            "durationMinutes": 40,
+            "tags": [
+                "stock_income"
+            ]
+        },
+        {
+            "type": "junkyard loot double",
+            "lootMultiplier": 2,
+            "displayName": "&d:sun: Scavenger's Eye :sun:",
+            "description": "&7You spy treasures where others see only scrap.",
+            "colorCode": 6,
+            "durationMinutes": 90,
+            "tags": [
+                "junkyard_loot"
+            ]
+        },
+        {
+            "type": "junkyard loot triple",
+            "lootMultiplier": 3,
+            "displayName": "&d:sun: Treasure Hunter's Gift :sun:",
+            "description": "&7Every crate reveals riches beyond imagining.",
+            "colorCode": 10,
+            "durationMinutes": 30,
+            "tags": [
+                "junkyard_loot"
+            ]
+        }
     ]
 }
