@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 
 // Load module configuration (crate reset duration in seconds)
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json") || {};
@@ -69,7 +70,22 @@ function isValidKey(item, player) {
 function lootCrate(player, item, npc) {
     item.setStackSize(item.getStackSize() - 1);
     player.setMainhandItem(item);
-    var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE, player);
+    var pull_count = 1;
+    if (player_has_passive_modifier(player, "junkyard loot triple")) {
+        pull_count += 2;
+    }
+    if (player_has_passive_modifier(player, "junkyard loot double")) {
+        pull_count += 1;
+    }
+
+    var loot = [];
+    for (var i = 0; i < pull_count; i++) {
+        var loot_part = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE, player);
+        for (var j = 0; j < loot_part.length; j++) {
+            loot.push(loot_part[j]);
+        }
+    }
+
     var value_estimate = 0;
     var logline = player.getName() + " opened a Junkyard Crate and received: ";
     var world = npc.getWorld();
