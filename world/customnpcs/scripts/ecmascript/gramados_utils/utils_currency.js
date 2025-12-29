@@ -306,3 +306,13 @@ function isArcadeToken(item) {
     }
     return false;
 }
+
+function format_arcade_token_count(count) {
+    if (count == -1) {
+        return "&r:amethyst:&d&lArcade Tokens&r";
+    } else if (count == 1) {
+        return "&r:amethyst:&e1 &dArcade Token&r";
+    } else {
+        return "&r:amethyst:&e" + count + " &dArcade Tokens&r";
+    }
+}
