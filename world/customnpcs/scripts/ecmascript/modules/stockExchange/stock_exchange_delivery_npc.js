@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 
 // Define JSON paths as constants
 var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
@@ -279,6 +280,7 @@ function interact(event) {
 function calculateEarnings(delivery, region) {
     var totalEarnings = 0;
     var earningsMultiplier = 1;
+    var modifierBonus = 1;
 
     // If there are generic items in the delivery
     if (delivery["generic"]) {
@@ -311,9 +313,15 @@ function calculateEarnings(delivery, region) {
         }
     }
 
+    // Check for passive modifiers that affect earnings
+    if (player_has_passive_modifier_with_tag(player, "stock_income")) {
+        modifierBonus = get_passive_multiplier_for_tag(player, "stock_income");
+        tellPlayer(player, "§a:sun: Your passive modifier increases your stock delivery earnings by §e" + ((modifierBonus - 1) * 100).toFixed(2) + "%§a!");
+    }
+
     // npc.say("Total Earnings: " + getAmountCoin(totalEarnings) + ", Earnings Multiplier: " + earningsMultiplier + ", Total Earnings after Multiplier: " + getAmountCoin(totalEarnings * earningsMultiplier));
 
-    return totalEarnings * earningsMultiplier;
+    return totalEarnings * earningsMultiplier * modifierBonus;
 }
 
 /**
