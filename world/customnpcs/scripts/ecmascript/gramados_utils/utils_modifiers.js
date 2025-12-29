@@ -25,7 +25,7 @@ var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_mo
  * @param {string} modifierType Modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured modifier.
  */
-function instanciate_modifier(player, stack, modifierType) {
+function instanciate_active_modifier(player, stack, modifierType) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
@@ -34,13 +34,10 @@ function instanciate_modifier(player, stack, modifierType) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
     var entry = findJsonSubEntry(config_data.modifiers, "type", modifierType);
-    tellPlayer(player, "§e:recycle: Debug: Entry for modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierType + "': " + JSON.stringify(entry));
 
-    var resolvedType = modifierType;
-    if (resolvedType) {
-        tag.setString("modifier_type", "" + resolvedType);
-        tag.setInteger("modifier_radius", entry.radius);
-    }
+    tag.setString("modifier_type", modifierType);
+    tag.setInteger("modifier_radius", entry.radius);
 
     nbt.setCompound("tag", tag);
     nbt.setString("id", cfg.itemId);
@@ -48,46 +45,60 @@ function instanciate_modifier(player, stack, modifierType) {
     var newItem = player.getWorld().createItemFromNbt(nbt);
 
     newItem.setCustomName(parseEmotes(ccs(entry.displayName)));
-    newItem.setLore([parseEmotes(ccs(entry.description)), ccs("&7Radius: &e" + entry.radius + " blocks")]);
+    newItem.setLore([
+        parseEmotes(ccs(entry.description)),
+        ccs("&7Radius: &e" + entry.radius + " blocks")
+    ]);
     newItem.setItemDamage(entry.colorCode);
 
     return newItem;
 }
 
 /**
- * "Repairs" a used modifier orb back into an active modifier orb.
+ * Creates a passive modifier orb item from a base stack.
  *
- * Side effects on NBT:
- * - sets `tag.is_modifier` to true
- * - increments `tag.repairs` (used to compute future recharge costs)
- * - replaces item id with `items.itemId`
+ * Passive modifier orbs do not apply a world effect directly.
+ * They are consumed by the modifier engine to add a runtime entry in
+ * `PASSIVE_MODIFIERS_DATA_PATH` via `apply_passive_modifier_type`.
+ *
+ * The passive modifier metadata is stored in the item NBT under `tag`:
+ * - `is_passive_modifier` (boolean): marker for passive modifier items
+ * - `passive_modifier_type` (string): the configured passive modifier type
+ *
+ * Configuration source:
+ * - `items.itemId` (replaces the item id)
+ * - `passive_modifiers[]` entry matching `modifierType`
  *
  * @param {IPlayer} player Player used for world/NBT creation and debug output.
- * 
- * @param {IItemStack} stack The existing modifier item stack to repair (will be cloned).
- * @returns {IItemStack} A new item stack representing the repaired modifier.
+ * @param {IItemStack} stack Base item stack to clone and convert.
+ * @param {string} modifierType Passive modifier `type` to resolve from `modifiers_config.json`.
+ * @returns {IItemStack} A new item stack representing the configured passive modifier orb.
  */
-function repair_modifier_item(player, stack) {
+function instanciate_passive_modifier(player, stack, modifierType) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
-    tag.setBoolean("is_modifier", true);
+    tag.setBoolean("is_passive_modifier", true);
 
-    var json_data = loadJson(MODIFIERS_CFG_PATH)
-
-    var repair_count = tag.getInteger("repairs") || 0;
-
-    tag.setInteger("repairs", repair_count + 1);
+    var config_data = loadJson(MODIFIERS_CFG_PATH);
+    var cfg = config_data.items;
+    var entry = findJsonSubEntry(config_data.passive_modifiers, "type", modifierType);
+    tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    
+    tag.setString("passive_modifier_type", modifierType);
+    tag.setInteger("duration_minutes", entry.durationMinutes);
 
     nbt.setCompound("tag", tag);
-    nbt.setString("id", json_data.items.itemId);
+    nbt.setString("id", cfg.itemId);
 
     var newItem = player.getWorld().createItemFromNbt(nbt);
 
-    
-    var entry = findJsonSubEntry(json_data.modifiers, "type", tag.getString("modifier_type"));
-    tellPlayer(player, "§e:recycle: Debug: Repairing modifier item of type '" + tag.getString("modifier_type") + "': " + JSON.stringify(entry));
     newItem.setCustomName(parseEmotes(ccs(entry.displayName)));
+    newItem.setLore([
+        parseEmotes(ccs(entry.description)),
+        ccs("&7Duration: &e" + entry.durationMinutes + " minutes")
+    ]);
+    newItem.setItemDamage(entry.colorCode);
 
     return newItem;
 }
@@ -101,7 +112,7 @@ function repair_modifier_item(player, stack) {
  * @param {IItemStack} stack Item stack to inspect.
  * @returns {boolean} True if the stack has a `tag.is_modifier` key.
  */
-function has_item_modifier_tag(stack) {
+function has_active_modifier_tag(stack) {
     var nbt = stack.getItemNbt();
     if (stack.isEmpty()) {
         return false;
@@ -120,6 +131,26 @@ function has_item_modifier_tag(stack) {
 }
 
 /**
+ * Checks whether an item stack contains this module's passive modifier marker.
+ *
+ * @param {IItemStack} stack Item stack to inspect.
+ * @returns {boolean} True if the stack has a `tag.is_passive_modifier` key.
+ */
+function has_passive_modifier_tag(stack) {
+    if (!stack || stack.isEmpty()) {
+        return false;
+    }
+
+    var nbt = stack.getItemNbt();
+    if (!nbt.has("tag")) {
+        return false;
+    }
+
+    var compound = nbt.getCompound("tag");
+    return compound.has("is_passive_modifier");
+}
+
+/**
  * Checks whether an item is an active (usable) modifier item.
  *
  * Active means `tag.is_modifier === true`.
@@ -129,13 +160,71 @@ function has_item_modifier_tag(stack) {
  * @returns {boolean} True if the modifier marker exists and is active.
  */
 function is_active_modifier_item(stack) {
-    if (has_item_modifier_tag(stack)) {
+    if (has_active_modifier_tag(stack)) {
         var nbt = stack.getItemNbt();
         var compound = nbt.getCompound("tag");
         return compound.getBoolean("is_modifier");
     }
     return false;
 }
+
+/**
+ * Checks whether an item stack is a passive modifier orb.
+ *
+ * @param {IItemStack} stack Item stack to inspect.
+ * @returns {boolean} True if the passive marker exists and is set to true.
+ */
+function is_passive_modifier_item(stack) {
+    if (!has_passive_modifier_tag(stack)) {
+        return false;
+    }
+    var nbt = stack.getItemNbt();
+    var compound = nbt.getCompound("tag");
+    return compound.getBoolean("is_passive_modifier");
+}
+
+
+/**
+ * "Repairs" a used modifier orb back into an active modifier orb.
+ *
+ * Side effects on NBT:
+ * - sets `tag.is_modifier` to true
+ * - increments `tag.repairs` (used to compute future recharge costs)
+ * - replaces item id with `items.itemId`
+ *
+ * @param {IPlayer} player Player used for world/NBT creation and debug output.
+ * 
+ * @param {IItemStack} stack The existing modifier item stack to repair (will be cloned).
+ * @returns {IItemStack} A new item stack representing the repaired modifier.
+ */
+function repair_modifier_item(player, stack) {
+    var stackClone = stack.copy();
+    var nbt = stackClone.getItemNbt();
+    var tag = nbt.getCompound("tag");
+    if (tag.has("modifier_type")) {
+        tag.setBoolean("is_modifier", true);
+        var itemName = get_modifier_display_name(tag.getString("modifier_type"));
+    } else {
+        tag.setBoolean("is_passive_modifier", true);
+        var itemName = get_modifier_display_name(tag.getString("passive_modifier_type"));
+    }
+
+    var json_data = loadJson(MODIFIERS_CFG_PATH)
+
+    var repair_count = tag.getInteger("repairs") || 0;
+
+    tag.setInteger("repairs", repair_count + 1);
+
+    nbt.setCompound("tag", tag);
+    nbt.setString("id", json_data.items.itemId);
+
+    var newItem = player.getWorld().createItemFromNbt(nbt);
+
+    newItem.setCustomName(parseEmotes(ccs(itemName)));
+
+    return newItem;
+}
+
 
 /**
  * Applies an active modifier effect to the world around the player.
@@ -148,7 +237,7 @@ function is_active_modifier_item(stack) {
  * @param {number} radius Effect radius in blocks.
  * @returns {*} The underlying handler's return value, or null if `modifierType` is unknown.
  */
-function apply_modifier_type(player, modifierType, radius) {
+function apply_active_modifier_type(player, modifierType, radius) {
 
     var world = player.getWorld();
     var pos = player.getPos();
@@ -183,6 +272,112 @@ function apply_modifier_type(player, modifierType, radius) {
     }
 }
 
+
+function get_passive_modifier_config_entry(modifierType) {
+    return findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+}
+
+function get_passive_modifier_remaining_ms(player_modifier, nowMs) {
+    if (!player_modifier) {
+        return 0;
+    }
+
+    var remainingMs = player_modifier.remainingMs;
+    if (typeof (remainingMs) !== "number") {
+        remainingMs = 0;
+    }
+
+    var lastOnlineAt = player_modifier.lastOnlineAt;
+    if (typeof (lastOnlineAt) === "number") {
+        remainingMs = remainingMs - (nowMs - lastOnlineAt);
+    }
+
+    return remainingMs;
+}
+
+function normalize_and_clean_passive_modifiers(player, modifiers) {
+    var nowMs = Date.now();
+    var cleaned = [];
+    var changed = false;
+
+    if (!modifiers) {
+        return { modifiers: [], changed: false };
+    }
+
+    for (var i = 0; i < modifiers.length; i++) {
+        var raw = modifiers[i];
+        if (!raw) {
+            changed = true;
+            continue;
+        }
+
+        if (typeof (raw.lastOnlineAt) === "undefined") {
+            changed = true;
+        }
+
+        var remainingMs = get_passive_modifier_remaining_ms(raw, nowMs);
+        if (remainingMs <= 0) {
+            changed = true;
+            continue;
+        }
+
+        cleaned.push(raw);
+    }
+
+    if (cleaned.length !== modifiers.length) {
+        changed = true;
+    }
+
+    return { modifiers: cleaned, changed: changed };
+}
+
+
+/**
+ * Adds a passive modifier to a player (if not already present).
+ *
+ * Timer model:
+ * - We store `remainingMs` (ms left) and `lastOnlineAt` (ms timestamp when countdown started).
+ * - On logout, `freeze_passive_modifiers` collapses time spent online into `remainingMs` and sets `lastOnlineAt = null`.
+ * - On login/init, `unfreeze_passive_modifiers` sets `lastOnlineAt = now` so time only ticks while online.
+ *
+ * Data file: `PASSIVE_MODIFIERS_DATA_PATH` (per-player array).
+ *
+ * @param {IPlayer} player Player receiving the passive modifier.
+ * @param {string} modifierType Modifier type (must exist in `passive_modifiers`).
+ * @returns {boolean} True if a new modifier entry was added, false otherwise.
+ */
+function apply_passive_modifier_type(player, modifierType) {
+    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
+    var playerId = player.getUUID();
+
+    if (!data.hasOwnProperty(playerId)) {
+        data[playerId] = [];
+    }
+    var normalized = normalize_and_clean_passive_modifiers(player, data[playerId]);
+    var playerModifiers = normalized.modifiers;
+
+    for (var i = 0; i < playerModifiers.length; i++) {
+        if (playerModifiers[i].type === modifierType) {
+            if (normalized.changed) {
+                data[playerId] = playerModifiers;
+                saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
+            }
+            return false;
+        }
+    }
+
+    var newEntry = get_dynamic_modifier_entry_from_type(modifierType);
+    if (!newEntry) {
+        return false;
+    }
+
+    playerModifiers.push(newEntry);
+    data[playerId] = playerModifiers;
+    saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
+    return true;
+}
+
+
 /**
  * Checks whether a player currently has a given passive modifier recorded.
  *
@@ -192,7 +387,7 @@ function apply_modifier_type(player, modifierType, radius) {
  * @param {string} modifierType Passive modifier type to look for.
  * @returns {boolean} True if the player's data contains an entry with matching `type`.
  */
-function has_passive_modifier(player, modifierType) {
+function player_has_passive_modifier(player, modifierType) {
 
     var playerModifiers = get_players_passive_modifiers(player);
 
@@ -204,7 +399,7 @@ function has_passive_modifier(player, modifierType) {
     return false;
 }
 
-function has_passive_modifier_with_tag(player, tag) {
+function player_has_passive_modifier_with_tag(player, tag) {
 
     var playerModifiers = get_players_passive_modifiers(player);
 
@@ -220,71 +415,18 @@ function has_passive_modifier_with_tag(player, tag) {
 }
 
 /**
- * Adds a passive modifier to a player (if not already present).
+ * Removes any expired passive modifiers from a list.
  *
- * The stored entry is a dynamic runtime record containing at least:
- * - `type`: modifier type
- * - `start`: timestamp (ms) when the modifier began
- * - `pause`: timestamp (ms) when the modifier was last paused/frozen
- *
- * The duration itself is configured in `modifiers_config.json` under `passive_modifiers[].durationMinutes`.
- *
- * @param {IPlayer} player Player receiving the passive modifier.
- * @param {string} modifierType Modifier type (must exist in `passive_modifiers`).
- * @returns {boolean} True if a new modifier entry was added, false otherwise.
- */
-function add_passive_modifier(player, modifierType) {
-    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
-    var playerId = player.getUniqueId();
-
-    if (!data.hasOwnProperty(playerId)) {
-        data[playerId] = [];
-    }
-    var playerModifiers = data[playerId];
-
-    if (!has_passive_modifier(player, modifierType)) {
-        var newEntry = get_dynamic_modifier_entry_from_type(modifierType);
-        if (newEntry) {
-            playerModifiers.push(newEntry);
-            saveJson(PASSIVE_MODIFIERS_DATA_PATH, data);
-            return true;
-        }
-    }
-    return false;
-}
-
-/**
- * Removes any expired passive modifiers for a player.
- *
- * Expiry is computed using:
- * - runtime entry: `start`
- * - config entry: `passive_modifiers[].durationMinutes`
- *
- * When expired, the entry is omitted from the saved list.
+ * Expiry is computed using the runtime `remainingMs` minus any time since `lastOnlineAt`.
  *
  * @param {IPlayer} player Player whose passive modifiers are cleaned.
+ * @param {Array} modifiers Raw runtime entries.
+ * @returns {Array} Cleaned runtime entries.
  */
 function clean_modifiers(player, modifiers) {
 
-    var currentTime = Date.now();
-    var activeModifiers = [];
-
-    for (var i = 0; i < modifiers.length; i++) {
-        var modifier = modifiers[i];
-        var elapsedTime = currentTime - modifier.start;
-
-        var entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifier.type);
-        if (entry) {
-            var durationMs = entry.durationMinutes * 60 * 1000;
-            if (elapsedTime < durationMs) {
-                activeModifiers.push(modifier);
-            } else {
-                tellPlayer(player, "§e:recycle: Debug: Passive modifier '" + modifier.type + "' has expired and will be removed.");
-            }
-        }
-    }
-
-    return activeModifiers;
+    var normalized = normalize_and_clean_passive_modifiers(player, modifiers);
+    return normalized.modifiers;
 }
 
 /**
@@ -293,39 +435,47 @@ function clean_modifiers(player, modifiers) {
  * This does not apply any gameplay effect by itself; it only creates the persisted
  * state entry stored in `PASSIVE_MODIFIERS_DATA_PATH`.
  *
+ * Data format:
+ * - `type`: modifier type
+ * - `remainingMs`: milliseconds remaining
+ * - `lastOnlineAt`: timestamp (ms) when countdown started, or null when paused/offline
+ *
  * @param {string} modifierType The `passive_modifiers[].type` to look up.
- * @returns {{type: string, start: number, pause: number}|null} Dynamic entry, or null if not found.
+ * @returns {{type: string, remainingMs: number, lastOnlineAt: (number|null)}|null} Dynamic entry, or null if not found.
  */
 function get_dynamic_modifier_entry_from_type(modifierType) {
-    var data = loadJson(MODIFIERS_CFG_PATH);
-    for (var i = 0; i < data.passive_modifiers.length; i++) {
-        var entry = data.passive_modifiers[i];
-        if (entry.type === modifierType) {
-            return {
-                type: entry.type,
-                start: Date.now(),
-                pause: Date.now()
-            };
-        }
+    var entry = get_passive_modifier_config_entry(modifierType);
+    if (!entry) {
+        return null;
     }
-    return null;
+
+    return {
+        type: entry.type,
+        remainingMs: entry.durationMinutes * 60 * 1000,
+        lastOnlineAt: Date.now()
+    };
 }
 
 /**
  * Retrieves the player's current passive modifier runtime entries.
  *
  * @param {IPlayer} player Player whose saved modifiers are loaded.
- * @returns {Array} Array of runtime entries (each includes `type`, `start`, `pause`).
+ * @returns {Array} Array of runtime entries.
  */
 function get_players_passive_modifiers(player) {
     var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
-    var playerId = player.getUniqueId();
+    var playerId = player.getUUID();
 
     if (!data.hasOwnProperty(playerId)) {
         return [];
     }
 
-    return clean_modifiers(player, data[playerId]);
+    var normalized = normalize_and_clean_passive_modifiers(player, data[playerId]);
+    if (normalized.changed) {
+        data[playerId] = normalized.modifiers;
+        saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
+    }
+    return normalized.modifiers;
 }
 
 /**
@@ -336,45 +486,132 @@ function get_players_passive_modifiers(player) {
  */
 function save_players_passive_modifiers(player, modifiers) {
     var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
-    var playerId = player.getUniqueId();
+    var playerId = player.getUUID();
     data[playerId] = modifiers;
-    saveJson(PASSIVE_MODIFIERS_DATA_PATH, data);
+    saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
 }
 
 /**
- * Freezes passive modifiers for a player by recording a pause timestamp.
+ * Freezes passive modifiers for a player so they don't tick while offline.
  *
- * This is intended for situations where the timer should not tick (e.g. player is offline,
- * in a protected state, etc.). `unfreeze_passive_modifiers` compensates `start` accordingly.
+ * Collapses time spent online into `remainingMs` and sets `lastOnlineAt = null`.
  *
  * @param {IPlayer} player Player whose passive modifiers are paused.
  */
 function freeze_passive_modifiers(player) {
+    var nowMs = Date.now();
     var modifiers = get_players_passive_modifiers(player);
+    var frozen = [];
 
     for (var i = 0; i < modifiers.length; i++) {
-        modifiers[i].pause = Date.now();
+        var modifier = modifiers[i];
+        var remainingMs = get_passive_modifier_remaining_ms(modifier, nowMs);
+        if (remainingMs <= 0) {
+            continue;
+        }
+
+        frozen.push({
+            type: modifier.type,
+            remainingMs: remainingMs,
+            lastOnlineAt: null
+        });
     }
 
-    save_players_passive_modifiers(player, modifiers);
+    save_players_passive_modifiers(player, frozen);
 }
 
 /**
  * Unfreezes passive modifiers for a player.
  *
- * Computes how long the modifier was paused (`now - pause`) and shifts `start` forward
- * by that amount so that total active time remains unchanged.
+ * Sets `lastOnlineAt = now` (without subtracting any time), ensuring offline time is never counted.
  *
  * @param {IPlayer} player Player whose passive modifiers are resumed.
  */
 function unfreeze_passive_modifiers(player) {
+    var nowMs = Date.now();
     var modifiers = get_players_passive_modifiers(player);
+    var unfrozen = [];
 
     for (var i = 0; i < modifiers.length; i++) {
-        var pausedDuration = Date.now() - modifiers[i].pause;
-        modifiers[i].start += pausedDuration;
-        modifiers[i].pause = Date.now();
+        var modifier = modifiers[i];
+        var remainingMs = get_passive_modifier_remaining_ms(modifier, nowMs);
+        if (remainingMs <= 0) {
+            continue;
+        }
+
+        unfrozen.push({
+            type: modifier.type,
+            remainingMs: remainingMs,
+            lastOnlineAt: nowMs
+        });
     }
 
-    save_players_passive_modifiers(player, modifiers);
+    save_players_passive_modifiers(player, unfrozen);
+}
+
+function format_passive_modifier_presentation(player, player_modifier) {
+    if (!player_modifier || !player_modifier.type) {
+        return ccs("&7(Invalid passive modifier entry)");
+    }
+
+    var entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", player_modifier.type);
+    if (!entry) {
+        return ccs("&7Unknown passive modifier: &f" + player_modifier.type);
+    }
+
+    var remainingTimeMs = get_passive_modifier_remaining_ms(player_modifier, Date.now());
+
+    var displayName = parseEmotes(ccs(entry.displayName));
+    var remainingStr = formatDurationMs(remainingTimeMs);
+
+    return displayName + ccs(" &8(§7Remaining: §e" + remainingStr + "§8)");
+}
+
+/**
+ * Formats a duration in milliseconds into a compact human-readable string.
+ *
+ * Examples:
+ * - 65000 -> "1m 5s"
+ * - 3600000 -> "1h 0m"
+ *
+ * @param {number} durationMs Duration in milliseconds.
+ * @returns {string} Human-readable duration string.
+ */
+function formatDurationMs(durationMs) {
+    if (durationMs === null || typeof (durationMs) === typeof (undefined)) {
+        return "0s";
+    }
+
+    if (durationMs < 0) {
+        durationMs = 0;
+    }
+
+    var totalSeconds = Math.floor(durationMs / 1000);
+    var hours = Math.floor(totalSeconds / 3600);
+    totalSeconds = totalSeconds % 3600;
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
+
+    if (hours > 0) {
+        return hours + "h " + minutes + "m";
+    }
+
+    if (minutes > 0) {
+        return minutes + "m " + seconds + "s";
+    }
+
+    return seconds + "s";
+}
+
+function get_modifier_display_name(modifierType) {
+    var entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).modifiers, "type", modifierType);
+    if (entry) {
+        return parseEmotes(ccs(entry.displayName));
+    } else {
+        entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+        if (entry) {
+            return parseEmotes(ccs(entry.displayName));
+        }
+    }
+    return ccs("&7Unknown modifier: &f" + modifierType);
 }
