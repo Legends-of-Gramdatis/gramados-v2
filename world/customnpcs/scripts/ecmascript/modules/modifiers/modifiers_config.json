@@ -99,6 +99,22 @@
             "displayName": "&d:sun: Orb of Blight :sun:",
             "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again.",
             "colorCode": 0
+        },
+        {
+            "type": "fruit growth max",
+            "radius": 10,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Orchard Bloom :sun:",
+            "description": "&7Coaxes nearby orchard fruits to ripen to perfection.",
+            "colorCode": 11
+        },
+        {
+            "type": "fruit rot max",
+            "radius": 10,
+            "isBonus": false,
+            "displayName": "&d:sun: Orb of Orchard Rot :sun:",
+            "description": "&7Spoils nearby orchard fruits, returning them to an unripe state.",
+            "colorCode": 0
         }
     ],
     "passive_modifiers": [
