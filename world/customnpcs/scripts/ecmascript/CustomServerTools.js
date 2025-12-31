@@ -8799,6 +8799,59 @@ registerXCommands([
         var jc = Object.keys(p.data.jobs).length;
         tellPlayer(pl, "&6Max Homes: &e" + hc + "/" + (mh == -1 ? "&aInfinite" : mh) + "&r [&a:check_mark: Set{suggest_command:!player setMaxHomes " + p.name + " }&r] [&dView{run_command:!player homes " + p.name + "}&r]");
         tellPlayer(pl, "&6Max Jobs: &e" + jc + "/" + (mj == -1 ? "&aInfinite" : mj) + "&r [&a:check_mark: Set{suggest_command:!player setMaxJobs " + p.name + " }&r] [&dView{run_command:!player income " + p.name + "}&r]");
+
+        // Regions (ownership/trust)
+        var regions = new Region().getAllDataEntries(data);
+        var ownedRegions = [];
+        var trustedRegions = [];
+        for (var i = 0; i < regions.length; i++) {
+            var reg = regions[i];
+            if (reg && reg.data) {
+                if (reg.data.owner === p.name) {
+                    ownedRegions.push(reg.name);
+                } else if (reg.data.trusted && reg.data.trusted.indexOf(p.name) > -1) {
+                    trustedRegions.push(reg.name);
+                }
+            }
+        }
+        ownedRegions.sort();
+        trustedRegions.sort();
+        if (ownedRegions.length === 0 && trustedRegions.length === 0) {
+            tellPlayer(pl, "&6&lRegions:&r\n&7None");
+        } else {
+            var regionsTxt = "&6&lRegions:&r\n";
+            regionsTxt += "&6Owned: &e" + ownedRegions.length + "\n" + (ownedRegions.length ? arrayFormat(ownedRegions, "&e - &b{VALUE}", "\n") : "&7 - None") + "\n";
+            regionsTxt += "&6Trusted: &e" + trustedRegions.length + "\n" + (trustedRegions.length ? arrayFormat(trustedRegions, "&e - &b{VALUE}", "\n") : "&7 - None");
+            tellPlayer(pl, regionsTxt);
+        }
+
+        // Modern jobs (from modules/jobs data_auto)
+        var MODERN_JOBS_DATA_PATH = "world/customnpcs/scripts/data_auto/jobs.json";
+        var modernJobsTxt = "&6&lModern Jobs:&r";
+        var modernJobs = [];
+        var jobsFile = new File(MODERN_JOBS_DATA_PATH);
+        if (jobsFile.exists()) {
+            var jobsRaw = readFileAsString(MODERN_JOBS_DATA_PATH);
+            if (jobsRaw && jobsRaw.trim() !== "") {
+                var jobsData = JSON.parse(jobsRaw);
+                var entry = jobsData ? jobsData[p.data.UUID] : null;
+                var active = entry && entry.ActiveJobs ? entry.ActiveJobs : {};
+                for (var jid in active) {
+                    var aj = active[jid];
+                    if (!aj) continue;
+                    var label = aj.JobName || (aj.JobID !== undefined ? ("JobID " + aj.JobID) : ("Job " + jid));
+                    var meta = [];
+                    if (aj.Region) meta.push(aj.Region);
+                    if (aj.Type) meta.push(aj.Type);
+                    if (meta.length) label += " &7(" + meta.join(", ") + ")";
+                    modernJobs.push(label);
+                }
+            }
+        }
+        modernJobs.sort();
+        modernJobsTxt += "\n" + (modernJobs.length ? arrayFormat(modernJobs, "&e - &b{VALUE}", "\n") : "&7None");
+        tellPlayer(pl, modernJobsTxt);
+
         var badgetxt = arrayFormat(p.data.badges, "&e - &b{VALUE}", "\n");
         tellPlayer(pl, "&6&lBadges:&r\n" + badgetxt);
         tellPlayer(pl, "&6Unlocks:\n&b" + Object.keys(p.data.unlocks).join(', '))
