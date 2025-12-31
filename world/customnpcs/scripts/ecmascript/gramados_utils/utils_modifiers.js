@@ -1,10 +1,12 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_crops.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_fruits.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_animania.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
 var farmCrops = exports_utils_farm_crops;
+var farmFruits = exports_utils_farm_fruits;
 var MODIFIERS_CFG_PATH = "world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json";
 var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_modifiers.json";
 
@@ -25,7 +27,7 @@ var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_mo
  * @param {string} modifierType Modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured modifier.
  */
-function instanciate_active_modifier(player, stack, modifierType) {
+function instanciate_active_modifier(player, stack, modifierType, silent) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
@@ -34,7 +36,9 @@ function instanciate_active_modifier(player, stack, modifierType) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
     var entry = findJsonSubEntry(config_data.modifiers, "type", modifierType);
-    tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    if (silent !== true) {
+        tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    }
 
     tag.setString("modifier_type", modifierType);
     tag.setInteger("modifier_radius", entry.radius);
@@ -74,7 +78,7 @@ function instanciate_active_modifier(player, stack, modifierType) {
  * @param {string} modifierType Passive modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured passive modifier orb.
  */
-function instanciate_passive_modifier(player, stack, modifierType) {
+function instanciate_passive_modifier(player, stack, modifierType, silent) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
@@ -83,7 +87,9 @@ function instanciate_passive_modifier(player, stack, modifierType) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
     var entry = findJsonSubEntry(config_data.passive_modifiers, "type", modifierType);
-    tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    if (silent !== true) {
+        tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierType + "': " + JSON.stringify(entry));
+    }
     
     tag.setString("passive_modifier_type", modifierType);
     tag.setInteger("duration_minutes", entry.durationMinutes);
@@ -267,6 +273,10 @@ function apply_active_modifier_type(player, modifierType, radius) {
             return farmCrops.randomLowerCrops(world, pos, radius);
         case "crop rot max":
             return farmCrops.resetCropsToZero(world, pos, radius);
+        case "fruit growth max":
+            return farmFruits.growFruitsToMax(world, pos, radius);
+        case "fruit rot max":
+            return farmFruits.resetFruitsToZero(world, pos, radius);
         default:
             return null;
     }
