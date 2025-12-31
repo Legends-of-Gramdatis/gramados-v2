@@ -5,6 +5,26 @@ This module implements **orb modifiers** (active and passive) used on the Gramad
 - **Active orbs** apply an effect in a radius (e.g. crop growth, cattle pregnancy) and then become **Used**.
 - **Passive orbs** apply a timed player buff (e.g. stock income multiplier) and then become **Used**.
 
+Active orb types added by this module also include **pickpocket** effects:
+
+- `npc pickpocket small` (radius 2)
+- `npc pickpocket large` (radius 10)
+
+These force nearby CustomNPCs to drop their RNG death drops, plus for each NPC:
+
+- 1/3 chance to also drop `_LOOTTABLE_NPCTYPE_HUMAN` items
+- 1/3 chance to also drop 1–50 grons worth of cash
+
+And **nature/vegetation** effects:
+
+- `nature grass small` (radius 5) – Converts dirt to grass and grows tall grass/flowers
+- `nature grass medium` (radius 10) – Converts dirt to grass and grows tall grass/flowers
+- `nature grass large` (radius 20) – Converts dirt to grass and grows tall grass/flowers (massive radius for cattle farms)
+- `nature flowers small` (radius 5) – Spawns decorative flower patterns (no tall grass)
+- `nature flowers medium` (radius 10) – Spawns decorative flower patterns (no tall grass)
+
+The grass orbs are particularly useful for cattle farms where animals consume vegetation. The flower orbs create aesthetic patterns for decorative builds.
+
 ## Configuration
 
 All orb definitions live in `modifiers_config.json`.
