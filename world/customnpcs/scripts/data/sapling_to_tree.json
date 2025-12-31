@@ -1,0 +1,472 @@
+{
+  "harvestcraft:almond_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamalmond",
+      "fruit": "almond",
+      "stage": 2
+    }
+  },
+  "harvestcraft:apple_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamapple",
+      "fruit": "apple",
+      "stage": 2
+    }
+  },
+  "harvestcraft:apricot_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamapricot",
+      "fruit": "apricot",
+      "stage": 2
+    }
+  },
+  "harvestcraft:avocado_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamavocado",
+      "fruit": "avocado",
+      "stage": 2
+    }
+  },
+  "harvestcraft:banana_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pambanana",
+      "fruit": "banana",
+      "stage": 2
+    }
+  },
+  "harvestcraft:breadfruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pambreadfruit",
+      "fruit": "breadfruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:cashew_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamcashew",
+      "fruit": "cashew",
+      "stage": 2
+    }
+  },
+  "harvestcraft:cherry_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamcherry",
+      "fruit": "cherry",
+      "stage": 2
+    }
+  },
+  "harvestcraft:chestnut_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamchestnut",
+      "fruit": "chestnut",
+      "stage": 2
+    }
+  },
+  "harvestcraft:cinnamon_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamcinnamon",
+      "fruit": "cinnamon",
+      "stage": 2
+    }
+  },
+  "harvestcraft:coconut_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamcoconut",
+      "fruit": "coconut",
+      "stage": 2
+    }
+  },
+  "harvestcraft:date_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamdate",
+      "fruit": "date",
+      "stage": 2
+    }
+  },
+  "harvestcraft:dragonfruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamdragonfruit",
+      "fruit": "dragonfruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:durian_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamdurian",
+      "fruit": "durian",
+      "stage": 2
+    }
+  },
+  "harvestcraft:fig_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamfig",
+      "fruit": "fig",
+      "stage": 2
+    }
+  },
+  "harvestcraft:gooseberry_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamgooseberry",
+      "fruit": "gooseberry",
+      "stage": 2
+    }
+  },
+  "harvestcraft:grapefruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamgrapefruit",
+      "fruit": "grapefruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:guava_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamguava",
+      "fruit": "guava",
+      "stage": 2
+    }
+  },
+  "harvestcraft:hazelnut_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamhazelnut",
+      "fruit": "hazelnut",
+      "stage": 2
+    }
+  },
+  "harvestcraft:jackfruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamjackfruit",
+      "fruit": "jackfruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:lemon_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamlemon",
+      "fruit": "lemon",
+      "stage": 2
+    }
+  },
+  "harvestcraft:lime_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamlime",
+      "fruit": "lime",
+      "stage": 2
+    }
+  },
+  "harvestcraft:lychee_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamlychee",
+      "fruit": "lychee",
+      "stage": 2
+    }
+  },
+  "harvestcraft:mango_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pammango",
+      "fruit": "mango",
+      "stage": 2
+    }
+  },
+  "harvestcraft:maple_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pammaple",
+      "fruit": "maple",
+      "stage": 2
+    }
+  },
+  "harvestcraft:nutmeg_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamnutmeg",
+      "fruit": "nutmeg",
+      "stage": 2
+    }
+  },
+  "harvestcraft:olive_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamolive",
+      "fruit": "olive",
+      "stage": 2
+    }
+  },
+  "harvestcraft:orange_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamorange",
+      "fruit": "orange",
+      "stage": 2
+    }
+  },
+  "harvestcraft:papaya_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampapaya",
+      "fruit": "papaya",
+      "stage": 2
+    }
+  },
+  "harvestcraft:paperbark_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampaperbark",
+      "fruit": "paperbark",
+      "stage": 2
+    }
+  },
+  "harvestcraft:passionfruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampassionfruit",
+      "fruit": "passionfruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:pawpaw_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampawpaw",
+      "fruit": "pawpaw",
+      "stage": 2
+    }
+  },
+  "harvestcraft:peach_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampeach",
+      "fruit": "peach",
+      "stage": 2
+    }
+  },
+  "harvestcraft:pear_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampear",
+      "fruit": "pear",
+      "stage": 2
+    }
+  },
+  "harvestcraft:pecan_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampecan",
+      "fruit": "pecan",
+      "stage": 2
+    }
+  },
+  "harvestcraft:peppercorn_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampeppercorn",
+      "fruit": "peppercorn",
+      "stage": 2
+    }
+  },
+  "harvestcraft:persimmon_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampersimmon",
+      "fruit": "persimmon",
+      "stage": 2
+    }
+  },
+  "harvestcraft:pistachio_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampistachio",
+      "fruit": "pistachio",
+      "stage": 2
+    }
+  },
+  "harvestcraft:plum_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamplum",
+      "fruit": "plum",
+      "stage": 2
+    }
+  },
+  "harvestcraft:pomegranate_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pampomegranate",
+      "fruit": "pomegranate",
+      "stage": 2
+    }
+  },
+  "harvestcraft:rambutan_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamrambutan",
+      "fruit": "rambutan",
+      "stage": 2
+    }
+  },
+  "harvestcraft:soursop_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamsoursop",
+      "fruit": "soursop",
+      "stage": 2
+    }
+  },
+  "harvestcraft:spiderweb_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamspiderweb",
+      "fruit": "spiderweb",
+      "stage": 2
+    }
+  },
+  "harvestcraft:starfruit_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamstarfruit",
+      "fruit": "starfruit",
+      "stage": 2
+    }
+  },
+  "harvestcraft:tamarind_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamtamarind",
+      "fruit": "tamarind",
+      "stage": 2
+    }
+  },
+  "harvestcraft:vanillabean_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamvanillabean",
+      "fruit": "vanillabean",
+      "stage": 2
+    }
+  },
+  "harvestcraft:walnut_sapling": {
+    "damage": 0,
+    "log": null,
+    "leaves": null,
+    "fruit_block": {
+      "block": "harvestcraft:pamwalnut",
+      "fruit": "walnut",
+      "stage": 2
+    }
+  }
+}
