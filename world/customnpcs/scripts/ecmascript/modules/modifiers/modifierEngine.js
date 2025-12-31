@@ -9,11 +9,14 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 function interact(event) {
     var player = event.player;
-    var item = player.getMainhandItem();
+    var originalItem = player.getMainhandItem();
 
-    if (item.isEmpty() || item.getName() == "customnpcs:npcscripter") {
+    if (originalItem.isEmpty() || originalItem.getName() == "customnpcs:npcscripter") {
         return;
     }
+
+    var item = originalItem.copy();
+    item.setStackSize(1);
 
     var offItem = player.getOffhandItem();
 
@@ -140,11 +143,14 @@ function interact(event) {
         return;
     }
 
+    // Using a modifier orb
     if (has_passive_modifier_tag(item)) {
         var trace = player.rayTraceBlock(5, true, false);
         var block = trace.getBlock();
         var nbt = item.getItemNbt();
         var tag = nbt.getCompound("tag");
+
+        // Using a passive modifier
         if (is_passive_modifier_item(item) && block.getName() == "minecraft:air") {
             var modifierType = tag.getString("passive_modifier_type");
             var time_in_minutes = tag.getInteger("duration_minutes");
@@ -156,13 +162,15 @@ function interact(event) {
             }
 
             tellPlayer(player, "§a:sun: Passive modifier activated: §f" + get_modifier_display_name(modifierType) + "§a (§e" + time_in_minutes + "m§a)");
+            
+            // Modify cloned item, reduce original stack, give modified item
+            item.setStackSize(1);
             tag.setBoolean("is_passive_modifier", false);
             nbt.setCompound("tag", tag);
-
-            // replace item id with used one
             var usedItem = loadJson(MODIFIERS_CFG_PATH).items.usedItemId;
             nbt.setString("id", usedItem);
             var usedItemStack = player.getWorld().createItemFromNbt(nbt);
+            usedItemStack.setStackSize(1);
             usedItemStack.setCustomName(item.getDisplayName() + " §8(§7Used§8)");
             var curr_lore = item.getLore();
             var new_lore = [
@@ -173,7 +181,14 @@ function interact(event) {
                 ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
             ];
             usedItemStack.setLore(new_lore);
-            player.setMainhandItem(usedItemStack);
+            
+            originalItem.setStackSize(originalItem.getStackSize() - 1);
+            player.setMainhandItem(originalItem);
+
+            if (!player.giveItem(usedItemStack)) {
+                player.dropItem(usedItemStack);
+            }
+            
             var command = "/playsound customnpcs:magic.shot player @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
             API.executeCommand(player.getWorld(), command);
 
@@ -250,15 +265,25 @@ function interact(event) {
 
             tellPlayer(player, "§a:check_mark: Orb recharged for "+ format_arcade_token_count(required_tokens) + "§a.");
             
+            // Modify cloned item, reduce original stack, give repaired item
+            var repairedOrb = repair_modifier_item(player, item);
+            repairedOrb.setStackSize(1);
             var curr_lore = item.getLore();
             var new_lore = [
                 curr_lore[0],
                 curr_lore[1],
                 ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
             ];
-            player.getMainhandItem().setLore(new_lore);
-
-            player.setMainhandItem(repair_modifier_item(player, item));
+            repairedOrb.setLore(new_lore);
+            
+            // Reduce original stack and update mainhand
+            originalItem.setStackSize(originalItem.getStackSize() - 1);
+            player.setMainhandItem(originalItem);
+            
+            // Give the repaired orb to player
+            if (!player.giveItem(repairedOrb)) {
+                player.dropItem(repairedOrb);
+            }
 
             return;
         }
@@ -281,13 +306,17 @@ function interact(event) {
             if (result === null) {
                 tellPlayer(player, "§e:sun: Nothing happened.");
             } else {
-                tellPlayer(player, "§a:sun: Orb activated: §f" + modifierType);
+                tellPlayer(player, "§a:sun: Orb activated: §f" + get_modifier_display_name(modifierType) + "§a (in a radius of §e" + radius + "§a).");
             }
 
-            // replace item id with used one
+            // Modify cloned item, reduce original stack, give modified item
+            item.setStackSize(1);
+            tag.setBoolean("is_modifier", false);
+            nbt.setCompound("tag", tag);
             var usedItem = loadJson(MODIFIERS_CFG_PATH).items.usedItemId;
             nbt.setString("id", usedItem);
             var usedItemStack = player.getWorld().createItemFromNbt(nbt);
+            usedItemStack.setStackSize(1);
             usedItemStack.setCustomName(item.getDisplayName() + " §8(§7Used§8)");
             var curr_lore = item.getLore();
             var new_lore = [
@@ -298,7 +327,14 @@ function interact(event) {
                 ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
             ];
             usedItemStack.setLore(new_lore);
-            player.setMainhandItem(usedItemStack);
+            
+            originalItem.setStackSize(originalItem.getStackSize() - 1);
+            player.setMainhandItem(originalItem);
+            
+            if (!player.giveItem(usedItemStack)) {
+                player.dropItem(usedItemStack);
+            }
+            
             var command = "/playsound customnpcs:magic.shot player @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
             API.executeCommand(player.getWorld(), command);
 
@@ -369,15 +405,25 @@ function interact(event) {
 
             tellPlayer(player, "§a:check_mark: Orb recharged for "+ format_arcade_token_count(required_tokens) + "§a.");
             
+            // Modify cloned item, reduce original stack, give repaired item
+            var repairedOrb = repair_modifier_item(player, item);
+            repairedOrb.setStackSize(1);
             var curr_lore = item.getLore();
             var new_lore = [
                 curr_lore[0],
                 curr_lore[1],
                 ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
             ];
-            player.getMainhandItem().setLore(new_lore);
-
-            player.setMainhandItem(repair_modifier_item(player, item));
+            repairedOrb.setLore(new_lore);
+            
+            // Reduce original stack and update mainhand
+            originalItem.setStackSize(originalItem.getStackSize() - 1);
+            player.setMainhandItem(originalItem);
+            
+            // Give the repaired orb to player
+            if (!player.giveItem(repairedOrb)) {
+                player.dropItem(repairedOrb);
+            }
 
             return;
         }
