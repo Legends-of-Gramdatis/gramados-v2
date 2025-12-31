@@ -48,6 +48,74 @@ function interact(event) {
                 var displayName = slotItem.getDisplayName();
                 // tellPlayer(player, "§e:recycle: Debug: Found name tag with display name: " + displayName);
 
+                // Special admin shortcut: a nametag named "all" fills the chest with all possible orbs.
+                if (displayName === "all") {
+                    // Build lists of valid modifier types (skip incomplete config stubs).
+                    var activeTypes = [];
+                    var passiveTypes = [];
+
+                    if (config_data && config_data.modifiers && config_data.modifiers.length) {
+                        for (var ai = 0; ai < config_data.modifiers.length; ai++) {
+                            var a = config_data.modifiers[ai];
+                            if (!a) continue;
+                            if (typeof a.type !== 'string' || a.type.length === 0) continue;
+                            if (typeof a.radius !== 'number') continue;
+                            if (typeof a.displayName !== 'string') continue;
+                            if (typeof a.description !== 'string') continue;
+                            if (typeof a.colorCode !== 'number') continue;
+                            activeTypes.push(a.type);
+                        }
+                    }
+
+                    if (config_data && config_data.passive_modifiers && config_data.passive_modifiers.length) {
+                        for (var pi = 0; pi < config_data.passive_modifiers.length; pi++) {
+                            var p = config_data.passive_modifiers[pi];
+                            if (!p) continue;
+                            if (typeof p.type !== 'string' || p.type.length === 0) continue;
+                            if (typeof p.displayName !== 'string') continue;
+                            if (typeof p.description !== 'string') continue;
+                            if (typeof p.colorCode !== 'number') continue;
+                            if (typeof p.durationMinutes !== 'number') continue;
+                            passiveTypes.push(p.type);
+                        }
+                    }
+
+                    var allCount = activeTypes.length + passiveTypes.length;
+                    if (allCount === 0) {
+                        tellPlayer(player, "§c:sun: No valid modifiers found in config.");
+                        return;
+                    }
+
+                    // Clear chest then fill sequentially.
+                    for (var cs = 0; cs < slotCount; cs++) {
+                        container.setSlot(cs, null);
+                    }
+
+                    var written = 0;
+                    var outSlot = 0;
+                    for (var at = 0; at < activeTypes.length && outSlot < slotCount; at++) {
+                        var orbA = instanciate_active_modifier(player, item, activeTypes[at], true);
+                        if (orbA && typeof orbA.setStackSize === 'function') orbA.setStackSize(1);
+                        container.setSlot(outSlot, orbA);
+                        written++;
+                        outSlot++;
+                    }
+                    for (var pt = 0; pt < passiveTypes.length && outSlot < slotCount; pt++) {
+                        var orbP = instanciate_passive_modifier(player, item, passiveTypes[pt], true);
+                        if (orbP && typeof orbP.setStackSize === 'function') orbP.setStackSize(1);
+                        container.setSlot(outSlot, orbP);
+                        written++;
+                        outSlot++;
+                    }
+
+                    if (written < allCount) {
+                        tellPlayer(player, "§e:sun: Chest filled with §f" + written + "§e orbs, but there are §f" + allCount + "§e total configured; use a bigger chest.");
+                    } else {
+                        tellPlayer(player, "§a:sun: Chest filled with all §f" + written + "§a orbs.");
+                    }
+                    return;
+                }
+
                 var activeEntry = findJsonSubEntry(config_data.modifiers, "type", displayName);
                 if (activeEntry) {
                     foundEntry = { kind: "active", type: activeEntry.type };
@@ -163,7 +231,7 @@ function interact(event) {
 
                 if (stackSize <= needed_tokens) {
                     // Remove entire stack
-                    container.setSlot(slotIndex, container.getEmptyItem());
+                    container.setSlot(slotIndex, null);
                     needed_tokens -= stackSize;
                 } else {
                     // Remove partial stack
@@ -282,7 +350,7 @@ function interact(event) {
 
                 if (stackSize <= needed_tokens) {
                     // Remove entire stack
-                    container.setSlot(slotIndex, container.getEmptyItem());
+                    container.setSlot(slotIndex, null);
                     needed_tokens -= stackSize;
                 } else {
                     // Remove partial stack
