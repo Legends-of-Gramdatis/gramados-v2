@@ -39,9 +39,9 @@ function grow_grass_and_flowers(world, center, radius) {
                 var block = world.getBlock(x, y, z);
                 if (!block) continue;
 
-                var blockName = (typeof block.getName === 'function') ? block.getName() : '';
+                var blockName = block.getName();
                 var blockAbove = world.getBlock(x, y + 1, z);
-                var blockAboveName = (blockAbove && typeof blockAbove.getName === 'function') ? blockAbove.getName() : '';
+                var blockAboveName = blockAbove.getName();
 
                 // Convert dirt to grass
                 if (blockName === 'minecraft:dirt') {
@@ -52,8 +52,8 @@ function grow_grass_and_flowers(world, center, radius) {
 
                 // Plant vegetation on grass blocks (if air above)
                 if (blockName === 'minecraft:grass' && blockAboveName === 'minecraft:air') {
-                    // 60% tall grass, 40% flowers
-                    if (Math.random() < 0.6) {
+                    // 80% tall grass, 20% flowers
+                    if (Math.random() < 0.8) {
                         // Tall grass (metadata 1) or fern (metadata 2)
                         var grassMeta = (Math.random() < 0.8) ? 1 : 2;
                         world.setBlock(x, y + 1, z, 'minecraft:tallgrass', grassMeta);
