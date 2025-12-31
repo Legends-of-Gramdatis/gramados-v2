@@ -25,6 +25,13 @@ And **nature/vegetation** effects:
 
 The grass orbs are particularly useful for cattle farms where animals consume vegetation. The flower orbs create aesthetic patterns for decorative builds.
 
+And **mixed crop planting** effects:
+
+- `crop plant mixed small` (radius 8) – Plants random mixed crops on farmland (uses all crop types from seed_to_crop.json)
+- `crop plant mixed large` (radius 20) – Plants random mixed crops on farmland across a large area
+
+These mixed crop orbs plant a variety of different crop types randomly across farmland, creating diverse fields without needing to manually plant each type.
+
 ## Configuration
 
 All orb definitions live in `modifiers_config.json`.
