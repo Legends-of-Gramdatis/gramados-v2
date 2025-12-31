@@ -171,6 +171,22 @@
             "displayName": "&d:sun: Orb of Floral Splendor :sun:",
             "description": "&7Paints the ground with vibrant flowers in graceful patterns.",
             "colorCode": 6
+        },
+        {
+            "type": "crop plant mixed small",
+            "radius": 8,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Varied Sowing :sun:",
+            "description": "&7Sows a patchwork of diverse crops across tilled soil.",
+            "colorCode": 2
+        },
+        {
+            "type": "crop plant mixed large",
+            "radius": 20,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Abundant Planting :sun:",
+            "description": "&7Fills vast farmland with a rich tapestry of mixed crops.",
+            "colorCode": 10
         }
     ],
     "passive_modifiers": [
