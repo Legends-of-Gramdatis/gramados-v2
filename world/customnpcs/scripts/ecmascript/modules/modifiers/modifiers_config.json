@@ -115,6 +115,62 @@
             "displayName": "&d:sun: Orb of Orchard Rot :sun:",
             "description": "&7Spoils nearby orchard fruits, returning them to an unripe state.",
             "colorCode": 0
+        },
+        {
+            "type": "npc pickpocket small",
+            "radius": 2,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Pickpocketing :sun:",
+            "description": "&7Coaxes nearby folk to spill their pockets—sometimes even a little extra.",
+            "colorCode": 14
+        },
+        {
+            "type": "npc pickpocket large",
+            "radius": 10,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Grand Larceny :sun:",
+            "description": "&7Sweeps the crowd for loose goods and coin with a practiced hand.",
+            "colorCode": 14
+        },
+        {
+            "type": "nature grass small",
+            "radius": 5,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Verdant Touch :sun:",
+            "description": "&7Awakens grass and flowers from bare earth in a small meadow.",
+            "colorCode": 2
+        },
+        {
+            "type": "nature grass medium",
+            "radius": 10,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Pasture Renewal :sun:",
+            "description": "&7Spreads lush grass and blooms across the land for grazing herds.",
+            "colorCode": 10
+        },
+        {
+            "type": "nature grass large",
+            "radius": 20,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Meadow Genesis :sun:",
+            "description": "&7Calls forth a sprawling field of green and wild growth.",
+            "colorCode": 5
+        },
+        {
+            "type": "nature flowers small",
+            "radius": 5,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Garden Beauty :sun:",
+            "description": "&7Weaves a delicate tapestry of colorful blossoms.",
+            "colorCode": 13
+        },
+        {
+            "type": "nature flowers medium",
+            "radius": 10,
+            "isBonus": true,
+            "displayName": "&d:sun: Orb of Floral Splendor :sun:",
+            "description": "&7Paints the ground with vibrant flowers in graceful patterns.",
+            "colorCode": 6
         }
     ],
     "passive_modifiers": [

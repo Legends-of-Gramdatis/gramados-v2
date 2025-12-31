@@ -2,11 +2,15 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_crops.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_fruits.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_farm_animania.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_pickpocket.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_nature.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
 var farmCrops = exports_utils_farm_crops;
 var farmFruits = exports_utils_farm_fruits;
+var pickpocket = exports_utils_pickpocket;
+var nature = exports_utils_nature;
 var MODIFIERS_CFG_PATH = "world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json";
 var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_modifiers.json";
 
@@ -277,6 +281,20 @@ function apply_active_modifier_type(player, modifierType, radius) {
             return farmFruits.growFruitsToMax(world, pos, radius);
         case "fruit rot max":
             return farmFruits.resetFruitsToZero(world, pos, radius);
+        case "npc pickpocket small":
+            return pickpocket.pickpocket_npcs_in_radius(player, radius);
+        case "npc pickpocket large":
+            return pickpocket.pickpocket_npcs_in_radius(player, radius);
+        case "nature grass small":
+            return nature.grow_grass_and_flowers(world, pos, radius);
+        case "nature grass medium":
+            return nature.grow_grass_and_flowers(world, pos, radius);
+        case "nature grass large":
+            return nature.grow_grass_and_flowers(world, pos, radius);
+        case "nature flowers small":
+            return nature.spawn_flower_pattern(world, pos, radius);
+        case "nature flowers medium":
+            return nature.spawn_flower_pattern(world, pos, radius);
         default:
             return null;
     }
