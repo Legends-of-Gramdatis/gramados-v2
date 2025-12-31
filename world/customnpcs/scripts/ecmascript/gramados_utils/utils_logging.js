@@ -37,6 +37,10 @@ var LOG_FILES = {
     automobile: {
         json: "world/customnpcs/scripts/logs/automobile.json",
         log: "world/customnpcs/scripts/logs/automobile.log"
+    },
+    modifiers: {
+        json: "world/customnpcs/scripts/logs/modifiers.json",
+        log: "world/customnpcs/scripts/logs/modifiers.log"
     }
 };
 

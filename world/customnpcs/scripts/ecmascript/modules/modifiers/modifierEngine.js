@@ -2,6 +2,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var MODIFIERS_CFG_PATH = "world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json";
 
@@ -162,6 +163,8 @@ function interact(event) {
             }
 
             tellPlayer(player, "§a:sun: Passive modifier activated: §f" + get_modifier_display_name(modifierType) + "§a (§e" + time_in_minutes + "m§a)");
+
+            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=passive type="' + modifierType + '" durationMinutes=' + time_in_minutes + ' nextRepairCostTokens=' + tag.getInteger('repairs'));
             
             // Modify cloned item, reduce original stack, give modified item
             item.setStackSize(1);
@@ -268,13 +271,21 @@ function interact(event) {
             // Modify cloned item, reduce original stack, give repaired item
             var repairedOrb = repair_modifier_item(player, item);
             repairedOrb.setStackSize(1);
+
+            var repairedNbt = repairedOrb.getItemNbt();
+            var repairedTag = repairedNbt.getCompound('tag');
+            var repairsTotal = repairedTag.getInteger('repairs');
+
             var curr_lore = item.getLore();
             var new_lore = [
                 curr_lore[0],
                 curr_lore[1],
-                ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
+                ccs("&7Next token use count: §e" + repairsTotal)
             ];
             repairedOrb.setLore(new_lore);
+
+            var modifierType = tag.getString('passive_modifier_type');
+            logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=passive type="' + modifierType + '" costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
             
             // Reduce original stack and update mainhand
             originalItem.setStackSize(originalItem.getStackSize() - 1);
@@ -308,6 +319,8 @@ function interact(event) {
             } else {
                 tellPlayer(player, "§a:sun: Orb activated: §f" + get_modifier_display_name(modifierType) + "§a (in a radius of §e" + radius + "§a).");
             }
+
+            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' nextRepairCostTokens=' + tag.getInteger('repairs'));
 
             // Modify cloned item, reduce original stack, give modified item
             item.setStackSize(1);
@@ -408,13 +421,22 @@ function interact(event) {
             // Modify cloned item, reduce original stack, give repaired item
             var repairedOrb = repair_modifier_item(player, item);
             repairedOrb.setStackSize(1);
+
+            var repairedNbt = repairedOrb.getItemNbt();
+            var repairedTag = repairedNbt.getCompound('tag');
+            var repairsTotal = repairedTag.getInteger('repairs');
+
             var curr_lore = item.getLore();
             var new_lore = [
                 curr_lore[0],
                 curr_lore[1],
-                ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
+                ccs("&7Next token use count: §e" + repairsTotal)
             ];
             repairedOrb.setLore(new_lore);
+
+            var modifierType = tag.getString('modifier_type');
+            var radius = tag.getInteger('modifier_radius');
+            logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
             
             // Reduce original stack and update mainhand
             originalItem.setStackSize(originalItem.getStackSize() - 1);
