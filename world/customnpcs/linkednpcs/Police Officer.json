@@ -2,6 +2,71 @@
     "NPCData": {
         "ReturnToStart": 1b,
         "NpcInv": [
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarovammo",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "flansmod:makarov",
+                "Count": 1b,
+                "tag": {
+                    "attachments": {
+                        "barrel": {
+                        },
+                        "grip": {
+                        },
+                        "generic_0": {
+                        },
+                        "scope": {
+                        },
+                        "stock": {
+                        }
+                    },
+                    "ammo": [
+                        {
+                            "ForgeCaps": {
+                                "customnpcs:itemscripteddata": {
+                                }
+                            },
+                            "id": "flansmod:makarovammo",
+                            "Count": 1b,
+                            "Damage": 2s
+                        }
+                    ]
+                },
+                "Damage": 0s
+            }
         ],
         "BossColor": 0,
         "PotionEffect": 0,
@@ -53,7 +118,7 @@
         "WalkingRange": 32,
         "ShotCount": 1,
         "pDur": 5,
-        "StartPosNew": [I;-1938,73,-229],
+        "StartPosNew": [I;-1924,74,37],
         "AttackRange": 2,
         "NpcKillLines": {
             "Lines": [
