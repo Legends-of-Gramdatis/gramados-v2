@@ -582,6 +582,81 @@ function plantCropsOnFarmland(world, center, radius, seedItemId, count, player, 
 	return count - planted;
 }
 
+/**
+ * Plant mixed random crops on farmland blocks within a spherical radius.
+ * Uses all crop types defined in seed_to_crop.json configuration.
+ * Plants unlimited crops (ignores player inventory).
+ * 
+ * @param {IWorld} world - CustomNPCs world instance.
+ * @param {{x:number,y:number,z:number}|IPos} center - Center position.
+ * @param {number} radius - Sphere radius in blocks.
+ * @returns {number} Number of crops planted.
+ */
+function plantMixedCropsOnFarmland(world, center, radius) {
+	var seedMap = loadSeedToCropMap();
+	if (!seedMap) return 0;
+	
+	// Build list of unique crop block ids from the map
+	var cropIds = [];
+	var seen = {};
+	for (var seedId in seedMap) {
+		var entry = seedMap[seedId];
+		if (!entry || typeof entry.crop !== 'string') continue;
+		var cid = entry.crop;
+		if (!seen[cid]) {
+			cropIds.push(cid);
+			seen[cid] = true;
+		}
+	}
+	
+	if (cropIds.length === 0) return 0;
+	
+	var c;
+	if (center && typeof center.getX === 'function') {
+		c = iposToPos(center);
+	} else {
+		c = {
+			x: Math.floor(center.x),
+			y: Math.floor(center.y),
+			z: Math.floor(center.z)
+		};
+	}
+	
+	var r2 = radius * radius;
+	var planted = 0;
+	
+	// Scan sphere for farmland blocks
+	for (var dx = -radius; dx <= radius; dx++) {
+		for (var dy = -radius; dy <= radius; dy++) {
+			for (var dz = -radius; dz <= radius; dz++) {
+				if (dx*dx + dy*dy + dz*dz > r2) continue;
+				
+				var x = c.x + dx;
+				var y = c.y + dy;
+				var z = c.z + dz;
+				
+				// Check if this block is farmland
+				var blockBelow = world.getBlock(x, y, z);
+				if (!blockBelow) continue;
+				if (typeof blockBelow.getName !== 'function' || blockBelow.getName() !== 'minecraft:farmland') continue;
+				
+				// Check if block above is air
+				var blockAbove = world.getBlock(x, y + 1, z);
+				if (!blockAbove || !blockAbove.isAir()) continue;
+				
+				// Pick a random crop type
+				var randomCropId = cropIds[Math.floor(Math.random() * cropIds.length)];
+				
+				// Plant the crop
+				world.setBlock(x, y + 1, z, randomCropId, 0);
+				planted++;
+			}
+		}
+	}
+	
+	return planted;
+}
+
 // Exports
 var exports_utils_farm_crops = {
 	loadSeedToCropMap: loadSeedToCropMap,
@@ -597,7 +672,7 @@ var exports_utils_farm_crops = {
 	resetCropsToZero: resetCropsToZero,
 	randomLowerCrops: randomLowerCrops,
 	harvestCropsBreak: harvestCropsBreak,
-	harvestCropsBreakAndReset: harvestCropsBreakAndReset
-,
-	tillSurfaceToFarmland: tillSurfaceToFarmland
+	harvestCropsBreakAndReset: harvestCropsBreakAndReset,
+	tillSurfaceToFarmland: tillSurfaceToFarmland,
+	plantMixedCropsOnFarmland: plantMixedCropsOnFarmland
 };
