@@ -295,6 +295,10 @@ function apply_active_modifier_type(player, modifierType, radius) {
             return nature.spawn_flower_pattern(world, pos, radius);
         case "nature flowers medium":
             return nature.spawn_flower_pattern(world, pos, radius);
+        case "crop plant mixed small":
+            return farmCrops.plantMixedCropsOnFarmland(world, pos, radius);
+        case "crop plant mixed large":
+            return farmCrops.plantMixedCropsOnFarmland(world, pos, radius);
         default:
             return null;
     }
