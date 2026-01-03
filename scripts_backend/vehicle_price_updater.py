@@ -694,7 +694,7 @@ def price_vehicles(found: List[FoundVehicle], config: Dict[str, Any], *, interac
             )
             interior_price, interior_details = resolve_interior_price(parsed.interior_key, interior_aliases, interior_by_norm, interactive=interactive)
 
-            value = int(base_price + paint_price + interior_price)
+            value = int((base_price + paint_price + interior_price) * 100) # final value in cents
 
             details = {
                 "suffix": fv.suffix,
