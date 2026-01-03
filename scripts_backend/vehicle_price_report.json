@@ -1,0 +1,194 @@
+{
+  "found_count": 712,
+  "priced_count": 711,
+  "errors_count": 1,
+  "would_add": 711,
+  "would_update": 0,
+  "errors": [
+    {
+      "full_id": "mts:iv_tcp_v3_civil.trin_pilocrap_wagon_g",
+      "suffix": "trin_pilocrap_wagon_g",
+      "error": "Low-confidence model match for trin_pilocrap: score=2, picked=Trin Trumon Trin Trumon Truck"
+    }
+  ],
+  "sample_priced": [
+    {
+      "suffix": "trin_bultizorg_comfort_electricblue_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "electricblue",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Electric Blue",
+      "paint_price": 250,
+      "polychrome": false,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68450
+    },
+    {
+      "suffix": "trin_bultizorg_comfort_electricblue_w",
+      "model_key": "trin_bultizorg",
+      "paint_key": "electricblue",
+      "interior_key": "w",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Electric Blue",
+      "paint_price": 250,
+      "polychrome": false,
+      "interior": "White",
+      "interior_price": 200,
+      "final_value": 68650
+    },
+    {
+      "suffix": "trin_bultizorg_comfort_firered_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "firered",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Fire Red",
+      "paint_price": 250,
+      "polychrome": false,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68450
+    },
+    {
+      "suffix": "trin_bultizorg_comfort_firered_w",
+      "model_key": "trin_bultizorg",
+      "paint_key": "firered",
+      "interior_key": "w",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Fire Red",
+      "paint_price": 250,
+      "polychrome": false,
+      "interior": "White",
+      "interior_price": 200,
+      "final_value": 68650
+    },
+    {
+      "suffix": "trin_bultizorg_comfort_pureblack_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "pureblack",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Deep Black",
+      "paint_price": 0,
+      "polychrome": false,
+      "override": true,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68200
+    },
+    {
+      "suffix": "trin_bultizorg_comfort_pureblack_w",
+      "model_key": "trin_bultizorg",
+      "paint_key": "pureblack",
+      "interior_key": "w",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Deep Black",
+      "paint_price": 0,
+      "polychrome": false,
+      "override": true,
+      "interior": "White",
+      "interior_price": 200,
+      "final_value": 68400
+    },
+    {
+      "suffix": "trin_bultizorg_root_midnightpurple_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "midnightpurple",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Midnight Purple",
+      "paint_price": 250,
+      "polychrome": false,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68450
+    },
+    {
+      "suffix": "trin_bultizorg_root_purewhite_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "purewhite",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Glacier White",
+      "paint_price": 0,
+      "polychrome": false,
+      "override": true,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68200
+    },
+    {
+      "suffix": "trin_bultizorg_root_slimelime_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "slimelime",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": "Slime Lime",
+      "paint_price": 300,
+      "polychrome": false,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 68500
+    },
+    {
+      "suffix": "trin_bultizorg_substantial_forest_g",
+      "model_key": "trin_bultizorg",
+      "paint_key": "forest",
+      "interior_key": "g",
+      "matched_model": {
+        "name": "Trin Bultizorg",
+        "variant": "Bultizorg Crew Cab Dually",
+        "base_price": 68200
+      },
+      "paint": [
+        "Soft Green",
+        "Oak Green"
+      ],
+      "paint_price": 450,
+      "polychrome": true,
+      "polychrome_extra": 1000,
+      "override": true,
+      "interior": "Gray",
+      "interior_price": 0,
+      "final_value": 69650
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "paths": {
+    "crafttweaker_log": "/home/mouette/gramados-v2/crafttweaker.log",
+    "trin_car_models": "/home/mouette/gramados-v2/scripts_backend/inputs/trinCarModels.json",
+    "factory_colors": "/home/mouette/gramados-v2/scripts_backend/inputs/factoryColors.json",
+    "interior_colors": "/home/mouette/gramados-v2/scripts_backend/inputs/interiorColors.json",
+    "global_prices": "/home/mouette/gramados-v2/world/customnpcs/scripts/globals/global_prices.json",
+    "overrides": "/home/mouette/gramados-v2/scripts_backend/vehicle_price_overrides.json",
+    "report_out": "/home/mouette/gramados-v2/scripts_backend/vehicle_price_report.json"
+  },
+  "scan": {
+    "modids": [
+      "iv_tcp_v3_civil",
+      "iv_tcp_v3_service",
+      "iv_tcp_v3_txs",
+      "iv_tcp_v3_utility"
+    ],
+    "namespace": "mts",
+    "only_trin": true
+  },
+  "parsing": {
+    "trim_tokens": ["comfort", "root", "substantial", "tq1", "tq2", "tq3"],
+    "polychrome_extra": 1000
+  },
+  "interior_aliases": {
+    "g": "Gray",
+    "w": "White",
+    "b": "Brown",
+    "r": "Red",
+    "t": "Tan",
+    "bl": "Black",
+    "gb": "Gray & Blue",
+    "gray_blue": "Gray & Blue",
+    "grayblue": "Gray & Blue"
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "paint_overrides": {
+    "example_unrecognized_paint": {
+      "item_suffix": "trin_example_model_weirdpaint_g",
+      "factory_colors": [
+        "Iron Gray"
+      ],
+      "polychrome": false
+    }
+  },
+  "interior_overrides": {
+    "example_unrecognized_interior": {
+      "item_suffix": "trin_example_model_whiteleather",
+      "interior_name": "White"
+    }
+  },
+  "model_overrides": {
+    "example_unrecognized_model": {
+      "model_key": "trin_example_model",
+      "chosen_name": "Trin Heavorum",
+      "chosen_variant": "Heavorum Crew Cab Dually"
+    }
+  },
+  "paint_key_overrides": {
+    "pureblack": {
+      "colors": [
+        "Deep Black"
+      ],
+      "polychrome": false
+    },
+    "purewhite": {
+      "colors": [
+        "Glacier White"
+      ],
+      "polychrome": false
+    },
+    "redblack": {
+      "colors": [
+        "Fire Red",
+        "Deep Black"
+      ],
+      "polychrome": true
+    },
+    "bubblegum": {
+      "colors": [
+        "Pink Candy",
+        "Dark Pink Candy"
+      ],
+      "polychrome": true
+    },
+    "redandblack": {
+      "colors": [
+        "Fire Red",
+        "Deep Black"
+      ],
+      "polychrome": true
+    },
+    "steelblueandteel": {
+      "colors": [
+        "Steel Blue",
+        "Teal"
+      ],
+      "polychrome": true
+    },
+    "explorer": {
+      "colors": [
+        "White",
+        "Jet Black"
+      ],
+      "polychrome": true
+    },
+    "forest": {
+      "colors": [
+        "Soft Green",
+        "Oak Green"
+      ],
+      "polychrome": true
+    },
+    "gold": {
+      "colors": [
+        "Gold Edition"
+      ],
+      "polychrome": false
+    },
+    "sponge": {
+      "colors": [
+        "Spongebob"
+      ],
+      "polychrome": false
+    },
+    "panthera": {
+      "colors": [
+        "Panther"
+      ],
+      "polychrome": false
+    },
+    "sprucewooden": {
+      "colors": [
+        "Spruce"
+      ],
+      "polychrome": false
+    },
+    "tomatowooden": {
+      "colors": [
+        "Tomato"
+      ],
+      "polychrome": false
+    },
+    "pourpre": {
+      "colors": [
+        "Carmin Red"
+      ],
+      "polychrome": false
+    },
+    "root": {
+      "colors": [
+        "Glacier White"
+      ],
+      "polychrome": false
+    },
+    "lime": {
+      "colors": [
+        "Lemon Yellow"
+      ],
+      "polychrome": false
+    },
+    "lapenderblue": {
+      "colors": [
+        "Lavender Blue"
+      ],
+      "polychrome": false
+    },
+    "shagbark": {
+      "colors": [
+        "Milk Coffee",
+        "Brown"
+      ],
+      "polychrome": true
+    },
+    "goldandsilver": {
+      "colors": [
+        "Gold Edition",
+        "Chrome"
+      ],
+      "polychrome": true
+    },
+    "darkwalnutandivory": {
+      "colors": [
+        "Ivory"
+      ],
+      "polychrome": false
+    },
+    "safari": {
+      "colors": [
+        "Girafe",
+        "Panther"
+      ],
+      "polychrome": true
+    },
+    "sandandchocolate": {
+      "colors": [
+        "Sand",
+        "Chocolate"
+      ],
+      "polychrome": true
+    }
+  },
+  "model_key_overrides": {
+    "trindevomcabrio": {
+      "name": "Trin Devom",
+      "variant": "Devom Cabriolet"
+    },
+    "trindevom": {
+      "name": "Trin Devom",
+      "variant": "Devom Coupé"
+    },
+    "trindevomcustomlivery1": {
+      "name": "Trin Devom",
+      "variant": "Devom Coupé"
+    },
+    "trineconoboxcabrioc": {
+      "name": "Trin Econobox",
+      "variant": "Econobox Cabriolet"
+    },
+    "trineconoboxvanpaneled": {
+      "name": "Trin Econobox",
+      "variant": "Econobox Panel Van"
+    },
+    "trineconoboxvanwindowed": {
+      "name": "Trin Econobox",
+      "variant": "Econobox Window Van"
+    },
+    "tringobigsuv2door": {
+      "name": "Trin Gobig",
+      "variant": "Gobig SUV 2 Door"
+    },
+    "tringobigsuv4door": {
+      "name": "Trin Gobig",
+      "variant": "Gobig SUV 4 Door"
+    },
+    "tringobigsuvcabrio2door": {
+      "name": "Trin Gobig",
+      "variant": "Gobig Cabriolet 2 Door"
+    },
+    "trinrodeocabrio": {
+      "name": "Trin Rodeo",
+      "variant": "Rodeo Cabriolet"
+    },
+    "trinrodeovan": {
+      "name": "Trin Rodeo",
+      "variant": "Rodeo Panel Van"
+    },
+    "trinrodeowagon": {
+      "name": "Trin Rodeo",
+      "variant": "Rodeo Window Van"
+    },
+    "trinsportaillarge": {
+      "name": "Trin Sportail",
+      "variant": "Sportail 4 Door SUV"
+    },
+    "trinsportailsmall": {
+      "name": "Trin Sportail",
+      "variant": "Sportail 2 Door SUV"
+    },
+    "trinurlonsedancompass": {
+      "name": "Trin Urlon (V3)",
+      "variant": "Urlon Sedan Compass"
+    },
+    "trinurlonsedann": {
+      "name": "Trin Urlon (V3)",
+      "variant": "Urlon Sedan"
+    },
+    "trinurlonsedanv4": {
+      "name": "Trin Urlon (V4)",
+      "variant": "Urlon Sedan V4"
+    },
+    "trinfootpatherservicefirefighter": {
+      "name": "Trin Footpather",
+      "variant": "Footpather Phase 1"
+    },
+    "trinfootpatherservice": {
+      "name": "Trin Footpather",
+      "variant": "Footpather Phase 1"
+    },
+    "trinfootpatherservicepolice": {
+      "name": "Trin Footpather",
+      "variant": "Footpather Phase 1"
+    },
+    "trinfootpatherservicetaxi": {
+      "name": "Trin Footpather",
+      "variant": "Footpather Phase 1"
+    },
+    "trinsportailsmalltxs": {
+      "name": "Trin Sportail",
+      "variant": "Sportail 2 Door SUV"
+    },
+    "trinforagonnrmlhalfwindow": {
+      "name": "Trin Foragon",
+      "variant": "Foragon Half-Window Van"
+    },
+    "trinforagonnrmlminibus": {
+      "name": "Trin Foragon",
+      "variant": "Foragon Minibus"
+    },
+    "trinforagonnrmlpanel": {
+      "name": "Trin Foragon",
+      "variant": "Foragon Panel Van"
+    },
+    "trinforagonnrmlpickup": {
+      "name": "Trin Foragon",
+      "variant": "Foragon Pickup"
+    },
+    "trinjuggernautmodtruck": {
+      "name": "Trin Juggernaut",
+      "variant": "Juggernaut Chassis Cab"
+    },
+    "trinjuggernautsemitrucks": {
+      "name": "Trin Juggernaut",
+      "variant": "Juggernaut Semi Trck"
+    },
+    "trintransortuscrystal": {
+      "name": "Trin Transortus",
+      "variant": "Transortus Crystal City Bus"
+    },
+    "trintransortus": {
+      "name": "Trin Transortus",
+      "variant": "Transortus City Bus"
+    }
+  }
+}
