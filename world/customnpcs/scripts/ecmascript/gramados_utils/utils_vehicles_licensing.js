@@ -5,7 +5,7 @@ function isPlateLicensed(plate) {
     if (!plate) {
         return false;
     }
-    var licensed = loadLicensedVehicles() || {};
+    var licensed = loadLicensedVehicles();
     return !!licensed[plate];
 }
 
@@ -13,7 +13,7 @@ function isVinUnknown(vin) {
     if (!vin) {
         return true;
     }
-    var licensed = loadLicensedVehicles() || {};
+    var licensed = loadLicensedVehicles();
     for (var plate in licensed) {
         if (licensed[plate] && licensed[plate].vin === vin) {
             return false;
@@ -26,7 +26,7 @@ function getRegistrationByVin(vin) {
     if (!vin) {
         return null;
     }
-    var licensed = loadLicensedVehicles() || {};
+    var licensed = loadLicensedVehicles();
     for (var plate in licensed) {
         var entry = licensed[plate];
         if (entry && entry.vin === vin) {

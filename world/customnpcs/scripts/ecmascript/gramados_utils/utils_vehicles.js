@@ -3,18 +3,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
 /**
- * Pad a string to a specified length (Nashorn-compatible alternative to padStart)
- */
-function padLeft(str, length, char) {
-    char = char || "0";
-    var result = str.toString();
-    while (result.length < length) {
-        result = char + result;
-    }
-    return result;
-}
-
-/**
  * Load the vehicle catalog database
  */
 function loadVehicleCatalog() {
@@ -22,16 +10,22 @@ function loadVehicleCatalog() {
 }
 
 /**
+ * Get the plate system config by systemName
+ */
+function getPlateSystemConfig(systemName) {
+    var catalog = loadVehicleCatalog();
+    return catalog.plateSystems[systemName];
+}
+
+/**
  * Load the dynamic licensed vehicles database
  */
 function loadLicensedVehicles() {
     var file = "world/customnpcs/scripts/data_auto/licensed_vehicles.json";
-    try {
-        return loadJson(file);
-    } catch (e) {
-        // Return empty object if file doesn't exist
-        return {};
+    if (!checkFileExists(file)) {
+        createJsonFile(file);
     }
+    return loadJson(file);
 }
 
 /**
@@ -52,20 +46,23 @@ function getMainVehicleId(fullItemId) {
     if (catalog.vehicles[fullItemId]) {
         return fullItemId;
     }
-    
-    // Try to find by removing variants
+
+    // Otherwise, match by prefix (e.g. mainId + "_sage_g")
     var keys = getJsonKeys(catalog.vehicles);
+    var bestMatch = null;
     for (var i = 0; i < keys.length; i++) {
         var mainId = keys[i];
-        var vehicle = catalog.vehicles[mainId];
-        var variants = vehicle.paintVariants || [];
-        
-        // Check if fullItemId matches mainId + any variant
-        for (var j = 0; j < variants.length; j++) {
-            if (fullItemId === mainId + variants[j]) {
-                return mainId;
+        if (fullItemId.indexOf(mainId) === 0) {
+            if (fullItemId.length === mainId.length || fullItemId.charAt(mainId.length) === "_") {
+                if (bestMatch === null || mainId.length > bestMatch.length) {
+                    bestMatch = mainId;
+                }
             }
         }
+    }
+
+    if (bestMatch !== null) {
+        return bestMatch;
     }
     
     return null;
@@ -95,32 +92,16 @@ function getVehicleInfo(mainVehicleId) {
  * Check if a license plate is the default one for a vehicle
  */
 function isDefaultPlate(plate, mainVehicleId) {
-    var vehicleInfo = getVehicleInfo(mainVehicleId);
-    if (!vehicleInfo) {
-        return false;
-    }
-    return plate === vehicleInfo.defaultPlateFormat;
+    // Deprecated: plate defaults are determined by the license plate part systemName.
+    return false;
 }
 
 /**
  * Generate a random license plate for a vehicle
  */
-function generateRandomPlate(mainVehicleId) {
-    var vehicleInfo = getVehicleInfo(mainVehicleId);
-    if (!vehicleInfo) {
-        return null;
-    }
-    
-    var format = vehicleInfo.defaultPlateFormat;
-    var brand = vehicleInfo.brand;
-    var catalogData = loadVehicleCatalog();
-    var plateFormat = catalogData.platePrefixes[brand];
-    
-    if (!plateFormat) {
-        return null;
-    }
-    
-    var formatStr = plateFormat.format;
+function generateRandomPlate(systemName) {
+    var plateSystem = getPlateSystemConfig(systemName);
+    var formatStr = plateSystem.format;
     var plate = "";
     
     for (var i = 0; i < formatStr.length; i++) {
@@ -149,9 +130,6 @@ function generateRandomPlate(mainVehicleId) {
  */
 function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
     var vehicleInfo = getVehicleInfo(mainVehicleId);
-    if (!vehicleInfo) {
-        return { success: false, message: "Vehicle not found in catalog" };
-    }
     
     // Generate a unique plate
     var licensedVehicles = loadLicensedVehicles();
@@ -160,7 +138,7 @@ function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
     var maxAttempts = 100;
     
     do {
-        plate = generateRandomPlate(mainVehicleId);
+        plate = generateRandomPlate("plate_gramados");
         attempts++;
     } while (licensedVehicles[plate] && attempts < maxAttempts);
     
@@ -185,7 +163,7 @@ function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
                 soldDate: null
             }
         ],
-        titles: vehicleInfo.extraTitles ? vehicleInfo.extraTitles.slice() : [],
+        titles: (vehicleInfo && vehicleInfo.extraTitles) ? vehicleInfo.extraTitles.slice() : [],
         insuranceClaims: [],
         registrationDate: dateStr,
         status: "active"
