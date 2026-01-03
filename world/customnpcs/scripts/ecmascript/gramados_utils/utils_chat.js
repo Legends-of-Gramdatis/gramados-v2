@@ -1,5 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
