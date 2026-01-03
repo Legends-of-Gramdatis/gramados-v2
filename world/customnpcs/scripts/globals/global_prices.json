@@ -4451,2137 +4451,2137 @@
             "electrum": 0.05
         }
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_g:0": {
         "value": 6845000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_w:0": {
         "value": 6865000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_firered_g:0": {
         "value": 6845000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_firered_w:0": {
         "value": 6865000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_pureblack_g:0": {
         "value": 6820000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_pureblack_w:0": {
         "value": 6840000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_root_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_root_midnightpurple_g:0": {
         "value": 6845000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_root_purewhite_g:0": {
         "value": 6820000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_root_slimelime_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_root_slimelime_g:0": {
         "value": 6850000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_g:0": {
         "value": 6965000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_r": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_r:0": {
         "value": 6995000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_forest_w:0": {
         "value": 6985000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_g:0": {
         "value": 7020000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_r": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_r:0": {
         "value": 7050000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_w:0": {
         "value": 7040000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_g": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_g:0": {
         "value": 6945000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_r": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_r:0": {
         "value": 6975000
     },
-    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_w": {
+    "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_w:0": {
         "value": 6965000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_midnightpurple_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_midnightpurple_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_pureblack_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_pureblack_w:0": {
         "value": 4110000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_sage_g:0": {
         "value": 4110000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_sage_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_comfort_sage_w:0": {
         "value": 4130000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_steelblue_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_tungsten_g:0": {
         "value": 4105000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_root_white_g:0": {
         "value": 4100000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_bubblegum_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_bubblegum_w:0": {
         "value": 4270000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_r:0": {
         "value": 4145000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_firered_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_g:0": {
         "value": 4215000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_r:0": {
         "value": 4245000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_redandblack_w:0": {
         "value": 4235000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_g:0": {
         "value": 4240000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_r:0": {
         "value": 4270000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_cabrio_substantial_steelblueandteel_w:0": {
         "value": 4260000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_midnightpurple_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_midnightpurple_w:0": {
         "value": 3315000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_pureblack_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_pureblack_w:0": {
         "value": 3290000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_sage_g:0": {
         "value": 3290000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_comfort_sage_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_comfort_sage_w:0": {
         "value": 3310000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_root_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_root_steelblue_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_root_tungsten_g:0": {
         "value": 3285000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_root_white_g:0": {
         "value": 3280000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_customlivery1_clean_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_customlivery1_clean_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_customlivery1_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_customlivery1_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_r:0": {
         "value": 3325000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_firered_w:0": {
         "value": 3315000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_g:0": {
         "value": 3395000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_r:0": {
         "value": 3425000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_redandblack_w:0": {
         "value": 3415000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_g": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_g:0": {
         "value": 3420000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_r": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_r:0": {
         "value": 3450000
     },
-    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_w": {
+    "mts:iv_tcp_v3_civil.trin_devom_substantial_steelblueandteel_w:0": {
         "value": 3440000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_lavenderblue_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_milkcoffee_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_milkcoffee_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_comfort_pureblack_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_oakgreen_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_pink_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_pink_g:0": {
         "value": 2470000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_cabrio_c_root_purewhite_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_lavenderblue_g:0": {
         "value": 1935000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_milkcoffee_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_milkcoffee_g:0": {
         "value": 1935000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_comfort_pureblack_g:0": {
         "value": 1910000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_oakgreen_g:0": {
         "value": 1935000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_pink_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_pink_g:0": {
         "value": 1930000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_hatchback_c_root_purewhite_g:0": {
         "value": 1910000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_harlequin_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_harlequin_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_lavenderblue_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_milkcoffee_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_milkcoffee_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_comfort_pureblack_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_oakgreen_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_pink_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_pink_g:0": {
         "value": 2200000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_purewhite_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_sponge_b": {
+    "mts:iv_tcp_v3_civil.trin_econobox_sedan_c_root_sponge_b:0": {
         "value": 2320000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_lavenderblue_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_milkcoffee_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_milkcoffee_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_comfort_pureblack_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_oakgreen_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_pink_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_pink_g:0": {
         "value": 2200000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_paneled_root_purewhite_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_lavenderblue_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_milkcoffee_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_milkcoffee_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_comfort_pureblack_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_oakgreen_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_pink_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_pink_g:0": {
         "value": 2470000
     },
-    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_econobox_van_windowed_root_purewhite_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_g:0": {
         "value": 8205000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_r:0": {
         "value": 8235000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_midnightpurple_w:0": {
         "value": 8225000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_g:0": {
         "value": 8180000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_r:0": {
         "value": 8210000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_pureblack_w:0": {
         "value": 8200000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_g:0": {
         "value": 8195000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_r:0": {
         "value": 8225000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_comfort_tungsten_w:0": {
         "value": 8215000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_coldspruce_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_coldspruce_g:0": {
         "value": 8205000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_coldspruce_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_coldspruce_w:0": {
         "value": 8225000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_purewhite_g:0": {
         "value": 8180000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_purewhite_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_purewhite_w:0": {
         "value": 8200000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_sage_g:0": {
         "value": 8200000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_root_sage_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_root_sage_w:0": {
         "value": 8220000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_blackgranite_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_blackgranite_r:0": {
         "value": 8410000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_panthera_t": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_panthera_t:0": {
         "value": 8385000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_plum_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_plum_g:0": {
         "value": 8205000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_g:0": {
         "value": 8305000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_r:0": {
         "value": 8335000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_t:0": {
         "value": 8335000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_redandblack_w:0": {
         "value": 8325000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_spongebob_b": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_spongebob_b:0": {
         "value": 8320000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_g:0": {
         "value": 8330000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_r:0": {
         "value": 8360000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_t": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_t:0": {
         "value": 8360000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_steelblueandteel_w:0": {
         "value": 8350000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_g": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_g:0": {
         "value": 8205000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_r": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_r:0": {
         "value": 8235000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_t": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_t:0": {
         "value": 8235000
     },
-    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_w": {
+    "mts:iv_tcp_v3_civil.trin_flugoral_substantial_sunshineyellow_w:0": {
         "value": 8225000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_lemonyellow_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_lemonyellow_g:0": {
         "value": 1825000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_orangered_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_orangered_g:0": {
         "value": 1825000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_rustypatchwork": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_rustypatchwork:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_sand_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_sand_g:0": {
         "value": 1820000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_seafoam_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_seafoam_g:0": {
         "value": 1820000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase1_teal_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase1_teal_g:0": {
         "value": 1825000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_ivory_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_ivory_g:0": {
         "value": 2620000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_oceanblue_g:0": {
         "value": 2625000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_ruby_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_ruby_g:0": {
         "value": 2625000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g:0": {
         "value": 2620000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_sandstone_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_sandstone_g:0": {
         "value": 2620000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_softgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_softgreen_g:0": {
         "value": 2620000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_footpather_phase2_steelblue_g:0": {
         "value": 2625000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_ebony_explorer_b": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_ebony_explorer_b:0": {
         "value": 3945000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_honey_white_white": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_honey_white_white:0": {
         "value": 3830000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_jetblack_milkcoffee_black": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_jetblack_milkcoffee_black:0": {
         "value": 3855000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_plum_lavenderblue_red": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_plum_lavenderblue_red:0": {
         "value": 3855000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_seafoam_ivory_tan": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_seafoam_ivory_tan:0": {
         "value": 3850000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_teal_glacierwhite_gray_blue": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_teal_glacierwhite_gray_blue:0": {
         "value": 3850000
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_tomato_sand_brown": {
+    "mts:iv_tcp_v3_civil.trin_footpather_specialsix_tomato_sand_brown:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_g:0": {
         "value": 12775000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_r:0": {
         "value": 12805000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_chocolate_w:0": {
         "value": 12795000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_g:0": {
         "value": 12760000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_r:0": {
         "value": 12790000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_jetblack_w:0": {
         "value": 12780000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_g:0": {
         "value": 12775000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_r:0": {
         "value": 12805000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_comfort_oceanblue_w:0": {
         "value": 12795000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_firered_g:0": {
         "value": 12775000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_firered_w:0": {
         "value": 12795000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_purewhite_g:0": {
         "value": 12750000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_purewhite_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_purewhite_w:0": {
         "value": 12770000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_tungsten_g:0": {
         "value": 12765000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_root_tungsten_w:0": {
         "value": 12785000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_g:0": {
         "value": 12775000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_r:0": {
         "value": 12805000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_t:0": {
         "value": 12805000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_midnightpurple_w:0": {
         "value": 12795000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_g:0": {
         "value": 12875000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_r:0": {
         "value": 12905000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_t:0": {
         "value": 12905000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_redandblack_w:0": {
         "value": 12895000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_g:0": {
         "value": 12890000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_r:0": {
         "value": 12920000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_t:0": {
         "value": 12920000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_pickup_2door_substantial_tungstenandelectricblue_w:0": {
         "value": 12910000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_g:0": {
         "value": 13525000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_r:0": {
         "value": 13555000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_w:0": {
         "value": 13545000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_g:0": {
         "value": 13510000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_r:0": {
         "value": 13540000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_w:0": {
         "value": 13530000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_g:0": {
         "value": 13525000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_r:0": {
         "value": 13555000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_w:0": {
         "value": 13545000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_g:0": {
         "value": 13525000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_w:0": {
         "value": 13545000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_g:0": {
         "value": 13500000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_w:0": {
         "value": 13520000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_g:0": {
         "value": 13515000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_w:0": {
         "value": 13535000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_g:0": {
         "value": 13525000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_r:0": {
         "value": 13555000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_t:0": {
         "value": 13555000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_w:0": {
         "value": 13545000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_g:0": {
         "value": 13625000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_r:0": {
         "value": 13655000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_t:0": {
         "value": 13655000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_w:0": {
         "value": 13645000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_g:0": {
         "value": 13640000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_r:0": {
         "value": 13670000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_t:0": {
         "value": 13670000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_w:0": {
         "value": 13660000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_g:0": {
         "value": 14985000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_r:0": {
         "value": 15015000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_w:0": {
         "value": 15005000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_g:0": {
         "value": 14970000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_r:0": {
         "value": 15000000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_w:0": {
         "value": 14990000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_g:0": {
         "value": 14985000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_r:0": {
         "value": 15015000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_w:0": {
         "value": 15005000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_g:0": {
         "value": 14985000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_w:0": {
         "value": 15005000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_g:0": {
         "value": 14960000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_w:0": {
         "value": 14980000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_g:0": {
         "value": 14975000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_w:0": {
         "value": 14995000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_g:0": {
         "value": 14985000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_r:0": {
         "value": 15015000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_t:0": {
         "value": 15015000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_w:0": {
         "value": 15005000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_g:0": {
         "value": 15085000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_r:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_t:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_w:0": {
         "value": 15105000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_g:0": {
         "value": 15100000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_r:0": {
         "value": 15130000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_t:0": {
         "value": 15130000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_w:0": {
         "value": 15120000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_g:0": {
         "value": 16725000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_r:0": {
         "value": 16755000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_chocolate_w:0": {
         "value": 16745000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_g:0": {
         "value": 16710000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_r:0": {
         "value": 16740000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_jetblack_w:0": {
         "value": 16730000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_g:0": {
         "value": 16725000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_r:0": {
         "value": 16755000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_comfort_oceanblue_w:0": {
         "value": 16745000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_firered_g:0": {
         "value": 16725000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_firered_w:0": {
         "value": 16745000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_purewhite_g:0": {
         "value": 16700000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_purewhite_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_purewhite_w:0": {
         "value": 16720000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_tungsten_g:0": {
         "value": 16715000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_root_tungsten_w:0": {
         "value": 16735000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_g:0": {
         "value": 16725000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_r:0": {
         "value": 16755000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_t:0": {
         "value": 16755000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_midnightpurple_w:0": {
         "value": 16745000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_g:0": {
         "value": 16825000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_r:0": {
         "value": 16855000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_t:0": {
         "value": 16855000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_redandblack_w:0": {
         "value": 16845000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_g:0": {
         "value": 16840000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_r:0": {
         "value": 16870000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_t:0": {
         "value": 16870000
     },
-    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_gobig_suv_cabrio_2door_substantial_tungstenandelectricblue_w:0": {
         "value": 16860000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_appleford_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_appleford_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_brown_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_brown_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_deepblack_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_deepblack_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_glacierwhite_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_glacierwhite_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_militarygreen_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_militarygreen_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_redandblack_g:0": {
         "value": 4215000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sapphire_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sapphire_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sprucewooden_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sprucewooden_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_steelblue_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_tomatowooden_g": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_tomatowooden_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_comfort_pourpre": {
+    "mts:iv_tcp_v3_civil.trin_keipan_comfort_pourpre:0": {
         "value": 1385000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_comfort_spruce": {
+    "mts:iv_tcp_v3_civil.trin_keipan_comfort_spruce:0": {
         "value": 1385000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_comfort_tungsten": {
+    "mts:iv_tcp_v3_civil.trin_keipan_comfort_tungsten:0": {
         "value": 1375000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_root_silver": {
+    "mts:iv_tcp_v3_civil.trin_keipan_root_silver:0": {
         "value": 1360000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_root_sky_blue": {
+    "mts:iv_tcp_v3_civil.trin_keipan_root_sky_blue:0": {
         "value": 1385000
     },
-    "mts:iv_tcp_v3_civil.trin_keipan_root_white": {
+    "mts:iv_tcp_v3_civil.trin_keipan_root_white:0": {
         "value": 1380000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_fireorange_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_fireorange_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_jetblack_g:0": {
         "value": 3010000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_comfort_tungsten_g:0": {
         "value": 3015000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_carminred_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_carminred_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_teal_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_teal_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_cabrio_root_white_g:0": {
         "value": 3010000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_fireorange_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_fireorange_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_jetblack_g:0": {
         "value": 2730000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_tungsten_g:0": {
         "value": 2735000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_carminred_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_carminred_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_teal_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_teal_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_white_g:0": {
         "value": 2730000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_blacksby_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_blacksby_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_fireorange_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_fireorange_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_jetblack_g:0": {
         "value": 2190000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_comfort_tungsten_g:0": {
         "value": 2195000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_carminred_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_carminred_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_teal_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_teal_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_van_root_white_g:0": {
         "value": 2190000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_fireorange_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_fireorange_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_jetblack_g:0": {
         "value": 2460000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_comfort_tungsten_g:0": {
         "value": 2465000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_carminred_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_carminred_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_teal_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_teal_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_rodeo_wagon_root_white_g:0": {
         "value": 2460000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_buttercup_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_buttercup_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_deepblack_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_deepblack_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_glacierwhite_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_glacierwhite_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_grape_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_grape_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_ivory_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_ivory_g:0": {
         "value": 2200000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_jetblackandfirered_r": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_jetblackandfirered_r:0": {
         "value": 2345000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_oakgreen_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_ruby_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_ruby_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_sapphire_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_sapphire_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_silver_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_comfort_silver_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_buttercup_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_buttercup_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_deepblack_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_deepblack_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_energy_lime_w": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_energy_lime_w:0": {
         "value": 2225000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_glacierwhite_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_glacierwhite_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_grape_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_grape_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_ivory_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_ivory_g:0": {
         "value": 2200000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_oakgreen_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_ruby_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_ruby_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_sapphire_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_sapphire_g:0": {
         "value": 2205000
     },
-    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_silver_g": {
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_silver_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_g:0": {
         "value": 4935000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_r:0": {
         "value": 4965000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_w:0": {
         "value": 4955000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_g:0": {
         "value": 4920000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_r:0": {
         "value": 4950000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_w:0": {
         "value": 4940000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_g:0": {
         "value": 4910000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_r:0": {
         "value": 4940000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_w:0": {
         "value": 4930000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_g:0": {
         "value": 4935000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_w:0": {
         "value": 4955000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_g:0": {
         "value": 4940000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_w:0": {
         "value": 4960000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_g:0": {
         "value": 4920000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_w:0": {
         "value": 4940000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_g:0": {
         "value": 4935000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_r:0": {
         "value": 4965000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_t:0": {
         "value": 4965000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_w:0": {
         "value": 4955000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_g:0": {
         "value": 5035000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_r:0": {
         "value": 5065000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_t:0": {
         "value": 5065000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_w:0": {
         "value": 5055000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_g:0": {
         "value": 5050000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_r:0": {
         "value": 5080000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_t:0": {
         "value": 5080000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_w:0": {
         "value": 5070000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_r:0": {
         "value": 4145000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_coldspruce_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_g:0": {
         "value": 4100000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_r:0": {
         "value": 4130000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_irongray_w:0": {
         "value": 4120000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_r:0": {
         "value": 4120000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_comfort_pureblack_w:0": {
         "value": 4110000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_amber_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_amber_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_amber_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_amber_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_slimelime_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_slimelime_g:0": {
         "value": 4120000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_slimelime_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_slimelime_w:0": {
         "value": 4140000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_white_g:0": {
         "value": 4100000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_root_white_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_root_white_w:0": {
         "value": 4120000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_r:0": {
         "value": 4145000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_t:0": {
         "value": 4145000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_bloodred_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_g:0": {
         "value": 4215000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_r:0": {
         "value": 4245000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_t:0": {
         "value": 4245000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_redandblack_w:0": {
         "value": 4235000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_g:0": {
         "value": 4230000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_r": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_r:0": {
         "value": 4260000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_t": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_t:0": {
         "value": 4260000
     },
-    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_w": {
+    "mts:iv_tcp_v3_civil.trin_sportail_small_substantial_tungstenandelectricblue_w:0": {
         "value": 4250000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_firered_g:0": {
         "value": 5475000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_firered_w:0": {
         "value": 5495000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_lapenderblue_r": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_lapenderblue_r:0": {
         "value": 5505000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_pureblack_g:0": {
         "value": 5450000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_pureblack_w:0": {
         "value": 5470000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_tungsten_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_tungsten_g:0": {
         "value": 5465000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_comfort_tungsten_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_comfort_tungsten_w:0": {
         "value": 5485000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_root_honey_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_root_honey_g:0": {
         "value": 5475000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_root_spruce_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_root_spruce_g:0": {
         "value": 5475000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_root_white_g:0": {
         "value": 5460000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_bubblegum_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_bubblegum_w:0": {
         "value": 5630000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_g:0": {
         "value": 5475000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_r": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_r:0": {
         "value": 5505000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_midnightpurple_w:0": {
         "value": 5495000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_g:0": {
         "value": 5475000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_r": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_r:0": {
         "value": 5505000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_oceanblue_w:0": {
         "value": 5495000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_g": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_g:0": {
         "value": 5575000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_r": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_r:0": {
         "value": 5605000
     },
-    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_w": {
+    "mts:iv_tcp_v3_civil.trin_springbok_substantial_redandblack_w:0": {
         "value": 5595000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_firered_g:0": {
         "value": 4385000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_firered_w:0": {
         "value": 4405000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_pureblack_g:0": {
         "value": 4360000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_pureblack_w:0": {
         "value": 4380000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_steelblue_g:0": {
         "value": 4385000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_steelblue_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_comfort_steelblue_w:0": {
         "value": 4405000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_chocolate_g:0": {
         "value": 4385000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_sage_g:0": {
         "value": 4380000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_root_white_g:0": {
         "value": 4370000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_g:0": {
         "value": 4385000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_r:0": {
         "value": 4415000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_oakgreen_w:0": {
         "value": 4405000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_g:0": {
         "value": 4510000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_r:0": {
         "value": 4540000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_shagbark_w:0": {
         "value": 4530000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_g:0": {
         "value": 4510000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_r:0": {
         "value": 4540000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_pickup_substantial_steelblueandteal_w:0": {
         "value": 4530000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_firered_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_firered_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_pureblack_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_pureblack_g:0": {
         "value": 3820000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_pureblack_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_pureblack_w:0": {
         "value": 3840000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_steelblue_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_steelblue_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_steelblue_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_comfort_steelblue_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_chocolate_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_chocolate_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_sage_g:0": {
         "value": 3840000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_white_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_root_white_g:0": {
         "value": 3830000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_r:0": {
         "value": 3875000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_oakgreen_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_g:0": {
         "value": 3970000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_r:0": {
         "value": 4000000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_shagbark_w:0": {
         "value": 3990000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_g": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_g:0": {
         "value": 3970000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_r": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_r:0": {
         "value": 4000000
     },
-    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_w": {
+    "mts:iv_tcp_v3_civil.trin_trainingor_suv_substantial_steelblueandteal_w:0": {
         "value": 3990000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_firered_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_firered_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_jetblack_g:0": {
         "value": 4100000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_jetblack_w:0": {
         "value": 4120000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_lavenderblue_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_lavenderblue_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_comfort_lavenderblue_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_oakgreen_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_purewhite_g:0": {
         "value": 4090000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_root_sage_g:0": {
         "value": 4110000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_customlivery1_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_customlivery1_w:0": {
         "value": 4110000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_g:0": {
         "value": 4115000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_r:0": {
         "value": 4145000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_plum_w:0": {
         "value": 4135000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_g:0": {
         "value": 4240000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_r:0": {
         "value": 4270000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_shagbark_w:0": {
         "value": 4260000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_g:0": {
         "value": 4240000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_r:0": {
         "value": 4270000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_steelblueandteal_w:0": {
         "value": 4260000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_tungstenandjetblack_b": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_compass_substantial_tungstenandjetblack_b:0": {
         "value": 4240000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_firered_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_firered_w:0": {
         "value": 3315000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_jetblack_g:0": {
         "value": 3280000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_jetblack_w:0": {
         "value": 3300000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_lavenderblue_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_lavenderblue_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_comfort_lavenderblue_w:0": {
         "value": 3315000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_oakgreen_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_purewhite_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_root_sage_g:0": {
         "value": 3290000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_bubblegum_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_bubblegum_w:0": {
         "value": 3450000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_r:0": {
         "value": 3325000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_plum_w:0": {
         "value": 3315000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_g:0": {
         "value": 3420000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_r:0": {
         "value": 3450000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_shagbark_w:0": {
         "value": 3440000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_g:0": {
         "value": 3420000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_r:0": {
         "value": 3450000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_n_substantial_steelblueandteal_w:0": {
         "value": 3440000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_v4_deepblack_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_v4_deepblack_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_sedan_v4_dev_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_sedan_v4_dev_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_firered_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_firered_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_firered_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_firered_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_jetblack_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_jetblack_g:0": {
         "value": 3830000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_jetblack_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_jetblack_w:0": {
         "value": 3850000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_lavenderblue_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_lavenderblue_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_lavenderblue_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_comfort_lavenderblue_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_oakgreen_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_oakgreen_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_purewhite_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_purewhite_g:0": {
         "value": 3820000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_sage_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_root_sage_g:0": {
         "value": 3840000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_g:0": {
         "value": 3845000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_r:0": {
         "value": 3875000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_plum_w:0": {
         "value": 3865000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_sandstone_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_sandstone_w:0": {
         "value": 3860000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_g:0": {
         "value": 3970000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_r:0": {
         "value": 4000000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_shagbark_w:0": {
         "value": 3990000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_g": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_g:0": {
         "value": 3970000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_r": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_r:0": {
         "value": 4000000
     },
-    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_w": {
+    "mts:iv_tcp_v3_civil.trin_urlon_wagon_substantial_steelblueandteal_w:0": {
         "value": 3990000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_firefighter_red_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_firefighter_red_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_firefighter_yellow_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_firefighter_yellow_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_guec_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_guec_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_highway_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_highway_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_police_generic_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_police_generic_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_police_gramados_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_police_gramados_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_police_sheriff_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_police_sheriff_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_taxi_generic_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_taxi_generic_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_footpather_service_taxi_gramados_g": {
+    "mts:iv_tcp_v3_service.trin_footpather_service_taxi_gramados_g:0": {
         "value": 1800000
     },
-    "mts:iv_tcp_v3_service.trin_ropy_4door_police_generic_g": {
+    "mts:iv_tcp_v3_service.trin_ropy_4door_police_generic_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_service.trin_ropy_4door_police_gramados_g": {
+    "mts:iv_tcp_v3_service.trin_ropy_4door_police_gramados_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_service.trin_ropy_4door_police_sheriff_g": {
+    "mts:iv_tcp_v3_service.trin_ropy_4door_police_sheriff_g:0": {
         "value": 2180000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_amber": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_amber:0": {
         "value": 28375000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_coldspruce": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_coldspruce:0": {
         "value": 28375000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_firered": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_firered:0": {
         "value": 28375000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_midnightpurple": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_midnightpurple:0": {
         "value": 28375000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_pureblack": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_pureblack:0": {
         "value": 28350000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_steelblueandteel": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_steelblueandteel:0": {
         "value": 28500000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_sunshineyellow": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_sunshineyellow:0": {
         "value": 28375000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_tungstenandelectricblue": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_tungstenandelectricblue:0": {
         "value": 28490000
     },
-    "mts:iv_tcp_v3_txs.trin_fabulide_txs_white": {
+    "mts:iv_tcp_v3_txs.trin_fabulide_txs_white:0": {
         "value": 28370000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_batspin": {
+    "mts:iv_tcp_v3_txs.trin_formula_batspin:0": {
         "value": 150000000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_dkz": {
+    "mts:iv_tcp_v3_txs.trin_formula_dkz:0": {
         "value": 150000000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_firered": {
+    "mts:iv_tcp_v3_txs.trin_formula_firered:0": {
         "value": 150025000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_plum": {
+    "mts:iv_tcp_v3_txs.trin_formula_plum:0": {
         "value": 150025000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_pureblack": {
+    "mts:iv_tcp_v3_txs.trin_formula_pureblack:0": {
         "value": 150000000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_redandblack": {
+    "mts:iv_tcp_v3_txs.trin_formula_redandblack:0": {
         "value": 150125000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_spruce": {
+    "mts:iv_tcp_v3_txs.trin_formula_spruce:0": {
         "value": 150025000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_sunshineyellow": {
+    "mts:iv_tcp_v3_txs.trin_formula_sunshineyellow:0": {
         "value": 150025000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_tungsten": {
+    "mts:iv_tcp_v3_txs.trin_formula_tungsten:0": {
         "value": 150015000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_tungstenandelectricblue": {
+    "mts:iv_tcp_v3_txs.trin_formula_tungstenandelectricblue:0": {
         "value": 150140000
     },
-    "mts:iv_tcp_v3_txs.trin_formula_white": {
+    "mts:iv_tcp_v3_txs.trin_formula_white:0": {
         "value": 150020000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_g:0": {
         "value": 85025000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_r:0": {
         "value": 85055000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_t:0": {
         "value": 85055000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_w:0": {
         "value": 85045000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_g:0": {
         "value": 85160000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_r:0": {
         "value": 85190000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_t:0": {
         "value": 85190000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_w:0": {
         "value": 85180000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_harlequin_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_harlequin_g:0": {
         "value": 85000000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_g:0": {
         "value": 85010000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_r:0": {
         "value": 85040000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_t:0": {
         "value": 85040000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_w:0": {
         "value": 85030000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_g:0": {
         "value": 85000000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_r:0": {
         "value": 85030000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_t:0": {
         "value": 85030000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_w:0": {
         "value": 85020000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_g:0": {
         "value": 85000000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_r:0": {
         "value": 85030000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_t:0": {
         "value": 85030000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_w:0": {
         "value": 85020000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_g:0": {
         "value": 85125000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_r:0": {
         "value": 85155000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_t:0": {
         "value": 85155000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_w:0": {
         "value": 85145000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_g:0": {
         "value": 85020000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_r:0": {
         "value": 85050000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_t:0": {
         "value": 85050000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_w:0": {
         "value": 85040000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_g:0": {
         "value": 85150000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_r:0": {
         "value": 85180000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_t:0": {
         "value": 85180000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_w:0": {
         "value": 85170000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_g:0": {
         "value": 85025000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_r:0": {
         "value": 85055000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_t:0": {
         "value": 85055000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_w:0": {
         "value": 85045000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_g:0": {
         "value": 60525000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_r:0": {
         "value": 60555000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_t:0": {
         "value": 60555000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bloodred_w:0": {
         "value": 60545000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_g:0": {
         "value": 60660000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_r:0": {
         "value": 60690000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_t:0": {
         "value": 60690000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_bubblegum_w:0": {
         "value": 60680000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_g:0": {
         "value": 60510000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_r:0": {
         "value": 60540000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_t:0": {
         "value": 60540000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_irongray_w:0": {
         "value": 60530000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_g:0": {
         "value": 60500000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_r:0": {
         "value": 60530000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_t:0": {
         "value": 60530000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_pureblack_w:0": {
         "value": 60520000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_g:0": {
         "value": 60500000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_r:0": {
         "value": 60530000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_t:0": {
         "value": 60530000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_purewhite_w:0": {
         "value": 60520000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_g:0": {
         "value": 60625000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_r:0": {
         "value": 60655000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_t:0": {
         "value": 60655000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_redandblack_w:0": {
         "value": 60645000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_g:0": {
         "value": 60520000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_r:0": {
         "value": 60550000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_t:0": {
         "value": 60550000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_softgreen_w:0": {
         "value": 60540000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_g:0": {
         "value": 60650000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_r:0": {
         "value": 60680000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_t:0": {
         "value": 60680000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_steelblueandteal_w:0": {
         "value": 60670000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_g": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_g:0": {
         "value": 60525000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_r": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_r:0": {
         "value": 60555000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_t": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_t:0": {
         "value": 60555000
     },
-    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_w": {
+    "mts:iv_tcp_v3_txs.trin_gobig_txs_suv_4x4_sunshineyellow_w:0": {
         "value": 60545000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_electricblue": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_electricblue:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_fireorange": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_fireorange:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_plum": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_plum:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_pureblack": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_pureblack:0": {
         "value": 15190000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_redandblack": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_redandblack:0": {
         "value": 15215000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_sand": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_sand:0": {
         "value": 15110000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_spruce": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_spruce:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_tungstenandelectricblue": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_tungstenandelectricblue:0": {
         "value": 15240000
     },
-    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_white": {
+    "mts:iv_tcp_v3_txs.trin_sportail_small_txs_white:0": {
         "value": 15110000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq1_honey_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq1_honey_g:0": {
         "value": 15125000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq1_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq1_plum_g:0": {
         "value": 15125000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq1_purewhite_g:0": {
         "value": 15100000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq2_bloodred_g:0": {
         "value": 15125000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq2_customlivery1_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq2_customlivery1_g:0": {
         "value": 15100000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq2_pureblack_g:0": {
         "value": 15100000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq2_steelblue_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq2_steelblue_g:0": {
         "value": 15125000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq3_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq3_redandblack_g:0": {
         "value": 15225000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq3_tungsten_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq3_tungsten_g:0": {
         "value": 15115000
     },
-    "mts:iv_tcp_v3_utility.trin_bolter_tq3_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_bolter_tq3_tungstenandelectricblue_g:0": {
         "value": 15240000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_honey_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_honey_g:0": {
         "value": 8475000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_purewhite_g:0": {
         "value": 8450000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_silver_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq1_silver_g:0": {
         "value": 8450000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_bloodred_g:0": {
         "value": 8475000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_electricblue_g:0": {
         "value": 8475000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_jetblack_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq2_jetblack_g:0": {
         "value": 8460000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_customlivery1_w": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_customlivery1_w:0": {
         "value": 8470000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_goldandsilver_t": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_goldandsilver_t:0": {
         "value": 8980000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_militarygreenandjetblack_b": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_militarygreenandjetblack_b:0": {
         "value": 8610000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_oakgreen_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_oakgreen_g:0": {
         "value": 8475000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_redandblack_g:0": {
         "value": 8575000
     },
-    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_steelblueandteal_g": {
+    "mts:iv_tcp_v3_utility.trin_capro3axle_tq3_steelblueandteal_g:0": {
         "value": 8600000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_purewhite_g:0": {
         "value": 2720000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_sand_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_sand_g:0": {
         "value": 2740000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_tungsten_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_tungsten_g:0": {
         "value": 2735000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_bloodred_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_coldspruce_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_coldspruce_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_pureblack_g:0": {
         "value": 2720000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_forest_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_forest_g:0": {
         "value": 2865000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_plum_g:0": {
         "value": 2745000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_shagbark_g:0": {
         "value": 2870000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_purewhite_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_sand_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_sand_g:0": {
         "value": 3290000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_tungsten_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_tungsten_g:0": {
         "value": 3285000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_bloodred_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_coldspruce_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_coldspruce_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_pureblack_g:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_forest_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_forest_g:0": {
         "value": 3415000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_plum_g:0": {
         "value": 3295000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_shagbark_g:0": {
         "value": 3420000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_customlivery1_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_customlivery1_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_purewhite_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_sand_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_sand_g:0": {
         "value": 2470000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_tungsten_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_tungsten_g:0": {
         "value": 2465000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_bloodred_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_coldspruce_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_coldspruce_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_pureblack_g:0": {
         "value": 2450000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_darkwalnutandivory_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_darkwalnutandivory_g:0": {
         "value": 2470000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_forest_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_forest_g:0": {
         "value": 2595000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_plum_g:0": {
         "value": 2475000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_shagbark_g:0": {
         "value": 2600000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_purewhite_g:0": {
         "value": 3000000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_sand_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_sand_g:0": {
         "value": 3020000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_tungsten_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq1_tungsten_g:0": {
         "value": 3015000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_bloodred_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_coldspruce_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_coldspruce_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq2_pureblack_g:0": {
         "value": 3000000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_forest_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_forest_g:0": {
         "value": 3145000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_plum_g:0": {
         "value": 3025000
     },
-    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_foragon_nrml_pickup_tq3_shagbark_g:0": {
         "value": 3150000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_purewhite_g:0": {
         "value": 10970000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_silver_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_silver_g:0": {
         "value": 10970000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_softgreen_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq1_softgreen_g:0": {
         "value": 10990000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_amber_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_amber_g:0": {
         "value": 10995000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_electricblue_g:0": {
         "value": 10995000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq2_pureblack_g:0": {
         "value": 10970000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_bloodred_g:0": {
         "value": 10995000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_redandblack_g:0": {
         "value": 11095000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_mod_truck_tq3_shagbark_g:0": {
         "value": 11120000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_purewhite_g:0": {
         "value": 11950000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_silver_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_silver_g:0": {
         "value": 11950000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_softgreen_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_softgreen_g:0": {
         "value": 11970000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_amber_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_amber_g:0": {
         "value": 11975000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_electricblue_g:0": {
         "value": 11975000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_pureblack_g:0": {
         "value": 11950000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_bloodred_g:0": {
         "value": 11975000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_redandblack_g:0": {
         "value": 12075000
     },
-    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_shagbark_g": {
+    "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_shagbark_g:0": {
         "value": 12100000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq1_bloodred_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq1_bloodred_g:0": {
         "value": 32765000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq1_plum_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq1_plum_g:0": {
         "value": 32765000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq1_purewhite_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq1_purewhite_g:0": {
         "value": 32740000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq2_customlivery1_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq2_customlivery1_g:0": {
         "value": 32740000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq2_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq2_electricblue_g:0": {
         "value": 32765000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq2_honey_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq2_honey_g:0": {
         "value": 32765000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq2_pureblack_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq2_pureblack_g:0": {
         "value": 32740000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq3_coldspruce_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq3_coldspruce_g:0": {
         "value": 32765000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq3_customlivery2_w": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq3_customlivery2_w:0": {
         "value": 32760000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq3_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq3_redandblack_g:0": {
         "value": 32865000
     },
-    "mts:iv_tcp_v3_utility.trin_tormador_tq3_tungstenandelectricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_tormador_tq3_tungstenandelectricblue_g:0": {
         "value": 32880000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_deepblack_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_deepblack_g:0": {
         "value": 20820000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_electricblue_g:0": {
         "value": 20845000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_firered_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_firered_g:0": {
         "value": 20845000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_glacierwhite_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_glacierwhite_g:0": {
         "value": 20820000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_jetblackandivory_w": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_jetblackandivory_w:0": {
         "value": 20970000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_oakgreen_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_oakgreen_g:0": {
         "value": 20845000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_redandblack_g:0": {
         "value": 20945000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_silver_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_silver_g:0": {
         "value": 20820000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_crystal_sunshineyellow_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_crystal_sunshineyellow_g:0": {
         "value": 20845000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_deepblack_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_deepblack_g:0": {
         "value": 19100000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_electricblue_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_electricblue_g:0": {
         "value": 19125000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_firered_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_firered_g:0": {
         "value": 19125000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_glacierwhite_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_glacierwhite_g:0": {
         "value": 19100000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_jetblackandivory_w": {
+    "mts:iv_tcp_v3_utility.trin_transortus_jetblackandivory_w:0": {
         "value": 19250000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_oakgreen_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_oakgreen_g:0": {
         "value": 19125000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_redandblack_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_redandblack_g:0": {
         "value": 19225000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_safari_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_safari_g:0": {
         "value": 19550000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_silver_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_silver_g:0": {
         "value": 19100000
     },
-    "mts:iv_tcp_v3_utility.trin_transortus_sunshineyellow_g": {
+    "mts:iv_tcp_v3_utility.trin_transortus_sunshineyellow_g:0": {
         "value": 19125000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_deepblackmonochrome": {
+    "mts:iv_tcp_v3_utility.trin_trumon_deepblackmonochrome:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_glacierwhiteclassic": {
+    "mts:iv_tcp_v3_utility.trin_trumon_glacierwhiteclassic:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_irongrayfreightline": {
+    "mts:iv_tcp_v3_utility.trin_trumon_irongrayfreightline:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_oakgreenharvest": {
+    "mts:iv_tcp_v3_utility.trin_trumon_oakgreenharvest:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_patrolbluemunicipal": {
+    "mts:iv_tcp_v3_utility.trin_trumon_patrolbluemunicipal:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_rubyheritage": {
+    "mts:iv_tcp_v3_utility.trin_trumon_rubyheritage:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_rust": {
+    "mts:iv_tcp_v3_utility.trin_trumon_rust:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_sagecountryhauler": {
+    "mts:iv_tcp_v3_utility.trin_trumon_sagecountryhauler:0": {
         "value": 3270000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_sandandchocolate": {
+    "mts:iv_tcp_v3_utility.trin_trumon_sandandchocolate:0": {
         "value": 3415000
     },
-    "mts:iv_tcp_v3_utility.trin_trumon_sandstoneutility": {
+    "mts:iv_tcp_v3_utility.trin_trumon_sandstoneutility:0": {
         "value": 3270000
     }
 }
