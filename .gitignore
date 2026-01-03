@@ -74,17 +74,18 @@ GramdatisServer-1.0-alpha-all.jar.OLD
 scripts_backend/reports/*.md
 scripts_backend/reports/*.json
 scripts_backend/reports/*.csv
+scripts_backend/__pycache__/*
+scripts_backend/wth is that?*
+scripts_backend/output*.json
+scripts_backend/loot_table.json
+scripts_backend/inputs/*
 world/customnpcs/linkednpcs/New.json
 lore markdowns/Private Lore Recap.md
 lore markdowns/TO SORT MESS/*.md
 DiscordIntegration-Data/*
 world/customnpcs/scripts/data_auto/*.json
 
-scripts_backend/__pycache__/*
-scripts_backend/wth is that?*
-scripts_backend/output*.json
 world/customnpcs/scripts/logs/*
-scripts_backend/loot_table.json
 gramados-v2.wiki/**/*
 world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/AI recap.md
 dynmap_resourcepack_tmp/*
