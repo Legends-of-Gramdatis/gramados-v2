@@ -122,7 +122,7 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
  */
 function getPriceFromItemStack(stack, defaultPrice, ignoreNBT) {
     var itemId = stack.getName();
-    if (stack.hasNbt()) {
+    if (stack.hasNbt() && !ignoreNBT) {
         var itemTag = stack.getNbt();
         if (itemTag) {
             itemTag = itemTag.getCompound("tag");
