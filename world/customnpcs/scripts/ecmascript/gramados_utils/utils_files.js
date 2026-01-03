@@ -159,3 +159,18 @@ function createJsonFile(filePath) {
     fileWriter.write("{}");
     fileWriter.close();
 }
+
+/**
+ * Sanitizes a JSON string by removing Java/NBT primitive type suffixes.
+ * @param {string} jsonString - The JSON string to sanitize.
+ * @returns {string} The sanitized JSON string.
+ */
+function sanitizeJavaJson(jsonString) {
+    if (!jsonString || typeof jsonString !== 'string') return jsonString;
+    // Remove primitive type suffixes used by NBT/Java: b,s,l,f,d (case-insensitive)
+    // Integers with suffixes
+    jsonString = jsonString.replace(/(\b-?\d+)[bBsSlL]/g, '$1');
+    // Floats/doubles with optional decimals and suffixes
+    jsonString = jsonString.replace(/(\b-?\d+(?:\.\d+)?)[fFdD]/g, '$1');
+    return jsonString;
+}

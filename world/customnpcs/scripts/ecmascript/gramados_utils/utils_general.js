@@ -196,3 +196,15 @@ function executeCommand(player, command, as_player) {
 
     return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
 }
+
+/**
+ * Pad a string to a specified length (Nashorn-compatible alternative to padStart)
+ */
+function padLeft(str, length, char) {
+    char = char || "0";
+    var result = str.toString();
+    while (result.length < length) {
+        result = char + result;
+    }
+    return result;
+}
