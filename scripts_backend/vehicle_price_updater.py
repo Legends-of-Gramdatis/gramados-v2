@@ -707,7 +707,7 @@ def price_vehicles(found: List[FoundVehicle], config: Dict[str, Any], *, interac
                 "final_value": value,
             }
 
-            priced.append(PricedVehicle(full_id=fv.full_id, value=value, details=details))
+            priced.append(PricedVehicle(full_id=fv.full_id+":0", value=value, details=details))
 
         except Exception as e:
             errors.append({"full_id": fv.full_id, "suffix": fv.suffix, "error": str(e)})
