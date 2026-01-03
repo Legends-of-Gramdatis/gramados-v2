@@ -1,0 +1,27 @@
+{
+    "engineSystemNames": [
+        "trin_v10_fat_diesel",
+        "trin_v8_fat_diesel",
+        "trin_v8_fat_biodiesel",
+        "trin_v8_fat_gasoline",
+        "trin_biturbine_engine",
+        "unuparts_part_unu_engine_v08_flathead"
+    ],
+    "regions": {
+        "Gramados Island": 1.20,
+        "Monsalac Island": 1.25,
+        "Greenfield Island": 1.15,
+        "Farmiston Island": 1.15,
+        "Allenis Island": 1.50,
+        "Feldpard Island": 1.15,
+        "Devland": 3.00
+    },
+    "titles": {
+        "Import": 1.16,
+        "Restomod": 1.20,
+        "Collectable": 1.25,
+        "Demilitarized": 1.0,
+        "Farm-Use": 0.90,
+        "Salvaged": 1.0
+    }
+}

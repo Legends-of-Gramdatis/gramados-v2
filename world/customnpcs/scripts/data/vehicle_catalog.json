@@ -1,23 +1,28 @@
 {
   "vehicles": {
+    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually": {
+      "brand": "Trin",
+      "name": "Heavorum CrewCab Dually",
+      "maxHealth": 270,
+      "extraTitles": []
+    },
     "mts:iv_tcp_v3_civil.trin_footpather_phase2": {
       "brand": "Trin",
       "name": "Footpather Phase 2",
       "maxHealth": 155,
-      "defaultPlateFormat": "ABC-1234",
-      "licensePlateSystem": "plate_gramados",
-      "extraTitles": [],
-      "paintVariants": ["_sage_g", "_ivory_g", "_oceanblue_g", "_ruby_g", "_sandstone_g", "_softgreen_g", "_steelblue_g"]
+      "extraTitles": []
     }
   },
-  "platePrefixes": {
-    "Trin": {
-      "format": "XXX-0000",
-      "description": "Trin format: 3 letters, dash, 4 numbers"
-    },
-    "UNU": {
+  "plateSystems": {
+    "unuparts_part_unu_licenseplate_euro": {
       "format": "XX-00000",
-      "description": "UNU format: 2 letters, dash, 5 numbers"
+      "default": "BT-00000",
+      "description": "UNU Euro plate system: 2 letters, dash, 5 numbers"
+    },
+    "plate_gramados": {
+      "format": "XXX-0000",
+      "default": "ABC-1234",
+      "description": "Gramados plate system: 3 letters, dash, 4 numbers"
     }
   }
 }
