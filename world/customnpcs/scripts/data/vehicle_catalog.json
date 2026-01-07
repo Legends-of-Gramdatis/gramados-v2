@@ -1,16 +1,22 @@
 {
   "vehicles": {
-    "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually": {
+    "trin_heavorum_crewcab_dually": {
       "brand": "Trin",
       "name": "Heavorum CrewCab Dually",
       "maxHealth": 270,
       "extraTitles": []
     },
-    "mts:iv_tcp_v3_civil.trin_footpather_phase2": {
+    "trin_footpather_phase2": {
       "brand": "Trin",
       "name": "Footpather Phase 2",
       "maxHealth": 155,
       "extraTitles": []
+    },
+    "unucivil_vehicle_unu_mastodon": {
+      "brand": "UNU",
+      "name": "Mastodon",
+      "maxHealth": 100,
+      "extraTitles": ["Collectable", "Import"]
     }
   },
   "plateSystems": {
