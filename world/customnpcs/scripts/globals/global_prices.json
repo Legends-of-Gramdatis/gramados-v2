@@ -6583,5 +6583,65 @@
     },
     "mts:iv_tcp_v3_utility.trin_trumon_sandstoneutility:0": {
         "value": 3270000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_apple:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_aqua:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_chocolate:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_crimson:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_emerald:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_ford:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_ivory:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_lemon:0": {
+        "value": 10000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_chocolate:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_crimson:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_ford:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_lemon:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_manilla:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_navy:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_olive:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_sedan_seaweed:0": {
+        "value": 15000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_van_emerald:0": {
+        "value": 12000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_van_ford:0": {
+        "value": 12000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_van_ivory:0": {
+        "value": 12000000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_mastodon_van_saddle:0": {
+        "value": 12000000
     }
 }
