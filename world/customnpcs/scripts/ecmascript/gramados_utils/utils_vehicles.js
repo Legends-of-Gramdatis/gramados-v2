@@ -36,36 +36,51 @@ function saveLicensedVehicles(data) {
 }
 
 /**
- * Get the main vehicle ID (without paint variant)
- * e.g., "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g" -> "mts:iv_tcp_v3_civil.trin_footpather_phase2"
+ * Get the MTS systemName from a full item id.
+ * e.g., "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g" -> "trin_footpather_phase2_sage_g"
+ */
+function getVehicleSystemNameFromItemId(fullItemId) {
+    var id = String(fullItemId || "").trim();
+    if (!id) {
+        return null;
+    }
+    var idx = id.lastIndexOf(".");
+    if (idx < 0 || idx === id.length - 1) {
+        return null;
+    }
+    return id.substring(idx + 1);
+}
+
+/**
+ * Get the base vehicle systemName (without paint variant), using the vehicle catalog.
+ * e.g., "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g" -> "trin_footpather_phase2"
  */
 function getMainVehicleId(fullItemId) {
-    var catalog = loadVehicleCatalog();
-    
-    // Check if it's already a main ID
-    if (catalog.vehicles[fullItemId]) {
-        return fullItemId;
+    var systemName = getVehicleSystemNameFromItemId(fullItemId);
+    if (!systemName) {
+        return null;
     }
 
-    // Otherwise, match by prefix (e.g. mainId + "_sage_g")
+    var catalog = loadVehicleCatalog();
+    if (catalog.vehicles[systemName]) {
+        return systemName;
+    }
+
+    // Otherwise, match by prefix (e.g. mainSystemName + "_sage_g")
     var keys = getJsonKeys(catalog.vehicles);
     var bestMatch = null;
     for (var i = 0; i < keys.length; i++) {
-        var mainId = keys[i];
-        if (fullItemId.indexOf(mainId) === 0) {
-            if (fullItemId.length === mainId.length || fullItemId.charAt(mainId.length) === "_") {
-                if (bestMatch === null || mainId.length > bestMatch.length) {
-                    bestMatch = mainId;
+        var baseSystemName = keys[i];
+        if (systemName.indexOf(baseSystemName) === 0) {
+            if (systemName.length === baseSystemName.length || systemName.charAt(baseSystemName.length) === "_") {
+                if (bestMatch === null || baseSystemName.length > bestMatch.length) {
+                    bestMatch = baseSystemName;
                 }
             }
         }
     }
 
-    if (bestMatch !== null) {
-        return bestMatch;
-    }
-    
-    return null;
+    return bestMatch;
 }
 
 /**
@@ -73,9 +88,10 @@ function getMainVehicleId(fullItemId) {
  * e.g., "mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g" -> "_sage_g"
  */
 function getPaintVariant(fullItemId) {
-    var mainId = getMainVehicleId(fullItemId);
-    if (mainId && fullItemId !== mainId) {
-        return fullItemId.substring(mainId.length);
+    var baseSystemName = getMainVehicleId(fullItemId);
+    var systemName = getVehicleSystemNameFromItemId(fullItemId);
+    if (baseSystemName && systemName && systemName !== baseSystemName) {
+        return systemName.substring(baseSystemName.length);
     }
     return "";
 }
@@ -126,10 +142,24 @@ function generateRandomPlate(systemName) {
 
 /**
  * Register a vehicle with a new license plate
+ *
+ * `vehicleMeta` may be either:
+ * - a string (legacy): stored as `paintVariant`
+ * - an object: { paintVariant, trim, interior, msrpCents, engineId, engineSystemName }
+ *
+ * NOTE: `paintVariant` is now the human-readable paint value (same as the “Paint” line on Car Papers).
+ * NOTE: `engineId` is the engine item id: `mts:<packID>.<systemName>`.
  * Returns: { success: boolean, plate: string, message: string }
  */
-function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
-    var vehicleInfo = getVehicleInfo(mainVehicleId);
+function registerVehicle(vehicleId, vehicleSystemName, vin, ownerName, vehicleMeta) {
+    var vehicleInfo = getVehicleInfo(vehicleSystemName);
+
+    var meta = {};
+    if (vehicleMeta && typeof vehicleMeta === "object") {
+        meta = vehicleMeta;
+    } else {
+        meta.paintVariant = vehicleMeta || "";
+    }
     
     // Generate a unique plate
     var licensedVehicles = loadLicensedVehicles();
@@ -151,11 +181,18 @@ function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
     var dateStr = today.getFullYear() + "-" + 
                   padLeft(today.getMonth() + 1, 2, "0") + "-" + 
                   padLeft(today.getDate(), 2, "0");
-    
+
     licensedVehicles[plate] = {
         vin: vin,
-        vehicleId: mainVehicleId,
-        paintVariant: paintVariant || "",
+        vehicleId: String(vehicleId),
+        vehicleSystemName: (vehicleSystemName !== undefined && vehicleSystemName !== null) ? String(vehicleSystemName) : "Unknown",
+        // Human-readable paint value (papers “Paint”)
+        paintVariant: (meta.paintVariant !== undefined && meta.paintVariant !== null) ? String(meta.paintVariant) : "",
+        trim: (meta.trim !== undefined && meta.trim !== null) ? String(meta.trim) : "N/A",
+        interior: (meta.interior !== undefined && meta.interior !== null) ? String(meta.interior) : "N/A",
+        msrpCents: (meta.msrpCents !== undefined) ? meta.msrpCents : null,
+        engineId: (meta.engineId !== undefined && meta.engineId !== null) ? String(meta.engineId) : "Unknown",
+        engineSystemName: (meta.engineSystemName !== undefined && meta.engineSystemName !== null) ? String(meta.engineSystemName) : "Unknown",
         ownershipHistory: [
             {
                 owner: ownerName,
@@ -165,6 +202,7 @@ function registerVehicle(mainVehicleId, vin, ownerName, paintVariant) {
         ],
         titles: (vehicleInfo && vehicleInfo.extraTitles) ? vehicleInfo.extraTitles.slice() : [],
         insuranceClaims: [],
+        history: [],
         registrationDate: dateStr,
         status: "active"
     };
