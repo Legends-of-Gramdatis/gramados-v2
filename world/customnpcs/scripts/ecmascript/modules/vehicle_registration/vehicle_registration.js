@@ -14,7 +14,184 @@ var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/
 var CAR_PAPERS_ITEM_ID = "variedcommodities:letter";
 
 var NPC_REGION_KEY = "vehicle_registration_region";
+var NPC_DEBUG_KEY = "vehicle_registration_debug";
 var NON_STANDARD_PLATE_FEE_CENTS = 1000 * 100;
+
+var UNKNOWN_VALUE = "Unknown";
+var NA_VALUE = "N/A";
+
+function isUnknownish(value) {
+    if (value === null || value === undefined) {
+        return true;
+    }
+    var s = String(value).trim();
+    if (s === "") {
+        return true;
+    }
+    var lc = s.toLowerCase();
+    return lc === "n/a" || lc === "na" || lc === "unknown";
+}
+
+function normalizeComparable(value) {
+    if (value === null || value === undefined) {
+        return "";
+    }
+    return String(value).trim().toLowerCase();
+}
+
+function mergeUniqueTitles(a, b) {
+    var out = [];
+    var i;
+
+    function addOne(t) {
+        if (isUnknownish(t)) {
+            return;
+        }
+        var s = String(t).trim();
+        if (!s) {
+            return;
+        }
+        for (var j = 0; j < out.length; j++) {
+            if (normalizeComparable(out[j]) === normalizeComparable(s)) {
+                return;
+            }
+        }
+        out.push(s);
+    }
+
+    if (a && a.length) {
+        for (i = 0; i < a.length; i++) {
+            addOne(a[i]);
+        }
+    }
+    if (b && b.length) {
+        for (i = 0; i < b.length; i++) {
+            addOne(b[i]);
+        }
+    }
+    return out;
+}
+
+function warnIfDefinedMismatch(player, label, itemValue, papersValue) {
+    if (isUnknownish(itemValue) || isUnknownish(papersValue)) {
+        return;
+    }
+    if (normalizeComparable(itemValue) !== normalizeComparable(papersValue)) {
+        tellPlayer(player, "&e:warning: Mismatch for &f" + label + "&e between vehicle item and papers.");
+        tellPlayer(player, "&eItem: &f" + itemValue + " &ePapers: &f" + papersValue);
+    }
+}
+
+function warnIfDefinedMismatchNumber(player, label, itemValue, papersValue) {
+    if (itemValue === null || itemValue === undefined) {
+        return;
+    }
+    if (papersValue === null || papersValue === undefined) {
+        return;
+    }
+    var a = Number(itemValue);
+    var b = Number(papersValue);
+    if (!isFinite(a) || !isFinite(b)) {
+        return;
+    }
+    if (Math.round(a) !== Math.round(b)) {
+        tellPlayer(player, "&e:warning: Mismatch for &f" + label + "&e between vehicle item and papers.");
+        tellPlayer(player, "&eItem: &f" + getAmountCoin(Math.round(a)) + " &ePapers: &f" + getAmountCoin(Math.round(b)));
+    }
+}
+
+function fillMetaFromCarItem(worldObj, itemId, vehicleInfo, engine, derived, asNewValueCents, plateText) {
+    var titles = [];
+    if (vehicleInfo && vehicleInfo.extraTitles && vehicleInfo.extraTitles.length > 0) {
+        titles = vehicleInfo.extraTitles.slice();
+    }
+
+    var engineId = UNKNOWN_VALUE;
+    var engineSystemName = UNKNOWN_VALUE;
+    if (engine && engine.packID && engine.systemName) {
+        engineSystemName = String(engine.systemName);
+        engineId = "mts:" + engine.packID + "." + engine.systemName;
+    }
+
+    return {
+        plate: (!isUnknownish(plateText)) ? String(plateText).trim() : NA_VALUE,
+        paint: (derived && !isUnknownish(derived.paint)) ? derived.paint : NA_VALUE,
+        trim: (derived && !isUnknownish(derived.trim)) ? derived.trim : NA_VALUE,
+        interior: (derived && !isUnknownish(derived.interior)) ? derived.interior : NA_VALUE,
+        msrpCents: (asNewValueCents >= 0 ? asNewValueCents : null),
+        engineId: engineId,
+        engineSystemName: engineSystemName,
+        titles: titles,
+        vehicleItemId: itemId
+    };
+}
+
+function fillMetaFromCarPapers(papersData) {
+    var titles = [];
+    if (papersData && papersData.titles && papersData.titles.length) {
+        titles = papersData.titles.slice();
+    } else if (papersData && !isUnknownish(papersData.title)) {
+        titles = [String(papersData.title).trim()];
+    }
+
+    return {
+        plate: (papersData && !isUnknownish(papersData.plate)) ? String(papersData.plate).trim() : NA_VALUE,
+        paint: (papersData && !isUnknownish(papersData.paint)) ? papersData.paint : NA_VALUE,
+        trim: (papersData && !isUnknownish(papersData.trim)) ? papersData.trim : NA_VALUE,
+        interior: (papersData && !isUnknownish(papersData.interior)) ? papersData.interior : NA_VALUE,
+        msrpCents: (papersData && papersData.msrpCents !== null && papersData.msrpCents !== undefined) ? papersData.msrpCents : null,
+        engineModel: (papersData && !isUnknownish(papersData.engineModel)) ? papersData.engineModel : UNKNOWN_VALUE,
+        titles: titles
+    };
+}
+
+function resolveMetaValue(itemValue, papersValue, unknownFallback) {
+    if (!isUnknownish(papersValue)) {
+        return papersValue;
+    }
+    if (!isUnknownish(itemValue)) {
+        return itemValue;
+    }
+    return unknownFallback;
+}
+
+function getRawGlobalPriceValueCents(itemId) {
+    var id = String(itemId || "").trim();
+    if (!id) {
+        return null;
+    }
+    // Ensure :damage suffix
+    if (!/^.+:.+:\d+$/.test(id)) {
+        id += ":0";
+    }
+    var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH);
+    if (!globalPrices || !globalPrices.hasOwnProperty(id)) {
+        return null;
+    }
+    var entry = globalPrices[id];
+    if (!entry || entry.value === undefined || entry.value === null) {
+        return null;
+    }
+    return Number(entry.value);
+}
+
+function warnIfMsprMismatch(player, itemId, msrpCents, contextLabel) {
+    if (msrpCents === null || msrpCents === undefined) {
+        return;
+    }
+    var raw = getRawGlobalPriceValueCents(itemId);
+    if (raw === null || raw === undefined) {
+        return;
+    }
+    var msrp = Number(msrpCents);
+    if (!isFinite(msrp) || !isFinite(raw)) {
+        return;
+    }
+    if (Math.round(msrp) !== Math.round(raw)) {
+        tellPlayer(player, "&e:warning: MSRP mismatch" + (contextLabel ? " (" + contextLabel + ")" : "") + ".");
+        tellPlayer(player, "&eComputed: &f" + getAmountCoin(Math.round(msrp)) + " &eGlobal: &f" + getAmountCoin(Math.round(raw)));
+    }
+}
 
 function getSortedRegionNames() {
     return Object.keys(VEHICLE_REGISTRATION_CONFIG.regions).sort();
@@ -40,6 +217,20 @@ function cycleNpcRegion(npc) {
     return next;
 }
 
+function isNpcDebugMode(npc) {
+    return npc.getStoreddata().get(NPC_DEBUG_KEY) === "1";
+}
+
+function setNpcDebugMode(npc, enabled) {
+    npc.getStoreddata().put(NPC_DEBUG_KEY, enabled ? "1" : "0");
+}
+
+function toggleNpcDebugMode(npc) {
+    var next = !isNpcDebugMode(npc);
+    setNpcDebugMode(npc, next);
+    return next;
+}
+
 function formatDateDDMMYYYY(dateObj) {
     var day = padLeft(dateObj.getDate(), 2, "0");
     var month = padLeft(dateObj.getMonth() + 1, 2, "0");
@@ -56,6 +247,23 @@ function formatDateYYYYMMDDToDDMMYYYY(dateStr) {
         return null;
     }
     return m[3] + "/" + m[2] + "/" + m[1];
+}
+
+function dateToYYYYMMDD(dateObj) {
+    return dateObj.getFullYear() + "-" + padLeft(dateObj.getMonth() + 1, 2, "0") + "-" + padLeft(dateObj.getDate(), 2, "0");
+}
+
+function parsePaperDateToYYYYMMDD(text) {
+    var s = String(text || "").trim();
+    var m1 = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(s);
+    if (m1) {
+        return m1[1] + "-" + m1[2] + "-" + m1[3];
+    }
+    var m2 = /^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/.exec(s);
+    if (m2) {
+        return m2[3] + "-" + padLeft(m2[2], 2, "0") + "-" + padLeft(m2[1], 2, "0");
+    }
+    return null;
 }
 
 function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
@@ -145,6 +353,149 @@ function isTrinByCatalogOrDisplay(vehicleInfo, carModelText) {
     return raw.toLowerCase().indexOf("trin ") === 0;
 }
 
+function isLikelyCarPapersItem(stack) {
+    if (!stack || stack.isEmpty()) {
+        return false;
+    }
+    if (stack.getName() !== CAR_PAPERS_ITEM_ID) {
+        return false;
+    }
+    var dn = stripMinecraftSectionColors(stack.getDisplayName());
+    if (dn && dn.toLowerCase() === "car papers") {
+        return true;
+    }
+    var lore = stack.getLore();
+    if (!lore || lore.length === 0) {
+        return false;
+    }
+    for (var i = 0; i < lore.length; i++) {
+        var line = stripMinecraftSectionColors(String(lore[i]));
+        var lc = line.toLowerCase();
+        if (lc.indexOf("plate") > -1 && lc.indexOf(":") > -1) {
+            return true;
+        }
+        if (lc.indexOf("registry") > -1) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function parseCarPapersLore(stack) {
+    var out = {
+        plate: null,
+        region: null,
+        title: null,
+        titles: null,
+        firstOwner: null,
+        delivery: null,
+        trim: null,
+        paint: null,
+        interior: null,
+        engineModel: null,
+        msrpCents: null
+    };
+
+    if (!stack || stack.isEmpty()) {
+        return out;
+    }
+    var lore = stack.getLore();
+    if (!lore || lore.length === 0) {
+        return out;
+    }
+
+    for (var i = 0; i < lore.length; i++) {
+        var raw = stripMinecraftSectionColors(String(lore[i])).trim();
+        if (!raw) {
+            continue;
+        }
+
+        // Normalize common list prefixes
+        raw = raw.replace(/^[-•]\s*/, "");
+
+        var lower = raw.toLowerCase();
+        var idx = raw.indexOf(":");
+        if (idx === -1) {
+            continue;
+        }
+        var key = raw.substr(0, idx).trim().toLowerCase();
+        var value = raw.substr(idx + 1).trim();
+
+        if ((key === "plate" || key.indexOf("plate") > -1) && !out.plate) {
+            out.plate = value;
+            continue;
+        }
+        if ((key === "region" || key.indexOf("region") > -1) && !out.region) {
+            out.region = value;
+            continue;
+        }
+        if ((key === "title" || key.indexOf("title") > -1) && !out.title) {
+            out.title = value;
+            // Support comma-separated titles on older papers.
+            if (value && value.indexOf(",") > -1) {
+                var parts = value.split(",");
+                var collected = [];
+                for (var ti = 0; ti < parts.length; ti++) {
+                    var t = String(parts[ti] || "").trim();
+                    if (t) {
+                        collected.push(t);
+                    }
+                }
+                if (collected.length > 0) {
+                    out.titles = collected;
+                }
+            }
+            continue;
+        }
+        if ((key.indexOf("first owner") > -1 || key === "owner") && !out.firstOwner) {
+            out.firstOwner = value;
+            continue;
+        }
+        if ((key.indexOf("delivery") > -1 || key.indexOf("date") > -1) && !out.delivery) {
+            out.delivery = value;
+            continue;
+        }
+
+        if (key.indexOf("trim") > -1 && !out.trim) {
+            out.trim = value;
+            continue;
+        }
+        if (key.indexOf("paint") > -1 && !out.paint) {
+            out.paint = value;
+            continue;
+        }
+        if (key.indexOf("interior") > -1 && !out.interior) {
+            out.interior = value;
+            continue;
+        }
+        if (key.indexOf("engine") > -1 && !out.engineModel) {
+            out.engineModel = value;
+            continue;
+        }
+        if (key.indexOf("msrp") > -1 && out.msrpCents === null) {
+            var v = String(value || "").trim();
+            if (v && v.toLowerCase() !== "n/a") {
+                if (/^-?\d+$/.test(v)) {
+                    out.msrpCents = parseInt(v, 10);
+                } else {
+                    var coinCandidate = v.replace(/[^0-9A-Za-z-]/g, "");
+                    var cents = getCoinAmount(coinCandidate);
+                    if (cents > 0 || coinCandidate.indexOf("0") > -1) {
+                        out.msrpCents = cents;
+                    }
+                }
+            }
+            continue;
+        }
+        // Fallbacks for older papers that use slightly different wording
+        if (!out.plate && lower.indexOf("plate") > -1 && lower.indexOf(":") > -1) {
+            out.plate = value;
+        }
+    }
+
+    return out;
+}
+
 function createCarPapersItem(worldObj, paperData) {
     var papers = worldObj.createItem(CAR_PAPERS_ITEM_ID, 0, 1);
     papers.setCustomName(ccs("&6Car Papers"));
@@ -183,10 +534,195 @@ function interact(event) {
     var offhandItem = player.getOffhandItem();
     var hasSeagullCard = offhandItem && !offhandItem.isEmpty() && offhandItem.getName() === "mts:ivv.idcard_seagull";
 
-    // Admin: cycle this NPC's linked registration region
+    var debugMode = isNpcDebugMode(npc);
+
+    // Admin: toggle debug mode
     if (hasSeagullCard && heldItem && !heldItem.isEmpty() && heldItem.getName() === "minecraft:command_block") {
+        var enabled = toggleNpcDebugMode(npc);
+        tellPlayer(player, "&a:check_mark: Vehicle registration debug mode: &f" + (enabled ? "ON" : "OFF"));
+        tellPlayer(player, "&7Current NPC region: &f" + getNpcRegion(npc));
+        return;
+    }
+
+    // Debug: cycle region (command block only)
+    if (debugMode && heldItem && !heldItem.isEmpty() && heldItem.getName() === "minecraft:command_block") {
         var newRegion = cycleNpcRegion(npc);
         tellPlayer(player, "&a:check_mark: Vehicle registration region set to: &f" + newRegion);
+        return;
+    }
+
+    // Debug: import legacy papers into registry (car papers offhand + vehicle in mainhand)
+    if (debugMode && isLikelyCarPapersItem(offhandItem)) {
+        if (!heldItem || heldItem.isEmpty() || !heldItem.hasNbt()) {
+            tellPlayer(player, "&c:cross_mark: Debug import requires a vehicle item in main hand.");
+            return;
+        }
+
+        var rawNbtImport = heldItem.getNbt();
+        var jsonImport = JSON.parse(sanitizeJavaJson(rawNbtImport.toJsonString()));
+        var keysImport = getJsonKeys(jsonImport);
+        if (!includes(keysImport, "electricPower")) {
+            tellPlayer(player, "&c:cross_mark: Main hand item is not a vehicle.");
+            return;
+        }
+
+        var papersData = parseCarPapersLore(offhandItem);
+
+        var plateFromPapers = null;
+        if (papersData && papersData.plate && !isUnknownish(papersData.plate)) {
+            plateFromPapers = String(papersData.plate).trim();
+        }
+
+        // Extract vehicle plate (fallback to paperwork if missing)
+        var catalogImport = loadVehicleCatalog();
+        var plateFromVehicle = null;
+        for (var i = 0; i < keysImport.length; i++) {
+            var k = keysImport[i];
+            if (k.startsWith("part_")) {
+                var p = jsonImport[k];
+                if (p.systemName && catalogImport.plateSystems[p.systemName]) {
+                    var candidate = p.textLine0 || p["textLicense Plate"] || null;
+                    var defaultPlate = catalogImport.plateSystems[p.systemName].default;
+                    if (candidate && !isUnknownish(candidate) && String(candidate).trim() !== String(defaultPlate).trim()) {
+                        plateFromVehicle = String(candidate).trim();
+                    }
+                    break;
+                }
+            }
+        }
+
+        // Prefer papers plate; vehicle plate is often the factory-default placeholder.
+        var plateImport = plateFromPapers || plateFromVehicle || null;
+        if (!plateImport) {
+            tellPlayer(player, "&c:cross_mark: Could not determine plate (vehicle NBT and paperwork are missing it).");
+            return;
+        }
+        var regionImport = (papersData.region && VEHICLE_REGISTRATION_CONFIG.regions.hasOwnProperty(papersData.region)) ? papersData.region : getNpcRegion(npc);
+
+        var titleImport = (papersData.title && papersData.title !== "N/A") ? papersData.title : "N/A";
+
+        var regDate = parsePaperDateToYYYYMMDD(papersData.delivery) || dateToYYYYMMDD(new Date());
+
+        var vinImport = jsonImport.keyUUID || "unknown";
+        var itemIdImport = heldItem.getName();
+        var vehicleIdImport = itemIdImport;
+        var vehicleSystemNameImport = getMainVehicleId(itemIdImport) || UNKNOWN_VALUE;
+
+        var vehicleInfoImport = (vehicleSystemNameImport !== UNKNOWN_VALUE) ? getVehicleInfo(vehicleSystemNameImport) : null;
+        var asNewValueImport = getPriceFromItemStack(heldItem, -1, true);
+
+        // Derive Trin trim/paint/interior from the display name when possible.
+        var carModelImport = heldItem.getDisplayName();
+        var derivedImport = { trim: NA_VALUE, paint: NA_VALUE, interior: NA_VALUE };
+        if (isTrinByCatalogOrDisplay(vehicleInfoImport, carModelImport)) {
+            derivedImport = deriveTrinTrimPaintInterior(carModelImport);
+        }
+
+        // Extract engine from vehicle item (systemName) when possible.
+        var engineImport = null;
+        for (var ei = 0; ei < keysImport.length; ei++) {
+            var ek = keysImport[ei];
+            if (ek.startsWith("part_")) {
+                var ep = jsonImport[ek];
+                if (ep && ep.systemName && (String(ep.systemName).indexOf("engine_") === 0 || includes(VEHICLE_REGISTRATION_CONFIG.engineSystemNames, ep.systemName))) {
+                    engineImport = ep;
+                    break;
+                }
+            }
+        }
+
+        var metaFromItem = fillMetaFromCarItem(player.world, itemIdImport, vehicleInfoImport, engineImport, derivedImport, asNewValueImport, plateFromVehicle);
+        var metaFromPapers = fillMetaFromCarPapers(papersData);
+
+        // Always warn when both sources define a value and they differ.
+        warnIfDefinedMismatch(player, "Paint", metaFromItem.paint, metaFromPapers.paint);
+        warnIfDefinedMismatch(player, "Trim", metaFromItem.trim, metaFromPapers.trim);
+        warnIfDefinedMismatch(player, "Interior", metaFromItem.interior, metaFromPapers.interior);
+        warnIfDefinedMismatchNumber(player, "MSRP", metaFromItem.msrpCents, metaFromPapers.msrpCents);
+
+        var titlesResolved = mergeUniqueTitles(metaFromItem.titles, metaFromPapers.titles);
+        if (metaFromItem.titles.length > 0 && metaFromPapers.titles.length > 0) {
+            // Warn if the sets differ (order-insensitive).
+            var tA = mergeUniqueTitles(metaFromItem.titles, []);
+            var tB = mergeUniqueTitles(metaFromPapers.titles, []);
+            if (tA.length !== tB.length) {
+                tellPlayer(player, "&e:warning: Titles differ between item and papers; storing union.");
+            }
+        }
+
+        warnIfMsprMismatch(player, itemIdImport, metaFromPapers.msrpCents, "debug import");
+
+        var resolvedPaint = resolveMetaValue(metaFromItem.paint, metaFromPapers.paint, NA_VALUE);
+        var resolvedTrim = resolveMetaValue(metaFromItem.trim, metaFromPapers.trim, NA_VALUE);
+        var resolvedInterior = resolveMetaValue(metaFromItem.interior, metaFromPapers.interior, NA_VALUE);
+        var resolvedMsrp = (metaFromPapers.msrpCents !== null && metaFromPapers.msrpCents !== undefined) ? metaFromPapers.msrpCents : metaFromItem.msrpCents;
+        var resolvedEngineId = (metaFromItem.engineId && !isUnknownish(metaFromItem.engineId)) ? metaFromItem.engineId : UNKNOWN_VALUE;
+        var resolvedEngineSystemName = (metaFromItem.engineSystemName && !isUnknownish(metaFromItem.engineSystemName)) ? metaFromItem.engineSystemName : UNKNOWN_VALUE;
+
+        var entry = {
+            vin: vinImport,
+            vehicleId: vehicleIdImport,
+            vehicleSystemName: vehicleSystemNameImport,
+            // Resolved meta (prefer papers when present, else item)
+            paintVariant: resolvedPaint,
+            trim: resolvedTrim,
+            interior: resolvedInterior,
+            msrpCents: resolvedMsrp,
+            engineId: resolvedEngineId,
+            engineSystemName: resolvedEngineSystemName,
+            metaSources: {
+                fromCarItem: metaFromItem,
+                fromCarPapers: metaFromPapers
+            },
+            ownershipHistory: [],
+            titles: [],
+            insuranceClaims: [],
+            history: [],
+            registrationDate: regDate,
+            region: regionImport,
+            status: "active"
+        };
+
+        if (papersData.firstOwner && papersData.firstOwner !== "N/A") {
+            entry.ownershipHistory = [{ owner: papersData.firstOwner, acquiredDate: regDate, soldDate: null }];
+        }
+        entry.titles = mergeUniqueTitles(titlesResolved, (titleImport && titleImport !== "N/A") ? [titleImport] : []);
+
+        var licensedVehiclesImport = loadLicensedVehicles();
+        if (licensedVehiclesImport[plateImport]) {
+            var existing = licensedVehiclesImport[plateImport];
+            // Merge only missing fields (best effort, non-destructive)
+            if (!existing.vin) { existing.vin = entry.vin; }
+            if (!existing.vehicleId) { existing.vehicleId = entry.vehicleId; }
+            if (!existing.vehicleSystemName) { existing.vehicleSystemName = entry.vehicleSystemName; }
+            if (existing.paintVariant === undefined || existing.paintVariant === "") { existing.paintVariant = entry.paintVariant; }
+            if (existing.trim === undefined || existing.trim === "") { existing.trim = entry.trim; }
+            if (existing.interior === undefined || existing.interior === "") { existing.interior = entry.interior; }
+            if (existing.msrpCents === undefined) { existing.msrpCents = entry.msrpCents; }
+            if (existing.engineId === undefined || existing.engineId === "") { existing.engineId = entry.engineId; }
+            if (existing.engineSystemName === undefined || existing.engineSystemName === "") { existing.engineSystemName = entry.engineSystemName; }
+            existing.metaSources = entry.metaSources;
+            if (!existing.registrationDate) { existing.registrationDate = entry.registrationDate; }
+            if (!existing.region) { existing.region = entry.region; }
+            if (!existing.status) { existing.status = entry.status; }
+            if (!existing.ownershipHistory || existing.ownershipHistory.length === 0) { existing.ownershipHistory = entry.ownershipHistory; }
+            existing.titles = mergeUniqueTitles(existing.titles || [], entry.titles || []);
+            if (!existing.insuranceClaims) { existing.insuranceClaims = entry.insuranceClaims; }
+            licensedVehiclesImport[plateImport] = existing;
+            saveLicensedVehicles(licensedVehiclesImport);
+            tellPlayer(player, "&a:check_mark: Updated existing registry entry for plate: &f" + plateImport);
+        } else {
+            licensedVehiclesImport[plateImport] = entry;
+            saveLicensedVehicles(licensedVehiclesImport);
+            tellPlayer(player, "&a:check_mark: Created registry entry for plate: &f" + plateImport);
+        }
+
+        if (plateFromVehicle && plateFromPapers && plateFromPapers !== plateFromVehicle) {
+            tellPlayer(player, "&e:warning: Papers plate does not match vehicle plate.");
+            tellPlayer(player, "&eVehicle plate: &f" + plateFromVehicle + " &ePapers plate: &f" + papersData.plate);
+        }
+
+        logToFile("automobile", "[DEBUG_IMPORT] " + player.getName() + " imported papers for plate: " + plateImport + " (vehicleId=" + vehicleIdImport + ")");
         return;
     }
 
@@ -297,30 +833,34 @@ function interact(event) {
     var engineDamage = engine.damage || 0;
 
     // ============ Identify Vehicle in Catalog ============ //
-    // Get the item's registry name (e.g., mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g)
+    // Full vehicle item id (e.g., mts:iv_tcp_v3_civil.trin_footpather_phase2_sage_g)
     var itemID = heldItem.getName();
-    
-    // Extract the main vehicle ID (without paint variant)
-    var mainVehicleId = getMainVehicleId(itemID);
+    var vehicleId = itemID;
+
+    // Base vehicle systemName (catalog key)
+    var vehicleSystemName = getMainVehicleId(itemID) || UNKNOWN_VALUE;
     var paintVariant = getPaintVariant(itemID);
     var vehicleInfo = null;
     var maxHealth = null;
-    
-    if (mainVehicleId) {
-        vehicleInfo = getVehicleInfo(mainVehicleId);
+
+    if (vehicleSystemName !== UNKNOWN_VALUE) {
+        vehicleInfo = getVehicleInfo(vehicleSystemName);
     }
     
     if (!vehicleInfo) {
         // Unknown vehicles are allowed: maxHealth becomes N/A and no extra titles.
-        // Use the raw item ID as identifier if we couldn't map it.
-        if (!mainVehicleId) {
-            mainVehicleId = itemID;
-        }
         tellPlayer(player, "&e:danger: Vehicle model not found in catalog. Continuing with health: N/A.");
-        logToFile("dev", "[vehicle_registration] Unknown vehicle model during registration (itemID=" + itemID + ", resolvedId=" + mainVehicleId + ")");
+        logToFile("dev", "[vehicle_registration] Unknown vehicle model during registration (itemID=" + itemID + ", vehicleSystemName=" + vehicleSystemName + ")");
     } else {
         maxHealth = vehicleInfo.maxHealth;
     }
+
+    var asNewValue = getPriceFromItemStack(heldItem, -1, true);
+    warnIfMsprMismatch(player, itemID, (asNewValue >= 0 ? asNewValue : null), "computed MSRP");
+
+    var carModelText = heldItem.getDisplayName();
+    var isTrin = isTrinByCatalogOrDisplay(vehicleInfo, carModelText);
+    var derived = isTrin ? deriveTrinTrimPaintInterior(carModelText) : { trim: "N/A", paint: "N/A", interior: "N/A" };
 
     // Check if the vehicle is already licensed
     // Vehicles can ONLY be registered if they have the default plate
@@ -331,8 +871,6 @@ function interact(event) {
         // If this plate is already in the registry (and not marked as unlicensed),
         // we still issue papers using the stored data.
         if (existingEntry && existingEntry.status !== "unlicensed") {
-            var asNewValueExisting = getPriceFromItemStack(heldItem, -1, true);
-
             var npcRegionExisting = getNpcRegion(npc);
             var regionExisting = existingEntry.region || npcRegionExisting;
             if (!existingEntry.region) {
@@ -341,6 +879,36 @@ function interact(event) {
                 saveLicensedVehicles(licensedVehiclesExisting);
             }
 
+            // Backfill missing config info in the registry when possible
+            if (existingEntry.paintVariant === undefined || existingEntry.paintVariant === "") {
+                existingEntry.paintVariant = derived.paint;
+            }
+            if (existingEntry.trim === undefined || existingEntry.trim === "") {
+                existingEntry.trim = derived.trim;
+            }
+            if (existingEntry.interior === undefined || existingEntry.interior === "") {
+                existingEntry.interior = derived.interior;
+            }
+            if (existingEntry.msrpCents === undefined) {
+                existingEntry.msrpCents = (asNewValue >= 0 ? asNewValue : null);
+            }
+
+            // Backfill engine meta
+            if (existingEntry.engineId === undefined || existingEntry.engineId === "") {
+                existingEntry.engineId = "mts:" + engine.packID + "." + engine.systemName;
+            }
+            if (existingEntry.engineSystemName === undefined || existingEntry.engineSystemName === "") {
+                existingEntry.engineSystemName = engine.systemName;
+            }
+            if (!existingEntry.metaSources) {
+                existingEntry.metaSources = {
+                    fromCarItem: fillMetaFromCarItem(player.world, itemID, vehicleInfo, engine, derived, asNewValue),
+                    fromCarPapers: null
+                };
+            }
+            licensedVehiclesExisting[plate] = existingEntry;
+            saveLicensedVehicles(licensedVehiclesExisting);
+
             var titleExisting = "N/A";
             if (existingEntry.titles && existingEntry.titles.length > 0) {
                 titleExisting = existingEntry.titles[0];
@@ -348,14 +916,17 @@ function interact(event) {
                 titleExisting = vehicleInfo.extraTitles[0];
             }
 
-            var paperPriceExisting = (asNewValueExisting >= 0) ? calculateCarPaperPrice(asNewValueExisting, regionExisting, plate, titleExisting) : null;
+            var paperPriceExisting = (asNewValue >= 0) ? calculateCarPaperPrice(asNewValue, regionExisting, plate, titleExisting) : null;
 
-            var carModelTextExisting = heldItem.getDisplayName();
-            var isTrinExisting = isTrinByCatalogOrDisplay(vehicleInfo, carModelTextExisting);
-            var derivedExisting = isTrinExisting ? deriveTrinTrimPaintInterior(carModelTextExisting) : { trim: "N/A", paint: "N/A", interior: "N/A" };
+            var carModelTextExisting = carModelText;
+            var derivedExisting = derived;
 
-            var engineModelTextExisting = "mts:" + engine.packID + "." + engine.systemName;
-            engineModelTextExisting = world.createItem(engineModelTextExisting, 0, 1).getDisplayName();
+            var trimExisting = existingEntry.trim || derivedExisting.trim;
+            var paintExisting = existingEntry.paintVariant || derivedExisting.paint;
+            var interiorExisting = existingEntry.interior || derivedExisting.interior;
+
+            var engineIdExisting = "mts:" + engine.packID + "." + engine.systemName;
+            var engineModelTextExisting = world.createItem(engineIdExisting, 0, 1).getDisplayName();
 
             var firstOwnerExisting = "Unknown";
             if (existingEntry.ownershipHistory && existingEntry.ownershipHistory.length > 0 && existingEntry.ownershipHistory[0].owner) {
@@ -366,18 +937,20 @@ function interact(event) {
 
             var papersExisting = createCarPapersItem(player.world, {
                 carModel: carModelTextExisting,
-                trim: derivedExisting.trim,
-                paint: derivedExisting.paint,
-                interior: derivedExisting.interior,
+                trim: trimExisting,
+                paint: paintExisting,
+                interior: interiorExisting,
                 engine: engineModelTextExisting,
                 firstOwner: firstOwnerExisting,
                 delivery: deliveryExisting,
                 plate: plate,
-                msrpCents: (asNewValueExisting >= 0 ? asNewValueExisting : null),
+                msrpCents: (existingEntry.msrpCents !== undefined ? existingEntry.msrpCents : (asNewValue >= 0 ? asNewValue : null)),
                 title: titleExisting,
                 region: regionExisting,
                 priceCents: paperPriceExisting
             });
+
+            warnIfMsprMismatch(player, itemID, papersExisting ? (existingEntry.msrpCents !== undefined ? existingEntry.msrpCents : (asNewValue >= 0 ? asNewValue : null)) : null, "re-issue papers");
             player.giveItem(papersExisting);
 
             tellPlayer(player, "&e:warning: This vehicle is already registered. Registration was not performed.");
@@ -394,11 +967,22 @@ function interact(event) {
             var dateStr = today.getFullYear() + "-" + padLeft(today.getMonth() + 1, 2, "0") + "-" + padLeft(today.getDate(), 2, "0");
             licensedVehicles[plate] = {
                 vin: keyUUID || "unknown",
-                vehicleId: mainVehicleId,
-                paintVariant: paintVariant || "",
+                vehicleId: vehicleId,
+                vehicleSystemName: vehicleSystemName,
+                paintVariant: derived.paint,
+                trim: derived.trim,
+                interior: derived.interior,
+                msrpCents: (asNewValue >= 0 ? asNewValue : null),
+                engineId: "mts:" + engine.packID + "." + engine.systemName,
+                engineSystemName: engine.systemName,
+                metaSources: {
+                    fromCarItem: fillMetaFromCarItem(player.world, itemID, vehicleInfo, engine, derived, asNewValue),
+                    fromCarPapers: null
+                },
                 ownershipHistory: [],
                 titles: [],
                 insuranceClaims: [],
+                history: [],
                 registrationDate: dateStr,
                 region: npcRegionUnlicensed,
                 status: "unlicensed"
@@ -436,7 +1020,17 @@ function interact(event) {
     }
 
     // ============ Register Vehicle ============ //
-    var registrationResult = registerVehicle(mainVehicleId, keyUUID, player.getName(), paintVariant);
+    var engineItemId = "mts:" + engine.packID + "." + engine.systemName;
+    var engineModelText = world.createItem(engineItemId, 0, 1).getDisplayName();
+
+    var registrationResult = registerVehicle(vehicleId, vehicleSystemName, keyUUID, player.getName(), {
+        paintVariant: derived.paint,
+        trim: derived.trim,
+        interior: derived.interior,
+        msrpCents: (asNewValue >= 0 ? asNewValue : null),
+        engineId: engineItemId,
+        engineSystemName: engine.systemName
+    });
     
     if (!registrationResult.success) {
         tellPlayer(player, "&c:cross_mark: Registration failed: " + registrationResult.message);
@@ -451,6 +1045,10 @@ function interact(event) {
     var licensedVehiclesAfterRegistration = loadLicensedVehicles();
     if (licensedVehiclesAfterRegistration[newPlate]) {
         licensedVehiclesAfterRegistration[newPlate].region = npcRegion;
+        licensedVehiclesAfterRegistration[newPlate].metaSources = {
+            fromCarItem: fillMetaFromCarItem(player.world, itemID, vehicleInfo, engine, derived, asNewValue, newPlate),
+            fromCarPapers: null
+        };
         saveLicensedVehicles(licensedVehiclesAfterRegistration);
     }
 
@@ -523,10 +1121,9 @@ function interact(event) {
     if (vehicleInfo) {
         tellPlayer(player, "&aVehicle Model: &f" + vehicleInfo.name + " (" + vehicleInfo.brand + ")");
     } else {
-        tellPlayer(player, "&aVehicle Model: &f" + mainVehicleId + " (N/A)");
+        tellPlayer(player, "&aVehicle Model: &f" + vehicleSystemName + " (N/A)");
     }
 
-    var asNewValue = getPriceFromItemStack(heldItem, -1, true);
     tellPlayer(player, "&aAs-New Value: &f" + (asNewValue >= 0 ? getAmountCoin(asNewValue) : "N/A"));
     if (platesUpdated > 0) {
         tellPlayer(player, "&aLicense Plate(s) Updated: &f" + platesUpdated);
@@ -541,12 +1138,7 @@ function interact(event) {
 
     var paperPrice = (asNewValue >= 0) ? calculateCarPaperPrice(asNewValue, region, newPlate, title) : null;
 
-    var carModelText = heldItem.getDisplayName();
-    var isTrin = isTrinByCatalogOrDisplay(vehicleInfo, carModelText);
-    var derived = isTrin ? deriveTrinTrimPaintInterior(carModelText) : { trim: "N/A", paint: "N/A", interior: "N/A" };
-    var engineModelText = "mts:" + engine.packID + "." + engine.systemName;
-    engineModelText = world.createItem(engineModelText, 0, 1).getDisplayName();
-
+    // (carModelText / derived already computed above)
     var papers = createCarPapersItem(player.world, {
         carModel: carModelText,
         trim: derived.trim,
@@ -563,5 +1155,5 @@ function interact(event) {
     });
     player.giveItem(papers);
     
-    logToFile("automobile", player.getName() + " registered vehicle: " + mainVehicleId + " with plate: " + newPlate + " (" + platesUpdated + " plates updated)");
+    logToFile("automobile", player.getName() + " registered vehicle: " + vehicleId + " with plate: " + newPlate + " (" + platesUpdated + " plates updated)");
 }
