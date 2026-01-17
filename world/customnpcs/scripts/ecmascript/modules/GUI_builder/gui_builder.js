@@ -1,7 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
-
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 
 var TILE_SCALE = 16;
 var ITEM_OFFSET_X = -2.5;
@@ -99,6 +98,31 @@ function guiBuilder_countElements() {
     }
 }
 
+function guiBuilder_buildTextField(GUI, component) {
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+
+    GUI.addTextField(id, posX, posY, sizeW, sizeH);
+    guiBuilder_buildDefault(GUI, id, component);
+    guiBuilder_buildMeta(GUI, id, component);
+
+}
+
+function guiBuilder_buildScrollList(GUI, component) {
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+    var items = component.items || [];
+
+    GUI.addScroll(id, posX, posY, sizeW, sizeH, items);
+    guiBuilder_buildMeta(GUI, id, component);
+}
+
 function guiBuilder_buildButton(GUI, component) {
     var id = component.id;
     var posX = component.offset.x * TILE_SCALE;
@@ -176,6 +200,17 @@ function guiBuilder_buildItemSlot(GUI, component) {
     }
 }
 
+function guiBuilder_buildDefault(GUI, componentID, component) {
+    if (component.label == '' || typeof component.label === 'undefined') {
+        return;
+    }
+
+    if (component.type === 'text_field') {
+        var guiComponent = GUI.getComponent(componentID);
+        guiComponent.setText(component.label);
+    }
+}
+
 function guiBuilder_buildMeta(GUI, componentID, component) {
     if (!component.hover_text) {
         return;
@@ -195,7 +230,7 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
 
     _currentPageID = NewpageID;
 
-    GUI = guiBuilder_assembleGUI(GUI, _manifest, _manifest.skin_packs[0], NewpageID, player);
+    GUI = guiBuilder_assembleGUI(GUI, player);
 
     GUI.update(player);
 }
@@ -233,7 +268,8 @@ function customGuiButton(event) {
 }
 
 function customGuiScroll(event) {
-    tellPlayer(event.player, 'Scrolled!');
+    var scrollSelection = event.selection;
+    tellPlayer(event.player, 'Scrolled to selection: ' + scrollSelection[0]);
 }
 
 function guiBuilder_assembleGUI(GUI, player) {
@@ -256,6 +292,12 @@ function guiBuilder_assembleGUI(GUI, player) {
             guiBuilder_buildLabel(GUI, component);
         } else if (component.type === 'item_slot') {
             guiBuilder_buildItemSlot(GUI, component);
+        } else if (component.type === 'text_field') {
+            guiBuilder_buildTextField(GUI, component);
+        } else if (component.type === 'scroll_list') {
+            guiBuilder_buildScrollList(GUI, component);
+        } else if (component.type === 'press_button') {
+            guiBuilder_buildPressButton(GUI, component);
         }
     }
     return GUI;
@@ -268,7 +310,7 @@ function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player
     _skinPack = skinPack;
 
     var GUI = api.createCustomGui(pageID, manifest.size * TILE_SCALE, manifest.size * TILE_SCALE, false);
-    GUI = guiBuilder_assembleGUI(GUI, manifest, pageID, player);
+    GUI = guiBuilder_assembleGUI(GUI, player);
 
     player.showCustomGui(GUI);
 }
