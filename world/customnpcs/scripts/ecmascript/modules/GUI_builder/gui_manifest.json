@@ -64,7 +64,6 @@
           "label": "",
           "locked": true,
           "toggled": true,
-          "disabled": true,
           "sheet": 1,
           "tex": {
             "x": 224,
@@ -109,6 +108,10 @@
           "tex": {
             "x": 64,
             "y": 32
+          },
+          "disabled_tex": {
+            "x": 80,
+            "y": 32
           }
         },
         {
@@ -127,6 +130,10 @@
           "sheet": 1,
           "tex": {
             "x": 64,
+            "y": 32
+          },
+          "disabled_tex": {
+            "x": 80,
             "y": 32
           }
         },
@@ -147,6 +154,10 @@
           "sheet": 1,
           "tex": {
             "x": 0,
+            "y": 0
+          },
+          "disabled_tex": {
+            "x": 112,
             "y": 0
           }
         }
@@ -214,6 +225,10 @@
           "tex": {
             "x": 0,
             "y": 0
+          },
+          "disabled_tex": {
+            "x": 112,
+            "y": 0
           }
         },
         {
@@ -233,6 +248,10 @@
           "sheet": 1,
           "tex": {
             "x": 0,
+            "y": 32
+          },
+          "disabled_tex": {
+            "x": 32,
             "y": 32
           }
         }

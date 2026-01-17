@@ -120,7 +120,37 @@ function guiBuilder_buildScrollList(GUI, component) {
     guiBuilder_buildMeta(GUI, id, component);
 }
 
+function guiBuilder_buildDisabledButton(GUI, component) {
+    var toggled = !!component.toggled;
+    var disabled = !!component.disabled;
+
+    var textureX = component.tex.x;
+    var textureY = component.tex.y;
+
+    if (disabled && component.disabled_tex) {
+        textureX = component.disabled_tex.x;
+        textureY = component.disabled_tex.y;
+    } else if (toggled && component.toggle_tex) {
+        textureX = component.toggle_tex.x;
+        textureY = component.toggle_tex.y;
+    }
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+    var sheetTexture = guiBuilder_sheetTexture(component.sheet);
+
+    GUI.addTexturedRect(id, sheetTexture, posX, posY, sizeW, sizeH, textureX, textureY);
+    guiBuilder_buildMeta(GUI, id, component);
+
+}
+
 function guiBuilder_buildButton(GUI, component) {
+    if (component.locked) {
+        guiBuilder_buildDisabledButton(GUI, component);
+        return;
+    }
     var id = component.id;
     var posX = component.offset.x * TILE_SCALE;
     var posY = component.offset.y * TILE_SCALE;
@@ -143,6 +173,10 @@ function guiBuilder_updateToggleButton(GUI, component, player) {
 }
 
 function guiBuilder_buildToggleButton(GUI, component) {
+    if (component.locked) {
+        guiBuilder_buildDisabledButton(GUI, component);
+        return;
+    }
     var toggled = !!component.toggled;
     var disabled = !!component.disabled;
 
