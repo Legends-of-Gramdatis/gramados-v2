@@ -1,0 +1,274 @@
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
+
+
+var TILE_SCALE = 16;
+var ITEM_OFFSET_X = -2.5;
+var ITEM_OFFSET_Y = -2.8;
+
+var _currentPageID = null;
+var _manifest = null;
+var _skinPack = null;
+
+function guiBuilder_textureBase() {
+    return 'minecraft:textures/gui/gui_creator/' + _manifest.gui_name + '/' + _skinPack + '/';
+}
+
+function guiBuilder_backgroundTexture() {
+    return guiBuilder_textureBase() + 'background_page_' + _currentPageID + '.png';
+}
+
+function guiBuilder_sheetTexture(sheetId) {
+    return guiBuilder_textureBase() + 'sheet_' + sheetId + '.png';
+}
+
+function guiBuilder_computeSizePx(tileW, tileH) {
+    
+    tileW = tileW * TILE_SCALE;
+    tileH = tileH * TILE_SCALE;
+
+    return { w: tileW, h: tileH };
+}
+
+function guiBuilder_getPagesID(manifest) {
+    var pages = [];
+    for (var i = 0; i < manifest.pages.length; i++) {
+        pages.push(manifest.pages[i].page);
+    }
+    return pages;
+}
+
+function guiBuilder_getAllSheets(manifest) {
+    var sheets = [];
+    for (var i = 0; i < manifest.pages.length; i++) {
+        for (var j = 0; j < manifest.pages[i].components.length; j++) {
+            var sheet = manifest.pages[i].components[j].sheet;
+            if (sheets.indexOf(sheet) === -1) {
+                sheets.push(sheet);
+            }
+        }
+    }
+    return sheets;
+}
+
+function guiBuilder_getAllIDs(manifest) {
+    var ids = [];
+    var manifest_page = findJsonEntry(manifest.pages, 'page', _currentPageID);
+    for (var i = 0; i < manifest_page.components.length; i++) {
+        ids.push(manifest_page.components[i].id);
+    }
+    return ids;
+}
+
+function guiBuilder_getAllButtonIDs() {
+    var buttonIDs = [];
+    var manifest_page = findJsonEntry(_manifest.pages, 'page', _currentPageID);
+    for (var i = 0; i < manifest_page.components.length; i++) {
+        switch (manifest_page.components[i].type) {
+            case 'button':
+                buttonIDs.push(manifest_page.components[i].id);
+                break;
+            case 'toggle_button':
+                buttonIDs.push(manifest_page.components[i].id);
+                break;
+            case 'press_button':
+                buttonIDs.push(manifest_page.components[i].id);
+                break;
+        }
+    }
+    return buttonIDs;
+}
+
+function guiBuilder_countElements() {
+    var sheets = [];
+    var pages = [];
+    for (var i = 0; i < _manifest.pages.length; i++) {
+        pages.push(_manifest.pages[i].page);
+        for (var j = 0; j < _manifest.pages[i].components.length; j++) {
+            if (sheets.indexOf(_manifest.pages[i].components[j].sheet) === -1) {
+                sheets.push(_manifest.pages[i].components[j].sheet);
+            }
+        }
+    }
+    return {
+        sheets_count: sheets.length,
+        pages_count: pages.length,
+        sheets: sheets,
+        pages: pages 
+    }
+}
+
+function guiBuilder_buildButton(GUI, component) {
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+    var textureX = component.tex.x;
+    var textureY = component.tex.y;
+    var label = component.label || '';
+    var sheetTexture = guiBuilder_sheetTexture(component.sheet);
+
+    GUI.addTexturedButton(id, label, posX, posY, sizeW, sizeH, sheetTexture, textureX, textureY);
+    guiBuilder_buildMeta(GUI, id, component);
+
+}
+
+function guiBuilder_buildPressButton(GUI, component) {
+    // TODO: implement press button
+    guiBuilder_buildToggleButton(GUI, component);
+}
+
+function guiBuilder_updateToggleButton(GUI, component, player) {
+    GUI.removeComponent(component.id);
+    guiBuilder_buildToggleButton(GUI, component);
+    GUI.update(player);
+}
+
+function guiBuilder_buildToggleButton(GUI, component) {
+    var toggled = component.toggled;
+    if (toggled) {
+        var textureX = component.toggle_tex.x;
+        var textureY = component.toggle_tex.y;
+    } else {
+        var textureX = component.tex.x;
+        var textureY = component.tex.y;
+    }
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+    var label = component.label || '';
+    var sheetTexture = guiBuilder_sheetTexture(component.sheet);
+
+    GUI.addTexturedButton(id, label, posX, posY, sizeW, sizeH, sheetTexture, textureX, textureY);
+    guiBuilder_buildMeta(GUI, id, component);
+}
+
+function guiBuilder_buildLabel(GUI, component) {
+    var id = component.id;
+    var label = component.label || '';
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+
+    posX = posX + (TILE_SCALE / 2);
+    sizeW = sizeW - TILE_SCALE;
+    posY = posY + (TILE_SCALE / 2);
+    sizeH = sizeH - TILE_SCALE;
+
+    GUI.addLabel(id, label, posX, posY, sizeW, sizeH);
+    guiBuilder_buildMeta(GUI, id, component);
+}
+
+function guiBuilder_buildItemSlot(GUI, component) {
+    var rawX = ((component.size_tiles.w - 1)/2) + component.offset.x
+    var rawY = ((component.size_tiles.h - 1)/2) + component.offset.y
+    var posX = (rawX + ITEM_OFFSET_X) * TILE_SCALE;
+    var posY = (rawY + ITEM_OFFSET_Y) * TILE_SCALE;
+    var slot = GUI.addItemSlot(posX, posY);
+    // Item slots are not addressable via GUI.getComponent(id), so apply hover text directly if supported.
+    if (component.hover_text && slot && typeof slot.setHoverText === 'function') {
+        slot.setHoverText(component.hover_text);
+    }
+}
+
+function guiBuilder_buildMeta(GUI, componentID, component) {
+    if (!component.hover_text) {
+        return;
+    }
+
+    var guiComponent = GUI.getComponent(componentID);
+    if (guiComponent && typeof guiComponent.setHoverText === 'function') {
+        guiComponent.setHoverText(component.hover_text);
+    }
+}
+
+function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
+    var allIDs = guiBuilder_getAllIDs(_manifest);
+    for (var i = 0; i < allIDs.length; i++) {
+        GUI.removeComponent(allIDs[i]);
+    }
+
+    _currentPageID = NewpageID;
+
+    GUI = guiBuilder_assembleGUI(GUI, _manifest, _manifest.skin_packs[0], NewpageID, player);
+
+    GUI.update(player);
+}
+
+function customGuiButton(event) {
+    var b1 = event.buttonId;
+
+    var buttonIDs = guiBuilder_getAllButtonIDs(findJsonEntry(_manifest.pages, 'page', _currentPageID));
+
+    for (var i = 0; i < buttonIDs.length; i++) {
+        if (b1 === buttonIDs[i]) {
+            tellPlayer(event.player, 'Button pressed: ' + b1);
+        }
+    }
+
+    var buttonManifest = findJsonEntry(findJsonEntry(_manifest.pages, 'page', _currentPageID).components, 'id', b1);
+    
+    if (buttonManifest.hasOwnProperty('open_page')) {
+        var newPageID = buttonManifest.open_page;;
+        tellPlayer(event.player, 'Opening page: ' + newPageID);
+        guiBuilder_OpenPage(event.player, event.gui, newPageID, event.API);
+    } else if (buttonManifest.hasOwnProperty('close_gui')) {
+        event.player.closeGui();
+    } else if (buttonManifest.type === 'toggle_button') {
+        tellPlayer(event.player, 'Toggling button: ' + b1 + ' from ' + buttonManifest.toggled + ' to ' + !buttonManifest.toggled);
+        buttonManifest.toggled = !buttonManifest.toggled;
+        guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
+    }
+
+    switch (b1) {
+        // case 'some_button_id':
+        //     // Do something
+        //     break;
+    }
+}
+
+function customGuiScroll(event) {
+    tellPlayer(event.player, 'Scrolled!');
+}
+
+function guiBuilder_assembleGUI(GUI, player) {
+    var bgTexture = guiBuilder_backgroundTexture();
+
+    tellPlayer(player, 'Using background texture: ' + bgTexture);
+
+    GUI.setBackgroundTexture(bgTexture);
+    var manifest_page = findJsonEntry(_manifest.pages, 'page', _currentPageID);
+
+    tellPlayer(player, 'Building GUI for page ' + _currentPageID + ' with ' + manifest_page.components.length + ' components.');
+
+    for (var i = 0; i < manifest_page.components.length; i++) {
+        var component = manifest_page.components[i];
+        if (component.type === 'button') {
+            guiBuilder_buildButton(GUI, component);
+        } else if (component.type === 'toggle_button') {
+            guiBuilder_buildToggleButton(GUI, component);
+        } else if (component.type === 'label') {
+            guiBuilder_buildLabel(GUI, component);
+        } else if (component.type === 'item_slot') {
+            guiBuilder_buildItemSlot(GUI, component);
+        }
+    }
+    return GUI;
+}
+
+function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player) {
+
+    _currentPageID = pageID;
+    _manifest = manifest;
+    _skinPack = skinPack;
+
+    var GUI = api.createCustomGui(pageID, manifest.size * TILE_SCALE, manifest.size * TILE_SCALE, false);
+    GUI = guiBuilder_assembleGUI(GUI, manifest, pageID, player);
+
+    player.showCustomGui(GUI);
+}

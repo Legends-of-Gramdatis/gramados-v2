@@ -1,0 +1,474 @@
+{
+  "version": 3,
+  "gui_name": "item_purchase_plus",
+  "size": 16,
+  "skin_packs": [
+    "default",
+    "green",
+    "tanwood"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "components": [
+        {
+          "id": 1,
+          "type": "label",
+          "offset": {
+            "x": 6,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 1
+          },
+          "label": "Take Insurance"
+        },
+        {
+          "id": 2,
+          "type": "item_slot",
+          "offset": {
+            "x": 2,
+            "y": 4
+          },
+          "size_tiles": {
+            "w": 3,
+            "h": 3
+          },
+          "label": ""
+        },
+        {
+          "id": 3,
+          "type": "label",
+          "offset": {
+            "x": 2,
+            "y": 2
+          },
+          "size_tiles": {
+            "w": 10,
+            "h": 1
+          },
+          "label": "Seagull's Store"
+        },
+        {
+          "id": 4,
+          "type": "toggle_button",
+          "offset": {
+            "x": 5,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "",
+          "toggled": true,
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          },
+          "toggle_tex": {
+            "x": 240,
+            "y": 0
+          }
+        },
+        {
+          "id": 5,
+          "type": "label",
+          "offset": {
+            "x": 5,
+            "y": 4
+          },
+          "size_tiles": {
+            "w": 7,
+            "h": 2
+          },
+          "label": ""
+        },
+        {
+          "id": 6,
+          "type": "button",
+          "offset": {
+            "x": 2,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "<",
+          "hover_text": "Previous Item",
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          }
+        },
+        {
+          "id": 7,
+          "type": "button",
+          "offset": {
+            "x": 3,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": ">",
+          "hover_text": "Next Item",
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          }
+        },
+        {
+          "id": 8,
+          "type": "button",
+          "offset": {
+            "x": 5,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 7,
+            "h": 1
+          },
+          "label": "Purchase",
+          "hover_text": "Purchase",
+          "open_page": 2,
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "components": [
+        {
+          "id": 9,
+          "type": "label",
+          "offset": {
+            "x": 2,
+            "y": 2
+          },
+          "size_tiles": {
+            "w": 10,
+            "h": 1
+          },
+          "label": "Seagull's Store"
+        },
+        {
+          "id": 10,
+          "type": "label",
+          "offset": {
+            "x": 5,
+            "y": 4
+          },
+          "size_tiles": {
+            "w": 7,
+            "h": 3
+          },
+          "label": "Are you sure you want to purchase this item? This action can't be undone."
+        },
+        {
+          "id": 11,
+          "type": "item_slot",
+          "offset": {
+            "x": 2,
+            "y": 4
+          },
+          "size_tiles": {
+            "w": 3,
+            "h": 3
+          },
+          "label": "",
+          "hover_text": "Confirm"
+        },
+        {
+          "id": 12,
+          "type": "button",
+          "offset": {
+            "x": 5,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 7,
+            "h": 1
+          },
+          "label": "Confirm",
+          "hover_text": "Confirm Purchase",
+          "open_page": 3,
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": 13,
+          "type": "button",
+          "offset": {
+            "x": 2,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 1
+          },
+          "label": "<",
+          "hover_text": "Cancel",
+          "open_page": 1,
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 32
+          }
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "components": [
+        {
+          "id": 15,
+          "type": "button",
+          "offset": {
+            "x": 2,
+            "y": 2
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 1
+          },
+          "label": "Close",
+          "hover_text": "Close GUI",
+          "close_gui": true,
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 32
+          }
+        },
+        {
+          "id": 16,
+          "type": "press_button",
+          "offset": {
+            "x": 2,
+            "y": 3
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 1
+          },
+          "label": "",
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 32
+          }
+        },
+        {
+          "id": 17,
+          "type": "toggle_button",
+          "offset": {
+            "x": 2,
+            "y": 4
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 1
+          },
+          "label": "",
+          "toggled": false,
+          "sheet": 1,
+          "tex": {
+            "x": 0,
+            "y": 32
+          },
+          "toggle_tex": {
+            "x": 32,
+            "y": 32
+          }
+        },
+        {
+          "id": 18,
+          "type": "text_field",
+          "offset": {
+            "x": 2,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": ""
+        },
+        {
+          "id": 19,
+          "type": "text_field",
+          "offset": {
+            "x": 8,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": "default text",
+          "hover_text": "hover text"
+        },
+        {
+          "id": 20,
+          "type": "scroll_list",
+          "offset": {
+            "x": 2,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": ""
+        },
+        {
+          "id": 21,
+          "type": "scroll_list",
+          "offset": {
+            "x": 8,
+            "y": 8
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": "option 1, option 2, option 3, option 4",
+          "hover_text": "hover text"
+        },
+        {
+          "id": 22,
+          "type": "label",
+          "offset": {
+            "x": 2,
+            "y": 10
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": ""
+        },
+        {
+          "id": 23,
+          "type": "label",
+          "offset": {
+            "x": 8,
+            "y": 10
+          },
+          "size_tiles": {
+            "w": 6,
+            "h": 2
+          },
+          "label": "label content",
+          "hover_text": "hover text"
+        },
+        {
+          "id": 24,
+          "type": "item_slot",
+          "offset": {
+            "x": 2,
+            "y": 13
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": ""
+        },
+        {
+          "id": 25,
+          "type": "item_slot",
+          "offset": {
+            "x": 4,
+            "y": 13
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 2
+          },
+          "label": ""
+        },
+        {
+          "id": 26,
+          "type": "item_slot",
+          "offset": {
+            "x": 7,
+            "y": 12
+          },
+          "size_tiles": {
+            "w": 3,
+            "h": 3
+          },
+          "label": ""
+        },
+        {
+          "id": 27,
+          "type": "item_slot",
+          "offset": {
+            "x": 11,
+            "y": 12
+          },
+          "size_tiles": {
+            "w": 2,
+            "h": 2
+          },
+          "label": "",
+          "hover_text": "hover text"
+        },
+        {
+          "id": 28,
+          "type": "button",
+          "offset": {
+            "x": 9,
+            "y": 2
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "p 1",
+          "hover_text": "p 1",
+          "open_page": 1,
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          }
+        },
+        {
+          "id": 29,
+          "type": "button",
+          "offset": {
+            "x": 11,
+            "y": 2
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "",
+          "open_page": 1,
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          }
+        }
+      ]
+    }
+  ]
+}
