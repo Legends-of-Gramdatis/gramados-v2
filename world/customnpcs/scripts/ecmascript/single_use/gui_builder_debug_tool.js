@@ -6,6 +6,7 @@ var MANIFEST_PATH = '/home/mouette/gramados-v2/world/customnpcs/scripts/ecmascri
 var g_manifest = null;
 var g_skinPacks = [];
 var g_skinIndex = 0;
+var g_currentSkinPack = null;
 
 function guiBuilderDebug_ensureLoaded() {
     if (g_manifest) {
@@ -14,26 +15,28 @@ function guiBuilderDebug_ensureLoaded() {
     g_manifest = loadJson(MANIFEST_PATH);
     g_skinPacks = g_manifest.skin_packs;
     g_skinIndex = 0;
+    g_currentSkinPack = g_skinPacks[g_skinIndex];
 }
 
 function init(event) {
     var item = event.item;
+    guiBuilderDebug_ensureLoaded();
     item.setDurabilityShow(false);
     item.setCustomName('§6§lGUI Builder Debug Tool');
+    g_currentSkinPack = g_skinPacks[g_skinIndex];
     return true;
 }
 
 function interact(event) {
     guiBuilderDebug_ensureLoaded();
-    var g_skinPack = g_skinPacks[g_skinIndex];
 
-    tellPlayer(event.player, 'Using skin pack: ' + g_skinPack);
+    tellPlayer(event.player, 'Using skin pack: ' + g_currentSkinPack);
 
     var pageID = guiBuilder_getPagesID(g_manifest)[0];
 
     tellPlayer(event.player, 'Loaded GUI manifest: ' + MANIFEST_PATH + ' at page ' + pageID);
 
-    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_skinPack, pageID, event.player);
+    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player);
 }
 
 // Rotate skin pack while the GUI is open (or reopen it if needed)
@@ -49,7 +52,7 @@ function attack(event) {
         g_skinIndex = 0;
     }
 
-    var newSkinPack = g_skinPacks[g_skinIndex];
+    g_currentSkinPack = g_skinPacks[g_skinIndex];
 
     // Keep the current page if one is already open
     var pageID = _currentPageID;
@@ -57,6 +60,6 @@ function attack(event) {
         pageID = guiBuilder_getPagesID(g_manifest)[0];
     }
 
-    tellPlayer(event.player, 'Switching skin pack to: ' + newSkinPack);
-    guiBuilder_buildGuiFromManifest(event.API, g_manifest, newSkinPack, pageID, event.player);
+    tellPlayer(event.player, 'Switching skin pack to: ' + g_currentSkinPack);
+    // guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player);
 }

@@ -71,9 +71,6 @@ function guiBuilder_getAllButtonIDs() {
             case 'toggle_button':
                 buttonIDs.push(manifest_page.components[i].id);
                 break;
-            case 'press_button':
-                buttonIDs.push(manifest_page.components[i].id);
-                break;
         }
     }
     return buttonIDs;
@@ -139,11 +136,6 @@ function guiBuilder_buildButton(GUI, component) {
 
 }
 
-function guiBuilder_buildPressButton(GUI, component) {
-    // TODO: implement press button
-    guiBuilder_buildToggleButton(GUI, component);
-}
-
 function guiBuilder_updateToggleButton(GUI, component, player) {
     GUI.removeComponent(component.id);
     guiBuilder_buildToggleButton(GUI, component);
@@ -151,13 +143,18 @@ function guiBuilder_updateToggleButton(GUI, component, player) {
 }
 
 function guiBuilder_buildToggleButton(GUI, component) {
-    var toggled = component.toggled;
-    if (toggled) {
-        var textureX = component.toggle_tex.x;
-        var textureY = component.toggle_tex.y;
-    } else {
-        var textureX = component.tex.x;
-        var textureY = component.tex.y;
+    var toggled = !!component.toggled;
+    var disabled = !!component.disabled;
+
+    var textureX = component.tex.x;
+    var textureY = component.tex.y;
+
+    if (disabled && component.disabled_tex) {
+        textureX = component.disabled_tex.x;
+        textureY = component.disabled_tex.y;
+    } else if (toggled && component.toggle_tex) {
+        textureX = component.toggle_tex.x;
+        textureY = component.toggle_tex.y;
     }
     var id = component.id;
     var posX = component.offset.x * TILE_SCALE;
@@ -255,6 +252,10 @@ function customGuiButton(event) {
     } else if (buttonManifest.hasOwnProperty('close_gui')) {
         event.player.closeGui();
     } else if (buttonManifest.type === 'toggle_button') {
+        if (buttonManifest.disabled) {
+            tellPlayer(event.player, 'Toggle is disabled: ' + b1);
+            return;
+        }
         tellPlayer(event.player, 'Toggling button: ' + b1 + ' from ' + buttonManifest.toggled + ' to ' + !buttonManifest.toggled);
         buttonManifest.toggled = !buttonManifest.toggled;
         guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
@@ -296,8 +297,6 @@ function guiBuilder_assembleGUI(GUI, player) {
             guiBuilder_buildTextField(GUI, component);
         } else if (component.type === 'scroll_list') {
             guiBuilder_buildScrollList(GUI, component);
-        } else if (component.type === 'press_button') {
-            guiBuilder_buildPressButton(GUI, component);
         }
     }
     return GUI;
