@@ -76,6 +76,10 @@
           "disabled_tex": {
             "x": 240,
             "y": 16
+          },
+          "toggle_disabled_tex": {
+            "x": 240,
+            "y": 16
           }
         },
         {

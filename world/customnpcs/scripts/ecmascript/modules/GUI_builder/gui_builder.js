@@ -122,15 +122,20 @@ function guiBuilder_buildScrollList(GUI, component) {
 
 function guiBuilder_buildDisabledButton(GUI, component) {
     var toggled = !!component.toggled;
-    var disabled = !!component.disabled;
+    var locked = !!component.locked;
 
     var textureX = component.tex.x;
     var textureY = component.tex.y;
 
-    if (disabled && component.disabled_tex) {
-        textureX = component.disabled_tex.x;
-        textureY = component.disabled_tex.y;
-    } else if (toggled && component.toggle_tex) {
+    if (locked) {
+        if (toggled) {
+            textureX = component.toggle_disabled_tex.x;
+            textureY = component.toggle_disabled_tex.y;
+        } else {
+            textureX = component.disabled_tex.x;
+            textureY = component.disabled_tex.y;
+        }
+    } else if (toggled) {
         textureX = component.toggle_tex.x;
         textureY = component.toggle_tex.y;
     }
