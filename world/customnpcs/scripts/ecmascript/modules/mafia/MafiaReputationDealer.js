@@ -84,7 +84,7 @@ function interact(event) {
         var repGain = ticket.repGain;
         var costInCents = ticket.costInCents;
 
-        if (!getMoneyFromPlayerPouch(player, costInCents)) {
+        if (!extractMoneyFromPouch(player, costInCents)) {
             tellPlayer(player, "§cYou don't have the cash for this deal.");
             logToFile("mafia", player.getName() + " tried to use a ticket but lacked the funds.");
             return;

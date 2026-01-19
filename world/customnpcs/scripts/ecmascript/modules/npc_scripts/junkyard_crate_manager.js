@@ -59,7 +59,7 @@ function interact(event) {
     }
 
     // === Payment and crowbar delivery
-    if (getMoneyFromPlayerPouch(player, crowbarPrice)) {
+    if (extractMoneyFromPouch(player, crowbarPrice)) {
         var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player);
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);

@@ -291,7 +291,7 @@ function buyShop(player, shopData, buyerName) {
         return;
     }
 
-    if (!getMoneyFromPlayerPouch(buyer, salePrice)) {
+    if (!extractMoneyFromPouch(buyer, salePrice)) {
         tellPlayer(player, "&cBuyer &e" + buyerName + " &cdoes not have enough money! Sale price: &r:money:&e" + getAmountCoin(salePrice));
         return;
     }

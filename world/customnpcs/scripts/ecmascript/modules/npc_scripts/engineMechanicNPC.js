@@ -68,7 +68,7 @@ function interact(event) {
     var hoursToFix = hours - 20;
     var cost = Math.round(hoursToFix * (maxWeight + 1 - weight)) * 300;
 
-    if (!getMoneyFromPlayerPouch(player, cost)) {
+    if (!extractMoneyFromPouch(player, cost)) {
         npc.say("You don't have enough money to fix this engine. Cost: " + getAmountCoin(cost));
         return;
     }

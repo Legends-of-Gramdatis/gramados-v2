@@ -235,13 +235,31 @@ function convertCoinItems(jsonCoinItems) {
     return converted;
 }
 
+function hasMoneyInPouch(player, value) {
+    var worldData = getWorldData();
+    var playerIndex = player.getDisplayName();
+    playerIndex = "player_" + playerIndex;
+    var playerData = JSON.parse(worldData.get(playerIndex));
+    var money = playerData["money"];
+    return money >= value;
+}
+
+function getMoneyInPouch(player) {
+    var worldData = getWorldData();
+    var playerIndex = player.getDisplayName();
+    playerIndex = "player_" + playerIndex;
+    var playerData = JSON.parse(worldData.get(playerIndex));
+    var money = playerData["money"];
+    return money;
+}
+
 /**
  * Retrieves the money from a player's pouch.
  * @param {IPlayer} player - The player.
  * @param {number} value - The value to retrieve in cents.
  * @returns {boolean} - True if the money was successfully retrieved, false otherwise.
  */
-function getMoneyFromPlayerPouch(player, value) {
+function extractMoneyFromPouch(player, value) {
     var worldData = getWorldData();
     var playerIndex = player.getDisplayName();
     playerIndex = "player_" + playerIndex;

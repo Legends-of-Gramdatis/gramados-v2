@@ -1114,7 +1114,7 @@ function putMoneyInShopFromPouch(player, shopData, value) {
         tellPlayer(player, "&cYou don't have permission to put money in this shop!");
         return;
     }
-    if (getMoneyFromPlayerPouch(player, getCoinAmount(value))) {
+    if (extractMoneyFromPouch(player, getCoinAmount(value))) {
         shopData.finances.stored_cash += getCoinAmount(value);
         tellPlayer(player, "&aSuccessfully added &r:money:&e" + value + " &ato shop &e" + shopData.shop.display_name);
     } else {

@@ -96,7 +96,7 @@ function expertiseItem(npc, itemStack, player, world) {
     }
 
     var fee = parseFloat(feeString[1]) * 100; // Convert to cents
-    if (!getMoneyFromPlayerPouch(player, fee)) {
+    if (!extractMoneyFromPouch(player, fee)) {
         tellPlayer(player, "§c:cross_mark: You don't have enough to pay the expertise fee.");
         npc.executeCommand("/playsound minecraft:block.anvil.land block @a ~ ~ ~ 10 1");
         return;
