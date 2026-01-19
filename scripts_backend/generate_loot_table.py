@@ -1,5 +1,6 @@
 import json
 import re
+import os
 
 def read_items_from_file(filename):
     with open(filename, "r") as file:
@@ -44,11 +45,18 @@ def write_loot_table_to_file(loot_table, output_filename):
         json.dump(loot_table, file, indent=4)
 
 if __name__ == "__main__":
-    input_file = "/home/mouette/gramados-v2/scripts_backend/reports/items.txt"
-    output_file = "/home/mouette/gramados-v2/scripts_backend/reports/loot_table.json"
-
-    items = read_items_from_file(input_file)
-    loot_table = generate_loot_table(items)
-    write_loot_table_to_file(loot_table, output_file)
-
-    print(f"Loot table with {len(items)} items written to {output_file}")
+    input_folder = "/home/mouette/gramados-v2/scripts_backend/loot_tables"
+    
+    # List all .txt files in the folder
+    txt_files = [f for f in os.listdir(input_folder) if f.endswith('.txt')]
+    
+    for txt_file in txt_files:
+        input_path = os.path.join(input_folder, txt_file)
+        output_filename = txt_file.replace('.txt', '.json')
+        output_path = os.path.join(input_folder, output_filename)
+        
+        items = read_items_from_file(input_path)
+        loot_table = generate_loot_table(items)
+        write_loot_table_to_file(loot_table, output_path)
+        
+        print(f"Loot table with {len(items)} items written to {output_path}")
