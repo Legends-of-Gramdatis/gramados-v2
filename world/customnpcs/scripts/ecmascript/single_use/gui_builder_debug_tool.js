@@ -2,7 +2,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/modules/GUI_builder/gui_builder.js');
 
 var SOURCE_PATH = 'world/customnpcs/scripts/ecmascript/modules/GUI_builder/guis/';
-var MANIFEST_PATH = SOURCE_PATH + 'gui_manifest.json';
+var MANIFEST_PATH = SOURCE_PATH + 'car_dealership/gui_manifest.json';
 
 var g_manifest = null;
 var g_skinPacks = [];
@@ -10,7 +10,11 @@ var g_skinIndex = 0;
 var g_currentSkinPack = null;
 
 function guiBuilderDebug_ensureLoaded() {
-    g_manifest = loadJson(MANIFEST_PATH);
+    if (g_manifest) {
+        g_manifest = guiBuilder_updateManifest(g_manifest);
+        return;
+    }
+    g_manifest = guiBuilder_updateManifest(loadJson(MANIFEST_PATH));
     g_skinPacks = g_manifest.skin_packs;
     g_skinIndex = 0;
     g_currentSkinPack = g_skinPacks[g_skinIndex];

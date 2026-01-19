@@ -28,3 +28,9 @@ function guiButtons(event, buttonId, pageId) {
             break;
     }
 }
+
+function guiBuilder_updateManifest(manifest) {
+    // Modify the manifest as needed before building the GUI
+    // For example, if you want to make a locked button unlocked due to some conditions.
+    return manifest;
+}
