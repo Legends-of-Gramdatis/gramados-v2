@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_appleford_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_brown_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_deepblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_glacierwhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_militarygreen_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sapphire_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_sprucewooden_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_steelblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_heavorum_crewcab_dually_tomatowooden_g",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

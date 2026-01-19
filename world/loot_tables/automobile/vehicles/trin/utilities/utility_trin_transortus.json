@@ -1,0 +1,99 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_deepblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_electricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_firered_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_glacierwhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_jetblackandivory_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_oakgreen_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_silver_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_crystal_sunshineyellow_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_deepblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_electricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_firered_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_glacierwhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_jetblackandivory_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_oakgreen_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_silver_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_transortus_sunshineyellow_g",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

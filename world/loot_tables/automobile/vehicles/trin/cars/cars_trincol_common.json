@@ -1,0 +1,74 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_devom_cabrio.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_devom_coupe.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_cabrio.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_heavorum.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_cabrio.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_pickup.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_large.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_small.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_trainingor_pickup.json",
+                    "weight": 11
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_trainingor_suv.json",
+                    "weight": 12
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_compass.json",
+                    "weight": 9
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_sedan.json",
+                    "weight": 14
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_wagon.json",
+                    "weight": 14
+                }
+            ]
+        }
+    ]
+}

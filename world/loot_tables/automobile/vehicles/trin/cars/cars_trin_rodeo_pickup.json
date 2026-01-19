@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_fireorange_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_jetblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_comfort_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_carminred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_teal_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_rodeo_pickup_root_white_g",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

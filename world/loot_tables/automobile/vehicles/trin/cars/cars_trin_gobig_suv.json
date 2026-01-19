@@ -1,0 +1,279 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_chocolate_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_jetblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_comfort_oceanblue_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_firered_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_purewhite_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_root_tungsten_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_midnightpurple_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_redandblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_2door_substantial_tungstenandelectricblue_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_chocolate_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_jetblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_comfort_oceanblue_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_firered_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_purewhite_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_root_tungsten_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_midnightpurple_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_redandblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_gobig_suv_4door_substantial_tungstenandelectricblue_w",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

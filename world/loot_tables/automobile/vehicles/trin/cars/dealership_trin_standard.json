@@ -1,0 +1,30 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 2,
+                "max": 4
+            },
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_starter.json",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "rolls": {
+                "min": 4,
+                "max": 10
+            },
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_common.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

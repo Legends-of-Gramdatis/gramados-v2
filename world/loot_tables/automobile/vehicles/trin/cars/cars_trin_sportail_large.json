@@ -1,0 +1,144 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_coldspruce_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_irongray_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_comfort_pureblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_amber_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_slimelime_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_root_white_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_bloodred_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_redandblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_civil.trin_sportail_large_substantial_tungstenandelectricblue_w",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,189 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bloodred_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_bubblegum_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_irongray_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_pureblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_purewhite_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_redandblack_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_softgreen_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_steelblueandteal_w",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_r",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_t",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_gobig_txs_pickup_6x6_sunshineyellow_w",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

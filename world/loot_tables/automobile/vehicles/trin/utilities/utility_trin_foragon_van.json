@@ -1,0 +1,149 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_sand_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq1_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_coldspruce_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq2_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_forest_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_plum_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_halfwindow_tq3_shagbark_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_sand_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq1_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_coldspruce_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq2_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_forest_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_plum_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_minibus_tq3_shagbark_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_sand_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq1_tungsten_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_coldspruce_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq2_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_darkwalnutandivory_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_forest_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_plum_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_foragon_nrml_panel_tq3_shagbark_g",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

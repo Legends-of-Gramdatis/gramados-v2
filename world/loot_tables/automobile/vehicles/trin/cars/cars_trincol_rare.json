@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_bultizorg.json",
+                    "weight": 14
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_flugoral.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_cabrio.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_pickup.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_suv.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_springbok.json",
+                    "weight": 14
+                }
+            ]
+        }
+    ]
+}

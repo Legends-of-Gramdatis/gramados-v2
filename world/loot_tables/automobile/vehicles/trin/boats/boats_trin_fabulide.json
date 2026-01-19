@@ -1,0 +1,54 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_amber",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_coldspruce",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_firered",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_midnightpurple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_pureblack",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_steelblueandteel",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_sunshineyellow",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_tungstenandelectricblue",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_txs.trin_fabulide_txs_white",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

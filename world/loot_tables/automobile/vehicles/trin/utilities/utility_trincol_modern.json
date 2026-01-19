@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_bolter.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_capro.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_foragon_pickup.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_foragon_van.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_juggernaut_mod.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_juggernaut_semi.json",
+                    "weight": 16
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_tormador.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_transortus.json",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}

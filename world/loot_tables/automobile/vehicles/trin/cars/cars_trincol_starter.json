@@ -1,0 +1,44 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_hatchback.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_sedan.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_van.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_footpather.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_keipan.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_van.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_ropy.json",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}

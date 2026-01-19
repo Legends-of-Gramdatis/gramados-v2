@@ -1,0 +1,54 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_purewhite_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_silver_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq1_softgreen_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_amber_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_electricblue_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq2_pureblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_bloodred_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_redandblack_g",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tcp_v3_utility.trin_juggernaut_semi_truck_s_tq3_shagbark_g",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
