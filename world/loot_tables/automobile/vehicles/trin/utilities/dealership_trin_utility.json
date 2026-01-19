@@ -8,7 +8,7 @@
             "entries": [
                 {
                     "type": "loot_table",
-                    "path": "automobile/vehicles/trin/utilities/dealership_trin_utility.json",
+                    "path": "automobile/vehicles/trin/utilities/utility_trincol_modern.json",
                     "weight": 1
                 }
             ]
