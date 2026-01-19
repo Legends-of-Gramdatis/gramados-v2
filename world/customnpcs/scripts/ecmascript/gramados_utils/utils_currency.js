@@ -334,3 +334,8 @@ function format_arcade_token_count(count) {
         return "&r:amethyst:&e" + count + " &dArcade Tokens&r";
     }
 }
+
+function formatMoney(amount) {
+    var grons = getAmountCoin(amount);
+    return parseEmotes(ccs('&r:money:&e' + grons + '&r'));
+}
