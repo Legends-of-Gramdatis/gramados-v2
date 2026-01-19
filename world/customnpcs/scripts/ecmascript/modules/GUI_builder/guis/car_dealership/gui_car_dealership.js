@@ -1,3 +1,4 @@
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 
 function guiButtons(event, buttonId, pageId) {
     switch (pageId) {
@@ -30,7 +31,7 @@ function guiButtons(event, buttonId, pageId) {
     }
 }
 
-function guiBuilder_updateManifest(manifest) {
+function guiBuilder_updateManifest(event, manifest) {
     // Modify the manifest as needed before building the GUI
     // For example, if you want to make a locked button unlocked due to some conditions.
     return manifest;

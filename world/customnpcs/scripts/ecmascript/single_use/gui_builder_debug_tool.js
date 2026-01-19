@@ -10,10 +10,10 @@ var g_skinIndex = 0;
 var g_currentSkinPack = null;
 var g_script = null;
 
-function guiBuilderDebug_ensureLoaded() {
+function guiBuilderDebug_ensureLoaded(event) {
 
     if (g_manifest) {
-        g_manifest = guiBuilder_updateManifest(g_manifest);
+        g_manifest = guiBuilder_updateManifest(event, g_manifest);
         return;
     } else {
         g_manifest = loadJson(MANIFEST_PATH);
@@ -24,7 +24,7 @@ function guiBuilderDebug_ensureLoaded() {
         load(g_script);
     }
 
-    g_manifest = guiBuilder_updateManifest(g_manifest);
+    g_manifest = guiBuilder_updateManifest(event, g_manifest);
     g_skinPacks = g_manifest.skin_packs;
     g_skinIndex = 0;
     g_currentSkinPack = g_skinPacks[g_skinIndex];
@@ -32,7 +32,7 @@ function guiBuilderDebug_ensureLoaded() {
 
 function init(event) {
     var item = event.item;
-    guiBuilderDebug_ensureLoaded();
+    guiBuilderDebug_ensureLoaded(event);
     item.setDurabilityShow(false);
     item.setCustomName('§6§lGUI Builder Debug Tool');
     g_currentSkinPack = g_skinPacks[g_skinIndex];
@@ -40,7 +40,7 @@ function init(event) {
 }
 
 function interact(event) {
-    guiBuilderDebug_ensureLoaded();
+    guiBuilderDebug_ensureLoaded(event);
 
     tellPlayer(event.player, 'Using skin pack: ' + g_currentSkinPack);
 
@@ -53,7 +53,7 @@ function interact(event) {
 
 // Rotate skin pack while the GUI is open (or reopen it if needed)
 function attack(event) {
-    guiBuilderDebug_ensureLoaded();
+    guiBuilderDebug_ensureLoaded(event);
 
     if (!g_skinPacks || g_skinPacks.length === 0) {
         return;
