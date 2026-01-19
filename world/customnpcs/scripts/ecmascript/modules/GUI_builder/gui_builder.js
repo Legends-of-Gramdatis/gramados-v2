@@ -12,6 +12,9 @@ var _skinPack = null;
 var _guiSourcePath = null;
 var _guiscript = null;
 
+var _NPC = null;
+var _PLAYER = null;
+
 function guiBuilder_textureBase() {
     return 'minecraft:textures/gui/gui_creator/' + _manifest.gui_name + '/' + _skinPack + '/';
 }
@@ -226,16 +229,36 @@ function guiBuilder_buildLabel(GUI, component) {
     guiBuilder_buildMeta(GUI, id, component);
 }
 
-function guiBuilder_buildItemSlot(GUI, component) {
+function guiBuilder_buildTexturedRect(GUI, component) {
+    var id = component.id;
+    var posX = component.offset.x * TILE_SCALE;
+    var posY = component.offset.y * TILE_SCALE;
+    var sizeW = component.size_tiles.w * TILE_SCALE;
+    var sizeH = component.size_tiles.h * TILE_SCALE;
+    var textureX = component.tex.x || 0;
+    var textureY = component.tex.y || 0;
+    var texture = component.texture || '';
+
+    GUI.addTexturedRect(id, texture, posX, posY, sizeW, sizeH, textureX, textureY);
+    guiBuilder_buildMeta(GUI, id, component);
+}
+
+function guiBuilder_buildItemSlot(GUI, component, world) {
+    var id = component.id;
     var rawX = ((component.size_tiles.w - 1)/2) + component.offset.x
     var rawY = ((component.size_tiles.h - 1)/2) + component.offset.y
     var posX = (rawX + ITEM_OFFSET_X) * TILE_SCALE;
     var posY = (rawY + ITEM_OFFSET_Y) * TILE_SCALE;
-    var slot = GUI.addItemSlot(posX, posY);
-    // Item slots are not addressable via GUI.getComponent(id), so apply hover text directly if supported.
-    if (component.hover_text && slot && typeof slot.setHoverText === 'function') {
-        slot.setHoverText(component.hover_text);
+
+    // Pre-fill slot with a specified item if provided by the manifest (slot_item mirrors loot table entry shape)
+    if (component.slot_item) {
+        var item_stack = world.createItem(component.slot_item.id, component.slot_item.damage || 0, component.slot_item.count || 1);
+        GUI.addItemSlot(posX, posY, item_stack);
+    } else {
+        GUI.addItemSlot(posX, posY);
     }
+
+    guiBuilder_buildMeta(GUI, id, component);
 }
 
 function guiBuilder_buildDefault(GUI, componentID, component) {
@@ -298,7 +321,8 @@ function customGuiButton(event) {
         guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
     }
 
-    guiButtons(event, b1, _currentPageID);
+    guiButtons(event, _NPC, b1, _currentPageID, _manifest);
+    _manifest = guiBuilder_updateManifest(event.player, _NPC, _manifest);
 }
 
 function customGuiScroll(event) {
@@ -309,12 +333,8 @@ function customGuiScroll(event) {
 function guiBuilder_assembleGUI(GUI, player) {
     var bgTexture = guiBuilder_backgroundTexture();
 
-    tellPlayer(player, 'Using background texture: ' + bgTexture);
-
     GUI.setBackgroundTexture(bgTexture);
     var manifest_page = findJsonEntry(_manifest.pages, 'page', _currentPageID);
-
-    tellPlayer(player, 'Building GUI for page ' + _currentPageID + ' with ' + manifest_page.components.length + ' components.');
 
     for (var i = 0; i < manifest_page.components.length; i++) {
         var component = manifest_page.components[i];
@@ -325,23 +345,27 @@ function guiBuilder_assembleGUI(GUI, player) {
         } else if (component.type === 'label') {
             guiBuilder_buildLabel(GUI, component);
         } else if (component.type === 'item_slot') {
-            guiBuilder_buildItemSlot(GUI, component);
+            guiBuilder_buildItemSlot(GUI, component, player.getWorld());
         } else if (component.type === 'text_field') {
             guiBuilder_buildTextField(GUI, component);
         } else if (component.type === 'scroll_list') {
             guiBuilder_buildScrollList(GUI, component);
+        } else if (component.type === 'textured_rect') {
+            guiBuilder_buildTexturedRect(GUI, component);
         }
     }
     return GUI;
 }
 
-function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player, source_path, gui_script) {
+function guiBuilder_buildGuiFromManifest(api, player, manifest, skinPack, pageID, source_path, gui_script, npc) {
 
     _currentPageID = pageID;
     _manifest = manifest;
     _skinPack = skinPack;
     _guiSourcePath = source_path;
     _guiscript = gui_script;
+    _NPC = npc;
+    _PLAYER = player;
 
     var GUI = api.createCustomGui(pageID, manifest.size * TILE_SCALE, manifest.size * TILE_SCALE, false);
     GUI = guiBuilder_assembleGUI(GUI, player);
