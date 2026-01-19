@@ -8,13 +8,23 @@ var g_manifest = null;
 var g_skinPacks = [];
 var g_skinIndex = 0;
 var g_currentSkinPack = null;
+var g_script = null;
 
 function guiBuilderDebug_ensureLoaded() {
+
     if (g_manifest) {
         g_manifest = guiBuilder_updateManifest(g_manifest);
         return;
+    } else {
+        g_manifest = loadJson(MANIFEST_PATH);
     }
-    g_manifest = guiBuilder_updateManifest(loadJson(MANIFEST_PATH));
+
+    if (g_script == null) {
+        g_script = SOURCE_PATH + g_manifest.gui_name + '/gui_' + g_manifest.gui_name + '.js';
+        load(g_script);
+    }
+
+    g_manifest = guiBuilder_updateManifest(g_manifest);
     g_skinPacks = g_manifest.skin_packs;
     g_skinIndex = 0;
     g_currentSkinPack = g_skinPacks[g_skinIndex];
@@ -38,7 +48,7 @@ function interact(event) {
 
     tellPlayer(event.player, 'Loaded GUI manifest: ' + MANIFEST_PATH + ' at page ' + pageID);
 
-    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player, SOURCE_PATH);
+    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player, SOURCE_PATH, g_script);
 }
 
 // Rotate skin pack while the GUI is open (or reopen it if needed)

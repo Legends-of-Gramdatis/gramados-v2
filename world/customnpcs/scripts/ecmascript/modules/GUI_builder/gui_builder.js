@@ -10,6 +10,7 @@ var _currentPageID = null;
 var _manifest = null;
 var _skinPack = null;
 var _guiSourcePath = null;
+var _guiscript = null;
 
 function guiBuilder_textureBase() {
     return 'minecraft:textures/gui/gui_creator/' + _manifest.gui_name + '/' + _skinPack + '/';
@@ -274,8 +275,7 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
 
 function customGuiButton(event) {
     var b1 = event.buttonId;
-    var gui_script = _guiSourcePath + _manifest.gui_name + '/gui_' + _manifest.gui_name + '.js';
-    load(gui_script);
+    load(_guiscript);
 
     var buttonIDs = guiBuilder_getAllButtonIDs(findJsonEntry(_manifest.pages, 'page', _currentPageID));
 
@@ -335,12 +335,13 @@ function guiBuilder_assembleGUI(GUI, player) {
     return GUI;
 }
 
-function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player, source_path) {
+function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player, source_path, gui_script) {
 
     _currentPageID = pageID;
     _manifest = manifest;
     _skinPack = skinPack;
     _guiSourcePath = source_path;
+    _guiscript = gui_script;
 
     var GUI = api.createCustomGui(pageID, manifest.size * TILE_SCALE, manifest.size * TILE_SCALE, false);
     GUI = guiBuilder_assembleGUI(GUI, player);
