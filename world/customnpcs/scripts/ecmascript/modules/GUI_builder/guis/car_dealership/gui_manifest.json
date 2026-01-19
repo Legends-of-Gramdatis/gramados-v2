@@ -3,9 +3,9 @@
   "gui_name": "car_dealership",
   "size": 16,
   "skin_packs": [
-    "glassbubble",
     "default",
     "flatflashy",
+    "glassbubble",
     "green",
     "tanwood"
   ],
