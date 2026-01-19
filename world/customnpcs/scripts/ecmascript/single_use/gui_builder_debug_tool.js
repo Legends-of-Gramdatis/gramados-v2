@@ -1,7 +1,8 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/modules/GUI_builder/gui_builder.js');
 
-var MANIFEST_PATH = '/home/mouette/gramados-v2/world/customnpcs/scripts/ecmascript/modules/GUI_builder/gui_manifest.json';
+var SOURCE_PATH = 'world/customnpcs/scripts/ecmascript/modules/GUI_builder/guis/';
+var MANIFEST_PATH = SOURCE_PATH + 'gui_manifest.json';
 
 var g_manifest = null;
 var g_skinPacks = [];
@@ -9,9 +10,6 @@ var g_skinIndex = 0;
 var g_currentSkinPack = null;
 
 function guiBuilderDebug_ensureLoaded() {
-    if (g_manifest) {
-        return;
-    }
     g_manifest = loadJson(MANIFEST_PATH);
     g_skinPacks = g_manifest.skin_packs;
     g_skinIndex = 0;
@@ -36,7 +34,7 @@ function interact(event) {
 
     tellPlayer(event.player, 'Loaded GUI manifest: ' + MANIFEST_PATH + ' at page ' + pageID);
 
-    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player);
+    guiBuilder_buildGuiFromManifest(event.API, g_manifest, g_currentSkinPack, pageID, event.player, SOURCE_PATH);
 }
 
 // Rotate skin pack while the GUI is open (or reopen it if needed)

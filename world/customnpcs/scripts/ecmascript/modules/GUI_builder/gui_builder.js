@@ -9,6 +9,7 @@ var ITEM_OFFSET_Y = -2.8;
 var _currentPageID = null;
 var _manifest = null;
 var _skinPack = null;
+var _guiSourcePath = null;
 
 function guiBuilder_textureBase() {
     return 'minecraft:textures/gui/gui_creator/' + _manifest.gui_name + '/' + _skinPack + '/';
@@ -273,6 +274,8 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
 
 function customGuiButton(event) {
     var b1 = event.buttonId;
+    var gui_script = _guiSourcePath + _manifest.gui_name + '/gui_' + _manifest.gui_name + '.js';
+    load(gui_script);
 
     var buttonIDs = guiBuilder_getAllButtonIDs(findJsonEntry(_manifest.pages, 'page', _currentPageID));
 
@@ -285,26 +288,17 @@ function customGuiButton(event) {
     var buttonManifest = findJsonEntry(findJsonEntry(_manifest.pages, 'page', _currentPageID).components, 'id', b1);
     
     if (buttonManifest.hasOwnProperty('open_page')) {
-        var newPageID = buttonManifest.open_page;;
-        tellPlayer(event.player, 'Opening page: ' + newPageID);
+        var newPageID = buttonManifest.open_page;
         guiBuilder_OpenPage(event.player, event.gui, newPageID, event.API);
+        return;
     } else if (buttonManifest.hasOwnProperty('close_gui')) {
         event.player.closeGui();
     } else if (buttonManifest.type === 'toggle_button') {
-        if (buttonManifest.disabled) {
-            tellPlayer(event.player, 'Toggle is disabled: ' + b1);
-            return;
-        }
-        tellPlayer(event.player, 'Toggling button: ' + b1 + ' from ' + buttonManifest.toggled + ' to ' + !buttonManifest.toggled);
         buttonManifest.toggled = !buttonManifest.toggled;
         guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
     }
 
-    switch (b1) {
-        // case 'some_button_id':
-        //     // Do something
-        //     break;
-    }
+    guiButtons(event, b1, _currentPageID);
 }
 
 function customGuiScroll(event) {
@@ -341,11 +335,12 @@ function guiBuilder_assembleGUI(GUI, player) {
     return GUI;
 }
 
-function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player) {
+function guiBuilder_buildGuiFromManifest(api, manifest, skinPack, pageID, player, source_path) {
 
     _currentPageID = pageID;
     _manifest = manifest;
     _skinPack = skinPack;
+    _guiSourcePath = source_path;
 
     var GUI = api.createCustomGui(pageID, manifest.size * TILE_SCALE, manifest.size * TILE_SCALE, false);
     GUI = guiBuilder_assembleGUI(GUI, player);
