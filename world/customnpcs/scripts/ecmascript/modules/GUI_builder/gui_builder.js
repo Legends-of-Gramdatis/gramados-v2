@@ -81,25 +81,6 @@ function guiBuilder_getAllButtonIDs() {
     return buttonIDs;
 }
 
-function guiBuilder_countElements() {
-    var sheets = [];
-    var pages = [];
-    for (var i = 0; i < _manifest.pages.length; i++) {
-        pages.push(_manifest.pages[i].page);
-        for (var j = 0; j < _manifest.pages[i].components.length; j++) {
-            if (sheets.indexOf(_manifest.pages[i].components[j].sheet) === -1) {
-                sheets.push(_manifest.pages[i].components[j].sheet);
-            }
-        }
-    }
-    return {
-        sheets_count: sheets.length,
-        pages_count: pages.length,
-        sheets: sheets,
-        pages: pages 
-    }
-}
-
 function guiBuilder_buildTextField(GUI, component) {
     var id = component.id;
     var posX = component.offset.x * TILE_SCALE;
@@ -108,7 +89,7 @@ function guiBuilder_buildTextField(GUI, component) {
     var sizeH = component.size_tiles.h * TILE_SCALE;
 
     GUI.addTextField(id, posX, posY, sizeW, sizeH);
-    guiBuilder_buildDefault(GUI, id, component);
+    guiBuilder_fillDefault(GUI, id, component);
     guiBuilder_buildMeta(GUI, id, component);
 
 }
@@ -251,7 +232,7 @@ function guiBuilder_buildItemSlot(GUI, component, world) {
     var posY = (rawY + ITEM_OFFSET_Y) * TILE_SCALE;
 
     // Pre-fill slot with a specified item if provided by the manifest (slot_item mirrors loot table entry shape)
-    if (component.slot_item) {
+    if (component.slot_item && world) {
         var item_stack = world.createItem(component.slot_item.id, component.slot_item.damage || 0, component.slot_item.count || 1);
         GUI.addItemSlot(posX, posY, item_stack);
     } else {
@@ -261,7 +242,7 @@ function guiBuilder_buildItemSlot(GUI, component, world) {
     guiBuilder_buildMeta(GUI, id, component);
 }
 
-function guiBuilder_buildDefault(GUI, componentID, component) {
+function guiBuilder_fillDefault(GUI, componentID, component) {
     if (component.label == '' || typeof component.label === 'undefined') {
         return;
     }
@@ -289,7 +270,11 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
         GUI.removeComponent(allIDs[i]);
     }
 
+    tellPlayer(player, '&e[GUI Builder] Opening page ' + NewpageID + '.');
+    _NPC.getStoreddata().put('dealership_current_page', NewpageID);
+
     _currentPageID = NewpageID;
+    _manifest = guiBuilder_updateManifest(player, _NPC, _manifest);
 
     GUI = guiBuilder_assembleGUI(GUI, player);
 
@@ -298,22 +283,15 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
 
 function customGuiButton(event) {
     var b1 = event.buttonId;
+    var gui = event.gui;
     load(_guiscript);
-
-    var buttonIDs = guiBuilder_getAllButtonIDs(findJsonEntry(_manifest.pages, 'page', _currentPageID));
-
-    for (var i = 0; i < buttonIDs.length; i++) {
-        if (b1 === buttonIDs[i]) {
-            tellPlayer(event.player, 'Button pressed: ' + b1);
-        }
-    }
 
     var buttonManifest = findJsonEntry(findJsonEntry(_manifest.pages, 'page', _currentPageID).components, 'id', b1);
     
+    var page = _currentPageID;
+
     if (buttonManifest.hasOwnProperty('open_page')) {
-        var newPageID = buttonManifest.open_page;
-        guiBuilder_OpenPage(event.player, event.gui, newPageID, event.API);
-        return;
+        page = buttonManifest.open_page;
     } else if (buttonManifest.hasOwnProperty('close_gui')) {
         event.player.closeGui();
     } else if (buttonManifest.type === 'toggle_button') {
@@ -321,8 +299,10 @@ function customGuiButton(event) {
         guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
     }
 
+    tellPlayer(event.player, '&7Handling button ID: ' + b1 + ' on page ' + page);
+
     guiButtons(event, _NPC, b1, _currentPageID, _manifest);
-    _manifest = guiBuilder_updateManifest(event.player, _NPC, _manifest);
+    guiBuilder_OpenPage(event.player, event.gui, page, event.API);
 }
 
 function customGuiScroll(event) {
@@ -331,6 +311,7 @@ function customGuiScroll(event) {
 }
 
 function guiBuilder_assembleGUI(GUI, player) {
+    tellPlayer(player, '&e[GUI Builder] Assembling GUI for page ' + _currentPageID + '.');
     var bgTexture = guiBuilder_backgroundTexture();
 
     GUI.setBackgroundTexture(bgTexture);
