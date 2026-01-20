@@ -27,65 +27,6 @@
           "label": ""
         },
         {
-          "id": 30,
-          "type": "label",
-          "offset": {
-            "x": 2,
-            "y": 6
-          },
-          "size_tiles": {
-            "w": 6,
-            "h": 1
-          },
-          "label": ""
-        },
-        {
-          "id": 32,
-          "type": "label",
-          "offset": {
-            "x": 9,
-            "y": 6
-          },
-          "size_tiles": {
-            "w": 3,
-            "h": 1
-          },
-          "label": ""
-        },
-        {
-          "id": 33,
-          "type": "toggle_button",
-          "offset": {
-            "x": 8,
-            "y": 6
-          },
-          "size_tiles": {
-            "w": 1,
-            "h": 1
-          },
-          "label": "",
-          "locked": true,
-          "hover_text": "Disable Insurance",
-          "toggled": false,
-          "sheet": 1,
-          "tex": {
-            "x": 224,
-            "y": 0
-          },
-          "toggle_tex": {
-            "x": 240,
-            "y": 0
-          },
-          "disabled_tex": {
-            "x": 240,
-            "y": 16
-          },
-          "toggle_disabled_tex": {
-            "x": 240,
-            "y": 16
-          }
-        },
-        {
           "id": 38,
           "type": "button",
           "offset": {
@@ -165,6 +106,65 @@
             "h": 1
           },
           "label": "Trin Gramados Dealership"
+        },
+        {
+          "id": 85,
+          "type": "label",
+          "offset": {
+            "x": 2,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 5,
+            "h": 1
+          },
+          "label": ""
+        },
+        {
+          "id": 86,
+          "type": "label",
+          "offset": {
+            "x": 8,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 4,
+            "h": 1
+          },
+          "label": ""
+        },
+        {
+          "id": 87,
+          "type": "toggle_button",
+          "offset": {
+            "x": 7,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "",
+          "locked": true,
+          "hover_text": "Licensing",
+          "toggled": true,
+          "sheet": 1,
+          "tex": {
+            "x": 224,
+            "y": 0
+          },
+          "toggle_tex": {
+            "x": 240,
+            "y": 0
+          },
+          "disabled_tex": {
+            "x": 240,
+            "y": 16
+          },
+          "toggle_disabled_tex": {
+            "x": 240,
+            "y": 16
+          }
         }
       ]
     },

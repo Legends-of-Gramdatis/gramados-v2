@@ -1,14 +1,14 @@
-// Dealership stock loader NPC: refreshes vehicle stock from a loot table when an admin interacts and opens the dealership GUI for players.
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js'); // provides pullLootTable, logging, chat helpers
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/modules/GUI_builder/gui_builder.js');
 
-var LOOT_TABLE_PATH = 'automobile/vehicles/trin/cars/dealership_trin_standard.json';
-var STORED_KEY = 'dealership_stock';
-var PREVIEW_LIMIT = 5;
 
 var GUI_SOURCE_BASE = 'world/customnpcs/scripts/ecmascript/modules/GUI_builder/guis/';
-var GUI_DEFAULT = 'car_dealership';
+var GUI_NAME = 'car_dealership';
+
+var LOOT_TABLE_PATH = 'automobile/vehicles/trin/cars/dealership_trin_standard.json';
+var STORED_KEY = 'dealership_stock';
+
 var guiCache = {};
 
 function getGuiResources(guiName) {
@@ -38,39 +38,49 @@ function getGuiResources(guiName) {
 }
 
 function openDealershipGui(api, player, npc) {
-    var resources = getGuiResources(GUI_DEFAULT);
+    var resources = getGuiResources(GUI_NAME);
     if (!resources) {
-        tellPlayer(player, '&c[Dealership] GUI manifest missing for ' + GUI_DEFAULT + '.');
+        tellPlayer(player, '&c[Dealership] GUI manifest missing for ' + GUI_NAME + '.');
         return;
     }
 
     var manifestCopy = JSON.parse(JSON.stringify(resources.manifest));
-    manifestCopy = guiBuilder_updateManifest(player, npc, manifestCopy);
 
     var pages = guiBuilder_getPagesID(manifestCopy);
-    if (!pages || pages.length === 0) {
-        tellPlayer(player, '&c[Dealership] GUI manifest has no pages.');
-        return;
-    }
-
     var firstPage = pages[0];
-    guiBuilder_buildGuiFromManifest(api, player, manifestCopy, resources.skinPack, firstPage, resources.sourcePath, resources.scriptPath, npc);
+
+    guiBuilder_buildGuiFromManifest(api, player, guiBuilder_updateManifest(player, npc, manifestCopy), resources.skinPack, firstPage, resources.sourcePath, resources.scriptPath, npc);
 }
 
-function interact(event) {
-    var player = event.player;
+function init(event) {
     var npc = event.npc;
-    var api = event.API;
-    var offItem = player.getOffhandItem();
-    var mainItem = player.getMainhandItem();
+    var player = event.player;
 
-    var hasSeagullCard = offItem && !offItem.isEmpty() && offItem.getName() === 'mts:ivv.idcard_seagull';
-    var hasCommandBlock = mainItem && !mainItem.isEmpty() && mainItem.getName() === 'minecraft:command_block';
-
-    if (!hasSeagullCard || !hasCommandBlock) {
-        openDealershipGui(api, player, npc);
-        return;
+    // Initialize GUI name if not present
+    if (!npc.getStoreddata().has('gui_name')) {
+        npc.getStoreddata().put('gui_name', GUI_NAME);
+        tellPlayer(player, '&e[Dealership] GUI name set to default: ' + GUI_NAME);
     }
+
+    // Initialize vehicle index tracking if not present
+    if (!npc.getStoreddata().has('dealership_vehicle_index')) {
+        npc.getStoreddata().put('dealership_vehicle_index', 0);
+        tellPlayer(player, '&e[Dealership] Vehicle index initialized.');
+    }
+
+    // Initialize first page id if not present
+    if (!npc.getStoreddata().has('dealership_current_page')) {
+        npc.getStoreddata().put('dealership_current_page', 1);
+        tellPlayer(player, '&e[Dealership] Set to page 1.');
+    }
+
+    // Warn if no stock loaded  
+    if (!npc.getStoreddata().has(STORED_KEY)) {
+        tellPlayer(player, '&c[Dealership] No stock loaded. Ask an admin to refresh.');
+    }
+}
+
+function reloadStock(player, npc) {
 
     var fullPath = 'world/loot_tables/' + LOOT_TABLE_PATH;
     if (!checkFileExists(fullPath)) {
@@ -114,16 +124,24 @@ function interact(event) {
         vehicles: vehicles
     }));
 
-    var preview = [];
-    for (var j = 0; j < vehicles.length && j < PREVIEW_LIMIT; j++) {
-        var v = vehicles[j];
-        preview.push(v.id + ' x' + v.count);
-    }
-
     tellPlayer(player, '&a[Dealership] Reloaded stock from ' + LOOT_TABLE_PATH + '.');
     tellPlayer(player, '&7Stored ' + vehicles.length + ' vehicle types (' + pulled.length + ' total units).');
-    if (preview.length > 0) {
-        var suffix = vehicles.length > PREVIEW_LIMIT ? ' ...' : '';
-        tellPlayer(player, '&7Preview: ' + preview.join(', ') + suffix);
+}
+
+function interact(event) {
+    var player = event.player;
+    var npc = event.npc;
+    var api = event.API;
+    var offItem = player.getOffhandItem();
+    var mainItem = player.getMainhandItem();
+
+    var hasSeagullCard = !offItem.isEmpty() && offItem.getName() === 'mts:ivv.idcard_seagull';
+    var hasCommandBlock = !mainItem.isEmpty() && mainItem.getName() === 'minecraft:command_block';
+
+    if (hasSeagullCard && hasCommandBlock) {
+        reloadStock(player, npc);
+    } else {
+        npc.getStoreddata().put('dealership_current_page', 1);
+        openDealershipGui(api, player, npc);
     }
 }

@@ -1,6 +1,7 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
 
 function guiButtons(event, npc, buttonId, pageId) {
     switch (pageId) {
@@ -22,15 +23,10 @@ function guiButtons(event, npc, buttonId, pageId) {
             break;
         case 2:
             switch (buttonId) {
-                // case 12:
-                //     // Do something
-                //     break;
-                // case 13:
-                //     // Do something
-                //     break;
-                // case 50:
-                //     // Do something
-                //     break;
+                case 12:
+                    purchaseVehicle(event.player, npc);
+                    event.player.closeGui();
+                    break;
             }
             break;
         case 3:
@@ -54,28 +50,14 @@ function guiButtons(event, npc, buttonId, pageId) {
 
 function navigateVehicle(event, npc, direction) {
     var player = event.player;
+    var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
     
-    var stockData = npc.getStoreddata().get('dealership_stock');
-    if (!stockData) {
-        tellPlayer(player, '&c[Dealership] No stock loaded. Ask an admin to refresh.');
-        return;
-    }
-    
-    var stock = null;
-    try {
-        stock = JSON.parse(stockData);
-    } catch (e) {
-        tellPlayer(player, '&c[Dealership] Stock data corrupted.');
-        return;
-    }
-    
-    if (!stock || !stock.vehicles || stock.vehicles.length === 0) {
+    if (stock.vehicles.length === 0) {
         tellPlayer(player, '&e[Dealership] No vehicles in stock.');
         return;
     }
     
-    var currentIndexStr = npc.getStoreddata().get('dealership_vehicle_index');
-    var currentIndex = parseInt(currentIndexStr || '0', 10);
+    var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
     
     var newIndex = currentIndex + direction;
     var totalVehicles = stock.vehicles.length;
@@ -86,66 +68,78 @@ function navigateVehicle(event, npc, direction) {
         newIndex = 0;
     }
     
-    npc.getStoreddata().put('dealership_vehicle_index', String(newIndex));
+    npc.getStoreddata().put('dealership_vehicle_index', newIndex);
+    tellPlayer(player, '&e[Dealership] Showing vehicle ' + (newIndex + 1) + ' of ' + totalVehicles + '.');
 }
 
-function guiBuilder_updateManifest(player, npc, manifest) {
-    if (!player || !npc) return manifest;
-
-    // Initialize vehicle index tracking if not present
-    var stored = npc.getStoreddata().get('dealership_vehicle_index');
-    if (!stored) {
-        npc.getStoreddata().put('dealership_vehicle_index', '0');
+function purchaseVehicle(player, npc) {
+    var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
+    var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+    var vehicle = stock.vehicles[currentIndex];
+    var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
+    var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), "Devland", "XXX-0000");
+    
+    if (extractMoneyFromPouch(player, price)) {
+        player.giveItem(itemStack);
+        tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + ' for ' + formatMoney(price) + '.');
+        return true;
     }
 
-    // Get current vehicle index and stock data
-    var currentIndexStr = npc.getStoreddata().get('dealership_vehicle_index') || '0';
-    var currentIndex = parseInt(currentIndexStr, 10);
-    
-    var stockData = npc.getStoreddata().get('dealership_stock');
-    if (stockData) {
-        var stock = JSON.parse(stockData);
-        if (stock && stock.vehicles && stock.vehicles.length > 0 && currentIndex < stock.vehicles.length) {
+    tellPlayer(player, '&c[Dealership] You do not have enough money to purchase this vehicle. Price: ' + formatMoney(price) + '.');
+    return false;
+}
+function guiBuilder_updateManifest(player, npc, manifest) {
+
+    var pageId = npc.getStoreddata().get('dealership_current_page');
+
+    tellPlayer(player, '&e[Dealership] Updating GUI for page ' + pageId + '.');
+
+    switch (pageId) {
+        case 1:
+
+            // Get current vehicle index and stock data
+            var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
+            var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
             var vehicle = stock.vehicles[currentIndex];
-            
+
             // Create itemstack for the current vehicle
             var world = player.getWorld();
             var itemStack = world.createItem(vehicle.id, vehicle.damage || 0, 1);
             
             // Get display name and price
             var displayName = itemStack.getDisplayName();
-            // var price = getPriceFromItemStack(itemStack, 0, false);
-            // var priceFormatted = formatMoney(price);
+            var price = getPriceFromItemStack(itemStack, 0, false);
+            var priceFormatted = formatMoney(price);
+            var paperPrice = formatMoney(calculateCarPaperPrice(price, "Devland", "XXX-0000"));
             
-            // Update label component 5 with vehicle info
-            for (var i = 0; i < manifest.pages.length; i++) {
-                if (manifest.pages[i].page === 1) {
-                    for (var j = 0; j < manifest.pages[i].components.length; j++) {
-                        if (manifest.pages[i].components[j].id === 5) {
-                            manifest.pages[i].components[j].label = displayName;
-                            break;
-                        }
-                    }
-                    break;
-                }
-            }
-            
-            var labelComponent = manifest.pages[0].components[4]; // Find component 5
-            for (var k = 0; k < manifest.pages[0].components.length; k++) {
-                if (manifest.pages[0].components[k].id === 5) {
-                    labelComponent = manifest.pages[0].components[k];
-                    break;
-                }
-            }
-        }
-    }
+            // Update label component with vehicle display name
+            manifest.pages[0].components[0].label = displayName;
+            manifest.pages[0].components[5].label = priceFormatted;
+            manifest.pages[0].components[6].label = paperPrice;
 
-    // Unlock buttons based on jobs/cash (existing behavior)
-    if (playerHasJobWithTag(player, "Mechanic")) {
-        manifest.pages[0].components[4].locked = false;
-    }
-    if (getMoneyInPouch(player) >= 1000000) {
-        manifest.pages[1].components[3].locked = false;
+            // Unlock licensing button if player has Mechanic job
+            manifest.pages[0].components[7].locked = !playerHasJobWithTag(player, "Mechanic");
+            break;
+        case 2:
+            tellPlayer(player, '&e[Dealership] Updating purchase page.');
+            // Get current vehicle index and stock data
+            var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
+            var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+            var vehicle = stock.vehicles[currentIndex];
+            var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
+            var displayName = itemStack.getDisplayName();
+            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(price, "Devland", "XXX-0000");
+            var priceFormatted = formatMoney(price);
+
+            manifest.pages[1].components[2].label = displayName;
+            manifest.pages[1].components[3].label = priceFormatted;
+
+            manifest.pages[1].components[0].locked = !hasMoneyInPouch(player, price);
+
+            break;
+        case 3:
+            // Additional page updates can be handled here
+            break;
     }
 
     return manifest;
