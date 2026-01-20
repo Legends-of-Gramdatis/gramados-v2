@@ -1,6 +1,9 @@
 // Licensing helpers for vehicle registration flows
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js");
 
+var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
+
+
 function isPlateLicensed(plate) {
     if (!plate) {
         return false;
@@ -41,7 +44,6 @@ function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
     if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
         return null;
     }
-
     var basePrice = msrp * 0.05;
 
     var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
