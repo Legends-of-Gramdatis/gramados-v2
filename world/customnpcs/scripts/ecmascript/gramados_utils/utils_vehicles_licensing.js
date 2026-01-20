@@ -35,3 +35,25 @@ function getRegistrationByVin(vin) {
     }
     return null;
 }
+
+function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
+    var msrp = Number(msrpNumber);
+    if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
+        return null;
+    }
+
+    var basePrice = msrp * 0.05;
+
+    var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
+    var price = basePrice * regionMultiplier;
+
+    if (title && VEHICLE_REGISTRATION_CONFIG.titles && VEHICLE_REGISTRATION_CONFIG.titles.hasOwnProperty(title)) {
+        price = price * VEHICLE_REGISTRATION_CONFIG.titles[title];
+    }
+
+    if (!/^[A-Za-z]{3}-\d{4}$/.test(plateText || "")) {
+        price += NON_STANDARD_PLATE_FEE_CENTS;
+    }
+
+    return Math.round(price);
+}

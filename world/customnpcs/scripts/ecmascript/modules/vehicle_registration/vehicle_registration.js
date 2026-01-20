@@ -266,28 +266,6 @@ function parsePaperDateToYYYYMMDD(text) {
     return null;
 }
 
-function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
-    var msrp = Number(msrpNumber);
-    if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
-        return null;
-    }
-
-    var basePrice = msrp * 0.05;
-
-    var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
-    var price = basePrice * regionMultiplier;
-
-    if (title && VEHICLE_REGISTRATION_CONFIG.titles && VEHICLE_REGISTRATION_CONFIG.titles.hasOwnProperty(title)) {
-        price = price * VEHICLE_REGISTRATION_CONFIG.titles[title];
-    }
-
-    if (!/^[A-Za-z]{3}-\d{4}$/.test(plateText || "")) {
-        price += NON_STANDARD_PLATE_FEE_CENTS;
-    }
-
-    return Math.round(price);
-}
-
 function stripMinecraftSectionColors(text) {
     // Removes vanilla Minecraft formatting codes (e.g. "§a", "§l")
     return String(text || "").replace(/§[0-9A-FK-ORa-fk-or]/g, "");
