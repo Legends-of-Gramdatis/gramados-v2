@@ -57,5 +57,5 @@ function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
         price += NON_STANDARD_PLATE_FEE_CENTS;
     }
 
-    return Math.round(price);
+    return Math.round(price / 100) * 100;
 }
