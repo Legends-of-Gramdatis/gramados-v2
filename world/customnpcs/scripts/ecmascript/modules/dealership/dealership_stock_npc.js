@@ -11,6 +11,17 @@ var STORED_KEY = 'dealership_stock';
 
 var guiCache = {};
 
+// Compute the start of the current week (Monday at 00:00 local time)
+function getStartOfCurrentWeekMonday() {
+    var now = new Date();
+    var monday = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var day = monday.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+    var diffToMonday = (day + 6) % 7; // Mon->0, Sun->6
+    monday.setDate(monday.getDate() - diffToMonday);
+    monday.setHours(0, 0, 0, 0);
+    return monday;
+}
+
 function getGuiResources(guiName) {
     if (guiCache[guiName]) {
         return guiCache[guiName];
@@ -77,6 +88,29 @@ function init(event) {
     // Warn if no stock loaded  
     if (!npc.getStoreddata().has(STORED_KEY)) {
         tellPlayer(player, '&c[Dealership] No stock loaded. Ask an admin to refresh.');
+    } else {
+        // Auto-reload if last refresh was before current week's Monday
+        var stockStr = npc.getStoreddata().get(STORED_KEY);
+        if (stockStr) {
+            var stockObj = null;
+            try {
+                stockObj = JSON.parse(stockStr);
+            } catch (e) {
+                // If stored JSON is invalid, trigger a reload to recover
+                stockObj = null;
+            }
+
+            if (stockObj && stockObj.refreshedAt) {
+                var lastRefresh = new Date(stockObj.refreshedAt);
+                if (!isNaN(lastRefresh.getTime())) {
+                    var weekMonday = getStartOfCurrentWeekMonday();
+                    if (lastRefresh.getTime() < weekMonday.getTime()) {
+                        tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
+                        reloadStock(player, npc);
+                    }
+                }
+            }
+        }
     }
 }
 

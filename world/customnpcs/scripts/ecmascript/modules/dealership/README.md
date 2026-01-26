@@ -13,4 +13,9 @@ NPC script to refresh dealership vehicle stock from an assembled loot table, kee
 - Chat feedback shows the number of vehicle types and total units stored, plus a short preview of counts.
 - Without the admin combo, interacting opens the dealership GUI.
 
+## Auto Refresh
+- On NPC init, the script checks the last `refreshedAt` timestamp in `dealership_stock`.
+- If that timestamp is earlier than the current week’s Monday (00:00 local time), the stock is automatically reloaded from the loot table and `refreshedAt` is updated to the current date.
+- This ensures the dealership inventory stays current on a weekly cadence without manual intervention.
+
 Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.
