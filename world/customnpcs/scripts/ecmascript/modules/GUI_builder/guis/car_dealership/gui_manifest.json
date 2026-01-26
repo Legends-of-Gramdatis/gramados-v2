@@ -258,6 +258,7 @@
             "h": 1
           },
           "label": "Licensing",
+          "locked": true,
           "hover_text": "Extra Licensing Options",
           "open_page": 3,
           "sheet": 1,
