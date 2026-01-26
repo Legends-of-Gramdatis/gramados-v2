@@ -52,12 +52,18 @@ function navigateVehicle(event, npc, direction) {
     var player = event.player;
     var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
     
-    if (stock.vehicles.length === 0) {
+    if (!stock.vehicles || stock.vehicles.length === 0) {
         tellPlayer(player, '&e[Dealership] No vehicles in stock.');
+        npc.getStoreddata().put('dealership_vehicle_index', 0);
         return;
     }
     
     var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
+    
+    // Ensure current index is valid
+    if (currentIndex < 0 || currentIndex >= stock.vehicles.length) {
+        currentIndex = 0;
+    }
     
     var newIndex = currentIndex + direction;
     var totalVehicles = stock.vehicles.length;
@@ -75,6 +81,17 @@ function navigateVehicle(event, npc, direction) {
 function purchaseVehicle(player, npc) {
     var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
     var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+    
+    if (!stock.vehicles || stock.vehicles.length === 0) {
+        tellPlayer(player, '&c[Dealership] No vehicles available in stock.');
+        return false;
+    }
+    
+    if (currentIndex < 0 || currentIndex >= stock.vehicles.length) {
+        tellPlayer(player, '&c[Dealership] Invalid vehicle selection. Please refresh.');
+        return false;
+    }
+    
     var vehicle = stock.vehicles[currentIndex];
     var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
     var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), "Devland", "XXX-0000");
@@ -82,6 +99,31 @@ function purchaseVehicle(player, npc) {
     if (extractMoneyFromPouch(player, price)) {
         player.giveItem(itemStack);
         tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + ' for ' + formatMoney(price) + '.');
+        
+        // Remove the vehicle from stock
+        if (vehicle.count > 1) {
+            // Decrease count if multiple units exist
+            stock.vehicles[currentIndex].count -= 1;
+            tellPlayer(player, '&7[Dealership] ' + (vehicle.count - 1) + ' units of this model remain in stock.');
+        } else {
+            // Remove the entire vehicle entry if only one unit existed
+            stock.vehicles.splice(currentIndex, 1);
+            stock.totalStacks -= 1;
+            tellPlayer(player, '&7[Dealership] This was the last unit of this model.');
+            
+            // Adjust vehicle index if needed
+            if (stock.vehicles.length === 0) {
+                npc.getStoreddata().put('dealership_vehicle_index', 0);
+                tellPlayer(player, '&e[Dealership] Stock is now empty. Ask an admin to refresh.');
+            } else if (currentIndex >= stock.vehicles.length) {
+                // Index is now out of bounds, wrap to last vehicle
+                npc.getStoreddata().put('dealership_vehicle_index', stock.vehicles.length - 1);
+            }
+        }
+        
+        // Save updated stock
+        npc.getStoreddata().put('dealership_stock', JSON.stringify(stock));
+        
         return true;
     }
 
@@ -100,6 +142,22 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             // Get current vehicle index and stock data
             var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
             var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+            
+            // Check if stock is empty
+            if (!stock.vehicles || stock.vehicles.length === 0) {
+                manifest.pages[0].components[0].label = "No Vehicles Available";
+                manifest.pages[0].components[5].label = "--";
+                manifest.pages[0].components[6].label = "--";
+                manifest.pages[0].components[7].locked = true;
+                break;
+            }
+            
+            // Validate index
+            if (currentIndex < 0 || currentIndex >= stock.vehicles.length) {
+                currentIndex = 0;
+                npc.getStoreddata().put('dealership_vehicle_index', 0);
+            }
+            
             var vehicle = stock.vehicles[currentIndex];
 
             // Create itemstack for the current vehicle
@@ -113,7 +171,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             var paperPrice = formatMoney(calculateCarPaperPrice(price, "Devland", "XXX-0000"));
             
             // Update label component with vehicle display name
-            manifest.pages[0].components[0].label = displayName;
+            manifest.pages[0].components[0].label = displayName + (vehicle.count > 1 ? " (" + vehicle.count + " available)" : "");
             manifest.pages[0].components[5].label = priceFormatted;
             manifest.pages[0].components[6].label = paperPrice;
 
@@ -125,10 +183,22 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             // Get current vehicle index and stock data
             var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
             var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+            
+            // Validate stock and index
+            if (!stock.vehicles || stock.vehicles.length === 0) {
+                manifest.pages[1].components[2].label = "No Vehicles Available";
+                break;
+            }
+            
+            if (currentIndex < 0 || currentIndex >= stock.vehicles.length) {
+                currentIndex = 0;
+                npc.getStoreddata().put('dealership_vehicle_index', 0);
+            }
+            
             var vehicle = stock.vehicles[currentIndex];
             var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
             var displayName = itemStack.getDisplayName();
-            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(price, "Devland", "XXX-0000");
+            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), "Devland", "XXX-0000");
             var priceFormatted = formatMoney(price);
 
             manifest.pages[1].components[2].label = displayName;
