@@ -6,6 +6,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
 var API = Java.type("noppes.npcs.api.NpcAPI").Instance();
 
@@ -941,8 +942,7 @@ function interact(event) {
         if (!isPlateLicensed(plate)) {
             var licensedVehicles = licensedVehiclesExisting;
             var npcRegionUnlicensed = getNpcRegion(npc);
-            var today = new Date();
-            var dateStr = today.getFullYear() + "-" + padLeft(today.getMonth() + 1, 2, "0") + "-" + padLeft(today.getDate(), 2, "0");
+            var dateStr = dateToYYYYMMDD();
             licensedVehicles[plate] = {
                 vin: keyUUID || "unknown",
                 vehicleId: vehicleId,

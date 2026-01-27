@@ -1,6 +1,7 @@
 // Vehicle utilities for registration and management
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
 /**
  * Load the vehicle catalog database
@@ -177,10 +178,7 @@ function registerVehicle(vehicleId, vehicleSystemName, vin, ownerName, vehicleMe
     }
     
     // Create registration record
-    var today = new Date();
-    var dateStr = today.getFullYear() + "-" + 
-                  padLeft(today.getMonth() + 1, 2, "0") + "-" + 
-                  padLeft(today.getDate(), 2, "0");
+    var dateStr = dateToYYYYMMDD();
 
     licensedVehicles[plate] = {
         vin: vin,
@@ -212,6 +210,58 @@ function registerVehicle(vehicleId, vehicleSystemName, vin, ownerName, vehicleMe
     return { success: true, plate: plate, message: "Vehicle registered successfully" };
 }
 
+function generateRandomWWPlate() {
+
+    var plate = "WW-";
+    
+    do {
+        plate += padLeft(Math.floor(Math.random() * 100000), 5, "0");
+    } while (!isPlateAvailable(plate));
+    
+    return plate;
+
+}
+
+function registerVehicleAsWW(vehicleId, ownerName, player) {
+    var vehicleInfo = getVehicleInfo(vehicleId);
+    var plate = generateRandomWWPlate();
+    var licensedVehicles = loadLicensedVehicles();
+
+    tellPlayer(player, "&e[Vehicle Registration] Generated WW plate: " + plate);
+
+    var dateStr = dateToYYYYMMDD();
+
+    licensedVehicles[plate] = {
+        asWW: true,
+        WWplate: plate,
+        vin: "N/A",
+        vehicleId: String(vehicleId),
+        vehicleSystemName: vehicleId,
+        paintVariant: "",
+        trim: "N/A",
+        interior: "N/A",
+        msrpCents: null,
+        engineId: "Unknown",
+        engineSystemName: "Unknown",
+        ownershipHistory: [
+            {
+                owner: ownerName,
+                acquiredDate: dateStr,
+                soldDate: null
+            }
+        ],
+        titles: (vehicleInfo && vehicleInfo.extraTitles) ? vehicleInfo.extraTitles.slice() : [],
+        insuranceClaims: [],
+        history: [],
+        registrationDate: dateStr,
+        status: "WW"
+    };
+    
+    saveLicensedVehicles(licensedVehicles);
+    
+    return { success: true, plate: plate, message: "Vehicle registered successfully as WW" };
+}
+
 /**
  * Get vehicle registration by license plate
  */
@@ -231,10 +281,7 @@ function addInsuranceClaim(plate, description, amount) {
         return false;
     }
     
-    var today = new Date();
-    var dateStr = today.getFullYear() + "-" + 
-                  padLeft(today.getMonth() + 1, 2, "0") + "-" + 
-                  padLeft(today.getDate(), 2, "0");
+    var dateStr = dateToYYYYMMDD();
     
     var claimId = "claim_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
     
@@ -260,10 +307,7 @@ function transferOwnership(plate, newOwner) {
         return false;
     }
     
-    var today = new Date();
-    var dateStr = today.getFullYear() + "-" + 
-                  padLeft(today.getMonth() + 1, 2, "0") + "-" + 
-                  padLeft(today.getDate(), 2, "0");
+    var dateStr = dateToYYYYMMDD();
     
     // Mark previous owner as sold
     if (vehicle.ownershipHistory.length > 0) {
