@@ -1,22 +1,103 @@
 {
   "vehicles": {
-    "trin_heavorum_crewcab_dually": {
+    "trin_heavorum": {
       "brand": "Trin",
-      "name": "Heavorum CrewCab Dually",
+      "name": "Heavorum",
       "maxHealth": 270,
       "extraTitles": []
     },
-    "trin_footpather_phase2": {
+    "trin_devom": {
       "brand": "Trin",
-      "name": "Footpather Phase 2",
+      "name": "Devom",
+      "maxHealth": 100,
+      "extraTitles": []
+    },
+    "trin_footpather": {
+      "brand": "Trin",
+      "name": "Footpather",
       "maxHealth": 155,
+      "extraTitles": []
+    },
+    "trin_bultizorg": {
+      "brand": "Trin",
+      "name": "Bultizorg",
+      "maxHealth": 250,
+      "extraTitles": []
+    },
+    "trin_trainingor": {
+      "brand": "Trin",
+      "name": "Trainingor",
+      "maxHealth": 165,
+      "extraTitles": []
+    },
+    "trin_springbok": {
+      "brand": "Trin",
+      "name": "Springbok",
+      "maxHealth": 135,
+      "extraTitles": []
+    },
+    "trin_urlon": {
+      "brand": "Trin",
+      "name": "Urlon",
+      "maxHealth": 150,
+      "extraTitles": []
+    },
+    "trin_flugoral": {
+      "brand": "Trin",
+      "name": "Flugoral",
+      "maxHealth": 165,
+      "extraTitles": []
+    },
+    "trin_gobig_pickup_2door": {
+      "brand": "Trin",
+      "name": "Gobig Pickup 2-Door",
+      "maxHealth": 240,
+      "extraTitles": []
+    },
+    "trin_gobig_suv_2door": {
+      "brand": "Trin",
+      "name": "Gobig SUV 2-Door",
+      "maxHealth": 250,
+      "extraTitles": []
+    },
+    "trin_gobig_suv_cabrio_2door": {
+      "brand": "Trin",
+      "name": "Gobig SUV Cabrio 2-Door",
+      "maxHealth": 250,
+      "extraTitles": []
+    },
+    "trin_gobig_suv_4door": {
+      "brand": "Trin",
+      "name": "Gobig SUV 4-Door",
+      "maxHealth": 270,
+      "extraTitles": []
+    },
+    "trin_sportail_large": {
+      "brand": "Trin",
+      "name": "Sportail Large",
+      "maxHealth": 250,
+      "extraTitles": []
+    },
+    "trin_sportail_small": {
+      "brand": "Trin",
+      "name": "Sportail Small",
+      "maxHealth": 200,
+      "extraTitles": []
+    },
+    "trin_pilocrap": {
+      "brand": "Trin",
+      "name": "Pilocrap",
+      "maxHealth": 260,
       "extraTitles": []
     },
     "unucivil_vehicle_unu_mastodon": {
       "brand": "UNU",
       "name": "Mastodon",
       "maxHealth": 100,
-      "extraTitles": ["Collectable", "Import"]
+      "extraTitles": [
+        "Collectable",
+        "Import"
+      ]
     }
   },
   "plateSystems": {
