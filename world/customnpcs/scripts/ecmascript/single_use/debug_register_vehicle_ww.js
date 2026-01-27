@@ -25,6 +25,13 @@ function interact(event) {
         if (mainVehicleId && vehicleCatalog.vehicles[mainVehicleId]) {
             var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId, "Devland", generateRandomPlate("plate_gramados"), []);
             tellRegisterationDetails(player, registeredData);
+            var item = generatePaperItem(player.getWorld(), registeredData, player);
+            if (item) {
+                player.giveItem(item);
+                tellPlayer(player, "&a[Debug] Vehicle registered as WW and papers given.");
+            } else {
+                tellPlayer(player, "&c[Debug] Failed to generate vehicle papers item.");
+            }
             return;
         }
     }

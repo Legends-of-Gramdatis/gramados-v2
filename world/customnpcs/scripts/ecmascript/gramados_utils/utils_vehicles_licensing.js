@@ -161,16 +161,21 @@ function generateWWPaperItem(world, registration, player) {
     var vehicle_stack_name = vehicle_stack.getDisplayName();
 
     var lore = [
-        "&b" + vehicle_stack_name,
-        "&cThis vehicle is currently in WW state.",
-        "&cTo finalize registration, please contact any dealership.",
-        "&cInteract with both the car papers and the car item after placement."
+        "§b" + vehicle_stack_name,
+        "§cThis vehicle is currently in WW state.",
+        "§cTo finalize registration, please contact any dealership.",
+        "§cInteract with both the car papers and the car item after placement."
     ];
     stack.setLore(lore);
     return stack;
 }
 
 function generatePaperItem(world, registration, player) {
+
+    if (registration.status === "WW") {
+        return generateWWPaperItem(world, registration, player);
+    }
+
     var stack = world.createItem(VEHICLE_REGISTRATION_CONFIG.carPapers.item_id, 0, 1);
     stack.setCustomName(ccs("&6Car Papers"));
 
@@ -178,21 +183,21 @@ function generatePaperItem(world, registration, player) {
     var vehicle_stack_name = vehicle_stack.getDisplayName();
 
     var lore = [
-        "&b" + vehicle_stack_name,
-        "&aConfiguration:",
-        "&a- Trim: " + registration.trim,
-        "&a- Paint: " + registration.paint,
-        "&a- Interior: " + registration.interior,
-        "&a- Engine: " + registration.engine,
-        "&5Information:",
-        "&5- First Owner: " + registration.firstOwner,
-        "&5- Delivery: " + registration.delivery,
-        "&5- Plate: " + registration.plate,
-        "&5- MSRP: " + getAmountCoin(registration.msrpCents),
-        "&eRegistry:",
-        "&e- Title: " + registration.title,
-        "&e- Price: " + getAmountCoin(registration.registrationPriceCents),
-        "&e- Region: " + registration.region
+        "§b" + vehicle_stack_name,
+        "§aConfiguration:",
+        "§a- Trim: " + registration.trim,
+        "§a- Paint: " + registration.paint,
+        "§a- Interior: " + registration.interior,
+        "§a- Engine: " + registration.engine,
+        "§5Information:",
+        "§5- First Owner: " + registration.firstOwner,
+        "§5- Delivery: " + registration.delivery,
+        "§5- Plate: " + registration.plate,
+        "§5- MSRP: " + getAmountCoin(registration.msrpCents),
+        "§eRegistry:",
+        "§e- Title: " + registration.title,
+        "§e- Price: " + getAmountCoin(registration.registrationPriceCents),
+        "§e- Region: " + registration.region
     ];
     stack.setLore(lore);
     return stack;
