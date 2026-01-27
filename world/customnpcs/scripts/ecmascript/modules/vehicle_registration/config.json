@@ -49,5 +49,10 @@
         "Demilitarized": 1.0,
         "Farm-Use": 0.90,
         "Salvaged": 1.0
+    },
+    "carPapers": {
+        "item_id": "variedcommodities:letter",
+        "unknown_value": "Unknown",
+        "na_value": "N/A"
     }
 }
