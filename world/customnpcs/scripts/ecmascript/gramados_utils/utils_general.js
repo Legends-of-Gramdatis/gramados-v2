@@ -96,15 +96,22 @@ function includeSome(array, items) {
 /**
  * Finds an entry in a JSON array by a specific key and value.
  *
- * @param {Object[]} json - The JSON array to search.
+ * @param {Object{}} json - The JSON object to search.
  * @param {string} key - The key to search for.
  * @param {*} value - The value to search for.
  * @returns {Object} - The JSON object if found, null otherwise.
  */
 function findJsonEntry(json, key, value) {
-    for (var i = 0; i < json.length; i++) {
-        if (json[i][key] === value) {
-            return json[i];
+    // for all entries in json
+    all_keys = Object.keys(json);
+
+    for (var i = 0; i < all_keys.length; i++) {
+
+        var entryKey = all_keys[i];
+        var entry = json[entryKey];
+
+        if (entry[key] === value) {
+            return entry;
         }
     }
 
