@@ -23,7 +23,7 @@ function interact(event) {
         var mainVehicleId = getMainVehicleId(itemId);
 
         if (mainVehicleId && vehicleCatalog.vehicles[mainVehicleId]) {
-            var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId);
+            var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId, "Devland", generateRandomPlate("plate_gramados"), []);
             tellRegisterationDetails(player, registeredData);
             return;
         }
