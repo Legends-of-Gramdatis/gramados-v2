@@ -2,6 +2,7 @@
 // Place this as an NPC script (interact) for quick vehicle registration testing
 
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
@@ -18,22 +19,12 @@ function interact(event) {
         if (!stack || stack.isEmpty()) continue;
         
         var itemId = stack.getName();
-        
-        // Check if this item exists in vehicle catalog
-        // Try direct lookup first
-        var systemName = getVehicleSystemNameFromItemId(itemId);
+
         var mainVehicleId = getMainVehicleId(itemId);
 
-        tellPlayer(player, "&6[Debug] Checking item: &e" + itemId + " | System name: " + systemName + " | Main vehicle ID: " + mainVehicleId);
-        
         if (mainVehicleId && vehicleCatalog.vehicles[mainVehicleId]) {
-            tellPlayer(player, "&6[Debug] Found vehicle: &e" + itemId);
-            tellPlayer(player, "&6[Debug] System name: &e" + systemName);
-            
-            // Call registerVehicleAsWW
-            registerVehicleAsWW(itemId, player.getName(), player);
-            
-            tellPlayer(player, "&a[Debug] Vehicle registration initiated!");
+            var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId);
+            tellRegisterationDetails(player, registeredData);
             return;
         }
     }
