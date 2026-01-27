@@ -1,5 +1,10 @@
 // Licensing helpers for vehicle registration flows
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 
 var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
 
@@ -60,12 +65,72 @@ function getRegistrationByVinCompact(vin) {
     return null;
 }
 
+function getUnknownLabel() {
+    return VEHICLE_REGISTRATION_CONFIG.carPapers.unknown_value;
+}
+function getNaLabel() {
+    return VEHICLE_REGISTRATION_CONFIG.carPapers.na_value;
+}
+
+
+
+function addOwnershipHistoryPlaceholder(playerName) {
+    return {
+        owner: playerName,
+        acquiredDate: dateToDDMMYYYY(),
+        soldDate: getNaLabel()
+    };
+}
+
+
+function tellRegisterationDetails(player, registration) {
+    tellPlayer(player, "&6--- Vehicle Registration Details ---");
+    tellPlayer(player, "&6VIN: &e" + registration.vin);
+    tellPlayer(player, "&6Plate: &e" + registration.plate);
+    tellPlayer(player, "&6Vehicle ID: &e" + registration.vehicleId);
+    tellPlayer(player, "&6Registration Date: &e" + registration.registrationDate);
+    tellPlayer(player, "&6Status: &e" + registration.status);
+    tellPlayer(player, "&6Region: &e" + registration.region);
+    tellPlayer(player, "&6MSRP: &e" + formatMoney(registration.msrpCents));
+    tellPlayer(player, "&6Owner History:");
+    for (var i = 0; i < registration.ownershipHistory.length; i++) {
+        var history = registration.ownershipHistory[i];
+        tellPlayer(player, "  &e- Owner: " + history.owner + ", Acquired: " + history.acquiredDate + ", Sold: " + history.soldDate);
+    }
+}
+
+
+
+function generatePlaceholderRegistration(ownerName, itemId) {
+    return {
+        vin: getUnknownLabel(),
+        plate: getUnknownLabel(),
+        vehicleId: itemId,
+        vehicleSystemName: getUnknownLabel(),
+        paintVariant: getUnknownLabel(),
+        trim: getUnknownLabel(),
+        interior: getUnknownLabel(),
+        msrpCents: getPrice(itemId, getUnknownLabel(), null, true),
+        engineId: getUnknownLabel(),
+        engineSystemName: getUnknownLabel(),
+        ownershipHistory: [
+            addOwnershipHistoryPlaceholder(ownerName)
+        ],
+        titles: [],
+        insuranceClaims: [],
+        history: [],
+        registrationDate: dateToDDMMYYYY(),
+        status: "WW",
+        region: getUnknownLabel(),
+        metaSources: ["Placeholder Registration"]
+    };
+}
+
+
 function getRegistrationByVin(vin) {
     var licensed = loadLicensedVehicles();
     return findJsonEntry(licensed, "vin", vin);
 }
-
-
 
 function getRegistrationByPlate(plate) {
     var licensed = loadLicensedVehicles();
