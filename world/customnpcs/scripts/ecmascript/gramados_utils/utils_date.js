@@ -239,3 +239,24 @@ function dateToYYYYMMDD(dateObj) {
     var day = padLeft(dateObj.getDate(), 2, "0");
     return year + "-" + month + "-" + day;
 }
+
+function dateToDDMMYYYY(dateObj) {
+    if (!dateObj) {
+        dateObj = new Date();
+    }
+    var day = padLeft(dateObj.getDate(), 2, "0");
+    var month = padLeft(dateObj.getMonth() + 1, 2, "0");
+    var year = dateObj.getFullYear();
+    return day + "/" + month + "/" + year;
+}
+
+function formatDateYYYYMMDDToDDMMYYYY(dateStr) {
+    if (!dateStr) {
+        return null;
+    }
+    var m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(dateStr);
+    if (!m) {
+        return null;
+    }
+    return m[3] + "/" + m[2] + "/" + m[1];
+}
