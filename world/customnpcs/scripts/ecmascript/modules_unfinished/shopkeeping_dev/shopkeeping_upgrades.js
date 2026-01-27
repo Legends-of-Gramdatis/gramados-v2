@@ -115,7 +115,7 @@ function listShopEvents(player, shopData) {
         var event = upgrades.events[i];
         var canStartEvent = canShopStartEvent(shopData, event);
 
-        if (!findJsonSubEntry(shopData.events, "id", event.id)) {
+        if (!findJsonEntryArray(shopData.events, "id", event.id)) {
             if (canStartEvent.canTake) {
                 var entry = "&2:check_mark: &a" + event.name + " &8(ID: " + event.id + ")&a : \n&7" + event.description + "\n&6Cost: &r:money:&e" + getAmountCoin(event.cost) + "\n&a:thumbsup: Shop can start this event!\n&b-----------------------------------------";
                 messageEvents2.push(entry);
@@ -369,7 +369,7 @@ function takeShopEvent(player, shopData, eventId) {
         shopData.events = [];
     }
 
-    if (findJsonSubEntry(shopData.events, "id", eventId)) {
+    if (findJsonEntryArray(shopData.events, "id", eventId)) {
         tellPlayer(player, "&cEvent already running: &e" + eventId);
         return;
     }
@@ -418,12 +418,12 @@ function removeShopEvent(player, shopData, eventId) {
         return;
     }
 
-    if (!findJsonSubEntry(shopData.events, "id", eventId)) {
+    if (!findJsonEntryArray(shopData.events, "id", eventId)) {
         tellPlayer(player, "&cEvent not running: &e" + eventId);
         return;
     }
 
-    var index = findJsonSubEntryIndex(shopData.events, "id", eventId);
+    var index = findJsonEntryArrayIndex(shopData.events, "id", eventId);
     if (index > -1) {
         shopData.events.splice(index, 1);
     }

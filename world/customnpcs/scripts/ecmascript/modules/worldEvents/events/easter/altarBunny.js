@@ -465,7 +465,7 @@ function getEggType(item) {
 function makeChocolateRain(npc, recipe, bossFightData, safeZone) {
     if (recipe.first_trigger == false) {
         recipe.first_trigger = true;
-        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+        tellNearbyPlayers(npc, findJsonEntryArray(bossFightData.all_recipes, "name", recipe.name).description, 50);
     }
 
     var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON
@@ -523,7 +523,7 @@ function applyBunnyBounceEffect(npc, recipe, bossFightData, safeZone) {
         }
 
         // Notify players in the arena
-        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+        tellNearbyPlayers(npc, findJsonEntryArray(bossFightData.all_recipes, "name", recipe.name).description, 50);
     }
 }
 
@@ -542,7 +542,7 @@ function triggerZapOrbEvent(npc, recipe, bossFightData, safeZone) {
         var zapOrbName = "Zap Orb"; // Name of the NPC to spawn
 
         // Notify players in the area
-        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+        tellNearbyPlayers(npc, findJsonEntryArray(bossFightData.all_recipes, "name", recipe.name).description, 50);
 
         var players = npc.getWorld().getNearbyEntities(npc.getPos(), 50, 1); // Radius of 50 blocks, type 1 = players
         for (var i = 0; i < players.length; i++) {
@@ -577,7 +577,7 @@ function applyHealingSpiritsEffect(npc, recipe, bossFightData, safeZone) {
         recipe.first_trigger = true;
 
         // Notify players in the area
-        tellNearbyPlayers(npc, findJsonSubEntry(bossFightData.all_recipes, "name", recipe.name).description, 50);
+        tellNearbyPlayers(npc, findJsonEntryArray(bossFightData.all_recipes, "name", recipe.name).description, 50);
     }
 
     var arenaType = bossFightData["use_arena"] || "debug"; // Get arena type from JSON

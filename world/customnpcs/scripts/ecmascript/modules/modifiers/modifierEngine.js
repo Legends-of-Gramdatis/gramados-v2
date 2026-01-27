@@ -120,14 +120,14 @@ function interact(event) {
                     return;
                 }
 
-                var activeEntry = findJsonSubEntry(config_data.modifiers, "type", displayName);
+                var activeEntry = findJsonEntryArray(config_data.modifiers, "type", displayName);
                 if (activeEntry) {
                     foundEntry = { kind: "active", type: activeEntry.type };
                     player.setMainhandItem(instanciate_active_modifier(player, item, displayName));
                     break;
                 }
 
-                var passiveEntry = findJsonSubEntry(config_data.passive_modifiers, "type", displayName);
+                var passiveEntry = findJsonEntryArray(config_data.passive_modifiers, "type", displayName);
                 if (passiveEntry) {
                     foundEntry = { kind: "passive", type: passiveEntry.type };
                     player.setMainhandItem(instanciate_passive_modifier(player, item, displayName));

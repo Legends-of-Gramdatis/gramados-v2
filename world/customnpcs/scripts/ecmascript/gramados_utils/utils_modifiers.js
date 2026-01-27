@@ -39,7 +39,7 @@ function instanciate_active_modifier(player, stack, modifierType, silent) {
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonSubEntry(config_data.modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(config_data.modifiers, "type", modifierType);
     if (silent !== true) {
         tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierType + "': " + JSON.stringify(entry));
     }
@@ -90,7 +90,7 @@ function instanciate_passive_modifier(player, stack, modifierType, silent) {
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonSubEntry(config_data.passive_modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(config_data.passive_modifiers, "type", modifierType);
     if (silent !== true) {
         tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierType + "': " + JSON.stringify(entry));
     }
@@ -306,7 +306,7 @@ function apply_active_modifier_type(player, modifierType, radius) {
 
 
 function get_passive_modifier_config_entry(modifierType) {
-    return findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+    return findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
 }
 
 function get_passive_modifier_remaining_ms(player_modifier, nowMs) {
@@ -438,7 +438,7 @@ function player_has_passive_modifier_with_tag(player, tag) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = findJsonSubEntry(config_data.passive_modifiers, "type", playerModifiers[i].type);
+        var entry = findJsonEntryArray(config_data.passive_modifiers, "type", playerModifiers[i].type);
         if (entry && entry.tags && includes(entry.tags, tag)) {
             return true;
         }
@@ -455,7 +455,7 @@ function get_passive_multiplier_for_tag(player, tag) {
     var totalMultiplier = 1.0;
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = findJsonSubEntry(config_data.passive_modifiers, "type", playerModifiers[i].type);
+        var entry = findJsonEntryArray(config_data.passive_modifiers, "type", playerModifiers[i].type);
         if (entry && entry.tags && includes(entry.tags, tag)) {
             totalMultiplier += entry.multiplier - 1.0;
         }
@@ -603,7 +603,7 @@ function format_passive_modifier_presentation(player, player_modifier) {
         return ccs("&7(Invalid passive modifier entry)");
     }
 
-    var entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", player_modifier.type);
+    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", player_modifier.type);
     if (!entry) {
         return ccs("&7Unknown passive modifier: &f" + player_modifier.type);
     }
@@ -653,11 +653,11 @@ function formatDurationMs(durationMs) {
 }
 
 function get_modifier_display_name(modifierType) {
-    var entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).modifiers, "type", modifierType);
     if (entry) {
         return parseEmotes(ccs(entry.displayName));
     } else {
-        entry = findJsonSubEntry(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+        entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
         if (entry) {
             return parseEmotes(ccs(entry.displayName));
         }

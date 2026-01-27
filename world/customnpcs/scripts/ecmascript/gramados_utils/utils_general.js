@@ -118,8 +118,7 @@ function findJsonEntry(json, key, value) {
  * @param {*} value - The value to search for.
  * @returns {Object} - The JSON object if found, null otherwise.
  */
-function findJsonSubEntry(jsonarray, key, value) {
-    // for each json in the array, see if the key exists and if it does, check if the value matches
+function findJsonEntryArray(jsonarray, key, value) {
     for (var i = 0; i < jsonarray.length; i++) {
         if (jsonarray[i][key] === value) {
             return jsonarray[i];
@@ -136,7 +135,7 @@ function findJsonSubEntry(jsonarray, key, value) {
  * @param {*} value - The value to search for.
  * @returns {number} - The index of the JSON object if found, -1 otherwise.
  */
-function findJsonSubEntryIndex(jsonarray, key, value) {
+function findJsonEntryArrayIndex(jsonarray, key, value) {
     for (var i = 0; i < jsonarray.length; i++) {
         if (jsonarray[i][key] === value) {
             return i;
@@ -180,7 +179,7 @@ function getJsonKeys(json) {
 //     var ops = loadJson("ops.json");
 //     // tellPlayer(player, "&6Checking if player " + playerName + " is an OP");
 //     if (ops) {
-//         if (findJsonSubEntry(ops, "name", playerName)) {
+//         if (findJsonEntryArray(ops, "name", playerName)) {
 //             return true;
 //         }
 //     } else {

@@ -242,7 +242,7 @@ function interact(event) {
         return;
     }
 
-    var bank = banksData[findJsonSubEntryIndex(banksData, "bankName", bankName)];
+    var bank = banksData[findJsonEntryArrayIndex(banksData, "bankName", bankName)];
 
     var fill_level = npc.getStoreddata().get("fill_level");
     var credit_refill = npc.getStoreddata().get("credit_refill") || 0;
@@ -534,7 +534,7 @@ function generateLoot(world, npc, player) {
         try {
             var banksData = loadJson("world/customnpcs/scripts/ecmascript/modules/bankVault/banks_data.json");
             var bankName = npc.getStoreddata().get("bank_name");
-            var bankIndex = findJsonSubEntryIndex(banksData, "bankName", bankName);
+            var bankIndex = findJsonEntryArrayIndex(banksData, "bankName", bankName);
             if (bankIndex != null && bankIndex >= 0) {
                 var bank = banksData[bankIndex];
                 chosenMode = bank.factionRepMode || "increase"; // default increase
