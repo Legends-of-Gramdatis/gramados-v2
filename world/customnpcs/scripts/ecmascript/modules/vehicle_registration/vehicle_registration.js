@@ -232,28 +232,6 @@ function toggleNpcDebugMode(npc) {
     return next;
 }
 
-function formatDateDDMMYYYY(dateObj) {
-    var day = padLeft(dateObj.getDate(), 2, "0");
-    var month = padLeft(dateObj.getMonth() + 1, 2, "0");
-    var year = dateObj.getFullYear();
-    return day + "/" + month + "/" + year;
-}
-
-function formatDateYYYYMMDDToDDMMYYYY(dateStr) {
-    if (!dateStr) {
-        return null;
-    }
-    var m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(dateStr);
-    if (!m) {
-        return null;
-    }
-    return m[3] + "/" + m[2] + "/" + m[1];
-}
-
-function dateToYYYYMMDD(dateObj) {
-    return dateObj.getFullYear() + "-" + padLeft(dateObj.getMonth() + 1, 2, "0") + "-" + padLeft(dateObj.getDate(), 2, "0");
-}
-
 function parsePaperDateToYYYYMMDD(text) {
     var s = String(text || "").trim();
     var m1 = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(s);
@@ -984,7 +962,7 @@ function interact(event) {
     // ============ Check for VIN Fraud ============ //
     // If a VIN already exists in the system, this is fraud
     if (keyUUID) {
-        var vinMatch = getRegistrationByVin(keyUUID);
+        var vinMatch = getRegistrationByVinCompact(keyUUID);
         if (vinMatch) {
             tellPlayer(player, "&4:warning: VIN Fraud Detected!");
             tellPlayer(player, "&4This VIN is already registered to plate: &f" + vinMatch.plate);

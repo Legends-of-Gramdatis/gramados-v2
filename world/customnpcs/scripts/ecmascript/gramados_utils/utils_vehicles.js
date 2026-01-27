@@ -106,14 +106,6 @@ function getVehicleInfo(mainVehicleId) {
 }
 
 /**
- * Check if a license plate is the default one for a vehicle
- */
-function isDefaultPlate(plate, mainVehicleId) {
-    // Deprecated: plate defaults are determined by the license plate part systemName.
-    return false;
-}
-
-/**
  * Generate a random license plate for a vehicle
  */
 function generateRandomPlate(systemName) {

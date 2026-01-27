@@ -25,20 +25,6 @@ function isVinUnknown(vin) {
     return true;
 }
 
-function getRegistrationByVin(vin) {
-    if (!vin) {
-        return null;
-    }
-    var licensed = loadLicensedVehicles();
-    for (var plate in licensed) {
-        var entry = licensed[plate];
-        if (entry && entry.vin === vin) {
-            return { plate: plate, entry: entry };
-        }
-    }
-    return null;
-}
-
 function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
     var msrp = Number(msrpNumber);
     if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
@@ -58,4 +44,67 @@ function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
     }
 
     return Math.round(price / 100) * 100;
+}
+
+function getRegistrationByVinCompact(vin) {
+    if (!vin) {
+        return null;
+    }
+    var licensed = loadLicensedVehicles();
+    for (var plate in licensed) {
+        var entry = licensed[plate];
+        if (entry && entry.vin === vin) {
+            return { plate: plate, entry: entry };
+        }
+    }
+    return null;
+}
+
+function getRegistrationByVin(vin) {
+    if (!vin) {
+        return null;
+    }
+    var licensed = loadLicensedVehicles();
+    for (var plate in licensed) {
+        var entry = licensed[plate];
+        if (entry && entry.vin === vin) {
+            return { plate: plate, entry: entry };
+        }
+    }
+    return null;
+}
+
+
+
+function getRegistrationByPlate(plate) {
+    if (!plate) {
+        return null;
+    }
+    var licensed = loadLicensedVehicles();
+    if (licensed[plate]) {
+        return { plate: plate, entry: licensed[plate] };
+    }
+    return null;
+}
+
+function generatePaperItemFromVin(world, vin, player) {
+    var registration = getRegistrationByVinCompact(vin);
+    if (registration) {
+        return generatePaperItemFromPlate(world, registration.plate, player);
+    }
+    return null;
+}
+
+function generatePaperItemFromPlate(world, plate, player) {
+    var licensed = loadLicensedVehicles();
+    if (!licensed[plate]) {
+        return null;
+    }
+    var vehicleData = licensed[plate];
+    var vehicleInfo = getVehicleInfoByItemId(vehicleData.itemId);
+    if (!vehicleInfo) {
+        return null;
+    }
+
+    return stack;
 }
