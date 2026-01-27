@@ -61,34 +61,22 @@ function getRegistrationByVinCompact(vin) {
 }
 
 function getRegistrationByVin(vin) {
-    if (!vin) {
-        return null;
-    }
     var licensed = loadLicensedVehicles();
-    for (var plate in licensed) {
-        var entry = licensed[plate];
-        if (entry && entry.vin === vin) {
-            return { plate: plate, entry: entry };
-        }
-    }
-    return null;
+    return findJsonEntry(licensed, "vin", vin);
 }
 
 
 
 function getRegistrationByPlate(plate) {
-    if (!plate) {
-        return null;
-    }
     var licensed = loadLicensedVehicles();
     if (licensed[plate]) {
-        return { plate: plate, entry: licensed[plate] };
+        return licensed[plate];
     }
     return null;
 }
 
 function generatePaperItemFromVin(world, vin, player) {
-    var registration = getRegistrationByVinCompact(vin);
+    var registration = getRegistrationByVin(vin);
     if (registration) {
         return generatePaperItemFromPlate(world, registration.plate, player);
     }
