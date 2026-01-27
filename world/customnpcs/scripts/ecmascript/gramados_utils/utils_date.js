@@ -1,4 +1,5 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js')
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js')
 
 /**
  * Checks if the current date is between two specified dates.
@@ -222,4 +223,19 @@ function getTimeLeftBeforeTick(world, targetTick) {
     }
 
     return ticksLeft;
+}
+
+/**
+ * Converts a Date object to YYYY-MM-DD format string.
+ * @param {Date} [dateObj] - The Date object to convert. If not provided, uses current date.
+ * @returns {string} - The date formatted as YYYY-MM-DD.
+ */
+function dateToYYYYMMDD(dateObj) {
+    if (!dateObj) {
+        dateObj = new Date();
+    }
+    var year = dateObj.getFullYear();
+    var month = padLeft(dateObj.getMonth() + 1, 2, "0");
+    var day = padLeft(dateObj.getDate(), 2, "0");
+    return year + "-" + month + "-" + day;
 }
