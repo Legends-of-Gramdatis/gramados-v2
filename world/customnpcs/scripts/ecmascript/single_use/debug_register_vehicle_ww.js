@@ -12,6 +12,14 @@ function interact(event) {
     var slots = inv.getItems();
     
     var vehicleCatalog = loadVehicleCatalog();
+
+    for (var i = 0; i < slots.length; i++) {
+        var stack = slots[i];
+        if (isPaperWWCarPapers(stack)) {
+            tellPlayer(player, "&c[Debug] You already have WW car papers in your inventory. Cannot register another vehicle as WW.");
+            return;
+        }
+    }
     
     // Search for first vehicle item in inventory
     for (var i = 0; i < slots.length; i++) {
@@ -25,7 +33,7 @@ function interact(event) {
         if (mainVehicleId && vehicleCatalog.vehicles[mainVehicleId]) {
             var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId, "Devland", generateRandomPlate("plate_gramados"), []);
             tellRegisterationDetails(player, registeredData);
-            var item = generatePaperItem(player.getWorld(), registeredData, player);
+            var item = generatePaperItem(player.getWorld(), registeredData, stack);
             if (item) {
                 player.giveItem(item);
                 tellPlayer(player, "&a[Debug] Vehicle registered as WW and papers given.");
