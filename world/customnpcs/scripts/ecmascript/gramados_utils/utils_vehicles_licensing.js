@@ -116,6 +116,7 @@ function generatePlaceholderRegistration(ownerName, itemId, region, plate, title
         registrationPriceCents: calculateCarPaperPrice(msrp, region, plate, titles),
         engineId: getUnknownLabel(),
         engineSystemName: getUnknownLabel(),
+        firstRegistrant: ownerName,
         ownershipHistory: [
             addOwnershipHistoryPlaceholder(ownerName)
         ],
@@ -153,52 +154,87 @@ function generatePaperItemFromPlate(world, plate, player) {
     return generatePaperItem(world, registration, player);
 }
 
-function generateWWPaperItem(world, registration, player) {
-    var stack = world.createItem(VEHICLE_REGISTRATION_CONFIG.carPapers.item_id, 0, 1);
-    stack.setCustomName(ccs("&6Car Papers"));
-
-    var vehicle_stack = world.createItem(registration.vehicleId, 0, 1);
-    var vehicle_stack_name = vehicle_stack.getDisplayName();
-
-    var lore = [
-        "§b" + vehicle_stack_name,
-        "§cThis vehicle is currently in WW state.",
-        "§cTo finalize registration, please contact any dealership.",
-        "§cInteract with both the car papers and the car item after placement."
-    ];
-    stack.setLore(lore);
-    return stack;
+function setupPaperNBT(stack, registration) {
+    var nbt = stack.getNbt();
+    nbt.setString("status", registration.status);
+    nbt.setString("plate", registration.plate);
+    nbt.setString("registrant", registration.firstRegistrant);
+    nbt.setString("linked_vehicle_id", registration.vehicleId);
 }
 
-function generatePaperItem(world, registration, player) {
-
-    if (registration.status === "WW") {
-        return generateWWPaperItem(world, registration, player);
-    }
-
-    var stack = world.createItem(VEHICLE_REGISTRATION_CONFIG.carPapers.item_id, 0, 1);
-    stack.setCustomName(ccs("&6Car Papers"));
-
-    var vehicle_stack = world.createItem(registration.vehicleId, 0, 1);
-    var vehicle_stack_name = vehicle_stack.getDisplayName();
-
+function setupPaperLoreWW(stack, registration, vehicleDisplayName) {
     var lore = [
-        "§b" + vehicle_stack_name,
-        "§aConfiguration:",
-        "§a- Trim: " + registration.trim,
-        "§a- Paint: " + registration.paint,
-        "§a- Interior: " + registration.interior,
-        "§a- Engine: " + registration.engine,
-        "§5Information:",
-        "§5- First Owner: " + registration.firstOwner,
-        "§5- Delivery: " + registration.delivery,
+        "§b" + vehicleDisplayName,
+        "§cThis vehicle is currently in WW state.",
+        "§cTo finalize registration, please contact any dealership.",
+        "§cInteract with both these papers and the car item after placement.",
+        "§5WW Information:",
+        "§5- WW Registrant: " + registration.firstRegistrant,
+        "§5- WW Registration Date: " + registration.registrationDate,
         "§5- Plate: " + registration.plate,
         "§5- MSRP: " + getAmountCoin(registration.msrpCents),
         "§eRegistry:",
-        "§e- Title: " + registration.title,
+        "§e- Titles: " + registration.titles.join(", "),
         "§e- Price: " + getAmountCoin(registration.registrationPriceCents),
         "§e- Region: " + registration.region
     ];
     stack.setLore(lore);
     return stack;
 }
+
+function setPaperLoreActive(stack, registration, vehicleDisplayName) {
+    var lore = [
+        "§b" + vehicleDisplayName,
+        "§aConfiguration:",
+        "§a- Trim: " + registration.trim,
+        "§a- Paint: " + registration.paint,
+        "§a- Interior: " + registration.interior,
+        "§a- Engine: " + registration.engine,
+        "§5Information:",
+        "§5- Registrant: " + registration.firstRegistrant,
+        "§5- Registration Date: " + registration.registrationDate,
+        "§5- Plate: " + registration.plate,
+        "§5- MSRP: " + getAmountCoin(registration.msrpCents),
+        "§eRegistry:",
+        "§e- Titles: " + registration.titles.join(", "),
+        "§e- Price: " + getAmountCoin(registration.registrationPriceCents),
+        "§e- Region: " + registration.region
+    ];
+    stack.setLore(lore);
+    return stack;
+}
+
+function generatePaperItem(world, registration, car_stack) {
+
+    var stack = world.createItem(VEHICLE_REGISTRATION_CONFIG.carPapers.item_id, 0, 1);
+    stack.setCustomName(ccs("&6Car Papers"));
+
+    if (registration.status === "WW") {
+        setupPaperLoreWW(stack, registration, car_stack.getDisplayName());
+    } else {
+        setPaperLoreActive(stack, registration, car_stack.getDisplayName());
+    }
+    setupPaperNBT(stack, registration);
+    
+    return stack;
+}
+
+function isPaperCarPapers(stack) {
+    if (!stack || stack.isEmpty()) {
+        return false;
+    }
+    if (stack.getName() !== VEHICLE_REGISTRATION_CONFIG.carPapers.item_id) {
+        return false;
+    }
+    var nbt = stack.getNbt();
+    return nbt.has("plate") && nbt.has("status") && nbt.has("registrant") && nbt.has("linked_vehicle_id");
+}
+
+function isPaperWWCarPapers(stack) {
+    if (!isPaperCarPapers(stack)) {
+        return false;
+    }
+    var nbt = stack.getNbt();
+    return nbt.getString("status") === "WW";
+}
+
