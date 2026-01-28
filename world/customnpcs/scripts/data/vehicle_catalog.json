@@ -90,6 +90,30 @@
       "maxHealth": 260,
       "extraTitles": []
     },
+    "trin_econobox": {
+      "brand": "Trin",
+      "name": "Econobox",
+      "maxHealth": 110,
+      "extraTitles": []
+    },
+    "trin_keipan": {
+      "brand": "Trin",
+      "name": "Keipan",
+      "maxHealth": 90,
+      "extraTitles": []
+    },
+    "trin_rodeo": {
+      "brand": "Trin",
+      "name": "Roedo",
+      "maxHealth": 138,
+      "extraTitles": []
+    },
+    "trin_ropy": {
+      "brand": "Trin",
+      "name": "Ropy",
+      "maxHealth": 120,
+      "extraTitles": []
+    },
     "unucivil_vehicle_unu_mastodon": {
       "brand": "UNU",
       "name": "Mastodon",
