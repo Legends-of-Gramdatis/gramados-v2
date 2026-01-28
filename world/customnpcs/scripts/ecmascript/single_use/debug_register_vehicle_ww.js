@@ -6,43 +6,155 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensin
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
-function interact(event) {
-    var player = event.player;
-    var inv = player.getInventory();
-    var slots = inv.getItems();
-    
-    var vehicleCatalog = loadVehicleCatalog();
+function get_all_car_papers(slots, include_ww) {
+    var car_papers = [];
+
+    for (var i = 0; i < slots.length; i++) {
+        var stack = slots[i];
+        if (isPaperCarPapers(stack)) {
+
+            if (include_ww) {
+                car_papers.push(stack);
+
+            } else if (!isPaperWWCarPapers(stack)) {
+                car_papers.push(stack);
+            }
+        }
+    }
+
+    return car_papers;
+}
+
+function get_all_car_items_registered(car_list, car_paper_list) {
+    var registered_cars = [];
+
+    for (var i = 0; i < car_list.length; i++) {
+        var car_stack = car_list[i];
+        if (is_car_ww_registered(car_stack, car_paper_list)) {
+            registered_cars.push(car_stack);
+        }
+    }
+
+    return registered_cars;
+}
+
+function get_all_ww_car_papers(slots) {
+    var ww_papers = [];
 
     for (var i = 0; i < slots.length; i++) {
         var stack = slots[i];
         if (isPaperWWCarPapers(stack)) {
-            tellPlayer(player, "&c[Debug] You already have WW car papers in your inventory. Cannot register another vehicle as WW.");
-            return;
+            ww_papers.push(stack);
         }
     }
-    
-    // Search for first vehicle item in inventory
+
+    return ww_papers;
+}
+
+function get_all_car_items(slots) {
+    var car_items = [];
+
     for (var i = 0; i < slots.length; i++) {
         var stack = slots[i];
-        if (!stack || stack.isEmpty()) continue;
-        
         var itemId = stack.getName();
 
         var mainVehicleId = getMainVehicleId(itemId);
 
-        if (mainVehicleId && vehicleCatalog.vehicles[mainVehicleId]) {
-            var registeredData = generatePlaceholderRegistration(player.getDisplayName(), itemId, "Devland", generateRandomPlate("plate_gramados"), []);
-            tellRegisterationDetails(player, registeredData);
-            var item = generatePaperItem(player.getWorld(), registeredData, stack);
-            if (item) {
-                player.giveItem(item);
-                tellPlayer(player, "&a[Debug] Vehicle registered as WW and papers given.");
-            } else {
-                tellPlayer(player, "&c[Debug] Failed to generate vehicle papers item.");
-            }
-            return;
+        if (mainVehicleId) {
+            car_items.push(stack);
         }
     }
+
+    return car_items;
+}
+
+function is_car_ww_registered(car_item_stack, ww_paper_stack_list) {
+    if (car_item_stack.hasNbt()) {
+        return false;
+    }
+    var carVehicleId = car_item_stack.getName();
+    // get itemstack NBT
+    for (var i = 0; i < ww_paper_stack_list.length; i++) {
+        var paper_stack = ww_paper_stack_list[i];
+        var paperNbt = paper_stack.getNbt();
+        if (!paperNbt || !paperNbt.has("linked_vehicle_id")) {
+            continue;
+        }
+        return paperNbt.getString("linked_vehicle_id") === carVehicleId;
+    }
+
+    return false;
+}
+
+function get_all_car_ids_from_paper_list(paper_stack_list) {
+    var car_ids = [];
+    for (var i = 0; i < paper_stack_list.length; i++) {
+        var paper_stack = paper_stack_list[i];
+        var paperNbt = paper_stack.getNbt();
+        if (!paperNbt || !paperNbt.has("linked_vehicle_id")) {
+            continue;
+        }
+        car_ids.push(paperNbt.getString("linked_vehicle_id"));
+    }
+    return car_ids;
+}
+
+function is_car_registered(car_item_stack, paper_stack_list, include_ww) {
+    if (!car_item_stack.hasNbt() && !include_ww) {
+        return false;
+    }
     
-    tellPlayer(player, "&c[Debug] No vehicle items found in your inventory.");
+    return includes(get_all_car_ids_from_paper_list(paper_stack_list), car_item_stack.getName())
+}
+
+
+function interact(event) {
+    var player = event.player;
+    var inv = player.getInventory();
+    var slots = inv.getItems();
+
+    var all_papers = get_all_car_papers(slots, false);
+    var ww_papers = get_all_ww_car_papers(slots);
+    var car_items = get_all_car_items(slots);
+    var registered_car_items = get_all_car_items_registered(car_items, all_papers);
+    var ww_registered_car_items = get_all_car_items_registered(car_items, ww_papers);
+
+    tellPlayer(player, "&6Debug Vehicle Registration Report:");
+    tellPlayer(player, "&e- Total Car Papers (excl. WW): &a" + all_papers.length);
+    tellPlayer(player, "&e- Total WW Car Papers: &a" + ww_papers.length);
+    tellPlayer(player, "&e- Total Car Items: &a" + car_items.length);
+    tellPlayer(player, "&e- Total Registered Car Items: &a" + registered_car_items.length);
+    tellPlayer(player, "&e- Total WW Registered Car Items: &a" + ww_registered_car_items.length);
+
+    var unregistered_cars = [];
+    for (var i = 0; i < car_items.length; i++) {
+        var car_stack = car_items[i];
+        if (!is_car_registered(car_stack, ww_papers, true)) {
+            unregistered_cars.push(car_stack);
+        }
+    }
+
+    tellPlayer(player, "&6Unregistered Car Items in Inventory:");
+    for (var i = 0; i < unregistered_cars.length; i++) {
+        var car_stack = unregistered_cars[i];
+        tellPlayer(player, "&e- " + car_stack.getDisplayName());
+    }
+
+    // Register all unregistered cars as WW
+    for (var i = 0; i < unregistered_cars.length; i++) {
+        var car_stack = unregistered_cars[i];
+        var registration = generateRegistration(
+            player.getName(),
+            car_stack,
+            "Devland",
+            ["WW Temporary Registration"]
+        );
+
+        var paper_stack = generatePaperItem(player.getWorld(), registration, car_stack);
+
+        // Give the player the paper stack
+        player.giveItem(paper_stack);
+
+        tellPlayer(player, "&aRegistered vehicle " + car_stack.getDisplayName() + " as WW. Given Car Papers.");
+    }
 }

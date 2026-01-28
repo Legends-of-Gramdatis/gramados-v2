@@ -100,9 +100,13 @@ function tellRegisterationDetails(player, registration) {
     }
 }
 
+function generateRegistration(ownerName, item_stack, region, titles) {
+    if (!item_stack.hasNbt()) {
+        return generateWWRegistration(ownerName, item_stack.getName(), region, generateRandomPlate("plate_gramados"), titles);
+    }
+}
 
-
-function generatePlaceholderRegistration(ownerName, itemId, region, plate, titles) {
+function generateWWRegistration(ownerName, itemId, region, plate, titles) {
     var msrp = getPrice(itemId, getUnknownLabel(), null, true);
     return {
         vin: getUnknownLabel(),
@@ -204,6 +208,15 @@ function setPaperLoreActive(stack, registration, vehicleDisplayName) {
     return stack;
 }
 
+function getPaperLinkedRegistry(paperStack) {
+    if (!isPaperCarPapers(paperStack)) {
+        return null;
+    }
+    var nbt = paperStack.getNbt();
+    var plate = nbt.getString("plate");
+    return getRegistrationByPlate(plate);
+}
+
 function generatePaperItem(world, registration, car_stack) {
 
     var stack = world.createItem(VEHICLE_REGISTRATION_CONFIG.carPapers.item_id, 0, 1);
@@ -237,4 +250,3 @@ function isPaperWWCarPapers(stack) {
     var nbt = stack.getNbt();
     return nbt.getString("status") === "WW";
 }
-
