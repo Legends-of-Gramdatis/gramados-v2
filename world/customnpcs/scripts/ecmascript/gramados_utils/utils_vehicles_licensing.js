@@ -8,6 +8,10 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js"
 
 var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
 
+// Keep this file self-contained: some callers load only utils_vehicles_licensing.js.
+// Matches the constant used in modules/vehicle_registration/vehicle_registration.js
+var NON_STANDARD_PLATE_FEE_CENTS = 1000 * 100;
+
 
 function isPlateLicensed(plate) {
     if (!plate) {
@@ -30,7 +34,7 @@ function isVinUnknown(vin) {
     return true;
 }
 
-function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
+function calculateCarPaperPrice(msrpNumber, region, plateText, titles) {
     var msrp = Number(msrpNumber);
     if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
         return null;
@@ -40,11 +44,25 @@ function calculateCarPaperPrice(msrpNumber, region, plateText, title) {
     var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
     var price = basePrice * regionMultiplier;
 
-    if (title && VEHICLE_REGISTRATION_CONFIG.titles && VEHICLE_REGISTRATION_CONFIG.titles.hasOwnProperty(title)) {
-        price = price * VEHICLE_REGISTRATION_CONFIG.titles[title];
+    // Titles may be a string or an array of strings.
+    if (titles && VEHICLE_REGISTRATION_CONFIG.titles) {
+        var titleList = (typeof titles === "string") ? [titles] : titles;
+        if (titleList && titleList.length) {
+            for (var i = 0; i < titleList.length; i++) {
+                var t = titleList[i];
+                if (t && VEHICLE_REGISTRATION_CONFIG.titles.hasOwnProperty(t)) {
+                    price = price * VEHICLE_REGISTRATION_CONFIG.titles[t];
+                }
+            }
+        }
     }
 
-    if (!/^[A-Za-z]{3}-\d{4}$/.test(plateText || "")) {
+    // Known plate formats:
+    // - Gramados: 3 letters + dash + 4 digits (ABC-1234)
+    // - UNU Euro / WW: 2 letters + dash + 5 digits (BT-00000 / WW-00000)
+    var plateStr = String(plateText || "");
+    var isStandardPlate = /^[A-Za-z]{3}-\d{4}$/.test(plateStr) || /^[A-Za-z]{2}-\d{5}$/.test(plateStr);
+    if (!isStandardPlate) {
         price += NON_STANDARD_PLATE_FEE_CENTS;
     }
 

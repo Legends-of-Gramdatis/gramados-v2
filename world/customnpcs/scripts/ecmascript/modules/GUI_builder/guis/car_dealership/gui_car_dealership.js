@@ -94,11 +94,25 @@ function purchaseVehicle(player, npc) {
     
     var vehicle = stock.vehicles[currentIndex];
     var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
-    var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), "Devland", "XXX-0000");
+    var basePrice = getPriceFromItemStack(itemStack, 0, false);
+    var paperFee = calculateCarPaperPrice(basePrice, "Devland", "XXX-0000");
+    var price = basePrice + paperFee;
     
     if (extractMoneyFromPouch(player, price)) {
         player.giveItem(itemStack);
         tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + ' for ' + formatMoney(price) + '.');
+
+        // Auto-register as WW and give WW car papers linked to the purchased item.
+        var ww = registerVehicleAsWW(vehicle.id, player.getName(), player);
+        var registration = generateWWRegistration(
+            player.getName(),
+            vehicle.id,
+            "Devland",
+            ww.plate,
+            ["WW Temporary Registration"]
+        );
+        var papers = generatePaperItem(player.getWorld(), registration, itemStack);
+        player.giveItem(papers);
         
         // Remove the vehicle from stock
         if (vehicle.count > 1) {

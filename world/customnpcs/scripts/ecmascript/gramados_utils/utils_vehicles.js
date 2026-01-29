@@ -215,7 +215,11 @@ function generateRandomWWPlate() {
 }
 
 function registerVehicleAsWW(vehicleId, ownerName, player) {
-    var vehicleInfo = getVehicleInfo(vehicleId);
+    // `vehicleId` is typically the full item id (e.g. mts:<pack>.<systemName_variant>).
+    // For catalog lookups, derive the base systemName.
+    var fullItemId = String(vehicleId);
+    var mainVehicleId = getMainVehicleId(fullItemId) || getVehicleSystemNameFromItemId(fullItemId) || fullItemId;
+    var vehicleInfo = getVehicleInfo(mainVehicleId);
     var plate = generateRandomWWPlate();
     var licensedVehicles = loadLicensedVehicles();
 
@@ -227,9 +231,9 @@ function registerVehicleAsWW(vehicleId, ownerName, player) {
         asWW: true,
         WWplate: plate,
         vin: "N/A",
-        vehicleId: String(vehicleId),
-        vehicleSystemName: vehicleId,
-        paintVariant: "",
+        vehicleId: fullItemId,
+        vehicleSystemName: mainVehicleId,
+        paintVariant: getPaintVariant(fullItemId),
         trim: "N/A",
         interior: "N/A",
         msrpCents: null,

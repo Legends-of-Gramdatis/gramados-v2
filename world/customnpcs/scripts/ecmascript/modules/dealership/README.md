@@ -8,6 +8,10 @@ NPC script to refresh dealership vehicle stock from an assembled loot table, kee
 - Stock is saved in the NPC `storeddata` under key `dealership_stock` as JSON: `{ "source", "refreshedAt", "totalStacks", "vehicles": [{"id","damage","count"}] }`.
 - Any player interaction opens the `car_dealership` GUI (first skin pack) via the GUI Builder. The GUI manifest lives under `modules/GUI_builder/guis/car_dealership/`.
 
+## Vehicle Registration
+- When a player purchases a vehicle through the dealership GUI, the vehicle is automatically registered as **WW**.
+- The player also receives **WW Car Papers** (a `variedcommodities:letter`) linked to the purchased vehicle.
+
 ## Admin Tips
 - Hold `mts:ivv.idcard_seagull` in offhand and `minecraft:command_block` in main hand, then interact with the NPC to reload stock from the loot table.
 - Chat feedback shows the number of vehicle types and total units stored, plus a short preview of counts.
