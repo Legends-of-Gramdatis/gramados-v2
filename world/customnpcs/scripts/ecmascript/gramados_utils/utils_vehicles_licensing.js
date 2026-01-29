@@ -14,9 +14,6 @@ var NON_STANDARD_PLATE_FEE_CENTS = 1000 * 100;
 
 
 function isPlateLicensed(plate) {
-    if (!plate) {
-        return false;
-    }
     var licensed = loadLicensedVehicles();
     return !!licensed[plate];
 }
@@ -86,11 +83,10 @@ function getRegistrationByVinCompact(vin) {
 function getUnknownLabel() {
     return VEHICLE_REGISTRATION_CONFIG.carPapers.unknown_value;
 }
+
 function getNaLabel() {
     return VEHICLE_REGISTRATION_CONFIG.carPapers.na_value;
 }
-
-
 
 function addOwnershipHistoryPlaceholder(playerName) {
     return {
@@ -99,7 +95,6 @@ function addOwnershipHistoryPlaceholder(playerName) {
         soldDate: getNaLabel()
     };
 }
-
 
 function tellRegisterationDetails(player, registration) {
     tellPlayer(player, "&6--- Vehicle Registration Details ---");
@@ -151,7 +146,6 @@ function generateWWRegistration(ownerName, itemId, region, plate, titles) {
         metaSources: ["WW Registration"]
     };
 }
-
 
 function getRegistrationByVin(vin) {
     var licensed = loadLicensedVehicles();
@@ -267,4 +261,16 @@ function isPaperWWCarPapers(stack) {
     }
     var nbt = stack.getNbt();
     return nbt.getString("status") === "WW";
+}
+
+function playerHasWWPapersInInv(player) {
+    var inv = player.getInventory();
+    var slots = inv.getItems();
+    for (var i = 0; i < slots.length; i++) {
+        var stack = slots[i];
+        if (isPaperWWCarPapers(stack)) {
+            return true;
+        }
+    }
+    return false;
 }
