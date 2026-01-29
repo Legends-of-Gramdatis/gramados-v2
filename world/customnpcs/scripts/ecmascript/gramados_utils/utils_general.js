@@ -103,7 +103,7 @@ function includeSome(array, items) {
  */
 function findJsonEntry(json, key, value) {
     // for all entries in json
-    all_keys = Object.keys(json);
+    var all_keys = Object.keys(json);
 
     for (var i = 0; i < all_keys.length; i++) {
 
