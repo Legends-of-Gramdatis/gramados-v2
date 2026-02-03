@@ -1,5 +1,12 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 
+var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+var INbt = Java.type('noppes.npcs.api.INbt');
+var LogManager = Java.type('org.apache.logging.log4j.LogManager');
+var Logger = LogManager.getLogger("GramdatisScript");
+var ForgeLoader = Java.type('net.minecraftforge.fml.common.Loader').instance();
+var EntityType = Java.type('noppes.npcs.api.constants.EntityType');
 /*
     Custom Server Tools
 */
@@ -760,36 +767,7 @@ function data_overwrite(data, keys, vals) {
         data.put(key, val);
     }
 }
-//Compare 2 IItemStacks
-function isItemEqual(stack, other, ignoreNbt) {
-    if (typeof (ignoreNbt) == typeof (undefined) || ignoreNbt === null) { ignoreNbt = false; }
-    if (!other || other.isEmpty()) {
-        return false;
-    }
 
-    var stackNbt = stack.getItemNbt();
-    stackNbt.remove('Count');
-    var otherNbt = other.getItemNbt();
-    otherNbt.remove('Count');
-
-    if (ignoreNbt) {
-        if (stackNbt.getString("id") == otherNbt.getString("id")) {
-            return true;
-        }
-    } else {
-        if (isNbtEqual(stackNbt, otherNbt)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
-var INbt = Java.type('noppes.npcs.api.INbt');
-var LogManager = Java.type('org.apache.logging.log4j.LogManager');
-var Logger = LogManager.getLogger("GramdatisScript");
-var ForgeLoader = Java.type('net.minecraftforge.fml.common.Loader').instance();
-var EntityType = Java.type('noppes.npcs.api.constants.EntityType');
 
 var NbtTypes = {
     "Byte": 1,
@@ -922,10 +900,6 @@ function nbtItemArr(nbtArr, w) {
     return itemArr;
 }
 
-function isNbtEqual(nbt, otherNbt) {
-    return nbt.toJsonString() == otherNbt.toJsonString();
-}
-
 function nbtHasSameData(nbt, onbt) {
     //TODO:compare keys of nbt
 } function givePlayerItems(player, stacks, pnbt) {
@@ -967,23 +941,6 @@ function getArrItemCount(array, itemstack, ignoreNbt) {
     }
 
     return icount;
-}
-
-function getPlayerInvFromNbt(pnbt, w, filterFn) {
-    if (typeof (filterFn) == typeof (undefined) || filterFn === null) { filterFn = null; }
-    var pinv = pnbt.getList('Inventory', pnbt.getListType('Inventory'));
-    var pitems = [];
-    for (var p in pinv) {
-        var pin = pinv[p];
-        var pitm = w.createItemFromNbt(API.stringToNbt(pin.toJsonString()));
-        //pin (INbt) contains key "Slot"
-        //pitm.getItemNbt() does not, thats why pin is passed
-        if ((filterFn == null ? true : filterFn(pitm, pin, w))) {
-            pitems.push(pitm);
-        }
-    }
-
-    return pitems;
 }
 
 function getInvItemCount(pnbt, itemstack, w, ignoreNbt) {
@@ -2739,18 +2696,6 @@ function cson_parse(cson_string) {
     return JSON.parse((cson_string.replace(rgx_comments, '').replace(rgx_commas, '$1')));
 }
 
-
-
-
-
-function executeCommand(player, command, as_player) {
-    if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
-    if (as_player == null) { as_player = player.getName(); }
-    var cmd = API.createNPC(player.world.getMCWorld());
-
-    return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
-
-}
 
 function executeCommandGlobal(command, dim) {
     if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
@@ -10769,11 +10714,6 @@ registerXCommands([
     }, 'myUnlocks']
 ]);
 
-
-function includes(array, item) {
-    // tellPlayer(player, "&6Checking if item " + item + " is in array " + array);
-    return array.indexOf(item) > -1;
-}
 function rainbowifyText(text) {
     var rainbowText = '';
     var colorIndex = 0;
