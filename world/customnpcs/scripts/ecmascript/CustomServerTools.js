@@ -1,5 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
@@ -7,6 +8,7 @@ var LogManager = Java.type('org.apache.logging.log4j.LogManager');
 var Logger = LogManager.getLogger("GramdatisScript");
 var ForgeLoader = Java.type('net.minecraftforge.fml.common.Loader').instance();
 var EntityType = Java.type('noppes.npcs.api.constants.EntityType');
+var _TIMERS = [];
 /*
     Custom Server Tools
 */
@@ -65,126 +67,6 @@ function giveBadge(player, badge) {
     }
     return false;
 }
-
-function array_shuffle(a) {
-    var j, x, i;
-    for (i = a.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        x = a[i];
-        a[i] = a[j];
-        a[j] = x;
-    }
-    return a;
-}
-
-function array_filter(a, fn) {
-    var aa = [];
-    for (var i in a) {
-        if (fn(a[i])) { aa.push(a[i]); }
-    }
-
-    return aa;
-}
-
-function array_dist(a) {
-    var b = [];
-    for (var c in a) {
-        if (b.indexOf(a[c]) == -1) {
-            b.push(a[c]);
-        }
-    }
-
-    return b;
-}
-
-function array_remove(array, element) {
-    var index = array.indexOf(element);
-    if (index !== -1) {
-        array.splice(index, 1);
-    }
-}
-
-function removeFromArray(arr, vals) {
-    if (typeof (vals) == 'string') { vals = [vals]; }
-    var a = arr;
-    for (var v in vals) {
-        var val = vals[v];
-        array_remove(a, val);
-    }
-    return a;
-}
-
-function removeFromArrayByKey(arr, keys) {
-    var narr = [];
-    for (var k in keys) {
-        var key = keys[k];
-        keys[k] = parseInt(key);
-    }
-    for (var i in arr) {
-        var ari = arr[i];
-        if (keys.indexOf(i) > -1) {
-            narr.push(ari);
-        }
-    }
-    return narr;
-}
-
-
-function array_merge(a1, a2) {
-    var bb = [];
-    for (var k in a1) {
-        bb[k] = a1[k];
-    }
-    for (var k in a2) {
-        bb[k] = a2[k];
-    }
-    return bb;
-}
-
-function arrayTransform(arr, elfn) {
-    var newa = [];
-    for (var a in arr) {
-        var arri = arr[a];
-        newa.push(elfn(arri, a, arr));
-    }
-    return newa;
-}
-
-function arrayTakeRange(arr, start, end) {
-    if (typeof (end) == typeof (undefined) || end === null) { end = null; }
-    if (end == null) { end = arr.length; }
-    var a = [];
-    var _end = Math.min(end, arr.length);
-    var _start = Math.min(start, _end);
-    for (var i = _start; i < Math.min(end, arr.length); i++) {
-        if (typeof (arr[i]) != typeof (undefined)) {
-            a.push(arr[i]);
-        }
-    }
-    return a;
-}
-
-function arrayOccurs(string, subArray, allowOverlapping, caseSensitive) {
-    if (typeof (allowOverlapping) == typeof (undefined) || allowOverlapping === null) { allowOverlapping = false; }
-    if (typeof (caseSensitive) == typeof (undefined) || caseSensitive === null) { caseSensitive = true; }
-    var occ = 0;
-    for (var i in subArray) {
-        var sel = subArray[i];
-        occ += occurrences(string, sel, allowOverlapping, caseSensitive);
-    }
-
-    return occ;
-}
-
-function arrayFormat(array, format, sep) {
-    var joined = "";
-    for (var i = 0; i < array.length; i++) {
-        joined += format.fill({
-            "VALUE": array[i]
-        }) + (i == array.length - 1 ? "" : sep || " ");
-    }
-    return joined;
-}//==Reallife date handler for hiring regions etc
 
 Date.prototype.addTime = function (addTime) {
     this.setTime(this.getTime() + addTime);
@@ -3063,17 +2945,6 @@ function escapeNbtJson(json, trim_ends) {
 function getDayTime(time) {
     while (time > 24000) { time -= 24000; }
     return time;
-}
-
-function isArray(obj) {
-    if (typeof (obj) === 'object') {
-        for (var k in obj) {
-            if (isNaN(k)) {
-                return false;
-            }
-        }
-        return true;
-    } else { return false }
 }
 
 function isObject(obj) {
@@ -12403,45 +12274,6 @@ function Loan(player) {
     };
 }
 
-
-function random_ranges(min, max, amount) {
-    var a = 0;
-    for (var i = 0; i < amount; i++) { a += random_range(min, max); }
-    return a;
-}
-
-function rrandom_ranges(min, max, amount) {
-    var a = 0;
-    for (var i = 0; i < amount; i++) { a += rrandom_range(min, max); }
-    return a;
-}
-
-function pickchance(a, amount) {
-    var aa = [];
-    for (var e in a) {
-        if (!isArray(a[e])) {
-            aa[aa.length] = a[e];
-        } else {
-            for (var i = 0; i < a[e][1]; i++) {
-                aa[aa.length] = a[e][0];
-            }
-        }
-    }
-
-    return pick(aa, amount);
-}
-
-function rrandom_range(min, max) { return Math.round(random_range(min, max)); }
-
-function random_range(_min, _max) {
-    var min = Math.min(_min, _max);
-    var max = Math.max(_min, _max);
-
-    var diff = max - min;
-
-    return (min + (Math.random() * diff));
-}
-
 function pickwhere(a, fn, amount) {
     return pick(array_filter(a, fn), amount);
 }
@@ -12490,24 +12322,6 @@ function genName(name) {
     ];
 
     return pick(p) + ' ' + name + ' of ' + pick(s);
-}
-
-function pick(a, amount) {
-    if (typeof (amount) == typeof (undefined) || amount === null) { amount = 1; }
-    var index = Math.floor(Math.random() * a.length);
-    amount = Math.min(a.length, amount);
-    if (amount == 1) {
-        return a[index];
-    } else {
-        var picks = [];
-
-        while (picks.length < amount) {
-            index = Math.floor(Math.random() * a.length);
-            if (picks.indexOf(a[index]) == -1) { picks.push(a[index]); }
-        }
-
-        return picks;
-    }
 }
 
 
@@ -13938,7 +13752,8 @@ function runDelayTick() {
 
         _TIMERS = _newTimers;
     }
-} var _TIMERS = [];
+}
+
 function runDelay(timerObj, time, func) {
     //Generate a timer id that doesn't exists
     //To know what id does not exists, we need to get all timers
@@ -13963,98 +13778,6 @@ function runDelay(timerObj, time, func) {
         timerObj.start(timerId, time, false);
     }
 }
-
-;
-
-
-
-
-
-
-
-
-function lengthdir_x(length, angle) {
-    return length * Number(Math.cos(toRadians(angle))).toFixed(2) * -1;
-}
-
-function lengthdir_z(length, angle) {
-    return length * Number(Math.sin(toRadians(angle))).toFixed(2);
-}
-
-function toRadians(angle) {
-    return angle * (Math.PI / 180);
-}
-
-//Get angle between two points (2-dimensional)
-function getPosAngle(x1, y1, x2, y2) {
-    return Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
-}
-
-function roundByNum(num, rounder, mode) {
-    var m = 1 / (rounder || 1);
-    var mode = mode || "round";
-
-    return Math[mode](num * m) / m;
-}
-
-
-function sign(num) {
-    if (typeof (num) == typeof (undefined) || num === null) { num = 0; }
-    if (num > 0) { return 1; }
-    if (num < 0) { return -1; }
-    return 0;
-}
-
-function roundDec(num, dec) {
-    if (typeof (dec) == typeof (undefined) || dec === null) { dec = 1; }
-    var mult = Math.pow(10, dec);
-
-    return Math.round(num * mult) / mult;
-}
-
-function fixAngle(angle) {
-    return Number((Math.abs(angle) % 360) * sign(angle)).toFixed(2);
-}
-
-function posdir(pos, dir, pitch, len, flying) {
-    if (typeof (dir) == typeof (undefined) || dir === null) { dir = 0; }
-    if (typeof (pitch) == typeof (undefined) || pitch === null) { pitch = 0; }
-    if (typeof (len) == typeof (undefined) || len === null) { len = 1; }
-    if (typeof (flying) == typeof (undefined) || flying === null) { flying = false; }
-    var x = pos.getX();
-    var y = pos.getY();
-    var z = pos.getZ();
-    var xdir = getQuartRotation(dir);
-    var zdir = getQuartRotation(dir - 90);
-    x += Math.round(len * (Math.abs(xdir) / 90) * sign(xdir));
-    z += Math.round(len * (Math.abs(zdir) / 90) * sign(zdir));
-    if (flying) {
-        y += (len) * (Math.abs(pitch) / 90) * -sign(pitch);
-    }
-    return { x: x, y: y, z: z };
-}
-
-function lengthpitch_y(pitch, length) {
-    return Math.round(pitch / -90) * length;
-}
-
-function getQuartRotation(dir) {
-    dir = getHalfRotation(dir);
-
-    if (Math.abs(dir) > 90) {
-        dir = (180 - Math.abs(dir)) * sign(dir);
-    }
-
-    return dir;
-}
-
-function getHalfRotation(angle) {
-    angle = fixAngle(angle);
-    if (angle <= 180) { return angle; } else { return -(180 - (angle - 180)); }
-}
-
-
-
 
 function clonePlayerAsNpc(player) {
     var npc = API.createNPC(player.world.getMCWorld());
