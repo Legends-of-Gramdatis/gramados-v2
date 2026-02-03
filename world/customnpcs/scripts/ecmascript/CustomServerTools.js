@@ -2,6 +2,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 
 var _RAWCOLORS = {
     '0': 'black',
@@ -384,7 +385,7 @@ var _COINTABLE = {
     't': 100000000000000,
     'q': 100000000000000000,
     's': 100000000000000000000
-}; //With this setup, the syntax for 223503 would be 2k235g3c (case-INSensitive)
+};
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
@@ -1793,20 +1794,6 @@ var VIRTUAL_CURRENCIES = [{
     "items": true
 }
 ];
-
-function getCurrency(type) {
-    for (var i in VIRTUAL_CURRENCIES) {
-        var currency = VIRTUAL_CURRENCIES[i];
-        if (currency.name != type) {
-            continue;
-        }
-        return currency;
-        break;
-    }
-
-    return null;
-}
-
 
 function formatCurrency(amount, currencyType) {
     if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
@@ -4802,7 +4789,7 @@ registerXCommands([
         });
         var am = getCoinAmount(args.amount);
         if (args.players.length == 0) { args.players = [pl.getName()]; }
-        var mn = genMoney(w, am);
+        var mn = generateMoney(w, am);
 
         for (var i in args.players) {
             var apl = args.players[i];
@@ -4968,7 +4955,7 @@ registerXCommands([
                 if (cAm > 0) {
                     var ssize = mItem.getStackSize();
                     mItem.setStackSize(0);
-                    var items = genMoney(pl.world, cAm, 'money');
+                    var items = generateMoney(pl.world, cAm, 'money');
 
                     if (items[0]) {
                         items[0].setStackSize(ssize);
@@ -8671,7 +8658,7 @@ registerXCommands([
         var wamount = getCoinAmount(args.amount);
         if (p.data.money >= wamount * times) {
             for (var i = 0; i < times; i++) {
-                var moneyItems = genMoney(w, wamount, currency.name);
+                var moneyItems = generateMoney(w, wamount, currency.name);
                 p.data[currency.name] -= wamount;
                 givePlayerItems(pl, moneyItems);
             }
@@ -10838,7 +10825,7 @@ function takeMoneyFromPlayer(player, amount, pnbt) {
         }
         tellPlayer(player, "Amount: " + amount);
         if (amount < 0) {
-            var cmoney = genMoney(w, Math.abs(amount));
+            var cmoney = generateMoney(w, Math.abs(amount));
             givePlayerItems(player, cmoney, pnbt)
         }
     }
@@ -10849,7 +10836,7 @@ function getMoneyItemCount(pnbt, w) {
     var am = 0;
     for (var itemvalue in _COINITEMS) {
         var ci = _COINITEMS[itemvalue];
-        var coinItems = genMoney(w, getCoinAmount(itemvalue));
+        var coinItems = generateMoney(w, getCoinAmount(itemvalue));
         for (var _cii in coinItems) {
             var _coin = coinItems[_cii];
             am += getInvItemCount(pnbt, _coin, w, false) * getCoinAmount(itemvalue);
@@ -10858,104 +10845,6 @@ function getMoneyItemCount(pnbt, w) {
     }
     return am;
 }
-
-
-
-function getItemMoney(stack, w, currencyType) {
-    for (var ival in _COINITEMS) {
-        var ci = _COINITEMS[ival];
-        var cm = genMoney(w, getCoinAmount(ival), currencyType)[0] || null;
-        if (cm != null) {
-            if (isItemEqual(stack, cm)) {
-                return getCoinAmount(ival);
-            }
-        }
-    }
-    return 0;
-}
-
-function isItemMoney(stack, w, currencyType) {
-    if (stack.getDisplayName().equals("§2§lMoney§r")) {
-        return getItemMoney(stack, w, currencyType) > 0;
-    }
-    return false;
-}
-
-function genMoney(w, amount, currencyType) {
-    if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
-    var am = amount
-    var coinams = Object.keys(_COINITEMS);
-    var currency = getCurrency(currencyType);
-
-
-    var nmItems = [];
-    for (var i = coinams.length - 1; i >= 0; i--) {
-        var coincount = 0;
-        var coinval = getCoinAmount(coinams[i]);
-        if (coinval > 0) {
-            while (am >= coinval) {
-                coincount++;
-                am -= coinval;
-            }
-        }
-        if (coincount > 0) {
-            var coinitem = w.createItem(_COINITEMS[coinams[i]], 0, coincount);
-            coinitem.setCustomName(ccs(currency.displayPrefix + currency.displayName + '&r'));
-            coinitem.setLore([
-                ccs('&e' + getAmountCoin(getCoinAmount(coinams[i].toUpperCase())))
-            ]);
-            nmItems.push(coinitem);
-        }
-    }
-
-
-    return nmItems;
-}
-
-
-//Converts int to string
-function getAmountCoin(amount) {
-    var rstr = '';
-    var ams = sign(amount);
-    if (ams == -1) { rstr = '-'; }
-    amount = Math.abs(amount);
-    var ckeys = Object.keys(_COINTABLE);
-    for (var i = ckeys.length - 1; i >= 0; i--) {
-
-        var add = 0;
-        while (amount >= _COINTABLE[ckeys[i]]) {
-            add++;
-            amount -= _COINTABLE[ckeys[i]];
-        }
-        if (add > 0) {
-            rstr += add.toString() + ckeys[i].toUpperCase();
-        }
-    }
-
-    if (rstr == '') { rstr = '0G'; }
-    return rstr;
-}
-//converts string to int
-function getCoinAmount(str) {
-    var arx = /([\d]+)([a-zA-Z]+)/g;
-    var amounts = str.match(arx) || [];
-    var amount = 0;
-    var sgn = 1;
-    if (str.substr(0, 1) == '-') { sgn = -1; }
-
-    for (var a in amounts) {
-        var _am = amounts[a];
-        var _amnum = parseInt(_am.replace(arx, '$1'));
-        var _amunit = _am.replace(arx, '$2').toLowerCase();
-        var coinkeys = Object.keys(_COINTABLE);
-        if (coinkeys.indexOf(_amunit) > -1) {
-            amount += _amnum * _COINTABLE[_amunit];
-        }
-    }
-    return amount * sgn;
-}
-
-
 
 function getPlayerMessage(player, message, w, pname, fullraw, allowed) {
     if (typeof (pname) == typeof (undefined) || pname === null) { pname = null; }
@@ -11734,7 +11623,7 @@ function GiftCode(name) {
             }
         }
         if (this.data.items.length > 0) givePlayerItems(pl, nbtItemArr(this.data.items, pl.world));
-        if (this.data.money > 0) givePlayerItems(pl, genMoney(pl.world, this.data.money));
+        if (this.data.money > 0) givePlayerItems(pl, generateMoney(pl.world, this.data.money));
 
         if (this.data.uses > 0) { //keep -1 special
             this.data.uses -= 1;
@@ -14179,7 +14068,7 @@ function died(e) {
                         if (pbounty > 0) {
                             var sco = new Player(e.source.getName()).init(data, false);
                             executeCommand(pl, "/tellraw @a " + parseEmotes(strf(sco.getNameTag(sb) + "&a received &r:money:&e" + getAmountCoin(pbounty) + "&a for killing " + pl.getName() + "!")));
-                            givePlayerItems(e.source, genMoney(w, pbounty));
+                            givePlayerItems(e.source, generateMoney(w, pbounty));
                             pscore.setValue(0);
                         }
                         }
@@ -14193,7 +14082,7 @@ function died(e) {
         var loseMoney = Math.ceil(plo.data.money / 2);
         if (loseMoney > 0) {
             plo.data.money -= loseMoney;
-            var lm = genMoney(w, loseMoney);
+            var lm = generateMoney(w, loseMoney);
             for (var l in lm) {
                 var lsm = lm[l];
                 pl.dropItem(lsm);
