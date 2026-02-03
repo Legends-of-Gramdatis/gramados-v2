@@ -2206,6 +2206,114 @@ function writeToFile(filePath, text, offset, length) {
 // Then writes timestamp under phase2["last ran"][cmdKey] = Date.now().
 // If file missing, invalid JSON, or conditions not met, it silently does nothing.
 var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
+var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
+
+// Tutorial skip helper: advances to the next enabled onboarding phase.
+// - Only available from phase 1+ (phase 0 cannot be skipped).
+// - Uses onboarding_config.json to find the next enabled phase.
+// - Adjusts completion timestamps so phase-gates don't stall after skipping.
+function cst_onboarding_skipTutorialPhase(player) {
+    var playerName = player.getName();
+    try {
+        // Load onboarding config
+        var cfgFile = new File(ONBOARDING_CONFIG_PATH);
+        if (!cfgFile.exists()) {
+            tellPlayer(player, '&cOnboarding config not found.');
+            return false;
+        }
+        var cfgRaw = readFileAsString(ONBOARDING_CONFIG_PATH);
+        var cfgStr = ('' + cfgRaw);
+        if (!cfgStr || !cfgStr.trim()) {
+            tellPlayer(player, '&cOnboarding config is empty.');
+            return false;
+        }
+        var cfg;
+        try { cfg = JSON.parse(cfgStr); } catch (eCfg) {
+            tellPlayer(player, '&cOnboarding config is invalid JSON.');
+            return false;
+        }
+
+        // Load onboarding data
+        var dataFile = new File(ONBOARDING_DATA_PATH);
+        if (!dataFile.exists()) {
+            tellPlayer(player, '&cOnboarding data not found.');
+            return false;
+        }
+        var raw = readFileAsString(ONBOARDING_DATA_PATH);
+        var rawStr = ('' + raw);
+        if (!rawStr || !rawStr.trim()) {
+            tellPlayer(player, '&cOnboarding data is empty.');
+            return false;
+        }
+        var data;
+        try { data = JSON.parse(rawStr); } catch (eData) {
+            tellPlayer(player, '&cOnboarding data is invalid JSON.');
+            return false;
+        }
+        if (!data || !data[playerName]) {
+            tellPlayer(player, '&cNo onboarding entry found for you.');
+            return false;
+        }
+
+        var entry = data[playerName];
+        var curPhase = entry.phase;
+        if (typeof curPhase !== 'number') {
+            curPhase = parseInt(curPhase || 0, 10);
+            if (isNaN(curPhase)) curPhase = 0;
+        }
+
+        if (curPhase < 1) {
+            tellPlayer(player, '&cYou cannot skip Phase 0.');
+            return false;
+        }
+
+        var phasesObj = (cfg && cfg.phases) ? cfg.phases : {};
+        var nextPhase = null;
+        for (var i = curPhase + 1; i < 100; i++) {
+            var pcfg = phasesObj['' + i];
+            if (pcfg && pcfg.enabled) { nextPhase = i; break; }
+        }
+
+        if (nextPhase === null) {
+            tellPlayer(player, '&eThere is no next onboarding phase to skip to.');
+            return false;
+        }
+
+        var now = Date.now();
+        var longDelayMs = (cfg.general && typeof cfg.general.generic_streamline_delay_long === 'number')
+            ? (cfg.general.generic_streamline_delay_long * 1000)
+            : 0;
+        var bypassTs = now - longDelayMs - 1000;
+
+        // Ensure phase-gates don't stall after skipping
+        if (curPhase === 1 && nextPhase === 2) {
+            if (!entry.phase1 || typeof entry.phase1 !== 'object') entry.phase1 = {};
+            entry.phase1.s4_completedTime = bypassTs;
+        }
+        if (nextPhase === 3) {
+            if (!entry.phase2 || typeof entry.phase2 !== 'object') entry.phase2 = {};
+            entry.phase2.s5_completedTime = bypassTs;
+            if (!entry.phase3 || typeof entry.phase3 !== 'object') entry.phase3 = {};
+            entry.phase3._gateP2DelayChecked = true;
+            entry.phase3.s1_availableAt = now - 1;
+            entry.phase3.currentStage = 1;
+            entry.phase3.currentStep = 1;
+        }
+
+        entry.phase = nextPhase;
+        entry._tutorialSkipLast = now;
+
+        writeToFile(ONBOARDING_DATA_PATH, JSON.stringify(data, null, 2));
+
+        var nextName = (phasesObj['' + nextPhase] && phasesObj['' + nextPhase].name) ? phasesObj['' + nextPhase].name : ('Phase ' + nextPhase);
+        tellPlayer(player, '&a:check_mark: Tutorial phase skipped. Next: &e' + nextName + '&a.');
+        return true;
+    } catch (e) {
+        tellPlayer(player, '&cException in tutorial skip: ' + (e.message || e));
+        return false;
+    }
+}
+
 function cst_onboarding_log_command(player, cmdKey) {
     // tellPlayer(player,"Debug: cst_onboarding_log_command called for cmdKey '" + cmdKey + "'");
     var playerName = player.getName();
@@ -2769,6 +2877,9 @@ var PluginAPI = {
 
 
 registerXCommands([
+    ['!tutorial skip', function (pl, args, data) {
+        return cst_onboarding_skipTutorialPhase(pl);
+    }, 'tutorial.skip'],
     ['!plugins', function (pl, args, data) {
         var output = getTitleBar("Plugin List") + "\n&dHover plugin name for more info\n&a";
         for (var p in PLUGIN_LIST) {
