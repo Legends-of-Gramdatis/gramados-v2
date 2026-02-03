@@ -77,6 +77,15 @@ function init(event) {
     if (onboarding_isBlacklisted(player)) return; // Skip init for blacklisted players
     var pdata = onboarding_getPlayerData(player);
     var phaseIdx = pdata.phase || 0;
+
+    // Skip hint (only for implemented phases; not Phase 0 and not Phase 4+)
+    if (phaseIdx >= 1 && phaseIdx <= 4) {
+        var phaseCfgN = _onboarding_cfg.phases && _onboarding_cfg.phases['' + phaseIdx];
+        if (phaseCfgN && phaseCfgN.enabled) {
+            tellPlayer(player, _onboarding_cfg.general.chat.skip_phase_hint);
+        }
+    }
+
     if (phaseIdx === 0) {
         var phase0 = _onboarding_cfg.phases && _onboarding_cfg.phases['0'];
         if (phase0 && phase0.enabled) {

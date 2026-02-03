@@ -13,7 +13,10 @@
         "generic_streamline_delay_medium": 10,
         "generic_streamline_delay_long": 20,
         "generic_streamline_delay_very_long": 60,
-        "generic_streamline_interval": 60
+        "generic_streamline_interval": 60,
+        "chat": {
+            "skip_phase_hint": ":lit: &eYou can skip this onboarding phase with &6!tutorial skip&e."
+        }
     },
     "phases": {
         "0": {

@@ -10,6 +10,11 @@ Separators and logging throughout the 10h onboarding
 - phase completions: &b
 - stage completion messages: &a
 
+## Tutorial skip
+
+**Skip hint**  
+:lit: &eYou can skip this onboarding phase with &6!tutorial skip&e.
+
 
 ## Phase 0
 - phase separator: &6

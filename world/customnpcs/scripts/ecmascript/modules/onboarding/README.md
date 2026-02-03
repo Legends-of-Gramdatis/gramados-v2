@@ -13,6 +13,7 @@ This module lives under `modules_unfinished/onboarding/` and will move to `modul
 	- Stage 3 Step 2 (Selling): This step completes when the player's economy log (`world/customnpcs/scripts/logs/economy.json`) contains any entry with `type: "scrap_sale"` and `preset: "ferrous"` under their name. No in-game checks are performed; the sale is inferred from the log.
 - Phase separators appear at the end of each phase with color-coded titles (see “Color/Chat Conventions”).
 - When Phase 1 completes, players receive a badge/emote reward.
+- Players can skip the current onboarding phase (Phase 1+) with `!tutorial skip`.
 
 ## Quick start (for staff)
 
@@ -21,6 +22,8 @@ This module lives under `modules_unfinished/onboarding/` and will move to `modul
 	 - During development, only names in `beta_players` can run it when `indev: true`.
 2) Teleport to the arrival area or use the reset tool (see Admin Tips) to restart onboarding.
 3) Walk through the phases as a test player. Flip `general.force_full_onboarding` to `true` if you need to force the entire Phase 1 flow even for players who already own regions.
+
+Tip: if you need to jump forward quickly during testing, use `!tutorial skip` (it only works from Phase 1 and up; Phase 0 cannot be skipped).
 
 ## Configuration (onboarding_config.json)
 
