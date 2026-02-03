@@ -400,6 +400,39 @@ var CHAT_CMD_RGX = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*(
 var CHAT_CMD_RGX_G = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/g;
 var _ENCHANTS = [];
 var CSTENCH_TAG = "CSTEnch";
+var SCRIPT_VERSION = "%__FILENAME__%";
+var SLOWTICK_TIMER_ID = 1;
+var SLOWTICK_TIMER = 100;
+
+var MCP = {
+    "functions": {
+        "ItemStack_getItem": "func_77973_b",
+        "Item_getEquipmentSlot": "func_185083_B_",
+        "EntityLivingBase_travel": "func_191986_a",
+        "EntityLivingBase_setAIMoveSpeed": "func_70659_e",
+        "EntityLivingBase_getAIMoveSpeed": "func_70689_ay",
+        "EntityLiving_getMoveHelper": "func_70605_aq",
+        "EntityMoveHelper_strafe": "func_188488_a",
+        "ISaveHandler_getWorldDirectory": "func_75765_b"
+    },
+    "fields": {
+        "World_isRemote": "field_72995_K",
+        "World_worldInfo": "field_72986_A",
+        "World_saveHandler": "field_73019_z",
+        "Entity_onGround": "field_70122_E",
+    }
+
+};
+
+var MCItem = Java.type("net.minecraft.item.Item");
+var MCItemArmor = Java.type("net.minecraft.item.ItemArmor");
+var MCItemBow = Java.type("net.minecraft.item.ItemBow");
+var MCItemSword = Java.type("net.minecraft.item.ItemSword");
+var MCItemTool = Java.type("net.minecraft.item.ItemTool");
+var EntityEqSlot = Java.type("net.minecraft.inventory.EntityEquipmentSlot");
+var REGISTRY = Java.type('net.minecraftforge.fml.common.registry.ForgeRegistries');
+
+
 
 /*
     Custom Server Tools
@@ -887,91 +920,7 @@ if (!String.prototype.padEnd) {
 }
 
 
-var MCP = {
-    "functions": {
-        "ItemStack_getItem": "func_77973_b",
-        "Item_getEquipmentSlot": "func_185083_B_",
-        "EntityLivingBase_travel": "func_191986_a",
-        "EntityLivingBase_setAIMoveSpeed": "func_70659_e",
-        "EntityLivingBase_getAIMoveSpeed": "func_70689_ay",
-        "EntityLiving_getMoveHelper": "func_70605_aq",
-        "EntityMoveHelper_strafe": "func_188488_a",
-        "ISaveHandler_getWorldDirectory": "func_75765_b"
-    },
-    "fields": {
-        "World_isRemote": "field_72995_K",
-        "World_worldInfo": "field_72986_A",
-        "World_saveHandler": "field_73019_z",
-        "Entity_onGround": "field_70122_E",
-    }
 
-};
-
-var MCItem = Java.type("net.minecraft.item.Item");
-var MCItemArmor = Java.type("net.minecraft.item.ItemArmor");
-var MCItemBow = Java.type("net.minecraft.item.ItemBow");
-var MCItemSword = Java.type("net.minecraft.item.ItemSword");
-var MCItemTool = Java.type("net.minecraft.item.ItemTool");
-var EntityEqSlot = Java.type("net.minecraft.inventory.EntityEquipmentSlot");
-var REGISTRY = Java.type('net.minecraftforge.fml.common.registry.ForgeRegistries');
-
-
-function getItemType(iitemstack, mcentity) {
-    if (typeof (mcentity) == typeof (undefined) || mcentity === null) { mcentity = null; }
-    var mcitem = iitemstack.getMCItemStack()[MCP.ItemStack_getItem]();
-    if (mcitem instanceof MCItemBow) {
-        return "BOW";
-    }
-    if (mcitem instanceof MCItemSword) {
-        return "SWORD";
-    }
-    if (mcitem instanceof MCItemTool) {
-
-        return "TOOL";
-    }
-    if (mcitem instanceof MCItemArmor) {
-        if (mcentity != null) {
-            if (mcitem.isValidArmor(iitemstack.getMCItemStack(), EntityEqSlot.CHEST, mcentity)) {
-                return "ARMOR_CHEST";
-            }
-        }
-        return "ARMOR";
-    }
-    return "NONE";
-}
-
-
-function getEnchIdByName(name) {
-    var enchants = REGISTRY.ENCHANTMENTS.getValues();
-    for (var r in enchants) {
-        var ench = enchants[r];
-        if (name == REGISTRY.ENCHANTMENTS.getKey(ench)) {
-            return parseInt(REGISTRY.ENCHANTMENTS.getID(ench));
-        }
-    }
-
-    return null;
-}
-
-//Get data from IData
-function data_get(data, keys) {
-    var get = {};
-    for (var k in keys) {
-        //var key = keys[k];
-        get[keys[k]] = data.get(keys[k]);
-        //if(get[keys[k]] == null) { get[keys[k]] = keys[k]; }
-    }
-
-    return get;
-}
-
-//Add data to IData if it doesn't exist
-function data_register(data, vals) {
-    for (var k in vals) {
-        var val = vals[k];
-        if (data.get(k) == null) { data.put(k, val); }
-    }
-}
 
 //Add data to IData even if it does exist
 function data_overwrite(data, keys, vals) {
@@ -13277,17 +13226,7 @@ function clonePlayerAsNpc(player) {
     return npc;
 }
 
-
-
-//
-
-var SCRIPT_VERSION = "%__FILENAME__%";
-var SLOWTICK_TIMER_ID = 1;
-var SLOWTICK_TIMER = 100;
-
 reloadConfiguration();
-
-
 
 function init(e) {
     var w = API.getIWorld(0);
