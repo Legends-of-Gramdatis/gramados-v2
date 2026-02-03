@@ -1,6 +1,3 @@
-var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
-var world = API.getIWorld(0);
-
 /**
  * Loads a JSON object from a file.
  * @param {string} filePath - The path to the JSON file.
@@ -58,7 +55,9 @@ function checkFileExists(filePath) {
  * Retrieves the stored data from the world.
  * @returns {Object} The stored data from the world.
  */
-function getWorldData() { 
+function getWorldData() {
+    var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+    var world = API.getIWorld(0);
     return world.getStoreddata();
 }
 
@@ -78,7 +77,7 @@ function loadJavaJson(filePath) {
     reader.close();
 
     // Remove letters at the end of number values
-    jsonString = jsonString.replace(/(\d+)[bBsSlLfFdD]/g, '$1');
+    jsonString = sanitizeJavaJson(jsonString);
 
     var json = JSON.parse(jsonString);
     return json;
