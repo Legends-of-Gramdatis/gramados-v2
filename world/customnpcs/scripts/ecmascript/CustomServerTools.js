@@ -1,6 +1,35 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+
+var _RAWCOLORS = {
+    '0': 'black',
+    '1': 'dark_blue',
+    '2': 'dark_green',
+    '3': 'dark_aqua',
+    '4': 'dark_red',
+    '5': 'dark_purple',
+    '6': 'gold',
+    '7': 'gray',
+    '8': 'dark_gray',
+    '9': 'blue',
+    'a': 'green',
+    'b': 'aqua',
+    'c': 'red',
+    'd': 'light_purple',
+    'e': 'yellow',
+    'f': 'white',
+};
+
+var _RAWEFFECTS = {
+    'o': 'italic',
+    'l': 'bold',
+    'k': 'magic',
+    'm': 'strike',
+    'n': 'underline',
+    'r': 'reset'
+}
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
@@ -9,6 +38,12 @@ var Logger = LogManager.getLogger("GramdatisScript");
 var ForgeLoader = Java.type('net.minecraftforge.fml.common.Loader').instance();
 var EntityType = Java.type('noppes.npcs.api.constants.EntityType');
 var _TIMERS = [];
+var _RAWCODES = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
+var CHAT_CMD_RGX = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/;
+var CHAT_CMD_RGX_G = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/g;
+var _ENCHANTS = [];
+var CSTENCH_TAG = "CSTEnch";
+
 /*
     Custom Server Tools
 */
@@ -839,20 +874,6 @@ function playerIsOnline(world, player) {
         }
     }
     return isOnline;
-}
-
-function getChatMessage(player, team, color, message) {
-    //time
-    var curTimeStr = new Date().toLocaleTimeString("fr-FR").split(":");
-    curTimeStr.pop();
-    curTimeStr = curTimeStr.join(":");
-    var ccode = getColorId(color);
-    return "[" + curTimeStr + "] &l&" + ccode + "[&" + ccode + team + "&r &" + ccode + player + "&l&" + ccode + "] -> &r" + message;
-}
-
-function getChatTag(player, team, color) {
-    var ccode = getColorId(color);
-    return "&" + ccode + "&l[&" + ccode + "&o" + team + "&r &" + ccode + player + "&" + ccode + "&l]";
 }
 
 function scanPlayerOnNbt(player, nbtstring) {
@@ -2258,286 +2279,6 @@ function reloadConfiguration() {
 reloadConfiguration();
 
 
-var _RAWCOLORS = {
-    '0': 'black',
-    '1': 'dark_blue',
-    '2': 'dark_green',
-    '3': 'dark_aqua',
-    '4': 'dark_red',
-    '5': 'dark_purple',
-    '6': 'gold',
-    '7': 'gray',
-    '8': 'dark_gray',
-    '9': 'blue',
-    'a': 'green',
-    'b': 'aqua',
-    'c': 'red',
-    'd': 'light_purple',
-    'e': 'yellow',
-    'f': 'white',
-};
-
-var _RAWEFFECTS = {
-    'o': 'italic',
-    'l': 'bold',
-    'k': 'magic',
-    'm': 'strike',
-    'n': 'underline',
-    'r': 'reset'
-}
-
-var _RAWCODES = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
-
-function getColorId(name) {
-    for (var i in _RAWCOLORS) {
-        if (name == _RAWCOLORS[i]) {
-            return i;
-        }
-    }
-    for (var i in _RAWEFFECTS) {
-        var re = _RAWEFFECTS[i];
-        if (name == re) {
-            return i;
-        }
-    }
-    return 'r';
-}
-
-function getColorName(id) {
-    for (var i in _RAWCOLORS) {
-        var rc = _RAWCOLORS[i];
-        if (id == i) {
-            return rc;
-        }
-    }
-    for (var i in _RAWEFFECTS) {
-        var re = _RAWEFFECTS[i];
-        if (id == i) {
-            return re;
-        }
-    }
-    return 'white';
-}
-
-function stripColors(str) {
-    for (var i in _RAWCODES) {
-        var rawcode = _RAWCODES[i];
-        str = str.replaceAll('&' + rawcode, '');
-    }
-
-    return str;
-}
-
-function slugify(text) {
-    text = stripColors(text);
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '_') // Replace spaces with -
-        .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-        .replace(/__+/g, '_') // Replace multiple - with single -
-        .replace(/^_+/, '') // Trim - from start of text
-        .replace(/_+$/, ''); // Trim - from end of text
-}
-
-function ccs(str, af) {
-    if (typeof (af) == typeof (undefined) || af === null) { af = null; }
-    return colorCodeString(str, af);
-}
-
-function colorCodeString(str, allowed_formats) {
-    if (typeof (allowed_formats) == typeof (undefined) || allowed_formats === null) { allowed_formats = null; }
-    if (allowed_formats == null) {
-        allowed_formats = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
-    }
-    allowed_formats = removeFromArray(allowed_formats, ['x', 'y']);
-    return str.replace(new RegExp("&([" + allowed_formats.join("") + "])", 'g'), '\u00A7$1').replace(/&\\/g, '&');
-}
-
-function escCcs(str, esc_formats) {
-    if (typeof (esc_formats) == typeof (undefined) || esc_formats === null) { esc_formats = null; }
-    if (esc_formats == null) {
-        esc_formats = _RAWCODES;
-    }
-
-    return str.replace(new RegExp('&([' + esc_formats.join("") + '])', 'g'), '');
-}
-
-function parseEmotes(str, allwd, replaceOld) {
-    if (typeof (allwd) == typeof (undefined) || allwd === null) { allwd = []; }
-    if (typeof (replaceOld) == typeof (undefined) || replaceOld === null) { replaceOld = true; }
-    if (replaceOld) {
-        str = str.replaceAll(Object.values(CHAT_EMOTES), '');
-    }
-    for (var ce in CHAT_EMOTES) {
-        var chatemote = CHAT_EMOTES[ce];
-        if (allwd.length == 0 || allwd.indexOf(ce) > -1) {
-            str = str.replaceAll(':' + ce + ':', chatemote);
-            str = str.replaceAll(':/' + ce + '/:', ':' + ce + ':');
-        }
-    }
-    return str;
-}
-
-function strf(str, toRaw, allowed) {
-    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = true; }
-    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
-    return strrawformat(str, toRaw, allowed);
-}
-var CHAT_CMD_RGX = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/;
-var CHAT_CMD_RGX_G = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/g;
-
-
-function strrawformat(str, toRaw, allowed) {
-    if (typeof (toRaw) == typeof (undefined) || toRaw === null) { toRaw = false; }
-    var rf = [];
-    var txt = '';
-    var ri = -1;
-    var isCode = false;
-    var txtColor = 'white';
-    var isItalic = false;
-    var isBold = false;
-    var isStrike = false;
-    var isUnderlined = false;
-    var isObf = false;
-    str = str + '&r ';
-
-    for (var i = 0; i < str.length; i++) {
-        var c = str.substr(i, 1);
-        if (c == '&' || i == str.length - 1) {
-            //Check if new section has to be made
-            if (txt.length > 0) {
-                ri++;
-                var cmds = [];
-
-                rf.push([txt, txtColor, isItalic, isBold, isUnderlined, isStrike, isObf]);
-                isItalic = false;
-                isBold = false;
-                isUnderlined = false;
-                isStrike = false;
-                isObf = false;
-                txtColor = 'white';
-                txt = '';
-            }
-            isCode = true;
-            continue;
-        } else {
-            if (!isCode) {
-                txt += c.toString();
-            } else {
-                //Check Colors
-                if (typeof (_RAWCOLORS[c]) != typeof (undefined)) {
-                    txtColor = _RAWCOLORS[c];
-                }
-                //Check Markup
-                switch (c.toString()) {
-                    case 'o': {
-                        isItalic = true;
-                        break;
-                    }
-                    case 'l': {
-                        isBold = true;
-                        break;
-                    }
-                    case 'n': {
-                        isUnderlined = true;
-                        break;
-                    }
-                    case 'm': {
-                        isStrike = true;
-                        break;
-                    }
-                    case 'k': {
-                        isObf = true;
-                        break;
-                    }
-                    case 'r': {
-                        isItalic = false;
-                        isBold = false;
-                        isUnderlined = false;
-                        isStrike = false;
-                        isObf = false;
-                        txtColor = 'white';
-                        break;
-                    }
-                }
-                isCode = false;
-            }
-        }
-    }
-
-    return (!toRaw ? rf : rawformat(rf, true));
-}
-
-function rawformat(str_pieces, fullraw, allowed) {
-    if (typeof (fullraw) == typeof (undefined) || fullraw === null) { fullraw = true; }
-    if (typeof (allowed) == typeof (undefined) || allowed === null) { allowed = null; }
-    if (allowed == null) {
-        allowed = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS)).concat(['x', 'y']);
-
-    }
-    var txt = '';
-    if (fullraw) { txt += '[""'; }
-
-    for (var i in str_pieces) {
-        var p = str_pieces[i];
-        var ntext = p[0].replace(/\"/g, '\\"');
-        var nm = ntext.match(CHAT_CMD_RGX) || [];
-        if (nm.length > 0) {
-            p[7] = nm[1];
-            p[8] = nm[2];
-            p[9] = nm[3];
-            p[10] = nm[4];
-            ntext = ntext.replace(nm[0], '');
-        }
-        var pc = '{"text":"' + ntext + '"';
-        if (p[1]) {
-            if (allowed.indexOf(getColorId(p[1])) == -1) {
-                p[1] = 'white';
-            }
-
-            pc += ',"color":"' + p[1].toString() + '"';
-
-        }
-        if (p[2]) {
-            if (allowed.indexOf('o') > -1) {
-                pc += ',"italic":true';
-            }
-        }
-        if (p[3]) {
-            if (allowed.indexOf('l') > -1) {
-                pc += ',"bold":true';
-            }
-        }
-        if (p[4]) {
-            if (allowed.indexOf('n') > -1) {
-                pc += ',"underlined":true';
-            }
-        }
-        if (p[5]) {
-            if (allowed.indexOf('m') > -1) {
-                pc += ',"strikethrough":true';
-            }
-        }
-        if (p[6]) {
-            if (allowed.indexOf('k') > -1) {
-                pc += ',"obfuscated":true';
-            }
-        }
-
-        if (p[7] && p[8]) { pc += ',"clickEvent":{"action":"' + p[7] + '","value":"' + p[8] + '"}'; }
-        if (p[9] && p[10]) { pc += ',"hoverEvent":{"action":"' + p[9] + '","value":"' + ccs((p[10] || "").replace(/\$/g, '\u00A7'), allowed) + '"}'; }
-        pc += '}';
-
-
-        txt += (fullraw ? ',' : '') + pc.toString();
-    }
-
-    if (fullraw) {
-        txt += ']';
-    }
-
-    return txt;
-}
-
 /**
  * 
  * @param {Number} value Current value
@@ -2578,11 +2319,6 @@ function cson_parse(cson_string) {
     return JSON.parse((cson_string.replace(rgx_comments, '').replace(rgx_commas, '$1')));
 }
 
-
-function executeCommandGlobal(command, dim) {
-    if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
-    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
-}
 
 
 //Initialize PLugin Folder
@@ -4740,7 +4476,7 @@ registerXCommands([
         "max": 6,
     }]],
     ['!fakemsg <player> <team> <team_color> [...message]', function (pl, args, data) {
-        executeCommand(pl, "/tellraw @a " + parseEmotes(strf(getChatMessage(args.player, args.team, args.team_color, args.message.join(" ")))));
+        executeCommand(pl, "/tellraw @a " + parseEmotes(strf(formatChatMessage(args.player, args.team, args.team_color, args.message.join(" ")))));
     }, 'fakemsg', [{
         "argname": "team_color",
         "type": "color"
@@ -10585,75 +10321,6 @@ registerXCommands([
     }, 'myUnlocks']
 ]);
 
-function rainbowifyText(text) {
-    var rainbowText = '';
-    var colorIndex = 0;
-    var color_keys = Object.keys(_RAWCOLORS);
-    var stack = []; // Stack to handle recursive brackets
-    var skipRainbow = false;
-
-    for (var i = 0; i < text.length; i++) {
-        var char = text.charAt(i);
-
-        // Handle opening brackets
-        if ((char === '[' || char === '{') && !skipRainbow) {
-            stack.push(char === '[' ? ']' : '}');
-            skipRainbow = true;
-        }
-
-        // Handle closing brackets
-        if (skipRainbow && stack.length > 0 && char === stack[stack.length - 1]) {
-            stack.pop();
-            if (stack.length === 0) {
-                skipRainbow = false;
-            }
-        }
-
-        if (skipRainbow || (char === '&' && i + 1 < text.length && (includes(color_keys, text.charAt(i + 1)) || _RAWEFFECTS[text.charAt(i + 1)]))) {
-            // Skip adding color codes to existing color codes or within skip sections or formatting tags
-            rainbowText += char;
-            if (char === '&' || char === '$') {
-                rainbowText += text.charAt(i + 1);
-                i++; // Skip the next character as it's part of the color code or formatting tag
-            }
-        } else {
-            // Get the color code for the current character
-            var colorCode = color_keys[colorIndex % color_keys.length];
-            rainbowText += '&' + colorCode + char;
-            colorIndex++;
-        }
-    }
-
-    return rainbowText; // Return the rainbow text
-}
-
-//Send player formatted message
-function tellPlayer(player, rawtext) {
-    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
-        rawtext = rainbowifyText(rawtext);
-    }
-    return executeCommand(player, "/tellraw " + player.getName() + " " + parseEmotes(strf(rawtext)));
-}
-
-function tellTarget(player, target, rawtext) {
-    if ((new Date().getDate() > 30 && new Date().getMonth() == 2) || (new Date().getDate() < 2 && new Date().getMonth() == 3)) {
-        rawtext = rainbowifyText(rawtext);
-    }
-    return executeCommand(player, "/tellraw " + target + " " + parseEmotes(strf(rawtext)));
-}
-
-function tellPlayerTitle(player, rawtext, type, target) {
-    if (typeof (type) == typeof (undefined) || type === null) { type = "actionbar"; }
-    return executeCommand(player, "/title " + (target || player.getName()) + " " + type + " " + parseEmotes(strf(rawtext)))
-}
-//Send player multiple formatted messages from array
-function storytellPlayer(player, ar) {
-    for (var i in ar) {
-        var ari = ar[i];
-        tellPlayer(player, ari);
-    }
-}
-
 //Get server title bar for displaying
 //TO-DO: Placeholders instead of multiple variables
 function getTitleBar(title, showServerName) {
@@ -10852,23 +10519,7 @@ function getMaxXp(lvl) {
 
 
 
-function romanize(num) {
-    var lookup = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 },
-        roman = '',
-        i;
-    for (i in lookup) {
-        while (num >= lookup[i]) {
-            roman += i;
-            num -= lookup[i];
-        }
-    }
-    return roman;
-}
 
-
-
-var _ENCHANTS = [];
-var CSTENCH_TAG = "CSTEnch";
 
 registerCSTEnchant("cst:berserker", "Berserker", 10, function (id, e, lvl, type) {
     switch (type) {
