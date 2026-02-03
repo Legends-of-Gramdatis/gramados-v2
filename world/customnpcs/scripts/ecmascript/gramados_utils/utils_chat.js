@@ -266,13 +266,13 @@ function parseEmotes(str, allwd, replaceOld) {
         replaceOld = false;
     }
     if (replaceOld) {
-        str = str.replace(/:([\w]+):/g, function (match, p1) {
-            return (p1 in CHAT_EMOTES ? CHAT_EMOTES[p1] : match);
-        });
+        str = str.replaceAll(Object.values(CHAT_EMOTES), '');
     }
     for (var ce in CHAT_EMOTES) {
-        if (allwd.indexOf(ce) > -1) {
-            str = str.replace(new RegExp(":" + ce + ":", "g"), CHAT_EMOTES[ce]);
+        var chatemote = CHAT_EMOTES[ce];
+        if (allwd.length == 0 || allwd.indexOf(ce) > -1) {
+            str = str.replaceAll(':' + ce + ':', chatemote);
+            str = str.replaceAll(':/' + ce + '/:', ':' + ce + ':');
         }
     }
     return str;
@@ -457,32 +457,8 @@ function rawformat(str_pieces, fullraw, allowed) {
     return txt;
 }
 
-/**
- * Executes a command as a player.
- * @param {IPlayer} player - The player executing the command.
- * @param {string} command - The command to execute.
- * @param {string} [as_player] - The player to execute the command as.
- * @returns {boolean} The result of the command execution.
- */
-function executeCommand(player, command, as_player) {
-    if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
-    if (as_player == null) { as_player = player.getName(); }
-    var cmd = API.createNPC(player.world.getMCWorld());
 
-    return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
 
-}
-
-/**
- * Executes a command globally.
- * @param {string} command - The command to execute.
- * @param {number} [dim=0] - The dimension to execute the command in.
- * @returns {boolean} The result of the command execution.
- */
-function executeCommandGlobal(command, dim) {
-    if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
-    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
-}
 
 /**
  * Converts a number to a roman numeral.

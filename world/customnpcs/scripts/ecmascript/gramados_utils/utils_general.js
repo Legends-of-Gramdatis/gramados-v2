@@ -195,12 +195,30 @@ function getJsonKeys(json) {
 //     return false;
 // }
 
+/**
+ * Executes a command as a player.
+ * @param {IPlayer} player - The player executing the command.
+ * @param {string} command - The command to execute.
+ * @param {string} [as_player] - The player to execute the command as.
+ * @returns {boolean} The result of the command execution.
+ */
 function executeCommand(player, command, as_player) {
     if (typeof (as_player) == typeof (undefined) || as_player === null) { as_player = null; }
     if (as_player == null) { as_player = player.getName(); }
     var cmd = API.createNPC(player.world.getMCWorld());
 
     return cmd.executeCommand("/execute " + as_player + " ~ ~ ~ " + command);
+}
+
+/**
+ * Executes a command globally.
+ * @param {string} command - The command to execute.
+ * @param {number} [dim=0] - The dimension to execute the command in.
+ * @returns {boolean} The result of the command execution.
+ */
+function executeCommandGlobal(command, dim) {
+    if (typeof (dim) == typeof (undefined) || dim === null) { dim = 0; }
+    return API.createNPC(API.getIWorld(dim).getMCWorld()).executeCommand(command);
 }
 
 /**
