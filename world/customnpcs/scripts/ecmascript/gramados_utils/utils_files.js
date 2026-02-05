@@ -91,10 +91,15 @@ function mkPath(path) {
     var expath = path.split("/");
     var curpath = "";
     for (var ex in expath) {
-        curpath += expath[ex] + "/";
-        var dir = new File(curpath);
-        if (!dir.exists()) {
-            dir.mkdir();
+        var expt = expath[ex];
+        curpath += (curpath == "" ? "" : "/") + expt;
+        var pfile = new File(curpath);
+        if (!pfile.exists()) {
+            if (expt.match(/[\w]+\.[\w]+/) === null) { //is dir?
+                pfile.mkdir();
+            } else {
+                pfile.createNewFile();
+            }
         }
     }
 }
@@ -108,7 +113,11 @@ function readDir(dirPath) {
     var res = [];
     var files = new File(dirPath).listFiles();
     for (var id in files) {
-        res.push(files[id].getName());
+        var file = files[id];
+        if (file.isDirectory())
+            res = res.concat(readDir(file.toString()));
+        else
+            res.push(Java.from(readFile(file.toString())).join("\n").replace(/\t/g, "  "));
     }
     return res;
 }
@@ -135,18 +144,17 @@ function readFile(filePath) {
  * @param {number} [length=text.length] - The length of text to write.
  */
 function writeToFile(filePath, text, offset, length) {
-    if (typeof (offset) == typeof (undefined) || offset === null) {
-        offset = 0;
+    if (typeof (offset) == typeof (undefined) || offset === null) { offset = null; }
+    if (typeof (length) == typeof (undefined) || length === null) { length = null; }
+    var path = Paths.get(filePath);
+    try {
+        var writer = Files.newBufferedWriter(path, CHARSET_UTF_8);
+        writer.write(text, offset || 0, length || text.length);
+        writer.close();
+        return true;
+    } catch (exc) {
+        return false
     }
-    if (typeof (length) == typeof (undefined) || length === null) {
-        length = text.length;
-    }
-    var fileReader = new java.io.FileWriter(filePath, true);
-    var bufferedWriter = new java.io.BufferedWriter(fileReader);
-    bufferedWriter.write(text, offset, length);
-    bufferedWriter.newLine();
-    bufferedWriter.close();
-    fileReader.close();
 }
 
 /**
