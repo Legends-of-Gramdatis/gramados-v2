@@ -1,0 +1,58 @@
+{
+    "ScriptEnabled": 1b,
+    "ScriptConsole": [
+    ],
+    "Scripts": [
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "customservertools.js"
+                }
+            ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/jobs/job_manager.js"
+                }
+            ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/modifiers/modifierengine.js"
+                }
+            ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/onboarding/onboarding_main.js"
+                }
+            ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/worldevents/worldeventsmain.js"
+                }
+            ]
+        }
+    ],
+    "ScriptLanguage": "ECMAScript"
+}
