@@ -4,19 +4,26 @@
  * @returns {Object|null} The parsed JSON object, or null if the file does not exist.
  */
 function loadJson(filePath) {
-    var fileReader = new java.io.FileReader(filePath);
-    var bufferedReader = new java.io.BufferedReader(fileReader);
-    var content = "";
-    var line;
-    while ((line = bufferedReader.readLine()) !== null) {
-        content += line;
-    }
-    bufferedReader.close();
-    // if empty, return null
-    if (content.trim() === "") {
+    try {
+        var fileReader = new java.io.FileReader(filePath);
+        var bufferedReader = new java.io.BufferedReader(fileReader);
+        var content = "";
+        var line;
+        while ((line = bufferedReader.readLine()) !== null) {
+            content += line;
+        }
+        bufferedReader.close();
+        // if empty, return null
+        if (content.trim() === "") {
+            return null;
+        }
+        return JSON.parse(content);
+    } catch (e) {
+        var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
+        var world = API.getIWorld(0);
+        world.broadcast("§4Critical error loading JSON file: " + filePath + " - " + e.message + " - Immediately call a staff member to fix this!");
         return null;
     }
-    return JSON.parse(content);
 }
 
 /**
