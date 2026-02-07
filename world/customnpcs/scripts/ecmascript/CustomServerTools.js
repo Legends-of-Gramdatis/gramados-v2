@@ -5,6 +5,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
+var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
+
 var _RAWCOLORS = {
     '0': 'black',
     '1': 'dark_blue',
@@ -403,6 +405,13 @@ var CSTENCH_TAG = "CSTEnch";
 var SCRIPT_VERSION = "%__FILENAME__%";
 var SLOWTICK_TIMER_ID = 1;
 var SLOWTICK_TIMER = 100;
+var MENU_TIMER_ID = 420;
+var MENU_TIMER_PAYLOAD = null;
+var MENU_ON_CLOSE = [];
+var MENU_CAN_EDIT = false;
+var rgx_selector = /@([\w]+)(?:\[([^\v]*)\])?/;
+var rgx_selector_arg = /(\w+)(?:=(\w+)?(?:(\.\.)(\w+)?)?)?/g;
+var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
 
 var MCP = {
     "functions": {
@@ -12264,29 +12273,9 @@ HTTP.async = {
 };
 
 
-
-
-
-
-//
-
-
-
-
-
-//
-
-
-
 function getColorPermId(colorId) {
     return 'chat.color.' + getColorName(colorId);
 }
-
-
-
-
-
-
 
 function reloadEmotes(w) {
     var data = w.getStoreddata();
@@ -12298,20 +12287,6 @@ function reloadEmotes(w) {
         }
     }
 }
-
-
-
-
-
-
-
-;
-
-
-
-
-
-
 
 function formatLoanInfo(loan, params, title, cmdPrefix) {
     if (typeof (params) == typeof (undefined) || params === null) { params = {}; }
@@ -12385,28 +12360,6 @@ function formatLoanInfo(loan, params, title, cmdPrefix) {
 
     return output;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-var MENU_TIMER_ID = 420;
-var MENU_TIMER_PAYLOAD = null;
-var MENU_ON_CLOSE = [];
-var MENU_CAN_EDIT = false;
-
-
-
-
-
-
 
 function fillObject(obj, data) {
 
@@ -13026,9 +12979,6 @@ function array_compare(array1, array2, compareFn) {
 
 
 
-var rgx_selector = /@([\w]+)(?:\[([^\v]*)\])?/;
-var rgx_selector_arg = /(\w+)(?:=(\w+)?(?:(\.\.)(\w+)?)?)?/g;
-var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
 function $(query, e, source) {
 
     //The order is important
