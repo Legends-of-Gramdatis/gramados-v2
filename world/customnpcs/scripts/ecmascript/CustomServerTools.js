@@ -7,40 +7,9 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
-var UNI = [
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-];
-var _COINTABLE = {
-    'c': 1,
-    'g': 100,
-    'k': 100000,
-    'm': 100000000,
-    'b': 100000000000,
-    't': 100000000000000,
-    'q': 100000000000000000,
-    's': 100000000000000000000
-};
-
 var CHAT_EMOTES = gramados_json.CHAT_EMOTES;
 var _RAWCOLORS = gramados_json._RAWCOLORS;
 var _RAWEFFECTS = gramados_json._RAWEFFECTS;
-
-
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var INbt = Java.type('noppes.npcs.api.INbt');
@@ -64,6 +33,58 @@ var MENU_CAN_EDIT = false;
 var rgx_selector = /@([\w]+)(?:\[([^\v]*)\])?/;
 var rgx_selector_arg = /(\w+)(?:=(\w+)?(?:(\.\.)(\w+)?)?)?/g;
 var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
+
+
+var _MSG = gramados_json._MSG;
+var _COINITEMS = gramados_json._COINITEMS;
+
+//===== CONFIG
+var CONFIG_SERVER = {
+    "NAME": "TestServer",
+    "TITLE": "&5&lTestServer",
+    "PREFIX": "&5&l",
+    "BAR_OPEN": "&r&l[=======] &r",
+    "BAR_CLOSE": "&r&l [=======]&r",
+    "DEFAULT_PERM_TEAMS": [
+        "Owner",
+        "Developer"
+    ],
+    "DEFAULT_PERM_PLAYERS": [],
+    "DEFAULT_TEAM_JOIN": "Player",
+    "DEVELOPMENT_MODE": false,
+    "USE_DISK": "DEFAULT",
+    "LICENSE_KEY": "",
+    "FILE_DISKS": {
+        "DEFAULT": {
+            "path": "{worldname}/customnpcs/scripts/world_data.json"
+        },
+        "CST_DATA": {
+            "path": "CustomServerTools/data/data.json"
+        }
+    },
+    "CHAT_COLOR_CURRENCY": "credit",
+    "MONEY_POUCH_SCRIPT": null,
+    "REGION_TYPES": {
+        "garden": {
+            "build": [],
+            "interact": []
+        }
+    }
+};
+
+
+//Configure your own time units for in arguments etc!
+var msTable = {
+    //Reallife time
+    'y': 31556926000, //365.25 days for taking leap years into account
+    'mon': 2629743830, //
+    'w': 604800000,
+    'd': 86400000,
+    'h': 3600000,
+    'min': 60000,
+    's': 1000,
+    'ms': 1,
+};
 
 var MCP = {
     "functions": {
@@ -1366,140 +1387,6 @@ function formatCurrency(amount, currencyType) {
 
     return null;
 }
-
-
-//Currency settings
-var _COINITEMNAME = '&2&lMoney&r'; //Custom name of currency
-var _COINITEM_PREFIX = '&e'; //Prefix showing before money value lore (used for color coding)
-
-//Your money items, and their values in money syntax
-//"value": "item_id",
-var LOWVALUE_ID = "variedcommodities:coin_iron";
-var MIDVALUE_ID = "variedcommodities:money";
-var HIGHVALUE_ID = "variedcommodities:plans";
-var ULTRAVALUE_ID = "variedcommodities:satchel";
-
-
-//Coin Items for the physical currency
-var _COINITEMS = { //MUST BE FROM LOW TO HIGH
-    '1c': LOWVALUE_ID,
-    '5c': LOWVALUE_ID,
-    '10c': LOWVALUE_ID,
-    '20c': LOWVALUE_ID,
-    '50c': LOWVALUE_ID,
-    '1g': LOWVALUE_ID,
-    '2g': LOWVALUE_ID,
-    '5g': MIDVALUE_ID,
-    '10g': MIDVALUE_ID,
-    '20g': MIDVALUE_ID,
-    '50g': MIDVALUE_ID,
-    '100g': MIDVALUE_ID,
-    '200g': MIDVALUE_ID,
-    '500g': MIDVALUE_ID,
-    '1k': HIGHVALUE_ID,
-    '2k': HIGHVALUE_ID,
-    '10k': HIGHVALUE_ID,
-    '20k': HIGHVALUE_ID,
-    '50k': HIGHVALUE_ID,
-    '100k': HIGHVALUE_ID,
-    '1m': ULTRAVALUE_ID,
-    '2m': ULTRAVALUE_ID,
-    '5m': ULTRAVALUE_ID,
-    '10m': ULTRAVALUE_ID,
-    '20m': ULTRAVALUE_ID,
-    '50m': ULTRAVALUE_ID,
-    '100m': ULTRAVALUE_ID,
-    '200m': ULTRAVALUE_ID,
-    '500m': ULTRAVALUE_ID,
-    '1b': ULTRAVALUE_ID,
-    '2b': ULTRAVALUE_ID,
-    '5b': ULTRAVALUE_ID,
-    '10b': ULTRAVALUE_ID,
-    '20b': ULTRAVALUE_ID,
-    '50b': ULTRAVALUE_ID,
-    '100b': ULTRAVALUE_ID,
-    '200b': ULTRAVALUE_ID,
-    '500b': ULTRAVALUE_ID,
-    '1t': ULTRAVALUE_ID,
-    '2t': ULTRAVALUE_ID,
-    '5t': ULTRAVALUE_ID,
-    '10t': ULTRAVALUE_ID,
-    '20t': ULTRAVALUE_ID,
-    '50t': ULTRAVALUE_ID,
-    '100t': ULTRAVALUE_ID,
-    '200t': ULTRAVALUE_ID,
-    '500t': ULTRAVALUE_ID,
-    '1q': ULTRAVALUE_ID,
-};//LANGUAGE settings
-var _MSG = {
-    //Error Strings
-    "cmdNotFound": "&cCould not find this command!",
-    "cmdNoPerm": "&cYou don't have permission to this command!",
-    "argNotValid": "&c'{argName}' is not a valid id/name! It can only contain: &o{allowed}",
-    "argToShort": "&c'{argName}' is too short! (Min. {allowed} characters)",
-    "argNoColor": "&c'{argName}' cannot contain colorcoding!",
-    "argEnum": "&c'{argName}' must be one of the following: &o{allowed}!",
-    "argNaN": "&c'{argName}' is not a number!",
-    "argMax": "&c'{argName}' cannot be bigger than {allowed}!",
-    "argMin": "&c'{argName}' cannot be smaller than {allowed}!",
-    "argNotExists": "&c{type} '{argVal}' does not exists!",
-    "argExists": "&c{type} '{argVal}' already exists!",
-    "argColor": "&cColors must be one of the following: {allowed}!",
-    "argColorEffect": "&cChat effects must be one of the following: {allowed}!",
-    "argItemAttr": "&cItem attributes must be one of these {allowed}!",
-    "argBool": "&c{dataType} must be true or false!",
-    //button texts
-    "undoBtnText": "Undo",
-    "refreshBtnText": "Refresh"
-};
-//===== CONFIG
-var CONFIG_SERVER = {
-    "NAME": "TestServer",
-    "TITLE": "&5&lTestServer",
-    "PREFIX": "&5&l",
-    "BAR_OPEN": "&r&l[=======] &r",
-    "BAR_CLOSE": "&r&l [=======]&r",
-    "DEFAULT_PERM_TEAMS": [
-        "Owner",
-        "Developer"
-    ],
-    "DEFAULT_PERM_PLAYERS": [],
-    "DEFAULT_TEAM_JOIN": "Player",
-    "DEVELOPMENT_MODE": false,
-    "USE_DISK": "DEFAULT",
-    "LICENSE_KEY": "",
-    "FILE_DISKS": {
-        "DEFAULT": {
-            "path": "{worldname}/customnpcs/scripts/world_data.json"
-        },
-        "CST_DATA": {
-            "path": "CustomServerTools/data/data.json"
-        }
-    },
-    "CHAT_COLOR_CURRENCY": "credit",
-    "MONEY_POUCH_SCRIPT": null,
-    "REGION_TYPES": {
-        "garden": {
-            "build": [],
-            "interact": []
-        }
-    }
-};
-
-var DEFAULT_MONEY = 0;
-
-//Configure your own time units for in arguments etc!
-var msTable = {
-    //Reallife time
-    'y': 31556926000, //365.25 days for taking leap years into account
-    'mon': 2629743830, //
-    'w': 604800000,
-    'd': 86400000,
-    'h': 3600000,
-    'min': 60000,
-    's': 1000,
-    'ms': 1,
-};
 
 
 function handleError(error, logsToConsole, target) {
