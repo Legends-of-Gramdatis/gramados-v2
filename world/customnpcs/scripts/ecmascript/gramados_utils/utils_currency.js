@@ -9,7 +9,6 @@ var coinItems = convertCoinItems(gramadosData._COINITEMS);
 var coinTable = gramadosData._COINTABLE;
 var virtualCurrencies = gramadosData.VIRTUAL_CURRENCIES;
 var coinItemName = gramadosData._COINITEMNAME;
-var coinItemPrefix = gramadosData._COINITEM_PREFIX;
 var lowValueId = gramadosData.LOWVALUE_ID;
 var midValueId = gramadosData.MIDVALUE_ID;
 var highValueId = gramadosData.HIGHVALUE_ID;
