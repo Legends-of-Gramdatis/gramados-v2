@@ -377,7 +377,6 @@
         }
     ],
     "_COINITEMNAME": "&2&lMoney&r",
-    "_COINITEM_PREFIX": "&e",
     "LOWVALUE_ID": "variedcommodities:coin_iron",
     "MIDVALUE_ID": "variedcommodities:money",
     "HIGHVALUE_ID": "variedcommodities:plans",
