@@ -392,7 +392,7 @@ function get_all_car_items_registered(car_list, car_paper_list) {
     var registered_cars = [];
 
     for (var i = 0; i < car_list.length; i++) {
-        var car_stack = car_list[i];
+        var car_stack = car_list[i].copy();
         if (is_car_ww_registered(car_stack, car_paper_list)) {
             registered_cars.push(car_stack);
         }
@@ -432,9 +432,9 @@ function get_all_car_items(inventory_slots) {
 }
 
 function is_car_ww_registered(car_item_stack, ww_paper_stack_list) {
-    if (car_item_stack.hasNbt()) {
-        return false;
-    }
+    // if (car_item_stack.hasNbt()) {
+    //     return false;
+    // }
     var carVehicleId = car_item_stack.getName();
     // get itemstack NBT
     for (var i = 0; i < ww_paper_stack_list.length; i++) {
@@ -466,6 +466,8 @@ function is_car_registered(car_item_stack, paper_stack_list, include_ww) {
     if (!car_item_stack.hasNbt() && !include_ww) {
         return false;
     }
+
+    var carIdsList = JSON.stringify(get_all_car_ids_from_paper_list(paper_stack_list));
     
-    return includes(get_all_car_ids_from_paper_list(paper_stack_list), car_item_stack.getName())
+    return includes(carIdsList, car_item_stack.getName())
 }

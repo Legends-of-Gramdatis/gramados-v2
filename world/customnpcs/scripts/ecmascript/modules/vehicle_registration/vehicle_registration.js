@@ -487,6 +487,7 @@ function interact(event) {
     var player = event.player;
     var npc = event.npc;
     var heldItem = player.getMainhandItem();
+    var world = player.getWorld();
 
     var offhandItem = player.getOffhandItem();
     var hasSeagullCard = offhandItem && !offhandItem.isEmpty() && offhandItem.getName() === "mts:ivv.idcard_seagull";
@@ -715,8 +716,7 @@ function interact(event) {
     var keys = getJsonKeys(json);
 
     // if no "electricPower" key, assume it's not a vehicle
-    if (!includes(keys, "electricPower")) {
-        tellPlayer(player, "&c:cross_mark: This item is not a vehicle.");
+    if (!isItem_Vehicle(heldItem)) {
         return;
     }
 

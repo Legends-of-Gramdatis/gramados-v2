@@ -7,9 +7,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 
 var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
-
-// Keep this file self-contained: some callers load only utils_vehicles_licensing.js.
-// Matches the constant used in modules/vehicle_registration/vehicle_registration.js
 var NON_STANDARD_PLATE_FEE_CENTS = 1000 * 100;
 
 
@@ -273,4 +270,93 @@ function playerHasWWPapersInInv(player) {
         }
     }
     return false;
+}
+
+// Car Part NBT Checks
+
+function isCarPartNBT_Engine(nbt) {
+    if (nbt.has("packID") && nbt.has("temp") && nbt.has("systemName")) {
+        return includes(VEHICLE_REGISTRATION_CONFIG.engineSystemNames, nbt.getString("systemName"));
+    }
+    return false;
+}
+
+function isCarPartNBT_Plate(nbt) {
+    if (nbt.has("packID") && nbt.has("systemName")) {
+        return includes(VEHICLE_REGISTRATION_CONFIG.plateSystemNames, nbt.getString("systemName"));
+    }
+    return false;
+}
+
+//  VIN
+
+function hasVehicleVIN(ItemStack) {
+    if (!isItem_Vehicle(ItemStack)) {
+        return false;
+    }
+    var nbt = ItemStack.getNbt();
+    return nbt.has("keyUUID");
+}
+
+function getVehicleVIN(ItemStack) {
+    if (!hasVehicleVIN(ItemStack)) {
+        return null;
+    }
+    var nbt = ItemStack.getNbt();
+    return nbt.getString("keyUUID");
+}
+
+// Other NBT
+
+function hasVehicleNBT(ItemStack, player) {
+    if (!isItem_Vehicle(ItemStack)) {
+        return false;
+    }
+
+    var checked_systems = checkCarSystems(ItemStack);
+
+    tellPlayer(player, "&6Vehicle NBT Check:");
+    tellPlayer(player, "&e- Plate System: " + (checked_systems.plate_gramados ? "&aFound" : "&cNot Found"));
+    tellPlayer(player, "&e- VIN: " + (checked_systems.VIN ? "&aFound" : "&cNot Found"));
+    tellPlayer(player, "&e- Engine System: " + (checked_systems.engine ? "&aFound" : "&cNot Found"));
+    return (checked_systems.plate_gramados && checked_systems.VIN && checked_systems.engine);
+}
+
+function checkCarSystems(ItemStack) {
+    var checkedSystems = {
+        "plate_gramados": false,
+        "VIN": false,
+        "engine": false
+    }
+
+    var rawNbt = ItemStack.getNbt();
+    var allKeys = rawNbt.getKeys();
+    var allPartKeys = []
+    for (var i = 0; i < allKeys.length; i++) {
+        var key = allKeys[i];
+        if (key.startsWith("part_")) {
+            allPartKeys.push(key);
+        }
+    }
+    
+    for (var i = 0; i < allPartKeys.length; i++) {
+        var partKey = allPartKeys[i];
+        var partNbt = rawNbt.getCompound(partKey);
+
+        if (!checkedSystems.plate_gramados) {
+            checkedSystems.plate_gramados = isCarPartNBT_Plate(partNbt);
+        }
+        if (!checkedSystems.engine) {
+            checkedSystems.engine = isCarPartNBT_Engine(partNbt);
+        }
+        if (!checkedSystems.VIN) {
+            checkedSystems.VIN = hasVehicleVIN(ItemStack);
+        }
+    }
+    return checkedSystems;
+}
+
+function isItem_Vehicle(ItemStack) {
+    var nbt = ItemStack.getNbt();
+    return nbt.has("electricPower") && nbt.has("fuelTank");
 }

@@ -39,21 +39,19 @@ function interact(event) {
         tellPlayer(player, "&e- " + car_stack.getDisplayName());
     }
 
-    // Register all unregistered cars as WW
-    for (var i = 0; i < unregistered_cars.length; i++) {
-        var car_stack = unregistered_cars[i];
-        var registration = generateRegistration(
-            player.getName(),
-            car_stack,
-            "Devland",
-            ["WW Temporary Registration"]
-        );
+    tellPlayer(player, "&6WW Registered Car Items in Inventory:");
+    for (var i = 0; i < ww_registered_car_items.length; i++) {
+        var car_stack = ww_registered_car_items[i];
+        tellPlayer(player, "&e- " + car_stack.getDisplayName());
+    }
 
-        var paper_stack = generatePaperItem(player.getWorld(), registration, car_stack);
-
-        // Give the player the paper stack
-        player.giveItem(paper_stack);
-
-        tellPlayer(player, "&aRegistered vehicle " + car_stack.getDisplayName() + " as WW. Given Car Papers.");
+    if (ww_registered_car_items.length > 0) {
+        for (var i = 0; i < ww_registered_car_items.length; i++) {
+            var car_stack = ww_registered_car_items[i];
+            tellPlayer(player, "&6Checking if " + car_stack.getDisplayName() + " has valid vehicle NBT tu upgrade from WW to Active registration...");
+            if (hasVehicleNBT(car_stack, player)) {
+                tellPlayer(player, "&aVehcile " + car_stack.getDisplayName() + " is valid and can be registered to Active status.");
+            }
+        }
     }
 }
