@@ -48,7 +48,7 @@ function interact(event) {
     if (ww_registered_car_items.length > 0) {
         for (var i = 0; i < ww_registered_car_items.length; i++) {
             var car_stack = ww_registered_car_items[i];
-            tellPlayer(player, "&6Checking if " + car_stack.getDisplayName() + " has valid vehicle NBT tu upgrade from WW to Active registration...");
+            tellPlayer(player, "&6Checking if " + car_stack.getDisplayName() + " has valid vehicle NBT to upgrade from WW to Active registration...");
             if (hasVehicleNBT(car_stack, player)) {
                 tellPlayer(player, "&aVehcile " + car_stack.getDisplayName() + " is valid and can be registered to Active status.");
             }
