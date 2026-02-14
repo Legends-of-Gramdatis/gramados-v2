@@ -94,48 +94,36 @@ function purchaseVehicle(player, npc) {
     
     var vehicle = stock.vehicles[currentIndex];
     var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
-    var basePrice = getPriceFromItemStack(itemStack, 0, false);
-    var paperFee = calculateCarPaperPrice(basePrice, "Devland", "XXX-0000");
-    var price = basePrice + paperFee;
+
+    var registration = generateWWRegistration(
+        player.getName(),
+        vehicle.id,
+        "Devland",
+        generateRandomWWPlate(),
+        [getNaLabel()]
+    );
+    var price = registration.msrpCents + registration.registrationPriceCents;
     
     if (extractMoneyFromPouch(player, price)) {
         player.giveItem(itemStack);
         tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + ' for ' + formatMoney(price) + '.');
 
-        // Auto-register as WW and give WW car papers linked to the purchased item.
-        var ww = registerVehicleAsWW(vehicle.id, player.getName(), player);
-        var registration = generateWWRegistration(
-            player.getName(),
-            vehicle.id,
-            "Devland",
-            ww.plate,
-            ["WW Temporary Registration"]
-        );
-        var papers = generatePaperItem(player.getWorld(), registration, itemStack);
-        player.giveItem(papers);
-        
-        // Remove the vehicle from stock
+        player.giveItem(generatePaperItem(player.getWorld(), registration, itemStack));
+
+        saveLicenseJSON(registration);
+
         if (vehicle.count > 1) {
-            // Decrease count if multiple units exist
             stock.vehicles[currentIndex].count -= 1;
-            tellPlayer(player, '&7[Dealership] ' + (vehicle.count - 1) + ' units of this model remain in stock.');
         } else {
-            // Remove the entire vehicle entry if only one unit existed
             stock.vehicles.splice(currentIndex, 1);
             stock.totalStacks -= 1;
-            tellPlayer(player, '&7[Dealership] This was the last unit of this model.');
-            
-            // Adjust vehicle index if needed
             if (stock.vehicles.length === 0) {
                 npc.getStoreddata().put('dealership_vehicle_index', 0);
-                tellPlayer(player, '&e[Dealership] Stock is now empty. Ask an admin to refresh.');
             } else if (currentIndex >= stock.vehicles.length) {
-                // Index is now out of bounds, wrap to last vehicle
                 npc.getStoreddata().put('dealership_vehicle_index', stock.vehicles.length - 1);
             }
         }
-        
-        // Save updated stock
+
         npc.getStoreddata().put('dealership_stock', JSON.stringify(stock));
         
         return true;
@@ -144,6 +132,7 @@ function purchaseVehicle(player, npc) {
     tellPlayer(player, '&c[Dealership] You do not have enough money to purchase this vehicle. Price: ' + formatMoney(price) + '.');
     return false;
 }
+
 function guiBuilder_updateManifest(player, npc, manifest) {
 
     var pageId = npc.getStoreddata().get('dealership_current_page');
@@ -193,7 +182,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             manifest.pages[0].components[7].locked = !playerHasJobWithTag(player, "Mechanic");
             break;
         case 2:
-            tellPlayer(player, '&e[Dealership] Updating purchase page.');
+            // tellPlayer(player, '&e[Dealership] Updating purchase page.');
             // Get current vehicle index and stock data
             var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
             var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
@@ -223,6 +212,21 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             break;
         case 3:
             // Additional page updates can be handled here
+            var inv = player.getInventory();
+            var slots = inv.getItems();
+            var all_papers = get_all_car_papers(slots, false);
+            var ww_papers = get_all_ww_car_papers(slots);
+            tellPlayer(player, "&e- Total Car Papers (excl. WW): &a" + all_papers.length);
+            tellPlayer(player, "&e- Total WW Car Papers: &a" + ww_papers.length);
+
+            if( ww_papers.length > 0) {
+                var current_ww_paper = ww_papers[0]
+                var registry_data = getPaperLinkedRegistry(current_ww_paper);
+            }
+
+            manifest.pages[2].components[3].label = registry_data.plate;
+            manifest.pages[2].components[6].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
+
             break;
     }
 

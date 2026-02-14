@@ -1,6 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/modules/GUI_builder/gui_builder.js');
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
 
 
 var GUI_SOURCE_BASE = 'world/customnpcs/scripts/ecmascript/modules/GUI_builder/guis/';
@@ -48,7 +49,7 @@ function getGuiResources(guiName) {
     return guiCache[guiName];
 }
 
-function openDealershipGui(api, player, npc) {
+function openDealershipGui(api, player, npc, pageIndex) {
     var resources = getGuiResources(GUI_NAME);
     if (!resources) {
         tellPlayer(player, '&c[Dealership] GUI manifest missing for ' + GUI_NAME + '.');
@@ -58,9 +59,10 @@ function openDealershipGui(api, player, npc) {
     var manifestCopy = JSON.parse(JSON.stringify(resources.manifest));
 
     var pages = guiBuilder_getPagesID(manifestCopy);
-    var firstPage = pages[0];
+    var page = pages[pageIndex];
+    npc.getStoreddata().put('dealership_current_page', page);
 
-    guiBuilder_buildGuiFromManifest(api, player, guiBuilder_updateManifest(player, npc, manifestCopy), resources.skinPack, firstPage, resources.sourcePath, resources.scriptPath, npc);
+    guiBuilder_buildGuiFromManifest(api, player, guiBuilder_updateManifest(player, npc, manifestCopy), resources.skinPack, page, resources.sourcePath, resources.scriptPath, npc);
 }
 
 function init(event) {
@@ -92,22 +94,14 @@ function init(event) {
         // Auto-reload if last refresh was before current week's Monday
         var stockStr = npc.getStoreddata().get(STORED_KEY);
         if (stockStr) {
-            var stockObj = null;
-            try {
-                stockObj = JSON.parse(stockStr);
-            } catch (e) {
-                // If stored JSON is invalid, trigger a reload to recover
-                stockObj = null;
-            }
+            var stockObj = JSON.parse(stockStr);
 
             if (stockObj && stockObj.refreshedAt) {
                 var lastRefresh = new Date(stockObj.refreshedAt);
-                if (!isNaN(lastRefresh.getTime())) {
-                    var weekMonday = getStartOfCurrentWeekMonday();
-                    if (lastRefresh.getTime() < weekMonday.getTime()) {
-                        tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
-                        reloadStock(player, npc);
-                    }
+                var weekMonday = getStartOfCurrentWeekMonday();
+                if (lastRefresh.getTime() < weekMonday.getTime()) {
+                    tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
+                    reloadStock(player, npc);
                 }
             }
         }
@@ -172,10 +166,13 @@ function interact(event) {
     var hasSeagullCard = !offItem.isEmpty() && offItem.getName() === 'mts:ivv.idcard_seagull';
     var hasCommandBlock = !mainItem.isEmpty() && mainItem.getName() === 'minecraft:command_block';
 
-    if (hasSeagullCard && hasCommandBlock) {
+    var slots = player.getInventory().getItems();
+    var ww_registered_car_items = get_all_car_items_registered(get_all_car_items(slots), get_all_ww_car_papers(slots));
+    if (ww_registered_car_items.length > 0) {
+        openDealershipGui(api, player, npc, 2);
+    } else if (hasSeagullCard && hasCommandBlock) {
         reloadStock(player, npc);
     } else {
-        npc.getStoreddata().put('dealership_current_page', 1);
-        openDealershipGui(api, player, npc);
+        openDealershipGui(api, player, npc, 0);
     }
 }
