@@ -311,7 +311,7 @@ function customGuiScroll(event) {
 }
 
 function guiBuilder_assembleGUI(GUI, player) {
-    tellPlayer(player, '&e[GUI Builder] Assembling GUI for page ' + _currentPageID + '.');
+    // tellPlayer(player, '&e[GUI Builder] Assembling GUI for page ' + _currentPageID + '.');
     var bgTexture = guiBuilder_backgroundTexture();
 
     GUI.setBackgroundTexture(bgTexture);
