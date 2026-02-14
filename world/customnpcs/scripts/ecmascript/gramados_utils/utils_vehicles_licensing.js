@@ -7,33 +7,24 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 
 var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
-var NON_STANDARD_PLATE_FEE_CENTS = 1000 * 100;
+var VEHICLE_LICENSED_DATA_PATH = "world/customnpcs/scripts/data_auto/licensed_vehicles.json";
+var VEHICLE_LICENSED_DATA = loadJson(VEHICLE_LICENSED_DATA_PATH);
 
+function getUnknownLabel() {
+    return VEHICLE_REGISTRATION_CONFIG.carPapers.unknown_value;
+}
+
+function getNaLabel() {
+    return VEHICLE_REGISTRATION_CONFIG.carPapers.na_value;
+}
 
 function isPlateLicensed(plate) {
     var licensed = loadLicensedVehicles();
     return !!licensed[plate];
 }
 
-function isVinUnknown(vin) {
-    if (!vin) {
-        return true;
-    }
-    var licensed = loadLicensedVehicles();
-    for (var plate in licensed) {
-        if (licensed[plate] && licensed[plate].vin === vin) {
-            return false;
-        }
-    }
-    return true;
-}
-
-function calculateCarPaperPrice(msrpNumber, region, plateText, titles) {
-    var msrp = Number(msrpNumber);
-    if (!isFinite(msrp) || msrpNumber === null || msrpNumber === undefined || msrpNumber < 0) {
-        return null;
-    }
-    var basePrice = msrp * 0.05;
+function calculateCarPaperPrice(vehicleMsrp, region, plateText, titles) {
+    var basePrice = vehicleMsrp * 0.05;
 
     var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
     var price = basePrice * regionMultiplier;
@@ -57,12 +48,13 @@ function calculateCarPaperPrice(msrpNumber, region, plateText, titles) {
     var plateStr = String(plateText || "");
     var isStandardPlate = /^[A-Za-z]{3}-\d{4}$/.test(plateStr) || /^[A-Za-z]{2}-\d{5}$/.test(plateStr);
     if (!isStandardPlate) {
-        price += NON_STANDARD_PLATE_FEE_CENTS;
+        price += VEHICLE_REGISTRATION_CONFIG.carPapers.special_plate_fee; // Add fee for non-standard plates
     }
 
     return Math.round(price / 100) * 100;
 }
 
+// TODO: DEPRECATE IN FAVOR OF getRegistrationByVin/Plate
 function getRegistrationByVinCompact(vin) {
     if (!vin) {
         return null;
@@ -77,15 +69,7 @@ function getRegistrationByVinCompact(vin) {
     return null;
 }
 
-function getUnknownLabel() {
-    return VEHICLE_REGISTRATION_CONFIG.carPapers.unknown_value;
-}
-
-function getNaLabel() {
-    return VEHICLE_REGISTRATION_CONFIG.carPapers.na_value;
-}
-
-function addOwnershipHistoryPlaceholder(playerName) {
+function getOwnershipHistoryEntry(playerName) {
     return {
         owner: playerName,
         acquiredDate: dateToDDMMYYYY(),
@@ -132,7 +116,7 @@ function generateWWRegistration(ownerName, itemId, region, plate, titles) {
         engineSystemName: getUnknownLabel(),
         firstRegistrant: ownerName,
         ownershipHistory: [
-            addOwnershipHistoryPlaceholder(ownerName)
+            getOwnershipHistoryEntry(ownerName)
         ],
         titles: titles,
         insuranceClaims: [],
@@ -272,6 +256,14 @@ function playerHasWWPapersInInv(player) {
     return false;
 }
 
+function saveLicenseJSON(registration) {
+    var plate = registration.plate;
+
+    VEHICLE_LICENSED_DATA[plate] = registration;
+    saveJson(VEHICLE_LICENSED_DATA, VEHICLE_LICENSED_DATA_PATH);
+}
+    
+
 // Car Part NBT Checks
 
 function isCarPartNBT_Engine(nbt) {
@@ -310,6 +302,7 @@ function getVehicleVIN(ItemStack) {
 
 function hasVehicleNBT(ItemStack, player) {
     if (!isItem_Vehicle(ItemStack)) {
+        tellPlayer(player, "&cThe item " + ItemStack.getDisplayName() + " is not recognized as a vehicle. Have you placed it down and interacted with it to generate the necessary NBT data?");
         return false;
     }
 
