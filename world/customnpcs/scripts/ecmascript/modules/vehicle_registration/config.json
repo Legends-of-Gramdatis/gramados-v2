@@ -92,6 +92,7 @@
     "carPapers": {
         "item_id": "variedcommodities:letter",
         "unknown_value": "Unknown",
-        "na_value": "N/A"
+        "na_value": "N/A",
+        "special_plate_fee": 100000
     }
 }
