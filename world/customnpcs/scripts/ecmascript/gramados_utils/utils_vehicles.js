@@ -133,6 +133,18 @@ function generateRandomPlate(systemName) {
     return plate;
 }
 
+function generateRandomWWPlate() {
+
+    var plate = "WW-";
+    
+    do {
+        plate += padLeft(Math.floor(Math.random() * 100000), 5, "0");
+    } while (!isPlateAvailable(plate));
+    
+    return plate;
+
+}
+
 /**
  * Register a vehicle with a new license plate
  *
@@ -200,62 +212,6 @@ function registerVehicle(vehicleId, vehicleSystemName, vin, ownerName, vehicleMe
     saveLicensedVehicles(licensedVehicles);
     
     return { success: true, plate: plate, message: "Vehicle registered successfully" };
-}
-
-function generateRandomWWPlate() {
-
-    var plate = "WW-";
-    
-    do {
-        plate += padLeft(Math.floor(Math.random() * 100000), 5, "0");
-    } while (!isPlateAvailable(plate));
-    
-    return plate;
-
-}
-
-function registerVehicleAsWW(vehicleId, ownerName, player) {
-    // `vehicleId` is typically the full item id (e.g. mts:<pack>.<systemName_variant>).
-    // For catalog lookups, derive the base systemName.
-    var fullItemId = String(vehicleId);
-    var mainVehicleId = getMainVehicleId(fullItemId) || getVehicleSystemNameFromItemId(fullItemId) || fullItemId;
-    var vehicleInfo = getVehicleInfo(mainVehicleId);
-    var plate = generateRandomWWPlate();
-    var licensedVehicles = loadLicensedVehicles();
-
-    tellPlayer(player, "&e[Vehicle Registration] Generated WW plate: " + plate);
-
-    var dateStr = dateToYYYYMMDD();
-
-    licensedVehicles[plate] = {
-        asWW: true,
-        WWplate: plate,
-        vin: "N/A",
-        vehicleId: fullItemId,
-        vehicleSystemName: mainVehicleId,
-        paintVariant: getPaintVariant(fullItemId),
-        trim: "N/A",
-        interior: "N/A",
-        msrpCents: null,
-        engineId: "Unknown",
-        engineSystemName: "Unknown",
-        ownershipHistory: [
-            {
-                owner: ownerName,
-                acquiredDate: dateStr,
-                soldDate: null
-            }
-        ],
-        titles: (vehicleInfo && vehicleInfo.extraTitles) ? vehicleInfo.extraTitles.slice() : [],
-        insuranceClaims: [],
-        history: [],
-        registrationDate: dateStr,
-        status: "WW"
-    };
-    
-    saveLicensedVehicles(licensedVehicles);
-    
-    return { success: true, plate: plate, message: "Vehicle registered successfully as WW" };
 }
 
 /**
