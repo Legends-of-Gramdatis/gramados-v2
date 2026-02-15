@@ -349,6 +349,47 @@ function checkCarSystems(ItemStack) {
     return checkedSystems;
 }
 
+function getCarSystems(ItemStack) {
+    var checkedSystems = {
+        "plate_gramados": null,
+        "VIN": null,
+        "engine": null
+    }
+
+    var rawNbt = ItemStack.getNbt();
+    var allKeys = rawNbt.getKeys();
+    var allPartKeys = []
+    for (var i = 0; i < allKeys.length; i++) {
+        var key = allKeys[i];
+        if (key.startsWith("part_")) {
+            allPartKeys.push(key);
+        }
+    }
+
+    if (hasVehicleVIN(ItemStack)) {
+        checkedSystems.VIN = getVehicleVIN(ItemStack);
+    }
+    
+    for (var i = 0; i < allPartKeys.length; i++) {
+        var partKey = allPartKeys[i];
+        var partNbt = rawNbt.getCompound(partKey);
+
+        if (isCarPartNBT_Plate(partNbt)) {
+            checkedSystems.plate_gramados = {
+                systemName: partNbt.getString("systemName"),
+                plateText: partNbt.getString("plateText")
+            };
+        }
+        if (isCarPartNBT_Engine(partNbt)) {
+            checkedSystems.engine = {
+                systemName: partNbt.getString("systemName"),
+                temp: partNbt.getFloat("temp")
+            };
+        }
+    }
+    return checkedSystems;
+}
+
 function isItem_Vehicle(ItemStack) {
     var nbt = ItemStack.getNbt();
     return nbt.has("electricPower") && nbt.has("fuelTank");

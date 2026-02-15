@@ -325,6 +325,37 @@ function isPlateAvailable(plate) {
     return !licensedVehicles[plate];
 }
 
+function isPlateValid(plate) {
+    var result = {
+        valid: true,
+        messages: []
+    }
+
+    if (plate.length < 2) {
+        result.valid = false;
+        result.messages.push("Plate is too short (min 2 characters)");
+    }
+
+    if (plate.length > 8) {
+        result.valid = false;
+        result.messages.push("Plate is too long (max 8 characters)");
+    }
+
+    if (!isPlateAvailable(plate)) {
+        result.valid = false;
+        result.messages.push("Plate is already registered");
+    }
+
+    return result;
+}
+
+function isPlateCustom(plate) {
+    // Returns true if plate is not formatted like the standard plate_gramados (e.g. "ABC-1234")
+    var plateSystem = getPlateSystemConfig("plate_gramados");
+    var formatRegex = new RegExp("^" + plateSystem.format.replace(/X/g, "[A-Z]").replace(/N/g, "[A-Z0-9]").replace(/0/g, "\\d") + "$");
+    return !formatRegex.test(plate);
+}
+
 function get_all_car_papers(inventory_slots, include_ww) {
     var car_papers = [];
 
@@ -426,4 +457,31 @@ function is_car_registered(car_item_stack, paper_stack_list, include_ww) {
     var carIdsList = JSON.stringify(get_all_car_ids_from_paper_list(paper_stack_list));
     
     return includes(carIdsList, car_item_stack.getName())
+}
+
+function getRegisteredCouples(car_item_stack_list, paper_stack_list) {
+    var registered_couples = [];
+
+    for (var j = 0; j < car_item_stack_list.length; j++) {
+        var car_item_stack = car_item_stack_list[j];
+        var carVehicleId = car_item_stack.getName();
+
+        for (var i = 0; i < paper_stack_list.length; i++) {
+            var paper_stack = paper_stack_list[i];
+            var paperNbt = paper_stack.getNbt();
+            if (!paperNbt || !paperNbt.has("linked_vehicle_id")) {
+                continue;
+            }
+            if (paperNbt.getString("linked_vehicle_id") === carVehicleId) {
+                registered_couples.push({ car: car_item_stack, paper: paper_stack });
+            }
+        }
+    }
+
+    return registered_couples;
+}
+
+function getRegisteredCouple(car_item_stack_list, paper_stack_list) {
+    var couples = getRegisteredCouples(car_item_stack_list, paper_stack_list);
+    return couples.length > 0 ? couples[0] : null;
 }
