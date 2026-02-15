@@ -3,13 +3,10 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
 
-function guiButtons(event, npc, buttonId, pageId) {
+function guiButtons(event, npc, buttonId, pageId, manifest) {
     switch (pageId) {
         case 1:
             switch (buttonId) {
-                // case 33:
-                //     // Do something
-                //     break;
                 case 38: // Previous vehicle
                     navigateVehicle(event, npc, -1);
                     break;
@@ -17,6 +14,9 @@ function guiButtons(event, npc, buttonId, pageId) {
                     navigateVehicle(event, npc, 1);
                     break;
                 // case 43:
+                //     // Do something
+                //     break;
+                // case 87:
                 //     // Do something
                 //     break;
             }
@@ -27,22 +27,25 @@ function guiButtons(event, npc, buttonId, pageId) {
                     purchaseVehicle(event.player, npc);
                     event.player.closeGui();
                     break;
+                // case 13:
+                //     // Do something
+                //     break;
+                // case 50:
+                //     // Do something
+                //     break;
             }
             break;
         case 3:
             switch (buttonId) {
-                // case 52:
+                // case 103:
                 //     // Do something
                 //     break;
-                // case 53:
+                // case 104:
                 //     // Do something
                 //     break;
-                // case 55:
-                //     // Do something
-                //     break;
-                // case 76:
-                //     // Do something
-                //     break;
+                case 105:
+                    manifest.pages[2].components[5].label = generateRandomPlate('plate_gramados');
+                    break;
             }
             break;
     }
@@ -224,8 +227,13 @@ function guiBuilder_updateManifest(player, npc, manifest) {
                 var registry_data = getPaperLinkedRegistry(current_ww_paper);
             }
 
-            manifest.pages[2].components[3].label = registry_data.plate;
-            manifest.pages[2].components[6].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
+            if (manifest.pages[2].components[5].label == "XXX-0000") {
+                manifest.pages[2].components[5].label = registry_data.plate;
+            }
+            manifest.pages[2].components[3].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
+
+            // manifest.pages[2].components[11].locked = !playerHasJobWithTag(player, "Mechanic");
+            manifest.pages[2].components[11].locked = false; // For testing purposes, unlock the button regardless of job status
 
             break;
     }
