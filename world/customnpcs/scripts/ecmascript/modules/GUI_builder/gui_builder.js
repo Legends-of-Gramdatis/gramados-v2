@@ -88,7 +88,12 @@ function guiBuilder_buildTextField(GUI, component) {
     var sizeW = component.size_tiles.w * TILE_SCALE;
     var sizeH = component.size_tiles.h * TILE_SCALE;
 
-    GUI.addTextField(id, posX, posY, sizeW, sizeH);
+    if (component.locked) {
+        GUI.addLabel(id, component.label, posX, posY, sizeW, sizeH);
+    } else {
+        GUI.addTextField(id, posX, posY, sizeW, sizeH);
+    }
+
     guiBuilder_fillDefault(GUI, id, component);
     guiBuilder_buildMeta(GUI, id, component);
 
