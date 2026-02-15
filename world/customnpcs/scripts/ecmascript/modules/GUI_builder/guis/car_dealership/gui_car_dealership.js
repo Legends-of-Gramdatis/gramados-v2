@@ -40,9 +40,9 @@ function guiButtons(event, npc, buttonId, pageId, manifest) {
                 // case 103:
                 //     // Do something
                 //     break;
-                // case 104:
-                //     // Do something
-                //     break;
+                case 104:
+                    // Do something
+                    break;
                 case 105:
                     manifest.pages[2].components[11].label = generateRandomPlate('plate_gramados');
                     break;
@@ -82,6 +82,21 @@ function navigateVehicle(event, npc, direction) {
     
     npc.getStoreddata().put('dealership_vehicle_index', newIndex);
     tellPlayer(player, '&e[Dealership] Showing vehicle ' + (newIndex + 1) + ' of ' + totalVehicles + '.');
+}
+
+function updateWWtoActive(player, npc) {
+    var slots = player.getInventory().getItems();
+    var registered_car_couple = getRegisteredCouple(get_all_car_items(slots), get_all_ww_car_papers(slots));
+    var systems = getCarSystems(registered_car_couple.car);
+    var registry_data = getPaperLinkedRegistry(registered_car_couple.paper);
+    var plate = registry_data.plate;
+    removeRegistration(plate);
+
+    registry_data.plate = systems.plate_gramados;
+    registry_data.VIN = systems.VIN;
+    registry_data.engineSystemName = systems.engine;
+    registry_data.status = "Active";
+    saveLicenseJSON(registry_data);
 }
 
 function purchaseVehicle(player, npc) {
@@ -230,23 +245,31 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             }
             manifest.pages[2].components[3].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
 
-            // manifest.pages[2].components[10].locked = !playerHasJobWithTag(player, "Mechanic");
-            // manifest.pages[2].components[11].locked = !playerHasJobWithTag(player, "Mechanic");
-            manifest.pages[2].components[10].locked = false; // For testing purposes, unlock the button regardless of job status
-            manifest.pages[2].components[11].locked = false;
+            if (!playerHasJobWithTag(player, "Mechanic")) {
+                manifest.pages[2].components[10].locked = true;
+                manifest.pages[2].components[10].hover_text = "Only mechanics can change plates.";
+                manifest.pages[2].components[11].locked = true;
+            } else {
+                manifest.pages[2].components[10].locked = false;
+                manifest.pages[2].components[10].hover_text = "Generate a different random plate";
+                manifest.pages[2].components[11].locked = false;
+            }
 
             var systems = checkCarSystems(registered_car_couple.car);
             var systemDetails = getCarSystems(registered_car_couple.car);
 
-            if (systems.plate_gramados) {
+            var validity = isPlateValid(manifest.pages[2].components[11].label);
+
+            if (systems.plate_gramados && validity.valid) {
                 manifest.pages[2].components[5].tex.x = 160;
                 manifest.pages[2].components[5].tex.y = 96;
                 manifest.pages[2].components[5].hover_text = manifest.pages[2].components[11].label;
             } else {
                 manifest.pages[2].components[5].tex.x = 176;
                 manifest.pages[2].components[5].tex.y = 96;
-                manifest.pages[2].components[5].hover_text = "Invalid Plate Detected";
+                manifest.pages[2].components[5].hover_text = "Invalid Plate Detected: " + validity.messages.join(", ");
             }
+
             if (systems.engine) {
                 manifest.pages[2].components[6].tex.x = 160;
                 manifest.pages[2].components[6].tex.y = 96;
@@ -255,6 +278,8 @@ function guiBuilder_updateManifest(player, npc, manifest) {
                 manifest.pages[2].components[6].tex.x = 176;
                 manifest.pages[2].components[6].tex.y = 96;
                 manifest.pages[2].components[6].hover_text = "No Engine Detected";
+                validity.valid = false;
+                validity.messages.push("No engine detected in the vehicle. Have you forgotten to spawn the vehicle at leats once?");
             }
             if (systems.VIN) {
                 manifest.pages[2].components[7].tex.x = 160;
@@ -263,22 +288,30 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             } else {
                 manifest.pages[2].components[7].tex.x = 176;
                 manifest.pages[2].components[7].tex.y = 96;
-                manifest.pages[2].components[7].hover_text = "No VIN Detected";
+                manifest.pages[2].components[7].hover_text = "No VIN Detected. Have you forgotten to use a key on the vehicle?";
+                validity.valid = false;
+                validity.messages.push("No VIN detected in the vehicle");
             }
 
-            var validity = isPlateValid(manifest.pages[2].components[11].label);
-            if (validity.valid) {
-                if (isPlateCustom(manifest.pages[2].components[11].label)) {
-                    var config = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
-                    manifest.pages[2].components[9].locked = !hasMoneyInPouch(player, config.carPapers.special_plate_fee)
-                    manifest.pages[2].components[9].hover_text = "You can't afford custom plate fee: " + formatMoney(config.carPapers.special_plate_fee);
-                } else {
-                    manifest.pages[2].components[9].locked = false;
-                    manifest.pages[2].components[9].hover_text = "Plate is valid";
+            
+            if (isPlateCustom(manifest.pages[2].components[11].label)) {
+                var config = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
+                if (!hasMoneyInPouch(player, config.carPapers.special_plate_fee)) {
+                    validity.valid = false;
+                    validity.messages.push("You can't afford custom plate fee: " + formatMoney(config.carPapers.special_plate_fee));
                 }
+            }
+            if (validity.valid) {
+                manifest.pages[2].components[9].locked = false;
+                manifest.pages[2].components[9].hover_text = "Active license migration is possible.";
             } else {
+                if (validity.messages.length == 1) {
+                    var message = "You can't migrate license : " + validity.messages[0] + ".";
+                } else {
+                    var message = "You can't migrate license :\n - " + validity.messages.join("\n - ");
+                }
                 manifest.pages[2].components[9].locked = true;
-                manifest.pages[2].components[9].hover_text = "Plate is invalid: " + validity.messages.join(", ");
+                manifest.pages[2].components[9].hover_text = message;
             }
 
             break;
