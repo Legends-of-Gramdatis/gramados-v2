@@ -456,6 +456,7 @@
             "h": 1
           },
           "label": "Confirm",
+          "locked": true,
           "close_gui": true,
           "sheet": 1,
           "tex": {
