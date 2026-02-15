@@ -100,6 +100,16 @@ function generateRegistration(ownerName, item_stack, region, titles) {
     }
 }
 
+function removeRegistration(plate) {
+    var licensed = loadLicensedVehicles();
+    if (licensed[plate]) {
+        delete licensed[plate];
+        saveJson(licensed, VEHICLE_LICENSED_DATA_PATH);
+        return true;
+    }
+    return false;
+}
+
 function generateWWRegistration(ownerName, itemId, region, plate, titles) {
     var msrp = getPrice(itemId, getUnknownLabel(), null, true);
     return {
