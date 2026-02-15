@@ -218,9 +218,9 @@ function guiBuilder_buildTexturedRect(GUI, component) {
     var sizeH = component.size_tiles.h * TILE_SCALE;
     var textureX = component.tex.x || 0;
     var textureY = component.tex.y || 0;
-    var texture = component.texture || '';
+    var sheetTexture = guiBuilder_sheetTexture(component.sheet);
 
-    GUI.addTexturedRect(id, texture, posX, posY, sizeW, sizeH, textureX, textureY);
+    GUI.addTexturedRect(id, sheetTexture, posX, posY, sizeW, sizeH, textureX, textureY);
     guiBuilder_buildMeta(GUI, id, component);
 }
 
