@@ -44,7 +44,10 @@ function guiButtons(event, npc, buttonId, pageId, manifest) {
                 //     // Do something
                 //     break;
                 case 105:
-                    manifest.pages[2].components[5].label = generateRandomPlate('plate_gramados');
+                    manifest.pages[2].components[11].label = generateRandomPlate('plate_gramados');
+                    break;
+                case 107:
+                    manifest.pages[2].components[11].label = event.gui.getComponent(manifest.pages[2].components[11].id).getText();
                     break;
             }
             break;
@@ -215,25 +218,68 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             break;
         case 3:
             // Additional page updates can be handled here
-            var inv = player.getInventory();
-            var slots = inv.getItems();
-            var all_papers = get_all_car_papers(slots, false);
-            var ww_papers = get_all_ww_car_papers(slots);
-            tellPlayer(player, "&e- Total Car Papers (excl. WW): &a" + all_papers.length);
-            tellPlayer(player, "&e- Total WW Car Papers: &a" + ww_papers.length);
+            var slots = player.getInventory().getItems();
+            var registered_car_couple = getRegisteredCouple(get_all_car_items(slots), get_all_ww_car_papers(slots));
 
-            if( ww_papers.length > 0) {
-                var current_ww_paper = ww_papers[0]
-                var registry_data = getPaperLinkedRegistry(current_ww_paper);
+            if( registered_car_couple && registered_car_couple.paper && registered_car_couple.car ) {
+                var registry_data = getPaperLinkedRegistry(registered_car_couple.paper);
             }
 
-            if (manifest.pages[2].components[5].label == "XXX-0000") {
-                manifest.pages[2].components[5].label = registry_data.plate;
+            if (manifest.pages[2].components[11].label == "XXX-0000") {
+                manifest.pages[2].components[11].label = generateRandomPlate('plate_gramados');
             }
             manifest.pages[2].components[3].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
 
+            // manifest.pages[2].components[10].locked = !playerHasJobWithTag(player, "Mechanic");
             // manifest.pages[2].components[11].locked = !playerHasJobWithTag(player, "Mechanic");
-            manifest.pages[2].components[11].locked = false; // For testing purposes, unlock the button regardless of job status
+            manifest.pages[2].components[10].locked = false; // For testing purposes, unlock the button regardless of job status
+            manifest.pages[2].components[11].locked = false;
+
+            var systems = checkCarSystems(registered_car_couple.car);
+            var systemDetails = getCarSystems(registered_car_couple.car);
+
+            if (systems.plate_gramados) {
+                manifest.pages[2].components[5].tex.x = 160;
+                manifest.pages[2].components[5].tex.y = 96;
+                manifest.pages[2].components[5].hover_text = manifest.pages[2].components[11].label;
+            } else {
+                manifest.pages[2].components[5].tex.x = 176;
+                manifest.pages[2].components[5].tex.y = 96;
+                manifest.pages[2].components[5].hover_text = "Invalid Plate Detected";
+            }
+            if (systems.engine) {
+                manifest.pages[2].components[6].tex.x = 160;
+                manifest.pages[2].components[6].tex.y = 96;
+                manifest.pages[2].components[6].hover_text = systemDetails.engine.systemName;
+            } else {
+                manifest.pages[2].components[6].tex.x = 176;
+                manifest.pages[2].components[6].tex.y = 96;
+                manifest.pages[2].components[6].hover_text = "No Engine Detected";
+            }
+            if (systems.VIN) {
+                manifest.pages[2].components[7].tex.x = 160;
+                manifest.pages[2].components[7].tex.y = 96;
+                manifest.pages[2].components[7].hover_text = systemDetails.VIN;
+            } else {
+                manifest.pages[2].components[7].tex.x = 176;
+                manifest.pages[2].components[7].tex.y = 96;
+                manifest.pages[2].components[7].hover_text = "No VIN Detected";
+            }
+
+            var validity = isPlateValid(manifest.pages[2].components[11].label);
+            if (validity.valid) {
+                if (isPlateCustom(manifest.pages[2].components[11].label)) {
+                    var config = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
+                    manifest.pages[2].components[9].locked = !hasMoneyInPouch(player, config.carPapers.special_plate_fee)
+                    manifest.pages[2].components[9].hover_text = "You can't afford custom plate fee: " + formatMoney(config.carPapers.special_plate_fee);
+                } else {
+                    manifest.pages[2].components[9].locked = false;
+                    manifest.pages[2].components[9].hover_text = "Plate is valid";
+                }
+            } else {
+                manifest.pages[2].components[9].locked = true;
+                manifest.pages[2].components[9].hover_text = "Plate is invalid: " + validity.messages.join(", ");
+            }
 
             break;
     }

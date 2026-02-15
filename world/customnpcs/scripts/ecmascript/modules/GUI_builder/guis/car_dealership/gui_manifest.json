@@ -355,19 +355,6 @@
           "label": "Plate Number"
         },
         {
-          "id": 99,
-          "type": "text_field",
-          "offset": {
-            "x": 7,
-            "y": 6
-          },
-          "size_tiles": {
-            "w": 6,
-            "h": 1
-          },
-          "label": "XXX-0000"
-        },
-        {
           "id": 100,
           "type": "textured_rect",
           "offset": {
@@ -381,7 +368,7 @@
           "label": "",
           "sheet": 1,
           "tex": {
-            "x": 144,
+            "x": 176,
             "y": 96
           }
         },
@@ -399,7 +386,7 @@
           "label": "",
           "sheet": 1,
           "tex": {
-            "x": 128,
+            "x": 160,
             "y": 96
           }
         },
@@ -417,7 +404,7 @@
           "label": "",
           "sheet": 1,
           "tex": {
-            "x": 128,
+            "x": 160,
             "y": 96
           }
         },
@@ -490,6 +477,42 @@
           "disabled_tex": {
             "x": 96,
             "y": 32
+          }
+        },
+        {
+          "id": 106,
+          "type": "text_field",
+          "offset": {
+            "x": 7,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 5,
+            "h": 1
+          },
+          "label": "XXX-0000"
+        },
+        {
+          "id": 107,
+          "type": "button",
+          "offset": {
+            "x": 12,
+            "y": 6
+          },
+          "size_tiles": {
+            "w": 1,
+            "h": 1
+          },
+          "label": "V",
+          "hover_text": "Confirm Current Entry",
+          "sheet": 1,
+          "tex": {
+            "x": 128,
+            "y": 96
+          },
+          "disabled_tex": {
+            "x": 144,
+            "y": 96
           }
         }
       ]
