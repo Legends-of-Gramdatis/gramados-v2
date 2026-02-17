@@ -129,7 +129,7 @@ function purchaseVehicle(player, npc) {
     }
     
     var vehicle = stock.vehicles[currentIndex];
-    var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
+    var itemStack = player.getWorld().createItem(vehicle.id, 0, 1);
 
     var registration = generateWWRegistration(
         player.getName(),
@@ -142,9 +142,12 @@ function purchaseVehicle(player, npc) {
     
     if (extractMoneyFromPouch(player, price)) {
         player.giveItem(itemStack);
-        tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + ' for ' + formatMoney(price) + '.');
+        player.giveItem(player.getWorld().createItem("mts:mts.key", 0, 1));
+        tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + '&a for ' + formatMoney(price) + '&a.');
 
-        player.giveItem(generatePaperItem(player.getWorld(), registration, itemStack));
+        var paperStack = generatePaperItem(player.getWorld(), registration, itemStack);
+        tellPlayer(player, '&7 You have received the ' + paperStack.getDisplayName() + '&7 for ' + itemStack.getDisplayName() + '&7.');
+        player.giveItem(paperStack);
 
         saveLicenseJSON(registration);
 
@@ -243,7 +246,14 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             manifest.pages[1].components[2].label = displayName;
             manifest.pages[1].components[3].label = priceFormatted;
 
-            manifest.pages[1].components[0].locked = !hasMoneyInPouch(player, price);
+            
+            if (!hasMoneyInPouch(player, price)) {
+                manifest.pages[1].components[0].locked = true;
+                manifest.pages[1].components[0].hover_text = "You can't afford this vehicle. Price: " + priceFormatted;
+            } else {
+                manifest.pages[1].components[0].locked = false;
+                manifest.pages[1].components[0].hover_text = "Purchase " + displayName + " for " + priceFormatted;
+            }
 
             break;
         case 3:
@@ -278,7 +288,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
 
             var validity = isPlateValid(manifest.pages[2].components[11].label);
 
-            if (systems.plate_gramados && validity.valid) {
+            if (validity.valid) {
                 manifest.pages[2].components[5].tex.x = 160;
                 manifest.pages[2].components[5].tex.y = 96;
                 manifest.pages[2].components[5].hover_text = manifest.pages[2].components[11].label;
