@@ -326,12 +326,14 @@ function hasVehicleNBT(ItemStack, player) {
     return (checked_systems.plate_gramados && checked_systems.VIN && checked_systems.engine);
 }
 
-function checkCarSystems(ItemStack) {
+function checkCarSystems(ItemStackSource) {
     var checkedSystems = {
         "plate_gramados": false,
         "VIN": false,
         "engine": false
     }
+
+    var ItemStack = ItemStackSource.copy(); // Work with a copy to avoid modifying original NBT
 
     var rawNbt = ItemStack.getNbt();
     var allKeys = rawNbt.getKeys();
@@ -360,12 +362,14 @@ function checkCarSystems(ItemStack) {
     return checkedSystems;
 }
 
-function getCarSystems(ItemStack) {
+function getCarSystems(ItemStackSource) {
     var checkedSystems = {
         "plate_gramados": null,
         "VIN": null,
         "engine": null
     }
+
+    var ItemStack = ItemStackSource.copy(); // Work with a copy to avoid modifying original NBT
 
     var rawNbt = ItemStack.getNbt();
     var allKeys = rawNbt.getKeys();
