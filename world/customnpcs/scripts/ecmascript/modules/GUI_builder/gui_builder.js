@@ -275,7 +275,7 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
         GUI.removeComponent(allIDs[i]);
     }
 
-    tellPlayer(player, '&e[GUI Builder] Opening page ' + NewpageID + '.');
+    // tellPlayer(player, '&e[GUI Builder] Opening page ' + NewpageID + '.');
     _NPC.getStoreddata().put('dealership_current_page', NewpageID);
 
     _currentPageID = NewpageID;
@@ -304,7 +304,7 @@ function customGuiButton(event) {
         guiBuilder_updateToggleButton(event.gui, buttonManifest, event.player);
     }
 
-    tellPlayer(event.player, '&7Handling button ID: ' + b1 + ' on page ' + page);
+    // tellPlayer(event.player, '&7Handling button ID: ' + b1 + ' on page ' + page);
 
     guiButtons(event, _NPC, b1, _currentPageID, _manifest);
     guiBuilder_OpenPage(event.player, event.gui, page, event.API);

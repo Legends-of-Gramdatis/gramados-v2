@@ -100,7 +100,7 @@ function init(event) {
                 var lastRefresh = new Date(stockObj.refreshedAt);
                 var weekMonday = getStartOfCurrentWeekMonday();
                 if (lastRefresh.getTime() < weekMonday.getTime()) {
-                    tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
+                    // tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
                     reloadStock(player, npc);
                 }
             }
@@ -152,8 +152,8 @@ function reloadStock(player, npc) {
         vehicles: vehicles
     }));
 
-    tellPlayer(player, '&a[Dealership] Reloaded stock from ' + LOOT_TABLE_PATH + '.');
-    tellPlayer(player, '&7Stored ' + vehicles.length + ' vehicle types (' + pulled.length + ' total units).');
+    // tellPlayer(player, '&a[Dealership] Reloaded stock from ' + LOOT_TABLE_PATH + '.');
+    // tellPlayer(player, '&7Stored ' + vehicles.length + ' vehicle types (' + pulled.length + ' total units).');
 }
 
 function interact(event) {
