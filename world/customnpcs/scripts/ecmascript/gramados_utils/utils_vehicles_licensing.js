@@ -194,9 +194,9 @@ function setPaperLoreActive(stack, registration, vehicleDisplayName) {
         "§b" + vehicleDisplayName,
         "§aConfiguration:",
         "§a- Trim: " + registration.trim,
-        "§a- Paint: " + registration.paint,
+        "§a- Paint: " + registration.paintVariant,
         "§a- Interior: " + registration.interior,
-        "§a- Engine: " + registration.engine,
+        "§a- Engine: " + registration.engineSystemName,
         "§5Information:",
         "§5- Registrant: " + registration.firstRegistrant,
         "§5- Registration Date: " + registration.registrationDate,
@@ -268,9 +268,10 @@ function playerHasWWPapersInInv(player) {
 
 function saveLicenseJSON(registration) {
     var plate = registration.plate;
+    var licensed = loadLicensedVehicles();
 
-    VEHICLE_LICENSED_DATA[plate] = registration;
-    saveJson(VEHICLE_LICENSED_DATA, VEHICLE_LICENSED_DATA_PATH);
+    licensed[plate] = registration;
+    saveJson(licensed, VEHICLE_LICENSED_DATA_PATH);
 }
     
 
@@ -403,4 +404,82 @@ function getCarSystems(ItemStack) {
 function isItem_Vehicle(ItemStack) {
     var nbt = ItemStack.getNbt();
     return nbt.has("electricPower") && nbt.has("fuelTank");
+}
+
+// Setters
+
+function setVehicleLicensePlate(ItemStack, plateText) {
+    var rawNbt = ItemStack.getNbt();
+    var allKeys = rawNbt.getKeys();
+    for (var i = 0; i < allKeys.length; i++) {
+        var key = allKeys[i];
+        if (key.startsWith("part_")) {
+            var partNbt = rawNbt.getCompound(key);
+            if (isCarPartNBT_Plate(partNbt)) {
+                partNbt.setString("textLicense Plate", plateText);
+                partNbt.setString("systemName", "plate_gramados");
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+
+function _stripMinecraftSectionColors(text) {
+    // Removes vanilla Minecraft formatting codes (e.g. "§a", "§l")
+    return String(text || "").replace(/§[0-9A-FK-ORa-fk-or]/g, "");
+}
+
+function _toTitleCaseWords(text) {
+    var cleaned = String(text || "").trim().replace(/\s+/g, " ");
+    if (!cleaned) {
+        return "";
+    }
+    var parts = cleaned.split(" ");
+    for (var i = 0; i < parts.length; i++) {
+        var w = parts[i];
+        if (!w) {
+            continue;
+        }
+        parts[i] = w.substr(0, 1).toUpperCase() + w.substr(1).toLowerCase();
+    }
+    return parts.join(" ");
+}
+
+function deriveTrinTrimPaintInterior(carModelText) {
+    var raw = _stripMinecraftSectionColors(carModelText);
+    var idx = raw.indexOf("-");
+    if (idx === -1) {
+        return { trim: getNaLabel(), paint: getNaLabel(), interior: getNaLabel() };
+    }
+
+    var before = raw.substr(0, idx).trim();
+    var after = raw.substr(idx + 1).trim();
+
+    var trim = getNaLabel();
+    var trimTokens = ["Root", "Comfort", "Substantial", "TQ1", "TQ2", "TQ3"];
+    for (var i = 0; i < trimTokens.length; i++) {
+        var token = trimTokens[i];
+        var re = new RegExp("\\b" + token + "\\b", "i");
+        if (re.test(before)) {
+            trim = _toTitleCaseWords(token);
+            break;
+        }
+    }
+
+    var paint = getNaLabel();
+    var interior = getNaLabel();
+    if (after) {
+        var parts = after.split(",");
+        if (parts.length >= 1 && parts[0].trim() !== "") {
+            paint = _toTitleCaseWords(parts[0].trim());
+        }
+        if (parts.length >= 2 && parts[1].trim() !== "") {
+            interior = _toTitleCaseWords(parts[1].trim());
+        }
+    }
+
+    return { trim: trim, paint: paint, interior: interior };
 }

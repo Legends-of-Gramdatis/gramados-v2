@@ -41,7 +41,8 @@ function guiButtons(event, npc, buttonId, pageId, manifest) {
                 //     // Do something
                 //     break;
                 case 104:
-                    // Do something
+                    updateWWtoActive(event.player, npc, manifest.pages[2].components[11].label);
+                    event.player.closeGui();
                     break;
                 case 105:
                     manifest.pages[2].components[11].label = generateRandomPlate('plate_gramados');
@@ -81,21 +82,35 @@ function navigateVehicle(event, npc, direction) {
     }
     
     npc.getStoreddata().put('dealership_vehicle_index', newIndex);
-    tellPlayer(player, '&e[Dealership] Showing vehicle ' + (newIndex + 1) + ' of ' + totalVehicles + '.');
+    // tellPlayer(player, '&e[Dealership] Showing vehicle ' + (newIndex + 1) + ' of ' + totalVehicles + '.');
 }
 
-function updateWWtoActive(player, npc) {
+function updateWWtoActive(player, npc, newPlate) {
     var slots = player.getInventory().getItems();
     var registered_car_couple = getRegisteredCouple(get_all_car_items(slots), get_all_ww_car_papers(slots));
     var systems = getCarSystems(registered_car_couple.car);
     var registry_data = getPaperLinkedRegistry(registered_car_couple.paper);
     var plate = registry_data.plate;
-    removeRegistration(plate);
+    if (!removeRegistration(plate)) {
+        tellPlayer(player, '&c[Dealership] Failed to remove old registration for plate ' + plate + '. Migration aborted.');
+        return;
+    }
 
-    registry_data.plate = systems.plate_gramados;
-    registry_data.VIN = systems.VIN;
-    registry_data.engineSystemName = systems.engine;
+    registered_car_couple.paper.setStackSize(0);
+
+    var extra_data = deriveTrinTrimPaintInterior(registered_car_couple.car.getName());
+
+    registry_data.plate = newPlate;
+    registry_data.vin = systems.VIN;
+    registry_data.engineSystemName = systems.engine.systemName;
     registry_data.status = "Active";
+    registry_data.trim = extra_data.trim;
+    registry_data.paintVariant = extra_data.paint;
+    registry_data.interior = extra_data.interior;
+    registry_data.metaSources.push("WW to Active migration on " + new Date().toISOString());
+    // tellPlayer(player, '&a[Dealership] Updated registration data for plate ' + registry_data.plate + '. Saving new registration...');
+    player.giveItem(generatePaperItem(player.getWorld(), registry_data, registered_car_couple.car));
+    setVehicleLicensePlate(registered_car_couple.car, registry_data.plate);
     saveLicenseJSON(registry_data);
 }
 
@@ -158,7 +173,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
 
     var pageId = npc.getStoreddata().get('dealership_current_page');
 
-    tellPlayer(player, '&e[Dealership] Updating GUI for page ' + pageId + '.');
+    // tellPlayer(player, '&e[Dealership] Updating GUI for page ' + pageId + '.');
 
     switch (pageId) {
         case 1:
@@ -238,11 +253,14 @@ function guiBuilder_updateManifest(player, npc, manifest) {
 
             if( registered_car_couple && registered_car_couple.paper && registered_car_couple.car ) {
                 var registry_data = getPaperLinkedRegistry(registered_car_couple.paper);
+            } else {
+                return manifest;
             }
 
             if (manifest.pages[2].components[11].label == "XXX-0000") {
                 manifest.pages[2].components[11].label = generateRandomPlate('plate_gramados');
             }
+
             manifest.pages[2].components[3].label = player.getWorld().createItem(registry_data.vehicleId, 0, 1).getDisplayName();
 
             if (!playerHasJobWithTag(player, "Mechanic")) {
