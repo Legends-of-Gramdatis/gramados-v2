@@ -98,7 +98,7 @@ function updateWWtoActive(player, npc, newPlate) {
 
     registered_car_couple.paper.setStackSize(0);
 
-    var extra_data = deriveTrinTrimPaintInterior(registered_car_couple.car.getName());
+    var extra_data = deriveTrinTrimPaintInterior(registered_car_couple.car.getDisplayName());
 
     registry_data.plate = newPlate;
     registry_data.vin = systems.VIN;
