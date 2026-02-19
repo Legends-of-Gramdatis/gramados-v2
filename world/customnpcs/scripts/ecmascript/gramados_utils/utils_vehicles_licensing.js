@@ -415,6 +415,7 @@ function isItem_Vehicle(ItemStack) {
 function setVehicleLicensePlate(ItemStack, plateText) {
     var rawNbt = ItemStack.getNbt();
     var allKeys = rawNbt.getKeys();
+    var atleastone = false;
     for (var i = 0; i < allKeys.length; i++) {
         var key = allKeys[i];
         if (key.startsWith("part_")) {
@@ -422,11 +423,11 @@ function setVehicleLicensePlate(ItemStack, plateText) {
             if (isCarPartNBT_Plate(partNbt)) {
                 partNbt.setString("textLicense Plate", plateText);
                 partNbt.setString("systemName", "plate_gramados");
-                return true;
+                atleastone = true;
             }
         }
     }
-    return false;
+    return atleastone;
 }
 
 
