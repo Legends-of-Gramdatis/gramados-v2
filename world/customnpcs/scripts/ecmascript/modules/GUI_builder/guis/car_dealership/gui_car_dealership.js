@@ -2,6 +2,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 function guiButtons(event, npc, buttonId, pageId, manifest) {
     switch (pageId) {
@@ -108,6 +109,7 @@ function updateWWtoActive(player, npc, newPlate) {
     registry_data.interior = extra_data.interior;
     registry_data.metaSources.push("WW to Active migration on " + new Date().toISOString());
     // tellPlayer(player, '&a[Dealership] Updated registration data for plate ' + registry_data.plate + '. Saving new registration...');
+    logToFile("automobile", "Player " + player.getName() + " migrated WW registration with plate " + plate + " to active registration with plate " + newPlate + ". VIN: " + registry_data.vin + ", Engine: " + registry_data.engineSystemName);
     player.giveItem(generatePaperItem(player.getWorld(), registry_data, registered_car_couple.car));
     setVehicleLicensePlate(registered_car_couple.car, registry_data.plate);
     saveLicenseJSON(registry_data);
@@ -158,6 +160,8 @@ function purchaseVehicle(player, npc) {
         }
 
         player.updatePlayerInventory()
+
+        logToFile("automobile", "Player " + player.getName() + " purchased vehicle " + itemStack.getDisplayName() + " for " + formatMoney(price) + ". Assigned plate: " + registration.plate);
 
         saveLicenseJSON(registration);
 
