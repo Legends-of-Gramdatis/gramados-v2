@@ -6,9 +6,17 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensin
 
 var GUI_SOURCE_BASE = 'world/customnpcs/scripts/ecmascript/modules/GUI_builder/guis/';
 var GUI_NAME = 'car_dealership';
-
-var LOOT_TABLE_PATH = 'automobile/vehicles/trin/cars/dealership_trin_standard.json';
 var STORED_KEY = 'dealership_stock';
+
+var VEHICLE_REGISTRATION_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json';
+
+var STORED_REGION_KEY = 'dealership_region';
+var STORED_LOOT_TABLE_KEY = 'dealership_loot_table_path';
+
+var ADMIN_SEAGULL_CARD_ID = 'mts:ivv.idcard_seagull';
+var ADMIN_RELOAD_ITEM_ID = 'minecraft:command_block';
+var ADMIN_CYCLE_REGION_ITEM_ID = 'minecraft:paper';
+var ADMIN_CYCLE_LOOT_TABLE_ITEM_ID = 'minecraft:shulker_shell';
 
 var guiCache = {};
 
@@ -49,6 +57,58 @@ function getGuiResources(guiName) {
     return guiCache[guiName];
 }
 
+function isNpcSetup(npc) {
+    return (npc.getStoreddata().has(STORED_REGION_KEY) && npc.getStoreddata().has(STORED_LOOT_TABLE_KEY));
+}
+
+function adminTellCurrentSetup(player, npc) {
+    var region = npc.getStoreddata().has(STORED_REGION_KEY) ? npc.getStoreddata().get(STORED_REGION_KEY) : 'UNSET';
+    var lootTablePath = npc.getStoreddata().has(STORED_LOOT_TABLE_KEY) ? npc.getStoreddata().get(STORED_LOOT_TABLE_KEY) : 'UNSET';
+
+    tellPlayer(player, '&7[Dealership.debug] region=' + region + ', lootTable=' + lootTablePath);
+    tellPlayer(player, '&7[Dealership.debug] With seagull card in offhand:');
+    tellPlayer(player, '&7 - Hold &eminecraft:paper&7 to cycle location');
+    tellPlayer(player, '&7 - Hold &eminecraft:shulker_shell&7 to cycle loot table');
+    tellPlayer(player, '&7 - Hold &eminecraft:command_block&7 to reload stock');
+}
+
+function adminCycleRegion(player, npc, setupConfig) {
+    var regions = Object.keys(setupConfig.regions);
+
+    var current = npc.getStoreddata().has(STORED_REGION_KEY) ? npc.getStoreddata().get(STORED_REGION_KEY) : null;
+    var currentIndex = -1;
+    for (var i = 0; i < regions.length; i++) {
+        if (regions[i] === current) {
+            currentIndex = i;
+            break;
+        }
+    }
+
+    var newIndex = (currentIndex + 1) % regions.length;
+    var newRegion = regions[newIndex];
+    npc.getStoreddata().put(STORED_REGION_KEY, newRegion);
+    tellPlayer(player, '&a[Dealership] Location set to: ' + newRegion);
+}
+
+function adminCycleLootTable(player, npc, setupConfig) {
+    var lootTables = setupConfig['dealership loot tables'];
+
+    var current = npc.getStoreddata().has(STORED_LOOT_TABLE_KEY) ? npc.getStoreddata().get(STORED_LOOT_TABLE_KEY) : null;
+    var currentIndex = -1;
+    for (var i = 0; i < lootTables.length; i++) {
+        if (lootTables[i] === current) {
+            currentIndex = i;
+            break;
+        }
+    }
+
+    var newIndex = (currentIndex + 1) % lootTables.length;
+    var newLootTable = lootTables[newIndex];
+    npc.getStoreddata().put(STORED_LOOT_TABLE_KEY, newLootTable);
+    tellPlayer(player, '&a[Dealership] Loot table set to: ' + newLootTable);
+    tellPlayer(player, '&7[Dealership] Use a command block to reload stock.');
+}
+
 function openDealershipGui(api, player, npc, pageIndex) {
     var resources = getGuiResources(GUI_NAME);
     if (!resources) {
@@ -72,35 +132,30 @@ function init(event) {
     // Initialize GUI name if not present
     if (!npc.getStoreddata().has('gui_name')) {
         npc.getStoreddata().put('gui_name', GUI_NAME);
-        tellPlayer(player, '&e[Dealership] GUI name set to default: ' + GUI_NAME);
+        // tellPlayer(player, '&e[Dealership] GUI name set to default: ' + GUI_NAME);
     }
 
     // Initialize vehicle index tracking if not present
     if (!npc.getStoreddata().has('dealership_vehicle_index')) {
         npc.getStoreddata().put('dealership_vehicle_index', 0);
-        tellPlayer(player, '&e[Dealership] Vehicle index initialized.');
+        // tellPlayer(player, '&e[Dealership] Vehicle index initialized.');
     }
 
     // Initialize first page id if not present
     if (!npc.getStoreddata().has('dealership_current_page')) {
         npc.getStoreddata().put('dealership_current_page', 1);
-        tellPlayer(player, '&e[Dealership] Set to page 1.');
+        // tellPlayer(player, '&e[Dealership] Set to page 1.');
     }
 
-    // Warn if no stock loaded  
-    if (!npc.getStoreddata().has(STORED_KEY)) {
-        tellPlayer(player, '&c[Dealership] No stock loaded. Ask an admin to refresh.');
-    } else {
-        // Auto-reload if last refresh was before current week's Monday
+    // Auto-refresh only if configured and stock exists
+    if (isNpcSetup(npc) && npc.getStoreddata().has(STORED_KEY)) {
         var stockStr = npc.getStoreddata().get(STORED_KEY);
         if (stockStr) {
             var stockObj = JSON.parse(stockStr);
-
             if (stockObj && stockObj.refreshedAt) {
                 var lastRefresh = new Date(stockObj.refreshedAt);
                 var weekMonday = getStartOfCurrentWeekMonday();
                 if (lastRefresh.getTime() < weekMonday.getTime()) {
-                    // tellPlayer(player, '&e[Dealership] Stock is older than this week\'s Monday. Auto-refreshing…');
                     reloadStock(player, npc);
                 }
             }
@@ -110,16 +165,17 @@ function init(event) {
 
 function reloadStock(player, npc) {
 
-    var fullPath = 'world/loot_tables/' + LOOT_TABLE_PATH;
-    if (!checkFileExists(fullPath)) {
-        tellPlayer(player, '&c[Dealership] Loot table missing: ' + LOOT_TABLE_PATH);
+    if (!npc.getStoreddata().has(STORED_LOOT_TABLE_KEY) || !npc.getStoreddata().get(STORED_LOOT_TABLE_KEY)) {
+        tellPlayer(player, '&c[Dealership] Loot table is not set. Use the admin shulker shell tool first.');
         return;
     }
 
-    var pulled = pullLootTable(LOOT_TABLE_PATH, player);
+    var lootTablePath = npc.getStoreddata().get(STORED_LOOT_TABLE_KEY);
+
+    var pulled = pullLootTable(lootTablePath, player);
     if (!pulled || pulled.length === 0) {
         npc.getStoreddata().put(STORED_KEY, JSON.stringify({
-            source: LOOT_TABLE_PATH,
+            source: lootTablePath,
             refreshedAt: new Date().toISOString(),
             totalStacks: 0,
             vehicles: []
@@ -146,14 +202,11 @@ function reloadStock(player, npc) {
     }
 
     npc.getStoreddata().put(STORED_KEY, JSON.stringify({
-        source: LOOT_TABLE_PATH,
+        source: lootTablePath,
         refreshedAt: new Date().toISOString(),
         totalStacks: pulled.length,
         vehicles: vehicles
     }));
-
-    // tellPlayer(player, '&a[Dealership] Reloaded stock from ' + LOOT_TABLE_PATH + '.');
-    // tellPlayer(player, '&7Stored ' + vehicles.length + ' vehicle types (' + pulled.length + ' total units).');
 }
 
 function interact(event) {
@@ -163,15 +216,61 @@ function interact(event) {
     var offItem = player.getOffhandItem();
     var mainItem = player.getMainhandItem();
 
-    var hasSeagullCard = !offItem.isEmpty() && offItem.getName() === 'mts:ivv.idcard_seagull';
-    var hasCommandBlock = !mainItem.isEmpty() && mainItem.getName() === 'minecraft:command_block';
+    var hasSeagullCard = !offItem.isEmpty() && offItem.getName() === ADMIN_SEAGULL_CARD_ID;
+    var mainItemName = (!mainItem.isEmpty()) ? mainItem.getName() : null;
+
+    if (hasSeagullCard) {
+        var setupConfig = loadJson(VEHICLE_REGISTRATION_CONFIG_PATH);
+        if (!setupConfig) {
+            tellPlayer(player, '&c[Dealership] Failed to load config: ' + VEHICLE_REGISTRATION_CONFIG_PATH);
+            return;
+        }
+
+        if (!mainItemName) {
+            adminTellCurrentSetup(player, npc);
+            return;
+        }
+
+        if (mainItemName === ADMIN_RELOAD_ITEM_ID) {
+            if (!isNpcSetup(npc)) {
+                tellPlayer(player, '&c[Dealership] Configure location and loot table first (paper + shulker shell).');
+                adminTellCurrentSetup(player, npc);
+                return;
+            }
+            reloadStock(player, npc);
+            return;
+        }
+
+        if (mainItemName === ADMIN_CYCLE_REGION_ITEM_ID) {
+            adminCycleRegion(player, npc, setupConfig);
+            return;
+        }
+
+        if (mainItemName === ADMIN_CYCLE_LOOT_TABLE_ITEM_ID) {
+            adminCycleLootTable(player, npc, setupConfig);
+            return;
+        }
+
+        adminTellCurrentSetup(player, npc);
+        return;
+    }
+
+    // Non-admins: NPC must be configured and have stock
+    var setupConfig = loadJson(VEHICLE_REGISTRATION_CONFIG_PATH);
+    if (!isNpcSetup(npc)) {
+        tellPlayer(player, '&c[Dealership] This NPC is not configured. Please report to an admin.');
+        return;
+    }
+
+    if (!npc.getStoreddata().has(STORED_KEY) || !npc.getStoreddata().get(STORED_KEY)) {
+        tellPlayer(player, '&c[Dealership] Dealership stock is not loaded. Please report to an admin.');
+        return;
+    }
 
     var slots = player.getInventory().getItems();
     var ww_registered_car_items = get_all_car_items_registered(get_all_car_items(slots), get_all_ww_car_papers(slots));
     if (ww_registered_car_items.length > 0) {
         openDealershipGui(api, player, npc, 2);
-    } else if (hasSeagullCard && hasCommandBlock) {
-        reloadStock(player, npc);
     } else {
         openDealershipGui(api, player, npc, 0);
     }

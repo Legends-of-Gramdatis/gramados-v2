@@ -81,6 +81,13 @@
         "Feldpard Island": 1.15,
         "Devland": 3.00
     },
+    "dealership loot tables": [
+        "automobile/vehicles/trin/cars/dealership_trin_standard.json",
+        "automobile/vehicles/trin/cars/dealership_trin_fancy.json",
+        "automobile/vehicles/trin/cars/dealership_trin_mini.json",
+        "automobile/vehicles/trin/cars/dealership_trin_utility_mini.json",
+        "automobile/vehicles/trin/cars/dealership_trin_utility.json"
+    ],
     "titles": {
         "Import": 1.16,
         "Restomod": 1.20,

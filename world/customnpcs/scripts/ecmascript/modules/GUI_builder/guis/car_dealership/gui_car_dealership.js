@@ -64,7 +64,7 @@ function navigateVehicle(event, npc, direction) {
         npc.getStoreddata().put('dealership_vehicle_index', 0);
         return;
     }
-    
+
     var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
     
     // Ensure current index is valid
@@ -82,7 +82,6 @@ function navigateVehicle(event, npc, direction) {
     }
     
     npc.getStoreddata().put('dealership_vehicle_index', newIndex);
-    // tellPlayer(player, '&e[Dealership] Showing vehicle ' + (newIndex + 1) + ' of ' + totalVehicles + '.');
 }
 
 function updateWWtoActive(player, npc, newPlate) {
@@ -117,6 +116,7 @@ function updateWWtoActive(player, npc, newPlate) {
 function purchaseVehicle(player, npc) {
     var currentIndex = npc.getStoreddata().get('dealership_vehicle_index');
     var stock = JSON.parse(npc.getStoreddata().get('dealership_stock'));
+    var region = npc.getStoreddata().get('dealership_region');
     
     if (!stock.vehicles || stock.vehicles.length === 0) {
         tellPlayer(player, '&c[Dealership] No vehicles available in stock.');
@@ -134,20 +134,30 @@ function purchaseVehicle(player, npc) {
     var registration = generateWWRegistration(
         player.getName(),
         vehicle.id,
-        "Devland",
+        region,
         generateRandomWWPlate(),
         [getNaLabel()]
     );
     var price = registration.msrpCents + registration.registrationPriceCents;
     
     if (extractMoneyFromPouch(player, price)) {
-        player.giveItem(itemStack);
-        player.giveItem(player.getWorld().createItem("mts:mts.key", 0, 1));
-        tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + '&a for ' + formatMoney(price) + '&a.');
+        if (!player.giveItem(itemStack)) {
+            player.dropItem(itemStack);
+        }
+        var keyItemStack = player.getWorld().createItem("mts:mts.key", 0, 1);
+        if (!player.giveItem(keyItemStack)) {
+            player.dropItem(keyItemStack);
+        }
 
+        tellPlayer(player, '&a[Dealership] You have purchased ' + itemStack.getDisplayName() + '&a for ' + formatMoney(price) + '&a.');
         var paperStack = generatePaperItem(player.getWorld(), registration, itemStack);
         tellPlayer(player, '&7 You have received the ' + paperStack.getDisplayName() + '&7 for ' + itemStack.getDisplayName() + '&7.');
-        player.giveItem(paperStack);
+        
+        if (!player.giveItem(paperStack)) {
+            player.dropItem(paperStack);
+        }
+
+        player.updatePlayerInventory()
 
         saveLicenseJSON(registration);
 
@@ -173,6 +183,7 @@ function purchaseVehicle(player, npc) {
 }
 
 function guiBuilder_updateManifest(player, npc, manifest) {
+    var region = npc.getStoreddata().get('dealership_region');
 
     var pageId = npc.getStoreddata().get('dealership_current_page');
 
@@ -210,7 +221,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             var displayName = itemStack.getDisplayName();
             var price = getPriceFromItemStack(itemStack, 0, false);
             var priceFormatted = formatMoney(price);
-            var paperPrice = formatMoney(calculateCarPaperPrice(price, "Devland", "XXX-0000"));
+            var paperPrice = formatMoney(calculateCarPaperPrice(price, region, "XXX-0000"));
             
             // Update label component with vehicle display name
             manifest.pages[0].components[0].label = displayName + (vehicle.count > 1 ? " (" + vehicle.count + " available)" : "");
@@ -240,7 +251,7 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             var vehicle = stock.vehicles[currentIndex];
             var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
             var displayName = itemStack.getDisplayName();
-            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), "Devland", "XXX-0000");
+            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), region, "XXX-0000");
             var priceFormatted = formatMoney(price);
 
             manifest.pages[1].components[2].label = displayName;
