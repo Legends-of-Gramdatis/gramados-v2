@@ -989,6 +989,22 @@ sets:
                 y: 77.0
                 z: -2912.0
                 label: Highward
+            marker_18:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -5100.0
+                y: 77.0
+                z: -6066.0
+                label: Graystone
+            marker_19:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -2961.0
+                y: 73.0
+                z: -8745.0
+                label: Whiterock
         lines: {
             }
         layerprio: 0
@@ -1277,35 +1293,51 @@ sets:
             marker_5:
                 world: world
                 markup: false
-                x: -1141.0
                 icon: shopping_dealership
+                x: -1141.0
                 y: 74.0
                 z: 126.0
                 label: Trin Dealerships
             marker_6:
                 world: world
                 markup: false
-                x: -1831.0
                 icon: shopping_dealership
+                x: -1831.0
                 y: 75.0
                 z: 293.0
                 label: UNU Dealerships
             marker_7:
                 world: world
                 markup: false
-                x: -2524.0
                 icon: shopping_dealership
+                x: -2524.0
                 y: 95.0
                 z: -34.0
                 label: Retro Car Dealerships
             marker_8:
                 world: world
                 markup: false
-                x: -3372.0
                 icon: shopping_dealership
+                x: -3372.0
                 y: 69.0
                 z: -2512.0
                 label: Trilnat Trin Dealerships
+            marker_9:
+                world: world
+                markup: false
+                icon: shopping_dealership
+                x: -5168.0
+                y: 77.0
+                z: -6157.0
+                label: (WIP) Greystone Large Dealership
+            marker_10:
+                world: world
+                markup: false
+                icon: shopping_dealership
+                x: -5152.0
+                y: 76.0
+                z: -5969.0
+                label: (WIP) Greystone Small Dealership
         lines: {
             }
         layerprio: 0
