@@ -5,6 +5,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js");
 
 var VEHICLE_REGISTRATION_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json");
@@ -17,6 +18,11 @@ function getUnknownLabel() {
 
 function getNaLabel() {
     return VEHICLE_REGISTRATION_CONFIG.carPapers.na_value;
+}
+
+function isUnknownOrNa(value) {
+    var str = String(value || "").trim();
+    return (str === getUnknownLabel() || str === getNaLabel());
 }
 
 function isPlateLicensed(plate) {
@@ -109,6 +115,144 @@ function removeRegistration(plate) {
         return true;
     }
     return false;
+}
+
+function assembleRegistrationFrom_OGpapers(item_stack) {
+    var lore = item_stack.getLore();
+    var lr_paintVariant = getLoreValueByPrefix(lore, "§a- Paint: ", getUnknownLabel());
+    var lr_trim = getLoreValueByPrefix(lore, "§a- Trim: ", getUnknownLabel());
+    var lr_interior = getLoreValueByPrefix(lore, "§a- Interior: ", getUnknownLabel());
+    var lr_engine = getLoreValueByPrefix(lore, "§a- Engine: ", getUnknownLabel());
+
+    var lr_owner = getLoreValueByPrefix(lore, "§5- First Owner: ", getUnknownLabel());
+    if (isUnknownOrNa(lr_owner)) {
+        lr_owner = getLoreValueByPrefix(lore, "§5- Owner: ", getUnknownLabel());
+    }
+    var lr_delivery = getLoreValueByPrefix(lore, "§5- Delivery: ", getUnknownLabel());
+    var lr_plate = getLoreValueByPrefix(lore, "§5- Plate: ", getUnknownLabel());
+    var lr_msrp = getLoreValueByPrefix(lore, "§5- MSRP: ", getUnknownLabel());
+
+    var lr_title = getLoreValueByPrefix(lore, "§e- Title: ", getUnknownLabel());
+    if (isUnknownOrNa(lr_title)) {
+        lr_title = getLoreValueByPrefix(lore, "§e- Titles: ", getUnknownLabel());
+    }
+
+    var lr_registryprice = getLoreValueByPrefix(lore, "§e- Price: ", getUnknownLabel());
+    var lr_region = getLoreValueByPrefix(lore, "§e- Region: ", getUnknownLabel());
+
+    var parsedMsrp = getUnknownLabel();
+    if (!isUnknownOrNa(lr_msrp)) {
+        var msrpDigits = String(lr_msrp).replace(/[^0-9]/g, "").trim();
+        parsedMsrp = msrpDigits ? parseInt(msrpDigits, 10) : getUnknownLabel();
+        parsedMsrp *= 100; // Convert to cents
+    }
+
+    var parsedRegistrationPrice = getUnknownLabel();
+    if (!isUnknownOrNa(lr_registryprice)) {
+        var priceDigits = String(lr_registryprice).replace(/[^0-9]/g, "").trim();
+        parsedRegistrationPrice = priceDigits ? parseInt(priceDigits, 10) : getUnknownLabel();
+    }
+
+    var parsedTitles = [];
+    if (!isUnknownOrNa(lr_title)) {
+        var titleParts = String(lr_title).split(",");
+        for (var i = 0; i < titleParts.length; i++) {
+            var titleName = String(titleParts[i] || "").trim();
+            if (titleName !== "") {
+                parsedTitles.push(titleName);
+            }
+        }
+    }
+
+    return {
+        vin: getUnknownLabel(),
+        plate: lr_plate,
+        vehicleId: getUnknownLabel(),
+        vehicleSystemName: getUnknownLabel(),
+        paintVariant: lr_paintVariant,
+        trim: lr_trim,
+        interior: lr_interior,
+        msrpCents: parsedMsrp,
+        registrationPriceCents: parsedRegistrationPrice,
+        engineId: getUnknownLabel(),
+        engineSystemName: lr_engine,
+        firstRegistrant: lr_owner,
+        ownershipHistory: [
+            {
+                owner: lr_owner,
+                acquiredDate: lr_delivery,
+                soldDate: getNaLabel()
+            }
+        ],
+        titles: parsedTitles,
+        insuranceClaims: [],
+        history: [],
+        registrationDate: lr_delivery,
+        status: getUnknownLabel(),
+        region: lr_region,
+        metaSources: ["OG Car Papers"]
+    };
+}
+
+function assembleRegistrationFrom_Vehicle(item_stack) {
+    var systems = getCarSystems(item_stack);
+    var vehicleName = item_stack.getDisplayName();
+
+    var trinTrimPaintInterior = deriveTrinTrimPaintInterior(vehicleName);
+
+    return {
+        vin: systems.VIN || getUnknownLabel(),
+        plate: systems.plate_gramados.plateText || getUnknownLabel(),
+        vehicleId: item_stack.getName(),
+        vehicleSystemName: getUnknownLabel(),
+        paintVariant: trinTrimPaintInterior.paint,
+        trim: trinTrimPaintInterior.trim,
+        interior: trinTrimPaintInterior.interior,
+        msrpCents: getUnknownLabel(),
+        registrationPriceCents: getUnknownLabel(),
+        engineId: getUnknownLabel(),
+        engineSystemName: systems.engine ? systems.engine.systemName : getUnknownLabel(),
+        firstRegistrant: getUnknownLabel(),
+        ownershipHistory: [],
+        titles: [],
+        insuranceClaims: [],
+        history: [],
+        registrationDate: getUnknownLabel(),
+        status: getUnknownLabel(),
+        region: getUnknownLabel(),
+        metaSources: ["Vehicle Item NBT"]
+    };
+}
+
+function mergeRegistrationData(baseRegistration, newRegistration) {
+    return {
+        vin: baseRegistration.vin !== getUnknownLabel() ? baseRegistration.vin : newRegistration.vin,
+        plate: baseRegistration.plate !== getUnknownLabel() ? baseRegistration.plate : newRegistration.plate,
+        vehicleId: baseRegistration.vehicleId !== getUnknownLabel() ? baseRegistration.vehicleId : newRegistration.vehicleId,
+        vehicleSystemName: baseRegistration.vehicleSystemName !== getUnknownLabel() ? baseRegistration.vehicleSystemName : newRegistration.vehicleSystemName,
+        paintVariant: baseRegistration.paintVariant !== getUnknownLabel() ? baseRegistration.paintVariant : newRegistration.paintVariant,
+        trim: baseRegistration.trim !== getUnknownLabel() ? baseRegistration.trim : newRegistration.trim,
+        interior: baseRegistration.interior !== getUnknownLabel() ? baseRegistration.interior : newRegistration.interior,
+        msrpCents: baseRegistration.msrpCents !== getUnknownLabel() ? baseRegistration.msrpCents : newRegistration.msrpCents,
+        registrationPriceCents: baseRegistration.registrationPriceCents !== getUnknownLabel() ? baseRegistration.registrationPriceCents : newRegistration.registrationPriceCents,
+        engineId: baseRegistration.engineId !== getUnknownLabel() ? baseRegistration.engineId : newRegistration.engineId,
+        engineSystemName: baseRegistration.engineSystemName !== getUnknownLabel() ? baseRegistration.engineSystemName : newRegistration.engineSystemName,
+        firstRegistrant: baseRegistration.firstRegistrant !== getUnknownLabel() ? baseRegistration.firstRegistrant : newRegistration.firstRegistrant,
+        ownershipHistory: mergeOwnershipHistories(baseRegistration.ownershipHistory, newRegistration.ownershipHistory),
+        titles: mergeTitles(baseRegistration.titles, newRegistration.titles),
+        insuranceClaims: mergeInsuranceClaims(baseRegistration.insuranceClaims, newRegistration.insuranceClaims),
+        history: mergeHistory(baseRegistration.history, newRegistration.history),
+        registrationDate: baseRegistration.registrationDate || newRegistration.registrationDate || getUnknownLabel(),
+        status: mergeStatus(baseRegistration.status, newRegistration.status),
+        region: mergeRegion(baseRegistration.region, newRegistration.region),
+        metaSources: mergeMetaSources(baseRegistration.metaSources, newRegistration.metaSources)
+    };
+}
+
+function updateRegistration(registration) {
+    var licensed = loadLicensedVehicles();
+    licensed[registration.plate] = registration;
+    saveLicensedVehicles(licensed);
 }
 
 function generateWWRegistration(ownerName, itemId, region, plate, titles) {
@@ -267,7 +411,7 @@ function playerHasWWPapersInInv(player) {
     return false;
 }
 
-function saveLicenseJSON(registration) {
+function registerPlate(registration) {
     var plate = registration.plate;
     var licensed = loadLicensedVehicles();
 
@@ -393,7 +537,7 @@ function getCarSystems(ItemStackSource) {
         if (isCarPartNBT_Plate(partNbt)) {
             checkedSystems.plate_gramados = {
                 systemName: partNbt.getString("systemName"),
-                plateText: partNbt.getString("plateText")
+                plateText: partNbt.getString("plateText") || partNbt.getString("textLicense Plate")
             };
         }
         if (isCarPartNBT_Engine(partNbt)) {
@@ -409,6 +553,14 @@ function getCarSystems(ItemStackSource) {
 function isItem_Vehicle(ItemStack) {
     var nbt = ItemStack.getNbt();
     return nbt.has("electricPower") && nbt.has("fuelTank");
+}
+
+function isItem_CarPaperOG(ItemStack) {
+    var lore = ItemStack.getLore();
+    if (!lore || lore.length < 2) {
+        return false;
+    }
+    return lore[1] == "§aConfiguration:" && ItemStack.getDisplayName() == "§6Car Papers"
 }
 
 // Setters

@@ -232,3 +232,18 @@ function padLeft(str, length, char) {
     }
     return result;
 }
+
+function getLoreValueByPrefix(lore, prefix, fallbackValue) {
+    if (!lore || !prefix) {
+        return fallbackValue;
+    }
+
+    for (var i = 0; i < lore.length; i++) {
+        var line = lore[i];
+        if (line && line.indexOf(prefix) === 0) {
+            return line.replace(prefix, "").trim();
+        }
+    }
+
+    return fallbackValue;
+}

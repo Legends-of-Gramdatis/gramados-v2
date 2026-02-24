@@ -112,7 +112,7 @@ function updateWWtoActive(player, npc, newPlate) {
     logToFile("automobile", "Player " + player.getName() + " migrated WW registration with plate " + plate + " to active registration with plate " + newPlate + ". VIN: " + registry_data.vin + ", Engine: " + registry_data.engineSystemName);
     player.giveItem(generatePaperItem(player.getWorld(), registry_data, registered_car_couple.car));
     setVehicleLicensePlate(registered_car_couple.car, registry_data.plate);
-    saveLicenseJSON(registry_data);
+    registerPlate(registry_data);
 }
 
 function purchaseVehicle(player, npc) {
@@ -163,7 +163,7 @@ function purchaseVehicle(player, npc) {
 
         logToFile("automobile", "Player " + player.getName() + " purchased vehicle " + itemStack.getDisplayName() + " for " + formatMoney(price) + ". Assigned plate: " + registration.plate);
 
-        saveLicenseJSON(registration);
+        registerPlate(registration);
 
         if (vehicle.count > 1) {
             stock.vehicles[currentIndex].count -= 1;
