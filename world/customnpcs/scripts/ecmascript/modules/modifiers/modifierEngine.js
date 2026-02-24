@@ -28,11 +28,12 @@ function interact(event) {
         var block = trace.getBlock();
         if (block.getName() == "minecraft:chest") {
             var container = block.getContainer();
-        } //else {
-        //     // tellPlayer(player, "§e:recycle: Debug: Not a container block.");
-        //     tellPlayer(player, "§c:sun: Look at a chest containing a named name tag.");
-        //     return;
-        // }
+        }
+
+        if (!container) {
+            // tellPlayer(player, "§e:recycle: Debug: You must look at a chest to use the admin orb creation feature.");
+            return;
+        }
 
         var slotCount = container.getSize();
         // tellPlayer(player, "§e:recycle: Debug: Container has " + slotCount + " slots.");
