@@ -22,7 +22,7 @@ function getNaLabel() {
 
 function isUnknownOrNa(value) {
     var str = String(value || "").trim();
-    return (str === getUnknownLabel() || str === getNaLabel());
+    return (str === getUnknownLabel() || str === getNaLabel() || str === "");
 }
 
 function isPlateLicensed(plate) {
@@ -175,7 +175,8 @@ function assembleRegistrationFrom_OGpapers(item_stack) {
         msrpCents: parsedMsrp,
         registrationPriceCents: parsedRegistrationPrice,
         engineId: getUnknownLabel(),
-        engineSystemName: lr_engine,
+        // engineSystemName: lr_engine,
+        engineSystemName: getUnknownLabel(),
         firstRegistrant: lr_owner,
         ownershipHistory: [
             {
@@ -195,14 +196,33 @@ function assembleRegistrationFrom_OGpapers(item_stack) {
 }
 
 function assembleRegistrationFrom_Vehicle(item_stack) {
+    var validsystems = checkCarSystems(item_stack);
     var systems = getCarSystems(item_stack);
     var vehicleName = item_stack.getDisplayName();
 
     var trinTrimPaintInterior = deriveTrinTrimPaintInterior(vehicleName);
 
+    if (validsystems.VIN) {
+        var valid_vin = systems.VIN;
+    } else {
+        var valid_vin = getUnknownLabel();
+    }
+
+    if (validsystems.plate_gramados) {
+        var valid_plate = systems.plate_gramados.plateText;
+    } else {
+        var valid_plate = getUnknownLabel();
+    }
+
+    if (validsystems.engine) {
+        var valid_engine = systems.engine.systemName;
+    } else {
+        var valid_engine = getUnknownLabel();
+    }
+
     return {
-        vin: systems.VIN || getUnknownLabel(),
-        plate: systems.plate_gramados.plateText || getUnknownLabel(),
+        vin: valid_vin,
+        plate: valid_plate,
         vehicleId: item_stack.getName(),
         vehicleSystemName: getUnknownLabel(),
         paintVariant: trinTrimPaintInterior.paint,
@@ -211,7 +231,7 @@ function assembleRegistrationFrom_Vehicle(item_stack) {
         msrpCents: getUnknownLabel(),
         registrationPriceCents: getUnknownLabel(),
         engineId: getUnknownLabel(),
-        engineSystemName: systems.engine ? systems.engine.systemName : getUnknownLabel(),
+        engineSystemName: valid_engine,
         firstRegistrant: getUnknownLabel(),
         ownershipHistory: [],
         titles: [],
@@ -247,6 +267,78 @@ function mergeRegistrationData(baseRegistration, newRegistration) {
         region: mergeRegion(baseRegistration.region, newRegistration.region),
         metaSources: mergeMetaSources(baseRegistration.metaSources, newRegistration.metaSources)
     };
+}
+
+function mergeMetaSources(sources1, sources2) {
+    var merged = sources1.slice();
+    for (var i = 0; i < sources2.length; i++) {
+        if (merged.indexOf(sources2[i]) === -1) {
+            merged.push(sources2[i]);
+        }
+    }
+    return merged;
+}
+
+function mergeRegion(region1, region2) {
+    if (region1 !== getUnknownLabel()) {
+        return region1;
+    }
+    return region2;
+}
+
+function mergeStatus(status1, status2) {
+    if (status1 !== getUnknownLabel()) {
+        return status1;
+    }
+    return status2;
+}
+
+function mergeHistory(history1, history2) {
+    var merged = history1.slice();
+    for (var i = 0; i < history2.length; i++) {
+        if (merged.indexOf(history2[i]) === -1) {
+            merged.push(history2[i]);
+        }
+    }
+    return merged;
+}
+
+function mergeInsuranceClaims(claims1, claims2) {
+    var merged = claims1.slice();
+    for (var i = 0; i < claims2.length; i++) {
+        if (merged.indexOf(claims2[i]) === -1) {
+            merged.push(claims2[i]);
+        }
+    }
+    return merged;
+}
+
+function mergeTitles(titles1, titles2) {
+    var merged = titles1.slice();
+    for (var i = 0; i < titles2.length; i++) {
+        if (merged.indexOf(titles2[i]) === -1) {
+            merged.push(titles2[i]);
+        }
+    }
+    return merged;
+}
+
+function mergeOwnershipHistories(history1, history2) {
+    var merged = history1.slice();
+    for (var i = 0; i < history2.length; i++) {
+        var entry = history2[i];
+        var exists = false;
+        for (var j = 0; j < merged.length; j++) {
+            if (merged[j].owner === entry.owner && merged[j].acquiredDate === entry.acquiredDate) {
+                exists = true;
+                break;
+            }
+        }
+        if (!exists) {
+            merged.push(entry);
+        }
+    }
+    return merged;
 }
 
 function updateRegistration(registration) {
@@ -413,12 +505,21 @@ function playerHasWWPapersInInv(player) {
 
 function registerPlate(registration) {
     var plate = registration.plate;
+    if (isUnknownOrNa(plate)) {
+        return false;
+    }
     var licensed = loadLicensedVehicles();
 
     licensed[plate] = registration;
     saveJson(licensed, VEHICLE_LICENSED_DATA_PATH);
+    return true;
 }
-    
+
+function getMostRecentPlate() {
+    var licensed = loadLicensedVehicles();
+    var length = Object.keys(licensed).length;
+    return licensed[Object.keys(licensed)[length - 1]];
+}
 
 // Car Part NBT Checks
 
