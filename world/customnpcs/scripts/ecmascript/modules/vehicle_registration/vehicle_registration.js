@@ -66,15 +66,15 @@ function interact(event) {
             tellPlayer(player, ":car: &c[Vehicle Registration] Failed to register vehicle plate.");
             // merge it with last plate
 
-            var lastPlate = getMostRecentPlate();
-            if (lastPlate) {
-                tellPlayer(player, ":car: &e[Vehicle Registration] Attempting to merge with most recent plate: " + lastPlate.plate);
-                var mergedRegistration = mergeRegistrationData(lastPlate, registration);
-                updateRegistration(mergedRegistration);
-                tellPlayer(player, ":car: &a[Vehicle Registration] Vehicle registration merged with most recent plate successfully.");
-            } else {
-                tellPlayer(player, ":car: &c[Vehicle Registration] No recent plate found to merge with.");
-            }
+            // var lastPlate = getMostRecentPlate();
+            // if (lastPlate) {
+            //     tellPlayer(player, ":car: &e[Vehicle Registration] Attempting to merge with most recent plate: " + lastPlate.plate);
+            //     var mergedRegistration = mergeRegistrationData(lastPlate, registration);
+            //     updateRegistration(mergedRegistration);
+            //     tellPlayer(player, ":car: &a[Vehicle Registration] Vehicle registration merged with most recent plate successfully.");
+            // } else {
+            //     tellPlayer(player, ":car: &c[Vehicle Registration] No recent plate found to merge with.");
+            // }
         }
         return;
     }
