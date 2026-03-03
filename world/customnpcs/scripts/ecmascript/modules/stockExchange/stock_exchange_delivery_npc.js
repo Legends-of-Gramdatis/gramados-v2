@@ -208,7 +208,7 @@ function interact(event) {
                 }
 
                 // Calculate total earnings before updating stock prices
-                var totalEarnings = calculateEarnings(delivery, NPC_REGION);
+                var totalEarnings = calculateEarnings(player, delivery, NPC_REGION);
 
                 // Spy data to log the delivery
                 var spy_data = {}
@@ -244,7 +244,7 @@ function interact(event) {
                 }
 
                 // Calculate total earnings before updating stock prices
-                var totalEarnings = calculateEarnings(delivery, NPC_REGION);
+                var totalEarnings = calculateEarnings(player, delivery, NPC_REGION);
 
                 // Spy data to log the delivery
                 var spy_data = {}
@@ -277,7 +277,7 @@ function interact(event) {
  * @param {string} region - The region name.
  * @returns {number} The total earnings in the region's currency.
  */
-function calculateEarnings(delivery, region) {
+function calculateEarnings(player, delivery, region) {
     var totalEarnings = 0;
     var earningsMultiplier = 1;
     var modifierBonus = 1;
