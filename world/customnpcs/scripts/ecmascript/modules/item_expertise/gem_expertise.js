@@ -19,6 +19,7 @@ var config = loadJson("world/customnpcs/scripts/ecmascript/modules/item_expertis
 function interact(event) {
     var player = event.player;
     var npc = event.npc;
+    var world = npc.getWorld();
 
     if (!player.hasReadDialog(560)) {
         return;
@@ -66,10 +67,10 @@ function interact(event) {
     }
 
     npc.executeCommand("/playsound minecraft:entity.experience_orb.pickup master @a ~ ~ ~ 1 1");
-    player.giveItem(generateExpertisableItem(heldItem, player));
+    player.giveItem(generateExpertisableItem(heldItem, player, world));
 }
 
-function generateExpertisableItem(heldItem, player) {
+function generateExpertisableItem(heldItem, player, world) {
     var itemStack = heldItem.copy();
     var itemName = itemStack.getName();
     var enhancedItem = world.createItem(itemStack.getName(), itemStack.getItemDamage(), 1);
