@@ -7,7 +7,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js"
 // Load config like in gem_expertise.js
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/item_expertise/gem_config.json");
 
-var FACTION_ID_MAFIA = 9;
+var FACTION_ID_MAFIA = 7;
 
 function interact(event) {
     var player = event.player;
