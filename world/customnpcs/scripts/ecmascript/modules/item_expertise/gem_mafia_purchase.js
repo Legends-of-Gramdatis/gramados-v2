@@ -125,10 +125,10 @@ function interact(event) {
 
 
     // Give mafia reputation (if < 2000)
-    var mafia_rep_per_cents = (config && config.mafia_rep_per_cents) ? config.mafia_rep_per_cents : 30000;
+    var cents_for_mafia_rep = config.cents_for_mafia_rep;
     var repGain = 0;
     if (player.getFactionPoints(FACTION_ID_MAFIA) < 2000) {
-        repGain = Math.floor(estimated / mafia_rep_per_cents); // configurable value
+        repGain = Math.floor(estimated / cents_for_mafia_rep); // configurable value
         if (repGain > 0) {
             player.addFactionPoints(FACTION_ID_MAFIA, repGain);
         }
