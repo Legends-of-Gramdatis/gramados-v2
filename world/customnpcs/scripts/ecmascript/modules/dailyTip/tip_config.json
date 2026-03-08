@@ -47,10 +47,15 @@
             "release_date": "24/04/2024"
         },
         {
-            "name": "Of Mice and Flour",
+            "name": "Under Pressure",
             "display": "§d§lA baker's plea awaits!§r §5Dive into Trin lore, old stories, and strange clues in a heartfelt journey of flour and friendship.",
             "description": "§7Visit §6Moulin-Fournelet §7in Trilnat and talk to the baker to begin.",
-            "requirements": [],
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 154
+                }
+            ],
             "release_date": "29/05/2025"
         },
         {
@@ -113,6 +118,18 @@
             "display": "§e§lRestoration call!§r §6Tomás Ravel is rebuilding a storm-damaged historic home and needs a hand preserving Old Seagull Road's legacy.",
             "description": "§7Meet §eTomás Ravel §7near Old Seagull Road if you want repeatable restoration work.",
             "requirements": [],
+            "release_date": "06/01/2025"
+        },
+        {
+            "name": "Starter Jobs Discovery Tour",
+            "display": "§a§lNew in town?§r §2Take the starter jobs tour to discover where to begin earning your first income.",
+            "description": "§7Talk to the Hiring Manager near the §aGramados Town Hall §7 and ask for the trip to starter jobs.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 120
+                }
+            ],
             "release_date": "06/01/2025"
         }
     ]
