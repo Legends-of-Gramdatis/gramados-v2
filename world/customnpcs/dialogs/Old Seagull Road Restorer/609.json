@@ -6,10 +6,20 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 5,
-                "Title": "Oh, what happend?",
-                "DialogColor": 9604220,
+                "Dialog": 610,
+                "Title": "So you're restoring it for the history?",
+                "DialogColor": 16777215,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 610,
+                "Title": "That sounds like a lot of work. I wish you good luck.",
+                "DialogColor": 16777215,
+                "OptionType": 0
             }
         }
     ],
@@ -17,7 +27,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 4,
+    "DialogId": 609,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Start 1",
+    "DialogTitle": "p3 - Story History",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Hello there, im sorry but you can't enter the property, this house is under construction.",
+    "DialogText": "Very.
+
+This house stands on Old Seagull Road, one of the oldest streets in this part of the city. Before that giant four-lane road out there, this was where people walked, traded, and argued.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1572805824761L,
+        "TimePast": 1772986741501L,
         "Time": 0L,
         "Subject": ""
     }

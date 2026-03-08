@@ -6,10 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Okay",
-                "DialogColor": 5175314,
-                "OptionType": 0
+                "Dialog": 611,
+                "Title": "Can I help somehow?",
+                "DialogColor": 16777215,
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 7,
+    "DialogId": 610,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 1,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "10Wooddialouge",
+    "DialogTitle": "p4 - Story Motivation",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Oh, yes. This will help us repair the roof. If you get me some dark Oak Logs i will of course pay you 15 G. Does that sound good?",
+    "DialogText": "Exactly.
+
+Everyone remembers the highway, but few remember what stood here before it. I want to bring at least one piece of it back.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1572807800056L,
+        "TimePast": 1772986723652L,
         "Time": 0L,
         "Subject": ""
     }

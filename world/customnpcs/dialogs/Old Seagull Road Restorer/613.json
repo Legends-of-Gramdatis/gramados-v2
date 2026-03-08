@@ -1,15 +1,15 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 2,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Alright!",
-                "DialogColor": 14737632,
-                "OptionType": 0
+                "Dialog": 8,
+                "Title": "I will visit the glassmaker.",
+                "DialogColor": 16777215,
+                "OptionType": 1
             }
         }
     ],
@@ -17,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 8,
-    "AvailabilityQuest": 0,
+    "DialogId": 613,
+    "AvailabilityQuest": 6,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 2,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "15Glassdialouge",
+    "DialogTitle": "p6.2.1 - Accept Glass Offer",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,7 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Oh yes. 15 Glass will be enough to repair the windows. They've taken quite a hit during the storm. I'll give you 25 G. How does that sound?",
+    "DialogText": "For the windows, I want proper artisan glass.
+
+There's a glassmaker on Feldpard - Atelier de la Verrière. Their panes are strong and clear, just like the old ones.
+
+Bring me 15 Hand-crafted Glass Panes - the dungeon ones, and I'll trade you some of the valuable scrap I've recovered.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1573286423629L,
+        "TimePast": 1772985182708L,
         "Time": 0L,
         "Subject": ""
     }

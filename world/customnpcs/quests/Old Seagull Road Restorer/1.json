@@ -1,0 +1,151 @@
+{
+    "CompleterNpc": "Tomás Ravel",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 4,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 1b,
+    "Title": "Rebuild the Roof Frame",
+    "Text": "Tomás Ravel is restoring an old house on Old Seagull Road.
+
+He needs strong timber to rebuild the damaged roof structure.
+I should bring him 12 Spruce Logs, likely obtained from the Lumberjack starter job.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 15,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1772986412803L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:lead_pipe",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:lead_pipe",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:mtsofficialpack.screws",
+                "Count": 15b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:material",
+                "Count": 4b,
+                "Damage": 9s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:material",
+                "Count": 1b,
+                "Damage": 3s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:metal",
+                "Count": 3b,
+                "Damage": 18s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:metal",
+                "Count": 1b,
+                "Damage": 32s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "immersiveengineering:material",
+                "Count": 2b,
+                "Damage": 8s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:mtsofficialpack.copperwire",
+                "Count": 2b,
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:log",
+                "Count": 12b,
+                "Damage": 1s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I hand the spruce logs to Tomás.
+
+The wood should help him rebuild the roof beams of the old house. He gives me a bundle of salvaged scrap he recovered during the cleanup.",
+    "NextQuestTitle": ""
+}

@@ -1,24 +1,14 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "What a pity",
-                "DialogColor": 9604220,
-                "OptionType": 0
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 6,
-                "Title": "Oh, how could i help?",
-                "DialogColor": 9604220,
+                "Dialog": 612,
+                "Title": "Alright, I'll bring the logs.",
+                "DialogColor": 16777215,
                 "OptionType": 1
             }
         }
@@ -27,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 5,
-    "AvailabilityQuest": 0,
+    "DialogId": 7,
+    "AvailabilityQuest": 6,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -48,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Ask",
+    "DialogTitle": "p6.1.1 - Accept Spruce Offer",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Well, there was a storm a few weeks ago and the roof was hit by a tree, we managed to remove the tree but are a bit short on resources",
+    "DialogText": "Spruce would be perfect.
+
+The lumberjack crews usually bring some through the markets, so it shouldn't be too hard to find.
+
+Bring me 12 Spruce Logs, and I'll give you a bundle of scrap I salvaged from the house.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1572806129610L,
+        "TimePast": 1772985163401L,
         "Time": 0L,
         "Subject": ""
     }

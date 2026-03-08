@@ -7,8 +7,8 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 7,
-                "Title": "Yes, i could supply 10 Dark Oak Logs [Quest]",
-                "DialogColor": 5175314,
+                "Title": "I could bring spruce logs.",
+                "DialogColor": 16777215,
                 "OptionType": 1
             }
         },
@@ -16,9 +16,9 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 8,
-                "Title": "Yes, I could supply you with 15 Glass [Quest]",
-                "DialogColor": 7666691,
+                "Dialog": 613,
+                "Title": "I could bring proper glass.",
+                "DialogColor": 16777215,
                 "OptionType": 1
             }
         }
@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Quest Ask",
+    "DialogTitle": "p6 - Offer Choices",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Well there is, we ARE really short on supplies and thus, we can not repair the building. If you were to supply us with materials we would be able to continue. We would, of course pay.",
+    "DialogText": "Two things mainly.
+
+Good spruce logs for rebuilding the roof beams, and proper hand-crafted glass for the windows. I refuse to put cheap factory panes in a house this old.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1572862522318L,
+        "TimePast": 1772984624799L,
         "Time": 0L,
         "Subject": ""
     }
