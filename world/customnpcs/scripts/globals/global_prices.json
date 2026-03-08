@@ -1419,7 +1419,12 @@
         "value": 20000
     },
     "immersiveengineering:metal:3": {
-        "value": 10000
+        "display_name": "Silver Ingot",
+        "value": 10000,
+        "ore_override": false,
+        "ore": {
+            "silver": 1
+        }
     },
     "immersiveengineering:metal_decoration2:2": {
         "value": 300000
@@ -4372,12 +4377,36 @@
             "iron": 0.25
         }
     },
+    "immersiveengineering:metal:9": {
+        "display_name": "Copper Grit",
+        "value": 1500,
+        "ore_override": true,
+        "ore": {
+            "copper": 0.25
+        }
+    },
     "immersiveengineering:metal:39": {
         "display_name": "Iron Plate",
         "value": 2500,
         "ore_override": true,
         "ore": {
             "iron": 2.5
+        }
+    },
+    "immersiveengineering:metal:38": {
+        "display_name": "Steel Plate",
+        "value": 5000,
+        "ore_override": true,
+        "ore": {
+            "steel": 2.5
+        }
+    },
+    "immersiveengineering:metal:32": {
+        "display_name": "Lead Plate",
+        "value": 10000,
+        "ore_override": true,
+        "ore": {
+            "lead": 2.5
         }
     },
     "mts:mtsofficialpack.copperwire:0": {

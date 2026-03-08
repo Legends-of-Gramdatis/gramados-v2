@@ -70,5 +70,13 @@
         "max_price": 140000,
         "current_price": 100000,
         "quantity_factor": 1000
+    },
+    "ore:silver": {
+        "display_name": "Silver",
+        "min_price": 12000,
+        "reference_price": 20000,
+        "max_price": 28000,
+        "current_price": 20000,
+        "quantity_factor": 1000
     }
 }
