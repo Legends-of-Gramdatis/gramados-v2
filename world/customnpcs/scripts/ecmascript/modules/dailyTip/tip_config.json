@@ -1,0 +1,119 @@
+{
+    "tip_types": ["features", "quests"],
+    "features": [
+        {
+            "name": "Car Dealerships",
+            "display": "§6§lEngine check!§r §eYour wallet is looking healthy—why not cruise by a Gramados dealership and hunt for your next dream ride?",
+            "description": "§7Across Gramados, dealerships rotate their stock every week. §aSince the 2026 rework, each lot can surprise you with rare finds, budget gems, or luxury beasts. §bIf your funds are ready, today might be the day you drive out in style.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 2000000
+                }
+            ],
+            "release_date": "19/02/2026"
+        },
+        {
+            "name": "Mafia rep purchase",
+            "display": "§4§lCareful...§r §cThe mafia is not exactly your biggest fan right now. Maybe a little \"tribute\" could smooth things over?",
+            "description": "§7Whispers in the streets say deals are made behind the ovens at §6Dominico's Pizza §7in Siloroz. §eBring courage—and enough cash—to negotiate a cleaner slate.",
+            "requirements": [
+                {
+                    "type": "factions",
+                    "id": 7,
+                    "max": 700
+                }
+            ],
+            "release_date": "07/08/2025"
+        }
+    ],
+
+    "quests": [
+        {
+            "name": "Weapon Permit Quest",
+            "display": "§9§lReady for responsibility?§r §bA long and challenging journey can earn you a weapon permit, unlocking gun shops and more.",
+            "description": "§7Start at §3Gramados Town Hall§7. §aExpect paperwork, tests, and a serious proving of trust before the permit is finally in your hands.",
+            "requirements": [
+                {
+                    "type": "factions",
+                    "id": 2,
+                    "max": 5000
+                },
+                {
+                    "type": "quests_uncompleted",
+                    "id": 19
+                }
+            ],
+            "release_date": "24/04/2024"
+        },
+        {
+            "name": "Of Mice and Flour",
+            "display": "§d§lA baker's plea awaits!§r §5Dive into Trin lore, old stories, and strange clues in a heartfelt journey of flour and friendship.",
+            "description": "§7Head to §6Moulin-Fournelet §7in Trilnat and speak with the locals. §dWhat starts as a simple favor may uncover far more than missing ingredients.",
+            "requirements": [],
+            "release_date": "29/05/2025"
+        },
+        {
+            "name": "Insecticide",
+            "display": "§2§lGreen thumbs wanted!§r §aA community garden is under siege by pests—can you save this season's harvest?",
+            "requirements": [],
+            "description": "§7Find the communal garden in §aSiloroz§7. §eBring patience, sharp eyes, and maybe a few homegrown tricks to reclaim the crops.",
+            "release_date": "21/05/2025"
+        },
+        {
+            "name": "A Fountain Once Lost",
+            "display": "§b§lSilence in Caldero...§r §3The legendary fountain has gone quiet. If you're handy with tools, its voice may yet return.",
+            "description": "§7Seek the §b'Fuente de los Ecos' §7in Caldero. §fInvestigate the mechanism, follow the clues, and restore the heart of the plaza.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 127
+                }
+            ],
+            "release_date": "20/05/2025"
+        },
+        {
+            "name": "The Sand from Crystal Cove",
+            "display": "§b§lA glimmering errand awaits!§r §3A glass artisan in Rivermarch seeks rare crystal sand from a hidden dune far across Feldpard.",
+            "description": "§7Visit §dMaëline Courbe §7at the §6Atelier de la Verrière§7, then journey to §bCrystal Cove§7. §fCross the island, gather the pure lagoon sand, and return to help shape something truly beautiful.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 159
+                }
+            ],
+            "release_date": "11/09/2025"
+        },
+        {
+            "name": "Pieces of What Remains",
+            "display": "§8§lDrabus remembers...§r §7An old mechanic named Marcel needs help piecing together more than just a broken station wagon.",
+            "description": "§7Walk the worn streets of §8Drabus Strip§7, track down a whitewall tire, and chase echoes of cassette music through forgotten ruins. §fA quiet quest of memory, rust, and resilience.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 122
+                }
+            ],
+            "release_date": "30/05/2025"
+        },
+        {
+            "name": "Valencian Fire Zest",
+            "display": "§6§lTaste test challenge!§r §eA hyper-energetic teen in Citrus Alley dares you to try Café Valencia's legendary drink.",
+            "description": "§7Find §dMira Ventroli §7near the plaza, then head to §6Café Valencia§7 between the hotel and hall. §cBuy and drink the §6Valencian Fire Zest§7 to survive the sweet-sour-spicy citrus chaos.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 158
+                }
+            ],
+            "release_date": "26/08/2025"
+        },
+        {
+            "name": "Old Seagull Road Restorer",
+            "display": "§e§lRestoration call!§r §6Tomás Ravel is rebuilding a storm-damaged historic home and needs a hand preserving Old Seagull Road's legacy.",
+            "description": "§7Find Tomás at the ruined house near §eOld Seagull Road and Cloralis Street§7. §aBring spruce logs or hand-crafted glass to help restore roof beams and windows, one piece of history at a time.",
+            "requirements": [],
+            "release_date": "06/01/2025"
+        }
+    ]
+}
