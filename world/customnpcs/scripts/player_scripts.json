@@ -52,6 +52,16 @@
                     "Line": "modules/worldevents/worldeventsmain.js"
                 }
             ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/dailytip/dailytipengine.js"
+                }
+            ]
         }
     ],
     "ScriptLanguage": "ECMAScript"
