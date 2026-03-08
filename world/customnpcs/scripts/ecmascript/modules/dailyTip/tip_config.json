@@ -59,7 +59,7 @@
             "release_date": "29/05/2025"
         },
         {
-            "name": "Insecticide",
+            "name": "Siloroz Insecticide",
             "display": "§2§lGreen thumbs wanted!§r §aA community garden is under siege by pests—can you save this season's harvest?",
             "requirements": [],
             "description": "§7Look for the communal garden in §aSiloroz§7 if you want a hands-on local quest.",
@@ -131,6 +131,27 @@
                 }
             ],
             "release_date": "06/01/2025"
+        },
+        {
+            "name": "Harlow Weaponry Solutions",
+            "display": "§c§lHigh-risk contract!§r §6Harlow Weaponry Solutions is hiring capable hands for a dangerous recovery operation.",
+            "description": "§7If you're combat-ready, speak with §cClayton Harlow §7at Harlow Weaponry Solutions to hear the offer.",
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 11
+                },
+                {
+                    "type": "factions",
+                    "id": 6,
+                    "max": 1700
+                },
+                {
+                    "type": "quests_completed",
+                    "id": 59
+                }
+            ],
+            "release_date": "31/08/2025"
         }
     ]
 }
