@@ -1,6 +1,7 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 
 var TIP_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/dailyTip/tip_config.json");
 var DAILY_TIP_TIMER_ID = 91;
@@ -26,6 +27,7 @@ function timer(event) {
         if (tip.description) {
             tellPlayer(player, "&7:arrow_r: &r" + tip.description);
         }
+        logToFile('events', player.getName() + " received tip: " + tip.display);
     }
 }
 
