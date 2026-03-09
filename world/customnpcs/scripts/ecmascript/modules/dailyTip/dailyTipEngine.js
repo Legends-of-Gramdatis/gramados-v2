@@ -27,7 +27,7 @@ function timer(event) {
         if (tip.description) {
             tellPlayer(player, "&7:arrow_r: &r" + tip.description);
         }
-        logToFile('events', player.getName() + " received tip: " + tip.display);
+        logToFile('events', player.getName() + " received tip: " + tip.name);
     }
 }
 
