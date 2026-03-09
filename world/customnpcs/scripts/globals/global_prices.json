@@ -1418,12 +1418,131 @@
     "immersiveengineering:hoe_steel:0": {
         "value": 20000
     },
+    "immersiveengineering:material:2": {
+        "display_name": "Steel Rod",
+        "value": 4000,
+        "ore_override": false,
+        "ore": {
+            "steel": 2
+        }
+    },
+    "immersiveengineering:material:21": {
+        "display_name": "Electrum Wire",
+        "value": 5000,
+        "ore_override": false,
+        "ore": {
+            "electrum": 0.05
+        }
+    },
+    "immersiveengineering:material:3": {
+        "display_name": "Aluminum Rod",
+        "value": 6000,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 2
+        }
+    },
+    "immersiveengineering:material:8": {
+        "display_name": "Iron Mechanical Component",
+        "value": 250,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "immersiveengineering:material:9": {
+        "display_name": "Steel Mechanical Component",
+        "value": 500,
+        "ore_override": true,
+        "ore": {
+            "steel": 0.25
+        }
+    },
+    "immersiveengineering:metal:0": {
+        "display_name": "Copper Ingot",
+        "value": 6000,
+        "ore_override": false,
+        "ore": {
+            "copper": 1
+        }
+    },
+    "immersiveengineering:metal:15": {
+        "display_name": "Constantan Grit",
+        "value": 2250,
+        "ore_override": true,
+        "ore": {
+            "constantan": 0.25
+        }
+    },
+    "immersiveengineering:metal:18": {
+        "display_name": "Iron Grit",
+        "value": 250,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "immersiveengineering:metal:19": {
+        "display_name": "Gold Grit",
+        "value": 3600,
+        "ore_override": false,
+        "ore": {
+            "gold": 0.02
+        }
+    },
     "immersiveengineering:metal:3": {
         "display_name": "Silver Ingot",
         "value": 10000,
         "ore_override": false,
         "ore": {
             "silver": 1
+        }
+    },
+    "immersiveengineering:metal:30": {
+        "display_name": "Copper Plate",
+        "value": 15000,
+        "ore_override": false,
+        "ore": {
+            "copper": 2.5
+        }
+    },
+    "immersiveengineering:metal:32": {
+        "display_name": "Lead Plate",
+        "value": 10000,
+        "ore_override": true,
+        "ore": {
+            "lead": 2.5
+        }
+    },
+    "immersiveengineering:metal:34": {
+        "value": 7500,
+        "ore_override": false,
+        "ore": {
+            "nickel": 0.5
+        }
+    },
+    "immersiveengineering:metal:38": {
+        "display_name": "Steel Plate",
+        "value": 5000,
+        "ore_override": true,
+        "ore": {
+            "steel": 2.5
+        }
+    },
+    "immersiveengineering:metal:39": {
+        "display_name": "Iron Plate",
+        "value": 2500,
+        "ore_override": true,
+        "ore": {
+            "iron": 2.5
+        }
+    },
+    "immersiveengineering:metal:9": {
+        "display_name": "Copper Grit",
+        "value": 1500,
+        "ore_override": true,
+        "ore": {
+            "copper": 0.25
         }
     },
     "immersiveengineering:metal_decoration2:2": {
@@ -2024,2461 +2143,6 @@
     },
     "mts:iav.iav_wheel_standard_hubcap:0": {
         "value": 20000
-    },
-    "mts:iv_tpp.car_roof_lightbar_y:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.car_roof_xl_lightbar_y:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.engine_i3_gasoline_turbo_aut:0": {
-        "value": 380000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_normal_man:0": {
-        "value": 110000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_turbo_aut:0": {
-        "value": 150000
-    },
-    "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.engine_i5_gasoline_normal_aut:0": {
-        "value": 390000
-    },
-    "mts:iv_tpp.engine_i5_gasoline_normal_man:0": {
-        "value": 340000
-    },
-    "mts:iv_tpp.engine_i5_gasoline_turbo_aut:0": {
-        "value": 520000
-    },
-    "mts:iv_tpp.engine_i5_gasoline_turbo_man:0": {
-        "value": 460000
-    },
-    "mts:iv_tpp.engine_v10_gasoline_man:0": {
-        "value": 1590000
-    },
-    "mts:iv_tpp.engine_v10_gasoline_normal_aut:0": {
-        "value": 1250000
-    },
-    "mts:iv_tpp.engine_v10_gasoline_normal_man:0": {
-        "value": 1100000
-    },
-    "mts:iv_tpp.engine_v10_gasoline_turbo_aut:0": {
-        "value": 1550000
-    },
-    "mts:iv_tpp.engine_v10_gasoline_turbo_man:0": {
-        "value": 1380000
-    },
-    "mts:iv_tpp.engine_v12_gasoline_normal_aut:0": {
-        "value": 1130000
-    },
-    "mts:iv_tpp.engine_v12_gasoline_normal_man:0": {
-        "value": 980000
-    },
-    "mts:iv_tpp.engine_v12_gasoline_trackprepared_aut:0": {
-        "value": 8000000
-    },
-    "mts:iv_tpp.engine_v12_gasoline_turbo_aut:0": {
-        "value": 1500000
-    },
-    "mts:iv_tpp.engine_v12_gasoline_turbo_man:0": {
-        "value": 1320000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
-        "value": 520000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_normal_man:0": {
-        "value": 480000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_turbo_aut:0": {
-        "value": 660000
-    },
-    "mts:iv_tpp.engine_v6_gasoline_turbo_man:0": {
-        "value": 620000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_normal_aut:0": {
-        "value": 1100000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_normal_man:0": {
-        "value": 1200000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_turbo_aut:0": {
-        "value": 1500000
-    },
-    "mts:iv_tpp.engine_v8_gasoline_turbo_man:0": {
-        "value": 1500000
-    },
-    "mts:iv_tpp.gyro_yellow:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_w_chrome:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_w_copper:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_w_metal:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_y_chrome:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_y_copper:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_powerful_y_metal:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_w_chrome:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_w_copper:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_w_metal:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_y_chrome:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_y_copper:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_headlight_y_metal:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_light_w:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.led_light_y:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.paint_bucket_amber:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_bloodred:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_brown:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_buttercup:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_caramel:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_carminred:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_chocolate:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_citruslime:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_coldspruce:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_darkpinkcandy:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_deepblack:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.paint_bucket_electricblue:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_emerald:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_fireorange:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_firered:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_fuchsia:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_glacierwhite:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.paint_bucket_grape:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_honey:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_irongray:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.paint_bucket_ivory:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.paint_bucket_jetblack:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.paint_bucket_lapenverblue:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_lemonyellow:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_midnightpurple:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_militarygreen:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_milkcoffee:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_oakgreen:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_oceanblue:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_orangered:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_pink:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_pinkcandy:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_plum:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_pureblack:0": {
-        "value": 100
-    },
-    "mts:iv_tpp.paint_bucket_purewhite:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.paint_bucket_ruby:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_sage:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.paint_bucket_sand:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.paint_bucket_sandstone:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.paint_bucket_sapphire:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_silver:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.paint_bucket_skyblue:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_slimelime:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_softgreen:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.paint_bucket_spruce:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_steelblue:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_sunshineyellow:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_teal:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.paint_bucket_tomato:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_tungsten:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.paint_bucket_turquoise:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_vibrantred:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.paint_bucket_white:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.paint_double_bucket_bubblegum:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_double_bucket_forest:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_double_bucket_redandblack:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_double_bucket_shagbark:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_double_bucket_steelblueandteal:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.paint_empty_bucket:0": {
-        "value": 1000
-    },
-    "mts:iv_tpp.plate_gramados:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.roll_bar_small_black:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.roll_bar_small_chrome:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.roll_bar_small_gray:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.roll_bar_small_txs:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.roll_bar_small_white:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.roll_bar_small_yellow:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_boat_engine_firered:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_medium_carbonfiber:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_medium_iron:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_boat_engine_propeller_small:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.trin_boat_engine_pureblack:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_silver:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_engine_white:0": {
-        "value": 500000
-    },
-    "mts:iv_tpp.trin_boat_v8_firered:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_v8_pureblack:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_v8_silver:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_boat_v8_white:0": {
-        "value": 800000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_electric:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_f:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_fuel:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer:0": {
-        "value": 5500
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_electric:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_fuel:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_default_tachometer:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_car-boat_gauge_gear:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_crate1:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.trin_crate1_wooden:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_crate2:0": {
-        "value": 3000
-    },
-    "mts:iv_tpp.trin_electric_bike_engine:0": {
-        "value": 60000
-    },
-    "mts:iv_tpp.trin_seat_1_beige:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_black:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_brown:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_gray:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_junk:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_red:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_1_white:0": {
-        "value": 57000
-    },
-    "mts:iv_tpp.trin_seat_2_beige:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_2_black:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_2_brown:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_2_gray:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_2_junk:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.trin_seat_2_red:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_2_white:0": {
-        "value": 100000
-    },
-    "mts:iv_tpp.trin_seat_3_beige:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_black:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_brown:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_cheese:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_gray:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_junk:0": {
-        "value": 1500
-    },
-    "mts:iv_tpp.trin_seat_3_red:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_3_white:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_1:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_2:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_3:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_4:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_5:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_6:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_7:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_8:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_bus_9:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.trin_seat_frying_pan_blue:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_seat_frying_pan_gray:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_seat_frying_pan_green:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_seat_frying_pan_orange:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_seat_frying_pan_red:0": {
-        "value": 5000
-    },
-    "mts:iv_tpp.trin_stacked_boxes_cardboard:0": {
-        "value": 60000
-    },
-    "mts:iv_tpp.trin_stacked_boxes_cardboard_2:0": {
-        "value": 60000
-    },
-    "mts:iv_tpp.trin_v10_fat_diesel:0": {
-        "value": 1150000
-    },
-    "mts:iv_tpp.trin_v8_fat_biodiesel:0": {
-        "value": 950000
-    },
-    "mts:iv_tpp.trin_v8_fat_diesel:0": {
-        "value": 900000
-    },
-    "mts:iv_tpp.trin_v8_fat_gasoline:0": {
-        "value": 650000
-    },
-    "mts:iv_tpp.trinwheel30t10d_c:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.trinwheel30t10d_or:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
-        "value": 25000
-    },
-    "mts:iv_tpp.wheel_20h_6w_rim1_or:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_20h_6w_rim2_or:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_classic_2d5_0_steel:0": {
-        "value": 10000
-    },
-    "mts:iv_tpp.wheel_classic_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_classic_4d14_0_steel:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.wheel_classic_4d14_1_chromic:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_classic_4d16_0_steel:0": {
-        "value": 20000
-    },
-    "mts:iv_tpp.wheel_classic_4d16_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_offroad_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_offroad_4d14_0_steel:0": {
-        "value": 15000
-    },
-    "mts:iv_tpp.wheel_offroad_4d14_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_offroad_4d16_0_steel:0": {
-        "value": 22000
-    },
-    "mts:iv_tpp.wheel_offroad_4d16_1_chromic:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_sport_3d11_0_steel:0": {
-        "value": 11000
-    },
-    "mts:iv_tpp.wheel_sport_4d14_0_steel:0": {
-        "value": 14000
-    },
-    "mts:iv_tpp.wheel_sport_4d14_1_chromic:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_blue:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_red:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_blue:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_red:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_blue:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_red:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
-        "value": 40000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_blue:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_red:0": {
-        "value": 30000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_blue:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_red:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_gold:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_red:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_blue:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_red:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_blue:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_red:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
-        "value": 50000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_blue:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_red:0": {
-        "value": 45000
-    },
-    "mts:iv_tpp.wrap_roll_coal:0": {
-        "value": 125000
-    },
-    "mts:iv_tpp.wrap_roll_diamond:0": {
-        "value": 250000
-    },
-    "mts:iv_tpp.wrap_roll_driveschool:0": {
-        "value": 120000
-    },
-    "mts:iv_tpp.wrap_roll_emerald:0": {
-        "value": 250000
-    },
-    "mts:iv_tpp.wrap_roll_gold:0": {
-        "value": 200000
-    },
-    "mts:iv_tpp.wrap_roll_iron:0": {
-        "value": 110000
-    },
-    "mts:iv_tpp.wrap_roll_lapislazuli:0": {
-        "value": 140000
-    },
-    "mts:iv_tpp.wrap_roll_quartz:0": {
-        "value": 130000
-    },
-    "mts:iv_tpp.wrap_roll_redstone:0": {
-        "value": 130000
-    },
-    "mts:ivairlinerpack.truckwheel:0": {
-        "value": 30000
-    },
-    "mts:ivv.1gear:0": {
-        "value": 5000
-    },
-    "mts:ivv.1gear_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.2gear:0": {
-        "value": 10000
-    },
-    "mts:ivv.2gear_dark:0": {
-        "value": 10000
-    },
-    "mts:ivv.antenna:0": {
-        "value": 5000
-    },
-    "mts:ivv.antenna_hf:0": {
-        "value": 10000
-    },
-    "mts:ivv.antenna_sharkfin:0": {
-        "value": 10000
-    },
-    "mts:ivv.backpack_blue:0": {
-        "value": 50000
-    },
-    "mts:ivv.backpack_white:0": {
-        "value": 50000
-    },
-    "mts:ivv.battery:0": {
-        "value": 20000
-    },
-    "mts:ivv.bigtire:0": {
-        "value": 100000
-    },
-    "mts:ivv.bigtirebudd:0": {
-        "value": 150000
-    },
-    "mts:ivv.bigtirerace:0": {
-        "value": 300000
-    },
-    "mts:ivv.bikewheel:0": {
-        "value": 20000
-    },
-    "mts:ivv.bodypanel:0": {
-        "value": 30000
-    },
-    "mts:ivv.bodypanel_flexible:0": {
-        "value": 10000
-    },
-    "mts:ivv.box:0": {
-        "value": 2000
-    },
-    "mts:ivv.butanepack:0": {
-        "value": 37
-    },
-    "mts:ivv.carrierseat:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_blue:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_brown:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_cyan:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_gray:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_green:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_light_blue:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_lime:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_magenta:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_orange:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_pink:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_purple:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_red:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_silver:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_white:0": {
-        "value": 25000
-    },
-    "mts:ivv.carrierseat_yellow:0": {
-        "value": 25000
-    },
-    "mts:ivv.carseat:0": {
-        "value": 56000
-    },
-    "mts:ivv.carseat_black:0": {
-        "value": 56000
-    },
-    "mts:ivv.carseat_gray:0": {
-        "value": 56000
-    },
-    "mts:ivv.carseat_tan:0": {
-        "value": 56000
-    },
-    "mts:ivv.carseat_white:0": {
-        "value": 56000
-    },
-    "mts:ivv.classicfuel:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicfueltemp:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicgear:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicgearneedle:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicmph:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicmphround:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicmphscrolling:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicoil:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicoilpower:0": {
-        "value": 5000
-    },
-    "mts:ivv.classicpower:0": {
-        "value": 5000
-    },
-    "mts:ivv.classictach:0": {
-        "value": 5000
-    },
-    "mts:ivv.classictemp:0": {
-        "value": 5000
-    },
-    "mts:ivv.climatecompressor:0": {
-        "value": 200000
-    },
-    "mts:ivv.clock:0": {
-        "value": 5000
-    },
-    "mts:ivv.clock_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.clusterclassic:0": {
-        "value": 50000
-    },
-    "mts:ivv.clustermodern:0": {
-        "value": 50000
-    },
-    "mts:ivv.compact_electricmotor:0": {
-        "value": 400000
-    },
-    "mts:ivv.compass:0": {
-        "value": 5000
-    },
-    "mts:ivv.containerbed:0": {
-        "value": 150000
-    },
-    "mts:ivv.crate:0": {
-        "value": 100000
-    },
-    "mts:ivv.crate_metallic:0": {
-        "value": 200000
-    },
-    "mts:ivv.dashboardchime_angel:0": {
-        "value": 5000
-    },
-    "mts:ivv.dashboardchime_sable:0": {
-        "value": 5000
-    },
-    "mts:ivv.dashboardchime_tofu:0": {
-        "value": 5000
-    },
-    "mts:ivv.exhaust:0": {
-        "value": 200000
-    },
-    "mts:ivv.flatbed:0": {
-        "value": 100000
-    },
-    "mts:ivv.fuel:0": {
-        "value": 5000
-    },
-    "mts:ivv.fuel_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueldigital:0": {
-        "value": 10000
-    },
-    "mts:ivv.fueldigital_dark:0": {
-        "value": 10000
-    },
-    "mts:ivv.fuelelectric:0": {
-        "value": 5000
-    },
-    "mts:ivv.fuelelectric_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueltank:0": {
-        "value": 60000
-    },
-    "mts:ivv.fueltank_electric:0": {
-        "value": 400000
-    },
-    "mts:ivv.fueltemp:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueltemp_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueltempbattoil:0": {
-        "value": 5000
-    },
-    "mts:ivv.fueltempbattoil_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.gearbox03auto:0": {
-        "value": 200000
-    },
-    "mts:ivv.gearbox04auto:0": {
-        "value": 200000
-    },
-    "mts:ivv.gearbox05manual:0": {
-        "value": 150000
-    },
-    "mts:ivv.gearbox06manual:0": {
-        "value": 180000
-    },
-    "mts:ivv.gearbox07manual:0": {
-        "value": 200000
-    },
-    "mts:ivv.gearboxcvt:0": {
-        "value": 300000
-    },
-    "mts:ivv.glovebox:0": {
-        "value": 50000
-    },
-    "mts:ivv.handbrake:0": {
-        "value": 50000
-    },
-    "mts:ivv.hitch:0": {
-        "value": 250000
-    },
-    "mts:ivv.hitchadapter:0": {
-        "value": 120000
-    },
-    "mts:ivv.hitchadapterheavy:0": {
-        "value": 150000
-    },
-    "mts:ivv.hitchadapterxl:0": {
-        "value": 200000
-    },
-    "mts:ivv.hitchconnector:0": {
-        "value": 200000
-    },
-    "mts:ivv.hitchnb:0": {
-        "value": 200000
-    },
-    "mts:ivv.horn_1:0": {
-        "value": 5000
-    },
-    "mts:ivv.horn_2:0": {
-        "value": 5000
-    },
-    "mts:ivv.horn_3:0": {
-        "value": 5000
-    },
-    "mts:ivv.horn_truck:0": {
-        "value": 5000
-    },
-    "mts:ivv.hours:0": {
-        "value": 10000
-    },
-    "mts:ivv.hours_dark:0": {
-        "value": 10000
-    },
-    "mts:ivv.industrial_electricmotor:0": {
-        "value": 1500000
-    },
-    "mts:ivv.ivvbumper1:0": {
-        "value": 150000
-    },
-    "mts:ivv.ivvspoiler1:0": {
-        "value": 100000
-    },
-    "mts:ivv.ivvspoiler2:0": {
-        "value": 150000
-    },
-    "mts:ivv.ivvspoiler3:0": {
-        "value": 200000
-    },
-    "mts:ivv.ivvspoiler4:0": {
-        "value": 300000
-    },
-    "mts:ivv.jerrycan:0": {
-        "value": 10000
-    },
-    "mts:ivv.keyfob:0": {
-        "value": 5000
-    },
-    "mts:ivv.kmh:0": {
-        "value": 5000
-    },
-    "mts:ivv.kmh_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.lidar:0": {
-        "value": 3500000
-    },
-    "mts:ivv.lightbar_or:0": {
-        "value": 50000
-    },
-    "mts:ivv.lighter:0": {
-        "value": 10000
-    },
-    "mts:ivv.medkit:0": {
-        "value": 5000
-    },
-    "mts:ivv.microjet:0": {
-        "value": 10000000
-    },
-    "mts:ivv.mph:0": {
-        "value": 5000
-    },
-    "mts:ivv.mph_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.mphdigital:0": {
-        "value": 10000
-    },
-    "mts:ivv.mphdigital_dark:0": {
-        "value": 10000
-    },
-    "mts:ivv.nano_electricmotor:0": {
-        "value": 200000
-    },
-    "mts:ivv.normaltire:0": {
-        "value": 50000
-    },
-    "mts:ivv.normaltire_rainbow:0": {
-        "value": 80000
-    },
-    "mts:ivv.normaltire_whitewall:0": {
-        "value": 50000
-    },
-    "mts:ivv.normaltire_whitewallthin:0": {
-        "value": 50000
-    },
-    "mts:ivv.normaltirerace:0": {
-        "value": 200000
-    },
-    "mts:ivv.normaltirerace_bluelinethin:0": {
-        "value": 220000
-    },
-    "mts:ivv.normaltirerace_greenlinethin:0": {
-        "value": 220000
-    },
-    "mts:ivv.normaltirerace_redlinethin:0": {
-        "value": 220000
-    },
-    "mts:ivv.normaltirerace_whitewall:0": {
-        "value": 200000
-    },
-    "mts:ivv.normaltirerace_whitewallthin:0": {
-        "value": 200000
-    },
-    "mts:ivv.normaltirerally:0": {
-        "value": 150000
-    },
-    "mts:ivv.normaltiresuper:0": {
-        "value": 2000000
-    },
-    "mts:ivv.oil:0": {
-        "value": 5000
-    },
-    "mts:ivv.oil_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.oilcan:0": {
-        "value": 1000
-    },
-    "mts:ivv.oilcan_industrial:0": {
-        "value": 1500
-    },
-    "mts:ivv.oilcan_race:0": {
-        "value": 2000
-    },
-    "mts:ivv.oilpower:0": {
-        "value": 5000
-    },
-    "mts:ivv.oilpower_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.paintcan_black:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_blue:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_brown:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_cyan:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_gray:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_green:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_light_blue:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_light_gray:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_lime:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_magenta:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_orange:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_pink:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_purple:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_red:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_white:0": {
-        "value": 20000
-    },
-    "mts:ivv.paintcan_yellow:0": {
-        "value": 20000
-    },
-    "mts:ivv.power:0": {
-        "value": 5000
-    },
-    "mts:ivv.power_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.radiator:0": {
-        "value": 50000
-    },
-    "mts:ivv.radiocb:0": {
-        "value": 50000
-    },
-    "mts:ivv.rim_4spoke:0": {
-        "value": 100000
-    },
-    "mts:ivv.rim_6spoke:0": {
-        "value": 100000
-    },
-    "mts:ivv.rim_futuristic:0": {
-        "value": 400000
-    },
-    "mts:ivv.rim_hypnodish:0": {
-        "value": 500000
-    },
-    "mts:ivv.rim_wire:0": {
-        "value": 300000
-    },
-    "mts:ivv.screen:0": {
-        "value": 50000
-    },
-    "mts:ivv.screen_dark:0": {
-        "value": 50000
-    },
-    "mts:ivv.screwdriver:0": {
-        "value": 15000
-    },
-    "mts:ivv.smalltire:0": {
-        "value": 20000
-    },
-    "mts:ivv.smalltire_rainbow:0": {
-        "value": 50000
-    },
-    "mts:ivv.smalltire_whitewall:0": {
-        "value": 20000
-    },
-    "mts:ivv.smalltire_whitewallthin:0": {
-        "value": 20000
-    },
-    "mts:ivv.smalltirerace:0": {
-        "value": 150000
-    },
-    "mts:ivv.soundbox_jet:0": {
-        "value": 50000
-    },
-    "mts:ivv.soundbox_ufo:0": {
-        "value": 50000
-    },
-    "mts:ivv.soundbox_v8:0": {
-        "value": 50000
-    },
-    "mts:ivv.stakebed:0": {
-        "value": 250000
-    },
-    "mts:ivv.standard_electricmotor:0": {
-        "value": 600000
-    },
-    "mts:ivv.strut:0": {
-        "value": 20000
-    },
-    "mts:ivv.tach:0": {
-        "value": 5000
-    },
-    "mts:ivv.tach_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.tachdigital:0": {
-        "value": 10000
-    },
-    "mts:ivv.tachdigital_dark:0": {
-        "value": 10000
-    },
-    "mts:ivv.tachmarkless:0": {
-        "value": 5000
-    },
-    "mts:ivv.tachmarkless_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.tachshifter:0": {
-        "value": 5000
-    },
-    "mts:ivv.tachshifter_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.tape:0": {
-        "value": 350
-    },
-    "mts:ivv.tardiskey:0": {
-        "value": 50000
-    },
-    "mts:ivv.temp:0": {
-        "value": 5000
-    },
-    "mts:ivv.temp_dark:0": {
-        "value": 5000
-    },
-    "mts:ivv.toiletpaper_roll:0": {
-        "value": 250
-    },
-    "mts:ivv.truckseat:0": {
-        "value": 100000
-    },
-    "mts:ivv.ultra_electricmotor:0": {
-        "value": 1000000
-    },
-    "mts:ivv.ultraindustrial_electricmotor:0": {
-        "value": 2500000
-    },
-    "mts:ivv.ultramotormkii:0": {
-        "value": 5000000
-    },
-    "mts:ivv.v1e:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1g:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1heavy:0": {
-        "value": 500000
-    },
-    "mts:ivv.v1prop:0": {
-        "value": 20000
-    },
-    "mts:ivv.v2:0": {
-        "value": 40000
-    },
-    "mts:ivv.v2insolvo:0": {
-        "value": 60000
-    },
-    "mts:ivv.v3insolvo:0": {
-        "value": 80000
-    },
-    "mts:ivv.v3median:0": {
-        "value": 250000
-    },
-    "mts:ivv.v3performante:0": {
-        "value": 1900000
-    },
-    "mts:ivv.v3vanilla:0": {
-        "value": 400000
-    },
-    "mts:ivv.v4:0": {
-        "value": 270000
-    },
-    "mts:ivv.v4inlineinsolvo:0": {
-        "value": 100000
-    },
-    "mts:ivv.v4inlinetorqueline:0": {
-        "value": 1200000
-    },
-    "mts:ivv.v4insolvo:0": {
-        "value": 140000
-    },
-    "mts:ivv.v4performante:0": {
-        "value": 2400000
-    },
-    "mts:ivv.v4smallfry:0": {
-        "value": 100000
-    },
-    "mts:ivv.v5:0": {
-        "value": 1000000
-    },
-    "mts:ivv.v5performante:0": {
-        "value": 2900000
-    },
-    "mts:ivv.v6:0": {
-        "value": 300000
-    },
-    "mts:ivv.v6falconstage1:0": {
-        "value": 10000000
-    },
-    "mts:ivv.v6falconstage2:0": {
-        "value": 15000000
-    },
-    "mts:ivv.v6falconstage3:0": {
-        "value": 20000000
-    },
-    "mts:ivv.v6falconstage4:0": {
-        "value": 40000000
-    },
-    "mts:ivv.v6insolvo:0": {
-        "value": 150000
-    },
-    "mts:ivv.v6performante:0": {
-        "value": 3400000
-    },
-    "mts:ivv.v8:0": {
-        "value": 350000
-    },
-    "mts:ivv.v8insolvo:0": {
-        "value": 170000
-    },
-    "mts:ivv.v8newperformante:0": {
-        "value": 3900000
-    },
-    "mts:ivv.v8performante:0": {
-        "value": 5400000
-    },
-    "mts:ivv.v8torqueline:0": {
-        "value": 1600000
-    },
-    "mts:ivv.v90performante:0": {
-        "value": 4900000
-    },
-    "mts:ivv.v90torqueline:0": {
-        "value": 1800000
-    },
-    "mts:ivv.v91performante:0": {
-        "value": 6400000
-    },
-    "mts:ivv.v96performante:0": {
-        "value": 10000000
-    },
-    "mts:ivv.v9:0": {
-        "value": 370000
-    },
-    "mts:mts.handbook_car:0": {
-        "value": 6000
-    },
-    "mts:mts.handbook_plane:0": {
-        "value": 6000
-    },
-    "mts:mts.jerrycan:0": {
-        "value": 5500
-    },
-    "mts:mts.jumperpack:0": {
-        "value": 10000
-    },
-    "mts:mts.paintgun:0": {
-        "value": 50000
-    },
-    "mts:mts.wrench:0": {
-        "value": 20000
-    },
-    "mts:mtsofficialpack.barrel:0": {
-        "value": 10000
-    },
-    "mts:mtsofficialpack.barrel_black:0": {
-        "value": 10000
-    },
-    "mts:mtsofficialpack.carseat_black:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.carseat_brown:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.carseat_grey:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.carseat_red:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.carseat_white:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.engineamci4:0": {
-        "value": 300000
-    },
-    "mts:mtsofficialpack.enginedetroitdiesel:0": {
-        "value": 700000
-    },
-    "mts:mtsofficialpack.nuts:0": {
-        "value": 500
-    },
-    "mts:mtsofficialpack.rods:0": {
-        "value": 500
-    },
-    "mts:mtsofficialpack.seatblack:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatblue:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatbrown:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatcyan:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatgrey:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatolive:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatpink:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatred:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatwhite:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.seatyellow:0": {
-        "value": 60000
-    },
-    "mts:mtsofficialpack.wheellarge:0": {
-        "value": 30000
-    },
-    "mts:mtsofficialpack.wheelmedium:0": {
-        "value": 20000
-    },
-    "mts:mtsofficialpack.wheelsmall:0": {
-        "value": 10000
-    },
-    "mts:syndicatemotorfoundry.paintcan_ashen:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_azure:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_celestial:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_dark:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_golden:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_iridescent:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_keppel:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_lunar:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_lux:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_phosphorescent:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_russet:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_scarlet:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_solar:0": {
-        "value": 25000
-    },
-    "mts:syndicatemotorfoundry.paintcan_verdant:0": {
-        "value": 15000
-    },
-    "mts:syndicatemotorfoundry.paintcan_violet:0": {
-        "value": 15000
-    },
-    "mts:unucivil.unucivil_item_unu_manual_mastodon:0": {
-        "value": 6000
-    },
-    "mts:unudecor.unuparts_decor_unu_books_generic1:0": {
-        "value": 2000
-    },
-    "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
-        "value": 2000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_apple:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_aqua:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_blackthorne:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_charcoal:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_chocolate:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_coral:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_crimson:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_emerald:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_ford:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_ivory:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_jade:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_lemon:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_manilla:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_mint:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_navy:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_ocean:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_olive:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_redsands:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_saddle:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_sea:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_seaweed:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_silver:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_spaghetti:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_tungsten:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_instrument_unu_battery:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_fuel:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_fuel_1:0": {
-        "value": 2000
-    },
-    "mts:unuparts.unuparts_instrument_unu_multi:0": {
-        "value": 7000
-    },
-    "mts:unuparts.unuparts_instrument_unu_oilpressure:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_oiltemperature:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_speedometer_k3:0": {
-        "value": 2000
-    },
-    "mts:unuparts.unuparts_instrument_unu_speedometer_mph:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_speedometer_mphscaled:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_tachometer_1:0": {
-        "value": 2000
-    },
-    "mts:unuparts.unuparts_instrument_unu_tachometer_automatic:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_instrument_unu_tachometer_manual:0": {
-        "value": 4000
-    },
-    "mts:unuparts.unuparts_item_unu_manual_assembly_vehicle:0": {
-        "value": 51000
-    },
-    "mts:unuparts.unuparts_item_unu_manual_turboencabulator:0": {
-        "value": 11000
-    },
-    "mts:unuparts.unuparts_part_unu_barrel_jerrycan_forrest:0": {
-        "value": 30000
-    },
-    "mts:unuparts.unuparts_part_unu_barrel_metal_grey:0": {
-        "value": 300000
-    },
-    "mts:unuparts.unuparts_part_unu_barrel_metal_red:0": {
-        "value": 300000
-    },
-    "mts:unuparts.unuparts_part_unu_barrel_wooden:0": {
-        "value": 300000
-    },
-    "mts:unuparts.unuparts_part_unu_crate_metal:0": {
-        "value": 200000
-    },
-    "mts:unuparts.unuparts_part_unu_crate_wooden:0": {
-        "value": 100000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
-        "value": 500000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_h04_aircooled:0": {
-        "value": 280000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
-        "value": 80000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i04_aircooled:0": {
-        "value": 240000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i04_flathead:0": {
-        "value": 180000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i04_standard:0": {
-        "value": 260000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
-        "value": 750000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i06_flathead:0": {
-        "value": 240000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i06_standard:0": {
-        "value": 340000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
-        "value": 40000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v06_standard:0": {
-        "value": 480000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v08_flathead:0": {
-        "value": 290000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v08_standard:0": {
-        "value": 650000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
-        "value": 650000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v12_standard:0": {
-        "value": 980000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v6:0": {
-        "value": 950000
-    },
-    "mts:unuparts.unuparts_part_unu_engine_v8:0": {
-        "value": 1250000
-    },
-    "mts:unuparts.unuparts_part_unu_propeller_w3d004:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_budget_manilla:0": {
-        "value": 5000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_budget_saddle:0": {
-        "value": 5000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_budget_tungsten:0": {
-        "value": 5000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_standard_apple:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_standard_ford:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_standard_ivory:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_standard_manilla:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_standard_saddle:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_truck:0": {
-        "value": 100000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_van_manilla:0": {
-        "value": 10000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_van_saddle:0": {
-        "value": 10000
-    },
-    "mts:unuparts.unuparts_part_unu_seat_van_tungsten:0": {
-        "value": 10000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_automatic_3_base:0": {
-        "value": 250000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_manual_3_base:0": {
-        "value": 120000
-    },
-    "mts:unuparts.unuparts_part_unu_transmission_manual_4_base:0": {
-        "value": 150000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_compact:0": {
-        "value": 10000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
-        "value": 10000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_small:0": {
-        "value": 12000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
-        "value": 18000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_apple:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_aqua:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_blackthorne:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_budd:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_charcoal:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_chocolate:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_coral:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_crimson:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_emerald:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_ford:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_ivory:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_jade:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_lemon:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_manilla:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_mint:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_navy:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_ocean:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad:0": {
-        "value": 33000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_desert:0": {
-        "value": 35000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_forrest:0": {
-        "value": 35000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_winter:0": {
-        "value": 35000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_olive:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_red:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_redsands:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_rusty:0": {
-        "value": 5000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_saddle:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_sea:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_seaweed:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_silver:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_spaghetti:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_tungsten:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_unu:0": {
-        "value": 15000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_wire:0": {
-        "value": 19000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_wire_mitchell:0": {
-        "value": 19000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_standard_wireknockoff:0": {
-        "value": 19000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_tractor:0": {
-        "value": 40000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd:0": {
-        "value": 30000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_desert:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_forrest:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_vintage:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_winter:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_yellow:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_truck_dayton:0": {
-        "value": 32000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_apple:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_aqua:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_blackthorne:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_charcoal:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_chocolate:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_coral:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_crimson:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_emerald:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ford:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ivory:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_jade:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_lemon:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_manilla:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_mint:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_navy:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ocean:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_olive:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_redsands:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_saddle:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_sea:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_seaweed:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_silver:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_spaghetti:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_tungsten:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_unu:0": {
-        "value": 20000
-    },
-    "mts:unuparts.unuparts_part_unu_wheel_vintage_wood:0": {
-        "value": 14000
-    },
-    "mts:warkparts.wark_heavyengine_v8:0": {
-        "value": 700000
-    },
-    "mts:warkparts.wark_hugeengine_v16:0": {
-        "value": 2500000
-    },
-    "mw:kcpd_boots:0": {
-        "value": 100000
-    },
-    "mw:kcpd_chest:0": {
-        "value": 100000
-    },
-    "mw:m40gasmask_helmet:0": {
-        "value": 100000
-    },
-    "mw:tactical_helmet:0": {
-        "value": 100000
-    },
-    "mw:umbrella_boots:0": {
-        "value": 100000
-    },
-    "mw:umbrella_chest:0": {
-        "value": 100000
-    },
-    "mw:umbrella_helmet:0": {
-        "value": 100000
-    },
-    "storagedrawers:framingtable:0": {
-        "value": 5000
-    },
-    "variedcommodities:bronze_skirt:0": {
-        "value": 25000
-    },
-    "variedcommodities:chain_skirt:0": {
-        "value": 20000
-    },
-    "variedcommodities:chair:0": {
-        "value": 2000
-    },
-    "variedcommodities:chair:1": {
-        "value": 2000
-    },
-    "variedcommodities:chair:2": {
-        "value": 2000
-    },
-    "variedcommodities:chair:3": {
-        "value": 2000
-    },
-    "variedcommodities:chair:4": {
-        "value": 2000
-    },
-    "variedcommodities:chair:5": {
-        "value": 2000
-    },
-    "variedcommodities:combat_knive:0": {
-        "value": 50000
-    },
-    "variedcommodities:couch_wood:0": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wood:1": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wood:2": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wood:3": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wood:4": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wood:5": {
-        "value": 3000
-    },
-    "variedcommodities:couch_wool:0": {
-        "value": 4000
-    },
-    "variedcommodities:couch_wool:1": {
-        "value": 4000
-    },
-    "variedcommodities:couch_wool:2": {
-        "value": 4000
-    },
-    "variedcommodities:couch_wool:3": {
-        "value": 4000
-    },
-    "variedcommodities:couch_wool:4": {
-        "value": 4000
-    },
-    "variedcommodities:couch_wool:5": {
-        "value": 4000
-    },
-    "variedcommodities:crate:0": {
-        "value": 4000
-    },
-    "variedcommodities:crowbar:0": {
-        "value": 6000
-    },
-    "variedcommodities:crystal:0": {
-        "value": 5000
-    },
-    "variedcommodities:full_bronze_boots:0": {
-        "value": 10000
-    },
-    "variedcommodities:full_bronze_chest:0": {
-        "value": 30000
-    },
-    "variedcommodities:full_bronze_head:0": {
-        "value": 10000
-    },
-    "variedcommodities:full_bronze_legs:0": {
-        "value": 25000
-    },
-    "variedcommodities:full_wooden_boots:0": {
-        "value": 5000
-    },
-    "variedcommodities:full_wooden_chest:0": {
-        "value": 15000
-    },
-    "variedcommodities:full_wooden_head:0": {
-        "value": 5000
-    },
-    "variedcommodities:full_wooden_legs:0": {
-        "value": 10000
-    },
-    "variedcommodities:gem_amethyst:0": {
-        "value": 10000
-    },
-    "variedcommodities:gem_ruby:0": {
-        "value": 10000
-    },
-    "variedcommodities:gem_sapphire:0": {
-        "value": 10000
-    },
-    "variedcommodities:ingot_bronze:0": {
-        "value": 10000
-    },
-    "variedcommodities:ingot_demonic:0": {
-        "value": 200000
-    },
-    "variedcommodities:ingot_mithril:0": {
-        "value": 200000
-    },
-    "variedcommodities:iron_broadsword:0": {
-        "value": 60000
-    },
-    "variedcommodities:iron_skirt:0": {
-        "value": 25000
-    },
-    "variedcommodities:lamp:0": {
-        "value": 1000
-    },
-    "variedcommodities:leather_skirt:0": {
-        "value": 10000
-    },
-    "variedcommodities:lighter:0": {
-        "value": 4000
-    },
-    "variedcommodities:necklace:0": {
-        "display_name": "Necklace",
-        "value": 25000
-    },
-    "variedcommodities:ninja_chest:0": {
-        "value": 60000
-    },
-    "variedcommodities:ninja_head:0": {
-        "value": 20000
-    },
-    "variedcommodities:ninja_legs:0": {
-        "value": 50000
-    },
-    "variedcommodities:pendant:0": {
-        "display_name": "Pendant",
-        "value": 10000
-    },
-    "variedcommodities:pipe_wrench:0": {
-        "value": 6000
-    },
-    "variedcommodities:ring:0": {
-        "display_name": "Ring",
-        "value": 30000
-    },
-    "variedcommodities:shelf:0": {
-        "value": 2000
-    },
-    "variedcommodities:shelf:1": {
-        "value": 2000
-    },
-    "variedcommodities:shelf:2": {
-        "value": 2000
-    },
-    "variedcommodities:shelf:3": {
-        "value": 2000
-    },
-    "variedcommodities:shelf:4": {
-        "value": 2000
-    },
-    "variedcommodities:shelf:5": {
-        "value": 2000
-    },
-    "variedcommodities:statuette:0": {
-        "display_name": "Statuette",
-        "value": 15000
-    },
-    "variedcommodities:stool:0": {
-        "value": 1000
-    },
-    "variedcommodities:stool:1": {
-        "value": 1000
-    },
-    "variedcommodities:stool:2": {
-        "value": 1000
-    },
-    "variedcommodities:stool:3": {
-        "value": 1000
-    },
-    "variedcommodities:stool:4": {
-        "value": 1000
-    },
-    "variedcommodities:stool:5": {
-        "value": 1000
-    },
-    "variedcommodities:swiss_army_knife:0": {
-        "value": 60000
-    },
-    "variedcommodities:table:0": {
-        "value": 4000
-    },
-    "variedcommodities:table:1": {
-        "value": 10000
-    },
-    "variedcommodities:table:2": {
-        "value": 4000
-    },
-    "variedcommodities:table:3": {
-        "value": 4000
-    },
-    "variedcommodities:table:4": {
-        "value": 4000
-    },
-    "variedcommodities:table:5": {
-        "value": 4000
-    },
-    "variedcommodities:tablet:0": {
-        "display_name": "Tablet",
-        "value": 17500
-    },
-    "variedcommodities:tactical_chest:0": {
-        "value": 100000
-    },
-    "variedcommodities:tactical_head:0": {
-        "value": 100000
-    },
-    "variedcommodities:tall_lamp:0": {
-        "value": 3000
-    },
-    "variedcommodities:tall_lamp:1": {
-        "value": 3000
-    },
-    "variedcommodities:tall_lamp:2": {
-        "value": 4000
-    },
-    "variedcommodities:tall_lamp:3": {
-        "value": 5000
-    },
-    "variedcommodities:tall_lamp:4": {
-        "value": 5000
-    },
-    "variedcommodities:trading_block:0": {
-        "value": 3000
-    },
-    "immersiveengineering:metal:34": {
-        "value": 7500,
-        "ore_override": false,
-        "ore": {
-            "nickel": 0.5
-        }
-    },
-    "mts:mtsofficialpack.screws:0": {
-        "value": 7500,
-        "ore_override": true,
-        "ore": {
-            "iron": 0.012,
-            "nickel": 0.004
-        }
-    },
-    "immersiveengineering:material:2": {
-        "display_name": "Steel Rod",
-        "value": 4000,
-        "ore_override": false,
-        "ore": {
-            "steel": 2
-        }
-    },
-    "immersiveengineering:material:9": {
-        "display_name": "Steel Mechanical Component",
-        "value": 500,
-        "ore_override": true,
-        "ore": {
-            "steel": 0.25
-        }
-    },
-    "immersiveengineering:material:8": {
-        "display_name": "Iron Mechanical Component",
-        "value": 250,
-        "ore_override": true,
-        "ore": {
-            "iron": 0.25
-        }
-    },
-    "mts:mtsofficialpack.spring:0": {
-        "value": 250,
-        "ore_override": false,
-        "ore": {
-            "iron": 0.25
-        }
-    },
-    "variedcommodities:ingot_steel:0": {
-        "value": 2000,
-        "ore_override": false,
-        "ore": {
-            "steel": 1
-        }
-    },
-    "immersiveengineering:metal:18": {
-        "display_name": "Iron Grit",
-        "value": 250,
-        "ore_override": true,
-        "ore": {
-            "iron": 0.25
-        }
-    },
-    "immersiveengineering:metal:9": {
-        "display_name": "Copper Grit",
-        "value": 1500,
-        "ore_override": true,
-        "ore": {
-            "copper": 0.25
-        }
-    },
-    "immersiveengineering:metal:39": {
-        "display_name": "Iron Plate",
-        "value": 2500,
-        "ore_override": true,
-        "ore": {
-            "iron": 2.5
-        }
-    },
-    "immersiveengineering:metal:38": {
-        "display_name": "Steel Plate",
-        "value": 5000,
-        "ore_override": true,
-        "ore": {
-            "steel": 2.5
-        }
-    },
-    "immersiveengineering:metal:32": {
-        "display_name": "Lead Plate",
-        "value": 10000,
-        "ore_override": true,
-        "ore": {
-            "lead": 2.5
-        }
-    },
-    "mts:mtsofficialpack.copperwire:0": {
-        "value": 3000,
-        "ore_override": false,
-        "ore": {
-            "copper": 0.5
-        }
-    },
-    "variedcommodities:lead_pipe:0": {
-        "value": 8000,
-        "ore_override": false,
-        "ore": {
-            "lead": 2
-        }
-    },
-    "immersiveengineering:metal:15": {
-        "display_name": "Constantan Grit",
-        "value": 2250,
-        "ore_override": true,
-        "ore": {
-            "constantan": 0.25
-        }
-    },
-    "immersiveengineering:metal:19": {
-        "display_name": "Gold Grit",
-        "value": 3600,
-        "ore_override": false,
-        "ore": {
-            "gold": 0.02
-        }
-    },
-    "immersiveengineering:metal:0": {
-        "display_name": "Copper Ingot",
-        "value": 6000,
-        "ore_override": false,
-        "ore": {
-            "copper": 1
-        }
-    },
-    "immersiveengineering:metal:30": {
-        "display_name": "Copper Plate",
-        "value": 15000,
-        "ore_override": false,
-        "ore": {
-            "copper": 2.5
-        }
-    },
-    "mts:mtsofficialpack.smallarmscartridge:0": {
-        "display_name": "Small Empty Casings",
-        "value": 500,
-        "ore_override": true,
-        "ore": {
-            "copper": 0.05,
-            "lead": 0.05
-        }
-    },
-    "immersiveengineering:material:3": {
-        "display_name": "Aluminum Rod",
-        "value": 6000,
-        "ore_override": false,
-        "ore": {
-            "aluminum": 2
-        }
-    },
-    "immersiveengineering:material:21": {
-        "display_name": "Electrum Wire",
-        "value": 5000,
-        "ore_override": false,
-        "ore": {
-            "electrum": 0.05
-        }
     },
     "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_g:0": {
         "value": 6845000
@@ -6613,6 +4277,1594 @@
     "mts:iv_tcp_v3_utility.trin_trumon_sandstoneutility:0": {
         "value": 3270000
     },
+    "mts:iv_tpp.car_roof_lightbar_y:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.car_roof_xl_lightbar_y:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.engine_i3_gasoline_turbo_aut:0": {
+        "value": 380000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_normal_aut:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_normal_man:0": {
+        "value": 110000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_turbo_aut:0": {
+        "value": 150000
+    },
+    "mts:iv_tpp.engine_i4_gasoline_turbo_man:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_normal_aut:0": {
+        "value": 390000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_normal_man:0": {
+        "value": 340000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_turbo_aut:0": {
+        "value": 520000
+    },
+    "mts:iv_tpp.engine_i5_gasoline_turbo_man:0": {
+        "value": 460000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_man:0": {
+        "value": 1590000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_normal_aut:0": {
+        "value": 1250000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_normal_man:0": {
+        "value": 1100000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_turbo_aut:0": {
+        "value": 1550000
+    },
+    "mts:iv_tpp.engine_v10_gasoline_turbo_man:0": {
+        "value": 1380000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_normal_aut:0": {
+        "value": 1130000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_normal_man:0": {
+        "value": 980000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_trackprepared_aut:0": {
+        "value": 8000000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_turbo_aut:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.engine_v12_gasoline_turbo_man:0": {
+        "value": 1320000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_normal_aut:0": {
+        "value": 520000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_normal_man:0": {
+        "value": 480000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_turbo_aut:0": {
+        "value": 660000
+    },
+    "mts:iv_tpp.engine_v6_gasoline_turbo_man:0": {
+        "value": 620000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_normal_aut:0": {
+        "value": 1100000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_normal_man:0": {
+        "value": 1200000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_turbo_aut:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.engine_v8_gasoline_turbo_man:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.gyro_yellow:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_w_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_powerful_y_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_w_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_chrome:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_copper:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_headlight_y_metal:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_light_w:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.led_light_y:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_amber:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_bloodred:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_brown:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_buttercup:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_caramel:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_carminred:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_chocolate:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_citruslime:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_coldspruce:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_darkpinkcandy:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_deepblack:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_electricblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_emerald:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_fireorange:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_firered:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_fuchsia:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_glacierwhite:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_grape:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_honey:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_irongray:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_ivory:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_jetblack:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_lapenverblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_lemonyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_midnightpurple:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_militarygreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_milkcoffee:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_oakgreen:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_oceanblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_orangered:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_pink:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_pinkcandy:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_plum:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_pureblack:0": {
+        "value": 100
+    },
+    "mts:iv_tpp.paint_bucket_purewhite:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_bucket_ruby:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_sage:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sand:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sandstone:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_sapphire:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_silver:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.paint_bucket_skyblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_slimelime:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_softgreen:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.paint_bucket_spruce:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_steelblue:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_sunshineyellow:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_teal:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.paint_bucket_tomato:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_tungsten:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.paint_bucket_turquoise:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantpurple:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_vibrantred:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.paint_bucket_white:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.paint_double_bucket_bubblegum:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_double_bucket_forest:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_double_bucket_redandblack:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_double_bucket_shagbark:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_double_bucket_steelblueandteal:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_double_bucket_tungstenandelectricblue:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.paint_empty_bucket:0": {
+        "value": 1000
+    },
+    "mts:iv_tpp.plate_gramados:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.roll_bar_small_black:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_chrome:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_gray:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_txs:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.roll_bar_small_white:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.roll_bar_small_yellow:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_boat_engine_firered:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_carbonfiber:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_medium_iron:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.trin_boat_engine_propeller_small:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.trin_boat_engine_pureblack:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_silver:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_engine_white:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.trin_boat_v8_firered:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_pureblack:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_silver:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_boat_v8_white:0": {
+        "value": 800000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_electric:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_c:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_enginetemp_f:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_fuel:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_speed_mph:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer:0": {
+        "value": 5500
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_electric:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_c:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_enginetemp_f:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_fuel:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_default_tachometer:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_car-boat_gauge_gear:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_crate1:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.trin_crate1_wooden:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_crate2:0": {
+        "value": 3000
+    },
+    "mts:iv_tpp.trin_electric_bike_engine:0": {
+        "value": 60000
+    },
+    "mts:iv_tpp.trin_seat_1_beige:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_black:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_brown:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_gray:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_junk:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_red:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_1_white:0": {
+        "value": 57000
+    },
+    "mts:iv_tpp.trin_seat_2_beige:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_2_black:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_2_brown:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_2_gray:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_2_junk:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.trin_seat_2_red:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_2_white:0": {
+        "value": 100000
+    },
+    "mts:iv_tpp.trin_seat_3_beige:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_black:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_brown:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_cheese:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_gray:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_junk:0": {
+        "value": 1500
+    },
+    "mts:iv_tpp.trin_seat_3_red:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_3_white:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_1:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_2:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_3:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_4:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_5:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_6:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_7:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_8:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_bus_9:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.trin_seat_frying_pan_blue:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_seat_frying_pan_gray:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_seat_frying_pan_green:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_seat_frying_pan_orange:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_seat_frying_pan_red:0": {
+        "value": 5000
+    },
+    "mts:iv_tpp.trin_stacked_boxes_cardboard:0": {
+        "value": 60000
+    },
+    "mts:iv_tpp.trin_stacked_boxes_cardboard_2:0": {
+        "value": 60000
+    },
+    "mts:iv_tpp.trin_v10_fat_diesel:0": {
+        "value": 1150000
+    },
+    "mts:iv_tpp.trin_v8_fat_biodiesel:0": {
+        "value": 950000
+    },
+    "mts:iv_tpp.trin_v8_fat_diesel:0": {
+        "value": 900000
+    },
+    "mts:iv_tpp.trin_v8_fat_gasoline:0": {
+        "value": 650000
+    },
+    "mts:iv_tpp.trinwheel30t10d_c:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.trinwheel30t10d_or:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
+        "value": 25000
+    },
+    "mts:iv_tpp.wheel_20h_6w_rim1_or:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_20h_6w_rim2_or:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_classic_2d5_0_steel:0": {
+        "value": 10000
+    },
+    "mts:iv_tpp.wheel_classic_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_classic_4d14_0_steel:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.wheel_classic_4d14_1_chromic:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_classic_4d16_0_steel:0": {
+        "value": 20000
+    },
+    "mts:iv_tpp.wheel_classic_4d16_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_offroad_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_offroad_4d14_0_steel:0": {
+        "value": 15000
+    },
+    "mts:iv_tpp.wheel_offroad_4d14_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_offroad_4d16_0_steel:0": {
+        "value": 22000
+    },
+    "mts:iv_tpp.wheel_offroad_4d16_1_chromic:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_sport_3d11_0_steel:0": {
+        "value": 11000
+    },
+    "mts:iv_tpp.wheel_sport_4d14_0_steel:0": {
+        "value": 14000
+    },
+    "mts:iv_tpp.wheel_sport_4d14_1_chromic:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_bluedemon_red:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_fataltxs_red:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_flamingchrome_red:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost:0": {
+        "value": 40000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_blue:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_4d12_0_goldghost_red:0": {
+        "value": 30000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_bluedemon_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_gold:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_dkztxs_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_fataltxs_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_flamingchrome_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost:0": {
+        "value": 50000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_blue:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wheel_txs_race_7d14_0_goldghost_red:0": {
+        "value": 45000
+    },
+    "mts:iv_tpp.wrap_roll_coal:0": {
+        "value": 125000
+    },
+    "mts:iv_tpp.wrap_roll_diamond:0": {
+        "value": 250000
+    },
+    "mts:iv_tpp.wrap_roll_driveschool:0": {
+        "value": 120000
+    },
+    "mts:iv_tpp.wrap_roll_emerald:0": {
+        "value": 250000
+    },
+    "mts:iv_tpp.wrap_roll_gold:0": {
+        "value": 200000
+    },
+    "mts:iv_tpp.wrap_roll_iron:0": {
+        "value": 110000
+    },
+    "mts:iv_tpp.wrap_roll_lapislazuli:0": {
+        "value": 140000
+    },
+    "mts:iv_tpp.wrap_roll_quartz:0": {
+        "value": 130000
+    },
+    "mts:iv_tpp.wrap_roll_redstone:0": {
+        "value": 130000
+    },
+    "mts:ivairlinerpack.truckwheel:0": {
+        "value": 30000
+    },
+    "mts:ivv.1gear:0": {
+        "value": 5000
+    },
+    "mts:ivv.1gear_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.2gear:0": {
+        "value": 10000
+    },
+    "mts:ivv.2gear_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.antenna:0": {
+        "value": 5000
+    },
+    "mts:ivv.antenna_hf:0": {
+        "value": 10000
+    },
+    "mts:ivv.antenna_sharkfin:0": {
+        "value": 10000
+    },
+    "mts:ivv.backpack_blue:0": {
+        "value": 50000
+    },
+    "mts:ivv.backpack_white:0": {
+        "value": 50000
+    },
+    "mts:ivv.battery:0": {
+        "value": 20000
+    },
+    "mts:ivv.bigtire:0": {
+        "value": 100000
+    },
+    "mts:ivv.bigtirebudd:0": {
+        "value": 150000
+    },
+    "mts:ivv.bigtirerace:0": {
+        "value": 300000
+    },
+    "mts:ivv.bikewheel:0": {
+        "value": 20000
+    },
+    "mts:ivv.bodypanel:0": {
+        "value": 30000
+    },
+    "mts:ivv.bodypanel_flexible:0": {
+        "value": 10000
+    },
+    "mts:ivv.box:0": {
+        "value": 2000
+    },
+    "mts:ivv.butanepack:0": {
+        "value": 37
+    },
+    "mts:ivv.carrierseat:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_blue:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_brown:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_cyan:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_gray:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_green:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_light_blue:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_lime:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_magenta:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_orange:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_pink:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_purple:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_red:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_silver:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_white:0": {
+        "value": 25000
+    },
+    "mts:ivv.carrierseat_yellow:0": {
+        "value": 25000
+    },
+    "mts:ivv.carseat:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_black:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_gray:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_tan:0": {
+        "value": 56000
+    },
+    "mts:ivv.carseat_white:0": {
+        "value": 56000
+    },
+    "mts:ivv.classicfuel:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicfueltemp:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicgear:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicgearneedle:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicmph:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicmphround:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicmphscrolling:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicoil:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicoilpower:0": {
+        "value": 5000
+    },
+    "mts:ivv.classicpower:0": {
+        "value": 5000
+    },
+    "mts:ivv.classictach:0": {
+        "value": 5000
+    },
+    "mts:ivv.classictemp:0": {
+        "value": 5000
+    },
+    "mts:ivv.climatecompressor:0": {
+        "value": 200000
+    },
+    "mts:ivv.clock:0": {
+        "value": 5000
+    },
+    "mts:ivv.clock_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.clusterclassic:0": {
+        "value": 50000
+    },
+    "mts:ivv.clustermodern:0": {
+        "value": 50000
+    },
+    "mts:ivv.compact_electricmotor:0": {
+        "value": 400000
+    },
+    "mts:ivv.compass:0": {
+        "value": 5000
+    },
+    "mts:ivv.containerbed:0": {
+        "value": 150000
+    },
+    "mts:ivv.crate:0": {
+        "value": 100000
+    },
+    "mts:ivv.crate_metallic:0": {
+        "value": 200000
+    },
+    "mts:ivv.dashboardchime_angel:0": {
+        "value": 5000
+    },
+    "mts:ivv.dashboardchime_sable:0": {
+        "value": 5000
+    },
+    "mts:ivv.dashboardchime_tofu:0": {
+        "value": 5000
+    },
+    "mts:ivv.exhaust:0": {
+        "value": 200000
+    },
+    "mts:ivv.flatbed:0": {
+        "value": 100000
+    },
+    "mts:ivv.fuel:0": {
+        "value": 5000
+    },
+    "mts:ivv.fuel_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueldigital:0": {
+        "value": 10000
+    },
+    "mts:ivv.fueldigital_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.fuelelectric:0": {
+        "value": 5000
+    },
+    "mts:ivv.fuelelectric_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltank:0": {
+        "value": 60000
+    },
+    "mts:ivv.fueltank_electric:0": {
+        "value": 400000
+    },
+    "mts:ivv.fueltemp:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltemp_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltempbattoil:0": {
+        "value": 5000
+    },
+    "mts:ivv.fueltempbattoil_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.gearbox03auto:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearbox04auto:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearbox05manual:0": {
+        "value": 150000
+    },
+    "mts:ivv.gearbox06manual:0": {
+        "value": 180000
+    },
+    "mts:ivv.gearbox07manual:0": {
+        "value": 200000
+    },
+    "mts:ivv.gearboxcvt:0": {
+        "value": 300000
+    },
+    "mts:ivv.glovebox:0": {
+        "value": 50000
+    },
+    "mts:ivv.handbrake:0": {
+        "value": 50000
+    },
+    "mts:ivv.hitch:0": {
+        "value": 250000
+    },
+    "mts:ivv.hitchadapter:0": {
+        "value": 120000
+    },
+    "mts:ivv.hitchadapterheavy:0": {
+        "value": 150000
+    },
+    "mts:ivv.hitchadapterxl:0": {
+        "value": 200000
+    },
+    "mts:ivv.hitchconnector:0": {
+        "value": 200000
+    },
+    "mts:ivv.hitchnb:0": {
+        "value": 200000
+    },
+    "mts:ivv.horn_1:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_2:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_3:0": {
+        "value": 5000
+    },
+    "mts:ivv.horn_truck:0": {
+        "value": 5000
+    },
+    "mts:ivv.hours:0": {
+        "value": 10000
+    },
+    "mts:ivv.hours_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.industrial_electricmotor:0": {
+        "value": 1500000
+    },
+    "mts:ivv.ivvbumper1:0": {
+        "value": 150000
+    },
+    "mts:ivv.ivvspoiler1:0": {
+        "value": 100000
+    },
+    "mts:ivv.ivvspoiler2:0": {
+        "value": 150000
+    },
+    "mts:ivv.ivvspoiler3:0": {
+        "value": 200000
+    },
+    "mts:ivv.ivvspoiler4:0": {
+        "value": 300000
+    },
+    "mts:ivv.jerrycan:0": {
+        "value": 10000
+    },
+    "mts:ivv.keyfob:0": {
+        "value": 5000
+    },
+    "mts:ivv.kmh:0": {
+        "value": 5000
+    },
+    "mts:ivv.kmh_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.lidar:0": {
+        "value": 3500000
+    },
+    "mts:ivv.lightbar_or:0": {
+        "value": 50000
+    },
+    "mts:ivv.lighter:0": {
+        "value": 10000
+    },
+    "mts:ivv.medkit:0": {
+        "value": 5000
+    },
+    "mts:ivv.microjet:0": {
+        "value": 10000000
+    },
+    "mts:ivv.mph:0": {
+        "value": 5000
+    },
+    "mts:ivv.mph_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.mphdigital:0": {
+        "value": 10000
+    },
+    "mts:ivv.mphdigital_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.nano_electricmotor:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltire:0": {
+        "value": 50000
+    },
+    "mts:ivv.normaltire_rainbow:0": {
+        "value": 80000
+    },
+    "mts:ivv.normaltire_whitewall:0": {
+        "value": 50000
+    },
+    "mts:ivv.normaltire_whitewallthin:0": {
+        "value": 50000
+    },
+    "mts:ivv.normaltirerace:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerace_bluelinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_greenlinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_redlinethin:0": {
+        "value": 220000
+    },
+    "mts:ivv.normaltirerace_whitewall:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerace_whitewallthin:0": {
+        "value": 200000
+    },
+    "mts:ivv.normaltirerally:0": {
+        "value": 150000
+    },
+    "mts:ivv.normaltiresuper:0": {
+        "value": 2000000
+    },
+    "mts:ivv.oil:0": {
+        "value": 5000
+    },
+    "mts:ivv.oil_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.oilcan:0": {
+        "value": 1000
+    },
+    "mts:ivv.oilcan_industrial:0": {
+        "value": 1500
+    },
+    "mts:ivv.oilcan_race:0": {
+        "value": 2000
+    },
+    "mts:ivv.oilpower:0": {
+        "value": 5000
+    },
+    "mts:ivv.oilpower_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.paintcan_black:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_brown:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_cyan:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_green:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_blue:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_light_gray:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_lime:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_magenta:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_orange:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_pink:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_purple:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_red:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_white:0": {
+        "value": 20000
+    },
+    "mts:ivv.paintcan_yellow:0": {
+        "value": 20000
+    },
+    "mts:ivv.power:0": {
+        "value": 5000
+    },
+    "mts:ivv.power_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.radiator:0": {
+        "value": 50000
+    },
+    "mts:ivv.radiocb:0": {
+        "value": 50000
+    },
+    "mts:ivv.rim_4spoke:0": {
+        "value": 100000
+    },
+    "mts:ivv.rim_6spoke:0": {
+        "value": 100000
+    },
+    "mts:ivv.rim_futuristic:0": {
+        "value": 400000
+    },
+    "mts:ivv.rim_hypnodish:0": {
+        "value": 500000
+    },
+    "mts:ivv.rim_wire:0": {
+        "value": 300000
+    },
+    "mts:ivv.screen:0": {
+        "value": 50000
+    },
+    "mts:ivv.screen_dark:0": {
+        "value": 50000
+    },
+    "mts:ivv.screwdriver:0": {
+        "value": 15000
+    },
+    "mts:ivv.smalltire:0": {
+        "value": 20000
+    },
+    "mts:ivv.smalltire_rainbow:0": {
+        "value": 50000
+    },
+    "mts:ivv.smalltire_whitewall:0": {
+        "value": 20000
+    },
+    "mts:ivv.smalltire_whitewallthin:0": {
+        "value": 20000
+    },
+    "mts:ivv.smalltirerace:0": {
+        "value": 150000
+    },
+    "mts:ivv.soundbox_jet:0": {
+        "value": 50000
+    },
+    "mts:ivv.soundbox_ufo:0": {
+        "value": 50000
+    },
+    "mts:ivv.soundbox_v8:0": {
+        "value": 50000
+    },
+    "mts:ivv.stakebed:0": {
+        "value": 250000
+    },
+    "mts:ivv.standard_electricmotor:0": {
+        "value": 600000
+    },
+    "mts:ivv.strut:0": {
+        "value": 20000
+    },
+    "mts:ivv.tach:0": {
+        "value": 5000
+    },
+    "mts:ivv.tach_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachdigital:0": {
+        "value": 10000
+    },
+    "mts:ivv.tachdigital_dark:0": {
+        "value": 10000
+    },
+    "mts:ivv.tachmarkless:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachmarkless_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachshifter:0": {
+        "value": 5000
+    },
+    "mts:ivv.tachshifter_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.tape:0": {
+        "value": 350
+    },
+    "mts:ivv.tardiskey:0": {
+        "value": 50000
+    },
+    "mts:ivv.temp:0": {
+        "value": 5000
+    },
+    "mts:ivv.temp_dark:0": {
+        "value": 5000
+    },
+    "mts:ivv.toiletpaper_roll:0": {
+        "value": 250
+    },
+    "mts:ivv.truckseat:0": {
+        "value": 100000
+    },
+    "mts:ivv.ultra_electricmotor:0": {
+        "value": 1000000
+    },
+    "mts:ivv.ultraindustrial_electricmotor:0": {
+        "value": 2500000
+    },
+    "mts:ivv.ultramotormkii:0": {
+        "value": 5000000
+    },
+    "mts:ivv.v1e:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1g:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1heavy:0": {
+        "value": 500000
+    },
+    "mts:ivv.v1prop:0": {
+        "value": 20000
+    },
+    "mts:ivv.v2:0": {
+        "value": 40000
+    },
+    "mts:ivv.v2insolvo:0": {
+        "value": 60000
+    },
+    "mts:ivv.v3insolvo:0": {
+        "value": 80000
+    },
+    "mts:ivv.v3median:0": {
+        "value": 250000
+    },
+    "mts:ivv.v3performante:0": {
+        "value": 1900000
+    },
+    "mts:ivv.v3vanilla:0": {
+        "value": 400000
+    },
+    "mts:ivv.v4:0": {
+        "value": 270000
+    },
+    "mts:ivv.v4inlineinsolvo:0": {
+        "value": 100000
+    },
+    "mts:ivv.v4inlinetorqueline:0": {
+        "value": 1200000
+    },
+    "mts:ivv.v4insolvo:0": {
+        "value": 140000
+    },
+    "mts:ivv.v4performante:0": {
+        "value": 2400000
+    },
+    "mts:ivv.v4smallfry:0": {
+        "value": 100000
+    },
+    "mts:ivv.v5:0": {
+        "value": 1000000
+    },
+    "mts:ivv.v5performante:0": {
+        "value": 2900000
+    },
+    "mts:ivv.v6:0": {
+        "value": 300000
+    },
+    "mts:ivv.v6falconstage1:0": {
+        "value": 10000000
+    },
+    "mts:ivv.v6falconstage2:0": {
+        "value": 15000000
+    },
+    "mts:ivv.v6falconstage3:0": {
+        "value": 20000000
+    },
+    "mts:ivv.v6falconstage4:0": {
+        "value": 40000000
+    },
+    "mts:ivv.v6insolvo:0": {
+        "value": 150000
+    },
+    "mts:ivv.v6performante:0": {
+        "value": 3400000
+    },
+    "mts:ivv.v8:0": {
+        "value": 350000
+    },
+    "mts:ivv.v8insolvo:0": {
+        "value": 170000
+    },
+    "mts:ivv.v8newperformante:0": {
+        "value": 3900000
+    },
+    "mts:ivv.v8performante:0": {
+        "value": 5400000
+    },
+    "mts:ivv.v8torqueline:0": {
+        "value": 1600000
+    },
+    "mts:ivv.v90performante:0": {
+        "value": 4900000
+    },
+    "mts:ivv.v90torqueline:0": {
+        "value": 1800000
+    },
+    "mts:ivv.v91performante:0": {
+        "value": 6400000
+    },
+    "mts:ivv.v96performante:0": {
+        "value": 10000000
+    },
+    "mts:ivv.v9:0": {
+        "value": 370000
+    },
+    "mts:mts.handbook_car:0": {
+        "value": 6000
+    },
+    "mts:mts.handbook_plane:0": {
+        "value": 6000
+    },
+    "mts:mts.jerrycan:0": {
+        "value": 5500
+    },
+    "mts:mts.jumperpack:0": {
+        "value": 10000
+    },
+    "mts:mts.paintgun:0": {
+        "value": 50000
+    },
+    "mts:mts.wrench:0": {
+        "value": 20000
+    },
+    "mts:mtsofficialpack.barrel:0": {
+        "value": 10000
+    },
+    "mts:mtsofficialpack.barrel_black:0": {
+        "value": 10000
+    },
+    "mts:mtsofficialpack.carseat_black:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.carseat_brown:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.carseat_grey:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.carseat_red:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.carseat_white:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.copperwire:0": {
+        "value": 3000,
+        "ore_override": false,
+        "ore": {
+            "copper": 0.5
+        }
+    },
+    "mts:mtsofficialpack.engineamci4:0": {
+        "value": 300000
+    },
+    "mts:mtsofficialpack.enginedetroitdiesel:0": {
+        "value": 700000
+    },
+    "mts:mtsofficialpack.nuts:0": {
+        "value": 500
+    },
+    "mts:mtsofficialpack.rods:0": {
+        "value": 500
+    },
+    "mts:mtsofficialpack.screws:0": {
+        "value": 7500,
+        "ore_override": true,
+        "ore": {
+            "iron": 0.012,
+            "nickel": 0.004
+        }
+    },
+    "mts:mtsofficialpack.seatblack:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatblue:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatbrown:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatcyan:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatgrey:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatolive:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatpink:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatred:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatwhite:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.seatyellow:0": {
+        "value": 60000
+    },
+    "mts:mtsofficialpack.smallarmscartridge:0": {
+        "display_name": "Small Empty Casings",
+        "value": 500,
+        "ore_override": true,
+        "ore": {
+            "copper": 0.05,
+            "lead": 0.05
+        }
+    },
+    "mts:mtsofficialpack.spring:0": {
+        "value": 250,
+        "ore_override": false,
+        "ore": {
+            "iron": 0.25
+        }
+    },
+    "mts:mtsofficialpack.wheellarge:0": {
+        "value": 30000
+    },
+    "mts:mtsofficialpack.wheelmedium:0": {
+        "value": 20000
+    },
+    "mts:mtsofficialpack.wheelsmall:0": {
+        "value": 10000
+    },
+    "mts:syndicatemotorfoundry.paintcan_ashen:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_azure:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_celestial:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_dark:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_golden:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_iridescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_keppel:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lunar:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_lux:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_phosphorescent:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_russet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_scarlet:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_solar:0": {
+        "value": 25000
+    },
+    "mts:syndicatemotorfoundry.paintcan_verdant:0": {
+        "value": 15000
+    },
+    "mts:syndicatemotorfoundry.paintcan_violet:0": {
+        "value": 15000
+    },
+    "mts:unucivil.unucivil_item_unu_manual_mastodon:0": {
+        "value": 6000
+    },
     "mts:unucivil.unucivil_vehicle_unu_mastodon_coupe_apple:0": {
         "value": 10000000
     },
@@ -6672,5 +5924,753 @@
     },
     "mts:unucivil.unucivil_vehicle_unu_mastodon_van_saddle:0": {
         "value": 12000000
+    },
+    "mts:unudecor.unuparts_decor_unu_books_generic1:0": {
+        "value": 2000
+    },
+    "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_apple:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_aqua:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_blackthorne:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_charcoal:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_chocolate:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_coral:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_crimson:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_emerald:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ford:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ivory:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_jade:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_lemon:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_manilla:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_mint:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_navy:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_ocean:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_olive:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_redsands:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_saddle:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_sea:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_seaweed:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_silver:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_spaghetti:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_tungsten:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_instrument_unu_battery:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_fuel:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_fuel_1:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_instrument_unu_multi:0": {
+        "value": 7000
+    },
+    "mts:unuparts.unuparts_instrument_unu_oilpressure:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_oiltemperature:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_speedometer_k3:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_instrument_unu_speedometer_mph:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_speedometer_mphscaled:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_tachometer_1:0": {
+        "value": 2000
+    },
+    "mts:unuparts.unuparts_instrument_unu_tachometer_automatic:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_instrument_unu_tachometer_manual:0": {
+        "value": 4000
+    },
+    "mts:unuparts.unuparts_item_unu_manual_assembly_vehicle:0": {
+        "value": 51000
+    },
+    "mts:unuparts.unuparts_item_unu_manual_turboencabulator:0": {
+        "value": 11000
+    },
+    "mts:unuparts.unuparts_part_unu_barrel_jerrycan_forrest:0": {
+        "value": 30000
+    },
+    "mts:unuparts.unuparts_part_unu_barrel_metal_grey:0": {
+        "value": 300000
+    },
+    "mts:unuparts.unuparts_part_unu_barrel_metal_red:0": {
+        "value": 300000
+    },
+    "mts:unuparts.unuparts_part_unu_barrel_wooden:0": {
+        "value": 300000
+    },
+    "mts:unuparts.unuparts_part_unu_crate_metal:0": {
+        "value": 200000
+    },
+    "mts:unuparts.unuparts_part_unu_crate_wooden:0": {
+        "value": 100000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_boat_outboard_ivory:0": {
+        "value": 500000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_h04_aircooled:0": {
+        "value": 280000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i02_aircooled:0": {
+        "value": 80000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_aircooled:0": {
+        "value": 240000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_flathead:0": {
+        "value": 180000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i04_standard:0": {
+        "value": 260000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_diesel:0": {
+        "value": 750000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_flathead:0": {
+        "value": 240000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i06_standard:0": {
+        "value": 340000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_i1m:0": {
+        "value": 40000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v06_standard:0": {
+        "value": 480000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08_flathead:0": {
+        "value": 290000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08_standard:0": {
+        "value": 650000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v08h:0": {
+        "value": 650000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v12_standard:0": {
+        "value": 980000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v6:0": {
+        "value": 950000
+    },
+    "mts:unuparts.unuparts_part_unu_engine_v8:0": {
+        "value": 1250000
+    },
+    "mts:unuparts.unuparts_part_unu_propeller_w3d004:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_manilla:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_saddle:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_budget_tungsten:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_apple:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_ford:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_ivory:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_manilla:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_standard_saddle:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_truck:0": {
+        "value": 100000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_manilla:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_saddle:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_seat_van_tungsten:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_automatic_3_base:0": {
+        "value": 250000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_manual_3_base:0": {
+        "value": 120000
+    },
+    "mts:unuparts.unuparts_part_unu_transmission_manual_4_base:0": {
+        "value": 150000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_compact:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_scooter:0": {
+        "value": 10000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_small:0": {
+        "value": 12000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard:0": {
+        "value": 18000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_apple:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_aqua:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_blackthorne:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_budd:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_charcoal:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_chocolate:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_coral:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_crimson:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_emerald:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ford:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ivory:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_jade:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_lemon:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_manilla:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_mint:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_navy:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_ocean:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad:0": {
+        "value": 33000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_desert:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_forrest:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_offroad_winter:0": {
+        "value": 35000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_olive:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_red:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_redsands:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_rusty:0": {
+        "value": 5000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_saddle:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_sea:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_seaweed:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_silver:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_spaghetti:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_tungsten:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_unu:0": {
+        "value": 15000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wire:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wire_mitchell:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_standard_wireknockoff:0": {
+        "value": 19000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_tractor:0": {
+        "value": 40000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd:0": {
+        "value": 30000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_desert:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_forrest:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_vintage:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_winter:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_budd_yellow:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_truck_dayton:0": {
+        "value": 32000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_apple:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_aqua:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_blackthorne:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_charcoal:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_chocolate:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_coral:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_crimson:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_emerald:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ford:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ivory:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_jade:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_lemon:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_manilla:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_mint:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_navy:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_ocean:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_olive:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_redsands:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_saddle:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_sea:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_seaweed:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_silver:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_spaghetti:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_tungsten:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wire_unu:0": {
+        "value": 20000
+    },
+    "mts:unuparts.unuparts_part_unu_wheel_vintage_wood:0": {
+        "value": 14000
+    },
+    "mts:warkparts.wark_heavyengine_v8:0": {
+        "value": 700000
+    },
+    "mts:warkparts.wark_hugeengine_v16:0": {
+        "value": 2500000
+    },
+    "mw:kcpd_boots:0": {
+        "value": 100000
+    },
+    "mw:kcpd_chest:0": {
+        "value": 100000
+    },
+    "mw:m40gasmask_helmet:0": {
+        "value": 100000
+    },
+    "mw:tactical_helmet:0": {
+        "value": 100000
+    },
+    "mw:umbrella_boots:0": {
+        "value": 100000
+    },
+    "mw:umbrella_chest:0": {
+        "value": 100000
+    },
+    "mw:umbrella_helmet:0": {
+        "value": 100000
+    },
+    "storagedrawers:framingtable:0": {
+        "value": 5000
+    },
+    "variedcommodities:bronze_skirt:0": {
+        "value": 25000
+    },
+    "variedcommodities:chain_skirt:0": {
+        "value": 20000
+    },
+    "variedcommodities:chair:0": {
+        "value": 2000
+    },
+    "variedcommodities:chair:1": {
+        "value": 2000
+    },
+    "variedcommodities:chair:2": {
+        "value": 2000
+    },
+    "variedcommodities:chair:3": {
+        "value": 2000
+    },
+    "variedcommodities:chair:4": {
+        "value": 2000
+    },
+    "variedcommodities:chair:5": {
+        "value": 2000
+    },
+    "variedcommodities:combat_knive:0": {
+        "value": 50000
+    },
+    "variedcommodities:couch_wood:0": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:1": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:2": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:3": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:4": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wood:5": {
+        "value": 3000
+    },
+    "variedcommodities:couch_wool:0": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:1": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:2": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:3": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:4": {
+        "value": 4000
+    },
+    "variedcommodities:couch_wool:5": {
+        "value": 4000
+    },
+    "variedcommodities:crate:0": {
+        "value": 4000
+    },
+    "variedcommodities:crowbar:0": {
+        "value": 6000
+    },
+    "variedcommodities:crystal:0": {
+        "value": 5000
+    },
+    "variedcommodities:full_bronze_boots:0": {
+        "value": 10000
+    },
+    "variedcommodities:full_bronze_chest:0": {
+        "value": 30000
+    },
+    "variedcommodities:full_bronze_head:0": {
+        "value": 10000
+    },
+    "variedcommodities:full_bronze_legs:0": {
+        "value": 25000
+    },
+    "variedcommodities:full_wooden_boots:0": {
+        "value": 5000
+    },
+    "variedcommodities:full_wooden_chest:0": {
+        "value": 15000
+    },
+    "variedcommodities:full_wooden_head:0": {
+        "value": 5000
+    },
+    "variedcommodities:full_wooden_legs:0": {
+        "value": 10000
+    },
+    "variedcommodities:gem_amethyst:0": {
+        "value": 10000
+    },
+    "variedcommodities:gem_ruby:0": {
+        "value": 10000
+    },
+    "variedcommodities:gem_sapphire:0": {
+        "value": 10000
+    },
+    "variedcommodities:ingot_bronze:0": {
+        "value": 10000
+    },
+    "variedcommodities:ingot_demonic:0": {
+        "value": 200000
+    },
+    "variedcommodities:ingot_mithril:0": {
+        "value": 200000
+    },
+    "variedcommodities:ingot_steel:0": {
+        "value": 2000,
+        "ore_override": false,
+        "ore": {
+            "steel": 1
+        }
+    },
+    "variedcommodities:iron_broadsword:0": {
+        "value": 60000
+    },
+    "variedcommodities:iron_skirt:0": {
+        "value": 25000
+    },
+    "variedcommodities:lamp:0": {
+        "value": 1000
+    },
+    "variedcommodities:lead_pipe:0": {
+        "value": 8000,
+        "ore_override": false,
+        "ore": {
+            "lead": 2
+        }
+    },
+    "variedcommodities:leather_skirt:0": {
+        "value": 10000
+    },
+    "variedcommodities:lighter:0": {
+        "value": 4000
+    },
+    "variedcommodities:necklace:0": {
+        "display_name": "Necklace",
+        "value": 25000
+    },
+    "variedcommodities:ninja_chest:0": {
+        "value": 60000
+    },
+    "variedcommodities:ninja_head:0": {
+        "value": 20000
+    },
+    "variedcommodities:ninja_legs:0": {
+        "value": 50000
+    },
+    "variedcommodities:pendant:0": {
+        "display_name": "Pendant",
+        "value": 10000
+    },
+    "variedcommodities:pipe_wrench:0": {
+        "value": 6000
+    },
+    "variedcommodities:ring:0": {
+        "display_name": "Ring",
+        "value": 30000
+    },
+    "variedcommodities:shelf:0": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:1": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:2": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:3": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:4": {
+        "value": 2000
+    },
+    "variedcommodities:shelf:5": {
+        "value": 2000
+    },
+    "variedcommodities:statuette:0": {
+        "display_name": "Statuette",
+        "value": 15000
+    },
+    "variedcommodities:stool:0": {
+        "value": 1000
+    },
+    "variedcommodities:stool:1": {
+        "value": 1000
+    },
+    "variedcommodities:stool:2": {
+        "value": 1000
+    },
+    "variedcommodities:stool:3": {
+        "value": 1000
+    },
+    "variedcommodities:stool:4": {
+        "value": 1000
+    },
+    "variedcommodities:stool:5": {
+        "value": 1000
+    },
+    "variedcommodities:swiss_army_knife:0": {
+        "value": 60000
+    },
+    "variedcommodities:table:0": {
+        "value": 4000
+    },
+    "variedcommodities:table:1": {
+        "value": 10000
+    },
+    "variedcommodities:table:2": {
+        "value": 4000
+    },
+    "variedcommodities:table:3": {
+        "value": 4000
+    },
+    "variedcommodities:table:4": {
+        "value": 4000
+    },
+    "variedcommodities:table:5": {
+        "value": 4000
+    },
+    "variedcommodities:tablet:0": {
+        "display_name": "Tablet",
+        "value": 17500
+    },
+    "variedcommodities:tactical_chest:0": {
+        "value": 100000
+    },
+    "variedcommodities:tactical_head:0": {
+        "value": 100000
+    },
+    "variedcommodities:tall_lamp:0": {
+        "value": 3000
+    },
+    "variedcommodities:tall_lamp:1": {
+        "value": 3000
+    },
+    "variedcommodities:tall_lamp:2": {
+        "value": 4000
+    },
+    "variedcommodities:tall_lamp:3": {
+        "value": 5000
+    },
+    "variedcommodities:tall_lamp:4": {
+        "value": 5000
+    },
+    "variedcommodities:trading_block:0": {
+        "value": 3000
     }
 }
