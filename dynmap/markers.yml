@@ -1857,6 +1857,22 @@ sets:
                 y: 73.0
                 z: 3323.0
                 label: Smell Oil - Charging Station
+            marker_31:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -5449.0
+                y: 77.0
+                z: 1659.0
+                label: Cominac - Fuel Station
+            marker_32:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -5434.0
+                y: 77.0
+                z: 1649.0
+                label: Cominac - Charging Station
         lines: {
             }
         layerprio: 0
