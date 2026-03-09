@@ -14,6 +14,13 @@
             "release_date": "19/02/2026"
         },
         {
+            "name": "Engine Mechanics",
+            "display": "§6§lEngine running rough?§r §eSome mechanics can restore worn engines and save you from buying a full replacement.",
+            "description": "§7You will usually find §6engine mechanics §7around dealerships, and they tend to service engines from that dealership's brands.",
+            "requirements": [],
+            "release_date": "29/06/2025"
+        },
+        {
             "name": "Mafia rep purchase",
             "display": "§4§lCareful...§r §cThe mafia is not exactly your biggest fan right now. Maybe a little \"tribute\" could smooth things over?",
             "description": "§7If your mafia reputation is rough, ask around §6Dominico's Pizza §7in Siloroz. §eSome problems can be... negotiated.",
@@ -25,6 +32,33 @@
                 }
             ],
             "release_date": "07/08/2025"
+        },
+        {
+            "name": "Gem Expertising",
+            "display": "§d§lHidden brilliance?§r §5Master cutters in Gramados can appraise rough finds and reveal what your gems are truly worth.",
+            "description": "§7Bring your stones to §dGems of Zanzibar §7in §3Gramados City§7 and ask about expertising before you trade them away.",
+            "requirements": [],
+            "release_date": "03/08/2025"
+        },
+        {
+            "name": "Arcade Tokens",
+            "display": "§d§lEvent keepsakes with power§r §5Keep an eye on seasonal activities: §dArcade Tokens §5only surface during special events.",
+            "description": "§7These tokens can be spent to fix, repair, or improve §dmodifiers§7. Both tokens and modifiers are event rewards, so festival seasons are the best time to stock up.",
+            "requirements": [],
+            "release_date": "03/01/2026"
+        },
+        {
+            "name": "Food Donations",
+            "display": "§2§lGive back to the community!§r §aIf your fridge is full, consider donating to the local food bank. It's a great way to help out and maybe even get some reputation.",
+            "description": "§7Over at the §3State Hotel§7 bottom-floor §6storage hall§7, you can drop off a crate filled with §afood donations§7.",
+            "requirements": [
+                {
+                    "type": "factions",
+                    "id": 2,
+                    "max": 2000
+                }
+            ],
+            "release_date": "12/10/2025"
         }
     ],
 
@@ -153,5 +187,7 @@
             ],
             "release_date": "31/08/2025"
         }
-    ]
+    ],
+
+    "jobs": []
 }
