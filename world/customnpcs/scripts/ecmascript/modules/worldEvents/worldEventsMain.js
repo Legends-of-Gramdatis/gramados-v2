@@ -5,7 +5,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js");
 
-load("world/customnpcs/scripts/ecmascript/gramados_sounds/toll_sounds.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/toll_sounds.js");
 
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/susBoxEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
