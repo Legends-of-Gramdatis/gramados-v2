@@ -31,12 +31,19 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
    - **Chromashell Eggs**: Uncommon and magical, opened by Aetheric Botanists.
    - **Encrypted Eggs**: Rare and mysterious, opened by Eggcryption Technicians.
 
-6. **Boss Fight**:
+6. **Event Year Tagging**:
+   - Each spawned egg NPC stores an `event_year` value.
+   - Legacy eggs from 2025 may not contain this value; missing `event_year` is treated as `2025`.
+   - Item lore now uses the stored year in the collection line.
+   - If `Easter Egg Hunt` is currently active, the lore says `Collected during the Easter <year> event: The Great Eggcryption`.
+   - If the event is not active, the lore says `Collected after the Easter <year> event: The Great Eggcryption`.
+
+7. **Boss Fight**:
    - The Easter Bunny Boss alternates between "Egg Mode" and "Bunny Mode."
    - Players must defeat the boss in multiple stages, each with increasing difficulty.
    - Unique attacks include Mini Egg Swarms, Boomshell Walls, and Chocolate Powder Floods.
 
-7. **Logging**:
+8. **Logging**:
    - All egg spawns, player interactions, and boss fight events are logged for tracking purposes.
 
 ## Files

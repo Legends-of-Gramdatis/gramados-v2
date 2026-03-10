@@ -220,6 +220,11 @@ function setEggTypeRarity(npc) {
     getRandomEasterEggSkin(npc, rarity);
 }
 
+function setEventYear(npc) {
+    var current_year = new Date().getFullYear();
+    npc.getStoreddata().put("event_year", current_year);
+}
+
 /**
  * Resets the NPC's data and regenerates its attributes.
  * @param {ICustomNpc} npc - The NPC instance.
@@ -231,10 +236,12 @@ function regenerate(npc) {
     npc.getStoreddata().remove("tries");
     npc.getStoreddata().remove("rarity");
     npc.getStoreddata().remove("last_interraction");
+    npc.getStoreddata().remove("event_year");
     // Set a new random size
     setRandomType(npc);
     setRandomSize(npc);
     setEggTypeRarity(npc);
+    setEventYear(npc);
     applyEggName(npc);
 
     setupInactiveMode(npc);
@@ -476,6 +483,17 @@ function generateEggItem(world, npc) {
     var egg_lore_7 = "&7- Found in:";
     var egg_lore_8 = "&7- Note:";
 
+    // Legacy eggs (2025) do not have this key, so we keep that year as default.
+    var event_year = npc.getStoreddata().get("event_year");
+    if (event_year == null || event_year == "") {
+        event_year = 2025;
+    }
+
+    var event_collection_line = "&e&oCollected &e&l&oafter&r&e&o the Easter " + event_year + " event: The Great Eggcryption";
+    if (isEventActive("Easter Egg Hunt")) {
+        event_collection_line = "&e&oCollected during the Easter " + event_year + " event: The Great Eggcryption";
+    }
+
     var egg_size = npc.getDisplay().getSize();
     if (egg_size > 6) {
         var egg_lore_4 = "&d&oApproximately " + npc.getDisplay().getSize() + " yolkmarks in diameter - &lthis is a jumbo egg!&r";
@@ -523,7 +541,7 @@ function generateEggItem(world, npc) {
     eggItem.setLore([
         ccs(egg_lore_1),
         ccs(egg_lore_2),
-        ccs("&e&oCollected &e&l&oafter&r&e&o the Easter 2025 event: The Great Eggcryption"),
+        ccs(event_collection_line),
         ccs(egg_lore_4),
         ccs(egg_lore_5),
         ccs(egg_lore_6),
