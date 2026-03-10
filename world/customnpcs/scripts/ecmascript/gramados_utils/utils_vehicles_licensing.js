@@ -244,6 +244,39 @@ function assembleRegistrationFrom_Vehicle(item_stack) {
     };
 }
 
+// functioon to make a registeration valid (plates) and update itemstack if needed
+function validateAndRegisterVehicle(player, registration) {
+    var licensed = loadLicensedVehicles();
+    var attempts = 0;
+    var maxAttempts = 100;
+    
+    do {
+        registration.plate = generateRandomPlate("plate_gramados");
+        attempts++;
+    } while (licensed[registration.plate] && attempts < maxAttempts);
+
+    if (attempts >= maxAttempts) {
+        tellPlayer(player, ":car: &c[Vehicle Registration] Failed to generate a unique plate after " + maxAttempts + " attempts. Please try again later.");
+        return;
+    }
+
+    tellPlayer(player, ":car: &a[Vehicle Registration] Generated new unique plate: " + registration.plate);
+
+    registration.region = "Solterra Island";
+    registration.msrpCents = getPrice(registration.vehicleId, getUnknownLabel(), null, true);
+    registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, []);
+    registration.firstRegistrant = player.getName();
+    registration.registrationDate = dateToDDMMYYYY();
+
+    if(registerPlate(registration)) {
+        tellPlayer(player, ":car: &a[Vehicle Registration] Vehicle plate registered successfully with new plate: " + registration.plate);
+    } else {
+        tellPlayer(player, ":car: &c[Vehicle Registration] Failed to register vehicle plate with new plate: " + registration.plate);
+    }
+
+    return registration;
+}
+
 function mergeRegistrationData(baseRegistration, newRegistration) {
     return {
         vin: baseRegistration.vin !== getUnknownLabel() ? baseRegistration.vin : newRegistration.vin,

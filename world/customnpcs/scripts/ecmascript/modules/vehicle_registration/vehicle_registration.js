@@ -30,8 +30,13 @@ function interact(event) {
         var registration = assembleRegistrationFrom_Vehicle(heldItem);
         tellRegisterationDetails(player, registration);
         tellPlayer(player, ":car: &a[Vehicle Registration] Vehicle registration assembled from vehicle item and logged successfully.");
-    
-    
+
+        if (registration.plate === "ABC-1234") {
+            tellPlayer(player, ":car: &e[Vehicle Registration] This vehicle has the default plate 'ABC-1234'. Regenerating a new plate...");
+            registration = validateAndRegisterVehicle(player, registration);
+            setVehicleLicensePlate(heldItem, registration.plate);
+            return;
+        }
     
     } else if (heldItem.getName() === VEHICLE_REGISTRATION_CONFIG.carPapers.item_id) {
         if (isItem_CarPaperOG(heldItem)) {
