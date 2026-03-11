@@ -32,6 +32,20 @@ function timer(event) {
     }
 }
 
+function interact(event) {
+    var player = event.player;
+    if (player.getOffhandItem().getName() == "mts:ivv.idcard_seagull") {
+        var tip = getTip(player);
+        if (tip) {
+            tellPlayer(player, ":lit:&eToday's tip: &r" + tip.display);
+            if (tip.description) {
+                tellPlayer(player, "&7:arrow_r: &r" + tip.description);
+            }
+            logToFile('events', player.getName() + " received tip: " + tip.name);
+        }
+    }
+}
+
 function getTip(player, attempts) {
     // get a random element from "tip_types" array
     var tipType = pickFromArray(TIP_CONFIG.tip_types);
@@ -46,6 +60,9 @@ function getTip(player, attempts) {
             break;
         case "quests":
             tip = getQuestTip(player);
+            break;
+        case "jobs":
+            tip = getJobTip(player);
             break;
         default:
             return null;
@@ -77,6 +94,11 @@ function getQuestTip(player) {
     return quest;
 }
 
+function getJobTip(player) {
+    var job = pickFromArray(TIP_CONFIG.jobs);
+    // tellPlayer(player, ":lit:&eToday's tip job: &r" + job.name);
+    return job;
+}
 
 function checkTipValidity(player, tip) {
     // If player offhand is sagull id card
@@ -100,11 +122,13 @@ function checkRequirement(player, requirement) {
                 if (getMoneyInPouch(player) < requirement.min) {
                     return false;
                 }
+                return true;
             }
             if (requirement.max) {
                 if (getMoneyInPouch(player) > requirement.max) {
                     return false;
                 }
+                return true;
             }
             break;
         case "factions":
@@ -133,6 +157,19 @@ function checkRequirement(player, requirement) {
             if (requirement.id) {
                 return !hadJobInHistory(player, requirement.id, requirement.months);
             }
+        case "jobs_accumulation_peak":
+            var maxJobsAccumulated = getMaxJobsAccumulatedAtOnce(player);
+            if (requirement.min !== undefined) {
+                if (maxJobsAccumulated < requirement.min) {
+                    return false;
+                }
+            }
+            if (requirement.max !== undefined) {
+                if (maxJobsAccumulated > requirement.max) {
+                    return false;
+                }
+            }
+            return true;
         case "quests_completed":
             return player.hasFinishedQuest(requirement.id);
         case "quests_uncompleted":
