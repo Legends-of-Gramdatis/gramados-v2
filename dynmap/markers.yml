@@ -1873,6 +1873,22 @@ sets:
                 y: 77.0
                 z: 1649.0
                 label: Cominac - Charging Station
+            marker_33:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -3121.0
+                y: 72.0
+                z: -8246.0
+                label: Solidaritet Fuel Stop
+            marker_34:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -4604.0
+                y: 76.0
+                z: -6525.0
+                label: Highlands Fuel Stop
         lines: {
             }
         layerprio: 0
