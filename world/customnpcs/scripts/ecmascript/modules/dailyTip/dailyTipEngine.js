@@ -2,6 +2,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 
 var TIP_CONFIG = loadJson("world/customnpcs/scripts/ecmascript/modules/dailyTip/tip_config.json");
 var DAILY_TIP_TIMER_ID = 91;
@@ -118,6 +119,20 @@ function checkRequirement(player, requirement) {
                 }
             }
             break;
+        case "jobs_experienced":
+            if (requirement.tag) {
+                return hadTagInHistory(player, requirement.tag, requirement.months);
+            }
+            if (requirement.id) {
+                return hadJobInHistory(player, requirement.id, requirement.months);
+            }
+        case "jobs_unexperienced":
+            if (requirement.tag) {
+                return !hadTagInHistory(player, requirement.tag, requirement.months);
+            }
+            if (requirement.id) {
+                return !hadJobInHistory(player, requirement.id, requirement.months);
+            }
         case "quests_completed":
             return player.hasFinishedQuest(requirement.id);
         case "quests_uncompleted":
