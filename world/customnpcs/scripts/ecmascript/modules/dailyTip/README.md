@@ -26,10 +26,11 @@ Top-level keys:
 
 - `tip_types` (array of strings)
 	- Lists pools available for random selection.
-	- Current values: `features`, `quests`.
+	- Current values: `features`, `quests`, `jobs`.
 
 - `features` (array of tip objects)
 - `quests` (array of tip objects)
+- `jobs` (array of tip objects)
 
 Each tip object supports:
 
@@ -59,6 +60,10 @@ Supported requirement objects:
 	- Requires `player.hasFinishedQuest(id) == true`.
 - `{"type": "quests_uncompleted", "id": <questId>}`
 	- Requires `player.hasFinishedQuest(id) == false`.
+- `{"type": "max_jobs_accumulated_at_once", "min": <number>, "max": <number>}`
+	- Uses `getMaxJobsAccumulatedAtOnce(player)` from `utils_jobs.js`.
+	- Compares against the highest number of jobs the player ever held concurrently.
+	- `min` and `max` are optional and can be used independently.
 
 Unknown requirement types currently pass by default.
 

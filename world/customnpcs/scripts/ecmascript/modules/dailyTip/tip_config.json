@@ -1,9 +1,9 @@
 {
-    "tip_types": ["features", "quests"],
+    "tip_types": ["features", "quests", "jobs"],
     "features": [
         {
             "name": "Car Dealerships",
-            "display": "§6§lEngine check!§r §eYour wallet is looking healthy—why not cruise by a Gramados dealership and hunt for your next dream ride?",
+            "display": "§6§lEngine check!§r §eYour wallet is looking healthy-why not cruise by a Gramados dealership and hunt for your next dream ride?",
             "description": "§7Dealership stock changes often, so a quick visit can reveal something new. §bIf you've got the budget, go take a look.",
             "requirements": [
                 {
@@ -94,7 +94,7 @@
         },
         {
             "name": "Siloroz Insecticide",
-            "display": "§2§lGreen thumbs wanted!§r §aA community garden is under siege by pests—can you save this season's harvest?",
+            "display": "§2§lGreen thumbs wanted!§r §aA community garden is under siege by pests-can you save this season's harvest?",
             "requirements": [],
             "description": "§7Look for the communal garden in §aSiloroz§7 if you want a hands-on local quest.",
             "release_date": "21/05/2025"
@@ -151,7 +151,16 @@
             "name": "Old Seagull Road Restorer",
             "display": "§e§lRestoration call!§r §6Tomás Ravel is rebuilding a storm-damaged historic home and needs a hand preserving Old Seagull Road's legacy.",
             "description": "§7Meet §eTomás Ravel §7near Old Seagull Road if you want repeatable restoration work.",
-            "requirements": [],
+            "requirements": [
+                {
+                    "type": "quests_uncompleted",
+                    "id": 1
+                },
+                {
+                    "type": "quests_uncompleted",
+                    "id": 2
+                }
+            ],
             "release_date": "06/01/2025"
         },
         {
@@ -189,5 +198,120 @@
         }
     ],
 
-    "jobs": []
+    "jobs": [
+        {
+            "name": "Regional Job Portfolio",
+            "display": "§a§lBuild a broader career path!§r §2You can hold multiple jobs across regions, letting you combine steady starters, advanced specialties, and prestige roles.",
+            "description": "§7As you expand your properties and operations, you can grow a §aportfolio of jobs§7 instead of sticking to one lane. Mix regions to unlock more opportunities.",
+            "requirements": [
+                {
+                    "type": "jobs_accumulation_peak",
+                    "max": 1
+                }
+            ],
+            "release_date": "11/03/2026"
+        },
+        {
+            "name": "Greenfield Organic Farmer",
+            "display": "§2§lFields of opportunity!§r §aYour savings could cover a market garden farm, opening the door to an organic farming career.",
+            "description": "§7Head to §aGreenfield Island§7 to begin. Its fertile land and local growers make it a strong place to establish your first farm.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 25000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "id": 51,
+                    "months": 12
+                }
+            ],
+            "release_date": "02/03/2019"
+        },
+        {
+            "name": "Farmiston Mass Cereal Farmer",
+            "display": "§e§lThink big-farm bigger!§r §6Farmiston's countryside runs on combine harvesters, grain silos, and mass poultry operations. Land and machinery don't come cheap, but the scale is unmatched.",
+            "description": "§7From sprawling §ecereal fields §7to large §6chicken farms§7, Farmiston is the hub of industrial agriculture. Ask around the countryside if you're ready to invest.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 50000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "id": 154,
+                    "months": 12
+                }
+            ],
+            "release_date": "07/06/2022"
+        },
+        {
+            "name": "Mechanic",
+            "display": "§6§lYour own repair shop awaits!§r §eOwning a garage means more than fixing cars-it opens up part orders, junkyard salvage runs, and licensed workshops across the map.",
+            "description": "§7Mechanics §6source parts from junkyard crates§7, fulfil §epart orders§7, and unlock new §6part shops §7and §elicensing permissions§7. Repair shops are found throughout all regions and vary in price.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 25000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "tag": "Mechanic",
+                    "months": 12
+                }
+            ],
+            "release_date": "07/04/2019"
+        },
+        {
+            "name": "Monsalac Milk & Cheese Farmer",
+            "display": "§b§lFrom pasture to creamery!§r §3Monsalac's rolling hills are home to prize cattle-and a thriving dairy and cheese-making trade unique to the island.",
+            "description": "§7Raise §bcows and cattle§7, produce §3milk and artisan cheeses§7, and manage your own dairy operation. This career is only available on §bMonsalac Island§7.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 40000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "id": 211,
+                    "months": 12
+                }
+            ],
+            "release_date": "09/07/2022"
+        },
+        {
+            "name": "Allenis Vintage Wine Brewer",
+            "display": "§5§lA legacy measured in bottles.§r §dOwning a wine domain on Allenis means tending vineyards, ageing vintages for generations, and building a reputation that takes years to earn.",
+            "description": "§7Grow §5grapes§7, craft and §dage rare bottles§7, and manage an ever-evolving §5domain reputation§7. The most prized vintages can only be produced on §dAllenis Island§7-this is late-game prestige.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 200000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "id": 233,
+                    "months": 12
+                }
+            ],
+            "release_date": "02/10/2024"
+        },
+        {
+            "name": "Winemaking",
+            "display": "§5§lThe art of the domain.§r §dWine domains span several regions-from a first estate in Solterra to the most prestigious vineyards on Allenis Island.",
+            "description": "§7Each domain runs on §5reputation§7. Age your bottles, manage your harvests, and build your name. §dOnly Allenis §7allows the production of true §5vintage wines§7.",
+            "requirements": [
+                {
+                    "type": "money_cents",
+                    "min": 50000000
+                },
+                {
+                    "type": "jobs_unexperienced",
+                    "tag": "Brewer_Wine",
+                    "months": 12
+                }
+            ],
+            "release_date": "02/10/2024"
+        }
+    ]
 }
