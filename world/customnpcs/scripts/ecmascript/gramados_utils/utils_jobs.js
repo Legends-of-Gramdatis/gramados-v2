@@ -141,38 +141,6 @@ function getJobIdsWithTag(tag) {
     return jobIds;
 }
 
-/**
- * Gets the job qualification by job ID.
- * @param {number} jobId - The job ID.
- * @returns {string|null} - The job qualification or null if not found.
- */
-function getJobQualification(jobId) {
-    var cfg = loadJson(CONFIG_PATH);
-    if (!cfg || !cfg.Jobs) return null;
-    for (var i = 0; i < cfg.Jobs.length; i++) {
-        var id = cfg.Jobs[i].JobID || cfg.Jobs[i].JobId;
-        if (id === jobId) {
-            // In the new config this is stored as Type
-            return cfg.Jobs[i].Type || cfg.Jobs[i].Qualification || null;
-        }
-    }
-    return null;
-}
-
-
-function playerHasJobWithQualification(player, qualification) {
-    var cfg = loadJson(CONFIG_PATH);
-    if (!cfg || !cfg.Jobs) return false;
-    for (var i = 0; i < cfg.Jobs.length; i++) {
-        var q = cfg.Jobs[i].Type || cfg.Jobs[i].Qualification;
-        var id = cfg.Jobs[i].JobID || cfg.Jobs[i].JobId;
-        if (q === qualification && player.hasReadDialog(id)) {
-            return true;
-        }
-    }
-    return false;
-}
-
 function getAutopayAmountForID(jobId) {
     var cfg = loadJson(CONFIG_PATH);
     if (!cfg || !cfg.Jobs) return 0;
