@@ -1,6 +1,8 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
 var CONFIG_PATH = "world/customnpcs/scripts/ecmascript/modules/jobs/config.json";
+var JOBS_DATA_PATH = "world/customnpcs/scripts/data_auto/jobs.json";
+var TICKS_PER_MONTH = 20 * 60 * 60 * 24 * 30; // 51,840,000 ticks ≈ 30 real-world days
 
 /**
  * Gets the job name by its ID.
@@ -205,6 +207,49 @@ function ensureJobAndTagDialogsOnGrant(player, jobDef) {
     } catch (e) {
         // Swallow errors to avoid breaking flows; dialog ops are best-effort
     }
+}
+
+/**
+ * Checks if a player has previously held a specific job (by job ID) in their history.
+ * @param {IPlayer} player - The player object.
+ * @param {number} jobId - The job ID to look for in history.
+ * @param {number} [months] - Optional. How many past months to search. If omitted, all history is searched.
+ * @returns {boolean} - True if the player held the job in the specified period, false otherwise.
+ */
+function hadJobInHistory(player, jobId, months) {
+    var data = loadJson(JOBS_DATA_PATH);
+    var uuid = player.getUUID();
+    if (!data || !data[uuid] || !data[uuid].JobHistory) return false;
+    var history = data[uuid].JobHistory;
+    var cutoff = (months !== undefined && months !== null)
+        ? (world.getTotalTime() - months * TICKS_PER_MONTH)
+        : null;
+    for (var key in history) {
+        var entry = history[key];
+        var id = entry.JobID || entry.JobId;
+        if (id !== jobId) continue;
+        if (cutoff === null) return true;
+        // Use EndTime if present, otherwise fall back to StartTime
+        var refTime = (entry.EndTime !== undefined) ? entry.EndTime : entry.StartTime;
+        if (refTime >= cutoff) return true;
+    }
+    return false;
+}
+
+/**
+ * Checks if a player has previously held any job with a given tag in their history.
+ * @param {IPlayer} player - The player object.
+ * @param {string} tag - The tag to look for in history.
+ * @param {number} [months] - Optional. How many past months to search. If omitted, all history is searched.
+ * @returns {boolean} - True if the player held a tagged job in the specified period, false otherwise.
+ */
+function hadTagInHistory(player, tag, months) {
+    var tagJobIds = getJobIdsWithTag(tag);
+    if (!tagJobIds || tagJobIds.length === 0) return false;
+    for (var i = 0; i < tagJobIds.length; i++) {
+        if (hadJobInHistory(player, tagJobIds[i], months)) return true;
+    }
+    return false;
 }
 
 /**
