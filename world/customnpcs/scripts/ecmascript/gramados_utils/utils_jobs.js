@@ -217,6 +217,7 @@ function ensureJobAndTagDialogsOnGrant(player, jobDef) {
  * @returns {boolean} - True if the player held the job in the specified period, false otherwise.
  */
 function hadJobInHistory(player, jobId, months) {
+    var world = player.getWorld();
     var data = loadJson(JOBS_DATA_PATH);
     var uuid = player.getUUID();
     if (!data || !data[uuid] || !data[uuid].JobHistory) return false;
@@ -250,6 +251,65 @@ function hadTagInHistory(player, tag, months) {
         if (hadJobInHistory(player, tagJobIds[i], months)) return true;
     }
     return false;
+}
+
+/**
+ * Computes the maximum number of jobs a player had at the same time.
+ * Uses both archived JobHistory intervals and currently ActiveJobs starts.
+ * @param {IPlayer} player - The player object.
+ * @returns {number} - Peak concurrent jobs reached by this player.
+ */
+function getMaxJobsAccumulatedAtOnce(player) {
+    var data = loadJson(JOBS_DATA_PATH);
+    var uuid = player.getUUID();
+    if (!data || !data[uuid]) return 0;
+
+    var playerData = data[uuid];
+    var history = playerData.JobHistory || {};
+    var active = playerData.ActiveJobs || {};
+    var events = [];
+    var activeWithoutTime = 0;
+
+    for (var historyKey in history) {
+        var historyEntry = history[historyKey];
+        if (historyEntry.StartTime !== undefined) {
+            events.push({ time: historyEntry.StartTime, delta: 1 });
+        }
+        if (historyEntry.EndTime !== undefined) {
+            events.push({ time: historyEntry.EndTime, delta: -1 });
+        }
+    }
+
+    for (var activeKey in active) {
+        var activeEntry = active[activeKey];
+        if (activeEntry.StartTime !== undefined) {
+            events.push({ time: activeEntry.StartTime, delta: 1 });
+        } else {
+            activeWithoutTime++;
+        }
+    }
+
+    if (events.length === 0) {
+        return Object.keys(active).length || activeWithoutTime;
+    }
+
+    events.sort(function (a, b) {
+        if (a.time === b.time) {
+            return a.delta - b.delta;
+        }
+        return a.time - b.time;
+    });
+
+    var current = 0;
+    var peak = 0;
+    for (var i = 0; i < events.length; i++) {
+        current += events[i].delta;
+        if (current > peak) {
+            peak = current;
+        }
+    }
+
+    return peak;
 }
 
 /**
