@@ -4,6 +4,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
@@ -3863,6 +3864,26 @@ registerXCommands([
         "min": 0,
     }
         ]],
+    ['!itemvalue', function (pl, args) {
+        var mItem = pl.getMainhandItem();
+        if (mItem.isEmpty()) {
+            tellPlayer(pl, "&cYou don't have anything in your hand!");
+            return false;
+        }
+        var itemId = mItem.getName();
+        var itemTag = null;
+        if (mItem.hasNbt()) {
+            var nbt = mItem.getNbt();
+            if (nbt) { itemTag = nbt.getCompound("tag"); }
+        }
+        var value = getPrice(itemId, -1, itemTag, false);
+        if (value < 0) {
+            tellPlayer(pl, "&eItem: &f" + itemId + "\n&cNo price found in global prices.");
+        } else {
+            tellPlayer(pl, "&eItem: &f" + itemId + "\n&eUnit value: " + formatCurrency(value, 'money'));
+        }
+        return true;
+    }, 'item.value'],
 
 ]);
 
