@@ -710,6 +710,14 @@ sets:
                 y: 80.0
                 z: 6813.0
                 label: Mesa del Sol
+            marker_23:
+                world: world
+                markup: false
+                icon: food&drink_cafe
+                x: 408.0
+                y: 70.0
+                z: -7722.0
+                label: Boreal Grill
         lines: {
             }
         layerprio: 0
@@ -1889,6 +1897,22 @@ sets:
                 y: 76.0
                 z: -6525.0
                 label: Highlands Fuel Stop
+            marker_35:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: 402.0
+                y: 70.0
+                z: -7737.0
+                label: Boreal Fuel - Charging Station
+            marker_36:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: 399.0
+                y: 70.0
+                z: -7748.0
+                label: Boreal Fuel - Fuel Station
         lines: {
             }
         layerprio: 0
