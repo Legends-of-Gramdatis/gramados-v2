@@ -51,19 +51,23 @@ var LOG_FILES = {
  * @param {Object} data - The data to log.
  */
 function logToJson(logType, key, data) {
-    if (!LOG_FILES[logType] || !LOG_FILES[logType].json) {
-        tellPlayer("Invalid log type: " + logType);
+    try {
+        if (!LOG_FILES[logType] || !LOG_FILES[logType].json) {
+            tellPlayer("Invalid log type: " + logType);
+        }
+
+        var filePath = LOG_FILES[logType].json;
+        var logData = loadJson(filePath);
+
+        if (!logData[key]) {
+            logData[key] = [];
+        }
+
+        logData[key].push(data);
+        saveJson(logData, filePath);
+    } catch (e) {
+        tellPlayer("Error occurred while logging to JSON: " + e.message);
     }
-
-    var filePath = LOG_FILES[logType].json;
-    var logData = checkFileExists(filePath) ? loadJson(filePath) : {};
-
-    if (!logData[key]) {
-        logData[key] = [];
-    }
-
-    logData[key].push(data);
-    saveJson(logData, filePath);
 }
 
 /**
