@@ -21,8 +21,7 @@ function getNaLabel() {
 }
 
 function isUnknownOrNa(value) {
-    var str = String(value || "").trim();
-    return (str === getUnknownLabel() || str === getNaLabel() || str === "");
+    return (value === getUnknownLabel() || value === getNaLabel() || value === "");
 }
 
 function isPlateLicensed(plate) {
@@ -52,7 +51,7 @@ function calculateCarPaperPrice(vehicleMsrp, region, plateText, titles) {
     // Known plate formats:
     // - Gramados: 3 letters + dash + 4 digits (ABC-1234)
     // - UNU Euro / WW: 2 letters + dash + 5 digits (BT-00000 / WW-00000)
-    var plateStr = String(plateText || "");
+    var plateStr = plateText || "";
     var isStandardPlate = /^[A-Za-z]{3}-\d{4}$/.test(plateStr) || /^[A-Za-z]{2}-\d{5}$/.test(plateStr);
     if (!isStandardPlate) {
         price += VEHICLE_REGISTRATION_CONFIG.carPapers.special_plate_fee; // Add fee for non-standard plates
@@ -721,11 +720,11 @@ function setVehicleLicensePlate(ItemStack, plateText) {
 
 function _stripMinecraftSectionColors(text) {
     // Removes vanilla Minecraft formatting codes (e.g. "§a", "§l")
-    return String(text || "").replace(/§[0-9A-FK-ORa-fk-or]/g, "");
+    return text.replace(/§[0-9A-FK-ORa-fk-or]/g, "");
 }
 
 function _toTitleCaseWords(text) {
-    var cleaned = String(text || "").trim().replace(/\s+/g, " ");
+    var cleaned = text.trim().replace(/\s+/g, " ");
     if (!cleaned) {
         return "";
     }
