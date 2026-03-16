@@ -111,16 +111,17 @@ function getVehicleInfo(mainVehicleId) {
 function generateRandomPlate(systemName) {
     var plateSystem = getPlateSystemConfig(systemName);
     var formatStr = plateSystem.format;
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     var plate = "";
     
     for (var i = 0; i < formatStr.length; i++) {
         var char = formatStr[i];
         if (char === 'X') {
             // Random uppercase letter
-            plate += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            plate += alphabet.charAt(Math.floor(Math.random() * 26));
         } else if (char === 'N') {
             // Random letter (case-insensitive, we'll uppercase)
-            plate += String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            plate += alphabet.charAt(Math.floor(Math.random() * 26));
         } else if (char === '0') {
             // Random digit
             plate += Math.floor(Math.random() * 10);
