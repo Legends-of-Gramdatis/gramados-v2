@@ -5,6 +5,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
@@ -3717,6 +3719,84 @@ registerXCommands([
         tellPlayer(pl, "&aReloaded emotes. &e" + created + "&a new emote data entr" + (created == 1 ? "y" : "ies") + " created.");
         return true;
     }, 'emotes.reload'],
+    ['!register', function (pl, args, data) {
+        var heldItem = pl.getMainhandItem();
+        if (heldItem.isEmpty()) {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] Hold a vehicle or car paper item in your main hand.");
+            return false;
+        }
+
+        var registration = null;
+
+        if (heldItem.hasNbt() && isItem_Vehicle(heldItem)) {
+            registration = assembleRegistrationFrom_Vehicle(heldItem);
+
+            if (registration.plate === "ABC-1234") {
+                var licensed = loadLicensedVehicles();
+                var attempts = 0;
+                var maxAttempts = 100;
+
+                do {
+                    registration.plate = generateRandomPlate("plate_gramados");
+                    attempts++;
+                } while (licensed[registration.plate] && attempts < maxAttempts);
+
+                if (attempts >= maxAttempts) {
+                    tellPlayer(pl, ":car: &c[Vehicle Registration] Failed to generate a unique plate after " + maxAttempts + " attempts. Please try again later.");
+                    return false;
+                }
+
+                registration.region = "Solterra Island";
+                registration.msrpCents = getPrice(registration.vehicleId, getUnknownLabel(), null, true);
+                registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, []);
+                registration.firstRegistrant = pl.getName();
+                registration.registrationDate = dateToDDMMYYYY();
+
+                if (!registerPlate(registration)) {
+                    tellPlayer(pl, ":car: &c[Vehicle Registration] Failed to register vehicle plate.");
+                    return false;
+                }
+
+                setVehicleLicensePlate(heldItem, registration.plate);
+                tellRegisterationDetails(pl, registration);
+                tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle plate registered successfully with new plate: " + registration.plate);
+                return true;
+            }
+        } else if (heldItem.getName() === VEHICLE_REGISTRATION_CONFIG.carPapers.item_id) {
+            if (isItem_CarPaperOG(heldItem)) {
+                registration = assembleRegistrationFrom_OGpapers(heldItem);
+            } else {
+                tellPlayer(pl, ":car: &c[Vehicle Registration] This paper is not recognized as OG car papers.");
+                return false;
+            }
+        } else {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] Hold a vehicle or OG car papers in your main hand.");
+            return false;
+        }
+
+        if (registration === null) {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] Could not assemble registration data from this item.");
+            return false;
+        }
+
+        if (isPlateLicensed(registration.plate)) {
+            var existingRegistration = getRegistrationByPlate(registration.plate);
+            var mergedRegistration = mergeRegistrationData(existingRegistration, registration);
+            updateRegistration(mergedRegistration);
+            tellRegisterationDetails(pl, mergedRegistration);
+            tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle registration updated successfully.");
+            return true;
+        }
+
+        if (registerPlate(registration)) {
+            tellRegisterationDetails(pl, registration);
+            tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle plate registered successfully.");
+            return true;
+        }
+
+        tellPlayer(pl, ":car: &c[Vehicle Registration] Failed to register vehicle plate.");
+        return false;
+    }, 'register'],
 ]);
 
 registerXCommands([
