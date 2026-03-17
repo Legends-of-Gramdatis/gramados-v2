@@ -4,68 +4,68 @@
             "rolls": 1,
             "entries": [
                 {
-                    "item": "harvestcraft:calamarirawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:calamarirawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:clamrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:clamrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:crabrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:crabrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:crayfishrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:crayfishrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:frograwitem",
-                    "meta": 0,
+                    "name": "harvestcraft:frograwitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:jellyfishrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:jellyfishrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:musselrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:musselrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:octopusrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:octopusrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:oysterrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:oysterrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:scalloprawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:scalloprawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:shrimprawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:shrimprawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:snailrawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:snailrawitem",
+                    "type": "item",
                     "weight": 5
                 },
                 {
-                    "item": "harvestcraft:turtlerawitem",
-                    "meta": 0,
+                    "name": "harvestcraft:turtlerawitem",
+                    "type": "item",
                     "weight": 5
                 }
             ]
