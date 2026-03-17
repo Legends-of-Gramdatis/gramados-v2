@@ -1,0 +1,114 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "item": "harvestcraft:anchovyrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:bassrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:carprawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:catfishrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:charrrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:eelrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:greenheartfishitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:grouperrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:herringrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:mudfishrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:perchrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:sardinerawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:snapperrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:tilapiarawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:troutrawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:tunarawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "harvestcraft:walleyerawitem",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "minecraft:clownfish",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "minecraft:cod",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "minecraft:pufferfish",
+                    "meta": 0,
+                    "weight": 5
+                },
+                {
+                    "item": "minecraft:salmon",
+                    "meta": 0,
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
