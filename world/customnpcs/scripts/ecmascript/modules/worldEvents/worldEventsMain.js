@@ -7,7 +7,7 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js
 
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/toll_sounds.js");
 
-load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/susBoxEvent.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2025/susBoxEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/spooktober/spooktoberEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/christmas/christmasElfEvent.js");
