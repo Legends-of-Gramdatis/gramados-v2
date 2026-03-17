@@ -1,4 +1,8 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+
+var _LOOTTABLE_FISH = "sealife/sealife_fish.json";
 
 var tickCount = 0;
 
@@ -27,12 +31,18 @@ function tick(event) {
 function interact(event) {
     var npc = event.npc;
     var player = event.player;
+    var world = npc.getWorld();
 
     // if bucket in main hand
     var item = player.getMainhandItem();
     if (item.getName() == "minecraft:bucket") {
         npc.executeCommand("/playsound minecraft:block.note.bell master @a ~ ~ ~ 1 1");
-        player.giveItem("minecraft:fish", 0, 1);
+        var items = pullLootTable(_LOOTTABLE_FISH, player);
+        for (var i = 0; i < items.length; i++) {
+            player.dropItem(
+                generateItemStackFromLootEntry(items[i], world, player)
+            );
+        }
         npc.despawn();
     }
 }
