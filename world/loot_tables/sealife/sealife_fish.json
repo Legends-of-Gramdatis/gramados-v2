@@ -6,47 +6,47 @@
                 {
                     "type": "item",
                     "name": "harvestcraft:anchovyrawitem",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:bassrawitem",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:carprawitem",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:catfishrawitem",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:charrrawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:eelrawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:greenheartfishitem",
-                    "weight": 5
+                    "weight": 2
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:grouperrawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:herringrawitem",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "item",
@@ -56,57 +56,57 @@
                 {
                     "type": "item",
                     "name": "harvestcraft:perchrawitem",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:sardinerawitem",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:snapperrawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:tilapiarawitem",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:troutrawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:tunarawitem",
-                    "weight": 5
+                    "weight": 4
                 },
                 {
                     "type": "item",
                     "name": "harvestcraft:walleyerawitem",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "type": "item",
                     "name": "minecraft:clownfish",
-                    "weight": 5
+                    "weight": 2
                 },
                 {
                     "type": "item",
                     "name": "minecraft:cod",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "item",
                     "name": "minecraft:pufferfish",
-                    "weight": 5
+                    "weight": 2
                 },
                 {
                     "type": "item",
                     "name": "minecraft:salmon",
-                    "weight": 5
+                    "weight": 8
                 }
             ]
         }
