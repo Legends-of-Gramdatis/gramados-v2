@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 var _LOOTTABLE_FISH = "sealife/sealife_fish.json";
 
 var tickCount = 0;
+var lifespan = 20;
 
 function init(event) {
     var npc = event.npc;
@@ -15,7 +16,7 @@ function tick(event) {
     var npc = event.npc;
 
     tickCount++;
-    if (tickCount >= 40) {
+    if (tickCount >= lifespan) {
         npc.despawn();
         npc.executeCommand("/playsound minecraft:enchant.thorns.hit master @a ~ ~ ~ 1 1");
         npc.executeCommand("/particle droplet ~ ~ ~ 0.5 0.5 0.5 0.5 10 normal");
@@ -24,7 +25,14 @@ function tick(event) {
 
     if (npc.getMotionY() > -0.1 && npc.getMotionY() < 0) {
         npc.executeCommand("/playsound minecraft:entity.slime.squish master @a ~ ~ ~ 1 1");
-        npc.setMotionY(1);
+
+        var randomMotion = Math.random() * 0.25 + 0.75;
+        var randomMotionX = (Math.random() - 0.5) * 0.2;
+        var randomMotionZ = (Math.random() - 0.5) * 0.2;
+
+        npc.setMotionY(randomMotion);
+        npc.setMotionX(randomMotionX);
+        npc.setMotionZ(randomMotionZ);
     }
 }
 
@@ -39,9 +47,13 @@ function interact(event) {
         npc.executeCommand("/playsound minecraft:block.note.bell master @a ~ ~ ~ 1 1");
         var items = pullLootTable(_LOOTTABLE_FISH, player);
         for (var i = 0; i < items.length; i++) {
-            player.dropItem(
-                generateItemStackFromLootEntry(items[i], world, player)
-            );
+            var itemStack = generateItemStackFromLootEntry(items[i], world, player);
+
+            // Set custom name to the item
+            var customName = "§rFish";
+            itemStack.setCustomName(customName);
+
+            player.dropItem(itemStack);
         }
         npc.despawn();
     }
@@ -58,6 +70,7 @@ function getRandomSkin() {
 
 function regenerateFish(npc) {
     tickCount = 0;
+    lifespan = Math.floor(Math.random() * 7) + 16;
     npc.getDisplay().setSkinUrl(getRandomSkin());
     var randomScale = pickFromArray([1,2]);
     npc.getDisplay().setSize(randomScale);
