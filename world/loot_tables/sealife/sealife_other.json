@@ -6,67 +6,67 @@
                 {
                     "name": "harvestcraft:calamarirawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "name": "harvestcraft:clamrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "name": "harvestcraft:crabrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "name": "harvestcraft:crayfishrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 8
                 },
                 {
                     "name": "harvestcraft:frograwitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 4
                 },
                 {
                     "name": "harvestcraft:jellyfishrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 2
                 },
                 {
                     "name": "harvestcraft:musselrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "name": "harvestcraft:octopusrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 3
                 },
                 {
                     "name": "harvestcraft:oysterrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "name": "harvestcraft:scalloprawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "name": "harvestcraft:shrimprawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "name": "harvestcraft:snailrawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 6
                 },
                 {
                     "name": "harvestcraft:turtlerawitem",
                     "type": "item",
-                    "weight": 5
+                    "weight": 1
                 }
             ]
         }
