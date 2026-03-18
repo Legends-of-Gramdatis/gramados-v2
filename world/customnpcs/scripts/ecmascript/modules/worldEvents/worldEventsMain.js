@@ -7,7 +7,8 @@ load("world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js
 
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/toll_sounds.js");
 
-load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2025/susBoxEvent.js");
+// load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2025/susBoxEvent.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/easter/easterEggHuntEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/spooktober/spooktoberEvent.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/christmas/christmasElfEvent.js");
@@ -51,13 +52,13 @@ function isPlayerInEarlyOnboarding(player) {
  * Triggered when an entity dies. Cleans up "Sus Box" entities on April 1st.
  * @param {Object} e - The event object containing information about the death event.
  */
-function died(e) {
-    if (isEventActive("April Fools")) {
-        susbox_cleanup(e);
-        var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
-        logToFile("events", logline);
-    }
-}
+// function died(e) {
+//     if (isEventActive("April Fools")) {
+//         susbox_cleanup(e);
+//         var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
+//         logToFile("events", logline);
+//     }
+// }
 
 /**
  * Initializes the script, resetting counters or performing setup tasks.
@@ -171,11 +172,11 @@ function getRandomSpawnInterval() {
  */
 function logout(e) {
 
-    if (isEventActive("April Fools")) {
-        susbox_cleanup(e);
-        var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
-        logToFile("events", logline);
-    }
+    // if (isEventActive("April Fools")) {
+    //     susbox_cleanup(e);
+    //     var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
+    //     logToFile("events", logline);
+    // }
 
     if (isEventActive("Christmas")) {
         christmas_onPlayerLogout(e.player);
@@ -200,7 +201,7 @@ function playerJoin(e) {
         }
     }
 
-    if (isEventActive("Easter Egg Hunt") || player.getName() == "TheOddlySeagull") {
+    if (isEventActive("Easter Egg Hunt")) {
         var player = e.player;
         var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
     }
