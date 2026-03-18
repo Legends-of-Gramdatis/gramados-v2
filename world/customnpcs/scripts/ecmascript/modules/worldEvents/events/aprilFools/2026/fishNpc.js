@@ -26,7 +26,7 @@ function tick(event) {
     if (npc.getMotionY() > -0.1 && npc.getMotionY() < 0) {
         npc.executeCommand("/playsound minecraft:entity.slime.squish master @a ~ ~ ~ 1 1");
 
-        var randomMotion = Math.random() * 0.25 + 0.75;
+        var randomMotion = Math.random() * 0.25 + 0.5;
         var randomMotionX = (Math.random() - 0.5) * 0.2;
         var randomMotionZ = (Math.random() - 0.5) * 0.2;
 
@@ -52,6 +52,14 @@ function interact(event) {
             // Set custom name to the item
             var customName = "§rFish";
             itemStack.setCustomName(customName);
+
+            if (Math.random() < 0.2) {
+                var nbt = itemStack.getItemNbt();
+                var tag = nbt.getCompound("tag");
+                tag.setBoolean("is_modifier", true);
+                nbt.setCompound("tag", tag);
+                itemStack.setLore(["§7This fish has mysterious properties..."]);
+            }
 
             player.dropItem(itemStack);
         }
