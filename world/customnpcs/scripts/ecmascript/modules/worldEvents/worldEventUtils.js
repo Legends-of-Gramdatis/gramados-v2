@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 var allEventConfig = loadEventConfig();
+var DEBUG_MODE = false;
 
 
 /**
@@ -66,6 +67,9 @@ function savePlayerEventData(event_name, player_name, data) {
  * @returns {boolean} - True if the current date is within the event range, false otherwise.
  */
 function isEventActive(eventName) {
+    if (DEBUG_MODE) {
+        return true;
+    }
     for (var i = 0; i < allEventConfig.events.length; i++) {
         var eventConfig = allEventConfig.events[i];
         if (isDateBetween(
@@ -85,6 +89,9 @@ function isEventActive(eventName) {
  * @returns {boolean} - True if any event is active, false otherwise.
  */
 function isAnyEventActive() {
+    if (DEBUG_MODE) {
+        return true;
+    }
     for (var i = 0; i < allEventConfig.events.length; i++) {
         var eventConfig = allEventConfig.events[i];
         if (isDateBetween(
