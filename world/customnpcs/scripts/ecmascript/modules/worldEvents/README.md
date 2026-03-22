@@ -8,6 +8,7 @@ This module implements a dynamic world events system for the Gramados modded Min
 - **Player Interaction**: Tracks player-specific event data and interactions.
 - **Dynamic Event Behavior**: Includes unique mechanics for each event, such as spawning entities, granting rewards, or engaging in boss fights.
 - **Logging and Persistence**: Logs event-related actions and persists player data across sessions.
+- **April Fools Variants**: Uses legacy Sus Box swarms for 2025 behavior and Fish Rain swarms for 2026+ behavior, including themed chat lines and spawn effects.
 
 ## Event Configuration
 

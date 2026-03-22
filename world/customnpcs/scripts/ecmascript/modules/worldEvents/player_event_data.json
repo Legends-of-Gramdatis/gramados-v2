@@ -2,7 +2,9 @@
     "April Fools": {
         "TheOddlySeagull": {
             "lastSpawnTime": 1743706663065,
-            "spawnInterval": 1764608
+            "spawnInterval": 1764608,
+            "playerLastSpawnTime": 1773866607896,
+            "playerSpawnIntervals": 429006
         },
         "BOTFerris": {
             "lastSpawnTime": 1743461895039,
@@ -255,9 +257,9 @@
     },
     "Spooktober": {
         "TheOddlySeagull": {
-            "playerLastSpawnTime": 1761862679738,
-            "ghostsSpawned": 1435,
-            "ghostsHunted": 202
+            "playerLastSpawnTime": 1773866255954,
+            "ghostsSpawned": 1443,
+            "ghostsHunted": 210
         },
         "oldbjorn": {
             "playerLastSpawnTime": 1761814729405,
