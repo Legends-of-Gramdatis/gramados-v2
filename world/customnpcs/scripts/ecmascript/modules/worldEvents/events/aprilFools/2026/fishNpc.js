@@ -46,6 +46,7 @@ function interact(event) {
     if (item.getName() == "minecraft:bucket") {
         npc.executeCommand("/playsound minecraft:block.note.bell master @a ~ ~ ~ 1 1");
         var items = pullLootTable(_LOOTTABLE_FISH, player);
+        logToFile("events", player.getName() + " caught a fish from the Fish Rain event!");
         for (var i = 0; i < items.length; i++) {
             var itemStack = generateItemStackFromLootEntry(items[i], world, player);
 
