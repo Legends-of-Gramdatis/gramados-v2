@@ -7,6 +7,9 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
+load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
@@ -22,7 +25,6 @@ var ForgeLoader = Java.type('net.minecraftforge.fml.common.Loader').instance();
 var EntityType = Java.type('noppes.npcs.api.constants.EntityType');
 var _TIMERS = [];
 var _RAWCODES = Object.keys(_RAWCOLORS).concat(Object.keys(_RAWEFFECTS));
-var CHAT_CMD_RGX = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/;
 var CHAT_CMD_RGX_G = /{[\s]*(?:([\w]+)[\s]*\:[\s]*([\w\W\/]+?)|\*)(?:[\s]*\|[\s]*([\w]+)[\s]*\:[\s]*([\w\W\/]+?[\s]*))?}/g;
 var _ENCHANTS = [];
 var CSTENCH_TAG = "CSTEnch";
@@ -1821,6 +1823,30 @@ var PluginAPI = {
 
 
 registerXCommands([
+    ['!event skip (eventname)', function (pl, args, data) {
+        if (!args.eventname) {
+            tellPlayer(pl, "&cPlease specify an event to skip.");
+            return false;
+        }
+        
+        var eventName = args.eventname;
+        
+        // Check if the event is active
+        if (!isEventActive(eventName)) {
+            tellPlayer(pl, "&c'" + eventName + "' is not currently active.");
+            return false;
+        }
+        
+        // Mark player as having skipped this event
+        setPlayerSkippedEvent(pl, eventName);
+        
+        tellPlayer(pl, "&a:check_mark: You've skipped the '" + eventName + "' event.");
+        logToFile("events", pl.getName() + " skipped the '" + eventName + "' event.");
+        
+        return true;
+    }, 'event.skip', [
+        { argname: 'eventname', type: 'string', minlen: 1, maxlen: 50 }
+    ]],
     ['!tutorial skip', function (pl, args, data) {
         return cst_onboarding_skipTutorialPhase(pl);
     }, 'tutorial.skip'],
