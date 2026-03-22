@@ -118,7 +118,7 @@ function tick(e) {
                 // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
                 var currentTime = new Date().getTime();
                 if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
-                    run_aprilfools_event(player);
+                    run_aprilfools_event(player, event_player_data);
                 }
             }
 
@@ -165,6 +165,10 @@ function getRandomSpawnInterval() {
     return (10 * 60 * 1000) + Math.floor(Math.random() * (20 * 60 * 1000)); // 10 to 30 minutes
 }
 
+function getRandomSpawnIntervalMinutes(minutes_min, minutes_max) {
+    return (minutes_min * 60 * 1000) + Math.floor(Math.random() * ((minutes_max - minutes_min) * 60 * 1000));
+}
+
 /**
  * Triggered when a player leaves the game. Saves their last spawn time and interval to a JSON file.
  * Also cleans up "Sus Box" entities near the player.
@@ -197,7 +201,7 @@ function playerJoin(e) {
         playerLastSpawnTime = event_player_data.playerLastSpawnTime;
         playerSpawnIntervals = event_player_data.playerSpawnIntervals;
         if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
-            run_aprilfools_event(player);
+            run_aprilfools_event(player, event_player_data);
         }
     }
 
