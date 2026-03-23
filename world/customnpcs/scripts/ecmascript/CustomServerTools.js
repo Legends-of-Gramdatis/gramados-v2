@@ -1881,7 +1881,7 @@ registerXCommands([
     ]],
     ['!event showSkipMessage <show>', function (pl, args, data) {
         var show = setShowSkipMessage(pl, args.show);
-        tellPlayer(pl, "&a:check_mark: Skip message " + (show ? "disabled" : "enabled") + ".");
+        tellPlayer(pl, "&a:check_mark: Skip message " + (show ? "enabled" : "disabled") + ".");
         return true;
     }, 'event.showSkipMessage', [
         {
