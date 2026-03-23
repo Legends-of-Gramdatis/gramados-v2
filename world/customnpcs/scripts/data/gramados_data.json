@@ -450,6 +450,7 @@
         "undoBtnText": "Undo",
         "refreshBtnText": "Refresh"
     },
+    "CHAT_CMD_RGX": "{[\\s]*(?:([\\w]+)[\\s]*\\:[\\s]*([\\w\\W\\/]+?)|\\*)(?:[\\s]*\\|[\\s]*([\\w]+)[\\s]*\\:[\\s]*([\\w\\W\\/]+?[\\s]*))?}",
     "_RAWCOLORS": {
         "0": "black",
         "1": "dark_blue",
