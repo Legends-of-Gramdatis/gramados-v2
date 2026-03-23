@@ -96,6 +96,22 @@ function isEventActive(eventName) {
 }
 
 /**
+ * Checks if an event is active for a specific player.
+ * The event must be active globally and not skipped by the player.
+ * @param {string} eventName - The name or ID of the event.
+ * @param {IPlayer} player - The player to check against.
+ * @returns {boolean} - True if the event is active and not skipped by the player.
+ */
+function isEventActiveForPlayer(eventName, player) {
+    var eventID = nameToID(eventName);
+    if (!isEventActive(eventID)) {
+        return false;
+    }
+
+    return !hasPlayerSkippedEvent(player, eventID);
+}
+
+/**
  * Checks if any event is currently active.
  * @returns {boolean} - True if any event is active, false otherwise.
  */

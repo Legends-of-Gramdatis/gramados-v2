@@ -53,7 +53,7 @@ function isPlayerInEarlyOnboarding(player) {
  * @param {Object} e - The event object containing information about the death event.
  */
 // function died(e) {
-//     if (isEventActive("April Fools")) {
+//     if (isEventActiveForPlayer("April Fools", e.player)) {
 //         susbox_cleanup(e);
 //         var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
 //         logToFile("events", logline);
@@ -94,7 +94,7 @@ function init(e) {
             }
         }
 
-        if (isEventActive("Easter Egg Hunt")) {
+        if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
             spawnEasterStarterPack(player);
             resetToll();
         }
@@ -102,8 +102,8 @@ function init(e) {
 
     updateSkippersList();
 
-    if (isEventActive("Christmas")) {
-        christmas_onPlayerJoin(e.player);
+    if (isEventActiveForPlayer("Christmas", player)) {
+        christmas_onPlayerJoin(player);
     }
 }
 
@@ -126,7 +126,7 @@ function tick(e) {
             var playerName = player.getName();
             // var currentTime = new Date().getTime();		
 
-            if (isEventActive("April Fools")) {
+            if (isEventActiveForPlayer("April Fools", player)) {
                 var event_player_data = loadPlayerEventData("April Fools", playerName);
                 playerLastSpawnTime = event_player_data.playerLastSpawnTime;
                 playerSpawnIntervals = event_player_data.playerSpawnIntervals;
@@ -137,7 +137,7 @@ function tick(e) {
                 }
             }
 
-            if (isEventActive("Easter Egg Hunt")) {
+            if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
                 runToll(e);
 
                 if (everyHours(0)) {
@@ -153,7 +153,7 @@ function tick(e) {
                 }
             }
 
-            if (isEventActive("Spooktober")) {
+            if (isEventActiveForPlayer("Spooktober", player)) {
                 var playerName = player.getName();
                 var pdata = loadPlayerEventData("Spooktober", playerName);
                 var lastTime = pdata.playerLastSpawnTime || 0;
@@ -167,7 +167,7 @@ function tick(e) {
     }
     tick_counter++;
 
-    if (isEventActive("Christmas")) {
+    if (isEventActiveForPlayer("Christmas", player)) {
         christmas_tickFollow(player);
     }
 }
@@ -191,13 +191,13 @@ function getRandomSpawnIntervalMinutes(minutes_min, minutes_max) {
  */
 function logout(e) {
 
-    // if (isEventActive("April Fools")) {
+    // if (isEventActiveForPlayer("April Fools", e.player)) {
     //     susbox_cleanup(e);
     //     var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
     //     logToFile("events", logline);
     // }
 
-    if (isEventActive("Christmas")) {
+    if (isEventActiveForPlayer("Christmas", e.player)) {
         christmas_onPlayerLogout(e.player);
     }
 }
@@ -207,9 +207,9 @@ function logout(e) {
  * @param {Object} e - The event object containing information about the player joining.
  */
 function playerJoin(e) {
+    var player = e.player;
 
-    if (isEventActive("April Fools")) {
-        var player = e.player;
+    if (isEventActiveForPlayer("April Fools", player)) {
         var currentTime = new Date().getTime();
 
         var event_player_data = loadPlayerEventData("April Fools", player.getName());
@@ -220,8 +220,7 @@ function playerJoin(e) {
         }
     }
 
-    if (isEventActive("Easter Egg Hunt")) {
-        var player = e.player;
+    if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
         var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
     }
 }
