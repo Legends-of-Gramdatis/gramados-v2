@@ -85,11 +85,11 @@ function init(e) {
             tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &a" + activeEventsNames.join("&a, &r") + " &6&l[&e&lEvent&6&l]");
         }
 
-        // Show skip option for each active event the player hasn't skipped
         for (var i = 0; i < activeEvents.length; i++) {
             var eventID = activeEvents[i].id;
-            if (!hasPlayerSkippedEvent(player, eventID)) {
+            if (!hasPlayerSkippedEvent(player, eventID) && shouldShowSkipMessage(player)) {
                 var skipMessage = "&7If you don't want to participate in the '" + eventID + "' event, you can &9[Skip]{run_command:!event skip " + eventID + "|show_text:$aClick to skip the " + eventID + " event}&r &7this event.";
+                skipMessage += " &9[Hide]{run_command:!event showSkipMessage false|show_text:$aClick to stop seeing this message}&r";
                 tellPlayer(player, skipMessage);
             }
         }

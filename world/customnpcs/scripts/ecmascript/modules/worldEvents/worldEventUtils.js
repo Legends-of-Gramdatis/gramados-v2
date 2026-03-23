@@ -1,6 +1,8 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
@@ -159,21 +161,53 @@ function updateSkippersList() {
     }
 }
 
+function loadPlayerSpecificEventData(player_name) {
+    var all_data = loadJson(PLAYER_EVENT_DATA);
+    if (all_data.player_data[player_name]) {
+        return all_data.player_data[player_name];
+    } else {
+        return {};
+    }
+}
+
+function savePlayerSpecificEventData(player_name, data) {
+    var all_data = loadJson(PLAYER_EVENT_DATA);
+    all_data.player_data[player_name] = data;
+    saveJson(all_data, PLAYER_EVENT_DATA);
+}
+
+function hasPlayerSkippedEvent(player, eventID) {
+    var event_player_data = loadPlayerSpecificEventData(player.getName());
+    return includes(event_player_data.skipping_events, eventID);
+}
+
 function setPlayerSkippedEvent(player, EventName) {
-    var event_player_data = loadPlayerEventData(EventName, player.getName());
-    event_player_data.skipped = true;
-    savePlayerEventData(EventName, player.getName(), event_player_data);
+    var event_player_data = loadPlayerSpecificEventData(player.getName());
+    if (!includes(event_player_data.skipping_events, EventName)) {
+        event_player_data.skipping_events.push(EventName);
+        savePlayerSpecificEventData(player.getName(), event_player_data);
+    }
 }
 
-function hasPlayerSkippedEvent(player, EventName) {
-    var event_player_data = loadPlayerEventData(EventName, player.getName());
-    return event_player_data.skipped === true;
+function setPlayerParticipatingInEvent(player, eventID) {
+    var event_player_data = loadPlayerSpecificEventData(player.getName());
+    if (hasPlayerSkippedEvent(player, eventID)) {
+        array_remove(event_player_data.skipping_events, eventID);
+        savePlayerSpecificEventData(player.getName(), event_player_data);
+    }
 }
 
-function setPlayerParticipatingInEvent(player, EventName) {
-    var event_player_data = loadPlayerEventData(EventName, player.getName());
-    event_player_data.skipped = false;
-    savePlayerEventData(EventName, player.getName(), event_player_data);
+function setShowSkipMessage(player, show) {
+    show = (show.toLowerCase() === "true");
+    var event_player_data = loadPlayerSpecificEventData(player.getName());
+    event_player_data.show_skip_message = show;
+    savePlayerSpecificEventData(player.getName(), event_player_data);
+    return show;
+}
+
+function shouldShowSkipMessage(player) {
+    var event_player_data = loadPlayerSpecificEventData(player.getName());
+    return event_player_data.show_skip_message !== false; // Default to true if not set
 }
 
 

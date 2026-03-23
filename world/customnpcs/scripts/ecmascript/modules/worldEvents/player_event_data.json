@@ -300,5 +300,11 @@
         "Peter_Kitsune": {
             "elfDisabledUntil": 1766345648953
         }
+    },
+    "player_data": {
+        "TheOddlySeagull": {
+            "skipping_events": [],
+            "show_skip_message": false
+        }
     }
 }
