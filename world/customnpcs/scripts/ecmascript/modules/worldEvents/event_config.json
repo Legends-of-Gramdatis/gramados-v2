@@ -1,7 +1,8 @@
 {
     "events": [
         {
-            "name": "April Fools",
+            "id": "april_fools",
+            "name": ":fish:&d&lApril Fools&r:fish:",
             "startDate": {
                 "month": 2,
                 "day": 28
@@ -12,7 +13,8 @@
             }
         },
         {
-            "name": "Christmas",
+            "id": "christmas",
+            "name": "&c&lChristmas &2&lFestival &r:giftchest:",
             "startDate": {
                 "month": 11,
                 "day": 1
@@ -23,7 +25,8 @@
             }
         },
         {
-            "name": "Easter Egg Hunt",
+            "id": "easter_egg_hunt",
+            "name": "&e&lEaster Egg Hunt &r:egg:",
             "startDate": {
                 "month": 3,
                 "day": 14
@@ -34,7 +37,8 @@
             }
         },
         {
-            "name": "Easter Boss Fight",
+            "id": "easter_boss_fight",
+            "name": "&6&lEaster Boss Fight",
             "startDate": {
                 "month": 3,
                 "day": 21
@@ -45,7 +49,8 @@
             }
         },
         {
-            "name": "Spooktober",
+            "id": "spooktober",
+            "name": "&5&lSpooktober &r:ghost:",
             "startDate": {
                 "month": 9,
                 "day": 9
