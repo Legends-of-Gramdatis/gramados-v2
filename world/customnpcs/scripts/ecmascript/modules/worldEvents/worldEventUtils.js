@@ -61,6 +61,16 @@ function savePlayerEventData(event_name, player_name, data) {
     saveJson(all_data, PLAYER_EVENT_DATA);
 }
 
+function nameToID(name) {
+    for (var i = 0; i < allEventConfig.events.length; i++) {
+        var eventConfig = allEventConfig.events[i];
+        if (eventConfig.name === name) {
+            return eventConfig.id;
+        }
+    }
+    return name; // Return original name if not found
+}
+
 /**
  * Checks if the current date falls within the specified event's date range.
  * @param {string} eventName - The name of the event to check.
@@ -70,6 +80,7 @@ function isEventActive(eventName) {
     if (DEBUG_MODE) {
         return true;
     }
+    eventName = nameToID(eventName);
     for (var i = 0; i < allEventConfig.events.length; i++) {
         var eventConfig = allEventConfig.events[i];
         if (isDateBetween(
@@ -77,7 +88,7 @@ function isEventActive(eventName) {
             eventConfig.startDate.month,
             eventConfig.endDate.day,
             eventConfig.endDate.month
-        ) && eventConfig.name === eventName) {
+        ) && eventConfig.id === eventName) {
             return true;
         }
     }
@@ -107,6 +118,50 @@ function isAnyEventActive() {
 }
 
 /**
+ * Updates the list of players who have skipped events, clearing it for events that are no longer active.
+ */
+function updateSkippersList() {
+    for (var i = 0; i < allEventConfig.events.length; i++) {
+        var eventConfig = allEventConfig.events[i];
+        if (!isDateBetween(
+            eventConfig.startDate.day,
+            eventConfig.startDate.month,
+            eventConfig.endDate.day,
+            eventConfig.endDate.month
+        )) {
+            // Event is not active, clear skippers list
+            var all_data = loadJson(PLAYER_EVENT_DATA);
+            if (all_data[eventConfig.name]) {
+                for (var playerName in all_data[eventConfig.name]) {
+                    if (all_data[eventConfig.name][playerName].skipped) {
+                        all_data[eventConfig.name][playerName].skipped = false;
+                    }
+                }
+                saveJson(all_data, PLAYER_EVENT_DATA);
+            }
+        }
+    }
+}
+
+function setPlayerSkippedEvent(player, EventName) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    event_player_data.skipped = true;
+    savePlayerEventData(EventName, player.getName(), event_player_data);
+}
+
+function hasPlayerSkippedEvent(player, EventName) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    return event_player_data.skipped === true;
+}
+
+function setPlayerParticipatingInEvent(player, EventName) {
+    var event_player_data = loadPlayerEventData(EventName, player.getName());
+    event_player_data.skipped = false;
+    savePlayerEventData(EventName, player.getName(), event_player_data);
+}
+
+
+/**
  * Retrieves a list of currently active events.
  * @returns {Array<string>} - A list of active event names.
  */
@@ -120,7 +175,7 @@ function getActiveEventList() {
             eventConfig.endDate.day,
             eventConfig.endDate.month
         )) {
-            activeEvents.push(eventConfig.name);
+            activeEvents.push({ id: eventConfig.id, name: eventConfig.name });
         }
     }
     return activeEvents;

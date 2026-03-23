@@ -78,7 +78,20 @@ function init(e) {
     if (activeEvents.length > 0) {
 
         if (activeEvents.length > 0) {
-            tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &a" + activeEvents.join(", &a") + " &6&l[&e&lEvent&6&l]");
+            var activeEventsNames = [];
+            for (var i = 0; i < activeEvents.length; i++) {
+                activeEventsNames.push(activeEvents[i].name);
+            }
+            tellPlayer(player, "&6&l[&e&lEvent&6&l] &eActive Events: &a" + activeEventsNames.join("&a, &r") + " &6&l[&e&lEvent&6&l]");
+        }
+
+        // Show skip option for each active event the player hasn't skipped
+        for (var i = 0; i < activeEvents.length; i++) {
+            var eventID = activeEvents[i].id;
+            if (!hasPlayerSkippedEvent(player, eventID)) {
+                var skipMessage = "&7If you don't want to participate in the '" + eventID + "' event, you can &9[Skip]{run_command:!event skip " + eventID + "|show_text:$aClick to skip the " + eventID + " event}&r &7this event.";
+                tellPlayer(player, skipMessage);
+            }
         }
 
         if (isEventActive("Easter Egg Hunt")) {
@@ -86,6 +99,8 @@ function init(e) {
             resetToll();
         }
     }
+
+    updateSkippersList();
 
     if (isEventActive("Christmas")) {
         christmas_onPlayerJoin(e.player);
