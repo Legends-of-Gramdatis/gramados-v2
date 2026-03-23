@@ -1840,7 +1840,7 @@ registerXCommands([
         // Mark player as having skipped this event
         setPlayerSkippedEvent(pl, eventName);
         
-        tellPlayer(pl, "&a:check_mark: You've skipped the '" + eventName + "' event.");
+        tellPlayer(pl, "&a:check_mark: You've skipped the '" + eventName + "' event. &9[Undo]{run_command:!event participating " + eventName + "|show_text:$aClick to undo skip}&r");
         logToFile("events", pl.getName() + " skipped the '" + eventName + "' event.");
         
         return true;
@@ -1868,7 +1868,7 @@ registerXCommands([
         // Mark player as participating in this event
         setPlayerParticipatingInEvent(pl, eventName);
         
-        tellPlayer(pl, "&a:check_mark: You're now participating in the '" + eventName + "' event.");
+        tellPlayer(pl, "&a:check_mark: You're now participating in the '" + eventName + "' event. &9[Skip]{run_command:!event skip " + eventName + "|show_text:$aClick to skip}&r");
         logToFile("events", pl.getName() + " is now participating in the '" + eventName + "' event.");
         
         return true;
@@ -1879,6 +1879,18 @@ registerXCommands([
             "minlen": 1
         }
     ]],
+    ['!event showSkipMessage <show>', function (pl, args, data) {
+        var show = setShowSkipMessage(pl, args.show);
+        tellPlayer(pl, "&a:check_mark: Skip message " + (show ? "disabled" : "enabled") + ".");
+        return true;
+    }, 'event.showSkipMessage', [
+        {
+            "argname": "show",
+            "type": "bool",
+            "minlen": 1
+        }
+    ]],
+
     ['!tutorial skip', function (pl, args, data) {
         return cst_onboarding_skipTutorialPhase(pl);
     }, 'tutorial.skip'],
