@@ -2,7 +2,7 @@
     "events": [
         {
             "id": "april_fools",
-            "name": ":fish:&d&lApril Fools&r:fish:",
+            "name": "&r:fish:&d&lApril Fools&r:fish:",
             "startDate": {
                 "month": 2,
                 "day": 28
