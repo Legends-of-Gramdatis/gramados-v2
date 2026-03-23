@@ -1823,7 +1823,7 @@ var PluginAPI = {
 
 
 registerXCommands([
-    ['!event skip (eventname)', function (pl, args, data) {
+    ['!event skip <eventname>', function (pl, args, data) {
         if (!args.eventname) {
             tellPlayer(pl, "&cPlease specify an event to skip.");
             return false;
@@ -1845,7 +1845,39 @@ registerXCommands([
         
         return true;
     }, 'event.skip', [
-        { argname: 'eventname', type: 'string', minlen: 1, maxlen: 50 }
+        {
+            "argname": "eventname",
+            "type": "string",
+            "minlen": 1
+        }
+    ]],
+    ['!event participating <eventname>', function (pl, args, data) {
+        if (!args.eventname) {
+            tellPlayer(pl, "&cPlease specify an event name.");
+            return false;
+        }
+        
+        var eventName = args.eventname;
+        
+        // Check if the event is active
+        if (!isEventActive(eventName)) {
+            tellPlayer(pl, "&c'" + eventName + "' is not currently active.");
+            return false;
+        }
+        
+        // Mark player as participating in this event
+        setPlayerParticipatingInEvent(pl, eventName);
+        
+        tellPlayer(pl, "&a:check_mark: You're now participating in the '" + eventName + "' event.");
+        logToFile("events", pl.getName() + " is now participating in the '" + eventName + "' event.");
+        
+        return true;
+    }, 'event.participating', [
+        {
+            "argname": "eventname",
+            "type": "string",
+            "minlen": 1
+        }
     ]],
     ['!tutorial skip', function (pl, args, data) {
         return cst_onboarding_skipTutorialPhase(pl);
