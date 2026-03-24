@@ -20,7 +20,7 @@ function interact(event) {
         tellPlayer(player, "§e:sun: Old modifier item detected. Converting to new format...");
     }
 
-    var item = update_old_modifier_to_new(originalItem.copy());
+    var item = update_old_modifier_to_new(originalItem.copy(), player);
     item.setStackSize(1);
 
     var offItem = player.getOffhandItem();

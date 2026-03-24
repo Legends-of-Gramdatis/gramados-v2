@@ -218,7 +218,7 @@ function get_modifier_class(stack) {
     return null;
 }
 
-function update_old_modifier_to_new(stack) {
+function update_old_modifier_to_new(stack, player) {
     if (!is_old_modifier(stack)) {
         return stack;
     }
@@ -258,7 +258,9 @@ function update_old_modifier_to_new(stack) {
     tag.setBoolean("is_modifier", true);
     nbt.setCompound("tag", tag);
 
-    var newItem = stack.getWorld().createItemFromNbt(nbt);
+    var world = player.getWorld();
+    var newItem = world.createItemFromNbt(nbt);
+    tellPlayer(player, "§e:recycle: Debug: Updated old modifier item to new format with effect '" + legacyEffect + "' and repairs " + tag.getInteger("modifier_repairs"));
     return newItem;
 }
 
