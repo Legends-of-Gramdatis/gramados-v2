@@ -150,6 +150,11 @@ function switch_region() {
             helloPhrase: "Hello there! I'm the local stock exchange manager. I only deal with players who have the Monsalac Farmer job.",
             jobId: 211
         }
+    } else if (NPC_REGION == "Sealife Fishing") {
+        region_specifics = {
+            helloPhrase: "Hello there! I'm the local stock exchange manager for Sealife Fishing deliveries.",
+            jobId: 0
+        }
     } else {
         region_specifics = {
             helloPhrase: "I am currently not set up to trade in any region. Call the admin to set me up.",
@@ -180,7 +185,7 @@ function interact(event) {
         }
     } else {
 
-        if (!player.hasReadDialog(region_specifics.jobId)) {
+        if (region_specifics.jobId !== 0 && !player.hasReadDialog(region_specifics.jobId)) {
             npc.say(region_specifics.helloPhrase);
             return;
         }

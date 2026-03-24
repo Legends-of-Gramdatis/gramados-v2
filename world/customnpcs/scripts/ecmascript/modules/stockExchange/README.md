@@ -41,10 +41,14 @@ This module implements a dynamic stock exchange system for the Gramados modded M
    - Players deliver items in crates or barrels to NPCs.
    - The system calculates earnings based on item prices and regional bonuses.
 
-2. **Variety Bonus**:
+2. **Access Rules by Region**:
+    - Regions can require a job dialog ID (`jobId`) before a player can sell.
+    - Setting `jobId` to `0` acts as a wildcard and allows anyone to use that regional market.
+
+3. **Variety Bonus**:
    - Selling diverse items in a single delivery may yield higher earnings in certain regions.
 
-3. **Domain Reputation**:
+4. **Domain Reputation**:
    - For aged products (e.g., wine), domain reputation and aging time affect the final price.
 
 ### Bulk Sales
