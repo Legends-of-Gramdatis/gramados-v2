@@ -302,9 +302,5 @@
         }
     },
     "player_data": {
-        "TheOddlySeagull": {
-            "skipping_events": [],
-            "show_skip_message": false
-        }
     }
 }
