@@ -8,6 +8,23 @@ var MODIFIERS_CFG_PATH = "world/customnpcs/scripts/ecmascript/modules/modifiers/
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
+function replace_consumed_orb(player, originalItem, replacementItem) {
+    var originalSize = originalItem.getStackSize();
+    replacementItem.setStackSize(1);
+
+    if (originalSize <= 1) {
+        player.setMainhandItem(replacementItem);
+        return;
+    }
+
+    originalItem.setStackSize(originalSize - 1);
+    player.setMainhandItem(originalItem);
+
+    if (!player.giveItem(replacementItem)) {
+        player.dropItem(replacementItem);
+    }
+}
+
 function interact(event) {
     var player = event.player;
     var originalItem = player.getMainhandItem();
@@ -190,13 +207,8 @@ function interact(event) {
                 ccs("&7Next token use count: §e" + (tag.getInteger("modifier_repairs")))
             ];
             usedItemStack.setLore(new_lore);
-            
-            originalItem.setStackSize(originalItem.getStackSize() - 1);
-            player.setMainhandItem(originalItem);
 
-            if (!player.giveItem(usedItemStack)) {
-                player.dropItem(usedItemStack);
-            }
+            replace_consumed_orb(player, originalItem, usedItemStack);
             
             var command = "/playsound customnpcs:magic.shot player @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
             API.executeCommand(player.getWorld(), command);
@@ -292,15 +304,8 @@ function interact(event) {
 
             var modifierType = tag.getString('modifier_effect');
             logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=passive type="' + modifierType + '" costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
-            
-            // Reduce original stack and update mainhand
-            originalItem.setStackSize(originalItem.getStackSize() - 1);
-            player.setMainhandItem(originalItem);
-            
-            // Give the repaired orb to player
-            if (!player.giveItem(repairedOrb)) {
-                player.dropItem(repairedOrb);
-            }
+
+            replace_consumed_orb(player, originalItem, repairedOrb);
 
             return;
         }
@@ -346,13 +351,8 @@ function interact(event) {
                 ccs("&7Next token use count: §e" + (tag.getInteger("modifier_repairs")))
             ];
             usedItemStack.setLore(new_lore);
-            
-            originalItem.setStackSize(originalItem.getStackSize() - 1);
-            player.setMainhandItem(originalItem);
-            
-            if (!player.giveItem(usedItemStack)) {
-                player.dropItem(usedItemStack);
-            }
+
+            replace_consumed_orb(player, originalItem, usedItemStack);
             
             var command = "/playsound customnpcs:magic.shot player @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
             API.executeCommand(player.getWorld(), command);
@@ -443,15 +443,8 @@ function interact(event) {
             var modifierType = tag.getString('modifier_effect');
             var radius = tag.getInteger('modifier_radius');
             logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
-            
-            // Reduce original stack and update mainhand
-            originalItem.setStackSize(originalItem.getStackSize() - 1);
-            player.setMainhandItem(originalItem);
-            
-            // Give the repaired orb to player
-            if (!player.giveItem(repairedOrb)) {
-                player.dropItem(repairedOrb);
-            }
+
+            replace_consumed_orb(player, originalItem, repairedOrb);
 
             return;
         }
