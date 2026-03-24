@@ -1115,7 +1115,7 @@
     },
     "harvestcraft:frograwitem:0": {
         "display_name": "Frog",
-        "value": 1100,
+        "value": 110,
         "allow_market_override": true,
         "based_on_stock": "Sealife Fishing"
     },
@@ -1151,7 +1151,7 @@
     },
     "harvestcraft:shrimprawitem:0": {
         "display_name": "Shrimp",
-        "value": 420,
+        "value": 42,
         "allow_market_override": true,
         "based_on_stock": "Sealife Fishing"
     },
