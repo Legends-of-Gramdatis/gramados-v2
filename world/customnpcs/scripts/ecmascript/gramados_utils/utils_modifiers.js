@@ -31,7 +31,7 @@ var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_mo
  * @param {string} modifierEffect Modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured modifier.
  */
-function instanciate_active_modifier(player, stack, modifierEffect, silent) {
+function instanciate_active_modifier(player, stack, modifierEffect) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
@@ -45,9 +45,6 @@ function instanciate_active_modifier(player, stack, modifierEffect, silent) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
     var entry = findJsonEntryArray(config_data.modifiers, "type", modifierEffect);
-    if (silent !== true) {
-        tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierEffect + "': " + JSON.stringify(entry));
-    }
 
     tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("modifier_radius", entry.radius);
@@ -87,7 +84,7 @@ function instanciate_active_modifier(player, stack, modifierEffect, silent) {
  * @param {string} modifierEffect Passive modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured passive modifier orb.
  */
-function instanciate_passive_modifier(player, stack, modifierEffect, silent) {
+function instanciate_passive_modifier(player, stack, modifierEffect) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
@@ -102,9 +99,6 @@ function instanciate_passive_modifier(player, stack, modifierEffect, silent) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
     var entry = findJsonEntryArray(config_data.passive_modifiers, "type", modifierEffect);
-    if (silent !== true) {
-        tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierEffect + "': " + JSON.stringify(entry));
-    }
     
     tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("duration_minutes", entry.durationMinutes);
@@ -260,7 +254,6 @@ function update_old_modifier_to_new(stack, player) {
 
     var world = player.getWorld();
     var newItem = world.createItemFromNbt(nbt);
-    tellPlayer(player, "§e:recycle: Debug: Updated old modifier item to new format with effect '" + legacyEffect + "' and repairs " + tag.getInteger("modifier_repairs"));
     return newItem;
 }
 

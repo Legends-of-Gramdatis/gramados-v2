@@ -120,14 +120,14 @@ function interact(event) {
                     var written = 0;
                     var outSlot = 0;
                     for (var at = 0; at < activeTypes.length && outSlot < slotCount; at++) {
-                        var orbA = instanciate_active_modifier(player, item, activeTypes[at], true);
+                        var orbA = instanciate_active_modifier(player, item, activeTypes[at]);
                         if (orbA && typeof orbA.setStackSize === 'function') orbA.setStackSize(1);
                         container.setSlot(outSlot, orbA);
                         written++;
                         outSlot++;
                     }
                     for (var pt = 0; pt < passiveTypes.length && outSlot < slotCount; pt++) {
-                        var orbP = instanciate_passive_modifier(player, item, passiveTypes[pt], true);
+                        var orbP = instanciate_passive_modifier(player, item, passiveTypes[pt]);
                         if (orbP && typeof orbP.setStackSize === 'function') orbP.setStackSize(1);
                         container.setSlot(outSlot, orbP);
                         written++;
