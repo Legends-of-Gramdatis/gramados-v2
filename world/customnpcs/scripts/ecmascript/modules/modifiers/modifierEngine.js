@@ -16,14 +16,18 @@ function interact(event) {
         return;
     }
 
-    var item = originalItem.copy();
+    if (is_old_modifier(originalItem)) {
+        tellPlayer(player, "§e:sun: Old modifier item detected. Converting to new format...");
+    }
+
+    var item = update_old_modifier_to_new(originalItem.copy());
     item.setStackSize(1);
 
     var offItem = player.getOffhandItem();
 
     // Admin setup: with Seagull ID Card in offhand, use a name tag in a chest to create an orb.
     // The name tag display name must match either an active modifier `type` or a passive modifier `type`.
-    if (!offItem.isEmpty() && offItem.getName() == "mts:ivv.idcard_seagull" && !has_active_modifier_tag(item) && !has_passive_modifier_tag(item)) {
+    if (!offItem.isEmpty() && offItem.getName() == "mts:ivv.idcard_seagull" && !is_modifier_active(item) && !is_modifier_passive(item)) {
         var trace = player.rayTraceBlock(5, true, false);
         var block = trace.getBlock();
         if (block.getName() == "minecraft:chest") {
@@ -146,15 +150,16 @@ function interact(event) {
     }
 
     // Using a modifier orb
-    if (has_passive_modifier_tag(item)) {
+    if (is_modifier_passive(item)) {
         var trace = player.rayTraceBlock(5, true, false);
         var block = trace.getBlock();
         var nbt = item.getItemNbt();
         var tag = nbt.getCompound("tag");
+        var isBroken = tag.getBoolean("is_broken");
 
         // Using a passive modifier
-        if (is_passive_modifier_item(item) && block.getName() == "minecraft:air") {
-            var modifierType = tag.getString("passive_modifier_type");
+        if (!isBroken && block.getName() == "minecraft:air") {
+            var modifierType = tag.getString("modifier_effect");
             var time_in_minutes = tag.getInteger("duration_minutes");
 
             var applied = apply_passive_modifier_type(player, modifierType);
@@ -165,11 +170,11 @@ function interact(event) {
 
             tellPlayer(player, "§a:sun: Passive modifier activated: §f" + get_modifier_display_name(modifierType) + "§a (§e" + time_in_minutes + "m§a)");
 
-            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=passive type="' + modifierType + '" durationMinutes=' + time_in_minutes + ' nextRepairCostTokens=' + tag.getInteger('repairs'));
+            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=passive type="' + modifierType + '" durationMinutes=' + time_in_minutes + ' nextRepairCostTokens=' + tag.getInteger('modifier_repairs'));
             
             // Modify cloned item, reduce original stack, give modified item
             item.setStackSize(1);
-            tag.setBoolean("is_passive_modifier", false);
+            tag.setBoolean("is_broken", true);
             nbt.setCompound("tag", tag);
             var usedItem = loadJson(MODIFIERS_CFG_PATH).items.usedItemId;
             nbt.setString("id", usedItem);
@@ -182,7 +187,7 @@ function interact(event) {
                 curr_lore[1],
                 ccs("&8This modifier has been used and needs to be recharged."),
                 ccs("&6Use the orb on a chest with §dArcade Token §6inside to recharge it."),
-                ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
+                ccs("&7Next token use count: §e" + (tag.getInteger("modifier_repairs")))
             ];
             usedItemStack.setLore(new_lore);
             
@@ -197,7 +202,7 @@ function interact(event) {
             API.executeCommand(player.getWorld(), command);
 
             return;
-        } else if (!is_passive_modifier_item(item)) {
+        } else if (isBroken) {
             if (block.getName() == "minecraft:chest") {
                 var container = block.getContainer();
             } else {
@@ -235,7 +240,7 @@ function interact(event) {
             }
 
             // Use one token to recharge
-            var required_tokens = tag.getInteger("repairs");
+            var required_tokens = tag.getInteger("modifier_repairs");
             var needed_tokens = required_tokens;
             if (tokens_counted < required_tokens) {
                 // tellPlayer(player, "§e:recycle: Debug: Not enough arcade tokens to recharge the modifier. Needed: " + required_tokens + ", found: " + tokens_counted);
@@ -275,7 +280,7 @@ function interact(event) {
 
             var repairedNbt = repairedOrb.getItemNbt();
             var repairedTag = repairedNbt.getCompound('tag');
-            var repairsTotal = repairedTag.getInteger('repairs');
+            var repairsTotal = repairedTag.getInteger('modifier_repairs');
 
             var curr_lore = item.getLore();
             var new_lore = [
@@ -285,7 +290,7 @@ function interact(event) {
             ];
             repairedOrb.setLore(new_lore);
 
-            var modifierType = tag.getString('passive_modifier_type');
+            var modifierType = tag.getString('modifier_effect');
             logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=passive type="' + modifierType + '" costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
             
             // Reduce original stack and update mainhand
@@ -301,15 +306,16 @@ function interact(event) {
         }
     }
 
-    if (has_active_modifier_tag(item)) {
+    if (is_modifier_active(item)) {
         var trace = player.rayTraceBlock(5, true, false);
         var block = trace.getBlock();
         var nbt = item.getItemNbt();
         var tag = nbt.getCompound("tag");
-        if (is_active_modifier_item(item) && block.getName() == "minecraft:air") {
-            var modifierType = tag.getString("modifier_type");
+        var isBroken = tag.getBoolean("is_broken");
+        if (!isBroken && block.getName() == "minecraft:air") {
+            var modifierType = tag.getString("modifier_effect");
             var radius = tag.getInteger("modifier_radius");
-            tag.setBoolean("is_modifier", false);
+            tag.setBoolean("is_broken", true);
             nbt.setCompound("tag", tag);
 
             // tellPlayer(player, "§a:recycle: Debug: Applying modifier of type '" + modifierType + "' with radius " + radius);
@@ -321,11 +327,10 @@ function interact(event) {
                 tellPlayer(player, "§a:sun: Orb activated: §f" + get_modifier_display_name(modifierType) + "§a (in a radius of §e" + radius + "§a).");
             }
 
-            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' nextRepairCostTokens=' + tag.getInteger('repairs'));
+            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' nextRepairCostTokens=' + tag.getInteger('modifier_repairs'));
 
             // Modify cloned item, reduce original stack, give modified item
             item.setStackSize(1);
-            tag.setBoolean("is_modifier", false);
             nbt.setCompound("tag", tag);
             var usedItem = loadJson(MODIFIERS_CFG_PATH).items.usedItemId;
             nbt.setString("id", usedItem);
@@ -338,7 +343,7 @@ function interact(event) {
                 curr_lore[1],
                 ccs("&8This modifier has been used and needs to be recharged."),
                 ccs("&6Use the orb on a chest with §dArcade Token §6inside to recharge it."),
-                ccs("&7Next token use count: §e" + (tag.getInteger("repairs")))
+                ccs("&7Next token use count: §e" + (tag.getInteger("modifier_repairs")))
             ];
             usedItemStack.setLore(new_lore);
             
@@ -353,7 +358,7 @@ function interact(event) {
             API.executeCommand(player.getWorld(), command);
 
             return;
-        } else if (!is_active_modifier_item(item)) {
+        } else if (isBroken) {
             if (block.getName() == "minecraft:chest") {
                 var container = block.getContainer();
             } else {
@@ -386,7 +391,7 @@ function interact(event) {
             }
 
             // Use one token to recharge
-            var required_tokens = tag.getInteger("repairs");
+            var required_tokens = tag.getInteger("modifier_repairs");
             var needed_tokens = required_tokens;
             if (tokens_counted < required_tokens) {
                 tellPlayer(player, "§c:cross_mark: Not enough §dArcade Tokens§c (need §e" + required_tokens + "§c, found §e" + tokens_counted + "§c). ");
@@ -425,7 +430,7 @@ function interact(event) {
 
             var repairedNbt = repairedOrb.getItemNbt();
             var repairedTag = repairedNbt.getCompound('tag');
-            var repairsTotal = repairedTag.getInteger('repairs');
+            var repairsTotal = repairedTag.getInteger('modifier_repairs');
 
             var curr_lore = item.getLore();
             var new_lore = [
@@ -435,7 +440,7 @@ function interact(event) {
             ];
             repairedOrb.setLore(new_lore);
 
-            var modifierType = tag.getString('modifier_type');
+            var modifierType = tag.getString('modifier_effect');
             var radius = tag.getInteger('modifier_radius');
             logToFile('modifiers', '[modifiers.repair] player=' + player.getName() + ' kind=active type="' + modifierType + '" radius=' + radius + ' costTokens=' + required_tokens + ' repairsTotal=' + repairsTotal);
             

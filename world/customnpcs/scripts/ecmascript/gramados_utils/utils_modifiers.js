@@ -28,23 +28,28 @@ var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_mo
  *
  * @param {IPlayer} player Player used for world/NBT creation and debug output.
  * @param {IItemStack} stack Base item stack to clone and convert.
- * @param {string} modifierType Modifier `type` to resolve from `modifiers_config.json`.
+ * @param {string} modifierEffect Modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured modifier.
  */
-function instanciate_active_modifier(player, stack, modifierType, silent) {
+function instanciate_active_modifier(player, stack, modifierEffect, silent) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
     tag.setBoolean("is_modifier", true);
+    tag.setString("modifier_class", "orb");
+    tag.setString("modifier_type", "active");
+    tag.setString("modifier_use", "unlimited-use");
+    tag.setInteger("modifier_repairs", 0);
+    tag.setBoolean("is_broken", false);
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(config_data.modifiers, "type", modifierEffect);
     if (silent !== true) {
-        tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierType + "': " + JSON.stringify(entry));
+        tellPlayer(player, "§e:recycle: Debug: Entry for active modifier type '" + modifierEffect + "': " + JSON.stringify(entry));
     }
 
-    tag.setString("modifier_type", modifierType);
+    tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("modifier_radius", entry.radius);
 
     nbt.setCompound("tag", tag);
@@ -70,8 +75,8 @@ function instanciate_active_modifier(player, stack, modifierType, silent) {
  * `PASSIVE_MODIFIERS_DATA_PATH` via `apply_passive_modifier_type`.
  *
  * The passive modifier metadata is stored in the item NBT under `tag`:
- * - `is_passive_modifier` (boolean): marker for passive modifier items
- * - `passive_modifier_type` (string): the configured passive modifier type
+ * - `is_modifier` (boolean): marker for modifier items
+ * - `modifier_type` (string): the configured modifier type
  *
  * Configuration source:
  * - `items.itemId` (replaces the item id)
@@ -79,23 +84,29 @@ function instanciate_active_modifier(player, stack, modifierType, silent) {
  *
  * @param {IPlayer} player Player used for world/NBT creation and debug output.
  * @param {IItemStack} stack Base item stack to clone and convert.
- * @param {string} modifierType Passive modifier `type` to resolve from `modifiers_config.json`.
+ * @param {string} modifierEffect Passive modifier `type` to resolve from `modifiers_config.json`.
  * @returns {IItemStack} A new item stack representing the configured passive modifier orb.
  */
-function instanciate_passive_modifier(player, stack, modifierType, silent) {
+function instanciate_passive_modifier(player, stack, modifierEffect, silent) {
     var stackClone = stack.copy();
     var nbt = stackClone.getItemNbt();
     var tag = nbt.getCompound("tag");
-    tag.setBoolean("is_passive_modifier", true);
+    tag.setBoolean("is_modifier", true);
+    tag.setString("modifier_class", "orb");
+    tag.setString("modifier_type", "passive");
+    tag.setString("modifier_use", "unlimited-use");
+    tag.setInteger("modifier_repairs", 0);
+    tag.setBoolean("is_broken", false);
+
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.passive_modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(config_data.passive_modifiers, "type", modifierEffect);
     if (silent !== true) {
-        tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierType + "': " + JSON.stringify(entry));
+        tellPlayer(player, "§e:recycle: Debug: Entry for passive modifier type '" + modifierEffect + "': " + JSON.stringify(entry));
     }
     
-    tag.setString("passive_modifier_type", modifierType);
+    tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("duration_minutes", entry.durationMinutes);
 
     nbt.setCompound("tag", tag);
@@ -117,12 +128,53 @@ function instanciate_passive_modifier(player, stack, modifierType, silent) {
  * Checks whether an item stack contains this module's modifier marker.
  *
  * Note: This only checks for presence of `tag.is_modifier`, not whether it is active.
- * Use `is_active_modifier_item` to check if the orb is currently usable.
+ * Use `is_modifier_active` to check if the orb is currently usable.
  *
  * @param {IItemStack} stack Item stack to inspect.
  * @returns {boolean} True if the stack has a `tag.is_modifier` key.
  */
-function has_active_modifier_tag(stack) {
+function is_modifier_active(stack) {
+
+    if (!is_modifier(stack)) {
+        return false;
+    }
+
+    var nbt = stack.getItemNbt();
+    var compound = nbt.getCompound("tag");
+
+    return compound.getString("modifier_type") === "active";
+}
+
+/**
+ * Checks whether an item stack contains this module's passive modifier marker.
+ *
+ * @param {IItemStack} stack Item stack to inspect.
+ * @returns {boolean} True if `tag.modifier_type` is `passive`.
+ */
+function is_modifier_passive(stack) {
+    
+    if (!is_modifier(stack)) {
+        return false;
+    }
+
+    var nbt = stack.getItemNbt();
+    var compound = nbt.getCompound("tag");
+
+    return compound.getString("modifier_type") === "passive";
+}
+
+function is_modifier_an_orb(stack) {
+    if (!is_modifier(stack)) {
+        return false;
+    }
+
+    var nbt = stack.getItemNbt();
+    var compound = nbt.getCompound("tag");
+
+    return compound.getString("modifier_class") === "orb";
+}
+
+function is_modifier(stack) {
     var nbt = stack.getItemNbt();
     if (stack.isEmpty()) {
         return false;
@@ -133,20 +185,10 @@ function has_active_modifier_tag(stack) {
     }
 
     var compound = nbt.getCompound("tag");
-    if (!compound.has("is_modifier")) {
-        return false;
-    }
-
-    return true;
+    return compound.has("is_modifier");
 }
 
-/**
- * Checks whether an item stack contains this module's passive modifier marker.
- *
- * @param {IItemStack} stack Item stack to inspect.
- * @returns {boolean} True if the stack has a `tag.is_passive_modifier` key.
- */
-function has_passive_modifier_tag(stack) {
+function is_old_modifier(stack) {
     if (!stack || stack.isEmpty()) {
         return false;
     }
@@ -157,40 +199,67 @@ function has_passive_modifier_tag(stack) {
     }
 
     var compound = nbt.getCompound("tag");
-    return compound.has("is_passive_modifier");
+    var has_a_modifier_tag = compound.has("is_passive_modifier") || compound.has("is_modifier");
+    var has_a_modifier_class = get_modifier_class(stack) !== null;
+    return has_a_modifier_tag && !has_a_modifier_class;
 }
 
-/**
- * Checks whether an item is an active (usable) modifier item.
- *
- * Active means `tag.is_modifier === true`.
- * Used/depleted modifiers should have the marker but with `is_modifier === false`.
- *
- * @param {IItemStack} stack Item stack to inspect.
- * @returns {boolean} True if the modifier marker exists and is active.
- */
-function is_active_modifier_item(stack) {
-    if (has_active_modifier_tag(stack)) {
-        var nbt = stack.getItemNbt();
-        var compound = nbt.getCompound("tag");
-        return compound.getBoolean("is_modifier");
+function get_modifier_class(stack) {
+    if (!is_modifier(stack)) {
+        return null;
     }
-    return false;
-}
 
-/**
- * Checks whether an item stack is a passive modifier orb.
- *
- * @param {IItemStack} stack Item stack to inspect.
- * @returns {boolean} True if the passive marker exists and is set to true.
- */
-function is_passive_modifier_item(stack) {
-    if (!has_passive_modifier_tag(stack)) {
-        return false;
-    }
     var nbt = stack.getItemNbt();
     var compound = nbt.getCompound("tag");
-    return compound.getBoolean("is_passive_modifier");
+
+    if (compound.has("modifier_class")) {
+        return compound.getString("modifier_class");
+    }
+    return null;
+}
+
+function update_old_modifier_to_new(stack) {
+    if (!is_old_modifier(stack)) {
+        return stack;
+    }
+
+    var nbt = stack.getItemNbt();
+    var tag = nbt.getCompound("tag");
+    var legacyEffect = null;
+
+    if (tag.has("modifier_type")) {
+        legacyEffect = tag.getString("modifier_type");
+    } else if (tag.has("passive_modifier_type")) {
+        legacyEffect = tag.getString("passive_modifier_type");
+    }
+
+    if (tag.has("is_modifier")) {
+        tag.setString("modifier_type", "active");
+        tag.setBoolean("is_broken", !tag.getBoolean("is_modifier"));
+    } else if (tag.has("is_passive_modifier")) {
+        tag.setString("modifier_type", "passive");
+        tag.setBoolean("is_broken", !tag.getBoolean("is_passive_modifier"));
+    } else {
+        return stack;
+    }
+
+    if (legacyEffect !== null) {
+        tag.setString("modifier_effect", legacyEffect);
+    }
+
+    if (tag.has("repairs")) {
+        tag.setInteger("modifier_repairs", tag.getInteger("repairs"));
+    } else {
+        tag.setInteger("modifier_repairs", 0);
+    }
+
+    tag.setString("modifier_class", "orb");
+    tag.setString("modifier_use", "unlimited-use");
+    tag.setBoolean("is_modifier", true);
+    nbt.setCompound("tag", tag);
+
+    var newItem = stack.getWorld().createItemFromNbt(nbt);
+    return newItem;
 }
 
 
@@ -198,8 +267,8 @@ function is_passive_modifier_item(stack) {
  * "Repairs" a used modifier orb back into an active modifier orb.
  *
  * Side effects on NBT:
- * - sets `tag.is_modifier` to true
- * - increments `tag.repairs` (used to compute future recharge costs)
+ * - sets `tag.is_broken` to false
+ * - increments `tag.modifier_repairs` (used to compute future recharge costs)
  * - replaces item id with `items.itemId`
  *
  * @param {IPlayer} player Player used for world/NBT creation and debug output.
@@ -208,29 +277,36 @@ function is_passive_modifier_item(stack) {
  * @returns {IItemStack} A new item stack representing the repaired modifier.
  */
 function repair_modifier_item(player, stack) {
-    var stackClone = stack.copy();
-    var nbt = stackClone.getItemNbt();
-    var tag = nbt.getCompound("tag");
-    if (tag.has("modifier_type")) {
-        tag.setBoolean("is_modifier", true);
-        var itemName = get_modifier_display_name(tag.getString("modifier_type"));
-    } else {
-        tag.setBoolean("is_passive_modifier", true);
-        var itemName = get_modifier_display_name(tag.getString("passive_modifier_type"));
+
+    if (!is_modifier(stack)) {
+        return stack;
     }
+
+    var nbt = stack.getItemNbt();
+    var tag = nbt.getCompound("tag");
+
+    if (!tag.getBoolean("is_broken")) {
+        return stack;
+    }
+
+    tag.setBoolean("is_broken", false);
 
     var json_data = loadJson(MODIFIERS_CFG_PATH)
 
-    var repair_count = tag.getInteger("repairs") || 0;
+    var repair_count = tag.getInteger("modifier_repairs");
 
-    tag.setInteger("repairs", repair_count + 1);
+    tag.setInteger("modifier_repairs", repair_count + 1);
 
     nbt.setCompound("tag", tag);
-    nbt.setString("id", json_data.items.itemId);
+
+    if (is_modifier_an_orb(stack)) {
+        nbt.setString("id", json_data.items.itemId);
+    }
 
     var newItem = player.getWorld().createItemFromNbt(nbt);
+    var itemName = get_modifier_display_name(tag.getString("modifier_effect"));
 
-    newItem.setCustomName(parseEmotes(ccs(itemName)));
+    newItem.setCustomName(itemName);
 
     return newItem;
 }
@@ -243,16 +319,16 @@ function repair_modifier_item(player, stack) {
  * Most crop/farmland actions delegate to `utils_farm_crops`.
  *
  * @param {IPlayer} player The player used as the center point for the effect.
- * @param {string} modifierType Modifier `type` string (as configured in `modifiers_config.json`).
+ * @param {string} modifierEffect Modifier `type` string (as configured in `modifiers_config.json`).
  * @param {number} radius Effect radius in blocks.
  * @returns {*} The underlying handler's return value, or null if `modifierType` is unknown.
  */
-function apply_active_modifier_type(player, modifierType, radius) {
+function apply_active_modifier_type(player, modifierEffect, radius) {
 
     var world = player.getWorld();
     var pos = player.getPos();
 
-    switch (modifierType) {
+    switch (modifierEffect) {
         case "cattle pregnancy":
             return makeFieldCattlePregnant(player, radius);
         case "cattle gestation":
