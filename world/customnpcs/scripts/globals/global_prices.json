@@ -987,6 +987,186 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
     },
+    "harvestcraft:anchovyrawitem:0": {
+        "display_name": "Anchovy",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:bassrawitem:0": {
+        "display_name": "Bass",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:carprawitem:0": {
+        "display_name": "Carp",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:catfishrawitem:0": {
+        "display_name": "Catfish",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:charrrawitem:0": {
+        "display_name": "Char",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:eelrawitem:0": {
+        "display_name": "Eel",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:greenheartfishitem:0": {
+        "display_name": "Greenheart Fish",
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:grouperrawitem:0": {
+        "display_name": "Grouper",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:herringrawitem:0": {
+        "display_name": "Herring",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:mudfishrawitem:0": {
+        "display_name": "Mudfish",
+        "value": 920,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:perchrawitem:0": {
+        "display_name": "Perch",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:sardinerawitem:0": {
+        "display_name": "Sardine",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:snapperrawitem:0": {
+        "display_name": "Snapper",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:tilapiarawitem:0": {
+        "display_name": "Tilapia",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:troutrawitem:0": {
+        "display_name": "Trout",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:tunarawitem:0": {
+        "display_name": "Tuna",
+        "value": 1100,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:walleyerawitem:0": {
+        "display_name": "Walleye",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:calamarirawitem:0": {
+        "display_name": "Calamari",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:clamrawitem:0": {
+        "display_name": "Clam",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:crabrawitem:0": {
+        "display_name": "Crab",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:crayfishrawitem:0": {
+        "display_name": "Crayfish",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:frograwitem:0": {
+        "display_name": "Frog",
+        "value": 1100,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:jellyfishrawitem:0": {
+        "display_name": "Jellyfish",
+        "value": 1750,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:musselrawitem:0": {
+        "display_name": "Mussel",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:octopusrawitem:0": {
+        "display_name": "Octopus",
+        "value": 1450,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:oysterrawitem:0": {
+        "display_name": "Oyster",
+        "value": 680,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:scalloprawitem:0": {
+        "display_name": "Scallop",
+        "value": 680,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:shrimprawitem:0": {
+        "display_name": "Shrimp",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:snailrawitem:0": {
+        "display_name": "Snail",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:turtlerawitem:0": {
+        "display_name": "Turtle",
+        "value": 2600,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:fishsandwichitem:0": {
         "value": 600
     },
@@ -1735,6 +1915,30 @@
         "value": 500,
         "allow_market_override": true,
         "based_on_stock": "Farmiston"
+    },
+    "minecraft:clownfish:0": {
+        "display_name": "Clownfish",
+        "value": 1900,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "minecraft:cod:0": {
+        "display_name": "Cod",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "minecraft:pufferfish:0": {
+        "display_name": "Pufferfish",
+        "value": 2100,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "minecraft:salmon:0": {
+        "display_name": "Salmon",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "minecraft:clay:0": {
         "value": 250

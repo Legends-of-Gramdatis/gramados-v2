@@ -49,6 +49,11 @@
         "stock_flexibility": 1,
         "variety_bonus": 0.05
     },
+    "Sealife Fishing": {
+        "stock_multiplier": 1,
+        "stock_flexibility": 1,
+        "variety_bonus": 0.15
+    },
     "Monsalac Milk": {
         "stock_multiplier": 1,
         "stock_flexibility": 1,
