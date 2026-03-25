@@ -50,14 +50,16 @@ function interact(event) {
                 break;
             
             case "consumable":
-                // Placeholder for consumable modifiers that delete the item after running effect
-                tellPlayer(player, "§e:sun: Consumable modifier system not yet implemented.");
+                handle_consumable_modifier(event, player, item, originalItem);
                 break;
             
             default:
                 tellPlayer(player, "§c:sun: Unknown modifier class: " + modifierClass);
                 break;
         }
+    } else {
+        // Not a modifier item - no action, or potential future handling for modifier application items
+        tellPlayer(player, "§e:sun: This item is not a modifier.");
     }
 }
 
@@ -470,6 +472,41 @@ function handle_orb_modifier(event, player, item, originalItem) {
 
             return;
         }
+    }
+}
+
+function handle_consumable_modifier(event, player, item, originalItem) {
+    var trace = player.rayTraceBlock(5, true, false);
+    var block = trace.getBlock();
+    var nbt = item.getItemNbt();
+    var tag = nbt.getCompound("tag");
+
+    // Consumables apply effects on air blocks (like active modifiers do)
+    if (block.getName() == "minecraft:air") {
+        var modifierEffect = tag.getString("modifier_effect");
+        var radius = tag.getInteger("modifier_radius");
+
+        // Apply the effect
+        var result = apply_active_modifier_type(player, modifierEffect, radius);
+        if (result === null) {
+            tellPlayer(player, "§c:sun: Unknown consumable effect: " + modifierEffect);
+            return;
+        }
+
+        tellPlayer(player, "§a:sun: Consumable effect activated: §f" + get_modifier_display_name(modifierEffect) + "§a!");
+
+        logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=consumable type="' + modifierEffect + '" radius=' + radius);
+
+        // Delete the consumable item after use
+        originalItem.setStackSize(originalItem.getStackSize() - 1);
+
+        var command = "/playsound customnpcs:magic.shot player @a " + player.getPos().getX() + " " + player.getPos().getY() + " " + player.getPos().getZ() + " 1 1";
+        API.executeCommand(player.getWorld(), command);
+
+        return;
+    } else {
+        tellPlayer(player, "§6:sun: Look at air to activate the consumable modifier.");
+        return;
     }
 }
 
