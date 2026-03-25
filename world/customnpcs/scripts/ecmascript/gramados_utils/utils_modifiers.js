@@ -44,7 +44,7 @@ function instanciate_active_modifier(player, stack, modifierEffect) {
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.modifiers, "type", modifierEffect);
+    var entry = findJsonEntryArray(config_data.active_effects, "type", modifierEffect);
 
     tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("modifier_radius", entry.radius);
@@ -98,7 +98,7 @@ function instanciate_passive_modifier(player, stack, modifierEffect) {
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.passive_modifiers, "type", modifierEffect);
+    var entry = findJsonEntryArray(config_data.passive_effects, "type", modifierEffect);
     
     tag.setString("modifier_effect", modifierEffect);
     tag.setInteger("duration_minutes", entry.durationMinutes);
@@ -509,7 +509,7 @@ function player_has_passive_modifier_with_tag(player, tag) {
     var config_data = loadJson(MODIFIERS_CFG_PATH);
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = findJsonEntryArray(config_data.passive_modifiers, "type", playerModifiers[i].type);
+        var entry = findJsonEntryArray(config_data.passive_effects, "type", playerModifiers[i].type);
         if (entry && entry.tags && includes(entry.tags, tag)) {
             return true;
         }
@@ -526,7 +526,7 @@ function get_passive_multiplier_for_tag(player, tag) {
     var totalMultiplier = 1.0;
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = findJsonEntryArray(config_data.passive_modifiers, "type", playerModifiers[i].type);
+        var entry = findJsonEntryArray(config_data.passive_effects, "type", playerModifiers[i].type);
         if (entry && entry.tags && includes(entry.tags, tag)) {
             totalMultiplier += entry.multiplier - 1.0;
         }

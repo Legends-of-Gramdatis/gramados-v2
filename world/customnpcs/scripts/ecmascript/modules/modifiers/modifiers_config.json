@@ -3,7 +3,7 @@
         "itemId": "variedcommodities:orb",
         "usedItemId": "variedcommodities:orb_broken"
     },
-    "modifiers": [
+    "active_effects": [
         {
             "type": "cattle pregnancy",
             "radius": 16,
@@ -189,7 +189,7 @@
             "colorCode": 10
         }
     ],
-    "passive_modifiers": [
+    "passive_effects": [
         {
             "type": "stock income 5%",
             "multiplier": 1.05,

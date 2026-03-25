@@ -40,6 +40,28 @@ function interact(event) {
     var item = update_old_modifier_to_new(originalItem.copy(), player);
     item.setStackSize(1);
 
+    // Differentiate modifier classes
+    if (is_modifier(item)) {
+        var modifierClass = get_modifier_class(item);
+        
+        switch (modifierClass) {
+            case "orb":
+                handle_orb_modifier(event, player, item, originalItem);
+                break;
+            
+            case "consumable":
+                // Placeholder for consumable modifiers that delete the item after running effect
+                tellPlayer(player, "§e:sun: Consumable modifier system not yet implemented.");
+                break;
+            
+            default:
+                tellPlayer(player, "§c:sun: Unknown modifier class: " + modifierClass);
+                break;
+        }
+    }
+}
+
+function handle_orb_modifier(event, player, item, originalItem) {
     var offItem = player.getOffhandItem();
 
     // Admin setup: with Seagull ID Card in offhand, use a name tag in a chest to create an orb.
@@ -80,9 +102,9 @@ function interact(event) {
                     var activeTypes = [];
                     var passiveTypes = [];
 
-                    if (config_data && config_data.modifiers && config_data.modifiers.length) {
-                        for (var ai = 0; ai < config_data.modifiers.length; ai++) {
-                            var a = config_data.modifiers[ai];
+                    if (config_data && config_data.active_effects && config_data.active_effects.length) {
+                        for (var ai = 0; ai < config_data.active_effects.length; ai++) {
+                            var a = config_data.active_effects[ai];
                             if (!a) continue;
                             if (typeof a.type !== 'string' || a.type.length === 0) continue;
                             if (typeof a.radius !== 'number') continue;
@@ -93,9 +115,9 @@ function interact(event) {
                         }
                     }
 
-                    if (config_data && config_data.passive_modifiers && config_data.passive_modifiers.length) {
-                        for (var pi = 0; pi < config_data.passive_modifiers.length; pi++) {
-                            var p = config_data.passive_modifiers[pi];
+                    if (config_data && config_data.passive_effects && config_data.passive_effects.length) {
+                        for (var pi = 0; pi < config_data.passive_effects.length; pi++) {
+                            var p = config_data.passive_effects[pi];
                             if (!p) continue;
                             if (typeof p.type !== 'string' || p.type.length === 0) continue;
                             if (typeof p.displayName !== 'string') continue;
@@ -142,14 +164,14 @@ function interact(event) {
                     return;
                 }
 
-                var activeEntry = findJsonEntryArray(config_data.modifiers, "type", displayName);
+                var activeEntry = findJsonEntryArray(config_data.active_effects, "type", displayName);
                 if (activeEntry) {
                     foundEntry = { kind: "active", type: activeEntry.type };
                     player.setMainhandItem(instanciate_active_modifier(player, item, displayName));
                     break;
                 }
 
-                var passiveEntry = findJsonEntryArray(config_data.passive_modifiers, "type", displayName);
+                var passiveEntry = findJsonEntryArray(config_data.passive_effects, "type", displayName);
                 if (passiveEntry) {
                     foundEntry = { kind: "passive", type: passiveEntry.type };
                     player.setMainhandItem(instanciate_passive_modifier(player, item, displayName));
