@@ -119,6 +119,56 @@ function instanciate_passive_modifier(player, stack, modifierEffect) {
 }
 
 /**
+ * Creates a consumable modifier item from a base stack.
+ *
+ * Consumable modifiers apply an effect to any item type and are deleted after use.
+ * Unlike orbs, consumables do not have a "broken" or "recharged" state.
+ *
+ * The consumable modifier metadata is stored in the item NBT under `tag`:
+ * - `is_modifier` (boolean): marker for modifier items
+ * - `modifier_class` (string): "consumable"
+ * - `modifier_use` (string): "single-use"
+ * - `modifier_effect` (string): the configured effect type
+ * - `modifier_radius` (int): radius to apply the effect
+ *
+ * Configuration source:
+ * - Base item can be any item (the item is what the player holds)
+ * - `active_effects[]` entry matching `modifierEffect` (consumables use active effect definitions)
+ *
+ * @param {IPlayer} player Player used for world/NBT creation and debug output.
+ * @param {IItemStack} stack Base item stack to clone and convert (the carrier item).
+ * @param {string} modifierEffect Active effect `type` to resolve from `modifiers_config.json`.
+ * @returns {IItemStack} A new item stack representing the configured consumable modifier.
+ */
+function instanciate_consumable_modifier(player, stack, modifierEffect) {
+    var stackClone = stack.copy();
+    var nbt = stackClone.getItemNbt();
+    var tag = nbt.getCompound("tag");
+    tag.setBoolean("is_modifier", true);
+    tag.setString("modifier_class", "consumable");
+    tag.setString("modifier_use", "single-use");
+
+    var config_data = loadJson(MODIFIERS_CFG_PATH);
+    var entry = findJsonEntryArray(config_data.active_effects, "type", modifierEffect);
+
+    tag.setString("modifier_effect", modifierEffect);
+    tag.setInteger("modifier_radius", entry.radius);
+
+    nbt.setCompound("tag", tag);
+
+    var newItem = player.getWorld().createItemFromNbt(nbt);
+
+    newItem.setCustomName(parseEmotes(ccs(entry.displayName + " &8[Consumable]")));
+    newItem.setLore([
+        parseEmotes(ccs(entry.description)),
+        ccs("&7Radius: &e" + entry.radius + " blocks"),
+        ccs("&8Single-use item")
+    ]);
+
+    return newItem;
+}
+
+/**
  * Checks whether an item stack contains this module's modifier marker.
  *
  * Note: This only checks for presence of `tag.is_modifier`, not whether it is active.
@@ -377,7 +427,7 @@ function apply_active_modifier_type(player, modifierEffect, radius) {
 
 
 function get_passive_modifier_config_entry(modifierType) {
-    return findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+    return findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_effects, "type", modifierType);
 }
 
 function get_passive_modifier_remaining_ms(player_modifier, nowMs) {
@@ -674,7 +724,7 @@ function format_passive_modifier_presentation(player, player_modifier) {
         return ccs("&7(Invalid passive modifier entry)");
     }
 
-    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", player_modifier.type);
+    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_effects, "type", player_modifier.type);
     if (!entry) {
         return ccs("&7Unknown passive modifier: &f" + player_modifier.type);
     }
@@ -724,11 +774,11 @@ function formatDurationMs(durationMs) {
 }
 
 function get_modifier_display_name(modifierType) {
-    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).modifiers, "type", modifierType);
+    var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).active_effects, "type", modifierType);
     if (entry) {
         return parseEmotes(ccs(entry.displayName));
     } else {
-        entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_modifiers, "type", modifierType);
+        entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_effects, "type", modifierType);
         if (entry) {
             return parseEmotes(ccs(entry.displayName));
         }
