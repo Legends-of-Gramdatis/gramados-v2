@@ -2,6 +2,8 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_spawning.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js");
 
 var fishCloneName = "AprilFools Fish Rain";
 
@@ -54,4 +56,43 @@ function spawnFishSwarm(player, size, radius) {
     var pos = {x: playerPos.getX(), y: playerPos.getY() + 3, z: playerPos.getZ()};
 
     return spawnClonesInArea(world, fishCloneName, 2, cloneCount, pos, radius);
+}
+
+function catchNearbyFishSwarm(player, radius) {
+    var world = player.getWorld();
+    var nearbyNpcs = world.getNearbyEntities(player.getPos(), radius, 2);
+    var caughtCount = 0;
+
+    for (var i = 0; i < nearbyNpcs.length; i++) {
+        var npc = nearbyNpcs[i];
+        if (!npc || npc.getName() !== "Fish") {
+            continue;
+        }
+
+        var fishLoot = pullLootTable(_LOOTTABLE_FISH, player);
+        for (var j = 0; j < fishLoot.length; j++) {
+            var fishStack = generateItemStackFromLootEntry(fishLoot[j], world, player);
+            fishStack.setCustomName("§rFish");
+
+            if (typeof (instanciate_consumable_modifier) !== "undefined" && Math.random() < 0.1) {
+                var fishEffects = ["fish swarm", "fish catch nearby"];
+                fishStack = instanciate_consumable_modifier(player, fishStack, pickFromArray(fishEffects));
+            }
+
+            if (Math.random() < 0.25) {
+                var arcadeTokens = pullLootTable(_LOOTTABLE_ARCADE_TOKENS, player);
+                for (var k = 0; k < arcadeTokens.length; k++) {
+                    var tokenStack = generateItemStackFromLootEntry(arcadeTokens[k], world, player);
+                    player.dropItem(tokenStack);
+                }
+            }
+
+            player.dropItem(fishStack);
+        }
+
+        npc.despawn();
+        caughtCount++;
+    }
+
+    return caughtCount;
 }

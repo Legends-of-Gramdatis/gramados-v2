@@ -1,8 +1,8 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
-
-var _LOOTTABLE_FISH = "sealife/sealife_fish.json";
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
 
 var tickCount = 0;
 var lifespan = 20;
@@ -54,16 +54,22 @@ function interact(event) {
             var customName = "§rFish";
             itemStack.setCustomName(customName);
 
-            if (Math.random() < 0.2) {
-                var nbt = itemStack.getItemNbt();
-                var tag = nbt.getCompound("tag");
-                tag.setBoolean("is_modifier", true);
-                nbt.setCompound("tag", tag);
-                itemStack.setLore(["§7This fish has mysterious properties..."]);
+            if (Math.random() < 0.1) {
+                var fishEffects = ["fish swarm", "fish catch nearby"];
+                itemStack = instanciate_consumable_modifier(player, itemStack, pickFromArray(fishEffects));
+            }
+
+            if (Math.random() < 0.25) {
+                var arcadeTokens = pullLootTable(_LOOTTABLE_ARCADE_TOKENS, player);
+                for (var j = 0; j < arcadeTokens.length; j++) {
+                    var tokenStack = generateItemStackFromLootEntry(arcadeTokens[j], world, player);
+                    player.dropItem(tokenStack);
+                }
             }
 
             player.dropItem(itemStack);
         }
+
         npc.despawn();
     }
 }
