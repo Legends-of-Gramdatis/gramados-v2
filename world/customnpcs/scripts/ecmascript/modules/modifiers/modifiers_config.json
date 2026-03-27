@@ -187,6 +187,18 @@
             "displayName": "&d:sun: Orb of Abundant Planting :sun:",
             "description": "&7Fills vast farmland with a rich tapestry of mixed crops.",
             "colorCode": 10
+        },
+        {
+            "type": "fish swarm",
+            "radius": 5,
+            "isBonus": true,
+            "description": "&7A sudden fish swarm bursts from above around you."
+        },
+        {
+            "type": "fish catch nearby",
+            "radius": 12,
+            "isBonus": true,
+            "description": "&7Scoops up nearby rain fish as if each had been bucket-caught."
         }
     ],
     "passive_effects": [

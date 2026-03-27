@@ -6,6 +6,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_pickpocket.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_nature.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js");
 
 var farmCrops = exports_utils_farm_crops;
 var farmFruits = exports_utils_farm_fruits;
@@ -150,20 +151,26 @@ function instanciate_consumable_modifier(player, stack, modifierEffect) {
 
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var entry = findJsonEntryArray(config_data.active_effects, "type", modifierEffect);
+    var size = rrandom_range(entry.radius * 0.5, entry.radius * 1.5)
 
     tag.setString("modifier_effect", modifierEffect);
-    tag.setInteger("modifier_radius", entry.radius);
+    tag.setInteger("modifier_radius", size);
 
     nbt.setCompound("tag", tag);
 
     var newItem = player.getWorld().createItemFromNbt(nbt);
 
-    newItem.setCustomName(parseEmotes(ccs(entry.displayName + " &8[Consumable]")));
-    newItem.setLore([
-        parseEmotes(ccs(entry.description)),
-        ccs("&7Radius: &e" + entry.radius + " blocks"),
-        ccs("&8Single-use item")
-    ]);
+    if (entry.displayName) {
+        newItem.setCustomName(parseEmotes(ccs(entry.displayName + " &8[Consumable]")));
+    }
+
+    var lore = [];
+    if (entry.description) {
+        lore.push(parseEmotes(ccs(entry.description)));
+    }
+    lore.push(ccs("&7Size: &e" + size));
+    lore.push(ccs("&8Single-use item"));
+    newItem.setLore(lore);
 
     return newItem;
 }
@@ -420,6 +427,11 @@ function apply_active_modifier_type(player, modifierEffect, radius) {
             return farmCrops.plantMixedCropsOnFarmland(world, pos, radius);
         case "crop plant mixed large":
             return farmCrops.plantMixedCropsOnFarmland(world, pos, radius);
+        case "fish swarm":
+            playFishRainSpawnEffects(player);
+            return spawnFishSwarm(player, radius, 5);
+        case "fish catch nearby":
+            return catchNearbyFishSwarm(player, radius);
         default:
             return null;
     }
@@ -776,11 +788,17 @@ function formatDurationMs(durationMs) {
 function get_modifier_display_name(modifierType) {
     var entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).active_effects, "type", modifierType);
     if (entry) {
-        return parseEmotes(ccs(entry.displayName));
+        if (entry.displayName) {
+            return parseEmotes(ccs(entry.displayName));
+        }
+        return ccs("&f" + modifierType);
     } else {
         entry = findJsonEntryArray(loadJson(MODIFIERS_CFG_PATH).passive_effects, "type", modifierType);
         if (entry) {
-            return parseEmotes(ccs(entry.displayName));
+            if (entry.displayName) {
+                return parseEmotes(ccs(entry.displayName));
+            }
+            return ccs("&f" + modifierType);
         }
     }
     return ccs("&7Unknown modifier: &f" + modifierType);

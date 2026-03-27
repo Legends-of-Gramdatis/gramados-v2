@@ -57,10 +57,11 @@ function interact(event) {
                 tellPlayer(player, "§c:sun: Unknown modifier class: " + modifierClass);
                 break;
         }
-    } else {
-        // Not a modifier item - no action, or potential future handling for modifier application items
-        tellPlayer(player, "§e:sun: This item is not a modifier.");
-    }
+    } 
+    // else {
+    //     // Not a modifier item - no action, or potential future handling for modifier application items
+    //     tellPlayer(player, "§e:sun: This item is not a modifier.");
+    // }
 }
 
 function handle_orb_modifier(event, player, item, originalItem) {
