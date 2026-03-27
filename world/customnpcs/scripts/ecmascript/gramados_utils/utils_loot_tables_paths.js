@@ -11,6 +11,8 @@ var _LOOTTABLE_BANKVAULT_SERVERSTRONGRACK = "technology/storage_disks_high.json"
 var _LOOTTABLE_NPCTYPE_ROBOT = "robots/robots_brokenbits.json"
 var _LOOTTABLE_NPCTYPE_HUMAN = "assembled_loot_tables/npc_human.json"
 
+var _LOOTTABLE_FISH = "sealife/sealife_fish.json";
+
 var _LOOTTABLE_VEHICLE_BIKE = "automobile/vehicles/vehicle_ivl_bike.json";
 var _LOOTTABLE_VEHICLE_WRENCH = "tools/tools_mts_wrench.json";
 var _LOOTTABLE_VEHICLE_KEY = "automobile/keys/car_keys.json";
@@ -28,3 +30,5 @@ var _LOOTTABLE_TOOLS_WELDING = "tools/tools_welding.json"
 var _LOOTTABLE_FURNITURE_BED = "furniture/furniture_bed.json"
 var _LOOTTABLE_FURNITURE_STORAGE = "furniture/furniture_storage.json"
 var _LOOTTABLE_FURNITURE_TABLE = "furniture/furniture_table.json"
+
+var _LOOTTABLE_ARCADE_TOKENS = "treasures/treasures_arcade_tokens.json"
