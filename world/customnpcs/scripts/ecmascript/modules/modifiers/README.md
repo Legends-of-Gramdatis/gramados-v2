@@ -32,6 +32,13 @@ And **mixed crop planting** effects:
 
 These mixed crop orbs plant a variety of different crop types randomly across farmland, creating diverse fields without needing to manually plant each type.
 
+And an **event trigger** effect:
+
+- `fish swarm` (radius 5) - Calls the April Fools fish swarm spawner with a fixed spread radius of 5.
+- `fish catch nearby` (radius 12) - Catches nearby Fish Rain fish automatically, like rapid bucket use in an area.
+
+These effects are intended for single-use consumable fish items. `fish swarm` uses the configured modifier radius as the swarm size parameter.
+
 ## Configuration
 
 All orb definitions live in `modifiers_config.json`.
