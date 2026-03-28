@@ -163,10 +163,12 @@ function updateSkippersList() {
 
 function loadPlayerSpecificEventData(player_name) {
     var all_data = loadJson(PLAYER_EVENT_DATA);
-    if (all_data.player_data[player_name]) {
+    if (all_data.player_data && all_data.player_data[player_name]) {
         return all_data.player_data[player_name];
     } else {
-        return {};
+        return {
+            skipping_events: []
+        };
     }
 }
 
