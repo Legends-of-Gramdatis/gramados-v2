@@ -2,7 +2,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js')
+load('world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js');
 
 var tickCount = 0;
 var lifespan = 20;
@@ -44,30 +44,14 @@ function interact(event) {
     // if bucket in main hand
     var item = player.getMainhandItem();
     if (item.getName() == "minecraft:bucket") {
+        
         npc.executeCommand("/playsound minecraft:block.note.bell master @a ~ ~ ~ 1 1");
-        var items = pullLootTable(_LOOTTABLE_FISH, player);
+
         logToFile("events", player.getName() + " caught a fish from the Fish Rain event!");
+
+        var items = generate_fish_catch_loot(player);
         for (var i = 0; i < items.length; i++) {
-            var itemStack = generateItemStackFromLootEntry(items[i], world, player);
-
-            // Set custom name to the item
-            var customName = "§rFish";
-            itemStack.setCustomName(customName);
-
-            if (Math.random() < 0.1) {
-                var fishEffects = ["fish swarm", "fish catch nearby"];
-                itemStack = instanciate_consumable_modifier(player, itemStack, pickFromArray(fishEffects));
-            }
-
-            if (Math.random() < 0.25) {
-                var arcadeTokens = pullLootTable(_LOOTTABLE_ARCADE_TOKENS, player);
-                for (var j = 0; j < arcadeTokens.length; j++) {
-                    var tokenStack = generateItemStackFromLootEntry(arcadeTokens[j], world, player);
-                    player.dropItem(tokenStack);
-                }
-            }
-
-            player.dropItem(itemStack);
+            player.dropItem(items[i]);
         }
 
         npc.despawn();

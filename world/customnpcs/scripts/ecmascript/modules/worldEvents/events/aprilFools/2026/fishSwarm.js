@@ -69,30 +69,45 @@ function catchNearbyFishSwarm(player, radius) {
             continue;
         }
 
-        var fishLoot = pullLootTable(_LOOTTABLE_FISH, player);
-        for (var j = 0; j < fishLoot.length; j++) {
-            var fishStack = generateItemStackFromLootEntry(fishLoot[j], world, player);
-            fishStack.setCustomName("§rFish");
+        npc.executeCommand("/playsound minecraft:block.note.bell master @a ~ ~ ~ 1 1");
 
-            if (typeof (instanciate_consumable_modifier) !== "undefined" && Math.random() < 0.1) {
-                var fishEffects = ["fish swarm", "fish catch nearby"];
-                fishStack = instanciate_consumable_modifier(player, fishStack, pickFromArray(fishEffects));
-            }
-
-            if (Math.random() < 0.25) {
-                var arcadeTokens = pullLootTable(_LOOTTABLE_ARCADE_TOKENS, player);
-                for (var k = 0; k < arcadeTokens.length; k++) {
-                    var tokenStack = generateItemStackFromLootEntry(arcadeTokens[k], world, player);
-                    player.dropItem(tokenStack);
-                }
-            }
-
-            player.dropItem(fishStack);
+        var fishLoot = generate_fish_catch_loot(player);
+        for (var i = 0; i < fishLoot.length; i++) {
+            player.dropItem(fishLoot[i]);
         }
 
         npc.despawn();
         caughtCount++;
     }
 
+    logToFile("events", player.getName() + " caught " + caughtCount + " fish from the Fish Swarm consumable modifier!");
+
     return caughtCount;
+}
+
+function generate_fish_catch_loot(player) {
+    var loot = pullLootTable(_LOOTTABLE_FISH, player);
+    var generatedItems = [];
+
+    for (var i = 0; i < loot.length; i++) {
+        var itemStack = generateItemStackFromLootEntry(loot[i], player.getWorld(), player);
+        itemStack.setCustomName("§rFish");
+
+        if (typeof (instanciate_consumable_modifier) !== "undefined" && Math.random() < 0.1) {
+            var fishEffects = ["fish swarm", "fish catch nearby"];
+            itemStack = instanciate_consumable_modifier(player, itemStack, pickFromArray(fishEffects));
+        }
+
+        generatedItems.push(itemStack);
+    }
+
+    if (Math.random() < 0.25) {
+        var arcadeTokens = pullLootTable(_LOOTTABLE_ARCADE_TOKENS, player);
+        for (var j = 0; j < arcadeTokens.length; j++) {
+            var tokenStack = generateItemStackFromLootEntry(arcadeTokens[j], player.getWorld(), player);
+            generatedItems.push(tokenStack);
+        }
+    }
+
+    return generatedItems;
 }
