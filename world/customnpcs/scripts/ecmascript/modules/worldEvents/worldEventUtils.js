@@ -23,19 +23,15 @@ function loadEventConfig() {
 
 /**
  * Loads the player event data from a JSON file.
- * @param {string} event_name - The name of the event.
+ * @param {string} eventId - The name of the event.
  * @param {string} player_name - The name of the player.
  * @returns {Object} - The player event data.
  */
-function loadPlayerEventData(event_name, player_name) {
-    if (checkFileExists(PLAYER_EVENT_DATA)) {
-        var all_data = loadJson(PLAYER_EVENT_DATA);
+function loadPlayerEventData(eventId, player_name) {
+    var all_data = loadJson(PLAYER_EVENT_DATA);
 
-        if (all_data[event_name] && all_data[event_name][player_name]) {
-            return all_data[event_name][player_name];
-        } else {
-            return {};
-        }
+    if (all_data[eventId] && all_data[eventId][player_name]) {
+        return all_data[eventId][player_name];
     } else {
         return {};
     }

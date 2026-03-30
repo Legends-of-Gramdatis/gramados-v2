@@ -1,8 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js');
-load('world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js');
+load('world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishUtils.js');
 
 var tickCount = 0;
 var lifespan = 20;

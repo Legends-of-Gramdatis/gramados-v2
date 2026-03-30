@@ -9,6 +9,7 @@ This module implements a dynamic world events system for the Gramados modded Min
 - **Dynamic Event Behavior**: Includes unique mechanics for each event, such as spawning entities, granting rewards, or engaging in boss fights.
 - **Logging and Persistence**: Logs event-related actions and persists player data across sessions.
 - **April Fools Variants**: Uses legacy Sus Box swarms for 2025 behavior and Fish Rain swarms for 2026+ behavior, including themed chat lines and spawn effects.
+- **Shared Fish Loot Helper**: Fish reward generation is centralized in `events/aprilFools/2026/fishUtils.js` so fish NPC and fish swarm scripts reuse the same logic without circular script loads.
 
 ## Event Configuration
 
@@ -47,6 +48,7 @@ Events are defined in the `event_config.json` file. Example:
 
 - **`worldEventsMain.js`**: Main script for managing world events, including initialization, player interactions, and event-specific logic.
 - **`worldEventUtils.js`**: Utility functions for managing events and player data.
+- **`events/aprilFools/2026/fishUtils.js`**: Shared fish loot and fish consumable creation helper for April Fools 2026.
 - **`event_config.json`**: Stores event definitions and date ranges.
 - **`player_event_data.json`**: Tracks player-specific event data.
 - **`EasterBunnyBoss.js`**: Manages the Easter Bunny Boss fight mechanics.

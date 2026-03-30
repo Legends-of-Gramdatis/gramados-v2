@@ -53,7 +53,7 @@ function isPlayerInEarlyOnboarding(player) {
  * @param {Object} e - The event object containing information about the death event.
  */
 // function died(e) {
-//     if (isEventActiveForPlayer("April Fools", e.player)) {
+//     if (isEventActiveForPlayer("april_fools", e.player)) {
 //         susbox_cleanup(e);
 //         var logline = e.player.getName() + " died. Nearby Sus Box despawned.";
 //         logToFile("events", logline);
@@ -126,13 +126,14 @@ function tick(e) {
             var playerName = player.getName();
             // var currentTime = new Date().getTime();		
 
-            if (isEventActiveForPlayer("April Fools", player)) {
-                var event_player_data = loadPlayerEventData("April Fools", playerName);
-                playerLastSpawnTime = event_player_data.playerLastSpawnTime;
-                playerSpawnIntervals = event_player_data.playerSpawnIntervals;
+            if (isEventActiveForPlayer("april_fools", player)) {
+                // tellPlayer(player, "&6&l[&e&lEvent&6&l] &eThe Fish Rain event is active! Try catching fish with a bucket! &6&l[&e&lEvent&6&l]");
+                var event_player_data = loadPlayerEventData("april_fools", playerName);
+                playerLastSpawnTime = event_player_data.playerLastSpawnTime || 0;
+                playerSpawnIntervals = event_player_data.playerSpawnIntervals || 2 * 60 * 1000; // Default to 2 minutes if not set
                 // Check if it's time to spawn a new swarm (30 to 40 minutes interval)
                 var currentTime = new Date().getTime();
-                if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
+                if (currentTime - playerLastSpawnTime > playerSpawnIntervals) {
                     run_aprilfools_event(player, event_player_data);
                 }
             }
@@ -191,7 +192,7 @@ function getRandomSpawnIntervalMinutes(minutes_min, minutes_max) {
  */
 function logout(e) {
 
-    // if (isEventActiveForPlayer("April Fools", e.player)) {
+    // if (isEventActiveForPlayer("april_fools", e.player)) {
     //     susbox_cleanup(e);
     //     var logline = e.player.getName() + " left the game. Nearby Sus Box despawned.";
     //     logToFile("events", logline);
@@ -209,10 +210,10 @@ function logout(e) {
 function playerJoin(e) {
     var player = e.player;
 
-    if (isEventActiveForPlayer("April Fools", player)) {
+    if (isEventActiveForPlayer("april_fools", player)) {
         var currentTime = new Date().getTime();
 
-        var event_player_data = loadPlayerEventData("April Fools", player.getName());
+        var event_player_data = loadPlayerEventData("april_fools", player.getName());
         playerLastSpawnTime = event_player_data.playerLastSpawnTime;
         playerSpawnIntervals = event_player_data.playerSpawnIntervals;
         if (!playerLastSpawnTime || currentTime - playerLastSpawnTime > (playerSpawnIntervals || 30 * 60 * 1000)) {
