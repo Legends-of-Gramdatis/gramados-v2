@@ -3707,13 +3707,15 @@ function executeXCommand(str, player, permcheck, data) {
                         }
                     }
 
-                    try {
+                    if (player.getGamemode() == 0) { // Survival mode
+                        try {
+                            return (cmd.callback(player, args, data, cmd.payload) || false);
+                        } catch (err) {
+                            tellPlayer(player, "&cAn internal command error occurred. Please report this to staff: \n" + err);
+                            return false;
+                        }
+                    } else {
                         return (cmd.callback(player, args, data, cmd.payload) || false);
-                    } catch (err) {
-                        tellPlayer(player, "&cAn internal command error occurred. Please report this to staff.");
-                        var errMsg = (err && err.message) ? err.message : err;
-                        Logger.error("[CST.command.error] command='" + cmd.usage + "' player='" + player.getName() + "' input='" + str + "' error='" + errMsg + "'");
-                        return false;
                     }
                 } else {
                     tellPlayer(player, "&cYou don't have permission to this command!");
