@@ -3317,6 +3317,22 @@ sets:
                 y: 74.0
                 z: 6771.0
                 label: Capilla de Pedralba
+            marker_47:
+                world: world
+                markup: false
+                icon: ent&lei_monument
+                x: -3247.0
+                y: 78.0
+                z: -8298.0
+                label: Hands of Unity
+            marker_48:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -3210.0
+                y: 72.0
+                z: -8254.0
+                label: Block A Restored Historic Plaza
         lines: {}
         layerprio: 0
     Bridges:
@@ -3485,6 +3501,14 @@ sets:
                 y: 104.0
                 z: 1996.0
                 label: Greater Gramados Channel Intergalactic Spaceport
+            marker_11:
+                world: world
+                markup: false
+                icon: transport_bus
+                x: -3250.0
+                y: 73.0
+                z: -8283.0
+                label: Bus Stop
         lines: {}
         layerprio: 0
     Factories:
