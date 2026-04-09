@@ -1,28 +1,4 @@
 {
-    "April Fools": {
-        "TheOddlySeagull": {
-            "lastSpawnTime": 1743706663065,
-            "spawnInterval": 1764608,
-            "playerLastSpawnTime": 1773866607896,
-            "playerSpawnIntervals": 429006
-        },
-        "BOTFerris": {
-            "lastSpawnTime": 1743461895039,
-            "spawnInterval": 766779
-        },
-        "oldbjorn": {
-            "lastSpawnTime": 1743645112628,
-            "spawnInterval": 1727388
-        },
-        "Colt_44_magnum": {
-            "lastSpawnTime": 1743475655468,
-            "spawnInterval": 765478
-        },
-        "SinaBloodsaw": {
-            "lastSpawnTime": 1743704985010,
-            "spawnInterval": 1585364
-        }
-    },
     "Easter Egg Hunt": {
         "MoriUnderGarden": {
             "has_starter_pack": true,
@@ -40,7 +16,7 @@
             "egg_count": 282
         },
         "Global Data": {
-            "egg_count": 1171
+            "egg_count": 1172
         },
         "TheOddlySeagull": {
             "has_starter_pack": true,
@@ -253,6 +229,14 @@
                 }
             },
             "egg_count": 1
+        },
+        "AliceOfTheMoon": {
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         }
     },
     "Spooktober": {
@@ -302,5 +286,40 @@
         }
     },
     "player_data": {
+        "TheOddlySeagull": {
+            "skipping_events": [
+                "april_fools"
+            ],
+            "show_skip_message": false
+        },
+        "Kitsunami_": {
+            "skipping_events": [
+                "april_fools"
+            ]
+        },
+        "SinaBloodsaw": {
+            "skipping_events": [
+                "april_fools"
+            ],
+            "show_skip_message": true
+        }
+    },
+    "april_fools": {
+        "TheOddlySeagull": {
+            "playerLastSpawnTime": 1774777663199,
+            "playerSpawnIntervals": 327557
+        },
+        "SinaBloodsaw": {
+            "playerLastSpawnTime": 1774956040715,
+            "playerSpawnIntervals": 323226
+        },
+        "Kitsunami_": {
+            "playerLastSpawnTime": 1774835281604,
+            "playerSpawnIntervals": 574466
+        },
+        "BOTFerris": {
+            "playerLastSpawnTime": 1775249962875,
+            "playerSpawnIntervals": 309211
+        }
     }
 }
