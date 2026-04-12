@@ -39,13 +39,13 @@
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
     "DialogTitle": "rep final 1",
-    "AvailabilityDialog": 1,
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 641,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
     "DialogText": "You’ve seen the lumberyard. That is where the trees are planted and harvested.",
     "AvailabilityQuest4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1775997023453L,
+        "TimePast": 1776002195252L,
         "Time": 0L,
         "Subject": ""
     }

@@ -39,13 +39,13 @@
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
     "DialogTitle": "p2-1 Join Entry",
-    "AvailabilityDialog": 0,
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 629,
     "OptionFaction2Points": 100,
     "DialogText": "You want to register for a profession. I can guide you through what is available here on Greenfield.",
     "AvailabilityQuest4Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1775998605454L,
+        "TimePast": 1776001790454L,
         "Time": 0L,
         "Subject": ""
     }
