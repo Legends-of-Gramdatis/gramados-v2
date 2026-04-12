@@ -1,0 +1,42 @@
+{
+    "CompleterNpc": "Timber Creek Sawmill",
+    "NextQuestId": 167,
+    "QuestLocation3": "",
+    "RandomReward": 0b,
+    "QuestLocation2": "",
+    "QuestRepeat": 1,
+    "QuestCompletion": 1,
+    "Title": "Across the Street",
+    "Text": "I should go to the Timber Creek Sawmill Warehouse, just across the street. That is where logs are brought and sold in crates.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 3,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1775999419202L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I found the warehouse. This is where harvested wood is delivered and sold.",
+    "NextQuestTitle": "Understanding the Work",
+    "QuestLocation": "Timber Creek Sawmill Warehouse"
+}
