@@ -8,9 +8,6 @@ var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldE
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 var allEventConfig = loadEventConfig();
 var DEBUG_MODE = false;
-var LEGACY_EVENT_DATA_ALIASES = {
-    "easter_egg_hunt": ["Easter Egg Hunt"]
-};
 
 
 /**
@@ -26,19 +23,16 @@ function loadEventConfig() {
 
 /**
  * Loads the player event data from a JSON file.
- * @param {string} eventId - The name of the event.
+ * @param {string} eventId - The event ID (or configured name, which is normalized to ID).
  * @param {string} player_name - The name of the player.
  * @returns {Object} - The player event data.
  */
 function loadPlayerEventData(eventId, player_name) {
     var all_data = loadJson(PLAYER_EVENT_DATA);
-    var event_keys = getEventDataLookupKeys(eventId);
+    var canonicalEventId = nameToID(eventId);
 
-    for (var i = 0; i < event_keys.length; i++) {
-        var event_key = event_keys[i];
-        if (all_data[event_key] && all_data[event_key][player_name]) {
-            return all_data[event_key][player_name];
-        }
+    if (all_data[canonicalEventId] && all_data[canonicalEventId][player_name]) {
+        return all_data[canonicalEventId][player_name];
     }
 
     return {};
@@ -46,51 +40,25 @@ function loadPlayerEventData(eventId, player_name) {
 
 /**
  * Saves the player event data to a JSON file.
- * @param {string} event_name - The name of the event.
+ * @param {string} event_name - The event ID (or configured name, which is normalized to ID).
  * @param {string} player_name - The name of the player.
  * @param {Object} data - The data to save.
  */
 function savePlayerEventData(event_name, player_name, data) {
+    var canonicalEventId = nameToID(event_name);
     if (checkFileExists(PLAYER_EVENT_DATA)) {
         var all_data = loadJson(PLAYER_EVENT_DATA);
     } else {
         var all_data = {};
     }
 
-    migrateLegacyEventDataKey(all_data, event_name);
-
-    if (!all_data[event_name]) {
-        all_data[event_name] = {};
+    if (!all_data[canonicalEventId]) {
+        all_data[canonicalEventId] = {};
     }
 
-    all_data[event_name][player_name] = data;
+    all_data[canonicalEventId][player_name] = data;
 
     saveJson(all_data, PLAYER_EVENT_DATA);
-}
-
-function getEventDataLookupKeys(eventId) {
-    var keys = [eventId];
-    var aliases = LEGACY_EVENT_DATA_ALIASES[eventId] || [];
-    for (var i = 0; i < aliases.length; i++) {
-        keys.push(aliases[i]);
-    }
-    return keys;
-}
-
-function migrateLegacyEventDataKey(all_data, eventId) {
-    if (all_data[eventId]) {
-        return;
-    }
-
-    var aliases = LEGACY_EVENT_DATA_ALIASES[eventId] || [];
-    for (var i = 0; i < aliases.length; i++) {
-        var legacyKey = aliases[i];
-        if (all_data[legacyKey]) {
-            all_data[eventId] = all_data[legacyKey];
-            delete all_data[legacyKey];
-            return;
-        }
-    }
 }
 
 function nameToID(name) {
@@ -179,10 +147,10 @@ function updateSkippersList() {
         )) {
             // Event is not active, clear skippers list
             var all_data = loadJson(PLAYER_EVENT_DATA);
-            if (all_data[eventConfig.name]) {
-                for (var playerName in all_data[eventConfig.name]) {
-                    if (all_data[eventConfig.name][playerName].skipped) {
-                        all_data[eventConfig.name][playerName].skipped = false;
+            if (all_data[eventConfig.id]) {
+                for (var playerName in all_data[eventConfig.id]) {
+                    if (all_data[eventConfig.id][playerName].skipped) {
+                        all_data[eventConfig.id][playerName].skipped = false;
                     }
                 }
                 saveJson(all_data, PLAYER_EVENT_DATA);
@@ -303,9 +271,10 @@ function GetIfCooldownOver(player, EventName) {
  * @returns {number} - The cooldown time in milliseconds.
  */
 function getCooldownTime(EventName) {
+    var eventID = nameToID(EventName);
     for (var i = 0; i < allEventConfig.events.length; i++) {
         var eventConfig = allEventConfig.events[i];
-        if (eventConfig.name === EventName) {
+        if (eventConfig.id === eventID) {
             return eventConfig.cooldownTime;
         }
     }
