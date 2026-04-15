@@ -121,7 +121,7 @@ function setSignLineAt(x, y, z, line, text) {
     var li = parseInt(line, 10);
     if (isNaN(li) || li < 1) li = 1; if (li > 4) li = 4;
     var key = "Text" + li;
-    var safe = text == null ? "" : String(text);
+    var safe = text == null ? "" : ("" + text);
     var json = JSON.stringify({ text: safe });
     te.setString(key, json);
     blk.setTileEntityNBT(te);
