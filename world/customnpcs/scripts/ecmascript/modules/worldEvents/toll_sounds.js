@@ -10,6 +10,11 @@ var lock_counter_quarter = false;
 var lock_counter_minute = false;
 var lock_counter_30seconds = 0;
 
+var hour_trigger_state = {};
+var quarter_trigger_state = {};
+var minute_trigger_state = {};
+var second30_trigger_slot = null;
+
 function initToll(type) {
     if (!lock_toll) {
         tollTickCounter = 1;
@@ -58,16 +63,18 @@ function everyHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    if (date.getMinutes() === 0 && date.getSeconds() === second_delay) {
-        if (!lock_counter_hour) {
+    var delayKey = "" + second_delay;
+    var hourKey = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours();
+
+    if (date.getMinutes() === 0 && date.getSeconds() >= second_delay) {
+        if (hour_trigger_state[delayKey] !== hourKey) {
+            hour_trigger_state[delayKey] = hourKey;
             lock_counter_hour = true;
             return true;
-        } else {
-            return false;
         }
-    } else {
-        lock_counter_hour = false;
     }
+
+    lock_counter_hour = false;
     return false;
 }
 
@@ -81,16 +88,19 @@ function everyQuarterHours(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    if (date.getMinutes() % 15 === 0 && date.getSeconds() === second_delay) {
-        if (!lock_counter_quarter) {
+    var delayKey = "" + second_delay;
+    var quarterIndex = Math.floor(date.getMinutes() / 15);
+    var quarterKey = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + " Q" + quarterIndex;
+
+    if (date.getMinutes() % 15 === 0 && date.getSeconds() >= second_delay) {
+        if (quarter_trigger_state[delayKey] !== quarterKey) {
+            quarter_trigger_state[delayKey] = quarterKey;
             lock_counter_quarter = true;
             return true;
-        } else {
-            return false;
         }
-    } else {
-        lock_counter_quarter = false;
     }
+
+    lock_counter_quarter = false;
     return false;
 }
 
@@ -103,16 +113,18 @@ function everyMinutes(second_delay) {
     if (second_delay == null) {
         second_delay = 0;
     }
-    if (date.getSeconds() === second_delay) {
-        if (!lock_counter_minute) {
+    var delayKey = "" + second_delay;
+    var minuteKey = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes();
+
+    if (date.getSeconds() >= second_delay) {
+        if (minute_trigger_state[delayKey] !== minuteKey) {
+            minute_trigger_state[delayKey] = minuteKey;
             lock_counter_minute = true;
             return true;
-        } else {
-            return false;
         }
-    } else {
-        lock_counter_minute = false;
     }
+
+    lock_counter_minute = false;
     return false;
 }
 
@@ -121,13 +133,12 @@ function everyMinutes(second_delay) {
  * @returns {boolean} - True if it's a 30-second interval and hasn't been executed yet.
  */
 function every30Seconds() {
-    var date = new Date();
-    var currentTimestamp = date.getTime();
-    if (date.getSeconds() % 30 === 0) {
-        if (currentTimestamp - lock_counter_30seconds >= 1000) {
-            lock_counter_30seconds = currentTimestamp;
-            return true;
-        }
+    var currentTimestamp = new Date().getTime();
+    var slot = Math.floor(currentTimestamp / 30000);
+    if (second30_trigger_slot !== slot) {
+        second30_trigger_slot = slot;
+        lock_counter_30seconds = currentTimestamp;
+        return true;
     }
     return false;
 }
