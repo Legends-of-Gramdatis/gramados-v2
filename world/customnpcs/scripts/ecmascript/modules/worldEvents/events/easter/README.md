@@ -13,7 +13,8 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
 ## How It Works
 
 1. **Event Activation**:
-   - The event is active from March 14 to March 22, as defined in `event_config.json`.
+   - The event is active from March 14 to March 21, as defined in `event_config.json`.
+   - Runtime checks and player data now use the event ID `easter_egg_hunt`.
 
 2. **Egg Spawning**:
    - Eggs spawn randomly around players in clusters.
@@ -35,7 +36,7 @@ The Easter Egg Hunt event brings a festive atmosphere to the Gramados server wit
    - Each spawned egg NPC stores an `event_year` value.
    - Legacy eggs from 2025 may not contain this value; missing `event_year` is treated as `2025`.
    - Item lore now uses the stored year in the collection line.
-   - If `Easter Egg Hunt` is currently active, the lore says `Collected during the Easter <year> event: The Great Eggcryption`.
+   - If `easter_egg_hunt` is currently active, the lore says `Collected during the Easter <year> event: The Great Eggcryption`.
    - If the event is not active, the lore says `Collected after the Easter <year> event: The Great Eggcryption`.
 
 7. **Boss Fight**:
@@ -60,14 +61,15 @@ The event's date range is defined in `event_config.json`:
 
 ```json
 {
-    "name": "Easter Egg Hunt",
+   "id": "easter_egg_hunt",
+   "name": "&e&lEaster Egg Hunt &r:egg:",
     "startDate": {
         "month": 3,
         "day": 14
     },
     "endDate": {
         "month": 3,
-        "day": 22
+      "day": 21
     }
 }
 ```

@@ -3,6 +3,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 var NearbyEggSpawnedLines = []
+var EASTER_EVENT_ID = "easter_egg_hunt";
 
 /**
  * Counts the number of nearby eggs around the player.
@@ -111,11 +112,11 @@ function spawnEggSwarm(player, world, count, group_radius, display_message) {
 function spawnEasterStarterPack(player) {
     // Load player event data
     var playerName = player.getName();
-    var event_player_data = loadPlayerEventData("Easter Egg Hunt", playerName);
+    var event_player_data = loadPlayerEventData(EASTER_EVENT_ID, playerName);
     // If no "has starter pack" data, create it
     if (!event_player_data.hasOwnProperty("has_starter_pack")) {
         event_player_data.has_starter_pack = true;
-        savePlayerEventData("Easter Egg Hunt", playerName, event_player_data);
+        savePlayerEventData(EASTER_EVENT_ID, playerName, event_player_data);
 
         // Spawn the starter pack
         var story_message = [

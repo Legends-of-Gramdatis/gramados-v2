@@ -19,7 +19,8 @@ Events are defined in the `event_config.json` file. Example:
 {
     "events": [
         {
-            "name": "April Fools",
+            "id": "april_fools",
+            "name": "&r:fish:&d&lApril Fools&r:fish:",
             "startDate": {
                 "month": 3,
                 "day": 30
@@ -30,19 +31,22 @@ Events are defined in the `event_config.json` file. Example:
             }
         },
         {
-            "name": "Easter Egg Hunt",
+            "id": "easter_egg_hunt",
+            "name": "&e&lEaster Egg Hunt &r:egg:",
             "startDate": {
                 "month": 3,
                 "day": 14
             },
             "endDate": {
                 "month": 3,
-                "day": 22
+                "day": 21
             }
         }
     ]
 }
 ```
+
+Event checks in scripts should use event IDs (for example `easter_egg_hunt`) instead of plain display names.
 
 ## Files
 

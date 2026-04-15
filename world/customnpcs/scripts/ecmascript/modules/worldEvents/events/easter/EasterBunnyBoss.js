@@ -38,6 +38,7 @@ var EGG_MODE_LINES = [
 
 var ATTACK_COOLDOWN_BASE = 40; // Base cooldown in seconds
 var TICKS_PER_SECOND = 20; // Minecraft ticks per second
+var EASTER_EVENT_ID = "easter_egg_hunt";
 
 /**
  * Initializes the Easter Bunny Boss NPC.
@@ -139,7 +140,7 @@ function provideTutorialMessage(npc) {
 function updateHealth(npc) {
     var data = loadJson(EVENT_DATA_JSON);
     if (!isEggMode()) {
-        var globalData = loadPlayerEventData("Easter Egg Hunt", "Global Data");
+        var globalData = loadPlayerEventData(EASTER_EVENT_ID, "Global Data");
         var totalEggs = globalData.egg_count || 0;
         totalEggs = Math.floor(totalEggs * (1 + data.BunnyStage * 0.25)); // Increase health by 25% per stage
         npc.getDisplay().setName(ccs("&dEaster Bunny Boss &c❤ " + totalEggs));

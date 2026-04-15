@@ -7,6 +7,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
+var EASTER_EVENT_ID = "easter_egg_hunt";
+
 var egg_activation_lines = [
     "&6Uh oh... it woke up.",
     "&6The egg opens one eye. It has seen things. It chooses violence.",
@@ -490,7 +492,7 @@ function generateEggItem(world, npc) {
     }
 
     var event_collection_line = "&e&oCollected &e&l&oafter&r&e&o the Easter " + event_year + " event: The Great Eggcryption";
-    if (isEventActive("Easter Egg Hunt")) {
+    if (isEventActive(EASTER_EVENT_ID)) {
         event_collection_line = "&e&oCollected during the Easter " + event_year + " event: The Great Eggcryption";
     }
 
@@ -557,8 +559,8 @@ function generateEggItem(world, npc) {
  * @param {string} egg_type - The type of egg captured (e.g., "spring", "chromashell", "encrypted").
  */
 function incremendEggTypeCounter(player, egg_type) {
-    var event_global_data = loadPlayerEventData("Easter Egg Hunt", "Global Data");
-    var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
+    var event_global_data = loadPlayerEventData(EASTER_EVENT_ID, "Global Data");
+    var event_player_data = loadPlayerEventData(EASTER_EVENT_ID, player.getName());
 
     // In player data, see if there is an entry for the egg type
     if (!event_player_data.egg_types) {
@@ -588,10 +590,10 @@ function incremendEggTypeCounter(player, egg_type) {
     event_player_data.egg_count = egg_count;
     event_global_data.egg_count = global_egg_count;
     tellPlayer(player, "&e&oYou have collected &l&6" + egg_count + "&r&e&o eggs out of &l&6" + global_egg_count + "&r&e&o eggs in the world!");
-    savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
-    savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
-    savePlayerEventData("Easter Egg Hunt", player.getName(), event_player_data);
-    savePlayerEventData("Easter Egg Hunt", "Global Data", event_global_data);
+    savePlayerEventData(EASTER_EVENT_ID, player.getName(), event_player_data);
+    savePlayerEventData(EASTER_EVENT_ID, "Global Data", event_global_data);
+    savePlayerEventData(EASTER_EVENT_ID, player.getName(), event_player_data);
+    savePlayerEventData(EASTER_EVENT_ID, "Global Data", event_global_data);
     var logline = player.getName() + " just caught a " + egg_type + " egg! (" + egg_count + " eggs total)";
     logToFile("events", logline);
 }

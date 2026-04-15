@@ -20,6 +20,7 @@ var playerSpawnIntervals = {}; // Tracks the spawn interval for each player in m
 
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
+var EASTER_EVENT_ID = "easter_egg_hunt";
 
 var tick_counter = 0;
 var max_tick_count = 100;
@@ -94,7 +95,7 @@ function init(e) {
             }
         }
 
-        if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
+        if (isEventActiveForPlayer(EASTER_EVENT_ID, player)) {
             spawnEasterStarterPack(player);
             resetToll();
         }
@@ -138,7 +139,7 @@ function tick(e) {
                 }
             }
 
-            if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
+            if (isEventActiveForPlayer(EASTER_EVENT_ID, player)) {
                 runToll(e);
 
                 if (everyHours(0)) {
@@ -221,7 +222,7 @@ function playerJoin(e) {
         }
     }
 
-    if (isEventActiveForPlayer("Easter Egg Hunt", player)) {
-        var event_player_data = loadPlayerEventData("Easter Egg Hunt", player.getName());
+    if (isEventActiveForPlayer(EASTER_EVENT_ID, player)) {
+        var event_player_data = loadPlayerEventData(EASTER_EVENT_ID, player.getName());
     }
 }

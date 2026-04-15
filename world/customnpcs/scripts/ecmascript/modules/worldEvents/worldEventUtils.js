@@ -8,6 +8,9 @@ var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldE
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 var allEventConfig = loadEventConfig();
 var DEBUG_MODE = false;
+var LEGACY_EVENT_DATA_ALIASES = {
+    "easter_egg_hunt": ["Easter Egg Hunt"]
+};
 
 
 /**
@@ -29,12 +32,16 @@ function loadEventConfig() {
  */
 function loadPlayerEventData(eventId, player_name) {
     var all_data = loadJson(PLAYER_EVENT_DATA);
+    var event_keys = getEventDataLookupKeys(eventId);
 
-    if (all_data[eventId] && all_data[eventId][player_name]) {
-        return all_data[eventId][player_name];
-    } else {
-        return {};
+    for (var i = 0; i < event_keys.length; i++) {
+        var event_key = event_keys[i];
+        if (all_data[event_key] && all_data[event_key][player_name]) {
+            return all_data[event_key][player_name];
+        }
     }
+
+    return {};
 }
 
 /**
@@ -50,6 +57,8 @@ function savePlayerEventData(event_name, player_name, data) {
         var all_data = {};
     }
 
+    migrateLegacyEventDataKey(all_data, event_name);
+
     if (!all_data[event_name]) {
         all_data[event_name] = {};
     }
@@ -57,6 +66,31 @@ function savePlayerEventData(event_name, player_name, data) {
     all_data[event_name][player_name] = data;
 
     saveJson(all_data, PLAYER_EVENT_DATA);
+}
+
+function getEventDataLookupKeys(eventId) {
+    var keys = [eventId];
+    var aliases = LEGACY_EVENT_DATA_ALIASES[eventId] || [];
+    for (var i = 0; i < aliases.length; i++) {
+        keys.push(aliases[i]);
+    }
+    return keys;
+}
+
+function migrateLegacyEventDataKey(all_data, eventId) {
+    if (all_data[eventId]) {
+        return;
+    }
+
+    var aliases = LEGACY_EVENT_DATA_ALIASES[eventId] || [];
+    for (var i = 0; i < aliases.length; i++) {
+        var legacyKey = aliases[i];
+        if (all_data[legacyKey]) {
+            all_data[eventId] = all_data[legacyKey];
+            delete all_data[legacyKey];
+            return;
+        }
+    }
 }
 
 function nameToID(name) {
