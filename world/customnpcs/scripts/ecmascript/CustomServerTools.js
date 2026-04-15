@@ -9,6 +9,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensing.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
@@ -9178,6 +9179,103 @@ registerXCommands([
         "datatype": "region",
         "exists": true
     }]],
+    ['!region addSign <name> <line>', function (pl, args, data) {
+        var region = new Region(args.name).init(data);
+        var line = parseInt(args.line, 10);
+        if (isNaN(line) || line < 1 || line > 4) {
+            tellPlayer(pl, "&cInvalid line number. Use a value between 1 and 4.");
+            return false;
+        }
+        var rayt = null;
+        try {
+            rayt = pl.rayTraceBlock(16, false, false);
+        } catch (e) { }
+
+        if (!rayt || !rayt.getBlock) {
+            tellPlayer(pl, "&cYou are not looking at a block.");
+            return false;
+        }
+
+        var blk = rayt.getBlock();
+        if (!blk || !blk.getName || blk.getName().toLowerCase().indexOf("sign") === -1) {
+            tellPlayer(pl, "&cTarget block is not a sign. Look at a sign and try again.");
+            return false;
+        }
+
+        var ownerName = getRegionOwnerName(region.name);
+        setSignLineAt(blk.getX(), blk.getY(), blk.getZ(), line, ownerName);
+        addRegionOwnerSign(region.name, {
+            x: blk.getX(),
+            y: blk.getY(),
+            z: blk.getZ(),
+            line: line
+        });
+
+        tellPlayer(pl, "&aLinked sign to region '&b" + region.name + "&a' and set owner on line &e" + line + "&a to '&f" + ownerName + "&a'.");
+        return true;
+    }, 'region.setOwner', [{
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    }, {
+        "argname": "line",
+        "type": "number",
+        "min": 1,
+        "max": 4
+    }]],
+    ['!region removeSign <name>', function (pl, args, data) {
+        var region = new Region(args.name).init(data);
+        var rayt = null;
+        try {
+            rayt = pl.rayTraceBlock(16, false, false);
+        } catch (e) { }
+
+        if (!rayt || !rayt.getBlock) {
+            tellPlayer(pl, "&cYou are not looking at a block.");
+            return false;
+        }
+
+        var blk = rayt.getBlock();
+        if (!blk || !blk.getName || blk.getName().toLowerCase().indexOf("sign") === -1) {
+            tellPlayer(pl, "&cTarget block is not a sign. Look at a sign and try again.");
+            return false;
+        }
+
+        if (!region.data.ownerSigns || region.data.ownerSigns.length === 0) {
+            tellPlayer(pl, "&cRegion '&e" + region.name + "&c' has no linked owner signs.");
+            return false;
+        }
+
+        var sx = blk.getX();
+        var sy = blk.getY();
+        var sz = blk.getZ();
+        var removed = false;
+        for (var i = 0; i < region.data.ownerSigns.length; i++) {
+            var s = region.data.ownerSigns[i];
+            if (!s) continue;
+            var sl = (s.line != null ? (s.line | 0) : 2);
+            if ((s.x | 0) === sx && (s.y | 0) === sy && (s.z | 0) === sz && sl === 2) {
+                region.data.ownerSigns.splice(i, 1);
+                removed = true;
+                break;
+            }
+        }
+
+        if (!removed) {
+            tellPlayer(pl, "&cThis sign is not linked as owner sign line 2 for region '&e" + region.name + "&c'.");
+            return false;
+        }
+
+        region.save(data);
+        tellPlayer(pl, "&aRemoved linked owner sign from region '&b" + region.name + "&a'.");
+        return true;
+    }, 'region.setOwner', [{
+        "argname": "name",
+        "type": "datahandler",
+        "datatype": "region",
+        "exists": true
+    }]],
     ['!region select <name>', function (pl, args, data) {
         var rayt;
         try {
@@ -9641,7 +9739,11 @@ registerXCommands([
             return false;
         }
 
-        region.set('forSale', forSale).save(data);
+        region.set('forSale', forSale);
+
+        check_and_update_sign(region, pl);
+
+        region.save(data);
 
         tellPlayer(pl, '&aSet region for sale to &e' + forSale.toString());
 
