@@ -521,6 +521,14 @@ sets:
                 y: 75.0
                 z: -89.0
                 label: FerraSol Recyclers
+            marker_6:
+                world: world
+                markup: false
+                icon: shopping_junkyard
+                x: -2385.0
+                y: 74.0
+                z: -4930.0
+                label: Casse des Courneilles - Junk Yard
         lines: {
             }
         layerprio: 0
@@ -1013,6 +1021,14 @@ sets:
                 y: 73.0
                 z: -8745.0
                 label: Solidaritet
+            marker_20:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -3361.0
+                y: 110.0
+                z: -5168.0
+                label: Montaigarde
         lines: {
             }
         layerprio: 0
@@ -1913,6 +1929,22 @@ sets:
                 y: 70.0
                 z: -7748.0
                 label: Boreal Fuel - Fuel Station
+            marker_37:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -2420.0
+                y: 74.0
+                z: -4895.0
+                label: Station des Courneilles - Fuel Station
+            marker_38:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -2423.0
+                y: 74.0
+                z: -4928.0
+                label: Station des Courneilles - Charging Station
         lines: {
             }
         layerprio: 0
@@ -2937,6 +2969,14 @@ sets:
                 y: 79.0
                 z: 3667.0
                 label: Zarnivik Office Parking
+            marker_21:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -3337.0
+                y: 117.0
+                z: -5221.0
+                label: Parking
         lines: {}
         layerprio: 0
     Historical Sites:

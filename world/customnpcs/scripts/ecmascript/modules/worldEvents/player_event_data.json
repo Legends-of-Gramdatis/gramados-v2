@@ -305,6 +305,10 @@
                 "april_fools"
             ],
             "show_skip_message": true
+        },
+        "SilveradoTDS": {
+            "skipping_events": [],
+            "show_skip_message": false
         }
     },
     "april_fools": {
