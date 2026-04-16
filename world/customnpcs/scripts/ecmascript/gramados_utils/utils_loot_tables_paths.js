@@ -32,3 +32,4 @@ var _LOOTTABLE_FURNITURE_STORAGE = "furniture/furniture_storage.json"
 var _LOOTTABLE_FURNITURE_TABLE = "furniture/furniture_table.json"
 
 var _LOOTTABLE_ARCADE_TOKENS = "treasures/treasures_arcade_tokens.json"
+var _LOOTTABLE_MODIFIER_FUNCTION_COVERAGE = "modifiers/modifier_function_coverage.json"

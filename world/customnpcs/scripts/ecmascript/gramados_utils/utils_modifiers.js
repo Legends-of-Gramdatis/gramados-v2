@@ -6,6 +6,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_pickpocket.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_nature.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js");
 
 var farmCrops = exports_utils_farm_crops;
@@ -33,36 +34,14 @@ var PASSIVE_MODIFIERS_DATA_PATH = "world/customnpcs/scripts/data_auto/passive_mo
  * @returns {IItemStack} A new item stack representing the configured modifier.
  */
 function instanciate_active_modifier(player, stack, modifierEffect) {
-    var stackClone = stack.copy();
-    var nbt = stackClone.getItemNbt();
-    var tag = nbt.getCompound("tag");
-    tag.setBoolean("is_modifier", true);
-    tag.setString("modifier_class", "orb");
-    tag.setString("modifier_type", "active");
-    tag.setString("modifier_use", "unlimited-use");
-    tag.setInteger("modifier_repairs", 0);
-    tag.setBoolean("is_broken", false);
-
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.active_effects, "type", modifierEffect);
-
-    tag.setString("modifier_effect", modifierEffect);
-    tag.setInteger("modifier_radius", entry.radius);
-
-    nbt.setCompound("tag", tag);
-    nbt.setString("id", cfg.itemId);
-
-    var newItem = player.getWorld().createItemFromNbt(nbt);
-
-    newItem.setCustomName(parseEmotes(ccs(entry.displayName)));
-    newItem.setLore([
-        parseEmotes(ccs(entry.description)),
-        ccs("&7Radius: &e" + entry.radius + " blocks")
-    ]);
-    newItem.setItemDamage(entry.colorCode);
-
-    return newItem;
+    return create_modifier_item_stack(player, stack, {
+        modifierClass: "orb",
+        modifierType: "active",
+        modifierEffect: modifierEffect,
+        overrideItemId: cfg.itemId
+    });
 }
 
 /**
@@ -86,37 +65,14 @@ function instanciate_active_modifier(player, stack, modifierEffect) {
  * @returns {IItemStack} A new item stack representing the configured passive modifier orb.
  */
 function instanciate_passive_modifier(player, stack, modifierEffect) {
-    var stackClone = stack.copy();
-    var nbt = stackClone.getItemNbt();
-    var tag = nbt.getCompound("tag");
-    tag.setBoolean("is_modifier", true);
-    tag.setString("modifier_class", "orb");
-    tag.setString("modifier_type", "passive");
-    tag.setString("modifier_use", "unlimited-use");
-    tag.setInteger("modifier_repairs", 0);
-    tag.setBoolean("is_broken", false);
-
-
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var cfg = config_data.items;
-    var entry = findJsonEntryArray(config_data.passive_effects, "type", modifierEffect);
-    
-    tag.setString("modifier_effect", modifierEffect);
-    tag.setInteger("duration_minutes", entry.durationMinutes);
-
-    nbt.setCompound("tag", tag);
-    nbt.setString("id", cfg.itemId);
-
-    var newItem = player.getWorld().createItemFromNbt(nbt);
-
-    newItem.setCustomName(parseEmotes(ccs(entry.displayName)));
-    newItem.setLore([
-        parseEmotes(ccs(entry.description)),
-        ccs("&7Duration: &e" + entry.durationMinutes + " minutes")
-    ]);
-    newItem.setItemDamage(entry.colorCode);
-
-    return newItem;
+    return create_modifier_item_stack(player, stack, {
+        modifierClass: "orb",
+        modifierType: "passive",
+        modifierEffect: modifierEffect,
+        overrideItemId: cfg.itemId
+    });
 }
 
 /**
@@ -142,37 +98,15 @@ function instanciate_passive_modifier(player, stack, modifierEffect) {
  * @returns {IItemStack} A new item stack representing the configured consumable modifier.
  */
 function instanciate_consumable_modifier(player, stack, modifierEffect) {
-    var stackClone = stack.copy();
-    var nbt = stackClone.getItemNbt();
-    var tag = nbt.getCompound("tag");
-    tag.setBoolean("is_modifier", true);
-    tag.setString("modifier_class", "consumable");
-    tag.setString("modifier_use", "single-use");
-
     var config_data = loadJson(MODIFIERS_CFG_PATH);
     var entry = findJsonEntryArray(config_data.active_effects, "type", modifierEffect);
     var size = rrandom_range(entry.radius * 0.5, entry.radius * 1.5)
 
-    tag.setString("modifier_effect", modifierEffect);
-    tag.setInteger("modifier_radius", size);
-
-    nbt.setCompound("tag", tag);
-
-    var newItem = player.getWorld().createItemFromNbt(nbt);
-
-    if (entry.displayName) {
-        newItem.setCustomName(parseEmotes(ccs(entry.displayName + " &8[Consumable]")));
-    }
-
-    var lore = [];
-    if (entry.description) {
-        lore.push(parseEmotes(ccs(entry.description)));
-    }
-    lore.push(ccs("&7Size: &e" + size));
-    lore.push(ccs("&8Single-use item"));
-    newItem.setLore(lore);
-
-    return newItem;
+    return create_modifier_item_stack(player, stack, {
+        modifierClass: "consumable",
+        modifierEffect: modifierEffect,
+        radius: size
+    });
 }
 
 /**
@@ -511,7 +445,7 @@ function normalize_and_clean_passive_modifiers(player, modifiers) {
  * @param {string} modifierType Modifier type (must exist in `passive_modifiers`).
  * @returns {boolean} True if a new modifier entry was added, false otherwise.
  */
-function apply_passive_modifier_type(player, modifierType) {
+function apply_passive_modifier_type(player, modifierType, modifierData) {
     var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
     var playerId = player.getUUID();
 
@@ -531,7 +465,7 @@ function apply_passive_modifier_type(player, modifierType) {
         }
     }
 
-    var newEntry = get_dynamic_modifier_entry_from_type(modifierType);
+    var newEntry = get_dynamic_modifier_entry_from_type(modifierType, modifierData);
     if (!newEntry) {
         return false;
     }
@@ -590,7 +524,11 @@ function get_passive_multiplier_for_tag(player, tag) {
     for (var i = 0; i < playerModifiers.length; i++) {
         var entry = findJsonEntryArray(config_data.passive_effects, "type", playerModifiers[i].type);
         if (entry && entry.tags && includes(entry.tags, tag)) {
-            totalMultiplier += entry.multiplier - 1.0;
+            var multiplier = (typeof (playerModifiers[i].multiplier) === "number") ? playerModifiers[i].multiplier : entry.multiplier;
+            if (typeof (multiplier) !== "number") {
+                multiplier = 1.0;
+            }
+            totalMultiplier += multiplier - 1.0;
         }
     }
     return totalMultiplier;
@@ -625,16 +563,38 @@ function clean_modifiers(player, modifiers) {
  * @param {string} modifierType The `passive_modifiers[].type` to look up.
  * @returns {{type: string, remainingMs: number, lastOnlineAt: (number|null)}|null} Dynamic entry, or null if not found.
  */
-function get_dynamic_modifier_entry_from_type(modifierType) {
+function get_dynamic_modifier_entry_from_type(modifierType, modifierData) {
     var entry = get_passive_modifier_config_entry(modifierType);
     if (!entry) {
         return null;
     }
 
+    var durationMinutes = entry.durationMinutes;
+    var multiplier = entry.multiplier;
+    var radius = entry.radius;
+
+    if (modifierData) {
+        if (typeof (modifierData.durationMinutes) === "number") {
+            durationMinutes = modifierData.durationMinutes;
+        }
+        if (typeof (modifierData.multiplier) === "number") {
+            multiplier = modifierData.multiplier;
+        }
+        if (typeof (modifierData.radius) === "number") {
+            radius = modifierData.radius;
+        }
+    }
+
+    if (typeof (durationMinutes) !== "number") {
+        durationMinutes = 0;
+    }
+
     return {
         type: entry.type,
-        remainingMs: entry.durationMinutes * 60 * 1000,
-        lastOnlineAt: Date.now()
+        remainingMs: durationMinutes * 60 * 1000,
+        lastOnlineAt: Date.now(),
+        multiplier: multiplier,
+        radius: radius
     };
 }
 
@@ -695,7 +655,9 @@ function freeze_passive_modifiers(player) {
         frozen.push({
             type: modifier.type,
             remainingMs: remainingMs,
-            lastOnlineAt: null
+            lastOnlineAt: null,
+            multiplier: modifier.multiplier,
+            radius: modifier.radius
         });
     }
 
@@ -724,7 +686,9 @@ function unfreeze_passive_modifiers(player) {
         unfrozen.push({
             type: modifier.type,
             remainingMs: remainingMs,
-            lastOnlineAt: nowMs
+            lastOnlineAt: nowMs,
+            multiplier: modifier.multiplier,
+            radius: modifier.radius
         });
     }
 

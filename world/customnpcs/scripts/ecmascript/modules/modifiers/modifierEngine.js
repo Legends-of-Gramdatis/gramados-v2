@@ -203,8 +203,14 @@ function handle_orb_modifier(event, player, item, originalItem) {
         if (!isBroken && block.getName() == "minecraft:air") {
             var modifierType = tag.getString("modifier_effect");
             var time_in_minutes = tag.getInteger("duration_minutes");
+            var modifierMultiplier = tag.has("modifier_multiplier") ? tag.getDouble("modifier_multiplier") : null;
+            var modifierRadius = tag.has("modifier_radius") ? tag.getInteger("modifier_radius") : null;
 
-            var applied = apply_passive_modifier_type(player, modifierType);
+            var applied = apply_passive_modifier_type(player, modifierType, {
+                durationMinutes: time_in_minutes,
+                multiplier: modifierMultiplier,
+                radius: modifierRadius
+            });
             if (!applied) {
                 tellPlayer(player, "§e:sun: Passive modifier already active!");
                 return;
@@ -212,7 +218,7 @@ function handle_orb_modifier(event, player, item, originalItem) {
 
             tellPlayer(player, "§a:sun: Passive modifier activated: §f" + get_modifier_display_name(modifierType) + "§a (§e" + time_in_minutes + "m§a)");
 
-            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=passive type="' + modifierType + '" durationMinutes=' + time_in_minutes + ' nextRepairCostTokens=' + tag.getInteger('modifier_repairs'));
+            logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' kind=passive type="' + modifierType + '" durationMinutes=' + time_in_minutes + ' multiplier=' + (modifierMultiplier !== null ? modifierMultiplier : 'config') + ' nextRepairCostTokens=' + tag.getInteger('modifier_repairs'));
             
             // Modify cloned item, reduce original stack, give modified item
             item.setStackSize(1);

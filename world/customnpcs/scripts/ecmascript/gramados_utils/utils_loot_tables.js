@@ -2,6 +2,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
@@ -98,6 +99,34 @@ function pullLootTable(lootTablePath, player) {
                     if (func.function === "set_nbt") {
                         item.nbt = func.tag;
                     }
+
+                    if (func.function === "set_modifier") {
+                        var modifierClass = func.modifier_class || func.modifierClass || "orb";
+                        var modifierType = func.modifier_type || func.modifierType || null;
+                        var modifierEffect = func.type || func.modifier_effect || func.modifierEffect;
+                        var resolvedRadius = resolve_modifier_value(func.radius);
+                        var resolvedDurationMinutes = resolve_modifier_value(func.durationMinutes !== undefined ? func.durationMinutes : func.duration_minutes);
+                        var resolvedMultiplier = resolve_modifier_value(func.multiplier);
+
+                        if (modifierClass === "orb" && !modifierType) {
+                            modifierType = (resolvedDurationMinutes !== null || resolvedMultiplier !== null) ? "passive" : "active";
+                        }
+
+                        if (modifierClass === "consumable") {
+                            modifierType = null;
+                        }
+
+                        item.modifier = {
+                            modifierClass: modifierClass,
+                            modifierType: modifierType,
+                            modifierEffect: modifierEffect,
+                            radius: resolvedRadius,
+                            durationMinutes: resolvedDurationMinutes,
+                            multiplier: resolvedMultiplier,
+                            modifierUse: func.modifier_use || func.modifierUse,
+                            overrideItemId: func.itemId || func.item_id
+                        };
+                    }
                 }
             }
 
@@ -170,6 +199,9 @@ function generateItemStackFromLootEntry(entry, world) {
             var nbt = API.stringToNbt(entry.nbt);
             // set nbt to itemstack
             itemstack = setNbtToItemStack(itemstack, nbt, world);
+        }
+        if (entry.modifier) {
+            itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
         }
         return itemstack;
     } catch (error) {

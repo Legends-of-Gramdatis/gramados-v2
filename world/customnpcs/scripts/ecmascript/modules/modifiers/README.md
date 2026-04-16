@@ -48,6 +48,20 @@ All orb definitions live in `modifiers_config.json`.
 - `modifiers[]`: active orb definitions (radius-based world effects).
 - `passive_modifiers[]`: passive orb definitions (player buffs with durations).
 
+## Loot Table Support
+
+Loot tables can now spawn modifiers directly through a `set_modifier` function entry.
+
+- `function`: must be `set_modifier`.
+- `type`: the modifier effect id, matched against `active_effects[]` or `passive_effects[]`.
+- `modifier_class`: `orb` for active/passive orbs, or `consumable` for single-use modifiers.
+- `modifier_type`: `active` or `passive` for orb items. Consumables do not need this field.
+- `radius`: optional modifier radius. Supports a number (example: `8`) or `{ "min": 4, "max": 12 }`.
+- `durationMinutes`: optional passive duration in minutes. Supports a number (example: `120`) or a `{ "min": ..., "max": ... }` range.
+- `multiplier`: optional passive multiplier. Supports a number (example: `1.1`) or a `{ "min": ..., "max": ... }` range.
+
+The loot-table helper also writes any provided runtime values onto the item NBT, so the modifier engine can use the rolled values later instead of the static config default.
+
 ## Admin Tips
 
 Admin creation shortcut is handled by `modifierEngine.js`.
