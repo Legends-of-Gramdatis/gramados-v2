@@ -293,7 +293,7 @@
             "skipping_events": [
                 "april_fools"
             ],
-            "show_skip_message": false
+            "show_skip_message": true
         },
         "Kitsunami_": {
             "skipping_events": [
@@ -327,6 +327,59 @@
         "BOTFerris": {
             "playerLastSpawnTime": 1775249962875,
             "playerSpawnIntervals": 309211
+        }
+    },
+    "easter_egg_hunt": {
+        "TheOddlySeagull": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                },
+                "spring": {
+                    "egg_count": 1
+                },
+                "encrypted": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 3
+        },
+        "Kitsunami_": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 13
+                },
+                "spring": {
+                    "egg_count": 6
+                },
+                "encrypted": {
+                    "egg_count": 3
+                }
+            },
+            "egg_count": 22
+        },
+        "Global Data": {
+            "egg_count": 99
+        },
+        "AliceOfTheMoon": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 33
+                },
+                "spring": {
+                    "egg_count": 35
+                },
+                "encrypted": {
+                    "egg_count": 6
+                }
+            },
+            "egg_count": 74
+        },
+        "SilveradoTDS": {
+            "has_starter_pack": true
         }
     }
 }
