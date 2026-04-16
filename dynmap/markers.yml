@@ -2681,10 +2681,10 @@ sets:
                 world: world
                 markup: false
                 icon: outdoor_mountain
-                x: -3118.0
-                y: 230.0
-                z: -4934.0
-                label: Alden Peaks
+                x: -3723.0
+                y: 200.0
+                z: -5333.0
+                label: les Monts de Vermeil
             marker_22:
                 world: world
                 markup: false
@@ -2772,7 +2772,7 @@ sets:
                 x: -6854.0
                 y: 81.0
                 z: -172.0
-                label: Siloroz's Communal Vegetable Garden.
+                label: Siloroz fruktovy - Allotments
             marker_33:
                 world: world
                 markup: false
@@ -2797,6 +2797,14 @@ sets:
                 y: 104.0
                 z: -1290.0
                 label: Bois des Longues Veilles
+            marker_32:
+                world: world
+                markup: false
+                icon: outdoor_garden_park
+                x: -3260.0
+                y: 110.0
+                z: -5110.0
+                label: Les Jardins en Terrasses de Montaigarde - Allotments
         lines: {}
         layerprio: 0
     Parkings:
@@ -3373,6 +3381,30 @@ sets:
                 y: 72.0
                 z: -8254.0
                 label: Block A Restored Historic Plaza
+            marker_49:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3118.0
+                y: 230.0
+                z: -4934.0
+                label: Château de la Couronne Vermeille
+            marker_50:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -3230.0
+                y: 130.0
+                z: -5188.0
+                label: Sanctuaire de Montaigarde
+            marker_51:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -3341.0
+                y: 130.0
+                z: -5262.0
+                label: Cloitre des Hautes Marches
         lines: {}
         layerprio: 0
     Bridges:
