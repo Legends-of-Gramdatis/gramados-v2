@@ -169,7 +169,7 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
         newItem.setLore(lore);
     }
 
-    if (entry.colorCode !== undefined) {
+    if (modifierClass === 'orb' && entry.colorCode !== undefined) {
         newItem.setItemDamage(entry.colorCode);
     }
 
