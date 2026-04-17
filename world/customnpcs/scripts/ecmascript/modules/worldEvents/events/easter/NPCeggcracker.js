@@ -189,6 +189,7 @@ function regenerate(npc) {
     }
 
     initErrorLines(npc);
+    npc.say("&6&l[&e&lEggcracker&6&l] &eYou have changed the eggcracker type to " + next_type + "!");
 
     npc.getDisplay().setTitle(title);
     // npc.say("&6&l[&e&lEggcracker&6&l] &eYou have changed the eggcracker type to " + next_type + "!");
