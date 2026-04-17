@@ -11,12 +11,17 @@
                 {
                     "type": "loot_table",
                     "path": "treasures/treasures_arcade_events.json",
-                    "weight": 5
+                    "weight": 10
                 },
                 {
                     "type": "loot_table",
                     "path": "metals/metal_nuggets.json",
                     "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "modifiers/modifiers_vegetation_consumable.json",
+                    "weight": 2
                 }
             ]
         }
