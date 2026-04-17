@@ -293,7 +293,7 @@
             "skipping_events": [
                 "april_fools"
             ],
-            "show_skip_message": true
+            "show_skip_message": false
         },
         "Kitsunami_": {
             "skipping_events": [
@@ -334,16 +334,16 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 1
+                    "egg_count": 6
                 },
                 "spring": {
-                    "egg_count": 1
+                    "egg_count": 13
                 },
                 "encrypted": {
-                    "egg_count": 1
+                    "egg_count": 4
                 }
             },
-            "egg_count": 3
+            "egg_count": 23
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,25 +361,34 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 99
+            "egg_count": 155
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 33
+                    "egg_count": 42
                 },
                 "spring": {
-                    "egg_count": 35
+                    "egg_count": 58
                 },
                 "encrypted": {
-                    "egg_count": 6
+                    "egg_count": 8
                 }
             },
-            "egg_count": 74
+            "egg_count": 108
         },
         "SilveradoTDS": {
             "has_starter_pack": true
+        },
+        "oldbjorn": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "spring": {
+                    "egg_count": 2
+                }
+            },
+            "egg_count": 2
         }
     }
 }
