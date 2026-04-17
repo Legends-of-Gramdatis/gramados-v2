@@ -2,6 +2,31 @@ load("world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/shopkeeping_ut
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js")
 
+var REGIONAL_DEMAND_JSON_PATH = "world/customnpcs/scripts/ecmascript/modules/shopkeeping_dev/regional_demand.json";
+
+/**
+ * Checks if a region exists.
+ * @param {string} region - The region name.
+ * @returns {boolean} - True if the region exists, false otherwise.
+ */
+function checkRegionExists(region) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region];
+}
+
+/**
+ * Checks if a sub-region exists within a region.
+ * @param {string} region - The region name.
+ * @param {string} subRegion - The sub-region name.
+ * @returns {boolean} - True if the sub-region exists, false otherwise.
+ */
+function checkSubRegionExists(region, subRegion) {
+    var shopDemand = loadJson(REGIONAL_DEMAND_JSON_PATH);
+    shopDemand = shopDemand["Local Demands"];
+    return shopDemand && shopDemand[region] && shopDemand[region][subRegion];
+}
+
 /**
  * Function to get the shop name
  * @param {IPlayer} player - The player.
