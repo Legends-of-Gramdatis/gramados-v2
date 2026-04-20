@@ -2,9 +2,200 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_perms.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
+
+/**
+ * Sets the owner of a region, regardless of any other ownership or permission settings.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {string} owner - The owner name.
+ * @param {boolean} maintainTrusted - Whether to keep the existing trusted players list.
+ * @returns {boolean} True if the owner was set, false otherwise.
+ */
+function setRegionOwner(region, owner, maintainTrusted) {
+    var region_json = loadRegionData(region);
+    if (region_json) {
+        region_json.owner = owner;
+        if (!maintainTrusted) {
+            region_json.trusted = [];
+        }
+        return saveRegionData(region, region_json);
+    }
+    return false;
+}
+
+/**
+ * Removes the owner of a region, making it unowned/available.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {boolean} True if the owner was removed, false otherwise.
+ */
+function removeRegionOwner(region) {
+    return setRegionOwner(region, null, true);
+}
+
+/**
+ * Adds a player to the trusted list of a region, allowing them access without being the owner.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {string} playerName - The player name to add.
+ * @returns {boolean} True if the player was added or is already trusted, false otherwise.
+*/
+function addRegionTrustedPlayer(region, playerName) {
+    var region_trusted = getRegionTrustedPlayers(region);
+    if (!includes(region_trusted, playerName)) {
+        region_trusted.push(playerName);
+        return setRegionTrustedPlayers(region, region_trusted);
+    }
+    return includes(region_trusted, playerName);
+}
+
+/**
+ * Removes a player from the trusted list of a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {string} playerName - The player name to remove.
+ * @returns {boolean} True if the player was removed, false otherwise.
+*/
+function removeRegionTrustedPlayer(region, playerName) {
+    var region_trusted = getRegionTrustedPlayers(region);
+    region_trusted = array_remove(region_trusted, playerName)
+    return setRegionTrustedPlayers(region, region_trusted);
+}
+
+/** 
+ * Removes all players from the trusted list of a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {boolean} True if the trusted list was cleared, false otherwise.
+*/
+function removeAllRegionTrustedPlayers(region) {
+    return setRegionTrustedPlayers(region, []);
+}
+
+/**
+ * Retrieves the list of trusted players for a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {Array<string>} An array of player names who are trusted for the region.
+*/
+function getRegionTrustedPlayers(region) {
+    var region_json = loadRegionData(region);
+    if (region_json && region_json.trusted) {
+        return region_json.trusted;
+    }
+    return [];
+}
+
+/**
+ * Sets the list of trusted players for a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {Array<string>} playerNames - The list of player names to set as trusted.
+ * @returns {boolean} True if the list was set successfully, false otherwise.
+*/
+function setRegionTrustedPlayers(region, playerNames) {
+    var region_json = loadRegionData(region);
+    if (region_json) {
+        region_json.trusted = playerNames;
+        return saveRegionData(region, region_json);
+    }
+    return false;
+}
+
+/**
+ * Saves the data of a region to world data.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {Object} data - The region data object to save.
+ * @returns {boolean} True if the data was saved successfully, false otherwise.
+*/
+function saveRegionData(region, data) {
+    var worldData = getWorldData();
+    worldData.put(["region_" + region], JSON.stringify(data));
+    syncRegionPermission(region, data);
+    updateRegionOwnerSigns(region);
+    return true;
+}
+
+/**
+ * Synchronizes the corresponding region permission entry with region ownership/trusted data.
+ *
+ * Permission id convention follows CST Region+Permittable domain: `regions.<regionName>`.
+ * This helper keeps a managed list of region-derived players in
+ * `perm.meta._regionManagedPlayers` so manual permission players are preserved.
+ *
+ * @param {string} region - Region name without `region_` prefix.
+ * @param {Object} regionData - Region payload saved in world data.
+ * @returns {boolean}
+ */
+function syncRegionPermission(region, regionData) {
+    if (!region) return false;
+
+    var permissionId = 'regions.' + region;
+    var now = new Date().getTime();
+
+    var perm = loadPermissionData(permissionId);
+    if (!perm) {
+        perm = createDefaultPermissionData();
+        perm.created = now;
+    }
+
+    if (typeof perm.enabled !== 'boolean') perm.enabled = !!perm.enabled;
+    if (!perm.teams) perm.teams = [];
+    if (!perm.players) perm.players = [];
+    if (!perm.jobs) perm.jobs = [];
+    if (!perm.meta) perm.meta = {};
+
+    var previousManaged = perm.meta._regionManagedPlayers || [];
+    var players = perm.players;
+
+    // Remove previous auto-managed players before re-adding current owner/trusted.
+    for (var i = 0; i < previousManaged.length; i++) {
+        players = array_remove(players, previousManaged[i]);
+    }
+
+    var nextManaged = [];
+    if (regionData) {
+        var owner = regionData.owner;
+        if (owner != null) {
+            owner = String(owner).trim();
+            if (owner.length > 0) nextManaged.push(owner);
+        }
+
+        var trusted = regionData.trusted || [];
+        for (var t = 0; t < trusted.length; t++) {
+            var tr = trusted[t];
+            if (tr == null) continue;
+            tr = String(tr).trim();
+            if (tr.length > 0 && !includes(nextManaged, tr)) {
+                nextManaged.push(tr);
+            }
+        }
+    }
+
+    for (var j = 0; j < nextManaged.length; j++) {
+        if (!includes(players, nextManaged[j])) {
+            players.push(nextManaged[j]);
+        }
+    }
+
+    perm.players = players;
+    perm.meta._regionManagedPlayers = nextManaged;
+    perm.updated = now;
+
+    return savePermissionData(permissionId, perm);
+}
+
+/**
+ * Loads the data of a region from world data.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {Object|null} The region data object, or null if not found or on error.
+*/
+function loadRegionData(region) {
+    var worldData = getWorldData();
+    var dataStr = worldData.get(["region_" + region]);
+    if (dataStr) {
+        return JSON.parse(dataStr);
+    }
+    return null;
+}
+
 
 /**
  * Retrieves the price of a region.
@@ -14,43 +205,18 @@ var world = API.getIWorld(0);
  */
 function getRegionPrice(region, player) {
     var worldData = getWorldData();
-    var region_json = JSON.parse(worldData.get(["region_" + region]));
+    var region_json = loadRegionData(region);
     if (region_json
         && region_json.saleType
         && region_json.saleType === "buy"
         && region_json.salePrice) {
         return region_json.salePrice;
     }
-    // tellPlayer(player, "&cRegion value not found for: " + region);
-    // If region_json.saleType === "rent", then let player know price is not considered.
     if (region_json.saleType === "rent") {
         tellPlayer(player, "&eRegion " + region + " is sat for rent. Region price is not counted.");
         return 0;
     }
     return 0;
-}
-
-/**
- * Transfers a region from one player to another.
- * @param {IPlayer} player - The player initiating the transfer.
- * @param {string} region - The region name.
- * @param {string} target - The target player.
- */
-function transferRegion(player, region, target) {
-    var worldData = getWorldData();
-    var region_json = JSON.parse(worldData.get(["region_" + region]));
-    if (region_json) {
-        var regionOwner = region_json.owner;
-        region_json.owner = target;
-        worldData.put(["region_" + region], JSON.stringify(region_json));
-        // tellPlayer(player, "&aRegion transferred to " + region_json.owner + ".");
-        // Best-effort notify the target if it's an IPlayer, otherwise skip
-        // try { if (target && target.getName) { tellPlayer(target, "&aRegion transferred from " + regionOwner + "."); } } catch (e) {}
-        // Update any linked owner signs for this region
-        updateRegionOwnerSigns(region);
-    } else {
-        tellPlayer(player, "&4[ERROR] &cRegion not found: " + region + ". &ePlease contact an admin.");
-    }
 }
 
 /**
@@ -86,7 +252,7 @@ function _normalizeOwnerName(owner) {
  * @returns {string|null}
  */
 function getSignLineAt(x, y, z, line) {
-    var blk = world.getBlock(x | 0, y | 0, z | 0);
+    var blk = world.getBlock(x, y, z);
     if (!blk || !blk.getTileEntity) return null;
     var te = blk.getTileEntity();
     if (!te) return null;
@@ -95,10 +261,8 @@ function getSignLineAt(x, y, z, line) {
     var key = "Text" + li;
     var raw = te.getString(key);
     if (!raw) return "";
-    try {
-        var obj = JSON.parse(raw);
-        if (obj && typeof obj.text === "string") return obj.text;
-    } catch (e) { }
+    var obj = JSON.parse(raw);
+    if (obj && typeof obj.text === "string") return obj.text;
     return raw;
 }
 
