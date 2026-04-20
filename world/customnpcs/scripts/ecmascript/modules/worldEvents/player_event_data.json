@@ -337,13 +337,13 @@
                     "egg_count": 6
                 },
                 "spring": {
-                    "egg_count": 13
+                    "egg_count": 14
                 },
                 "encrypted": {
                     "egg_count": 4
                 }
             },
-            "egg_count": 23
+            "egg_count": 24
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 155
+            "egg_count": 160
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -389,6 +389,24 @@
                 }
             },
             "egg_count": 2
+        },
+        "SinaBloodsaw": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 3
+                }
+            },
+            "egg_count": 3
+        },
+        "Peter_Kitsune": {
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
         }
     }
 }
