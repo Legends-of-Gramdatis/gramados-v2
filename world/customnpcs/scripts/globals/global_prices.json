@@ -6876,5 +6876,8 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "mts:alicemotors.moguraa4:0": {
+        "value": 200000
     }
 }
