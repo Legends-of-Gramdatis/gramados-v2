@@ -40,6 +40,9 @@ var rgx_selector = /@([\w]+)(?:\[([^\v]*)\])?/;
 var rgx_selector_arg = /(\w+)(?:=(\w+)?(?:(\.\.)(\w+)?)?)?/g;
 var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
 
+var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
+var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
+
 
 var _MSG = gramados_json._MSG;
 var _COINITEMS = gramados_json._COINITEMS;
@@ -1298,16 +1301,6 @@ function Permission(name) {
             permitted = true;
         }
 
-        //Check jobs
-        /*
-        var pjobs = p.getJobs(data);
-        for(var p in pjobs) {
-var pjob = pjobs[p];
-            if(this.data.jobs.indexOf(pjob.name) != -1) {
-                permitted = true;
-            }
-        }*/
-
         //Check parents
         var ppar = getParentPerms(this.name || "", data);
         for (var p in ppar) {
@@ -1449,8 +1442,6 @@ function readFile(filePath) {
 // - entry.phase3 does NOT exist
 // Then writes timestamp under phase2["last ran"][cmdKey] = Date.now().
 // If file missing, invalid JSON, or conditions not met, it silently does nothing.
-var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
-var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 
 // Tutorial skip helper: advances to the next enabled onboarding phase.
 // - Only available from phase 1+ (phase 0 cannot be skipped).
