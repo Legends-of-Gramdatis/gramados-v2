@@ -51,6 +51,22 @@ function addRegionTrustedPlayer(region, playerName) {
 }
 
 /**
+ * Adds multiple players to the trusted list of a region, allowing them access without being the owner.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {Array<string>} playerNames - The list of player names to add.
+ * @returns {boolean} True if the players were added, false otherwise.
+*/
+function addRegionTrustedPlayers(region, playerNames) {
+    var region_trusted = getRegionTrustedPlayers(region);
+    for (var i = 0; i < playerNames.length; i++) {
+        if (!includes(region_trusted, playerNames[i])) {
+            region_trusted.push(playerNames[i]);
+        }
+    }
+    return setRegionTrustedPlayers(region, region_trusted);
+}
+
+/**
  * Removes a player from the trusted list of a region.
  * @param {string} region - The region name (without the 'region_' prefix).
  * @param {string} playerName - The player name to remove.
@@ -59,6 +75,20 @@ function addRegionTrustedPlayer(region, playerName) {
 function removeRegionTrustedPlayer(region, playerName) {
     var region_trusted = getRegionTrustedPlayers(region);
     region_trusted = array_remove(region_trusted, playerName)
+    return setRegionTrustedPlayers(region, region_trusted);
+}
+
+/**
+ * Removes multiple players from the trusted list of a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @param {Array<string>} playerNames - The list of player names to remove.
+ * @returns {boolean} True if the players were removed, false otherwise.
+ */
+function removeRegionTrustedPlayers(region, playerNames) {
+    var region_trusted = getRegionTrustedPlayers(region);
+    for (var i = 0; i < playerNames.length; i++) {
+        region_trusted = array_remove(region_trusted, playerNames[i]);
+    }
     return setRegionTrustedPlayers(region, region_trusted);
 }
 
@@ -154,7 +184,7 @@ function syncRegionPermission(region, regionData) {
     if (regionData) {
         var owner = regionData.owner;
         if (owner != null) {
-            owner = String(owner).trim();
+            owner = owner.trim();
             if (owner.length > 0) nextManaged.push(owner);
         }
 
@@ -162,7 +192,7 @@ function syncRegionPermission(region, regionData) {
         for (var t = 0; t < trusted.length; t++) {
             var tr = trusted[t];
             if (tr == null) continue;
-            tr = String(tr).trim();
+            tr = tr.trim();
             if (tr.length > 0 && !includes(nextManaged, tr)) {
                 nextManaged.push(tr);
             }
@@ -236,7 +266,7 @@ function getRegionOwnerName(region) {
 
 function _normalizeOwnerName(owner) {
     if (owner === undefined || owner === null) return "Available";
-    var s = String(owner).trim();
+    var s = owner.trim();
     if (s.length === 0) return "Available";
     var low = s.toLowerCase();
     if (low === "none" || low === "null" || low === "undefined") return "Available";
@@ -846,7 +876,7 @@ function getOwnedRegions(playerOrName, options) {
     var pname = (typeof playerOrName === 'string') ? playerOrName
         : (playerOrName && playerOrName.getName ? playerOrName.getName() : null);
     if (!pname) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
-    var pnameLc = String(pname).toLowerCase();
+    var pnameLc = pname.toLowerCase();
 
     var worldData;
     try { worldData = getWorldData(); } catch (e) { worldData = null; }
@@ -877,7 +907,7 @@ function getOwnedRegions(playerOrName, options) {
 
         var isOwner = false;
         var owner = data.owner || data.ownerName || (data.meta && data.meta.owner) || null;
-        if (owner && String(owner).toLowerCase() === pnameLc) {
+        if (owner && owner.toLowerCase() === pnameLc) {
             isOwner = true;
         }
         if (!isOwner) {
@@ -885,7 +915,7 @@ function getOwnedRegions(playerOrName, options) {
             if (owners && owners.length) {
                 for (var j = 0; j < owners.length; j++) {
                     var o = owners[j];
-                    if (o && String(o).toLowerCase() === pnameLc) { isOwner = true; break; }
+                    if (o && o.toLowerCase() === pnameLc) { isOwner = true; break; }
                 }
             }
         }
