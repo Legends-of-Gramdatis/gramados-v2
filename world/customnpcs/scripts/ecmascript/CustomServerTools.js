@@ -9154,15 +9154,14 @@ registerXCommands([
     }]],
     ['!region setOwner <name> [player]', function (pl, args, data) {
         var region = new Region(args.name).init(data);
-        region.data.owner = args.player;
-        if (!region.data.owner) {
-            region.data.trusted = [];
+        var owner = args.player;
+
+        if (!setRegionOwner(region.name, owner, false)) {
+            tellPlayer(pl, "&cFailed to set owner for region '&e" + region.name + "&c'.");
+            return false;
         }
-        tellPlayer(pl, "&aSet region owner to: " + (region.data.owner == null ? CONFIG_SERVER.TITLE : region.data.owner));
-        
-        check_and_update_sign(region, pl);
-        
-        region.save(data);
+
+        tellPlayer(pl, "&aSet region owner to: " + (owner == null ? CONFIG_SERVER.TITLE : owner));
         return true;
     }, 'region.setOwner', [{
         "argname": "name",
@@ -9755,16 +9754,12 @@ registerXCommands([
             return false;
         }
 
-        for (var i in args.players) {
-            var player = args.players[i];
-            if (region.data.trusted.indexOf(player) == -1) {
-                region.data.trusted.push(player);
-            }
+        var addCount = args.players.length;
+        if (!addRegionTrustedPlayers(region.name, args.players)) {
+            tellPlayer(pl, '&cFailed to add some or all players to the trusted list. Make sure you haven\'t added them already and that you\'ve entered valid player names.');
+        } else {
+            tellPlayer(pl, '&aAdded ' + addCount + ' player(s) to the trusted list.');
         }
-
-        region.save(data);
-
-        tellPlayer(pl, '&aAdded ' + args.players.length + ' player(s) to the trusted list.');
     }, 'myRegion.addTrusted', [{
         "argname": "name",
         "type": "datahandler",
@@ -9778,19 +9773,13 @@ registerXCommands([
             tellPlayer(pl, '&cYou are not the owner of this region.');
             return false;
         }
-        var newTrusted = [];
-        for (var i in region.data.trusted) {
-            var trusted = region.data.trusted[i];
-            if (args.players.indexOf(trusted) == -1) {
-                newTrusted.push(trusted);
-            }
+
+        var removeCount = args.players.length;
+        if (!removeRegionTrustedPlayers(region.name, args.players)) {
+            tellPlayer(pl, '&cFailed to remove some or all players from the trusted list. Make sure you\'ve entered valid player names and that you haven\'t tried to remove players that aren\'t on the trusted list.');
+        } else {
+            tellPlayer(pl, '&aRemoved ' + removeCount + ' player(s) from the trusted list.');
         }
-
-        region.data.trusted = newTrusted;
-
-        region.save(data);
-
-        tellPlayer(pl, '&Removed ' + args.players.length + ' player(s) from the trusted list.');
     }, 'myRegion.removeTrusted', [{
         "argname": "name",
         "type": "datahandler",
