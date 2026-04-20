@@ -28,7 +28,7 @@ function timer(event) {
         if (tip.description) {
             tellPlayer(player, "&7:arrow_r: &r" + tip.description);
         }
-        logToFile('events', player.getName() + " received tip: " + tip.name);
+        // logToFile('events', player.getName() + " received tip: " + tip.name);
     }
 }
 
@@ -41,7 +41,7 @@ function interact(event) {
             if (tip.description) {
                 tellPlayer(player, "&7:arrow_r: &r" + tip.description);
             }
-            logToFile('events', player.getName() + " received tip: " + tip.name);
+            // logToFile('events', player.getName() + " received tip: " + tip.name);
         }
     }
 }
