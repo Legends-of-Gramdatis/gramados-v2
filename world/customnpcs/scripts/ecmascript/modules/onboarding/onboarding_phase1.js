@@ -140,7 +140,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         var owner0 = getRegionOwnerName(pdata.phase1.targetRoomName);
                         var pname0 = player.getName();
                         if (owner0 === 'Available'){
-                            transferRegion(player, pdata.phase1.targetRoomName, pname0);
+                            setRegionOwner(pdata.phase1.targetRoomName, pname0);
                             pdata.phase1.roomClaimed = true;
                         } else if (owner0 === pname0) {
                             pdata.phase1.roomClaimed = true;

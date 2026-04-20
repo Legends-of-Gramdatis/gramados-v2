@@ -306,7 +306,7 @@ function buyShop(player, shopData, buyerName) {
     // Transfer ownership of regions
     var regions = getShopRegions(player, array_merge(shopData.property.stock_room, shopData.property.main_room));
     for (var i = 0; i < regions.length; i++) {
-        transferRegion(player, regions[i], buyerName);
+        setRegionOwner(regions[i], buyerName);
     }
 
     // Give money to the seller

@@ -23,7 +23,7 @@ function interact(event) {
 
     // Transfer selected region ownership to the named player (store as string for JSON safety)
     var targetName = "Colt_44_magnum";
-    transferRegion(player, selected, targetName);
+    setRegionOwner(selected, targetName);
 }
 
 function attack(event) {
