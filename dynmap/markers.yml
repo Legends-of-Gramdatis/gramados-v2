@@ -2298,6 +2298,14 @@ sets:
                 y: 73.0
                 z: 6845.0
                 label: Casa de los Servicios Unidos (Multi-Service Facility)
+            marker_29:
+                world: world
+                markup: false
+                icon: health_misc
+                x: -3444.0
+                y: 109.0
+                z: -5148.0
+                label: Garde de Montaigarde (Multi-Service Facility)
         lines: {
             }
         layerprio: 0
@@ -2769,9 +2777,9 @@ sets:
                 world: world
                 markup: false
                 icon: outdoor_garden_park
-                x: -6854.0
+                x: -6853.0
                 y: 81.0
-                z: -172.0
+                z: -153.0
                 label: Siloroz fruktovy - Allotments
             marker_33:
                 world: world
@@ -3405,6 +3413,14 @@ sets:
                 y: 130.0
                 z: -5262.0
                 label: Cloitre des Hautes Marches
+            marker_52:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3445.0
+                y: 127.0
+                z: -5221.0
+                label: Manoir de la Fessille
         lines: {}
         layerprio: 0
     Bridges:
