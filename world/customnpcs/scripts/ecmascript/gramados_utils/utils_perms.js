@@ -11,7 +11,7 @@ var PERMISSION_KEY_PREFIX = 'permission_';
  */
 function normalizePermissionId(permissionId) {
     if (permissionId == null) return '';
-    var id = String(permissionId);
+    var id = '' + permissionId;
     if (id.indexOf(PERMISSION_KEY_PREFIX) === 0) {
         return id.substring(PERMISSION_KEY_PREFIX.length);
     }
