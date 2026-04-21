@@ -6,6 +6,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_trader.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
