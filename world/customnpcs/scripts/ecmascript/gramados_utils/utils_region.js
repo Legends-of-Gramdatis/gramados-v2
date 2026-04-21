@@ -529,7 +529,7 @@ function getRegionPriority(region) {
 }
 
 function getAllRegionsAtPosition(pos) {
-    var region_names = loadRegionData();
+    var region_names = getAllRegions();
     var res = [];
     for (var i = 0; i < region_names.length; i++) {
         var name = region_names[i];
@@ -553,7 +553,7 @@ function getAllRegionsAtPosition(pos) {
  * @returns {boolean} True if the player is inside the region, false otherwise.
 */
 function getRegionAtPosition(pos) {
-    var region_names = loadRegionData();
+    var region_names = getAllRegions();
     var prior_region = null;
     var prior_priority = -Infinity;
     for (var i = 0; i < region_names.length; i++) {
