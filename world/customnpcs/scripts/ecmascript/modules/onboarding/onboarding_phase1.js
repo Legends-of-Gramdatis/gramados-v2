@@ -6,7 +6,6 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');

@@ -10,7 +10,6 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 // We'll manually read the config/data JSON files to avoid executing those hooks.
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js'); // for includes()
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js'); // region helpers (getStarterHotelRegions, updateRegionOwnerSigns)
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
 
 // Local path constants (mirrors onboarding_main.js values)
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';

@@ -7,7 +7,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
 
 // Configuration
 var STARTER_HOTEL_FALLBACK_ROOM = 'Gramados_GramadosCity_StarterHotel_301'; // Used if none unowned

@@ -3,10 +3,25 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_perms.js");
-load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js");
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_data.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
+
+/**
+ * Returns all region objects whose name contains a given substring (case-sensitive).
+ * @param {string} needle
+ * @returns {Array<{name:string,data:Object}>}
+*/
+function getRegionsByNameContains(needle) {
+    if (!needle) return [];
+    var regions = getAllRegions();
+    var out = [];
+    for (var i = 0; i < regions.length; i++) {
+        if (regions[i].name.indexOf(needle) !== -1) out.push(regions[i]);
+    }
+    return out;
+}
 
 /**
  * Convenience helper specifically for Starter Hotel regions.
