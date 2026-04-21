@@ -143,6 +143,44 @@ function saveRegionData(region, data) {
     return true;
 }
 
+function removeRegionData(region) {
+    var worldData = getWorldData();
+    worldData.remove(["region_" + region]);
+    syncRegionPermission(region, null);
+    return true;
+}
+
+function createRegionData(region) {
+    var worldData = getWorldData();
+    var worldAge = new Date().getTime();
+    var region_json = {
+        displayName: region,
+        positions: [],
+        created: worldAge,
+        updated: worldAge,
+        owner: null,
+        rentedAt: new Date().getTime(),
+        rentTimeCredit: 0,
+        maxRentTime: getStringTime('6mon'),
+        rentTime: getStringTime('1w'),
+        forSale: false,
+        saleType: "buy",
+        priority: 0,
+        salePrice: 0,
+        rentPrice: 0,
+        flags: {
+            noFallDamage: false,
+        },
+        allInteract: false,
+        allBuild: false,
+        allAttack: false,
+        trusted: [],
+    };
+    worldData.put(["region_" + region], JSON.stringify(region_json));
+    syncRegionPermission(region, region_json);
+    return region_json;
+}
+
 /**
  * Synchronizes the corresponding region permission entry with region ownership/trusted data.
  *
