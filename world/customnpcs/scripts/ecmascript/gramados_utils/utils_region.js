@@ -522,20 +522,55 @@ function isPlayerInCuboid(player, regionName) {
     return false;
 }
 
-function getCuboidAtPosition(pos) {
-    var regions = getAllRegionEntries();
-    for (var i = 0; i < regions.length; i++) {
-        var region = regions[i];
-        var data = region.data;
+function getRegionPriority(region) {
+    var data = loadRegionData(region);
+    var p = parseInt(data.priority, 10);
+    return isNaN(p) ? 0 : p;
+}
+
+function getAllCuboidsAtPosition(pos) {
+    var region_names = loadRegionData();
+    var res = [];
+    for (var i = 0; i < region_names.length; i++) {
+        var name = region_names[i];
+        var data = loadRegionData(name);
         if (!data || !data.positions || !data.positions.length) continue;
         for (var j = 0; j < data.positions.length; j++) {
             var sub = data.positions[j];
             if (isWithinAABB(pos, sub.xyz1, sub.xyz2)) {
-                return region.name;
+                res.push(name);
+                break;
             }
         }
     }
-    return null;
+    return res;
+}
+
+/**
+ * Checks whether a player's current position lies within ANY sub-cuboid of a region.
+ * @param {IPlayer} player - The player instance.
+ * @param {string} regionName - The region/cuboid name (without the `region_` prefix).
+ * @returns {boolean} True if the player is inside the region, false otherwise.
+*/
+function getCuboidAtPosition(pos) {
+    var region_names = loadRegionData();
+    var prior_region = null;
+    var prior_priority = -Infinity;
+    for (var i = 0; i < region_names.length; i++) {
+        var name = region_names[i];
+        var data = loadRegionData(name);
+        for (var j = 0; j < data.positions.length; j++) {
+            var sub = data.positions[j];
+            if (isWithinAABB(pos, sub.xyz1, sub.xyz2)) {
+                var prio = getRegionPriority(name);
+                if (prio > prior_priority) {
+                    prior_priority = prio;
+                    prior_region = name;
+                }
+            }
+        }
+    }
+    return prior_region;
 }
 
 /**
