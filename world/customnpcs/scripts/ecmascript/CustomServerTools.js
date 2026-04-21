@@ -8967,7 +8967,7 @@ registerXCommands([
         "type": "enum",
         "values": Object.keys(CONFIG_SERVER.REGION_TYPES || {}).concat(['none'])
     }
-        ]],
+    ]],
     ['!region setOpen <name> <action> <value>', function (pl, args, data) {
         var reg = new Region(args.name).init(data);
         var rdatakey = 'all' + args.action.toLowerCase().rangeUpper(0, 1);
@@ -8989,7 +8989,7 @@ registerXCommands([
         "argname": "value",
         "type": "bool",
     },
-        ]],
+    ]],
     ['!region setPrio <name> <priority>', function (pl, args, data) {
         var reg = new Region(args.name);
         reg.load(data);
@@ -9090,7 +9090,7 @@ registerXCommands([
         "min": 1,
         "max": 2,
     },
-        ]],
+    ]],
     ['!region setName <name> <newName>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var permission = new Permission(region.getPermissionId()).init();
@@ -9110,7 +9110,7 @@ registerXCommands([
         "datatype": "region",
         "exists": false
     }
-        ]],
+    ]],
     ['!region list [...matches]', function (pl, args, data) {
         var params = getArgParams(args.matches);
         var regions = new Region().getAllDataEntries(data);
@@ -9295,7 +9295,7 @@ registerXCommands([
                 "datatype": "region",
                 "exists": true
             }
-        ]],
+    ]],
     ['!region setPrice <name> <price>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var amount = getCoinAmount(args.price);
@@ -9313,7 +9313,7 @@ registerXCommands([
         "type": "currency",
         "min": 0
     }
-        ]],
+    ]],
     ['!region setRentPrice <name> <price>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var amount = getCoinAmount(args.price);
@@ -9331,7 +9331,7 @@ registerXCommands([
         "type": "currency",
         "min": 0
     }
-        ]],
+    ]],
     ['!region setSaleType <name> <saleType>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
@@ -9353,7 +9353,7 @@ registerXCommands([
         "type": "enum",
         "values": ["buy", "rent"]
     }
-        ]],
+    ]],
     ['!region setRentTime <name> <time>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
 
@@ -9832,10 +9832,7 @@ registerXCommands([
     }, 'region.unpaid'],
 ]);
 
-
-//REGISTER TEAM COMMANDS
 var teamCommands = new CommandFactory("team");
-
 
 registerXCommands([
     ['!team syncAll [removeNonExistend]', function (pl, args, data) {
@@ -9874,13 +9871,9 @@ registerXCommands([
 
     }, 'team.join']
 ]);
-;
-//REGISTER TRADER COMMANDS
-
-
-
 
 var unlockCommands = new CommandFactory("unlockable", "unlock");
+
 unlockCommands
     .addSettable("price", function (value) {
         return getCoinAmount(value);

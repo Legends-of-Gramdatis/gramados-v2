@@ -4,14 +4,9 @@
 			"path": "world/customnpcs/scripts/ecmascript/CustomServerTools.js",
 			"bookmarks": [
 				{
-					"line": 8273,
+					"line": 8787,
 					"column": 0,
-					"label": "!MyMoney command"
-				},
-				{
-					"line": 8540,
-					"column": 0,
-					"label": "!MyHomes command"
+					"label": "Region commands"
 				}
 			]
 		}
