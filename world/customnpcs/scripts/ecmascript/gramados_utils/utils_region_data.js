@@ -133,8 +133,7 @@ function syncRegionPermission(region, regionData) {
  * @returns {Object|null} The region data object, or null if not found or on error.
 */
 function loadRegionData(region) {
-    var worldData = getWorldData();
-    var dataStr = worldData.get(["region_" + region]);
+    var dataStr = getWorldData().get(["region_" + region]);
     if (dataStr) {
         return JSON.parse(dataStr);
     }
@@ -142,26 +141,18 @@ function loadRegionData(region) {
 }
 
 /**
- * Returns an array of all region entries stored in world data.
- * Each entry: { name: string, data: Object }
- * Safe against malformed JSON; such entries are skipped.
+ * Returns an array of all region names stored in world data.
+ * @returns {Array<string>} An array of region names (without the 'region_' prefix).
 */
-function getAllRegionEntries() {
-    var all = [];
-    var worldData = getWorldData();
-    if (!worldData) return all;
-    var keys;
-    try { keys = worldData.getKeys(); } catch (e) { return all; }
-    if (!keys) return all;
+function getAllRegions() {
+    var region_names = [];
+    var keys = getWorldData().getKeys();
     for (var i = 0; i < keys.length; i++) {
         var k = '' + keys[i];
-        if (k.indexOf('region_') !== 0) continue;
-        var dataStr;
-        try { dataStr = worldData.get(k); } catch (e2) { continue; }
-        if (!dataStr) continue;
-        var parsed;
-        try { parsed = JSON.parse(dataStr); } catch (jsonErr) { continue; }
-        all.push({ name: k.substring('region_'.length), data: parsed });
+        if (k.indexOf('region_') === 0) {
+            region_names.push(k.substring('region_'.length));
+        }
     }
-    return all;
+    return region_names;
 }
+

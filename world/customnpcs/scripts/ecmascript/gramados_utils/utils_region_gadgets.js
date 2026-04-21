@@ -9,6 +9,31 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
 
 /**
+ * Returns an array of all region entries stored in world data.
+ * Each entry: { name: string, data: Object }
+ * Safe against malformed JSON; such entries are skipped.
+*/
+function getAllRegionEntries() {
+    var all = [];
+    var worldData = getWorldData();
+    if (!worldData) return all;
+    var keys;
+    try { keys = worldData.getKeys(); } catch (e) { return all; }
+    if (!keys) return all;
+    for (var i = 0; i < keys.length; i++) {
+        var k = '' + keys[i];
+        if (k.indexOf('region_') !== 0) continue;
+        var dataStr;
+        try { dataStr = worldData.get(k); } catch (e2) { continue; }
+        if (!dataStr) continue;
+        var parsed;
+        try { parsed = JSON.parse(dataStr); } catch (jsonErr) { continue; }
+        all.push({ name: k.substring('region_'.length), data: parsed });
+    }
+    return all;
+}
+
+/**
  * Returns all region objects whose name contains a given substring (case-sensitive).
  * @param {string} needle
  * @returns {Array<{name:string,data:Object}>}
