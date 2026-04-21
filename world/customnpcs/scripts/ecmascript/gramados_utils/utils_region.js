@@ -528,7 +528,7 @@ function getRegionPriority(region) {
     return isNaN(p) ? 0 : p;
 }
 
-function getAllCuboidsAtPosition(pos) {
+function getAllRegionsAtPosition(pos) {
     var region_names = loadRegionData();
     var res = [];
     for (var i = 0; i < region_names.length; i++) {
@@ -552,7 +552,7 @@ function getAllCuboidsAtPosition(pos) {
  * @param {string} regionName - The region/cuboid name (without the `region_` prefix).
  * @returns {boolean} True if the player is inside the region, false otherwise.
 */
-function getCuboidAtPosition(pos) {
+function getRegionAtPosition(pos) {
     var region_names = loadRegionData();
     var prior_region = null;
     var prior_priority = -Infinity;
@@ -579,28 +579,8 @@ function getCuboidAtPosition(pos) {
  * @returns {Array<string>} Array of region names (without the `region_` prefix).
  */
 function getPlayerCuboids(player) {
-    var regions = getAllRegionEntries();
-    var res = [];
-    var player_position = getPlayerPos(player);
-    for (var i = 0; i < regions.length; i++) {
-        var region = regions[i];
-        var data = region.data;
-        if (!data || !data.positions || !data.positions.length) continue;
-        // Owner lookup (side-effect readiness for future filtering / room assignment)
-        var owner = null;
-        try {
-            owner = data.owner || data.ownerName || (data.meta && data.meta.owner) || null;
-        } catch (e) { owner = null; }
-        for (var j = 0; j < data.positions.length; j++) {
-            var sub = data.positions[j];
-            if (!sub || !sub.xyz1 || !sub.xyz2) continue;
-            if (isWithinAABB(player_position, sub.xyz1, sub.xyz2)) {
-                res.push(region.name); // Keep original contract: array of names only
-                break;
-            }
-        }
-    }
-    return res;
+    var position = getPlayerPos(player);
+    return getAllRegionsAtPosition(position);
 }
 
 /**
