@@ -8589,7 +8589,7 @@ registerXCommands([
         if (plo.data.maxHomes == -1 || Object.keys(plo.data.homes).length < plo.data.maxHomes) {
             plo.addHome(args.name, ppos.getX(), ppos.getY(), ppos.getZ());
             //check if the player owns the region where the home is set
-            var r = getRegionAtPos(pl.getPos(), pl.world);
+            var r = getRegionObjectAtPos(pl.getPos(), pl.world);
             if (r != null && (r.isTrusted(pl.getName()) || r.isOwner(pl.getName()))) {
                 tellPlayer(pl, "&aAdded home '" + args.name + "'!");
                 plo.save(data);
@@ -13689,7 +13689,7 @@ function factionUpdate(e) {
 
 }
 
-function getRegionAtPos(pos, w) {
+function getRegionObjectAtPos(pos, w) {
     // check if the player is in a region
     var data = w.getStoreddata();
     var regids = new Region().getAllDataIds(data);
