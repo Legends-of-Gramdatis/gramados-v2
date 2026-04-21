@@ -536,7 +536,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         }
                     }
                     // Completion when entering facility cuboid
-                    if (isPlayerInCuboid(player, fac.cuboid)) {
+                    if (isPlayerInRegion(player, fac.cuboid)) {
                         tellPlayer(player, s1chat.completion.replace('{facility_ferrous}', fac_name));
                         pdata.phase3.currentStep = 2; // next step of Stage 3
                         pdata.phase3.s3_arrivedAt = Date.now();
@@ -643,7 +643,7 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                         }
                     }
                     // Completion when entering non-ferrous facility cuboid
-                    if (isPlayerInCuboid(player, fac2.cuboid)) {
+                    if (isPlayerInRegion(player, fac2.cuboid)) {
                         if (s3chat && s3chat.completion) tellPlayer(player, s3chat.completion.replace('{facility_nonferrous}', fac2_name));
                         pdata.phase3.currentStep = 4; // next: selling non-ferrous
                         pdata.phase3.s3_arrivedAt2 = Date.now();

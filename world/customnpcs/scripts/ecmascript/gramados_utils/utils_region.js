@@ -503,7 +503,7 @@ function getCuboidData(cuboid, subCuboidId) {
  * @param {string} regionName - The region/cuboid name (without the `region_` prefix).
  * @returns {boolean} True if the player is inside the region, false otherwise.
  */
-function isPlayerInCuboid(player, regionName) {
+function isPlayerInRegion(player, regionName) {
 
     var data = loadRegionData(regionName);
 

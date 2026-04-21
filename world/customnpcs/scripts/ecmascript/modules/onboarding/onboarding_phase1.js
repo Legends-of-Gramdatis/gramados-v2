@@ -227,7 +227,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                         }
                     }
                     // Transition: entering the selected room -> Step 2
-                    if (pdata.phase1.targetRoomName && isPlayerInCuboid(player, pdata.phase1.targetRoomName)){
+                    if (pdata.phase1.targetRoomName && isPlayerInRegion(player, pdata.phase1.targetRoomName)){
                         pdata.phase1.inRoom = true;
                         pdata.phase1.inRoomSince = Date.now();
                         // Revoke hotel confinement from now on; room lock takes over

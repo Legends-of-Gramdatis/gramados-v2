@@ -679,7 +679,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Detect region entry
-                    var inCanteen = isPlayerInCuboid(player, phaseCfg.stages.stage5.canteen_region_name);
+                    var inCanteen = isPlayerInRegion(player, phaseCfg.stages.stage5.canteen_region_name);
                     var s5chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage5 && phaseCfg.stages.stage5.chat) ? phaseCfg.stages.stage5.chat : {};
 
                     if (inCanteen) {
