@@ -4,12 +4,12 @@
 			"path": "world/customnpcs/scripts/ecmascript/CustomServerTools.js",
 			"bookmarks": [
 				{
-					"line": 8270,
+					"line": 8273,
 					"column": 0,
 					"label": "!MyMoney command"
 				},
 				{
-					"line": 8537,
+					"line": 8540,
 					"column": 0,
 					"label": "!MyHomes command"
 				}
