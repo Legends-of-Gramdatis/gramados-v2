@@ -724,7 +724,7 @@ function getPlayerCuboids(player) {
  * @param {Array<string>} cuboidList
  * @param {string} needle
  * @returns {Array<string>}
- */
+*/
 function filterCuboidsByString(cuboidList, needle) {
     if (!cuboidList || !cuboidList.length || !needle) return [];
     var out = [];
@@ -739,7 +739,7 @@ function filterCuboidsByString(cuboidList, needle) {
  * Returns an array of all region entries stored in world data.
  * Each entry: { name: string, data: Object }
  * Safe against malformed JSON; such entries are skipped.
- */
+*/
 function getAllRegions() {
     var all = [];
     var worldData = getWorldData();
@@ -764,7 +764,7 @@ function getAllRegions() {
  * Returns all region objects whose name contains a given substring (case-sensitive).
  * @param {string} needle
  * @returns {Array<{name:string,data:Object}>}
- */
+*/
 function getRegionsByNameContains(needle) {
     if (!needle) return [];
     var regions = getAllRegions();
@@ -772,81 +772,5 @@ function getRegionsByNameContains(needle) {
     for (var i = 0; i < regions.length; i++) {
         if (regions[i].name.indexOf(needle) !== -1) out.push(regions[i]);
     }
-    return out;
-}
-
-/**
- * Returns the list of regions owned by a player (case-insensitive name match).
- * Scans CustomNPCs world data entries named `region_*` and checks common owner fields:
- *  - owner, ownerName, meta.owner (string)
- *  - owners[], meta.owners[] (array of strings)
- *
- * @param {IPlayer|string} playerOrName - Player instance or exact player name.
- * @param {Object} [options]
- * @param {boolean} [options.includeData=false] - When true, returns array of {name,data} objects instead of names.
- * @param {string}  [options.filterContains]    - If set, only include regions whose name contains this substring.
- * @param {boolean} [options.returnDetails=false] - When true, returns an object with { regions, parseErrors, totalScanned }.
- * @returns {Array<string>|Array<{name:string,data:Object}>|{regions:Array,parseErrors:number,totalScanned:number}}
- */
-function getOwnedRegions(playerOrName, options) {
-    var opts = options || {};
-    var includeData = !!opts.includeData;
-    var filterContains = (typeof opts.filterContains === 'string' && opts.filterContains.length > 0) ? opts.filterContains : null;
-    var returnDetails = !!opts.returnDetails;
-
-    var pname = (typeof playerOrName === 'string') ? playerOrName
-        : (playerOrName && playerOrName.getName ? playerOrName.getName() : null);
-    if (!pname) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
-    var pnameLc = pname.toLowerCase();
-
-    var worldData;
-    try { worldData = getWorldData(); } catch (e) { worldData = null; }
-    if (!worldData) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
-
-    var keys;
-    try { keys = worldData.getKeys(); } catch (e2) { keys = []; }
-    if (!keys || !keys.length) return returnDetails ? { regions: [], parseErrors: 0, totalScanned: 0 } : [];
-
-    var out = [];
-    var parseErrors = 0;
-    var scanned = 0;
-
-    for (var i = 0; i < keys.length; i++) {
-        var key = '' + keys[i];
-        if (key.indexOf('region_') !== 0) continue;
-        var regionName = key.substring('region_'.length);
-        if (filterContains && regionName.indexOf(filterContains) === -1) continue;
-        scanned++;
-
-        var dataStr;
-        try { dataStr = worldData.get(key); } catch (gErr) { continue; }
-        if (!dataStr) continue;
-
-        var data;
-        try { data = JSON.parse(dataStr); } catch (e3) { parseErrors++; continue; }
-        if (!data) continue;
-
-        var isOwner = false;
-        var owner = data.owner || data.ownerName || (data.meta && data.meta.owner) || null;
-        if (owner && owner.toLowerCase() === pnameLc) {
-            isOwner = true;
-        }
-        if (!isOwner) {
-            var owners = data.owners || (data.meta && data.meta.owners) || null;
-            if (owners && owners.length) {
-                for (var j = 0; j < owners.length; j++) {
-                    var o = owners[j];
-                    if (o && o.toLowerCase() === pnameLc) { isOwner = true; break; }
-                }
-            }
-        }
-
-        if (isOwner) {
-            if (includeData) out.push({ name: regionName, data: data });
-            else out.push(regionName);
-        }
-    }
-
-    if (returnDetails) return { regions: out, parseErrors: parseErrors, totalScanned: scanned };
     return out;
 }
