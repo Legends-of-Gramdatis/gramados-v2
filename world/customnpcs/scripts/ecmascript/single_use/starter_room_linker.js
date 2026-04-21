@@ -43,7 +43,7 @@ function interact(event) {
     }
 
     // Fallback: show the regions the player is currently standing in
-    var cuboids = getPlayerCuboids(player) || [];
+    var cuboids = getAllRegionsAtPlayerPos(player) || [];
     if (cuboids.length === 0) {
         tellPlayer(player, "&eYou are not inside any cuboid.");
     } else {
@@ -58,7 +58,7 @@ function attack(event) {
         return;
     }
 
-    var cuboids = getPlayerCuboids(player) || [];
+    var cuboids = getAllRegionsAtPlayerPos(player) || [];
     if (cuboids.length === 0) {
         tellPlayer(player, "&eYou are not inside any cuboid to select.");
         return;

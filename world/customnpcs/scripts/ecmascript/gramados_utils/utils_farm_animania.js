@@ -47,7 +47,7 @@ function _applyFieldCattleAction(player, radius, label, mutator) {
 	var world = player.getWorld();
 	if (!world) return { changed: 0, cattle: 0, fields: 0 };
 
-	var playerFields = filterCuboidsByString(getPlayerCuboids(player), '_Field_');
+	var playerFields = filterRegionsByString(getAllRegionsAtPlayerPos(player), '_Field_');
 	if (!playerFields.length) {
 		tellPlayer(player, '&cThis tool only works in fields.');
 		return { changed: 0, cattle: 0, fields: 0 };

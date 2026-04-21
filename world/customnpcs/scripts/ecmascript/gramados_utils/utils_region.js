@@ -578,23 +578,22 @@ function getRegionAtPosition(pos) {
  * @param {IPlayer} player - The player instance.
  * @returns {Array<string>} Array of region names (without the `region_` prefix).
  */
-function getPlayerCuboids(player) {
-    var position = getPlayerPos(player);
-    return getAllRegionsAtPosition(position);
+function getAllRegionsAtPlayerPos(player) {
+    return getAllRegionsAtPosition(getPlayerPos(player));
 }
 
 /**
  * Filters a list of cuboid/region names by substring match.
- * @param {Array<string>} cuboidList
+ * @param {Array<string>} regionNameList
  * @param {string} needle
  * @returns {Array<string>}
 */
-function filterCuboidsByString(cuboidList, needle) {
-    if (!cuboidList || !cuboidList.length || !needle) return [];
+function filterRegionsByString(regionNameList, needle) {
     var out = [];
-    for (var i = 0; i < cuboidList.length; i++) {
-        var name = '' + cuboidList[i];
-        if (name.indexOf(needle) !== -1) out.push(name);
+    for (var i = 0; i < regionNameList.length; i++) {
+        if (regionNameList[i].indexOf(needle) !== -1) {
+            out.push(regionNameList[i]);
+        }
     }
     return out;
 }
