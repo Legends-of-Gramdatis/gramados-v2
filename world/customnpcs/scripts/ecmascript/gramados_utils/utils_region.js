@@ -559,6 +559,7 @@ function getRegionAtPosition(pos) {
     for (var i = 0; i < region_names.length; i++) {
         var name = region_names[i];
         var data = loadRegionData(name);
+        if (!data || !data.positions || !data.positions.length) continue;
         for (var j = 0; j < data.positions.length; j++) {
             var sub = data.positions[j];
             if (isWithinAABB(pos, sub.xyz1, sub.xyz2)) {
