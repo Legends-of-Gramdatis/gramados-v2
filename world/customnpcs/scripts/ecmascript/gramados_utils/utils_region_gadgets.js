@@ -15,7 +15,7 @@ var world = API.getIWorld(0);
 */
 function getRegionsByNameContains(needle) {
     if (!needle) return [];
-    var regions = getAllRegions();
+    var regions = getAllRegionEntries();
     var out = [];
     for (var i = 0; i < regions.length; i++) {
         if (regions[i].name.indexOf(needle) !== -1) out.push(regions[i]);

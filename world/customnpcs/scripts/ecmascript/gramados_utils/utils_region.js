@@ -132,142 +132,6 @@ function setRegionTrustedPlayers(region, playerNames) {
 }
 
 /**
- * Saves the data of a region to world data.
- * @param {string} region - The region name (without the 'region_' prefix).
- * @param {Object} data - The region data object to save.
- * @returns {boolean} True if the data was saved successfully, false otherwise.
-*/
-function saveRegionData(region, data) {
-    var worldData = getWorldData();
-    worldData.put(["region_" + region], JSON.stringify(data));
-    syncRegionPermission(region, data);
-    updateRegionOwnerSigns(region);
-    return true;
-}
-
-function removeRegionData(region) {
-    var worldData = getWorldData();
-    worldData.remove(["region_" + region]);
-    syncRegionPermission(region, null);
-    return true;
-}
-
-function createRegionData(region) {
-    var worldData = getWorldData();
-    var worldAge = new Date().getTime();
-    var region_json = {
-        displayName: region,
-        positions: [],
-        created: worldAge,
-        updated: worldAge,
-        owner: null,
-        rentedAt: new Date().getTime(),
-        rentTimeCredit: 0,
-        maxRentTime: getStringTime('6mon'),
-        rentTime: getStringTime('1w'),
-        forSale: false,
-        saleType: "buy",
-        priority: 0,
-        salePrice: 0,
-        rentPrice: 0,
-        flags: {
-            noFallDamage: false,
-        },
-        allInteract: false,
-        allBuild: false,
-        allAttack: false,
-        trusted: [],
-    };
-    worldData.put(["region_" + region], JSON.stringify(region_json));
-    syncRegionPermission(region, region_json);
-    return region_json;
-}
-
-/**
- * Synchronizes the corresponding region permission entry with region ownership/trusted data.
- *
- * Permission id convention follows CST Region+Permittable domain: `regions.<regionName>`.
- * This helper keeps a managed list of region-derived players in
- * `perm.meta._regionManagedPlayers` so manual permission players are preserved.
- *
- * @param {string} region - Region name without `region_` prefix.
- * @param {Object} regionData - Region payload saved in world data.
- * @returns {boolean}
- */
-function syncRegionPermission(region, regionData) {
-    if (!region) return false;
-
-    var permissionId = 'regions.' + region;
-    var now = new Date().getTime();
-
-    var perm = loadPermissionData(permissionId);
-    if (!perm) {
-        perm = createDefaultPermissionData();
-        perm.created = now;
-    }
-
-    if (typeof perm.enabled !== 'boolean') perm.enabled = !!perm.enabled;
-    if (!perm.teams) perm.teams = [];
-    if (!perm.players) perm.players = [];
-    if (!perm.jobs) perm.jobs = [];
-    if (!perm.meta) perm.meta = {};
-
-    var previousManaged = perm.meta._regionManagedPlayers || [];
-    var players = perm.players;
-
-    // Remove previous auto-managed players before re-adding current owner/trusted.
-    for (var i = 0; i < previousManaged.length; i++) {
-        players = array_remove(players, previousManaged[i]);
-    }
-
-    var nextManaged = [];
-    if (regionData) {
-        var owner = regionData.owner;
-        if (owner != null) {
-            owner = owner.trim();
-            if (owner.length > 0) nextManaged.push(owner);
-        }
-
-        var trusted = regionData.trusted || [];
-        for (var t = 0; t < trusted.length; t++) {
-            var tr = trusted[t];
-            if (tr == null) continue;
-            tr = tr.trim();
-            if (tr.length > 0 && !includes(nextManaged, tr)) {
-                nextManaged.push(tr);
-            }
-        }
-    }
-
-    for (var j = 0; j < nextManaged.length; j++) {
-        if (!includes(players, nextManaged[j])) {
-            players.push(nextManaged[j]);
-        }
-    }
-
-    perm.players = players;
-    perm.meta._regionManagedPlayers = nextManaged;
-    perm.updated = now;
-
-    return savePermissionData(permissionId, perm);
-}
-
-/**
- * Loads the data of a region from world data.
- * @param {string} region - The region name (without the 'region_' prefix).
- * @returns {Object|null} The region data object, or null if not found or on error.
-*/
-function loadRegionData(region) {
-    var worldData = getWorldData();
-    var dataStr = worldData.get(["region_" + region]);
-    if (dataStr) {
-        return JSON.parse(dataStr);
-    }
-    return null;
-}
-
-
-/**
  * Retrieves the price of a region.
  * @param {string} region - The region name.
  * @param {IPlayer} player - The player.
@@ -636,59 +500,42 @@ function getCuboidData(cuboid, subCuboidId) {
 /**
  * Checks whether a player's current position lies within ANY sub-cuboid of a region.
  * @param {IPlayer} player - The player instance.
- * @param {string} cuboid - The region/cuboid name (without the `region_` prefix).
+ * @param {string} regionName - The region/cuboid name (without the `region_` prefix).
  * @returns {boolean} True if the player is inside the region, false otherwise.
  */
-function isPlayerInCuboid(player, cuboid) {
-    var worldData = getWorldData();
-    var dataStr = worldData.get("region_" + cuboid);
-    if (!dataStr) {
-        return false;
-    }
-    var data = JSON.parse(dataStr);
+function isPlayerInCuboid(player, regionName) {
+
+    var data = loadRegionData(regionName);
+
     if (!data || !data.positions || !data.positions.length) {
         return false;
     }
-    var p = getPlayerPos(player);
+
+    var player_position = getPlayerPos(player);
 
     for (var i = 0; i < data.positions.length; i++) {
         var sub = data.positions[i];
-        if (!sub || !sub.xyz1 || !sub.xyz2) continue;
-        if (isWithinAABB(p, sub.xyz1, sub.xyz2)) return true;
+        if (isWithinAABB(player_position, sub.xyz1, sub.xyz2)) {
+            return true;
+        }
     }
     return false;
 }
 
-/**
- * Checks whether a player's current position lies within a specific sub-cuboid of a region.
- * @param {IPlayer} player - The player instance.
- * @param {string} cuboid - The region/cuboid name (without the `region_` prefix).
- * @param {number|string} subCuboidId - Index of the sub-cuboid within the region's `positions` array.
- * @returns {boolean} True if the player is inside the specific sub-cuboid, false otherwise.
- */
-function isPlayerInSubCuboid(player, cuboid, subCuboidId) {
-    var worldData = getWorldData();
-    var dataStr = worldData.get("region_" + cuboid);
-    if (!dataStr) {
-        return false;
+function getCuboidAtPosition(pos) {
+    var regions = getAllRegionEntries();
+    for (var i = 0; i < regions.length; i++) {
+        var region = regions[i];
+        var data = region.data;
+        if (!data || !data.positions || !data.positions.length) continue;
+        for (var j = 0; j < data.positions.length; j++) {
+            var sub = data.positions[j];
+            if (isWithinAABB(pos, sub.xyz1, sub.xyz2)) {
+                return region.name;
+            }
+        }
     }
-    var data = JSON.parse(dataStr);
-    if (!data || !data.positions || !data.positions.length) {
-        return false;
-    }
-
-    var idx = parseInt(subCuboidId, 10);
-    if (isNaN(idx) || idx < 0 || idx >= data.positions.length) {
-        return false;
-    }
-
-    var sub = data.positions[idx];
-    if (!sub || !sub.xyz1 || !sub.xyz2) {
-        return false;
-    }
-
-    var p = getPlayerPos(player);
-    return isWithinAABB(p, sub.xyz1, sub.xyz2);
+    return null;
 }
 
 /**
@@ -697,12 +544,12 @@ function isPlayerInSubCuboid(player, cuboid, subCuboidId) {
  * @returns {Array<string>} Array of region names (without the `region_` prefix).
  */
 function getPlayerCuboids(player) {
-    var regions = getAllRegions();
+    var regions = getAllRegionEntries();
     var res = [];
-    var p = getPlayerPos(player);
+    var player_position = getPlayerPos(player);
     for (var i = 0; i < regions.length; i++) {
-        var r = regions[i];
-        var data = r.data;
+        var region = regions[i];
+        var data = region.data;
         if (!data || !data.positions || !data.positions.length) continue;
         // Owner lookup (side-effect readiness for future filtering / room assignment)
         var owner = null;
@@ -712,8 +559,8 @@ function getPlayerCuboids(player) {
         for (var j = 0; j < data.positions.length; j++) {
             var sub = data.positions[j];
             if (!sub || !sub.xyz1 || !sub.xyz2) continue;
-            if (isWithinAABB(p, sub.xyz1, sub.xyz2)) {
-                res.push(r.name); // Keep original contract: array of names only
+            if (isWithinAABB(player_position, sub.xyz1, sub.xyz2)) {
+                res.push(region.name); // Keep original contract: array of names only
                 break;
             }
         }
@@ -735,29 +582,4 @@ function filterCuboidsByString(cuboidList, needle) {
         if (name.indexOf(needle) !== -1) out.push(name);
     }
     return out;
-}
-
-/**
- * Returns an array of all region entries stored in world data.
- * Each entry: { name: string, data: Object }
- * Safe against malformed JSON; such entries are skipped.
-*/
-function getAllRegions() {
-    var all = [];
-    var worldData = getWorldData();
-    if (!worldData) return all;
-    var keys;
-    try { keys = worldData.getKeys(); } catch (e) { return all; }
-    if (!keys) return all;
-    for (var i = 0; i < keys.length; i++) {
-        var k = '' + keys[i];
-        if (k.indexOf('region_') !== 0) continue;
-        var dataStr;
-        try { dataStr = worldData.get(k); } catch (e2) { continue; }
-        if (!dataStr) continue;
-        var parsed;
-        try { parsed = JSON.parse(dataStr); } catch (jsonErr) { continue; }
-        all.push({ name: k.substring('region_'.length), data: parsed });
-    }
-    return all;
 }

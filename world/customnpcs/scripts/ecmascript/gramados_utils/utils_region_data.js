@@ -146,7 +146,7 @@ function loadRegionData(region) {
  * Each entry: { name: string, data: Object }
  * Safe against malformed JSON; such entries are skipped.
 */
-function getAllRegions() {
+function getAllRegionEntries() {
     var all = [];
     var worldData = getWorldData();
     if (!worldData) return all;
