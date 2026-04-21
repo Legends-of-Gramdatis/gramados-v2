@@ -47,6 +47,9 @@ var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboar
 var _MSG = gramados_json._MSG;
 var _COINITEMS = gramados_json._COINITEMS;
 
+
+var CONFIG_PATH = "CustomServerTools/config/";
+
 //===== CONFIG
 var CONFIG_SERVER = {
     "NAME": "TestServer",
@@ -10202,10 +10205,6 @@ function getMaxXp(lvl) {
     return mxp * 2;
 }
 
-
-
-
-
 registerCSTEnchant("cst:berserker", "Berserker", 10, function (id, e, lvl, type) {
     switch (type) {
         case "damagedEntity":
@@ -10668,12 +10667,7 @@ function getPlayerMessage(player, message, w, pname, fullraw, allowed) {
     return newmsg;
 }
 
-
-
-
 var ReskillableRegistry = (hasMCMod("reskillable") ? Java.type('codersafterdark.reskillable.api.ReskillableRegistries') : null);
-
-
 
 var PERMISSION_REGEX = /permission_([\w.\-]+)/g;
 
@@ -10700,10 +10694,6 @@ function Permittable(permDomain) {
         }
     });
 }
-
-
-
-
 
 registerXCommands([
     ['!skills [...matches]', function (pl, args, data) {
@@ -10743,7 +10733,9 @@ registerXCommands([
 
     }, 'skills']
 ]);
+
 registerDataHandler("automsg", AutoMsg);
+
 function AutoMsg(name) {
     DataHandler.apply(this, ['automsg', name]);
 
@@ -10764,6 +10756,7 @@ function AutoMsg(name) {
         return new Date().getTime() >= this.lastSend + this.interval;
     };
 }
+
 registerDataHandler("badge", Badge);
 
 function Badge(name) {
@@ -10791,7 +10784,6 @@ function Badge(name) {
         return '&' + this.getColor() + (prefix || '') + ':' + this.data.emote + ':{' + (hoverCmd || '*') + '|show_text:' + ccs(this.data.displayName + '\n&r' + this.data.desc + (hoverTxt || '')) + '}&r'
     }
 }
-
 
 registerDataHandler("bank", Bank);
 
@@ -11084,7 +11076,9 @@ Bank.__proto__.genBankCode = function (data) {
 
     return code;
 }
+
 //registerDataHandler("chatchannel", ChatChannel);
+
 function ChatChannel(name) {
     DataHandler.apply(this, ['chatchannel', name]);
     Permittable.apply(this, []); //add getPermission etc
@@ -11154,7 +11148,6 @@ function ChatChannel(name) {
     });
 }
 
-
 registerDataHandler('config', Config);
 
 function Config(key, type, def) {
@@ -11164,7 +11157,6 @@ function Config(key, type, def) {
         value: def,
     });
 }
-
 
 registerDataHandler("emote", Emote);
 
@@ -11188,7 +11180,9 @@ function Emote(name) {
     this.getCode = function () {
         return CHAT_EMOTES[this.name] || "?";
     };
-} registerDataHandler("fine", Fine);
+}
+
+registerDataHandler("fine", Fine);
 
 function Fine(code) {
     registerDataHandler("fine", Fine);
@@ -11253,6 +11247,7 @@ Fine.__proto__.genFineCode = function (data) {
 
     return code;
 }
+
 //registerDataHandler("giftcode", GiftCode);
 
 function GiftCode(name) {
@@ -11358,7 +11353,9 @@ function GiftCode(name) {
     };
 
 }
+
 registerDataHandler("job", Job);
+
 function Job(name) {
     DataHandler.apply(this, ['job', name]);
     this.addData({
@@ -11406,10 +11403,6 @@ function Job(name) {
         return '&c';
     };
 }
-
-
-
-
 
 registerDataHandler("loan", Loan);
 
@@ -11562,7 +11555,6 @@ function genName(name) {
     return pick(p) + ' ' + name + ' of ' + pick(s);
 }
 
-
 registerDataHandler('lottery', Lottery);
 
 function Lottery(name) {
@@ -11601,7 +11593,10 @@ function Lottery(name) {
         return Object.keys(this.tickets).length >= this.data.minimumPlayers;
     };
 
-} registerDataHandler("mail", Mail);
+}
+
+registerDataHandler("mail", Mail);
+
 function Mail(name) {
     this.addData({
         "from": null,
@@ -11610,7 +11605,9 @@ function Mail(name) {
         "message": ""
     });
 }
+
 registerDataHandler("minigame", Minigame);
+
 function Minigame(name) {
     DataHandler.apply(this, ["minigame", name]);
     this.addData({
@@ -11627,6 +11624,7 @@ function Minigame(name) {
 
     }
 }
+
 registerDataHandler("region", Region);
 
 function Region(name) {
@@ -11796,7 +11794,10 @@ function Region(name) {
         }
         return this.getRentTimeLeft() > 0;
     } //TODO: REGION RENT PRICE
-} registerDataHandler("team", Team);
+}
+
+registerDataHandler("team", Team);
+
 function Team(name) {
     DataHandler.apply(this, ['team', name]);
     this.addData({
@@ -11807,9 +11808,6 @@ function Team(name) {
         return sb.hasTeam(this.name);
     };
 }
-
-
-
 
 registerDataHandler('trader', Trader);
 
@@ -11939,7 +11937,6 @@ function Trader(uuid) {
     }
 }
 
-
 registerDataHandler("unlockable", Unlockable);
 
 function Unlockable(name) {
@@ -11961,7 +11958,10 @@ function Unlockable(name) {
     this.getColor = function () {
         return getColorId(this.data.color);
     }
-} registerDataHandler("warp", Warp);
+}
+
+registerDataHandler("warp", Warp);
+
 function Warp(name) {
     DataHandler.apply(this, ["warp", name]);
     Permittable.apply(this, ["warps"]); //Use new domain "warps"
@@ -12477,43 +12477,6 @@ function CustomMenuItem(id, damage, count) {
     };
 }
 
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-;
-
-
-
-
-
-
 var DATA_PATH = "CustomServerTools/data";
 
 if (!new File(DATA_PATH).exists()) {
@@ -12621,9 +12584,6 @@ function CSTData(disk, create) {
     }
 }
 
-
-
-
 function Collection(o) {
     if (typeof (o) == typeof (undefined) || o === null) { o = []; }
     this.items = o;
@@ -12671,13 +12631,8 @@ function Collection(o) {
 
         return new Collection(plucked);
     };
-
-
-
 }
 
-
-var CONFIG_PATH = "CustomServerTools/config/";
 function Config(name, startvalues) {
     this.path = CONFIG_PATH + name + '.json';
 
@@ -12759,6 +12714,7 @@ function generateBook(w, bookstring) {
     return book;
 
 }
+
 function array_compare(array1, array2, compareFn) {
     var same = true;
     for (var i in array1) {
@@ -12774,11 +12730,6 @@ function array_compare(array1, array2, compareFn) {
 
     return same;
 }
-
-
-
-
-
 
 function $(query, e, source) {
 
