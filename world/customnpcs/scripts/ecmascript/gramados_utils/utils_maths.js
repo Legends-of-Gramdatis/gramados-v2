@@ -504,6 +504,7 @@ function getPlayerPos(player) {
  * @returns {boolean} True if inside (inclusive), else false.
  */
 function isWithinAABB(pos, xyz1, xyz2) {
+    if (!pos || !xyz1 || !xyz2) return false;
     return isWithinZone(pos, arrayToPos(xyz1), arrayToPos(xyz2));
 }
 
