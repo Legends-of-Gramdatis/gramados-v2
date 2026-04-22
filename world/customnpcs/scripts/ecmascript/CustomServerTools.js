@@ -655,7 +655,7 @@ function getNbtType(num) {
 
 function check_and_update_sign(region, pl) {
     if (!region || !region.name) return false;
-    return updateRegionOwnerSigns(region.name);
+    return updateRegionSigns(region.name);
 }
 
 function getMCModList() {
@@ -8974,10 +8974,10 @@ registerXCommands([
         var forSale = args.forSale.toString() == 'true';
 
         region.set('forSale', forSale)
-
-        check_and_update_sign(region, pl);
         
         region.save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet region' + (forSale ? '' : ' not') + ' for sale.');
     }, 'region.setForSale', [{
@@ -9138,11 +9138,19 @@ registerXCommands([
         "datatype": "region",
         "exists": true
     }]],
-    ['!region addSign <name> <line>', function (pl, args, data) {
+    ['!region addSign <name> <line> <type>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
         var line = parseInt(args.line, 10);
         if (isNaN(line) || line < 1 || line > 4) {
             tellPlayer(pl, "&cInvalid line number. Use a value between 1 and 4.");
+            return false;
+        }
+        var lineType = args.type == null ? null : ("" + args.type).toLowerCase();
+        if (lineType === "null") {
+            lineType = null;
+        }
+        if (lineType !== null && lineType !== "owner" && lineType !== "price" && lineType !== "status") {
+            tellPlayer(pl, "&cInvalid sign line type. Use owner, price, status, or null.");
             return false;
         }
         var rayt = null;
@@ -9161,16 +9169,19 @@ registerXCommands([
             return false;
         }
 
-        var ownerName = getRegionOwnerName(region.name);
-        setSignLineAt(blk.getX(), blk.getY(), blk.getZ(), line, ownerName);
+        var signText = lineType === null ? "" : getRegionSignTextByType(region.name, lineType);
+        setSignLineAt(blk.getX(), blk.getY(), blk.getZ(), line, signText);
         addRegionOwnerSign(region.name, {
             x: blk.getX(),
             y: blk.getY(),
             z: blk.getZ(),
-            line: line
+            line: line,
+            type: lineType
         });
 
-        tellPlayer(pl, "&aLinked sign to region '&b" + region.name + "&a' and set owner on line &e" + line + "&a to '&f" + ownerName + "&a'.");
+        updateRegionSigns(region.name);
+
+        tellPlayer(pl, "&aLinked sign to region '&b" + region.name + "&a' and set line &e" + line + "&a to '&f" + (lineType === null ? "disabled" : lineType) + "&a'.");
         return true;
     }, 'region.setOwner', [{
         "argname": "name",
@@ -9182,6 +9193,10 @@ registerXCommands([
         "type": "number",
         "min": 1,
         "max": 4
+    }, {
+        "argname": "type",
+        "type": "enum",
+        "values": ["owner", "price", "status", "null"]
     }]],
     ['!region removeSign <name>', function (pl, args, data) {
         var region = new Region(args.name).init(data);
@@ -9210,24 +9225,34 @@ registerXCommands([
         var sy = blk.getY();
         var sz = blk.getZ();
         var removed = false;
-        for (var i = 0; i < region.data.ownerSigns.length; i++) {
+        for (var i = region.data.ownerSigns.length - 1; i >= 0; i--) {
             var s = region.data.ownerSigns[i];
             if (!s) continue;
-            var sl = (s.line != null ? (s.line | 0) : 2);
-            if ((s.x | 0) === sx && (s.y | 0) === sy && (s.z | 0) === sz && sl === 2) {
+            var ex = s.x;
+            var ey = s.y;
+            var ez = s.z;
+            if (s.pos) {
+                ex = s.pos.x;
+                ey = s.pos.y;
+                ez = s.pos.z;
+            }
+            if ((ex | 0) === sx && (ey | 0) === sy && (ez | 0) === sz) {
                 region.data.ownerSigns.splice(i, 1);
                 removed = true;
-                break;
             }
         }
 
         if (!removed) {
-            tellPlayer(pl, "&cThis sign is not linked as owner sign line 2 for region '&e" + region.name + "&c'.");
+            tellPlayer(pl, "&cThis sign is not linked to region '&e" + region.name + "&c'.");
             return false;
         }
 
+        for (var lineNum = 1; lineNum <= 4; lineNum++) {
+            setSignLineAt(sx, sy, sz, lineNum, "");
+        }
+
         region.save(data);
-        tellPlayer(pl, "&aRemoved linked owner sign from region '&b" + region.name + "&a'.");
+        tellPlayer(pl, "&aRemoved and stripped linked sign from region '&b" + region.name + "&a'.");
         return true;
     }, 'region.setOwner', [{
         "argname": "name",
@@ -9266,6 +9291,8 @@ registerXCommands([
         var region = new Region(args.name).init(data);
         var amount = getCoinAmount(args.price);
         region.set('salePrice', amount).save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet sale price to &r:money:&e' + getAmountCoin(amount));
     }, 'region.setPrice', [{
