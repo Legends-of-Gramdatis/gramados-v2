@@ -1,6 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_perms.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
@@ -159,22 +160,43 @@ function getRegionPrice(region, player) {
  * @returns {string}
  */
 function getRegionOwnerName(region) {
-    var worldData = getWorldData();
-    var dataStr = worldData.get("region_" + region);
-    if (!dataStr) return "Available";
-    var data;
-    try { data = JSON.parse(dataStr); } catch (e) { return "Available"; }
-    var owner = data ? data.owner : null;
-    return _normalizeOwnerName(owner);
+    var data = loadRegionData(region);
+    return data.owner;
 }
 
-function _normalizeOwnerName(owner) {
-    if (owner === undefined || owner === null) return "Available";
-    var s = owner.trim();
-    if (s.length === 0) return "Available";
-    var low = s.toLowerCase();
-    if (low === "none" || low === "null" || low === "undefined") return "Available";
-    return s;
+/**
+ * Returns the owner text that should appear on linked owner signs.
+ * Preserves legacy CST behavior: server-owned and for-sale regions show "Available".
+ * @param {string} region - Region name without prefix.
+ * @returns {string}
+ */
+function getRegionSignTextOwner(region) {
+    var owner = getRegionOwnerName(region);
+    var status = "Not Owned"
+    if (owner) {
+        if (owner.toLowerCase() === "gramados") {
+            status = "Not Owned";
+        }
+        status = owner;
+    }
+    return status;
+}
+
+function getRegionSignTextPrice(region) {
+    var price = getRegionPrice(region);
+    return price > 0 ? formatMoney(price) : "N/A";
+}
+
+function getRegionSignTextStatus(region) {
+    var data = loadRegionData(region);
+    if (data.forSale) {
+        if (data.saleType === "rent") {
+            return "For Rent";
+        } else if (data.saleType === "buy") {
+            return "For Sale";
+        }
+    }
+    return "Not For Sale";
 }
 
 /**
@@ -254,27 +276,73 @@ function addRegionOwnerSign(region, sign) {
     return true;
 }
 
+function getAllRegionSigns(region) {
+    var data = loadRegionData(region);
+    if (!data || !data.ownerSigns) return [];
+    var signs = [];
+    for (var i = 0; i < data.ownerSigns.length; i++) {
+        signs.push(refactorSign(data.ownerSigns[i]));
+    }
+    return signs;
+}
+
+function createSignData(x, y, z, line1, line2, line3, line4) {
+    var signData = {
+        "pos": {
+            "x": x,
+            "y": y,
+            "z": z
+        },
+        "lines": [
+            line1,
+            line2,
+            line3,
+            line4
+        ]
+    }
+    return signData;
+}
+
+function refactorSign(signEntry) {
+    // Old format: { x, y, z, line }
+    // New format: { pos: { x, y, z }, lines: [null, null, line, null] }
+
+    if (signEntry.lines) {
+        return signEntry;
+    }
+
+    var x = signEntry.x;
+    var y = signEntry.y;
+    var z = signEntry.z;
+    var lineId = signEntry.line;
+    var line1 = null
+    var line2 = null
+    var line3 = null
+    var line4 = null
+    if (lineId === 1) line1 = "owner";
+    else if (lineId === 2) line2 = "owner";
+    else if (lineId === 3) line3 = "owner";
+    else if (lineId === 4) line4 = "owner";
+    return createSignData(x, y, z, line1, line2, line3, line4);
+}
+
 /**
  * Writes the current owner name to all linked owner signs for a region.
  * @param {string} region - Region name without prefix
  * @returns {boolean}
  */
 function updateRegionOwnerSigns(region) {
-    var worldData = getWorldData();
-    var key = "region_" + region;
-    var str = worldData.get(key);
-    if (!str) return false;
-    var data;
-    try { data = JSON.parse(str); } catch (e) { return false; }
-    if (!data.ownerSigns || !data.ownerSigns.length) return false;
-    var ownerName = getRegionOwnerName(region);
-    for (var i = 0; i < data.ownerSigns.length; i++) {
-        var s = data.ownerSigns[i];
-        if (!s) continue;
-        var line = (s.line != null ? s.line : 2);
-        setSignLineAt(s.x, s.y, s.z, line, ownerName);
+    var ownerSigns = getAllRegionSigns(region);
+
+    for (var i = 0; i < ownerSigns.length; i++) {
+        var sign = ownerSigns[i];
+        var text = getRegionSignTextOwner(region);
+        for (var l = 0; l < sign.lines.length; l++) {
+            if (sign.lines[l] && sign.lines[l].toLowerCase() === "owner") {
+                setSignLineAt(sign.pos.x, sign.pos.y, sign.pos.z, l + 1, text);
+            }
+        }
     }
-    return true;
 }
 
 /**

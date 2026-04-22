@@ -654,42 +654,8 @@ function getNbtType(num) {
 }
 
 function check_and_update_sign(region, pl) {
-    if (region.data.ownerSigns && region.data.ownerSigns.length) {
-        for (var i = 0; i < region.data.ownerSigns.length; i++) {
-            var s = region.data.ownerSigns[i];
-            if (!s) return false;
-            var line = (s.line != null ? s.line : 2);
-            var blk = pl.getWorld().getBlock(s.x, s.y, s.z);
-            if (!blk || !blk.getTileEntityNBT) {
-                // remove this sign from list
-                region.data.ownerSigns.splice(i, 1);
-                i--;
-                return false;
-            }
-            try {
-                var te = blk.getTileEntityNBT();
-                if (!te) return false;
-
-                var li = parseInt(line, 10);
-                if (isNaN(li) || li < 1) li = 1; if (li > 4) li = 4;
-                var key = "Text" + li;
-                var newText = region.data.owner == null ? "Available" : region.data.owner;
-                newText = region.data.owner == "Gramados" ? "Available" : newText;
-                newText = region.data.forSale ? "Available" : newText;
-                var json = JSON.stringify({ text: newText });
-                te.setString(key, json);
-                blk.setTileEntityNBT(te);
-                // Force block update to reflect changes visually
-                try { if (blk.update) blk.update(); } catch (e) {}
-            } catch (e) {
-                Logger.error("Error updating sign at " + s.x + "," + s.y + "," + s.z + ": " + e);
-                // remove this sign from list
-                region.data.ownerSigns.splice(i, 1);
-                i--;
-                return false;
-            }
-        }
-    }
+    if (!region || !region.name) return false;
+    return updateRegionOwnerSigns(region.name);
 }
 
 function getMCModList() {
