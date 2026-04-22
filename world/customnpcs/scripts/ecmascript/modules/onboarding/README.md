@@ -129,7 +129,25 @@ All tools are in `ecmascript/single_use/` and are meant to be attached to a scri
 
 - Starter Room Linker (`single_use/starter_room_linker.js`)
 	- Attack to cycle/select a region from the cuboids you’re currently in; interact on a sign to write/link the owner name.
-	- Updates linked owner signs for that region.
+	- Updates linked sign lines for that region.
+
+### Region Sign Lines (Staff Commands)
+
+Region signs now support per-line types on all 4 sign lines.
+
+- Add or update one line on the sign you are looking at:
+	- `!region addSign <regionName> <line> <type>`
+	- `line`: `1..4`
+	- `type`: `owner`, `price`, `status`, or `null` (disables/clears that line)
+- You can run `!region addSign` multiple times on the same physical sign to configure different lines.
+- If the selected line is already configured, the command replaces that line type and rewrites the displayed text.
+- `!region removeSign <regionName>` removes the full linked sign entry for the sign you are looking at and strips all 4 displayed lines.
+
+Example setup for a hotel room sign:
+
+- `!region addSign Gramados_GramadosCity_StarterHotel_301 2 owner`
+- `!region addSign Gramados_GramadosCity_StarterHotel_301 3 price`
+- `!region addSign Gramados_GramadosCity_StarterHotel_301 4 status`
 
 - Starter Room Switcher (`single_use/starter_room_switcher.js`)
 	- Attack to cycle/select a region from your current cuboids; interact to transfer the selected region to a configured target (currently `Colt_44_magnum`).
