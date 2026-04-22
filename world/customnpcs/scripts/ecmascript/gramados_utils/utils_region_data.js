@@ -16,7 +16,7 @@ function saveRegionData(region, data) {
     var worldData = getWorldData();
     worldData.put(["region_" + region], JSON.stringify(data));
     syncRegionPermission(region, data);
-    updateRegionOwnerSigns(region);
+    updateRegionSigns(region);
     return true;
 }
 

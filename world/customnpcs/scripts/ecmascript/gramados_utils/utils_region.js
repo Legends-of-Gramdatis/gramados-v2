@@ -147,8 +147,10 @@ function getRegionPrice(region, player) {
         && region_json.salePrice) {
         return region_json.salePrice;
     }
-    if (region_json.saleType === "rent") {
-        tellPlayer(player, "&eRegion " + region + " is sat for rent. Region price is not counted.");
+    if (region_json && region_json.saleType === "rent") {
+        if (player) {
+            tellPlayer(player, "&eRegion " + region + " is sat for rent. Region price is not counted.");
+        }
         return 0;
     }
     return 0;
@@ -197,6 +199,19 @@ function getRegionSignTextStatus(region) {
         }
     }
     return "Not For Sale";
+}
+
+function getRegionSignTextByType(region, signType) {
+    if (signType === "owner") {
+        return getRegionSignTextOwner(region);
+    }
+    if (signType === "price") {
+        return getRegionSignTextPrice(region);
+    }
+    if (signType === "status") {
+        return getRegionSignTextStatus(region);
+    }
+    return "";
 }
 
 /**
@@ -263,15 +278,49 @@ function addRegionOwnerSign(region, sign) {
     var data;
     try { data = JSON.parse(str); } catch (e) { return false; }
     if (!data.ownerSigns) data.ownerSigns = [];
-    var sx = sign.x | 0, sy = sign.y | 0, sz = sign.z | 0; var sl = (sign.line != null ? (sign.line | 0) : 2);
-    var exists = false;
-    for (var i = 0; i < data.ownerSigns.length; i++) {
-        var s = data.ownerSigns[i];
-        if (s && (s.x | 0) === sx && (s.y | 0) === sy && (s.z | 0) === sz && ((s.line != null ? (s.line | 0) : 2) === sl)) {
-            exists = true; break;
-        }
+    var sx = sign.x;
+    var sy = sign.y;
+    var sz = sign.z;
+    var sl = (sign.line != null ? (sign.line | 0) : 2);
+    var stype = sign.type == null ? null : ("" + sign.type).toLowerCase();
+    if (stype !== "owner" && stype !== "price" && stype !== "status") {
+        stype = null;
     }
-    if (!exists) data.ownerSigns.push({ x: sx, y: sy, z: sz, line: sl });
+
+    var merged = createSignData(sx, sy, sz, null, null, null, null);
+    var kept = [];
+
+    for (var i = 0; i < data.ownerSigns.length; i++) {
+        var entry = data.ownerSigns[i];
+        if (!entry) {
+            continue;
+        }
+
+        var ex = entry.x;
+        var ey = entry.y;
+        var ez = entry.z;
+        if (entry.pos) {
+            ex = entry.pos.x;
+            ey = entry.pos.y;
+            ez = entry.pos.z;
+        }
+
+        if ((ex | 0) === sx && (ey | 0) === sy && (ez | 0) === sz) {
+            var existing = refactorSign(entry);
+            for (var l = 0; l < existing.lines.length; l++) {
+                if (existing.lines[l]) {
+                    merged.lines[l] = existing.lines[l];
+                }
+            }
+            continue;
+        }
+
+        kept.push(entry);
+    }
+
+    merged.lines[sl - 1] = stype;
+    kept.push(merged);
+    data.ownerSigns = kept;
     worldData.put(key, JSON.stringify(data));
     return true;
 }
@@ -331,15 +380,15 @@ function refactorSign(signEntry) {
  * @param {string} region - Region name without prefix
  * @returns {boolean}
  */
-function updateRegionOwnerSigns(region) {
+function updateRegionSigns(region) {
     var ownerSigns = getAllRegionSigns(region);
 
     for (var i = 0; i < ownerSigns.length; i++) {
         var sign = ownerSigns[i];
-        var text = getRegionSignTextOwner(region);
         for (var l = 0; l < sign.lines.length; l++) {
-            if (sign.lines[l] && sign.lines[l].toLowerCase() === "owner") {
-                setSignLineAt(sign.pos.x, sign.pos.y, sign.pos.z, l + 1, text);
+            var lineType = sign.lines[l];
+            if (lineType) {
+                setSignLineAt(sign.pos.x, sign.pos.y, sign.pos.z, l + 1, getRegionSignTextByType(region, lineType.toLowerCase()));
             }
         }
     }
