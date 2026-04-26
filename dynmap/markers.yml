@@ -2464,9 +2464,9 @@ sets:
                 world: world
                 markup: false
                 icon: shopping_market
-                x: 194.0
-                y: 71.0
-                z: -896.0
+                x: 203.0
+                y: 72.0
+                z: -901.0
                 label: Springfield Market
             marker_4:
                 world: world
@@ -3421,6 +3421,14 @@ sets:
                 y: 127.0
                 z: -5221.0
                 label: Manoir de la Fessille
+            marker_53:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3440.0
+                y: 137.0
+                z: -5310.0
+                label: Manoir Hautegrange
         lines: {}
         layerprio: 0
     Bridges:
