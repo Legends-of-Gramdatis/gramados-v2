@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 174
+            "egg_count": 179
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -370,16 +370,25 @@
                     "egg_count": 42
                 },
                 "spring": {
-                    "egg_count": 58
+                    "egg_count": 60
                 },
                 "encrypted": {
                     "egg_count": 8
                 }
             },
-            "egg_count": 108
+            "egg_count": 110
         },
         "SilveradoTDS": {
-            "has_starter_pack": true
+            "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                },
+                "spring": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 2
         },
         "oldbjorn": {
             "has_starter_pack": true,
@@ -394,13 +403,13 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 9
+                    "egg_count": 10
                 },
                 "spring": {
                     "egg_count": 8
                 }
             },
-            "egg_count": 17
+            "egg_count": 18
         },
         "Peter_Kitsune": {
             "has_starter_pack": true,
