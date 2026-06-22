@@ -60,7 +60,7 @@
             },
             "egg_count": 2
         },
-        "cowboycosmic": {
+        "fourdotsixvee8": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
@@ -361,22 +361,22 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 179
+            "egg_count": 189
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 42
+                    "egg_count": 44
                 },
                 "spring": {
-                    "egg_count": 60
+                    "egg_count": 66
                 },
                 "encrypted": {
                     "egg_count": 8
                 }
             },
-            "egg_count": 110
+            "egg_count": 118
         },
         "SilveradoTDS": {
             "has_starter_pack": true,
@@ -395,9 +395,12 @@
             "egg_types": {
                 "spring": {
                     "egg_count": 2
+                },
+                "chromashell": {
+                    "egg_count": 1
                 }
             },
-            "egg_count": 2
+            "egg_count": 3
         },
         "SinaBloodsaw": {
             "has_starter_pack": true,
@@ -413,6 +416,14 @@
         },
         "Peter_Kitsune": {
             "has_starter_pack": true,
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 1
+                }
+            },
+            "egg_count": 1
+        },
+        "Beastatio": {
             "egg_types": {
                 "chromashell": {
                     "egg_count": 1
