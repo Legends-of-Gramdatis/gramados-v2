@@ -856,6 +856,14 @@ sets:
                 y: 74.0
                 z: 3397.0
                 label: Hotel Zarkazul
+            marker_12:
+                world: world
+                markup: false
+                icon: misc_hotel
+                x: -2647.0
+                y: 134.0
+                z: -5933.0
+                label: Auberge du Vieux Bastion - Hotel
         lines: {
             }
         layerprio: 0
@@ -1029,6 +1037,14 @@ sets:
                 y: 110.0
                 z: -5168.0
                 label: Montaigarde
+            marker_21:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -2643.0
+                y: 125.0
+                z: -5863.0
+                label: Courval-en-Fortvelles
         lines: {
             }
         layerprio: 0
@@ -2475,7 +2491,15 @@ sets:
                 x: -4724.0
                 y: 76.0
                 z: 6899.0
-                label: La Alhóndiga de Caldero
+                label: La Alhóndiga de Caldero - Covered Market
+            marker_5:
+                world: world
+                markup: false
+                icon: shopping_market
+                x: -2545.0
+                y: 115.0
+                z: -5877.0
+                label: Les Halles de Courval - Covered Market
         lines: {
             }
         layerprio: 0
@@ -3429,6 +3453,22 @@ sets:
                 y: 137.0
                 z: -5310.0
                 label: Manoir Hautegrange
+            marker_54:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2649.0
+                y: 133.0
+                z: -5983.0
+                label: Cathédrale des Remparts
+            marker_55:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -2554.0
+                y: 116.0
+                z: -5859.0
+                label: Le Pavillon des Halles
         lines: {}
         layerprio: 0
     Bridges:
