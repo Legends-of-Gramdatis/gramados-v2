@@ -3017,6 +3017,14 @@ sets:
                 y: 117.0
                 z: -5221.0
                 label: Parking
+            marker_22:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -2445.0
+                y: 110.0
+                z: -5822.0
+                label: Parking
         lines: {}
         layerprio: 0
     Historical Sites:
@@ -3456,7 +3464,7 @@ sets:
             marker_54:
                 world: world
                 markup: false
-                icon: ent&lei_historic
+                icon: civil_services_worship
                 x: -2649.0
                 y: 133.0
                 z: -5983.0
@@ -3469,7 +3477,55 @@ sets:
                 y: 116.0
                 z: -5859.0
                 label: Le Pavillon des Halles
-        lines: {}
+            marker_56:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -2460.0
+                y: 114.0
+                z: -5850.0
+                label: Chapelle de la Vieille Porte - Chapel
+            marker_57:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2493.0
+                y: 111.0
+                z: -5825.0
+                label: Porte de Courval
+            marker_58:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2506.0
+                y: 105.0
+                z: -5921.0
+                label: Porte Basse
+            marker_59:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2630.0
+                y: 133.0
+                z: -5952.0
+                label: Porte du Bastion
+            marker_60:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2607.0
+                y: 123.0
+                z: -5863.0
+                label: Porte du Parvis
+            marker_61:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -2608.0
+                y: 127.0
+                z: -5824.0
+                label: Porte de la Haute-Cour
+        lines: {} 
         layerprio: 0
     Bridges:
         hide: false
