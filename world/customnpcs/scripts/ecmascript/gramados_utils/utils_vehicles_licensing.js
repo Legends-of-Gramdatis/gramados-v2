@@ -25,7 +25,7 @@ function isUnknownOrNa(value) {
 }
 
 function _normalizeVehicleRegionName(regionName) {
-    return String(regionName || "").replace(/\s*island\s*$/i, "").trim().toLowerCase();
+    return (regionName == null ? "" : regionName + "").replace(/\s*island\s*$/i, "").trim().toLowerCase();
 }
 
 function getVehicleRegistrationRegion(regionName) {
