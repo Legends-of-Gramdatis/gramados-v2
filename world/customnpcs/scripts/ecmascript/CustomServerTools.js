@@ -3759,7 +3759,14 @@ registerXCommands([
         tellPlayer(pl, "&aReloaded emotes. &e" + created + "&a new emote data entr" + (created == 1 ? "y" : "ies") + " created.");
         return true;
     }, 'emotes.reload'],
-    ['!register', function (pl, args, data) {
+    ['!register <region> [owner]', function (pl, args, data) {
+        var registrationRegion = getVehicleRegistrationRegion(args.region);
+        if (!registrationRegion) {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] Unknown region: " + args.region + ". Use a configured region name such as Solterra or Solterra Island.");
+            return false;
+        }
+
+        var registrationOwner = (args.owner && String(args.owner).trim() !== "") ? String(args.owner).trim() : pl.getName();
         var heldItem = pl.getMainhandItem();
         if (heldItem.isEmpty()) {
             tellPlayer(pl, ":car: &c[Vehicle Registration] Hold a vehicle or car paper item in your main hand.");
@@ -3786,12 +3793,6 @@ registerXCommands([
                     return false;
                 }
 
-                registration.region = "Solterra Island";
-                registration.msrpCents = getPrice(registration.vehicleId, getUnknownLabel(), null, true);
-                registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, []);
-                registration.firstRegistrant = pl.getName();
-                registration.registrationDate = dateToDDMMYYYY();
-
                 if (!registerPlate(registration)) {
                     tellPlayer(pl, ":car: &c[Vehicle Registration] Failed to register vehicle plate.");
                     return false;
@@ -3805,6 +3806,14 @@ registerXCommands([
         } else if (heldItem.getName() === VEHICLE_REGISTRATION_CONFIG.carPapers.item_id) {
             if (isItem_CarPaperOG(heldItem)) {
                 registration = assembleRegistrationFrom_OGpapers(heldItem);
+                registration.region = registrationRegion;
+                registration.firstRegistrant = registrationOwner;
+                if (registration.ownershipHistory && registration.ownershipHistory.length > 0) {
+                    registration.ownershipHistory[0].owner = registrationOwner;
+                } else {
+                    registration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
+                }
+                registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, registration.titles);
             } else {
                 tellPlayer(pl, ":car: &c[Vehicle Registration] This paper is not recognized as OG car papers.");
                 return false;
@@ -3819,9 +3828,28 @@ registerXCommands([
             return false;
         }
 
+        if (heldItem.hasNbt() && isItem_Vehicle(heldItem)) {
+            registration.region = registrationRegion;
+            registration.firstRegistrant = registrationOwner;
+            if (registration.ownershipHistory && registration.ownershipHistory.length > 0) {
+                registration.ownershipHistory[0].owner = registrationOwner;
+            } else {
+                registration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
+            }
+            registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, registration.titles);
+        }
+
         if (isPlateLicensed(registration.plate)) {
             var existingRegistration = getRegistrationByPlate(registration.plate);
             var mergedRegistration = mergeRegistrationData(existingRegistration, registration);
+            mergedRegistration.region = registrationRegion;
+            mergedRegistration.firstRegistrant = registrationOwner;
+            if (mergedRegistration.ownershipHistory && mergedRegistration.ownershipHistory.length > 0) {
+                mergedRegistration.ownershipHistory[0].owner = registrationOwner;
+            } else {
+                mergedRegistration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
+            }
+            mergedRegistration.registrationPriceCents = calculateCarPaperPrice(mergedRegistration.msrpCents, mergedRegistration.region, mergedRegistration.plate, mergedRegistration.titles);
             updateRegistration(mergedRegistration);
             tellRegisterationDetails(pl, mergedRegistration);
             tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle registration updated successfully.");

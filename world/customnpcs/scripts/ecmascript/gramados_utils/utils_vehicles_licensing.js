@@ -24,6 +24,31 @@ function isUnknownOrNa(value) {
     return (value === getUnknownLabel() || value === getNaLabel() || value === "");
 }
 
+function _normalizeVehicleRegionName(regionName) {
+    return String(regionName || "").replace(/\s*island\s*$/i, "").trim().toLowerCase();
+}
+
+function getVehicleRegistrationRegion(regionName) {
+    var normalizedRegion = _normalizeVehicleRegionName(regionName);
+    if (!normalizedRegion) {
+        return null;
+    }
+
+    var regionNames = Object.keys(VEHICLE_REGISTRATION_CONFIG.regions);
+    for (var i = 0; i < regionNames.length; i++) {
+        var configRegion = regionNames[i];
+        if (_normalizeVehicleRegionName(configRegion) === normalizedRegion) {
+            return configRegion;
+        }
+    }
+
+    return null;
+}
+
+function isVehicleRegistrationRegion(regionName) {
+    return getVehicleRegistrationRegion(regionName) !== null;
+}
+
 function isPlateLicensed(plate) {
     var licensed = loadLicensedVehicles();
     return !!licensed[plate];
@@ -32,7 +57,8 @@ function isPlateLicensed(plate) {
 function calculateCarPaperPrice(vehicleMsrp, region, plateText, titles) {
     var basePrice = vehicleMsrp * 0.05;
 
-    var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[region];
+    var resolvedRegion = getVehicleRegistrationRegion(region) || region;
+    var regionMultiplier = VEHICLE_REGISTRATION_CONFIG.regions[resolvedRegion];
     var price = basePrice * regionMultiplier;
 
     // Titles may be a string or an array of strings.

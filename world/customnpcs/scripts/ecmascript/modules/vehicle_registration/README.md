@@ -4,6 +4,8 @@ Admin NPC tool to create or update vehicle registrations from either vehicle ite
 
 When a player interacts with this NPC while holding `mts:ivv.idcard_seagull` in offhand, the script reads the mainhand item and builds a registration payload. It then checks if the plate already exists in the registry and either updates the existing entry (merge) or creates a new one.
 
+The `!register` command now takes a required region and an optional owner name: `!register <region> [owner]`. Region names are matched against the configured island regions, so players can say `Solterra` or `Solterra Island` and both resolve to `Solterra Island`. If no owner is provided, the command uses the player name of the person executing it.
+
 ## Behavior
 
 - Requires offhand admin card: `mts:ivv.idcard_seagull`.
@@ -11,6 +13,7 @@ When a player interacts with this NPC while holding `mts:ivv.idcard_seagull` in 
 - Supported mainhand inputs:
   - Vehicle item with NBT (`isItem_Vehicle`) → builds registration via `assembleRegistrationFrom_Vehicle`.
   - Car paper item (`variedcommodities:letter` from config) that passes `isItem_CarPaperOG` → builds registration via `assembleRegistrationFrom_OGpapers`.
+- The region passed to `!register` must exist in `config.json` under `regions`; the `Island` suffix is optional in chat input but always stored from the config key.
 - If the plate is already licensed in `world/customnpcs/scripts/data_auto/licensed_vehicles.json`:
   - loads existing entry,
   - merges new data into existing data with `mergeRegistrationData`,
