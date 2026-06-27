@@ -3601,6 +3601,14 @@ sets:
                 y: 73.0
                 z: 1757.0
                 label: The Anchorline Bridge
+            marker_9:
+                world: world
+                markup: false
+                icon: civil_services_bridge
+                x: -2597.0
+                y: 74.0
+                z: -6209.0
+                label: Norvelle Bridge
         lines: {}
         layerprio: 0
     Transports:
