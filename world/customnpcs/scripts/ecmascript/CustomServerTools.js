@@ -4018,13 +4018,8 @@ registerXCommands([
             tellPlayer(pl, "&cYou don't have anything in your hand!");
             return false;
         }
+        var value = getPriceFromItemStack(mItem, -1, false);
         var itemId = mItem.getName();
-        var itemTag = null;
-        if (mItem.hasNbt()) {
-            var nbt = mItem.getNbt();
-            if (nbt) { itemTag = nbt.getCompound("tag"); }
-        }
-        var value = getPrice(itemId, -1, itemTag, false);
         if (value < 0) {
             tellPlayer(pl, "&eItem: &f" + itemId + "\n&cNo price found in global prices.");
         } else {
