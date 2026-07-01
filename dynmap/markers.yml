@@ -1012,7 +1012,7 @@ sets:
                 x: -4706.0
                 y: 77.0
                 z: -2912.0
-                label: Highward
+                label: Port-aux-Huîtres-sur-Bellecôte
             marker_18:
                 world: world
                 markup: false
@@ -1961,6 +1961,22 @@ sets:
                 y: 74.0
                 z: -4928.0
                 label: Station des Courneilles - Charging Station
+            marker_39:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: 1342.0
+                y: 70.0
+                z: -5943.0
+                label: Colren Fuel - Fuel Station
+            marker_40:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: 1341.0
+                y: 69.0
+                z: -5918.0
+                label: Colren Fuel - Charging Station
         lines: {
             }
         layerprio: 0
@@ -2737,10 +2753,10 @@ sets:
                 world: world
                 markup: false
                 icon: outdoor_fishing
-                x: -4754.0
-                y: 71.0
-                z: -2933.0
-                label: Highward Bay
+                x: -4816.0
+                y: 63.0
+                z: -2940.0
+                label: Baie-aux-Huîtres
             marker_25:
                 world: world
                 markup: false
@@ -3024,6 +3040,14 @@ sets:
                 x: -2445.0
                 y: 110.0
                 z: -5822.0
+                label: Parking
+            marker_23:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -4700.0
+                y: 75.0
+                z: -2940.0
                 label: Parking
         lines: {}
         layerprio: 0
@@ -3525,6 +3549,22 @@ sets:
                 y: 127.0
                 z: -5824.0
                 label: Porte de la Haute-Cour
+            marker_62:
+                world: world
+                markup: false
+                icon: ent&lei_tourist
+                x: -3531.0
+                y: 145.0
+                z: -4979.0
+                label: Route des monts Vermeils
+            marker_63:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -4710.0
+                y: 78.0
+                z: -2873.0
+                label: Sanctuaire de la Bayodée
         lines: {} 
         layerprio: 0
     Bridges:
