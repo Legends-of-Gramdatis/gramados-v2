@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 189
+            "egg_count": 195
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -430,6 +430,20 @@
                 }
             },
             "egg_count": 1
+        },
+        "swy777": {
+            "egg_types": {
+                "encrypted": {
+                    "egg_count": 1
+                },
+                "chromashell": {
+                    "egg_count": 2
+                },
+                "spring": {
+                    "egg_count": 3
+                }
+            },
+            "egg_count": 6
         }
     }
 }
