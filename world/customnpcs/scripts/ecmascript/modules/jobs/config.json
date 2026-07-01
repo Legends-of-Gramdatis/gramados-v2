@@ -109,7 +109,8 @@
             "Title": "Allenis Vitage Wine Brewer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Allenis_North_VintnersRoad_SilverleafWinery"
+                "region_Allenis_North_VintnersRoad_SilverleafWinery",
+                "region_Allenis_North_VintersRoad_FoxgloveDomain"
             ],
             "Tags": [
                 "Brewer",
