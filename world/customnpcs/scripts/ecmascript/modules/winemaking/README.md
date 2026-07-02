@@ -96,6 +96,8 @@ Wine bottles store custom NBT data, including:
 
 - **Debug Messages**: Scripts use `npc.say` and `event.player.message` for debugging.
 - **Error Handling**: Errors such as missing domain data or invalid bottles are communicated to players.
+- **`!myDomain`**: Shows the wine domain or domains owned by the player. The command reads `domains.json`, matches the player name against `owner`, and displays the domain key, display name, reputation, bottle variety, last sale date, and domain multiplier value.
+- **Last sale date**: `last_sale_date` is stored as the world total time in ticks. The command shows both the converted date and the raw tick value when a sale has happened.
 
 ## Future Improvements
 

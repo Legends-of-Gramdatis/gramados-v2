@@ -10,6 +10,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_vehicles_licensin
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_winemaking.js');
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
@@ -8233,6 +8234,7 @@ registerXCommands([
     ['!menu', function (pl, args, data) {
         var output = getTitleBar('Menu') + '\n' +
             '&6[My Money]{run_command:!myMoney|show_text:$eClick to show your money}&r &e|| ' +
+            '&6[My Domain]{run_command:!myDomain|show_text:$eClick to show your wine domain info}&r &e|| ' +
             '&6[My Banks]{run_command:!myBanks|show_text:$eClick to show your banks}&r &e|| ' +
             '&6[My Emotes]{run_command:!myEmotes|show_text:$eClick to show your emotes}&r\n' +
             '&6[My Colors]{run_command:!myColors|show_text:$eClick to show your chatcolors}&r &e|| ' +
@@ -8376,6 +8378,35 @@ registerXCommands([
         tellPlayer(pl, "&cYou carry a total of &r:money:&e" + getAmountCoin(total));
         tellPlayer(pl, "&9You will lose &r:money:&e" + getAmountCoin(mi + Math.round(mp / 2)) + "&9 on death!");
         return true;
+    }, 'myMoney'],
+    ['!myDomain', function (pl, args, data) {
+        var domainEntries = getWinemakingDomainsByOwner(pl.getName());
+
+        if (domainEntries.length === 0) {
+            tellPlayer(pl, '&cYou do not own a wine domain.');
+            return false;
+        }
+
+        tellPlayer(pl, getTitleBar('My Domain'));
+        tellPlayer(pl, '&eYou own &6' + domainEntries.length + '&e wine domain' + (domainEntries.length === 1 ? '' : 's') + '.');
+
+        for (var i = 0; i < domainEntries.length; i++) {
+            var domainEntry = domainEntries[i];
+            var domain = domainEntry.data;
+
+            tellPlayer(pl,
+                '&6&lDomain Key: &e' + domainEntry.key + '\n' +
+                '&6&lDisplay Name: &e&o' + domain.display_name + '\n' +
+                '&6&lOwner: &e' + domain.owner + '\n' +
+                '&6&lReputation: &e' + domain.reputation + '\n' +
+                '&6&lBottle Variety: &e' + formatWinemakingBottleVariety(domain.bottle_variety) + '\n' +
+                '&6&lLast Sale Date: &e' + formatWinemakingLastSaleDate(pl.world, domain.last_sale_date) + '\n' +
+                '&6&lDomain Multiplier Value: &e' + getDomainMultiplierForInspection(domain.display_name) + '\n'
+            );
+        }
+
+        return true;
+
     }, 'myMoney'],
     ['!myIncome', function (pl, args, data) {
         var p = new Player(pl.getName());
