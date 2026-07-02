@@ -1,4 +1,5 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_stock_exchange.js");
 
 var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exchange_data.json";
@@ -113,26 +114,34 @@ function getPrice(itemId, defaultPrice, itemTag, ignoreNBT) {
     return defaultPrice;
 }
 
-/**
- * Gets the price of an item stack by its ID and NBT.
- * @param {IItemStack} stack - The item stack.
- * @param {number} defaultPrice - The default price to return if no price is found.
- * @param {boolean} ignoreNBT - Whether to ignore the NBT data when checking the price.
- * @returns {number} - The price of the item stack.
- */
-function getPriceFromItemStack(stack, defaultPrice, ignoreNBT) {
-    var itemId = stack.getName();
-    if (stack.hasNbt() && !ignoreNBT) {
-        var itemTag = stack.getNbt();
-        if (itemTag) {
-            itemTag = itemTag.getCompound("tag");
-        }
-    } else {
-        var itemTag = null; // No NBT data
+function getPriceFromItemStack(itemStack, defaultPrice, ignoreNBT) {
+    if (!itemStack || itemStack.isEmpty()) {
+        return defaultPrice;
     }
-    // logToFile("dev", "getPriceFromItemStack called with itemId: " + itemId + ", defaultPrice: " + defaultPrice + ", ignoreNBT: " + ignoreNBT);
-    var value = getPrice(itemId, defaultPrice, itemTag, ignoreNBT);
-    return value * stack.getStackSize();
+
+    var itemId = itemStack.getName();
+    var itemDamage = itemStack.getItemDamage();
+    var itemTag = itemStack.hasNbt() && !ignoreNBT ? itemStack.getNbt() : null;
+    var stackSize = itemStack.getStackSize();
+    var stackPrice = defaultPrice;
+
+    if (isItemInStockExchange(itemId, itemDamage, itemTag)) {
+        var stockRegion = getStockExchangeRegionForItem(itemId, itemDamage, itemTag);
+        var stockExchangeEntry = getStockExchangeForItemInRegion(stockRegion, itemId, itemDamage, itemTag);
+        var stockType = getStockTypeForItemInRegion(stockRegion, itemId, itemDamage, itemTag);
+
+        if (stockType === 'ageable_booze') {
+            stackPrice = getAgeableBoozePrice(itemId, itemDamage, itemTag);
+        } else {
+            stackPrice = stockExchangeEntry.current_price;
+        }
+    }
+
+    if (stackPrice === null || stackPrice === undefined) {
+        stackPrice = defaultPrice;
+    }
+
+    return stackPrice * stackSize;
 }
 
 /**
