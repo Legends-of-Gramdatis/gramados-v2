@@ -334,7 +334,7 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 6
+                    "egg_count": 7
                 },
                 "spring": {
                     "egg_count": 14
@@ -343,7 +343,7 @@
                     "egg_count": 4
                 }
             },
-            "egg_count": 24
+            "egg_count": 25
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 196
+            "egg_count": 197
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
