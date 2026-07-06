@@ -175,3 +175,20 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
 
     return newItem;
 }
+
+function setModifierRadius(item, radius) {
+    var tag = item.getNbt();
+    tag.setInteger('modifier_radius', Math.floor(radius));
+    // update lore
+    var lore = item.getLore();
+    var newLore = [];
+    for (var i = 0; i < lore.length; i++) {
+        var line = lore[i];
+        if (stringIncludes(line, 'Radius:')) {
+            newLore.push(ccs('&7Radius: &e' + Math.floor(radius) + ' blocks'));
+        } else {
+            newLore.push(line);
+        }
+    }
+    item.setLore(newLore);
+}
