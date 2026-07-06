@@ -253,7 +253,7 @@ function assembleRegistrationFrom_Vehicle(item_stack) {
         paintVariant: trinTrimPaintInterior.paint,
         trim: trinTrimPaintInterior.trim,
         interior: trinTrimPaintInterior.interior,
-        msrpCents: getUnknownLabel(),
+        msrpCents: getPrice(item_stack.getName(), getUnknownLabel(), null, true),
         registrationPriceCents: getUnknownLabel(),
         engineId: getUnknownLabel(),
         engineSystemName: valid_engine,
