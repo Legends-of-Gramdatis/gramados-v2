@@ -77,6 +77,12 @@ function includes(array, item) {
     return array.indexOf(item) > -1;
 }
 
+function stringIncludes(str, search) {
+    if (typeof (str) == typeof (undefined) || str === null) { str = ""; }
+    if (typeof (search) == typeof (undefined) || search === null) { search = ""; }
+    return str.indexOf(search) > -1;
+}
+
 /**
  * Checks if any of the specified items are included in the array.
  * @param {Array} array - The array to check.
