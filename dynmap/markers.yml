@@ -3909,6 +3909,14 @@ sets:
                 y: 73.0
                 z: 6451.0
                 label: Viñedos de Albaíra
+            marker_5:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -1435.0
+                y: 82.0
+                z: -1521.0
+                label: Foxglove Domain
         lines: {}
         layerprio: 0
 
