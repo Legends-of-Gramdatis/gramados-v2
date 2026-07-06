@@ -353,5 +353,26 @@
     "damage": 0,
     "crop": "harvestcraft:pamcandleberrycrop",
     "stage": 3
+  },
+  "growthcraft_grapes:grape": {
+    "damage": 0,
+    "crop": "growthcraft_grapes:native_grape_fruit",
+    "allowPlanting": false,
+    "stage": 0
+  },
+  "harvestcraft:beetitem": {
+    "damage": 0,
+    "crop": "harvestcraft:pambeetcrop",
+    "stage": 3
+  },
+  "harvestcraft:grapeitem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamgrapecrop",
+    "stage": 3
+  },
+  "harvestcraft:lentilitem": {
+    "damage": 0,
+    "crop": "harvestcraft:pamlentilcrop",
+    "stage": 3
   }
 }
