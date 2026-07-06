@@ -2,12 +2,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 
 var WINEMAKING_DOMAIN_FILE_PATH = 'world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json';
 
-function getWinemakingDomainsData() {
-    return loadJson(WINEMAKING_DOMAIN_FILE_PATH);
-}
-
 function getWinemakingDomainsByOwner(ownerName) {
-    var data = getWinemakingDomainsData();
+    var data = loadJson(WINEMAKING_DOMAIN_FILE_PATH);
     var matches = [];
 
     if (!data || !data.domains) {
