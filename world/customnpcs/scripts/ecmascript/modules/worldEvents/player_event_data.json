@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 195
+            "egg_count": 196
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -437,13 +437,13 @@
                     "egg_count": 1
                 },
                 "chromashell": {
-                    "egg_count": 2
+                    "egg_count": 3
                 },
                 "spring": {
                     "egg_count": 3
                 }
             },
-            "egg_count": 6
+            "egg_count": 7
         }
     }
 }
