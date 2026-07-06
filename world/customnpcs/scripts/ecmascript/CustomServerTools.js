@@ -3767,7 +3767,7 @@ registerXCommands([
             return false;
         }
 
-        var registrationOwner = (args.owner && String(args.owner).trim() !== "") ? String(args.owner).trim() : pl.getName();
+        var registrationOwner = (args.owner && args.owner.trim() !== "") ? args.owner.trim() : pl.getName();
         var heldItem = pl.getMainhandItem();
         if (heldItem.isEmpty()) {
             tellPlayer(pl, ":car: &c[Vehicle Registration] Hold a vehicle or car paper item in your main hand.");
