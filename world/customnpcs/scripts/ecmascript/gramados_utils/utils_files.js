@@ -117,16 +117,16 @@ function mkPath(path) {
  * @returns {Array<string>} The list of files in the directory.
  */
 function readDir(dirPath) {
-    var res = [];
-    var files = new File(dirPath).listFiles();
-    for (var id in files) {
-        var file = files[id];
-        if (file.isDirectory())
-            res = res.concat(readDir(file.toString()));
-        else
-            res.push(Java.from(readFile(file.toString())).join("\n").replace(/\t/g, "  "));
+    var dir = new java.io.File(dirPath);
+    if (!dir.exists() || !dir.isDirectory()) {
+        return [];
     }
-    return res;
+    var files = dir.list();
+    var filePaths = [];
+    for (var i = 0; i < files.length; i++) {
+        filePaths.push(dirPath + "/" + files[i]);
+    }
+    return filePaths;
 }
 
 /**
