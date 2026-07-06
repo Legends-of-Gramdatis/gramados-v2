@@ -645,7 +645,7 @@ function plantMixedCropsOnFarmland(world, center, radius) {
 				if (!blockAbove || !blockAbove.isAir()) continue;
 				
 				// Pick a random crop type
-				var randomCropId = cropIds[Math.floor(Math.random() * cropIds.length)];
+				var randomCropId = getRandomCropBlockId();
 				
 				// Plant the crop
 				world.setBlock(x, y + 1, z, randomCropId, 0);
@@ -655,6 +655,19 @@ function plantMixedCropsOnFarmland(world, center, radius) {
 	}
 	
 	return planted;
+}
+
+function getRandomCropBlockId() {
+	var seedMap = loadSeedToCropMap();	
+	var cropIds = [];
+
+	for (var seedId in seedMap) {
+		var entry = seedMap[seedId];
+		if (entry && entry.allowPlanting === false) continue; // Skip crops that shouldn't be planted
+		cropIds.push(cid);
+	}
+	
+	return cropIds[Math.floor(Math.random() * cropIds.length)];
 }
 
 // Exports
