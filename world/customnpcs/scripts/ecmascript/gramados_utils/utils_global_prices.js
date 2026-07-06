@@ -135,6 +135,8 @@ function getPriceFromItemStack(itemStack, defaultPrice, ignoreNBT) {
         } else {
             stackPrice = stockExchangeEntry.current_price;
         }
+    } else {
+        stackPrice = getPrice(itemId, defaultPrice, itemTag, ignoreNBT);
     }
 
     if (stackPrice === null || stackPrice === undefined) {
