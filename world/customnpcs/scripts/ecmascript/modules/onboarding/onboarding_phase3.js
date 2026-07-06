@@ -118,7 +118,9 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                                 if (dmgStr.match(/^\d+$/)) damage = parseInt(dmgStr, 10);
                             }
                             var stack = world.createItem(id, damage, 1);
-                            player.giveItem(stack);
+                            if (!player.giveItem(stack)) {
+                                player.dropItem(stack);
+                            }
                         }
                         pdata.phase3.stage1ItemsGiven = true;
                         pdata.phase3.stage1ItemsGivenTime = Date.now();
@@ -146,7 +148,9 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                             for (var li = 0; li < lootEntries.length; li++) {
                                 var entry = lootEntries[li];
                                 var crateStack = world2.createItem(entry.id, entry.damage || 0, entry.count || 1);
-                                player.giveItem(crateStack);
+                                if (!player.giveItem(crateStack)) {
+                                    player.dropItem(crateStack);
+                                }
                             }
                             pdata.phase3.stage1CrateGiven = true;
                             pdata.phase3.stage1CrateGivenTime = Date.now();
