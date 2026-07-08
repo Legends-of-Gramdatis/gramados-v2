@@ -15,7 +15,7 @@
         "factionRepMode": "increase",
         "factionRepFactionId": 6,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 3240466399,
+        "vaultGateOpenTime": 3251091090,
         "gate": {
             "pos1": {
                 "x": -1899,
@@ -117,7 +117,7 @@
         "factionRepMode": "decrease",
         "factionRepFactionId": 7,
         "isVaultGateOpened": false,
-        "vaultGateOpenTime": 3240462116,
+        "vaultGateOpenTime": 3251204141,
         "gate": {
             "pos1": {
                 "x": -7356,

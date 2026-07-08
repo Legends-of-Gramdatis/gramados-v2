@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 197
+            "egg_count": 202
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -444,6 +444,17 @@
                 }
             },
             "egg_count": 7
+        },
+        "Raflen100": {
+            "egg_types": {
+                "chromashell": {
+                    "egg_count": 2
+                },
+                "spring": {
+                    "egg_count": 3
+                }
+            },
+            "egg_count": 5
         }
     }
 }
