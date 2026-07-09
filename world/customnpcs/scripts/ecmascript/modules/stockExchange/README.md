@@ -50,6 +50,8 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 
 4. **Domain Reputation**:
    - For aged products (e.g., wine), domain reputation and aging time affect the final price.
+    - When a stock entry uses `"type": "ageable_booze"` with `"expects_tag": true`, bottles must carry lore metadata including `Age (in ticks): ...` and `Domain: ...`.
+    - Bottles missing valid metadata are ignored and are not sold as generic items.
 
 ### Bulk Sales
 

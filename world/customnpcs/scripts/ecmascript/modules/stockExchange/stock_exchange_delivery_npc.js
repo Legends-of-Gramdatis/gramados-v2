@@ -407,18 +407,32 @@ function read_crate_delivery(item, stackSize) {
 
         // Check if the item is part of the stock exchange instance
         if (stock_exchange_instance[key]) {
+            var stock_entry = stock_exchange_instance[key];
+
             // Multiply item count by stack size (to account for multiple crates)
             var totalCount = item_count * stackSize;
 
             //npc.say("Item data: " + items[i].toJsonString());
 
             // If Item has a "type" key
-            if (stock_exchange_instance[key]["type"]) {
-                if (stock_exchange_instance[key]["type"] == "ageable_booze") {
+            if (stock_entry["type"]) {
+                if (stock_entry["type"] == "ageable_booze") {
+
+                    // Allenis wines with expects_tag=true must provide valid age/domain lore.
+                    if (stock_entry["expects_tag"] === true) {
+                        var item_tag = items[i].getCompound("tag");
+                        if (!item_tag || item_tag.toJsonString() == "{}") {
+                            continue;
+                        }
+                    }
 
                     // npc.say("Old key: " + key);
 
                     var item_info = readAgeableBooze(items[i]);
+
+                    if (!item_info || item_info["type"] != "ageable_booze") {
+                        continue;
+                    }
 
                     // npc.say("New key: " + item_info["key"]);
 
@@ -773,33 +787,41 @@ function readAgeableBooze(item_data) {
 
     // npc.say("Item Id: " + item_id + ", Damage: " + item_damage + ", Tag: " + item_tag.toJsonString());
 
-    // If the tag is null, return an empty object
-    if (!item_tag) {
-        return {};
+    // If the tag is null or empty, this cannot be treated as ageable booze.
+    if (!item_tag || item_tag.toJsonString() == "{}") {
+        return null;
     }
 
     var data = {};
 
-    var age_data = item_tag.getCompound("display").getList("Lore", 8);
+    var display_tag = item_tag.getCompound("display");
+    if (!display_tag || display_tag.toJsonString() == "{}") {
+        return null;
+    }
+
+    var age_data = display_tag.getList("Lore", 8);
 
     // npc.say("Ageable Booze Lore: " + age_data);
 
 
     if (age_data.length == 0) {
-        //npc.say("No age data found!");
-        return { "key": item_id + ":" + item_damage, "type": "generic" };
+        return null;
     }
 
-    for (var it_key in age_data) {
-        if (age_data[it_key].contains("Age (in ticks):")) {
-            var age = age_data[it_key].replace("Age (in ticks): ", "");
-            data["Age"] = age;
+    for (var i = 0; i < age_data.length; i++) {
+        var lore_line = String(age_data[i]);
+
+        if (lore_line.indexOf("Age (in ticks):") > -1) {
+            data["Age"] = parseInt(lore_line.replace("Age (in ticks):", "").trim(), 10);
             //npc.say("Age: " + age);
-        } else if (age_data[it_key].contains("Domain:")) {
-            var domain = age_data[it_key].replace("Domain: ", "");
-            data["Domain"] = domain;
+        } else if (lore_line.indexOf("Domain:") > -1) {
+            data["Domain"] = lore_line.replace("Domain:", "").trim();
             //npc.say("Domain: " + domain);
         }
+    }
+
+    if (!data["Domain"] || isNaN(data["Age"])) {
+        return null;
     }
 
     // npc.say("Data: " + JSON.stringify(data));
@@ -862,17 +884,39 @@ function getDomainMultiplier(domain_name) {
 function add_spy_data(data, player) {
     var playerName = player.getName();
     var total_item_count = 0;
-    var delivery_keys = getJsonKeys(data.delivery["generic"]);
-    for (var item in delivery_keys) {
-        total_item_count += data.delivery["generic"][delivery_keys[item]]["count"];
+    var delivery_type_count = 0;
+
+    if (data.delivery["generic"]) {
+        var generic_keys = getJsonKeys(data.delivery["generic"]);
+        delivery_type_count += generic_keys.length;
+        for (var i = 0; i < generic_keys.length; i++) {
+            total_item_count += data.delivery["generic"][generic_keys[i]]["count"];
+        }
     }
+
+    if (data.delivery["ageable_booze"]) {
+        var booze_keys = getJsonKeys(data.delivery["ageable_booze"]);
+        delivery_type_count += booze_keys.length;
+        for (var j = 0; j < booze_keys.length; j++) {
+            total_item_count += data.delivery["ageable_booze"][booze_keys[j]]["count"];
+        }
+    }
+
+    if (data.delivery["fluid"]) {
+        var fluid_keys = getJsonKeys(data.delivery["fluid"]);
+        delivery_type_count += fluid_keys.length;
+        for (var k = 0; k < fluid_keys.length; k++) {
+            total_item_count += data.delivery["fluid"][fluid_keys[k]]["count"];
+        }
+    }
+
     var logEntry = {
         date: new Date().toLocaleString(),
         region: NPC_REGION,
         delivery: data.delivery,
         totalEarnings: data.totalEarnings
     };
-    var logline = playerName + " sold " + total_item_count + " items of " + delivery_keys.length + " different types to " + NPC_REGION + " for " + getAmountCoin(data.totalEarnings);
+    var logline = playerName + " sold " + total_item_count + " items of " + delivery_type_count + " different types to " + NPC_REGION + " for " + getAmountCoin(data.totalEarnings);
 
     logToJson("economy", playerName, logEntry);
     logToFile("economy", logline);
