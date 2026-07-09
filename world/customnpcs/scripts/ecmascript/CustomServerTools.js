@@ -3794,12 +3794,23 @@ registerXCommands([
                     return false;
                 }
 
+                registration.region = registrationRegion;
+                registration.firstRegistrant = registrationOwner;
+                registration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
+                registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, registration.titles);
+                registration.status = "Active";
+                registration.registrationDate = dateToDDMMYYYY();
+                registration.metaSources.push("Direct Registration on " + new Date().toISOString());
+
                 if (!registerPlate(registration)) {
                     tellPlayer(pl, ":car: &c[Vehicle Registration] Failed to register vehicle plate.");
                     return false;
                 }
 
                 setVehicleLicensePlate(heldItem, registration.plate);
+                var paperStack = generatePaperItem(pl.getWorld(), registration, heldItem);
+                if (!pl.giveItem(paperStack)) { pl.dropItem(paperStack); }
+                logToFile("automobile", "Player " + pl.getName() + " registered vehicle " + heldItem.getDisplayName() + " via !register. New plate: " + registration.plate + ". VIN: " + registration.vin + ". Region: " + registration.region);
                 tellRegisterationDetails(pl, registration);
                 tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle plate registered successfully with new plate: " + registration.plate);
                 return true;
@@ -3815,6 +3826,8 @@ registerXCommands([
                     registration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
                 }
                 registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, registration.titles);
+                registration.status = "Active";
+                registration.registrationDate = dateToDDMMYYYY();
             } else {
                 tellPlayer(pl, ":car: &c[Vehicle Registration] This paper is not recognized as OG car papers.");
                 return false;
@@ -3838,6 +3851,9 @@ registerXCommands([
                 registration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
             }
             registration.registrationPriceCents = calculateCarPaperPrice(registration.msrpCents, registration.region, registration.plate, registration.titles);
+            registration.status = "Active";
+            registration.registrationDate = dateToDDMMYYYY();
+            registration.metaSources.push("Direct Registration on " + new Date().toISOString());
         }
 
         if (isPlateLicensed(registration.plate)) {
@@ -3851,13 +3867,28 @@ registerXCommands([
                 mergedRegistration.ownershipHistory = [getOwnershipHistoryEntry(registrationOwner)];
             }
             mergedRegistration.registrationPriceCents = calculateCarPaperPrice(mergedRegistration.msrpCents, mergedRegistration.region, mergedRegistration.plate, mergedRegistration.titles);
+            mergedRegistration.status = "Active";
+            if (!mergedRegistration.registrationDate || isUnknownOrNa(mergedRegistration.registrationDate)) {
+                mergedRegistration.registrationDate = dateToDDMMYYYY();
+            }
+            mergedRegistration.metaSources.push("Direct Registration update on " + new Date().toISOString());
             updateRegistration(mergedRegistration);
+            if (heldItem.hasNbt() && isItem_Vehicle(heldItem)) {
+                var paperStack = generatePaperItem(pl.getWorld(), mergedRegistration, heldItem);
+                if (!pl.giveItem(paperStack)) { pl.dropItem(paperStack); }
+                logToFile("automobile", "Player " + pl.getName() + " updated registration via !register. Plate: " + mergedRegistration.plate + ". VIN: " + mergedRegistration.vin + ". Region: " + mergedRegistration.region);
+            }
             tellRegisterationDetails(pl, mergedRegistration);
             tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle registration updated successfully.");
             return true;
         }
 
         if (registerPlate(registration)) {
+            if (heldItem.hasNbt() && isItem_Vehicle(heldItem)) {
+                var paperStack = generatePaperItem(pl.getWorld(), registration, heldItem);
+                if (!pl.giveItem(paperStack)) { pl.dropItem(paperStack); }
+                logToFile("automobile", "Player " + pl.getName() + " registered vehicle " + heldItem.getDisplayName() + " via !register. Plate: " + registration.plate + ". VIN: " + registration.vin + ". Region: " + registration.region);
+            }
             tellRegisterationDetails(pl, registration);
             tellPlayer(pl, ":car: &a[Vehicle Registration] Vehicle plate registered successfully.");
             return true;
