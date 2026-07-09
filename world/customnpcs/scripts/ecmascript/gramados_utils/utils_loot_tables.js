@@ -356,3 +356,17 @@ function getMaxWeightFromLootTable(lootTable) {
 
     return maxWeight;
 }
+
+/**
+ * Checks if a loot table exists at the specified path.
+ * @param {string} lootTablePath - The path to the loot table file.
+ * @returns {boolean} - True if the loot table exists, false otherwise.
+ */
+function doesLootTableExist(lootTablePath) {
+    // if it doesn't start with "world/loot_tables/", add it
+    if (!lootTablePath.startsWith("world/loot_tables/")) {
+        lootTablePath = "world/loot_tables/" + lootTablePath;
+    }
+    var lootTable = loadJson(lootTablePath);
+    return lootTable != null;
+}
