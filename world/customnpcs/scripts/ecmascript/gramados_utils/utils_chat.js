@@ -579,3 +579,8 @@ function tellSeparatorTitle(player, title, sepColor, titleColor, char) {
     var msg = sepColor + leftPart + ' ' + titleColor + title + ' ' + sepColor + rightPart;
     tellPlayer(player, msg);
 }
+
+function stripColorCodes(text) {
+    if (text === null || text === undefined) return '';
+    return String(text).replace(/§[0-9A-FK-ORa-fk-or]/g, '').replace(/&[0-9A-FK-ORa-fk-or]/g, '');
+}
