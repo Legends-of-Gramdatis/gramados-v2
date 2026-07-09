@@ -208,14 +208,14 @@ function tryHaggle(npc, player, deal) {
         }
 
         var remaining = maxValue - oldValue;
-        var increase = Math.max(1, Math.floor(remaining * random_range(0.15, 0.35)));
+        var increase = Math.max(1, Math.floor(remaining * random_range(0.10, 0.20)));
 
         deal.pawn_value = Math.min(maxValue, oldValue + increase);
 
         saveDealData(npc, deal);
 
         npc.say(ccs('&aFine. I can raise my offer to &6' + formatMoney(deal.pawn_value) + '&a.'));
-        npc.say(ccs('&7Use the item on me to accept, or empty-hand me again to haggle.'));
+        npc.say(ccs('&7Use the item on me to accept.'));
         return;
     }
 
@@ -231,7 +231,7 @@ function tryHaggle(npc, player, deal) {
     saveDealData(npc, deal);
 
     npc.say(ccs('&eNo. My offer stays at &6' + formatMoney(deal.pawn_value) + '&e.'));
-    npc.say(ccs('&7Use the item on me to accept, or empty-hand me again to haggle.'));
+    npc.say(ccs('&7Use the item on me to accept.'));
 }
 
 function completePawnSale(npc, player, itemStack, deal) {
