@@ -341,16 +341,13 @@ function rrandom_range(min, max) {
 }
 
 /**
- * Generates a random number within a specified range.
+ * Generates a random float within a specified range.
  * @param {number} min - The minimum value.
  * @param {number} max - The maximum value.
- * @returns {number} The random number.
+ * @returns {number} The random float.
  */
 function random_range(min, max) {
-    var minimum = Math.min(min, max);
-    var maximum = Math.max(min, max);
-    var difference = maximum - minimum;
-    return (minimum + (Math.random() * difference));
+    return min + Math.random() * (max - min);
 }
 
 /**
