@@ -66,6 +66,11 @@ function interact(event) {
         return;
     }
 
+    if (!mainhand.isEmpty() && !isSinglePawnItem(mainhand)) {
+        npc.say(ccs('&eBring me one item at a time. I do not buy stacked goods.'));
+        return;
+    }
+
     var currentDeal = getLastInteraction(npc);
 
     if (currentDeal && currentDeal.player == player.getName()) {
@@ -110,6 +115,11 @@ function handleAdminInteraction(npc, player, mainhand) {
     var id = mainhand.getName();
     var value = stripColorCodes(mainhand.getDisplayName());
 
+    if (id == 'minecraft:barrier') {
+        resetAdminState(npc, player);
+        return;
+    }
+
     switch (id) {
         case admin_config_items[PAWN_LOOT_TABLE_KEY].id:
             if (doesLootTableExist(value)) {
@@ -147,6 +157,12 @@ function handleAdminInteraction(npc, player, mainhand) {
             showAdminConfigurationHelp(npc, player);
             return;
     }
+}
+
+function resetAdminState(npc, player) {
+    clearPlayerBlock(npc, player.getName());
+    resetLastInteraction(npc);
+    tellPlayer(player, '&a[Admin] Cleared your pawn block timer and the NPC\'s active pawn offer.');
 }
 
 function setPercentConfig(npc, player, key, value, label) {
@@ -241,6 +257,11 @@ function completePawnSale(npc, player, itemStack, deal) {
         return;
     }
 
+    if (!isSinglePawnItem(itemStack)) {
+        npc.say(ccs('&eBring me one item at a time if you want to sell it.'));
+        return;
+    }
+
     if (!isSameItemAsDeal(itemStack, deal)) {
         npc.say(ccs('&cThat is not the item we were discussing.'));
         resetLastInteraction(npc);
@@ -256,6 +277,7 @@ function completePawnSale(npc, player, itemStack, deal) {
 
 function verifyIfItemCanBePawned(npc, itemStack) {
     if (!itemStack || itemStack.isEmpty()) return false;
+    if (!isSinglePawnItem(itemStack)) return false;
     if (!isNpcConfigured(npc)) return false;
 
     var lootTablePath = npc.getStoreddata().get(PAWN_LOOT_TABLE_KEY);
@@ -349,6 +371,14 @@ function getPlayerBlockRemainingSeconds(npc, player) {
     return remaining;
 }
 
+function clearPlayerBlock(npc, playerName) {
+    npc.getStoreddata().remove(PAWN_BLOCKED_PREFIX + playerName);
+}
+
+function isSinglePawnItem(itemStack) {
+    return itemStack && !itemStack.isEmpty() && itemStack.getStackSize() == 1;
+}
+
 function getNPCConfig(npc) {
     var sd = npc.getStoreddata();
 
@@ -411,6 +441,7 @@ function showAdminConfigurationHelp(npc, player) {
     var tutorialText = [
         '&6[Admin] &ePawn Shop NPC Configuration',
         '&7Use the following admin items on this NPC after renaming them to the value you want to set:',
+        '&7Use a &fminecraft:barrier &7to clear your block timer and the NPC\'s active pawn offer.',
         '',
         '&e- &f' + admin_config_items[PAWN_LOOT_TABLE_KEY].id + ' &7→ ' + admin_config_items[PAWN_LOOT_TABLE_KEY].name,
         '  ' + admin_config_items[PAWN_LOOT_TABLE_KEY].description,
