@@ -116,7 +116,7 @@
         "noCarRadius": 10,
         "factionRepMode": "decrease",
         "factionRepFactionId": 7,
-        "isVaultGateOpened": true,
+        "isVaultGateOpened": false,
         "vaultGateOpenTime": 3252814689,
         "gate": {
             "pos1": {
