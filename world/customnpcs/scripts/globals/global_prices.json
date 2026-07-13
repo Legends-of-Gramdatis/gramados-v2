@@ -737,6 +737,12 @@
     "growthcraft_milk:yogurt:0": {
         "value": 390
     },
+    "harvestcraft:anchovyrawitem:0": {
+        "display_name": "Anchovy",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:applejuiceitem:0": {
         "value": 350
     },
@@ -778,6 +784,12 @@
     "harvestcraft:barleyitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Barley\"}}": {
         "value": 23,
         "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Barley\"}}"
+    },
+    "harvestcraft:bassrawitem:0": {
+        "display_name": "Bass",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:bbqplatteritem:0": {
         "value": 1400
@@ -850,6 +862,12 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
     },
+    "harvestcraft:calamarirawitem:0": {
+        "display_name": "Calamari",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:candledeco1:0": {
         "value": 200
     },
@@ -859,14 +877,32 @@
     "harvestcraft:caramelitem:0": {
         "value": 50
     },
+    "harvestcraft:carprawitem:0": {
+        "display_name": "Carp",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:carrotcupcakeitem:0": {
         "value": 330
+    },
+    "harvestcraft:catfishrawitem:0": {
+        "display_name": "Catfish",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:caulifloweritem:0": {
         "display_name": "Cauliflower",
         "value": 20,
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:charrrawitem:0": {
+        "display_name": "Char",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:cheeseburgeritem:0": {
         "value": 1700
@@ -911,6 +947,12 @@
     "harvestcraft:chocolatemilkshakeitem:0": {
         "value": 300
     },
+    "harvestcraft:clamrawitem:0": {
+        "display_name": "Clam",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:coconutsmoothieitem:0": {
         "value": 300
     },
@@ -939,8 +981,20 @@
         "value": 23,
         "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Corn\"}}"
     },
+    "harvestcraft:crabrawitem:0": {
+        "display_name": "Crab",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:cranberryjuiceitem:0": {
         "value": 300
+    },
+    "harvestcraft:crayfishrawitem:0": {
+        "display_name": "Crayfish",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:croissantitem:0": {
         "display_name": "croissantitem",
@@ -968,6 +1022,12 @@
     "harvestcraft:earlgreyteaitem:0": {
         "value": 200
     },
+    "harvestcraft:eelrawitem:0": {
+        "display_name": "Eel",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:eggplantitem:0": {
         "display_name": "Eggplant",
         "value": 20,
@@ -986,186 +1046,6 @@
         "value": 20,
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
-    },
-    "harvestcraft:anchovyrawitem:0": {
-        "display_name": "Anchovy",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:bassrawitem:0": {
-        "display_name": "Bass",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:carprawitem:0": {
-        "display_name": "Carp",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:catfishrawitem:0": {
-        "display_name": "Catfish",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:charrrawitem:0": {
-        "display_name": "Char",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:eelrawitem:0": {
-        "display_name": "Eel",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:greenheartfishitem:0": {
-        "display_name": "Greenheart Fish",
-        "value": 2000,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:grouperrawitem:0": {
-        "display_name": "Grouper",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:herringrawitem:0": {
-        "display_name": "Herring",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:mudfishrawitem:0": {
-        "display_name": "Mudfish",
-        "value": 920,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:perchrawitem:0": {
-        "display_name": "Perch",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:sardinerawitem:0": {
-        "display_name": "Sardine",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:snapperrawitem:0": {
-        "display_name": "Snapper",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:tilapiarawitem:0": {
-        "display_name": "Tilapia",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:troutrawitem:0": {
-        "display_name": "Trout",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:tunarawitem:0": {
-        "display_name": "Tuna",
-        "value": 1100,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:walleyerawitem:0": {
-        "display_name": "Walleye",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:calamarirawitem:0": {
-        "display_name": "Calamari",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:clamrawitem:0": {
-        "display_name": "Clam",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:crabrawitem:0": {
-        "display_name": "Crab",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:crayfishrawitem:0": {
-        "display_name": "Crayfish",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:frograwitem:0": {
-        "display_name": "Frog",
-        "value": 110,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:jellyfishrawitem:0": {
-        "display_name": "Jellyfish",
-        "value": 1750,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:musselrawitem:0": {
-        "display_name": "Mussel",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:octopusrawitem:0": {
-        "display_name": "Octopus",
-        "value": 1450,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:oysterrawitem:0": {
-        "display_name": "Oyster",
-        "value": 680,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:scalloprawitem:0": {
-        "display_name": "Scallop",
-        "value": 680,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:shrimprawitem:0": {
-        "display_name": "Shrimp",
-        "value": 42,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:snailrawitem:0": {
-        "display_name": "Snail",
-        "value": 800,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "harvestcraft:turtlerawitem:0": {
-        "display_name": "Turtle",
-        "value": 2600,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:fishsandwichitem:0": {
         "value": 600
@@ -1187,6 +1067,12 @@
     },
     "harvestcraft:friesitem:0": {
         "value": 300
+    },
+    "harvestcraft:frograwitem:0": {
+        "display_name": "Frog",
+        "value": 110,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:frosteddonutitem:0": {
         "value": 700
@@ -1233,6 +1119,12 @@
     "harvestcraft:grapesodaitem:0": {
         "value": 550
     },
+    "harvestcraft:greenheartfishitem:0": {
+        "display_name": "Greenheart Fish",
+        "value": 2000,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:greenteaitem:0": {
         "value": 200
     },
@@ -1241,6 +1133,12 @@
     },
     "harvestcraft:grinder:0": {
         "value": 5000
+    },
+    "harvestcraft:grouperrawitem:0": {
+        "display_name": "Grouper",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:hamandcheesesandwichitem:0": {
         "value": 450
@@ -1254,11 +1152,23 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
     },
+    "harvestcraft:herringrawitem:0": {
+        "display_name": "Herring",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:hotwingsitem:0": {
         "value": 400
     },
     "harvestcraft:jellybeansitem:0": {
         "value": 300
+    },
+    "harvestcraft:jellyfishrawitem:0": {
+        "display_name": "Jellyfish",
+        "value": 1750,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:juiceritem:0": {
         "value": 1000
@@ -1329,12 +1239,30 @@
     "harvestcraft:mozzerellasticksitem:0": {
         "value": 600
     },
+    "harvestcraft:mudfishrawitem:0": {
+        "display_name": "Mudfish",
+        "value": 920,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:musselrawitem:0": {
+        "display_name": "Mussel",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:netherwingsitem:0": {
         "value": 1000
     },
     "harvestcraft:oatsitem:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Oats\"}}": {
         "value": 23,
         "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Oats\"}}"
+    },
+    "harvestcraft:octopusrawitem:0": {
+        "display_name": "Octopus",
+        "value": 1450,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:onionitem:0": {
         "display_name": "Onion",
@@ -1353,6 +1281,12 @@
     },
     "harvestcraft:orangesodaitem:0": {
         "value": 550
+    },
+    "harvestcraft:oysterrawitem:0": {
+        "display_name": "Oyster",
+        "value": 680,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:parsnipitem:0": {
         "display_name": "Parsnip",
@@ -1375,6 +1309,12 @@
         "value": 20,
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
+    },
+    "harvestcraft:perchrawitem:0": {
+        "display_name": "Perch",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:pistachioicecreamitem:0": {
         "value": 400
@@ -1430,6 +1370,12 @@
     "harvestcraft:saltitem:0": {
         "value": 25
     },
+    "harvestcraft:sardinerawitem:0": {
+        "display_name": "Sardine",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:saucepanitem:0": {
         "value": 1000
     },
@@ -1442,11 +1388,35 @@
         "allow_market_override": true,
         "based_on_stock": "Greenfield Farming"
     },
+    "harvestcraft:scalloprawitem:0": {
+        "display_name": "Scallop",
+        "value": 680,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:shadedgarden:0": {
         "value": 1000
     },
+    "harvestcraft:shrimprawitem:0": {
+        "display_name": "Shrimp",
+        "value": 42,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:skilletitem:0": {
         "value": 1000
+    },
+    "harvestcraft:snailrawitem:0": {
+        "display_name": "Snail",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:snapperrawitem:0": {
+        "display_name": "Snapper",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:soggygarden:0": {
         "value": 1000
@@ -1500,6 +1470,12 @@
     "harvestcraft:teaitem:0": {
         "value": 200
     },
+    "harvestcraft:tilapiarawitem:0": {
+        "display_name": "Tilapia",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:toastitem:0": {
         "display_name": "toastitem",
         "value": 346
@@ -1513,14 +1489,38 @@
     "harvestcraft:tropicalgarden:0": {
         "value": 1000
     },
+    "harvestcraft:troutrawitem:0": {
+        "display_name": "Trout",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "harvestcraft:tunafishsandwichitem:0": {
         "value": 1000
+    },
+    "harvestcraft:tunarawitem:0": {
+        "display_name": "Tuna",
+        "value": 1100,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
+    "harvestcraft:turtlerawitem:0": {
+        "display_name": "Turtle",
+        "value": 2600,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:vanillaicecreamitem:0": {
         "value": 400
     },
     "harvestcraft:wafflesitem:0": {
         "value": 300
+    },
+    "harvestcraft:walleyerawitem:0": {
+        "display_name": "Walleye",
+        "value": 800,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "harvestcraft:walnutraisinbreaditem:0": {
         "display_name": "walnutraisinbreaditem",
@@ -1916,41 +1916,29 @@
         "allow_market_override": true,
         "based_on_stock": "Farmiston"
     },
-    "minecraft:clownfish:0": {
-        "display_name": "Clownfish",
-        "value": 1900,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "minecraft:cod:0": {
-        "display_name": "Cod",
-        "value": 420,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "minecraft:pufferfish:0": {
-        "display_name": "Pufferfish",
-        "value": 2100,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
-    "minecraft:salmon:0": {
-        "display_name": "Salmon",
-        "value": 560,
-        "allow_market_override": true,
-        "based_on_stock": "Sealife Fishing"
-    },
     "minecraft:clay:0": {
         "value": 250
     },
     "minecraft:clay_ball:0": {
         "value": 25
     },
+    "minecraft:clownfish:0": {
+        "display_name": "Clownfish",
+        "value": 1900,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "minecraft:coal:0": {
         "value": 93
     },
     "minecraft:coal:1": {
         "value": 93
+    },
+    "minecraft:cod:0": {
+        "display_name": "Cod",
+        "value": 420,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "minecraft:cookie:0": {
         "display_name": "cookie",
@@ -2180,6 +2168,12 @@
         "value": 23,
         "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Potato\"}}"
     },
+    "minecraft:pufferfish:0": {
+        "display_name": "Pufferfish",
+        "value": 2100,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
+    },
     "minecraft:pumpkin:0": {
         "value": 312
     },
@@ -2189,6 +2183,12 @@
     },
     "minecraft:rotten_flesh:0": {
         "value": 312
+    },
+    "minecraft:salmon:0": {
+        "display_name": "Salmon",
+        "value": 560,
+        "allow_market_override": true,
+        "based_on_stock": "Sealife Fishing"
     },
     "minecraft:sand:0": {
         "value": 50
@@ -2234,17 +2234,143 @@
     "mts:alicemotors.micro_ev:0": {
         "value": 800000
     },
+    "mts:alicemotors.moguraa4:0": {
+        "value": 200000
+    },
     "mts:alicemotors.nano_ev:0": {
         "value": 500000
     },
     "mts:alicemotors.wheel_20h_12w_rim1_or:0": {
         "value": 48000
     },
+    "mts:bjornscustoms.k400_black:0": {
+        "value": 14600000
+    },
+    "mts:bjornscustoms.k400_blue:0": {
+        "value": 14600000
+    },
+    "mts:bjornscustoms.k400_cyan:0": {
+        "value": 14600000
+    },
+    "mts:bjornscustoms.k400_green:0": {
+        "value": 14600000
+    },
+    "mts:bjornscustoms.k400_red:0": {
+        "value": 14600000
+    },
+    "mts:bjornscustoms.k400_white:0": {
+        "value": 14500000
+    },
+    "mts:bjornscustoms.proto_x_23_alice:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_black:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_blue:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_cyan:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_green:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_magenta:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_orange:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_purple:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_red:0": {
+        "value": 12050000
+    },
+    "mts:bjornscustoms.proto_x_23_white:0": {
+        "value": 11950000
+    },
+    "mts:bjornscustoms.proto_x_23_yellow:0": {
+        "value": 12050000
+    },
     "mts:bjornscustoms.rally_wheel:0": {
         "value": 32000
     },
     "mts:bjornscustoms.rally_wheel_rusted:0": {
         "value": 20000
+    },
+    "mts:cactusdecor_advertising.painting2_1:0": {
+        "value": 350000
+    },
+    "mts:cactusdecor_advertising.painting2_2:0": {
+        "value": 320000
+    },
+    "mts:cactusdecor_advertising.painting2_3:0": {
+        "value": 150000
+    },
+    "mts:cactusdecor_advertising.painting2_4:0": {
+        "value": 200000
+    },
+    "mts:cactusdecor_advertising.painting2_5:0": {
+        "value": 180000
+    },
+    "mts:cactusdecor_advertising.painting2_6:0": {
+        "value": 160000
+    },
+    "mts:cactusdecor_advertising.painting2_7:0": {
+        "value": 140000
+    },
+    "mts:cactusdecor_advertising.painting2_8:0": {
+        "value": 130000
+    },
+    "mts:cactusdecor_advertising.painting2_9:0": {
+        "value": 180000
+    },
+    "mts:cactusdecor_advertising.painting3_1:0": {
+        "value": 120000
+    },
+    "mts:cactusdecor_advertising.painting3_2:0": {
+        "value": 110000
+    },
+    "mts:cactusdecor_advertising.painting3_3:0": {
+        "value": 220000
+    },
+    "mts:cactusdecor_advertising.painting3_4:0": {
+        "value": 120000
+    },
+    "mts:cactusdecor_advertising.painting3_5:0": {
+        "value": 120000
+    },
+    "mts:cactusdecor_advertising.painting3_6:0": {
+        "value": 140000
+    },
+    "mts:cactusdecor_advertising.painting3_7:0": {
+        "value": 160000
+    },
+    "mts:cactusdecor_advertising.painting3_8:0": {
+        "value": 180000
+    },
+    "mts:cactusdecor_advertising.painting_1:0": {
+        "value": 70000
+    },
+    "mts:cactusdecor_advertising.painting_2:0": {
+        "value": 70000
+    },
+    "mts:cactusdecor_advertising.painting_3:0": {
+        "value": 60000
+    },
+    "mts:cactusdecor_advertising.painting_4:0": {
+        "value": 130000
+    },
+    "mts:cactusdecor_advertising.painting_5:0": {
+        "value": 90000
+    },
+    "mts:cactusdecor_advertising.painting_6:0": {
+        "value": 300000
+    },
+    "mts:cactusdecor_advertising.painting_7:0": {
+        "value": 250000
     },
     "mts:cactusdecor_furniture.book:0": {
         "value": 1000
@@ -2347,6 +2473,33 @@
     },
     "mts:iav.iav_wheel_standard_hubcap:0": {
         "value": 20000
+    },
+    "mts:iv_tcp_v2.trin_forester_blue:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_brown:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_diamond:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_light_blue:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_light_gray:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_olive:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_pure_black:0": {
+        "value": 1490000
+    },
+    "mts:iv_tcp_v2.trin_forester_pure_white:0": {
+        "value": 1450000
+    },
+    "mts:iv_tcp_v2.trin_forester_red:0": {
+        "value": 1490000
     },
     "mts:iv_tcp_v3_civil.trin_bultizorg_comfort_electricblue_g:0": {
         "value": 6845000
@@ -4487,6 +4640,54 @@
     "mts:iv_tpp.car_roof_xl_lightbar_y:0": {
         "value": 20000
     },
+    "mts:iv_tpp.container_dry_container_chrome:0": {
+        "value": 1000000
+    },
+    "mts:iv_tpp.container_dry_container_copper:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_dry_container_gray:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_dry_container_green:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_dry_container_military_green:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_dry_container_red:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_dry_container_red_rust:0": {
+        "value": 250000
+    },
+    "mts:iv_tpp.container_dry_container_white:0": {
+        "value": 500000
+    },
+    "mts:iv_tpp.container_reefer_chrome:0": {
+        "value": 2000000
+    },
+    "mts:iv_tpp.container_reefer_copper:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.container_reefer_gray:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.container_reefer_green:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.container_reefer_military_green:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.container_reefer_red:0": {
+        "value": 1500000
+    },
+    "mts:iv_tpp.container_reefer_red_rust:0": {
+        "value": 750000
+    },
+    "mts:iv_tpp.container_reefer_white:0": {
+        "value": 1500000
+    },
     "mts:iv_tpp.engine_i3_gasoline_normal_aut:0": {
         "value": 20000
     },
@@ -5228,6 +5429,18 @@
     "mts:ivv.2gear_dark:0": {
         "value": 10000
     },
+    "mts:ivv.acive_black:0": {
+        "value": 3599588300
+    },
+    "mts:ivv.acive_blue:0": {
+        "value": 3599588300
+    },
+    "mts:ivv.acive_dkz:0": {
+        "value": 3599588300
+    },
+    "mts:ivv.acive_gray:0": {
+        "value": 3599588300
+    },
     "mts:ivv.antenna:0": {
         "value": 5000
     },
@@ -5237,6 +5450,24 @@
     "mts:ivv.antenna_sharkfin:0": {
         "value": 10000
     },
+    "mts:ivv.axolotl_black:0": {
+        "value": 2550000
+    },
+    "mts:ivv.axolotl_blue:0": {
+        "value": 2550000
+    },
+    "mts:ivv.axolotl_pink:0": {
+        "value": 2550000
+    },
+    "mts:ivv.axolotl_purple:0": {
+        "value": 2550000
+    },
+    "mts:ivv.axolotl_red:0": {
+        "value": 2550000
+    },
+    "mts:ivv.axolotl_white:0": {
+        "value": 2500000
+    },
     "mts:ivv.backpack_blue:0": {
         "value": 50000
     },
@@ -5245,6 +5476,9 @@
     },
     "mts:ivv.battery:0": {
         "value": 20000
+    },
+    "mts:ivv.benchengine:0": {
+        "value": 1500000
     },
     "mts:ivv.bigtire:0": {
         "value": 100000
@@ -5384,6 +5618,48 @@
     "mts:ivv.clustermodern:0": {
         "value": 50000
     },
+    "mts:ivv.colada_black:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_blue:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_brown:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_gray:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_green:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_ivlabs:0": {
+        "value": 2800000
+    },
+    "mts:ivv.colada_ivltest:0": {
+        "value": 2800000
+    },
+    "mts:ivv.colada_minimod:0": {
+        "value": 2900000
+    },
+    "mts:ivv.colada_policeblack:0": {
+        "value": 2900000
+    },
+    "mts:ivv.colada_policeblue:0": {
+        "value": 2900000
+    },
+    "mts:ivv.colada_red:0": {
+        "value": 2850000
+    },
+    "mts:ivv.colada_taxi:0": {
+        "value": 2900000
+    },
+    "mts:ivv.colada_taxigramados:0": {
+        "value": 2900000
+    },
+    "mts:ivv.colada_white:0": {
+        "value": 2800000
+    },
     "mts:ivv.compact_electricmotor:0": {
         "value": 400000
     },
@@ -5408,8 +5684,44 @@
     "mts:ivv.dashboardchime_tofu:0": {
         "value": 5000
     },
+    "mts:ivv.evelyn_black:0": {
+        "value": 5250000
+    },
+    "mts:ivv.evelyn_blue:0": {
+        "value": 5250000
+    },
+    "mts:ivv.evelyn_gray:0": {
+        "value": 5250000
+    },
+    "mts:ivv.evelyn_pink:0": {
+        "value": 5250000
+    },
+    "mts:ivv.evelyn_red:0": {
+        "value": 5250000
+    },
+    "mts:ivv.evelyn_white:0": {
+        "value": 5250000
+    },
     "mts:ivv.exhaust:0": {
         "value": 200000
+    },
+    "mts:ivv.f1car_black:0": {
+        "value": 30000000
+    },
+    "mts:ivv.f1car_blue:0": {
+        "value": 30000000
+    },
+    "mts:ivv.f1car_green:0": {
+        "value": 30000000
+    },
+    "mts:ivv.f1car_purple:0": {
+        "value": 30000000
+    },
+    "mts:ivv.f1car_red:0": {
+        "value": 30000000
+    },
+    "mts:ivv.f1car_white:0": {
+        "value": 30000000
     },
     "mts:ivv.flatbed:0": {
         "value": 100000
@@ -5473,6 +5785,24 @@
     },
     "mts:ivv.handbrake:0": {
         "value": 50000
+    },
+    "mts:ivv.helix_black:0": {
+        "value": 2050000
+    },
+    "mts:ivv.helix_blue:0": {
+        "value": 2050000
+    },
+    "mts:ivv.helix_brown:0": {
+        "value": 2050000
+    },
+    "mts:ivv.helix_green:0": {
+        "value": 2050000
+    },
+    "mts:ivv.helix_red:0": {
+        "value": 2050000
+    },
+    "mts:ivv.helix_white:0": {
+        "value": 2000000
     },
     "mts:ivv.hitch:0": {
         "value": 250000
@@ -5540,6 +5870,24 @@
     "mts:ivv.kmh_dark:0": {
         "value": 5000
     },
+    "mts:ivv.kobold_black:0": {
+        "value": 825000
+    },
+    "mts:ivv.kobold_blue:0": {
+        "value": 825000
+    },
+    "mts:ivv.kobold_green:0": {
+        "value": 825000
+    },
+    "mts:ivv.kobold_pink:0": {
+        "value": 825000
+    },
+    "mts:ivv.kobold_red:0": {
+        "value": 825000
+    },
+    "mts:ivv.kobold_white:0": {
+        "value": 800000
+    },
     "mts:ivv.lidar:0": {
         "value": 3500000
     },
@@ -5554,6 +5902,27 @@
     },
     "mts:ivv.microjet:0": {
         "value": 10000000
+    },
+    "mts:ivv.mountaineer_black:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_blue:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_gray:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_red:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_silver:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_syphus590:0": {
+        "value": 3550000
+    },
+    "mts:ivv.mountaineer_white:0": {
+        "value": 3500000
     },
     "mts:ivv.mph:0": {
         "value": 5000
@@ -5675,6 +6044,24 @@
     "mts:ivv.paintcan_yellow:0": {
         "value": 20000
     },
+    "mts:ivv.painting_dcc:0": {
+        "value": 350000
+    },
+    "mts:ivv.painting_dmb:0": {
+        "value": 300000
+    },
+    "mts:ivv.painting_ka:0": {
+        "value": 220000
+    },
+    "mts:ivv.painting_mci:0": {
+        "value": 170000
+    },
+    "mts:ivv.painting_ml:0": {
+        "value": 1000000
+    },
+    "mts:ivv.painting_vg:0": {
+        "value": 900000
+    },
     "mts:ivv.power:0": {
         "value": 5000
     },
@@ -5701,6 +6088,45 @@
     },
     "mts:ivv.rim_wire:0": {
         "value": 300000
+    },
+    "mts:ivv.roadster_black:0": {
+        "value": 21600000
+    },
+    "mts:ivv.roadster_lime:0": {
+        "value": 21600000
+    },
+    "mts:ivv.roadster_orange:0": {
+        "value": 21600000
+    },
+    "mts:ivv.roadster_purple:0": {
+        "value": 21600000
+    },
+    "mts:ivv.roadster_red:0": {
+        "value": 21600000
+    },
+    "mts:ivv.roadster_silver:0": {
+        "value": 21900000
+    },
+    "mts:ivv.roadster_white:0": {
+        "value": 21500000
+    },
+    "mts:ivv.runabout_black:0": {
+        "value": 45000000
+    },
+    "mts:ivv.runabout_green:0": {
+        "value": 45025000
+    },
+    "mts:ivv.runabout_purple:0": {
+        "value": 45025000
+    },
+    "mts:ivv.runabout_red:0": {
+        "value": 45025000
+    },
+    "mts:ivv.runabout_white:0": {
+        "value": 45000000
+    },
+    "mts:ivv.runabout_yellow:0": {
+        "value": 45025000
     },
     "mts:ivv.screen:0": {
         "value": 50000
@@ -5734,6 +6160,42 @@
     },
     "mts:ivv.soundbox_v8:0": {
         "value": 50000
+    },
+    "mts:ivv.speedback_black:0": {
+        "value": 4050000
+    },
+    "mts:ivv.speedback_blue:0": {
+        "value": 4050000
+    },
+    "mts:ivv.speedback_green:0": {
+        "value": 4050000
+    },
+    "mts:ivv.speedback_red:0": {
+        "value": 4050000
+    },
+    "mts:ivv.speedback_white:0": {
+        "value": 4000000
+    },
+    "mts:ivv.speedback_yellow:0": {
+        "value": 4050000
+    },
+    "mts:ivv.sprinter_black:0": {
+        "value": 3050000
+    },
+    "mts:ivv.sprinter_blue:0": {
+        "value": 3050000
+    },
+    "mts:ivv.sprinter_panda:0": {
+        "value": 3100000
+    },
+    "mts:ivv.sprinter_red:0": {
+        "value": 3100000
+    },
+    "mts:ivv.sprinter_teal:0": {
+        "value": 3050000
+    },
+    "mts:ivv.sprinter_white:0": {
+        "value": 3000000
     },
     "mts:ivv.stakebed:0": {
         "value": 250000
@@ -5782,6 +6244,48 @@
     },
     "mts:ivv.toiletpaper_roll:0": {
         "value": 250
+    },
+    "mts:ivv.trombone_black:0": {
+        "value": 1050000
+    },
+    "mts:ivv.trombone_bubblegum:0": {
+        "value": 1050000
+    },
+    "mts:ivv.trombone_olive:0": {
+        "value": 1050000
+    },
+    "mts:ivv.trombone_rose:0": {
+        "value": 1050000
+    },
+    "mts:ivv.trombone_teal:0": {
+        "value": 1050000
+    },
+    "mts:ivv.trombone_white:0": {
+        "value": 1000000
+    },
+    "mts:ivv.truck_blue:0": {
+        "value": 7050000
+    },
+    "mts:ivv.truck_ivlabs:0": {
+        "value": 7000000
+    },
+    "mts:ivv.truck_orange:0": {
+        "value": 7050000
+    },
+    "mts:ivv.truck_pink:0": {
+        "value": 7050000
+    },
+    "mts:ivv.truck_red:0": {
+        "value": 7050000
+    },
+    "mts:ivv.truck_scp:0": {
+        "value": 7000000
+    },
+    "mts:ivv.truck_white:0": {
+        "value": 7000000
+    },
+    "mts:ivv.truck_yellow:0": {
+        "value": 7050000
     },
     "mts:ivv.truckseat:0": {
         "value": 100000
@@ -5899,6 +6403,36 @@
     },
     "mts:ivv.v9:0": {
         "value": 370000
+    },
+    "mts:ivv.vector_black:0": {
+        "value": 4550000
+    },
+    "mts:ivv.vector_blue:0": {
+        "value": 4550000
+    },
+    "mts:ivv.vector_green:0": {
+        "value": 4550000
+    },
+    "mts:ivv.vector_red:0": {
+        "value": 4550000
+    },
+    "mts:ivv.vector_white:0": {
+        "value": 4500000
+    },
+    "mts:ivv.yatwa_blue:0": {
+        "value": 1275000
+    },
+    "mts:ivv.yatwa_green:0": {
+        "value": 1275000
+    },
+    "mts:ivv.yatwa_pink:0": {
+        "value": 1275000
+    },
+    "mts:ivv.yatwa_red:0": {
+        "value": 1275000
+    },
+    "mts:ivv.yatwa_white:0": {
+        "value": 1250000
     },
     "mts:mts.handbook_car:0": {
         "value": 6000
@@ -6876,8 +7410,5 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
-    },
-    "mts:alicemotors.moguraa4:0": {
-        "value": 200000
     }
 }
