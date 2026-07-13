@@ -1,13 +1,33 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 16,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
+                "Dialog": 655,
+                "Title": "Who are you? (meet)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 74,
+                "Title": "You look troubled... (quest)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "I'll be back (close)",
+                "Title": "Goodbye (close)",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -17,8 +37,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 79,
-    "AvailabilityQuest": 0,
+    "DialogId": 654,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -28,7 +48,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 172,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,17 +58,16 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "hobo_bread",
-    "AvailabilityDialog": 0,
+    "DialogTitle": "rd_intro",
+    "AvailabilityDialog": 2,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
-    "DialogSound": "customnpcs:human.male.heroic.attack",
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 76,
     "OptionFaction2Points": 100,
-    "DialogText": "I'd love bread... I miss bread... *hic*",
+    "DialogText": "Howdy, there. I'm right sorry I can't help ya now, I'm plum busy at the moment. My faithful staff's always ready to lend a hand, though.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -65,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1783920923107L,
+        "TimePast": 1783918097183L,
         "Time": 0L,
         "Subject": ""
     }

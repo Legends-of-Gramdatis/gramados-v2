@@ -1,14 +1,24 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": -1,
+    "AvailabilityQuestId": 16,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Awesome!",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 604,
-    "AvailabilityQuest": 0,
+    "AvailabilityQuest": 1,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -32,12 +42,13 @@
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
+    "DialogSound": "minecraft:entity.cat.purreow",
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Yeehaw! CowboyCosmic has tipped his hat your way. The blessing is yours, partner - the cosmic shelves swing open, and every item in the pack is now within your reach.",
+    "DialogText": "Just one last checkbox, and... done! That should be your access to the Extended Parts Catalogue, nya. This is a special kind of privilage, and you'll be able to buy every engine, wheel, or component you want. There's no discount, nya, but at least you're able to buy parts that are out of production, highly exclusive, or otherwise hard to come by!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -54,7 +65,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1758447859708L,
+        "TimePast": 1783919648015L,
         "Time": 0L,
         "Subject": ""
     }

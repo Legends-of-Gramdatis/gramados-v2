@@ -49,16 +49,16 @@
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 2,
     "DialogTitle": "rd_start",
-    "AvailabilityDialog": 0,
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "DialogSound": "minecraft:entity.villager.no",
     "AvailabilityFactionId": 7,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 655,
     "OptionFaction2Points": 100,
-    "DialogText": "I've got a lot more paperwork than usual ahead of me because I lost my keycard...",
+    "DialogText": "I've gots a lotta paperwork ahead of me, after losing my company ID card...",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -75,7 +75,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1667822446158L,
+        "TimePast": 1783917339436L,
         "Time": 0L,
         "Subject": ""
     }

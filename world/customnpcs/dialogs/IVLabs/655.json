@@ -6,10 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "I'll be back (close)",
+                "Dialog": 657,
+                "Title": "Ah, interesting! (continue)",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 79,
+    "DialogId": 655,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": 172,
+    "DialogQuest": -1,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -38,17 +38,18 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "hobo_bread",
+    "DialogTitle": "rd_intro_whoareyou",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
-    "DialogSound": "customnpcs:human.male.heroic.attack",
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I'd love bread... I miss bread... *hic*",
+    "DialogText": "My name's Armentarius Cosmos, but some folks 'round here call me the Cosmic Cowboy. You can call me whatever suits ya, I reckon.
+
+I'm the manager of this here Atlas Motors Dealership! We take pride in our cars that are fast, cheap, and reliable. You could also say I got a few shares in Atlas's parent company, International Vista Laboratories, or IVLabs... but for all them connections and resources I got, ever'body's gotta keep puttin' in their hard work too.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -65,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1783920923107L,
+        "TimePast": 1783917895082L,
         "Time": 0L,
         "Subject": ""
     }

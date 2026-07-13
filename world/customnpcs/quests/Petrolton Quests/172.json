@@ -1,15 +1,12 @@
 {
-    "CompleterNpc": "seller",
+    "CompleterNpc": "Hobo",
     "NextQuestId": -1,
     "RandomReward": 0b,
-    "QuestRepeat": 4,
+    "QuestRepeat": 0,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
-    "Title": "Wine Some More, won't you?",
-    "Text": "Get some wine and rootbeer for the Regional Director
-
-Rewards:
-800g",
+    "Title": "Brot's to give",
+    "Text": "",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -18,7 +15,7 @@ Rewards:
         "OptionFaction1Points": 100,
         "DecreaseFaction2Points": 0b
     },
-    "RewardExp": 2,
+    "RewardExp": 7,
     "QuestCommand": "",
     "ModRev": 18,
     "Type": 0,
@@ -30,7 +27,7 @@ Rewards:
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1783915744080L,
+        "TimePast": 1783920867258L,
         "Time": 0L,
         "Subject": ""
     },
@@ -43,26 +40,17 @@ Rewards:
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:money",
-                "Count": 4b,
+                "id": "mts:ivv.shovel",
+                "Count": 1b,
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e200G"
+                            "§7...what?",
+                            "§7Try not to run with it."
                         ],
-                        "Name": "§2§lMoney§r"
+                        "Name": "§rHobo Shovel"
                     }
                 },
-                "Damage": 0s
-            },
-            {
-                "Slot": 1b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "minecraft:glass_bottle",
-                "Count": 1b,
                 "Damage": 0s
             }
         ]
@@ -75,23 +63,15 @@ Rewards:
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "growthcraft_grapes:grapewine",
-                "Count": 1b,
-                "Damage": 21s
-            },
-            {
-                "Slot": 1b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "harvestcraft:rootbeersodaitem",
+                "id": "minecraft:bread",
                 "Count": 1b,
                 "Damage": 0s
             }
         ]
     },
     "LeaveItems": 0b,
-    "CompleteText": "Thank ya- *hic* you're a real.. helpful fella. Get'erself- *hic* something cool...",
+    "CompleteText": "Ahhh.. thanks... perfect. 
+
+Take this for- *hic* ..payment. I don't want it.",
     "NextQuestTitle": ""
 }

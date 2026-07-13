@@ -48,7 +48,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "All these negotiations and piles of paperwork have got me stressed out, and I haven't gotten my wine delivery yet. Think you can get some for me?",
+    "DialogText": "All this jawin' and heaps of paperwork have got me plumb stressed, and I ain't got my wine or root beer deliveries yet. I'm itchin' for my sarsparilla fix... Reckon you can rustle some up for me?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -65,7 +65,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1706720019563L,
+        "TimePast": 1783915864680L,
         "Time": 0L,
         "Subject": ""
     }

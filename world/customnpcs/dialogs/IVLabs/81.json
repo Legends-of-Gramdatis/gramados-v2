@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 84,
-                "Title": "Get 1x Red Port Wine (quest)",
+                "Title": "Get 1x Red Port Wine & 1x Root Beer (quest)",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -68,7 +68,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "I've got some more favors for you. You think you can handle it?",
+    "DialogText": "I got a few more favors for ya, if you're willin' and feelin' right kindly.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -85,7 +85,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1706900333506L,
+        "TimePast": 1783915828731L,
         "Time": 0L,
         "Subject": ""
     }

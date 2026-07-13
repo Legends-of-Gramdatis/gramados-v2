@@ -1,17 +1,16 @@
 {
-    "CompleterNpc": "Regional Director",
+    "CompleterNpc": "Armentarius Cosmos",
     "NextQuestId": -1,
-    "RandomReward": 1b,
+    "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 0,
-    "IgnoreNBT": 1b,
     "Title": "Cardly Valuable",
     "Text": "Find the Regional Director's ID card
 
 Rewards:
-Random Desk Trinket
-or
-100g",
+Desk Trinket
+IVL Extra Shop Access
+",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 1,
@@ -22,8 +21,14 @@ or
     },
     "RewardExp": 6,
     "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 77,
+            "Slot": 0
+        }
+    ],
     "ModRev": 18,
-    "Type": 0,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -32,11 +37,10 @@ or
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1706900358655L,
+        "TimePast": 1783920534657L,
         "Time": 0L,
         "Subject": ""
     },
-    "IgnoreDamage": 1b,
     "Rewards": {
         "NpcMiscInv": [
             {
@@ -45,8 +49,16 @@ or
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.soda_generic",
+                "id": "variedcommodities:plans",
                 "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e2K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
                 "Damage": 0s
             },
             {
@@ -60,7 +72,7 @@ or
                 "tag": {
                     "display": {
                         "Lore": [
-                            "§e100G"
+                            "§e500G"
                         ],
                         "Name": "§2§lMoney§r"
                     }
@@ -73,9 +85,9 @@ or
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "immersiveengineering:connector",
+                "id": "mts:ivv.rootbeer",
                 "Count": 1b,
-                "Damage": 9s
+                "Damage": 0s
             },
             {
                 "Slot": 3b,
@@ -83,27 +95,21 @@ or
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:ivv.businessphone",
+                "id": "variedcommodities:locket",
                 "Count": 1b,
-                "Damage": 0s
-            }
-        ]
-    },
-    "Items": {
-        "NpcMiscInv": [
-            {
-                "Slot": 0b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7It has fancy engravings, made by some exceptional craftsmanship.",
+                            "§7The hands have stopped at 03:18, though..."
+                        ],
+                        "Name": "§6Locket"
                     }
                 },
-                "id": "mts:ivv.idcard_cowboycosmic",
-                "Count": 1b,
                 "Damage": 0s
             }
         ]
     },
-    "LeaveItems": 0b,
-    "CompleteText": "Oh, you found it. Thanks, I thought I'd have to get a replacement card... here's something I had lying in my desk.",
+    "CompleteText": "You done found it! Thank you kindly, I ain't never been so grateful. You don't know how hard it is for me to get stuff done 'round here, the way I am... well, anyhow, I'll see if I can pull a few strings and get you special shop access at the IVLabs Ghost Dealership. You can check with my secretary over yonder in one of them cubicles, and she'll take care of the rest from there. In the meantime, here's a little trinket and some cash as a reward!",
     "NextQuestTitle": ""
 }
