@@ -3776,7 +3776,7 @@ registerXCommands([
 
         var registration = null;
 
-        if (heldItem.hasNbt() && isItem_Vehicle(heldItem)) {
+        if (heldItem.hasNbt() && isItem_Vehicle(heldItem) && getPriceFromItemStack(heldItem, 0, true) > 0) {
             registration = assembleRegistrationFrom_Vehicle(heldItem);
 
             if (registration.plate === "ABC-1234") {
@@ -4044,6 +4044,75 @@ registerXCommands([
         "min": 0,
     }
         ]],
+    ['!itemvalue set <value>', function (pl, args) {
+        var mItem = pl.getMainhandItem();
+        if (mItem.isEmpty()) {
+            tellPlayer(pl, "&cYou don't have anything in your hand!");
+            return false;
+        }
+
+        var itemId = mItem.getName();
+        if (!/^.+:.+:\d+$/.test(itemId)) {
+            itemId += ":" + mItem.getItemDamage();
+        }
+
+        var valueCents = getCoinAmount(args.value);
+        if (isNaN(valueCents) || valueCents < 0) {
+            tellPlayer(pl, "&cInvalid value: &f" + args.value + "&c. Use a valid currency amount.");
+            return false;
+        }
+
+        var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH) || {};
+        if (!globalPrices[itemId]) {
+            globalPrices[itemId] = {};
+        }
+
+        if (typeof globalPrices[itemId].value !== "undefined") {
+            tellPlayer(pl, "&cA value is already set for &f" + itemId + "&c. Use &f!itemvalue replace <value>&c to overwrite it.");
+            return false;
+        }
+
+        globalPrices[itemId].value = valueCents;
+        saveJson(globalPrices, GLOBAL_PRICES_JSON_PATH);
+
+        tellPlayer(pl, "&aSet unit value for &f" + itemId + "&a to " + formatCurrency(valueCents, 'money') + "&a (&f" + valueCents + "&a cents).");
+        return true;
+    }, 'item.value', [{
+        "argname": "value",
+        "type": "currency"
+    }]],
+    ['!itemvalue replace <value>', function (pl, args) {
+        var mItem = pl.getMainhandItem();
+        if (mItem.isEmpty()) {
+            tellPlayer(pl, "&cYou don't have anything in your hand!");
+            return false;
+        }
+
+        var itemId = mItem.getName();
+        if (!/^.+:.+:\d+$/.test(itemId)) {
+            itemId += ":" + mItem.getItemDamage();
+        }
+
+        var valueCents = getCoinAmount(args.value);
+        if (isNaN(valueCents) || valueCents < 0) {
+            tellPlayer(pl, "&cInvalid value: &f" + args.value + "&c. Use a valid currency amount.");
+            return false;
+        }
+
+        var globalPrices = loadJson(GLOBAL_PRICES_JSON_PATH) || {};
+        if (!globalPrices[itemId]) {
+            globalPrices[itemId] = {};
+        }
+
+        globalPrices[itemId].value = valueCents;
+        saveJson(globalPrices, GLOBAL_PRICES_JSON_PATH);
+
+        tellPlayer(pl, "&aReplaced unit value for &f" + itemId + "&a with " + formatCurrency(valueCents, 'money') + "&a (&f" + valueCents + "&a cents).");
+        return true;
+    }, 'item.value', [{
+        "argname": "value",
+        "type": "currency"
+    }]],
     ['!itemvalue', function (pl, args) {
         var mItem = pl.getMainhandItem();
         if (mItem.isEmpty()) {
