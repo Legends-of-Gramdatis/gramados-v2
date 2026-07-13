@@ -1,6 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 var TILE_SCALE = 16;
 var ITEM_OFFSET_X = -2.5;
@@ -287,12 +288,17 @@ function guiBuilder_OpenPage(player, GUI, NewpageID, api) {
 }
 
 function customGuiButton(event) {
-    var b1 = event.buttonId;
+    var b1 = +event.buttonId;
     var gui = event.gui;
     load(_guiscript);
 
     var buttonManifest = findJsonEntry(findJsonEntry(_manifest.pages, 'page', _currentPageID).components, 'id', b1);
-    
+
+    if (buttonManifest === null) {
+        logToFile('gui_builder', '[customGuiButton] buttonManifest is null for buttonId=' + b1 + ' on page ' + _currentPageID + '. Aborting.');
+        return;
+    }
+
     var page = _currentPageID;
 
     if (buttonManifest.hasOwnProperty('open_page')) {
