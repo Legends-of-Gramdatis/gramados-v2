@@ -48,7 +48,7 @@ function interact(event) {
     var npc = event.npc;
     var player = event.player;
     var offhand = player.getOffhandItem();
-    var mainhand = player.getMainhandItem();
+    var mainhand = player.getMainhandItem().copy();
 
     if (isAdmin(offhand)) {
         handleAdminInteraction(npc, player, mainhand);
