@@ -300,7 +300,7 @@ sets:
         lines: {
             }
         layerprio: 0
-    Florists:
+    Shops:
         hide: false
         minzoom: 4
         circles: {
@@ -308,7 +308,7 @@ sets:
         deficon: shopping_misc
         areas: {
             }
-        label: Florists
+        label: Shops
         markers:
             marker_1:
                 world: world
@@ -326,6 +326,14 @@ sets:
                 y: 75.0
                 z: -1005.0
                 label: Springfield Flowers
+            marker_3:
+                world: world
+                markup: false
+                icon: ent&lei_arts
+                x: -5168.0
+                y: 67.0
+                z: 254.0
+                label: The Pavilion Gallery
         lines: {
             }
         layerprio: 0
@@ -677,7 +685,7 @@ sets:
                 icon: food&drink_food
                 y: 76.0
                 z: -2053.0
-                label: Feldpard Trucker Hotel Restaurant
+                label: Foréval Trucker Hotel Restaurant
             marker_18:
                 world: world
                 markup: false
@@ -831,7 +839,7 @@ sets:
                 icon: misc_hotel
                 y: 76.0
                 z: -2063
-                label: Feldpard Trucker Hotel
+                label: Foréval Trucker Hotel
             marker_9:
                 world: world
                 markup: false
@@ -1784,7 +1792,7 @@ sets:
                 x: -4192.0
                 y: 76.0
                 z: -2019.0
-                label: Feldpard Truck Stop Fuel Service
+                label: Foréval Truck Stop Fuel Service
             marker_17:
                 world: world
                 markup: false
@@ -1792,7 +1800,7 @@ sets:
                 x: -4219.0
                 y: 76.0
                 z: -2037.0
-                label: Feldpard Electric Charging Station
+                label: Foréval Electric Charging Station
             marker_18:
                 world: world
                 markup: false
@@ -2006,7 +2014,7 @@ sets:
                 y: 78.0
                 z: -620.0
                 label: Gramados Civic Center
-            marker_5:
+            marker_3:
                 world: world
                 markup: false
                 icon: civil_services_library
@@ -2014,6 +2022,14 @@ sets:
                 y: 95.0
                 z: 935.0
                 label: Petrolton Library
+            marker_4:
+                world: world
+                markup: false
+                icon: ent&lei_event_venue
+                x: -5164.0
+                y: 71.0
+                z: 296.0
+                label: Asher Hall
         lines: {
             }
         layerprio: 0
@@ -2536,7 +2552,7 @@ sets:
                 icon: services_truck_stop
                 y: 76.0
                 z: -2013.0
-                label: Feldpard Truck Stop
+                label: Foréval Truck Stop
             marker_2:
                 world: world
                 markup: false
