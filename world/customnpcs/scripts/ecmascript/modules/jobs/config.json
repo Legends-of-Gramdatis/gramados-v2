@@ -109,8 +109,9 @@
             "Title": "Allenis Vitage Wine Brewer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Allenis_North_VintnersRoad_SilverleafWinery",
-                "region_Allenis_North_VintersRoad_FoxgloveDomain"
+                "region_Allenis_AmberDowns_VintnersRoad_SilverleafWinery_Domain",
+                "region_Allenis_AmberDowns_VintersRoad_FoxgloveDomain_Domain",
+                "region_Allenis_AmberDowns_VinorRoad_FernwoodDomain_Domain"
             ],
             "Tags": [
                 "Brewer",
@@ -128,8 +129,8 @@
             "Title": "Farmiston Mass Cereal Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Farmiston_Countryside_KrasnayaZemlyaFarm_Farm",
-                "region_Farmiston_Countryside_RechnoyePoleFarm_Farm"
+                "region_Farmiston_Countryside_VelgradMagistral_KrasnayaZemlyaFarm_Farm",
+                "region_Farmiston_Countryside_TisovLane_RechnoyePoleFarm_Farm"
             ],
             "Tags": [
                 "Farmer",
@@ -220,7 +221,9 @@
                 "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
                 "region_Gramados_GramadosCity_RustmarkStreet_4_RustmarkGarage_Garage",
                 "region_Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership_Dealership",
-                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage"
+                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage",
+                "region_Gramados_GramadosCity_CarpoStreet_6_BrickhallGarage_Garage",
+                "region_Gramados_GramadosCity_ScraparStreet_3_WilsonAutomotive_Garage"
             ],
             "Tags": [
                 "Mechanic"
@@ -248,18 +251,17 @@
             "Title": "Greenfield Organic Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Greenfield_Countryside_BananaSteal_Farm",
+                "region_Greenfield_Countryside_MidgrassRoad_BananaSteal_Farm",
                 "region_Greenfield_Countryside_FalleafRoad_5_KoolFarm_Farm",
                 "region_Greenfield_Countryside_FootoralPath_SprigtelFarm_Farm",
                 "region_Greenfield_Countryside_GreleafRoad_AltanticPuffinAcres_Farm",
-                "region_Greenfield_Countryside_DewfallAcres_Farm",
-                "region_Greenfield_Countryside_BananaSteal_Farm",
-                "region_Greenfield_Countryside_OldHedgeHollow_Farm",
-                "region_Greenfield_Countryside_AeromorRoad_2",
-                "region_Greenfield_Countryside_AeromorRoad_3",
-                "region_Greenfield_Countryside_AeromorRoad_4",
-                "region_Greenfield_Countryside_AeromorRoad_5",
-                "region_Greenfield_Countryside_AeromorRoad_6"
+                "region_Greenfield_Countryside_GreleafRoad_DewfallAcres_Farm",
+                "region_Greenfield_Countryside_TrestorRoad_OldHedgeHollow_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_2_WilsonFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_3_MillerFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_4_RedMapleFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_5_OakHillFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_6_PleasantValleyFarm_Farm"
             ],
             "Tags": [
                 "Farmer",
@@ -293,11 +295,12 @@
             "Title": "Monsalac Milk & Cheese Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Monsalac_Chaseals_ChurnsideFarm_Farm",
-                "region_Monsalac_Chaseals_SilverflowFarm_Farm",
-                "region_Monsalac_Countryside_AlpenglowFarm_Farm",
-                "region_Monsalac_Countryside_Coldreach_Farm",
-                "region_Monsalac_Countryside_FerrousEstate_Farm"
+                "region_Monsalac_Chaseals_ChasealsRoad_ChurnsideFarm_Farm",
+                "region_Monsalac_Chaseals_MonsalacCoastRoad_SilverflowFarm_Farm",
+                "region_Monsalac_Chaseals_OldByreStreet_AlpenglowFarm_Farm",
+                "region_Monsalac_Countryside_whitecapLane_Coldreach_Farm",
+                "region_Monsalac_Countryside_SnowdonRoad_FerrousEstate_Farm",
+                "region_Monsalac_Countryside_RoastonPath_Ostehytte_Farm"
             ],
             "Tags": [
                 "Farmer",
