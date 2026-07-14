@@ -599,7 +599,7 @@ function updateStockPrices(region, delivery, player) {
                 // npc.say("Quantity Sold: " + stock_exchange_instance[generic_id].quantity_sold);
 
                 for (var i = 0; i < quantityDelivered; i += stock_exchange_instance[generic_id].quantity_factor) {
-                    var newPrice = stock_exchange_instance[generic_id].current_price * ((1 - _PRICE_EVOLUTION_FACTOR) * stock_exchange_generals[region]["stock_flexibility"]);
+                    var newPrice = stock_exchange_instance[generic_id].current_price * (1 - (_PRICE_EVOLUTION_FACTOR * stock_exchange_generals[region]["stock_flexibility"]));
 
                     stock_exchange_instance[generic_id].current_price = Math.round(
                         Math.max(
