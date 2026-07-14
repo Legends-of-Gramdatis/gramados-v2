@@ -9264,6 +9264,31 @@ registerXCommands([
 
         return true;
     }, 'region.list'],
+    ['!region lookFor <type>', function (pl, args, data) {
+        var searchedType = args.type;
+        var regions = getRegionsByNameContains('_' + searchedType);
+        var regionsForSale = [];
+
+        for (var i = 0; i < regions.length; i++) {
+            if (isRegionForSale(regions[i].name)) {
+                regionsForSale.push(regions[i]);
+            }
+        }
+
+        tellPlayer(pl, "&7[Region Lookup] Found &e" + regions.length + "&7 " + searchedType + " regions, &e" + regionsForSale.length + "&7 of them are for sale.");
+
+        for (var j = 0; j < regionsForSale.length; j++) {
+            var parsed = parseRegionName(regionsForSale[j].name);
+            tellPlayer(pl, assembleRegionAddress(parsed));
+            tellPlayer(pl, "&7At the price of &e" + formatMoney(getRegionPrice(regionsForSale[j].name)) + "&7.\n");
+        }
+
+        return true;
+    }, 'region.list', [{
+        "argname": "type",
+        "type": "enum",
+        "values": ["Domain", "Farm", "Garage", "Dealership"]
+    }]],
     ['!region remove <name>', function (pl, args, data) {
         var region = new Region(args.name);
         region.remove(data);
