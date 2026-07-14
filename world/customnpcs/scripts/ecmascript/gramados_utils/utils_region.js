@@ -664,10 +664,9 @@ function getAllRegionsAtPosition(pos) {
 }
 
 /**
- * Checks whether a player's current position lies within ANY sub-cuboid of a region.
- * @param {IPlayer} player - The player instance.
- * @param {string} regionName - The region/cuboid name (without the `region_` prefix).
- * @returns {boolean} True if the player is inside the region, false otherwise.
+ * Returns the name of the region with the highest priority that contains the given position.
+ * @param {Object} pos - The position object with x, y, z coordinates.
+ * @returns {string|null} The name of the region with the highest priority, or null if none found.
 */
 function getRegionAtPosition(pos) {
     var region_names = getAllRegions();
@@ -714,4 +713,52 @@ function filterRegionsByString(regionNameList, needle) {
         }
     }
     return out;
+}
+
+/**
+ * Returns the sale status of a region.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {number} 0 = Not for sale, 1 = For sale, 2 = For rent, -1 = Unknown.
+ */
+function getRegionSaleStatus(region) {
+    var data = loadRegionData(region);
+    if (!data) return -1;
+    if (data.forSale) {
+        if (data.saleType === "rent") {
+            return 2;
+        } else if (data.saleType === "buy") {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+function isRegionForSale(region) {
+    return getRegionSaleStatus(region) === 1;
+}
+
+function isRegionForRent(region) {
+    return getRegionSaleStatus(region) === 2;
+}
+
+function DisplayRegionInfo(player, region) {
+    var data = loadRegionData(region);
+    if (!data) {
+        tellPlayer(player, "&cRegion data not found for: " + region);
+        return;
+    }
+
+    DisplayRegionDataInfo(player, data);
+}
+
+function DisplayRegionDataInfo(player, regionData) {
+    var owner = regionData.owner || "Not Owned";
+    var price = getRegionPrice(regionData.name);
+    var saleStatus = getRegionSaleStatus(regionData.name);
+    var saleTypeText = saleStatus === 1 ? "For Sale" : (saleStatus === 2 ? "For Rent" : "Not For Sale");
+
+    tellPlayer(player, "&7[Region Info] &e" + regionData.name);
+    tellPlayer(player, "&7Owner: &e" + owner);
+    tellPlayer(player, "&7Price: &e" + (price > 0 ? formatMoney(price) : "N/A"));
+    tellPlayer(player, "&7Sale Status: &e" + saleTypeText);
 }

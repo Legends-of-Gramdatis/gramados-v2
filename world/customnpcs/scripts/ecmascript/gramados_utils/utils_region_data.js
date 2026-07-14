@@ -156,3 +156,79 @@ function getAllRegions() {
     return region_names;
 }
 
+function parseRegionName(regionName) {
+    if (!regionName) return null;
+    var parts = regionName.split('_');
+    var island_name = parts[0];
+    var town_name = parts[1];
+    var street_name = parts[2];
+    var street_number = null;
+    var unit_name = null;
+    var type_name = null;
+    // number 3 could be street number, check if it's an int
+    if (parts.length > 3) {
+        var num = parseInt(parts[3]);
+        if (!isNaN(num)) {
+            street_number = num;
+            if (parts.length > 4) {
+                unit_name = parts[4];
+            }
+        } else {
+            unit_name = parts[3];
+            if (parts.length > 4) {
+                type_name = parts[4];
+            }
+        }
+    }
+    if (parts.length > 5) {
+        type_name = parts[5];
+    }
+    return {
+        island: island_name,
+        town: town_name,
+        street: street_name,
+        number: street_number,
+        unit: unit_name,
+        type: type_name
+    };
+}
+
+function assembleRegionAddress(parsed) {
+    var sentence = '';
+    if (parsed.unit) {
+        sentence = assembleNamedRegionAddress(parsed, "&b");
+    } else {
+        sentence = assembleStreetAddress(parsed.number, parsed.street, parsed.town, parsed.island);
+    }
+
+    if (parsed.type) {
+        sentence += ' (' + addSpacesToCamelCase(parsed.type, "&7") + ')';
+    }
+
+    return sentence;
+}
+
+function assembleNamedRegionAddress(parsed, color) {
+    var sentence = addSpacesToCamelCase(parsed.unit, color) + ', ';
+    sentence += assembleStreetAddress(parsed.number, parsed.street, parsed.town, parsed.island);
+    return sentence;
+}
+
+function assembleStreetAddress(number, street, town, island) {
+    var sentence = '';
+    if (number) sentence += '&e#' + number + '&r ';
+    if (street) sentence += addSpacesToCamelCase(street, "&e") + ', ';
+    if (town && town !== 'Countryside') sentence += addSpacesToCamelCase(town, "&e") + ', ';
+    if (island) sentence += addSpacesToCamelCase(island, "&e");
+    return sentence;
+}
+
+function addSpacesToCamelCase(str, color) {
+    if (!str) return str;
+    var result = str.replace(/([A-Z])/g, ' $1').trim();
+    result = result.replace(/([0-9]+)/g, ' $1').trim();
+    if (color) {
+        result = color + result + '&r';
+    }
+    return result;
+}
