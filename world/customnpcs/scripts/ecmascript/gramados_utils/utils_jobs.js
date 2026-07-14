@@ -1,6 +1,6 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 
-var CONFIG_PATH = "world/customnpcs/scripts/ecmascript/modules/jobs/config.json";
+var CONFIG_PATH = "world/customnpcs/scripts/data/jobs_data.json";
 var JOBS_DATA_PATH = "world/customnpcs/scripts/data_auto/jobs.json";
 var TICKS_PER_MONTH = 20 * 60 * 60 * 24 * 30; // 51,840,000 ticks ≈ 30 real-world days
 

@@ -29,13 +29,14 @@ This module implements a job system for the Gramados modded Minecraft RP server 
 
 ## Files
 
-- **`jobs_log.json`**: Stores all job-related data, including job definitions, region limits, and player-specific job data.
+- **`data/jobs_data.json`**: Stores the static job configuration, including region limits, job definitions, and tag mappings.
 - **`job_manager.js`**: The main script that manages job-related functionality, including initialization, job assignment, and permission updates.
+- **`data_auto/jobs.json`**: Stores dynamic per-player job state such as active jobs and job history.
 
 ## How It Works
 
 1. **Initialization**:
-   - When a player joins, their data is initialized in `jobs_log.json` if not already present.
+   - When a player joins, their data is initialized in `data_auto/jobs.json` if not already present.
    - The system ensures all active jobs and job history entries are up-to-date.
 
 2. **Job Assignment**:
@@ -51,13 +52,14 @@ This module implements a job system for the Gramados modded Minecraft RP server 
    - Quitting a job moves it to the player's job history.
 
 5. **Data Persistence**:
-   - All job data is saved to `jobs_log.json` to ensure persistence across server restarts.
+   - Static job definitions are loaded from `data/jobs_data.json`.
+   - Dynamic player job data is saved to `data_auto/jobs.json` to ensure persistence across server restarts.
 
 ## Configuration
 
 ### Region Job Limits
 
-Region-specific job limits are defined in the `Region_Job_Limits` section of `jobs_log.json`. Example:
+Region-specific job limits are defined in the `Region_Job_Limits` section of `data/jobs_data.json`. Example:
 
 ```json
 "Region_Job_Limits": {
@@ -71,7 +73,7 @@ Region-specific job limits are defined in the `Region_Job_Limits` section of `jo
 
 ### Job Definitions
 
-Jobs are defined in the `Jobs` array in `jobs_log.json`. Example:
+Jobs are defined in the `Jobs` array in `data/jobs_data.json`. Example:
 
 ```json
 {
@@ -89,7 +91,7 @@ Jobs are defined in the `Jobs` array in `jobs_log.json`. Example:
 
 ## Adding New Jobs
 
-1. Add the job definition to the `Jobs` array in `jobs_log.json`.
+1. Add the job definition to the `Jobs` array in `data/jobs_data.json`.
 2. Define the necessary permissions in the `Perms` field.
 3. Update the `Region_Job_Limits` section if needed.
 

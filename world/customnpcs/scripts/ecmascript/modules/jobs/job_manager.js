@@ -2,7 +2,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
 
 // Paths split between static config and dynamic player data
-var config_file_path = "world/customnpcs/scripts/ecmascript/modules/jobs/config.json";
+var config_file_path = "world/customnpcs/scripts/data/jobs_data.json";
 var data_file_path = "world/customnpcs/scripts/data_auto/jobs.json";
 
 // Static config (Regions, Jobs, Tags) and dynamic per-player data

@@ -1,5 +1,45 @@
 {
     "Region_Job_Limits": {
+        "Allenis": {
+            "Advanced": 1,
+            "Prestige": 1,
+            "Starter": 0
+        },
+        "Brackenholt_Isle": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Branwen": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Buxton": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Farmiston": {
+            "Advanced": 2,
+            "Prestige": 0,
+            "Starter": 1
+        },
+        "Foréval": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Glacilac": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Gladewind_Isle": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
         "Gramados": {
             "Starter": 2,
             "Advanced": 3,
@@ -10,201 +50,447 @@
             "Advanced": 2,
             "Prestige": 1
         },
-        "Farmiston": {
-            "Starter": 1,
-            "Advanced": 2,
-            "Prestige": 0
-        },
-        "Allenis": {
-            "Starter": 0,
-            "Advanced": 1,
-            "Prestige": 1
-        },
         "Monsalac": {
             "Starter": 1,
             "Advanced": 3,
             "Prestige": 1
         },
+        "Oakridge_Vale": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Rivetshore": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
         "Solterra": {
             "Starter": 1,
             "Advanced": 3,
             "Prestige": 1
+        },
+        "Tulivar": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        },
+        "Verdanite": {
+            "Advanced": 0,
+            "Prestige": 0,
+            "Starter": 0
+        }
+    },
+    "Tags": {
+        "Mechanic": {
+            "TagID": 606,
+            "TagLock": 607,
+            "TagQuit": 608
         }
     },
     "Jobs": [
         {
-            "JobID": 59,
-            "JobLock": 60,
-            "JobQuit": 441,
-            "Qualification": "Starter",
-            "AutoPay": 20000,
-            "Title": "Gramados Royal Sawmill Lumberjack",
-            "Types": ["Timber"],
-            "Region": "Gramados",
-            "Perms": [
-                "permission_regions.Gramados_PinorosForest_RoyalSawmill"
-            ]
-        },
-        {
-            "JobID": 56,
-            "JobLock": 57,
-            "JobQuit": 442,
-            "Qualification": "Starter",
-            "AutoPay": 20000,
-            "Title": "Timber Creek Sawmill Lumberjack",
-            "Region": "Greenfield",
-            "Types": ["Timber"],
-            "Perms": [
-                "permission_regions.Greenfield_Springfild_TimberCreekSawmill"
-            ]
-        },
-        {
-            "JobID": 54,
-            "JobLock": 55,
-            "JobQuit": 436,
-            "Qualification": "Starter",
-            "AutoPay": 20000,
-            "Title": "Concrete Factory Worker",
-            "Types": ["Workman"],
-            "Region": "Gramados",
-            "Perms": [
-                "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Worker"
+            "JobID": 233,
+            "JobLock": 234,
+            "JobQuit": 426,
+            "Type": "Prestige",
+            "Qualification": "Prestige",
+            "JobName": "Brewer",
+            "Region": "Allenis",
+            "Title": "Allenis Vitage Wine Brewer",
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Allenis_AmberDowns_VintnersRoad_SilverleafWinery_Domain",
+                "region_Allenis_AmberDowns_VintersRoad_FoxgloveDomain_Domain",
+                "region_Allenis_AmberDowns_VinorRoad_FernwoodDomain_Domain"
+            ],
+            "Tags": [
+                "Brewer",
+                "Brewer_Vintage",
+                "Brewer_Wine"
+            ],
+            "Types": [
+                "Brewer",
+                "Vineyard"
             ]
         },
         {
             "JobID": 154,
             "JobLock": 155,
             "JobQuit": 437,
+            "Type": "Advanced",
             "Qualification": "Advanced",
-            "Title": "Farmiston Farmer",
-            "Types": ["Cereal", "Poultry"],
+            "JobName": "Farmer",
             "Region": "Farmiston",
+            "Title": "Farmiston Mass Cereal Farmer",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Farmiston_Countryside_RechnoyePoleFarm_Farm",
-                "region_Farmiston_Countryside_KrasnayaZemlyaFarm_Farm"
-            ]
-        },
-        {
-            "JobID": 342,
-            "JobLock": 343,
-            "JobQuit": 438,
-            "Qualification": "Advanced",
-            "Title": "Gramados Farmer",
-            "Types": ["Fruits"],
-            "Region": "Gramados",
-            "Perms": []
-        },
-        {
-            "JobID": 233,
-            "JobLock": 234,
-            "JobQuit": 426,
-            "Qualification": "Prestige",
-            "Title": "Allenis Brewer",
-            "Types": ["Brewer", "Vineyard"],
-            "Region": "Allenis",
-            "Perms": [],
-            "AutoAssignPerms": [
-                "region_Allenis_North_VintnersRoad_SilverleafWinery",
-                "region_Allenis_North_VintersRoad_FoxgloveDomain",
-                "region_Allenis_North_VinorRoad_FernwoodDomain_Domain"
-            ]
-        },
-        {
-            "JobID": 51,
-            "JobLock": 53,
-            "JobQuit": 439,
-            "Qualification": "Advanced",
-            "Title": "Greenfield Farmer",
-            "Types": ["Vegetable", "Herbs", "Apiary", "Brewer"],
-            "Region": "Greenfield",
-            "Perms": []
-        },
-        {
-            "JobID": 211,
-            "JobLock": 212,
-            "JobQuit": 440,
-            "Qualification": "Advanced",
-            "Title": "Monsalac Milk Farmer",
-            "Types": ["Dairy", "Meat"],
-            "Region": "Monsalac",
-            "Perms": [],
-            "AutoAssignPerms": [
-                "region_Monsalac_Countryside_FerrousEstate_Farm"
-            ]
-        },
-        {
-            "JobID": 554,
-            "JobLock": 555,
-            "JobQuit": 556,
-            "Qualification": "Advanced",
-            "Title": "Greenfield Mechanic",
-            "Types": ["Mechanic"],
-            "Region": "Greenfield",
-            "AutoAssignPerms": [
-                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
+                "region_Farmiston_Countryside_VelgradMagistral_KrasnayaZemlyaFarm_Farm",
+                "region_Farmiston_Countryside_TisovLane_RechnoyePoleFarm_Farm"
+            ],
+            "Tags": [
+                "Farmer",
+                "Farmer_Crops"
+            ],
+            "Types": [
+                "Cereal",
+                "Poultry"
             ]
         },
         {
             "JobID": 63,
             "JobLock": 64,
             "JobQuit": 443,
+            "Type": "Advanced",
             "Qualification": "Advanced",
-            "Title": "Farmiston Mechanic",
-            "Types": ["Mechanic"],
+            "JobName": "Mechanic",
             "Region": "Farmiston",
-            "Perms": []
-        },
-        {
-            "JobID": 409,
-            "JobLock": 413,
-            "JobQuit": 431,
-            "Qualification": "Advanced",
-            "Title": "Solterra Mechanic",
-            "Types": ["Mechanic"],
-            "Region": "Solterra",
-            "Perms": []
-        },
-        {
-            "JobID": 66,
-            "JobLock": 65,
-            "JobQuit": 444,
-            "Qualification": "Advanced",
-            "Title": "Gramados Mechanic",
-            "Types": ["Mechanic"],
-            "Region": "Gramados",
+            "Title": "Farmiston Mechanic",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Gramados_GramadosCity_RustmarkStreet_4_RustmarkGarage_Garage",
-                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage",
-                "region_Gramados_GramadosCity_GrezyatStreet_3_DrabusGarage_Garage",
-                "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
-                "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
-                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage",
-                "region_Gramados_GramadosCity_CitrulTunnel_1_TangerineGarage_Garage"
+                "region_Farmiston_Siloroz_VolnayaProspekt_22_VoznyakTekhservis_Garage",
+                "region_Farmiston_Siloroz_ZalivkaStreet_AutoRemSiloroz_Garage"
+            ],
+            "Tags": [
+                "Mechanic"
+            ],
+            "Types": [
+                "Mechanic"
+            ]
+        },
+        {
+            "JobID": 54,
+            "JobLock": 55,
+            "JobQuit": 436,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Concrete Factory Worker",
+            "Region": "Gramados",
+            "Title": "Gramados Concrete Factory Worker",
+            "AutoPay": 20000,
+            "Perms": [
+                "permission_regions.Gramados_TroyenAvenue_1_ConcreteFactory_Worker"
+            ],
+            "Types": [
+                "Workman"
+            ]
+        },
+        {
+            "JobID": 59,
+            "JobLock": 60,
+            "JobQuit": 441,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Lumberjack",
+            "Region": "Gramados",
+            "Title": "Gramados Royal Lumberjack",
+            "AutoPay": 20000,
+            "Perms": [
+                "permission_regions.Gramados_PinorosForest_RoyalSawmill"
+            ],
+            "Types": [
+                "Timber"
             ]
         },
         {
             "JobID": 61,
             "JobLock": 62,
             "JobQuit": 445,
+            "Type": "Starter",
             "Qualification": "Starter",
-            "AutoPay": 20000,
-            "Title": "Terracotta Factory Worker",
+            "JobName": "Terracotta Factory Worker",
             "Region": "Gramados",
-            "Types": ["Workman"],
+            "Title": "Gramados Terracotta Factory Worker",
+            "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_material_factory_terracotta"
+            ],
+            "Types": [
+                "Workman"
             ]
+        },
+        {
+            "JobID": 342,
+            "JobLock": 343,
+            "JobQuit": 438,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Farmer",
+            "Region": "Gramados",
+            "Title": "Gramados Citrus Farmer",
+            "Perms": [],
+            "Tags": [
+                "Farmer",
+                "Farmer_Fruits"
+            ],
+            "Types": [
+                "Fruits"
+            ]
+        },
+        {
+            "JobID": 66,
+            "JobLock": 65,
+            "JobQuit": 444,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Gramados",
+            "Title": "Gramados Mechanic",
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Gramados_GramadosCity_CitrusTunnel_1_TangerineGarage_Garage",
+                "region_Gramados_GramadosCity_GrezyatStreet_3_DrabusGarage_Garage",
+                "region_Gramados_GramadosCity_IntorisStreet_8_SilversAutoRepairCustoms_Garage",
+                "region_Gramados_GramadosCity_KorvinStreet_KitsuneAndCoAutoRepairs_Garage",
+                "region_Gramados_GramadosCity_MinchalyBlock_2_MinchalyCustoms_Garage",
+                "region_Gramados_GramadosCity_RustmarkStreet_4_RustmarkGarage_Garage",
+                "region_Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership_Dealership",
+                "region_Gramados_GramadosCity_SultimStreet_1_FerrisWheelAutomobileRepair_Garage",
+                "region_Gramados_GramadosCity_CarpoStreet_6_BrickhallGarage_Garage",
+                "region_Gramados_GramadosCity_ScraparStreet_3_WilsonAutomotive_Garage"
+            ],
+            "Tags": [
+                "Mechanic"
+            ],
+            "Types": [
+                "Mechanic"
+            ]
+        },
+        {
+            "JobID": 56,
+            "JobLock": 57,
+            "JobQuit": 442,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Lumberjack",
+            "Region": "Greenfield",
+            "Title": "Greenfield Lumberjack",
+            "AutoPay": 20000,
+            "Perms": [
+                "permission_regions.Greenfield_Springfild_TimberCreekSawmill"
+            ],
+            "Types": [
+                "Timber"
+            ]
+        },
+        {
+            "JobID": 51,
+            "JobLock": 53,
+            "JobQuit": 439,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Farmer",
+            "Region": "Greenfield",
+            "Title": "Greenfield Organic Farmer",
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Greenfield_Countryside_MidgrassRoad_BananaSteal_Farm",
+                "region_Greenfield_Countryside_FalleafRoad_5_KoolFarm_Farm",
+                "region_Greenfield_Countryside_FootoralPath_SprigtelFarm_Farm",
+                "region_Greenfield_Countryside_GreleafRoad_AltanticPuffinAcres_Farm",
+                "region_Greenfield_Countryside_GreleafRoad_DewfallAcres_Farm",
+                "region_Greenfield_Countryside_TrestorRoad_OldHedgeHollow_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_2_WilsonFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_3_MillerFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_4_RedMapleFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_5_OakHillFarm_Farm",
+                "region_Greenfield_Countryside_AeromorRoad_6_PleasantValleyFarm_Farm"
+            ],
+            "Tags": [
+                "Farmer",
+                "Farmer_Crops",
+                "Farmer_Fruits",
+                "Farmer_Vegetables"
+            ],
+            "Types": [
+                "Vegetable",
+                "Herbs",
+                "Apiary",
+                "Brewer"
+            ]
+        },
+        {
+            "JobID": 554,
+            "JobLock": 555,
+            "JobQuit": 556,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Greenfield",
+            "Title": "Greenfield Mechanic",
+            "AutoAssignPerms": [
+                "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
+            ],
+            "Tags": [
+                "Mechanic"
+            ],
+            "Types": [
+                "Mechanic"
+            ]
+        },
+        {
+            "JobID": 211,
+            "JobLock": 212,
+            "JobQuit": 440,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Farmer",
+            "Region": "Monsalac",
+            "Title": "Monsalac Milk & Cheese Farmer",
+            "Perms": [],
+            "AutoAssignPerms": [
+                "region_Monsalac_Chaseals_ChasealsRoad_ChurnsideFarm_Farm",
+                "region_Monsalac_Chaseals_MonsalacCoastRoad_SilverflowFarm_Farm",
+                "region_Monsalac_Chaseals_OldByreStreet_AlpenglowFarm_Farm",
+                "region_Monsalac_Countryside_whitecapLane_Coldreach_Farm",
+                "region_Monsalac_Countryside_SnowdonRoad_FerrousEstate_Farm",
+                "region_Monsalac_Countryside_RoastonPath_Ostehytte_Farm"
+            ],
+            "Tags": [
+                "Farmer",
+                "Farmer_Cattle",
+                "Farmer_Dairy"
+            ],
+            "Types": [
+                "Dairy",
+                "Meat"
+            ]
+        },
+        {
+            "JobID": 583,
+            "JobLock": 584,
+            "JobQuit": 585,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Monsalac",
+            "Title": "Monsalac Mechanic",
+            "AutoAssignPerms": [
+                "region_Monsalac_Chaseals_OldByreStreet_TheChasealsBench_Garage"
+            ],
+            "Tags": [
+                "Mechanic"
+            ],
+            "Types": [
+                "Mechanic"
+            ]
+        },
+        {
+            "JobID": 419,
+            "JobLock": 418,
+            "JobQuit": 429,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Fisherman",
+            "Region": "Solterra",
+            "Title": "Solterra Fisherman",
+            "Perms": []
+        },
+        {
+            "JobID": 411,
+            "JobLock": 415,
+            "JobQuit": 430,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Lumberjack",
+            "Region": "Solterra",
+            "Title": "Solterra Lumberjack",
+            "Perms": []
+        },
+        {
+            "JobID": 424,
+            "JobLock": 425,
+            "JobQuit": 435,
+            "Type": "Starter",
+            "Qualification": "Starter",
+            "JobName": "Terracotta",
+            "Region": "Solterra",
+            "Title": "Solterra Pottery Crafter",
+            "Perms": []
+        },
+        {
+            "JobID": 408,
+            "JobLock": 412,
+            "JobQuit": 428,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Farmer",
+            "Region": "Solterra",
+            "Title": "Solterra Farmer",
+            "Perms": [],
+            "Tags": [
+                "Farmer",
+                "Farmer_Cattle"
+            ]
+        },
+        {
+            "JobID": 409,
+            "JobLock": 413,
+            "JobQuit": 431,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Solterra",
+            "Title": "Solterra Mechanic",
+            "Perms": [],
+            "AutoAssignPerms": [],
+            "Tags": [
+                "Mechanic"
+            ],
+            "Types": [
+                "Mechanic"
+            ]
+        },
+        {
+            "JobID": 422,
+            "JobLock": 423,
+            "JobQuit": 434,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Stonemasson",
+            "Region": "Solterra",
+            "Title": "Solterra Stonemasson",
+            "Perms": []
         },
         {
             "JobID": 416,
             "JobLock": 417,
             "JobQuit": 427,
+            "Type": "Prestige",
             "Qualification": "Prestige",
-            "Title": "Solterra Brewer",
-            "Types": ["Brewer", "Vineyard"],
+            "JobName": "Brewer",
             "Region": "Solterra",
+            "Title": "Solterra Wine Brewer",
+            "Perms": [],
+            "Tags": [
+                "Brewer",
+                "Brewer_Wine"
+            ],
+            "Types": [
+                "Brewer",
+                "Vineyard"
+            ]
+        },
+        {
+            "JobID": 420,
+            "JobLock": 421,
+            "JobQuit": 432,
+            "Type": "Prestige",
+            "Qualification": "Prestige",
+            "JobName": "Musician",
+            "Region": "Solterra",
+            "Title": "Solterra Musician",
+            "Perms": []
+        },
+        {
+            "JobID": 410,
+            "JobLock": 414,
+            "JobQuit": 433,
+            "Type": "Prestige",
+            "Qualification": "Prestige",
+            "JobName": "Shopkeeper",
+            "Region": "Solterra",
+            "Title": "Solterra Shopkeeper",
             "Perms": []
         }
     ]
