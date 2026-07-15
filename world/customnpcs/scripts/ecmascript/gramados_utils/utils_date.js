@@ -143,7 +143,7 @@ function IRLDaysToTicks(days) {
  * @param {number} ticks - The number of ticks.
  * @returns {string} - The time in a human-readable format (days, hours, minutes, seconds).
  */
-function TicksToHumanReadable(ticks) {
+function TicksToHumanReadable(ticks, skip_zero_units) {
     var totalSeconds = Math.floor(ticks / 20); // Convert ticks to seconds
     var days = Math.floor(totalSeconds / 86400); // Calculate days (86400 seconds in a day)
     var remainingSeconds = totalSeconds % 86400;
@@ -152,7 +152,13 @@ function TicksToHumanReadable(ticks) {
     var minutes = Math.floor(remainingSeconds / 60); // Calculate minutes
     var seconds = remainingSeconds % 60; // Remaining seconds
 
-    return days + " days, " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds";
+    var parts = [];
+    if (!skip_zero_units || days > 0) parts.push(days + " days");
+    if (!skip_zero_units || hours > 0) parts.push(hours + " hours");
+    if (!skip_zero_units || minutes > 0) parts.push(minutes + " minutes");
+    if (!skip_zero_units || seconds > 0) parts.push(seconds + " seconds");
+
+    return parts.join(", ");
 }
 
 /**
