@@ -10,10 +10,8 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
 // Load module configuration
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json") || {};
-// Price of a crowbar in cents (e.g., 50000 = 500g)
-var CROWBAR_PRICE_CENTS = config.CROWBAR_PRICE_CENTS || 50000;
-// Purchase cooldown in real-world minutes
-var CROWBAR_COOLDOWN_MINUTES = config.CROWBAR_COOLDOWN_MINUTES || 10;
+var CROWBAR_PRICE_CENTS = config.CROWBAR_PRICE_CENTS;
+var CROWBAR_COOLDOWN_MINUTES = config.CROWBAR_COOLDOWN_MINUTES;
 var jsonFilePath = "world/customnpcs/scripts/data_auto/junkyard_purchases.json";
 
 function interact(event) {
