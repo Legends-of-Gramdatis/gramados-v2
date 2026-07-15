@@ -856,7 +856,7 @@ function getDomainMultiplier(domain_name) {
         var domain = allenis_data.domains[it_domain];
 
         if (domain["display_name"] == domain_name) {
-            multiplier = domain["reputation"];
+            multiplier += domain["reputation"]/10;
 
             // update last_sale_date
             domain["last_sale_date"] = world.getTotalTime();
