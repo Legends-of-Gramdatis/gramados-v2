@@ -1,4 +1,5 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
 var CONFIG_PATH = "world/customnpcs/scripts/data/jobs_data.json";
 var JOBS_DATA_PATH = "world/customnpcs/scripts/data_auto/jobs.json";
@@ -338,3 +339,39 @@ function cleanupLockQuitForJobAndTags(player, jobDef) {
     }
 }
 
+function getAutoAssignPermsForJob(jobId, filter) {
+    var cfg = loadJson(CONFIG_PATH);
+    if (!cfg || !cfg.Jobs) return [];
+    for (var i = 0; i < cfg.Jobs.length; i++) {
+        var id = cfg.Jobs[i].JobID || cfg.Jobs[i].JobId;
+        if (id === jobId) {
+            var perms = cfg.Jobs[i].AutoAssignPerms || [];
+            var filteredPerms = [];
+            for (var j = 0; j < perms.length; j++) {
+                var perm = perms[j];
+                if (stringIncludes(perm, filter)) {
+                    filteredPerms.push(perm);
+                }
+            }
+            return filteredPerms;
+        }
+    }
+    return [];
+}
+
+// function to get the region that cause teh job to be granted
+function getRegionNameThatGrantedJob(player, jobId) {
+    var data = loadJson(JOBS_DATA_PATH);
+    // get region perms using getAutoAssignPermsForJob with "region_" filter
+    var regionPerms = getAutoAssignPermsForJob(jobId, "region_");
+    // for each region, see if it is owned by player
+    var owned_regions = [];
+    for (var i = 0; i < regionPerms.length; i++) {
+        var regionName = regionPerms[i].replace("region_", "");
+        if (player.getDisplayName() == getRegionOwnerName(regionName) || includes(getRegionTrustedPlayers(regionName), player.getName())) {
+            owned_regions.push(regionName);
+        }
+
+    }
+    return owned_regions;
+}
