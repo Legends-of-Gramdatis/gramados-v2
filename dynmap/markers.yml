@@ -3933,6 +3933,14 @@ sets:
                 y: 82.0
                 z: -1521.0
                 label: Foxglove Domain
+            marker_6:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -1345.0
+                y: 96.0
+                z: -1554.0
+                label: Fernwood Domain
         lines: {}
         layerprio: 0
 
