@@ -9284,7 +9284,7 @@ registerXCommands([
         }
 
         return true;
-    }, 'region.list', [{
+    }, 'region.lookFor', [{
         "argname": "type",
         "type": "enum",
         "values": ["Domain", "Farm", "Garage", "Dealership"]
@@ -9362,7 +9362,7 @@ registerXCommands([
 
         tellPlayer(pl, "&aLinked sign to region '&b" + region.name + "&a' and set line &e" + line + "&a to '&f" + (lineType === null ? "disabled" : lineType) + "&a'.");
         return true;
-    }, 'region.setOwner', [{
+    }, 'region.signs', [{
         "argname": "name",
         "type": "datahandler",
         "datatype": "region",
@@ -9433,7 +9433,7 @@ registerXCommands([
         region.save(data);
         tellPlayer(pl, "&aRemoved and stripped linked sign from region '&b" + region.name + "&a'.");
         return true;
-    }, 'region.setOwner', [{
+    }, 'region.signs', [{
         "argname": "name",
         "type": "datahandler",
         "datatype": "region",
