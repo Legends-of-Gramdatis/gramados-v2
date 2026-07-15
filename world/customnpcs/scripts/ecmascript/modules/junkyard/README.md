@@ -92,8 +92,9 @@ Scripts: `junkyard_crate_manager.js`, `junkyard_loot_crate.js`
 ### Crowbar Purchase
 - Who: Mechanic only.
 - Price: 500g (50000 cents).
-- Cooldown: ~10 minutes IRL per player.
-- Phone Quick-Check: If you hold a phone (matched via `_LOOTTABLE_CELLPHONES`), the seller tells you whether you’re still on cooldown.
+- Cooldown: Dynamic per player, based on `CROWBAR_COOLDOWN_MINUTES` and reduced by Mechanic region value (minimum 2 minutes).
+- Phone Quick-Check: If you hold a phone (matched via `_LOOTTABLE_CELLPHONES`), the seller reports whether you are on cooldown and includes the remaining wait time.
+- Cooldown Flavor Hint: While on cooldown, there is a 23% chance the seller gives an immersive hint that higher mechanic garage/region coverage lowers cooldown.
 - Result: You receive a one-use crowbar item with custom name/lore:
   - Name: `§6Junkyard Crate Crowbar`
   - Lore (must match exactly to be valid):

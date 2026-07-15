@@ -5,6 +5,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js");
 
@@ -13,6 +15,7 @@ var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/conf
 var CROWBAR_PRICE_CENTS = config.CROWBAR_PRICE_CENTS;
 var CROWBAR_COOLDOWN_MINUTES = config.CROWBAR_COOLDOWN_MINUTES;
 var jsonFilePath = "world/customnpcs/scripts/data_auto/junkyard_purchases.json";
+var MECHANIC_JOB_ID = 66;
 
 function interact(event) {
     var npc = event.npc;
@@ -22,10 +25,7 @@ function interact(event) {
 
     // Require Mechanic job
     if (!playerHasJobWithTag(player, "Mechanic")) {
-        storytellPlayer(player, [
-            "&7[&c✖&7] &fHey — this isn't a tourist trap. &cOnly certified mechanics are allowed to buy crowbars around here.",
-            "&r&8(If you're serious, maybe consider taking up the Mechanic job.)"
-        ]);
+        npc.say("§fThis stall is guild stock only. Get yourself signed in with the §6Mechanics' Union§f, then we talk tools.");
         return;
     }
 
@@ -34,18 +34,18 @@ function interact(event) {
 
     // Current real-world timestamp (ms)
     var now = Date.now();
-    var cooldownMs = CROWBAR_COOLDOWN_MINUTES * 20 * 60 * 60;
+    var cooldownMinutes = getAdjustedCrowbarCooldownMinutes(player);
+    var cooldownMs = cooldownMinutes * 60 * 1000;
 
     // === Phone check (info only)
     if (!player.getMainhandItem().isEmpty() && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, player.getMainhandItem().getName())) {
         if (purchaseData[playerName] && now < purchaseData[playerName]) {
             var msLeft = purchaseData[playerName] - now;
             var ticksLeft = Math.floor(msLeft / 50); // convert ms to ticks
-            storytellPlayer(player, [
-                "&7[&c✖&7] &fHold on, champ. You need to wait &e" + TicksToHumanReadable(ticksLeft) + "&f before you can buy another crowbar."
-            ]);
+            npc.say("§fYour next crowbar clears in §e" + TicksToHumanReadable(ticksLeft, true) + "§f. No exceptions.");
+            maybeSayGarageHint(npc);
         } else {
-            storytellPlayer(player, ["&7[&a✔&7] &fYou're good to go! You can buy a crowbar now."]);
+            npc.say("§7[§aJunkyard Clerk§7] §fYou're clear. I can sell you a fresh crowbar right now.");
         }
         return;
     }
@@ -54,9 +54,8 @@ function interact(event) {
     if (purchaseData[playerName] && now < purchaseData[playerName]) {
         var msLeft = purchaseData[playerName] - now;
         var ticksLeft = Math.floor(msLeft / 50);
-        storytellPlayer(player, [
-            "&7[&c✖&7] &fWoah there, no double-dipping.",
-        ]);
+        npc.say("§fEasy there. You're still on cooldown for §e" + TicksToHumanReadable(ticksLeft, true) + "§f.");
+        maybeSayGarageHint(npc);
         return;
     }
 
@@ -66,10 +65,8 @@ function interact(event) {
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);
 
-        storytellPlayer(player, [
-            "&7[&a✔&7] &fDeal's done. Here's your crowbar — one-use only, so make it count.",
-            "&8Check the crates behind the fence. You never know what you'll find."
-        ]);
+        npc.say("§7[§aJunkyard Clerk§7] §fDeal made. §6One crowbar, one crate§f. Make the pull count.");
+        npc.say("§8The stacks behind the fence still hide good metal if you know where to pry.");
         logToFile("mechanics", playerName + " purchased a Junkyard Crate Crowbar for " + getAmountCoin(CROWBAR_PRICE_CENTS));
 
         // Save cooldown end time (now + cooldownMs)
@@ -77,12 +74,33 @@ function interact(event) {
         saveJson(purchaseData, jsonFilePath);
 
     } else {
-        storytellPlayer(player, [
-            "&7[&c✖&7] &fSorry, pal. &cThat crowbar costs " + getAmountCoin(CROWBAR_PRICE_CENTS) + ".",
-            "&r&8Check your pouch and try again when you've got the funds."
-        ]);
+        npc.say("§fPrice is §6" + getAmountCoin(CROWBAR_PRICE_CENTS) + "§f. Come back when your pouch is heavier.");
         return;
     }
+}
+
+function maybeSayGarageHint(npc) {
+    if (Math.random() < 0.23) {
+        npc.say("§8Between us? Bigger mechanic coverage means shorter cooldowns. Expand your garage footprint and I'll clear you faster.");
+    }
+}
+
+function getAdjustedCrowbarCooldownMinutes(player) {
+    var grantedReasons = getRegionNameThatGrantedJob(player, MECHANIC_JOB_ID);
+    var allRegionPrices = 0;
+
+    for (var i = 0; i < grantedReasons.length; i++) {
+        allRegionPrices += getRegionPrice(grantedReasons[i], player);
+    }
+
+    var cooldownMinutes = CROWBAR_COOLDOWN_MINUTES;
+    if (allRegionPrices > 30000000) {
+        var diff = allRegionPrices - 30000000;
+        var lessMinutes = Math.floor(diff / 5000000);
+        cooldownMinutes = Math.max(2, cooldownMinutes - lessMinutes);
+    }
+
+    return cooldownMinutes;
 }
 
 function setupCrowbarNameLore(loot_entry, world) {
