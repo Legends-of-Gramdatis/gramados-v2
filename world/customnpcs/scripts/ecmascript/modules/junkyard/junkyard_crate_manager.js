@@ -45,7 +45,7 @@ function interact(event) {
             npc.say("§fYour next crowbar clears in §e" + TicksToHumanReadable(ticksLeft, true) + "§f. No exceptions.");
             maybeSayGarageHint(npc);
         } else {
-            npc.say("§7[§aJunkyard Clerk§7] §fYou're clear. I can sell you a fresh crowbar right now.");
+            npc.say("§fYou're clear. I can sell you a fresh crowbar right now.");
         }
         return;
     }
@@ -65,7 +65,7 @@ function interact(event) {
         var crowbar = setupCrowbarNameLore(loot[0], world);
         player.giveItem(crowbar);
 
-        npc.say("§7[§aJunkyard Clerk§7] §fDeal made. §6One crowbar, one crate§f. Make the pull count.");
+        npc.say("§fDeal made. §6One crowbar, one crate§f. Make the pull count.");
         npc.say("§8The stacks behind the fence still hide good metal if you know where to pry.");
         logToFile("mechanics", playerName + " purchased a Junkyard Crate Crowbar for " + getAmountCoin(CROWBAR_PRICE_CENTS));
 
