@@ -108,14 +108,14 @@ function ensure_tag_joins_for_active_jobs(player) {
     }
 }
 
-function timer(event) {
-    var salary = getAutopayAmountTotal(event.player);
-    if (salary > 0) {
-        addMoneyToCurrentPlayerPouch(event.player, salary);
-        tellPlayer(event.player, "&a:check_mark: You have received your daily salary of " + getAmountCoin(salary) + "!");
-        logToFile("economy", event.player.getName() + " received daily salary of " + getAmountCoin(salary) + ".");
-    }
-}
+// function timer(event) {
+//     var salary = getAutopayAmountTotal(event.player);
+//     if (salary > 0) {
+//         addMoneyToCurrentPlayerPouch(event.player, salary);
+//         tellPlayer(event.player, "&a:check_mark: You have received your daily salary of " + getAmountCoin(salary) + "!");
+//         logToFile("economy", event.player.getName() + " received daily salary of " + getAmountCoin(salary) + ".");
+//     }
+// }
 
 /**
  * Creates a new player entry in the job data if it doesn't exist.
