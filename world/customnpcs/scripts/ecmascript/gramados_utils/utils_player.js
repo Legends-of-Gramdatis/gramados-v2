@@ -6,15 +6,6 @@ function loadPlayerMeta(player){
     return JSON.parse(getWorldData().get('player_' + player.getName()));
 }
 
-
-
-
-
-
-
-
-
-
 /**
     * Loads and parses the player's homes metadata from world data.
     * @param {Object} player - The player object.
