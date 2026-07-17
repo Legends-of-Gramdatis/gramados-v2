@@ -112,7 +112,7 @@ function expertiseItem(npc, itemStack, player, world) {
     }
 
     npc.executeCommand("/playsound minecraft:entity.player.levelup block @a ~ ~ ~ 1 1");
-    logToFile("economy", player.getName() + " paid " + getAmountCoin(fee) + " for expertise of item: " + fullId);
+    // logToFile("economy", player.getName() + " paid " + getAmountCoin(fee) + " for expertise of item: " + fullId);
 
     // Reduce stack and isolate one item
     var reducedStack = itemStack.copy();
