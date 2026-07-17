@@ -7410,5 +7410,14 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "mts:unuparts.unuparts_decor_unu_lift_twopost:0": {
+        "value": 300000
+    },
+    "mts:ivv.benchcarlift_twopost:0": {
+        "value": 1000000
+    },
+    "mts:ivv.benchcarlift_ramp:0": {
+        "value": 1500000
     }
 }
