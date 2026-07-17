@@ -1,5 +1,6 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_stock_exchange.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_items.js");
 
 var GLOBAL_PRICES_JSON_PATH = "world/customnpcs/scripts/globals/global_prices.json";
 var STOCK_EXCHANGE_DATA_JSON_PATH = "world/customnpcs/scripts/globals/stock_exchange_data.json";
@@ -135,6 +136,14 @@ function getPriceFromItemStack(itemStack, defaultPrice, ignoreNBT) {
         } else {
             stackPrice = stockExchangeEntry.current_price;
         }
+
+        return stackPrice * stackSize;
+    }
+
+    if (isItemAnEngine(itemStack)) {
+        stackPrice = getPrice(itemId, defaultPrice, itemTag, true); // Ignore NBT for base price
+        stackPrice *= calculateEngineMultiplier(itemStack);
+        stackPrice = Math.round(stackPrice); // Round to nearest cent
     } else {
         stackPrice = getPrice(itemId, defaultPrice, itemTag, ignoreNBT);
     }
@@ -144,6 +153,29 @@ function getPriceFromItemStack(itemStack, defaultPrice, ignoreNBT) {
     }
 
     return stackPrice * stackSize;
+}
+
+function calculateEngineMultiplier(itemStack) {
+    if (!itemStack || itemStack.isEmpty()) {
+        return 1.0;
+    }
+
+    if (!isItemAnEngine(itemStack)) {
+        return 1.0;
+    }
+
+    var hours = getEngineHours(itemStack);
+    if (hours === null) {
+        return 1.0;
+    }
+
+    // Calculate multiplier based on hours (For each 100 hours, reduce value by 30%, but not below 10%)
+    var multiplier = 1.0 - (hours / 100 * 0.3);
+    if (multiplier < 0.1) {
+        multiplier = 0.1;
+    }
+    // logToFile("dev", "Engine hours: " + hours + ", multiplier: " + multiplier);
+    return multiplier;
 }
 
 /**
