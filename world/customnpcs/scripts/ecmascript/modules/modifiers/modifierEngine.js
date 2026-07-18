@@ -523,7 +523,7 @@ function logout(event) {
     freeze_passive_modifiers(player);
 }
 
-function init(event) {
+function login(event) {
     var player = event.player;
 
     unfreeze_passive_modifiers(player);

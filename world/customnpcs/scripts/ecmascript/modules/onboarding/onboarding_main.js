@@ -68,7 +68,7 @@ function onboarding_isModuleEnabled() {
 }
 
 // === Event Hooks ===
-function init(event) {
+function login(event) {
     onboarding_loadConfig();
     onboarding_loadData();
     var player = event.player; if (!player) return;
@@ -113,9 +113,9 @@ function init(event) {
 
 function tick(event) {
     if (!_onboarding_cfg) return;
-    var player = event.player; if (!player) return;
+    var player = event.player;
     if (!onboarding_isModuleEnabled()) return;
-    if (!onboarding_isBetaAllowed(player)) return;
+    // if (!onboarding_isBetaAllowed(player)) return;
     var pdata = onboarding_getPlayerData(player);
     var changed = false;
     switch (pdata.phase) {
