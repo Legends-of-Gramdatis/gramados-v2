@@ -475,7 +475,14 @@ sets:
                 y: 74.0
                 z: -1036.0
                 label: Wine Export Int. Wholesale (sell)
-
+            marker_17:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -5685.0
+                y: 72.0
+                z: -1621.0
+                label: GépWorks Equipment
         lines: {
             }
         layerprio: 0
