@@ -7419,5 +7419,14 @@
     },
     "mts:ivv.benchcarlift_ramp:0": {
         "value": 1500000
+    },
+    "mts:unuparts.unuparts_decor_unu_dynometer:0": {
+        "value": 1000000
+    },
+    "mts:unuparts.unuparts_decor_unu_tiremachine:0": {
+        "value": 500000
+    },
+    "mts:unuparts.unuparts_decor_unu_enginestand:0": {
+        "value": 100000
     }
 }
