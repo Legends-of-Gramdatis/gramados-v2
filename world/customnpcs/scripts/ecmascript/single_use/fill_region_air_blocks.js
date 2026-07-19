@@ -1,21 +1,26 @@
 // Single-use tool: fills all air blocks inside a region with a chosen block.
 // Set REGION_NAME and BLOCK_ID below, then interact with the scripted item.
+// Block meta is derived from each sub-cuboid's `type` using CustomServerTools/settings.json.
 
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var WORLD = API.getIWorld(0);
 
 // ── Configuration ──────────────────────────────────────────────────────────────
-var REGION_NAME = 'Gramados_GramadosCity_CarpoStreet_6_BrickhallGarage_Garage';  // region name without the 'region_' prefix
-var BLOCK_ID    = 'minecraft:stained_glass_pane';        // block id to place (e.g. 'minecraft:planks')
-var BLOCK_META  = 6;                        // block metadata / damage value
+var REGION_NAME = 'Allenis_AmberDowns_VintnersRoad_AmbercrestEstate_Domain';  // region name without the 'region_' prefix
+var BLOCK_ID    = 'variedcommodities:placeholder';        // block id to place (e.g. 'minecraft:planks')
 // ───────────────────────────────────────────────────────────────────────────────
+
+var SETTINGS_PATH = 'CustomServerTools/settings.json';
 
 function interact(event) {
     var player = event.player;
     if (!player) return;
+
+    var regionTypeMetaMap = getRegionTypeMetaMap();
 
     var worldData = getWorldData();
     var key = 'region_' + REGION_NAME;
@@ -37,8 +42,12 @@ function interact(event) {
     var filled = 0;
     var processedBlocks = {};
 
+    // tell how many sub-cuboids we are processing
+    tellPlayer(player, '&6[FillAir] Processing &e' + subCuboids.length + '&6 sub-cuboid(s) in region &e' + REGION_NAME + '&6...');
+
     for (var i = 0; i < subCuboids.length; i++) {
         var sub = subCuboids[i];
+        var blockMeta = getSubCuboidMeta(sub, regionTypeMetaMap);
 
         var minX = Math.min(sub.xyz1[0], sub.xyz2[0]);
         var maxX = Math.max(sub.xyz1[0], sub.xyz2[0]);
@@ -54,8 +63,8 @@ function interact(event) {
                     if (processedBlocks[blockKey]) continue;
                     processedBlocks[blockKey] = true;
 
-                    if (WORLD.getBlock(x, y, z).isAir()) {
-                        WORLD.setBlock(x, y, z, BLOCK_ID, BLOCK_META);
+                    if (WORLD.getBlock(x, y, z).isAir() && !can_be_broken(WORLD.getBlock(x, y-1, z))) {
+                        WORLD.setBlock(x, y, z, BLOCK_ID, blockMeta);
                         filled++;
                     }
                 }
@@ -63,5 +72,39 @@ function interact(event) {
         }
     }
 
-    tellPlayer(player, '&6[FillAir] &aDone. Filled &e' + filled + '&a air block(s) in region &e' + REGION_NAME + '&a with &e' + BLOCK_ID + '&7 (meta ' + BLOCK_META + ')&a.');
+    tellPlayer(player, '&6[FillAir] &aDone. Filled &e' + filled + '&a air block(s) in region &e' + REGION_NAME + '&a with &e' + BLOCK_ID + '&a using sub-cuboid type metadata.');
+}
+
+function getRegionTypeMetaMap() {
+    var settings = loadJson(SETTINGS_PATH);
+    var regionTypes = settings && settings.REGION_TYPES ? settings.REGION_TYPES : {};
+    var regionTypeNames = Object.keys(regionTypes);
+    var metaMap = {};
+
+    for (var i = 0; i < regionTypeNames.length; i++) {
+        metaMap[regionTypeNames[i]] = i + 1;
+    }
+
+    return metaMap;
+}
+
+function getSubCuboidMeta(subCuboid, regionTypeMetaMap) {
+    if (!subCuboid || !subCuboid.type) {
+        return 0;
+    }
+
+    if (typeof regionTypeMetaMap[subCuboid.type] === 'number') {
+        return regionTypeMetaMap[subCuboid.type];
+    }
+
+    return 0;
+}
+
+function can_be_broken(block) {
+    // If the block can be changed due to block placing above (path)
+    var blockid = block.getName();
+    if (includes(["minecraft:grass_path", "minecraft:farmland"], blockid)) {
+        return true;
+    }
+    return false;
 }
