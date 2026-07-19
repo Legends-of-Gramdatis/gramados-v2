@@ -388,6 +388,18 @@
             "Perms": []
         },
         {
+            "JobID": 661,
+            "JobLock": 662,
+            "JobQuit": 663,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Fisherman",
+            "Region": "Foréval",
+            "Title": "Foréval Fisherman",
+            "AutoAssignPerms": [],
+            "Perms": []
+        },
+        {
             "JobID": 411,
             "JobLock": 415,
             "JobQuit": 430,

@@ -153,7 +153,7 @@ function switch_region() {
     } else if (NPC_REGION == "Sealife Fishing") {
         region_specifics = {
             helloPhrase: "Hello there! I'm the local stock exchange manager for Sealife Fishing deliveries.",
-            jobId: 0
+            jobId: 661
         }
     } else {
         region_specifics = {
