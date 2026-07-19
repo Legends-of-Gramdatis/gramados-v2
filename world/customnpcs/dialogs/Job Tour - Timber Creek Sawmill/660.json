@@ -1,25 +1,15 @@
 {
-    "DialogShowWheel": 1b,
-    "AvailabilityQuestId": -1,
+    "DialogShowWheel": 0b,
+    "AvailabilityQuestId": 164,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 630,
-                "Title": "What does lumberjack work involve?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "What does [job name] work involve?",
+                "Title": "I'll visit the hiring agency first.",
                 "DialogColor": 14737632,
-                "OptionType": 2
+                "OptionType": 0
             }
         }
     ],
@@ -27,8 +17,8 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 632,
-    "AvailabilityQuest": 0,
+    "DialogId": 660,
+    "AvailabilityQuest": 2,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
@@ -48,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.1-1 Tour Accessible Jobs List",
+    "DialogTitle": "rep default unknown",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Some work can be started immediately, without investment. These roles focus on gathering and supplying essential resources across the island.
+    "DialogText": "Interested in lumberjack work? The Greenfield Hire Agency offers guided tours before you commit to a profession.
 
-Here are a few examples available on Greenfield.",
+Come back once they've sent you here, and I'll gladly show you how everything works.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -76,7 +66,7 @@ Here are a few examples available on Greenfield.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1784451065509L,
+        "TimePast": 1784452747813L,
         "Time": 0L,
         "Subject": ""
     }
