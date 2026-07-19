@@ -133,7 +133,9 @@ function customGuiButton(event) {
             var item = createBottleFromNBT(event, bottle_nbt);
             stored_bottles[i] = null;
             event.gui.removeComponent(button_id);
-            event.player.dropItem(item);
+            if (!event.player.giveItem(item)) {
+                event.player.dropItem(item);
+            }
             event.gui.update(event.player);
             event.player.updatePlayerInventory();
         } else if (stored_bottles[i] == null) {
