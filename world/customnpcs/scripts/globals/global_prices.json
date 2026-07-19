@@ -7428,5 +7428,26 @@
     },
     "mts:unuparts.unuparts_decor_unu_enginestand:0": {
         "value": 100000
+    },
+    "harvestcraft:fishtrapbaititem:0": {
+        "value": 20
+    },
+    "harvestcraft:watertrap:0": {
+        "value": 100000
+    },
+    "forestry:scoop:0": {
+        "value": 2000
+    },
+    "minecraft:fishing_rod:0": {
+        "value": 10000
+    },
+    "growthcraft_fishtrap:fishtrap_darkoak:0": {
+        "value": 400000
+    },
+    "growthcraft_fishtrap:fishtrap_spruce:0": {
+        "value": 400000
+    },
+    "growthcraft_fishtrap:fishtrap_oak:0": {
+        "value": 400000
     }
 }
