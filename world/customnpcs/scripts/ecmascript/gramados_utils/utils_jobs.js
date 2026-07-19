@@ -176,38 +176,26 @@ function getAutopayAmountTotal(player) {
  * and that lock/quit dialogs for the job and its tags are removed.
  * This is safe to call multiple times (idempotent behavior).
  * @param {IPlayer} player
- * @param {Object} jobDef - A job object from config.json (must contain JobID; may contain JobLock/JobQuit and Tags)
+ * @param {Object} jobDef - A job object from config.json (must contain JobID, JobLock, JobQuit and can contain Tags)
  */
 function ensureJobAndTagDialogsOnGrant(player, jobDef) {
-    var cfg = loadJson(CONFIG_PATH) || { Tags: {} };
-    try {
-        // Always add the job's join dialog
-        var jid = jobDef && (jobDef.JobID || jobDef.JobId);
-        if (jid !== undefined && typeof player.addDialog === 'function') {
-            player.addDialog(jid);
-        }
+    var cfg = loadJson(CONFIG_PATH);
+    applyJobIds(player, jobDef.JobID, jobDef.JobQuit, jobDef.JobLock);
 
-        // Remove job lock/quit tokens
-        if (jobDef && jobDef.JobQuit !== undefined) player.removeDialog(jobDef.JobQuit);
-        if (jobDef && jobDef.JobLock !== undefined) player.removeDialog(jobDef.JobLock);
-
-        // Handle tag dialogs/cleanup
-        var tags = (jobDef && (jobDef.Tags || jobDef.Types)) || [];
-        if (Array.isArray(tags)) {
-            for (var i = 0; i < tags.length; i++) {
-                var tname = tags[i];
-                var t = cfg.Tags ? cfg.Tags[tname] : null;
-                if (!t) continue;
-                if (t.TagID !== undefined && typeof player.addDialog === 'function') {
-                    player.addDialog(t.TagID);
-                }
-                if (t.TagQuit !== undefined) player.removeDialog(t.TagQuit);
-                if (t.TagLock !== undefined) player.removeDialog(t.TagLock);
-            }
+    if (jobDef.Tags) {
+        for (var i = 0; i < jobDef.Tags.length; i++) {
+            var tag_name = jobDef.Tags[i];
+            var tag_object = cfg.Tags[tag_name];
+            applyJobIds(player, tag_object.TagJoin, tag_object.TagQuit, tag_object.TagLock);
         }
-    } catch (e) {
-        // Swallow errors to avoid breaking flows; dialog ops are best-effort
     }
+}
+
+function applyJobIds(player, jobID, jobQuit, jobLock) {
+    player.addDialog(jobID);
+    player.removeDialog(jobQuit);
+    player.removeDialog(jobLock);
+    // tellPlayer(player, "&a:check_mark: You have unlocked all " + tag_name + " related wholesales.");
 }
 
 /**
