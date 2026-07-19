@@ -12,6 +12,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_winemaking.js');
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
+load('world/customnpcs/scripts/ecmascript/modules/contactInformation/contactInformation_utils.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
@@ -4131,7 +4132,6 @@ registerXCommands([
 
 ]);
 
-//REGISTER UTIL COMMANDS
 registerXCommands([
     ['!debug [...matches]', function (pl, args, data) {
         var items = new Permission().getAllDataEntries(data);
@@ -4848,6 +4848,51 @@ registerXCommands([
 
         givePlayerItems(pl, [item]);
     }, 'genLot'],
+]);
+
+// !contact commands
+registerXCommands([
+    ['!contact set email <email>', function (pl, args, data) {
+        ensureContactInfo(pl);
+        setContactInfoEmail(pl.getUUID(), args.email);
+        tellPlayer(pl, "&aSet email to " + args.email);
+    }, 'contact.set.email'],
+    ['!contact set birthdate <day> <month> [year]', function (pl, args, data) {
+        var day = parseInt(args.day);
+        var month = parseInt(args.month);
+        var year = args.year ? parseInt(args.year) : null;
+        if (day < 1 || day > 31 || month < 1 || month > 12 || (year && year < 1900)) {
+            tellPlayer(pl, "&cInvalid date. Please provide a valid day, month, and optional year.");
+            return false;
+        }
+
+        ensureContactInfo(pl);
+        setContactInfoBirthday(pl.getUUID(), day, month, year);
+        tellPlayer(pl, "&aSet birthdate to " + day + "/" + month + (year ? "/" + year : ""));
+    }, 'contact.set.birthdate', [{
+        "argname": "day",
+        "type": "number",
+        "min": 1,
+        "max": 31
+    },
+    {
+        "argname": "month",
+        "type": "number",
+        "min": 1,
+        "max": 12
+    },
+    {
+        "argname": "year",
+        "type": "number",
+        "min": 1900,
+        "optional": true
+    }]],
+    ['!contact get', function (pl, args, data) {
+        var contactInfo = getContactInfo(pl);
+        tellPlayer(pl, "&6&lContact Information:\n" +
+            "&eEmail: &r" + (contactInfo.email || "Not set") +
+            "\n&eBirthdate: &r" + (contactInfo.birthday || "Not set"));
+    }, 'contact.get'],
 ]);
 
 //REGISTER PERMISSION COMMANDS
@@ -13365,6 +13410,8 @@ function customChestClosed(e) {
 function login(e) {
 
     PluginAPI.Players.run("login", [e]);
+
+    ensureContactInfo(e.player);
 
     (function (e) {
         var pl = e.player;
