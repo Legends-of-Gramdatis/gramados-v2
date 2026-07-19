@@ -3923,7 +3923,7 @@ sets:
                 x: -1496.0
                 y: 89.0
                 z: -1611.0
-                label: Chateau Silverleaf
+                label: Silverleaf Estate
             marker_4:
                 world: world
                 markup: false
@@ -3948,6 +3948,14 @@ sets:
                 y: 96.0
                 z: -1554.0
                 label: Fernwood Domain
+            marker_7:
+                world: world
+                markup: false
+                icon: company_domain
+                x: -1606.0
+                y: 80.0
+                z: -1613.0
+                label: Ambercrest Estate
         lines: {}
         layerprio: 0
 
