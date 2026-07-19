@@ -102,7 +102,8 @@
             "AutoAssignPerms": [
                 "region_Allenis_AmberDowns_VintnersRoad_SilverleafWinery_Domain",
                 "region_Allenis_AmberDowns_VintersRoad_FoxgloveDomain_Domain",
-                "region_Allenis_AmberDowns_VinorRoad_FernwoodDomain_Domain"
+                "region_Allenis_AmberDowns_VinorRoad_FernwoodDomain_Domain",
+                "region_Allenis_AmberDowns_VintnersRoad_AmbercrestEstate_Domain"
             ],
             "Tags": [
                 "Brewer",
