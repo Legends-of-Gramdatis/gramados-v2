@@ -218,24 +218,6 @@
                 "Damage": 0s
             },
             {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 13b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
@@ -254,61 +236,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 14b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 15b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e50G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -434,43 +362,7 @@
                 "Damage": 0s
             },
             {
-                "Slot": 33b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e5G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
                 "Slot": 34b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "variedcommodities:money",
-                "Count": 1b,
-                "tag": {
-                    "display": {
-                        "Lore": [
-                            "§e5G"
-                        ],
-                        "Name": "§2§lMoney§r"
-                    }
-                },
-                "Damage": 0s
-            },
-            {
-                "Slot": 35b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
@@ -569,7 +461,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_bar",
+                "id": "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -579,7 +471,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_default_oilpressure_psi",
+                "id": "mts:iv_tpp.trin_car-boat_gauge_default_tachometer",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -599,7 +491,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_bar",
+                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -609,17 +501,7 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_oilpressure_psi",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 12b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_default_tachometer",
+                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer",
                 "Count": 1b,
                 "Damage": 0s
             },
@@ -629,42 +511,12 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_default_speed_kph",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 14b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
                 "id": "mts:iv_tpp.trin_car-boat_gauge_default_speed_mph",
                 "Count": 1b,
                 "Damage": 0s
             },
             {
-                "Slot": 15b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_tachometer",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
                 "Slot": 16b,
-                "ForgeCaps": {
-                    "customnpcs:itemscripteddata": {
-                    }
-                },
-                "id": "mts:iv_tpp.trin_car-boat_gauge_blue_speed_kph",
-                "Count": 1b,
-                "Damage": 0s
-            },
-            {
-                "Slot": 17b,
                 "ForgeCaps": {
                     "customnpcs:itemscripteddata": {
                     }
