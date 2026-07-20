@@ -4115,7 +4115,7 @@ registerXCommands([
         "type": "currency"
     }]],
     ['!itemvalue', function (pl, args) {
-        var mItem = pl.getMainhandItem();
+        var mItem = pl.getMainhandItem().copy();
         if (mItem.isEmpty()) {
             tellPlayer(pl, "&cYou don't have anything in your hand!");
             return false;
