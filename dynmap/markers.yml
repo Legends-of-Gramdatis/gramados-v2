@@ -483,6 +483,22 @@ sets:
                 y: 72.0
                 z: -1621.0
                 label: GépWorks Equipment
+            marker_18:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -4770.0
+                y: 69.0
+                z: -2872.0
+                label: Fishermen's Supply - Fishing Equipment
+            marker_19:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -4810.0
+                y: 75.0
+                z: -2829.0
+                label: La Criée de Port-aux-Huîtres - Fish Wholesale
         lines: {
             }
         layerprio: 0
@@ -741,6 +757,14 @@ sets:
                 y: 70.0
                 z: -7722.0
                 label: Boreal Grill
+            marker_24:
+                world: world
+                markup: false
+                icon: food&drink_food
+                x: -4721.0
+                y: 75.0
+                z: -2942.0
+                label: L'Huître - Seafood Restaurant
         lines: {
             }
         layerprio: 0
