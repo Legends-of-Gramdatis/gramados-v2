@@ -7449,5 +7449,8 @@
     },
     "growthcraft_fishtrap:fishtrap_oak:0": {
         "value": 400000
+    },
+    "minecraft:netherrack:0": {
+        "value": 10000
     }
 }
