@@ -109,10 +109,6 @@
                 "Brewer",
                 "Brewer_Vintage",
                 "Brewer_Wine"
-            ],
-            "Types": [
-                "Brewer",
-                "Vineyard"
             ]
         },
         {
@@ -132,10 +128,6 @@
             "Tags": [
                 "Farmer",
                 "Farmer_Crops"
-            ],
-            "Types": [
-                "Cereal",
-                "Poultry"
             ]
         },
         {
@@ -154,9 +146,6 @@
             ],
             "Tags": [
                 "Mechanic"
-            ],
-            "Types": [
-                "Mechanic"
             ]
         },
         {
@@ -171,9 +160,6 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_GramadosCity_TroyenAvenue_1_GramadosConcreteFactory"
-            ],
-            "Types": [
-                "Workman"
             ]
         },
         {
@@ -188,9 +174,6 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_PinorosForest_RoyalSawmill"
-            ],
-            "Types": [
-                "Timber"
             ]
         },
         {
@@ -205,9 +188,6 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_material_factory_terracotta"
-            ],
-            "Types": [
-                "Workman"
             ]
         },
         {
@@ -223,9 +203,6 @@
             "Tags": [
                 "Farmer",
                 "Farmer_Fruits"
-            ],
-            "Types": [
-                "Fruits"
             ]
         },
         {
@@ -252,9 +229,6 @@
             ],
             "Tags": [
                 "Mechanic"
-            ],
-            "Types": [
-                "Mechanic"
             ]
         },
         {
@@ -269,9 +243,6 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Greenfield_Springfild_TimberCreekSawmill"
-            ],
-            "Types": [
-                "Timber"
             ]
         },
         {
@@ -302,12 +273,6 @@
                 "Farmer_Crops",
                 "Farmer_Fruits",
                 "Farmer_Vegetables"
-            ],
-            "Types": [
-                "Vegetable",
-                "Herbs",
-                "Apiary",
-                "Brewer"
             ]
         },
         {
@@ -323,9 +288,6 @@
                 "region_Greenfield_Springfield_StanopliRoad_SpringfieldGarage_Garage"
             ],
             "Tags": [
-                "Mechanic"
-            ],
-            "Types": [
                 "Mechanic"
             ]
         },
@@ -351,10 +313,6 @@
                 "Farmer",
                 "Farmer_Cattle",
                 "Farmer_Dairy"
-            ],
-            "Types": [
-                "Dairy",
-                "Meat"
             ]
         },
         {
@@ -370,9 +328,6 @@
                 "region_Monsalac_Chaseals_OldByreStreet_TheChasealsBench_Garage"
             ],
             "Tags": [
-                "Mechanic"
-            ],
-            "Types": [
                 "Mechanic"
             ]
         },
@@ -449,8 +404,20 @@
             "AutoAssignPerms": [],
             "Tags": [
                 "Mechanic"
-            ],
-            "Types": [
+            ]
+        },
+        {
+            "JobID": 661,
+            "JobLock": 662,
+            "JobQuit": 663,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Foréval",
+            "Title": "Foréval Mechanic",
+            "Perms": [],
+            "AutoAssignPerms": [],
+            "Tags": [
                 "Mechanic"
             ]
         },
@@ -478,10 +445,6 @@
             "Tags": [
                 "Brewer",
                 "Brewer_Wine"
-            ],
-            "Types": [
-                "Brewer",
-                "Vineyard"
             ]
         },
         {

@@ -608,7 +608,7 @@ function can_add_job(player_uuid, job) {
  */
 function grant_tag_joins_for_job(player, job) {
     try {
-        var tags = job["Tags"] || job["Types"] || [];
+        var tags = job["Tags"] || [];
         if (!Array.isArray(tags) || tags.length === 0) return;
         var tagDefs = (job_config && job_config["Tags"]) ? job_config["Tags"] : {};
         for (var i = 0; i < tags.length; i++) {
@@ -751,7 +751,7 @@ function remove_jobs_with_tag(player, tag_name) {
             if (job_config["Jobs"][i]["JobID"] == job_id) { jdef = job_config["Jobs"][i]; break; }
         }
         if (!jdef) continue;
-        var tags = jdef["Tags"] || jdef["Types"] || [];
+        var tags = jdef["Tags"] || [];
         if (Array.isArray(tags) && tags.indexOf(tag_name) !== -1) {
             toRemove.push({ id: job_id, def: jdef });
         }

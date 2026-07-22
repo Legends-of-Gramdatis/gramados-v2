@@ -93,7 +93,7 @@ function hasTag(jobId, tag) {
         var job = cfg.Jobs[i];
         var id = job.JobID || job.JobId;
         if (id === jobId) {
-            var tags = job.Tags || job.Types || [];
+            var tags = job.Tags || [];
             return Array.isArray(tags) ? tags.indexOf(tag) !== -1 : false;
         }
     }
@@ -136,7 +136,7 @@ function getJobIdsWithTag(tag) {
     var jobIds = [];
     if (!cfg || !cfg.Jobs) return jobIds;
     for (var i = 0; i < cfg.Jobs.length; i++) {
-        var tags = cfg.Jobs[i].Tags || cfg.Jobs[i].Types || [];
+        var tags = cfg.Jobs[i].Tags || [];
         if (Array.isArray(tags) && tags.indexOf(tag) !== -1) {
             jobIds.push(cfg.Jobs[i].JobID || cfg.Jobs[i].JobId);
         }
@@ -312,7 +312,7 @@ function cleanupLockQuitForJobAndTags(player, jobDef) {
     try {
         if (jobDef && jobDef.JobQuit !== undefined) player.removeDialog(jobDef.JobQuit);
         if (jobDef && jobDef.JobLock !== undefined) player.removeDialog(jobDef.JobLock);
-        var tags = (jobDef && (jobDef.Tags || jobDef.Types)) || [];
+        var tags = (jobDef && jobDef.Tags) || [];
         if (Array.isArray(tags)) {
             for (var i = 0; i < tags.length; i++) {
                 var tname = tags[i];
