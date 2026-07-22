@@ -1595,6 +1595,14 @@ sets:
                 z: -375.0
                 icon: shopping_garage
                 label: AutoRem Siloroz (Repair Shop)
+            marker_15:
+                world: world
+                markup: false
+                x: -4621.0
+                y: 72.0
+                z: -3024.0
+                icon: shopping_garage
+                label: Iodock Garage (Repair Shop)
         lines: {
             }
         layerprio: 0
