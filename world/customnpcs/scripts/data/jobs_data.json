@@ -416,7 +416,9 @@
             "Region": "Foréval",
             "Title": "Foréval Mechanic",
             "Perms": [],
-            "AutoAssignPerms": [],
+            "AutoAssignPerms": [
+                "region_Foreval_PortAuxHuîtresSurBellecôte_RouteDePortAuxHuîtres_IodockGarage_Garage"
+            ],
             "Tags": [
                 "Mechanic"
             ]
