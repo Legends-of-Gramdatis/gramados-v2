@@ -10,7 +10,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var WORLD = API.getIWorld(0);
 
 // ── Configuration ──────────────────────────────────────────────────────────────
-var REGION_NAME = 'Allenis_AmberDowns_VintnersRoad_AmbercrestEstate_Domain';  // region name without the 'region_' prefix
+var REGION_NAME = 'Foreval_PortAuxHuîtresSurBellecôte_RouteDePortAuxHuîtres_IodockGarage_Garage';  // region name without the 'region_' prefix
 var BLOCK_ID    = 'variedcommodities:placeholder';        // block id to place (e.g. 'minecraft:planks')
 // ───────────────────────────────────────────────────────────────────────────────
 
