@@ -266,3 +266,77 @@ function formatDateYYYYMMDDToDDMMYYYY(dateStr) {
     }
     return m[3] + "/" + m[2] + "/" + m[1];
 }
+
+// UTILS MIGRATED FROM CustomServerTools.js
+
+//Converts TimeString to number
+function getStringTime(timeString) {
+    //0y4mon3d 6h 8min3s 800ms
+    var reg = /([\d]+)([a-zA-Z]+)/g;
+    var _m = timeString.match(reg);
+    var newTime = NaN;
+    var _tk = Object.keys(msTable);
+
+    for (var m in _m) {
+        var fm = _m[m];
+        var nm = fm.replace(reg, '$1').cInt();
+        var om = fm.replace(reg, '$2');
+        if (nm != null) {
+            if (isNaN(newTime)) { newTime = 0; }
+            if (_tk.indexOf(om) != -1) {
+                newTime += nm * (msTable[_tk[_tk.indexOf(om)]]);
+            } else { newTime += nm; }
+        }
+    }
+
+    return newTime;
+}
+
+//Converts number to TimeString
+function getTimeString(stringTime, excludes) {
+    if (typeof (excludes) == typeof (undefined) || excludes === null) { excludes = []; }
+    var newTime = parseInt(stringTime);
+    var newStr = '';
+    for (var ms in msTable) {
+        if (excludes.indexOf(ms) == -1) {
+            var msnum = 0;
+            while (newTime >= msTable[ms]) {
+                msnum++;
+                newTime -= msTable[ms];
+            }
+            if (msnum > 0) {
+                newStr += msnum.toString() + ms;
+            }
+        }
+    }
+
+
+    return newStr;
+}
+
+// 
+function getDateString(val, mode, dateSeperator, timeSeperator) {
+    // 
+    if (typeof (mode) == typeof (undefined) || mode === null) { mode = null; }
+    if (typeof (dateSeperator) == typeof (undefined) || dateSeperator === null) { dateSeperator = '/'; }
+    if (typeof (timeSeperator) == typeof (undefined) || timeSeperator === null) { timeSeperator = ':'; }
+    var date = new Date();
+    date.setTime(val);
+
+    var outputStr = '';
+
+    if ((mode || 'date') == 'date') {
+        var showDay = date.getDate();
+        var showMonth = (date.getMonth() + 1).toString().padStart(2, '0');
+        var showYear = date.getFullYear();
+        outputStr += showDay + dateSeperator + showMonth + dateSeperator + showYear + (mode == null ? ' ' : '');
+    }
+    if ((mode || 'time') == 'time') {
+        var showHours = date.getHours().toString().padStart(2, '0');
+        var showMins = date.getMinutes().toString().padStart(2, '0');
+        var showSecs = date.getSeconds().toString().padStart(2, '0');
+        outputStr += showHours + timeSeperator + showMins + timeSeperator + showSecs;
+    }
+
+    return outputStr;
+}
