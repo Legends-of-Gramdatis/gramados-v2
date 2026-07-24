@@ -351,7 +351,10 @@
             "JobName": "Fisherman",
             "Region": "Foréval",
             "Title": "Foréval Fisherman",
-            "AutoAssignPerms": [],
+            "AutoAssignPerms": [
+                "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_5_FishingHut",
+                "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_3_FishingHut"
+            ],
             "Perms": []
         },
         {
@@ -417,7 +420,7 @@
             "Title": "Foréval Mechanic",
             "Perms": [],
             "AutoAssignPerms": [
-                "region_Foreval_PortAuxHuîtresSurBellecôte_RouteDePortAuxHuîtres_IodockGarage_Garage"
+                "region_Foreval_PortAuxHuitresSurBellecote_RouteDePortAuxHuitres_1_IodockGarage_Garage"
             ],
             "Tags": [
                 "Mechanic"
