@@ -45,6 +45,8 @@ var rgx_selector_nbt = /(\w+)={([\S]+})?/g;
 var ONBOARDING_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 
+var _COMMANDS = [];
+var _DATAHANDLERS = {};
 
 var _MSG = gramados_json._MSG;
 var _COINITEMS = gramados_json._COINITEMS;
@@ -120,6 +122,46 @@ var MCP = {
 
 };
 
+var VIRTUAL_CURRENCIES = [
+    {
+        "name": "armoney",
+        "displayName": "Arcade Money",
+        "displayPrefix": "&c",
+        "default": 0,
+        "prefix": "&3:money:A",
+        "color": "&d",
+        "suffix": "",
+    },
+    {
+        "name": "vmoney",
+        "displayName": "Vote Money",
+        "displayPrefix": "&5",
+        "default": 0,
+        "prefix": "&d:money:V",
+        "color": "&b",
+        "suffix": "",
+    },
+    {
+        "name": "credit",
+        "displayName": "Store Money",
+        "displayPrefix": "&2&l",
+        "default": 0,
+        "prefix": "&2:money:",
+        "color": "&2",
+        "suffix": "",
+    },
+    {
+        "name": "money",
+        "displayName": "Money",
+        "displayPrefix": "&2&l",
+        "default": 0,
+        "prefix": "&r:money:&e",
+        "color": "&e",
+        "suffix": "",
+        "items": true
+    }
+];
+
 var MCItem = Java.type("net.minecraft.item.Item");
 var MCItemArmor = Java.type("net.minecraft.item.ItemArmor");
 var MCItemBow = Java.type("net.minecraft.item.ItemBow");
@@ -127,12 +169,6 @@ var MCItemSword = Java.type("net.minecraft.item.ItemSword");
 var MCItemTool = Java.type("net.minecraft.item.ItemTool");
 var EntityEqSlot = Java.type("net.minecraft.inventory.EntityEquipmentSlot");
 var REGISTRY = Java.type('net.minecraftforge.fml.common.registry.ForgeRegistries');
-
-
-
-/*
-    Custom Server Tools
-*/
 
 Date.prototype.addTime = function (addTime) {
     this.setTime(this.getTime() + addTime);
@@ -142,90 +178,6 @@ Date.prototype.hasPassed = function (passDate) {
     return (this.getTime() >= passDate.getTime());
 };
 
-//Converts TimeString to number
-function getStringTime(timeString) {
-    //0y4mon3d 6h 8min3s 800ms
-    var reg = /([\d]+)([a-zA-Z]+)/g;
-    var _m = timeString.match(reg);
-    var newTime = NaN;
-    var _tk = Object.keys(msTable);
-
-    for (var m in _m) {
-        var fm = _m[m];
-        var nm = fm.replace(reg, '$1').cInt();
-        var om = fm.replace(reg, '$2');
-        if (nm != null) {
-            if (isNaN(newTime)) { newTime = 0; }
-            if (_tk.indexOf(om) != -1) {
-                newTime += nm * (msTable[_tk[_tk.indexOf(om)]]);
-            } else { newTime += nm; }
-        }
-    }
-
-    return newTime;
-}
-//Converts number to TimeString
-function getTimeString(stringTime, excludes) {
-    if (typeof (excludes) == typeof (undefined) || excludes === null) { excludes = []; }
-    var newTime = parseInt(stringTime);
-    var newStr = '';
-    for (var ms in msTable) {
-        if (excludes.indexOf(ms) == -1) {
-            var msnum = 0;
-            while (newTime >= msTable[ms]) {
-                msnum++;
-                newTime -= msTable[ms];
-            }
-            if (msnum > 0) {
-                newStr += msnum.toString() + ms;
-            }
-        }
-    }
-
-
-    return newStr;
-}
-
-
-function getDateString(val, mode, dateSeperator, timeSeperator) {
-    if (typeof (mode) == typeof (undefined) || mode === null) { mode = null; }
-    if (typeof (dateSeperator) == typeof (undefined) || dateSeperator === null) { dateSeperator = '/'; }
-    if (typeof (timeSeperator) == typeof (undefined) || timeSeperator === null) { timeSeperator = ':'; }
-    var date = new Date();
-    date.setTime(val);
-
-    var outputStr = '';
-
-    if ((mode || 'date') == 'date') {
-        var showDay = date.getDate();
-        var showMonth = (date.getMonth() + 1).toString().padStart(2, '0');
-        var showYear = date.getFullYear();
-        outputStr += showDay + dateSeperator + showMonth + dateSeperator + showYear + (mode == null ? ' ' : '');
-    }
-    if ((mode || 'time') == 'time') {
-        var showHours = date.getHours().toString().padStart(2, '0');
-        var showMins = date.getMinutes().toString().padStart(2, '0');
-        var showSecs = date.getSeconds().toString().padStart(2, '0');
-        outputStr += showHours + timeSeperator + showMins + timeSeperator + showSecs;
-    }
-
-    return outputStr;
-} function getFnArgs(fn) {
-    var fnrgx = /function[\s]+([\w]+)\(([\w,\s]+)\)/;
-    var fnstr = fn.toString();
-    var fnargs = [];
-    var m = fnstr.match(fnrgx);
-    if (m != null) {
-
-        m[2].split(',').forEach(function (a) {
-            fnargs.push(a.trim());
-        });
-
-        return fnargs;
-    }
-
-    return fnargs;
-}
 //Convert object to array
 function objArray(obj) {
     var a = [];
@@ -293,19 +245,6 @@ function getObjectProp(obj, prop) {
     return obj
 }
 
-//Get functions in the object
-function getAllFuncs(obj) {
-    var props = [];
-
-    do {
-        props = props.concat(Object.getOwnPropertyNames(obj));
-    } while (obj = Object.getPrototypeOf(obj));
-
-    return props.sort().filter(function (e, i, arr) {
-        if (e != arr[i + 1] && typeof obj[e] == 'function') return true;
-    });
-}
-
 //Merge 2 objects
 function objMerge(obj1, obj2, inheritNewProps) {
     if (typeof (inheritNewProps) == typeof (undefined) || inheritNewProps === null) { inheritNewProps = true; }
@@ -341,7 +280,6 @@ Object.__proto__.values = function (obj) {
 
     return vals;
 }
-/* */
 
 function formatObj(obj, tabIndex, maxDeep, maxLoop, propTypes, propType, argFn) {
     if (typeof (propTypes) == typeof (undefined) || propTypes === null) { propTypes = {}; }
@@ -417,7 +355,9 @@ function formatObj(obj, tabIndex, maxDeep, maxLoop, propTypes, propType, argFn) 
     }
 
     return obj;
-}; /* */if (typeof (Object.values) !== "function") {
+}
+
+if (typeof (Object.values) !== "function") {
     Object.values = function (obj) {
         var v = [];
         for (var i in obj) {
@@ -428,6 +368,7 @@ function formatObj(obj, tabIndex, maxDeep, maxLoop, propTypes, propType, argFn) 
         return v;
     }
 }
+
 if (typeof (Object.keys) !== "function") {
     Object.keys = function (obj) {
         var v = [];
@@ -439,6 +380,7 @@ if (typeof (Object.keys) !== "function") {
         return v;
     }
 }
+
 String.prototype.allMatch = function (regx) {
     var m = this.match(regx);
     var rr = [];
@@ -449,12 +391,11 @@ String.prototype.allMatch = function (regx) {
     }
 
     return rr;
-};
-
+}
 
 String.prototype.cmatch = function (regx) {
     return (this.match(regx) || []).length;
-};
+}
 
 String.prototype.rangeUpper = function (min, max) {
     var str = '';
@@ -466,7 +407,8 @@ String.prototype.rangeUpper = function (min, max) {
         str += c.toString();
     }
     return str;
-};
+}
+
 String.prototype.rangeLower = function (min, max) {
     var str = '';
     for (var i = 0; i < this.length; i++) {
@@ -477,7 +419,7 @@ String.prototype.rangeLower = function (min, max) {
         str += c.toString();
     }
     return str;
-};
+}
 
 String.prototype.pad = function (character, len) {
     var n = this.toString();
@@ -485,7 +427,7 @@ String.prototype.pad = function (character, len) {
         n += character.toString();
     }
     return n;
-};
+}
 
 String.prototype.fill = function (payload) {
     var str = this.toString();
@@ -509,12 +451,11 @@ String.prototype.padMiddle = function (character, len) {
         ns += character.toString();
     }
     return ns;
-};
+}
 
 String.prototype.cInt = function () {
     return (isNaN(parseInt(this)) ? null : parseInt(this));
-};
-
+}
 
 String.prototype.append = function (ch, amount) {
     var new_str = this.toString();
@@ -525,7 +466,7 @@ String.prototype.append = function (ch, amount) {
     }
 
     return new_str;
-};
+}
 
 String.prototype.prepend = function (ch, amount) {
     var new_str = this.toString();
@@ -536,7 +477,7 @@ String.prototype.prepend = function (ch, amount) {
     }
 
     return new_str;
-};
+}
 
 String.prototype.replaceAll = function (search, replacement) {
     var target = this.toString();
@@ -546,7 +487,7 @@ String.prototype.replaceAll = function (search, replacement) {
         target = target.split(sr).join(replacement);
     }
     return target;
-};
+}
 
 function occurrences(string, subString, allowOverlapping, caseSensitive) {
     if (typeof (allowOverlapping) == typeof (undefined) || allowOverlapping === null) { allowOverlapping = false; }
@@ -615,9 +556,6 @@ if (!String.prototype.padEnd) {
     };
 }
 
-
-
-
 //Add data to IData even if it does exist
 function data_overwrite(data, keys, vals) {
     if (typeof (keys) == typeof (undefined) || keys === null) { keys = []; }
@@ -676,7 +614,6 @@ function hasMCMod(name) {
     return getMCModList().indexOf(name) > -1;
 }
 
-
 function ENbt(nbtObject) {
     this.nbt = nbtObject; /* INbt */
     this.copy = function () {
@@ -730,9 +667,7 @@ function nbtItemArr(nbtArr, w) {
     return itemArr;
 }
 
-function nbtHasSameData(nbt, onbt) {
-    //TODO:compare keys of nbt
-} function givePlayerItems(player, stacks, pnbt) {
+function givePlayerItems(player, stacks, pnbt) {
     if (typeof (pnbt) == typeof (undefined) || pnbt === null) { pnbt = null; }
     var w = player.world;
     if (pnbt == null) {
@@ -791,7 +726,9 @@ function playerIsOnline(world, player) {
 
 function scanPlayerOnNbt(player, nbtstring) {
     return player.getEntityNbt().getCompound('Inventory').toJsonString().indexOf(nbtstring.toString()) > -1;
-} function normalizePos(pos, asObj) {
+}
+
+function normalizePos(pos, asObj) {
     if (typeof (asObj) == typeof (undefined) || asObj === null) { asObj = false; }
     if (!asObj) {
         return [
@@ -806,7 +743,9 @@ function scanPlayerOnNbt(player, nbtstring) {
             'z': pos.z
         }
     }
-} function getChunk(pos) {
+}
+
+function getChunk(pos) {
     return [Math.floor(pos.x / 16), Math.floor(pos.z / 16)];
 }
 
@@ -822,17 +761,12 @@ function getChunkCoords(chunk) {
 function inChunk(pos, chunk) {
     var coords = getChunkCoords(chunk);
     return (
-        pos.x >= coords[0],
-        pos.z >= coords[1],
-        pos.x <= coords[2],
-        pos.z >= coords[3]
+        pos.x >= coords[0] &&
+        pos.z >= coords[1] &&
+        pos.x <= coords[2] &&
+        pos.z <= coords[3]
     );
 }
-var _COMMANDS = [];
-var _DATAHANDLERS = {};
-//To-Do: Comment this file
-
-
 
 registerDataHandler("player", Player);
 
@@ -1303,44 +1237,6 @@ function getParentPerms(name, data) {
     return par;
 
 }
-var VIRTUAL_CURRENCIES = [{
-    "name": "armoney",
-    "displayName": "Arcade Money",
-    "displayPrefix": "&c",
-    "default": 0,
-    "prefix": "&3:money:A",
-    "color": "&d",
-    "suffix": "",
-},
-{
-    "name": "vmoney",
-    "displayName": "Vote Money",
-    "displayPrefix": "&5",
-    "default": 0,
-    "prefix": "&d:money:V",
-    "color": "&b",
-    "suffix": "",
-},
-{
-    "name": "credit",
-    "displayName": "Store Money",
-    "displayPrefix": "&2&l",
-    "default": 0,
-    "prefix": "&2:money:",
-    "color": "&2",
-    "suffix": "",
-},
-{
-    "name": "money",
-    "displayName": "Money",
-    "displayPrefix": "&2&l",
-    "default": 0,
-    "prefix": "&r:money:&e",
-    "color": "&e",
-    "suffix": "",
-    "items": true
-}
-];
 
 function formatCurrency(amount, currencyType) {
     if (typeof (currencyType) == typeof (undefined) || currencyType === null) { currencyType = 'money'; }
