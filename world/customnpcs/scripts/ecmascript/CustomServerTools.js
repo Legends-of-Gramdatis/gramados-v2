@@ -9332,7 +9332,7 @@ registerXCommands([
     }, 'region.lookFor', [{
         "argname": "type",
         "type": "enum",
-        "values": ["Domain", "Farm", "Garage", "Dealership", "Office"]
+        "values": get_region_types()
     }]],
     ['!region remove <name>', function (pl, args, data) {
         var region = new Region(args.name);

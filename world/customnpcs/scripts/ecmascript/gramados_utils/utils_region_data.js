@@ -156,6 +156,10 @@ function getAllRegions() {
     return region_names;
 }
 
+function get_region_types() {
+    return ["Domain", "Farm", "Garage", "Dealership", "Office", "FishingHut"];
+}
+
 function parseRegionName(regionName) {
     if (!regionName) return null;
     var parts = regionName.split('_');
@@ -165,23 +169,28 @@ function parseRegionName(regionName) {
     var street_number = null;
     var unit_name = null;
     var type_name = null;
-    // number 3 could be street number, check if it's an int
-    if (parts.length > 3) {
+    var last_part = parts[parts.length - 1];
+    var details_end = parts.length;
+
+    if (includes(get_region_types(), last_part)) {
+        type_name = last_part;
+        details_end--;
+    }
+
+    // part 3 could be street number, check if it's an int
+    if (details_end > 3) {
         var num = parseInt(parts[3]);
         if (!isNaN(num)) {
             street_number = num;
-            if (parts.length > 4) {
-                unit_name = parts[4];
+            if (details_end > 4) {
+                unit_name = parts.slice(4, details_end).join('_');
             }
         } else {
             unit_name = parts[3];
-            if (parts.length > 4) {
-                type_name = parts[4];
+            if (details_end > 4) {
+                unit_name = parts.slice(3, details_end).join('_');
             }
         }
-    }
-    if (parts.length > 5) {
-        type_name = parts[5];
     }
     return {
         island: island_name,
