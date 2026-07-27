@@ -85,7 +85,8 @@
         "Mechanic": {
             "TagID": 606,
             "TagLock": 607,
-            "TagQuit": 608
+            "TagQuit": 608,
+            "MarketAccessDeniedText": "Sorry, but I only conduct business with licensed mechanics. Come back once you've earned your certification."
         }
     },
     "Jobs": [
@@ -109,6 +110,10 @@
                 "Brewer",
                 "Brewer_Vintage",
                 "Brewer_Wine"
+            ],
+            "MarketAccessDeniedText": "These wines are traded exclusively through the recognized vintners of Allenis. I cannot accept deliveries from anyone else.",
+            "Markets": [
+                "Allenis"
             ]
         },
         {
@@ -128,6 +133,10 @@
             "Tags": [
                 "Farmer",
                 "Farmer_Crops"
+            ],
+            "MarketAccessDeniedText": "Only registered Farmiston cereal farmers may deliver harvests here.",
+            "Markets": [
+                "Farmiston"
             ]
         },
         {
@@ -146,7 +155,9 @@
             ],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "MarketAccessDeniedText": "I only trade with certified mechanics operating in Farmiston.",
+            "Markets": []
         },
         {
             "JobID": 54,
@@ -160,6 +171,10 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_GramadosCity_TroyenAvenue_1_GramadosConcreteFactory"
+            ],
+            "MarketAccessDeniedText": "Concrete deliveries are accepted only from authorized workers of the Gramados Concrete Factory.",
+            "Markets": [
+                "Gramados Industrial Concrete"
             ]
         },
         {
@@ -174,6 +189,10 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_PinorosForest_RoyalSawmill"
+            ],
+            "MarketAccessDeniedText": "Only licensed lumberjacks of the Royal Sawmill may sell timber through this market.",
+            "Markets": [
+                "Gramados Lumber"
             ]
         },
         {
@@ -188,6 +207,10 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Gramados_material_factory_terracotta"
+            ],
+            "MarketAccessDeniedText": "Terracotta deliveries must come directly from certified workers of the Gramados Terracotta Factory.",
+            "Markets": [
+                "Gramados Industrial Terracotta"
             ]
         },
         {
@@ -203,6 +226,10 @@
             "Tags": [
                 "Farmer",
                 "Farmer_Fruits"
+            ],
+            "MarketAccessDeniedText": "I only purchase produce from registered citrus farmers working the orchards of Gramados.",
+            "Markets": [
+                "Gramados Farming"
             ]
         },
         {
@@ -229,7 +256,9 @@
             ],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "MarketAccessDeniedText": "Only certified Gramados mechanics may supply this market.",
+            "Markets": []
         },
         {
             "JobID": 56,
@@ -243,6 +272,10 @@
             "AutoPay": 20000,
             "Perms": [
                 "permission_regions.Greenfield_Springfild_TimberCreekSawmill"
+            ],
+            "MarketAccessDeniedText": "This timber market serves Greenfield's licensed lumberjacks only.",
+            "Markets": [
+                "Greenfield Lumber"
             ]
         },
         {
@@ -273,6 +306,10 @@
                 "Farmer_Crops",
                 "Farmer_Fruits",
                 "Farmer_Vegetables"
+            ],
+            "MarketAccessDeniedText": "Fresh produce is accepted only from registered Greenfield organic farmers.",
+            "Markets": [
+                "Greenfield Farming"
             ]
         },
         {
@@ -289,7 +326,9 @@
             ],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "MarketAccessDeniedText": "Only registered dairy farmers of Monsalac may supply milk and cheese to this market.",
+            "Markets": []
         },
         {
             "JobID": 211,
@@ -313,6 +352,11 @@
                 "Farmer",
                 "Farmer_Cattle",
                 "Farmer_Dairy"
+            ],
+            "MarketAccessDeniedText": "Only registered dairy farmers of Monsalac may supply milk and cheese to this market.",
+            "Markets": [
+                "Monsalac Cheesemaking",
+                "Monsalac Milk"
             ]
         },
         {
@@ -329,7 +373,9 @@
             ],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "MarketAccessDeniedText": "I only conduct business with certified mechanics from Monsalac.",
+            "Markets": []
         },
         {
             "JobID": 419,
@@ -340,7 +386,11 @@
             "JobName": "Fisherman",
             "Region": "Solterra",
             "Title": "Solterra Fisherman",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "Only licensed Solterran fishermen may sell their catch here.",
+            "Markets": [
+                "Sealife Fishing"
+            ]
         },
         {
             "JobID": 661,
@@ -355,7 +405,11 @@
                 "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_5_FishingHut",
                 "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_3_FishingHut"
             ],
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "The fish market of Port-aux-Huîtres accepts deliveries only from registered fishermen.",
+            "Markets": [
+                "Sealife Fishing"
+            ]
         },
         {
             "JobID": 411,
@@ -366,7 +420,9 @@
             "JobName": "Lumberjack",
             "Region": "Solterra",
             "Title": "Solterra Lumberjack",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "Only licensed lumberjacks may supply timber to this market.",
+            "Markets": []
         },
         {
             "JobID": 424,
@@ -377,7 +433,9 @@
             "JobName": "Terracotta",
             "Region": "Solterra",
             "Title": "Solterra Pottery Crafter",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "This market only purchases pottery crafted by recognized Solterran artisans.",
+            "Markets": []
         },
         {
             "JobID": 408,
@@ -392,7 +450,9 @@
             "Tags": [
                 "Farmer",
                 "Farmer_Cattle"
-            ]
+            ],
+            "MarketAccessDeniedText": "Only registered Solterran farmers may deliver their goods here.",
+            "Markets": []
         },
         {
             "JobID": 409,
@@ -407,7 +467,9 @@
             "AutoAssignPerms": [],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "MarketAccessDeniedText": "Only certified Solterran mechanics may trade with this market.",
+            "Markets": []
         },
         {
             "JobID": 661,
@@ -424,7 +486,8 @@
             ],
             "Tags": [
                 "Mechanic"
-            ]
+            ],
+            "Markets": []
         },
         {
             "JobID": 422,
@@ -435,7 +498,9 @@
             "JobName": "Stonemasson",
             "Region": "Solterra",
             "Title": "Solterra Stonemasson",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "Stone and masonry materials are accepted only from recognized Solterran stonemasons.",
+            "Markets": []
         },
         {
             "JobID": 416,
@@ -450,7 +515,9 @@
             "Tags": [
                 "Brewer",
                 "Brewer_Wine"
-            ]
+            ],
+            "MarketAccessDeniedText": "Only recognized vintners of Solterra may sell wine through this market.",
+            "Markets": []
         },
         {
             "JobID": 420,
@@ -461,7 +528,9 @@
             "JobName": "Musician",
             "Region": "Solterra",
             "Title": "Solterra Musician",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "This market is reserved for licensed musicians and performers of Solterra.",
+            "Markets": []
         },
         {
             "JobID": 410,
@@ -472,7 +541,9 @@
             "JobName": "Shopkeeper",
             "Region": "Solterra",
             "Title": "Solterra Shopkeeper",
-            "Perms": []
+            "Perms": [],
+            "MarketAccessDeniedText": "Only registered Solterran merchants may conduct business through this market.",
+            "Markets": []
         }
     ]
 }
