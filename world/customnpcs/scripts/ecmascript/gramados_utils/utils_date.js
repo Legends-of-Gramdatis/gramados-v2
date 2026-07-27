@@ -314,9 +314,9 @@ function getTimeString(stringTime, excludes) {
     return newStr;
 }
 
-// 
+//Gets a date string from a timestamp value, with optional mode and separators.
 function getDateString(val, mode, dateSeperator, timeSeperator) {
-    // 
+    // Default values for optional parameters
     if (typeof (mode) == typeof (undefined) || mode === null) { mode = null; }
     if (typeof (dateSeperator) == typeof (undefined) || dateSeperator === null) { dateSeperator = '/'; }
     if (typeof (timeSeperator) == typeof (undefined) || timeSeperator === null) { timeSeperator = ':'; }
