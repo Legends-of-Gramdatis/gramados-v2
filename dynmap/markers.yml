@@ -1279,6 +1279,14 @@ sets:
                 y: 152.0
                 z: -4010.0
                 label: Atelier de la Verrière - Glass & Glassware
+            marker_14:
+                world: world
+                icon: shopping_shopping
+                markup: false
+                x: -4681.0
+                y: 80.0
+                z: -2851.0
+                label: Furniture Shop
         lines: {
             }
         layerprio: 0
