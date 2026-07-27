@@ -5,7 +5,7 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var _TIMER_COUNTER = 1728000; // 24 IRL hours
 var _OFFER_AND_DEMAND_FACTOR = 0.005; // 0.5% increase/decrease
 var _RANDOM_FACTOR = 0.1; // 10% random factor
-var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
+var STOCK_FILE_PATH = "world/customnpcs/scripts/data_auto/markets.json";
 var DOMAINS_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 
 var world = API.getIWorld(0);

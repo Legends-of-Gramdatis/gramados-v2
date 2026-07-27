@@ -1,6 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 
-var STOCK_FILE_PATH = 'world/customnpcs/scripts/stock_exchange.json';
+var STOCK_FILE_PATH = 'world/customnpcs/scripts/data_auto/markets.json';
 var DOMAIN_FILE_PATH = 'world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json';
 
 function normalizeStockItemKey(itemId, itemDamage) {

@@ -8,7 +8,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js')
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 
 // Define JSON paths as constants
-var STOCK_FILE_PATH = "world/customnpcs/scripts/stock_exchange.json";
+var STOCK_FILE_PATH = "world/customnpcs/scripts/data_auto/markets.json";
 var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 var SPY_DATA_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.json";
 var SPY_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.log";
