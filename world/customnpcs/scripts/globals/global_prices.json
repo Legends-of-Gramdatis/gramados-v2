@@ -77,6 +77,54 @@
     "cfm:counter_sink:0": {
         "value": 30000
     },
+    "cfm:esky:0:0": {
+        "value": 30000
+    },
+    "cfm:esky:10:0": {
+        "value": 30000
+    },
+    "cfm:esky:11:0": {
+        "value": 30000
+    },
+    "cfm:esky:12:0": {
+        "value": 30000
+    },
+    "cfm:esky:13:0": {
+        "value": 30000
+    },
+    "cfm:esky:14:0": {
+        "value": 30000
+    },
+    "cfm:esky:15:0": {
+        "value": 30000
+    },
+    "cfm:esky:1:0": {
+        "value": 30000
+    },
+    "cfm:esky:2:0": {
+        "value": 30000
+    },
+    "cfm:esky:3:0": {
+        "value": 30000
+    },
+    "cfm:esky:4:0": {
+        "value": 30000
+    },
+    "cfm:esky:5:0": {
+        "value": 30000
+    },
+    "cfm:esky:6:0": {
+        "value": 30000
+    },
+    "cfm:esky:7:0": {
+        "value": 30000
+    },
+    "cfm:esky:8:0": {
+        "value": 30000
+    },
+    "cfm:esky:9:0": {
+        "value": 30000
+    },
     "cfm:item_crow_bar:0": {
         "value": 6000
     },
@@ -401,6 +449,9 @@
     "forestry:planks.1:6": {
         "value": 600
     },
+    "forestry:scoop:0": {
+        "value": 2000
+    },
     "forestry:squeezer:0": {
         "value": 100000
     },
@@ -520,6 +571,15 @@
     },
     "growthcraft_cellar:culture_jar:0": {
         "value": 5000
+    },
+    "growthcraft_fishtrap:fishtrap_darkoak:0": {
+        "value": 400000
+    },
+    "growthcraft_fishtrap:fishtrap_oak:0": {
+        "value": 400000
+    },
+    "growthcraft_fishtrap:fishtrap_spruce:0": {
+        "value": 400000
     },
     "growthcraft_grapes:grapewine:1": {
         "display_name": "Purple Grape Wine",
@@ -1050,6 +1110,9 @@
     "harvestcraft:fishsandwichitem:0": {
         "value": 600
     },
+    "harvestcraft:fishtrapbaititem:0": {
+        "value": 20
+    },
     "harvestcraft:flouritem:0": {
         "value": 50
     },
@@ -1528,6 +1591,9 @@
     },
     "harvestcraft:waterfilter:0": {
         "value": 5000
+    },
+    "harvestcraft:watertrap:0": {
+        "value": 100000
     },
     "harvestcraft:well:0": {
         "value": 5000
@@ -2019,6 +2085,9 @@
         "allow_market_override": true,
         "based_on_stock": "Farmiston"
     },
+    "minecraft:fishing_rod:0": {
+        "value": 10000
+    },
     "minecraft:flint_and_steel:0": {
         "value": 3000
     },
@@ -2145,6 +2214,9 @@
     "minecraft:melon_seeds:0|{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}": {
         "value": 7,
         "tag": "{\"display\": {\"Lore\": [\"\\u00a7eUsed for animal feed purposes\"], \"Name\": \"\\u00a7f Animal Feed Seeds\"}}"
+    },
+    "minecraft:netherrack:0": {
+        "value": 10000
     },
     "minecraft:noteblock:0": {
         "value": 1000
@@ -5477,6 +5549,12 @@
     "mts:ivv.battery:0": {
         "value": 20000
     },
+    "mts:ivv.benchcarlift_ramp:0": {
+        "value": 1500000
+    },
+    "mts:ivv.benchcarlift_twopost:0": {
+        "value": 1000000
+    },
     "mts:ivv.benchengine:0": {
         "value": 1500000
     },
@@ -6669,6 +6747,15 @@
     "mts:unudecor.unuparts_decor_unu_books_generic2:0": {
         "value": 2000
     },
+    "mts:unuparts.unuparts_decor_unu_dynometer:0": {
+        "value": 1000000
+    },
+    "mts:unuparts.unuparts_decor_unu_enginestand:0": {
+        "value": 100000
+    },
+    "mts:unuparts.unuparts_decor_unu_lift_twopost:0": {
+        "value": 300000
+    },
     "mts:unuparts.unuparts_decor_unu_paint_apple:0": {
         "value": 20000
     },
@@ -6743,6 +6830,9 @@
     },
     "mts:unuparts.unuparts_decor_unu_paint_unu:0": {
         "value": 20000
+    },
+    "mts:unuparts.unuparts_decor_unu_tiremachine:0": {
+        "value": 500000
     },
     "mts:unuparts.unuparts_instrument_unu_battery:0": {
         "value": 4000
@@ -7410,47 +7500,5 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
-    },
-    "mts:unuparts.unuparts_decor_unu_lift_twopost:0": {
-        "value": 300000
-    },
-    "mts:ivv.benchcarlift_twopost:0": {
-        "value": 1000000
-    },
-    "mts:ivv.benchcarlift_ramp:0": {
-        "value": 1500000
-    },
-    "mts:unuparts.unuparts_decor_unu_dynometer:0": {
-        "value": 1000000
-    },
-    "mts:unuparts.unuparts_decor_unu_tiremachine:0": {
-        "value": 500000
-    },
-    "mts:unuparts.unuparts_decor_unu_enginestand:0": {
-        "value": 100000
-    },
-    "harvestcraft:fishtrapbaititem:0": {
-        "value": 20
-    },
-    "harvestcraft:watertrap:0": {
-        "value": 100000
-    },
-    "forestry:scoop:0": {
-        "value": 2000
-    },
-    "minecraft:fishing_rod:0": {
-        "value": 10000
-    },
-    "growthcraft_fishtrap:fishtrap_darkoak:0": {
-        "value": 400000
-    },
-    "growthcraft_fishtrap:fishtrap_spruce:0": {
-        "value": 400000
-    },
-    "growthcraft_fishtrap:fishtrap_oak:0": {
-        "value": 400000
-    },
-    "minecraft:netherrack:0": {
-        "value": 10000
     }
 }
