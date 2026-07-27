@@ -92,9 +92,6 @@ function isItemInStockExchange(itemId, itemDamage, itemTag) {
     var stockExchangeData = loadJson(STOCK_FILE_PATH);
 
     for (var regionName in stockExchangeData) {
-        if (regionName === 'Region Generals') {
-            continue;
-        }
 
         if (isItemInStockExchangeRegion(regionName, itemId, itemDamage, itemTag)) {
             return true;
@@ -108,9 +105,6 @@ function getStockExchangeRegionForItem(itemId, itemDamage, itemTag) {
     var stockExchangeData = loadJson(STOCK_FILE_PATH);
 
     for (var regionName in stockExchangeData) {
-        if (regionName === 'Region Generals') {
-            continue;
-        }
 
         if (isItemInStockExchangeRegion(regionName, itemId, itemDamage, itemTag)) {
             return regionName;

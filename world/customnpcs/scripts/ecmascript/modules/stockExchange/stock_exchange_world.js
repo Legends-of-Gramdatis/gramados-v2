@@ -6,6 +6,7 @@ var _TIMER_COUNTER = 1728000; // 24 IRL hours
 var _OFFER_AND_DEMAND_FACTOR = 0.005; // 0.5% increase/decrease
 var _RANDOM_FACTOR = 0.1; // 10% random factor
 var STOCK_FILE_PATH = "world/customnpcs/scripts/data_auto/markets.json";
+var MARKET_CONFIG_FILE_PATH = "world/customnpcs/scripts/data/market_config.json";
 var DOMAINS_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 
 var world = API.getIWorld(0);
@@ -25,8 +26,9 @@ function updateStockValue() {
         return;
     }
 
-    var regionGenerals = stockData["Region Generals"];
-    delete stockData["Region Generals"];
+    var marketConfig = loadJson(MARKET_CONFIG_FILE_PATH);
+
+    var regionGenerals = marketConfig;
 
     for (var region in stockData) {
         var stocks = stockData[region];
@@ -36,7 +38,6 @@ function updateStockValue() {
         stockData[region] = stocks;
     }
 
-    stockData["Region Generals"] = regionGenerals;
     saveJson(stockData, STOCK_FILE_PATH);
 }
 

@@ -9,6 +9,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 
 // Define JSON paths as constants
 var STOCK_FILE_PATH = "world/customnpcs/scripts/data_auto/markets.json";
+var MARKET_CONFIG_FILE_PATH = "world/customnpcs/scripts/data/market_config.json";
 var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 var SPY_DATA_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.json";
 var SPY_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.log";
@@ -65,9 +66,7 @@ var world;
  */
 function listRegions() {
     var data = load_data();
-    _REGIONS = Object.keys(data).filter(function (key) {
-        return key !== "Region Generals";
-    });
+    _REGIONS = Object.keys(data);
 }
 
 /**
@@ -194,7 +193,12 @@ function interact(event) {
         var stackSize = item.getStackSize();
 
         stock_exchange_instance = load_data()[NPC_REGION];
-        stock_exchange_generals = load_data()["Region Generals"];
+        stock_exchange_generals = load_market_config();
+
+        if (!stock_exchange_generals[NPC_REGION]) {
+            npc.say("&cMarket config missing for region: " + NPC_REGION + ". Please contact an admin.");
+            return;
+        }
 
         // Check if the player is holding one of the valid crates
         for (var i = 0; i < crates_ids.length; i++) {
@@ -770,6 +774,16 @@ function save_data(data) {
     var fileWriter = new java.io.FileWriter(STOCK_FILE_PATH);
     fileWriter.write(JSON.stringify(json_data, null, 4)); // Pretty-print JSON with 4 spaces
     fileWriter.close();
+}
+
+/**
+ * Loads market configuration data from the config JSON file.
+ * @returns {Object} Region general market configuration.
+ */
+function load_market_config() {
+    var configData = loadJson(MARKET_CONFIG_FILE_PATH);
+
+    return configData;
 }
 
 /**

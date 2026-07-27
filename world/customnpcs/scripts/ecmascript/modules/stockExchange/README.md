@@ -15,7 +15,8 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 
 - **`stock_exchange_world.js`**: Handles global stock updates, including price adjustments during server restarts.
 - **`stock_exchange_delivery_npc.js`**: Manages player interactions with NPCs for selling items and updating stock prices.
-- **`stock_exchange.json`**: Stores stock data, including item prices, quantities, and regional settings.
+- **`data_auto/markets.json`**: Stores dynamic market data only (item prices, quantities sold, last sold timestamps).
+- **`data/market_config.json`**: Stores static regional market configuration (`stock_multiplier`, `stock_flexibility`, `variety_bonus`).
 - **`domains.json`**: Stores domain-specific data, such as wine domain reputation and bottle variety.
 
 ## How It Works
@@ -62,7 +63,7 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 
 ### Stock Data
 
-Stock data is stored in `stock_exchange.json`. Example:
+Dynamic stock data is stored in `data_auto/markets.json`. Example:
 
 ```json
 {
@@ -76,7 +77,14 @@ Stock data is stored in `stock_exchange.json`. Example:
             "quantity_factor": 100,
             "last_sold_time": 0
         }
-    },
+    }
+}
+```
+
+Regional market configuration is stored in `data/market_config.json`. Example:
+
+```json
+{
     "Region Generals": {
         "Gramados Farming": {
             "stock_multiplier": 1.2,
