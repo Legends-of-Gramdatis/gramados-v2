@@ -85,12 +85,10 @@ Regional market configuration is stored in `data/market_config.json`. Example:
 
 ```json
 {
-    "Region Generals": {
-        "Gramados Farming": {
-            "stock_multiplier": 1.2,
-            "stock_flexibility": 0.8,
-            "variety_bonus": 0.1
-        }
+    "Gramados Farming": {
+        "stock_multiplier": 1.2,
+        "stock_flexibility": 0.8,
+        "variety_bonus": 0.1
     }
 }
 ```
