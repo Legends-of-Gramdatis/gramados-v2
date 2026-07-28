@@ -32,19 +32,19 @@ function timer(event) {
     }
 }
 
-function interact(event) {
-    var player = event.player;
-    if (player.getOffhandItem().getName() == "mts:ivv.idcard_seagull") {
-        var tip = getTip(player);
-        if (tip) {
-            tellPlayer(player, ":lit:&eToday's tip: &r" + tip.display);
-            if (tip.description) {
-                tellPlayer(player, "&7:arrow_r: &r" + tip.description);
-            }
-            // logToFile('events', player.getName() + " received tip: " + tip.name);
-        }
-    }
-}
+// function interact(event) {
+//     var player = event.player;
+//     if (player.getOffhandItem().getName() == "mts:ivv.idcard_seagull") {
+//         var tip = getTip(player);
+//         if (tip) {
+//             tellPlayer(player, ":lit:&eToday's tip: &r" + tip.display);
+//             if (tip.description) {
+//                 tellPlayer(player, "&7:arrow_r: &r" + tip.description);
+//             }
+//             // logToFile('events', player.getName() + " received tip: " + tip.name);
+//         }
+//     }
+// }
 
 function getTip(player, attempts) {
     // get a random element from "tip_types" array
