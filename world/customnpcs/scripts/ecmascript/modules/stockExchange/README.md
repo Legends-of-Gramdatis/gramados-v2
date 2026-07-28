@@ -17,6 +17,7 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 - **`stock_exchange_delivery_npc.js`**: Manages player interactions with NPCs for selling items and updating stock prices.
 - **`data_auto/markets.json`**: Stores dynamic market data only (item prices, quantities sold, last sold timestamps).
 - **`data/market_config.json`**: Stores static regional market configuration (`stock_multiplier`, `stock_flexibility`, `variety_bonus`).
+- **`data/containers.json`**: Defines accepted delivery containers. The delivery NPC reads crate IDs from the **Freight Crates** tier and barrel IDs from the **Standard Barrels** tier.
 - **`domains.json`**: Stores domain-specific data, such as wine domain reputation and bottle variety.
 
 ## How It Works
@@ -40,6 +41,7 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 
 1. **Crates and Barrels**:
    - Players deliver items in crates or barrels to NPCs.
+    - Accepted container item IDs are loaded from `data/containers.json` (`Freight Crates` and `Standard Barrels`).
    - The system calculates earnings based on item prices and regional bonuses.
 
 2. **Access Rules by Region**:
