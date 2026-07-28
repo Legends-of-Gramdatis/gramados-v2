@@ -1,0 +1,118 @@
+{
+    "container_types": {
+        "crate": {
+            "display_name": "Crates",
+            "tiers": {
+                "personal": {
+                    "tier": 1,
+                    "display_name": "Personal Containers",
+                    "description": "Backpacks, luggage, boxes, and other small hand-carried containers.",
+                    "items": [
+                        "mts:ivv.backpack_red",
+                        "mts:ivv.backpack_blue",
+                        "mts:ivv.backpack_green",
+                        "mts:ivv.backpack_black",
+                        "mts:ivv.backpack_brown",
+                        "mts:ivv.backpack_white",
+                        "mts:ivv.backpack_yellow",
+                        "mts:ivv.box",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_apple",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_aqua",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_ford",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_ivory",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_jade",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_lemon",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_ocean",
+                        "mts:unuparts.unuparts_part_unu_luggage_1_sea",
+                        "mts:unuparts.unuparts_part_unu_luggage_2",
+                        "mts:unuparts.unuparts_part_unu_luggage_2_medic",
+                        "mts:unuparts.unuparts_part_unu_luggage_2_tool",
+                        "mts:unuparts.unuparts_part_unu_luggage_3"
+                    ]
+                },
+                "freight": {
+                    "tier": 2,
+                    "display_name": "Freight Crates",
+                    "description": "Standard wooden and metal crates intended for regular commercial deliveries.",
+                    "items": [
+                        "mts:unuparts.unuparts_part_unu_crate_wooden",
+                        "mts:unuparts.unuparts_part_unu_crate_metal",
+                        "mts:iv_tpp.trin_crate1_wooden",
+                        "mts:iv_tpp.trin_crate1",
+                        "mts:iv_tpp.trin_crate2",
+                        "mts:ivv.crate_metallic",
+                        "mts:ivv.crate",
+                        "mts:ivv.chest",
+                        "mts:iav.iav_storage_l_crate_2",
+                        "mts:iav.iav_storage_l_crate_3",
+                        "mts:iav.iav_storage_l_crate_5",
+                        "mts:iav.iav_storage_l_crate_6",
+                        "mts:iv_tpp.trin_stacked_boxes_ornate_gold",
+                        "mts:iv_tpp.trin_stacked_boxes_sculpted_light",
+                        "mts:iv_tpp.trin_stacked_boxes_ornate_marble",
+                        "mts:iv_tpp.trin_stacked_boxes_cardboard_2",
+                        "mts:iv_tpp.trin_stacked_boxes_cardboard"
+                    ]
+                },
+                "bulk": {
+                    "tier": 3,
+                    "display_name": "Bulk Storage",
+                    "description": "Large industrial storage units and container-sized freight.",
+                    "items": [
+                        "mts:unuparts.unuparts_part_unu_container_redcliffe",
+                        "mts:warkparts.wark_standard_interactable_container_blue",
+                        "mts:warkparts.wark_standard_interactable_container_brown",
+                        "mts:warkparts.wark_standard_interactable_container_gray",
+                        "mts:warkparts.wark_standard_interactable_container_green",
+                        "mts:warkparts.wark_standard_interactable_container_militarygray",
+                        "mts:warkparts.wark_standard_interactable_container_militarygreen",
+                        "mts:warkparts.wark_standard_interactable_container_militaryyellow",
+                        "mts:warkparts.wark_standard_interactable_container_orange",
+                        "mts:warkparts.wark_standard_interactable_container_red",
+                        "mts:warkparts.wark_standard_interactable_container_white",
+                        "mts:warkparts.wark_standard_interactable_container_yellow",
+                        "mts:iv_tpp.container_dry_container_chrome",
+                        "mts:iv_tpp.container_dry_container_copper",
+                        "mts:iv_tpp.container_dry_container_gray",
+                        "mts:iv_tpp.container_dry_container_green",
+                        "mts:iv_tpp.container_dry_container_military_green",
+                        "mts:iv_tpp.container_dry_container_red",
+                        "mts:iv_tpp.container_dry_container_red_rust",
+                        "mts:iv_tpp.container_dry_container_white",
+                        "mts:iv_tpp.container_reefer_chrome",
+                        "mts:iv_tpp.container_reefer_copper",
+                        "mts:iv_tpp.container_reefer_gray",
+                        "mts:iv_tpp.container_reefer_green",
+                        "mts:iv_tpp.container_reefer_military_green",
+                        "mts:iv_tpp.container_reefer_red",
+                        "mts:iv_tpp.container_reefer_red_rust",
+                        "mts:iv_tpp.container_reefer_white",
+                        "mts:ivv.container_black",
+                        "mts:ivv.container_blue",
+                        "mts:ivv.container_coke",
+                        "mts:ivv.container_green",
+                        "mts:ivv.container_pootis",
+                        "mts:ivv.container_red"
+                    ]
+                }
+            }
+        },
+        "barrel": {
+            "display_name": "Barrels",
+            "tiers": {
+                "standard": {
+                    "tier": 1,
+                    "display_name": "Standard Barrels",
+                    "description": "Ordinary wooden and metal barrels used for fluid deliveries.",
+                    "items": [
+                        "mts:unuparts.unuparts_part_unu_barrel_wooden",
+                        "mts:unuparts.unuparts_part_unu_barrel_metal_yellow",
+                        "mts:unuparts.unuparts_part_unu_barrel_metal_blue",
+                        "mts:unuparts.unuparts_part_unu_barrel_metal_red",
+                        "mts:unuparts.unuparts_part_unu_barrel_metal_grey"
+                    ]
+                }
+            }
+        }
+    }
+}
