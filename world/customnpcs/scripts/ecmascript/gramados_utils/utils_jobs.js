@@ -169,6 +169,54 @@ function getAutopayAmountTotal(player) {
     return total;
 }
 
+function getAllJobs() {
+    var cfg = loadJson(CONFIG_PATH);
+    var job_list = [];
+    for (var i = 0; i < cfg.Jobs.length; i++) {
+        var job = cfg.Jobs[i];
+        job_list.push({
+            ID: job.JobID,
+            Title: job.Title,
+        });
+    }
+    return job_list;
+}
+
+function getAllTags() {
+    var cfg = loadJson(CONFIG_PATH);
+    var tag_list = [];
+    for (var i = 0; i < cfg.Tags.length; i++) {
+        var tag = cfg.Tags[i];
+        tag_list.push({
+            ID: tag.TagID,
+            Title: tag.Title,
+        });
+    }
+    return tag_list;
+}
+
+function getAllJobsAndTags() {
+    var cfg = loadJson(CONFIG_PATH);
+    var combined_list = [];
+    for (var i = 0; i < cfg.Jobs.length; i++) {
+        var job = cfg.Jobs[i];
+        combined_list.push({
+            id: job.JobID,
+            title: job.Title,
+            type: "Job"
+        });
+    }
+    for (var j = 0; j < cfg.Tags.length; j++) {
+        var tag = cfg.Tags[j];
+        combined_list.push({
+            id: tag.TagID,
+            title: tag.Title,
+            type: "Tag"
+        });
+    }
+    return combined_list;
+}
+
 // ===================== Dialog helpers (centralized) =====================
 
 /**
