@@ -86,6 +86,8 @@
             "TagID": 606,
             "TagLock": 607,
             "TagQuit": 608,
+            "Title": "Certified Mechanic",
+            "Description": "Only certified mechanics are authorized to deliver goods to this market.",
             "MarketAccessDeniedText": "Sorry, but I only conduct business with licensed mechanics. Come back once you've earned your certification."
         }
     },
@@ -472,9 +474,9 @@
             "Markets": []
         },
         {
-            "JobID": 661,
-            "JobLock": 662,
-            "JobQuit": 663,
+            "JobID": 664,
+            "JobLock": 665,
+            "JobQuit": 666,
             "Type": "Advanced",
             "Qualification": "Advanced",
             "JobName": "Mechanic",
