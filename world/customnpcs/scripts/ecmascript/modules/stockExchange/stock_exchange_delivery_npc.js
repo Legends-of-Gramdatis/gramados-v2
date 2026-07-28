@@ -10,45 +10,14 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 // Define JSON paths as constants
 var STOCK_FILE_PATH = "world/customnpcs/scripts/data_auto/markets.json";
 var MARKET_CONFIG_FILE_PATH = "world/customnpcs/scripts/data/market_config.json";
+var CONTAINERS_FILE_PATH = "world/customnpcs/scripts/data/containers.json";
 var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
 var SPY_DATA_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.json";
 var SPY_LOG_FILE_PATH = "world/customnpcs/scripts/json_spy/stock_spying.log";
 
 // Initialize variables and constants for the stock exchange
-var crates_ids = [
-    "mts:unuparts.unuparts_part_unu_crate_wooden",
-    "mts:unuparts.unuparts_part_unu_crate_metal",
-    "mts:iv_tpp.trin_crate2",
-    "mts:iv_tpp.trin_crate1_wooden",
-    "mts:iv_tpp.trin_crate1_metal",
-    "mts:ivv.backpack_red",
-    "mts:ivv.backpack_blue",
-    "mts:ivv.backpack_green",
-    "mts:ivv.backpack_black",
-    "mts:ivv.backpack_brown",
-    "mts:ivv.backpack_white",
-    "mts:ivv.backpack_yellow",
-    "mts:ivv.crate_metallic",
-    "mts:ivv.crate",
-    "mts:ivv.box",
-    "mts:ivv.chest",
-    "mts:iav.iav_storage_l_crate_2",
-    "mts:iav.iav_storage_l_crate_3",
-    "mts:iav.iav_storage_l_crate_5",
-    "mts:iav.iav_storage_l_crate_6",
-    "mts:iv_tpp.trin_stacked_boxes_ornate_gold",
-    "mts:iv_tpp.trin_stacked_boxes_sculpted_light",
-    "mts:iv_tpp.trin_stacked_boxes_ornate_marble",
-    "mts:iv_tpp.trin_stacked_boxes_cardboard_2",
-    "mts:iv_tpp.trin_stacked_boxes_cardboard"
-];
-var barrels_ids = [
-    "mts:unuparts.unuparts_part_unu_barrel_wooden",
-    "mts:unuparts.unuparts_part_unu_barrel_metal_yellow",
-    "mts:unuparts.unuparts_part_unu_barrel_metal_blue",
-    "mts:unuparts.unuparts_part_unu_barrel_metal_red",
-    "mts:unuparts.unuparts_part_unu_barrel_metal_grey"
-];
+var crates_ids = [];
+var barrels_ids = [];
 
 
 var _REGIONS = []; // List of available regions
@@ -70,12 +39,59 @@ function listRegions() {
 }
 
 /**
+ * Returns the item list for the tier whose display_name matches the requested value.
+ * @param {Object} tiers - Tier map from containers.json.
+ * @param {string} targetDisplayName - Display name to match.
+ * @returns {Array} The tier item IDs, or an empty array when missing.
+ */
+function getContainerTierItemsByDisplayName(tiers, targetDisplayName) {
+    if (!tiers) {
+        return [];
+    }
+
+    for (var tierKey in tiers) {
+        var tier = tiers[tierKey];
+        if (tier && tier["display_name"] == targetDisplayName && Array.isArray(tier["items"])) {
+            return tier["items"].slice();
+        }
+    }
+
+    return [];
+}
+
+/**
+ * Loads accepted crate/barrel IDs from containers.json.
+ * Uses Freight Crates and Standard Barrels tiers.
+ */
+function loadAcceptedContainerIds() {
+    var containerData = loadJson(CONTAINERS_FILE_PATH);
+
+    if (!containerData || !containerData["container_types"]) {
+        crates_ids = [];
+        barrels_ids = [];
+        npc.say("&cContainer config is missing or invalid: " + CONTAINERS_FILE_PATH);
+        return;
+    }
+
+    var crateTiers = containerData["container_types"]["crate"] ? containerData["container_types"]["crate"]["tiers"] : null;
+    var barrelTiers = containerData["container_types"]["barrel"] ? containerData["container_types"]["barrel"]["tiers"] : null;
+
+    crates_ids = getContainerTierItemsByDisplayName(crateTiers, "Freight Crates");
+    barrels_ids = getContainerTierItemsByDisplayName(barrelTiers, "Standard Barrels");
+
+    if (crates_ids.length == 0 || barrels_ids.length == 0) {
+        npc.say("&cContainer tier items missing in " + CONTAINERS_FILE_PATH + ". Expected Freight Crates and Standard Barrels.");
+    }
+}
+
+/**
  * Initializes the NPC when it is spawned or loaded.
  * @param {Object} event - The event object containing the NPC instance.
  */
 function init(event) {
     npc = event.npc;
     world = npc.getWorld();
+    loadAcceptedContainerIds();
 
     var stored_data = npc.getStoreddata();
 
