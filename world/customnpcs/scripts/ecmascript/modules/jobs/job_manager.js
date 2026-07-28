@@ -24,10 +24,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 function init(event) {
     // Load static config
     job_config = loadJson(config_file_path);
-    if (!job_config) {
-        // Fallback defaults if config is missing
-        job_config = { "Region_Job_Limits": {}, "Jobs": [], "Tags": {} };
-    }
 
     // Load dynamic data (per-player state)
     job_data = loadJson(data_file_path);
