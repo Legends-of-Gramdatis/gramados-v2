@@ -13,6 +13,7 @@ var MARKET_DATA = "world/customnpcs/scripts/data_auto/markets.json";
 var MARKET_CONFIG = "world/customnpcs/scripts/data/market_config.json";
 var CONTAINERS_CONFIG = "world/customnpcs/scripts/data/containers.json";
 var DOMAIN_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/winemaking/domains.json";
+var MARKET_NPC_CONFIG = "world/customnpcs/scripts/ecmascript/modules/stockExchange/market_npc_config.json";
 
 // Stored-data keys
 var CRATE_PERSONAL_KEY = "crate_personal";
@@ -33,39 +34,7 @@ var activeMarketData = null;
 var activeMarketConfig = null;
 var activeJob = null;
 var containerConfig = null;
-
-var admin_config_items = {
-    "crate_personal": {
-        "id": "variedcommodities:coin_wood",
-        "description": "&8Toggles whether this NPC accepts personal containers.",
-        "name": "&bToggle Personal Container Acceptance"
-    },
-    "crate_freight": {
-        "id": "variedcommodities:coin_stone",
-        "description": "&8Toggles whether this NPC accepts freight crates.",
-        "name": "&bToggle Freight Crate Acceptance"
-    },
-    "crate_bulk": {
-        "id": "variedcommodities:coin_bronze",
-        "description": "&8Toggles whether this NPC accepts bulk storage containers.",
-        "name": "&bToggle Bulk Storage Acceptance"
-    },
-    "barrel_standard": {
-        "id": "variedcommodities:coin_iron",
-        "description": "&8Toggles whether this NPC accepts standard barrels.",
-        "name": "&bToggle Standard Barrel Acceptance"
-    },
-    "market": {
-        "id": "variedcommodities:ingot_bronze",
-        "description": "&8Cycles through the markets this NPC may manage.",
-        "name": "&bSwitch Market"
-    },
-    "job": {
-        "id": "variedcommodities:ingot_mithril",
-        "description": "&8Cycles through the jobs or job tags required to trade.",
-        "name": "&bSwitch Job"
-    }
-};
+var admin_config_items = null;
 
 /* -------------------------------------------------------------------------- */
 /* Lifecycle                                                                   */
@@ -75,12 +44,18 @@ function init(event) {
     npc = event.npc;
     world = npc.getWorld();
 
+    refreshAdminConfigItems();
     refreshRuntimeConfiguration();
 }
 
 function interact(event) {
     npc = event.npc;
     world = npc.getWorld();
+
+    if (!refreshAdminConfigItems()) {
+        npc.say(ccs("&cI cannot load my admin configuration right now. Please contact an admin."));
+        return;
+    }
 
     var player = event.player;
     var offhand = player.getOffhandItem();
@@ -108,6 +83,11 @@ function interact(event) {
     }
 
     processPlayerDelivery(player, mainhand);
+}
+
+function refreshAdminConfigItems() {
+    admin_config_items = loadJson(MARKET_NPC_CONFIG);
+    return !!admin_config_items;
 }
 
 /* -------------------------------------------------------------------------- */

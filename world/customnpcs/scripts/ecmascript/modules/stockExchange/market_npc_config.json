@@ -1,0 +1,32 @@
+{
+    "crate_personal": {
+        "id": "variedcommodities:coin_wood",
+        "description": "&8Toggles whether this NPC accepts personal containers.",
+        "name": "&bToggle Personal Container Acceptance"
+    },
+    "crate_freight": {
+        "id": "variedcommodities:coin_stone",
+        "description": "&8Toggles whether this NPC accepts freight crates.",
+        "name": "&bToggle Freight Crate Acceptance"
+    },
+    "crate_bulk": {
+        "id": "variedcommodities:coin_bronze",
+        "description": "&8Toggles whether this NPC accepts bulk storage containers.",
+        "name": "&bToggle Bulk Storage Acceptance"
+    },
+    "barrel_standard": {
+        "id": "variedcommodities:coin_iron",
+        "description": "&8Toggles whether this NPC accepts standard barrels.",
+        "name": "&bToggle Standard Barrel Acceptance"
+    },
+    "market": {
+        "id": "variedcommodities:ingot_bronze",
+        "description": "&8Cycles through the markets this NPC may manage.",
+        "name": "&bSwitch Market"
+    },
+    "job": {
+        "id": "variedcommodities:ingot_mithril",
+        "description": "&8Cycles through the jobs or job tags required to trade.",
+        "name": "&bSwitch Job"
+    }
+}
