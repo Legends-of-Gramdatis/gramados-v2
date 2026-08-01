@@ -14,7 +14,8 @@ This module implements a dynamic stock exchange system for the Gramados modded M
 ## Files
 
 - **`stock_exchange_world.js`**: Handles global stock updates, including price adjustments during server restarts.
-- **`stock_exchange_delivery_npc.js`**: Manages player interactions with NPCs for selling items and updating stock prices.
+- **`market_npc.js`**: Manages player interactions with NPCs for selling items and updating stock prices.
+- **`market_npc_config.json`**: Defines admin configuration items used by `market_npc.js` (toggle tokens, market switch item, and job switch item).
 - **`data_auto/markets.json`**: Stores dynamic market data only (item prices, quantities sold, last sold timestamps).
 - **`data/market_config.json`**: Stores static regional market configuration (`stock_multiplier`, `stock_flexibility`, `variety_bonus`).
 - **`data/containers.json`**: Defines accepted delivery containers. The delivery NPC reads crate IDs from the **Freight Crates** tier and barrel IDs from the **Standard Barrels** tier.
@@ -94,6 +95,14 @@ Regional market configuration is stored in `data/market_config.json`. Example:
     }
 }
 ```
+
+### Market NPC Admin Items
+
+Admin interaction items for the market NPC are loaded from `market_npc_config.json`. Each key maps to:
+
+- `id`: item ID required in the admin's main hand.
+- `name`: displayed item name.
+- `description`: lore shown on the helper items.
 
 ### Domain Data
 
