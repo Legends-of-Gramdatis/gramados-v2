@@ -5,7 +5,7 @@
             "tiers": {
                 "personal": {
                     "tier": 1,
-                    "display_name": "Personal Containers",
+                    "display_name": "personal container",
                     "description": "Backpacks, luggage, boxes, and other small hand-carried containers.",
                     "items": [
                         "mts:ivv.backpack_red",
@@ -32,7 +32,7 @@
                 },
                 "freight": {
                     "tier": 2,
-                    "display_name": "Freight Crates",
+                    "display_name": "freight crate",
                     "description": "Standard wooden and metal crates intended for regular commercial deliveries.",
                     "items": [
                         "mts:unuparts.unuparts_part_unu_crate_wooden",
@@ -56,7 +56,7 @@
                 },
                 "bulk": {
                     "tier": 3,
-                    "display_name": "Bulk Storage",
+                    "display_name": "bulk storage",
                     "description": "Large industrial storage units and container-sized freight.",
                     "items": [
                         "mts:unuparts.unuparts_part_unu_container_redcliffe",
@@ -102,7 +102,7 @@
             "tiers": {
                 "standard": {
                     "tier": 1,
-                    "display_name": "Standard Barrels",
+                    "display_name": "standard barrel",
                     "description": "Ordinary wooden and metal barrels used for fluid deliveries.",
                     "items": [
                         "mts:unuparts.unuparts_part_unu_barrel_wooden",
