@@ -87,8 +87,8 @@
             "TagLock": 607,
             "TagQuit": 608,
             "Title": "Certified Mechanic",
-            "Description": "Only certified mechanics are authorized to deliver goods to this market.",
-            "MarketAccessDeniedText": "Sorry, but I only conduct business with licensed mechanics. Come back once you've earned your certification."
+            "MarketAccessDeniedText": "Sorry, but I only conduct business with licensed mechanics. Come back once you've earned your certification.",
+            "Markets": []
         }
     },
     "Jobs": [
