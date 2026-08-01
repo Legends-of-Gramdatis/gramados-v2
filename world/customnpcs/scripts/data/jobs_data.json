@@ -130,7 +130,8 @@
             "Perms": [],
             "AutoAssignPerms": [
                 "region_Farmiston_Countryside_VelgradMagistral_KrasnayaZemlyaFarm_Farm",
-                "region_Farmiston_Countryside_TisovLane_RechnoyePoleFarm_Farm"
+                "region_Farmiston_Countryside_TisovLane_RechnoyePoleFarm_Farm",
+                "region_Farmiston_Countryside_VelgradMagistral_VayanikotyFarm_Farm"
             ],
             "Tags": [
                 "Farmer",
