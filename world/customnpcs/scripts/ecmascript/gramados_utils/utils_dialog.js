@@ -26,3 +26,20 @@ function unread_dialog_from_category(player, category) {
     }
     return deletedDialogs;
 }
+
+function undo_quest_from_category(player, category) {
+    // world/customnpcs/quests/<category>/
+    var questsPath = "world/customnpcs/quests/" + category + "/";
+    var questsFiles = readDir(questsPath);
+    var deletedQuests = 0;
+    // a Quest file is <id>.json, so we need to extract the id from the filename
+    for (var i = 0; i < questsFiles.length; i++) {
+        var questFile = questsFiles[i];
+        var questId = parseInt(questFile.split("/").pop().split(".")[0]);
+        if (!isNaN(questId) && player.hasFinishedQuest(questId)) {
+            player.removeQuest(questId);
+            deletedQuests++;
+        }
+    }
+    return deletedQuests;
+}
