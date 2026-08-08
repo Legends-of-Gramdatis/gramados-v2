@@ -13309,6 +13309,12 @@ function login(e) {
 
     ensureContactInfo(e.player);
 
+    DiscordBot.sendMessage({
+        "channel": "%chat%",
+        "player": e.player.getName(),
+        "content": e.player.getName() + " logged in."
+    });
+
     (function (e) {
         var pl = e.player;
         var data = pl.world.getStoreddata();
@@ -13334,6 +13340,12 @@ function login(e) {
 function logout(e) {
 
     PluginAPI.Players.run("logout", [e]);
+
+    DiscordBot.sendMessage({
+        "channel": "%chat%",
+        "player": e.player.getName(),
+        "content": e.player.getName() + " logged out."
+    });
 
 }
 
@@ -13689,6 +13701,16 @@ function chat(e) {
                     toldPlayers.push(wpl.getName());
                 }
             }
+        }
+
+        var playerName = e.player.getName();
+        var message = escCcs(e.message.toString());
+        if (typeof DiscordBot !== 'undefined' && DiscordBot !== null && typeof DiscordBot.sendMessage === 'function') {
+            DiscordBot.sendMessage({
+                "channel": "%chat%",
+                "player": playerName,
+                "content": message
+            });
         }
 
         if (ScriptHooks)
