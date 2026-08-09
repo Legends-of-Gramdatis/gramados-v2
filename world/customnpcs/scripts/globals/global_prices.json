@@ -7500,5 +7500,11 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "mts:iv_tcp_v3_utility.trin_trumon_milkcoffee-lavenderblue-sapphire_black:0": {
+        "value": 3515000
+    },
+    "mts:iv_tcp_v3_utility.trin_trumon_deepblack-ivory-midnightpurple_brown:0": {
+        "value": 3270000
     }
 }
