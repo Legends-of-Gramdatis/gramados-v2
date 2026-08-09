@@ -134,7 +134,7 @@ function pullLootTable(lootTablePath, player) {
         }
     }
 
-    logToFile("loot_tables", "Loot table pulled: " + lootTablePath);
+    // logToFile("loot_tables", "Loot table pulled: " + lootTablePath);
 
     return generatedLoot;
 }
@@ -155,7 +155,7 @@ function multiplePullLootTable(lootTablePath, player, lootCount) {
             full_loot = full_loot.concat(loot);
         }
     }
-    logToFile("loot_tables", "Loot table pulled: " + lootTablePath + " x" + lootCount);
+    // logToFile("loot_tables", "Loot table pulled: " + lootTablePath + " x" + lootCount);
 
     return full_loot;
 }
