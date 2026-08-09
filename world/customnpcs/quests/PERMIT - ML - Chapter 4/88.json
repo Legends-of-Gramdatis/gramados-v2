@@ -1,5 +1,5 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Lord Novskaya",
     "NextQuestId": 89,
     "RandomReward": 0b,
     "QuestRepeat": 0,
@@ -100,5 +100,5 @@
     },
     "LeaveItems": 0b,
     "CompleteText": "I’ve achieved a high score in the tournament, proving myself worthy among the best marksmen.",
-    "NextQuestTitle": "Step 5: Talk to Lord Ardocor to conclude the tournament"
+    "NextQuestTitle": "Step 5: Talk to Lord Novskaya to conclude the tournament"
 }

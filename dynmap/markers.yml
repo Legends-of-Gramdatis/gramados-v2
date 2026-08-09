@@ -923,7 +923,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 73.0
                 z: 243.0
-                label: Ardocor
+                label: Novskaya
             marker_2:
                 world: world
                 markup: false
@@ -1246,7 +1246,7 @@ sets:
                 icon: shopping_shopping
                 y: 67.0
                 z: 234.0
-                label: Ardocor Furniture
+                label: Novskaya Furniture
             marker_10:
                 world: world
                 markup: false
@@ -1815,7 +1815,7 @@ sets:
                 icon: services_station_petrol
                 y: 70.0
                 z: 112.0
-                label: Ardocor UNU Fuel Station
+                label: Novskaya UNU Fuel Station
             marker_14:
                 world: world
                 markup: false
@@ -2264,7 +2264,7 @@ sets:
                 icon: health_misc
                 y: 67.0
                 z: 207.0
-                label: Ardocor Multi-Service Facility
+                label: Novskaya Multi-Service Facility
             marker_13:
                 world: world
                 markup: false
@@ -2320,7 +2320,7 @@ sets:
                 x: -5120.0
                 y: 67.0
                 z: 268.0
-                label: Ardocor Post Office
+                label: Novskaya Post Office
             marker_20:
                 world: world
                 markup: false

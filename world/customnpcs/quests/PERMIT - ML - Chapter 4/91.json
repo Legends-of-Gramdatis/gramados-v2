@@ -1,12 +1,12 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Lord Novskaya",
     "NextQuestId": -1,
     "RandomReward": 0b,
     "QuestRepeat": 1,
     "QuestCompletion": 0,
     "IgnoreNBT": 0b,
     "Title": "Ammo Refill",
-    "Text": "Wait for Lord Ardocor to gather the ammo.",
+    "Text": "Wait for Lord Novskaya to gather the ammo.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

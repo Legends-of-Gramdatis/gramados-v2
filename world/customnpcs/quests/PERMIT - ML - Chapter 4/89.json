@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Lord Novskaya",
     "NextQuestId": 90,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 5: Talk to Lord Ardocor to conclude the tournament",
-    "Text": "Having completed the tournament, I should speak with Lord Ardocor to officially conclude my participation and return the gun he provided.",
+    "Title": "Step 5: Talk to Lord Novskaya to conclude the tournament",
+    "Text": "Having completed the tournament, I should speak with Lord Novskaya to officially conclude my participation and return the gun he provided.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -40,6 +40,6 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I’ve returned the tournament rifle to Lord Ardocor and officially concluded my part in the competition.",
+    "CompleteText": "I’ve returned the tournament rifle to Lord Novskaya and officially concluded my part in the competition.",
     "NextQuestTitle": "Step 6: Return to Marcus Eldridge to review your progress"
 }

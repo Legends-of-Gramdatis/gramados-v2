@@ -1,5 +1,5 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Lord Novskaya",
     "NextQuestId": 86,
     "QuestLocation3": "",
     "RandomReward": 0b,
@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Step 1: Find Suncrest Estate on Farmiston Island",
-    "Text": "Marcus Eldridge has informed me about an exclusive shooting tournament at Suncrest Estate on Farmiston Island, east of Ardocor Village. To get there, I need to cross the Mirefall Bridge from Monsalac Island to Farmiston Island, then take the small road on the left just before the wheat farms to reach Ardocor Village. Suncrest Estate is located on the eastern side of the village.",
+    "Text": "Marcus Eldridge has informed me about an exclusive shooting tournament at Suncrest Estate on Farmiston Island, east of Novskaya Village. To get there, I need to cross the Mirefall Bridge from Monsalac Island to Farmiston Island, then take the small road on the left just before the wheat farms to reach Novskaya Village. Suncrest Estate is located on the eastern side of the village.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've found Suncrest Estate and am ready for the next challenge: the tournament hosted by the Ardocor family.",
-    "NextQuestTitle": "Step 2: Talk to Lord Ardocor to receive your tournament instructions and gun",
+    "CompleteText": "I've found Suncrest Estate and am ready for the next challenge: the tournament hosted by the Novskaya family.",
+    "NextQuestTitle": "Step 2: Talk to Lord Novskaya to receive your tournament instructions and gun",
     "QuestLocation": "Suncrest Estate"
 }

@@ -1,11 +1,11 @@
 {
-    "CompleterNpc": "Lord Ardocor",
+    "CompleterNpc": "Lord Novskaya",
     "NextQuestId": 87,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 2: Talk to Lord Ardocor to receive your tournament instructions and gun",
-    "Text": "Upon arriving at Suncrest Estate, I need to meet Lord Ardocor, who will give me the details of the tournament. He will also provide the gun I'll be using for the competition.",
+    "Title": "Step 2: Talk to Lord Novskaya to receive your tournament instructions and gun",
+    "Text": "Upon arriving at Suncrest Estate, I need to meet Lord Novskaya, who will give me the details of the tournament. He will also provide the gun I'll be using for the competition.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -85,6 +85,6 @@
             }
         ]
     },
-    "CompleteText": "I’ve spoken to Lord Ardocor and received my instructions and the tournament rifle. Time to prove my skills.",
+    "CompleteText": "I’ve spoken to Lord Novskaya and received my instructions and the tournament rifle. Time to prove my skills.",
     "NextQuestTitle": "Step 3: Participate in the shooting tournament at Suncrest Estate"
 }
