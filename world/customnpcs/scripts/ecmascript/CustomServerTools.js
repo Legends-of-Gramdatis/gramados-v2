@@ -3969,6 +3969,7 @@ registerXCommands([
             return false;
         }
 
+        logToFile("dev", "Setting unit value for " + itemId + " to " + valueCents + " cents by player " + pl.getName());
         globalPrices[itemId].value = valueCents;
         saveJson(globalPrices, GLOBAL_PRICES_JSON_PATH);
 
@@ -4001,6 +4002,7 @@ registerXCommands([
             globalPrices[itemId] = {};
         }
 
+        logToFile("dev", "Setting unit value for " + itemId + " to " + valueCents + " cents by player " + pl.getName());
         globalPrices[itemId].value = valueCents;
         saveJson(globalPrices, GLOBAL_PRICES_JSON_PATH);
 
@@ -13311,8 +13313,7 @@ function login(e) {
 
     DiscordBot.sendMessage({
         "channel": "%chat%",
-        "player": e.player.getName(),
-        "content": e.player.getName() + " logged in."
+        "content": e.player.getName() + " joined"
     });
 
     (function (e) {
@@ -13343,8 +13344,7 @@ function logout(e) {
 
     DiscordBot.sendMessage({
         "channel": "%chat%",
-        "player": e.player.getName(),
-        "content": e.player.getName() + " logged out."
+        "content": e.player.getName() + " left"
     });
 
 }
@@ -13495,7 +13495,7 @@ try {
 function discordMessage(e) {
     var msg = e.message.replace(CHAT_CMD_RGX_G, '');
 
-    var logMsg = "[" + e.author + "] -> " + colorCodeString(e.message.toString());
+    var logMsg = "[" + e.username + "] -> " + colorCodeString(e.message.toString());
 
     //Chat emotes
     msg = parseEmotes(msg);
@@ -13506,7 +13506,7 @@ function discordMessage(e) {
     //Concat new message
     var msgInfo = '&e' + curTimeStr + '\n';
 
-    var msg = parseEmotes("[:lang:]{*|show_text:" + msgInfo.replace(/&/gm, '\u00A7') + "}&r ") + "&7[&3Discord&7]&r " + e.author + ": " + msg;
+    var msg = parseEmotes("[:lang:]{*|show_text:" + msgInfo.replace(/&/gm, '\u00A7') + "}&r ") + "&7[&3Discord&7]&r " + e.username + ": " + msg;
 
     Logger.info(logMsg);
 

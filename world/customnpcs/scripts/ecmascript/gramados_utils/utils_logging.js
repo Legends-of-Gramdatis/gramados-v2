@@ -80,6 +80,11 @@ function logToFile(logType, message) {
         tellPlayer("Invalid log type: " + logType);
     }
 
+    DiscordBot.sendMessage({
+        "channel": "%console%",
+        "content": message
+    });
+
     var filePath = LOG_FILES[logType].log;
     var logEntry = "[" + new Date().toLocaleString() + "] " + message + "\n";
 
