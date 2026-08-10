@@ -716,7 +716,7 @@ sets:
                 x: -2450.0
                 y: 96.0
                 z: 609.0
-                label: Gramatruck Hotel Restaurant
+                label: Blackrode Hotel Restaurant
             marker_19:
                 world: world
                 markup: false
@@ -878,7 +878,7 @@ sets:
                 x: -2464.0
                 y: 96.0
                 z: 599.0
-                label: Gramatruck Truck Stop Hotel
+                label: Blackrode Truck Stop Hotel
             marker_10:
                 world: world
                 markup: false
@@ -1083,7 +1083,15 @@ sets:
                 x: -2643.0
                 y: 125.0
                 z: -5863.0
-                label: Courval-en-Fortvelles
+                label: Courval-en-Fortvelles,
+            marker_22:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -2440.0
+                y: 99.0
+                z: 453.0
+                label: Blackrode
         lines: {
             }
         layerprio: 0
@@ -1323,7 +1331,7 @@ sets:
                 x: -2473.0
                 y: 114.0
                 z: 600.0
-                label: Gramatruck Hotel Cocktail Bar
+                label: Blackrode Hotel Cocktail Bar
             marker_4:
                 world: world
                 markup: false
@@ -1887,7 +1895,7 @@ sets:
                 x: -2546.0
                 y: 96.0
                 z: 583.0
-                label: Gramatruck Charging Station
+                label: Blackrode Charging Station
             marker_23:
                 world: world
                 markup: false
@@ -1895,7 +1903,7 @@ sets:
                 x: -2567.0
                 y: 96.0
                 z: 558.0
-                label: Gramatruck Fuel Station
+                label: Blackrode Fuel Station
             marker_24:
                 world: world
                 markup: false
@@ -2615,7 +2623,7 @@ sets:
                 x: -2496.0
                 y: 96.0
                 z: 527.0
-                label: Gramatruck - Gramados Truck Stop
+                label: Blackrode Truck Stop
         lines: {}
         layerprio: 0
     Parks And Gardens:
