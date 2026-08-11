@@ -78,7 +78,7 @@ function interact(event) {
         return;
     }
 
-    processPlayerDelivery(player, mainhand);
+    processPlayerDelivery(npc, player, mainhand);
 }
 
 function refreshAdminConfigItems() {
@@ -478,7 +478,7 @@ function getEnabledContainerDescription() {
 /* Delivery processing                                                         */
 /* -------------------------------------------------------------------------- */
 
-function processPlayerDelivery(player, item) {
+function processPlayerDelivery(npc, player, item) {
     if (!item || item.isEmpty()) {
         npc.say(ccs("&ePlease bring your delivery in an accepted container."));
         return;
@@ -492,7 +492,7 @@ function processPlayerDelivery(player, item) {
     }
 
     if (!npcAcceptsContainer(containerInfo)) {
-        npc.say(ccs("&eThis counter is not equipped to handle " + containerInfo.displayName + "."));
+        npc.say(ccs("&eThis container is not equipped to handle " + containerInfo.displayName + "."));
         return;
     }
 
