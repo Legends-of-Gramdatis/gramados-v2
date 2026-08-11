@@ -152,17 +152,15 @@ function getCrateContentEntries(itemStack) {
  */
 function setCrateContentEntries(itemStack, entries) {
     var inventoryCompound = itemStack.getNbt().getCompound("inventory");
-    var itemsList = inventoryCompound.getList("Items", 10);
-
-    itemsList.clear();
+    var rebuiltItemsList = [];
 
     for (var i = 0; i < entries.length; i++) {
         if (entries[i] && entries[i].nbt) {
-            itemsList.add(entries[i].nbt);
+            rebuiltItemsList.push(entries[i].nbt);
         }
     }
 
-    inventoryCompound.setList("Items", itemsList);
+    inventoryCompound.setList("Items", rebuiltItemsList);
 }
 
 function getBarrelContents(itemStack) {
