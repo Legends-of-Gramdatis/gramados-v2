@@ -9587,6 +9587,8 @@ registerXCommands([
             p.save(data);
             region.save(data);
 
+            logToFile('economy', pl.getName() + ' bought region ' + region.name + ' for ' + getAmountCoin(region.data.salePrice));
+
             tellPlayer(pl, '&aYou successfully bought this region. Do !myRegions to view your own regions or the ones you\'re added to.');
         }
 
