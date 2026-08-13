@@ -71,7 +71,7 @@ function interact(event) {
             if (delay > 0 && currentTime - playerEntry.lastOrderTime < delay) {
 
                 npc.executeCommand("/playsound minecraft:block.redstone_torch.burnout block @a ~ ~ ~ 10 1");
-                tellPlayer(player, "&c:cross_mark: You must wait before generating a new order.");
+                tellPlayer(player, "&c:cross_mark: You must wait " + TicksToHumanReadable(delay - (currentTime - playerEntry.lastOrderTime), true) + " before taking a new order.");
             
             } else {
 
