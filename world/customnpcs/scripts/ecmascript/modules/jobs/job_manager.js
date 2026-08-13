@@ -16,6 +16,9 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_jobs.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_tracking.js");
+
+// ===================== Main Hooks =====================
 
 /**
  * Initializes the job data and updates player job entries.
@@ -86,6 +89,16 @@ function tick(event) {
         tick_counter++;
     }
 }
+
+function login(event) {
+    handleTimeTrackingLogin(event.player);
+}
+
+function logout(event) {
+    handleTimeTrackingLogout(event.player);
+}
+
+// ===================== Job Management Helpers =====================
 
 /**
  * Ensures that for all currently active jobs, the player also has the TagID dialogs for their tags.

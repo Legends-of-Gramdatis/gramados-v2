@@ -62,21 +62,6 @@
                     "Line": "modules/dailytip/dailytipengine.js"
                 }
             ]
-        },
-        {
-            "Script": "load(\"world/customnpcs/scripts/ecmascript/gramados_utils/utils_tracking.js\");
-
-function login(event) {
-    handleTimeTrackingLogin(event.player);
-}
-
-function logout(event) {
-    handleTimeTrackingLogout(event.player);
-}",
-            "Console": [
-            ],
-            "ScriptList": [
-            ]
         }
     ],
     "ScriptLanguage": "ECMAScript"
