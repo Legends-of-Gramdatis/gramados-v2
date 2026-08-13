@@ -161,6 +161,11 @@ function get_region_types() {
 }
 
 function parseRegionName(regionName) {
+    // examples:
+    // "IslandName_TownName_StreetName_123_UnitName_Type"
+    // "IslandName_TownName_StreetName_UnitName_Type"
+    // "IslandName_TownName_StreetName_123_Type"
+    // "IslandName_TownName_StreetName_Type"
     if (!regionName) return null;
     var parts = regionName.split('_');
     var island_name = parts[0];

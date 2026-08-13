@@ -11,6 +11,40 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
 
 /**
+ * 
+ * @param {IPlayer} player - The player object.
+ * @param {string} region - The region name (without the 'region_' prefix).
+ * @returns {boolean} True if the purchase was successful, false otherwise.
+ */
+function purchaseRegion(player, region) {
+    var data = loadRegionData(region);
+    if (!data) {
+        tellPlayer(player, "&cRegion data not found for: " + region);
+        return false;
+    }
+
+    var price = getRegionPrice(region, player);
+    if (price <= 0) {
+        tellPlayer(player, "&cRegion " + region + " is not for sale.");
+        return false;
+    }
+
+    if (!hasEnoughMoney(player, price)) {
+        tellPlayer(player, "&cYou do not have enough money to purchase region " + region + ". Price: " + formatMoney(price));
+        return false;
+    }
+
+    // Deduct money from player
+    deductMoney(player, price);
+
+    // Set the player as the new owner
+    setRegionOwner(region, player.getName(), true);
+
+    tellPlayer(player, "&aYou have successfully purchased region " + region + " for " + formatMoney(price) + ".");
+    return true;
+}
+
+/**
  * Sets the owner of a region, regardless of any other ownership or permission settings.
  * @param {string} region - The region name (without the 'region_' prefix).
  * @param {string} owner - The owner name.
