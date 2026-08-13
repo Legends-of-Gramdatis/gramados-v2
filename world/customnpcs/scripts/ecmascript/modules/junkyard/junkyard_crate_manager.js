@@ -91,7 +91,7 @@ function interact(event) {
         npc.say(
             "§fThey're §6" +
             getAmountCoin(CROWBAR_PRICE_CENTS) +
-            " each§f. Hold §6500G bills§f in your hand — one bill for each crowbar you want."
+            " each§f. Hold §6500G bills§f in your hand - one bill for each crowbar you want."
         );
 
         npc.say(
@@ -117,11 +117,11 @@ function interact(event) {
     consumeMainhandItems(player, world, purchaseAmount);
 
     // === Give crowbars
-    var loot = pullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player);
-    var crowbar = setupCrowbarNameLore(loot[0], world);
-
-    crowbar.setStackSize(purchaseAmount);
-    player.giveItem(crowbar);
+    var loot = multiplePullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player, purchaseAmount);
+    for (var i = 0; i < loot.length; i++) {
+        var crowbar = setupCrowbarNameLore(loot[i], world);
+        player.giveItem(crowbar);
+    }
 
     var forfeitedCrowbars = availableCrowbars - purchaseAmount;
 
@@ -401,16 +401,11 @@ function loadCrowbarData() {
  * @param {number} amount
  */
 function consumeMainhandItems(player, world, amount) {
-    var mainhand = player.getMainhandItem();
+    var mainhand = player.getMainhandItem().copy();
     var remaining = mainhand.getStackSize() - amount;
 
-    if (remaining <= 0) {
-        player.setMainhandItem(
-            world.createItem("minecraft:air", 0, 1)
-        );
-    } else {
-        mainhand.setStackSize(remaining);
-    }
+    mainhand.setStackSize(remaining);
+    player.setMainhandItem(mainhand);
 }
 
 
