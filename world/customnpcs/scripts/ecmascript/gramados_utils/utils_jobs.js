@@ -234,7 +234,9 @@ function ensureJobAndTagDialogsOnGrant(player, jobDef) {
         for (var i = 0; i < jobDef.Tags.length; i++) {
             var tag_name = jobDef.Tags[i];
             var tag_object = cfg.Tags[tag_name];
-            applyJobIds(player, tag_object.TagJoin, tag_object.TagQuit, tag_object.TagLock);
+            if (tag_object) {
+                applyJobIds(player, tag_object.TagID, tag_object.TagQuit, tag_object.TagLock);
+            }
         }
     }
 }
