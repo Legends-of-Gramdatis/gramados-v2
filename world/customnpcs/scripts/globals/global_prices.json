@@ -7506,5 +7506,20 @@
     },
     "mts:iv_tcp_v3_utility.trin_trumon_deepblack-ivory-midnightpurple_brown:0": {
         "value": 3270000
+    },
+    "mts:iv_tpp.truck_bed_containerholder:0": {
+        "value": 1000000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalled:0": {
+        "value": 1700000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalledtall:0": {
+        "value": 1850000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalleddumpster:0": {
+        "value": 2500000
+    },
+    "mts:iv_tpp.truck_bed_woodenflatbed:0": {
+        "value": 750000
     }
 }
