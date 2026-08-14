@@ -13512,7 +13512,7 @@ function discordMessage(e) {
 
     Logger.info(logMsg);
 
-    executeCommandGlobal("/tellraw @a " + strf(msg))
+    tellPlayer(e.player, msg);
 }
 
 function chat(e) {
@@ -13707,13 +13707,11 @@ function chat(e) {
 
         var playerName = e.player.getName();
         var message = escCcs(e.message.toString());
-        if (typeof DiscordBot !== 'undefined' && DiscordBot !== null && typeof DiscordBot.sendMessage === 'function') {
-            DiscordBot.sendMessage({
-                "channel": "%chat%",
-                "player": playerName,
-                "content": message
-            });
-        }
+        DiscordBot.sendMessage({
+            "channel": "%chat%",
+            "player": playerName,
+            "content": message
+        });
 
         if (ScriptHooks)
             ScriptHooks.sendMessage(e.player.getName(), escCcs(e.message.toString()));
