@@ -380,8 +380,6 @@ function onboarding_run_phase3(player, pdata, phaseCfg, globalCfg, allPlayers) {
                     // Determine if crate part still exists near player
                     var nearbySet = _p3s2_scanCrateInventoryUUIDs(player.getWorld(), player.getPos(), radius, lootTablePath2);
                     var partStillPresent = !!nearbySet[focusUUID];
-                    // Debug: log presence status each tick (file-only to avoid chat spam)
-                    logToFile('onboarding', '[p3.s2.step3.tick] ' + player.getName() + ' focusUUID=' + focusUUID + ' present=' + partStillPresent);
                     if (partStillPresent) {
                         // If crate is present but missing required items (someone removed them), notify once per change
                         var partNow = _p3s2_findCratePartByUUID(player.getWorld(), player.getPos(), radius, lootTablePath2, focusUUID);
