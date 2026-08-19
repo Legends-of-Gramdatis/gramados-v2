@@ -102,7 +102,7 @@
             },
             "egg_count": 3
         },
-        "SilveradoTDS": {
+        "Silverlight10111": {
             "has_starter_pack": true,
             "egg_types": {
                 "spring": {
@@ -306,7 +306,7 @@
             ],
             "show_skip_message": true
         },
-        "SilveradoTDS": {
+        "Silverlight10111": {
             "skipping_events": [],
             "show_skip_message": false
         }
@@ -378,7 +378,7 @@
             },
             "egg_count": 118
         },
-        "SilveradoTDS": {
+        "Silverlight10111": {
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
