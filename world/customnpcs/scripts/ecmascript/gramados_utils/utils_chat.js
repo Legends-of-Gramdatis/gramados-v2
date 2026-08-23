@@ -29,6 +29,17 @@ function tellPlayer(player, rawtext) {
 }
 
 /**
+ * Sends a raw string message to the player without any formatting.
+ * @param {IPlayer} player - The player to send the message to.
+ * @param {string} text - The raw string message.
+ * @returns {boolean} The result of the command execution.
+ */
+function tellPlayerRawString(player, text) {
+    text = String(text).replace(/\\/g, "\\\\");
+    tellPlayer(player, text);
+}
+
+/**
  * Applies a rainbow color effect to the given text.
  * Skips adding color codes to existing color codes (the '&' character).
  * @param {string} text - The text to rainbowify.
