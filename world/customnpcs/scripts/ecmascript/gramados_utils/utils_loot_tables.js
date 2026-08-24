@@ -370,3 +370,64 @@ function doesLootTableExist(lootTablePath) {
     var lootTable = loadJson(lootTablePath);
     return lootTable != null;
 }
+
+/**
+ * Adds an entry to a loot table pool.
+ *
+ * The entry may be of any supported type:
+ * item, loot_table, or future custom types.
+ *
+ * @param {string} lootTablePath
+ * @param {Object} entry
+ * @param {number} [poolIndex=0]
+ * @param {boolean} [makeVolatile=false]
+ * @returns {Object|null} The inserted entry, or null on failure.
+ */
+function addEntryToLootTable(lootTablePath, entry, poolIndex, makeVolatile) {
+    if (poolIndex === undefined || poolIndex === null) {
+        poolIndex = 0;
+    }
+
+    if (makeVolatile === undefined || makeVolatile === null) {
+        makeVolatile = false;
+    }
+
+    var fullPath = lootTablePath;
+
+    if (!fullPath.startsWith("world/loot_tables/")) {
+        fullPath = "world/loot_tables/" + fullPath;
+    }
+
+    var lootTable = loadJson(fullPath);
+
+    if (
+        !lootTable ||
+        !lootTable.pools ||
+        !lootTable.pools[poolIndex] ||
+        !lootTable.pools[poolIndex].entries
+    ) {
+        return null;
+    }
+
+    // Do not mutate the object supplied by the caller.
+    var entryCopy = JSON.parse(JSON.stringify(entry));
+
+    if (makeVolatile) {
+        entryCopy.volatile = true;
+    }
+
+    lootTable.pools[poolIndex].entries.push(entryCopy);
+
+    saveJson(lootTable, fullPath);
+
+    return entryCopy;
+}
+
+function addVolatileEntryToLootTable(lootTablePath, entry, poolIndex) {
+    return addEntryToLootTable(
+        lootTablePath,
+        entry,
+        poolIndex,
+        true
+    );
+}
