@@ -85,6 +85,27 @@ function navigateVehicle(event, npc, direction) {
     npc.getStoreddata().put('dealership_vehicle_index', newIndex);
 }
 
+/**
+ * Resolve the registration titles attached to a dealership vehicle.
+ *
+ * Dealership stock contains the full MTS item id (trim/paint/interior included),
+ * while vehicle_catalog.json is keyed by the canonical/base vehicle system name.
+ * getMainVehicleId() performs that normalization for us.
+ */
+function getDealershipVehicleTitles(itemId) {
+    var mainVehicleId = getMainVehicleId(itemId);
+    if (!mainVehicleId) {
+        return [getNaLabel()];
+    }
+
+    var vehicleInfo = getVehicleInfo(mainVehicleId);
+    if (!vehicleInfo || !vehicleInfo.extraTitles || vehicleInfo.extraTitles.length === 0) {
+        return [getNaLabel()];
+    }
+
+    return vehicleInfo.extraTitles.slice();
+}
+
 function updateWWtoActive(player, npc, newPlate) {
     var slots = player.getInventory().getItems();
     var registered_car_couple = getRegisteredCouple(get_all_car_items(slots), get_all_ww_car_papers(slots));
@@ -132,13 +153,14 @@ function purchaseVehicle(player, npc) {
     
     var vehicle = stock.vehicles[currentIndex];
     var itemStack = player.getWorld().createItem(vehicle.id, 0, 1);
+    var vehicleTitles = getDealershipVehicleTitles(vehicle.id);
 
     var registration = generateWWRegistration(
         player.getName(),
         vehicle.id,
         region,
         generateRandomWWPlate(),
-        [getNaLabel()]
+        vehicleTitles
     );
     var price = registration.msrpCents + registration.registrationPriceCents;
     
@@ -224,8 +246,9 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             // Get display name and price
             var displayName = itemStack.getDisplayName();
             var price = getPriceFromItemStack(itemStack, 0, false);
+            var vehicleTitles = getDealershipVehicleTitles(vehicle.id);
             var priceFormatted = formatMoney(price);
-            var paperPrice = formatMoney(calculateCarPaperPrice(price, region, "XXX-0000"));
+            var paperPrice = formatMoney(calculateCarPaperPrice(price, region, "XXX-0000", vehicleTitles));
             
             // Update label component with vehicle display name
             manifest.pages[0].components[0].label = displayName + (vehicle.count > 1 ? " (" + vehicle.count + " available)" : "");
@@ -255,7 +278,9 @@ function guiBuilder_updateManifest(player, npc, manifest) {
             var vehicle = stock.vehicles[currentIndex];
             var itemStack = player.getWorld().createItem(vehicle.id, vehicle.damage || 0, 1);
             var displayName = itemStack.getDisplayName();
-            var price = getPriceFromItemStack(itemStack, 0, false) + calculateCarPaperPrice(getPriceFromItemStack(itemStack, 0, false), region, "XXX-0000");
+            var vehicleMsrp = getPriceFromItemStack(itemStack, 0, false);
+            var vehicleTitles = getDealershipVehicleTitles(vehicle.id);
+            var price = vehicleMsrp + calculateCarPaperPrice(vehicleMsrp, region, "XXX-0000", vehicleTitles);
             var priceFormatted = formatMoney(price);
 
             manifest.pages[1].components[2].label = displayName;
