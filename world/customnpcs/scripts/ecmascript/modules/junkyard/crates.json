@@ -1,0 +1,73 @@
+{
+    "powertrain": {
+        "DisplayName": "Powertrain Crate",
+        "LootTable": "junkyard/crates/powertrain.json",
+        "ScrapLootTable": "junkyard/scrap/mechanical.json",
+        "ScrapChance": 0.45,
+
+        "Weight": 16
+    },
+
+    "rolling_gear": {
+        "DisplayName": "Rolling Gear Crate",
+        "LootTable": "junkyard/crates/rolling_gear.json",
+        "ScrapLootTable": "junkyard/scrap/metal.json",
+        "ScrapChance": 0.35,
+
+        "Weight": 21
+    },
+
+    "interior": {
+        "DisplayName": "Interior Crate",
+        "LootTable": "junkyard/crates/interior.json",
+        "ScrapLootTable": "junkyard/scrap/misc.json",
+        "ScrapChance": 0.20,
+
+        "Weight": 16
+    },
+
+    "electrical": {
+        "DisplayName": "Electrical & Instrument Crate",
+        "LootTable": "junkyard/crates/electrical_instrument.json",
+        "ScrapLootTable": "junkyard/scrap/electrical.json",
+        "ScrapChance": 0.50,
+
+        "Weight": 14
+    },
+
+    "bodyshop": {
+        "DisplayName": "Bodyshop Crate",
+        "LootTable": "junkyard/crates/bodyshop.json",
+        "ScrapLootTable": "junkyard/scrap/metal.json",
+        "ScrapChance": 0.25,
+
+        "Weight": 13
+    },
+
+    "scrap": {
+        "DisplayName": "Scrap Crate",
+        "LootTable": "junkyard/crates/scrap.json",
+        "ScrapLootTable": null,
+        "ScrapChance": 0.0,
+
+        "Weight": 10
+    },
+
+    "heavy_salvage": {
+        "DisplayName": "Heavy Salvage Crate",
+        "LootTable": "junkyard/crates/heavy_salvage.json",
+        "ScrapLootTable": "junkyard/scrap/metal.json",
+        "ScrapChance": 0.60,
+
+        "Weight": 7
+    },
+
+    "specialty": {
+        "DisplayName": "Specialty Crate",
+        "LootTable": "junkyard/crates/specialty.json",
+        "ScrapLootTable": "junkyard/scrap/mixed.json",
+        "ScrapChance": 0.30,
+
+        "Weight": 3
+    }
+}
