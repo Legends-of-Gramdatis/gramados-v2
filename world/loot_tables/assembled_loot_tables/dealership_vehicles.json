@@ -20,7 +20,7 @@
                 },
                 {
                     "type": "loot_table",
-                    "path": "automobile/vehicles/trin/cars/dealership_trin_utility.json",
+                    "path": "automobile/vehicles/trin/utilities/dealership_trin_utility.json",
                     "weight": 1
                 },
                 {

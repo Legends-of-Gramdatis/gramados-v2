@@ -27,7 +27,7 @@ function getVolatileLootPoolConfig(alias) {
         return null;
     }
 
-    var wantedAlias = String(alias).toLowerCase();
+    var wantedAlias = alias.toLowerCase();
 
     for (var configuredAlias in config) {
         if (configuredAlias.toLowerCase() === wantedAlias) {
