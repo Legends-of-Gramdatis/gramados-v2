@@ -406,7 +406,8 @@
             "Title": "Foréval Fisherman",
             "AutoAssignPerms": [
                 "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_5_FishingHut",
-                "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_3_FishingHut"
+                "region_Foreval_PortAuxHuitresSurBellecote_QuaiDesPecheurs_3_FishingHut",
+                "region_Foreval_PortAuxHuitresSurBellecote_RouteDePortAuxHuitre_5_FishingHut"
             ],
             "Perms": [],
             "MarketAccessDeniedText": "The fish market of Port-aux-Huîtres accepts deliveries only from registered fishermen.",
