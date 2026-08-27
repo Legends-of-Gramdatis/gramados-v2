@@ -352,7 +352,7 @@ function prepareLootTablePull(lootTablePath, player) {
         return null;
     }
 
-    logToFile("loot_tables", "Prepared loot-table pull: " + lootTablePath + " for player: " + player.getName() + ". Loot: " + JSON.stringify(loot));
+    // logToFile("loot_tables", "Prepared loot-table pull: " + lootTablePath + " for player: " + player.getName() + ". Loot: " + JSON.stringify(loot));
 
     return {
         loot: loot,

@@ -1,20 +1,28 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
 
-var CRATE_SKIN_BASE_URL = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_";
+var CRATE_SKIN_BASE_URL =
+    "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_";
 
-var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
-var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
+var config = loadJson(
+    "world/customnpcs/scripts/ecmascript/modules/junkyard/config.json"
+);
 
-var CRATE_RARITY_WEIGHTS = config.JUNKYARD_CRATE_RARITY_WEIGHTS;
+var crates = loadJson(
+    "world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json"
+);
+
+var CRATE_RARITY_WEIGHTS =
+    config.JUNKYARD_CRATE_RARITY_WEIGHTS;
 
 
 /**
- * Temporarily regenerates the crate every time a player interacts
- * with it.
+ * Temporarily regenerates and opens the crate every time
+ * the player interacts with it.
  *
- * Later, this function can instead be called from init/timer logic.
+ * Later, regeneration and opening will become separate events.
  *
  * @param {Object} event
  */
@@ -32,7 +40,6 @@ function interact(event) {
         return;
     }
 
-    // Useful while testing.
     tellPlayer(
         player,
         "&a:check_mark: Generated &e" +
@@ -41,12 +48,19 @@ function interact(event) {
         result.rarity +
         "&a."
     );
+
+    lootCrate(
+        player,
+        npc,
+        result.type,
+        result.rarity
+    );
 }
 
 
 /**
- * Generates a new crate type and rarity, stores them on the NPC,
- * and applies the corresponding skin.
+ * Generates a new crate type, rarity, and size.
+ * Stores type/rarity on the NPC and applies its skin.
  *
  * @param {ICustomNpc} npc
  * @returns {Object|null}
@@ -79,6 +93,8 @@ function regenerateCrate(npc) {
     storedData.put("crate_type", crateType);
     storedData.put("crate_rarity", rarity);
 
+    setRandomCrateSize(npc);
+
     applyCrateSkin(
         npc,
         crateType,
@@ -89,6 +105,120 @@ function regenerateCrate(npc) {
         type: crateType,
         rarity: rarity
     };
+}
+
+
+/**
+ * Gives the crate a random size between 7 and 9 inclusive.
+ *
+ * @param {ICustomNpc} npc
+ */
+function setRandomCrateSize(npc) {
+    var size = Math.floor(Math.random() * 3) + 7;
+
+    npc.getDisplay().setSize(size);
+}
+
+
+/**
+ * Pulls loot from the loot table configured for the crate type.
+ *
+ * Rarity determines the number of loot-table pulls:
+ * common   -> 1
+ * uncommon -> 2
+ * rare     -> 3
+ *
+ * @param {IPlayer} player
+ * @param {ICustomNpc} npc
+ * @param {string} crateType
+ * @param {string} rarity
+ */
+function lootCrate(
+    player,
+    npc,
+    crateType,
+    rarity
+) {
+    var crateConfig = crates[crateType];
+
+    if (
+        !crateConfig ||
+        !crateConfig.LootTable
+    ) {
+        tellPlayer(
+            player,
+            "&c:cross_mark: This crate has no valid loot table."
+        );
+
+        logToFile(
+            "mechanics",
+            "[Junkyard Crate] Missing LootTable for crate type: " +
+            crateType
+        );
+
+        return;
+    }
+
+    var pullCount = getRarityPullCount(rarity);
+    var loot = [];
+
+    for (var i = 0; i < pullCount; i++) {
+        var lootPart = pullLootTable(
+            crateConfig.LootTable,
+            player
+        );
+
+        for (var j = 0; j < lootPart.length; j++) {
+            loot.push(lootPart[j]);
+        }
+    }
+
+    var world = npc.getWorld();
+
+    for (var k = 0; k < loot.length; k++) {
+        var itemStack =
+            generateItemStackFromLootEntry(
+                loot[k],
+                world
+            );
+
+        npc.dropItem(itemStack);
+    }
+
+    logToFile(
+        "mechanics",
+        player.getName() +
+        " opened a " +
+        rarity +
+        " " +
+        crateType +
+        " Junkyard Crate (" +
+        pullCount +
+        " loot pull" +
+        (pullCount == 1 ? "" : "s") +
+        ")."
+    );
+}
+
+
+/**
+ * Returns the number of main loot pulls associated with a rarity.
+ *
+ * @param {string} rarity
+ * @returns {number}
+ */
+function getRarityPullCount(rarity) {
+    switch (rarity) {
+        case "rare":
+            return 3;
+
+        case "uncommon":
+            return 2;
+
+        case "common":
+        default:
+            return 1;
+    }
 }
 
 
@@ -126,21 +256,14 @@ function getRandomCrateRarity() {
 /**
  * Selects a random key from an object using arbitrary numeric weights.
  *
- * Example:
- *
- * {
- *     "common": 70,
- *     "uncommon": 25,
- *     "rare": 5
- * }
- *
- * does not require weights to total 100.
- *
  * @param {Object} weightedObject
  * @param {Function} weightGetter
  * @returns {string|null}
  */
-function getWeightedRandomKey(weightedObject, weightGetter) {
+function getWeightedRandomKey(
+    weightedObject,
+    weightGetter
+) {
     if (!weightedObject) {
         return null;
     }
@@ -203,13 +326,7 @@ function getWeightedRandomKey(weightedObject, weightGetter) {
 /**
  * Generates and applies the crate skin URL.
  *
- * Format:
- *
  * Gramados_slime_crate_<type>_<rarity>.png
- *
- * Example:
- *
- * Gramados_slime_crate_powertrain_rare.png
  *
  * @param {ICustomNpc} npc
  * @param {string} crateType
