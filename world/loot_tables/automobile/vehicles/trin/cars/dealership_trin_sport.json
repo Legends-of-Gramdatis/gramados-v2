@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_txs_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_txs_suv.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_txs.json",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}
