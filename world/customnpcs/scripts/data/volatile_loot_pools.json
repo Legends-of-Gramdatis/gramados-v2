@@ -1,0 +1,6 @@
+{
+    "Junkers": {
+        "LootTablePath": "volatile/junkers.json",
+        "WhitelistLootTable": "assembled_loot_tables/dealership_vehicles.json"
+    }
+}

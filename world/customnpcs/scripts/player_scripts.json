@@ -10,6 +10,9 @@
             "ScriptList": [
                 {
                     "Line": "customservertools.js"
+                },
+                {
+                    "Line": "modules/volatile_loot_pools/cst_vlp_commands.js"
                 }
             ]
         },

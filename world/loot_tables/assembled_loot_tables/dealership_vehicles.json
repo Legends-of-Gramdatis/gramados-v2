@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_standard.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_fancy.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_mini.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_utility.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_sport.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
