@@ -1,0 +1,55 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 2,
+                "max": 5
+            },
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_nuggets.json",
+                    "weight": 14
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:wirecoil",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:wirecoil",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 4
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:connector",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:lever",
+                    "weight": 3
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints.json",
+                    "weight": 12
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/car_paints/car_paints_mts.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers.json",
+                    "weight": 3
+                }
+            ]
+        }
+    ]
+}

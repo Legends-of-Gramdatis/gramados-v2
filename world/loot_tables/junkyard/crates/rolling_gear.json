@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_common.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_common_standard.json",
+                    "weight": 6
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_common_offroad.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_other_common.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_wark_common.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

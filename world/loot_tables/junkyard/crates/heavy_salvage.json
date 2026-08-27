@@ -1,0 +1,49 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_oversized.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_oversized.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_wark_oversized.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_other_oversized.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/bus_seats.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/seats/trin/tractor_seats_pan.json",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.industrial_electricmotor",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.ultraindustrial_electricmotor",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

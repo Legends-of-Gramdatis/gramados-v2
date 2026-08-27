@@ -1,0 +1,85 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/gauges/car_gauges.json",
+                    "weight": 12
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:wirecoil",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:wirecoil",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:wirecoil",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:connector",
+                    "weight": 3,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:connector",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:connector",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 4
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:lever",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

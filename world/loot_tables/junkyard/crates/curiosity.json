@@ -1,0 +1,34 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/roof_device/car_roof_device_goofy.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/gauges/car_gauges_trin_cyber.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_unu_vintage.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/wheels/car_wheels_trin_txs.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/engines/car_engines_ivl_other.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
