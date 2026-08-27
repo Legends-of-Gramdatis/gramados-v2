@@ -1,7 +1,10 @@
 {
     "pools": [
         {
-            "rolls": 1,
+            "rolls": {
+                "min": 2,
+                "max": 5
+            },
             "entries": [
                 {
                     "type": "loot_table",
