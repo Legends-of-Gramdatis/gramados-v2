@@ -6,73 +6,157 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
-/**
- * Simulates pulling items from a loot table.
- * Iterates through pools and rolls to generate loot based on the loot table's configuration.
- * @param {string} lootTablePath - The path to the loot table file.
- * @param {IPlayer} player - The player interacting with the loot table.
- * @returns {Array} - An array of items generated from the loot table.
- */
-function pullLootTable(lootTablePath, player) {
-    var loot_table_json = loadJson("world/loot_tables/" + lootTablePath);
-    if (loot_table_json == null) {
-        tellPlayer(player, "&cFailed to load loot table: " + lootTablePath);
+function _prepareLootTablePull(
+    lootTablePath,
+    player,
+    context
+) {
+    var fullPath = lootTablePath;
+
+    if (!fullPath.startsWith("world/loot_tables/")) {
+        fullPath = "world/loot_tables/" + fullPath;
+    }
+
+    var lootTableJson = loadJson(fullPath);
+
+    if (lootTableJson == null) {
+        tellPlayer(
+            player,
+            "&cFailed to load loot table: " + lootTablePath
+        );
         return null;
     }
 
-    var pools = loot_table_json["pools"];
+    var pools = lootTableJson.pools;
     var generatedLoot = [];
 
     for (var poolIdx = 0; poolIdx < pools.length; poolIdx++) {
         var pool = pools[poolIdx];
+
         var rolls;
 
         if (pool.rolls === undefined) {
-            rolls = 1; // default to 1 roll
+            rolls = 1;
         } else if (typeof pool.rolls === "number") {
             rolls = pool.rolls;
         } else if (typeof pool.rolls === "object") {
-            rolls = rrandom_range(pool.rolls.min, pool.rolls.max);
-        }        
+            rolls = rrandom_range(
+                pool.rolls.min,
+                pool.rolls.max
+            );
+        }
 
         var entries = pool.entries;
-        // tellPlayer(player, "&eProcessing loot pool " + (poolIdx + 1) + " with " + rolls + " rolls.");
 
         for (var r = 0; r < rolls; r++) {
-            // Preprocess weights, especially for "auto" and "autorec"
+
+            // Build an available-entry list.
+            var availableEntries = [];
+
             for (var i = 0; i < entries.length; i++) {
                 var entry = entries[i];
-                
-                if (entry.weight === "auto" || entry.weight === "autorec") {
-                    if (entry.type === "loot_table" && entry.path) {
-                        var subWeight = (entry.weight === "auto")
-                            ? resolveDirectWeight(entry.path)
-                            : resolveRecursiveWeight(entry.path);
 
-                        entry.weight = subWeight > 0 ? subWeight : 1;
+                var key =
+                    fullPath +
+                    ":" +
+                    poolIdx +
+                    ":" +
+                    i;
+
+                // A volatile entry already selected during this
+                // transaction cannot be selected again.
+                if (
+                    entry.volatile === true &&
+                    context.reserved[key]
+                ) {
+                    continue;
+                }
+
+                // Resolve automatic weights on a copy so we do not
+                // modify the original loaded entry.
+                var candidate =
+                    JSON.parse(JSON.stringify(entry));
+
+                candidate._sourceIndex = i;
+
+                if (
+                    candidate.weight === "auto" ||
+                    candidate.weight === "autorec"
+                ) {
+                    if (
+                        candidate.type === "loot_table" &&
+                        candidate.path
+                    ) {
+                        var subWeight =
+                            candidate.weight === "auto"
+                                ? resolveDirectWeight(candidate.path)
+                                : resolveRecursiveWeight(candidate.path);
+
+                        candidate.weight =
+                            subWeight > 0 ? subWeight : 1;
                     } else {
-                        entry.weight = 1;
-                        tellPlayer(player, "&c'" + entry.weight + "' weight used on non-loot_table entry. Defaulting to 1.");
+                        candidate.weight = 1;
                     }
                 }
+
+                availableEntries.push(candidate);
             }
 
-
-            // Now that all weights are resolved, pick one
-            var selected = weightedRandom(entries);
-
-
-            // ✅ Check for sub-loot-table entry type
-            if (selected.type === "loot_table" && selected.path) {
-                // tellPlayer(player, "&7Pulling from sub-loot table: " + selected.path);
-                var subLoot = pullLootTable(selected.path, player);
-                if (subLoot != null) {
-                    generatedLoot = generatedLoot.concat(subLoot);
-                }
+            // No eligible entry remains for this roll.
+            if (availableEntries.length === 0) {
                 continue;
             }
 
-            // Default item entry
+            var selected =
+                weightedRandom(availableEntries);
+
+            var sourceIndex =
+                selected._sourceIndex;
+
+            delete selected._sourceIndex;
+
+            var sourceEntry =
+                entries[sourceIndex];
+
+            // Reserve volatile entry, but DO NOT delete it yet.
+            if (sourceEntry.volatile === true) {
+                var claimKey =
+                    fullPath +
+                    ":" +
+                    poolIdx +
+                    ":" +
+                    sourceIndex;
+
+                context.reserved[claimKey] = true;
+
+                context.claims.push({
+                    lootTablePath: fullPath,
+                    poolIndex: poolIdx,
+                    entryIndex: sourceIndex,
+                    entryJson: JSON.stringify(sourceEntry)
+                });
+            }
+
+            // Nested loot table
+            if (
+                selected.type === "loot_table" &&
+                selected.path
+            ) {
+                var subLoot = _prepareLootTablePull(
+                    selected.path,
+                    player,
+                    context
+                );
+
+                if (subLoot != null) {
+                    generatedLoot =
+                        generatedLoot.concat(subLoot);
+                }
+
+                continue;
+            }
+
+            // Normal item
             var item = {
                 id: selected.name || "minecraft:air",
                 count: 1,
@@ -81,19 +165,32 @@ function pullLootTable(lootTablePath, player) {
             };
 
             if (selected.functions) {
-                for (var f = 0; f < selected.functions.length; f++) {
-                    var func = selected.functions[f];
+                for (
+                    var f = 0;
+                    f < selected.functions.length;
+                    f++
+                ) {
+                    var func =
+                        selected.functions[f];
 
                     if (func.function === "set_count") {
-                        item.count = (typeof func.count === "object")
-                            ? rrandom_range(func.count.min, func.count.max)
-                            : func.count;
+                        item.count =
+                            typeof func.count === "object"
+                                ? rrandom_range(
+                                    func.count.min,
+                                    func.count.max
+                                )
+                                : func.count;
                     }
 
                     if (func.function === "set_data") {
-                        item.damage = (typeof func.data === "object")
-                            ? rrandom_range(func.data.min, func.data.max)
-                            : func.data;
+                        item.damage =
+                            typeof func.data === "object"
+                                ? rrandom_range(
+                                    func.data.min,
+                                    func.data.max
+                                )
+                                : func.data;
                     }
 
                     if (func.function === "set_nbt") {
@@ -101,30 +198,76 @@ function pullLootTable(lootTablePath, player) {
                     }
 
                     if (func.function === "set_modifier") {
-                        var modifierClass = func.modifier_class || func.modifierClass || "orb";
-                        var modifierType = func.modifier_type || func.modifierType || null;
-                        var modifierEffect = func.type || func.modifier_effect || func.modifierEffect;
-                        var resolvedRadius = resolve_modifier_value(func.radius);
-                        var resolvedDurationMinutes = resolve_modifier_value(func.durationMinutes !== undefined ? func.durationMinutes : func.duration_minutes);
-                        var resolvedMultiplier = resolve_modifier_value(func.multiplier);
+                        var modifierClass =
+                            func.modifier_class ||
+                            func.modifierClass ||
+                            "orb";
 
-                        if (modifierClass === "orb" && !modifierType) {
-                            modifierType = (resolvedDurationMinutes !== null || resolvedMultiplier !== null) ? "passive" : "active";
+                        var modifierType =
+                            func.modifier_type ||
+                            func.modifierType ||
+                            null;
+
+                        var modifierEffect =
+                            func.type ||
+                            func.modifier_effect ||
+                            func.modifierEffect;
+
+                        var resolvedRadius =
+                            resolve_modifier_value(
+                                func.radius
+                            );
+
+                        var resolvedDurationMinutes =
+                            resolve_modifier_value(
+                                func.durationMinutes !== undefined
+                                    ? func.durationMinutes
+                                    : func.duration_minutes
+                            );
+
+                        var resolvedMultiplier =
+                            resolve_modifier_value(
+                                func.multiplier
+                            );
+
+                        if (
+                            modifierClass === "orb" &&
+                            !modifierType
+                        ) {
+                            modifierType =
+                                (
+                                    resolvedDurationMinutes !== null ||
+                                    resolvedMultiplier !== null
+                                )
+                                    ? "passive"
+                                    : "active";
                         }
 
-                        if (modifierClass === "consumable") {
+                        if (
+                            modifierClass === "consumable"
+                        ) {
                             modifierType = null;
                         }
 
                         item.modifier = {
-                            modifierClass: modifierClass,
-                            modifierType: modifierType,
-                            modifierEffect: modifierEffect,
-                            radius: resolvedRadius,
-                            durationMinutes: resolvedDurationMinutes,
-                            multiplier: resolvedMultiplier,
-                            modifierUse: func.modifier_use || func.modifierUse,
-                            overrideItemId: func.itemId || func.item_id
+                            modifierClass:
+                                modifierClass,
+                            modifierType:
+                                modifierType,
+                            modifierEffect:
+                                modifierEffect,
+                            radius:
+                                resolvedRadius,
+                            durationMinutes:
+                                resolvedDurationMinutes,
+                            multiplier:
+                                resolvedMultiplier,
+                            modifierUse:
+                                func.modifier_use ||
+                                func.modifierUse,
+                            overrideItemId:
+                                func.itemId ||
+                                func.item_id
                         };
                     }
                 }
@@ -134,9 +277,35 @@ function pullLootTable(lootTablePath, player) {
         }
     }
 
-    // logToFile("loot_tables", "Loot table pulled: " + lootTablePath);
-
     return generatedLoot;
+}
+
+/**
+ * Pulls loot from a loot table.
+ *
+ * Volatile entries selected during the pull are automatically
+ * consumed before the result is returned.
+ *
+ * For transactional use, call prepareLootTablePull() directly
+ * and commit manually.
+ *
+ * @param {string} lootTablePath
+ * @param {IPlayer} player
+ * @returns {Array|null}
+ */
+function pullLootTable(lootTablePath, player) {
+    var pullResult = prepareLootTablePull(
+        lootTablePath,
+        player
+    );
+
+    if (pullResult == null) {
+        return null;
+    }
+
+    commitLootTablePull(pullResult);
+
+    return pullResult.loot;
 }
 
 /**
@@ -158,6 +327,145 @@ function multiplePullLootTable(lootTablePath, player, lootCount) {
     // logToFile("loot_tables", "Loot table pulled: " + lootTablePath + " x" + lootCount);
 
     return full_loot;
+}
+
+/**
+ * Prepares a loot-table pull without modifying volatile entries.
+ *
+ * @param {string} lootTablePath
+ * @param {IPlayer} player
+ * @returns {Object|null}
+ */
+function prepareLootTablePull(lootTablePath, player) {
+    var context = {
+        claims: [],
+        reserved: {}
+    };
+
+    var loot = _prepareLootTablePull(
+        lootTablePath,
+        player,
+        context
+    );
+
+    if (loot == null) {
+        return null;
+    }
+
+    logToFile("loot_tables", "Prepared loot-table pull: " + lootTablePath + " for player: " + player.getName() + ". Loot: " + JSON.stringify(loot));
+
+    return {
+        loot: loot,
+        volatileClaims: context.claims
+    };
+}
+
+/**
+ * Permanently consumes all volatile entries selected by a prepared pull.
+ *
+ * @param {Object} pullResult
+ * @returns {boolean}
+ */
+function commitLootTablePull(pullResult) {
+    if (
+        !pullResult ||
+        !pullResult.volatileClaims ||
+        pullResult.volatileClaims.length === 0
+    ) {
+        return true;
+    }
+
+    var groupedClaims = {};
+
+    for (
+        var i = 0;
+        i < pullResult.volatileClaims.length;
+        i++
+    ) {
+        var claim =
+            pullResult.volatileClaims[i];
+
+        if (!groupedClaims[claim.lootTablePath]) {
+            groupedClaims[claim.lootTablePath] = [];
+        }
+
+        groupedClaims[
+            claim.lootTablePath
+        ].push(claim);
+    }
+
+    for (var path in groupedClaims) {
+        var lootTable = loadJson(path);
+
+        if (!lootTable || !lootTable.pools) {
+            return false;
+        }
+
+        var claims = groupedClaims[path];
+
+        // Highest indexes first to prevent shifting.
+        claims.sort(function(a, b) {
+            return b.entryIndex - a.entryIndex;
+        });
+
+        for (var c = 0; c < claims.length; c++) {
+            var currentClaim = claims[c];
+
+            var pool =
+                lootTable.pools[
+                    currentClaim.poolIndex
+                ];
+
+            if (!pool || !pool.entries) {
+                continue;
+            }
+
+            var removed = false;
+
+            var currentEntry =
+                pool.entries[
+                    currentClaim.entryIndex
+                ];
+
+            // Normal case: entry is still exactly where
+            // it was during prepare.
+            if (
+                currentEntry &&
+                JSON.stringify(currentEntry) ===
+                    currentClaim.entryJson
+            ) {
+                pool.entries.splice(
+                    currentClaim.entryIndex,
+                    1
+                );
+
+                removed = true;
+            }
+
+            // Fallback in case indexes changed.
+            if (!removed) {
+                for (
+                    var e = 0;
+                    e < pool.entries.length;
+                    e++
+                ) {
+                    if (
+                        JSON.stringify(pool.entries[e]) ===
+                        currentClaim.entryJson
+                    ) {
+                        pool.entries.splice(e, 1);
+                        removed = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        saveJson(lootTable, path);
+    }
+
+    logToFile("loot_tables", "Committed volatile loot-table pull: " + JSON.stringify(pullResult.volatileClaims));
+    return true;
 }
 
 /**
@@ -420,6 +728,8 @@ function addEntryToLootTable(lootTablePath, entry, poolIndex, makeVolatile) {
 
     saveJson(lootTable, fullPath);
 
+    logToFile("loot_tables", "Added entry to loot table: " + fullPath + " in pool index: " + poolIndex + ". Entry: " + JSON.stringify(entryCopy));
+
     return entryCopy;
 }
 
@@ -430,4 +740,89 @@ function addVolatileEntryToLootTable(lootTablePath, entry, poolIndex) {
         poolIndex,
         true
     );
+}
+
+/**
+ * Checks whether a loot table can currently produce any loot.
+ *
+ * This works with volatile loot tables naturally: once all volatile
+ * entries have been consumed and removed, the table becomes unavailable.
+ *
+ * Nested loot tables are checked recursively.
+ * Circular references are protected against.
+ *
+ * @param {string} lootTablePath - Relative or full loot table path.
+ * @param {Array<string>} [visited] - Internal recursion stack.
+ * @returns {boolean} True if the loot table can produce loot.
+ */
+function canUseLootTable(lootTablePath, visited) {
+    visited = visited || [];
+
+    var fullPath = lootTablePath;
+
+    if (!fullPath.startsWith("world/loot_tables/")) {
+        fullPath = "world/loot_tables/" + fullPath;
+    }
+
+    // Prevent circular loot-table references.
+    if (visited.indexOf(fullPath) !== -1) {
+        return false;
+    }
+
+    if (!checkFileExists(fullPath)) {
+        return false;
+    }
+
+    var lootTable = loadJson(fullPath);
+
+    if (!lootTable || !lootTable.pools) {
+        return false;
+    }
+
+    visited.push(fullPath);
+
+    for (var p = 0; p < lootTable.pools.length; p++) {
+        var pool = lootTable.pools[p];
+
+        // A pool which can never roll cannot produce loot.
+        if (pool.rolls === 0) {
+            continue;
+        }
+
+        if (
+            typeof pool.rolls === "object" &&
+            pool.rolls.max !== undefined &&
+            pool.rolls.max <= 0
+        ) {
+            continue;
+        }
+
+        if (!pool.entries || pool.entries.length === 0) {
+            continue;
+        }
+
+        for (var e = 0; e < pool.entries.length; e++) {
+            var entry = pool.entries[e];
+
+            // Nested table: usable only if something below it is usable.
+            if (
+                entry.type === "loot_table" &&
+                entry.path
+            ) {
+                if (canUseLootTable(entry.path, visited)) {
+                    visited.pop();
+                    return true;
+                }
+
+                continue;
+            }
+
+            // Any ordinary entry can currently be selected.
+            visited.pop();
+            return true;
+        }
+    }
+
+    visited.pop();
+    return false;
 }
