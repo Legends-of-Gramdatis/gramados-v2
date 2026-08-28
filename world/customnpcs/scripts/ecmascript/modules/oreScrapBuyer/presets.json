@@ -16,6 +16,8 @@
         "ore:gold",
         "ore:silver",
         "ore:copper",
+        "ore:tin",
+        "ore:bronze",
         "ore:aluminum",
         "ore:electrum",
         "ore:constantan",

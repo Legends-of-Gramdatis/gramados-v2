@@ -386,8 +386,7 @@
     "forestry:gear_bronze:0": {
         "value": 26000,
         "ore": {
-            "copper": 0.6,
-            "tin": 0.2
+            "bronze": 0.80
         }
     },
     "forestry:gear_copper:0": {
