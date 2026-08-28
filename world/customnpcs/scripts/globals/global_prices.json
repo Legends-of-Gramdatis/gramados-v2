@@ -7889,5 +7889,24 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "immersiveengineering:material:4": {
+        "display_name": "Hemp Fiber",
+        "value": 250
+    },
+    "mts:mtsofficialpack.plastic:0": {
+        "display_name": "Automobile Plastic Sheet",
+        "value": 3000
+    },
+    "mts:mtsofficialpack.plating:0": {
+        "display_name": "Automobile Metal Sheet",
+        "value": 15000,
+        "ore": {
+            "steel": 2.5
+        }
+    },
+    "mts:ivv.rubber:0": {
+        "display_name": "Automobile Rubber Sheet",
+        "value": 4000
     }
 }
