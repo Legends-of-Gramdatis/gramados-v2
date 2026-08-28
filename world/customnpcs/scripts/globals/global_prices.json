@@ -386,7 +386,7 @@
     "forestry:gear_bronze:0": {
         "value": 26000,
         "ore": {
-            "bronze": 0.80
+            "bronze": 0.8
         }
     },
     "forestry:gear_copper:0": {
@@ -1769,12 +1769,20 @@
             "steel": 0.25
         }
     },
-    "immersiveengineering:metal:9": {
-        "display_name": "Copper Grit",
-        "value": 1500,
-        "ore_override": true,
+    "immersiveengineering:metal:0": {
+        "display_name": "Copper Ingot",
+        "value": 6000,
+        "ore_override": false,
         "ore": {
-            "copper": 0.25
+            "copper": 1
+        }
+    },
+    "immersiveengineering:metal:1": {
+        "display_name": "Aluminum Ingot",
+        "value": 3000,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 1
         }
     },
     "immersiveengineering:metal:10": {
@@ -1855,22 +1863,6 @@
             "gold": 0.02
         }
     },
-    "immersiveengineering:metal:0": {
-        "display_name": "Copper Ingot",
-        "value": 6000,
-        "ore_override": false,
-        "ore": {
-            "copper": 1
-        }
-    },
-    "immersiveengineering:metal:1": {
-        "display_name": "Aluminum Ingot",
-        "value": 3000,
-        "ore_override": false,
-        "ore": {
-            "aluminum": 1
-        }
-    },
     "immersiveengineering:metal:2": {
         "display_name": "Lead Ingot",
         "value": 4000,
@@ -1879,52 +1871,75 @@
             "lead": 1
         }
     },
+    "immersiveengineering:metal:20": {
+        "display_name": "Copper Nugget",
+        "value": 150,
+        "ore": {
+            "copper": 0.025
+        }
+    },
+    "immersiveengineering:metal:21": {
+        "display_name": "Aluminum Nugget",
+        "value": 75,
+        "ore": {
+            "aluminum": 0.025
+        }
+    },
+    "immersiveengineering:metal:22": {
+        "display_name": "Lead Nugget",
+        "value": 100,
+        "ore": {
+            "lead": 0.025
+        }
+    },
+    "immersiveengineering:metal:23": {
+        "display_name": "Silver Nugget",
+        "value": 500,
+        "ore": {
+            "silver": 0.025
+        }
+    },
+    "immersiveengineering:metal:24": {
+        "display_name": "Nickel Nugget",
+        "value": 375,
+        "ore": {
+            "nickel": 0.025
+        }
+    },
+    "immersiveengineering:metal:25": {
+        "display_name": "Uranium Nugget",
+        "value": 1000,
+        "ore": {
+            "uranium": 0.025
+        }
+    },
+    "immersiveengineering:metal:26": {
+        "display_name": "Constantan Nugget",
+        "value": 225,
+        "ore": {
+            "constantan": 0.025
+        }
+    },
+    "immersiveengineering:metal:27": {
+        "display_name": "Electrum Nugget",
+        "value": 2500,
+        "ore": {
+            "electrum": 0.025
+        }
+    },
+    "immersiveengineering:metal:28": {
+        "display_name": "Steel Nugget",
+        "value": 50,
+        "ore": {
+            "steel": 0.025
+        }
+    },
     "immersiveengineering:metal:3": {
         "display_name": "Silver Ingot",
         "value": 10000,
         "ore_override": false,
         "ore": {
             "silver": 1
-        }
-    },
-    "immersiveengineering:metal:4": {
-        "display_name": "Nickel Ingot",
-        "value": 15000,
-        "ore_override": false,
-        "ore": {
-            "nickel": 1
-        }
-    },
-    "immersiveengineering:metal:5": {
-        "display_name": "Uranium Ingot",
-        "value": 40000,
-        "ore_override": false,
-        "ore": {
-            "uranium": 1
-        }
-    },
-    "immersiveengineering:metal:6": {
-        "display_name": "Constantan Ingot",
-        "value": 9000,
-        "ore_override": false,
-        "ore": {
-            "constantan": 1
-        }
-    },
-    "immersiveengineering:metal:7": {
-        "display_name": "Electrum Ingot",
-        "value": 100000,
-        "ore_override": false,
-        "ore": {
-            "electrum": 1
-        }
-    },
-    "immersiveengineering:metal:8": {
-        "display_name": "Steel Ingot",
-        "value": 2000,
-        "ore_override": false,
-        "ore": {
-            "steel": 1
         }
     },
     "immersiveengineering:metal:30": {
@@ -2007,12 +2022,60 @@
             "iron": 2.5
         }
     },
+    "immersiveengineering:metal:4": {
+        "display_name": "Nickel Ingot",
+        "value": 15000,
+        "ore_override": false,
+        "ore": {
+            "nickel": 1
+        }
+    },
     "immersiveengineering:metal:40": {
         "display_name": "Gold Plate",
         "value": 450000,
         "ore_override": true,
         "ore": {
             "gold": 2.5
+        }
+    },
+    "immersiveengineering:metal:5": {
+        "display_name": "Uranium Ingot",
+        "value": 40000,
+        "ore_override": false,
+        "ore": {
+            "uranium": 1
+        }
+    },
+    "immersiveengineering:metal:6": {
+        "display_name": "Constantan Ingot",
+        "value": 9000,
+        "ore_override": false,
+        "ore": {
+            "constantan": 1
+        }
+    },
+    "immersiveengineering:metal:7": {
+        "display_name": "Electrum Ingot",
+        "value": 100000,
+        "ore_override": false,
+        "ore": {
+            "electrum": 1
+        }
+    },
+    "immersiveengineering:metal:8": {
+        "display_name": "Steel Ingot",
+        "value": 2000,
+        "ore_override": false,
+        "ore": {
+            "steel": 1
+        }
+    },
+    "immersiveengineering:metal:9": {
+        "display_name": "Copper Grit",
+        "value": 1500,
+        "ore_override": true,
+        "ore": {
+            "copper": 0.25
         }
     },
     "immersiveengineering:metal_decoration2:2": {
@@ -2327,9 +2390,6 @@
     "minecraft:glass_pane:0": {
         "value": 2000
     },
-    "minecraft:gold_ingot:0": {
-        "value": 50000
-    },
     "minecraft:gold_nugget:0": {
         "value": 5000
     },
@@ -2368,6 +2428,13 @@
     },
     "minecraft:iron_leggings:0": {
         "value": 25000
+    },
+    "minecraft:iron_nugget:0": {
+        "display_name": "Iron Nugget",
+        "value": 25,
+        "ore": {
+            "iron": 0.025
+        }
     },
     "minecraft:iron_pickaxe:0": {
         "value": 4000
