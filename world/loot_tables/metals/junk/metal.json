@@ -6,7 +6,7 @@
                 {
                     "type": "loot_table",
                     "path": "metals/junk/metal_nuggets.json",
-                    "weight": 45
+                    "weight": 55
                 },
                 {
                     "type": "loot_table",
@@ -15,15 +15,15 @@
                 },
                 {
                     "type": "loot_table",
-                    "path": "metals/junk/metal_plates.json",
-                    "weight": 17
+                    "path": "metals/junk/metal_ingots.json",
+                    "weight": 12
                 },
                 {
                     "type": "loot_table",
-                    "path": "metals/junk/metal_ingots.json",
-                    "weight": 8
+                    "path": "metals/junk/metal_plates.json",
+                    "weight": 3
                 }
             ]
         }
     ]
-} 
+}
