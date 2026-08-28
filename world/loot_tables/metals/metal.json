@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_nuggets.json",
+                    "weight": 30
+                },
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_grit.json",
+                    "weight": 25
+                },
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_ingots.json",
+                    "weight": 25
+                },
+                {
+                    "type": "loot_table",
+                    "path": "metals/metal_plates.json",
+                    "weight": 20
+                }
+            ]
+        }
+    ]
+}

@@ -5,121 +5,121 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "minecraft:iron_nugget",
-                    "_comment": "Iron Nugget",
-                    "weight": 25
-                },
-                {
-                    "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Steel Nugget",
-                    "weight": 18,
+                    "_comment": "Iron Grit",
+                    "weight": 30,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 28
+                            "data": 18
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Copper Nugget",
-                    "weight": 18,
+                    "_comment": "Steel Grit",
+                    "weight": 25,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 20
+                            "data": 17
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Aluminum Nugget",
-                    "weight": 13,
+                    "_comment": "Copper Grit",
+                    "weight": 20,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 21
+                            "data": 9
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Lead Nugget",
-                    "weight": 7,
+                    "_comment": "Aluminum Grit",
+                    "weight": 12,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 22
+                            "data": 10
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Nickel Nugget",
+                    "_comment": "Lead Grit",
                     "weight": 5,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 24
+                            "data": 11
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Constantan Nugget",
-                    "weight": 4,
+                    "_comment": "Nickel Grit",
+                    "weight": 3,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 26
+                            "data": 13
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Silver Nugget",
-                    "weight": 4,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 23
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:gold_nugget",
-                    "_comment": "Gold Nugget",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:metal",
-                    "_comment": "Electrum Nugget",
+                    "_comment": "Constantan Grit",
                     "weight": 2,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 27
+                            "data": 15
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Uranium Nugget",
+                    "_comment": "Silver Grit",
                     "weight": 1,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 25
+                            "data": 12
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:metal",
+                    "_comment": "Gold Grit",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 19
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:metal",
+                    "_comment": "Electrum Grit",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 16
                         }
                     ]
                 }

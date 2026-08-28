@@ -5,123 +5,99 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "minecraft:iron_nugget",
-                    "_comment": "Iron Nugget",
-                    "weight": 25
+                    "name": "minecraft:iron_ingot",
+                    "_comment": "Iron Ingot",
+                    "weight": 36
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Steel Nugget",
+                    "_comment": "Steel Ingot",
+                    "weight": 27,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 8
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:metal",
+                    "_comment": "Copper Ingot",
                     "weight": 18,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 28
+                            "data": 0
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Copper Nugget",
-                    "weight": 18,
+                    "_comment": "Aluminum Ingot",
+                    "weight": 10,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 20
+                            "data": 1
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Aluminum Nugget",
-                    "weight": 13,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 21
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:metal",
-                    "_comment": "Lead Nugget",
-                    "weight": 7,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 22
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:metal",
-                    "_comment": "Nickel Nugget",
-                    "weight": 5,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 24
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:metal",
-                    "_comment": "Constantan Nugget",
+                    "_comment": "Lead Ingot",
                     "weight": 4,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 26
+                            "data": 2
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Silver Nugget",
-                    "weight": 4,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 23
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:gold_nugget",
-                    "_comment": "Gold Nugget",
-                    "weight": 3
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:metal",
-                    "_comment": "Electrum Nugget",
+                    "_comment": "Nickel Ingot",
                     "weight": 2,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 27
+                            "data": 4
                         }
                     ]
                 },
                 {
                     "type": "item",
                     "name": "immersiveengineering:metal",
-                    "_comment": "Uranium Nugget",
+                    "_comment": "Constantan Ingot",
                     "weight": 1,
                     "functions": [
                         {
                             "function": "set_data",
-                            "data": 25
+                            "data": 6
                         }
                     ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:metal",
+                    "_comment": "Silver Ingot",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:gold_ingot",
+                    "_comment": "Gold Ingot",
+                    "weight": 1
                 }
             ]
         }
