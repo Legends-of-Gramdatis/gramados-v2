@@ -3,20 +3,10 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
 
-var CRATE_SKIN_BASE_URL =
-    "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_";
+var CRATE_SKIN_BASE_URL = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_";
 
-var config = loadJson(
-    "world/customnpcs/scripts/ecmascript/modules/junkyard/config.json"
-);
-
-var crates = loadJson(
-    "world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json"
-);
-
-var CRATE_RARITY_WEIGHTS =
-    config.JUNKYARD_CRATE_RARITY_WEIGHTS;
-
+var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
+var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
 
 /**
  * Temporarily regenerates and opens the crate every time
@@ -121,12 +111,16 @@ function setRandomCrateSize(npc) {
 
 
 /**
- * Pulls loot from the loot table configured for the crate type.
+ * Pulls main loot and optional secondary scrap loot
+ * configured for the crate type.
  *
- * Rarity determines the number of loot-table pulls:
+ * Rarity determines the number of MAIN loot-table pulls:
  * common   -> 1
  * uncommon -> 2
  * rare     -> 3
+ *
+ * Secondary loot is independent from rarity.
+ * ScrapChance determines whether ScrapLootTable is pulled once.
  *
  * @param {IPlayer} player
  * @param {ICustomNpc} npc
@@ -141,26 +135,9 @@ function lootCrate(
 ) {
     var crateConfig = crates[crateType];
 
-    if (
-        !crateConfig ||
-        !crateConfig.LootTable
-    ) {
-        tellPlayer(
-            player,
-            "&c:cross_mark: This crate has no valid loot table."
-        );
-
-        logToFile(
-            "mechanics",
-            "[Junkyard Crate] Missing LootTable for crate type: " +
-            crateType
-        );
-
-        return;
-    }
-
     var pullCount = getRarityPullCount(rarity);
-    var loot = [];
+
+    var mainLoot = [];
 
     for (var i = 0; i < pullCount; i++) {
         var lootPart = pullLootTable(
@@ -168,22 +145,34 @@ function lootCrate(
             player
         );
 
-        for (var j = 0; j < lootPart.length; j++) {
-            loot.push(lootPart[j]);
-        }
+        appendLootEntries(
+            mainLoot,
+            lootPart
+        );
     }
 
-    var world = npc.getWorld();
+    var secondaryResult =
+        pullSecondaryLoot(
+            crateConfig,
+            player
+        );
 
-    for (var k = 0; k < loot.length; k++) {
-        var itemStack =
-            generateItemStackFromLootEntry(
-                loot[k],
-                world
-            );
+    var loot = [];
 
-        npc.dropItem(itemStack);
-    }
+    appendLootEntries(
+        loot,
+        mainLoot
+    );
+
+    appendLootEntries(
+        loot,
+        secondaryResult.loot
+    );
+
+    dropLoot(
+        npc,
+        loot
+    );
 
     logToFile(
         "mechanics",
@@ -194,10 +183,117 @@ function lootCrate(
         crateType +
         " Junkyard Crate (" +
         pullCount +
-        " loot pull" +
+        " main loot pull" +
         (pullCount == 1 ? "" : "s") +
+        ", " +
+        mainLoot.length +
+        " main item" +
+        (mainLoot.length == 1 ? "" : "s") +
+        ", secondary scrap: " +
+        (
+            secondaryResult.triggered
+                ? secondaryResult.loot.length +
+                  " item" +
+                  (secondaryResult.loot.length == 1 ? "" : "s")
+                : "none"
+        ) +
         ")."
     );
+}
+
+
+/**
+ * Attempts to pull the secondary scrap loot table configured
+ * for a crate.
+ *
+ * ScrapChance is interpreted as a value between 0 and 1.
+ *
+ * The secondary loot table is pulled at most once.
+ * Any rolls inside that loot table are handled by the
+ * loot-table system itself.
+ *
+ * @param {Object} crateConfig
+ * @param {IPlayer} player
+ * @returns {Object}
+ */
+function pullSecondaryLoot(
+    crateConfig,
+    player
+) {
+    var result = {
+        triggered: false,
+        loot: []
+    };
+
+    if (!crateConfig.ScrapLootTable) {
+        return result;
+    }
+
+    var scrapChance = crateConfig.ScrapChance;
+
+    if (
+        scrapChance < 1 &&
+        Math.random() >= scrapChance
+    ) {
+        return result;
+    }
+
+    result.triggered = true;
+
+    var scrapLoot = pullLootTable(
+        crateConfig.ScrapLootTable,
+        player
+    );
+
+    appendLootEntries(
+        result.loot,
+        scrapLoot
+    );
+
+    return result;
+}
+
+
+/**
+ * Appends loot entries from one array into another.
+ *
+ * Safely ignores null or invalid loot results.
+ *
+ * @param {Array} target
+ * @param {Array} entries
+ */
+function appendLootEntries(
+    target,
+    entries
+) {
+    for (var i = 0; i < entries.length; i++) {
+        target.push(entries[i]);
+    }
+}
+
+
+/**
+ * Generates ItemStacks from loot entries and drops them
+ * at the crate NPC.
+ *
+ * @param {ICustomNpc} npc
+ * @param {Array} loot
+ */
+function dropLoot(
+    npc,
+    loot
+) {
+    var world = npc.getWorld();
+
+    for (var i = 0; i < loot.length; i++) {
+        var itemStack =
+            generateItemStackFromLootEntry(
+                loot[i],
+                world
+            );
+
+        npc.dropItem(itemStack);
+    }
 }
 
 
@@ -245,7 +341,7 @@ function getRandomCrateType() {
  */
 function getRandomCrateRarity() {
     return getWeightedRandomKey(
-        CRATE_RARITY_WEIGHTS,
+        config.JUNKYARD_CRATE_RARITY_WEIGHTS,
         function(weight) {
             return weight;
         }
