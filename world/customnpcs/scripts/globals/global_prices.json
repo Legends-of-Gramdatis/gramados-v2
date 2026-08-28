@@ -1672,12 +1672,36 @@
             "steel": 2
         }
     },
+    "immersiveengineering:material:20": {
+        "display_name": "Copper Wire",
+        "value": 300,
+        "ore_override": false,
+        "ore": {
+            "copper": 0.05
+        }
+    },
     "immersiveengineering:material:21": {
         "display_name": "Electrum Wire",
         "value": 5000,
         "ore_override": false,
         "ore": {
             "electrum": 0.05
+        }
+    },
+    "immersiveengineering:material:22": {
+        "display_name": "Aluminum Wire",
+        "value": 150,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 0.05
+        }
+    },
+    "immersiveengineering:material:23": {
+        "display_name": "Steel Wire",
+        "value": 100,
+        "ore_override": false,
+        "ore": {
+            "steel": 0.05
         }
     },
     "immersiveengineering:material:3": {
