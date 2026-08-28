@@ -47,8 +47,8 @@
     "scrap": {
         "DisplayName": "Scrap Crate",
         "LootTable": "junkyard/crates/scrap.json",
-        "ScrapLootTable": null,
-        "ScrapChance": 0.0,
+        "ScrapLootTable": "junkyard/scrap/mixed.json",
+        "ScrapChance": 1.0,
 
         "Weight": 10
     },
