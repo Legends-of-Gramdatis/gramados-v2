@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/misc.json",
+                    "weight": 35
+                },
+                {
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/metal.json",
+                    "weight": 30
+                },
+                {
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/mechanical.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/electrical.json",
+                    "weight": 15
+                }
+            ]
+        }
+    ]
+}
