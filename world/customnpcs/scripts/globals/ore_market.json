@@ -94,5 +94,13 @@
         "max_price": 7700,
         "current_price": 5500,
         "quantity_factor": 1000
+    },
+    "ore:uranium": {
+        "display_name": "Uranium",
+        "min_price": 24000,
+        "reference_price": 40000,
+        "max_price": 56000,
+        "current_price": 40000,
+        "quantity_factor": 1000
     }
 }
