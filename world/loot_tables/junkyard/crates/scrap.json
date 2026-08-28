@@ -9,45 +9,12 @@
                 {
                     "type": "loot_table",
                     "path": "metals/metal_nuggets.json",
-                    "weight": 14
+                    "weight": 1
                 },
                 {
-                    "type": "item",
-                    "name": "immersiveengineering:wirecoil",
-                    "weight": 3,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:wirecoil",
-                    "weight": 2,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 4
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "immersiveengineering:connector",
-                    "weight": 2,
-                    "functions": [
-                        {
-                            "function": "set_data",
-                            "data": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:lever",
-                    "weight": 3
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/junker_engines.json",
+                    "weight": 1
                 }
             ]
         }

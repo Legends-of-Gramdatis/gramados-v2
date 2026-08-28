@@ -1,0 +1,59 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.heavy_v8_junkyard",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.heavy_v10_decor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.heavy_v10_junkyard",
+                    "weight": 6
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.heavy_v8_decor",
+                    "weight": 8
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.engineh6",
+                    "weight": 13
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.enginei2",
+                    "weight": 19
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.enginetimemachine",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.enginev8",
+                    "weight": 17
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.engineelectric",
+                    "weight": 8
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.enginegearbox",
+                    "weight": 12
+                }
+            ]
+        }
+    ]
+}
