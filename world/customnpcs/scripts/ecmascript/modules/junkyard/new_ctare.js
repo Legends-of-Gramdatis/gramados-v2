@@ -2,9 +2,31 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
+
+var JUNKYARDS_CONFIG_PATH = "world/customnpcs/scripts/ecmascript/modules/junkyard/junkyards.json";
+
+var JUNKYARDS_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyards.json";
 
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
 var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
+var junkyards = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/junkyards.json");
+
+/**
+ * Links this crate NPC to the Junkyard region it is currently in.
+ *
+ * If the NPC is not inside a region configured in junkyards.json,
+ * the crate remains disabled.
+ *
+ * @param {Object} event
+ */
+function init(event) {
+    initializeCrateJunkyard(
+        event.npc
+    );
+}
 
 /**
  * Temporarily regenerates and opens the crate every time
@@ -18,6 +40,13 @@ function interact(event) {
     var npc = event.npc;
     var player = event.player;
 
+    var junkyardId = getLinkedJunkyardId(npc);
+
+    if (junkyardId == null || !junkyards[junkyardId]) {
+        tellPlayer(player, "&c:cross_mark: This crate is not linked to a Junkyard and cannot be opened.");
+        return;
+    }
+
     var result = regenerateCrate(npc);
 
     if (!result) {
@@ -27,9 +56,56 @@ function interact(event) {
 
     tellPlayer(player, "&a:check_mark: Generated &e" + result.type + "&a crate with rarity &e" + result.rarity + "&a.");
 
-    lootCrate(player, npc, result.type, result.rarity);
+    var opened = lootCrate(player, npc, result.type, result.rarity, junkyardId);
+
+    if (opened) {
+        recordJunkyardCrateOpen(junkyardId, result.type);
+    }
 }
 
+/**
+ * Detects the NPC's current region and links the crate
+ * to it if that region exists in junkyards.json.
+ *
+ * Any previous junkyard link is removed if the current
+ * region is not a configured Junkyard.
+ *
+ * @param {ICustomNpc} npc
+ * @returns {string|null} Linked Junkyard region ID, or null.
+ */
+function initializeCrateJunkyard(npc) {
+    var storedData = npc.getStoreddata();
+
+    var regionId = getRegionAtEntity(npc);
+
+    if (regionId == null || !junkyards[regionId]
+    ) {
+        storedData.remove("junkyard_id");
+        return null;
+    }
+
+    storedData.put("junkyard_id", regionId);
+
+    ensureJunkyardDataEntry(regionId);
+
+    return regionId;
+}
+
+/**
+ * Returns the Junkyard region ID linked to this crate.
+ *
+ * @param {ICustomNpc} npc
+ * @returns {string|null}
+ */
+function getLinkedJunkyardId(npc) {
+    var junkyardId = npc.getStoreddata().get("junkyard_id");
+
+    if (junkyardId == null) {
+        return null;
+    }
+
+    return junkyardId;
+}
 
 /**
  * Generates a new crate type, rarity, and size.
@@ -42,24 +118,11 @@ function regenerateCrate(npc) {
     var crateType = getRandomCrateType();
 
     if (crateType == null) {
-        logToFile(
-            "mechanics",
-            "[Junkyard Crate] Failed to select a crate type."
-        );
-
+        logToFile("mechanics", "[Junkyard Crate] Failed to select a crate type.");
         return null;
     }
 
     var rarity = getRandomCrateRarity();
-
-    if (rarity == null) {
-        logToFile(
-            "mechanics",
-            "[Junkyard Crate] Failed to select a crate rarity."
-        );
-
-        return null;
-    }
 
     var storedData = npc.getStoreddata();
 
@@ -67,12 +130,7 @@ function regenerateCrate(npc) {
     storedData.put("crate_rarity", rarity);
 
     setRandomCrateSize(npc);
-
-    applyCrateSkin(
-        npc,
-        crateType,
-        rarity
-    );
+    applyCrateSkin(npc, crateType, rarity);
 
     return {
         type: crateType,
@@ -80,18 +138,16 @@ function regenerateCrate(npc) {
     };
 }
 
-
 /**
  * Gives the crate a random size between 7 and 9 inclusive.
  *
  * @param {ICustomNpc} npc
  */
 function setRandomCrateSize(npc) {
-    var size = Math.floor(Math.random() * 3) + 7;
+    var size = rrandom_range(7, 9);
 
     npc.getDisplay().setSize(size);
 }
-
 
 /**
  * Pulls main loot and optional secondary scrap loot
@@ -109,33 +165,23 @@ function setRandomCrateSize(npc) {
  * @param {ICustomNpc} npc
  * @param {string} crateType
  * @param {string} rarity
+ * @param {string} junkyardId
+ * @returns {boolean} True if the crate was successfully opened.
  */
-function lootCrate(
-    player,
-    npc,
-    crateType,
-    rarity
-) {
+function lootCrate(player, npc, crateType, rarity, junkyardId) {
     var crateConfig = crates[crateType];
-
     var pullCount = getRarityPullCount(rarity);
-
-    var mainLoot = [];
-
-    for (var i = 0; i < pullCount; i++) {
-        var lootPart = pullLootTable(crateConfig.LootTable, player);
-
-        appendLootEntries(mainLoot, lootPart);
-    }
-
-    var secondaryResult =
-        pullSecondaryLoot(crateConfig, player);
-
     var loot = [];
 
-    appendLootEntries(loot, mainLoot);
+    for (var i = 0; i < pullCount; i++) {
+        var mainLoot = pullLootTable(crateConfig.LootTable, player);
+        loot = array_merge(loot, mainLoot);
+    }
 
-    appendLootEntries(loot, secondaryResult.loot);
+    if (crateConfig.ScrapChance > 0 && Math.random() < crateConfig.ScrapChance) {
+        var secondaryLoot = pullLootTable(crateConfig.ScrapLootTable, player);
+        loot = array_merge(loot, secondaryLoot);
+    }
 
     dropLoot(npc, loot);
 
@@ -146,96 +192,41 @@ function lootCrate(
         rarity +
         " " +
         crateType +
-        " Junkyard Crate (" +
+        " Junkyard Crate in " +
+        junkyards[junkyardId].DisplayName +
+        " (" +
         pullCount +
         " main loot pull" +
-        (pullCount == 1 ? "" : "s") +
+        (
+            pullCount == 1
+                ? ""
+                : "s"
+        ) +
         ", " +
-        mainLoot.length +
+        loot.length +
         " main item" +
-        (mainLoot.length == 1 ? "" : "s") +
+        (
+            loot.length == 1
+                ? ""
+                : "s"
+        ) +
         ", secondary scrap: " +
         (
-            secondaryResult.triggered
-                ? secondaryResult.loot.length +
+            secondaryLoot.triggered
+                ? secondaryLoot.length +
                   " item" +
-                  (secondaryResult.loot.length == 1 ? "" : "s")
+                  (
+                      secondaryLoot.length == 1
+                          ? ""
+                          : "s"
+                  )
                 : "none"
         ) +
         ")."
     );
+
+    return true;
 }
-
-
-/**
- * Attempts to pull the secondary scrap loot table configured
- * for a crate.
- *
- * ScrapChance is interpreted as a value between 0 and 1.
- *
- * The secondary loot table is pulled at most once.
- * Any rolls inside that loot table are handled by the
- * loot-table system itself.
- *
- * @param {Object} crateConfig
- * @param {IPlayer} player
- * @returns {Object}
- */
-function pullSecondaryLoot(
-    crateConfig,
-    player
-) {
-    var result = {
-        triggered: false,
-        loot: []
-    };
-
-    if (!crateConfig.ScrapLootTable) {
-        return result;
-    }
-
-    var scrapChance = crateConfig.ScrapChance;
-
-    if (
-        scrapChance < 1 &&
-        Math.random() >= scrapChance
-    ) {
-        return result;
-    }
-
-    result.triggered = true;
-
-    var scrapLoot = pullLootTable(
-        crateConfig.ScrapLootTable,
-        player
-    );
-
-    appendLootEntries(
-        result.loot,
-        scrapLoot
-    );
-
-    return result;
-}
-
-
-/**
- * Appends loot entries from one array into another.
- *
- * Safely ignores null or invalid loot results.
- *
- * @param {Array} target
- * @param {Array} entries
- */
-function appendLootEntries(
-    target,
-    entries
-) {
-    for (var i = 0; i < entries.length; i++) {
-        target.push(entries[i]);
-    }
-}
-
 
 /**
  * Generates ItemStacks from loot entries and drops them
@@ -252,6 +243,7 @@ function dropLoot(
 
     for (var i = 0; i < loot.length; i++) {
         var itemStack = generateItemStackFromLootEntry(loot[i], world);
+
         npc.dropItem(itemStack);
     }
 }
@@ -284,8 +276,7 @@ function getRarityPullCount(rarity) {
  * @returns {string|null}
  */
 function getRandomCrateType() {
-    return getWeightedRandomKey(
-        crates,
+    return getWeightedRandomKey(crates,
         function(crateConfig) {
             return crateConfig.Weight;
         }
@@ -300,8 +291,7 @@ function getRandomCrateType() {
  * @returns {string|null}
  */
 function getRandomCrateRarity() {
-    return getWeightedRandomKey(
-        config.JUNKYARD_CRATE_RARITY_WEIGHTS,
+    return getWeightedRandomKey(config.JUNKYARD_CRATE_RARITY_WEIGHTS,
         function(weight) {
             return weight;
         }
@@ -316,31 +306,16 @@ function getRandomCrateRarity() {
  * @param {Function} weightGetter
  * @returns {string|null}
  */
-function getWeightedRandomKey(
-    weightedObject,
-    weightGetter
-) {
-    if (!weightedObject) {
-        return null;
-    }
-
-    var keys = Object.keys(weightedObject);
+function getWeightedRandomKey(weightedObject, weightGetter) {
+    var keys = getJsonKeys(weightedObject);
     var totalWeight = 0;
 
     for (var i = 0; i < keys.length; i++) {
-        var value =
-            weightedObject[keys[i]];
-
-        var weight =
-            Number(weightGetter(value));
-
-        if (
-            isNaN(weight) ||
-            weight <= 0
-        ) {
+        var value = weightedObject[keys[i]];
+        var weight = weightGetter(value)
+        if (isNaN(weight) || weight <= 0) {
             continue;
         }
-
         totalWeight += weight;
     }
 
@@ -348,23 +323,14 @@ function getWeightedRandomKey(
         return null;
     }
 
-    var random =
-        Math.random() * totalWeight;
+    var random = Math.random() * totalWeight;
 
     for (var j = 0; j < keys.length; j++) {
-        var key =
-            keys[j];
+        var key = keys[j];
+        var entry = weightedObject[key];
+        var entryWeight = weightGetter(entry)
 
-        var entry =
-            weightedObject[key];
-
-        var entryWeight =
-            Number(weightGetter(entry));
-
-        if (
-            isNaN(entryWeight) ||
-            entryWeight <= 0
-        ) {
+        if (isNaN(entryWeight) || entryWeight <= 0) {
             continue;
         }
 
@@ -388,11 +354,93 @@ function getWeightedRandomKey(
  * @param {string} crateType
  * @param {string} rarity
  */
-function applyCrateSkin(
-    npc,
-    crateType,
-    rarity
-) {
+function applyCrateSkin(npc, crateType, rarity) {
     var skinUrl = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_" + crateType + "_" + rarity + ".png";
     npc.getDisplay().setSkinUrl(skinUrl);
+}
+
+/**
+ * Ensures that the dynamic data entry for a Junkyard exists.
+ *
+ * Existing historical crate-type entries are preserved.
+ * Newly configured crate types are automatically added with a
+ * starting count of 0.
+ *
+ * @param {string} junkyardId
+ */
+function ensureJunkyardDataEntry(junkyardId) {
+    var data = loadJson(JUNKYARDS_DATA_PATH);
+
+    var changed = ensureJunkyardDataStructure(data, junkyardId);
+
+    if (changed) {
+        saveJson(data, JUNKYARDS_DATA_PATH);
+    }
+}
+
+
+/**
+ * Ensures the expected statistics structure exists for a Junkyard.
+ *
+ * @param {Object} data
+ * @param {string} junkyardId
+ * @returns {boolean} True if the data object was modified.
+ */
+function ensureJunkyardDataStructure(data, junkyardId) {
+    var changed = false;
+
+    if (!data[junkyardId]) {
+        data[junkyardId] = {};
+        changed = true;
+    }
+
+    var junkyardData = data[junkyardId];
+
+    if (!junkyardData.CratesOpened) {
+        junkyardData.CratesOpened = {
+            Total: 0,
+            ByType: {}
+        };
+
+        changed = true;
+    }
+
+    var byType = junkyardData.CratesOpened.ByType;
+
+    for (var crateType in crates) {
+        if (!byType[crateType]) {
+            byType[crateType] = 0;
+            changed = true;
+        }
+    }
+
+    return changed;
+}
+
+
+/**
+ * Records one successfully opened crate for a Junkyard.
+ *
+ * Updates both the total counter and the counter for the
+ * specific crate type.
+ *
+ * @param {string} junkyardId
+ * @param {string} crateType
+ */
+function recordJunkyardCrateOpen(junkyardId, crateType) {
+    var data = loadJson(JUNKYARDS_DATA_PATH);
+
+    ensureJunkyardDataStructure(data, junkyardId);
+
+    var opened = data[junkyardId].CratesOpened;
+
+    opened.Total++;
+
+    if (!opened.ByType[crateType]) {
+        opened.ByType[crateType] = 0;
+    }
+
+    opened.ByType[crateType]++;
+
+    saveJson(data, JUNKYARDS_DATA_PATH);
 }
