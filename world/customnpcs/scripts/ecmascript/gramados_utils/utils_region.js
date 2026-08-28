@@ -724,6 +724,10 @@ function getRegionAtPosition(pos) {
     return prior_region;
 }
 
+function getRegionAtEntity(entity) {
+    return getRegionAtPosition(iposToPos(entity.getPos()));
+}
+
 /**
  * Returns a list of region names for which the player's current position is inside any sub-cuboid.
  * @param {IPlayer} player - The player instance.
