@@ -1,0 +1,27 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.sparkplug",
+                    "_comment": "Spark Plug",
+                    "weight": 7
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.piston",
+                    "_comment": "Piston",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.hydraulics",
+                    "_comment": "Hydraulics System",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

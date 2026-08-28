@@ -1,0 +1,51 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:material",
+                    "_comment": "Iron Rod",
+                    "weight": 8,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:material",
+                    "_comment": "Steel Rod",
+                    "weight": 6,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 2
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:material",
+                    "_comment": "Aluminum Rod",
+                    "weight": 4,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.metaltube",
+                    "_comment": "Metal Tube",
+                    "weight": 7
+                }
+            ]
+        }
+    ]
+}
