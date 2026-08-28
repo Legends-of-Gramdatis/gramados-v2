@@ -175,12 +175,14 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
 
     for (var i = 0; i < pullCount; i++) {
         var mainLoot = pullLootTable(crateConfig.LootTable, player);
-        loot = array_merge(loot, mainLoot);
+        loot = loot.concat(mainLoot);
     }
 
-    if (crateConfig.ScrapChance > 0 && Math.random() < crateConfig.ScrapChance) {
+    var triggered = (crateConfig.ScrapChance > 0 && Math.random() < crateConfig.ScrapChance)
+
+    if (triggered) {
         var secondaryLoot = pullLootTable(crateConfig.ScrapLootTable, player);
-        loot = array_merge(loot, secondaryLoot);
+        loot = loot.concat(secondaryLoot);
     }
 
     dropLoot(npc, loot);
@@ -212,7 +214,7 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
         ) +
         ", secondary scrap: " +
         (
-            secondaryLoot.triggered
+            triggered
                 ? secondaryLoot.length +
                   " item" +
                   (
