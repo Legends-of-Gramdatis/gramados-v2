@@ -1,0 +1,33 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "_comment": "Consumer Circuit Board",
+                    "name": "mts:ivv.circuit",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "_comment": "Aviation / Advanced Instrument Circuit Board",
+                    "name": "mts:mtsofficialpack.circuit",
+                    "weight": 3
+                },
+                {
+                    "type": "item",
+                    "_comment": "Industrial Circuit Board",
+                    "name": "immersiveengineering:material",
+                    "weight": 2,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 27
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
