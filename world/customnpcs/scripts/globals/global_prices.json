@@ -383,6 +383,25 @@
         "allow_market_override": true,
         "based_on_stock": "Gramados Farming"
     },
+    "forestry:gear_bronze:0": {
+        "value": 26000,
+        "ore": {
+            "copper": 0.6,
+            "tin": 0.2
+        }
+    },
+    "forestry:gear_copper:0": {
+        "value": 22000,
+        "ore": {
+            "copper": 0.8
+        }
+    },
+    "forestry:gear_tin:0": {
+        "value": 18000,
+        "ore": {
+            "tin": 0.8
+        }
+    },
     "forestry:ingot_copper:0": {
         "value": 1000
     },
@@ -1664,6 +1683,12 @@
     "immersiveengineering:hoe_steel:0": {
         "value": 20000
     },
+    "immersiveengineering:material:1": {
+        "value": 4500,
+        "ore": {
+            "iron": 0.5
+        }
+    },
     "immersiveengineering:material:2": {
         "display_name": "Steel Rod",
         "value": 4000,
@@ -1702,6 +1727,23 @@
         "ore_override": false,
         "ore": {
             "steel": 0.05
+        }
+    },
+    "immersiveengineering:material:26": {
+        "value": 25000,
+        "ore": {
+            "nickel": 0.15,
+            "iron": 0.05,
+            "steel": 0.05
+        }
+    },
+    "immersiveengineering:material:27": {
+        "value": 90000,
+        "ore": {
+            "copper": 0.6,
+            "electrum": 0.04,
+            "silver": 0.03,
+            "constantan": 0.05
         }
     },
     "immersiveengineering:material:3": {
@@ -4700,6 +4742,9 @@
     "mts:iv_tcp_v3_utility.trin_transortus_sunshineyellow_g:0": {
         "value": 19125000
     },
+    "mts:iv_tcp_v3_utility.trin_trumon_deepblack-ivory-midnightpurple_brown:0": {
+        "value": 3270000
+    },
     "mts:iv_tcp_v3_utility.trin_trumon_deepblackmonochrome:0": {
         "value": 3270000
     },
@@ -4708,6 +4753,9 @@
     },
     "mts:iv_tcp_v3_utility.trin_trumon_irongrayfreightline:0": {
         "value": 3270000
+    },
+    "mts:iv_tcp_v3_utility.trin_trumon_milkcoffee-lavenderblue-sapphire_black:0": {
+        "value": 3515000
     },
     "mts:iv_tcp_v3_utility.trin_trumon_oakgreenharvest:0": {
         "value": 3270000
@@ -5351,6 +5399,21 @@
     "mts:iv_tpp.trinwheel30t10d_or:0": {
         "value": 50000
     },
+    "mts:iv_tpp.truck_bed_containerholder:0": {
+        "value": 1000000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalled:0": {
+        "value": 1700000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalleddumpster:0": {
+        "value": 2500000
+    },
+    "mts:iv_tpp.truck_bed_flatbedwalledtall:0": {
+        "value": 1850000
+    },
+    "mts:iv_tpp.truck_bed_woodenflatbed:0": {
+        "value": 750000
+    },
     "mts:iv_tpp.wheel_18h_6w_rim1_or:0": {
         "value": 25000
     },
@@ -5668,6 +5731,14 @@
     },
     "mts:ivv.carseat_white:0": {
         "value": 56000
+    },
+    "mts:ivv.circuit:0": {
+        "value": 30000,
+        "ore": {
+            "copper": 0.3,
+            "gold": 0.005,
+            "silver": 0.01
+        }
     },
     "mts:ivv.classicfuel:0": {
         "value": 5000
@@ -6575,6 +6646,15 @@
     "mts:mtsofficialpack.carseat_white:0": {
         "value": 60000
     },
+    "mts:mtsofficialpack.circuit:0": {
+        "value": 60000,
+        "ore": {
+            "copper": 0.45,
+            "gold": 0.01,
+            "silver": 0.025,
+            "aluminum": 0.1
+        }
+    },
     "mts:mtsofficialpack.copperwire:0": {
         "value": 3000,
         "ore_override": false,
@@ -6588,8 +6668,53 @@
     "mts:mtsofficialpack.enginedetroitdiesel:0": {
         "value": 700000
     },
+    "mts:mtsofficialpack.headlight:0": {
+        "value": 20000,
+        "ore": {
+            "copper": 0.15,
+            "aluminum": 0.1,
+            "silver": 0.005
+        }
+    },
+    "mts:mtsofficialpack.hydraulics:0": {
+        "value": 90000,
+        "ore": {
+            "steel": 1.5,
+            "iron": 0.4
+        }
+    },
+    "mts:mtsofficialpack.irsensor:0": {
+        "value": 50000,
+        "ore": {
+            "copper": 0.12,
+            "gold": 0.01,
+            "silver": 0.02,
+            "aluminum": 0.03
+        }
+    },
+    "mts:mtsofficialpack.metaltube:0": {
+        "value": 12000,
+        "ore": {
+            "steel": 0.75
+        }
+    },
     "mts:mtsofficialpack.nuts:0": {
         "value": 500
+    },
+    "mts:mtsofficialpack.piston:0": {
+        "value": 35000,
+        "ore": {
+            "aluminum": 0.7
+        }
+    },
+    "mts:mtsofficialpack.processor:0": {
+        "value": 90000,
+        "ore": {
+            "copper": 0.2,
+            "gold": 0.04,
+            "silver": 0.03,
+            "aluminum": 0.05
+        }
     },
     "mts:mtsofficialpack.rods:0": {
         "value": 500
@@ -6641,6 +6766,13 @@
             "lead": 0.05
         }
     },
+    "mts:mtsofficialpack.sparkplug:0": {
+        "value": 12000,
+        "ore": {
+            "steel": 0.12,
+            "nickel": 0.04
+        }
+    },
     "mts:mtsofficialpack.spring:0": {
         "value": 250,
         "ore_override": false,
@@ -6656,6 +6788,14 @@
     },
     "mts:mtsofficialpack.wheelsmall:0": {
         "value": 10000
+    },
+    "mts:potatpacc.wires:0": {
+        "value": 12000,
+        "ore_override": false,
+        "ore": {
+            "copper": 0.8,
+            "gold": 0.005
+        }
     },
     "mts:syndicatemotorfoundry.paintcan_ashen:0": {
         "value": 15000
@@ -7524,99 +7664,5 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
-    },
-    "mts:iv_tcp_v3_utility.trin_trumon_milkcoffee-lavenderblue-sapphire_black:0": {
-        "value": 3515000
-    },
-    "mts:iv_tcp_v3_utility.trin_trumon_deepblack-ivory-midnightpurple_brown:0": {
-        "value": 3270000
-    },
-    "mts:iv_tpp.truck_bed_containerholder:0": {
-        "value": 1000000
-    },
-    "mts:iv_tpp.truck_bed_flatbedwalled:0": {
-        "value": 1700000
-    },
-    "mts:iv_tpp.truck_bed_flatbedwalledtall:0": {
-        "value": 1850000
-    },
-    "mts:iv_tpp.truck_bed_flatbedwalleddumpster:0": {
-        "value": 2500000
-    },
-    "mts:iv_tpp.truck_bed_woodenflatbed:0": {
-        "value": 750000
-    },
-    "mts:potatpacc.wires:0": {
-        "value": 12000,
-        "ore_override": false,
-        "ore": {
-            "copper": 0.8,
-            "gold": 0.005
-        }
-    },
-    "mts:ivv.circuit:0": {
-        "value": 30000,
-        "ore": {
-            "copper": 0.30,
-            "gold": 0.005,
-            "silver": 0.01
-        }
-    },
-
-    "mts:mtsofficialpack.circuit:0": {
-        "value": 60000,
-        "ore": {
-            "copper": 0.45,
-            "gold": 0.01,
-            "silver": 0.025,
-            "aluminum": 0.10
-        }
-    },
-
-    "immersiveengineering:material:27": {
-        "value": 90000,
-        "ore": {
-            "copper": 0.60,
-            "electrum": 0.04,
-            "silver": 0.03,
-            "constantan": 0.05
-        }
-    },
-    "mts:mtsofficialpack.processor:0": {
-        "value": 90000,
-        "ore": {
-            "copper": 0.20,
-            "gold": 0.04,
-            "silver": 0.03,
-            "aluminum": 0.05
-        }
-    },
-
-    "mts:mtsofficialpack.irsensor:0": {
-        "value": 50000,
-        "ore": {
-            "copper": 0.12,
-            "gold": 0.01,
-            "silver": 0.02,
-            "aluminum": 0.03
-        }
-    },
-
-    "mts:mtsofficialpack.headlight:0": {
-        "value": 20000,
-        "ore": {
-            "copper": 0.15,
-            "aluminum": 0.10,
-            "silver": 0.005
-        }
-    },
-
-    "immersiveengineering:material:26": {
-        "value": 25000,
-        "ore": {
-            "nickel": 0.15,
-            "iron": 0.05,
-            "steel": 0.05
-        }
     }
 }

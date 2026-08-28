@@ -78,5 +78,13 @@
         "max_price": 28000,
         "current_price": 20000,
         "quantity_factor": 1000
+    },
+    "ore:tin": {
+        "display_name": "Tin",
+        "min_price": 2400,
+        "reference_price": 4000,
+        "max_price": 5600,
+        "current_price": 4000,
+        "quantity_factor": 1000
     }
 }
