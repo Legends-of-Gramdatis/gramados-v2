@@ -3,8 +3,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
 
-var CRATE_SKIN_BASE_URL = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_";
-
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
 var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
 
@@ -23,28 +21,13 @@ function interact(event) {
     var result = regenerateCrate(npc);
 
     if (!result) {
-        tellPlayer(
-            player,
-            "&c:cross_mark: Failed to generate the Junkyard crate."
-        );
+        tellPlayer(player, "&c:cross_mark: Failed to generate the Junkyard crate.");
         return;
     }
 
-    tellPlayer(
-        player,
-        "&a:check_mark: Generated &e" +
-        result.type +
-        "&a crate with rarity &e" +
-        result.rarity +
-        "&a."
-    );
+    tellPlayer(player, "&a:check_mark: Generated &e" + result.type + "&a crate with rarity &e" + result.rarity + "&a.");
 
-    lootCrate(
-        player,
-        npc,
-        result.type,
-        result.rarity
-    );
+    lootCrate(player, npc, result.type, result.rarity);
 }
 
 
@@ -140,39 +123,21 @@ function lootCrate(
     var mainLoot = [];
 
     for (var i = 0; i < pullCount; i++) {
-        var lootPart = pullLootTable(
-            crateConfig.LootTable,
-            player
-        );
+        var lootPart = pullLootTable(crateConfig.LootTable, player);
 
-        appendLootEntries(
-            mainLoot,
-            lootPart
-        );
+        appendLootEntries(mainLoot, lootPart);
     }
 
     var secondaryResult =
-        pullSecondaryLoot(
-            crateConfig,
-            player
-        );
+        pullSecondaryLoot(crateConfig, player);
 
     var loot = [];
 
-    appendLootEntries(
-        loot,
-        mainLoot
-    );
+    appendLootEntries(loot, mainLoot);
 
-    appendLootEntries(
-        loot,
-        secondaryResult.loot
-    );
+    appendLootEntries(loot, secondaryResult.loot);
 
-    dropLoot(
-        npc,
-        loot
-    );
+    dropLoot(npc, loot);
 
     logToFile(
         "mechanics",
@@ -286,12 +251,7 @@ function dropLoot(
     var world = npc.getWorld();
 
     for (var i = 0; i < loot.length; i++) {
-        var itemStack =
-            generateItemStackFromLootEntry(
-                loot[i],
-                world
-            );
-
+        var itemStack = generateItemStackFromLootEntry(loot[i], world);
         npc.dropItem(itemStack);
     }
 }
@@ -433,14 +393,6 @@ function applyCrateSkin(
     crateType,
     rarity
 ) {
-    var skinUrl =
-        CRATE_SKIN_BASE_URL +
-        crateType +
-        "_" +
-        rarity +
-        ".png";
-
-    npc.getDisplay().setSkinUrl(
-        skinUrl
-    );
+    var skinUrl = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_" + crateType + "_" + rarity + ".png";
+    npc.getDisplay().setSkinUrl(skinUrl);
 }
