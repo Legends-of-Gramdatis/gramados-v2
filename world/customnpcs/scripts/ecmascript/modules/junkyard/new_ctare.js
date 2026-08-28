@@ -176,6 +176,8 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
         loot = loot.concat(mainLoot);
     }
 
+    var mainLootCount = loot.length;
+
     var triggered = (crateConfig.ScrapChance > 0 && Math.random() < crateConfig.ScrapChance)
 
     if (triggered) {
@@ -203,10 +205,10 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
                 : "s"
         ) +
         ", " +
-        loot.length +
+        mainLootCount +
         " main item" +
         (
-            loot.length == 1
+            mainLootCount == 1
                 ? ""
                 : "s"
         ) +
@@ -402,7 +404,7 @@ function ensureJunkyardDataStructure(data, junkyardId) {
     var byType = junkyardData.CratesOpened.ByType;
 
     for (var crateType in crates) {
-        if (!byType[crateType]) {
+        if (typeof byType[crateType] === "undefined") {
             byType[crateType] = 0;
             changed = true;
         }
