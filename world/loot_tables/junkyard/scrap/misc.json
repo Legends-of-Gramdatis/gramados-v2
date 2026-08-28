@@ -1,0 +1,60 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 1,
+                "max": 3
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:material",
+                    "_comment": "Hemp Fiber",
+                    "weight": 25,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 4
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.tape",
+                    "_comment": "Duct Tape",
+                    "weight": 25
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.plastic",
+                    "_comment": "Automobile plastic sheet",
+                    "weight": 18
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.spring",
+                    "_comment": "Suspension spring",
+                    "weight": 15
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.screws",
+                    "_comment": "Screws",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.plating",
+                    "_comment": "Automobile metal sheet",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.rubber",
+                    "_comment": "Automobile rubber sheet",
+                    "weight": 10
+                }
+            ]
+        }
+    ]
+}
