@@ -6,8 +6,6 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
-var JUNKYARDS_CONFIG_PATH = "world/customnpcs/scripts/ecmascript/modules/junkyard/junkyards.json";
-
 var JUNKYARDS_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyards.json";
 
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
@@ -250,7 +248,6 @@ function dropLoot(
     }
 }
 
-
 /**
  * Returns the number of main loot pulls associated with a rarity.
  *
@@ -271,7 +268,6 @@ function getRarityPullCount(rarity) {
     }
 }
 
-
 /**
  * Selects a crate type using the Weight property from crates.json.
  *
@@ -284,7 +280,6 @@ function getRandomCrateType() {
         }
     );
 }
-
 
 /**
  * Selects a rarity using JUNKYARD_CRATE_RARITY_WEIGHTS
@@ -299,7 +294,6 @@ function getRandomCrateRarity() {
         }
     );
 }
-
 
 /**
  * Selects a random key from an object using arbitrary numeric weights.
@@ -346,7 +340,6 @@ function getWeightedRandomKey(weightedObject, weightGetter) {
     return null;
 }
 
-
 /**
  * Generates and applies the crate skin URL.
  *
@@ -379,7 +372,6 @@ function ensureJunkyardDataEntry(junkyardId) {
         saveJson(data, JUNKYARDS_DATA_PATH);
     }
 }
-
 
 /**
  * Ensures the expected statistics structure exists for a Junkyard.
@@ -418,7 +410,6 @@ function ensureJunkyardDataStructure(data, junkyardId) {
 
     return changed;
 }
-
 
 /**
  * Records one successfully opened crate for a Junkyard.
