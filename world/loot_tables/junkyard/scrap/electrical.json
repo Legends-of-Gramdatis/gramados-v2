@@ -1,0 +1,73 @@
+{
+    "pools": [
+        {
+            "rolls": {
+                "min": 1,
+                "max": 3
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:tool",
+                    "_comment": "Wire Cutters",
+                    "weight": 1,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.copperwire",
+                    "_comment": "Copper Wire roll",
+                    "weight": 20
+                },
+                {
+                    "type": "item",
+                    "name": "mts:potatpacc.wires",
+                    "_comment": "Multiple rolls of different wires",
+                    "weight": 15
+                },
+                {
+                    "type": "loot_table",
+                    "path": "electrical/small_wires.json",
+                    "weight": 30
+                },
+                {
+                    "type": "loot_table",
+                    "path": "electrical/circuits.json",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.processor",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.irsensor",
+                    "weight": 4
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.headlight",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "immersiveengineering:material",
+                    "_comment": "Vacuum tube",
+                    "weight": 8,
+                    "functions": [
+                        {
+                            "function": "set_data",
+                            "data": 26
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
