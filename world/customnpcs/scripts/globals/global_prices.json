@@ -7545,5 +7545,41 @@
     },
     "mts:iv_tpp.truck_bed_woodenflatbed:0": {
         "value": 750000
+    },
+    "mts:potatpacc.wires:0": {
+        "value": 12000,
+        "ore_override": false,
+        "ore": {
+            "copper": 0.8,
+            "gold": 0.005
+        }
+    },
+    "mts:ivv.circuit:0": {
+        "value": 30000,
+        "ore": {
+            "copper": 0.30,
+            "gold": 0.005,
+            "silver": 0.01
+        }
+    },
+
+    "mts:mtsofficialpack.circuit:0": {
+        "value": 60000,
+        "ore": {
+            "copper": 0.45,
+            "gold": 0.01,
+            "silver": 0.025,
+            "aluminum": 0.10
+        }
+    },
+
+    "immersiveengineering:material:27": {
+        "value": 90000,
+        "ore": {
+            "copper": 0.60,
+            "electrum": 0.04,
+            "silver": 0.03,
+            "constantan": 0.05
+        }
     }
 }
