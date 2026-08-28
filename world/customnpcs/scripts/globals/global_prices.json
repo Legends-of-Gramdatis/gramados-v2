@@ -1769,12 +1769,52 @@
             "steel": 0.25
         }
     },
-    "immersiveengineering:metal:0": {
-        "display_name": "Copper Ingot",
-        "value": 6000,
-        "ore_override": false,
+    "immersiveengineering:metal:9": {
+        "display_name": "Copper Grit",
+        "value": 1500,
+        "ore_override": true,
         "ore": {
-            "copper": 1
+            "copper": 0.25
+        }
+    },
+    "immersiveengineering:metal:10": {
+        "display_name": "Aluminum Grit",
+        "value": 750,
+        "ore_override": true,
+        "ore": {
+            "aluminum": 0.25
+        }
+    },
+    "immersiveengineering:metal:11": {
+        "display_name": "Lead Grit",
+        "value": 1000,
+        "ore_override": true,
+        "ore": {
+            "lead": 0.25
+        }
+    },
+    "immersiveengineering:metal:12": {
+        "display_name": "Silver Grit",
+        "value": 5000,
+        "ore_override": true,
+        "ore": {
+            "silver": 0.25
+        }
+    },
+    "immersiveengineering:metal:13": {
+        "display_name": "Nickel Grit",
+        "value": 3750,
+        "ore_override": true,
+        "ore": {
+            "nickel": 0.25
+        }
+    },
+    "immersiveengineering:metal:14": {
+        "display_name": "Uranium Grit",
+        "value": 10000,
+        "ore_override": true,
+        "ore": {
+            "uranium": 0.25
         }
     },
     "immersiveengineering:metal:15": {
@@ -1783,6 +1823,20 @@
         "ore_override": true,
         "ore": {
             "constantan": 0.25
+        }
+    },
+    "immersiveengineering:metal:16": {
+        "display_name": "Electrum Grit",
+        "value": 50000,
+        "ore": {
+            "electrum": 0.25
+        }
+    },
+    "immersiveengineering:metal:17": {
+        "display_name": "Steel Grit",
+        "value": 500,
+        "ore": {
+            "steel": 0.25
         }
     },
     "immersiveengineering:metal:18": {
@@ -1801,12 +1855,76 @@
             "gold": 0.02
         }
     },
+    "immersiveengineering:metal:0": {
+        "display_name": "Copper Ingot",
+        "value": 6000,
+        "ore_override": false,
+        "ore": {
+            "copper": 1
+        }
+    },
+    "immersiveengineering:metal:1": {
+        "display_name": "Aluminum Ingot",
+        "value": 3000,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 1
+        }
+    },
+    "immersiveengineering:metal:2": {
+        "display_name": "Lead Ingot",
+        "value": 4000,
+        "ore_override": false,
+        "ore": {
+            "lead": 1
+        }
+    },
     "immersiveengineering:metal:3": {
         "display_name": "Silver Ingot",
         "value": 10000,
         "ore_override": false,
         "ore": {
             "silver": 1
+        }
+    },
+    "immersiveengineering:metal:4": {
+        "display_name": "Nickel Ingot",
+        "value": 15000,
+        "ore_override": false,
+        "ore": {
+            "nickel": 1
+        }
+    },
+    "immersiveengineering:metal:5": {
+        "display_name": "Uranium Ingot",
+        "value": 40000,
+        "ore_override": false,
+        "ore": {
+            "uranium": 1
+        }
+    },
+    "immersiveengineering:metal:6": {
+        "display_name": "Constantan Ingot",
+        "value": 9000,
+        "ore_override": false,
+        "ore": {
+            "constantan": 1
+        }
+    },
+    "immersiveengineering:metal:7": {
+        "display_name": "Electrum Ingot",
+        "value": 100000,
+        "ore_override": false,
+        "ore": {
+            "electrum": 1
+        }
+    },
+    "immersiveengineering:metal:8": {
+        "display_name": "Steel Ingot",
+        "value": 2000,
+        "ore_override": false,
+        "ore": {
+            "steel": 1
         }
     },
     "immersiveengineering:metal:30": {
@@ -1817,6 +1935,14 @@
             "copper": 2.5
         }
     },
+    "immersiveengineering:metal:31": {
+        "display_name": "Aluminum Plate",
+        "value": 7300,
+        "ore_override": false,
+        "ore": {
+            "aluminum": 2.5
+        }
+    },
     "immersiveengineering:metal:32": {
         "display_name": "Lead Plate",
         "value": 10000,
@@ -1825,11 +1951,44 @@
             "lead": 2.5
         }
     },
+    "immersiveengineering:metal:33": {
+        "display_name": "Silver Plate",
+        "value": 50000,
+        "ore_override": true,
+        "ore": {
+            "silver": 2.5
+        }
+    },
     "immersiveengineering:metal:34": {
+        "display_name": "Nickel Plate",
         "value": 7500,
         "ore_override": false,
         "ore": {
             "nickel": 0.5
+        }
+    },
+    "immersiveengineering:metal:35": {
+        "display_name": "Uranium Plate",
+        "value": 100000,
+        "ore_override": true,
+        "ore": {
+            "uranium": 2.5
+        }
+    },
+    "immersiveengineering:metal:36": {
+        "display_name": "Constantan Plate",
+        "value": 22500,
+        "ore_override": true,
+        "ore": {
+            "constantan": 2.5
+        }
+    },
+    "immersiveengineering:metal:37": {
+        "display_name": "Electrum Plate",
+        "value": 250000,
+        "ore_override": true,
+        "ore": {
+            "electrum": 2.5
         }
     },
     "immersiveengineering:metal:38": {
@@ -1848,12 +2007,12 @@
             "iron": 2.5
         }
     },
-    "immersiveengineering:metal:9": {
-        "display_name": "Copper Grit",
-        "value": 1500,
+    "immersiveengineering:metal:40": {
+        "display_name": "Gold Plate",
+        "value": 450000,
         "ore_override": true,
         "ore": {
-            "copper": 0.25
+            "gold": 2.5
         }
     },
     "immersiveengineering:metal_decoration2:2": {
