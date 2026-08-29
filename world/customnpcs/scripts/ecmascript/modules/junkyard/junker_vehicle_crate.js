@@ -68,6 +68,7 @@ function interact(event) {
 
     if (isJunkyardPhone(mainhand)) {
         displayJunkerCratePhoneData(player);
+        playJunkyardCrateSound(npc, "ivv:computer.old.on");
         return;
     }
 
@@ -75,6 +76,7 @@ function interact(event) {
 
     if (!isValidJunkyardCrowbar(crowbars)) {
         tellPlayer(player, "&c:cross_mark: You need a stack of " + config.JUNKER_CRATE_CROWBAR_COST + " Junkyard crowbars to open this crate.");
+        playJunkyardCrateSound(npc, "minecraft:entity.zombie.attack_door_wood");
         return;
     }
 
@@ -83,6 +85,7 @@ function interact(event) {
             player,
             "&c:cross_mark: You need " + config.JUNKER_CRATE_CROWBAR_COST + " matching Junkyard crowbars in your main hand."
         );
+        playJunkyardCrateSound(npc, "minecraft:entity.zombie.attack_door_wood");
         return;
     }
 
@@ -94,6 +97,7 @@ function interact(event) {
     }
 
     dropLoot(npc, loot);
+    playJunkyardCrateSound(npc, "minecraft:entity.zombie.break_door_wood");
 
     crowbars.setStackSize(crowbars.getStackSize() - config.JUNKER_CRATE_CROWBAR_COST);
     player.setMainhandItem(crowbars);
@@ -101,6 +105,7 @@ function interact(event) {
     recordJunkerCrateOpen(junkyardId);
 
     if (learnCrateType(player, JUNKER_CRATE_TYPE)) {
+        playJunkyardCrateSound(npc, "minecraft:entity.player.levelup");
         tellPlayer(
             player,
             "&6:star: You have learned to recognize &e" + JUNKER_CRATE_DISPLAY_NAME + "&6."

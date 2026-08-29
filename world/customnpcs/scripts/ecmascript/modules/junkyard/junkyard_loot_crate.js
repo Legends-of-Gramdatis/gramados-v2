@@ -68,11 +68,13 @@ function interact(event) {
 
     if (isJunkyardPhone(mainhand)) {
         displayCratePhoneData(player, npc);
+        playJunkyardCrateSound(npc, "ivv:computer.old.on");
         return;
     }
 
     if (getCrateState(npc) == CRATE_STATE_OPENED) {
         tellPlayer(player, "&c:cross_mark: This crate has already been opened.");
+        playJunkyardCrateSound(npc, "minecraft:entity.zombie.attack_door_wood");
         return;
     }
 
@@ -80,6 +82,7 @@ function interact(event) {
 
     if (!isValidJunkyardCrowbar(crowbar)) {
         tellPlayer(player, "&c:cross_mark: You need a Junkyard crowbar to open this crate.");
+        playJunkyardCrateSound(npc, "minecraft:entity.zombie.attack_door_wood");
         return;
     }
 
@@ -91,6 +94,8 @@ function interact(event) {
     var opened = lootCrate(player, npc, crateType, rarity, junkyardId);
 
     if (opened) {
+        playJunkyardCrateSound(npc, "minecraft:entity.zombie.break_door_wood");
+
         crowbar.setStackSize(crowbar.getStackSize() - 1);
         player.setMainhandItem(crowbar);
 
@@ -100,6 +105,7 @@ function interact(event) {
         recordJunkyardCrateOpen(junkyardId, crateType);
 
         if (learnCrateType(player, crateType)) {
+            playJunkyardCrateSound(npc, "minecraft:entity.player.levelup");
             tellPlayer(
                 player,
                 "&6:star: You have learned to recognize &e" + crates[crateType].DisplayName + "&6."
@@ -107,6 +113,7 @@ function interact(event) {
         }
 
         if (learnCrateRarity(player, rarity)) {
+            playJunkyardCrateSound(npc, "minecraft:entity.player.levelup");
             tellPlayer(
                 player,
                 "&6:star: You have learned to recognize &e" + rarity + "&6 Junkyard crates."

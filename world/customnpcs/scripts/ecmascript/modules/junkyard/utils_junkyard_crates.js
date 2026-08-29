@@ -1,6 +1,10 @@
 var JUNKYARDS_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyards.json";
 var JUNKYARD_KNOWLEDGE_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyard_knowledge.json";
 
+function playJunkyardCrateSound(npc, sound) {
+    npc.getWorld().playSoundAt(npc.getPos(), sound, 1, 1);
+}
+
 function isAdmin(offhandItem) {
     return offhandItem
         && !offhandItem.isEmpty()
