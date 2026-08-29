@@ -13,34 +13,84 @@
             "rare": 1.5
         }
     },
+
     "Gramados_GramadosCity_IntorisStreet_7_GramadosGreatJunkyard": {
         "DisplayName": "Gramados Great Junkyard",
 
-        "CrateTypeMultipliers": {},
+        "CrateTypeMultipliers": {
+            "powertrain": 1.1,
+            "rolling_gear": 1.1,
+            "bodyshop": 1.1,
+            "scrap": 1.15,
+            "heavy_salvage": 1.1,
+            "specialty": 0.75
+        },
 
         "RarityMultipliers": {
-            "common": 2.0
+            "common": 1.4,
+            "uncommon": 0.9,
+            "rare": 0.55
         }
     },
+
     "Foreval_Corsinet_RouteDeColigna_CasseDesCourneillesJunkyard": {
         "DisplayName": "Casse des Courneilles",
 
-        "CrateTypeMultipliers": {},
+        "CrateTypeMultipliers": {
+            "powertrain": 1.45,
+            "rolling_gear": 1.15,
+            "bodyshop": 1.3,
+            "scrap": 0.8,
+            "heavy_salvage": 0.9,
+            "specialty": 1.4
+        },
 
-        "RarityMultipliers": {}
+        "RarityMultipliers": {
+            "common": 0.9,
+            "uncommon": 1.15,
+            "rare": 1.25
+        }
     },
+
     "Greenfield_Springfield_StanopliRoad_2_SpringfieldJunkyard": {
         "DisplayName": "Springfield Junkyard",
 
-        "CrateTypeMultipliers": {},
+        "CrateTypeMultipliers": {
+            "powertrain": 0.9,
+            "rolling_gear": 1.25,
+            "interior": 1.15,
+            "electrical": 0.8,
+            "bodyshop": 1.0,
+            "scrap": 1.35,
+            "heavy_salvage": 0.7,
+            "specialty": 0.65
+        },
 
-        "RarityMultipliers": {}
+        "RarityMultipliers": {
+            "common": 0.95,
+            "uncommon": 1.15,
+            "rare": 1.35
+        }
     },
+
     "Farmiston_Countryside_BolskoyeStreet_BolskoyeJunkyard": {
         "DisplayName": "Bolskoye Junkyard",
 
-        "CrateTypeMultipliers": {},
+        "CrateTypeMultipliers": {
+            "powertrain": 1.05,
+            "rolling_gear": 1.2,
+            "interior": 0.75,
+            "electrical": 0.75,
+            "bodyshop": 1.3,
+            "scrap": 1.5,
+            "heavy_salvage": 1.35,
+            "specialty": 0.8
+        },
 
-        "RarityMultipliers": {}
+        "RarityMultipliers": {
+            "common": 1.1,
+            "uncommon": 1.05,
+            "rare": 0.9
+        }
     }
 }
