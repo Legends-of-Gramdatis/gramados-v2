@@ -193,14 +193,10 @@ function getLinkedJunkyardId(npc) {
 }
 
 function regenerateCrate(npc) {
-    var crateType = getRandomCrateType();
+    var junkyardId = getLinkedJunkyardId(npc);
 
-    if (crateType == null) {
-        logToFile("mechanics", "[Junkyard Crate] Failed to select a crate type.");
-        return null;
-    }
-
-    var rarity = getRandomCrateRarity();
+    var crateType = getRandomCrateType(junkyardId);
+    var rarity = getRandomCrateRarity(junkyardId);
 
     var storedData = npc.getStoreddata();
 
@@ -352,51 +348,51 @@ function getRarityPullCount(rarity) {
     }
 }
 
-/**
- * Selects a crate type using the Weight property from crates.json.
- *
- * @returns {string|null}
- */
-function getRandomCrateType() {
-    return getWeightedRandomKey(crates,
-        function(crateConfig) {
-            return crateConfig.Weight;
+function getRandomCrateType(junkyardId) {
+    var weightedTypes = [];
+    var typeMultipliers = junkyards[junkyardId].CrateTypeMultipliers;
+
+    for (var crateType in crates) {
+        var weight = crates[crateType].Weight;
+
+        if (typeMultipliers[crateType] !== undefined) {
+            weight *= typeMultipliers[crateType];
         }
-    );
+
+        weightedTypes.push({
+            value: crateType,
+            weight: weight
+        });
+    }
+
+    return getWeightedRandom(weightedTypes);
 }
 
-/**
- * Selects a rarity using JUNKYARD_CRATE_RARITY_WEIGHTS
- * from junkyard/config.json.
- *
- * @returns {string|null}
- */
-function getRandomCrateRarity() {
-    return getWeightedRandomKey(config.JUNKYARD_CRATE_RARITY_WEIGHTS,
-        function(weight) {
-            return weight;
+function getRandomCrateRarity(junkyardId) {
+    var weightedRarities = [];
+    var rarityMultipliers = junkyards[junkyardId].RarityMultipliers;
+
+    for (var rarity in config.JUNKYARD_CRATE_RARITY_WEIGHTS) {
+        var weight = config.JUNKYARD_CRATE_RARITY_WEIGHTS[rarity];
+
+        if (rarityMultipliers[rarity] !== undefined) {
+            weight *= rarityMultipliers[rarity];
         }
-    );
+
+        weightedRarities.push({
+            value: rarity,
+            weight: weight
+        });
+    }
+
+    return getWeightedRandom(weightedRarities);
 }
 
-/**
- * Selects a random key from an object using arbitrary numeric weights.
- *
- * @param {Object} weightedObject
- * @param {Function} weightGetter
- * @returns {string|null}
- */
-function getWeightedRandomKey(weightedObject, weightGetter) {
-    var keys = getJsonKeys(weightedObject);
+function getWeightedRandom(entries) {
     var totalWeight = 0;
 
-    for (var i = 0; i < keys.length; i++) {
-        var value = weightedObject[keys[i]];
-        var weight = weightGetter(value)
-        if (isNaN(weight) || weight <= 0) {
-            continue;
-        }
-        totalWeight += weight;
+    for (var i = 0; i < entries.length; i++) {
+        totalWeight += entries[i].weight;
     }
 
     if (totalWeight <= 0) {
@@ -405,19 +401,11 @@ function getWeightedRandomKey(weightedObject, weightGetter) {
 
     var random = Math.random() * totalWeight;
 
-    for (var j = 0; j < keys.length; j++) {
-        var key = keys[j];
-        var entry = weightedObject[key];
-        var entryWeight = weightGetter(entry)
-
-        if (isNaN(entryWeight) || entryWeight <= 0) {
-            continue;
-        }
-
-        random -= entryWeight;
+    for (var j = 0; j < entries.length; j++) {
+        random -= entries[j].weight;
 
         if (random < 0) {
-            return key;
+            return entries[j].value;
         }
     }
 
