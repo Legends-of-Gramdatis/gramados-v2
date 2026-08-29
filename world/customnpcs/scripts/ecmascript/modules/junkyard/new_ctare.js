@@ -25,7 +25,22 @@ function init(event) {
         }
     }
 
-    regenerateCrate(npc);
+    if (!isCrateInitialized(npc)) {
+        regenerateCrate(npc);
+        return;
+    }
+
+    if (getCrateState(npc) == CRATE_STATE_CLOSED) {
+        applyCrateSkin(npc);
+        return;
+    }
+
+    if (isCrateReadyToRegenerate(npc)) {
+        regenerateCrate(npc);
+        return;
+    }
+
+    applyCrateSkin(npc);
 }
 
 function interact(event) {
@@ -68,6 +83,7 @@ function interact(event) {
         player.setMainhandItem(crowbar);
 
         setCrateState(npc, CRATE_STATE_OPENED);
+        npc.getStoreddata().put("crate_opened_at", new Date().getTime());
         applyCrateSkin(npc);
         recordJunkyardCrateOpen(junkyardId, crateType);
     }
@@ -153,6 +169,13 @@ function setCrateState(npc, state) {
     npc.getStoreddata().put("crate_state", state);
 }
 
+function isCrateReadyToRegenerate(npc) {
+    var openedAt = npc.getStoreddata().get("crate_opened_at");
+    var regenMs = config.JUNKYARD_CRATE_REGEN_MINUTES * 60 * 1000;
+
+    return new Date().getTime() - openedAt >= regenMs;
+}
+
 /**
  * Returns the Junkyard region ID linked to this crate.
  *
@@ -184,6 +207,7 @@ function regenerateCrate(npc) {
     storedData.put("crate_type", crateType);
     storedData.put("crate_rarity", rarity);
     storedData.put("crate_state", CRATE_STATE_CLOSED);
+    storedData.remove("crate_opened_at");
 
     setRandomCrateSize(npc);
     applyCrateSkin(npc);
