@@ -7,6 +7,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 
 var JUNKYARDS_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyards.json";
+var JUNKYARD_KNOWLEDGE_DATA_PATH = "world/customnpcs/scripts/data_auto/junkyard_knowledge.json";
 
 var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/config.json");
 var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
@@ -86,6 +87,20 @@ function interact(event) {
         npc.getStoreddata().put("crate_opened_at", new Date().getTime());
         applyCrateSkin(npc);
         recordJunkyardCrateOpen(junkyardId, crateType);
+
+        if (learnCrateType(player, crateType)) {
+            tellPlayer(
+                player,
+                "&6:star: You have learned to recognize &e" + crates[crateType].DisplayName + "&6."
+            );
+        }
+
+        if (learnCrateRarity(player, rarity)) {
+            tellPlayer(
+                player,
+                "&6:star: You have learned to recognize &e" + rarity + "&6 Junkyard crates."
+            );
+        }
     }
 }
 
@@ -125,6 +140,73 @@ function isValidJunkyardCrowbar(item) {
     }
 
     return isOldJunkyardCrowbar(item);
+}
+
+function ensurePlayerJunkyardKnowledge(player) {
+    var data = loadJson(JUNKYARD_KNOWLEDGE_DATA_PATH);;
+    var uuid = player.getUUID();
+    var changed = false;
+
+    if (!data[uuid]) {
+        data[uuid] = {
+            Name: player.getName(),
+            Types: [],
+            Rarities: []
+        };
+
+        changed = true;
+    }
+
+    if (data[uuid].Name != player.getName()) {
+        data[uuid].Name = player.getName();
+        changed = true;
+    }
+
+    if (changed) {
+        saveJson(data, JUNKYARD_KNOWLEDGE_DATA_PATH);
+    }
+
+    return data[uuid];
+}
+
+function playerKnowsCrateType(player, crateType) {
+    var knowledge = ensurePlayerJunkyardKnowledge(player);
+
+    return includes(knowledge.Types, crateType);
+}
+
+function playerKnowsCrateRarity(player, rarity) {
+    var knowledge = ensurePlayerJunkyardKnowledge(player);
+
+    return includes(knowledge.Rarities, rarity);
+}
+
+function learnCrateType(player, crateType) {
+    if (playerKnowsCrateType(player, crateType)) {
+        return false;
+    }
+
+    var data = loadJson(JUNKYARD_KNOWLEDGE_DATA_PATH);;
+    var uuid = player.getUUID();
+
+    data[uuid].Types.push(crateType);
+    saveJson(data, JUNKYARD_KNOWLEDGE_DATA_PATH);
+
+    return true;
+}
+
+function learnCrateRarity(player, rarity) {
+    if (playerKnowsCrateRarity(player, rarity)) {
+        return false;
+    }
+
+    var data = loadJson(JUNKYARD_KNOWLEDGE_DATA_PATH);;
+    var uuid = player.getUUID();
+
+    data[uuid].Rarities.push(rarity);
+    saveJson(data, JUNKYARD_KNOWLEDGE_DATA_PATH);
+
+    return true;
 }
 
 function isCrateLinkedToJunkyard(npc) {
