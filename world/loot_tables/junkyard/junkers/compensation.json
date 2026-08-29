@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.junkyard_1",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_misc.junkyard_2",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "junkyard/scrap/mixed.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
