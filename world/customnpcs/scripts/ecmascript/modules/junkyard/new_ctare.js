@@ -48,6 +48,13 @@ function init(event) {
 function interact(event) {
     var npc = event.npc;
     var player = event.player;
+    var offhand = player.getOffhandItem();
+    var mainhand = player.getMainhandItem();
+
+    if (isAdmin(offhand)) {
+        handleAdminInteraction(npc, player, mainhand);
+        return;
+    }
 
     var junkyardId = getLinkedJunkyardId(npc);
 
@@ -60,8 +67,6 @@ function interact(event) {
         tellPlayer(player, "&c:cross_mark: This Junkyard crate is not initialized.");
         return;
     }
-
-    var mainhand = player.getMainhandItem();
 
     if (!mainhand.isEmpty() && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, mainhand.getName())) {
         displayCratePhoneData(player, npc);
@@ -110,6 +115,107 @@ function interact(event) {
             );
         }
     }
+}
+
+function isAdmin(offhandItem) {
+    return offhandItem
+        && !offhandItem.isEmpty()
+        && offhandItem.getName() == "mts:ivv.idcard_seagull";
+}
+
+function handleAdminInteraction(npc, player, mainhand) {
+    if (!mainhand || mainhand.isEmpty()) {
+        showCrateAdminInfo(npc, player);
+        return;
+    }
+
+    var storedData = npc.getStoreddata();
+
+    switch (mainhand.getName()) {
+        case "minecraft:barrier":
+            storedData.remove("junkyard_id");
+            storedData.remove("crate_type");
+            storedData.remove("crate_rarity");
+            storedData.remove("crate_state");
+            storedData.remove("crate_opened_at");
+
+            tellPlayer(player, "&a[Admin] Cleared all Junkyard crate data. It will relink and regenerate on its next initialization.");
+            return;
+
+        case "variedcommodities:coin_diamond":
+            if (!isCrateLinkedToJunkyard(npc)) {
+                tellPlayer(player, "&c[Admin] This crate must initialize and link to a valid Junkyard before it can regenerate.");
+                return;
+            }
+
+            var generated = regenerateCrate(npc);
+            var rarityDisplay = generated.rarity.charAt(0).toUpperCase() + generated.rarity.slice(1);
+
+            tellPlayer(
+                player,
+                "&a[Admin] Regenerated crate as &e" + rarityDisplay + " " + crates[generated.type].DisplayName + "&a."
+            );
+            return;
+
+        case "variedcommodities:coin_emerald":
+            if (!isCrateInitialized(npc)) {
+                tellPlayer(player, "&c[Admin] This Junkyard crate is not initialized.");
+                return;
+            }
+
+            setCrateState(npc, CRATE_STATE_CLOSED);
+            storedData.remove("crate_opened_at");
+            applyCrateSkin(npc);
+
+            tellPlayer(player, "&a[Admin] Reset this crate to the closed state without rerolling it.");
+            return;
+
+        default:
+            showCrateAdminInfo(npc, player);
+            return;
+    }
+}
+
+function showCrateAdminInfo(npc, player) {
+    var storedData = npc.getStoreddata();
+
+    var junkyardId = storedData.has("junkyard_id")
+        ? storedData.get("junkyard_id")
+        : null;
+
+    var junkyardDisplay = junkyardId != null && junkyards[junkyardId]
+        ? junkyards[junkyardId].DisplayName + " &7(" + junkyardId + ")"
+        : "Not linked";
+
+    var crateType = storedData.has("crate_type")
+        ? storedData.get("crate_type")
+        : null;
+
+    var typeDisplay = crateType != null && crates[crateType]
+        ? crates[crateType].DisplayName
+        : "Not set";
+
+    var rarityDisplay = storedData.has("crate_rarity")
+        ? storedData.get("crate_rarity")
+        : "Not set";
+
+    var stateDisplay = storedData.has("crate_state")
+        ? storedData.get("crate_state")
+        : "Not set";
+
+    var openedAtDisplay = storedData.has("crate_opened_at")
+        ? storedData.get("crate_opened_at")
+        : "Not set";
+
+    tellPlayer(player, "&6&lJunkyard Crate Admin");
+    tellPlayer(player, "&7Junkyard: &e" + junkyardDisplay);
+    tellPlayer(player, "&7Type: &e" + typeDisplay);
+    tellPlayer(player, "&7Rarity: &e" + rarityDisplay);
+    tellPlayer(player, "&7State: &e" + stateDisplay);
+    tellPlayer(player, "&7Opened At: &e" + openedAtDisplay);
+    tellPlayer(player, "&7Barrier &8-> &fClear all crate data");
+    tellPlayer(player, "&7Diamond Coin &8-> &fRegenerate crate");
+    tellPlayer(player, "&7Emerald Coin &8-> &fReset to closed");
 }
 
 function displayCratePhoneData(player, npc) {
