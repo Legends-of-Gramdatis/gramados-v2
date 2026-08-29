@@ -12,28 +12,15 @@ var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/conf
 var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
 var junkyards = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/junkyards.json");
 
-/**
- * Links this crate NPC to the Junkyard region it is currently in.
- *
- * If the NPC is not inside a region configured in junkyards.json,
- * the crate remains disabled.
- *
- * @param {Object} event
- */
 function init(event) {
-    initializeCrateJunkyard(
-        event.npc
-    );
+    if (isCrateLinkedToJunkyard(event.npc)) {
+        return;
+    }
+    if (!linkCrateToJunkyard(event.npc)) {
+        event.npc.say(parseEmotes("&c:cross_mark: This crate is not in a Junkyard region and cannot be linked. Report to an admin."));
+    }
 }
 
-/**
- * Temporarily regenerates and opens the crate every time
- * the player interacts with it.
- *
- * Later, regeneration and opening will become separate events.
- *
- * @param {Object} event
- */
 function interact(event) {
     var npc = event.npc;
     var player = event.player;
@@ -61,32 +48,37 @@ function interact(event) {
     }
 }
 
-/**
- * Detects the NPC's current region and links the crate
- * to it if that region exists in junkyards.json.
- *
- * Any previous junkyard link is removed if the current
- * region is not a configured Junkyard.
- *
- * @param {ICustomNpc} npc
- * @returns {string|null} Linked Junkyard region ID, or null.
- */
-function initializeCrateJunkyard(npc) {
+function isCrateLinkedToJunkyard(npc) {
+    var storedData = npc.getStoreddata();
+
+    if(storedData.has("junkyard_id")) {
+        var regionId = storedData.get("junkyard_id");
+        return includes(getJsonKeys(junkyards), regionId);
+    }
+    return false;
+}
+
+function linkCrateToJunkyard(npc) {
     var storedData = npc.getStoreddata();
 
     var regionId = getRegionAtEntity(npc);
 
-    if (regionId == null || !junkyards[regionId]
-    ) {
-        storedData.remove("junkyard_id");
-        return null;
+    // if region ID is defined in junkyards.json, link the crate to it
+    if (includes(getJsonKeys(junkyards), regionId)) {
+        storedData.put("junkyard_id", regionId);
+        return true;
     }
 
-    storedData.put("junkyard_id", regionId);
+    storedData.remove("junkyard_id");
+    return false;
+}
 
-    ensureJunkyardDataEntry(regionId);
+function isCrateInitialized(npc) {
+    var storedData = npc.getStoreddata();
 
-    return regionId;
+    return storedData.has("junkyard_id") &&
+        storedData.has("crate_type") &&
+        storedData.has("crate_rarity");
 }
 
 /**
@@ -354,25 +346,6 @@ function getWeightedRandomKey(weightedObject, weightGetter) {
 function applyCrateSkin(npc, crateType, rarity) {
     var skinUrl = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_" + crateType + "_" + rarity + ".png";
     npc.getDisplay().setSkinUrl(skinUrl);
-}
-
-/**
- * Ensures that the dynamic data entry for a Junkyard exists.
- *
- * Existing historical crate-type entries are preserved.
- * Newly configured crate types are automatically added with a
- * starting count of 0.
- *
- * @param {string} junkyardId
- */
-function ensureJunkyardDataEntry(junkyardId) {
-    var data = loadJson(JUNKYARDS_DATA_PATH);
-
-    var changed = ensureJunkyardDataStructure(data, junkyardId);
-
-    if (changed) {
-        saveJson(data, JUNKYARDS_DATA_PATH);
-    }
 }
 
 /**
