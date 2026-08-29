@@ -49,6 +49,13 @@ function interact(event) {
         return;
     }
 
+    var crowbar = player.getMainhandItem().copy();
+
+    if (!isValidJunkyardCrowbar(crowbar)) {
+        tellPlayer(player, "&c:cross_mark: You need a Junkyard crowbar to open this crate.");
+        return;
+    }
+
     var storedData = npc.getStoreddata();
 
     var crateType = storedData.get("crate_type");
@@ -57,10 +64,51 @@ function interact(event) {
     var opened = lootCrate(player, npc, crateType, rarity, junkyardId);
 
     if (opened) {
+        crowbar.setStackSize(crowbar.getStackSize() - 1);
+        player.setMainhandItem(crowbar);
+
         setCrateState(npc, CRATE_STATE_OPENED);
         applyCrateSkin(npc);
         recordJunkyardCrateOpen(junkyardId, crateType);
     }
+}
+
+function isOldJunkyardCrowbar(item) {
+    if (item.getName() != "growthcraft:crowbar") {
+        return false;
+    }
+
+    var lore = item.getLore();
+
+    return lore.length == 3 &&
+        lore[0] == "§7One-use crowbar to pry open a sealed parts crate." &&
+        lore[1] == "§8Marked by the Junkyard Authority." &&
+        lore[2] == "§2§o\"Snap it, loot it, toss it.\"";
+}
+
+function isValidJunkyardCrowbar(item) {
+    var nbt = item.getItemNbt();
+
+    if (nbt.has("tag")) {
+        var tag = nbt.getCompound("tag");
+
+        if (tag.has("Gramados")) {
+            var gramados = tag.getCompound("Gramados");
+
+            if (gramados.has("ToolCapabilities")) {
+                var toolCapabilities = gramados.getCompound("ToolCapabilities");
+
+                if (
+                    toolCapabilities.has("OpenJunkyardCrate") &&
+                    toolCapabilities.getBoolean("OpenJunkyardCrate")
+                ) {
+                    return true;
+                }
+            }
+        }
+    }
+
+    return isOldJunkyardCrowbar(item);
 }
 
 function isCrateLinkedToJunkyard(npc) {

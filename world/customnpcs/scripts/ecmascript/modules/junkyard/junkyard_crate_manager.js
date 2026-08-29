@@ -420,5 +420,15 @@ function setupCrowbarNameLore(loot_entry, world) {
         "§2§o\"Snap it, loot it, toss it.\""
     ]);
 
-    return item;
+    var nbt = item.getItemNbt();
+    var tag = nbt.getCompound("tag");
+    var gramados = tag.getCompound("Gramados");
+    var toolCapabilities = gramados.getCompound("ToolCapabilities");
+
+    toolCapabilities.setBoolean("OpenJunkyardCrate", true);
+    gramados.setCompound("ToolCapabilities", toolCapabilities);
+    tag.setCompound("Gramados", gramados);
+    nbt.setCompound("tag", tag);
+
+    return world.createItemFromNbt(nbt);
 }
