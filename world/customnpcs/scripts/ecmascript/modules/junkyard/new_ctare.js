@@ -12,13 +12,20 @@ var config = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/conf
 var crates = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/crates.json");
 var junkyards = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/junkyards.json");
 
+var CRATE_STATE_CLOSED = "closed";
+var CRATE_STATE_OPENED = "opened";
+
 function init(event) {
-    if (isCrateLinkedToJunkyard(event.npc)) {
-        return;
+    var npc = event.npc;
+
+    if (!isCrateLinkedToJunkyard(npc)) {
+        if (!linkCrateToJunkyard(npc)) {
+            npc.say(parseEmotes("&c:cross_mark: This crate is not in a Junkyard region and cannot be linked. Report to an admin."));
+            return;
+        }
     }
-    if (!linkCrateToJunkyard(event.npc)) {
-        event.npc.say(parseEmotes("&c:cross_mark: This crate is not in a Junkyard region and cannot be linked. Report to an admin."));
-    }
+
+    regenerateCrate(npc);
 }
 
 function interact(event) {
@@ -32,19 +39,27 @@ function interact(event) {
         return;
     }
 
-    var result = regenerateCrate(npc);
-
-    if (!result) {
-        tellPlayer(player, "&c:cross_mark: Failed to generate the Junkyard crate.");
+    if (!isCrateInitialized(npc)) {
+        tellPlayer(player, "&c:cross_mark: This Junkyard crate is not initialized.");
         return;
     }
 
-    tellPlayer(player, "&a:check_mark: Generated &e" + result.type + "&a crate with rarity &e" + result.rarity + "&a.");
+    if (getCrateState(npc) == CRATE_STATE_OPENED) {
+        tellPlayer(player, "&c:cross_mark: This crate has already been opened.");
+        return;
+    }
 
-    var opened = lootCrate(player, npc, result.type, result.rarity, junkyardId);
+    var storedData = npc.getStoreddata();
+
+    var crateType = storedData.get("crate_type");
+    var rarity = storedData.get("crate_rarity");
+
+    var opened = lootCrate(player, npc, crateType, rarity, junkyardId);
 
     if (opened) {
-        recordJunkyardCrateOpen(junkyardId, result.type);
+        setCrateState(npc, CRATE_STATE_OPENED);
+        applyCrateSkin(npc);
+        recordJunkyardCrateOpen(junkyardId, crateType);
     }
 }
 
@@ -78,7 +93,16 @@ function isCrateInitialized(npc) {
 
     return storedData.has("junkyard_id") &&
         storedData.has("crate_type") &&
-        storedData.has("crate_rarity");
+        storedData.has("crate_rarity") &&
+        storedData.has("crate_state");
+}
+
+function getCrateState(npc) {
+    return npc.getStoreddata().get("crate_state");
+}
+
+function setCrateState(npc, state) {
+    npc.getStoreddata().put("crate_state", state);
 }
 
 /**
@@ -97,13 +121,6 @@ function getLinkedJunkyardId(npc) {
     return junkyardId;
 }
 
-/**
- * Generates a new crate type, rarity, and size.
- * Stores type/rarity on the NPC and applies its skin.
- *
- * @param {ICustomNpc} npc
- * @returns {Object|null}
- */
 function regenerateCrate(npc) {
     var crateType = getRandomCrateType();
 
@@ -118,9 +135,10 @@ function regenerateCrate(npc) {
 
     storedData.put("crate_type", crateType);
     storedData.put("crate_rarity", rarity);
+    storedData.put("crate_state", CRATE_STATE_CLOSED);
 
     setRandomCrateSize(npc);
-    applyCrateSkin(npc, crateType, rarity);
+    applyCrateSkin(npc);
 
     return {
         type: crateType,
@@ -337,14 +355,25 @@ function getWeightedRandomKey(weightedObject, weightGetter) {
 /**
  * Generates and applies the crate skin URL.
  *
- * Gramados_slime_crate_<type>_<rarity>.png
+ * Format: https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_<type>_<rarity>[_open].png
  *
  * @param {ICustomNpc} npc
- * @param {string} crateType
- * @param {string} rarity
  */
-function applyCrateSkin(npc, crateType, rarity) {
-    var skinUrl = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_" + crateType + "_" + rarity + ".png";
+function applyCrateSkin(npc) {
+    var storedData = npc.getStoreddata();
+
+    var crateType = storedData.get("crate_type");
+    var rarity = storedData.get("crate_rarity");
+    var state = storedData.get("crate_state");
+
+    var skinUrl = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_" + crateType + "_" + rarity
+
+    if (state == CRATE_STATE_OPENED) {
+        skinUrl += "_open";
+    }
+
+    skinUrl += ".png";
+
     npc.getDisplay().setSkinUrl(skinUrl);
 }
 
