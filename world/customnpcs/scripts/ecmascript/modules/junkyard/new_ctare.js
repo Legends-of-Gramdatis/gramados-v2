@@ -2,6 +2,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
@@ -60,6 +61,13 @@ function interact(event) {
         return;
     }
 
+    var mainhand = player.getMainhandItem();
+
+    if (!mainhand.isEmpty() && isItemInLootTable("world/loot_tables/" + _LOOTTABLE_CELLPHONES, mainhand.getName())) {
+        displayCratePhoneData(player, npc);
+        return;
+    }
+
     if (getCrateState(npc) == CRATE_STATE_OPENED) {
         tellPlayer(player, "&c:cross_mark: This crate has already been opened.");
         return;
@@ -102,6 +110,31 @@ function interact(event) {
             );
         }
     }
+}
+
+function displayCratePhoneData(player, npc) {
+    var storedData = npc.getStoreddata();
+
+    var crateType = storedData.get("crate_type");
+    var rarity = storedData.get("crate_rarity");
+    var state = storedData.get("crate_state");
+
+    var typeDisplay = playerKnowsCrateType(player, crateType)
+        ? crates[crateType].DisplayName
+        : "Unidentified";
+
+    var rarityDisplay = playerKnowsCrateRarity(player, rarity)
+        ? rarity.charAt(0).toUpperCase() + rarity.slice(1)
+        : "Unidentified";
+
+    var statusDisplay = state == CRATE_STATE_CLOSED
+        ? "&aSealed"
+        : "&cOpened";
+
+    tellPlayer(player, "&6&lJunkyard Crate Scan");
+    tellPlayer(player, "&7Type: &f" + typeDisplay);
+    tellPlayer(player, "&7Rarity: &f" + rarityDisplay);
+    tellPlayer(player, "&7Status: " + statusDisplay);
 }
 
 function isOldJunkyardCrowbar(item) {
