@@ -12,5 +12,28 @@
             "uncommon": 1.2,
             "rare": 1.5
         }
+    },
+    "Gramados_GramadosCity_IntorisStreet_7_GramadosGreatJunkyard": {
+        "DisplayName": "Gramados Great Junkyard",
+
+        "CrateTypeMultipliers": {},
+
+        "RarityMultipliers": {
+            "common": 2.0
+        }
+    },
+    "Foreval_Corsinet_RouteDeColigna_CasseDesCourneillesJunkyard": {
+        "DisplayName": "Casse des Courneilles",
+
+        "CrateTypeMultipliers": {},
+
+        "RarityMultipliers": {}
+    },
+    "Greenfield_Springfield_StanopliRoad_2_SpringfieldJunkyard": {
+        "DisplayName": "Springfield Junkyard",
+
+        "CrateTypeMultipliers": {},
+
+        "RarityMultipliers": {}
     }
 }
