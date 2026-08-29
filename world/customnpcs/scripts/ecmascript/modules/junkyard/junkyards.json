@@ -1,5 +1,16 @@
 {
     "Devland_Countryside_JunkyardTest": {
-        "DisplayName": "Devland Junkyard Test"
+        "DisplayName": "Devland Junkyard Test",
+
+        "CrateTypeMultipliers": {
+            "heavy_salvage": 2.0,
+            "powertrain": 1.4
+        },
+
+        "RarityMultipliers": {
+            "common": 0.9,
+            "uncommon": 1.2,
+            "rare": 1.5
+        }
     }
 }
