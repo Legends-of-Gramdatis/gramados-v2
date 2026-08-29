@@ -35,5 +35,12 @@
         "CrateTypeMultipliers": {},
 
         "RarityMultipliers": {}
+    },
+    "Farmiston_Countryside_BolskoyeStreet_BolskoyeJunkyard": {
+        "DisplayName": "Bolskoye Junkyard",
+
+        "CrateTypeMultipliers": {},
+
+        "RarityMultipliers": {}
     }
 }
