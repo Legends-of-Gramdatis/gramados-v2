@@ -66,7 +66,7 @@ function isPlayerInEarlyOnboarding(player) {
  * @param {Object} e - The event object containing information about the initialization event.
  */
 function init(e) {
-    tick_counter = 0;
+    tick_counter = 101;
     var player = e.player;
     
     // Skip events for players in onboarding phases 0-1
@@ -116,12 +116,12 @@ function init(e) {
 function tick(e) {
     var player = e.player;
     
-    // Skip events for players in onboarding phases 0-1
-    if (isPlayerInEarlyOnboarding(player)) {
-        return;
-    }
-    
     if (tick_counter > max_tick_count) {
+        tick_counter = 0;
+        // Skip events for players in onboarding phases 0-1
+        if (isPlayerInEarlyOnboarding(player)) {
+            return;
+        }
         if (isAnyEventActive()) {
 
             var playerName = player.getName();

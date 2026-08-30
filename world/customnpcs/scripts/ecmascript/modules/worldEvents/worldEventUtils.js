@@ -7,6 +7,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 var EVENT_CONFIG_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules/worldEvents/event_config.json";
 var PLAYER_EVENT_DATA = "world/customnpcs/scripts/ecmascript/modules/worldEvents/player_event_data.json";
 var allEventConfig = loadEventConfig();
+var playerEventData = loadJson(PLAYER_EVENT_DATA);
 var DEBUG_MODE = false;
 
 
@@ -28,11 +29,10 @@ function loadEventConfig() {
  * @returns {Object} - The player event data.
  */
 function loadPlayerEventData(eventId, player_name) {
-    var all_data = loadJson(PLAYER_EVENT_DATA);
     var canonicalEventId = nameToID(eventId);
 
-    if (all_data[canonicalEventId] && all_data[canonicalEventId][player_name]) {
-        return all_data[canonicalEventId][player_name];
+    if (playerEventData[canonicalEventId] && playerEventData[canonicalEventId][player_name]) {
+        return playerEventData[canonicalEventId][player_name];
     }
 
     return {};
@@ -146,23 +146,21 @@ function updateSkippersList() {
             eventConfig.endDate.month
         )) {
             // Event is not active, clear skippers list
-            var all_data = loadJson(PLAYER_EVENT_DATA);
-            if (all_data[eventConfig.id]) {
-                for (var playerName in all_data[eventConfig.id]) {
-                    if (all_data[eventConfig.id][playerName].skipped) {
-                        all_data[eventConfig.id][playerName].skipped = false;
+            if (playerEventData[eventConfig.id]) {
+                for (var playerName in playerEventData[eventConfig.id]) {
+                    if (playerEventData[eventConfig.id][playerName].skipped) {
+                        playerEventData[eventConfig.id][playerName].skipped = false;
                     }
                 }
-                saveJson(all_data, PLAYER_EVENT_DATA);
+                saveJson(playerEventData, PLAYER_EVENT_DATA);
             }
         }
     }
 }
 
 function loadPlayerSpecificEventData(player_name) {
-    var all_data = loadJson(PLAYER_EVENT_DATA);
-    if (all_data.player_data && all_data.player_data[player_name]) {
-        return all_data.player_data[player_name];
+    if (playerEventData.player_data && playerEventData.player_data[player_name]) {
+        return playerEventData.player_data[player_name];
     } else {
         return {
             skipping_events: []
@@ -171,9 +169,8 @@ function loadPlayerSpecificEventData(player_name) {
 }
 
 function savePlayerSpecificEventData(player_name, data) {
-    var all_data = loadJson(PLAYER_EVENT_DATA);
-    all_data.player_data[player_name] = data;
-    saveJson(all_data, PLAYER_EVENT_DATA);
+    playerEventData.player_data[player_name] = data;
+    saveJson(playerEventData, PLAYER_EVENT_DATA);
 }
 
 function hasPlayerSkippedEvent(player, eventID) {
