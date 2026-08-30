@@ -20,6 +20,8 @@ load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase3.j
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
 var ONBOARDING_DATA_PATH   = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 
+var onboarding_tick_counter = 0;
+
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var WORLD = API.getIWorld(0);
 
@@ -112,6 +114,12 @@ function login(event) {
 }
 
 function tick(event) {
+    onboarding_tick_counter++;
+    if (onboarding_tick_counter < 10) {
+        return;
+    }
+    onboarding_tick_counter = 0;
+
     if (!_onboarding_cfg) return;
     var player = event.player;
     if (!onboarding_isModuleEnabled()) return;
