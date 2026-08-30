@@ -46,19 +46,18 @@ function loadPlayerEventData(eventId, player_name) {
  */
 function savePlayerEventData(event_name, player_name, data) {
     var canonicalEventId = nameToID(event_name);
-    if (checkFileExists(PLAYER_EVENT_DATA)) {
-        var all_data = loadJson(PLAYER_EVENT_DATA);
-    } else {
-        var all_data = {};
+
+    if (!playerEventData) {
+        playerEventData = {};
     }
 
-    if (!all_data[canonicalEventId]) {
-        all_data[canonicalEventId] = {};
+    if (!playerEventData[canonicalEventId]) {
+        playerEventData[canonicalEventId] = {};
     }
 
-    all_data[canonicalEventId][player_name] = data;
+    playerEventData[canonicalEventId][player_name] = data;
 
-    saveJson(all_data, PLAYER_EVENT_DATA);
+    saveJson(playerEventData, PLAYER_EVENT_DATA);
 }
 
 function nameToID(name) {
@@ -169,6 +168,10 @@ function loadPlayerSpecificEventData(player_name) {
 }
 
 function savePlayerSpecificEventData(player_name, data) {
+    if (!playerEventData.player_data) {
+        playerEventData.player_data = {};
+    }
+
     playerEventData.player_data[player_name] = data;
     saveJson(playerEventData, PLAYER_EVENT_DATA);
 }
