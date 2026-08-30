@@ -211,10 +211,12 @@ function injectEntryIntoVolatileLootPool(poolConfig, entry) {
  * @param {string} alias - Configured volatile loot pool alias.
  * @param {IItemStack} itemStack - Item instance to serialize.
  * @param {number} weight - Conventional loot-table weight.
+ * @param {boolean} [bypassWhitelist=false] - When true, ignores the configured whitelist check while still validating the whitelist file exists.
  * @returns {Object} Result object with Success/Reason/Alias/Entry fields.
  */
-function addItemStackToVolatileLootPool(alias, itemStack, weight) {
+function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelist) {
     var numericWeight = Number(weight);
+    var allowBypass = !!bypassWhitelist;
 
     if (!isFinite(numericWeight) || numericWeight <= 0) {
         return {
@@ -248,7 +250,7 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight) {
             };
         }
 
-        if (!isItemInLootTable(poolConfig.WhitelistLootTable, itemStack.getName())) {
+        if (!allowBypass && !isItemInLootTable(poolConfig.WhitelistLootTable, itemStack.getName())) {
             return {
                 Success: false,
                 Reason: 'not_whitelisted',
