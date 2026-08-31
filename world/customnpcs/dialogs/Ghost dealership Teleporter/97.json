@@ -29,7 +29,7 @@
                 "Dialog": -1,
                 "Title": "Greenfield - Springfield Town Hall",
                 "DialogColor": 14737632,
-                "OptionType": 4
+                "OptionType": 2
             }
         },
         {
@@ -39,7 +39,7 @@
                 "Dialog": -1,
                 "Title": "Monsalac - Chaseals Town Hall",
                 "DialogColor": 14737632,
-                "OptionType": 4
+                "OptionType": 2
             }
         }
     ],
@@ -94,7 +94,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1706460013850L,
+        "TimePast": 1788164706024L,
         "Time": 0L,
         "Subject": ""
     }
