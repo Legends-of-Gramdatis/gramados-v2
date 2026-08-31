@@ -337,13 +337,13 @@
                     "egg_count": 8
                 },
                 "spring": {
-                    "egg_count": 14
+                    "egg_count": 15
                 },
                 "encrypted": {
                     "egg_count": 4
                 }
             },
-            "egg_count": 26
+            "egg_count": 27
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 216
+            "egg_count": 217
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
