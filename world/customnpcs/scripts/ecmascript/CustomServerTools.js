@@ -9714,6 +9714,7 @@ registerXCommands([
             var region = new Region(args.name).init(data);
 
             if (!region.data.forSale || region.data.saleType != 'buy') {
+                logToFile('economy', '[REGION_BUY_FAILED] ' + pl.getName() + ' attempted to buy region ' + args.name + ' but it is not available for sale (forSale: ' + region.data.forSale + ', saleType: ' + region.data.saleType + ')');
                 tellPlayer(pl, '&cThis region is not available to buy.');
                 return false;
             }
@@ -9721,6 +9722,7 @@ registerXCommands([
             var p = new Player(pl.getName()).init(data);
 
             if (p.data.money < region.data.salePrice) {
+                logToFile('economy', '[REGION_BUY_FAILED] ' + pl.getName() + ' attempted to buy region ' + region.name + ' for ' + getAmountCoin(region.data.salePrice) + ' but only has ' + getAmountCoin(p.data.money));
                 tellPlayer(pl, '&cYou don\'t have &r:money:&e' + getAmountCoin(region.data.salePrice) + ' &cto buy this region.');
                 return false;
             }
@@ -9730,7 +9732,9 @@ registerXCommands([
                 var oldOwner = new Player(region.data.owner).init(data);
                 oldOwner.data.money += region.data.salePrice;
                 oldOwner.save(data);
-
+                logToFile('economy', '[REGION_BUY_TRANSFER] ' + pl.getName() + ' bought region ' + region.name + ' from ' + region.data.owner + ' for ' + getAmountCoin(region.data.salePrice) + '; funds transferred to previous owner');
+            } else {
+                logToFile('economy', '[REGION_BUY] ' + pl.getName() + ' purchased new region ' + region.name + ' for ' + getAmountCoin(region.data.salePrice) + ' (no previous owner)');
             }
             region.data.owner = pl.getName();
 
@@ -9740,11 +9744,20 @@ registerXCommands([
 
             check_and_update_sign(region, pl);
 
-
             p.save(data);
             region.save(data);
 
-            logToFile('economy', pl.getName() + ' bought region ' + region.name + ' for ' + getAmountCoin(region.data.salePrice));
+            // Structured JSON logging for audit trail
+            logToJson('economy', 'region_purchases', {
+                timestamp: new Date().getTime(),
+                buyer: pl.getName(),
+                region: region.name,
+                price: region.data.salePrice,
+                previousOwner: region.data.owner != null ? region.data.owner : 'none',
+                transaction_type: region.data.owner != null ? 'transfer' : 'new_purchase'
+            });
+
+            logToFile('economy', '[REGION_BUY_SUCCESS] ' + pl.getName() + ' successfully purchased region ' + region.name + ' for ' + getAmountCoin(region.data.salePrice));
 
             tellPlayer(pl, '&aYou successfully bought this region. Do !myRegions to view your own regions or the ones you\'re added to.');
         }
