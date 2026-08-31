@@ -1,0 +1,328 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 3b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e50G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e200G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:money",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e100G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 19b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 27b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:plans",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e10K"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.benchengine",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_decor_unu_lift_twopost",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_decor_unu_dynometer",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:bjornscustoms.for_sale_sign_red",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.benchcarlift_twopost",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:bjornscustoms.forsalesignstand",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:ivv.benchcarlift_ramp",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_decor_unu_tiremachine",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "minecraft:sign",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "mts:unuparts.unuparts_decor_unu_enginestand",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    }
+}
