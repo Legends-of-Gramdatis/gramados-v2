@@ -7908,5 +7908,14 @@
     "mts:ivv.rubber:0": {
         "display_name": "Automobile Rubber Sheet",
         "value": 4000
+    },
+    "mts:bjornscustoms.for_sale_sign_red:0": {
+        "value": 5000
+    },
+    "mts:bjornscustoms.forsalesignstand:0": {
+        "value": 20000
+    },
+    "minecraft:sign:0": {
+        "value": 10000
     }
 }
