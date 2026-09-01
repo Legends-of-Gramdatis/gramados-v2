@@ -41,6 +41,10 @@ var LOG_FILES = {
     modifiers: {
         json: "world/customnpcs/scripts/logs/modifiers.json",
         log: "world/customnpcs/scripts/logs/modifiers.log"
+    },
+    region_requests: {
+        json: "world/customnpcs/scripts/logs/region_requests.json",
+        log: "world/customnpcs/scripts/logs/region_requests.log"
     }
 };
 

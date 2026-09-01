@@ -6,9 +6,88 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_perms.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_gadgets.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region_data.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var world = API.getIWorld(0);
+var REGION_REQUESTS_PATH = "world/customnpcs/scripts/data_auto/region_requests.json";
+
+function loadRegionRequests() {
+    if (!checkFileExists(REGION_REQUESTS_PATH)) createJsonFile(REGION_REQUESTS_PATH);
+    return loadJson(REGION_REQUESTS_PATH) || {};
+}
+
+function ensurePlayerRegionRequestData(player, requests) {
+    var uuid = String(player.getUUID());
+    if (!requests[uuid]) requests[uuid] = { Name: player.getName(), TotalRequests: 0, OngoingRequests: [] };
+    requests[uuid].Name = player.getName();
+    if (typeof requests[uuid].TotalRequests !== "number") requests[uuid].TotalRequests = 0;
+    if (!requests[uuid].OngoingRequests) requests[uuid].OngoingRequests = [];
+    return requests[uuid];
+}
+
+function saveRegionRequests(requests) {
+    saveJson(requests, REGION_REQUESTS_PATH);
+}
+
+function createRegionSetupRequest(player) {
+    var region = getRegionAtEntity(player);
+    var priority = region == null ? 0 : getRegionPriority(region);
+    if (priority >= 2) return { success: false, reason: "configured" };
+
+    var requests = loadRegionRequests();
+    var playerData = ensurePlayerRegionRequestData(player, requests);
+    var pos = getPlayerPos(player);
+    for (var i = 0; i < playerData.OngoingRequests.length; i++) {
+        var pending = playerData.OngoingRequests[i];
+        if (pending.Type === "setup" && pending.Position && pending.Position.X === pos.x && pending.Position.Y === pos.y && pending.Position.Z === pos.z) {
+            saveRegionRequests(requests);
+            return { success: false, reason: "duplicate" };
+        }
+    }
+
+    var request = {
+        Type: "setup",
+        Timestamp: new Date().getTime(),
+        Position: { X: pos.x, Y: pos.y, Z: pos.z },
+        Region: region
+    };
+    playerData.OngoingRequests.push(request);
+    playerData.TotalRequests++;
+    saveRegionRequests(requests);
+    logToFile("region_requests", "[SETUP REQUEST] " + player.getName() + " (UUID: " + String(player.getUUID()) + ") requested property region setup/value at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + " (Region: " + region + ").");
+    return { success: true, request: request };
+}
+
+function createRegionRevalueRequest(player) {
+    var region = getRegionAtEntity(player);
+    var priority = region == null ? 0 : getRegionPriority(region);
+    if (priority < 2) return { success: false, reason: "not_configured" };
+    if (getRegionOwnerName(region) !== player.getName()) return { success: false, reason: "not_owner" };
+
+    var requests = loadRegionRequests();
+    var playerData = ensurePlayerRegionRequestData(player, requests);
+    for (var i = 0; i < playerData.OngoingRequests.length; i++) {
+        var pending = playerData.OngoingRequests[i];
+        if (pending.Type === "revalue" && pending.Region === region) {
+            saveRegionRequests(requests);
+            return { success: false, reason: "duplicate" };
+        }
+    }
+
+    var pos = getPlayerPos(player);
+    var request = {
+        Type: "revalue",
+        Timestamp: new Date().getTime(),
+        Position: { X: pos.x, Y: pos.y, Z: pos.z },
+        Region: region
+    };
+    playerData.OngoingRequests.push(request);
+    playerData.TotalRequests++;
+    saveRegionRequests(requests);
+    logToFile("region_requests", "[REVALUE REQUEST] " + player.getName() + " (UUID: " + String(player.getUUID()) + ") requested revaluation of " + region + " at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + ".");
+    return { success: true, request: request };
+}
 
 /**
  * 

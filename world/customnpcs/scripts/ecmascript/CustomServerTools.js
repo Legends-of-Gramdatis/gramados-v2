@@ -9008,6 +9008,27 @@ registerXCommands([
 //REGISTER REGION COMMANDS
 registerXCommands([
     //['', function(pl, args){}, '', []],
+    ['!region request revalue', function (pl, args, data) {
+        var result = createRegionRevalueRequest(pl);
+        if (result.success) {
+            tellPlayer(pl, "&a:check_mark: Your revaluation request has been sent to staff.");
+            return true;
+        }
+        if (result.reason === "not_configured") tellPlayer(pl, "&c:cross_mark: There is no configured property region here to revalue.");
+        else if (result.reason === "not_owner") tellPlayer(pl, "&c:cross_mark: You can only request a revaluation for a region you own.");
+        else if (result.reason === "duplicate") tellPlayer(pl, "&eThis revaluation request is already pending.");
+        return false;
+    }, 'region.request.revalue'],
+    ['!region request', function (pl, args, data) {
+        var result = createRegionSetupRequest(pl);
+        if (result.success) {
+            tellPlayer(pl, "&a:check_mark: Your request has been sent to staff. They will review and value the property at this location.");
+            return true;
+        }
+        if (result.reason === "configured") tellPlayer(pl, "&c:cross_mark: This location already has a configured property region. If you own it and believe its value is outdated, use !region request revalue.");
+        else if (result.reason === "duplicate") tellPlayer(pl, "&eA setup request for this location is already pending.");
+        return false;
+    }, 'region.request'],
     ['!region create <name>', function (pl, args, data) {
         var region = new Region(args.name);
         region.save(data);
