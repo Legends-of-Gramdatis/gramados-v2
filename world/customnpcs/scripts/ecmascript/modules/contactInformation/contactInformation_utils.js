@@ -22,16 +22,23 @@ function buildContactInformationData(player) {
 function ensureContactInfo(player) {
     var uuid = player.getUUID();
     var contactInfo = getContactInfoStore();
+    var changed = false;
 
     if (!contactInfo.hasOwnProperty(uuid)) {
         contactInfo[uuid] = buildContactInformationData(player);
+        changed = true;
+
         tellPlayer(player, ":book_quill: &aWelcome to Gramados! You can share your contact information with the server by using the !contact command.");
         tellPlayer(player, "&7:arrow_r: Contact Information are used for server events, giveaways, and other community activities. You can set your email and birthday!");
     } else if (!contactInfo[uuid].username) {
         contactInfo[uuid].username = player.getName();
+        changed = true;
     }
 
-    saveContactInfoStore(contactInfo);
+    if (changed) {
+        saveContactInfoStore(contactInfo);
+    }
+
     return contactInfo[uuid];
 }
 
