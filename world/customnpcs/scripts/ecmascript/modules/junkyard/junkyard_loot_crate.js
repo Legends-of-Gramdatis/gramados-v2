@@ -40,7 +40,7 @@ function init(event) {
         return;
     }
 
-    applyCrateSkin(npc);
+    // applyCrateSkin(npc);
 }
 
 function interact(event) {
