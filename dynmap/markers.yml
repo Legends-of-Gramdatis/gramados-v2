@@ -1522,7 +1522,7 @@ sets:
                 y: 76.0
                 z: 103.0
                 icon: shopping_garage
-                label: Ferris Wheel Automobile repair
+                label: Rustmark Garage (Repair Shop)
             marker_4:
                 world: world
                 markup: false
