@@ -120,7 +120,9 @@ function interact(event) {
     var loot = multiplePullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player, purchaseAmount);
     for (var i = 0; i < loot.length; i++) {
         var crowbar = setupCrowbarNameLore(loot[i], world);
-        player.giveItem(crowbar);
+        if (!player.giveItem(crowbar)) {
+            player.dropItem(crowbar);
+        }
     }
 
     var forfeitedCrowbars = availableCrowbars - purchaseAmount;
