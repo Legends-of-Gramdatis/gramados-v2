@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": -1,
+                "Title": "Tell me more about Jobs and Professions.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,38 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 386,
-                "Title": "Automobiles",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 2,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 394,
-                "Title": "Economy and Banking",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 3,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 667,
-                "Title": "Real Estate and Housing",
+                "Dialog": 676,
+                "Title": "How can I find properties for sale?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -56,8 +26,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Lore and History",
+                "Dialog": 667,
+                "Title": "Back to Real Estate Overview",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +37,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 673,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,16 +58,36 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "p4 - Properties and Professions",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 348,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here's how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "Some properties do much more than give you ownership of a building.
+
+Certain professions require you to own the appropriate workplace before you can access the job.
+
+Examples include:
+
+- Farms for farming professions
+- Garages for mechanics
+- Dealerships for automobile businesses
+- Fishing Huts for fishermen
+- Domains for some higher-level professions and activities
+
+These properties are part of the profession itself. Buying the correct region can therefore unlock new economic opportunities that aren't available through ordinary Starter Jobs.
+
+If you're looking for one of these workplaces, you can use:
+
+`!region lookFor <type>`
+
+For example, `!region lookFor Farm` or `!region lookFor Garage` will show the matching properties currently available for purchase and their prices.
+
+If you're interested in one of these careers, make sure you understand the property requirements before making your investment.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +104,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788265992561L,
+        "TimePast": 1788268226181L,
         "Time": 0L,
         "Subject": ""
     }

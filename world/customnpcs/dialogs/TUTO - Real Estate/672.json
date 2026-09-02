@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": 667,
+                "Title": "Back to Real Estate Overview",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,50 +16,10 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 386,
-                "Title": "Automobiles",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 2,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 394,
-                "Title": "Economy and Banking",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 3,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 667,
-                "Title": "Real Estate and Housing",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Lore and History",
+                "Title": "Thank you!",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -67,7 +27,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 672,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,16 +48,22 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "p3 - My Properties",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 348,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here's how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "You can see the regions you currently own using:
+
+`!myregions`
+
+This gives you a list of your properties and is useful once you begin owning several homes, businesses, or pieces of land around the islands.
+
+As your activities expand across Gramados, keeping track of your regions becomes increasingly useful.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +80,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788265992561L,
+        "TimePast": 1788266182909L,
         "Time": 0L,
         "Subject": ""
     }

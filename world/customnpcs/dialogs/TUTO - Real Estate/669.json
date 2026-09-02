@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": 676,
+                "Title": "How can I find properties already for sale?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,38 +16,18 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 386,
-                "Title": "Automobiles",
+                "Dialog": 667,
+                "Title": "Back to Real Estate Overview",
                 "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 2,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 394,
-                "Title": "Economy and Banking",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 3,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
-                "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 2
             }
         },
         {
             "OptionSlot": 4,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 667,
-                "Title": "Real Estate and Housing",
+                "Dialog": 668,
+                "Title": "Back to Buying a Property",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -56,8 +36,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Lore and History",
+                "Dialog": 667,
+                "Title": "Back to Real Estate Overview",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 669,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,16 +68,26 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "p1.2 - Requesting a Region",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 348,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here's how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "If you've found a building or piece of land you'd like to purchase but it isn't available through `!region buy` or listed among the properties for sale, don't assume it can never be owned.
+
+Gramados is enormous, and not every property has been valued and configured yet.
+
+You can use:
+
+`!region request`
+
+This creates a request for Staff, letting them know that you're interested in the property. They can then inspect the region, determine its value, and prepare it for purchase if appropriate.
+
+So if you find somewhere you really like, don't be afraid to ask!",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +104,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788265992561L,
+        "TimePast": 1788268035082L,
         "Time": 0L,
         "Subject": ""
     }

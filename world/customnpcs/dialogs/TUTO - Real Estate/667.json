@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": 668,
+                "Title": "How do I buy a property?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 386,
-                "Title": "Automobiles",
+                "Dialog": 670,
+                "Title": "How are properties valued?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +26,8 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 394,
-                "Title": "Economy and Banking",
+                "Dialog": 672,
+                "Title": "How can I see the properties I own?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -36,8 +36,8 @@
             "OptionSlot": 3,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
+                "Dialog": 673,
+                "Title": "Can properties unlock jobs?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -46,8 +46,8 @@
             "OptionSlot": 4,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 667,
-                "Title": "Real Estate and Housing",
+                "Dialog": 674,
+                "Title": "How do I sell a property?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -56,8 +56,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Lore and History",
+                "Dialog": 349,
+                "Title": "Back to Tutorial Overview",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +67,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 667,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,16 +88,20 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "p0 - Real Estate and Housing",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 348,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here's how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "Property ownership is an important part of life in Gramados. Homes, businesses, farms, workshops, and many other places across the islands are divided into regions that players can purchase.
+
+Some properties simply give you a place to live or build your business, while others can unlock entire professions.
+
+What would you like to know?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +118,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788265992561L,
+        "TimePast": 1788266681813L,
         "Time": 0L,
         "Subject": ""
     }

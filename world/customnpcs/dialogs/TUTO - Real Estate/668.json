@@ -1,13 +1,13 @@
 {
-    "DialogShowWheel": 1b,
+    "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Jobs and Professions",
+                "Dialog": 676,
+                "Title": "How can I find properties for sale?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 386,
-                "Title": "Automobiles",
+                "Dialog": 669,
+                "Title": "What if the property I want isn't available for purchase?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +26,8 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 394,
-                "Title": "Economy and Banking",
+                "Dialog": 677,
+                "Title": "What if I can't afford the property?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -36,28 +36,8 @@
             "OptionSlot": 3,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 350,
-                "Title": "Other Currencies",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
                 "Dialog": 667,
-                "Title": "Real Estate and Housing",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Lore and History",
+                "Title": "Back to Real Estate Overview",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -67,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 349,
+    "DialogId": 668,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -88,16 +68,24 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.4",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "p1 - Buying a Property",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 348,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Great! Here's how this works: You can choose any of the six branches below to dive into different aspects of life in Gramados. Each branch contains a set of tutorials and instructions tailored to help you understand that system.",
+    "DialogText": "If you're standing inside a region that has been prepared for sale, you can usually purchase it using:
+
+`!region buy`
+
+The command will tell you whether the region is available and guide you through the purchase.
+
+There are properties all across Gramados, from houses and offices to farms, garages, dealerships, fishing huts, domains, and much larger estates.
+
+If you don't already know what you're looking for, you can also search for properties currently on the market.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -114,7 +102,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788265992561L,
+        "TimePast": 1788268253381L,
         "Time": 0L,
         "Subject": ""
     }
