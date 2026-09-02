@@ -16,7 +16,7 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
+                "Dialog": 398,
                 "Title": "What's the stock market about?",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -90,7 +90,7 @@ You can also collect accumulated autopay funds using !myBank collectAutopay <ban
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731877795122L,
+        "TimePast": 1788355792934L,
         "Time": 0L,
         "Subject": ""
     }
