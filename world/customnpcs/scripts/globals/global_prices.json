@@ -7917,5 +7917,47 @@
     },
     "minecraft:sign:0": {
         "value": 10000
+    },
+    "mts:dkzcivilianpack.motostrut_10police:0": {
+        "value": 2800000
+    },
+    "mts:dkzcivilianpack.motostrut_11police:0": {
+        "value": 2800000
+    },
+    "mts:dkzcivilianpack.motostrut_12police:0": {
+        "value": 2800000
+    },
+    "mts:dkzcivilianpack.motostrut_13police:0": {
+        "value": 2800000
+    },
+    "mts:dkzcivilianpack.motostrut_1black:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_2red:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_3blue:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_4forest:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_5cream:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_6sky:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_7purple:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_8blackred:0": {
+        "value": 2100000
+    },
+    "mts:dkzcivilianpack.motostrut_8dkzdesert:0": {
+        "value": 2500000
+    },
+    "mts:dkzcivilianpack.motostrut_9raven:0": {
+        "value": 2100000
     }
 }

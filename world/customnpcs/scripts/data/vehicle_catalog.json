@@ -122,6 +122,12 @@
         "Collectable",
         "Import"
       ]
+    },
+    "motostrut_":{
+      "brand": "DKZ",
+      "name": "M-130 Motostrut",
+      "maxHealth": 100,
+      "extraTitles": []
     }
   },
   "plateSystems": {

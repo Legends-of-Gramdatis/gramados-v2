@@ -10,8 +10,8 @@ var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var WORLD = API.getIWorld(0);
 
 // ── Configuration ──────────────────────────────────────────────────────────────
-var REGION_NAME = 'Gramados_GramadosCity_PluslinStreet_1';  // region name without the 'region_' prefix
-var BLOCK_ID    = 'variedcommodities:placeholder';        // block id to place (e.g. 'minecraft:planks')
+var REGION_NAME = 'Gramados_GramadosCity_SpilghamAvenue_UsedCarDealership_Dealership';  // region name without the 'region_' prefix
+var BLOCK_ID    = 'minecraft:stained_glass';        // block id to place (e.g. 'minecraft:planks')
 // ───────────────────────────────────────────────────────────────────────────────
 
 var SETTINGS_PATH = 'CustomServerTools/settings.json';
