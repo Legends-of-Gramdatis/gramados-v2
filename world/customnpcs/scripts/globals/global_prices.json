@@ -7959,5 +7959,20 @@
     },
     "mts:dkzcivilianpack.motostrut_9raven:0": {
         "value": 2100000
+    },
+    "mts:warkfarming.wark_harvester_blue:0": {
+        "value": 31500000
+    },
+    "mts:warkfarming.wark_harvester_green:0": {
+        "value": 31500000
+    },
+    "mts:warkfarming.wark_harvester_orange:0": {
+        "value": 31500000
+    },
+    "mts:warkfarming.wark_harvester_red:0": {
+        "value": 31500000
+    },
+    "mts:warkfarming.wark_harvester_yellow:0": {
+        "value": 31500000
     }
 }
