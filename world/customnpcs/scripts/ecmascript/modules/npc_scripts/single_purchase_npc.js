@@ -7,6 +7,7 @@ var SINGLE_PURCHASE_HISTORY_PATH = 'world/customnpcs/scripts/data_auto/single_pu
 var CONFIRM_WINDOW_MS = 5000;
 
 var SD_ITEM_ID_KEY = 'single_purchase_item_id';
+var SD_ITEM_NBT_KEY = 'single_purchase_item_nbt';
 var SD_PRICE_CENTS_KEY = 'single_purchase_price_cents';
 
 function interact(event) {
@@ -33,10 +34,19 @@ function interact(event) {
             return;
         }
 
-        if (isSellMarker(mainhand)) {
+        var sellMode = getSellMarkerMode(mainhand);
+        if (sellMode) {
             var sellItemId = mainhand.getName();
-            npc.getStoreddata().put(SD_ITEM_ID_KEY, sellItemId);
-            tellPlayer(player, '&a[Admin] Sell item set to: ' + sellItemId);
+            var storeddata = npc.getStoreddata();
+            storeddata.put(SD_ITEM_ID_KEY, sellItemId);
+
+            if (sellMode == 'nbt') {
+                storeddata.put(SD_ITEM_NBT_KEY, getSellItemNbt(mainhand));
+                tellPlayer(player, '&a[Admin] Sell item set with NBT: ' + sellItemId);
+            } else {
+                storeddata.remove(SD_ITEM_NBT_KEY);
+                tellPlayer(player, '&a[Admin] Sell item set to: ' + sellItemId);
+            }
             return;
         }
 
@@ -79,7 +89,7 @@ function interact(event) {
 
 function completePurchase(npc, player, priceCents, confirmKey) {
     var itemId = npc.getStoreddata().get(SD_ITEM_ID_KEY);
-    var reward = npc.getWorld().createItem(itemId, 0, 1);
+    var reward = createConfiguredReward(npc, itemId);
 
     if (!reward || reward.isEmpty() || reward.getName() == 'minecraft:air') {
         npc.getTempdata().remove(confirmKey);
@@ -113,12 +123,46 @@ function isNameTag(item) {
     return item && !item.isEmpty() && item.getName() == 'minecraft:name_tag';
 }
 
-function isSellMarker(item) {
+function getSellMarkerMode(item) {
     if (!item || item.isEmpty()) {
-        return false;
+        return null;
     }
     var display = stripColors(item.getDisplayName()).toLowerCase();
-    return display == 'sell';
+    if (display == 'sell') {
+        return 'id';
+    }
+    if (display == 'sell nbt') {
+        return 'nbt';
+    }
+    return null;
+}
+
+function getSellItemNbt(item) {
+    var itemNbt = API.stringToNbt(item.getItemNbt().toJsonString());
+    var tag = itemNbt.getCompound('tag');
+    var display = tag.getCompound('display');
+
+    // The custom name is only an admin configuration marker, not reward data.
+    display.remove('Name');
+    tag.setCompound('display', display);
+    itemNbt.setCompound('tag', tag);
+    return itemNbt.toJsonString();
+}
+
+function createConfiguredReward(npc, itemId) {
+    var storeddata = npc.getStoreddata();
+    if (!storeddata.has(SD_ITEM_NBT_KEY)) {
+        return npc.getWorld().createItem(itemId, 0, 1);
+    }
+
+    try {
+        var reward = npc.getWorld().createItemFromNbt(API.stringToNbt(storeddata.get(SD_ITEM_NBT_KEY)));
+        reward.setStackSize(1);
+        return reward;
+    } catch (error) {
+        logToFile('economy', '[single_purchase_npc] Failed to recreate NBT sell item ' + itemId + ': ' + error);
+        return null;
+    }
 }
 
 function extractCentsFromNameTag(item) {
@@ -215,9 +259,10 @@ function showAdminConfigurationHelp(npc, player) {
         '&7You have the Seagull ID card in offhand. Use these mainhand items to configure:',
         '&e1) Name Tag &7(renamed to a number in cents) &r-> &aset price',
         '&8   Example: name tag "12500" sets price to 125g.',
-        '&e2) Any item renamed "sell" &r-> &asets that item ID as sold item',
-        '&8   Keep the item itself in mainhand while interacting.',
-        '&e3) Barrier &r-> &cresets this player purchase history for this NPC',
+        '&e2) Any item renamed "sell" &r-> &astores its item ID only',
+        '&e3) Any item renamed "sell nbt" &r-> &astores the item including NBT',
+        '&8   The temporary "sell nbt" name is not included in the reward.',
+        '&e4) Barrier &r-> &cresets this player purchase history for this NPC',
         '&8   Useful for testing one-time purchase behavior.',
         '&7Current sold item: &f' + configuredItem,
         '&7Current price: &f' + priceText
