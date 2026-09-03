@@ -347,36 +347,7 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
         " " +
         crateType +
         " Junkyard Crate in " +
-        junkyards[junkyardId].DisplayName +
-        " (" +
-        pullCount +
-        " main loot pull" +
-        (
-            pullCount == 1
-                ? ""
-                : "s"
-        ) +
-        ", " +
-        mainLootCount +
-        " main item" +
-        (
-            mainLootCount == 1
-                ? ""
-                : "s"
-        ) +
-        ", secondary scrap: " +
-        (
-            triggered
-                ? secondaryLoot.length +
-                  " item" +
-                  (
-                      secondaryLoot.length == 1
-                          ? ""
-                          : "s"
-                  )
-                : "none"
-        ) +
-        ")."
+        junkyards[junkyardId].DisplayName
     );
 
     return true;
