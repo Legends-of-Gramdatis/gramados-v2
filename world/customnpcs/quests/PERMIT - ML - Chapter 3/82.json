@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Step 5: Find the Taxidermist",
-    "Text": "I need to travel to Feldpard Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Rivetshore Island.",
+    "Text": "I need to travel to Foréval Island to find the taxidermist. The taxidermist is located at the Truck Stop, which is on the south-west side of the island, right after crossing the bridge from Rivetshore Island.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -36,7 +36,7 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've reached the Truck Stop on Feldpard Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
+    "CompleteText": "I've reached the Truck Stop on Foréval Island and found the taxidermist. Now, I can deliver the White Stag’s carcass for processing.",
     "NextQuestTitle": "Step 6: Talking with Edwin Kellen",
-    "QuestLocation": "Feldpard Truck Stop Taxidermist"
+    "QuestLocation": "Foréval Truck Stop Taxidermist"
 }
