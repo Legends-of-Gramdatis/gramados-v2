@@ -1619,6 +1619,14 @@ sets:
                 z: -3024.0
                 icon: shopping_garage
                 label: Iodock Garage (Repair Shop)
+            marker_16:
+                world: world
+                markup: false
+                x: -1197.0
+                y: 74.0
+                z: 250.0
+                icon: shopping_garage
+                label: Old Fordoni Garage (Repair Shop)
         lines: {
             }
         layerprio: 0
