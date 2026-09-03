@@ -260,7 +260,7 @@
         "y": "113",
         "z": "-3016",
         "description": "An important historical Feldspar quarry near Trilnat",
-        "region": "Feldpard",
+        "region": "Foréval",
         "category": "Material",
         "types": [
             "feldspar"
@@ -275,7 +275,7 @@
         "y": "117",
         "z": "-3736",
         "description": "An historical 14th century paper mill still in activity!",
-        "region": "Feldpard",
+        "region": "Foréval",
         "category": "Material",
         "types": [
             "high quality paper"

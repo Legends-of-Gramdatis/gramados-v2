@@ -15,7 +15,7 @@ var PHONE_FILE_PATH = "world/customnpcs/scripts/ecmascript/modules_unfinished/sm
 
 
 // list of available regions
-var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Feldpard", "Casco"];
+var regions = ["Gramados", "Greenfield", "Monsalac", "Farmiston", "Allenis", "Foréval", "Casco"];
 
 // dictionary of available categories
 var categories = {
