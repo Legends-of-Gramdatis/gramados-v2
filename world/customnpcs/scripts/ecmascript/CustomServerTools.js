@@ -10839,15 +10839,15 @@ function takeMoneyFromPlayer(player, amount, pnbt) {
 //Returns amount of money in player inv
 function getMoneyItemCount(pnbt, w) {
     var am = 0;
-    for (var itemvalue in _COINITEMS) {
-        var ci = _COINITEMS[itemvalue];
-        var coinItems = generateMoney(w, getCoinAmount(itemvalue));
-        for (var _cii in coinItems) {
-            var _coin = coinItems[_cii];
-            am += getInvItemCount(pnbt, _coin, w, false) * getCoinAmount(itemvalue);
-        }
+    var moneyItems = getPlayerInvFromNbt(pnbt, w, function (item, itemNbt, world) {
+        return isItemMoney(item, world);
+    });
 
+    for (var i in moneyItems) {
+        var moneyItem = moneyItems[i];
+        am += getItemMoney(moneyItem, w) * moneyItem.getStackSize();
     }
+
     return am;
 }
 
