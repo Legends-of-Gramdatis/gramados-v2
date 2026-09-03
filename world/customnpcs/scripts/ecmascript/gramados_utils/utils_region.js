@@ -55,7 +55,7 @@ function createRegionSetupRequest(player) {
     playerData.OngoingRequests.push(request);
     playerData.TotalRequests++;
     saveRegionRequests(requests);
-    logToFile("region_requests", "[SETUP REQUEST] " + player.getName() + " (UUID: " + player.getUUID() + ") requested property region setup/value at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + " (Region: " + region + ").");
+    logToFile("region_requests", "<@&539939620901748775> " + player.getName() + " requested property region setup/value at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + " (Region: " + region + ").");
     return { success: true, request: request };
 }
 
@@ -85,7 +85,7 @@ function createRegionRevalueRequest(player) {
     playerData.OngoingRequests.push(request);
     playerData.TotalRequests++;
     saveRegionRequests(requests);
-    logToFile("region_requests", "[REVALUE REQUEST] " + player.getName() + " (UUID: " + player.getUUID() + ") requested revaluation of " + region + " at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + ".");
+    logToFile("region_requests", "<@&539939620901748775> " + player.getName() + " requested revaluation of " + region + " at X: " + pos.x + " Y: " + pos.y + " Z: " + pos.z + ".");
     return { success: true, request: request };
 }
 
