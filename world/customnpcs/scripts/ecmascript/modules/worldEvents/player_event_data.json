@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 224
+            "egg_count": 225
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -388,10 +388,10 @@
                     "egg_count": 5
                 },
                 "encrypted": {
-                    "egg_count": 2
+                    "egg_count": 3
                 }
             },
-            "egg_count": 13
+            "egg_count": 14
         },
         "oldbjorn": {
             "has_starter_pack": true,
