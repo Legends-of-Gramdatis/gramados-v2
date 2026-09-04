@@ -337,13 +337,13 @@
                     "egg_count": 10
                 },
                 "spring": {
-                    "egg_count": 16
+                    "egg_count": 17
                 },
                 "encrypted": {
                     "egg_count": 5
                 }
             },
-            "egg_count": 31
+            "egg_count": 32
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 226
+            "egg_count": 228
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -382,7 +382,7 @@
             "has_starter_pack": true,
             "egg_types": {
                 "chromashell": {
-                    "egg_count": 6
+                    "egg_count": 7
                 },
                 "spring": {
                     "egg_count": 5
@@ -391,7 +391,7 @@
                     "egg_count": 3
                 }
             },
-            "egg_count": 14
+            "egg_count": 15
         },
         "oldbjorn": {
             "has_starter_pack": true,

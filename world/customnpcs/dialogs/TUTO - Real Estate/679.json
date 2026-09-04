@@ -13,11 +13,11 @@
             }
         },
         {
-            "OptionSlot": 1,
+            "OptionSlot": 3,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 679,
-                "Title": "How can I find these properties for sale?",
+                "Dialog": 676,
+                "Title": "How does property search work?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +26,8 @@
             "OptionSlot": 4,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 356,
-                "Title": "Tell me more about Jobs and Professions.",
+                "Dialog": 673,
+                "Title": "Back to Properties and Professions",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 673,
+    "DialogId": 679,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -68,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p4 - Properties and Professions",
+    "DialogTitle": "p4.2 - Finding a Workplace",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -77,9 +77,16 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Some properties do more than simply give you ownership of a building.
+    "DialogText": "You can search for available profession properties using:
 
-Certain professions require you to own the appropriate workplace before you can access the job. Owning the correct property can therefore unlock new economic opportunities that aren't available through ordinary Starter Jobs.",
+`!region lookFor <type>`
+
+For example:
+`!region lookFor Farm`
+or:
+`!region lookFor Garage`
+
+The command lists matching properties currently for sale and their prices.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -96,7 +103,7 @@ Certain professions require you to own the appropriate workplace before you can 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788513870153L,
+        "TimePast": 1788513967896L,
         "Time": 0L,
         "Subject": ""
     }
