@@ -12,16 +12,15 @@ var junkyards = loadJson("world/customnpcs/scripts/ecmascript/modules/junkyard/j
 
 var JUNKER_CRATE_TYPE = "junker";
 var JUNKER_CRATE_DISPLAY_NAME = "Junker Vehicle Crate";
-
-var JUNKER_VISIBLE = 0;
-var JUNKER_INVISIBLE = 1;
+var JUNKER_CLOSED_SKIN_URL = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_junker.png";
+var JUNKER_OPEN_SKIN_URL = "https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_junker_open.png";
 
 function init(event) {
     var npc = event.npc;
 
     if (!isCrateLinkedToJunkyard(npc)) {
         if (!linkCrateToJunkyard(npc)) {
-            npc.getDisplay().setVisible(JUNKER_INVISIBLE);
+            applyJunkerCrateSkin(npc, false);
             npc.say(parseEmotes("&c:cross_mark: This Junker crate is not in a Junkyard region and cannot be linked. Report to an admin."));
             return;
         }
@@ -33,11 +32,11 @@ function init(event) {
         isJunkerCrateReady(junkyardId) &&
         canUseLootTable(config.JUNKER_CRATE_LOOT_TABLE)
     ) {
-        npc.getDisplay().setVisible(JUNKER_VISIBLE);
+        applyJunkerCrateSkin(npc, true);
         return;
     }
 
-    npc.getDisplay().setVisible(JUNKER_INVISIBLE);
+    applyJunkerCrateSkin(npc, false);
 }
 
 function interact(event) {
@@ -59,9 +58,11 @@ function interact(event) {
     }
 
     if (
-        npc.getDisplay().getVisible() != JUNKER_VISIBLE ||
-        !isJunkerCrateReady(junkyardId)
+        !isJunkerCrateReady(junkyardId) ||
+        !canUseLootTable(config.JUNKER_CRATE_LOOT_TABLE) ||
+        npc.getDisplay().getSkinUrl() == JUNKER_OPEN_SKIN_URL
     ) {
+        applyJunkerCrateSkin(npc, false);
         tellPlayer(player, "&c:cross_mark: This Junker crate is not currently available.");
         return;
     }
@@ -112,7 +113,7 @@ function interact(event) {
         );
     }
 
-    npc.getDisplay().setVisible(JUNKER_INVISIBLE);
+    applyJunkerCrateSkin(npc, false);
 
     logToFile(
         "mechanics",
@@ -139,6 +140,12 @@ function pullJunkerCrateLoot(player) {
     return pullLootTable(
         config.JUNKER_CRATE_COMPENSATION_LOOT_TABLE,
         player
+    );
+}
+
+function applyJunkerCrateSkin(npc, isAvailable) {
+    npc.getDisplay().setSkinUrl(
+        isAvailable ? JUNKER_CLOSED_SKIN_URL : JUNKER_OPEN_SKIN_URL
     );
 }
 
@@ -212,14 +219,14 @@ function showJunkerCrateAdminInfo(npc, player) {
         }
     }
 
-    var visibility = npc.getDisplay().getVisible() == JUNKER_VISIBLE
-        ? "Visible"
-        : "Invisible";
+    var skinState = npc.getDisplay().getSkinUrl() == JUNKER_OPEN_SKIN_URL
+        ? "Open"
+        : "Closed";
 
     tellPlayer(player, "&6&lJunker Vehicle Crate Admin");
     tellPlayer(player, "&7Junkyard: &e" + junkyardDisplay);
     tellPlayer(player, "&7Volatile loot available: " + (volatileAvailable ? "&aYes" : "&cNo"));
     tellPlayer(player, "&7Last Opened At: &e" + lastOpenedAt);
     tellPlayer(player, "&7Cooldown: &e" + cooldownDisplay);
-    tellPlayer(player, "&7Visibility: &e" + visibility);
+    tellPlayer(player, "&7Skin state: &e" + skinState);
 }

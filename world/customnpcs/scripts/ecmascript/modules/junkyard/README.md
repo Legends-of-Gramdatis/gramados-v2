@@ -105,11 +105,11 @@ Scripts: `junkyard_crate_manager.js`, `junkyard_loot_crate.js`
 ### Crate Interaction
 - Use: Hold the crowbar and interact with a Junkyard crate NPC.
 - If valid and unopened:
-  - Plays breaking/particle effects and switches skin to a broken crate image.
+  - Plays breaking/particle effects and switches to the open Junker crate skin at `https://legends-of-gramdatis.com/gramados_skins/crates/Gramados_slime_crate_junker_open.png`.
   - Consumes 1 crowbar.
   - Drops loot via `_LOOTTABLE_JUNKYARD_CRATE` on the ground.
   - Logs an estimated value using global prices.
-  - Starts a short reset timer (about a minute) after which the crate closes (skin reset).
+  - The crate remains visually open and unavailable until its configured regeneration time passes, then returns to the closed skin.
 - If already opened: You’ll be told it’s already open.
 - Admin reset: Interact with a command block in hand to instantly reset a crate.
 
