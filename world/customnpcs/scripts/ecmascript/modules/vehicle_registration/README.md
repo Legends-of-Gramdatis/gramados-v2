@@ -4,7 +4,7 @@ Admin NPC tool to create or update vehicle registrations from either vehicle ite
 
 When a player interacts with this NPC while holding `mts:ivv.idcard_seagull` in offhand, the script reads the mainhand item and builds a registration payload. It then checks if the plate already exists in the registry and either updates the existing entry (merge) or creates a new one.
 
-The `!register` command now takes a required region and an optional owner name: `!register <region> [owner]`. Region names are matched against the configured island regions, so players can say `Solterra` or `Solterra Island` and both resolve to `Solterra Island`. If no owner is provided, the command uses the player name of the person executing it.
+The `!register` command takes a required region and an optional owner name: `!register <region> [owner]`. Region names are matched against the configured island regions, so players can say `Solterra` or `Solterra Island` and both resolve to `Solterra Island`. If no owner is provided, the command uses the player name of the person executing it. Existing papers can be replaced with `!register get <plate>`.
 
 ## Behavior
 
@@ -23,6 +23,12 @@ The `!register` command now takes a required region and an optional owner name: 
   - on failure, attempts fallback merge with the most recent plate entry (`getMostRecentPlate` + `mergeRegistrationData` + `updateRegistration`).
 - The script prints registration details to chat using `tellRegisterationDetails` during processing.
 
+## Replacement Papers
+
+- Use `!register get <plate>` to retrieve a licensed vehicle from `licensed_vehicles.json` and generate replacement car papers.
+- The command gives the papers to the player, or drops them if the inventory is full.
+- The command requires the existing `register` permission and does not alter the vehicle registration.
+
 ## Configuration
 
 File: `world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.json`
@@ -37,6 +43,7 @@ File: `world/customnpcs/scripts/ecmascript/modules/vehicle_registration/config.j
 - Hold `mts:ivv.idcard_seagull` in offhand.
 - Hold either a vehicle item or OG car paper in main hand.
 - Interact with the NPC to process registration.
+- Use `!register get <plate>` to replace lost papers for a licensed vehicle.
 - Re-using an already licensed plate will update/merge the existing registry entry instead of skipping.
 
 Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.

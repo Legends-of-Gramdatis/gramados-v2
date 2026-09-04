@@ -340,10 +340,10 @@
                     "egg_count": 16
                 },
                 "encrypted": {
-                    "egg_count": 4
+                    "egg_count": 5
                 }
             },
-            "egg_count": 30
+            "egg_count": 31
         },
         "Kitsunami_": {
             "has_starter_pack": true,
@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 225
+            "egg_count": 226
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
