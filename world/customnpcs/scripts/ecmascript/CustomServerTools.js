@@ -3658,6 +3658,26 @@ registerXCommands([
         tellPlayer(pl, "&aReloaded emotes. &e" + created + "&a new emote data entr" + (created == 1 ? "y" : "ies") + " created.");
         return true;
     }, 'emotes.reload'],
+    ['!register get <plate>', function (pl, args, data) {
+        var registration = getRegistrationByPlate(args.plate);
+        if (!registration) {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] No licensed vehicle found for plate: &e" + args.plate);
+            return false;
+        }
+
+        var vehiclePreviewStack = pl.getWorld().createItem(registration.vehicleId, 0, 1);
+        if (!vehiclePreviewStack || vehiclePreviewStack.isEmpty()) {
+            tellPlayer(pl, ":car: &c[Vehicle Registration] Could not create the registered vehicle item for plate: &e" + args.plate);
+            return false;
+        }
+
+        var paperStack = generatePaperItem(pl.getWorld(), registration, vehiclePreviewStack);
+        if (!pl.giveItem(paperStack)) { pl.dropItem(paperStack); }
+        tellRegisterationDetails(pl, registration);
+        tellPlayer(pl, ":car: &a[Vehicle Registration] Replacement car papers generated for plate: &e" + registration.plate);
+        logToFile("automobile", "Player " + pl.getName() + " generated replacement car papers for plate: " + registration.plate);
+        return true;
+    }, 'register'],
     ['!register <region> [owner]', function (pl, args, data) {
         var registrationRegion = getVehicleRegistrationRegion(args.region);
         if (!registrationRegion) {
