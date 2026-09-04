@@ -1353,14 +1353,6 @@ sets:
             }
         label: Dealerships
         markers:
-            marker_1:
-                world: world
-                markup: false
-                x: -1011.0
-                icon: shopping_dealership
-                y: 74.0
-                z: 103.0
-                label: Used Car Dealerships
             marker_2:
                 world: world
                 markup: false
@@ -1368,7 +1360,7 @@ sets:
                 icon: shopping_dealership
                 y: 77.0
                 z: 234.0
-                label: Used Car Dealerships
+                label: Ferris Wheel Inc. Used Cars and Service
             marker_3:
                 world: world
                 markup: false
