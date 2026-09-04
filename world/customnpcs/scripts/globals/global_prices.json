@@ -7974,5 +7974,23 @@
     },
     "mts:warkfarming.wark_harvester_yellow:0": {
         "value": 31500000
+    },
+    "mts:ivv.dummyitem4:0": {
+        "value": 500
+    },
+    "mts:ivv.dummyitem3:0": {
+        "value": 20000
+    },
+    "mts:ivv.dummyitem2:0": {
+        "value": 15000
+    },
+    "mts:ivv.dummyitem1:0": {
+        "value": 5000
+    },
+    "mts:ivv.key:0": {
+        "value": 5000
+    },
+    "mts:ivv.classickey:0": {
+        "value": 5000
     }
 }
