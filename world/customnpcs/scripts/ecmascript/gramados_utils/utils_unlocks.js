@@ -314,11 +314,22 @@ function grantUnlock(player, unlockId, definition, existingPlayerData) {
             "unlock:" + id
         );
 
+        // Badge/emote reward helpers also edit player_<name>. Reload before
+        // persisting reward metadata so their changes cannot be overwritten by
+        // the copy of playerData that existed before reward delivery.
+        var refreshedPlayerData = _genericUnlockGetPlayerData(player);
+        if (!refreshedPlayerData) return true;
+        _genericUnlockEnsureContainers(refreshedPlayerData);
+
+        metadata = _genericUnlockGetMetadata(refreshedPlayerData, id, true);
+        if (metadata.UnlockedAt === null && !alreadyUnlocked) {
+            metadata.UnlockedAt = new Date().getTime();
+        }
         metadata.RewardsGranted = rewardsGranted;
         metadata.RewardsGrantedAt = rewardsGranted
             ? new Date().getTime()
             : null;
-        savePlayerMeta(player, playerData);
+        savePlayerMeta(player, refreshedPlayerData);
     }
 
     if (!alreadyUnlocked) {
@@ -359,11 +370,6 @@ function checkUnlock(player, unlockId, existingPlayerData) {
  */
 function checkUnlocksForTrigger(player, trigger) {
     var config = loadGenericUnlockConfig();
-    var playerData = _genericUnlockGetPlayerData(player);
-    if (!playerData) return [];
-
-    _genericUnlockEnsureContainers(playerData);
-
     var newlyUnlocked = [];
 
     for (var unlockId in config.Unlocks) {
@@ -373,8 +379,11 @@ function checkUnlocksForTrigger(player, trigger) {
         if (!definition || definition.Enabled === false) continue;
         if (!_genericUnlockHasTrigger(definition, trigger)) continue;
 
-        var wasUnlocked = playerData.unlocks[unlockId] === true;
-        var nowUnlocked = checkUnlock(player, unlockId, playerData);
+        // Load fresh data for every definition. Rewards such as badges/emotes
+        // mutate the same player_<name> object, so carrying one cached object
+        // across several unlocks could overwrite changes made by a prior reward.
+        var wasUnlocked = hasUnlock(player, unlockId);
+        var nowUnlocked = checkUnlock(player, unlockId);
 
         if (!wasUnlocked && nowUnlocked) {
             newlyUnlocked.push(unlockId);
@@ -390,11 +399,6 @@ function checkUnlocksForTrigger(player, trigger) {
  */
 function recheckAllUnlocks(player) {
     var config = loadGenericUnlockConfig();
-    var playerData = _genericUnlockGetPlayerData(player);
-    if (!playerData) return [];
-
-    _genericUnlockEnsureContainers(playerData);
-
     var newlyUnlocked = [];
 
     for (var unlockId in config.Unlocks) {
@@ -403,8 +407,8 @@ function recheckAllUnlocks(player) {
         var definition = config.Unlocks[unlockId];
         if (!definition || definition.Enabled === false) continue;
 
-        var wasUnlocked = playerData.unlocks[unlockId] === true;
-        var nowUnlocked = checkUnlock(player, unlockId, playerData);
+        var wasUnlocked = hasUnlock(player, unlockId);
+        var nowUnlocked = checkUnlock(player, unlockId);
 
         if (!wasUnlocked && nowUnlocked) {
             newlyUnlocked.push(unlockId);
