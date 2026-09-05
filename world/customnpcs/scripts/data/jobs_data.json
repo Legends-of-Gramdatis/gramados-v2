@@ -110,7 +110,6 @@
             ],
             "Tags": [
                 "Brewer",
-                "Brewer_Vintage",
                 "Brewer_Wine"
             ],
             "MarketAccessDeniedText": "These wines are traded exclusively through the recognized vintners of Allenis. I cannot accept deliveries from anyone else.",
@@ -306,10 +305,7 @@
                 "region_Greenfield_Countryside_AeromorRoad_6_PleasantValleyFarm_Farm"
             ],
             "Tags": [
-                "Farmer",
-                "Farmer_Crops",
-                "Farmer_Fruits",
-                "Farmer_Vegetables"
+                "Farmer"
             ],
             "MarketAccessDeniedText": "Fresh produce is accepted only from registered Greenfield organic farmers.",
             "Markets": [
@@ -354,7 +350,6 @@
             ],
             "Tags": [
                 "Farmer",
-                "Farmer_Cattle",
                 "Farmer_Dairy"
             ],
             "MarketAccessDeniedText": "Only registered dairy farmers of Monsalac may supply milk and cheese to this market.",
@@ -453,8 +448,7 @@
             "Title": "Solterra Farmer",
             "Perms": [],
             "Tags": [
-                "Farmer",
-                "Farmer_Cattle"
+                "Farmer"
             ],
             "MarketAccessDeniedText": "Only registered Solterran farmers may deliver their goods here.",
             "Markets": []
