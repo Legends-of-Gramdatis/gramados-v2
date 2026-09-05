@@ -10,6 +10,12 @@ This module contains standalone CustomNPC scripts used for specific NPC behavior
 - `PoliceNPC.js` — Drops configured police loot on death.
 - `single_purchase_npc.js` — Sells one configured item once per player, with a 5-second confirmation.
 
+## `engineMechanicNPC.js` setup
+
+Admin controls are enabled only with a `mts:ivv.idcard_seagull` in offhand. Hold a `variedcommodities:coin_diamond` in main hand and interact to cycle through the IVL Gas, IVL Electric, and Trin Gas engine presets. Hold a `minecraft:barrier` to clear the selected preset. An empty main hand (or any other item) displays the current configuration and controls privately to the admin.
+
+Preset definitions and relative loot-table paths live in `engineMechanicNPC_config.json`; renamed command blocks are no longer used for setup.
+
 ## `single_purchase_npc.js` setup
 
 Attach `single_purchase_npc.js` to the NPC script slot.

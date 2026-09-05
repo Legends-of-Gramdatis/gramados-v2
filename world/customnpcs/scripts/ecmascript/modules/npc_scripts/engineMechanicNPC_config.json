@@ -1,0 +1,20 @@
+{
+    "PresetSwitchItem": "variedcommodities:coin_diamond",
+    "Presets": {
+        "ivl_gas": {
+            "DisplayName": "IVL Gas Engines",
+            "LootTable": "automobile/engines/car_engines_ivl.json",
+            "UnsupportedText": "I only fix IVL gas engines."
+        },
+        "ivl_electric": {
+            "DisplayName": "IVL Electric Engines",
+            "LootTable": "automobile/engines/car_engines_ivl_ev.json",
+            "UnsupportedText": "I only fix IVL electric engines."
+        },
+        "trin_gas": {
+            "DisplayName": "Trin Gas Engines",
+            "LootTable": "automobile/engines/car_engines_trin.json",
+            "UnsupportedText": "I only fix Trin gas engines."
+        }
+    }
+}
