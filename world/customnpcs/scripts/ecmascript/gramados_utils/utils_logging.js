@@ -1,5 +1,6 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_job_progress.js");
 
 var LOG_FILES = {
     economy: {
@@ -69,8 +70,43 @@ function logToJson(logType, key, data) {
 
         logData[key].push(data);
         saveJson(logData, filePath);
+
+        _tryRecordMarketJobProgressFromEconomyLog(logType, key, data);
     } catch (e) {
         tellPlayer("Error occurred while logging to JSON: " + e.message);
+    }
+}
+
+/**
+ * Market NPCs already centralize successful transactions through the economy
+ * logger. Reuse that point to maintain job progression without duplicating
+ * hooks in the legacy and refactored market scripts.
+ *
+ * The market script exposes activeJob and activeMarketName in its script scope.
+ * Other economy producers do not, so they are ignored here and can call the
+ * job-progress API directly when/if they need progression tracking.
+ */
+function _tryRecordMarketJobProgressFromEconomyLog(logType, playerName, data) {
+    try {
+        if (logType !== "economy" || !data || data.totalEarnings === undefined) return;
+        if (typeof activeJob === "undefined" || !activeJob || activeJob.id === undefined) return;
+        if (typeof activeMarketName === "undefined" || !activeMarketName) return;
+        if (typeof recordMarketJobProgress !== "function") return;
+
+        var player = getOnlinePlayerByNameForJobProgress(playerName);
+        if (!player) return;
+
+        recordMarketJobProgress(
+            player,
+            activeJob.id,
+            activeMarketName,
+            Number(data.totalEarnings || 0),
+            data.delivery || null
+        );
+    } catch (e) {
+        try {
+            java.lang.System.out.println("[Job Milestones] Failed to record market progress: " + e.message);
+        } catch (ignored) {}
     }
 }
 
