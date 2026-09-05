@@ -52,6 +52,7 @@ function _configuredRewardsLog(contextLabel, message) {
  * Supported reward types:
  * - money: { Type: "money", Amount: <cents>, Currency?: "money" }
  * - badge: { Type: "badge", Badge: "badge_id" }
+ * - badge_and_emotes: { Type: "badge_and_emotes", Badge: "badge_id", Emotes: ["one", "two"] }
  * - emote: { Type: "emote", Emote: "emote_id" }
  * - emotes: { Type: "emotes", Emotes: ["one", "two"] }
  * - loot_table: { Type: "loot_table", LootTable: "path.json", Pulls?: 1 }
@@ -100,6 +101,15 @@ function grantConfiguredRewards(player, rewards, contextLabel) {
                 _configuredRewardsEnsureEmoteUtils();
                 if (reward.Badge) {
                     grantBadgeAndEmotes(player, String(reward.Badge), []);
+                }
+            } else if (type === "badge_and_emotes" || type === "badgeandemotes") {
+                _configuredRewardsEnsureEmoteUtils();
+                if (reward.Badge) {
+                    grantBadgeAndEmotes(
+                        player,
+                        String(reward.Badge),
+                        reward.Emotes || []
+                    );
                 }
             } else if (type === "emote") {
                 _configuredRewardsEnsureEmoteUtils();
