@@ -2,7 +2,7 @@
     "Version": 1,
     "Unlocks": {
         "veteran_5_years": {
-            "Enabled": false,
+            "Enabled": true,
             "Name": "Five Year Veteran",
             "Triggers": [
                 "login"
