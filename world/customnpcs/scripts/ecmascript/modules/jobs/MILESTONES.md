@@ -146,7 +146,7 @@ Supported reward types:
 - `emotes`: `Emotes` array
 - `loot_table`: `LootTable` (or `Table`) and optional `Pulls`
 
-Loot table rewards use the existing loot-table API and therefore support the same item/NBT generation logic as other Gramados loot systems.
+Loot table rewards use the existing loot-table API and therefore support the same item/NBT generation logic as other Gramados loot systems. If a loot table is currently unusable, such as an empty volatile table, the milestone remains unlocked but its rewards stay pending and are retried on a later milestone check.
 
 ## Player data format
 
@@ -192,3 +192,7 @@ It maps old market transactions back to jobs or tags using the `Markets` arrays 
 The script is dry-run by default. Use `--apply` after reviewing its report. Applied files receive a migration marker so the same historical log is not accidentally counted twice; `--force` exists for deliberate re-runs.
 
 The migration intentionally does **not** directly mark milestones as unlocked or grant rewards. Existing players will have their historical stats available immediately; milestones will be evaluated and rewarded the next time that subject receives progress, or when `recheckAllJobMilestones(player)` is explicitly called while the player is online.
+
+---
+
+Developed for the Gramados Minecraft RP server. Special thanks to the server community for their feedback and support.
