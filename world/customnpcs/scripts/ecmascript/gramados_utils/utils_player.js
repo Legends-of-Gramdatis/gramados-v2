@@ -2,8 +2,28 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_global_prices.js');
 
+function getPlayerMetaKey(player) {
+    return 'player_' + player.getName();
+}
+
 function loadPlayerMeta(player){
-    return JSON.parse(getWorldData().get('player_' + player.getName()));
+    return JSON.parse(getWorldData().get(getPlayerMetaKey(player)));
+}
+
+/**
+ * Saves the player's legacy metadata object back into world stored data.
+ * This is the object serialized as `player_<name>` in world_data.json.
+ *
+ * @param {IPlayer} player
+ * @param {Object} data
+ * @returns {boolean} True when data was saved.
+ */
+function savePlayerMeta(player, data) {
+    if (!player || !data) return false;
+
+    data.updated = new Date().getTime();
+    getWorldData().put(getPlayerMetaKey(player), JSON.stringify(data));
+    return true;
 }
 
 /**
@@ -17,8 +37,7 @@ function loadPlayerMeta(player){
     * count: number of homes  
 **/
 function loadPlayerHomesMeta(player){
-    var worldData = getWorldData();
-    var parsed = JSON.parse(worldData.get('player_' + player.getName()));
+    var parsed = loadPlayerMeta(player);
     var homes = (parsed && parsed.homes) ? parsed.homes : {};
     var maxHomes = (parsed && typeof parsed.maxHomes === 'number') ? parsed.maxHomes : 2;
     var names = [];
