@@ -30,5 +30,5 @@
     "JUNKER_CRATE_LOOT_TABLE": "volatile/junkers.json",
     "JUNKER_CRATE_COMPENSATION_LOOT_TABLE": "junkyard/junkers/compensation.json",
     "JUNKER_CRATE_CROWBAR_COST": 10,
-    "JUNKER_CRATE_REGEN_MINUTES": 1440
+    "JUNKER_CRATE_REGEN_MINUTES": 2880
 }
