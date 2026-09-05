@@ -21,6 +21,189 @@
                     "Badge": "veteran_5_years"
                 }
             ]
+        },
+        "onboarding_checked_in": {
+            "Enabled": true,
+            "Name": "Checked In",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_badge",
+                    "Badge": "checked_in"
+                }
+            ],
+            "LegacyGrant": {
+                "Badge": "checked_in"
+            },
+            "Rewards": [
+                {
+                    "Type": "badge_and_emotes",
+                    "Badge": "checked_in",
+                    "Emotes": [
+                        "hut_dirt",
+                        "bed"
+                    ]
+                }
+            ]
+        },
+        "onboarding_first_meal": {
+            "Enabled": true,
+            "Name": "First Meal",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_emote",
+                    "Emote": "hunger_empty"
+                }
+            ],
+            "LegacyGrant": {
+                "Emotes": [
+                    "hunger_empty",
+                    "hunger_half",
+                    "hunger_full"
+                ]
+            },
+            "Rewards": [
+                {
+                    "Type": "emotes",
+                    "Emotes": [
+                        "hunger_empty",
+                        "hunger_half",
+                        "hunger_full"
+                    ]
+                }
+            ]
+        },
+        "lumberjack_first_delivery": {
+            "Enabled": true,
+            "Name": "Lumberjack First Delivery",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_badge",
+                    "Badge": "Lumberjack"
+                }
+            ],
+            "LegacyGrant": {
+                "Badge": "Lumberjack"
+            },
+            "Rewards": [
+                {
+                    "Type": "badge_and_emotes",
+                    "Badge": "Lumberjack",
+                    "Emotes": [
+                        "mossy_log",
+                        "log",
+                        "log2",
+                        "wood",
+                        "wooden_axe",
+                        "stone_axe"
+                    ]
+                }
+            ]
+        },
+        "mafia_blood_money": {
+            "Enabled": true,
+            "Name": "Blood Money",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_badge",
+                    "Badge": "blood_money"
+                }
+            ],
+            "LegacyGrant": {
+                "Badge": "blood_money"
+            },
+            "Rewards": [
+                {
+                    "Type": "badge_and_emotes",
+                    "Badge": "blood_money",
+                    "Emotes": [
+                        "heart_dark",
+                        "hphalf",
+                        "book_quill",
+                        "strength"
+                    ]
+                }
+            ]
+        },
+        "junkyard_fashionably_late": {
+            "Enabled": true,
+            "Name": "Fashionably Late",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_badge",
+                    "Badge": "too_late"
+                }
+            ],
+            "LegacyGrant": {
+                "Badge": "too_late"
+            },
+            "Rewards": [
+                {
+                    "Type": "badge_and_emotes",
+                    "Badge": "too_late",
+                    "Emotes": [
+                        "clock_night",
+                        "clock_4",
+                        "clock_5",
+                        "clock_6",
+                        "slowness",
+                        "dead_bush",
+                        "cobweb"
+                    ]
+                }
+            ]
+        },
+        "easter_egg_hunter": {
+            "Enabled": true,
+            "Name": "Easter Egg Hunter",
+            "Silent": true,
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "has_badge",
+                    "Badge": "easter_hunter"
+                }
+            ],
+            "LegacyGrant": {
+                "Badge": "easter_hunter"
+            },
+            "Rewards": [
+                {
+                    "Type": "badge_and_emotes",
+                    "Badge": "easter_hunter",
+                    "Emotes": [
+                        "egg",
+                        "jump_rabbit"
+                    ]
+                }
+            ]
         }
     }
 }
