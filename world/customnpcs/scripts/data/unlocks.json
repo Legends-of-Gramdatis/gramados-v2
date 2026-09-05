@@ -1,0 +1,26 @@
+{
+    "Version": 1,
+    "Unlocks": {
+        "veteran_5_years": {
+            "Enabled": false,
+            "Name": "Five Year Veteran",
+            "Triggers": [
+                "login"
+            ],
+            "RequirementMode": "ALL",
+            "Requirements": [
+                {
+                    "Type": "player_data_age",
+                    "Field": "created",
+                    "Years": 5
+                }
+            ],
+            "Rewards": [
+                {
+                    "Type": "badge",
+                    "Badge": "veteran_5_years"
+                }
+            ]
+        }
+    }
+}
