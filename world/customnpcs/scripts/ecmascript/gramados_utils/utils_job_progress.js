@@ -393,7 +393,7 @@ function _jobProgressEnsureEmoteUtils() {
 }
 
 function _jobProgressEnsureLootUtils() {
-    if (typeof pullLootTable !== "function" || typeof generateItemStackFromLootEntry !== "function") {
+    if (typeof pullLootTable !== "function" || typeof generateItemStackFromLootEntry !== "function" || typeof canUseLootTable !== "function") {
         load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
     }
 }
@@ -444,8 +444,18 @@ function _jobProgressGrantRewards(player, rewards) {
                 var pulls = Math.max(1, Number(reward.Pulls || 1));
                 if (!table) continue;
 
+                if (!canUseLootTable(String(table))) {
+                    allSuccessful = false;
+                    _jobProgressLog("Milestone loot table is currently unavailable or empty: " + table);
+                    continue;
+                }
+
                 for (var p = 0; p < pulls; p++) {
-                    var loot = pullLootTable(String(table), player) || [];
+                    var loot = pullLootTable(String(table), player);
+                    if (loot === null) {
+                        allSuccessful = false;
+                        break;
+                    }
                     for (var l = 0; l < loot.length; l++) {
                         var stack = generateItemStackFromLootEntry(loot[l], player.getWorld());
                         _jobProgressGiveItem(player, stack);
