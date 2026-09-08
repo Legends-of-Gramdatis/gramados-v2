@@ -2,12 +2,22 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "I will speak with a local guide first.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 133,
+    "DialogId": 733,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "HTGAJ - terracotta Factory - p2",
+    "DialogTitle": "p-1 Unavailable",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,15 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "**Token-Based System:**
-- One unique feature of the Terracotta Factory job is its reliance on a token-based system. At the factory office, you'll receive a random allocation of tokens at regular intervals. These tokens play a crucial role in your job.
-- They are mandatory for purchasing the raw materials needed for production. While some resourceful workers may find alternative ways to acquire raw materials, the official channels involve utilizing these tokens.
-- Moreover, when it comes to selling the finished terracotta and pottery products, tokens are also used as a currency.
-
-**Getting Started:**
-- To commence your journey as a Terracotta Factory Worker, simply approach a staff member and express your interest in the position. They will guide you through the initial steps and introduce you to an NPC who holds the key to unlocking the essential wholesalers and regions associated with this job.
-
-Working at the Gramados City Terracotta Factory provides a unique opportunity to be a part of the city's industrial history and contribute to its ongoing legacy. If you have any questions or require further information about this job, please feel free to ask.",
+    "DialogText": "Hello. Before I can register you for work, speak with a local guide and review the jobs available on Greenfield Island. Once that guide directs you to this agency, return and I will explain your options.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -62,7 +64,7 @@ Working at the Gramados City Terracotta Factory provides a unique opportunity to
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698858557788L,
+        "TimePast": 1788858331803L,
         "Time": 0L,
         "Subject": ""
     }

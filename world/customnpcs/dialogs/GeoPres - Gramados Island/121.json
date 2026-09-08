@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Landmarks p2",
+    "DialogTitle": "p2.1 - Notable Landmarks",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -60,7 +60,7 @@ Feel free to explore these landmarks, and if you have any questions or need dire
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788854253977L,
+        "TimePast": 1788857586702L,
         "Time": 0L,
         "Subject": ""
     }

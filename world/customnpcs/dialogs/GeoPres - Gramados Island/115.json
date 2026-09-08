@@ -16,7 +16,7 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 623,
+                "Dialog": 732,
                 "Title": "[Island Job Opportunities]",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -68,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Island Presentation p2",
+    "DialogTitle": "p0.1 - Island Topics",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -78,14 +78,16 @@
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
     "DialogText": "**Cities and Towns:**
+
 - Gramados Island is home to the thriving Gramados City, our capital and largest city.
+
 - You'll also find the charming small town of Petrolhead, offering its unique charm and services.
 
 **Industrial Heritage:**
+
 - During the industrial revolution, Gramados Island embraced industrialization wholeheartedly. As a result, you can discover many factories across the island, some of which have been left in a state of abandonment.
 
-Now, if you're looking for specific information about our island, feel free to choose one of the following options:
-",
+Now, if you're looking for specific information about our island, feel free to choose one of the following options:",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -102,7 +104,7 @@ Now, if you're looking for specific information about our island, feel free to c
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788854290677L,
+        "TimePast": 1788859758701L,
         "Time": 0L,
         "Subject": ""
     }

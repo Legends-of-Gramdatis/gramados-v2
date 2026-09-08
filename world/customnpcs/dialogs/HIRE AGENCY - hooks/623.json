@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If this line of work interests you, your next stop is the Gramados Island Hiring Agency.
+    "DialogText": "If one of these Starter Jobs interests you, your next stop is the Gramados Island Hiring Agency.
 
-The Hiring Manager there can explain which positions are available, confirm any requirements, and register you for work when you are ready. I have marked the agency as your next destination, so you can follow the location shown on your map.",
+The Hiring Manager there can explain the three positions, arrange a tour of their worksites, and register you once you meet the necessary requirements. I have marked the agency as your next destination, so you can follow the location shown on your map.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +66,7 @@ The Hiring Manager there can explain which positions are available, confirm any 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788853261677L,
+        "TimePast": 1788858492450L,
         "Time": 0L,
         "Subject": ""
     }

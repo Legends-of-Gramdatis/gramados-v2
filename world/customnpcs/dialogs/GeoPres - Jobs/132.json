@@ -6,10 +6,20 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 133,
-                "Title": "[Continue]",
+                "Dialog": 623,
+                "Title": "How do I apply for this job?",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I know what to expect now.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -38,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "HTGAJ - Terracotta Factory - p1",
+    "DialogTitle": "GIJ.3 - Terracotta Factory Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,13 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "As a Terracotta Factory Worker in Gramados City, you have the opportunity to be a part of the city's industrial heritage, dating back to the time of the Industrial Revolution. Let's explore the intricacies of this unique job:
+    "DialogText": "Terracotta Factory Workers continue one of Gramados City's older industries. They obtain clay, fuel, and mortar, then use the factory to produce bricks, pots, and other terracotta goods for export.
 
-**Terracotta Factory Evolution:**
-- The Gramados City Terracotta Factory has a rich history that stretches back to the Industrial Revolution. Originally, its primary focus was on brick production, a vital component for constructing buildings of that era.
-- However, as the advent of concrete began to replace brick buildings, the factory underwent a significant transformation. It diversified its product line and ventured into the production of pots and terracotta items. This transition necessitated substantial changes in the factory's operational systems.
-- Today, while the factory still continues to produce bricks, its primary focus lies in the creation of pottery and terracotta products, reflecting the evolving architectural and decorative preferences.
-",
+The work offers several possible products rather than one fixed output, allowing workers to adapt their production to available materials and changing demand.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -70,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745773772111L,
+        "TimePast": 1788858133600L,
         "Time": 0L,
         "Subject": ""
     }

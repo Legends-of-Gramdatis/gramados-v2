@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "HTGAJ - Gramados Citrus Farmer",
+    "DialogTitle": "ZEPRECATED - Gramados Citrus Farmer",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -68,7 +68,7 @@ If you have any questions or need more details about becoming a Citrus Farmer on
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698839253487L,
+        "TimePast": 1788858187956L,
         "Time": 0L,
         "Subject": ""
     }

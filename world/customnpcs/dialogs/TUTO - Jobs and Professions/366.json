@@ -58,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p4.0 - trip to starter jobs (quest)",
+    "DialogTitle": "ZEPRECATED - p4.0 - trip to starter jobs (quest)",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -84,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731622869451L,
+        "TimePast": 1788858668851L,
         "Time": 0L,
         "Subject": ""
     }

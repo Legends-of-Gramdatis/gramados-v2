@@ -67,15 +67,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": 623,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to the Gramados Island Hiring Agency! Here, we help newcomers get started with one of our starter jobs. Whether you're looking to chop wood, work with concrete, or craft terracotta, we've got something to suit your skills.
-
+    "DialogText": "Welcome to the Gramados Island Hiring Agency! We help newcomers get started as Royal Lumberjacks, Concrete Factory Workers, or Terracotta Factory Workers.
 Before we proceed, here's what you can do:
-
 1. You can take a tour of the starter worksites to get a feel for the jobs available here.
-2. If you've already completed the tour, you can ask me directly to get hired for one of the jobs—provided you don't already have one.
-3. If you currently have a job on this island and want to switch, you can choose to quit your job. Just remember, you can only quit after holding the job for at least 1 real-life day.
-
-Also, keep in mind: you can only have one starter job per region. But you're free to take a different starter job on another island later.",
+2. If you've completed the tour and have an available Starter Job slot, you can ask me to register you for a position.
+3. If you currently have a job on this island and want to switch, you can choose to quit your job. Just remember, you can only quit after holding the job for at least 1 real-life day.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -92,7 +88,7 @@ Also, keep in mind: you can only have one starter job per region. But you're fre
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788853288426L,
+        "TimePast": 1788858405802L,
         "Time": 0L,
         "Subject": ""
     }

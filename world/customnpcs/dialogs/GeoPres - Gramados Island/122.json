@@ -58,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Town List",
+    "DialogTitle": "p3.0 - Settlements of Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -98,7 +98,7 @@ Both towns offer their unique experiences, and you're welcome to explore either,
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788854257677L,
+        "TimePast": 1788859786650L,
         "Time": 0L,
         "Subject": ""
     }

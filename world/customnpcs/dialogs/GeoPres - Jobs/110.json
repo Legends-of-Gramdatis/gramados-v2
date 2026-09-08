@@ -2,6 +2,26 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 623,
+                "Title": "How do I apply for this job?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I know what to expect now.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -28,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "HTGAJ - lumberjack",
+    "DialogTitle": "GIJ.1 - Gramados Royal Lumberjack",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,8 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "To secure a job, simply reach out to one of our staff members. They will guide you through the process, which involves interacting with a designated NPC. After this interaction, you'll be added to the Tree Farm region, granting you the necessary permissions for block breaking and placement. It's a straightforward and quick process to get you started on your new job.
-",
+    "DialogText": "The Gramados Royal Lumberjack works from the Royal Sawmill in Pinoros Forest. Lumberjacks harvest trees from the designated worksite and deliver their logs into the island's timber market.
+
+Different species carry different values, and varied deliveries are generally worth more than relying on a single kind of wood. The job requires little equipment, making it well suited to newcomers.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -55,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831226787L,
+        "TimePast": 1788857975501L,
         "Time": 0L,
         "Subject": ""
     }

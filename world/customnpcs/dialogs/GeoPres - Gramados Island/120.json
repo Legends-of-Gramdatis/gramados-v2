@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Landmarks p1",
+    "DialogTitle": "p2.0 - Island Landmarks",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -71,7 +71,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698837605888L,
+        "TimePast": 1788859781350L,
         "Time": 0L,
         "Subject": ""
     }

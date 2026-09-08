@@ -6,8 +6,8 @@
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Step 2: Greenfield Hiring Agency",
-    "Text": "Next up is the Greenfield Island Hiring Agency. I’ll use the Dynmap markers to help me navigate to the agency and explore the job options they have for new players.",
+    "Title": "Greenfield Hiring Agency",
+    "Text": "I’m on my way to the Greenfield Island Hiring Agency. I’ll use the Dynmap markers to help me locate it and explore the Starter Jobs available on the island.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788854067476L,
+        "TimePast": 1788858793201L,
         "Time": 0L,
         "Subject": ""
     },

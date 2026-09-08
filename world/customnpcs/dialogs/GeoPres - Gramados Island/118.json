@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Island Transportation p1",
+    "DialogTitle": "p1.0 - Island Infrastructure",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -71,7 +71,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698835361588L,
+        "TimePast": 1788859771550L,
         "Time": 0L,
         "Subject": ""
     }

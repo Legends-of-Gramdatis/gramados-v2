@@ -6,10 +6,20 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 131,
-                "Title": "[Continue]",
+                "Dialog": 623,
+                "Title": "How do I apply for this job?",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I know what to expect now.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -38,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "HTGAJ - Concrete Factory - gramados",
+    "DialogTitle": "GIJ.2 - Concrete Factory Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,12 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Becoming a Concrete Factory Worker at Blacksby Concrete in Gramados City is an opportunity to step into the industrial legacy of our city. Let's delve into the details of this role:
+    "DialogText": "Concrete Factory Workers produce construction materials at the Gramados Concrete Factory in Gramados City. Workers obtain sand, gravel, and clay, operate the factory's production machinery, then deliver the finished concrete through its export market.
 
-**Blacksby Concrete:**
-- Blacksby Concrete, our city's concrete factory, boasts a rich history dating back to the Industrial Revolution. The factory got its name due to significant investments made by a dedicated player who has breathed new life into this iconic establishment.
-- While the system may initially seem complex, it becomes intuitive once you get the hang of it. The factory's age brings an element of required maintenance, but it's worth the effort.
-",
+The factory provides the costly industrial equipment, though workers must still manage their supply of raw materials and choose production according to demand.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -69,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698858111685L,
+        "TimePast": 1788858056551L,
         "Time": 0L,
         "Subject": ""
     }
