@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 731,
+                "Dialog": 115,
                 "Title": "What can you tell me about this place?",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -66,7 +66,7 @@ From here, I can help you understand the capital and the island around it.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788817437221L,
+        "TimePast": 1788871696769L,
         "Time": 0L,
         "Subject": ""
     }

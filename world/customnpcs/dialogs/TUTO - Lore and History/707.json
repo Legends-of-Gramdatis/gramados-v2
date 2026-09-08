@@ -87,11 +87,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": 704,
     "OptionFaction2Points": 100,
-    "DialogText": "A guide begins with the settlement where you meet them. In another Town Hall, the same island-wide presentation may begin with that community instead.
+    "DialogText": "A guide first welcomes you from the settlement where you meet them. In another Town Hall, that welcome will come from the other community instead.
 
-Those are different entrances to the same body of information, not separate town-only guides. From either entrance, you can continue toward the wider island and its other settlements.
+Those are different entrances to the same body of information, not separate town-only guides. After the welcome, each one leads to a shared selection where you can choose the wider island, its settlements, or its opportunities.
 
-That is also why there is no single opening conversation to which every local guide can send you back.",
+That shared selection also gives you a common place to return after exploring a subject.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -108,7 +108,7 @@ That is also why there is no single opening conversation to which every local gu
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791416786L,
+        "TimePast": 1788879984271L,
         "Time": 0L,
         "Subject": ""
     }

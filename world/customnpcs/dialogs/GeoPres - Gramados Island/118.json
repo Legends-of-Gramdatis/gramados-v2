@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 119,
-                "Title": "[Continue]",
+                "Title": "How has that landscape shaped the economy?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - Island Infrastructure",
+    "DialogTitle": "GI.I1 - Landscapes of Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,14 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Transportation on Gramados Island is quite well-developed, and we're proud to offer several options for getting around:
+    "DialogText": "Much of Gramados Island is flat or gently rolling, although hills and stony highlands break up the terrain. Gramados City occupies much of the north, while former orchard land and surviving cottages extend westward.
 
-**Roadways:**
-- Gramados Island features four-lane roads, which are primarily located in our capital city, Gramados City. These roads ensure smooth and efficient travel within the city.
-
-**Air Travel:**
-- The crown jewel of our transportation network is the Gramados International Airport, which is the largest on the server. This airport boasts an expansive 857-meter-long landing strip, making it a hub for air travel.
-",
+Pinoros Forest covers the south, and the island's eastern side becomes hillier, more wooded, and increasingly shaped by extraction and industry.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -71,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788859771550L,
+        "TimePast": 1788879337770L,
         "Time": 0L,
         "Subject": ""
     }

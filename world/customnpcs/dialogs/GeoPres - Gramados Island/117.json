@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 115,
-                "Title": "[Continue]",
+                "Dialog": 118,
+                "Title": "What is the island's landscape like?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.0 - Gramados Island",
+    "DialogTitle": "GI.I0 - The Main Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,16 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island, the largest and most developed island in the Gramados archipelago. Here's what you need to know about our beautiful island:
+    "DialogText": "Gramados Island is the main island of the country and home to Gramados City, its national capital. It combines the archipelago's densest urban centre with forests, hills, industrial land, working infrastructure, and settlements with very different identities.
 
-**Island Geography:**
-- Gramados Island boasts a landscape that's predominantly flat, with some gentle hills.
-- Our island is home to dense forests, including two unique biomes: tall oak forests and pine forests. You might encounter these forest types on other islands in our archipelago as well.
-
-**Economic Specializations:**
-- We're known for our wood production and industrial activities, which play a significant role in our island's economy.
-- While we once excelled in citrus farming, urbanization has led to the transformation of many citrus farms into the generic tall oak and pine forests. A Citrus Hall stands as a reminder of our citrus-producing history.
-- Our island's primary agricultural activity today is citrus farming, though not in heavy quantities.",
+Its importance comes not from one resource or landscape, but from the concentration of people, trade, services, and connections found here.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -73,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788859777600L,
+        "TimePast": 1788879336369L,
         "Time": 0L,
         "Subject": ""
     }

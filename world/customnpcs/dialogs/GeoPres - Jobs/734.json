@@ -39,6 +39,26 @@
                 "Dialog": -1,
                 "Title": "That is enough for now, thank you.",
                 "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "That is enough for now, thank you.",
+                "DialogColor": 14737632,
                 "OptionType": 0
             }
         }
@@ -96,7 +116,7 @@ These professions require a greater investment than Starter Jobs, but offer more
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788867007274L,
+        "TimePast": 1788879790869L,
         "Time": 0L,
         "Subject": ""
     }

@@ -56,10 +56,10 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "That is enough for now, thank you.",
+                "Dialog": 122,
+                "Title": "Tell me about another settlement instead.",
                 "DialogColor": 14737632,
-                "OptionType": 0
+                "OptionType": 1
             }
         }
     ],
@@ -116,7 +116,7 @@ Which district would you like to hear about?",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788816875721L,
+        "TimePast": 1788879177320L,
         "Time": 0L,
         "Subject": ""
     }

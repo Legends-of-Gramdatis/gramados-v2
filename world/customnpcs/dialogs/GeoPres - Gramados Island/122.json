@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados]",
+                "Dialog": 724,
+                "Title": "Tell me about Gramados City.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,8 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "[Petrolton]",
+                "Dialog": 718,
+                "Title": "Tell me about Blackrode.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,9 +27,39 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 718,
-                "Title": "[Blackrode]",
+                "Title": "Tell me about Petrolton.",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 711,
+                "Title": "What is the difference between a town, village, and city?",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "Return to the general island guide.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "That is all I needed, thank you.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -58,7 +88,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p3.0 - Settlements of Gramados Island",
+    "DialogTitle": "GI.S0 - Settlements of Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,21 +97,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Gramados Island is home to two distinct towns that each offer their unique charm and purpose:
+    "DialogText": "Gramados Island has three principal settlements. Gramados City is the national capital and the island's only city. Blackrode is an industrial town shaped by the Twingo Juice Factory and freight. Petrolton is a terraced south-western town known for automobile commerce and services.
 
-1. **Gramados City:**
-   - The economic and government capital of the island.
-   - A bustling hub of commerce, politics, and culture.
-   - Here, you'll find a blend of Victorian and 19th-century architecture influenced by the industrial revolution.
-   - The heart of Gramados Island, where business and administration thrive.
-
-2. **Petrolton:**
-   - A small but vibrant commercial town with a specific appeal to automobile enthusiasts.
-   - Known for its abundance of car-related shops, it's a haven for petrolheads.
-   - Whether you're looking for automotive accessories, customizations, or simply wish to immerse yourself in the world of automobiles, Petrolton has it all.
-
-Both towns offer their unique experiences, and you're welcome to explore either, depending on your interests and preferences. If you have any questions or require more information about either town, please feel free to ask.
-",
+Each has its own presentation. Which one would you like to discover?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -98,7 +116,7 @@ Both towns offer their unique experiences, and you're welcome to explore either,
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788859786650L,
+        "TimePast": 1788871563069L,
         "Time": 0L,
         "Subject": ""
     }

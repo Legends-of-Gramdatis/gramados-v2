@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 118,
-                "Title": "[Transportation Details]",
+                "Title": "Tell me about Gramados Island itself.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 732,
-                "Title": "[Island Job Opportunities]",
+                "Title": "Introduce me to its settlements.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +26,8 @@
             "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 122,
-                "Title": "[Towns and Villages of Gramados Island]",
+                "Dialog": 123,
+                "Title": "What jobs and opportunities are available?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -39,7 +39,17 @@
                 "Dialog": 120,
                 "Title": "[Explore Gramados Island's Landmarks]",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "That is all I needed, thank you.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -68,7 +78,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p0.1 - Island Topics",
+    "DialogTitle": "GI.H0 - Gramados Island Guide",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -77,17 +87,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "**Cities and Towns:**
+    "DialogText": "From here, I can introduce Gramados Island itself, its settlements, or its local work and business opportunities.
 
-- Gramados Island is home to the thriving Gramados City, our capital and largest city.
-
-- You'll also find the charming small town of Petrolhead, offering its unique charm and services.
-
-**Industrial Heritage:**
-
-- During the industrial revolution, Gramados Island embraced industrialization wholeheartedly. As a result, you can discover many factories across the island, some of which have been left in a state of abandonment.
-
-Now, if you're looking for specific information about our island, feel free to choose one of the following options:",
+These subjects are shared by the island's Town Hall guides, so you can continue exploring them regardless of which settlement brought you here. What would you like to discover?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

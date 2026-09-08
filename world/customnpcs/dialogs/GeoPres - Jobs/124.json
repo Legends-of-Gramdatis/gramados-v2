@@ -9,6 +9,26 @@
                 "Dialog": -1,
                 "Title": "Thank you. I will look for a suitable Farm.",
                 "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": " What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I will look for a suitable Farm.",
+                "DialogColor": 14737632,
                 "OptionType": 0
             }
         }
@@ -66,7 +86,7 @@ Use `!region lookFor Farm` to see Farms currently available for purchase and the
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788867018324L,
+        "TimePast": 1788879844770L,
         "Time": 0L,
         "Subject": ""
     }

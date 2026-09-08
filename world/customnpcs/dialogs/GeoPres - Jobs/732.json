@@ -46,6 +46,16 @@
             "OptionSlot": 4,
             "Option": {
                 "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
                 "Dialog": -1,
                 "Title": "That is all I needed, thank you.",
                 "DialogColor": 14737632,
@@ -88,7 +98,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GIJ.0 - Starter Jobs on Gramados Island",
+    "DialogTitle": "GIJ.S0 - Starter Jobs on Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -116,7 +126,7 @@ These jobs are handled by the Gramados Hiring Agency. Which one would you like t
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788867103874L,
+        "TimePast": 1788879544220L,
         "Time": 0L,
         "Subject": ""
     }

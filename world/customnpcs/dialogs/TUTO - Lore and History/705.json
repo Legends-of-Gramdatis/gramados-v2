@@ -89,9 +89,9 @@
     "OptionFaction2Points": 100,
     "DialogText": "When you arrive on an unfamiliar island, one of its Town Halls is a good place to begin.
 
-The guides across that island draw from the same island-wide presentation. You do not have to visit every settlement simply to understand the whole island.
+The guide first welcomes you from the settlement where you are standing. After that local introduction, every Town Hall on the island leads to the same selection of island information, settlements, and opportunities.
 
-Where you ask still matters, however: the guide begins with the place where you are standing before offering subjects from farther afield.",
+You do not have to visit every Town Hall simply to understand the whole island.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -108,7 +108,7 @@ Where you ask still matters, however: the guide begins with the place where you 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788790897968L,
+        "TimePast": 1788879952970L,
         "Time": 0L,
         "Subject": ""
     }

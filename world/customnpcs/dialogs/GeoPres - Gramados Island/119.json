@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "What is it like to purchase property here?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.1 - Transport Connections",
+    "DialogTitle": "GI.I2 - An Economy in Layer",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,16 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "**Bridges:**
-- Gramados Island is connected to other islands in our archipelago via two bridges. 
-  - One bridge extends northeast to Greenfield Island, providing convenient access to our neighboring island.
-  - Another bridge leads west to Monsalac Island, offering a direct link to this unique island.
-- In our plans for the future, a third bridge is proposed, extending south to Austin Island. While this bridge is yet to be constructed, it's part of our vision for enhancing island connectivity.
+    "DialogText": "Citrus growing and maritime trade shaped the island's early prosperity. Industrialisation later brought factories, worker housing, timber production, construction materials, freight, and automobile businesses.
 
-**Maritime Access:**
-- Our island also features a commercial port located north of Gramados Island. This port serves both cargo and passenger transportation needs and is connected to Gramados City via a crucial coastal road.
-
-Whether you're traveling by road, air, or sea, we strive to make your transportation experience as seamless as possible on Gramados Island.",
+Today, administration and services are just as important, especially around the capital. Working industries stand beside converted buildings and abandoned sites, making economic change visible throughout the island.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -63,7 +66,7 @@ Whether you're traveling by road, air, or sea, we strive to make your transporta
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788857550450L,
+        "TimePast": 1788869802670L,
         "Time": 0L,
         "Subject": ""
     }

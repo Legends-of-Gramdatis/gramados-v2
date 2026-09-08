@@ -2,6 +2,66 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 737,
+                "Title": "What infrastructure connects the island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 740,
+                "Title": "Tell me about the island's history.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 122,
+                "Title": "Introduce me to its settlements.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 745,
+                "Title": "Which landmarks should I visit?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 123,
+                "Title": "What jobs and opportunities are available?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "Return to the general island guide.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -28,7 +88,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p2.1 - Notable Landmarks",
+    "DialogTitle": "GI.T0 - Exploring Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,13 +97,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "**Citrus Alley:**
-- Located on the north coast of Gramados Island, within Gramados City, Citrus Alley has a rich history. Originally an enormous 18th-century underground warehouse, this ten-meter-tall structure with grand arches served as a storage facility for harvested citrus. It featured a direct road to Gramados Port from the same era.
-- In the 1920s, a portion of the warehouse crumbled, leading to a tragic accident and its temporary closure. However, a decade later, it was reconstructed and transformed into a vast hall. Numerous fancy buildings from the 1930s era sprang up around it, turning it into a stylish spot in town, adorned with elegant hotels and restaurants. This transformation remains intact even today.
+    "DialogText": "That is the island in broad terms, but its roads, history, settlements, industries, and landmarks each tell a different part of the story.
 
-While not officially designated as landmarks, the overall Gramados City Center is a captivating attraction. It features a blend of architectural styles, from Victorian to 19th-century buildings reflecting the influence of the industrial revolution. The city center's unique and varied facade makes it a notable part of the city.
-
-Feel free to explore these landmarks, and if you have any questions or need directions, don't hesitate to ask.",
+What would you like to explore in greater detail?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -60,7 +116,7 @@ Feel free to explore these landmarks, and if you have any questions or need dire
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788857586702L,
+        "TimePast": 1788871343020L,
         "Time": 0L,
         "Subject": ""
     }

@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 717,
-                "Title": "How did Blackrode become like this?",
+                "Title": "What can you help me discover?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -66,7 +66,7 @@ An old village survives beneath layers of worker housing, roadside development, 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788812287530L,
+        "TimePast": 1788869415270L,
         "Time": 0L,
         "Subject": ""
     }

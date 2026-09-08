@@ -6,38 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Yes. Introduce me to Gramados Island.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 707,
-                "Title": "How would this work in another Town Hall?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 2,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 706,
-                "Title": "What can you explain there?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 704,
-                "Title": "Back to Learning About Local Places",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "Thank you!",
+                "Title": "Thank you. That explains the island's connections.",
                 "DialogColor": 14737632,
                 "OptionType": 0
             }
@@ -57,7 +27,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 709,
+    "DialogId": 739,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -78,20 +48,18 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p6.5 - Gramados Island Introduction",
-    "AvailabilityDialog": 1,
+    "DialogTitle": "GI.INF2 - Airport and Maritime Access",
+    "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 704,
+    "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Here in Gramados City Town Hall, I can set the general tutorial aside and introduce Gramados Island as a local guide.
+    "DialogText": "Gramados International Airport stands east of the capital and serves as one of the country's principal air gateways. On the northern coast, Gramados Port handles maritime traffic and continues the island's long relationship with trade.
 
-That presentation covers Gramados City, the island's other settlements, the wider island, and its opportunities. Since you are speaking with me in Gramados City, we will begin with the Town Hall's local welcome.
-
-After that welcome, you will reach the same island-wide selection used by every Town Hall on Gramados Island. You can return to it as you move between subjects.",
+The nearby marina provides another point of access to the water, while Blackrode's truck stop supports the island's road-freight network.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -108,7 +76,7 @@ After that welcome, you will reach the same island-wide selection used by every 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788880001820L,
+        "TimePast": 1788871409519L,
         "Time": 0L,
         "Subject": ""
     }

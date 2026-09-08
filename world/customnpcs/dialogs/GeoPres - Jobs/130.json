@@ -19,6 +19,26 @@
                 "Dialog": -1,
                 "Title": "Thank you. I know what to expect now.",
                 "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I know what to expect now.",
+                "DialogColor": 14737632,
                 "OptionType": 0
             }
         }
@@ -76,7 +96,7 @@ The factory provides the costly industrial equipment, though workers must still 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788862738475L,
+        "TimePast": 1788879648669L,
         "Time": 0L,
         "Subject": ""
     }

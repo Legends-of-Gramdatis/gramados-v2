@@ -9,6 +9,26 @@
                 "Dialog": -1,
                 "Title": "Thank you. I will look for a Garage.",
                 "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I will look for a Garage.",
+                "DialogColor": 14737632,
                 "OptionType": 0
             }
         }
@@ -66,7 +86,7 @@ A Mechanic can also purchase an order board for the Garage, receive requests for
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788862341626L,
+        "TimePast": 1788879875220L,
         "Time": 0L,
         "Subject": ""
     }
