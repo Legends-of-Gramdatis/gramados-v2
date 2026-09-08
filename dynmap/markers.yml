@@ -765,6 +765,14 @@ sets:
                 y: 75.0
                 z: -2942.0
                 label: L'Huître - Seafood Restaurant
+            marker_25:
+                world: world
+                markup: false
+                icon: food&drink_food
+                x: -6259.0
+                y: 72.0
+                z: 7208.0
+                label: Brisamar Restaurant
         lines: {
             }
         layerprio: 0
@@ -2085,6 +2093,22 @@ sets:
                 y: 71.0
                 z: 296.0
                 label: Asher Hall
+            marker_5:
+                world: world
+                markup: false
+                icon: civil_services_school
+                x: -6317.0
+                y: 72.0
+                z: 7090.0
+                label: Brisamar School
+            marker_6:
+                world: world
+                markup: false
+                icon: ent&lei_event_venue
+                x: -6201.0
+                y: 72.0
+                z: 7313.0
+                label: Brisamar Cultural Center
         lines: {
             }
         layerprio: 0
@@ -2164,6 +2188,22 @@ sets:
                 y: 69.0
                 z: -2465.0
                 label: House of Trin - The Birthplace of Trin
+            marker_6:
+                world: world
+                markup: false
+                icon: ent&lei_casino
+                x: -6353.0
+                y: 78.0
+                z: 7324.0
+                label: Brisamar Casino
+            marker_7:
+                world: world
+                markup: false
+                icon: ent&lei_misc
+                x: -6325.0
+                y: 72.0
+                z: 7206.0
+                label: Brisamar Tourism Office
         lines: {
             }
         layerprio: 0
@@ -2409,6 +2449,14 @@ sets:
                 y: 109.0
                 z: -5148.0
                 label: Garde de Montaigarde (Multi-Service Facility)
+            marker_30:
+                world: world
+                markup: false
+                icon: civil_services_restroom
+                x: -6325.0
+                y: 73.0
+                z: 7221.0
+                label: Public Restrooms
         lines: {
             }
         layerprio: 0
@@ -2587,6 +2635,14 @@ sets:
                 y: 115.0
                 z: -5877.0
                 label: Les Halles de Courval - Covered Market
+            marker_6:
+                world: world
+                markup: false
+                icon: shopping_market
+                x: -6301.0
+                y: 72.0
+                z: 7207.0
+                label: Brisamar Market
         lines: {
             }
         layerprio: 0
@@ -3120,6 +3176,14 @@ sets:
                 y: 75.0
                 z: -2940.0
                 label: Parking
+            marker_24:
+                world: world
+                markup: false
+                icon: services_parking
+                x: -6353.0
+                y: 72.0
+                z: 7195.0
+                label: Brisamar Parking
         lines: {}
         layerprio: 0
     Historical Sites:
@@ -3636,6 +3700,14 @@ sets:
                 y: 78.0
                 z: -2873.0
                 label: Sanctuaire de la Bayodée
+            marker_64:
+                world: world
+                markup: false
+                icon: civil_services_worship
+                x: -6309.0
+                y: 72.0
+                z: 7238.0
+                label: Templo del Ala Guía
         lines: {} 
         layerprio: 0
     Bridges:
