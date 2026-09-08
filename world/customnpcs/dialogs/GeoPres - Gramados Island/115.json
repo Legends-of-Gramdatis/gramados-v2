@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 118,
+                "Dialog": 117,
                 "Title": "Tell me about Gramados Island itself.",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -16,7 +16,7 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 732,
+                "Dialog": 122,
                 "Title": "Introduce me to its settlements.",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -38,6 +38,16 @@
                 "DialogCommand": "",
                 "Dialog": 120,
                 "Title": "[Explore Gramados Island's Landmarks]",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Talk",
                 "DialogColor": 14737632,
                 "OptionType": 2
             }
@@ -106,7 +116,7 @@ These subjects are shared by the island's Town Hall guides, so you can continue 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788861838978L,
+        "TimePast": 1788881474770L,
         "Time": 0L,
         "Subject": ""
     }

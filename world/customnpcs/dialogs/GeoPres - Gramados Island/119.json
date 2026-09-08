@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
+                "Dialog": 120,
                 "Title": "What is it like to purchase property here?",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GI.I2 - An Economy in Layer",
+    "DialogTitle": "GI.I2 - An Economy in Layers",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -66,7 +66,7 @@ Today, administration and services are just as important, especially around the 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788869802670L,
+        "TimePast": 1788881520771L,
         "Time": 0L,
         "Subject": ""
     }

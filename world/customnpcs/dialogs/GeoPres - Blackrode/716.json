@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 717,
+                "Dialog": 115,
                 "Title": "What can you help me discover?",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -66,7 +66,7 @@ An old village survives beneath layers of worker housing, roadside development, 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788869415270L,
+        "TimePast": 1788882149670L,
         "Time": 0L,
         "Subject": ""
     }

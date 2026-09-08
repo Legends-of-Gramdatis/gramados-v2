@@ -6,6 +6,26 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
+                "Dialog": 122,
+                "Title": "Tell me about another settlement.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 115,
+                "Title": "What else can you tell me about Gramados Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
                 "Dialog": -1,
                 "Title": "Thank you. I understand Blackrode much better now.",
                 "DialogColor": 14737632,
@@ -66,7 +86,7 @@ For people who can accept its industrial surroundings and irregular streets, Bla
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788812254830L,
+        "TimePast": 1788882107520L,
         "Time": 0L,
         "Subject": ""
     }
