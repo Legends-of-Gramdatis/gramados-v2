@@ -16,7 +16,7 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 123,
+                "Dialog": 623,
                 "Title": "[Island Job Opportunities]",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -102,7 +102,7 @@ Now, if you're looking for specific information about our island, feel free to c
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698838854337L,
+        "TimePast": 1788854290677L,
         "Time": 0L,
         "Subject": ""
     }

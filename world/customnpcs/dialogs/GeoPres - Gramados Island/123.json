@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Job List",
+    "DialogTitle": "ZEPRECATED - Job List",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -87,7 +87,7 @@ If you have any specific questions about these jobs or wish to explore other opp
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1737559005516L,
+        "TimePast": 1788854301526L,
         "Time": 0L,
         "Subject": ""
     }

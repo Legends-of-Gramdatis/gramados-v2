@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.3.0 - Terracotta Worker",
+    "DialogTitle": "ZEPRECATED - p1.3.0 - Terracotta Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ To start, you'll need to buy materials like clay, fuel, and mortar from the quar
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731579544661L,
+        "TimePast": 1788854494226L,
         "Time": 0L,
         "Subject": ""
     }

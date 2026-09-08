@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.1.0 - Lumberjack",
+    "DialogTitle": "ZEPRECATED - p1.1.0 - Lumberjack",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ For higher profits, it's recommended to deliver a variety of logs rather than ju
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731693010520L,
+        "TimePast": 1788854478676L,
         "Time": 0L,
         "Subject": ""
     }

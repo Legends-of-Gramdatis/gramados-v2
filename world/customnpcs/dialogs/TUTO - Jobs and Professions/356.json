@@ -6,7 +6,7 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 357,
+                "Dialog": 623,
                 "Title": "Tell me about Starter Jobs.",
                 "DialogColor": 14737632,
                 "OptionType": 1
@@ -116,7 +116,7 @@ To help you navigate, let's break things down into three main categories of jobs
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1745775729410L,
+        "TimePast": 1788854451725L,
         "Time": 0L,
         "Subject": ""
     }

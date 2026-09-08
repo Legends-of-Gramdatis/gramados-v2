@@ -28,7 +28,7 @@
     "AvailabilityQuest4": 0,
     "ModRev": 18,
     "DecreaseFaction1Points": 0b,
-    "DialogQuest": -1,
+    "DialogQuest": 115,
     "AvailabilityDialog2": 0,
     "OptionFactions1": -1,
     "AvailabilityDayTime": 0,
@@ -66,7 +66,7 @@ The Hiring Manager there can explain which positions are available, confirm any 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788799123878L,
+        "TimePast": 1788853261677L,
         "Time": 0L,
         "Subject": ""
     }

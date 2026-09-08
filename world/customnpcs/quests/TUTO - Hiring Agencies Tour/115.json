@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Hiring Manager",
-    "NextQuestId": 116,
+    "NextQuestId": -1,
     "QuestLocation3": "",
     "RandomReward": 0b,
     "QuestLocation2": "",
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731623546945L,
+        "TimePast": 1788854056326L,
         "Time": 0L,
         "Subject": ""
     },
@@ -55,6 +55,6 @@
         ]
     },
     "CompleteText": "I’ve reached the Gramados Island Hiring Agency. I should talk to the Hiring Manager here to see what he has to say about the local starter jobs and learn about the opportunities available.",
-    "NextQuestTitle": "Step 2: Greenfield Hiring Agency",
+    "NextQuestTitle": "",
     "QuestLocation": "Gramados Hiring Agency"
 }

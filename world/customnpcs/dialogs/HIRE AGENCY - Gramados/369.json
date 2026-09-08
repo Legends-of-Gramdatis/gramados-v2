@@ -65,7 +65,7 @@
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": 345,
+    "AvailabilityDialogId": 623,
     "OptionFaction2Points": 100,
     "DialogText": "Welcome to the Gramados Island Hiring Agency! Here, we help newcomers get started with one of our starter jobs. Whether you're looking to chop wood, work with concrete, or craft terracotta, we've got something to suit your skills.
 
@@ -92,7 +92,7 @@ Also, keep in mind: you can only have one starter job per region. But you're fre
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1738801364813L,
+        "TimePast": 1788853288426L,
         "Time": 0L,
         "Subject": ""
     }

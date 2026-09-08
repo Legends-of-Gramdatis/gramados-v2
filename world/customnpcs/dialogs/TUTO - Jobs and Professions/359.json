@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.2.0 - Concrete Worker",
+    "DialogTitle": "ZEPRECATED - p1.2.0 - Concrete Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ To make concrete, you'll need to purchase sand, gravel and clay from quarries. T
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731579532210L,
+        "TimePast": 1788854486427L,
         "Time": 0L,
         "Subject": ""
     }

@@ -68,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "p1.0 - Starter Jobs",
+    "DialogTitle": "ZEPRECATED - p1.0 - Starter Jobs",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -96,7 +96,7 @@ Here are the current Starter Jobs available. Choose one to learn more.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1731579624861L,
+        "TimePast": 1788854466226L,
         "Time": 0L,
         "Subject": ""
     }
