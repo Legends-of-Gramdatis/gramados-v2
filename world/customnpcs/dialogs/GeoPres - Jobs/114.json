@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I will look for a Garage.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "ZEPRECATED - Farmer",
+    "DialogTitle": "GIJ.P2 - Gramados Mechanic",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,8 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you're interested in securing a job, you can reach out to one of our staff members. They will guide you through the process, which involves interacting with a designated NPC. This interaction will grant you access to the linked Wholesalers, where you can purchase seeds and saplings for planting, as well as sell your harvested crops and fruits.
-",
+    "DialogText": "Mechanics on Gramados Island operate from a Garage they own. This grants access to junkyards and vehicle-part shops, where they can recover components and repair junker vehicles.
+
+A Mechanic can also purchase an order board for the Garage, receive requests for particular parts, then obtain and send those parts for payment. Use `!region lookFor Garage` to see Garages currently for sale and their prices.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -55,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788858182051L,
+        "TimePast": 1788862341626L,
         "Time": 0L,
         "Subject": ""
     }

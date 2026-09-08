@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GIJ.2 - Concrete Factory Worker",
+    "DialogTitle": "GIJ.S2 - Concrete Factory Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ The factory provides the costly industrial equipment, though workers must still 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788858056551L,
+        "TimePast": 1788862738475L,
         "Time": 0L,
         "Subject": ""
     }

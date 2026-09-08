@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I will look for a suitable Farm.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "ZEPRECATED - Gramados Citrus Farmer",
+    "DialogTitle": "GIJ.P1 - Gramados Citrus Farmer",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,21 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Becoming a Citrus Farmer on Gramados Island is a unique opportunity, and it begins with your commitment and the help of our dedicated staff. Here's how you can embark on this journey:
+    "DialogText": "Citrus farming is an established profession tied to Gramados Island's orchards and its historic fruit economy. Rather than applying at the Hiring Agency, a farmer must own an eligible Farm, cultivate citrus produce, and supply the Gramados farming market.
 
-1. **Getting Started:**
-   - To become a Citrus Farmer, you need to reach out to one of our staff members. They will guide you through the initial steps.
-   - You'll be offered a Citrus Farm structure, which may sometimes be in need of restoration or even a mere ruin. These structures are available at a very affordable price, significantly below the actual land value.
-
-2. **Unlocking Wholesalers:**
-   - To kickstart your Citrus Farm, you'll need to interact with a designated NPC who is instrumental in this process.
-   - Once you've established your connection with this NPC, you'll unlock access to related wholesalers.
-   - These wholesalers will provide you with the necessary resources, support, and expertise to cultivate your Citrus Farm successfully.
-
-Embracing the Citrus Farmer role is a rewarding endeavor, and we're committed to helping you make it a reality. Our island has a rich history of citrus farming, and we're excited to see this tradition thrive once again.
-
-If you have any questions or need more details about becoming a Citrus Farmer on Gramados Island, don't hesitate to ask.
-",
+Use `!region lookFor Farm` to see Farms currently available for purchase and their prices.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -68,7 +66,7 @@ If you have any questions or need more details about becoming a Citrus Farmer on
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788858187956L,
+        "TimePast": 1788867018324L,
         "Time": 0L,
         "Subject": ""
     }

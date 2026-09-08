@@ -49,6 +49,16 @@
                 "Dialog": -1,
                 "Title": "That is all I needed, thank you.",
                 "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "That is all I needed, thank you.",
+                "DialogColor": 14737632,
                 "OptionType": 0
             }
         }
@@ -89,7 +99,7 @@
     "OptionFaction2Points": 100,
     "DialogText": "Gramados Island offers three Starter Jobs for people who want to earn their first income without purchasing a workplace: Royal Lumberjack, Concrete Factory Worker, and Terracotta Factory Worker.
 
-The island also has professions tied to privately owned farms, garages, and other properties, but those follow a different path. Which Starter Job would you like to hear about?",
+These jobs are handled by the Gramados Hiring Agency. Which one would you like to hear about?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -106,7 +116,7 @@ The island also has professions tied to privately owned farms, garages, and othe
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788857915367L,
+        "TimePast": 1788867103874L,
         "Time": 0L,
         "Subject": ""
     }

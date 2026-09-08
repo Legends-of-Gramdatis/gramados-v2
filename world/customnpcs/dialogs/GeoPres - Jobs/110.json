@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GIJ.1 - Gramados Royal Lumberjack",
+    "DialogTitle": "GIJ.S1 - Gramados Royal Lumberjack",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ Different species carry different values, and varied deliveries are generally wo
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788857975501L,
+        "TimePast": 1788862734726L,
         "Time": 0L,
         "Subject": ""
     }

@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 732,
-                "Title": "Tell me about Starter Jobs on Gramados Island.",
+                "Title": "Tell me about jobs on Gramados Island.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -116,7 +116,7 @@ To help you navigate, let's break things down into three main categories of jobs
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788858633051L,
+        "TimePast": 1788867083474L,
         "Time": 0L,
         "Subject": ""
     }

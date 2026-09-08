@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GIJ.3 - Terracotta Factory Worker",
+    "DialogTitle": "GIJ.S3 - Terracotta Factory Worker",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -76,7 +76,7 @@ The work offers several possible products rather than one fixed output, allowing
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788858133600L,
+        "TimePast": 1788862742929L,
         "Time": 0L,
         "Subject": ""
     }
