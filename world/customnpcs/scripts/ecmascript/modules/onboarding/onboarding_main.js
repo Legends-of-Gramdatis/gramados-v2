@@ -1,5 +1,5 @@
 // Main Onboarding Controller Script (Per-Player Model)
-// This script runs per player: login() on login, tick() per-player.
+// This script runs per player: login() on login, chat() on player chat/commands, tick() per-player.
 // Phase logic is delegated to phase scripts returning boolean when data changed.
 //
 // Persistent onboarding state is stored per player UUID. This intentionally avoids
@@ -161,6 +161,44 @@ function onboarding_isModuleEnabled() {
     return _onboarding_cfg && _onboarding_cfg.general && _onboarding_cfg.general.moduleEnabled;
 }
 
+// Phase 2 used to learn about command execution through CustomServerTools writing
+// timestamps into the legacy shared onboarding_data.json. That bridge became invalid
+// when onboarding state moved to per-UUID files. Record the relevant commands here,
+// in the same per-player script instance that owns the onboarding state instead.
+function onboarding_getPhase2CommandKey(message) {
+    if (message === null || typeof message === 'undefined') return null;
+
+    var text = String(message).replace(/^\s+|\s+$/g, '');
+    if (!text || text.charAt(0) !== '!') return null;
+
+    var command = text.split(/\s+/)[0].toLowerCase();
+    switch (command) {
+        case '!mymoney': return 'myMoney';
+        case '!deposit': return 'deposit';
+        case '!depositall': return 'depositAll';
+        case '!withdraw': return 'withdraw';
+        default: return null;
+    }
+}
+
+function onboarding_recordPhase2Command(player, commandKey) {
+    if (!player || !commandKey) return false;
+
+    var pdata = onboarding_getPlayerData(player);
+    if (!pdata || pdata.phase !== 2) return false;
+
+    if (!pdata.phase2 || typeof pdata.phase2 !== 'object') pdata.phase2 = {};
+    if (!pdata.phase2['last ran'] || typeof pdata.phase2['last ran'] !== 'object') {
+        pdata.phase2['last ran'] = {};
+    }
+
+    var ranAt = Date.now();
+    pdata.phase2['last ran'][commandKey] = ranAt;
+    onboarding_savePlayerData(player, pdata);
+    logToFile('onboarding', '[p2.command] ' + player.getName() + ' ran !' + commandKey + ' at ' + ranAt + '.');
+    return true;
+}
+
 // === Event Hooks ===
 function login(event) {
     onboarding_loadConfig();
@@ -211,6 +249,22 @@ function login(event) {
     if (changed) {
         onboarding_savePlayerData(player, pdata);
     }
+}
+
+function chat(event) {
+    var player = event.player;
+    if (!player) return;
+
+    // login() normally initializes config first, but keep this event safe after script reloads.
+    if (!_onboarding_cfg) {
+        try { onboarding_loadConfig(); } catch (cfgErr) { return; }
+    }
+    if (!onboarding_isModuleEnabled()) return;
+
+    var commandKey = onboarding_getPhase2CommandKey(event.message);
+    if (!commandKey) return;
+
+    onboarding_recordPhase2Command(player, commandKey);
 }
 
 function tick(event) {
