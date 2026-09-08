@@ -6,28 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 731,
+                "Title": "What can you tell me about this place?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 730,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "GCE.0 - Welcome to Gramados City Town Hall",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "Welcome to Gramados City Town Hall. The Immigration Office and State Hotels now handle a newcomer's first arrival, but Town Hall remains one of the first civic places most people encounter once their onboarding is complete.
 
-",
+From here, I can help you understand the capital and the island around it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788817437221L,
         "Time": 0L,
         "Subject": ""
     }

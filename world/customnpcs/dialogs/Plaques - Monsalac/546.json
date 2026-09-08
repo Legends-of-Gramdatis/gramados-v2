@@ -6,28 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 547,
+                "Title": "[Continue]",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 546,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "Castle Avencliff",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,9 +47,11 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "Standing just inland from the southern shore of Monsalac, Castle Avencliff has twice been engulfed in fire - and twice rebuilt from its ashes.
 
-",
+Originally constructed in the 16th century as the ancestral seat of the Laressier family, the castle was plundered in 1683 during the Grainfire Rebellion. Though restored, it was once again set ablaze in the mid-20th century during a workers’ revolt that left much of the family slain.
+
+Its current form is the result of a late 20th-century restoration led by a wealthy entrepreneur from Gramados Island, founder of the TFJ conglomerate. While the exterior preserves its historic form, the interior was entirely reimagined - blending noble architecture with modern luxury.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +68,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788799273128L,
         "Time": 0L,
         "Subject": ""
     }

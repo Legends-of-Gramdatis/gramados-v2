@@ -2,12 +2,22 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "I'll go and speak with the Hiring Manager.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 547,
+    "DialogId": 710,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Castle Avencliff 2",
+    "DialogTitle": "Greenfield Hiring Agency Hook",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,11 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "The arched walkways flanking the central alley were added during this restoration as ornamental features, designed to enhance the estate’s visual symmetry and grandeur.
+    "DialogText": "If this line of work interests you, your next stop is the Greenfield Island Hiring Agency.
 
-The owner eventually left Monsalac, but Castle Avencliff stands intact - a place where stone remembers fire, and legacy endures in silence.
-
-- Commissioned by the Gramados Department of Culture and Heritage, 2004.",
+The Hiring Manager there can explain which positions are available, confirm any requirements, and register you for work when you are ready. I have marked the agency as your next destination, so you can follow the location shown on your map.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -58,7 +66,7 @@ The owner eventually left Monsalac, but Castle Avencliff stands intact - a place
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748942847812L,
+        "TimePast": 1788799173828L,
         "Time": 0L,
         "Subject": ""
     }

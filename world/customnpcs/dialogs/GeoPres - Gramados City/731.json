@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
+                "Dialog": -1,
+                "Title": "Tell me about Gramados Island.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,18 +16,18 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
+                "Dialog": 724,
+                "Title": "Tell me about Gramados City.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
         },
         {
-            "OptionSlot": 5,
+            "OptionSlot": 2,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": -1,
+                "Title": "What work is available here?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +37,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 731,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "GCE.1 - What Can I Present?",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,9 +67,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
-
-",
+    "DialogText": "Gramados City is only one part of Gramados Island, though it is by far its largest settlement. I can present the wider island, explain how the capital developed, or show you what kinds of work are available locally.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +84,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788817296622L,
         "Time": 0L,
         "Subject": ""
     }

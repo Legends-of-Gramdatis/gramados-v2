@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
+                "Dialog": 692,
+                "Title": "Why are the islands so different?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,28 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
+                "Dialog": 693,
+                "Title": "How is the country governed?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 704,
+                "Title": "Where can I learn about individual islands?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 687,
+                "Title": "Back to Geography of Gramados",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +46,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 680,
+                "Title": "Back to Lore and History",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +57,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 688,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,18 +78,20 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
-    "AvailabilityDialog": 0,
+    "DialogTitle": "p3.1 - One Country Across an Archipelago",
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 687,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "The Gramados Archipelago is the geographical group of islands. The country of Gramados is the political state extending across it.
 
-",
+National institutions operate across most of the archipelago, but geography has always encouraged local differences. Distance, resources, climate, settlement, and history led each island to develop its own character.
+
+They belong to one country without becoming identical parts of it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +108,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788791311919L,
         "Time": 0L,
         "Subject": ""
     }

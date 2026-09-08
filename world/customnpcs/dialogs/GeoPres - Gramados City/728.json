@@ -6,28 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 729,
+                "Title": "Could you introduce me to those districts?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 728,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "GC.4 - A City of Contrasts",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "Modern Gramados City is a major center of administration, commerce, services, industry, and transport. Civic towers, factories, workshops, dense housing, coastal destinations, and hillside estates all belong to the same city.
 
-",
+Its brick, wood, iron, and glass architecture is often called Gramadosian, but no single style defines it. The contrast between its districts is the clearest expression of its character.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788817199821L,
         "Time": 0L,
         "Subject": ""
     }

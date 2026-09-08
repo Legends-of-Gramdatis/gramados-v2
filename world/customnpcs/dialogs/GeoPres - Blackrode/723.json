@@ -6,30 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
+                "Dialog": -1,
+                "Title": "Thank you. I understand Blackrode much better now.",
                 "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
-                "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 0
             }
         }
     ],
@@ -37,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 723,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "BT.5 - A Town of Many Layers",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "Blackrode is now economically stable, though it never regained a single clear identity. Homes have been demolished, abandoned, repaired, rebuilt, and replaced throughout its history, leaving affordable housing from many periods and architectural styles side by side.
 
-",
+For people who can accept its industrial surroundings and irregular streets, Blackrode remains one of the more accessible places to settle on Gramados Island.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +66,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788812254830L,
         "Time": 0L,
         "Subject": ""
     }

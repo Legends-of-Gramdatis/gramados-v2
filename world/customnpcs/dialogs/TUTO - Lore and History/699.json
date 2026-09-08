@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
+                "Dialog": 685,
+                "Title": "Tell me about the Sundering and Year 0.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,38 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
+                "Dialog": 700,
+                "Title": "How did society rebuild and reconnect?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 701,
+                "Title": "How did regional powers develop?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 702,
+                "Title": "How did industrialization transform the islands?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 703,
+                "Title": "How did the modern country emerge?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +56,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 680,
+                "Title": "Back to Lore and History",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +67,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 699,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,18 +88,20 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
-    "AvailabilityDialog": 0,
+    "DialogTitle": "p5 - Development of Modern Gramados",
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 693,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "Modern Gramados did not appear all at once.
 
-",
+After the Sundering, scattered communities rebuilt and gradually re-established contact. Regional societies and powers emerged, followed by industrialization, modern infrastructure, and stronger political connections between the islands.
+
+This is the shared outline. The details differ greatly from one island to another.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +118,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788790279018L,
         "Time": 0L,
         "Subject": ""
     }

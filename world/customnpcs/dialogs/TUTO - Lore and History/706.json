@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 117,
-                "Title": "[The island of Gramados]",
+                "Dialog": 705,
+                "Title": "Who provides these presentations?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,28 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 125,
-                "Title": "[Gramados City]",
+                "Dialog": 707,
+                "Title": "Why does the starting point change?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 708,
+                "Title": "How else can I discover lore?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 704,
+                "Title": "Back to Learning About Local Places",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -26,8 +46,8 @@
             "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 407,
-                "Title": "[How to get started?]",
+                "Dialog": 680,
+                "Title": "Back to Lore and History",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +57,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 116,
+    "DialogId": 706,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -58,18 +78,20 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
-    "AvailabilityDialog": 0,
+    "DialogTitle": "p6.2 - What Island Presentations Cover",
+    "AvailabilityDialog": 1,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
     "AvailabilityFactionId": -1,
     "AvailabilityFaction2Stance": 0,
     "DialogCommand": "",
-    "AvailabilityDialogId": -1,
+    "AvailabilityDialogId": 704,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Gramados Island and its vibrant capital, Gramados City. I'm here to assist you in exploring our island's unique offerings. What would you like to learn more about?
+    "DialogText": "A local guide may explain an island's geography, settlements, districts, transport, services, jobs, industries, landmarks, traditions, and public history.
 
-",
+The available subjects depend on the island and on what is known about it. These presentations are meant to orient you, not replace every tutorial or discovery.
+
+Detailed mechanics belong in the other tutorials, while personal, disputed, or hidden stories must be found elsewhere.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -86,7 +108,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788791756219L,
+        "TimePast": 1788791423221L,
         "Time": 0L,
         "Subject": ""
     }
