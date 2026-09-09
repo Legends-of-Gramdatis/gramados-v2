@@ -2,12 +2,32 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "What else can you tell me about Greenfield Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. That explains the island's connections.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 102,
+    "DialogId": 760,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -28,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Greenfield - Transportation",
+    "DialogTitle": "GF.INF2 - Airport and Maritime Access",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,15 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "If you're curious about transportation options on Greenfield Island, you're in the right place. Here's what you need to know:
+    "DialogText": "Greenfield Airport provides the island with a modest air connection. Its smaller scale suits light aircraft better than the largest planes serving Gramados International Airport.
 
-Greenfield Island is accessible by various means:
-- We have a small airport for those who prefer taking to the skies.
-- The bustling port at Springfield is perfect for those arriving by sea.
-- And there's a large bridge connecting us to Gramados Island, making it accessible by car or truck.
-
-However, a word of advice for island residents: our roads are narrow and winding, so smaller vehicles are recommended. Trucks and semi-trucks may find it challenging to navigate our tiny roads with sharp angles. Additionally, our airport is small, so if you own a plane, make sure it's a compact one. Safe travels!
-",
+Springfield Port provides maritime access for travellers, trade, and local boating. Together with the bridge, these facilities give Greenfield road, sea, and air links to the rest of the archipelago.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -62,7 +76,7 @@ However, a word of advice for island residents: our roads are narrow and winding
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831300790L,
+        "TimePast": 1788942110063L,
         "Time": 0L,
         "Subject": ""
     }

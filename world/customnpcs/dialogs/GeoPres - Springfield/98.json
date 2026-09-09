@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 99,
-                "Title": "[Learn about Greenfield Island]",
+                "Title": "What can you help me discover?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,9 +17,9 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 105,
-                "Title": "[Discover Springfield Town]",
+                "Title": "Talk",
                 "DialogColor": 14737632,
-                "OptionType": 1
+                "OptionType": 2
             }
         }
     ],
@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "SFE.0 - Welcome to Springfield Town Hall",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,7 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Greetings, traveler! Welcome to Springfield, a vibrant town on the lush Greenfield Island. I'm here to help you get acquainted with our beautiful island and this bustling town. Is there anything specific you'd like to know more about?",
+    "DialogText": "Welcome to Springfield Town Hall. You are in Greenfield Island's principal service town, where the surrounding countryside meets shops, public services, local industry, and the waterfront.
+
+From here, I can help you understand Springfield, Greenfield Island, and the opportunities available across it.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -74,7 +76,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831341987L,
+        "TimePast": 1788941620014L,
         "Time": 0L,
         "Subject": ""
     }

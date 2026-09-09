@@ -6,40 +6,10 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 732,
-                "Title": "Which Starter Jobs are available?",
+                "Dialog": 760,
+                "Title": "What about travel by air and sea?",
                 "DialogColor": 14737632,
                 "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 1,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 734,
-                "Title": "Tell me about property-based professions.",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 4,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": 115,
-                "Title": "What else can you tell me about Gramados Island?",
-                "DialogColor": 14737632,
-                "OptionType": 1
-            }
-        },
-        {
-            "OptionSlot": 5,
-            "Option": {
-                "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "That is all I needed, thank you.",
-                "DialogColor": 14737632,
-                "OptionType": 0
             }
         }
     ],
@@ -47,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 123,
+    "DialogId": 759,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -68,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "GIJ.0 - Jobs and Opportunities on Gramados Island",
+    "DialogTitle": "GF.INF1 - The Bridge to Gramados Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -77,10 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Work on Gramados Island follows two broad paths. Starter Jobs let newcomers begin with little investment and are handled by the island's Hiring Agency.
+    "DialogText": "A road bridge connects Greenfield Island directly with Gramados Island. It gives residents, visitors, and commercial traffic an overland route to the country's main island and its capital.
 
-Property-based professions require you to purchase a suitable workplace, but they provide access to broader business opportunities. I can introduce you to either path.
-",
+For Greenfield's farms and businesses, that crossing is especially important: produce, timber, supplies, and vehicles can move between the rural island and the archipelago's largest urban market.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -97,7 +66,7 @@ Property-based professions require you to purchase a suitable workplace, but the
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788882555419L,
+        "TimePast": 1788942101663L,
         "Time": 0L,
         "Subject": ""
     }

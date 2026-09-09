@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 106,
-                "Title": "What services can I find here?",
+                "Dialog": 755,
+                "Title": "How does Greenfield make its living?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 105,
+    "DialogId": 102,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.0 - Springfield",
+    "DialogTitle": "GF.I1 - Fields, Forests, and Winding Roads",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield is Greenfield Island's main service town. Farms and woodland surround it, but within the town you will find civic buildings, shops, workplaces, and transport facilities serving residents from across the island.
+    "DialogText": "Greenfield is shaped by open farmland, scattered farmsteads, stretches of woodland, and settlements separated by countryside. Fields and agricultural properties form a patchwork across much of the island.
 
-It is compact compared with Gramados City, yet it concentrates much of what people need for daily life and business on Greenfield.",
+Its local roads are often narrow and winding, reflecting the rural landscape. Smaller vehicles are generally easier to handle here than large trucks or heavy road equipment.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +66,7 @@ It is compact compared with Gramados City, yet it concentrates much of what peop
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941669162L,
+        "TimePast": 1788941953762L,
         "Time": 0L,
         "Subject": ""
     }

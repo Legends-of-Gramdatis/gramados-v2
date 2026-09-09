@@ -6,10 +6,40 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 106,
-                "Title": "What services can I find here?",
+                "Dialog": 102,
+                "Title": "What is the island's landscape like?",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 111,
+                "Title": "Talk",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 104,
+                "Title": "Talk",
+                "DialogColor": 14737632,
+                "OptionType": 2
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 103,
+                "Title": "Talk",
+                "DialogColor": 14737632,
+                "OptionType": 2
             }
         }
     ],
@@ -17,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 105,
+    "DialogId": 100,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.0 - Springfield",
+    "DialogTitle": "GF.I0 - The Rural Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,9 +77,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield is Greenfield Island's main service town. Farms and woodland surround it, but within the town you will find civic buildings, shops, workplaces, and transport facilities serving residents from across the island.
+    "DialogText": "Greenfield Island is a rural part of the Gramados archipelago, best known for agriculture and forestry. Its farms, woodland, and two principal settlements offer a quieter alternative to the dense industry and urban life found elsewhere.
 
-It is compact compared with Gramados City, yet it concentrates much of what people need for daily life and business on Greenfield.",
+The island is productive rather than isolated: its fields, workshops, roads, port, and airport all connect that countryside to the wider country.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +96,7 @@ It is compact compared with Gramados City, yet it concentrates much of what peop
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941669162L,
+        "TimePast": 1788941934863L,
         "Time": 0L,
         "Subject": ""
     }

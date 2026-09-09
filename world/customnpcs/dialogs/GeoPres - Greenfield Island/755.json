@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 106,
-                "Title": "What services can I find here?",
+                "Dialog": 756,
+                "Title": "What is it like to purchase property here?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 105,
+    "DialogId": 755,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.0 - Springfield",
+    "DialogTitle": "GF.I2 - A Working Countryside",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield is Greenfield Island's main service town. Farms and woodland surround it, but within the town you will find civic buildings, shops, workplaces, and transport facilities serving residents from across the island.
+    "DialogText": "Agriculture and timber form the foundation of Greenfield's economy. Farms supply crops, fruit, and other produce, while Timber Creek supports the island's lumber trade.
 
-It is compact compared with Gramados City, yet it concentrates much of what people need for daily life and business on Greenfield.",
+Small-scale brewing and processing add value to what the land provides. Springfield and Blockingham support that rural economy through shops, transport, public services, vehicle repair, and other local businesses.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +66,7 @@ It is compact compared with Gramados City, yet it concentrates much of what peop
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941669162L,
+        "TimePast": 1788941971963L,
         "Time": 0L,
         "Subject": ""
     }

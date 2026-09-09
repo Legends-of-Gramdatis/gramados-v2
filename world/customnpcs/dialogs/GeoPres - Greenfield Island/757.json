@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 107,
-                "Title": "What should a newcomer know about the waterfront?",
+                "Dialog": 758,
+                "Title": "What infrastructure connects the island?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,8 +16,48 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "Talk",
+                "Dialog": 761,
+                "Title": "Tell me about the island's history and character.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 2,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 104,
+                "Title": "Introduce me to its settlements.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 3,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 103,
+                "Title": "Which landmarks should I visit?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 111,
+                "Title": "What jobs and opportunities are available?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "Return to the general island guide.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,7 +67,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 108,
+    "DialogId": 757,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -44,11 +84,11 @@
     "AvailabilityDayTime": 0,
     "OptionFactions2": -1,
     "AvailabilityFaction2Id": -1,
-    "OptionFaction1Points": 1,
+    "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.2 - Work and Industry",
+    "DialogTitle": "GF.T0 - Exploring Greenfield Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,9 +97,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield supports several parts of Greenfield's economy. Timber Creek Sawmill organises the island's lumber trade near the town's eastern entrance, while local shops supply farms and households.
+    "DialogText": "That is Greenfield Island in broad terms, but its transport links, rural history, settlements, working places, and landmarks each reveal something different about life here.
 
-The Springfield Garage and nearby junkyard also support vehicle work, giving qualified Mechanics access to repairs, parts, and salvage without leaving the island.",
+What would you like to explore in greater detail?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -76,7 +116,7 @@ The Springfield Garage and nearby junkyard also support vehicle work, giving qua
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941763913L,
+        "TimePast": 1788942076163L,
         "Time": 0L,
         "Subject": ""
     }

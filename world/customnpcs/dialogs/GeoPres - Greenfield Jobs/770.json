@@ -6,10 +6,30 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 114,
-                "Title": "[How to get the job?]",
+                "Dialog": 112,
+                "Title": "Tell me about another property-based profession.",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "What else can you tell me about Greenfield Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. I will look for a Garage.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -17,7 +37,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 113,
+    "DialogId": 770,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Greenfield - farmer - p2",
+    "DialogTitle": "GFJ.P2 - Greenfield Mechanic",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,13 +67,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "3. **Greenfield Farmer Job:**
-   - Once you've acquired a farm, you'll become eligible for the Greenfield Farmer job, unlocking access to related Wholesalers. As a Greenfield Farmer, you're free to cultivate Greenfield-approved plants, fruit trees, apiaries, grapes, and more. The job itself is straightforward: grow crops, harvest, and sell your produce to earn a profit.
+    "DialogText": "Greenfield Mechanics operate from an eligible Garage they own. This grants access to junkyards and vehicle-part shops, where they can recover components and repair junker vehicles.
 
-4. **Agricultural Machinery:**
-   - If you accumulate enough funds, you can invest in agricultural machinery like tractors and harvesters. However, please be aware that these machines are challenging to operate on Greenfield Island, given the narrow and winding roads.
-
-It's an exciting journey, and your dedication can lead to a thriving farming business on Greenfield Island. If you have any questions or need further assistance, feel free to ask.",
+A Mechanic can also purchase an order board for the Garage, receive requests for particular parts, then obtain and send those parts for payment. Use `!region lookFor Garage` to see Garages currently for sale and their prices.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -70,7 +86,7 @@ It's an exciting journey, and your dedication can lead to a thriving farming bus
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831313287L,
+        "TimePast": 1788941514063L,
         "Time": 0L,
         "Subject": ""
     }

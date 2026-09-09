@@ -6,10 +6,40 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 106,
-                "Title": "What services can I find here?",
+                "Dialog": 113,
+                "Title": "Tell me about organic farming.",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 1,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 770,
+                "Title": "What does a Greenfield Mechanic do?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "What else can you tell me about Greenfield Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "That is enough for now, thank you.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -17,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 105,
+    "DialogId": 112,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +68,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.0 - Springfield",
+    "DialogTitle": "GFJ.P0 - Property-Based Professions",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,9 +77,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield is Greenfield Island's main service town. Farms and woodland surround it, but within the town you will find civic buildings, shops, workplaces, and transport facilities serving residents from across the island.
+    "DialogText": "Some professions begin with property ownership rather than an application. Purchasing an eligible Farm or Garage grants access to the work associated with that property.
 
-It is compact compared with Gramados City, yet it concentrates much of what people need for daily life and business on Greenfield.",
+These professions require a greater investment than the Lumberjack Starter Job, but offer more control over the operation. Which one interests you?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +96,7 @@ It is compact compared with Gramados City, yet it concentrates much of what peop
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941669162L,
+        "TimePast": 1788941499264L,
         "Time": 0L,
         "Subject": ""
     }

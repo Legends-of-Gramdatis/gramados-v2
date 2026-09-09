@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 100,
-                "Title": "[Continue]",
+                "Dialog": 109,
+                "Title": "Tell me about the Greenfield Lumberjack job.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -16,20 +16,30 @@
             "OptionSlot": 1,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": -1,
-                "Title": "[What are the villages on the island?]",
+                "Dialog": 710,
+                "Title": "How do I apply for the Starter Job?",
                 "DialogColor": 14737632,
-                "OptionType": 2
+                "OptionType": 1
             }
         },
         {
-            "OptionSlot": 2,
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "What else can you tell me about Greenfield Island?",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
                 "Dialog": -1,
-                "Title": "[What transportation options are available?]",
+                "Title": "That is all I needed, thank you.",
                 "DialogColor": 14737632,
-                "OptionType": 2
+                "OptionType": 0
             }
         }
     ],
@@ -37,7 +47,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 99,
+    "DialogId": 107,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -54,11 +64,11 @@
     "AvailabilityDayTime": 0,
     "OptionFactions2": -1,
     "AvailabilityFaction2Id": -1,
-    "OptionFaction1Points": 1,
+    "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Welcome",
+    "DialogTitle": "GFJ.S0 - Starter Jobs on Greenfield Island",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -67,12 +77,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Greenfield Island, where the soil is fertile, and the opportunities are as abundant as the crops that sway in the breeze. Here's a glimpse of what our bountiful island has to offer:
+    "DialogText": "Greenfield Island currently offers one Starter Job: Greenfield Lumberjack. It lets newcomers earn money through the island's timber trade without purchasing a workplace.
 
-Greenfield Island is a patchwork of many small farms, each offering a piece of our agricultural paradise. The farms here are diverse in size and affordability, ranging from the most affordable at under 200k grons to the most extensive, which can exceed a million. You'll find that the average farm costs between 250k to 300k grons, providing a range of options for aspiring farmers.
-
-Every farm comes with a spacious garden where you can cultivate your very own crop culture. But that's not all; surrounding each farm, you'll discover numerous plots and fields available for purchase by the owner of the nearest farm. These additional fields are priced reasonably, with the cost typically ranging from 40k to 60k grons, depending on their size. With a ratio of about 16 fields for every 1 farm, you have plenty of room to expand your agricultural endeavors.
-",
+The job is handled by the Greenfield Hiring Agency. I can explain the work here, or direct you to the agency when you are ready to apply.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -89,7 +96,7 @@ Every farm comes with a spacious garden where you can cultivate your very own cr
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831236439L,
+        "TimePast": 1788941453263L,
         "Time": 0L,
         "Subject": ""
     }

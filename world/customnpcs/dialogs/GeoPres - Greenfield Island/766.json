@@ -2,12 +2,42 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 103,
+                "Title": "Tell me about another landmark.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "Return to the general island guide.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. That is all for now.",
+                "DialogColor": 14737632,
+                "OptionType": 0
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 103,
+    "DialogId": 766,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -24,11 +54,11 @@
     "AvailabilityDayTime": 0,
     "OptionFactions2": -1,
     "AvailabilityFaction2Id": -1,
-    "OptionFaction1Points": 2,
+    "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Greenfield - Landmarks",
+    "DialogTitle": "GF.LM1 - Greenfield Castle",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,10 +67,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Greenfield Island may be known for its agricultural wonders, but we have one special landmark to capture your imagination. It's the iconic Greenfield Castle:
+    "DialogText": "Greenfield Castle is not a fortress in the usual sense, but a grand Victorian manor set within the island's rural landscape. Its history is associated with a former owner of a fine-wine brewery.
 
-Greenfield Castle is a magnificent Victorian manor with a rich history, once owned by an old fine wine brewery owner. Now, this grand estate is available for players to purchase. If you're interested in owning a piece of Greenfield's history, feel free to ask for more details. It's a unique opportunity to become a part of our island's story.
-",
+The estate represents the wealth that agriculture and specialised production could create on Greenfield, and it remains one of the island's most distinctive properties.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -57,7 +86,7 @@ Greenfield Castle is a magnificent Victorian manor with a rich history, once own
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831289388L,
+        "TimePast": 1788942301913L,
         "Time": 0L,
         "Subject": ""
     }

@@ -3,11 +3,11 @@
     "AvailabilityQuestId": -1,
     "Options": [
         {
-            "OptionSlot": 0,
+            "OptionSlot": 5,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 110,
-                "Title": "[How to get the job?]",
+                "Dialog": -1,
+                "Title": "What can you help me discover?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 109,
+    "DialogId": 751,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Lumberjack presentation - p2",
+    "DialogTitle": "BHE.0 - Welcome to Blockingham Town Hall",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,13 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "These resources and trades are exclusive to Lumberjacks, so joining this profession unlocks these opportunities.
+    "DialogText": "Welcome to Blockingham Town Hall. You are in Greenfield Island's smaller principal settlement, surrounded by the farmland, woodland, and rural roads that define much of the island.
 
-As a Lumberjack, your primary responsibility is to cut down and replant trees from the Tree Farms. These farms feature a variety of tree types, typically native to the specific island where your Lumberjack worksite is located.
-
-To find the Lumberjack worksite, you can use our online Dynmap, which will guide you to the location of your designated Tree Farm.
-
-If you're ready to embrace the life of a Lumberjack and take on the responsibilities that come with it, this job can be a rewarding and lucrative choice.",
+Blockingham is modest, but it provides a useful local centre for people living and working in this part of Greenfield.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -70,7 +66,7 @@ If you're ready to embrace the life of a Lumberjack and take on the responsibili
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831336934L,
+        "TimePast": 1788886111802L,
         "Time": 0L,
         "Subject": ""
     }

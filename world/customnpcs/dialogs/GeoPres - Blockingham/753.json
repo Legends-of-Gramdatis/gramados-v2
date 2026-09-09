@@ -6,8 +6,8 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 106,
-                "Title": "What services can I find here?",
+                "Dialog": -1,
+                "Title": "How does Blockingham fit into Greenfield Island?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 105,
+    "DialogId": 753,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "SF.0 - Springfield",
+    "DialogTitle": "BH.1 - Practical Local Services",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Springfield is Greenfield Island's main service town. Farms and woodland surround it, but within the town you will find civic buildings, shops, workplaces, and transport facilities serving residents from across the island.
+    "DialogText": "Blockingham concentrates a small but practical set of services. Town Hall provides its civic presence, while the fuel station, repair shop, parking, and multi-service facility support residents and people travelling through the surrounding countryside.
 
-It is compact compared with Gramados City, yet it concentrates much of what people need for daily life and business on Greenfield.",
+The town is best understood as a local service point rather than a major commercial centre.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +66,7 @@ It is compact compared with Gramados City, yet it concentrates much of what peop
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1788941669162L,
+        "TimePast": 1788886197252L,
         "Time": 0L,
         "Subject": ""
     }

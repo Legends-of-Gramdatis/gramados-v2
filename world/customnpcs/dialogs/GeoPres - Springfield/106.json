@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 108,
-                "Title": "[What jobs can I find in this town?]",
+                "Title": "What kind of work takes place around Springfield?",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -38,7 +38,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Springfield - Presentation - p2",
+    "DialogTitle": "SF.1 - Services and Daily Life",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,22 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "6. **Junkyard:**
-   - Our junkyard is a treasure trove of resources waiting to be discovered. You never know what valuable items you might find among the discarded materials.
+    "DialogText": "Springfield brings many everyday services together. Its bank, post office, market, shops, fuel station, parking, and multi-service facility make it a practical base for residents of the town and nearby farms.
 
-7. **Repair Shop:**
-   - Need to fix up your vehicles or equipment? The repair shop in Springfield is the place to go for all your maintenance and repair needs.
-
-8. **Post Office:**
-   - Stay connected with the outside world through our efficient post office services. Send and receive mail, parcels, and important messages.
-
-9. **Port:**
-   - The bustling port in Springfield is a gateway to the sea, allowing for trade and transportation to and from our island.
-
-10. **Multiservice Office:**
-   - Our multiservice office offers a range of administrative and clerical services. If you have paperwork to handle, this is the place to get it done.
-
-Springfield is a vibrant hub of activity on Greenfield Island, providing everything you need for a comfortable and productive stay. If you have any specific questions or if you'd like to explore any of these services further, feel free to ask.",
+These services give Greenfield a local centre of its own, reducing the need to travel to Gramados City for every purchase, errand, or administrative task.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -79,7 +66,7 @@ Springfield is a vibrant hub of activity on Greenfield Island, providing everyth
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698831354388L,
+        "TimePast": 1788941714813L,
         "Time": 0L,
         "Subject": ""
     }

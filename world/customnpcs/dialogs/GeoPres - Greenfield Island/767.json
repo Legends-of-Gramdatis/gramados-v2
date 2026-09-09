@@ -6,10 +6,30 @@
             "OptionSlot": 0,
             "Option": {
                 "DialogCommand": "",
-                "Dialog": 109,
-                "Title": "[Continue]",
+                "Dialog": 103,
+                "Title": "Tell me about another landmark.",
                 "DialogColor": 14737632,
                 "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": 99,
+                "Title": "Return to the general island guide.",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 5,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Thank you. That is all for now.",
+                "DialogColor": 14737632,
+                "OptionType": 0
             }
         }
     ],
@@ -17,7 +37,7 @@
     "DialogHideNPC": 0b,
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
-    "DialogId": 107,
+    "DialogId": 767,
     "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
@@ -38,7 +58,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Lumberjack presentation - p1",
+    "DialogTitle": "GF.LM2 - Timber Creek Sawmill",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -47,15 +67,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Are you interested in becoming a Lumberjack? It's a rewarding job that offers access to Tree Farms, Lumberjack Workshops, and Lumberjack Sawmills. Here's what you need to know about this role:
+    "DialogText": "Timber Creek Sawmill stands near the eastern entrance of Springfield and serves as Greenfield's centre for organised lumber work. Its office supplies tools and saplings, while the worksite and lumberyard support harvesting and replanting.
 
-The Lumberjack Workshop is where you can purchase essential wood-cutting tools like axes, ladders, scaffolds, and shears. These tools will be your companions in the job.
-
-The Lumberjack Sawmill houses machinery that allows you to:
-- Exchange leaf blocks and saplings for cash.
-- Trade plank blocks for cash.
-- Use a machine to turn logs into planks for various crafting needs.
-",
+Across the road, the warehouse receives logs packed into crates, linking the island's forests directly to the Greenfield lumber market.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -72,7 +86,7 @@ The Lumberjack Sawmill houses machinery that allows you to:
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1698764722738L,
+        "TimePast": 1788942307263L,
         "Time": 0L,
         "Subject": ""
     }
