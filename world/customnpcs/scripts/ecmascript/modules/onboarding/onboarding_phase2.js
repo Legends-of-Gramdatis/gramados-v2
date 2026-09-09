@@ -9,8 +9,17 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_trader.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_emotes.js');
 
-// Local path used to read onboarding data entries made by other commands
-var ONBOARDING_DATA_PATH_LOCAL = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
+// Command timestamps are recorded by onboarding_main.js directly into the player's
+// UUID-backed onboarding state. Keep legacy field fallbacks for migrated player data.
+function onboarding_phase2_getLastRan(pdata, commandKey) {
+    if (!pdata || !commandKey) return null;
+
+    var p2 = pdata.phase2 || {};
+    if (p2['last ran'] && p2['last ran'][commandKey]) return p2['last ran'][commandKey];
+    if (p2['last_ran'] && p2['last_ran'][commandKey]) return p2['last_ran'][commandKey];
+    if (pdata['last ran'] && pdata['last ran'][commandKey]) return pdata['last ran'][commandKey];
+    return null;
+}
 
 function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersData) {
     if (!phaseCfg || !phaseCfg.enabled) return false;
@@ -78,14 +87,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Check whether player ran !myMoney
-                    var onboardingFile1 = loadJson(ONBOARDING_DATA_PATH_LOCAL);
-                    var myMoneyLastRan1 = null;
-                    var pEntry1 = onboardingFile1[player.getName()];
-                    if (pEntry1) {
-                        if (pEntry1['phase2'] && pEntry1['phase2']['last ran'] && pEntry1['phase2']['last ran'].myMoney) myMoneyLastRan1 = pEntry1['phase2']['last ran'].myMoney;
-                        if (!myMoneyLastRan1 && pEntry1['last ran'] && pEntry1['last ran'].myMoney) myMoneyLastRan1 = pEntry1['last ran'].myMoney;
-                        if (!myMoneyLastRan1 && pEntry1['phase2'] && pEntry1['phase2']['last_ran'] && pEntry1['phase2']['last_ran'].myMoney) myMoneyLastRan1 = pEntry1['phase2']['last_ran'].myMoney;
-                    }
+                    var myMoneyLastRan1 = onboarding_phase2_getLastRan(pdata, 'myMoney');
 
                     if (!pdata.phase2.s1_myMoneySeen) {
                         if (myMoneyLastRan1 && pdata.phase2.s1_promptTime && myMoneyLastRan1 >= pdata.phase2.s1_promptTime) {
@@ -189,13 +191,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Wait for deposit command run
-                    var depositLastRan = null;
-                    var onboard_data = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                    var onboard_data_player = onboard_data[player.getName()];
-                    if (onboard_data_player) {
-                        if (onboard_data_player['phase2'] && onboard_data_player['phase2']['last ran'] && onboard_data_player['phase2']['last ran'].deposit) depositLastRan = onboard_data_player['phase2']['last ran'].deposit;
-                        if (!depositLastRan && onboard_data_player['last ran'] && onboard_data_player['last ran'].deposit) depositLastRan = onboard_data_player['last ran'].deposit;
-                    }
+                    var depositLastRan = onboarding_phase2_getLastRan(pdata, 'deposit');
 
                     if (!depositLastRan || (pdata.phase2.s2_promptTime && depositLastRan < pdata.phase2.s2_promptTime)) {
                         var last2 = pdata.phase2.s2_lastMsg || pdata.phase2.s2_promptTime || 0;
@@ -250,14 +246,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     break;
                 }
                 case 2: { // Check Your Pouch confirmation after short delay
-                    var myMoneyLast2 = null;
-                    var od3 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                    var p3 = od3[player.getName()];
-                    if (p3) {
-                        if (p3['phase2'] && p3['phase2']['last ran'] && p3['phase2']['last ran'].myMoney) myMoneyLast2 = p3['phase2']['last ran'].myMoney;
-                        if (!myMoneyLast2 && p3['last ran'] && p3['last ran'].myMoney) myMoneyLast2 = p3['last ran'].myMoney;
-                        if (!myMoneyLast2 && p3['phase2'] && p3['phase2']['last_ran'] && p3['phase2']['last_ran'].myMoney) myMoneyLast2 = p3['phase2']['last_ran'].myMoney;
-                    }
+                    var myMoneyLast2 = onboarding_phase2_getLastRan(pdata, 'myMoney');
 
                     if (!pdata.phase2.s3_myMoneySeen) {
                         if (myMoneyLast2 && pdata.phase2.s3_promptTime && myMoneyLast2 >= pdata.phase2.s3_promptTime) {
@@ -321,15 +310,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Wait for !depositAll run (using last ran map)
-                    var depositAllLastRan = null;
-                    try {
-                        var onboard_data = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                        var onboard_data_player = onboard_data[player.getName()];
-                        if (onboard_data_player) {
-                            if (onboard_data_player['phase2'] && onboard_data_player['phase2']['last ran'] && onboard_data_player['phase2']['last ran'].depositAll) depositAllLastRan = onboard_data_player['phase2']['last ran'].depositAll;
-                            if (!depositAllLastRan && onboard_data_player['last ran'] && onboard_data_player['last ran'].depositAll) depositAllLastRan = onboard_data_player['last ran'].depositAll;
-                        }
-                    } catch (e9) { depositAllLastRan = null; }
+                    var depositAllLastRan = onboarding_phase2_getLastRan(pdata, 'depositAll');
 
                     if (!depositAllLastRan || (pdata.phase2.s3b_promptTime && depositAllLastRan < pdata.phase2.s3b_promptTime)) {
                         var lastBA = pdata.phase2.s3b_lastMsg || pdata.phase2.s3b_promptTime || 0;
@@ -408,16 +389,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Detect !withdraw command
-                    var withdrawLastRan = null;
-                    try {
-                        var odW = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                        var pW = odW[player.getName()];
-                        if (pW) {
-                            if (pW['phase2'] && pW['phase2']['last ran'] && pW['phase2']['last ran'].withdraw) withdrawLastRan = pW['phase2']['last ran'].withdraw;
-                            if (!withdrawLastRan && pW['last ran'] && pW['last ran'].withdraw) withdrawLastRan = pW['last ran'].withdraw;
-                            if (!withdrawLastRan && pW['phase2'] && pW['phase2']['last_ran'] && pW['phase2']['last_ran'].withdraw) withdrawLastRan = pW['phase2']['last_ran'].withdraw;
-                        }
-                    } catch (we3) { withdrawLastRan = null; }
+                    var withdrawLastRan = onboarding_phase2_getLastRan(pdata, 'withdraw');
 
                     if (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < pdata.phase2.s4_withdraw_promptTime)) {
                         var lastW = pdata.phase2.s4_withdraw_lastMsg || pdata.phase2.s4_withdraw_promptTime || 0;
@@ -491,19 +463,8 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Detect either deposit or depositAll
-                    var dRan = null, daRan = null;
-                    var odRD = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                    var pRD = odRD[player.getName()];
-                    if (pRD) {
-                        if (pRD['phase2'] && pRD['phase2']['last ran']) {
-                            if (pRD['phase2']['last ran'].deposit) dRan = pRD['phase2']['last ran'].deposit;
-                            if (pRD['phase2']['last ran'].depositAll) daRan = pRD['phase2']['last ran'].depositAll;
-                        }
-                        if (pRD['last ran']) {
-                            if (!dRan && pRD['last ran'].deposit) dRan = pRD['last ran'].deposit;
-                            if (!daRan && pRD['last ran'].depositAll) daRan = pRD['last ran'].depositAll;
-                        }
-                    }
+                    var dRan = onboarding_phase2_getLastRan(pdata, 'deposit');
+                    var daRan = onboarding_phase2_getLastRan(pdata, 'depositAll');
 
                     // tellPlayer(player, '&7DEBUG: dRan=' + dRan + ' daRan=' + daRan + ' promptTime=' + pdata.phase2.s4_redeposit_promptTime);
 
@@ -594,16 +555,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Detect !withdraw command
-                    var withdrawLastRan4 = null;
-                    try {
-                        var odW4 = loadJson(ONBOARDING_DATA_PATH_LOCAL) || {};
-                        var pW4 = odW4[player.getName()];
-                        if (pW4) {
-                            if (pW4['phase2'] && pW4['phase2']['last ran'] && pW4['phase2']['last ran'].withdraw) withdrawLastRan4 = pW4['phase2']['last ran'].withdraw;
-                            if (!withdrawLastRan4 && pW4['last ran'] && pW4['last ran'].withdraw) withdrawLastRan4 = pW4['last ran'].withdraw;
-                            if (!withdrawLastRan4 && pW4['phase2'] && pW4['phase2']['last_ran'] && pW4['phase2']['last_ran'].withdraw) withdrawLastRan4 = pW4['phase2']['last_ran'].withdraw;
-                        }
-                    } catch (we34) { withdrawLastRan4 = null; }
+                    var withdrawLastRan4 = onboarding_phase2_getLastRan(pdata, 'withdraw');
 
                     if (!withdrawLastRan4 || (pdata.phase2.s4_multi_promptTime && withdrawLastRan4 < pdata.phase2.s4_multi_promptTime)) {
                         var lastM = pdata.phase2.s4_multi_lastMsg || pdata.phase2.s4_multi_promptTime || 0;
