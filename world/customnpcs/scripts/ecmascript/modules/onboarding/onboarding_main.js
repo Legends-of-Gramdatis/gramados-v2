@@ -2,12 +2,13 @@
 // This script runs per player: login() on login, chat() on player chat/commands, tick() per-player.
 // Phase logic is delegated to phase scripts returning boolean when data changed.
 //
-// Persistent onboarding state is stored per player UUID. This intentionally avoids
-// keeping/saving a shared in-memory snapshot of every player's onboarding data,
-// which could cause one player's stale cache to overwrite another player's progress.
+// Persistent onboarding state is stored per player UUID. Progress is reloaded from
+// that player's file before each processing pass so writes made by commands/debug
+// tools in other script contexts cannot be overwritten by stale in-memory state.
 
 // === Loads ===
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_onboarding.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
@@ -22,46 +23,25 @@ load('world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_phase3.j
 
 // === Constants ===
 var ONBOARDING_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboarding/onboarding_config.json';
-var ONBOARDING_DATA_DIR = 'world/customnpcs/scripts/data_auto/onboarding';
-
-// Legacy shared data file. Read-only and used only to migrate existing players the
-// first time they log in after this storage refactor.
-var ONBOARDING_LEGACY_DATA_PATH = 'world/customnpcs/scripts/data_auto/onboarding_data.json';
 
 var onboarding_tick_counter = 0;
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 var WORLD = API.getIWorld(0);
 
-// === In-Memory State (per-script / per-player instance) ===
+// === Script State ===
 var _onboarding_cfg = null;
-var _onboarding_current_pdata = null;
 
 function onboarding_loadConfig() {
     _onboarding_cfg = loadJson(ONBOARDING_CONFIG_PATH) || null;
     if (!_onboarding_cfg) throw 'empty';
 }
 
-function onboarding_ensureDataDir() {
-    var dir = new java.io.File(ONBOARDING_DATA_DIR);
-    if (!dir.exists()) {
-        dir.mkdirs();
-    }
-}
-
-function onboarding_getPlayerUuid(player) {
-    return String(player.getUUID());
-}
-
-function onboarding_getPlayerDataPath(player) {
-    return ONBOARDING_DATA_DIR + '/' + onboarding_getPlayerUuid(player) + '.json';
-}
-
 function onboarding_createPlayerData(player) {
     var initialPhase = onboarding_isBlacklisted(player) ? 3 : 0;
     var pdata = {
         name: player.getName(),
-        uuid: onboarding_getPlayerUuid(player),
+        uuid: onboardingStorage_getPlayerUuid(player),
         created: Date.now(),
         phase: initialPhase
     };
@@ -73,45 +53,38 @@ function onboarding_createPlayerData(player) {
 
 /**
  * Migrates this player's old name-keyed onboarding entry, if present.
- * The legacy file is intentionally never written by the new system.
+ * The legacy shared file is intentionally read-only.
  */
 function onboarding_loadLegacyPlayerData(player) {
-    if (!checkFileExists(ONBOARDING_LEGACY_DATA_PATH)) return null;
-
-    var legacy = loadJson(ONBOARDING_LEGACY_DATA_PATH);
-    if (!legacy) return null;
-
-    var pdata = legacy[player.getName()];
+    var pdata = onboardingStorage_loadLegacyPlayerData(player);
     if (!pdata) return null;
 
     pdata.name = player.getName();
-    pdata.uuid = onboarding_getPlayerUuid(player);
+    pdata.uuid = onboardingStorage_getPlayerUuid(player);
     logToFile('onboarding', '[p.migrate] Migrated legacy onboarding data for ' + player.getName() + ' to UUID storage.');
     return pdata;
 }
 
+/**
+ * Always reads the player's current UUID file from disk.
+ *
+ * This is intentionally not cached. Onboarding commands and debug/admin tools run in
+ * separate CustomNPCs script contexts and may update the same player's UUID file.
+ * Reloading prevents the controller from later saving a stale copy over those writes.
+ */
 function onboarding_loadPlayerData(player) {
-    onboarding_ensureDataDir();
-
-    var path = onboarding_getPlayerDataPath(player);
-    var pdata = null;
-
-    if (checkFileExists(path)) {
-        pdata = loadJson(path);
-    }
+    var pdata = onboardingStorage_loadPlayerData(player, false);
 
     if (!pdata) {
         pdata = onboarding_loadLegacyPlayerData(player);
-        if (!pdata) {
-            pdata = onboarding_createPlayerData(player);
-        }
+        if (!pdata) pdata = onboarding_createPlayerData(player);
         onboarding_savePlayerData(player, pdata);
     }
 
     // Keep identity metadata current without changing progression state.
     var identityChanged = false;
     var currentName = player.getName();
-    var currentUuid = onboarding_getPlayerUuid(player);
+    var currentUuid = onboardingStorage_getPlayerUuid(player);
     if (pdata.name !== currentName) {
         pdata.name = currentName;
         identityChanged = true;
@@ -120,27 +93,16 @@ function onboarding_loadPlayerData(player) {
         pdata.uuid = currentUuid;
         identityChanged = true;
     }
-    if (identityChanged) {
-        onboarding_savePlayerData(player, pdata);
-    }
+    if (identityChanged) onboarding_savePlayerData(player, pdata);
 
-    _onboarding_current_pdata = pdata;
     return pdata;
 }
 
 function onboarding_savePlayerData(player, pdata) {
-    if (!player || !pdata) return;
-    onboarding_ensureDataDir();
-    pdata.name = player.getName();
-    pdata.uuid = onboarding_getPlayerUuid(player);
-    saveJson(pdata, onboarding_getPlayerDataPath(player));
-    _onboarding_current_pdata = pdata;
+    return onboardingStorage_savePlayerData(player, pdata);
 }
 
 function onboarding_getPlayerData(player) {
-    if (_onboarding_current_pdata) {
-        return _onboarding_current_pdata;
-    }
     return onboarding_loadPlayerData(player);
 }
 
@@ -161,10 +123,9 @@ function onboarding_isModuleEnabled() {
     return _onboarding_cfg && _onboarding_cfg.general && _onboarding_cfg.general.moduleEnabled;
 }
 
-// Phase 2 used to learn about command execution through CustomServerTools writing
-// timestamps into the legacy shared onboarding_data.json. That bridge became invalid
-// when onboarding state moved to per-UUID files. Record the relevant commands here,
-// in the same per-player script instance that owns the onboarding state instead.
+// Phase 2 command execution is observed here so timestamps are written in the same
+// controller context as progression state. The old CustomServerTools command logger
+// is disabled by onboarding_cst_bridge.js.
 function onboarding_getPhase2CommandKey(message) {
     if (message === null || typeof message === 'undefined') return null;
 
@@ -185,7 +146,7 @@ function onboarding_recordPhase2Command(player, commandKey) {
     if (!player || !commandKey) return false;
 
     var pdata = onboarding_getPlayerData(player);
-    if (!pdata || pdata.phase !== 2) return false;
+    if (!pdata || onboardingStorage_getPhaseNumber(pdata) !== 2) return false;
 
     if (!pdata.phase2 || typeof pdata.phase2 !== 'object') pdata.phase2 = {};
     if (!pdata.phase2['last ran'] || typeof pdata.phase2['last ran'] !== 'object') {
@@ -209,7 +170,8 @@ function login(event) {
 
     var pdata = onboarding_loadPlayerData(player);
     var changed = false;
-    var phaseIdx = pdata.phase || 0;
+    var phaseIdx = onboardingStorage_getPhaseNumber(pdata);
+    if (phaseIdx === null) phaseIdx = 0;
 
     // Skip hint (only for implemented phases; not Phase 0 and not Phase 4+)
     if (phaseIdx >= 1 && phaseIdx <= 4) {
@@ -231,7 +193,6 @@ function login(event) {
                 var npcName = arrival.dialog.npc;
                 var chatCfg = arrival.dialog.chat || {};
                 var templ = chatCfg.onWelcome;
-                // var npcFormatted = '&6&l' + npcName + '&r&b';
                 // Show the Immigrant Office separator title before the welcome message
                 var phaseName0 = (phase0 && phase0.name) ? phase0.name : 'Immigrant Office';
                 tellSeparatorTitle(player, phaseName0, '&6', '&e');
@@ -246,9 +207,7 @@ function login(event) {
         }
     }
 
-    if (changed) {
-        onboarding_savePlayerData(player, pdata);
-    }
+    if (changed) onboarding_savePlayerData(player, pdata);
 }
 
 function chat(event) {
@@ -269,9 +228,7 @@ function chat(event) {
 
 function tick(event) {
     onboarding_tick_counter++;
-    if (onboarding_tick_counter < 10) {
-        return;
-    }
+    if (onboarding_tick_counter < 10) return;
     onboarding_tick_counter = 0;
 
     if (!_onboarding_cfg) return;
@@ -280,11 +237,12 @@ function tick(event) {
     if (!onboarding_isModuleEnabled()) return;
     // if (!onboarding_isBetaAllowed(player)) return;
 
+    // Reload authoritative state on each processing pass. Do not retain a stale copy.
     var pdata = onboarding_getPlayerData(player);
     if (!pdata) return;
 
     var changed = false;
-    switch (pdata.phase) {
+    switch (onboardingStorage_getPhaseNumber(pdata)) {
         case 0:
             changed = onboarding_run_phase0(player, pdata, _onboarding_cfg.phases['0'], _onboarding_cfg) || false;
             break;
@@ -301,7 +259,5 @@ function tick(event) {
             break;
     }
 
-    if (changed) {
-        onboarding_savePlayerData(player, pdata);
-    }
+    if (changed) onboarding_savePlayerData(player, pdata);
 }
