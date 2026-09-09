@@ -499,6 +499,14 @@ sets:
                 y: 75.0
                 z: -2829.0
                 label: La Criée de Port-aux-Huîtres - Fish Wholesale
+            marker_20:
+                world: world
+                markup: false
+                icon: shopping_wholesale
+                x: -2364.0
+                y: 96.0
+                z: 547.0
+                label: Blackrode Citrus Packing House
         lines: {
             }
         layerprio: 0
