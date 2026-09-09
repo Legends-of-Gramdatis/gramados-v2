@@ -72,16 +72,6 @@ function onboardingStorage_savePlayerData(player, pdata) {
     return true;
 }
 
-function onboardingStorage_deletePlayerData(player) {
-    if (!player) return false;
-    var path = onboardingStorage_getPlayerDataPath(player);
-    if (!path) return false;
-
-    var file = new java.io.File(path);
-    if (!file.exists()) return true;
-    return file['delete']();
-}
-
 function onboardingStorage_getPhaseNumber(pdata) {
     if (!pdata) return null;
     var phase = (typeof pdata.phase === 'number') ? pdata.phase : parseInt(pdata.phase, 10);
