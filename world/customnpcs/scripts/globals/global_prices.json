@@ -7992,5 +7992,44 @@
     },
     "mts:ivv.classickey:0": {
         "value": 5000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagon_ocean:0": {
+        "value": 950000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagon_sea:0": {
+        "value": 950000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagon_manilla:0": {
+        "value": 950000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagon_olive:0": {
+        "value": 950000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagonpolice_1:0": {
+        "value": 1400000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagonpolice_2:0": {
+        "value": 1400000
+    },
+    "mts:unucivil.unucivil_vehicle_unu_trio_wagonpolice_gramados:0": {
+        "value": 1400000
+    },
+    "harvestcraft:lemon_sapling:0": {
+        "value": 10000
+    },
+    "forestry:sapling:0": {
+        "value": 10000
+    },
+    "harvestcraft:orange_sapling:0": {
+        "value": 10000
+    },
+    "harvestcraft:pomegranate_sapling:0": {
+        "value": 10000
+    },
+    "harvestcraft:grapefruit_sapling:0": {
+        "value": 10000
+    },
+    "harvestcraft:lime_sapling:0": {
+        "value": 10000
     }
 }
