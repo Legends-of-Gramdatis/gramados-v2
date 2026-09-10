@@ -10,6 +10,9 @@
             "ScriptList": [
                 {
                     "Line": "customservertools.js"
+                },
+                {
+                    "Line": "modules/onboarding/onboarding_cst_bridge.js"
                 }
             ]
         },
