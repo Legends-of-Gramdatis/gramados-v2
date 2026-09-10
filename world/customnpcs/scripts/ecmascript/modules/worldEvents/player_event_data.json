@@ -361,7 +361,7 @@
             "egg_count": 22
         },
         "Global Data": {
-            "egg_count": 233
+            "egg_count": 234
         },
         "AliceOfTheMoon": {
             "has_starter_pack": true,
@@ -474,10 +474,10 @@
                     "egg_count": 1
                 },
                 "spring": {
-                    "egg_count": 1
+                    "egg_count": 2
                 }
             },
-            "egg_count": 4
+            "egg_count": 5
         }
     }
 }
