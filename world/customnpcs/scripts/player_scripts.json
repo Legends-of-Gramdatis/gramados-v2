@@ -65,6 +65,16 @@
                     "Line": "modules/unlocks/unlock_engine.js"
                 }
             ]
+        },
+        {
+            "Script": "",
+            "Console": [
+            ],
+            "ScriptList": [
+                {
+                    "Line": "modules/regions/devland_access_control.js"
+                }
+            ]
         }
     ],
     "ScriptLanguage": "ECMAScript"
