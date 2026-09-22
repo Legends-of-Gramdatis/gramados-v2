@@ -1116,6 +1116,22 @@ sets:
                 y: 99.0
                 z: 453.0
                 label: Blackrode
+            marker_23:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: -3453.0
+                y: 72.0
+                z: 6968.0
+                label: Calzadelad
+            marker_24:
+                world: world
+                markup: false
+                icon: civil_services_Civic_Building
+                x: 3132.0
+                y: 73.0
+                z: 7968.0
+                label: Galena
         lines: {
             }
         layerprio: 0
@@ -2064,6 +2080,30 @@ sets:
                 y: 69.0
                 z: -5918.0
                 label: Colren Fuel - Charging Station
+            marker_41:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: -3425.0
+                y: 72.0
+                z: 7016.0
+                label: SOLVÍA - Fuel Station
+            marker_42:
+                world: world
+                markup: false
+                icon: services_station_electric
+                x: -3412.0
+                y: 72.0
+                z: 7013.0
+                label: SOLVÍA - Charging Station
+            marker_43:
+                world: world
+                markup: false
+                icon: services_station_petrol
+                x: 3102.0
+                y: 72.0
+                z: 7969.0
+                label: Galena Fuels - Fuel Station
         lines: {
             }
         layerprio: 0
@@ -2473,6 +2513,14 @@ sets:
                 y: 73.0
                 z: 7221.0
                 label: Public Restrooms
+            marker_31:
+                world: world
+                markup: false
+                icon: civil_services_police
+                x: 3124.0
+                y: 73.0
+                z: 7968.0
+                label: Galena Police Station
         lines: {
             }
         layerprio: 0
@@ -2996,6 +3044,14 @@ sets:
                 y: 110.0
                 z: -5110.0
                 label: Les Jardins en Terrasses de Montaigarde - Allotments
+            marker_33:
+                world: world
+                markup: false
+                icon: outdoor_resort
+                x: 3089.0
+                y: 125.0
+                z: 7843.0
+                label: Galena Hot Springs
         lines: {}
         layerprio: 0
     Parkings:
@@ -3200,6 +3256,14 @@ sets:
                 y: 72.0
                 z: 7195.0
                 label: Brisamar Parking
+            marker_25:
+                world: world
+                markup: false
+                icon: services_parking
+                x: 2971.0
+                y: 72.0
+                z: 7953.0
+                label: Galena Hot Springs Car Park
         lines: {}
         layerprio: 0
     Historical Sites:
@@ -3915,10 +3979,10 @@ sets:
         minzoom: 3
         circles: {
             }
-        deficon: transport_misc
+        deficon: shopping_factory
         areas: {
             }
-        label: Transports
+        label: Factories
         markers:
             marker_1:
                 world: world
@@ -4024,6 +4088,14 @@ sets:
                 y: 85.0
                 z: 3423.0
                 label: The Hall of the Deep Warrant - Zundral Hollow HQ
+            marker_14:
+                world: world
+                markup: false
+                icon: shopping_factory
+                x: 3265.0
+                y: 71.0
+                z: 7833.0
+                label: Galena Silver Mines
         lines: {}
         layerprio: 0
     Wine Domains:
