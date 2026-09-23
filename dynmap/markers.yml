@@ -155,6 +155,8 @@ icons:
         label: shopping_carparts
     shopping_factory:
         label: shopping_factory
+    shopping_mine:
+        label: shopping_mine
     transport_misc:
         label: transport_misc
     transport_airport:
@@ -4091,7 +4093,7 @@ sets:
             marker_14:
                 world: world
                 markup: false
-                icon: shopping_factory
+                icon: shopping_mine
                 x: 3265.0
                 y: 71.0
                 z: 7833.0
