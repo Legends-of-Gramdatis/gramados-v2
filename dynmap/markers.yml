@@ -4098,6 +4098,14 @@ sets:
                 y: 71.0
                 z: 7833.0
                 label: Galena Silver Mines
+            marker_15:
+                world: world
+                markup: false
+                icon: shopping_mine
+                x: -457.0
+                y: 80.0
+                z: 956.0
+                label: Gramados Coal Mine
         lines: {}
         layerprio: 0
     Wine Domains:
