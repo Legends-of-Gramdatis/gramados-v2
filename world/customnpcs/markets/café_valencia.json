@@ -1,0 +1,488 @@
+{
+    "TraderCurrency": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 7b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 13b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 7b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 7b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 9b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 8b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 9b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 9b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 5b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 9b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 8b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 9b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_iron",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§e1G"
+                        ],
+                        "Name": "§2§lMoney§r"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "TraderIgnoreDamage": 0b,
+    "TraderIgnoreNBT": 0b,
+    "TraderSold": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:coffeeitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:hotchocolateitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:etonmessitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:espressoitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:fruitpunchitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:chaiteaitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:bananamilkshakeitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:custarditem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 9b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:earlgreyteaitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 10b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:strawberrymilkshakeitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 11b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:meringuebombeitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 12b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:teaitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 13b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:chocolatemilkshakeitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 14b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:marzipanitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 15b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:rosepetalteaitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 16b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:bubbleteaitem",
+                "Count": 1b,
+                "Damage": 0s
+            },
+            {
+                "Slot": 17b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "harvestcraft:fairybreaditem",
+                "Count": 1b,
+                "Damage": 0s
+            }
+        ]
+    }
+}
