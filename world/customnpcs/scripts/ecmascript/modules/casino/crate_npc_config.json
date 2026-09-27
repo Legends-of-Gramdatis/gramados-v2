@@ -1,0 +1,12 @@
+{
+    "crate_type": {
+        "id": "minecraft:shulker_shell",
+        "name": "&bSelect Crate Type",
+        "description": "&7Cycles through the configured casino crate types."
+    },
+    "enabled": {
+        "id": "variedcommodities:coin_iron",
+        "name": "&bToggle Crate Availability",
+        "description": "&7Enables or disables this crate without clearing its type."
+    }
+}
