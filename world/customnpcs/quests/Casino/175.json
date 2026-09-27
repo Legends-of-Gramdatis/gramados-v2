@@ -1,0 +1,236 @@
+{
+    "CompleterNpc": "Daily Bet",
+    "NextQuestId": -1,
+    "RandomReward": 1b,
+    "QuestRepeat": 4,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Diamond Daily Draw",
+    "Text": "I can deposit 1,000 Lucky Credits into the Diamond Daily Draw for a chance to obtain a premium loot box key or recover some of my credits. I can only enter once every 24 hours.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 0,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1790528324794L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "IgnoreDamage": 0b,
+    "Rewards": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_gold",
+                "Count": 4b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §e100 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§eGold Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 1b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_gold",
+                "Count": 6b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §e100 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§eGold Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 2b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_gold",
+                "Count": 8b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §e100 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§eGold Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 3b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 4b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 5b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_gold",
+                "Count": 12b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §e100 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§eGold Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 6b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 7b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            },
+            {
+                "Slot": 8b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "Items": {
+        "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:coin_diamond",
+                "Count": 1b,
+                "tag": {
+                    "display": {
+                        "Lore": [
+                            "§7Value: §b1,000 Lucky Credits",
+                            "§8For use in the Casinos."
+                        ],
+                        "Name": "§bDiamond Chip"
+                    }
+                },
+                "Damage": 0s
+            }
+        ]
+    },
+    "LeaveItems": 0b,
+    "CompleteText": "I've entered the Diamond Daily Draw. Let's see what today's reward is worth!",
+    "NextQuestTitle": ""
+}
