@@ -97,7 +97,7 @@ function interact(event) {
         return;
     }
 
-    dropLoot(npc, loot);
+    dropLoot(npc, loot, player);
     playJunkyardCrateSound(npc, "minecraft:entity.zombie.break_door_wood");
 
     crowbars.setStackSize(crowbars.getStackSize() - config.JUNKER_CRATE_CROWBAR_COST);
