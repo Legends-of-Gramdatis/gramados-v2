@@ -508,33 +508,32 @@ function weightedRandom(entries) {
  * @returns {Object} - The generated item stack.
  */
 function generateItemStackFromLootEntry(entry, world, player) {
-    try {
-        var itemstack = world.createItem(
-            entry.id,
-            entry.damage || 0,
-            entry.count || 1
-        );
-        if (entry.nbt) {
-            var nbt = API.stringToNbt(entry.nbt);
-            // set nbt to itemstack
-            itemstack = setNbtToItemStack(itemstack, nbt, world);
-        }
-        if (entry.modifier) {
-            itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
-            if (entry.modifier.modifierClass === "key" && !isCrateKeyModifier(itemstack)) return null;
-        }
-        if (entry.bindOwnerToPlayer) {
-            if (!player || typeof player.getUUID !== "function") {
-                logToFile("loot_tables", "Owner-bound reward requires a player during materialization.");
-                return null;
-            }
-            itemstack = bindItemToPlayer(itemstack, player);
-        }
-        return itemstack;
-    } catch (error) {
-        logToFile("dev", "Failed to create item stack for item: " + JSON.stringify(entry) + ". Error: " + error.message);
-        return null;
+    var itemstack = world.createItem(
+        entry.id,
+        entry.damage || 0,
+        entry.count || 1
+    );
+
+    if (entry.nbt) {
+        var nbt = API.stringToNbt(entry.nbt);
+        itemstack = setNbtToItemStack(itemstack, nbt, world);
     }
+
+    if (entry.modifier) {
+        itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
+        if (entry.modifier.modifierClass === "key" && !isCrateKeyModifier(itemstack)) {
+            throw new Error("Failed to create crate-key modifier from loot entry: " + JSON.stringify(entry));
+        }
+    }
+
+    if (entry.bindOwnerToPlayer) {
+        if (!player || typeof player.getUUID !== "function") {
+            throw new Error("set_owner requires a player in generateItemStackFromLootEntry: " + JSON.stringify(entry));
+        }
+        itemstack = bindItemToPlayer(itemstack, player);
+    }
+
+    return itemstack;
 }
 
 /**
