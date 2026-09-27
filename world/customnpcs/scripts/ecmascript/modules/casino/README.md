@@ -33,3 +33,13 @@ Players hold an owner-bound, matching key in their main hand and interact. The N
 For owner-bound loot table rewards, consumers must call `generateItemStackFromLootEntry(entry, world, player)`; the generic configured-reward utility already passes the player. Bound orbs may be transferred but cannot be activated by anyone except their owner. Ordinary unbound modifiers retain their existing behaviour.
 
 Test two-player ownership, stacked keys, full inventory, changed configuration, and simultaneous volatile pulls in-game before deploying scarce prizes.
+
+## Compatibility: loot item materialization
+
+The third `player` argument in `generateItemStackFromLootEntry(entry, world, player)` is **optional for unbound loot**, preserving the original two-argument behaviour. It is **required** for entries with `set_owner: player`. Missing owners and invalid crate-key modifiers throw script exceptions rather than returning a silent null.
+
+Existing player-controlled reward paths were reviewed and now pass the recipient: generic configured rewards, job milestones, onboarding, bank safe loot, Easter eggs, April Fools fish catches, pickpocket bonus loot, junkyard part orders, junkyard crate drops, and crowbar generation. The legacy welcome-pack script has also been updated.
+
+Four intentionally two-argument NPC-only call sites remain: `single_use/humanNPCloot.js`, `modules/npc_scripts/PoliceNPC.js`, `modules/bankVault/bank_guard_npc.js`, and `gramados_utils/utils_trader.js`. These generate NPC drops or trader inventory *without a defined player recipient*. Their existing unbound tables work unchanged; do not add `set_owner` to those tables without establishing the recipient at redemption/death time. A bound entry in those contexts raises a visible script exception rather than silently generating an unbound item.
+
+Static call-site and JavaScript syntax checks pass for the reviewed scripts. Simulated item-generation checks pass for unbound two-argument loot, NBT loot, bound three-argument keys, missing recipients and invalid key specifications. These do not replace in-game CustomNPCs/Nashorn integration tests.
