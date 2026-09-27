@@ -3,6 +3,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifiers.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js");
 
 var MODIFIERS_CFG_PATH = "world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json";
 
@@ -39,6 +40,13 @@ function interact(event) {
 
     var item = update_old_modifier_to_new(originalItem.copy(), player);
     item.setStackSize(1);
+
+    // Bound modifiers are unusable by other players. Unbound orbs retain
+    // their existing freely-transferable behaviour.
+    if (getItemOwnerUUID(item) !== null && !isItemOwnedBy(item, player)) {
+        tellPlayer(player, "&cThis modifier belongs to another player.");
+        return;
+    }
 
     // Differentiate modifier classes
     if (is_modifier(item)) {
