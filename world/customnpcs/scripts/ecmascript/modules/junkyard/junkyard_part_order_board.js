@@ -117,7 +117,7 @@ function generateOrder(player, playerName, world) {
     var totalPayout = 0;
 
     lootTable.forEach(function (entry) {
-        var itemStack = generateItemStackFromLootEntry(entry, world);
+        var itemStack = generateItemStackFromLootEntry(entry, world, player);
         parts.push({
             id: itemStack.getName(),
             count: entry.count,
