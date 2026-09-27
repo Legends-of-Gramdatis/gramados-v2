@@ -1,11 +1,28 @@
 # Owner-bound crate keys
 
-The optional loot-table function `{"function":"set_owner","owner":"player"}` binds a generated item to its recipient's UUID and adds display lore. General items/modifiers remain tradable and usable unless their consumer enforces ownership. The crate NPC always requires ownership.
+The optional loot-table function `{"function":"set_owner","owner":"player"}` binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json`.
 
-Generate bound items with `generateItemStackFromLootEntry(entry, world, player)`; a missing recipient fails closed. `grantConfiguredRewards` passes the player already. If an existing caller uses a new owner-bound loot table, update it to pass the recipient.
+## Setting up an NPC
 
-Keys use `set_modifier` with `modifier_class: key`, `type: open_crate`, `crate_type`, and an optional `item_id`, `key_name`, and `key_description`. Pair it with `set_owner`. See `world/loot_tables/casino/example_art_key.json`.
+The casino crate NPC follows the Market NPC's item-driven configuration pattern. Attach `modules/casino/crate_npc.js` to a CustomNPCs NPC, then hold the Seagull ID Card (`mts:ivv.idcard_seagull`) in your offhand:
 
-To configure a crate NPC, attach `modules/casino/crate_npc.js`; with the admin Seagull ID card in offhand and paper in main hand, interact to cycle crate type. Edit `modules/casino/crates.json` to configure available types and loot tables. Players hold their bound key in main hand and interact to open; the NPC checks UUID and matching crate type, generates rewards, commits volatile loot when present, consumes one key and gives rewards. Ordinary right-click on the key does nothing except display guidance through the modifier engine.
+| Main-hand item | Action |
+| --- | --- |
+| Empty hand | Display current setup; if unconfigured, display help and grant configuration items |
+| Shulker Shell | Cycle the NPC's crate type using `crates.json` |
+| Iron Coin | Toggle this crate's enabled state |
+| Barrier | Clear this NPC's crate type and enabled state |
 
-The art, gems and stickers examples are smoke-test configurations, not finalized casino balancing. Multiplayer, stacked keys, inventory-full and concurrent volatile-pool openings need in-game verification before deploying scarce rewards.
+The item IDs, display names and descriptions come from `crate_npc_config.json`, not from separate hard-coded interaction checks. Admin mode always takes precedence over ordinary key opening. Unrecognized admin items produce a help message without opening a crate.
+
+Select the crate type first, then enable it. An initialized but unconfigured or disabled NPC cannot dispense rewards. An NPC configured before the enabled switch existed is automatically enabled during initialization to preserve the previous behaviour.
+
+Edit `crates.json` to define each type's name, description and loot table. Current art, gems and stickers types are *demonstration configurations*, not finalized casino rewards.
+
+## Normal interaction
+
+Players hold an owner-bound, matching key in their main hand and interact. The NPC checks the UUID and crate type, prepares all rewards, commits volatile entries if applicable, consumes one key, then gives the rewards.
+
+For owner-bound loot table rewards, consumers must call `generateItemStackFromLootEntry(entry, world, player)`; the generic configured-reward utility already passes the player. Bound orbs may be transferred but cannot be activated by anyone except their owner. Ordinary unbound modifiers retain their existing behaviour.
+
+Test two-player ownership, stacked keys, full inventory, changed configuration, and simultaneous volatile pulls in-game before deploying scarce prizes.
