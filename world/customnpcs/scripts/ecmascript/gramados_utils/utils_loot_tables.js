@@ -3,6 +3,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
@@ -161,7 +162,8 @@ function _prepareLootTablePull(
                 id: selected.name || "minecraft:air",
                 count: 1,
                 damage: 0,
-                nbt: null
+                nbt: null,
+                bindOwnerToPlayer: false
             };
 
             if (selected.functions) {
@@ -195,6 +197,14 @@ function _prepareLootTablePull(
 
                     if (func.function === "set_nbt") {
                         item.nbt = func.tag;
+                    }
+
+                    if (func.function === "set_owner") {
+                        if (func.owner !== "player") {
+                            logToFile("loot_tables", "Unsupported set_owner target in " + fullPath);
+                            return null;
+                        }
+                        item.bindOwnerToPlayer = true;
                     }
 
                     if (func.function === "set_modifier") {
@@ -265,9 +275,10 @@ function _prepareLootTablePull(
                             modifierUse:
                                 func.modifier_use ||
                                 func.modifierUse,
-                            overrideItemId:
-                                func.itemId ||
-                                func.item_id
+                            overrideItemId: func.itemId || func.item_id,
+                            crateType: func.crate_type || func.crateType,
+                            keyName: func.key_name || func.keyName,
+                            keyDescription: func.key_description || func.keyDescription
                         };
                     }
                 }
@@ -496,7 +507,7 @@ function weightedRandom(entries) {
  * @param {IWorld} world - The world object to create the item in.
  * @returns {Object} - The generated item stack.
  */
-function generateItemStackFromLootEntry(entry, world) {
+function generateItemStackFromLootEntry(entry, world, player) {
     try {
         var itemstack = world.createItem(
             entry.id,
@@ -510,6 +521,14 @@ function generateItemStackFromLootEntry(entry, world) {
         }
         if (entry.modifier) {
             itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
+            if (entry.modifier.modifierClass === "key" && !isCrateKeyModifier(itemstack)) return null;
+        }
+        if (entry.bindOwnerToPlayer) {
+            if (!player || typeof player.getUUID !== "function") {
+                logToFile("loot_tables", "Owner-bound reward requires a player during materialization.");
+                return null;
+            }
+            itemstack = bindItemToPlayer(itemstack, player);
         }
         return itemstack;
     } catch (error) {
