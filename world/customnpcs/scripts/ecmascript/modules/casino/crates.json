@@ -1,0 +1,13 @@
+{
+  "crates": {
+    "art": {
+      "loot_table": "art/art_paintings.json"
+    },
+    "gems": {
+      "loot_table": "treasures/treasures_gems.json"
+    },
+    "stickers": {
+      "loot_table": "automobile/stickers/bumper_stickers.json"
+    }
+  }
+}
