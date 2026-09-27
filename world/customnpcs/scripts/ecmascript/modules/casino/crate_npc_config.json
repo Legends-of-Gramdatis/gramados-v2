@@ -4,6 +4,11 @@
         "name": "&bSelect Crate Type",
         "description": "&7Cycles through the configured casino crate types."
     },
+    "casino": {
+        "id": "minecraft:nether_star",
+        "name": "&bLink Casino",
+        "description": "&7Links this crate to a defined casino at its current region."
+    },
     "enabled": {
         "id": "variedcommodities:coin_iron",
         "name": "&bToggle Crate Availability",
