@@ -7,7 +7,12 @@ function bindItemToPlayer(stack, player) {
     tag.setString('owner_name', String(player.getName()));
     nbt.setCompound('tag', tag);
     var item = player.getWorld().createItemFromNbt(nbt);
-    var lore = item.getLore() || [];
+    // CustomNPCs exposes lore as a Java array/list in Nashorn, not a JS Array.
+    var currentLore = item.getLore();
+    var lore = [];
+    if (currentLore) {
+        for (var i = 0; i < currentLore.length; i++) lore.push(String(currentLore[i]));
+    }
     lore.push('§8Bound to: §a' + player.getName());
     item.setLore(lore);
     return item;
