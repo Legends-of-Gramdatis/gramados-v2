@@ -119,19 +119,18 @@ function recordCasinoCrateOpen(casinoId, casinoName, crate, npc, player, key, re
         java.lang.System.err.println('[Casino] Failed to update crate statistics: ' + e2);
     }
 
-    try {
-        logToFile('casino', JSON.stringify({
-            Event: 'crate_opened',
-            Casino: casinoId,
-            CrateType: crate.type,
-            Player: String(player.getName()),
-            Rewards: summary,
-            AuditWritten: auditOk,
-            StatsWritten: statsOk
-        }));
-    } catch (e3) {
-        java.lang.System.err.println('[Casino] Failed to write standard casino log: ' + e3);
+    // Human-readable activity log; structured details stay in the JSONL
+    // audit trail and the aggregated statistics JSON.
+    var rewardText = [];
+    for (var k = 0; k < summary.length; k++) {
+        rewardText.push(summary[k].Count + 'x ' + summary[k].Item);
     }
+
+    logToFile(
+        'casino',
+        player.getName() + ' opened ' + crate.name + ' at ' + casinoName +
+        ' and received ' + rewardText.join(', ') + '.'
+    );
 
     return auditOk && statsOk;
 }
