@@ -34,7 +34,7 @@ function init(event) {
     if (lootedItems && lootedItems.length > 0) {
         for (var i = 0; i < lootedItems.length; i++) {
             player.giveItem(
-                generateItemStackFromLootEntry(lootedItems[i], world)
+                generateItemStackFromLootEntry(lootedItems[i], world, player)
                 );
         }
         player.message("&aThe town's caretakers present you with a bicycle - may it carry you far and safely.");
