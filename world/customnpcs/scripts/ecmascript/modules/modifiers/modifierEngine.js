@@ -52,6 +52,10 @@ function interact(event) {
             case "consumable":
                 handle_consumable_modifier(event, player, item, originalItem);
                 break;
+
+            case "key":
+                tellPlayer(player, "&eUse this key on its matching crate.");
+                break;
             
             default:
                 tellPlayer(player, "§c:sun: Unknown modifier class: " + modifierClass);
