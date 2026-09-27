@@ -119,7 +119,7 @@ function interact(event) {
     // === Give crowbars
     var loot = multiplePullLootTable(_LOOTTABLE_JUNKYARD_CRATE_CROWBAR, player, purchaseAmount);
     for (var i = 0; i < loot.length; i++) {
-        var crowbar = setupCrowbarNameLore(loot[i], world);
+        var crowbar = setupCrowbarNameLore(loot[i], world, player);
         if (!player.giveItem(crowbar)) {
             player.dropItem(crowbar);
         }
@@ -411,8 +411,8 @@ function consumeMainhandItems(player, world, amount) {
 }
 
 
-function setupCrowbarNameLore(loot_entry, world) {
-    var item = generateItemStackFromLootEntry(loot_entry, world);
+function setupCrowbarNameLore(loot_entry, world, player) {
+    var item = generateItemStackFromLootEntry(loot_entry, world, player);
 
     item.setCustomName("§6Junkyard Crate Crowbar");
 
