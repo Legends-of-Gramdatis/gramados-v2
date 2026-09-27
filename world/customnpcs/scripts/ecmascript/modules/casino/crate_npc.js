@@ -2,12 +2,16 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
+load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_stats.js');
 
-// Each NPC stores only its selected crate type and enabled state.
-// All available crate types and all admin items are configured in JSON.
+// Each NPC stores its crate type, casino association, and enabled state.
+// Casino definitions, crate types, and admin items are separate JSON dictionaries.
 var CASINO_CRATES_CONFIG = 'world/customnpcs/scripts/ecmascript/modules/casino/crates.json';
 var CASINO_ADMIN_ITEMS_CONFIG = 'world/customnpcs/scripts/ecmascript/modules/casino/crate_npc_config.json';
+var CASINO_DEFINITIONS_CONFIG = 'world/customnpcs/scripts/ecmascript/modules/casino/casinos.json';
 var CASINO_CRATE_TYPE_KEY = 'casino_crate_type';
+var CASINO_ID_KEY = 'casino_id';
 var CASINO_CRATE_ENABLED_KEY = 'casino_crate_enabled';
 var CASINO_ADMIN_CARD = 'mts:ivv.idcard_seagull';
 var CASINO_ADMIN_RESET = 'minecraft:barrier';
@@ -41,11 +45,20 @@ function interact(event) {
         tellPlayer(player, '&cThis crate is not configured. Please contact an admin.');
         return;
     }
+    var casino = getLinkedCasino(npc);
+    if (!casino) {
+        tellPlayer(player, '&cThis crate is not linked to a valid casino. Please contact an admin.');
+        return;
+    }
+    if (!isNpcInsideCasino(npc, casino)) {
+        tellPlayer(player, '&cThis crate is outside its linked casino region. Please contact an admin.');
+        return;
+    }
     if (!isCasinoCrateEnabled(npc)) {
         tellPlayer(player, '&eThis crate is currently unavailable.');
         return;
     }
-    openCasinoCrate(npc, player, mainhand, crate);
+    openCasinoCrate(npc, player, mainhand, crate, casino);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -54,7 +67,7 @@ function interact(event) {
 
 function loadCasinoAdminItems() {
     var config = loadJson(CASINO_ADMIN_ITEMS_CONFIG);
-    if (!config || !config.crate_type || !config.enabled) return null;
+    if (!config || !config.crate_type || !config.casino || !config.enabled) return null;
 
     // Reject collisions and incomplete definitions instead of dispatching
     // different admin actions from the same physical item.
@@ -72,6 +85,33 @@ function loadCasinoAdminItems() {
 function loadCasinoCrateTypes() {
     var config = loadJson(CASINO_CRATES_CONFIG);
     return config && config.crates ? config.crates : null;
+}
+
+function loadCasinoDefinitions() {
+    return loadJson(CASINO_DEFINITIONS_CONFIG);
+}
+
+function getLinkedCasino(npc) {
+    var sd = npc.getStoreddata();
+    if (!sd.has(CASINO_ID_KEY)) return null;
+    var id = String(sd.get(CASINO_ID_KEY));
+    var casinos = loadCasinoDefinitions();
+    if (!casinos || !casinos[id] || !casinos[id].Region || !casinos[id].DisplayName) return null;
+    return {
+        id: id,
+        name: casinos[id].DisplayName,
+        town: casinos[id].Town || '',
+        island: casinos[id].Island || '',
+        region: casinos[id].Region
+    };
+}
+
+function getCasinoRegionsAtNpc(npc) {
+    return getAllRegionsAtPosition(iposToPos(npc.getPos())) || [];
+}
+
+function isNpcInsideCasino(npc, casino) {
+    return !!casino && getCasinoRegionsAtNpc(npc).indexOf(casino.region) !== -1;
 }
 
 function getCasinoCrateType(npc) {
@@ -93,9 +133,12 @@ function getActiveCasinoCrate(npc) {
 }
 
 function isCasinoCrateConfigured(npc) {
+    var casino = getLinkedCasino(npc);
     return npc.getStoreddata().has(CASINO_CRATE_TYPE_KEY)
         && npc.getStoreddata().has(CASINO_CRATE_ENABLED_KEY)
-        && getActiveCasinoCrate(npc) !== null;
+        && npc.getStoreddata().has(CASINO_ID_KEY)
+        && getActiveCasinoCrate(npc) !== null
+        && isNpcInsideCasino(npc, casino);
 }
 
 function isCasinoCrateEnabled(npc) {
@@ -141,6 +184,9 @@ function handleCasinoAdminInteraction(npc, player, mainhand, adminItems) {
         case 'crate_type':
             cycleCasinoCrateType(npc, player, adminItems);
             break;
+        case 'casino':
+            cycleCasinoLink(npc, player, adminItems);
+            break;
         case 'enabled':
             toggleCasinoCrateAvailability(npc, player, adminItems);
             break;
@@ -170,9 +216,33 @@ function cycleCasinoCrateType(npc, player, adminItems) {
     tellPlayer(player, '&7Reward table: &f' + types[next].loot_table);
 }
 
+function cycleCasinoLink(npc, player, adminItems) {
+    var casinos = loadCasinoDefinitions();
+    if (!casinos) {
+        tellPlayer(player, '&c[Crate Admin] Failed to load casinos.json.');
+        return;
+    }
+    var regions = getCasinoRegionsAtNpc(npc);
+    var options = Object.keys(casinos).filter(function(id) {
+        var entry = casinos[id];
+        return entry && entry.DisplayName && entry.Region && regions.indexOf(entry.Region) !== -1;
+    });
+    if (!options.length) {
+        tellPlayer(player, '&c[Crate Admin] No defined casino matches this NPC position.');
+        tellPlayer(player, '&7NPC regions: &f' + (regions.length ? regions.join(', ') : '(none)'));
+        return;
+    }
+    var sd = npc.getStoreddata();
+    var current = sd.has(CASINO_ID_KEY) ? String(sd.get(CASINO_ID_KEY)) : null;
+    var next = options[(options.indexOf(current) + 1) % options.length];
+    sd.put(CASINO_ID_KEY, next);
+    tellPlayer(player, '&a[Crate Admin] ' + adminItems.casino.name + '&a: &e' + casinos[next].DisplayName);
+    tellPlayer(player, '&7Region: &f' + casinos[next].Region);
+}
+
 function toggleCasinoCrateAvailability(npc, player, adminItems) {
-    if (!getActiveCasinoCrate(npc)) {
-        tellPlayer(player, '&c[Crate Admin] Select a valid crate type first.');
+    if (!getActiveCasinoCrate(npc) || !isNpcInsideCasino(npc, getLinkedCasino(npc))) {
+        tellPlayer(player, '&c[Crate Admin] Select a crate type and link a matching casino first.');
         return;
     }
 
@@ -185,8 +255,9 @@ function toggleCasinoCrateAvailability(npc, player, adminItems) {
 function resetCasinoCrateConfiguration(npc, player) {
     var sd = npc.getStoreddata();
     sd.remove(CASINO_CRATE_TYPE_KEY);
+    sd.remove(CASINO_ID_KEY);
     sd.remove(CASINO_CRATE_ENABLED_KEY);
-    tellPlayer(player, '&a[Crate Admin] Crate type and availability cleared.');
+    tellPlayer(player, '&a[Crate Admin] Crate type, casino link, and availability cleared.');
 }
 
 function giveCasinoCrateAdminItems(player, adminItems) {
@@ -202,10 +273,21 @@ function giveCasinoCrateAdminItems(player, adminItems) {
 
 function showCasinoCrateConfiguration(npc, player, adminItems) {
     var crate = getActiveCasinoCrate(npc);
+    var casino = getLinkedCasino(npc);
     var sd = npc.getStoreddata();
     tellPlayer(player, '&6[Crate Admin] &eCurrent configuration:');
     tellPlayer(player, '&7- ' + adminItems.crate_type.name + '&7: '
         + (crate ? '&e' + crate.name + ' &7(' + crate.type + ')' : '&cNot set'));
+    tellPlayer(player, '&7- ' + adminItems.casino.name + '&7: '
+        + (casino ? '&e' + casino.name + ' &7(' + casino.town + ', ' + casino.island + ')' : '&cNot set'));
+    if (casino) {
+        tellPlayer(player, '&7- Region: &f' + casino.region);
+        tellPlayer(player, '&7- Region match: ' + (isNpcInsideCasino(npc, casino) ? '&aValid' : '&cOutside linked region'));
+        var stats = loadCasinoStats();
+        var totals = stats && stats[casino.id] && stats[casino.id].CratesOpened;
+        tellPlayer(player, '&7- Casino crates opened: &e' + (totals ? totals.Total : 0));
+        if (totals && crate) tellPlayer(player, '&7- This crate type opened: &e' + (totals.ByType[crate.type] || 0));
+    }
     tellPlayer(player, '&7- ' + adminItems.enabled.name + '&7: '
         + (sd.has(CASINO_CRATE_ENABLED_KEY)
             ? (isCasinoCrateEnabled(npc) ? '&aEnabled' : '&cDisabled') : '&cNot set'));
@@ -243,7 +325,7 @@ function showCasinoCrateAdminHelp(player, adminItems) {
 /* Player interaction                                                          */
 /* -------------------------------------------------------------------------- */
 
-function openCasinoCrate(npc, player, mainhand, crate) {
+function openCasinoCrate(npc, player, mainhand, crate, casino) {
     if (!isCrateKeyModifier(mainhand)) {
         tellPlayer(player, '&eHold the matching crate key in your main hand.');
         return;
@@ -281,6 +363,8 @@ function openCasinoCrate(npc, player, mainhand, crate) {
         return;
     }
 
+    var usedKey = mainhand.copy();
+    usedKey.setStackSize(1);
     if (mainhand.getStackSize() <= 1) {
         player.setMainhandItem(player.getWorld().createItem('minecraft:air', 0, 1));
     } else {
@@ -291,5 +375,8 @@ function openCasinoCrate(npc, player, mainhand, crate) {
     for (var j = 0; j < rewards.length; j++) {
         if (!player.giveItem(rewards[j])) player.dropItem(rewards[j]);
     }
+    // Record only completed openings: no denied attempts or failed pulls
+    // inflate the casino's reward and crate counters.
+    recordCasinoCrateOpen(casino.id, casino.name, crate, npc, player, usedKey, rewards);
     tellPlayer(player, '&a:check_mark: ' + crate.name + ' opened!');
 }
