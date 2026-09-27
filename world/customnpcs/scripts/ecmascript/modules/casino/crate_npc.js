@@ -16,6 +16,27 @@ var CASINO_CRATE_ENABLED_KEY = 'casino_crate_enabled';
 var CASINO_ADMIN_CARD = 'mts:ivv.idcard_seagull';
 var CASINO_ADMIN_RESET = 'minecraft:barrier';
 
+var CASINO_CRATE_FAILURE_SOUND = 'ivv:mts.ivv.dashboard.angel.no';
+var CASINO_CRATE_SUCCESS_SOUND = 'ivv:mts.ivv.dashboard.angel.yes';
+
+// Small local effects only. Unexpected script errors still propagate normally.
+function playCasinoCrateFeedback(npc, successful) {
+    var sound = successful ? CASINO_CRATE_SUCCESS_SOUND : CASINO_CRATE_FAILURE_SOUND;
+    npc.getWorld().playSoundAt(npc.getPos(), sound, 1, 1);
+
+    var particle = successful ? 'fireworksSpark' : 'smoke';
+    var count = successful ? 24 : 6;
+    npc.executeCommand('/particle ' + particle + ' ' + npc.getX() + ' ' +
+        (npc.getY() + 1) + ' ' + npc.getZ() +
+        ' 0.35 0.4 0.35 0.05 ' + count + ' normal @a[r=16]');
+}
+
+function rejectCasinoCrate(npc, player, message) {
+    tellPlayer(player, message);
+    playCasinoCrateFeedback(npc, false);
+}
+
+
 function init(event) {
     // Retain the behaviour of crates configured before the enabled switch existed.
     var sd = event.npc.getStoreddata();
@@ -42,20 +63,20 @@ function interact(event) {
 
     var crate = getActiveCasinoCrate(npc);
     if (!crate) {
-        tellPlayer(player, '&cThis crate is not configured. Please contact an admin.');
+        rejectCasinoCrate(npc, player, '&cThis crate is not configured. Please contact an admin.');
         return;
     }
     var casino = getLinkedCasino(npc);
     if (!casino) {
-        tellPlayer(player, '&cThis crate is not linked to a valid casino. Please contact an admin.');
+        rejectCasinoCrate(npc, player, '&cThis crate is not linked to a valid casino. Please contact an admin.');
         return;
     }
     if (!isNpcInsideCasino(npc, casino)) {
-        tellPlayer(player, '&cThis crate is outside its linked casino region. Please contact an admin.');
+        rejectCasinoCrate(npc, player, '&cThis crate is outside its linked casino region. Please contact an admin.');
         return;
     }
     if (!isCasinoCrateEnabled(npc)) {
-        tellPlayer(player, '&eThis crate is currently unavailable.');
+        rejectCasinoCrate(npc, player, '&eThis crate is currently unavailable.');
         return;
     }
     openCasinoCrate(npc, player, mainhand, crate, casino);
@@ -327,25 +348,25 @@ function showCasinoCrateAdminHelp(player, adminItems) {
 
 function openCasinoCrate(npc, player, mainhand, crate, casino) {
     if (!isCrateKeyModifier(mainhand)) {
-        tellPlayer(player, '&eHold the matching crate key in your main hand.');
+        rejectCasinoCrate(npc, player, '&eHold the matching crate key in your main hand.');
         return;
     }
     if (!isItemOwnedBy(mainhand, player)) {
-        tellPlayer(player, '&cThis key belongs to another player or is unbound.');
+        rejectCasinoCrate(npc, player, '&cThis key belongs to another player or is unbound.');
         return;
     }
     if (!canPlayerOpenCrateWithKey(mainhand, player, crate.type)) {
-        tellPlayer(player, '&cThat key does not open this crate.');
+        rejectCasinoCrate(npc, player, '&cThat key does not open this crate.');
         return;
     }
     if (!canUseLootTable(crate.lootTable)) {
-        tellPlayer(player, '&cThis crate is currently out of rewards.');
+        rejectCasinoCrate(npc, player, '&cThis crate is currently out of rewards.');
         return;
     }
 
     var prepared = prepareLootTablePull(crate.lootTable, player);
     if (!prepared || !prepared.loot || !prepared.loot.length) {
-        tellPlayer(player, '&cUnable to prepare a reward. Your key was not consumed.');
+        rejectCasinoCrate(npc, player, '&cUnable to prepare a reward. Your key was not consumed.');
         return;
     }
 
@@ -353,13 +374,13 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
     for (var i = 0; i < prepared.loot.length; i++) {
         var item = generateItemStackFromLootEntry(prepared.loot[i], player.getWorld(), player);
         if (!item || item.isEmpty()) {
-            tellPlayer(player, '&cReward generation failed. Your key was not consumed.');
+            rejectCasinoCrate(npc, player, '&cReward generation failed. Your key was not consumed.');
             return;
         }
         rewards.push(item);
     }
     if (!commitLootTablePull(prepared)) {
-        tellPlayer(player, '&cReward pool changed. Try again.');
+        rejectCasinoCrate(npc, player, '&cReward pool changed. Try again.');
         return;
     }
 
@@ -378,5 +399,6 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
     // Record only completed openings: no denied attempts or failed pulls
     // inflate the casino's reward and crate counters.
     recordCasinoCrateOpen(casino.id, casino.name, crate, npc, player, usedKey, rewards);
+    playCasinoCrateFeedback(npc, true);
     tellPlayer(player, '&a:check_mark: ' + crate.name + ' opened!');
 }
