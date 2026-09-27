@@ -2,8 +2,10 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
+
 var CASINO_CRATES_CONFIG = 'world/customnpcs/scripts/ecmascript/modules/casino/crates.json';
 var CASINO_CRATE_TYPE_KEY = 'casino_crate_type';
+
 function interact(event) {
     var player = event.player, npc = event.npc;
     var cfg = loadJson(CASINO_CRATES_CONFIG);
