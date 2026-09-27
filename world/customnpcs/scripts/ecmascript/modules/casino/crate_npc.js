@@ -37,9 +37,13 @@ function interact(event) {
         rewards.push(item);
     }
     if (!commitLootTablePull(prepared)) { tellPlayer(player, '&cReward pool changed. Try again.'); return; }
-    var remaining = main.copy();
-    remaining.setStackSize(main.getStackSize() - 1);
-    player.setMainhandItem(remaining);
+    if (main.getStackSize() <= 1) {
+        player.setMainhandItem(player.getWorld().createItem("minecraft:air", 0, 1));
+    } else {
+        var remaining = main.copy();
+        remaining.setStackSize(main.getStackSize() - 1);
+        player.setMainhandItem(remaining);
+    }
     for (var j = 0; j < rewards.length; j++) {
         if (!player.giveItem(rewards[j])) player.dropItem(rewards[j]);
     }
