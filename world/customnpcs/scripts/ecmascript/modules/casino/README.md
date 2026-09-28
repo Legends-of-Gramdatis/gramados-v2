@@ -1,6 +1,6 @@
-# Owner-bound crate keys
+# Casino crate keys and optional item ownership
 
-The optional loot-table function `{"function":"set_owner","owner":"player"}` binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json`.
+The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json`.
 
 ## Setting up an NPC
 
@@ -28,11 +28,11 @@ Edit `crates.json` to define each type's name, description and loot table. Curre
 
 ## Normal interaction
 
-Players hold an owner-bound, matching key in their main hand and interact. The NPC checks the UUID and crate type, prepares all rewards, commits volatile entries if applicable, consumes one key, then gives the rewards.
+Players hold a matching key in their main hand and interact. Unbound keys can be used by anyone; if a key has explicit owner metadata, the NPC checks its owner's UUID. It also checks the crate type, prepares all rewards, commits volatile entries if applicable, consumes one key, then gives the rewards.
 
 For owner-bound loot table rewards, consumers must call `generateItemStackFromLootEntry(entry, world, player)`; the generic configured-reward utility already passes the player. Bound orbs may be transferred but cannot be activated by anyone except their owner. Ordinary unbound modifiers retain their existing behaviour.
 
-Test two-player ownership, stacked keys, full inventory, changed configuration, and simultaneous volatile pulls in-game before deploying scarce prizes.
+Test traded unbound keys, explicitly bound keys (owner and non-owner), stacked keys, full inventory, changed configuration, and simultaneous volatile pulls in-game before deploying scarce prizes.
 
 ## Compatibility: loot item materialization
 
