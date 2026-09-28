@@ -42,6 +42,10 @@ function isCrateKeyModifier(stack) {
         tag.has('crate_type') && !!tag.getString('crate_type');
 }
 function canPlayerOpenCrateWithKey(key, player, crateType) {
-    return isCrateKeyModifier(key) && isItemOwnedBy(key, player) &&
+    if (!isCrateKeyModifier(key)) return false;
+    // Unbound keys are freely tradable. Explicitly owner-bound keys keep
+    // their ownership restriction if another loot table uses set_owner.
+    var owner = getItemOwnerUUID(key);
+    return (owner === null || isItemOwnedBy(key, player)) &&
         key.getItemNbt().getCompound('tag').getString('crate_type') === crateType;
 }
