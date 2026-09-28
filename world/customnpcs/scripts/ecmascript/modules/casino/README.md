@@ -1,6 +1,6 @@
 # Casino crate keys and optional item ownership
 
-The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json`.
+The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json` and `world/loot_tables/casino/example_gems_key.json`. The gem key opens the existing `gems` crate, currently configured to dispense rewards from `treasures/treasures_gems.json`; these reward contents remain provisional.
 
 ## Setting up an NPC
 
