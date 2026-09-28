@@ -65,21 +65,6 @@
                 },
                 {
                     "type": "item",
-                    "name": "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_g",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_r",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_gold_w",
-                    "weight": 5
-                },
-                {
-                    "type": "item",
                     "name": "mts:iv_tcp_v3_civil.trin_bultizorg_substantial_redblack_g",
                     "weight": 5
                 },
