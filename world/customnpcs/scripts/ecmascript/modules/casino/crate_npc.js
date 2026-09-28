@@ -351,8 +351,8 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
         rejectCasinoCrate(npc, player, '&eHold the matching crate key in your main hand.');
         return;
     }
-    if (!isItemOwnedBy(mainhand, player)) {
-        rejectCasinoCrate(npc, player, '&cThis key belongs to another player or is unbound.');
+    if (getItemOwnerUUID(mainhand) !== null && !isItemOwnedBy(mainhand, player)) {
+        rejectCasinoCrate(npc, player, '&cThis key belongs to another player.');
         return;
     }
     if (!canPlayerOpenCrateWithKey(mainhand, player, crate.type)) {
