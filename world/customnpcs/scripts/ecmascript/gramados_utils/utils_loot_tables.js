@@ -3,6 +3,7 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
@@ -161,7 +162,8 @@ function _prepareLootTablePull(
                 id: selected.name || "minecraft:air",
                 count: 1,
                 damage: 0,
-                nbt: null
+                nbt: null,
+                bindOwnerToPlayer: false
             };
 
             if (selected.functions) {
@@ -195,6 +197,14 @@ function _prepareLootTablePull(
 
                     if (func.function === "set_nbt") {
                         item.nbt = func.tag;
+                    }
+
+                    if (func.function === "set_owner") {
+                        if (func.owner !== "player") {
+                            logToFile("loot_tables", "Unsupported set_owner target in " + fullPath);
+                            return null;
+                        }
+                        item.bindOwnerToPlayer = true;
                     }
 
                     if (func.function === "set_modifier") {
@@ -265,9 +275,10 @@ function _prepareLootTablePull(
                             modifierUse:
                                 func.modifier_use ||
                                 func.modifierUse,
-                            overrideItemId:
-                                func.itemId ||
-                                func.item_id
+                            overrideItemId: func.itemId || func.item_id,
+                            crateType: func.crate_type || func.crateType,
+                            keyName: func.key_name || func.keyName,
+                            keyDescription: func.key_description || func.keyDescription
                         };
                     }
                 }
@@ -303,7 +314,7 @@ function pullLootTable(lootTablePath, player) {
         return null;
     }
 
-    commitLootTablePull(pullResult);
+    if (!commitLootTablePull(pullResult)) return null;
 
     return pullResult.loot;
 }
@@ -367,104 +378,71 @@ function prepareLootTablePull(lootTablePath, player) {
  * @returns {boolean}
  */
 function commitLootTablePull(pullResult) {
-    if (
-        !pullResult ||
-        !pullResult.volatileClaims ||
-        pullResult.volatileClaims.length === 0
-    ) {
-        return true;
-    }
+    if (!pullResult) return false;
+    var claims = pullResult.volatileClaims || [];
+    if (claims.length === 0) return true;
 
     var groupedClaims = {};
-
-    for (
-        var i = 0;
-        i < pullResult.volatileClaims.length;
-        i++
-    ) {
-        var claim =
-            pullResult.volatileClaims[i];
-
+    for (var i = 0; i < claims.length; i++) {
+        var claim = claims[i];
         if (!groupedClaims[claim.lootTablePath]) {
             groupedClaims[claim.lootTablePath] = [];
         }
-
-        groupedClaims[
-            claim.lootTablePath
-        ].push(claim);
+        groupedClaims[claim.lootTablePath].push(claim);
     }
 
+    // Validate and stage EVERY claimed removal before changing any loot file.
+    // Two players preparing the same last reward can no longer both receive it.
+    var stagedTables = {};
     for (var path in groupedClaims) {
+        if (!groupedClaims.hasOwnProperty(path)) continue;
         var lootTable = loadJson(path);
+        if (!lootTable || !lootTable.pools) return false;
 
-        if (!lootTable || !lootTable.pools) {
-            return false;
-        }
-
-        var claims = groupedClaims[path];
-
-        // Highest indexes first to prevent shifting.
-        claims.sort(function(a, b) {
+        var pathClaims = groupedClaims[path].slice();
+        // Removing high indexes first preserves lower indexes where possible.
+        pathClaims.sort(function(a, b) {
+            if (a.poolIndex !== b.poolIndex) return b.poolIndex - a.poolIndex;
             return b.entryIndex - a.entryIndex;
         });
 
-        for (var c = 0; c < claims.length; c++) {
-            var currentClaim = claims[c];
+        for (var c = 0; c < pathClaims.length; c++) {
+            var currentClaim = pathClaims[c];
+            var pool = lootTable.pools[currentClaim.poolIndex];
+            if (!pool || !pool.entries) return false;
 
-            var pool =
-                lootTable.pools[
-                    currentClaim.poolIndex
-                ];
-
-            if (!pool || !pool.entries) {
-                continue;
-            }
-
-            var removed = false;
-
-            var currentEntry =
-                pool.entries[
-                    currentClaim.entryIndex
-                ];
-
-            // Normal case: entry is still exactly where
-            // it was during prepare.
-            if (
-                currentEntry &&
-                JSON.stringify(currentEntry) ===
-                    currentClaim.entryJson
-            ) {
-                pool.entries.splice(
-                    currentClaim.entryIndex,
-                    1
-                );
-
-                removed = true;
-            }
-
-            // Fallback in case indexes changed.
-            if (!removed) {
-                for (
-                    var e = 0;
-                    e < pool.entries.length;
-                    e++
-                ) {
-                    if (
-                        JSON.stringify(pool.entries[e]) ===
-                        currentClaim.entryJson
-                    ) {
-                        pool.entries.splice(e, 1);
-                        removed = true;
+            var index = currentClaim.entryIndex;
+            if (!pool.entries[index] ||
+                JSON.stringify(pool.entries[index]) !== currentClaim.entryJson) {
+                index = -1;
+                // An entry may have moved, but an identical entry must still
+                // exist AND be available for this particular claim.
+                for (var e = 0; e < pool.entries.length; e++) {
+                    if (JSON.stringify(pool.entries[e]) === currentClaim.entryJson) {
+                        index = e;
                         break;
                     }
                 }
             }
-        }
 
-        saveJson(lootTable, path);
+            if (index === -1) {
+                logToFile("loot_tables", "Volatile reward no longer available in " + path + ". Pull cancelled.");
+                return false;
+            }
+            pool.entries.splice(index, 1);
+        }
+        stagedTables[path] = lootTable;
     }
 
-    logToFile("loot_tables", "Committed volatile loot-table pull: " + JSON.stringify(pullResult.volatileClaims));
+    // Only write once all claims, including nested-table claims, are valid.
+    // File I/O failures still propagate normally instead of being hidden.
+    for (var savePath in stagedTables) {
+        if (stagedTables.hasOwnProperty(savePath)) {
+            saveJson(stagedTables[savePath], savePath);
+        }
+    }
+
+    logToFile("loot_tables", "Consumed " + claims.length + " volatile reward(s).");
     return true;
 }
 
@@ -496,26 +474,33 @@ function weightedRandom(entries) {
  * @param {IWorld} world - The world object to create the item in.
  * @returns {Object} - The generated item stack.
  */
-function generateItemStackFromLootEntry(entry, world) {
-    try {
-        var itemstack = world.createItem(
-            entry.id,
-            entry.damage || 0,
-            entry.count || 1
-        );
-        if (entry.nbt) {
-            var nbt = API.stringToNbt(entry.nbt);
-            // set nbt to itemstack
-            itemstack = setNbtToItemStack(itemstack, nbt, world);
-        }
-        if (entry.modifier) {
-            itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
-        }
-        return itemstack;
-    } catch (error) {
-        logToFile("dev", "Failed to create item stack for item: " + JSON.stringify(entry) + ". Error: " + error.message);
-        return null;
+function generateItemStackFromLootEntry(entry, world, player) {
+    var itemstack = world.createItem(
+        entry.id,
+        entry.damage || 0,
+        entry.count || 1
+    );
+
+    if (entry.nbt) {
+        var nbt = API.stringToNbt(entry.nbt);
+        itemstack = setNbtToItemStack(itemstack, nbt, world);
     }
+
+    if (entry.modifier) {
+        itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
+        if (entry.modifier.modifierClass === "key" && !isCrateKeyModifier(itemstack)) {
+            throw new Error("Failed to create crate-key modifier from loot entry: " + JSON.stringify(entry));
+        }
+    }
+
+    if (entry.bindOwnerToPlayer) {
+        if (!player || typeof player.getUUID !== "function") {
+            throw new Error("set_owner requires a player in generateItemStackFromLootEntry: " + JSON.stringify(entry));
+        }
+        itemstack = bindItemToPlayer(itemstack, player);
+    }
+
+    return itemstack;
 }
 
 /**

@@ -174,12 +174,13 @@ function getLinkedJunkyardId(npc) {
  */
 function dropLoot(
     npc,
-    loot
+    loot,
+    player
 ) {
     var world = npc.getWorld();
 
     for (var i = 0; i < loot.length; i++) {
-        var itemStack = generateItemStackFromLootEntry(loot[i], world);
+        var itemStack = generateItemStackFromLootEntry(loot[i], world, player);
 
         npc.dropItem(itemStack);
     }

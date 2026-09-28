@@ -138,7 +138,8 @@ function grantConfiguredRewards(player, rewards, contextLabel) {
                     for (var l = 0; l < loot.length; l++) {
                         var stack = generateItemStackFromLootEntry(
                             loot[l],
-                            player.getWorld()
+                            player.getWorld(),
+                            player
                         );
                         _configuredRewardsGiveItem(player, stack);
                     }

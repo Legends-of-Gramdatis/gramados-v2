@@ -276,7 +276,7 @@ function onboarding_run_phase1(player, pdata, phaseCfg, globalCfg, allPlayers){
                                     var combinedLoot2 = lootBed2.concat(lootStorage2).concat(lootTable2);
                                     for (var lj = 0; lj < combinedLoot2.length; lj++) {
                                         try {
-                                            var stack2 = generateItemStackFromLootEntry(combinedLoot2[lj], world2);
+                                            var stack2 = generateItemStackFromLootEntry(combinedLoot2[lj], world2, player);
                                             if (stack2) { player.giveItem(stack2); }
                                         } catch (giErr2) {
                                             logToFile('onboarding', '[p1.furniture.error] ' + player.getName() + ' loot gen failed: ' + giErr2);

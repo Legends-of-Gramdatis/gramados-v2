@@ -3,6 +3,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 
 var MODIFIERS_CFG_PATH = 'world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json';
 
@@ -78,11 +79,18 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
             : 'active';
     }
 
-    if (modifierClass === 'consumable') {
+    if (modifierClass === 'consumable' || modifierClass === 'key') {
         modifierType = null;
     }
 
-    var entry = get_modifier_config_entry(modifierClass, modifierType, modifierEffect);
+    if (modifierClass === 'key' &&
+        (modifierEffect !== 'open_crate' || !/^[a-z0-9_-]+$/.test(String(modifierSpec.crateType || '')))) {
+        logToFile('loot_tables', '[modifiers.item] Invalid crate key specification.');
+        return baseStack;
+    }
+    var entry = modifierClass === 'key'
+        ? {displayName: modifierSpec.keyName || '&6Crate Key', description: modifierSpec.keyDescription || '&7Opens a matching crate.'}
+        : get_modifier_config_entry(modifierClass, modifierType, modifierEffect);
     if (!entry) {
         logToFile('loot_tables', '[modifiers.item] Missing modifier config entry for class=' + modifierClass + ' type=' + modifierType + ' effect=' + modifierEffect);
         return baseStack;
@@ -97,10 +105,11 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
     if (modifierType) {
         tag.setString('modifier_type', modifierType);
     }
-    tag.setString('modifier_use', modifierSpec.modifierUse || modifierSpec.modifier_use || (modifierClass === 'consumable' ? 'single-use' : 'unlimited-use'));
+    tag.setString('modifier_use', modifierSpec.modifierUse || modifierSpec.modifier_use || ((modifierClass === 'consumable' || modifierClass === 'key') ? 'single-use' : 'unlimited-use'));
     tag.setInteger('modifier_repairs', typeof (modifierSpec.modifierRepairs) === 'number' ? modifierSpec.modifierRepairs : 0);
     tag.setBoolean('is_broken', false);
     tag.setString('modifier_effect', modifierEffect);
+    if (modifierClass === 'key') tag.setString('crate_type', modifierSpec.crateType);
 
     var radius = resolve_modifier_value(modifierSpec.radius);
     if (radius === null && typeof (entry.radius) === 'number') {
@@ -130,7 +139,7 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
 
     if (modifierSpec.overrideItemId || modifierSpec.itemId || modifierSpec.item_id) {
         nbt.setString('id', modifierSpec.overrideItemId || modifierSpec.itemId || modifierSpec.item_id);
-    } else if (modifierClass !== 'consumable' && configData.items && configData.items.itemId) {
+    } else if (modifierClass !== 'consumable' && modifierClass !== 'key' && configData.items && configData.items.itemId) {
         nbt.setString('id', configData.items.itemId);
     }
 
@@ -161,7 +170,7 @@ function create_modifier_item_stack(context, baseStack, modifierSpec) {
         lore.push(ccs('&7Multiplier: &e' + format_modifier_multiplier(multiplier) + 'x'));
     }
 
-    if (modifierClass === 'consumable') {
+    if (modifierClass === 'consumable' || modifierClass === 'key') {
         lore.push(ccs('&8Single-use item'));
     }
 

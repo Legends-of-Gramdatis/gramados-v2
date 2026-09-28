@@ -52,7 +52,7 @@ function pickpocket_npcs_in_radius(player, radius) {
         if (Math.random() < (1 / 3)) {
             var loot = pullLootTable(_LOOTTABLE_NPCTYPE_HUMAN, player) || [];
             for (var li = 0; li < loot.length; li++) {
-                var lootStack = generateItemStackFromLootEntry(loot[li], world);
+                var lootStack = generateItemStackFromLootEntry(loot[li], world, player);
                 if (!lootStack) continue;
                 drop_item_near_entity(world, npc, lootStack);
                 droppedHumanLoot++;

@@ -337,7 +337,7 @@ function lootCrate(player, npc, crateType, rarity, junkyardId) {
         loot = loot.concat(secondaryLoot);
     }
 
-    dropLoot(npc, loot);
+    dropLoot(npc, loot, player);
 
     logToFile(
         "mechanics",

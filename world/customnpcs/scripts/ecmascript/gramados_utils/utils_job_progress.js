@@ -171,7 +171,7 @@ function _jobProgressGrantRewards(player, rewards) {
                         break;
                     }
                     for (var l = 0; l < loot.length; l++) {
-                        var stack = generateItemStackFromLootEntry(loot[l], player.getWorld());
+                        var stack = generateItemStackFromLootEntry(loot[l], player.getWorld(), player);
                         _jobProgressGiveItem(player, stack);
                     }
                 }

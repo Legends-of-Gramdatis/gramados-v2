@@ -36,7 +36,7 @@ function onboarding_run_phase0(player, pdata, phaseCfg, globalCfg) {
                     var lootKey = pullLootTable(_LOOTTABLE_VEHICLE_KEY, player);
                     var combined = lootWrench.concat(lootBike).concat(lootKey);
                     for (var li = 0; li < combined.length; li++) {
-                        var stack = generateItemStackFromLootEntry(combined[li], world);
+                        var stack = generateItemStackFromLootEntry(combined[li], world, player);
                         if (stack) { player.giveItem(stack); }
                     }
                     pdata.phase0.rewardsGiven = true;

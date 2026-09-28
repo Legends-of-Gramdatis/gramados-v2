@@ -1,0 +1,19 @@
+{
+  "crates": {
+    "art": {
+      "name": "Art Collector's Crate",
+      "description": "Paintings and decorative art.",
+      "loot_table": "art/art_paintings.json"
+    },
+    "gems": {
+      "name": "Gem Collector's Crate",
+      "description": "Gemstones and mineral treasures.",
+      "loot_table": "treasures/treasures_single_gem.json"
+    },
+    "stickers": {
+      "name": "Motoring Collectibles Crate",
+      "description": "Automotive stickers and collectibles.",
+      "loot_table": "automobile/stickers/bumper_stickers.json"
+    }
+  }
+}
