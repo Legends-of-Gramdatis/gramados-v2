@@ -1,6 +1,6 @@
 # Casino crate keys and optional item ownership
 
-The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json` and `world/loot_tables/casino/example_gems_key.json`. The gem key opens the existing `gems` crate, currently configured to dispense rewards from `treasures/treasures_gems.json`; these reward contents remain provisional.
+The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json` and `world/loot_tables/casino/example_gems_key.json`. The gem key opens the existing `gems` crate, currently configured to dispense rewards from `treasures/treasures_single_gem.json`.
 
 ## Setting up an NPC
 
@@ -20,7 +20,14 @@ Select the crate type, link a casino using the Nether Star, then enable the crat
 
 The casino registry is `casinos.json`, keyed by region ID, with `DisplayName`, `Town`, `Island`, and `Region`. Currently Brisamar Casino is registered in `Solterra_Brisamar_BrisamarCasino_Casino`.
 
-Successful openings update `world/customnpcs/scripts/data_auto/casinos.json` with per-casino totals, crate types, daily counts, per-player breakdowns, and rewards dispensed by item ID/metadata. Each completed opening also appends a timestamped JSON event (player UUID/name, casino, crate, key, location, and rewards) to `world/customnpcs/scripts/logs/casino_crates.jsonl`, plus a conventional `casino.log` event. Only completed draws are counted; failed or rejected uses do not affect statistics.
+Successful openings use the split runtime-data layout:
+
+- `world/customnpcs/scripts/data_auto/casinos/<casino-id>.json` contains aggregate data for one casino, including `CratesOpened` and `loot_box_rewards`.
+- `world/customnpcs/scripts/data_auto/casinos/gamblers/<uuid>.json` contains that player's casino activity across all casinos under `Games`. Crate statistics live under `Games.loot_crates.<casino-id>`.
+
+Runtime activity uses millisecond timestamps. `CratesOpened.ByDate` intentionally keeps its `YYYY-MM-DD` keys for daily summaries. Each completed opening also appends a JSON event to `world/customnpcs/scripts/logs/casino_crates.jsonl`, plus a conventional human-readable `casino.log` event. Only completed draws are counted; failed or rejected uses do not affect statistics.
+
+There is no JavaScript compatibility path for the former single-file `data_auto/casinos.json` format. Run `scripts_backend/single_use/migrate_casino_data.py` once to migrate existing statistics; it is dry-run by default and writes files with `--apply`.
 
 Select the crate type and link the casino first, then enable it. An initialized but unconfigured or disabled NPC cannot dispense rewards. An NPC configured before the enabled switch existed is automatically enabled during initialization to preserve the previous behaviour.
 
