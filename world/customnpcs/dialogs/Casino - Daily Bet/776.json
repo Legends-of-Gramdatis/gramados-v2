@@ -1,6 +1,6 @@
 {
     "DialogShowWheel": 0b,
-    "AvailabilityQuestId": 173,
+    "AvailabilityQuestId": -1,
     "Options": [
         {
             "OptionSlot": 0,
@@ -18,12 +18,12 @@
     "AvailabilityFactionStance": 0,
     "AvailabilityScoreboard2Value": 1,
     "DialogId": 776,
-    "AvailabilityQuest": 1,
+    "AvailabilityQuest": 0,
     "AvailabilityDialog4": 0,
     "AvailabilityScoreboardObjective": "",
     "AvailabilityDialog3": 0,
-    "AvailabilityQuest2": 1,
-    "AvailabilityQuest3": 1,
+    "AvailabilityQuest2": 0,
+    "AvailabilityQuest3": 0,
     "AvailabilityScoreboard2Objective": "",
     "AvailabilityQuest4": 0,
     "ModRev": 18,
@@ -50,8 +50,8 @@
     "DialogText": "Today's reward has been dispensed.
 This machine will be available again in 24 hours.",
     "AvailabilityQuest4Id": -1,
-    "AvailabilityQuest3Id": 175,
-    "AvailabilityQuest2Id": 174,
+    "AvailabilityQuest3Id": -1,
+    "AvailabilityQuest2Id": -1,
     "AvailabilityDialog2Id": -1,
     "AvailabilityDialog3Id": -1,
     "AvailabilityDialog4Id": -1,
@@ -65,7 +65,7 @@ This machine will be available again in 24 hours.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1790528114695L,
+        "TimePast": 1790784681672L,
         "Time": 0L,
         "Subject": ""
     }
