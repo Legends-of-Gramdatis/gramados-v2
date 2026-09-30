@@ -304,8 +304,8 @@ function showCasinoCrateConfiguration(npc, player, adminItems) {
     if (casino) {
         tellPlayer(player, '&7- Region: &f' + casino.region);
         tellPlayer(player, '&7- Region match: ' + (isNpcInsideCasino(npc, casino) ? '&aValid' : '&cOutside linked region'));
-        var stats = loadCasinoStats();
-        var totals = stats && stats[casino.id] && stats[casino.id].CratesOpened;
+        var stats = loadCasinoStats(casino.id);
+        var totals = stats && stats.CratesOpened;
         tellPlayer(player, '&7- Casino crates opened: &e' + (totals ? totals.Total : 0));
         if (totals && crate) tellPlayer(player, '&7- This crate type opened: &e' + (totals.ByType[crate.type] || 0));
     }
