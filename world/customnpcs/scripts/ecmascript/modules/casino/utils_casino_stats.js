@@ -1,31 +1,83 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 
-// Persistent runtime statistics are intentionally separate from casino definitions.
-// The JSONL audit file provides one detailed event per successfully opened crate.
-var CASINO_STATS_PATH = 'world/customnpcs/scripts/data_auto/casinos.json';
+// Casino runtime data is split by casino and by gambler UUID.
+var CASINO_DATA_DIR = 'world/customnpcs/scripts/data_auto/casinos';
+var CASINO_GAMBLERS_DIR = CASINO_DATA_DIR + '/gamblers';
 var CASINO_CRATE_AUDIT_PATH = 'world/customnpcs/scripts/logs/casino_crates.jsonl';
 
-function loadCasinoStats() {
-    if (!checkFileExists(CASINO_STATS_PATH)) return {};
-    return loadJson(CASINO_STATS_PATH);
+function ensureCasinoDataDirectories() {
+    new java.io.File(CASINO_DATA_DIR).mkdirs();
+    new java.io.File(CASINO_GAMBLERS_DIR).mkdirs();
 }
 
-function ensureCasinoStats(data, casinoId) {
-    if (!data[casinoId]) data[casinoId] = {};
-    var casino = data[casinoId];
-    if (!casino.CratesOpened) casino.CratesOpened = {Total: 0, ByType: {}, ByDate: {}};
-    if (!casino.CratesOpened.ByType) casino.CratesOpened.ByType = {};
-    if (!casino.CratesOpened.ByDate) casino.CratesOpened.ByDate = {};
-    if (!casino.RewardsDistributed) casino.RewardsDistributed = {TotalStacks: 0, TotalItems: 0, ByItem: {}};
-    if (!casino.RewardsDistributed.ByItem) casino.RewardsDistributed.ByItem = {};
-    if (!casino.Players) casino.Players = {};
-    return casino;
+function casinoStatsPath(casinoId) {
+    return CASINO_DATA_DIR + '/' + casinoId + '.json';
+}
+
+function casinoGamblerPath(uuid) {
+    return CASINO_GAMBLERS_DIR + '/' + uuid + '.json';
+}
+
+function loadCasinoStats(casinoId) {
+    var path = casinoStatsPath(casinoId);
+    if (!checkFileExists(path)) return {};
+    return loadJson(path);
+}
+
+function saveCasinoStats(casinoId, data) {
+    ensureCasinoDataDirectories();
+    saveJson(data, casinoStatsPath(casinoId));
+}
+
+function ensureCasinoStats(data, casinoId, casinoName) {
+    data.Version = 1;
+    data.Casino = casinoId;
+    data.Name = casinoName || data.Name || casinoId;
+    if (!data.CratesOpened) data.CratesOpened = {Total: 0, ByType: {}, ByDate: {}};
+    if (!data.CratesOpened.ByType) data.CratesOpened.ByType = {};
+    if (!data.CratesOpened.ByDate) data.CratesOpened.ByDate = {};
+    if (!data.loot_box_rewards) {
+        data.loot_box_rewards = {TotalStacks: 0, TotalItems: 0, ByItem: {}};
+    }
+    if (!data.loot_box_rewards.ByItem) data.loot_box_rewards.ByItem = {};
+    return data;
+}
+
+function loadCasinoGambler(uuid, playerName) {
+    var path = casinoGamblerPath(uuid);
+    var data = checkFileExists(path) ? loadJson(path) : {};
+    if (!data) data = {};
+
+    data.Version = 1;
+    data.UUID = uuid;
+    data.Name = playerName || data.Name || '';
+    if (!data.Games) data.Games = {};
+    if (!data.Games.loot_crates) data.Games.loot_crates = {};
+    return data;
+}
+
+function saveCasinoGambler(uuid, data) {
+    ensureCasinoDataDirectories();
+    saveJson(data, casinoGamblerPath(uuid));
+}
+
+function ensurePlayerLootCrateStats(gambler, casinoId) {
+    var games = gambler.Games;
+    if (!games.loot_crates[casinoId]) {
+        games.loot_crates[casinoId] = {
+            Timestamp: 0,
+            CratesOpened: {Total: 0, ByType: {}}
+        };
+    }
+
+    var stats = games.loot_crates[casinoId];
+    if (!stats.CratesOpened) stats.CratesOpened = {Total: 0, ByType: {}};
+    if (!stats.CratesOpened.ByType) stats.CratesOpened.ByType = {};
+    return stats;
 }
 
 function casinoRewardSummary(item) {
-    // Item ID + metadata + count are sufficient for economy statistics.
-    // Deliberately do not log full reward NBT or sensitive item payloads.
     return {
         Item: String(item.getName()),
         Damage: Number(item.getItemDamage()),
@@ -48,19 +100,25 @@ function appendCasinoAuditEvent(event) {
 }
 
 /**
- * Record a completed crate opening, not a prepared or attempted one.
- * This function is deliberately independent of crate NPC state so that
- * other casino activities can later reuse the same casino ID.
+ * Record a completed crate opening.
+ *
+ * Aggregate casino data is stored in one JSON file per casino.
+ * Per-player casino data is stored once per UUID and groups activity across casinos.
  */
 function recordCasinoCrateOpen(casinoId, casinoName, crate, npc, player, key, rewards) {
-    var now = new Date();
-    var stamp = now.toISOString();
-    var date = stamp.slice(0, 10);
+    var timestamp = Date.now();
+    // ByDate intentionally remains YYYY-MM-DD because it is useful for daily summaries.
+    var date = new Date(timestamp).toISOString().slice(0, 10);
     var uuid = String(player.getUUID());
+    var playerName = String(player.getName());
     var summary = [];
-    for (var i = 0; i < rewards.length; i++) summary.push(casinoRewardSummary(rewards[i]));
-    var event = {
-        Time: stamp,
+
+    for (var i = 0; i < rewards.length; i++) {
+        summary.push(casinoRewardSummary(rewards[i]));
+    }
+
+    appendCasinoAuditEvent({
+        Time: timestamp,
         Event: 'crate_opened',
         Casino: casinoId,
         CasinoName: casinoName,
@@ -68,59 +126,40 @@ function recordCasinoCrateOpen(casinoId, casinoName, crate, npc, player, key, re
         CrateName: crate.name,
         LootTable: crate.lootTable,
         PlayerUUID: uuid,
-        PlayerName: String(player.getName()),
+        PlayerName: playerName,
         KeyItem: String(key.getName()),
         Position: casinoCratePosition(npc),
         Rewards: summary
-    };
+    });
 
-    // Audit trail is written first so aggregated statistics can be rebuilt
-    // from successful events if a later stats-file write fails.
-    var auditOk = true;
-    try {
-        appendCasinoAuditEvent(event);
-    } catch (e) {
-        auditOk = false;
-        java.lang.System.err.println('[Casino] Failed to append crate audit: ' + e);
+    var casino = ensureCasinoStats(loadCasinoStats(casinoId), casinoId, casinoName);
+    casino.Timestamp = timestamp;
+    casino.CratesOpened.Total++;
+    casino.CratesOpened.ByType[crate.type] =
+        (casino.CratesOpened.ByType[crate.type] || 0) + 1;
+    casino.CratesOpened.ByDate[date] =
+        (casino.CratesOpened.ByDate[date] || 0) + 1;
+
+    for (var j = 0; j < summary.length; j++) {
+        var reward = summary[j];
+        var itemKey = reward.Item + ':' + reward.Damage;
+        casino.loot_box_rewards.TotalStacks++;
+        casino.loot_box_rewards.TotalItems += reward.Count;
+        casino.loot_box_rewards.ByItem[itemKey] =
+            (casino.loot_box_rewards.ByItem[itemKey] || 0) + reward.Count;
     }
 
-    var statsOk = true;
-    try {
-        var data = loadCasinoStats();
-        if (!data) throw new Error('Failed to load casino statistics; refusing to overwrite data.');
-        var casino = ensureCasinoStats(data, casinoId);
-        var opened = casino.CratesOpened;
-        opened.Total++;
-        opened.ByType[crate.type] = (opened.ByType[crate.type] || 0) + 1;
-        opened.ByDate[date] = (opened.ByDate[date] || 0) + 1;
-        casino.LastOpenedAt = stamp;
+    saveCasinoStats(casinoId, casino);
 
-        var playerStats = casino.Players[uuid];
-        if (!playerStats) {
-            playerStats = {Name: String(player.getName()), CratesOpened: {Total: 0, ByType: {}}};
-            casino.Players[uuid] = playerStats;
-        }
-        playerStats.Name = String(player.getName());
-        playerStats.CratesOpened.Total++;
-        playerStats.CratesOpened.ByType[crate.type] = (playerStats.CratesOpened.ByType[crate.type] || 0) + 1;
-        playerStats.LastOpenedAt = stamp;
+    var gambler = loadCasinoGambler(uuid, playerName);
+    gambler.Name = playerName;
+    var playerStats = ensurePlayerLootCrateStats(gambler, casinoId);
+    playerStats.Timestamp = timestamp;
+    playerStats.CratesOpened.Total++;
+    playerStats.CratesOpened.ByType[crate.type] =
+        (playerStats.CratesOpened.ByType[crate.type] || 0) + 1;
+    saveCasinoGambler(uuid, gambler);
 
-        var distributed = casino.RewardsDistributed;
-        for (var j = 0; j < summary.length; j++) {
-            var reward = summary[j];
-            var itemKey = reward.Item + ':' + reward.Damage;
-            distributed.TotalStacks++;
-            distributed.TotalItems += reward.Count;
-            distributed.ByItem[itemKey] = (distributed.ByItem[itemKey] || 0) + reward.Count;
-        }
-        saveJson(data, CASINO_STATS_PATH);
-    } catch (e2) {
-        statsOk = false;
-        java.lang.System.err.println('[Casino] Failed to update crate statistics: ' + e2);
-    }
-
-    // Human-readable activity log; structured details stay in the JSONL
-    // audit trail and the aggregated statistics JSON.
     var rewardText = [];
     for (var k = 0; k < summary.length; k++) {
         rewardText.push(summary[k].Count + 'x ' + summary[k].Item);
@@ -128,9 +167,7 @@ function recordCasinoCrateOpen(casinoId, casinoName, crate, npc, player, key, re
 
     logToFile(
         'casino',
-        player.getName() + ' opened ' + crate.name + ' at ' + casinoName +
+        playerName + ' opened ' + crate.name + ' at ' + casinoName +
         ' and received ' + rewardText.join(', ') + '.'
     );
-
-    return auditOk && statsOk;
 }
