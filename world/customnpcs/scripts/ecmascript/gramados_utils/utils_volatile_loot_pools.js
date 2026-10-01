@@ -206,8 +206,8 @@ function injectEntryIntoVolatileLootPool(poolConfig, entry) {
 }
 
 /**
- * Validates and inserts one ItemStack instance into a configured volatile pool.
- * This function never changes the player's inventory.
+ * Validates and inserts one ItemStack into a configured volatile pool.
+ * On success, the entire submitted stack is consumed from the player's hand.
  *
  * @param {string} alias - Configured volatile loot pool alias.
  * @param {IItemStack} itemStack - Item instance to serialize.
@@ -260,6 +260,7 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelis
         }
     }
 
+    var submittedCount = Number(itemStack.getStackSize());
     var entry = createVolatileLootEntryFromItemStack(itemStack, numericWeight);
     var insertedEntry = injectEntryIntoVolatileLootPool(poolConfig, entry);
 
@@ -271,10 +272,15 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelis
         };
     }
 
+    // Stock is created from the submitted stack count, so consume that entire
+    // stack only after the pool write succeeds.
+    itemStack.setStackSize(0);
+
     return {
         Success: true,
         Reason: null,
         Alias: poolConfig.Alias,
+        ConsumedCount: submittedCount,
         Entry: insertedEntry
     };
 }
