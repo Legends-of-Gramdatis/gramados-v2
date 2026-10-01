@@ -1,0 +1,94 @@
+load('world/customnpcs/scripts/ecmascript/modules/casino/gem_machine_utils.js');
+
+function interact(event) {
+    var npc = event.npc;
+    var player = event.player;
+
+    if (isGemMachineAdmin(player)) {
+        handleGemMachineAdminInteraction(npc, player);
+        return;
+    }
+
+    var casino = getUsableGemMachineCasino(npc, player);
+    if (!casino) return;
+
+    var playerData = getGemMachinePlayerData(player, casino.id);
+    var stats = playerData.stats;
+
+    if (Number(stats.staged_gems) <= 0) {
+        tellPlayer(player, '&eYou have no staged gems to gamble.');
+        return;
+    }
+
+    var cooldown = getGemMachineCooldownRemaining(stats);
+    if (cooldown > 0) {
+        tellPlayer(
+            player,
+            '&eYou can use the gem machine again in &6' +
+            formatGemMachineDuration(cooldown) + '&e.'
+        );
+        return;
+    }
+
+    var staged = Number(stats.staged_gems);
+    var totalStock = syncGemMachineWeights(casino.id);
+
+    if (totalStock < staged) {
+        tellPlayer(
+            player,
+            '&c&lGEM MACHINE ERROR: The casino gem pool has less stock than your staged gems. Please contact an admin.'
+        );
+        return;
+    }
+
+    var loot = multiplePullLootTable(
+        getGemMachineLootTablePath(casino.id),
+        player,
+        staged
+    );
+
+    if (!loot || loot.length !== staged) {
+        tellPlayer(
+            player,
+            '&c&lGEM MACHINE ERROR: The gem pool changed during your gamble. Please contact an admin.'
+        );
+        return;
+    }
+
+    var rewards = [];
+    for (var i = 0; i < loot.length; i++) {
+        var reward = generateItemStackFromLootEntry(
+            loot[i],
+            player.getWorld(),
+            player
+        );
+
+        if (!reward || reward.isEmpty()) {
+            tellPlayer(
+                player,
+                '&c&lGEM MACHINE ERROR: A reward could not be generated. Please contact an admin.'
+            );
+            return;
+        }
+
+        rewards.push(reward);
+    }
+
+    stats.staged_gems = 0;
+    stats.total_pulled += staged;
+    stats.time_played += 1;
+    stats.last_gamble_timestamp = Date.now();
+    saveGemMachinePlayerData(playerData);
+
+    for (var r = 0; r < rewards.length; r++) {
+        if (!player.giveItem(rewards[r])) {
+            player.dropItem(rewards[r]);
+        }
+    }
+
+    tellPlayer(
+        player,
+        '&a:check_mark: Pulled &e' + staged +
+        '&a gem' + (staged === 1 ? '' : 's') + ' from the machine.'
+    );
+}
