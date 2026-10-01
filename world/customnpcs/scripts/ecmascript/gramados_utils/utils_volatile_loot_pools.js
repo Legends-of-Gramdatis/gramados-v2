@@ -132,7 +132,8 @@ function createVolatileLootEntryFromItemStack(itemStack, weight) {
         type: 'item',
         name: itemStack.getName(),
         weight: weight,
-        volatile: true
+        volatile: true,
+        stock: 1
     };
 
     var functions = [];
