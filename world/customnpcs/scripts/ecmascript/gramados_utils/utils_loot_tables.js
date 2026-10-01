@@ -7,6 +7,44 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance()
 
+/**
+ * Returns the stock attached to a volatile entry.
+ *
+ * null means the entry uses the legacy one-pull volatile behaviour.
+ * A defined stock must be a non-negative integer.
+ */
+function getVolatileEntryStock(entry) {
+    if (
+        !entry ||
+        entry.volatile !== true ||
+        entry.stock === undefined ||
+        entry.stock === null
+    ) {
+        return null;
+    }
+
+    var stock = Number(entry.stock);
+    if (!isFinite(stock) || stock < 0 || Math.floor(stock) !== stock) {
+        throw new Error(
+            "Volatile loot stock must be a non-negative integer: " +
+            JSON.stringify(entry)
+        );
+    }
+
+    return stock;
+}
+
+/**
+ * Stable identity for a stock-backed volatile entry.
+ * Stock is deliberately excluded because concurrent commits may decrement it.
+ * Weight remains part of the identity and is independent from stock.
+ */
+function getVolatileEntryIdentityJson(entry) {
+    var copy = JSON.parse(JSON.stringify(entry));
+    delete copy.stock;
+    return JSON.stringify(copy);
+}
+
 function _prepareLootTablePull(
     lootTablePath,
     player,
@@ -64,13 +102,17 @@ function _prepareLootTablePull(
                     ":" +
                     i;
 
-                // A volatile entry already selected during this
-                // transaction cannot be selected again.
-                if (
-                    entry.volatile === true &&
-                    context.reserved[key]
-                ) {
-                    continue;
+                // Volatile entries without stock retain the historical
+                // one-pull behaviour. Stock-backed entries can be selected
+                // repeatedly in the same transaction up to their available stock.
+                if (entry.volatile === true) {
+                    var reservedCount = Number(context.reserved[key] || 0);
+                    var availableStock = getVolatileEntryStock(entry);
+                    var capacity = availableStock === null ? 1 : availableStock;
+
+                    if (reservedCount >= capacity) {
+                        continue;
+                    }
                 }
 
                 // Resolve automatic weights on a copy so we do not
@@ -128,13 +170,18 @@ function _prepareLootTablePull(
                     ":" +
                     sourceIndex;
 
-                context.reserved[claimKey] = true;
+                context.reserved[claimKey] =
+                    Number(context.reserved[claimKey] || 0) + 1;
+
+                var sourceStock = getVolatileEntryStock(sourceEntry);
 
                 context.claims.push({
                     lootTablePath: fullPath,
                     poolIndex: poolIdx,
                     entryIndex: sourceIndex,
-                    entryJson: JSON.stringify(sourceEntry)
+                    entryJson: JSON.stringify(sourceEntry),
+                    entryIdentityJson: getVolatileEntryIdentityJson(sourceEntry),
+                    usesStock: sourceStock !== null
                 });
             }
 
@@ -391,34 +438,77 @@ function commitLootTablePull(pullResult) {
         groupedClaims[claim.lootTablePath].push(claim);
     }
 
-    // Validate and stage EVERY claimed removal before changing any loot file.
-    // Two players preparing the same last reward can no longer both receive it.
+    // Validate and stage EVERY claimed consumption before changing any loot file.
     var stagedTables = {};
+
     for (var path in groupedClaims) {
         if (!groupedClaims.hasOwnProperty(path)) continue;
+
         var lootTable = loadJson(path);
         if (!lootTable || !lootTable.pools) return false;
 
-        var pathClaims = groupedClaims[path].slice();
-        // Removing high indexes first preserves lower indexes where possible.
-        pathClaims.sort(function(a, b) {
+        // Collapse repeated claims for the same source entry. A stock-backed
+        // entry can legitimately be selected more than once in one pull.
+        var claimGroupsByKey = {};
+        var pathClaims = groupedClaims[path];
+
+        for (var c = 0; c < pathClaims.length; c++) {
+            var currentClaim = pathClaims[c];
+            var groupKey =
+                currentClaim.poolIndex + ":" +
+                currentClaim.entryIndex + ":" +
+                currentClaim.entryIdentityJson + ":" +
+                (currentClaim.usesStock ? "stock" : "single");
+
+            if (!claimGroupsByKey[groupKey]) {
+                claimGroupsByKey[groupKey] = {
+                    poolIndex: currentClaim.poolIndex,
+                    entryIndex: currentClaim.entryIndex,
+                    entryJson: currentClaim.entryJson,
+                    entryIdentityJson: currentClaim.entryIdentityJson,
+                    usesStock: currentClaim.usesStock === true,
+                    count: 0
+                };
+            }
+
+            claimGroupsByKey[groupKey].count++;
+        }
+
+        var claimGroups = [];
+        for (var groupName in claimGroupsByKey) {
+            if (claimGroupsByKey.hasOwnProperty(groupName)) {
+                claimGroups.push(claimGroupsByKey[groupName]);
+            }
+        }
+
+        // Highest indexes first to avoid index shifts when entries are removed.
+        claimGroups.sort(function(a, b) {
             if (a.poolIndex !== b.poolIndex) return b.poolIndex - a.poolIndex;
             return b.entryIndex - a.entryIndex;
         });
 
-        for (var c = 0; c < pathClaims.length; c++) {
-            var currentClaim = pathClaims[c];
-            var pool = lootTable.pools[currentClaim.poolIndex];
+        for (var g = 0; g < claimGroups.length; g++) {
+            var group = claimGroups[g];
+            var pool = lootTable.pools[group.poolIndex];
             if (!pool || !pool.entries) return false;
 
-            var index = currentClaim.entryIndex;
-            if (!pool.entries[index] ||
-                JSON.stringify(pool.entries[index]) !== currentClaim.entryJson) {
+            function matchesClaim(entry) {
+                if (!entry) return false;
+
+                if (group.usesStock) {
+                    return getVolatileEntryIdentityJson(entry) ===
+                        group.entryIdentityJson;
+                }
+
+                return JSON.stringify(entry) === group.entryJson;
+            }
+
+            var index = group.entryIndex;
+            if (!matchesClaim(pool.entries[index])) {
                 index = -1;
-                // An entry may have moved, but an identical entry must still
-                // exist AND be available for this particular claim.
+
                 for (var e = 0; e < pool.entries.length; e++) {
-                    if (JSON.stringify(pool.entries[e]) === currentClaim.entryJson) {
+                    if (matchesClaim(pool.entries[e])) {
                         index = e;
                         break;
                     }
@@ -426,23 +516,54 @@ function commitLootTablePull(pullResult) {
             }
 
             if (index === -1) {
-                logToFile("loot_tables", "Volatile reward no longer available in " + path + ". Pull cancelled.");
+                logToFile(
+                    "loot_tables",
+                    "Volatile reward no longer available in " +
+                    path + ". Pull cancelled."
+                );
                 return false;
             }
-            pool.entries.splice(index, 1);
+
+            if (group.usesStock) {
+                var currentStock = getVolatileEntryStock(pool.entries[index]);
+
+                if (currentStock === null || currentStock < group.count) {
+                    logToFile(
+                        "loot_tables",
+                        "Not enough volatile stock remains in " +
+                        path + ". Pull cancelled."
+                    );
+                    return false;
+                }
+
+                var remainingStock = currentStock - group.count;
+                if (remainingStock === 0) {
+                    pool.entries.splice(index, 1);
+                } else {
+                    pool.entries[index].stock = remainingStock;
+                }
+            } else {
+                // Legacy volatile entries represent exactly one available copy.
+                if (group.count !== 1) return false;
+                pool.entries.splice(index, 1);
+            }
         }
+
         stagedTables[path] = lootTable;
     }
 
-    // Only write once all claims, including nested-table claims, are valid.
-    // File I/O failures still propagate normally instead of being hidden.
+    // Only write once every claim, including nested-table claims, is valid.
+    // File I/O errors intentionally propagate.
     for (var savePath in stagedTables) {
         if (stagedTables.hasOwnProperty(savePath)) {
             saveJson(stagedTables[savePath], savePath);
         }
     }
 
-    logToFile("loot_tables", "Consumed " + claims.length + " volatile reward(s).");
+    logToFile(
+        "loot_tables",
+        "Consumed " + claims.length + " volatile reward(s)."
+    );
     return true;
 }
 
@@ -788,6 +909,15 @@ function canUseLootTable(lootTablePath, visited) {
 
         for (var e = 0; e < pool.entries.length; e++) {
             var entry = pool.entries[e];
+
+            // A stock-backed volatile entry with no remaining stock cannot
+            // currently produce loot. Legacy volatile entries have no stock field.
+            if (entry.volatile === true) {
+                var entryStock = getVolatileEntryStock(entry);
+                if (entryStock !== null && entryStock <= 0) {
+                    continue;
+                }
+            }
 
             // Nested table: usable only if something below it is usable.
             if (
