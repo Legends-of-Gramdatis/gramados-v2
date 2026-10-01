@@ -478,10 +478,10 @@ function commitLootTablePull(pullResult) {
         saveJson(stagedTables[savePath], savePath);
     }
 
-    logToFile(
-        "loot_tables",
-        "Consumed " + claims.length + " volatile reward(s)."
-    );
+    // logToFile(
+    //     "loot_tables",
+    //     "Consumed " + claims.length + " volatile reward(s)."
+    // );
     return true;
 }
 
