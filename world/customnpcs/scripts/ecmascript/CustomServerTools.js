@@ -4061,6 +4061,8 @@ registerXCommands([
         }
 
         var submittedItem = mainhand.copy();
+        var submittedCount = submittedItem.getStackSize();
+        var submittedDisplayName = submittedItem.getDisplayName();
         var result = addItemStackToVolatileLootPool(
             args.alias,
             submittedItem,
@@ -4092,29 +4094,22 @@ registerXCommands([
             return false;
         }
 
-        // Consume exactly one item only after the loot-table write succeeded.
-        var remaining = mainhand.getStackSize() - 1;
+        // The inserted stock matches the submitted stack count, so consume
+        // the entire main-hand stack after the loot-table write succeeds.
+        pl.setMainhandItem(pl.getWorld().createItem('minecraft:air', 0, 1));
 
-        if (remaining <= 0) {
-            pl.setMainhandItem(pl.getWorld().createItem('minecraft:air', 0, 1));
-        } else {
-            var remainingStack = mainhand.copy();
-            remainingStack.setStackSize(remaining);
-            pl.setMainhandItem(remainingStack);
-        }
-
-        var itemName = stripColors(submittedItem.getDisplayName());
+        var itemName = stripColors(submittedDisplayName);
 
         tellPlayer(
             pl,
-            '&a:check_mark: Added &e' + submittedItem.getDisplayName() +
+            '&a:check_mark: Added &e' + submittedCount + 'x ' + submittedDisplayName +
             '&a to volatile loot pool &e' + result.Alias +
             '&a with weight &e' + args.weight + '&a.'
         );
 
         logToFile(
             'loot_tables',
-            '[VLP] ' + pl.getName() + " added '" + itemName +
+            '[VLP] ' + pl.getName() + " added " + submittedCount + "x '" + itemName +
             "' to '" + result.Alias + "' (weight " + args.weight + ').'
         );
 
@@ -4139,6 +4134,8 @@ registerXCommands([
         }
 
         var submittedItem = mainhand.copy();
+        var submittedCount = submittedItem.getStackSize();
+        var submittedDisplayName = submittedItem.getDisplayName();
         var result = addItemStackToVolatileLootPool(
             args.alias,
             submittedItem,
@@ -4168,28 +4165,20 @@ registerXCommands([
             return false;
         }
 
-        var remaining = mainhand.getStackSize() - 1;
+        pl.setMainhandItem(pl.getWorld().createItem('minecraft:air', 0, 1));
 
-        if (remaining <= 0) {
-            pl.setMainhandItem(pl.getWorld().createItem('minecraft:air', 0, 1));
-        } else {
-            var remainingStack = mainhand.copy();
-            remainingStack.setStackSize(remaining);
-            pl.setMainhandItem(remainingStack);
-        }
-
-        var itemName = stripColors(submittedItem.getDisplayName());
+        var itemName = stripColors(submittedDisplayName);
 
         tellPlayer(
             pl,
-            '&a:check_mark: Force-added &e' + submittedItem.getDisplayName() +
+            '&a:check_mark: Force-added &e' + submittedCount + 'x ' + submittedDisplayName +
             '&a to volatile loot pool &e' + result.Alias +
             '&a with weight &e' + args.weight + '&a.'
         );
 
         logToFile(
             'loot_tables',
-            '[VLP] ' + pl.getName() + " force-added '" + itemName +
+            '[VLP] ' + pl.getName() + " force-added " + submittedCount + "x '" + itemName +
             "' to '" + result.Alias + "' (weight " + args.weight + ').'
         );
 

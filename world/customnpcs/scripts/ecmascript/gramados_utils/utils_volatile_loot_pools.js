@@ -120,8 +120,8 @@ function getVolatileLootItemDamage(itemStack) {
 }
 
 /**
- * Creates a conventional loot-table item entry from one ItemStack instance.
- * The stack count is deliberately ignored: one submitted item creates one entry.
+ * Creates a conventional loot-table item entry from one ItemStack.
+ * The ItemStack count becomes the volatile stock.
  *
  * @param {IItemStack} itemStack
  * @param {number} weight
@@ -132,7 +132,8 @@ function createVolatileLootEntryFromItemStack(itemStack, weight) {
         type: 'item',
         name: itemStack.getName(),
         weight: weight,
-        volatile: true
+        volatile: true,
+        stock: Number(itemStack.getStackSize())
     };
 
     var functions = [];
@@ -205,8 +206,8 @@ function injectEntryIntoVolatileLootPool(poolConfig, entry) {
 }
 
 /**
- * Validates and inserts one ItemStack instance into a configured volatile pool.
- * This function never changes the player's inventory.
+ * Validates and inserts one ItemStack into a configured volatile pool.
+ * Inventory consumption is handled by the caller after a successful write.
  *
  * @param {string} alias - Configured volatile loot pool alias.
  * @param {IItemStack} itemStack - Item instance to serialize.
@@ -259,6 +260,7 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelis
         }
     }
 
+    var submittedCount = Number(itemStack.getStackSize());
     var entry = createVolatileLootEntryFromItemStack(itemStack, numericWeight);
     var insertedEntry = injectEntryIntoVolatileLootPool(poolConfig, entry);
 
@@ -274,6 +276,7 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelis
         Success: true,
         Reason: null,
         Alias: poolConfig.Alias,
+        ConsumedCount: submittedCount,
         Entry: insertedEntry
     };
 }

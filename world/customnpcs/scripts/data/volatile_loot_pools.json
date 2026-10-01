@@ -2,5 +2,9 @@
     "Junkers": {
         "LootTablePath": "volatile/junkers.json",
         "WhitelistLootTable": "assembled_loot_tables/dealership_vehicles.json"
+    },
+    "GemMachine": {
+        "LootTablePath": "volatile/gem_machine.json",
+        "WhitelistLootTable": "treasures/treasures_single_gem.json"
     }
 }
