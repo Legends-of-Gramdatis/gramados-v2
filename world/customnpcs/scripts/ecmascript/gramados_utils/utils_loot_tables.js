@@ -419,7 +419,7 @@ function prepareLootTablePull(lootTablePath, player) {
 }
 
 /**
- * Permanently consumes all volatile entries selected by a prepared pull.
+ * Permanently consumes all volatile selections from a prepared pull.\n * Stock-backed volatile entries decrement stock per selection and are removed at zero.\n * Volatile entries without stock retain the legacy single-use removal behaviour.
  *
  * @param {Object} pullResult
  * @returns {boolean}
