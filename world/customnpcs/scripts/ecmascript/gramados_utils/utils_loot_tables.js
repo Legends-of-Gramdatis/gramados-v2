@@ -636,7 +636,19 @@ function isItemInLootTable(lootTablePath, itemId, itemDamage) {
                     if (entry.functions) {
                         for (var f = 0; f < entry.functions.length; f++) {
                             if (entry.functions[f].function === "set_data") {
-                                entryDamage = Number(entry.functions[f].data);
+                                var dataValue = entry.functions[f].data;
+
+                                if (typeof dataValue === "object") {
+                                    if (
+                                        Number(itemDamage) >= Number(dataValue.min) &&
+                                        Number(itemDamage) <= Number(dataValue.max)
+                                    ) {
+                                        return true;
+                                    }
+                                } else {
+                                    entryDamage = Number(dataValue);
+                                }
+
                                 break;
                             }
                         }
