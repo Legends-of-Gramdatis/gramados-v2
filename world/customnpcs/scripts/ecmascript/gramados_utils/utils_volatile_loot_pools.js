@@ -251,7 +251,14 @@ function addItemStackToVolatileLootPool(alias, itemStack, weight, bypassWhitelis
             };
         }
 
-        if (!allowBypass && !isItemInLootTable(poolConfig.WhitelistLootTable, itemStack.getName())) {
+        if (
+            !allowBypass &&
+            !isItemInLootTable(
+                poolConfig.WhitelistLootTable,
+                itemStack.getName(),
+                getVolatileLootItemDamage(itemStack)
+            )
+        ) {
             return {
                 Success: false,
                 Reason: 'not_whitelisted',
