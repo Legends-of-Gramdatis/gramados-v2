@@ -120,8 +120,8 @@ function getVolatileLootItemDamage(itemStack) {
 }
 
 /**
- * Creates a conventional loot-table item entry from one ItemStack instance.
- * The stack count is deliberately ignored: one submitted item creates one entry.
+ * Creates a conventional loot-table item entry from one ItemStack.
+ * The ItemStack count becomes the volatile stock.
  *
  * @param {IItemStack} itemStack
  * @param {number} weight
@@ -133,7 +133,7 @@ function createVolatileLootEntryFromItemStack(itemStack, weight) {
         name: itemStack.getName(),
         weight: weight,
         volatile: true,
-        stock: 1
+        stock: Number(itemStack.getStackSize())
     };
 
     var functions = [];
