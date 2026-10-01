@@ -54,6 +54,7 @@ function loadCasinoGambler(uuid, playerName) {
     data.Name = playerName || data.Name || '';
     if (!data.Games) data.Games = {};
     if (!data.Games.loot_crates) data.Games.loot_crates = {};
+    if (!data.Games.gem_machine) data.Games.gem_machine = {};
     return data;
 }
 
@@ -75,6 +76,22 @@ function ensurePlayerLootCrateStats(gambler, casinoId) {
     if (!stats.CratesOpened) stats.CratesOpened = {Total: 0, ByType: {}};
     if (!stats.CratesOpened.ByType) stats.CratesOpened.ByType = {};
     return stats;
+}
+
+function ensurePlayerGemMachineStats(gambler, casinoId) {
+    var games = gambler.Games;
+    if (!games.gem_machine) games.gem_machine = {};
+
+    if (!games.gem_machine[casinoId]) {
+        games.gem_machine[casinoId] = {
+            last_gamble_timestamp: 0,
+            staged_gems: 0,
+            total_pulled: 0,
+            time_played: 0
+        };
+    }
+
+    return games.gem_machine[casinoId];
 }
 
 function casinoRewardSummary(item) {
