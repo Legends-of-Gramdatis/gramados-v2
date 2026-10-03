@@ -463,11 +463,30 @@
             "Region": "Solterra",
             "Title": "Solterra Mechanic",
             "Perms": [],
-            "AutoAssignPerms": [],
+            "AutoAssignPerms": [
+                "region_Solterra_Golmera_CaminoDeNunos_2_TallerDeRutaSur_Garage"
+            ],
             "Tags": [
                 "Mechanic"
             ],
             "MarketAccessDeniedText": "Only certified Solterran mechanics may trade with this market.",
+            "Markets": []
+        },
+        {
+            "JobID": 777,
+            "JobLock": 778,
+            "JobQuit": 779,
+            "Type": "Advanced",
+            "Qualification": "Advanced",
+            "JobName": "Mechanic",
+            "Region": "Ardessa",
+            "Title": "Ardessa Mechanic",
+            "Perms": [],
+            "AutoAssignPerms": [],
+            "Tags": [
+                "Mechanic"
+            ],
+            "MarketAccessDeniedText": "Only certified Ardessan mechanics may trade with this market.",
             "Markets": []
         },
         {
