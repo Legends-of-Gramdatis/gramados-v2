@@ -9639,9 +9639,9 @@ registerXCommands([
 
         region.set('saleType', args.saleType)
         
-        check_and_update_sign(region, pl);
-        
         region.save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet sale type of region \'' + region.name + '\' to ' + args.saleType);
     }, 'region.setSaleType', [{
@@ -9772,10 +9772,10 @@ registerXCommands([
             region.data.trusted = [];
             region.data.rentTimeCredit = 0;
 
-            check_and_update_sign(region, pl);
-
             p.save(data);
             region.save(data);
+
+            check_and_update_sign(region, pl);
 
             // Structured JSON logging for audit trail
             logToJson('economy', 'region_purchases', {
@@ -9883,11 +9883,11 @@ registerXCommands([
                 region.data.forSale = false;
             }
 
-            check_and_update_sign(region, pl);
-
             region.data.rentTimeCredit += region.data.rentTime;
             p.save(data)
             region.save(data);
+
+            check_and_update_sign(region, pl);
 
             tellPlayer(pl, '&aSuccessfully rented region for &r:money:&e' + getAmountCoin(region.data.rentPrice) + ' &a for &a&o' + getTimeString(region.data.rentTime) + ' &amore time');
             // if StarterHotel in region name:
@@ -10051,9 +10051,9 @@ registerXCommands([
 
         region.set('forSale', forSale);
 
-        check_and_update_sign(region, pl);
-
         region.save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet region for sale to &e' + forSale.toString());
 
