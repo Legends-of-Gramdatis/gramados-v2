@@ -7,7 +7,7 @@ var CASINO_KEY_LOOT_TABLE_ROOT = 'casino/keys/';
 function playCasinoMilestoneEffects(npc) {
     npc.getWorld().playSoundAt(
         npc.getPos(),
-        'minecraft:entity.experience_orb.pickup',
+        'ivv:gun.explode.pina_colada',
         1,
         1
     );
