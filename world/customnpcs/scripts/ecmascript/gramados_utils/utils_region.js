@@ -311,6 +311,11 @@ function getRegionSignTextStatus(region) {
             return "For Sale";
         }
     }
+
+    if (data.owner && data.owner.toLowerCase() !== "gramados") {
+        return data.owner;
+    }
+
     return "Not For Sale";
 }
 
