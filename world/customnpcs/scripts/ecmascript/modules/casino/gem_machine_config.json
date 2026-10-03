@@ -1,4 +1,5 @@
 {
     "cooldown_minutes": 10,
-    "whitelist_loot_table": "treasures/treasures_single_gem.json"
+    "whitelist_loot_table": "treasures/treasures_single_gem.json",
+    "key_reward_every": 10
 }
