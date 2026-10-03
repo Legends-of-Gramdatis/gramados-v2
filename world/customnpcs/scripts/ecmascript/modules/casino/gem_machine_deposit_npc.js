@@ -12,6 +12,13 @@ function interact(event) {
     var casino = getUsableGemMachineCasino(npc, player);
     if (!casino) return;
 
+    npc.getWorld().playSoundAt(
+        npc.getPos(),
+        'ivv:computer.gaming.on',
+        1,
+        1
+    );
+
     var mainhand = player.getMainhandItem();
     if (!mainhand || mainhand.isEmpty()) {
         tellPlayer(player, '&eHold a gem in your main hand to deposit it.');
