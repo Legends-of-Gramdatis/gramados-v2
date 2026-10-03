@@ -24,6 +24,7 @@ function interact(event) {
     }
 
     var submittedCount = Number(mainhand.getStackSize());
+    var submittedName = stripColors(mainhand.getDisplayName());
     var entry = createGemMachineEntry(mainhand);
 
     var inserted = addEntryToLootTable(
@@ -54,5 +55,12 @@ function interact(event) {
         '&a:check_mark: Deposited &e' + submittedCount +
         '&a gem' + (submittedCount === 1 ? '' : 's') +
         '. &7Staged: &e' + playerData.stats.staged_gems
+    );
+
+    logToFile(
+        'casino',
+        player.getName() + " deposited " + submittedCount + "x '" +
+        submittedName + "' into the gem machine at " + casino.name +
+        ". Staged gems: " + playerData.stats.staged_gems + "."
     );
 }
