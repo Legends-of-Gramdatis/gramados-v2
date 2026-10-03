@@ -78,6 +78,32 @@ function interact(event) {
     stats.total_pulled += staged;
     stats.time_played += 1;
     stats.last_gamble_timestamp = Date.now();
+
+    var keyRewardEvery = getGemMachineKeyRewardEvery();
+    var milestoneReached =
+        keyRewardEvery > 0 &&
+        stats.time_played % keyRewardEvery === 0;
+
+    if (milestoneReached) {
+        if (
+            rewardCasinoKey(
+                casino.id,
+                casino.name,
+                npc,
+                player,
+                'gems',
+                stats
+            )
+        ) {
+            tellPlayer(
+                player,
+                '&6&lMilestone reached! &eYou received a Gem Collector\'s Key for ' +
+                stats.time_played + ' gem machine plays at ' + casino.name + '.'
+            );
+            playCasinoMilestoneEffects(npc);
+        }
+    }
+
     saveGemMachinePlayerData(playerData);
 
     var rewardTotals = {};
