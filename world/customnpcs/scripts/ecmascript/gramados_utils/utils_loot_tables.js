@@ -781,8 +781,6 @@ function addEntryToLootTable(lootTablePath, entry, poolIndex, makeVolatile) {
 
     saveJson(lootTable, fullPath);
 
-    logToFile("loot_tables", "Added entry to loot table: " + fullPath + " in pool index: " + poolIndex + ". Entry: " + JSON.stringify(entryCopy));
-
     return entryCopy;
 }
 
