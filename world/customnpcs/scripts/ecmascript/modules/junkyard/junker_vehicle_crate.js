@@ -97,7 +97,19 @@ function interact(event) {
         return;
     }
 
-    dropLoot(npc, loot, player);
+    logToFile(
+        "mechanics",
+        "[Junker Debug] " + player.getName() +
+        " prepared " + loot.length +
+        " reward stack(s) from the Junker Vehicle Crate."
+    );
+
+    dropLoot(
+        npc,
+        loot,
+        player,
+        "[Junker Debug] " + player.getName()
+    );
     playJunkyardCrateSound(npc, "minecraft:entity.zombie.break_door_wood");
 
     crowbars.setStackSize(crowbars.getStackSize() - config.JUNKER_CRATE_CROWBAR_COST);
