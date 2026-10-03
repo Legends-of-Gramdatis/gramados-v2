@@ -80,7 +80,14 @@ function interact(event) {
     stats.last_gamble_timestamp = Date.now();
     saveGemMachinePlayerData(playerData);
 
+    var rewardTotals = {};
+
     for (var r = 0; r < rewards.length; r++) {
+        var rewardName = stripColors(rewards[r].getDisplayName());
+        var rewardCount = Number(rewards[r].getStackSize());
+        rewardTotals[rewardName] =
+            Number(rewardTotals[rewardName] || 0) + rewardCount;
+
         if (!player.giveItem(rewards[r])) {
             player.dropItem(rewards[r]);
         }
@@ -90,5 +97,19 @@ function interact(event) {
         player,
         '&a:check_mark: Pulled &e' + staged +
         '&a gem' + (staged === 1 ? '' : 's') + ' from the machine.'
+    );
+
+    var rewardSummary = [];
+    for (var rewardName in rewardTotals) {
+        rewardSummary.push(
+            rewardTotals[rewardName] + "x '" + rewardName + "'"
+        );
+    }
+
+    logToFile(
+        'casino',
+        player.getName() + ' used the gem machine at ' + casino.name +
+        ' with ' + staged + ' staged gem' + (staged === 1 ? '' : 's') +
+        ' and received ' + rewardSummary.join(', ') + '.'
     );
 }
