@@ -3,6 +3,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_stats.js');
+load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_rewards.js');
 
 var GEM_MACHINE_CONFIG_PATH =
     'world/customnpcs/scripts/ecmascript/modules/casino/gem_machine_config.json';
@@ -38,6 +39,10 @@ function getGemMachineWhitelistPath() {
 
 function getGemMachineCooldownMs() {
     return Number(loadGemMachineConfig().cooldown_minutes) * 60 * 1000;
+}
+
+function getGemMachineKeyRewardEvery() {
+    return Number(loadGemMachineConfig().key_reward_every);
 }
 
 function getGemMachineLinkedCasino(npc) {
