@@ -93,3 +93,4 @@ gramados-v2.wiki/**/*
 world/customnpcs/scripts/ecmascript/modules_unfinished/onboarding/AI recap.md
 dynmap_resourcepack_tmp/*
 scripts_backend/loot_tables/*
+world/loot_tables/volatile/*
