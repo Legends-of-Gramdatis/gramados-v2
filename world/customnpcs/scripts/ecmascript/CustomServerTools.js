@@ -9639,9 +9639,9 @@ registerXCommands([
 
         region.set('saleType', args.saleType)
         
-        check_and_update_sign(region, pl);
-        
         region.save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet sale type of region \'' + region.name + '\' to ' + args.saleType);
     }, 'region.setSaleType', [{
@@ -10051,9 +10051,9 @@ registerXCommands([
 
         region.set('forSale', forSale);
 
-        check_and_update_sign(region, pl);
-
         region.save(data);
+
+        check_and_update_sign(region, pl);
 
         tellPlayer(pl, '&aSet region for sale to &e' + forSale.toString());
 
