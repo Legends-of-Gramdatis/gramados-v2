@@ -41,6 +41,7 @@ function ensureCasinoStats(data, casinoId, casinoName) {
         data.loot_box_rewards = {TotalStacks: 0, TotalItems: 0, ByItem: {}};
     }
     if (!data.loot_box_rewards.ByItem) data.loot_box_rewards.ByItem = {};
+    if (!data.awarded_keys) data.awarded_keys = {};
     return data;
 }
 
@@ -54,6 +55,7 @@ function loadCasinoGambler(uuid, playerName) {
     data.Name = playerName || data.Name || '';
     if (!data.Games) data.Games = {};
     if (!data.Games.loot_crates) data.Games.loot_crates = {};
+    if (!data.Games.gem_machine) data.Games.gem_machine = {};
     return data;
 }
 
@@ -75,6 +77,45 @@ function ensurePlayerLootCrateStats(gambler, casinoId) {
     if (!stats.CratesOpened) stats.CratesOpened = {Total: 0, ByType: {}};
     if (!stats.CratesOpened.ByType) stats.CratesOpened.ByType = {};
     return stats;
+}
+
+function ensurePlayerGemMachineStats(gambler, casinoId) {
+    var games = gambler.Games;
+    if (!games.gem_machine) games.gem_machine = {};
+
+    if (!games.gem_machine[casinoId]) {
+        games.gem_machine[casinoId] = {
+            last_gamble_timestamp: 0,
+            staged_gems: 0,
+            total_pulled: 0,
+            time_played: 0,
+            awarded_keys: {}
+        };
+    }
+
+    var stats = games.gem_machine[casinoId];
+    if (!stats.awarded_keys) stats.awarded_keys = {};
+    return stats;
+}
+
+function incrementCasinoAwardedKey(casinoId, casinoName, crateType) {
+    var casino = ensureCasinoStats(
+        loadCasinoStats(casinoId),
+        casinoId,
+        casinoName
+    );
+
+    casino.awarded_keys[crateType] =
+        Number(casino.awarded_keys[crateType] || 0) + 1;
+
+    saveCasinoStats(casinoId, casino);
+}
+
+function incrementPlayerAwardedKey(playerStats, crateType) {
+    if (!playerStats.awarded_keys) playerStats.awarded_keys = {};
+
+    playerStats.awarded_keys[crateType] =
+        Number(playerStats.awarded_keys[crateType] || 0) + 1;
 }
 
 function casinoRewardSummary(item) {

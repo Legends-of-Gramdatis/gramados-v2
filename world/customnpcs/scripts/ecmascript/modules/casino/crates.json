@@ -8,7 +8,7 @@
     "gems": {
       "name": "Gem Collector's Crate",
       "description": "Gemstones and mineral treasures.",
-      "loot_table": "treasures/treasures_single_gem.json"
+      "loot_table": "treasures/treasures_gems.json"
     },
     "stickers": {
       "name": "Motoring Collectibles Crate",
