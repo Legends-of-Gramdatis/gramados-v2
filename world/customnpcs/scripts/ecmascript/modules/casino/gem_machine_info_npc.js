@@ -12,6 +12,13 @@ function interact(event) {
     var casino = getUsableGemMachineCasino(npc, player);
     if (!casino) return;
 
+    npc.getWorld().playSoundAt(
+        npc.getPos(),
+        'ivv:computer.gaming.off',
+        1,
+        1
+    );
+
     var playerData = getGemMachinePlayerData(player, casino.id);
     var stats = playerData.stats;
     var cooldown = getGemMachineCooldownRemaining(stats);
