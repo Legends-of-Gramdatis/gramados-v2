@@ -1,10 +1,12 @@
 {
     "Junkers": {
+        "Description": "Vehicle stock used by Junker Vehicle Crates.",
         "LootTablePath": "volatile/junkers.json",
         "WhitelistLootTable": "assembled_loot_tables/dealership_vehicles.json"
     },
-    "GemMachine": {
-        "LootTablePath": "volatile/gem_machine.json",
+    "BrisamarGemMachine": {
+        "Description": "Gem stock shared by the gem machine at Brisamar Casino.",
+        "LootTablePath": "volatile/casino/gem_machine/Solterra_Brisamar_BrisamarCasino_Casino.json",
         "WhitelistLootTable": "treasures/treasures_single_gem.json"
     }
 }
