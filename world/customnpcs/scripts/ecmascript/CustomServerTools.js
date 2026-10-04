@@ -4052,6 +4052,25 @@ registerXCommands([
 ]);
 
 registerXCommands([
+    ['!loottableVLP list', function (pl, args, data) {
+        var pools = getAllVolatileLootPoolConfigs();
+
+        tellPlayer(pl, '&6&lConfigured Volatile Loot Pools&r');
+
+        if (pools.length === 0) {
+            tellPlayer(pl, '&7No volatile loot pools are configured.');
+            return true;
+        }
+
+        for (var i = 0; i < pools.length; i++) {
+            tellPlayer(
+                pl,
+                '&e' + pools[i].Alias + '&7 - ' + pools[i].Description
+            );
+        }
+
+        return true;
+    }, 'loottableVLP.add'],
     ['!loottableVLP add <alias> <weight>', function (pl, args, data) {
         var mainhand = pl.getMainhandItem();
 

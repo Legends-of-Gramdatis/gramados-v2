@@ -1,6 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_volatile_loot_pools.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_stats.js');
 load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_rewards.js');
@@ -9,8 +10,6 @@ var GEM_MACHINE_CONFIG_PATH =
     'world/customnpcs/scripts/ecmascript/modules/casino/gem_machine_config.json';
 var GEM_MACHINE_CASINOS_PATH =
     'world/customnpcs/scripts/ecmascript/modules/casino/casinos.json';
-var GEM_MACHINE_POOL_ROOT =
-    'volatile/casino/gem_machine/';
 var GEM_MACHINE_CASINO_ID_KEY = 'casino_id';
 
 var GEM_MACHINE_ADMIN_CARD = 'mts:ivv.idcard_seagull';
@@ -25,16 +24,20 @@ function loadGemMachineCasinos() {
     return loadJson(GEM_MACHINE_CASINOS_PATH);
 }
 
+function getGemMachinePoolAlias(casinoId) {
+    return loadGemMachineConfig().volatile_loot_pools[casinoId];
+}
+
+function getGemMachinePoolConfig(casinoId) {
+    return getVolatileLootPoolConfig(getGemMachinePoolAlias(casinoId));
+}
+
 function getGemMachineLootTablePath(casinoId) {
-    return GEM_MACHINE_POOL_ROOT + casinoId + '.json';
+    return getGemMachinePoolConfig(casinoId).LootTablePath;
 }
 
 function getGemMachineFullLootTablePath(casinoId) {
-    return 'world/loot_tables/' + getGemMachineLootTablePath(casinoId);
-}
-
-function getGemMachineWhitelistPath() {
-    return loadGemMachineConfig().whitelist_loot_table;
+    return getVolatileLootPoolFullPath(getGemMachinePoolConfig(casinoId));
 }
 
 function getGemMachineCooldownMs() {
@@ -120,6 +123,13 @@ function showGemMachineAdminStatus(npc, player) {
                 ? '&aValid'
                 : '&cOutside linked region')
         );
+        var poolAlias = getGemMachinePoolAlias(casino.id);
+        var poolPath = getGemMachineFullLootTablePath(casino.id);
+
+        tellPlayer(
+            player,
+            '&7- VLP alias: &f' + poolAlias
+        );
         tellPlayer(
             player,
             '&7- Loot pool: &f' + getGemMachineLootTablePath(casino.id)
@@ -127,9 +137,7 @@ function showGemMachineAdminStatus(npc, player) {
         tellPlayer(
             player,
             '&7- Pool file: ' +
-            (checkFileExists(getGemMachineFullLootTablePath(casino.id))
-                ? '&aFound'
-                : '&cMissing')
+            (checkFileExists(poolPath) ? '&aFound' : '&cMissing')
         );
     }
 
@@ -197,7 +205,9 @@ function getUsableGemMachineCasino(npc, player) {
         return null;
     }
 
-    if (!checkFileExists(getGemMachineFullLootTablePath(casino.id))) {
+    var poolPath = getGemMachineFullLootTablePath(casino.id);
+
+    if (!checkFileExists(poolPath)) {
         tellPlayer(
             player,
             '&c&lThis casino gem pool is missing. Please contact an admin.'
@@ -271,9 +281,11 @@ function createGemMachineEntry(itemStack) {
     return entry;
 }
 
-function isGemMachineAcceptedItem(itemStack) {
+function isGemMachineAcceptedItem(casinoId, itemStack) {
+    var poolConfig = getGemMachinePoolConfig(casinoId);
+
     return isItemInLootTable(
-        getGemMachineWhitelistPath(),
+        poolConfig.WhitelistLootTable,
         itemStack.getName(),
         getGemMachineItemDamage(itemStack)
     );

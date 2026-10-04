@@ -8,10 +8,6 @@ var VOLATILE_LOOT_POOL_CONFIG_PATH = 'world/customnpcs/scripts/data/volatile_loo
  * @returns {Object|null} Config object, or null if unavailable.
  */
 function loadVolatileLootPoolConfig() {
-    if (!checkFileExists(VOLATILE_LOOT_POOL_CONFIG_PATH)) {
-        return null;
-    }
-
     return loadJson(VOLATILE_LOOT_POOL_CONFIG_PATH);
 }
 
@@ -23,7 +19,7 @@ function loadVolatileLootPoolConfig() {
  */
 function getVolatileLootPoolConfig(alias) {
     var config = loadVolatileLootPoolConfig();
-    if (!config || alias === undefined || alias === null) {
+    if (alias === undefined || alias === null) {
         return null;
     }
 
@@ -33,20 +29,61 @@ function getVolatileLootPoolConfig(alias) {
         if (configuredAlias.toLowerCase() === wantedAlias) {
             var poolConfig = config[configuredAlias] || {};
 
-            if (!poolConfig.LootTablePath) {
-                return null;
-            }
-
             return {
                 Alias: configuredAlias,
+                Description: poolConfig.Description,
                 LootTablePath: poolConfig.LootTablePath,
-                WhitelistLootTable: poolConfig.WhitelistLootTable || null,
-                PoolIndex: poolConfig.PoolIndex === undefined ? 0 : poolConfig.PoolIndex
+                WhitelistLootTable: poolConfig.WhitelistLootTable,
+                PoolIndex: poolConfig.PoolIndex
             };
         }
     }
 
     return null;
+}
+
+/**
+ * Returns all configured volatile loot pools with canonical aliases.
+ *
+ * @returns {Array<Object>}
+ */
+function getAllVolatileLootPoolConfigs() {
+    var config = loadVolatileLootPoolConfig();
+    var pools = [];
+
+    for (var alias in config) {
+        if (!config.hasOwnProperty(alias)) continue;
+        pools.push(getVolatileLootPoolConfig(alias));
+    }
+
+    return pools;
+}
+
+/**
+ * Returns the full filesystem path for a configured volatile loot pool.
+ *
+ * @param {Object|string} poolOrAlias - Resolved pool config or configured alias.
+ * @returns {string}
+ */
+function getVolatileLootPoolFullPath(poolOrAlias) {
+    var poolConfig =
+        typeof poolOrAlias === 'string'
+            ? getVolatileLootPoolConfig(poolOrAlias)
+            : poolOrAlias;
+
+    return poolConfig.LootTablePath.startsWith('world/loot_tables/')
+        ? poolConfig.LootTablePath
+        : 'world/loot_tables/' + poolConfig.LootTablePath;
+}
+
+/**
+ * Returns whether the configured volatile pool currently has a usable reward.
+ *
+ * @param {string} alias
+ * @returns {boolean}
+ */
+function canUseVolatileLootPool(alias) {
+    return canUseLootTable(getVolatileLootPoolConfig(alias).LootTablePath);
 }
 
 /**
@@ -169,11 +206,7 @@ function createVolatileLootEntryFromItemStack(itemStack, weight) {
  * @returns {Object|null} Inserted entry, or null on failure.
  */
 function injectEntryIntoVolatileLootPool(poolConfig, entry) {
-    var fullPath = poolConfig.LootTablePath;
-
-    if (!fullPath.startsWith('world/loot_tables/')) {
-        fullPath = 'world/loot_tables/' + fullPath;
-    }
+    var fullPath = getVolatileLootPoolFullPath(poolConfig);
 
     if (!checkFileExists(fullPath)) {
         return null;

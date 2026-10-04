@@ -1,6 +1,7 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_volatile_loot_pools.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_stats.js');
@@ -104,8 +105,7 @@ function loadCasinoAdminItems() {
 }
 
 function loadCasinoCrateTypes() {
-    var config = loadJson(CASINO_CRATES_CONFIG);
-    return config && config.crates ? config.crates : null;
+    return loadJson(CASINO_CRATES_CONFIG).crates;
 }
 
 function loadCasinoDefinitions() {
@@ -142,15 +142,24 @@ function getCasinoCrateType(npc) {
 
 function getActiveCasinoCrate(npc) {
     var type = getCasinoCrateType(npc);
-    var types = loadCasinoCrateTypes();
-    if (!type || !types || !types[type] || !types[type].loot_table) return null;
+    if (!type) return null;
 
-    return {
+    var definition = loadCasinoCrateTypes()[type];
+    var isVolatile = definition.hasOwnProperty('volatile_loot_pool');
+    var crate = {
         type: type,
-        name: types[type].name || type,
-        description: types[type].description || '',
-        lootTable: types[type].loot_table
+        name: definition.name,
+        description: definition.description,
+        lootTable: isVolatile
+            ? getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath
+            : definition.loot_table
     };
+
+    if (isVolatile) {
+        crate.volatileLootPool = definition.volatile_loot_pool;
+    }
+
+    return crate;
 }
 
 function isCasinoCrateConfigured(npc) {
@@ -219,9 +228,7 @@ function handleCasinoAdminInteraction(npc, player, mainhand, adminItems) {
 
 function cycleCasinoCrateType(npc, player, adminItems) {
     var types = loadCasinoCrateTypes();
-    var options = types ? Object.keys(types).filter(function(key) {
-        return types[key] && types[key].loot_table;
-    }) : [];
+    var options = Object.keys(types);
 
     if (!options.length) {
         tellPlayer(player, '&c[Crate Admin] No valid crate types are defined in crates.json.');
@@ -233,8 +240,15 @@ function cycleCasinoCrateType(npc, player, adminItems) {
     npc.getStoreddata().put(CASINO_CRATE_TYPE_KEY, next);
 
     tellPlayer(player, '&a[Crate Admin] ' + adminItems.crate_type.name
-        + '&a: &e' + (types[next].name || next) + ' &7(' + next + ')');
-    tellPlayer(player, '&7Reward table: &f' + types[next].loot_table);
+        + '&a: &e' + types[next].name + ' &7(' + next + ')');
+    if (types[next].volatile_loot_pool) {
+        tellPlayer(
+            player,
+            '&7Volatile pool: &f' + types[next].volatile_loot_pool
+        );
+    } else {
+        tellPlayer(player, '&7Reward table: &f' + types[next].loot_table);
+    }
 }
 
 function cycleCasinoLink(npc, player, adminItems) {
@@ -315,6 +329,9 @@ function showCasinoCrateConfiguration(npc, player, adminItems) {
 
     if (crate) {
         tellPlayer(player, '&7- Description: &f' + crate.description);
+        if (crate.volatileLootPool) {
+            tellPlayer(player, '&7- Volatile pool: &f' + crate.volatileLootPool);
+        }
         tellPlayer(player, '&7- Loot table: &f' + crate.lootTable);
         tellPlayer(player, '&7- Reward availability: '
             + (canUseLootTable(crate.lootTable) ? '&aAvailable' : '&cEmpty or invalid'));
@@ -360,7 +377,13 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
         return;
     }
     if (!canUseLootTable(crate.lootTable)) {
-        rejectCasinoCrate(npc, player, '&cThis crate is currently out of rewards.');
+        rejectCasinoCrate(
+            npc,
+            player,
+            crate.volatileLootPool
+                ? '&eThis crate is currently unavailable.'
+                : '&cThis crate is currently out of rewards.'
+        );
         return;
     }
 
