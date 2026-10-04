@@ -19,6 +19,11 @@
       "name": "Car Collector's Crate",
       "description": "Full vehicles from the casino's volatile car stock.",
       "volatile_loot_pool": "BrisamarCarCrate"
+    },
+    "emotes": {
+      "name": "Emote Collector's Crate",
+      "description": "Unlocks up to three emotes the player cannot already use.",
+      "reward_handler": "emotes"
     }
   }
 }

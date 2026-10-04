@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_volatile_loot_poo
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 load('world/customnpcs/scripts/ecmascript/modules/casino/utils_casino_stats.js');
+load('world/customnpcs/scripts/ecmascript/modules/casino/custom_crate_rewards.js');
 
 // Each NPC stores its crate type, casino association, and enabled state.
 // Casino definitions, crate types, and admin items are separate JSON dictionaries.
@@ -145,18 +146,20 @@ function getActiveCasinoCrate(npc) {
     if (!type) return null;
 
     var definition = loadCasinoCrateTypes()[type];
-    var isVolatile = definition.hasOwnProperty('volatile_loot_pool');
     var crate = {
         type: type,
         name: definition.name,
-        description: definition.description,
-        lootTable: isVolatile
-            ? getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath
-            : definition.loot_table
+        description: definition.description
     };
 
-    if (isVolatile) {
+    if (definition.hasOwnProperty('reward_handler')) {
+        crate.rewardHandler = definition.reward_handler;
+    } else if (definition.hasOwnProperty('volatile_loot_pool')) {
         crate.volatileLootPool = definition.volatile_loot_pool;
+        crate.lootTable =
+            getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath;
+    } else {
+        crate.lootTable = definition.loot_table;
     }
 
     return crate;
@@ -241,7 +244,9 @@ function cycleCasinoCrateType(npc, player, adminItems) {
 
     tellPlayer(player, '&a[Crate Admin] ' + adminItems.crate_type.name
         + '&a: &e' + types[next].name + ' &7(' + next + ')');
-    if (types[next].volatile_loot_pool) {
+    if (types[next].reward_handler) {
+        tellPlayer(player, '&7Reward handler: &f' + types[next].reward_handler);
+    } else if (types[next].volatile_loot_pool) {
         tellPlayer(
             player,
             '&7Volatile pool: &f' + types[next].volatile_loot_pool
@@ -329,12 +334,18 @@ function showCasinoCrateConfiguration(npc, player, adminItems) {
 
     if (crate) {
         tellPlayer(player, '&7- Description: &f' + crate.description);
-        if (crate.volatileLootPool) {
-            tellPlayer(player, '&7- Volatile pool: &f' + crate.volatileLootPool);
+
+        if (crate.rewardHandler) {
+            tellPlayer(player, '&7- Reward handler: &f' + crate.rewardHandler);
+            tellPlayer(player, '&7- Reward availability: &ePlayer-dependent');
+        } else {
+            if (crate.volatileLootPool) {
+                tellPlayer(player, '&7- Volatile pool: &f' + crate.volatileLootPool);
+            }
+            tellPlayer(player, '&7- Loot table: &f' + crate.lootTable);
+            tellPlayer(player, '&7- Reward availability: '
+                + (canUseLootTable(crate.lootTable) ? '&aAvailable' : '&cEmpty or invalid'));
         }
-        tellPlayer(player, '&7- Loot table: &f' + crate.lootTable);
-        tellPlayer(player, '&7- Reward availability: '
-            + (canUseLootTable(crate.lootTable) ? '&aAvailable' : '&cEmpty or invalid'));
     }
     tellPlayer(player, '&7- Setup status: '
         + (isCasinoCrateConfigured(npc) ? '&aConfigured' : '&eIncomplete'));
@@ -363,6 +374,52 @@ function showCasinoCrateAdminHelp(player, adminItems) {
 /* Player interaction                                                          */
 /* -------------------------------------------------------------------------- */
 
+function consumeCasinoCrateKey(player, mainhand) {
+    var usedKey = mainhand.copy();
+    usedKey.setStackSize(1);
+
+    if (mainhand.getStackSize() <= 1) {
+        player.setMainhandItem(player.getWorld().createItem('minecraft:air', 0, 1));
+    } else {
+        var remaining = mainhand.copy();
+        remaining.setStackSize(mainhand.getStackSize() - 1);
+        player.setMainhandItem(remaining);
+    }
+
+    return usedKey;
+}
+
+function openCasinoCustomCrate(npc, player, mainhand, crate, casino) {
+    var prepared = prepareCasinoCustomCrateReward(crate.rewardHandler, player);
+
+    if (prepared.rewards.length === 0) {
+        rejectCasinoCrate(
+            npc,
+            player,
+            '&6:star: &eYou have already unlocked &6every emote &eavailable from this crate.'
+        );
+        return;
+    }
+
+    grantCasinoCustomCrateReward(prepared, player);
+
+    var usedKey = consumeCasinoCrateKey(player, mainhand);
+
+    recordCasinoCustomCrateOpen(
+        casino.id,
+        casino.name,
+        crate,
+        npc,
+        player,
+        usedKey,
+        prepared.type,
+        prepared.rewards
+    );
+
+    playCasinoCrateFeedback(npc, true);
+    tellPlayer(player, '&a:check_mark: ' + crate.name + ' opened!');
+}
+
 function openCasinoCrate(npc, player, mainhand, crate, casino) {
     if (!isCrateKeyModifier(mainhand)) {
         rejectCasinoCrate(npc, player, '&eHold the matching crate key in your main hand.');
@@ -374,6 +431,10 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
     }
     if (!canPlayerOpenCrateWithKey(mainhand, player, crate.type)) {
         rejectCasinoCrate(npc, player, '&cThat key does not open this crate.');
+        return;
+    }
+    if (crate.rewardHandler) {
+        openCasinoCustomCrate(npc, player, mainhand, crate, casino);
         return;
     }
     if (!canUseLootTable(crate.lootTable)) {
@@ -407,15 +468,7 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
         return;
     }
 
-    var usedKey = mainhand.copy();
-    usedKey.setStackSize(1);
-    if (mainhand.getStackSize() <= 1) {
-        player.setMainhandItem(player.getWorld().createItem('minecraft:air', 0, 1));
-    } else {
-        var remaining = mainhand.copy();
-        remaining.setStackSize(mainhand.getStackSize() - 1);
-        player.setMainhandItem(remaining);
-    }
+    var usedKey = consumeCasinoCrateKey(player, mainhand);
     for (var j = 0; j < rewards.length; j++) {
         if (!player.giveItem(rewards[j])) player.dropItem(rewards[j]);
     }

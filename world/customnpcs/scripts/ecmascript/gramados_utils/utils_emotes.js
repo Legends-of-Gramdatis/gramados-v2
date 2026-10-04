@@ -1,6 +1,8 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_player.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_perms.js");
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
@@ -43,22 +45,63 @@ function grantEmotes(player, emotes) {
 }
 
 function giveEmote(player, emote) {
-    var world_data = player.getWorld().getStoreddata();
-    var player_json = JSON.parse(world_data.get("player_" + player.getDisplayName()));
+    var playerData = loadPlayerMeta(player);
 
-    if (!player_json) {
-        player_json = {};
-    }
-
-    player_json.emotes = player_json.emotes || [];
-
-    if (!includes(player_json.emotes, emote)) {
-        player_json.emotes.push(emote);
-        world_data.put("player_" + player.getDisplayName(), JSON.stringify(player_json));
-        logToFile("events", "Player " + player.getDisplayName() + " received emote: " + emote);
+    if (!includes(playerData.emotes, emote)) {
+        playerData.emotes.push(emote);
+        savePlayerMeta(player, playerData);
+        logToFile("events", "Player " + player.getName() + " received emote: " + emote);
         return true;
     }
     return false;
+}
+
+/**
+ * Returns the saved emote metadata used by CustomServerTools Emote.
+ * Unsaved emotes use the Emote class default of default=false.
+ *
+ * @param {IPlayer} player
+ * @param {string} emote
+ * @returns {boolean}
+ */
+function isEmoteDefaultForPlayer(player, emote) {
+    var raw = player.getWorld().getStoreddata().get("emote_" + emote);
+    return raw === null ? false : JSON.parse(raw).default === true;
+}
+
+/**
+ * Returns whether the player can currently use an emote through an explicit
+ * unlock, the emote permission, or the emote's default flag.
+ *
+ * @param {IPlayer} player
+ * @param {string} emote
+ * @returns {boolean}
+ */
+function playerHasEmoteAccess(player, emote) {
+    var playerData = loadPlayerMeta(player);
+
+    return playerData.emotes.indexOf(emote) !== -1 ||
+        playerHasPermission(player, "emotes." + emote) ||
+        isEmoteDefaultForPlayer(player, emote);
+}
+
+/**
+ * Filters an explicit emote pool down to emotes the player cannot currently use.
+ *
+ * @param {IPlayer} player
+ * @param {Array<string>} emotes
+ * @returns {Array<string>}
+ */
+function getPlayerMissingEmotes(player, emotes) {
+    var missing = [];
+
+    for (var i = 0; i < emotes.length; i++) {
+        if (!playerHasEmoteAccess(player, emotes[i])) {
+            missing.push(emotes[i]);
+        }
+    }
+
+    return missing;
 }
 
 function grantBadgeAndEmotes(player, badge, emotes) {
