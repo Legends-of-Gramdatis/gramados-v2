@@ -4065,8 +4065,7 @@ registerXCommands([
         for (var i = 0; i < pools.length; i++) {
             tellPlayer(
                 pl,
-                '&e' + pools[i].Alias + '&7 - ' +
-                (pools[i].Description || 'No description configured.')
+                '&e' + pools[i].Alias + '&7 - ' + pools[i].Description
             );
         }
 
