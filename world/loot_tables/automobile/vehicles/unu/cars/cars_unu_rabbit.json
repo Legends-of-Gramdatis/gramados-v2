@@ -1,0 +1,54 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupe_ford",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupe_ivory",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupe_manilla",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupe_test",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupe_tungsten",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagon_apple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagon_ivory",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagon_manilla",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagon_olive",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

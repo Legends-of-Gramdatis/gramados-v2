@@ -1,0 +1,39 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupepolice_1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupepolice_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_coupepolice_gramados",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagonpolice_1",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagonpolice_2",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unucivil.unucivil_vehicle_unu_rabbit_wagonpolice_gramados",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
