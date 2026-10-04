@@ -62,7 +62,7 @@ function interact(event) {
                 break;
 
             case "key":
-                tellPlayer(player, "&eUse this key on its matching crate.");
+                // tellPlayer(player, "&eUse this key on its matching crate.");
                 break;
             
             default:
