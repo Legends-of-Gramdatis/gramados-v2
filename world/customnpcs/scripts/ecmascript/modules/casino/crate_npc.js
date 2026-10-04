@@ -149,7 +149,8 @@ function getActiveCasinoCrate(npc) {
     var crate = {
         type: type,
         name: definition.name,
-        description: definition.description
+        description: definition.description,
+        keyName: definition.key_name
     };
 
     if (definition.hasOwnProperty('reward_handler')) {
@@ -422,7 +423,12 @@ function openCasinoCustomCrate(npc, player, mainhand, crate, casino) {
 
 function openCasinoCrate(npc, player, mainhand, crate, casino) {
     if (!isCrateKeyModifier(mainhand)) {
-        rejectCasinoCrate(npc, player, '&eHold the matching crate key in your main hand.');
+        rejectCasinoCrate(
+            npc,
+            player,
+            '&eThis is the &6' + crate.name + '&e. Hold a &6' +
+            crate.keyName + ' &ein your main hand.'
+        );
         return;
     }
     if (getItemOwnerUUID(mainhand) !== null && !isItemOwnedBy(mainhand, player)) {
@@ -430,7 +436,12 @@ function openCasinoCrate(npc, player, mainhand, crate, casino) {
         return;
     }
     if (!canPlayerOpenCrateWithKey(mainhand, player, crate.type)) {
-        rejectCasinoCrate(npc, player, '&cThat key does not open this crate.');
+        rejectCasinoCrate(
+            npc,
+            player,
+            '&cThat key does not open the &6' + crate.name +
+            '&c. You need a &6' + crate.keyName + '&c.'
+        );
         return;
     }
     if (crate.rewardHandler) {

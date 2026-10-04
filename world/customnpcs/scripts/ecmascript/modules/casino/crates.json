@@ -3,27 +3,32 @@
     "art": {
       "name": "Art Collector's Crate",
       "description": "Paintings and decorative art.",
-      "loot_table": "art/art_paintings.json"
+      "loot_table": "art/art_paintings.json",
+      "key_name": "Art Collector's Key"
     },
     "gems": {
       "name": "Gem Collector's Crate",
       "description": "Gemstones and mineral treasures.",
-      "loot_table": "treasures/treasures_gems.json"
+      "loot_table": "treasures/treasures_gems.json",
+      "key_name": "Gem Collector's Key"
     },
     "stickers": {
       "name": "Motoring Collectibles Crate",
       "description": "Automotive stickers and collectibles.",
-      "loot_table": "automobile/stickers/bumper_stickers.json"
+      "loot_table": "automobile/stickers/bumper_stickers.json",
+      "key_name": "Motoring Collectibles Key"
     },
     "cars": {
       "name": "Car Collector's Crate",
       "description": "Full vehicles from the casino's volatile car stock.",
-      "volatile_loot_pool": "BrisamarCarCrate"
+      "volatile_loot_pool": "BrisamarCarCrate",
+      "key_name": "Car Collector's Key"
     },
     "emotes": {
       "name": "Emote Collector's Crate",
       "description": "Unlocks up to three emotes the player cannot already use.",
-      "reward_handler": "emotes"
+      "reward_handler": "emotes",
+      "key_name": "Emote Collector's Key"
     }
   }
 }
