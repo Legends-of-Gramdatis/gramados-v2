@@ -39,7 +39,7 @@ function getVolatileLootPoolConfig(alias) {
 
             return {
                 Alias: configuredAlias,
-                Description: poolConfig.Description || '',
+                Description: poolConfig.Description,
                 LootTablePath: poolConfig.LootTablePath,
                 WhitelistLootTable: poolConfig.WhitelistLootTable || null,
                 PoolIndex: poolConfig.PoolIndex === undefined ? 0 : poolConfig.PoolIndex
@@ -59,14 +59,9 @@ function getAllVolatileLootPoolConfigs() {
     var config = loadVolatileLootPoolConfig();
     var pools = [];
 
-    if (!config) {
-        return pools;
-    }
-
     for (var alias in config) {
         if (!config.hasOwnProperty(alias)) continue;
-        var resolved = getVolatileLootPoolConfig(alias);
-        if (resolved) pools.push(resolved);
+        pools.push(getVolatileLootPoolConfig(alias));
     }
 
     return pools;
@@ -84,10 +79,6 @@ function getVolatileLootPoolFullPath(poolOrAlias) {
             ? getVolatileLootPoolConfig(poolOrAlias)
             : poolOrAlias;
 
-    if (!poolConfig || !poolConfig.LootTablePath) {
-        return null;
-    }
-
     return poolConfig.LootTablePath.startsWith('world/loot_tables/')
         ? poolConfig.LootTablePath
         : 'world/loot_tables/' + poolConfig.LootTablePath;
@@ -100,8 +91,7 @@ function getVolatileLootPoolFullPath(poolOrAlias) {
  * @returns {boolean}
  */
 function canUseVolatileLootPool(alias) {
-    var poolConfig = getVolatileLootPoolConfig(alias);
-    return !!poolConfig && canUseLootTable(poolConfig.LootTablePath);
+    return canUseLootTable(getVolatileLootPoolConfig(alias).LootTablePath);
 }
 
 /**
