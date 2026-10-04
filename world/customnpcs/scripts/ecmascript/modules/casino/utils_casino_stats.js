@@ -212,3 +212,72 @@ function recordCasinoCrateOpen(casinoId, casinoName, crate, npc, player, key, re
         ' and received ' + rewardText.join(', ') + '.'
     );
 }
+
+
+/**
+ * Records a completed custom-reward casino crate opening.
+ * Custom rewards are audited and count toward crate totals, but are not added
+ * to item-based loot_box_rewards statistics.
+ */
+function recordCasinoCustomCrateOpen(
+    casinoId,
+    casinoName,
+    crate,
+    npc,
+    player,
+    key,
+    rewardType,
+    rewards
+) {
+    var timestamp = Date.now();
+    var date = new Date(timestamp).toISOString().slice(0, 10);
+    var uuid = String(player.getUUID());
+    var playerName = String(player.getName());
+    var auditRewards = [];
+
+    for (var i = 0; i < rewards.length; i++) {
+        auditRewards.push({
+            Type: rewardType,
+            Id: String(rewards[i])
+        });
+    }
+
+    appendCasinoAuditEvent({
+        Time: timestamp,
+        Event: 'crate_opened',
+        Casino: casinoId,
+        CasinoName: casinoName,
+        CrateType: crate.type,
+        CrateName: crate.name,
+        RewardHandler: crate.rewardHandler,
+        PlayerUUID: uuid,
+        PlayerName: playerName,
+        KeyItem: String(key.getName()),
+        Position: casinoCratePosition(npc),
+        Rewards: auditRewards
+    });
+
+    var casino = ensureCasinoStats(loadCasinoStats(casinoId), casinoId, casinoName);
+    casino.Timestamp = timestamp;
+    casino.CratesOpened.Total++;
+    casino.CratesOpened.ByType[crate.type] =
+        (casino.CratesOpened.ByType[crate.type] || 0) + 1;
+    casino.CratesOpened.ByDate[date] =
+        (casino.CratesOpened.ByDate[date] || 0) + 1;
+    saveCasinoStats(casinoId, casino);
+
+    var gambler = loadCasinoGambler(uuid, playerName);
+    gambler.Name = playerName;
+    var playerStats = ensurePlayerLootCrateStats(gambler, casinoId);
+    playerStats.Timestamp = timestamp;
+    playerStats.CratesOpened.Total++;
+    playerStats.CratesOpened.ByType[crate.type] =
+        (playerStats.CratesOpened.ByType[crate.type] || 0) + 1;
+    saveCasinoGambler(uuid, gambler);
+
+    logToFile(
+        'casino',
+        playerName + ' opened ' + crate.name + ' at ' + casinoName +
+        ' and unlocked ' + rewards.join(', ') + '.'
+    );
+}
