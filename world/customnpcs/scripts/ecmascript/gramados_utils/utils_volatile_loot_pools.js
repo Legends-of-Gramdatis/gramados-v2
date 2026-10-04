@@ -39,6 +39,7 @@ function getVolatileLootPoolConfig(alias) {
 
             return {
                 Alias: configuredAlias,
+                Description: poolConfig.Description || '',
                 LootTablePath: poolConfig.LootTablePath,
                 WhitelistLootTable: poolConfig.WhitelistLootTable || null,
                 PoolIndex: poolConfig.PoolIndex === undefined ? 0 : poolConfig.PoolIndex
@@ -47,6 +48,60 @@ function getVolatileLootPoolConfig(alias) {
     }
 
     return null;
+}
+
+/**
+ * Returns all configured volatile loot pools with canonical aliases.
+ *
+ * @returns {Array<Object>}
+ */
+function getAllVolatileLootPoolConfigs() {
+    var config = loadVolatileLootPoolConfig();
+    var pools = [];
+
+    if (!config) {
+        return pools;
+    }
+
+    for (var alias in config) {
+        if (!config.hasOwnProperty(alias)) continue;
+        var resolved = getVolatileLootPoolConfig(alias);
+        if (resolved) pools.push(resolved);
+    }
+
+    return pools;
+}
+
+/**
+ * Returns the full filesystem path for a configured volatile loot pool.
+ *
+ * @param {Object|string} poolOrAlias - Resolved pool config or configured alias.
+ * @returns {string|null}
+ */
+function getVolatileLootPoolFullPath(poolOrAlias) {
+    var poolConfig =
+        typeof poolOrAlias === 'string'
+            ? getVolatileLootPoolConfig(poolOrAlias)
+            : poolOrAlias;
+
+    if (!poolConfig || !poolConfig.LootTablePath) {
+        return null;
+    }
+
+    return poolConfig.LootTablePath.startsWith('world/loot_tables/')
+        ? poolConfig.LootTablePath
+        : 'world/loot_tables/' + poolConfig.LootTablePath;
+}
+
+/**
+ * Returns whether the configured volatile pool currently has a usable reward.
+ *
+ * @param {string} alias
+ * @returns {boolean}
+ */
+function canUseVolatileLootPool(alias) {
+    var poolConfig = getVolatileLootPoolConfig(alias);
+    return !!poolConfig && canUseLootTable(poolConfig.LootTablePath);
 }
 
 /**
@@ -169,11 +224,7 @@ function createVolatileLootEntryFromItemStack(itemStack, weight) {
  * @returns {Object|null} Inserted entry, or null on failure.
  */
 function injectEntryIntoVolatileLootPool(poolConfig, entry) {
-    var fullPath = poolConfig.LootTablePath;
-
-    if (!fullPath.startsWith('world/loot_tables/')) {
-        fullPath = 'world/loot_tables/' + fullPath;
-    }
+    var fullPath = getVolatileLootPoolFullPath(poolConfig);
 
     if (!checkFileExists(fullPath)) {
         return null;
