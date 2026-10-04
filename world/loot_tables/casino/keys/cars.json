@@ -1,0 +1,43 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "variedcommodities:key",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_modifier",
+              "modifier_class": "key",
+              "type": "open_crate",
+              "crate_type": "cars",
+              "modifier_use": "single-use",
+              "item_id": "variedcommodities:key",
+              "key_name": "&bCar Collector's Key",
+              "key_description": "&7Opens the Car Collector's Crate."
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "variedcommodities:key2",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "set_modifier",
+              "modifier_class": "key",
+              "type": "open_crate",
+              "crate_type": "cars",
+              "modifier_use": "single-use",
+              "item_id": "variedcommodities:key2",
+              "key_name": "&bCar Collector's Key",
+              "key_description": "&7Opens the Car Collector's Crate."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
