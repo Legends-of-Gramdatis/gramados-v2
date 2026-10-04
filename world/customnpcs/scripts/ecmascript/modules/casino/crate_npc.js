@@ -105,8 +105,7 @@ function loadCasinoAdminItems() {
 }
 
 function loadCasinoCrateTypes() {
-    var config = loadJson(CASINO_CRATES_CONFIG);
-    return config && config.crates ? config.crates : null;
+    return loadJson(CASINO_CRATES_CONFIG).crates;
 }
 
 function loadCasinoDefinitions() {
@@ -143,22 +142,24 @@ function getCasinoCrateType(npc) {
 
 function getActiveCasinoCrate(npc) {
     var type = getCasinoCrateType(npc);
-    var types = loadCasinoCrateTypes();
-    if (!type || !types || !types[type]) return null;
+    if (!type) return null;
 
-    var definition = types[type];
+    var definition = loadCasinoCrateTypes()[type];
     var isVolatile = definition.hasOwnProperty('volatile_loot_pool');
-    var lootTable = isVolatile
-        ? getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath
-        : definition.loot_table;
-
-    return {
+    var crate = {
         type: type,
         name: definition.name,
         description: definition.description,
-        lootTable: lootTable,
-        volatileLootPool: isVolatile ? definition.volatile_loot_pool : null
+        lootTable: isVolatile
+            ? getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath
+            : definition.loot_table
     };
+
+    if (isVolatile) {
+        crate.volatileLootPool = definition.volatile_loot_pool;
+    }
+
+    return crate;
 }
 
 function isCasinoCrateConfigured(npc) {
