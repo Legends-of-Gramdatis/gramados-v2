@@ -1,0 +1,274 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/boats/boats_trin_fabulide.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_bultizorg.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_devom_cabrio.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_devom_coupe.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_cabrio.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_hatchback.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_sedan.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_econobox_van.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_flugoral.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_footpather.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_footpather_specialsix.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_formula.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_cabrio.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_suv.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_txs_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_gobig_txs_suv.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_heavorum.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_keipan.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_cabrio.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_rodeo_van.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_ropy.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_large.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_small.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_sportail_txs.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_springbok.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_trainingor_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_trainingor_suv.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_compass.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_sedan.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trin_urlon_wagon.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_common.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_exclusive.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_rare.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/cars_trincol_starter.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_fancy.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_mini.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_sport.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/cars/dealership_trin_standard.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/dealership_trin_utility.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/dealership_trin_utility_mini.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_bolter.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_capro.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_foragon_pickup.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_foragon_van.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_juggernaut_mod.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_juggernaut_semi.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_tormador.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_transortus.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trin_trumon.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/trin/utilities/utility_trincol_modern.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/vehicles/vehicle_ivl_bike.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
