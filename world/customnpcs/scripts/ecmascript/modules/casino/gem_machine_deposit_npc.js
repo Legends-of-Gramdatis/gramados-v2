@@ -25,7 +25,7 @@ function interact(event) {
         return;
     }
 
-    if (!isGemMachineAcceptedItem(mainhand)) {
+    if (!isGemMachineAcceptedItem(casino.id, mainhand)) {
         tellPlayer(player, '&cThat item is not accepted by this gem machine.');
         return;
     }
@@ -34,11 +34,9 @@ function interact(event) {
     var submittedName = stripColors(mainhand.getDisplayName());
     var entry = createGemMachineEntry(mainhand);
 
-    var inserted = addEntryToLootTable(
-        getGemMachineLootTablePath(casino.id),
-        entry,
-        0,
-        false
+    var inserted = injectEntryIntoVolatileLootPool(
+        getGemMachinePoolConfig(casino.id),
+        entry
     );
 
     if (!inserted) {
