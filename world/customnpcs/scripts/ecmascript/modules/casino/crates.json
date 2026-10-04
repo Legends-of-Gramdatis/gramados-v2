@@ -14,6 +14,11 @@
       "name": "Motoring Collectibles Crate",
       "description": "Automotive stickers and collectibles.",
       "loot_table": "automobile/stickers/bumper_stickers.json"
+    },
+    "cars": {
+      "name": "Car Collector's Crate",
+      "description": "Full vehicles from the casino's volatile car stock.",
+      "volatile_loot_pool": "BrisamarCarCrate"
     }
   }
 }

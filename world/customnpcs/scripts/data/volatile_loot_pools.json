@@ -10,5 +10,11 @@
         "LootTablePath": "volatile/casino/gem_machine/Solterra_Brisamar_BrisamarCasino_Casino.json",
         "WhitelistLootTable": "treasures/treasures_single_gem.json",
         "PoolIndex": 0
+    },
+    "BrisamarCarCrate": {
+        "Description": "Full vehicle stock used by the Car Collector's Crate at Brisamar Casino.",
+        "LootTablePath": "volatile/casino/crates/Solterra_Brisamar_BrisamarCasino_Casino_cars.json",
+        "WhitelistLootTable": "assembled_loot_tables/all_vehicle_loot_tables.json",
+        "PoolIndex": 0
     }
 }
