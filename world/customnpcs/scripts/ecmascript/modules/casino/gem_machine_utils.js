@@ -25,24 +25,19 @@ function loadGemMachineCasinos() {
 }
 
 function getGemMachinePoolAlias(casinoId) {
-    var config = loadGemMachineConfig();
-    if (!config || !config.volatile_loot_pools) return null;
-    return config.volatile_loot_pools[casinoId] || null;
+    return loadGemMachineConfig().volatile_loot_pools[casinoId];
 }
 
 function getGemMachinePoolConfig(casinoId) {
-    var alias = getGemMachinePoolAlias(casinoId);
-    return alias ? getVolatileLootPoolConfig(alias) : null;
+    return getVolatileLootPoolConfig(getGemMachinePoolAlias(casinoId));
 }
 
 function getGemMachineLootTablePath(casinoId) {
-    var poolConfig = getGemMachinePoolConfig(casinoId);
-    return poolConfig ? poolConfig.LootTablePath : null;
+    return getGemMachinePoolConfig(casinoId).LootTablePath;
 }
 
 function getGemMachineFullLootTablePath(casinoId) {
-    var poolConfig = getGemMachinePoolConfig(casinoId);
-    return poolConfig ? getVolatileLootPoolFullPath(poolConfig) : null;
+    return getVolatileLootPoolFullPath(getGemMachinePoolConfig(casinoId));
 }
 
 function getGemMachineCooldownMs() {
@@ -133,18 +128,16 @@ function showGemMachineAdminStatus(npc, player) {
 
         tellPlayer(
             player,
-            '&7- VLP alias: ' + (poolAlias ? '&f' + poolAlias : '&cNot configured')
+            '&7- VLP alias: &f' + poolAlias
         );
         tellPlayer(
             player,
-            '&7- Loot pool: &f' + (getGemMachineLootTablePath(casino.id) || 'N/A')
+            '&7- Loot pool: &f' + getGemMachineLootTablePath(casino.id)
         );
         tellPlayer(
             player,
             '&7- Pool file: ' +
-            (poolPath && checkFileExists(poolPath)
-                ? '&aFound'
-                : '&cMissing')
+            (checkFileExists(poolPath) ? '&aFound' : '&cMissing')
         );
     }
 
@@ -212,19 +205,9 @@ function getUsableGemMachineCasino(npc, player) {
         return null;
     }
 
-    var poolAlias = getGemMachinePoolAlias(casino.id);
-    var poolConfig = getGemMachinePoolConfig(casino.id);
     var poolPath = getGemMachineFullLootTablePath(casino.id);
 
-    if (!poolAlias || !poolConfig) {
-        tellPlayer(
-            player,
-            '&c&lThis casino has no valid gem machine VLP configured. Please contact an admin.'
-        );
-        return null;
-    }
-
-    if (!poolPath || !checkFileExists(poolPath)) {
+    if (!checkFileExists(poolPath)) {
         tellPlayer(
             player,
             '&c&lThis casino gem pool is missing. Please contact an admin.'
@@ -300,14 +283,6 @@ function createGemMachineEntry(itemStack) {
 
 function isGemMachineAcceptedItem(casinoId, itemStack) {
     var poolConfig = getGemMachinePoolConfig(casinoId);
-
-    if (!poolConfig || !poolConfig.WhitelistLootTable) {
-        return false;
-    }
-
-    if (!doesLootTableExist(poolConfig.WhitelistLootTable)) {
-        return false;
-    }
 
     return isItemInLootTable(
         poolConfig.WhitelistLootTable,
