@@ -8,10 +8,6 @@ var VOLATILE_LOOT_POOL_CONFIG_PATH = 'world/customnpcs/scripts/data/volatile_loo
  * @returns {Object|null} Config object, or null if unavailable.
  */
 function loadVolatileLootPoolConfig() {
-    if (!checkFileExists(VOLATILE_LOOT_POOL_CONFIG_PATH)) {
-        return null;
-    }
-
     return loadJson(VOLATILE_LOOT_POOL_CONFIG_PATH);
 }
 
@@ -23,7 +19,7 @@ function loadVolatileLootPoolConfig() {
  */
 function getVolatileLootPoolConfig(alias) {
     var config = loadVolatileLootPoolConfig();
-    if (!config || alias === undefined || alias === null) {
+    if (alias === undefined || alias === null) {
         return null;
     }
 
@@ -33,16 +29,12 @@ function getVolatileLootPoolConfig(alias) {
         if (configuredAlias.toLowerCase() === wantedAlias) {
             var poolConfig = config[configuredAlias] || {};
 
-            if (!poolConfig.LootTablePath) {
-                return null;
-            }
-
             return {
                 Alias: configuredAlias,
                 Description: poolConfig.Description,
                 LootTablePath: poolConfig.LootTablePath,
-                WhitelistLootTable: poolConfig.WhitelistLootTable || null,
-                PoolIndex: poolConfig.PoolIndex === undefined ? 0 : poolConfig.PoolIndex
+                WhitelistLootTable: poolConfig.WhitelistLootTable,
+                PoolIndex: poolConfig.PoolIndex
             };
         }
     }
@@ -71,7 +63,7 @@ function getAllVolatileLootPoolConfigs() {
  * Returns the full filesystem path for a configured volatile loot pool.
  *
  * @param {Object|string} poolOrAlias - Resolved pool config or configured alias.
- * @returns {string|null}
+ * @returns {string}
  */
 function getVolatileLootPoolFullPath(poolOrAlias) {
     var poolConfig =
