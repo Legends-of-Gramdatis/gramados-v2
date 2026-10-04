@@ -287,3 +287,83 @@ function addPermissionJob(permissionId, jobName) {
 function removePermissionJob(permissionId, jobName) {
     return removePermissionSubject(permissionId, 'jobs', jobName);
 }
+
+
+/**
+ * Returns the effective permission payload used by CustomServerTools.
+ * Missing permission entries use the Permission class defaults in memory.
+ *
+ * @param {string} permissionId
+ * @returns {Object}
+ */
+function getEffectivePermissionData(permissionId) {
+    var data = loadPermissionData(permissionId);
+    return data === null ? createDefaultPermissionData() : data;
+}
+
+/**
+ * Returns the existing parent permission ids for a dotted permission id.
+ *
+ * @param {string} permissionId
+ * @returns {Array<string>}
+ */
+function getExistingParentPermissionIds(permissionId) {
+    var parts = normalizePermissionId(permissionId).split('.');
+    var parents = [];
+    var current = '';
+
+    for (var i = 0; i < parts.length - 1; i++) {
+        current += (current.length > 0 ? '.' : '') + parts[i];
+        if (permissionExists(current)) {
+            parents.push(current);
+        }
+    }
+
+    return parents;
+}
+
+/**
+ * Checks whether a player is permitted by a permission entry.
+ * Mirrors CustomServerTools Permission.permits(), including __ALL__,
+ * team/player membership, parent permissions, and disabled-permission semantics.
+ *
+ * @param {IPlayer} player
+ * @param {string} permissionId
+ * @param {boolean} [listenToDisabled=true]
+ * @returns {boolean}
+ */
+function playerHasPermission(player, permissionId, listenToDisabled) {
+    if (listenToDisabled === undefined) listenToDisabled = true;
+
+    var id = normalizePermissionId(permissionId);
+    var data = getEffectivePermissionData(id);
+
+    if (!data.enabled && listenToDisabled) {
+        return true;
+    }
+
+    if (id !== '__ALL__' && playerHasPermission(player, '__ALL__', false)) {
+        return true;
+    }
+
+    var playerName = String(player.getName());
+    var scoreboard = player.getWorld().getScoreboard();
+    var team = scoreboard.getPlayerTeam(playerName);
+
+    if (team !== null && data.teams.indexOf(team.getName()) !== -1) {
+        return true;
+    }
+
+    if (data.players.indexOf(playerName) !== -1) {
+        return true;
+    }
+
+    var parents = getExistingParentPermissionIds(id);
+    for (var i = 0; i < parents.length; i++) {
+        if (playerHasPermission(player, parents[i], false)) {
+            return true;
+        }
+    }
+
+    return false;
+}
