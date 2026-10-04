@@ -298,7 +298,17 @@ function removePermissionJob(permissionId, jobName) {
  */
 function getEffectivePermissionData(permissionId) {
     var data = loadPermissionData(permissionId);
-    return data === null ? createDefaultPermissionData() : data;
+    var effective = createDefaultPermissionData();
+
+    if (data !== null) {
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                effective[key] = data[key];
+            }
+        }
+    }
+
+    return effective;
 }
 
 /**
