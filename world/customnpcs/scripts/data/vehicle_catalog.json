@@ -123,6 +123,18 @@
         "Import"
       ]
     },
+    "unucivil_vehicle_unu_rabbit_coupe": {
+      "brand": "UNU",
+      "name": "Rabbit Coupé",
+      "maxHealth": 100,
+      "extraTitles": []
+    },
+    "unucivil_vehicle_unu_rabbit_wagon": {
+      "brand": "UNU",
+      "name": "Rabbit Wagon",
+      "maxHealth": 100,
+      "extraTitles": []
+    },
     "motostrut_":{
       "brand": "DKZ",
       "name": "M-130 Motostrut",
