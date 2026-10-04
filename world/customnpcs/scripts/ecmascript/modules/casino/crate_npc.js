@@ -147,23 +147,17 @@ function getActiveCasinoCrate(npc) {
     if (!type || !types || !types[type]) return null;
 
     var definition = types[type];
-    var vlpAlias = definition.volatile_loot_pool || null;
-    var lootTable = definition.loot_table || null;
-
-    if (vlpAlias) {
-        var poolConfig = getVolatileLootPoolConfig(vlpAlias);
-        if (!poolConfig) return null;
-        lootTable = poolConfig.LootTablePath;
-    }
-
-    if (!lootTable) return null;
+    var isVolatile = definition.hasOwnProperty('volatile_loot_pool');
+    var lootTable = isVolatile
+        ? getVolatileLootPoolConfig(definition.volatile_loot_pool).LootTablePath
+        : definition.loot_table;
 
     return {
         type: type,
-        name: definition.name || type,
-        description: definition.description || '',
+        name: definition.name,
+        description: definition.description,
         lootTable: lootTable,
-        volatileLootPool: vlpAlias
+        volatileLootPool: isVolatile ? definition.volatile_loot_pool : null
     };
 }
 
@@ -233,10 +227,7 @@ function handleCasinoAdminInteraction(npc, player, mainhand, adminItems) {
 
 function cycleCasinoCrateType(npc, player, adminItems) {
     var types = loadCasinoCrateTypes();
-    var options = types ? Object.keys(types).filter(function(key) {
-        return types[key] &&
-            (types[key].loot_table || types[key].volatile_loot_pool);
-    }) : [];
+    var options = Object.keys(types);
 
     if (!options.length) {
         tellPlayer(player, '&c[Crate Admin] No valid crate types are defined in crates.json.');
@@ -248,7 +239,7 @@ function cycleCasinoCrateType(npc, player, adminItems) {
     npc.getStoreddata().put(CASINO_CRATE_TYPE_KEY, next);
 
     tellPlayer(player, '&a[Crate Admin] ' + adminItems.crate_type.name
-        + '&a: &e' + (types[next].name || next) + ' &7(' + next + ')');
+        + '&a: &e' + types[next].name + ' &7(' + next + ')');
     if (types[next].volatile_loot_pool) {
         tellPlayer(
             player,
