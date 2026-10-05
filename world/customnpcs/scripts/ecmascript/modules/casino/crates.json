@@ -29,6 +29,12 @@
       "description": "Unlocks up to three emotes the player cannot already use.",
       "reward_handler": "emotes",
       "key_name": "Emote Collector's Key"
+    },
+    "keys": {
+      "name": "Key Collector's Crate",
+      "description": "Contains two random casino crate keys.",
+      "loot_table": "casino/keys/random_keys.json",
+      "key_name": "Key Collector's Key"
     }
   }
 }
