@@ -6,7 +6,7 @@
                 {
                     "type": "item",
                     "name": "mts:unuparts.unuparts_sign_pack",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "type": "item",
@@ -16,12 +16,12 @@
                 {
                     "type": "item",
                     "name": "mts:ivv.logo_sealofrassilon",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "type": "item",
                     "name": "mts:iv_tdp_signage.wall_panel_tiny_trinlogo",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "type": "item",
@@ -31,12 +31,12 @@
                 {
                     "type": "item",
                     "name": "mts:iv_tdp_signage.wall_panel_small_trin",
-                    "weight": 5
+                    "weight": 7
                 },
                 {
                     "type": "item",
                     "name": "mts:ivv.logo_vci",
-                    "weight": 5
+                    "weight": 2
                 }
             ]
         }

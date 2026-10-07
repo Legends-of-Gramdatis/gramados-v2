@@ -7,6 +7,11 @@
                     "type": "item",
                     "name": "mts:ivv.earring",
                     "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.diamondring",
+                    "weight": 5
                 }
             ]
         }

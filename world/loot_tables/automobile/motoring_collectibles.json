@@ -71,7 +71,7 @@
                 {
                     "type": "loot_table",
                     "path": "automobile/ornament_mirror/mirror_other.json",
-                    "weight": 4
+                    "weight": 2
                 },
                 {
                     "type": "loot_table",
