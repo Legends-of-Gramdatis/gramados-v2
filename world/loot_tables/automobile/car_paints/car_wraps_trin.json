@@ -5,37 +5,47 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_classic",
+                    "name": "mts:iv_tpp.wrap_roll_coal",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_kart",
+                    "name": "mts:iv_tpp.wrap_roll_diamond",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_pizza",
+                    "name": "mts:iv_tpp.wrap_roll_driveschool",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_saw",
+                    "name": "mts:iv_tpp.wrap_roll_emerald",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_trapdoor",
+                    "name": "mts:iv_tpp.wrap_roll_gold",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_wrench",
+                    "name": "mts:iv_tpp.wrap_roll_iron",
                     "weight": 5
                 },
                 {
                     "type": "item",
-                    "name": "mts:oamp.steeringornament_yoke",
+                    "name": "mts:iv_tpp.wrap_roll_lapislazuli",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_quartz",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_redstone",
                     "weight": 5
                 }
             ]
