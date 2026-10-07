@@ -14,8 +14,8 @@
     },
     "stickers": {
       "name": "Motoring Collectibles Crate",
-      "description": "Automotive stickers and collectibles.",
-      "loot_table": "automobile/stickers/bumper_stickers.json",
+      "description": "Automotive stickers, ornaments, antennas, and interior collectibles.",
+      "loot_table": "automobile/motoring_collectibles.json",
       "key_name": "Motoring Collectibles Key"
     },
     "cars": {
