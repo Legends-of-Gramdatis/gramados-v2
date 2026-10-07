@@ -11,7 +11,7 @@
         {
           "type": "loot_table",
           "path": "casino/keys/art.json",
-          "weight": 30
+          "weight": 25
         },
         {
           "type": "loot_table",
@@ -26,7 +26,7 @@
         {
           "type": "loot_table",
           "path": "casino/keys/cars.json",
-          "weight": 5
+          "weight": 1
         }
       ]
     }
