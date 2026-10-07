@@ -1,0 +1,79 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers.json",
+                    "weight": 30
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_smellytree.json",
+                    "weight": 15
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_bow.json",
+                    "weight": 12
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_fuzzydice.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_other.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_fun.json",
+                    "weight": 3
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_other.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_trin.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_other/bobblehead.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_other/grille_ornament.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_dkz.json",
+                    "weight": 4
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_ivl.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_chain.json",
+                    "weight": 1
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_ship.json",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}
