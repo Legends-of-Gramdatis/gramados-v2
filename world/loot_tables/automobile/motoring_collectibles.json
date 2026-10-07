@@ -1,0 +1,104 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/keys/car_keys.json",
+                    "weight": 24
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_decors/car_advertising.json",
+                    "weight": 18
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_decors/car_logos.json",
+                    "weight": 18
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_decors/car_models.json",
+                    "weight": 10
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_dkz.json",
+                    "weight": 12
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_ivl.json",
+                    "weight": 8
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_chain.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_steering_wheels/steering_wheels_ship.json",
+                    "weight": 5
+                }
+            ]
+        },
+        {
+            "rolls": 2,
+            "entries": [
+                {
+                    "type": "loot_table",
+                    "path": "automobile/stickers/bumper_stickers.json",
+                    "weight": 20
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_smellytree.json",
+                    "weight": 16
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_bow.json",
+                    "weight": 14
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_fuzzydice.json",
+                    "weight": 12
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_mirror/mirror_other.json",
+                    "weight": 2
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_fun.json",
+                    "weight": 5
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_other.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/antennas/antenna_trin.json",
+                    "weight": 7
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_other/bobblehead.json",
+                    "weight": 8
+                },
+                {
+                    "type": "loot_table",
+                    "path": "automobile/ornament_other/grille_ornament.json",
+                    "weight": 7
+                }
+            ]
+        }
+    ]
+}

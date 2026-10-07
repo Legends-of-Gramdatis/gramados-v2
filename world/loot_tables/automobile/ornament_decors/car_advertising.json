@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_sign_unu_neon_quality",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:unuparts.unuparts_sign_unu_neon_sparkplug",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_signage.banner_flag_trin",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tdp_signage.banner_flag_unuparts",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

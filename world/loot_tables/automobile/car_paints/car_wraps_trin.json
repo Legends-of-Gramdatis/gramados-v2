@@ -1,0 +1,54 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_coal",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_diamond",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_driveschool",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_emerald",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_gold",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_iron",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_lapislazuli",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_quartz",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.wrap_roll_redstone",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

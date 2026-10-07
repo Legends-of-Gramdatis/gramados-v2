@@ -7,11 +7,6 @@
                     "type": "item",
                     "name": "mts:ivv.steeringwheel_airbag_gray",
                     "weight": 5
-                },
-                {
-                    "type": "item",
-                    "name": "mts:ivv.steeringwheelkitt",
-                    "weight": 5
                 }
             ]
         }

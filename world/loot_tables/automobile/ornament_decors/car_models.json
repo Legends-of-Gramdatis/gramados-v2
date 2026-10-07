@@ -5,12 +5,12 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "mts:ivv.earring",
-                    "weight": 5
+                    "name": "mts:unudecor.unuparts_decor_unu_modelairship",
+                    "weight": 3
                 },
                 {
                     "type": "item",
-                    "name": "mts:ivv.diamondring",
+                    "name": "mts:iv_tpp.trin_ornament",
                     "weight": 5
                 }
             ]
