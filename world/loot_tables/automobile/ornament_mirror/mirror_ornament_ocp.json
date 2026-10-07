@@ -1,0 +1,189 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_1911black",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_1911gold",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_1911gray",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_anvil",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_aviators",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_blockacacia",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_blockgold",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_blockgrass",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_blocktnt",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_butter",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_cactus",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_car",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_cat",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_clock",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_creeper",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_diamond",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_emerald",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_gapple",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_gmc",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_hc",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_heart",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_joystick",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_mogus",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_nstar",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_nuts",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_pine",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_piston",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_potato",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_rubix",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_saturn",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_skull",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_snail",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_steak",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_totem",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.mirrorornament_wheel",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

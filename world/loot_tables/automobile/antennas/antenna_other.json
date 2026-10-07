@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:ivv.antenna_sharkfin",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:cactusvehicles.cb_antenna",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.antenna",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:ivv.antenna_hf",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

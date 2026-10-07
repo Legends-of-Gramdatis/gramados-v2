@@ -1,0 +1,29 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.grilleornament_cowskull",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.grilleornament_horns",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.grilleornament_moustache",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:mtsofficialpack.grilleornament_snail",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}

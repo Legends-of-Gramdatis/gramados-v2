@@ -1,0 +1,44 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_classic",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_kart",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_pizza",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_saw",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_trapdoor",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_wrench",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:oamp.steeringornament_yoke",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
