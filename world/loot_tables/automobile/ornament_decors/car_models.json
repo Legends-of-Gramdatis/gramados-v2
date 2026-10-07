@@ -1,0 +1,19 @@
+{
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "mts:unudecor.unuparts_decor_unu_modelairship",
+                    "weight": 5
+                },
+                {
+                    "type": "item",
+                    "name": "mts:iv_tpp.trin_ornament",
+                    "weight": 5
+                }
+            ]
+        }
+    ]
+}
