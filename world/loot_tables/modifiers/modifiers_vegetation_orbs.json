@@ -10,12 +10,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "farmland fertilize",
+                            "type": "farmland_fertilize",
                             "radius": {
                                 "min": 10,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 6
                         }
                     ]
                 },
@@ -26,12 +31,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "crop harvest",
+                            "type": "crop_harvest",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 14
                         }
                     ]
                 },
@@ -42,12 +52,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "crop harvest and plant",
+                            "type": "crop_harvest_and_plant",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 2
                         }
                     ]
                 },
@@ -58,12 +73,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "crop growth random",
+                            "type": "crop_growth_random",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 10
                         }
                     ]
                 },
@@ -74,12 +94,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "crop growth max",
+                            "type": "crop_growth_max",
                             "radius": {
                                 "min": 4,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 11
                         }
                     ]
                 },
@@ -90,12 +115,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "fruit growth max",
+                            "type": "fruit_growth_max",
                             "radius": {
                                 "min": 8,
                                 "max": 32
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 11
                         }
                     ]
                 },
@@ -106,12 +136,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "type": "crop plant mixed large",
+                            "type": "crop_plant_mixed",
                             "radius": {
                                 "min": 16,
                                 "max": 32
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 10
                         }
                     ]
                 }

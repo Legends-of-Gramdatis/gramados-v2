@@ -1,3 +1,5 @@
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_crate_keys.js');
+
 // UUID owner metadata is optional for ordinary items and modifiers.
 // Consumers must explicitly enforce it when ownership is required.
 function bindItemToPlayer(stack, player) {
@@ -30,19 +32,8 @@ function isItemOwnedBy(stack, player) {
     var owner = getItemOwnerUUID(stack);
     return owner !== null && !!player && owner === String(player.getUUID());
 }
-function isCrateKeyModifier(stack) {
-    if (!stack || stack.isEmpty()) return false;
-    var nbt = stack.getItemNbt();
-    if (!nbt.has('tag')) return false;
-    var tag = nbt.getCompound('tag');
-    return tag.has('is_modifier') && tag.getBoolean('is_modifier') &&
-        tag.has('modifier_class') && tag.getString('modifier_class') === 'key' &&
-        tag.has('modifier_effect') && tag.getString('modifier_effect') === 'open_crate' &&
-        tag.has('modifier_use') && tag.getString('modifier_use') === 'single-use' &&
-        tag.has('crate_type') && !!tag.getString('crate_type');
-}
 function canPlayerOpenCrateWithKey(key, player, crateType) {
-    if (!isCrateKeyModifier(key)) return false;
+    if (!isCrateKey(key)) return false;
     // Unbound keys are freely tradable. Explicitly owner-bound keys keep
     // their ownership restriction if another loot table uses set_owner.
     var owner = getItemOwnerUUID(key);

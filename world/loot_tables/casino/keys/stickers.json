@@ -9,11 +9,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "set_modifier",
-              "modifier_class": "key",
-              "type": "open_crate",
+              "function": "set_crate_key",
               "crate_type": "stickers",
-              "modifier_use": "single-use",
               "item_id": "variedcommodities:key",
               "key_name": "&eMotoring Collectibles Key",
               "key_description": "&7Opens the Motoring Collectibles Crate."
@@ -26,11 +23,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "set_modifier",
-              "modifier_class": "key",
-              "type": "open_crate",
+              "function": "set_crate_key",
               "crate_type": "stickers",
-              "modifier_use": "single-use",
               "item_id": "variedcommodities:key2",
               "key_name": "&eMotoring Collectibles Key",
               "key_description": "&7Opens the Motoring Collectibles Crate."

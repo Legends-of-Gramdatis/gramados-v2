@@ -217,79 +217,22 @@ function _prepareLootTablePull(
                         item.bindOwnerToPlayer = true;
                     }
 
+                    if (func.function === "set_crate_key") {
+                        item.crateKey = func;
+                    }
+
                     if (func.function === "set_modifier") {
-                        var modifierClass =
-                            func.modifier_class ||
-                            func.modifierClass ||
-                            "orb";
-
-                        var modifierType =
-                            func.modifier_type ||
-                            func.modifierType ||
-                            null;
-
-                        var modifierEffect =
-                            func.type ||
-                            func.modifier_effect ||
-                            func.modifierEffect;
-
-                        var resolvedRadius =
-                            resolve_modifier_value(
-                                func.radius
-                            );
-
-                        var resolvedDurationMinutes =
-                            resolve_modifier_value(
-                                func.durationMinutes !== undefined
-                                    ? func.durationMinutes
-                                    : func.duration_minutes
-                            );
-
-                        var resolvedMultiplier =
-                            resolve_modifier_value(
-                                func.multiplier
-                            );
-
-                        if (
-                            modifierClass === "orb" &&
-                            !modifierType
-                        ) {
-                            modifierType =
-                                (
-                                    resolvedDurationMinutes !== null ||
-                                    resolvedMultiplier !== null
-                                )
-                                    ? "passive"
-                                    : "active";
+                        // Resolve RNG once during preparation, before stock/reward commit.
+                        var modifier = {};
+                        for (var modifierKey in func) {
+                            if (func.hasOwnProperty(modifierKey) && modifierKey !== "function") modifier[modifierKey] = func[modifierKey];
                         }
-
-                        if (
-                            modifierClass === "consumable"
-                        ) {
-                            modifierType = null;
+                        var numeric = ['radius', 'durationMinutes', 'multiplier', 'usesBeforeDepletion', 'cooldownSeconds'];
+                        for (var ni = 0; ni < numeric.length; ni++) {
+                            var property = numeric[ni];
+                            if (modifier[property] !== undefined) modifier[property] = resolve_modifier_value(modifier[property], property !== 'multiplier');
                         }
-
-                        item.modifier = {
-                            modifierClass:
-                                modifierClass,
-                            modifierType:
-                                modifierType,
-                            modifierEffect:
-                                modifierEffect,
-                            radius:
-                                resolvedRadius,
-                            durationMinutes:
-                                resolvedDurationMinutes,
-                            multiplier:
-                                resolvedMultiplier,
-                            modifierUse:
-                                func.modifier_use ||
-                                func.modifierUse,
-                            overrideItemId: func.itemId || func.item_id,
-                            crateType: func.crate_type || func.crateType,
-                            keyName: func.key_name || func.keyName,
-                            keyDescription: func.key_description || func.keyDescription
-                        };
+                        item.modifier = modifier;
                     }
                 }
             }
@@ -525,11 +468,12 @@ function generateItemStackFromLootEntry(entry, world, player) {
         itemstack = setNbtToItemStack(itemstack, nbt, world);
     }
 
+    if (entry.crateKey) {
+        itemstack = create_crate_key_item_stack(world, itemstack, entry.crateKey);
+    }
+
     if (entry.modifier) {
         itemstack = create_modifier_item_stack(world, itemstack, entry.modifier);
-        if (entry.modifier.modifierClass === "key" && !isCrateKeyModifier(itemstack)) {
-            throw new Error("Failed to create crate-key modifier from loot entry: " + JSON.stringify(entry));
-        }
     }
 
     if (entry.bindOwnerToPlayer) {

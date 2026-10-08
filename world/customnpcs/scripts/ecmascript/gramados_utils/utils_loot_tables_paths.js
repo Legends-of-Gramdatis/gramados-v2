@@ -35,3 +35,5 @@ var _LOOTTABLE_ARCADE_TOKENS = "treasures/treasures_arcade_tokens.json"
 var _LOOTTABLE_MODIFIER_FUNCTION_COVERAGE = "modifiers/modifier_function_coverage.json"
 var _LOOTTABLE_MODIFIER_VEGETATION_ORB = "modifiers/modifiers_vegetation_orbs.json"
 var _LOOTTABLE_MODIFIER_VEGETATION_CONSUMABLE = "modifiers/modifiers_vegetation_consumable.json"
+
+var _LOOTTABLE_MODIFIER_CRATE = "modifiers/modifier_crate.json";

@@ -1,0 +1,132 @@
+{
+    "cattle pregnancy": {
+        "effect": "cattle_pregnancy",
+        "radius": 16
+    },
+    "cattle gestation": {
+        "effect": "cattle_gestation",
+        "radius": 12
+    },
+    "cattle milk production": {
+        "effect": "cattle_milk_production",
+        "radius": 12
+    },
+    "cattle baby grow": {
+        "effect": "cattle_baby_grow",
+        "radius": 12
+    },
+    "farmland fertilize": {
+        "effect": "farmland_fertilize",
+        "radius": 10
+    },
+    "farmland tilt": {
+        "effect": "farmland_tilt",
+        "radius": 8
+    },
+    "crop harvest": {
+        "effect": "crop_harvest",
+        "radius": 8
+    },
+    "crop harvest and plant": {
+        "effect": "crop_harvest_and_plant",
+        "radius": 8
+    },
+    "crop growth random": {
+        "effect": "crop_growth_random",
+        "radius": 6
+    },
+    "crop growth max": {
+        "effect": "crop_growth_max",
+        "radius": 6
+    },
+    "crop rot random": {
+        "effect": "crop_rot_random",
+        "radius": 6
+    },
+    "crop rot max": {
+        "effect": "crop_rot_max",
+        "radius": 6
+    },
+    "fruit growth max": {
+        "effect": "fruit_growth_max",
+        "radius": 10
+    },
+    "fruit rot max": {
+        "effect": "fruit_rot_max",
+        "radius": 10
+    },
+    "npc pickpocket small": {
+        "effect": "npc_pickpocket",
+        "radius": 2
+    },
+    "npc pickpocket large": {
+        "effect": "npc_pickpocket",
+        "radius": 10
+    },
+    "nature grass small": {
+        "effect": "nature_grass",
+        "radius": 5
+    },
+    "nature grass medium": {
+        "effect": "nature_grass",
+        "radius": 10
+    },
+    "nature grass large": {
+        "effect": "nature_grass",
+        "radius": 20
+    },
+    "nature flowers small": {
+        "effect": "nature_flowers",
+        "radius": 5
+    },
+    "nature flowers medium": {
+        "effect": "nature_flowers",
+        "radius": 10
+    },
+    "crop plant mixed small": {
+        "effect": "crop_plant_mixed",
+        "radius": 8
+    },
+    "crop plant mixed large": {
+        "effect": "crop_plant_mixed",
+        "radius": 20
+    },
+    "fish swarm": {
+        "effect": "fish_swarm",
+        "radius": 5
+    },
+    "fish catch nearby": {
+        "effect": "fish_catch_nearby",
+        "radius": 12
+    },
+    "stock income 5%": {
+        "effect": "stock_income",
+        "durationMinutes": 180,
+        "multiplier": 1.05
+    },
+    "stock income 10%": {
+        "effect": "stock_income",
+        "durationMinutes": 120,
+        "multiplier": 1.1
+    },
+    "stock income 25%": {
+        "effect": "stock_income",
+        "durationMinutes": 75,
+        "multiplier": 1.25
+    },
+    "stock income 50%": {
+        "effect": "stock_income",
+        "durationMinutes": 40,
+        "multiplier": 1.5
+    },
+    "junkyard loot double": {
+        "effect": "junkyard_loot",
+        "durationMinutes": 90,
+        "multiplier": 2
+    },
+    "junkyard loot triple": {
+        "effect": "junkyard_loot",
+        "durationMinutes": 30,
+        "multiplier": 3
+    }
+}

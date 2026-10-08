@@ -10,12 +10,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "farmland fertilize",
+                            "type": "farmland_fertilize",
                             "radius": {
                                 "min": 10,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -30,12 +31,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop harvest",
+                            "type": "crop_harvest",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -50,12 +52,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop harvest and plant",
+                            "type": "crop_harvest_and_plant",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -70,12 +73,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop growth random",
+                            "type": "crop_growth_random",
                             "radius": {
                                 "min": 8,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -90,12 +94,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop growth max",
+                            "type": "crop_growth_max",
                             "radius": {
                                 "min": 4,
                                 "max": 16
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -110,12 +115,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "fruit growth max",
+                            "type": "fruit_growth_max",
                             "radius": {
                                 "min": 8,
                                 "max": 32
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
@@ -130,12 +136,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop plant mixed large",
+                            "type": "crop_plant_mixed",
                             "radius": {
                                 "min": 16,
                                 "max": 32
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         },
                         {
                             "function": "set_data",
