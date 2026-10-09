@@ -115,6 +115,13 @@ test('lifecycle defaults come from config; missing config surfaces a native erro
     c.loadJson = load;
 });
 test('new format, physical metadata, tier boundaries and AND presentation', () => {
+    const fixedName = '&d:sun: Orb of Fertility :sun:';
+    const fixedDescription = '&7Blesses the herd so mothers carry new life.';
+    assert.equal(c.resolve_modifier_presentation(fixedName, {}), fixedName);
+    assert.equal(c.resolve_modifier_presentation(fixedDescription, {}), fixedDescription);
+    const fertility = make({type: 'cattle_pregnancy'});
+    assert.equal(fertility.getDisplayName(), fixedName);
+    assert.equal(fertility.getLore()[0], fixedDescription);
     const item = make();
     for (const field of ['modifier_class', 'modifier_type', 'modifier_use', 'is_broken']) assert(!Object.hasOwn(tag(item), field));
     assert.equal(item.data.id, 'test:carrier'); assert.equal(item.data.Damage, 7);

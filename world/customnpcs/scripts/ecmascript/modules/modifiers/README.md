@@ -53,7 +53,16 @@ Loot preparation resolves supplied ranges once. Constructing the prepared reward
 {"function": "set_owner", "owner": "player"}
 ```
 
-`displayName` and `description` are ordered lists of `{when, value}` rules. A single unconditional rule represents a fixed name or description. Conditions use `lt`, `lte`, `gt`, `gte`, `eq`; all conditions are ANDed, and the first match wins. A rule with `"when": {}` is unconditional. Include it as the last rule to cover the remaining values. Comparisons use the reusable `compare_values(val1, val2, operator)` helper in `utils_maths.js`. Names/descriptions derive from the resolved item values; lore updates after use and recharge.
+`displayName` and `description` accept plain strings for fixed text, or ordered lists of `{when, value}` rules for conditional text. Conditions use `lt`, `lte`, `gt`, `gte`, `eq`; all conditions are ANDed, and the first match wins. A rule with `"when": {}` is unconditional. Include it as the last rule to cover the remaining values. Comparisons use the reusable `compare_values(val1, val2, operator)` helper in `utils_maths.js`. Names/descriptions derive from the resolved item values; lore updates after use and recharge.
+
+For fixed presentation:
+
+```json
+"displayName": "&d:sun: Orb of Fertility :sun:",
+"description": "&7Blesses the herd so mothers carry new life."
+```
+
+For conditional presentation:
 
 ```json
 "displayName": [
@@ -81,7 +90,7 @@ For admin creation, hold `mts:ivv.idcard_seagull` in the offhand, a blank carrie
 
 ## Code conventions
 
-Trust the authored configuration. Do not add malformed-config recovery, substitute objects/names, broad type checks or custom validation exceptions. Missing or malformed configuration should reach the existing JSON error reporting and normal script errors. Use the existing math utilities for RNG and comparisons. Keep an explicit world argument rather than accepting interchangeable world/player contexts. Checks for ownership, charges, cooldown, passive conflicts and real player interactions remain gameplay logic. Legacy conversions are explicit migration paths.
+Trust the authored configuration. Do not add malformed-config recovery, substitute objects/names, broad type checks or custom validation exceptions. Missing or malformed mandatory configuration and required item tags should reach the existing JSON error reporting and normal script errors. Supporting documented alternatives, such as fixed strings and conditional presentation rules, is normal API behavior. Use the existing math utilities for RNG and comparisons. Keep an explicit world argument rather than accepting interchangeable world/player contexts. Checks for ownership, charges, cooldown, passive conflicts and real player interactions remain gameplay logic. Legacy conversions are explicit migration paths.
 
 The runtime file `world/customnpcs/scripts/data_auto/passive_modifiers.json` must contain valid JSON (an empty object for a new installation); do not replace a failed read with an empty object.
 

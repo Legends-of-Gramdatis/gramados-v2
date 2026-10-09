@@ -24,8 +24,9 @@ function get_modifier_legacy_entry(effect) {
     return legacy[effect];
 }
 
-// All presentation entries are ordered rules; an empty when object is unconditional.
+// Fixed presentation uses a string; conditional presentation uses ordered rules.
 function resolve_modifier_presentation(rules, values) {
+    if (typeof rules === 'string') return rules;
     for (var i = 0; i < rules.length; i++) {
         var rule = rules[i];
         var matches = true;
