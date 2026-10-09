@@ -1,6 +1,6 @@
 # Casino crate keys and optional item ownership
 
-The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys are `modifier_class: key`, `type: open_crate`, with a `crate_type` matching the crate's configured type. See `world/loot_tables/casino/example_art_key.json` and `world/loot_tables/casino/example_gems_key.json`. The gem key opens the existing `gems` crate, currently configured to dispense rewards from `treasures/treasures_single_gem.json`.
+The example casino keys are **unbound and freely tradable**. The optional loot-table function `{"function":"set_owner","owner":"player"}` remains available for other rewards and binds the generated item to its recipient's UUID. Keys use `is_crate_key: true` and a `crate_type` matching the configured crate. Loot tables generate them with `set_crate_key`; historical modifier-format keys remain accepted. See `world/loot_tables/casino/example_art_key.json` and `world/loot_tables/casino/example_gems_key.json`. The gem key opens the existing `gems` crate, currently configured to dispense rewards from `treasures/treasures_single_gem.json`.
 
 ## Setting up an NPC
 
@@ -50,3 +50,7 @@ Existing player-controlled reward paths were reviewed and now pass the recipient
 Four intentionally two-argument NPC-only call sites remain: `single_use/humanNPCloot.js`, `modules/npc_scripts/PoliceNPC.js`, `modules/bankVault/bank_guard_npc.js`, and `gramados_utils/utils_trader.js`. These generate NPC drops or trader inventory *without a defined player recipient*. Their existing unbound tables work unchanged; do not add `set_owner` to those tables without establishing the recipient at redemption/death time. A bound entry in those contexts raises a visible script exception rather than silently generating an unbound item.
 
 Static call-site and JavaScript syntax checks pass for the reviewed scripts. Simulated item-generation checks pass for unbound two-argument loot, NBT loot, bound three-argument keys, missing recipients and invalid key specifications. These do not replace in-game CustomNPCs/Nashorn integration tests.
+
+## Modifier Collector's Crate
+
+Crate type `modifiers` pulls one randomized modifier from `modifiers/modifier_crate.json`. Its key table is `casino/keys/modifiers.json`, also included in the random-key crate. Select the new type with the existing crate NPC admin control, link its casino and enable it. See [modifier configuration and lifecycle](../modifiers/README.md) for RNG ranges, depletion, cooldown and recharge behavior.

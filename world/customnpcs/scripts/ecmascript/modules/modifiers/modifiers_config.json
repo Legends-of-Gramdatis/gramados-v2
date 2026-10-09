@@ -1,272 +1,402 @@
 {
     "items": {
-        "itemId": "variedcommodities:orb",
-        "usedItemId": "variedcommodities:orb_broken"
+        "itemId": "variedcommodities:orb"
     },
-    "active_effects": [
+    "effects": [
         {
-            "type": "cattle pregnancy",
+            "type": "cattle_pregnancy",
+            "behavior": "instant",
             "radius": 16,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Fertility :sun:",
-            "description": "&7Blesses the herd so mothers carry new life.",
-            "colorCode": 9
+            "description": "&7Blesses the herd so mothers carry new life."
         },
         {
-            "type": "cattle gestation",
+            "type": "cattle_gestation",
+            "behavior": "instant",
             "radius": 12,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Swift Birth :sun:",
-            "description": "&7Hastens the coming of calves, bending time for expectant mothers.",
-            "colorCode": 12
+            "description": "&7Hastens the coming of calves, bending time for expectant mothers."
         },
         {
-            "type": "cattle milk production",
+            "type": "cattle_milk_production",
+            "behavior": "instant",
             "radius": 12,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Rich Milk :sun:",
-            "description": "&7Fills the herd's udders with rich, flowing milk.",
-            "colorCode": 15
+            "description": "&7Fills the herd's udders with rich, flowing milk."
         },
         {
-            "type": "cattle baby grow",
+            "type": "cattle_baby_grow",
+            "behavior": "instant",
             "radius": 12,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Rapid Growth :sun:",
-            "description": "&7Urges young calves to stand tall and grow in a heartbeat.",
-            "colorCode": 10
+            "description": "&7Urges young calves to stand tall and grow in a heartbeat."
         },
         {
-            "type": "farmland fertilize",
+            "type": "farmland_fertilize",
+            "behavior": "instant",
             "radius": 10,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Rainfall :sun:",
-            "description": "&7Calls down a gentle rain to soak every furrow.",
-            "colorCode": 6
+            "description": "&7Calls down a gentle rain to soak every furrow."
         },
         {
-            "type": "farmland tilt",
+            "type": "farmland_tilt",
+            "behavior": "instant",
             "radius": 8,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Fresh Soil :sun:",
-            "description": "&7Turns rough ground into neat, welcoming rows of soil.",
-            "colorCode": 3
+            "description": "&7Turns rough ground into neat, welcoming rows of soil."
         },
         {
-            "type": "crop harvest",
+            "type": "crop_harvest",
+            "behavior": "instant",
             "radius": 8,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Bountiful Harvest :sun:",
-            "description": "&7Signals a generous gathering of the season's crops.",
-            "colorCode": 14
+            "description": "&7Signals a generous gathering of the season's crops."
         },
         {
-            "type": "crop harvest and plant",
+            "type": "crop_harvest_and_plant",
+            "behavior": "instant",
             "radius": 8,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Cycle Harvest :sun:",
-            "description": "&7Reaps the fields, then sows anew in one graceful motion.",
-            "colorCode": 2
+            "description": "&7Reaps the fields, then sows anew in one graceful motion."
         },
         {
-            "type": "crop growth random",
+            "type": "crop_growth_random",
+            "behavior": "instant",
             "radius": 6,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Wild Growth :sun:",
-            "description": "&7Whispers wild vigor into nearby shoots and stalks.",
-            "colorCode": 10
+            "description": "&7Whispers wild vigor into nearby shoots and stalks."
         },
         {
-            "type": "crop growth max",
+            "type": "crop_growth_max",
+            "behavior": "instant",
             "radius": 6,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Full Bloom :sun:",
-            "description": "&7Brings every crop to glorious, full bloom in an instant.",
-            "colorCode": 11
+            "description": "&7Brings every crop to glorious, full bloom in an instant."
         },
         {
-            "type": "crop rot random",
+            "type": "crop_rot_random",
+            "behavior": "instant",
             "radius": 6,
             "isBonus": false,
             "displayName": "&d:sun: Orb of Withering :sun:",
-            "description": "&7Spreads a creeping wither through the fields.",
-            "colorCode": 8
+            "description": "&7Spreads a creeping wither through the fields."
         },
         {
-            "type": "crop rot max",
+            "type": "crop_rot_max",
+            "behavior": "instant",
             "radius": 6,
             "isBonus": false,
             "displayName": "&d:sun: Orb of Blight :sun:",
-            "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again.",
-            "colorCode": 0
+            "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again."
         },
         {
-            "type": "fruit growth max",
+            "type": "fruit_growth_max",
+            "behavior": "instant",
             "radius": 10,
             "isBonus": true,
             "displayName": "&d:sun: Orb of Orchard Bloom :sun:",
-            "description": "&7Coaxes nearby orchard fruits to ripen to perfection.",
-            "colorCode": 11
+            "description": "&7Coaxes nearby orchard fruits to ripen to perfection."
         },
         {
-            "type": "fruit rot max",
+            "type": "fruit_rot_max",
+            "behavior": "instant",
             "radius": 10,
             "isBonus": false,
             "displayName": "&d:sun: Orb of Orchard Rot :sun:",
-            "description": "&7Spoils nearby orchard fruits, returning them to an unripe state.",
-            "colorCode": 0
+            "description": "&7Spoils nearby orchard fruits, returning them to an unripe state."
         },
         {
-            "type": "npc pickpocket small",
+            "type": "npc_pickpocket",
+            "behavior": "instant",
             "radius": 2,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Pickpocketing :sun:",
-            "description": "&7Coaxes nearby folk to spill their pockets—sometimes even a little extra.",
-            "colorCode": 14
+            "displayName": [
+                {
+                    "value": "&d:sun: Orb of Pickpocketing :sun:",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Orb of Grand Larceny :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7Coaxes nearby folk to spill their pockets\u2014sometimes even a little extra.",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&7Sweeps the crowd for loose goods and coin with a practiced hand.",
+                    "when": {}
+                }
+            ]
         },
         {
-            "type": "npc pickpocket large",
-            "radius": 10,
-            "isBonus": true,
-            "displayName": "&d:sun: Orb of Grand Larceny :sun:",
-            "description": "&7Sweeps the crowd for loose goods and coin with a practiced hand.",
-            "colorCode": 14
-        },
-        {
-            "type": "nature grass small",
+            "type": "nature_grass",
+            "behavior": "instant",
             "radius": 5,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Verdant Touch :sun:",
-            "description": "&7Awakens grass and flowers from bare earth in a small meadow.",
-            "colorCode": 2
+            "displayName": [
+                {
+                    "value": "&d:sun: Orb of Verdant Touch :sun:",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Orb of Pasture Renewal :sun:",
+                    "when": {
+                        "radius": {
+                            "lt": 20
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Orb of Meadow Genesis :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7Awakens grass and flowers from bare earth in a small meadow.",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&7Spreads lush grass and blooms across the land for grazing herds.",
+                    "when": {
+                        "radius": {
+                            "lt": 20
+                        }
+                    }
+                },
+                {
+                    "value": "&7Calls forth a sprawling field of green and wild growth.",
+                    "when": {}
+                }
+            ]
         },
         {
-            "type": "nature grass medium",
-            "radius": 10,
-            "isBonus": true,
-            "displayName": "&d:sun: Orb of Pasture Renewal :sun:",
-            "description": "&7Spreads lush grass and blooms across the land for grazing herds.",
-            "colorCode": 10
-        },
-        {
-            "type": "nature grass large",
-            "radius": 20,
-            "isBonus": true,
-            "displayName": "&d:sun: Orb of Meadow Genesis :sun:",
-            "description": "&7Calls forth a sprawling field of green and wild growth.",
-            "colorCode": 5
-        },
-        {
-            "type": "nature flowers small",
+            "type": "nature_flowers",
+            "behavior": "instant",
             "radius": 5,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Garden Beauty :sun:",
-            "description": "&7Weaves a delicate tapestry of colorful blossoms.",
-            "colorCode": 13
+            "displayName": [
+                {
+                    "value": "&d:sun: Orb of Garden Beauty :sun:",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Orb of Floral Splendor :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7Weaves a delicate tapestry of colorful blossoms.",
+                    "when": {
+                        "radius": {
+                            "lt": 10
+                        }
+                    }
+                },
+                {
+                    "value": "&7Paints the ground with vibrant flowers in graceful patterns.",
+                    "when": {}
+                }
+            ]
         },
         {
-            "type": "nature flowers medium",
-            "radius": 10,
-            "isBonus": true,
-            "displayName": "&d:sun: Orb of Floral Splendor :sun:",
-            "description": "&7Paints the ground with vibrant flowers in graceful patterns.",
-            "colorCode": 6
-        },
-        {
-            "type": "crop plant mixed small",
+            "type": "crop_plant_mixed",
+            "behavior": "instant",
             "radius": 8,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Varied Sowing :sun:",
-            "description": "&7Sows a patchwork of diverse crops across tilled soil.",
-            "colorCode": 2
+            "displayName": [
+                {
+                    "value": "&d:sun: Orb of Varied Sowing :sun:",
+                    "when": {
+                        "radius": {
+                            "lt": 20
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Orb of Abundant Planting :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7Sows a patchwork of diverse crops across tilled soil.",
+                    "when": {
+                        "radius": {
+                            "lt": 20
+                        }
+                    }
+                },
+                {
+                    "value": "&7Fills vast farmland with a rich tapestry of mixed crops.",
+                    "when": {}
+                }
+            ]
         },
         {
-            "type": "crop plant mixed large",
-            "radius": 20,
-            "isBonus": true,
-            "displayName": "&d:sun: Orb of Abundant Planting :sun:",
-            "description": "&7Fills vast farmland with a rich tapestry of mixed crops.",
-            "colorCode": 10
-        },
-        {
-            "type": "fish swarm",
+            "type": "fish_swarm",
+            "behavior": "instant",
             "radius": 5,
             "isBonus": true,
+            "displayName": "Fish Swarm",
             "description": "&7A sudden fish swarm bursts from above around you."
         },
         {
-            "type": "fish catch nearby",
+            "type": "fish_catch_nearby",
+            "behavior": "instant",
             "radius": 12,
             "isBonus": true,
+            "displayName": "Fish Catch Nearby",
             "description": "&7Scoops up nearby rain fish as if each had been bucket-caught."
+        },
+        {
+            "type": "stock_income",
+            "behavior": "timed",
+            "durationMinutes": 180,
+            "multiplier": 1.05,
+            "tags": [
+                "stock_income"
+            ],
+            "displayName": [
+                {
+                    "value": "&d:sun: Trader's Charm :sun:",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.1
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Merchant's Blessing :sun:",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.25
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Baron's Fortune :sun:",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.5
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Magnate's Crown :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7Your deals attract favor, yielding modestly richer returns.",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.1
+                        }
+                    }
+                },
+                {
+                    "value": "&7The market smiles upon you, swelling your coin purse.",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.25
+                        }
+                    }
+                },
+                {
+                    "value": "&7Wealth flows to you as if drawn by noble decree.",
+                    "when": {
+                        "multiplier": {
+                            "lt": 1.5
+                        }
+                    }
+                },
+                {
+                    "value": "&7Every trade you strike turns to pure gold.",
+                    "when": {}
+                }
+            ]
+        },
+        {
+            "type": "junkyard_loot",
+            "behavior": "timed",
+            "durationMinutes": 90,
+            "multiplier": 2,
+            "tags": [
+                "junkyard_loot"
+            ],
+            "displayName": [
+                {
+                    "value": "&d:sun: Scavenger's Eye :sun:",
+                    "when": {
+                        "multiplier": {
+                            "lt": 3
+                        }
+                    }
+                },
+                {
+                    "value": "&d:sun: Treasure Hunter's Gift :sun:",
+                    "when": {}
+                }
+            ],
+            "description": [
+                {
+                    "value": "&7You spy treasures where others see only scrap.",
+                    "when": {
+                        "multiplier": {
+                            "lt": 3
+                        }
+                    }
+                },
+                {
+                    "value": "&7Every crate reveals riches beyond imagining.",
+                    "when": {}
+                }
+            ]
         }
     ],
-    "passive_effects": [
-        {
-            "type": "stock income 5%",
-            "multiplier": 1.05,
-            "displayName": "&d:sun: Trader's Charm :sun:",
-            "description": "&7Your deals attract favor, yielding modestly richer returns.",
-            "colorCode": 11,
-            "durationMinutes": 180,
-            "tags": [
-                "stock_income"
-            ]
-        },
-        {
-            "type": "stock income 10%",
-            "multiplier": 1.10,
-            "displayName": "&d:sun: Merchant's Blessing :sun:",
-            "description": "&7The market smiles upon you, swelling your coin purse.",
-            "colorCode": 14,
-            "durationMinutes": 120,
-            "tags": [
-                "stock_income"
-            ]
-        },
-        {
-            "type": "stock income 25%",
-            "multiplier": 1.25,
-            "displayName": "&d:sun: Baron's Fortune :sun:",
-            "description": "&7Wealth flows to you as if drawn by noble decree.",
-            "colorCode": 1,
-            "durationMinutes": 75,
-            "tags": [
-                "stock_income"
-            ]
-        },
-        {
-            "type": "stock income 50%",
-            "multiplier": 1.50,
-            "displayName": "&d:sun: Magnate's Crown :sun:",
-            "description": "&7Every trade you strike turns to pure gold.",
-            "colorCode": 13,
-            "durationMinutes": 40,
-            "tags": [
-                "stock_income"
-            ]
-        },
-        {
-            "type": "junkyard loot double",
-            "lootMultiplier": 2,
-            "displayName": "&d:sun: Scavenger's Eye :sun:",
-            "description": "&7You spy treasures where others see only scrap.",
-            "colorCode": 6,
-            "durationMinutes": 90,
-            "tags": [
-                "junkyard_loot"
-            ]
-        },
-        {
-            "type": "junkyard loot triple",
-            "lootMultiplier": 3,
-            "displayName": "&d:sun: Treasure Hunter's Gift :sun:",
-            "description": "&7Every crate reveals riches beyond imagining.",
-            "colorCode": 10,
-            "durationMinutes": 30,
-            "tags": [
-                "junkyard_loot"
-            ]
+    "defaults": {
+        "usesBeforeDepletion": 0,
+        "cooldownSeconds": 0,
+        "onDepletion": "break",
+        "brokenItem": {
+            "id": "variedcommodities:orb_broken",
+            "damage": 0
         }
-    ]
+    }
 }

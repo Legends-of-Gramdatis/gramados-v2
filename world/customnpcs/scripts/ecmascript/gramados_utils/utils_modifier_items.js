@@ -1,203 +1,127 @@
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
-load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js');
 
 var MODIFIERS_CFG_PATH = 'world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_config.json';
+var MODIFIERS_LEGACY_PATH = 'world/customnpcs/scripts/ecmascript/modules/modifiers/modifiers_legacy.json';
 
-function resolve_modifier_value(valueSpec) {
-    if (typeof (valueSpec) === 'number') {
-        return valueSpec;
+// Loot-table values are either numbers or configured min/max ranges.
+function resolve_modifier_value(valueSpec, integer) {
+    if (typeof valueSpec === 'object') {
+        return integer ? rrandom_range(valueSpec.min, valueSpec.max) : random_range(valueSpec.min, valueSpec.max);
     }
+    return valueSpec;
+}
 
-    if (valueSpec && typeof (valueSpec) === 'object') {
-        if (typeof (valueSpec.min) === 'number' && typeof (valueSpec.max) === 'number') {
-            return rrandom_range(valueSpec.min, valueSpec.max);
+function get_modifier_config_entry(effect) {
+    var config = loadJson(MODIFIERS_CFG_PATH);
+    return findJsonEntryArray(config.effects, 'type', effect);
+}
+
+function get_modifier_legacy_entry(effect) {
+    var legacy = loadJson(MODIFIERS_LEGACY_PATH);
+    return legacy[effect];
+}
+
+// Fixed presentation uses a string; conditional presentation uses ordered rules.
+function resolve_modifier_presentation(rules, values) {
+    if (typeof rules === 'string') return rules;
+    for (var i = 0; i < rules.length; i++) {
+        var rule = rules[i];
+        var matches = true;
+        for (var key in rule.when) {
+            for (var operator in rule.when[key]) {
+                if (!compare_values(values[key], rule.when[key][operator], operator)) {
+                    matches = false;
+                    break;
+                }
+            }
+            if (!matches) break;
         }
+        if (matches) return rule.value;
     }
-
-    return null;
 }
 
-function get_modifier_world(context) {
-    if (context && typeof (context.getWorld) === 'function') {
-        return context.getWorld();
+function get_modifier_item_values(tag) {
+    var values = {};
+    var fields = {radius: 'modifier_radius', durationMinutes: 'modifier_duration_minutes', multiplier: 'modifier_multiplier',
+        usesBeforeDepletion: 'modifier_uses_before_depletion', cooldownSeconds: 'modifier_cooldown_seconds'};
+    for (var key in fields) {
+        if (tag.has(fields[key])) values[key] = tag.getDouble(fields[key]);
     }
-
-    return context;
+    return values;
 }
 
-function normalize_modifier_class(modifierClass) {
-    if (modifierClass === 'single-use' || modifierClass === 'single_use' || modifierClass === 'single use') {
-        return 'consumable';
-    }
-
-    return modifierClass;
-}
-
-function get_modifier_config_entry(modifierClass, modifierType, modifierEffect) {
-    var configData = loadJson(MODIFIERS_CFG_PATH);
-    if (!configData) {
-        return null;
-    }
-
-    if (modifierClass === 'orb' && modifierType === 'passive') {
-        return findJsonEntryArray(configData.passive_effects, 'type', modifierEffect);
-    }
-
-    return findJsonEntryArray(configData.active_effects, 'type', modifierEffect);
-}
-
-function format_modifier_multiplier(multiplier) {
-    if (typeof (multiplier) !== 'number') {
-        return null;
-    }
-
-    return multiplier.toFixed(2);
-}
-
-function create_modifier_item_stack(context, baseStack, modifierSpec) {
-    if (!baseStack || baseStack.isEmpty()) {
-        return baseStack;
-    }
-
-    var world = get_modifier_world(context);
-    var configData = loadJson(MODIFIERS_CFG_PATH);
-    if (!configData) {
-        return baseStack;
-    }
-
-    var modifierClass = normalize_modifier_class(modifierSpec.modifierClass || modifierSpec.modifier_class || 'orb');
-    var modifierType = modifierSpec.modifierType || modifierSpec.modifier_type || null;
-    var modifierEffect = modifierSpec.modifierEffect || modifierSpec.modifier_effect || modifierSpec.type;
-
-    if (modifierClass === 'orb' && !modifierType) {
-        modifierType = (modifierSpec.durationMinutes !== undefined || modifierSpec.duration_minutes !== undefined || modifierSpec.multiplier !== undefined)
-            ? 'passive'
-            : 'active';
-    }
-
-    if (modifierClass === 'consumable' || modifierClass === 'key') {
-        modifierType = null;
-    }
-
-    if (modifierClass === 'key' &&
-        (modifierEffect !== 'open_crate' || !/^[a-z0-9_-]+$/.test(String(modifierSpec.crateType || '')))) {
-        logToFile('loot_tables', '[modifiers.item] Invalid crate key specification.');
-        return baseStack;
-    }
-    var entry = modifierClass === 'key'
-        ? {displayName: modifierSpec.keyName || '&6Crate Key', description: modifierSpec.keyDescription || '&7Opens a matching crate.'}
-        : get_modifier_config_entry(modifierClass, modifierType, modifierEffect);
-    if (!entry) {
-        logToFile('loot_tables', '[modifiers.item] Missing modifier config entry for class=' + modifierClass + ' type=' + modifierType + ' effect=' + modifierEffect);
-        return baseStack;
-    }
-
-    var stackClone = baseStack.copy();
-    var nbt = stackClone.getItemNbt();
-    var tag = nbt.getCompound('tag');
-
-    tag.setBoolean('is_modifier', true);
-    tag.setString('modifier_class', modifierClass);
-    if (modifierType) {
-        tag.setString('modifier_type', modifierType);
-    }
-    tag.setString('modifier_use', modifierSpec.modifierUse || modifierSpec.modifier_use || ((modifierClass === 'consumable' || modifierClass === 'key') ? 'single-use' : 'unlimited-use'));
-    tag.setInteger('modifier_repairs', typeof (modifierSpec.modifierRepairs) === 'number' ? modifierSpec.modifierRepairs : 0);
-    tag.setBoolean('is_broken', false);
-    tag.setString('modifier_effect', modifierEffect);
-    if (modifierClass === 'key') tag.setString('crate_type', modifierSpec.crateType);
-
-    var radius = resolve_modifier_value(modifierSpec.radius);
-    if (radius === null && typeof (entry.radius) === 'number') {
-        radius = entry.radius;
-    }
-    if (radius !== null) {
-        tag.setInteger('modifier_radius', Math.floor(radius));
-    }
-
-    var durationMinutes = resolve_modifier_value(modifierSpec.durationMinutes !== undefined ? modifierSpec.durationMinutes : modifierSpec.duration_minutes);
-    if (durationMinutes === null && typeof (entry.durationMinutes) === 'number') {
-        durationMinutes = entry.durationMinutes;
-    }
-    if (durationMinutes !== null) {
-        tag.setInteger('duration_minutes', Math.floor(durationMinutes));
-    }
-
-    var multiplier = resolve_modifier_value(modifierSpec.multiplier);
-    if (multiplier === null && typeof (entry.multiplier) === 'number') {
-        multiplier = entry.multiplier;
-    }
-    if (multiplier !== null) {
-        tag.setDouble('modifier_multiplier', multiplier);
-    }
-
-    nbt.setCompound('tag', tag);
-
-    if (modifierSpec.overrideItemId || modifierSpec.itemId || modifierSpec.item_id) {
-        nbt.setString('id', modifierSpec.overrideItemId || modifierSpec.itemId || modifierSpec.item_id);
-    } else if (modifierClass !== 'consumable' && modifierClass !== 'key' && configData.items && configData.items.itemId) {
-        nbt.setString('id', configData.items.itemId);
-    }
-
-    var newItem = world.createItemFromNbt(nbt);
-
-    if (entry.displayName) {
-        var displayName = parseEmotes(ccs(entry.displayName));
-        if (modifierClass === 'consumable') {
-            displayName = parseEmotes(ccs(entry.displayName + ' &8[Consumable]'));
-        }
-        newItem.setCustomName(displayName);
-    }
-
+function refresh_modifier_presentation(item) {
+    var tag = item.getItemNbt().getCompound('tag');
+    var effect = tag.getString('modifier_effect');
+    var entry = get_modifier_config_entry(effect);
+    var values = get_modifier_item_values(tag);
+    var depleted = tag.getBoolean('modifier_depleted');
+    var name = resolve_modifier_presentation(entry.displayName, values);
+    item.setCustomName(parseEmotes(ccs(name + (depleted ? ' &8(Depleted)' : ''))));
     var lore = [];
-    if (entry.description) {
-        lore.push(parseEmotes(ccs(entry.description)));
+    var description = resolve_modifier_presentation(entry.description, values);
+    if (description) lore.push(parseEmotes(ccs(description)));
+    if (values.radius !== undefined) lore.push(ccs('&7Radius: &e' + values.radius + ' blocks'));
+    if (values.durationMinutes !== undefined) lore.push(ccs('&7Duration: &e' + values.durationMinutes + ' online minutes'));
+    if (values.multiplier !== undefined) lore.push(ccs('&7Multiplier: &e' + values.multiplier.toFixed(2) + 'x'));
+    lore.push(ccs('&7Uses remaining: &e' + (depleted ? 0 : values.usesBeforeDepletion + 1)));
+    if (values.cooldownSeconds > 0) lore.push(ccs('&7Cooldown: &e' + values.cooldownSeconds + ' seconds'));
+    if (tag.getString('modifier_on_depletion') === 'break') {
+        if (depleted) lore.push(ccs('&6Use on a chest with Arcade Tokens to recharge.'));
+        lore.push(ccs('&7Next recharge cost: &e' + tag.getInteger('modifier_repairs') + ' Arcade Tokens'));
     }
+    if (tag.has('owner_name')) lore.push(ccs('&8Bound to: &a' + tag.getString('owner_name')));
+    item.setLore(lore);
+    return item;
+}
 
-    if (radius !== null) {
-        lore.push(ccs('&7Radius: &e' + Math.floor(radius) + ' blocks'));
+function create_modifier_item_stack(world, baseStack, spec) {
+    var config = loadJson(MODIFIERS_CFG_PATH);
+    var effect = spec.type;
+    var entry = get_modifier_config_entry(effect);
+    var action = spec.onDepletion === undefined ? config.defaults.onDepletion : spec.onDepletion;
+    var nbt = baseStack.copy().getItemNbt();
+    var tag = nbt.getCompound('tag');
+    tag.setBoolean('is_modifier', true);
+    tag.setString('modifier_effect', effect);
+    tag.setBoolean('modifier_depleted', false);
+    tag.setString('modifier_on_depletion', action);
+    tag.setInteger('modifier_repairs', 0);
+    tag.remove('modifier_last_used_at');
+    var fields = {radius: 'modifier_radius', durationMinutes: 'modifier_duration_minutes', multiplier: 'modifier_multiplier',
+        usesBeforeDepletion: 'modifier_uses_before_depletion', cooldownSeconds: 'modifier_cooldown_seconds'};
+    for (var key in fields) {
+        var valueSpec = spec[key] !== undefined ? spec[key] : entry[key];
+        if (valueSpec === undefined) valueSpec = config.defaults[key];
+        var value = resolve_modifier_value(valueSpec, key !== 'multiplier');
+        tag.remove(fields[key]);
+        if (value === undefined) continue;
+        if (key === 'multiplier') tag.setDouble(fields[key], value);
+        else tag.setInteger(fields[key], value);
     }
-
-    if (durationMinutes !== null) {
-        lore.push(ccs('&7Duration: &e' + Math.floor(durationMinutes) + ' minutes'));
+    tag.setInteger('modifier_initial_uses_before_depletion', tag.getInteger('modifier_uses_before_depletion'));
+    if (spec.conflictPolicy) tag.setString('modifier_conflict_policy', spec.conflictPolicy);
+    else tag.remove('modifier_conflict_policy');
+    if (spec.itemId) nbt.setString('id', spec.itemId);
+    var carrierFields = ['modifier_broken_item_id', 'modifier_broken_item_damage', 'modifier_ready_item_id', 'modifier_ready_item_damage'];
+    for (var ci = 0; ci < carrierFields.length; ci++) tag.remove(carrierFields[ci]);
+    if (action === 'break') {
+        var broken = spec.brokenItem === undefined ? config.defaults.brokenItem : spec.brokenItem;
+        tag.setString('modifier_broken_item_id', broken.id);
+        tag.setInteger('modifier_broken_item_damage', broken.damage);
+        tag.setString('modifier_ready_item_id', nbt.getString('id'));
+        tag.setInteger('modifier_ready_item_damage', nbt.getShort('Damage'));
     }
-
-    if (multiplier !== null) {
-        lore.push(ccs('&7Multiplier: &e' + format_modifier_multiplier(multiplier) + 'x'));
-    }
-
-    if (modifierClass === 'consumable' || modifierClass === 'key') {
-        lore.push(ccs('&8Single-use item'));
-    }
-
-    if (lore.length > 0) {
-        newItem.setLore(lore);
-    }
-
-    if (modifierClass === 'orb' && entry.colorCode !== undefined) {
-        newItem.setItemDamage(entry.colorCode);
-    }
-
-    return newItem;
+    var legacyFields = ['modifier_class', 'modifier_type', 'modifier_use', 'is_broken', 'duration_minutes', 'is_passive_modifier', 'passive_modifier_type', 'repairs'];
+    for (var i = 0; i < legacyFields.length; i++) tag.remove(legacyFields[i]);
+    nbt.setCompound('tag', tag);
+    return refresh_modifier_presentation(world.createItemFromNbt(nbt));
 }
 
 function setModifierRadius(item, radius) {
-    var tag = item.getNbt();
-    tag.setInteger('modifier_radius', Math.floor(radius));
-    // update lore
-    var lore = item.getLore();
-    var newLore = [];
-    for (var i = 0; i < lore.length; i++) {
-        var line = lore[i];
-        if (stringIncludes(line, 'Radius:')) {
-            newLore.push(ccs('&7Radius: &e' + Math.floor(radius) + ' blocks'));
-        } else {
-            newLore.push(line);
-        }
-    }
-    item.setLore(newLore);
+    item.getNbt().setInteger('modifier_radius', radius);
+    refresh_modifier_presentation(item);
 }

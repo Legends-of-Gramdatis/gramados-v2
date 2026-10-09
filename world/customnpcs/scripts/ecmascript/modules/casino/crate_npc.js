@@ -422,7 +422,7 @@ function openCasinoCustomCrate(npc, player, mainhand, crate, casino) {
 }
 
 function openCasinoCrate(npc, player, mainhand, crate, casino) {
-    if (!isCrateKeyModifier(mainhand)) {
+    if (!isCrateKey(mainhand)) {
         rejectCasinoCrate(
             npc,
             player,

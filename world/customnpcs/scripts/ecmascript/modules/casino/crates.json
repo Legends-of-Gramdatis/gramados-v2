@@ -35,6 +35,12 @@
       "description": "Contains two random casino crate keys.",
       "loot_table": "casino/keys/random_keys.json",
       "key_name": "Key Collector's Key"
+    },
+    "modifiers": {
+      "name": "Modifier Collector's Crate",
+      "description": "Randomized farming, nature, trading and scavenging modifiers.",
+      "loot_table": "modifiers/modifier_crate.json",
+      "key_name": "Modifier Collector's Key"
     }
   }
 }

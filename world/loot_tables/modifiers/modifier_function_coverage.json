@@ -10,10 +10,25 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "modifier_type": "active",
-                            "type": "crop growth max",
-                            "radius": 12
+                            "type": "crop_growth_max",
+                            "radius": 12,
+                            "usesBeforeDepletion": {
+                                "min": 1,
+                                "max": 3
+                            },
+                            "onDepletion": "break",
+                            "cooldownSeconds": {
+                                "min": 1,
+                                "max": 5
+                            },
+                            "brokenItem": {
+                                "id": "variedcommodities:orb_broken",
+                                "damage": 4
+                            }
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 11
                         }
                     ]
                 }
@@ -29,13 +44,17 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "modifier_type": "active",
-                            "type": "nature flowers medium",
+                            "type": "nature_flowers",
                             "radius": {
                                 "min": 5,
                                 "max": 9
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 6
                         }
                     ]
                 }
@@ -51,11 +70,16 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "modifier_type": "passive",
-                            "type": "stock income 10%",
+                            "type": "stock_income",
                             "durationMinutes": 120,
-                            "multiplier": 1.1
+                            "multiplier": 1.1,
+                            "usesBeforeDepletion": 2,
+                            "onDepletion": "break",
+                            "cooldownSeconds": 7200
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 14
                         }
                     ]
                 }
@@ -71,9 +95,7 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "orb",
-                            "modifier_type": "passive",
-                            "type": "junkyard loot double",
+                            "type": "junkyard_loot",
                             "durationMinutes": {
                                 "min": 45,
                                 "max": 75
@@ -81,7 +103,13 @@
                             "multiplier": {
                                 "min": 1.25,
                                 "max": 1.5
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "break"
+                        },
+                        {
+                            "function": "set_data",
+                            "data": 6
                         }
                     ]
                 }
@@ -97,9 +125,10 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "crop harvest",
-                            "radius": 8
+                            "type": "crop_harvest",
+                            "radius": 8,
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         }
                     ]
                 }
@@ -115,12 +144,13 @@
                     "functions": [
                         {
                             "function": "set_modifier",
-                            "modifier_class": "consumable",
-                            "type": "farmland fertilize",
+                            "type": "farmland_fertilize",
                             "radius": {
                                 "min": 3,
                                 "max": 7
-                            }
+                            },
+                            "usesBeforeDepletion": 0,
+                            "onDepletion": "disappear"
                         }
                     ]
                 }

@@ -518,3 +518,19 @@ function pad(value, length) {
     }
     return value;
 }
+/**
+ * Compares two values using a configured operator.
+ * @param {*} val1 First value.
+ * @param {*} val2 Second value.
+ * @param {string} operator lt, lte, gt, gte or eq.
+ * @returns {boolean} Comparison result.
+ */
+function compare_values(val1, val2, operator) {
+    switch (operator) {
+        case 'lt': return val1 < val2;
+        case 'lte': return val1 <= val2;
+        case 'gt': return val1 > val2;
+        case 'gte': return val1 >= val2;
+        case 'eq': return val1 === val2;
+    }
+}

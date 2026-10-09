@@ -9,11 +9,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "set_modifier",
-              "modifier_class": "key",
-              "type": "open_crate",
+              "function": "set_crate_key",
               "crate_type": "keys",
-              "modifier_use": "single-use",
               "item_id": "variedcommodities:key",
               "key_name": "&aKey Collector's Key",
               "key_description": "&7Opens the Key Collector's Crate."
@@ -26,11 +23,8 @@
           "weight": 1,
           "functions": [
             {
-              "function": "set_modifier",
-              "modifier_class": "key",
-              "type": "open_crate",
+              "function": "set_crate_key",
               "crate_type": "keys",
-              "modifier_use": "single-use",
               "item_id": "variedcommodities:key2",
               "key_name": "&aKey Collector's Key",
               "key_description": "&7Opens the Key Collector's Crate."

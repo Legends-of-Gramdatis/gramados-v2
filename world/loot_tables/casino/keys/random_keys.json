@@ -27,6 +27,11 @@
           "type": "loot_table",
           "path": "casino/keys/cars.json",
           "weight": 1
+        },
+        {
+          "type": "loot_table",
+          "path": "casino/keys/modifiers.json",
+          "weight": 10
         }
       ]
     }

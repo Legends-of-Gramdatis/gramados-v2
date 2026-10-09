@@ -10,10 +10,10 @@
           "functions": [
             {
               "function": "set_crate_key",
-              "crate_type": "art",
+              "crate_type": "modifiers",
               "item_id": "variedcommodities:key",
-              "key_name": "&6Art Collector's Key",
-              "key_description": "&7Opens the Art Collector's Crate."
+              "key_name": "&dModifier Collector's Key",
+              "key_description": "&7Opens the Modifier Collector's Crate."
             }
           ]
         },
@@ -24,10 +24,10 @@
           "functions": [
             {
               "function": "set_crate_key",
-              "crate_type": "art",
+              "crate_type": "modifiers",
               "item_id": "variedcommodities:key2",
-              "key_name": "&6Art Collector's Key",
-              "key_description": "&7Opens the Art Collector's Crate."
+              "key_name": "&dModifier Collector's Key",
+              "key_description": "&7Opens the Modifier Collector's Crate."
             }
           ]
         }

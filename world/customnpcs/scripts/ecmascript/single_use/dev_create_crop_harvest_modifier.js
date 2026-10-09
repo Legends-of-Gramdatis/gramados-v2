@@ -16,13 +16,11 @@ function interact(event) {
         return;
     }
 
-    var modifierItem = instanciate_active_modifier(player, stack.copy(), 'crop harvest');
+    var modifierItem = create_modifier_item_stack(player.getWorld(), stack.copy(), {type: 'crop_harvest', radius: 30, onDepletion: 'break'});
     if (!modifierItem) {
         tellPlayer(player, '&cCould not create the crop harvest modifier.');
         return;
     }
-
-    setModifierRadius(modifierItem, 30);
 
     modifierItem.setStackSize(1);
     player.setMainhandItem(modifierItem);

@@ -1,6 +1,7 @@
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_maths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables_paths.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js");
+load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js");
 
 function generate_fish_catch_loot(player) {
     var loot = pullLootTable(_LOOTTABLE_FISH, player);
@@ -11,8 +12,13 @@ function generate_fish_catch_loot(player) {
         itemStack.setCustomName("§rFish");
 
         if (Math.random() < 0.25) {
-            var fishEffects = ["fish swarm", "fish catch nearby"];
-            itemStack = instanciate_consumable_modifier(player, itemStack, pickFromArray(fishEffects));
+            var fishEffects = ["fish_swarm", "fish_catch_nearby"];
+            var effect = get_modifier_config_entry(pickFromArray(fishEffects));
+            itemStack = create_modifier_item_stack(player.getWorld(), itemStack, {
+                type: effect.type,
+                onDepletion: 'disappear',
+                radius: {min: Math.ceil(effect.radius * 0.5), max: Math.floor(effect.radius * 1.5)}
+            });
         }
 
         generatedItems.push(itemStack);
