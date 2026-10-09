@@ -1,7 +1,6 @@
 {
     "items": {
-        "itemId": "variedcommodities:orb",
-        "usedItemId": "variedcommodities:orb_broken"
+        "itemId": "variedcommodities:orb"
     },
     "effects": [
         {
@@ -9,112 +8,252 @@
             "behavior": "instant",
             "radius": 16,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Fertility :sun:",
-            "description": "&7Blesses the herd so mothers carry new life."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Fertility :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Blesses the herd so mothers carry new life."
+                }
+            ]
         },
         {
             "type": "cattle_gestation",
             "behavior": "instant",
             "radius": 12,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Swift Birth :sun:",
-            "description": "&7Hastens the coming of calves, bending time for expectant mothers."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Swift Birth :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Hastens the coming of calves, bending time for expectant mothers."
+                }
+            ]
         },
         {
             "type": "cattle_milk_production",
             "behavior": "instant",
             "radius": 12,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Rich Milk :sun:",
-            "description": "&7Fills the herd's udders with rich, flowing milk."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Rich Milk :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Fills the herd's udders with rich, flowing milk."
+                }
+            ]
         },
         {
             "type": "cattle_baby_grow",
             "behavior": "instant",
             "radius": 12,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Rapid Growth :sun:",
-            "description": "&7Urges young calves to stand tall and grow in a heartbeat."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Rapid Growth :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Urges young calves to stand tall and grow in a heartbeat."
+                }
+            ]
         },
         {
             "type": "farmland_fertilize",
             "behavior": "instant",
             "radius": 10,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Rainfall :sun:",
-            "description": "&7Calls down a gentle rain to soak every furrow."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Rainfall :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Calls down a gentle rain to soak every furrow."
+                }
+            ]
         },
         {
             "type": "farmland_tilt",
             "behavior": "instant",
             "radius": 8,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Fresh Soil :sun:",
-            "description": "&7Turns rough ground into neat, welcoming rows of soil."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Fresh Soil :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Turns rough ground into neat, welcoming rows of soil."
+                }
+            ]
         },
         {
             "type": "crop_harvest",
             "behavior": "instant",
             "radius": 8,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Bountiful Harvest :sun:",
-            "description": "&7Signals a generous gathering of the season's crops."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Bountiful Harvest :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Signals a generous gathering of the season's crops."
+                }
+            ]
         },
         {
             "type": "crop_harvest_and_plant",
             "behavior": "instant",
             "radius": 8,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Cycle Harvest :sun:",
-            "description": "&7Reaps the fields, then sows anew in one graceful motion."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Cycle Harvest :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Reaps the fields, then sows anew in one graceful motion."
+                }
+            ]
         },
         {
             "type": "crop_growth_random",
             "behavior": "instant",
             "radius": 6,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Wild Growth :sun:",
-            "description": "&7Whispers wild vigor into nearby shoots and stalks."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Wild Growth :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Whispers wild vigor into nearby shoots and stalks."
+                }
+            ]
         },
         {
             "type": "crop_growth_max",
             "behavior": "instant",
             "radius": 6,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Full Bloom :sun:",
-            "description": "&7Brings every crop to glorious, full bloom in an instant."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Full Bloom :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Brings every crop to glorious, full bloom in an instant."
+                }
+            ]
         },
         {
             "type": "crop_rot_random",
             "behavior": "instant",
             "radius": 6,
             "isBonus": false,
-            "displayName": "&d:sun: Orb of Withering :sun:",
-            "description": "&7Spreads a creeping wither through the fields."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Withering :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Spreads a creeping wither through the fields."
+                }
+            ]
         },
         {
             "type": "crop_rot_max",
             "behavior": "instant",
             "radius": 6,
             "isBonus": false,
-            "displayName": "&d:sun: Orb of Blight :sun:",
-            "description": "&7Drains life from the harvest, leaving only fresh seedlings to begin again."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Blight :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Drains life from the harvest, leaving only fresh seedlings to begin again."
+                }
+            ]
         },
         {
             "type": "fruit_growth_max",
             "behavior": "instant",
             "radius": 10,
             "isBonus": true,
-            "displayName": "&d:sun: Orb of Orchard Bloom :sun:",
-            "description": "&7Coaxes nearby orchard fruits to ripen to perfection."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Orchard Bloom :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Coaxes nearby orchard fruits to ripen to perfection."
+                }
+            ]
         },
         {
             "type": "fruit_rot_max",
             "behavior": "instant",
             "radius": 10,
             "isBonus": false,
-            "displayName": "&d:sun: Orb of Orchard Rot :sun:",
-            "description": "&7Spoils nearby orchard fruits, returning them to an unripe state."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "&d:sun: Orb of Orchard Rot :sun:"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Spoils nearby orchard fruits, returning them to an unripe state."
+                }
+            ]
         },
         {
             "type": "npc_pickpocket",
@@ -131,7 +270,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Orb of Grand Larceny :sun:"
+                    "value": "&d:sun: Orb of Grand Larceny :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -144,7 +284,8 @@
                     }
                 },
                 {
-                    "value": "&7Sweeps the crowd for loose goods and coin with a practiced hand."
+                    "value": "&7Sweeps the crowd for loose goods and coin with a practiced hand.",
+                    "when": {}
                 }
             ]
         },
@@ -171,7 +312,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Orb of Meadow Genesis :sun:"
+                    "value": "&d:sun: Orb of Meadow Genesis :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -192,7 +334,8 @@
                     }
                 },
                 {
-                    "value": "&7Calls forth a sprawling field of green and wild growth."
+                    "value": "&7Calls forth a sprawling field of green and wild growth.",
+                    "when": {}
                 }
             ]
         },
@@ -211,7 +354,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Orb of Floral Splendor :sun:"
+                    "value": "&d:sun: Orb of Floral Splendor :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -224,7 +368,8 @@
                     }
                 },
                 {
-                    "value": "&7Paints the ground with vibrant flowers in graceful patterns."
+                    "value": "&7Paints the ground with vibrant flowers in graceful patterns.",
+                    "when": {}
                 }
             ]
         },
@@ -243,7 +388,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Orb of Abundant Planting :sun:"
+                    "value": "&d:sun: Orb of Abundant Planting :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -256,7 +402,8 @@
                     }
                 },
                 {
-                    "value": "&7Fills vast farmland with a rich tapestry of mixed crops."
+                    "value": "&7Fills vast farmland with a rich tapestry of mixed crops.",
+                    "when": {}
                 }
             ]
         },
@@ -265,16 +412,36 @@
             "behavior": "instant",
             "radius": 5,
             "isBonus": true,
-            "displayName": "Fish Swarm",
-            "description": "&7A sudden fish swarm bursts from above around you."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "Fish Swarm"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7A sudden fish swarm bursts from above around you."
+                }
+            ]
         },
         {
             "type": "fish_catch_nearby",
             "behavior": "instant",
             "radius": 12,
             "isBonus": true,
-            "displayName": "Fish Catch Nearby",
-            "description": "&7Scoops up nearby rain fish as if each had been bucket-caught."
+            "displayName": [
+                {
+                    "when": {},
+                    "value": "Fish Catch Nearby"
+                }
+            ],
+            "description": [
+                {
+                    "when": {},
+                    "value": "&7Scoops up nearby rain fish as if each had been bucket-caught."
+                }
+            ]
         },
         {
             "type": "stock_income",
@@ -310,7 +477,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Magnate's Crown :sun:"
+                    "value": "&d:sun: Magnate's Crown :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -339,7 +507,8 @@
                     }
                 },
                 {
-                    "value": "&7Every trade you strike turns to pure gold."
+                    "value": "&7Every trade you strike turns to pure gold.",
+                    "when": {}
                 }
             ]
         },
@@ -361,7 +530,8 @@
                     }
                 },
                 {
-                    "value": "&d:sun: Treasure Hunter's Gift :sun:"
+                    "value": "&d:sun: Treasure Hunter's Gift :sun:",
+                    "when": {}
                 }
             ],
             "description": [
@@ -374,9 +544,19 @@
                     }
                 },
                 {
-                    "value": "&7Every crate reveals riches beyond imagining."
+                    "value": "&7Every crate reveals riches beyond imagining.",
+                    "when": {}
                 }
             ]
         }
-    ]
+    ],
+    "defaults": {
+        "usesBeforeDepletion": 0,
+        "cooldownSeconds": 0,
+        "onDepletion": "break",
+        "brokenItem": {
+            "id": "variedcommodities:orb_broken",
+            "damage": 0
+        }
+    }
 }

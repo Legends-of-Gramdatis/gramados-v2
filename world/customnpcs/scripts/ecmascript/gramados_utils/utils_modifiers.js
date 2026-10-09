@@ -29,23 +29,22 @@ function instanciate_consumable_modifier(player, stack, effect) {
     var alias = get_modifier_legacy_entry(effect);
     var canonical = alias ? alias.effect : effect;
     var entry = get_modifier_config_entry(canonical);
-    if (!entry) throw new Error('Unknown modifier effect: ' + effect);
     var radius = alias && alias.radius !== undefined ? alias.radius : entry.radius;
-    return create_modifier_item_stack(player, stack, {
-        effect: canonical, onDepletion: 'disappear',
+    return create_modifier_item_stack(player.getWorld(), stack, {
+        type: canonical, onDepletion: 'disappear',
         radius: {min: Math.ceil(radius * 0.5), max: Math.floor(radius * 1.5)}
     });
 }
 
 function modifier_create_legacy_preset(player, stack, effect, action) {
     var alias = get_modifier_legacy_entry(effect);
-    var spec = {effect: alias ? alias.effect : effect, onDepletion: action};
+    var spec = {type: alias ? alias.effect : effect, onDepletion: action};
     if (alias) {
         for (var key in alias) {
             if (alias.hasOwnProperty(key) && key !== 'effect') spec[key] = alias[key];
         }
     }
-    return create_modifier_item_stack(player, stack, spec);
+    return create_modifier_item_stack(player.getWorld(), stack, spec);
 }
 
 function is_modifier(stack) {
@@ -72,10 +71,9 @@ function update_old_modifier_to_new(stack, player) {
         (tag.has('passive_modifier_type') ? tag.getString('passive_modifier_type') : tag.getString('modifier_type'));
     var alias = get_modifier_legacy_entry(effect);
     var canonical = alias ? alias.effect : effect;
-    if (!get_modifier_config_entry(canonical)) return stack;
     var depleted = tag.has('is_broken') ? tag.getBoolean('is_broken') :
         !(tag.has('is_passive_modifier') ? tag.getBoolean('is_passive_modifier') : tag.getBoolean('is_modifier'));
-    var spec = {effect: canonical, usesBeforeDepletion: 0,
+    var spec = {type: canonical, usesBeforeDepletion: 0,
         onDepletion: tag.getString('modifier_class') === 'consumable' ? 'disappear' : 'break'};
     var fields = {radius: 'modifier_radius', durationMinutes: 'duration_minutes', multiplier: 'modifier_multiplier'};
     for (var key in fields) {
@@ -86,7 +84,7 @@ function update_old_modifier_to_new(stack, player) {
     var config = loadJson(MODIFIERS_CFG_PATH);
     if (depleted && spec.onDepletion === 'break') spec.itemId = config.items.itemId;
     var repairs = tag.has('modifier_repairs') ? tag.getInteger('modifier_repairs') : tag.getInteger('repairs');
-    var converted = create_modifier_item_stack(player, stack, spec);
+    var converted = create_modifier_item_stack(player.getWorld(), stack, spec);
     var convertedNbt = converted.getItemNbt();
     var convertedTag = convertedNbt.getCompound('tag');
     convertedTag.setInteger('modifier_repairs', repairs);
@@ -120,7 +118,7 @@ function repair_modifier_item(player, stack) {
  * @param {IPlayer} player The player used as the center point for the effect.
  * @param {string} modifierEffect Modifier `type` string (as configured in `modifiers_config.json`).
  * @param {number} radius Effect radius in blocks.
- * @returns {*} The underlying handler's return value, or null if `modifierEffect` is unknown.
+ * @returns {boolean} Whether the effect changed the world.
  */
 function apply_active_modifier_type(player, modifierEffect, radius) {
 
@@ -129,73 +127,54 @@ function apply_active_modifier_type(player, modifierEffect, radius) {
 
     switch (modifierEffect) {
         case "cattle_pregnancy":
-            return makeFieldCattlePregnant(player, radius);
+            return makeFieldCattlePregnant(player, radius).changed > 0;
         case "cattle_gestation":
-            return skipGestationForFieldCattle(player, radius);
+            return skipGestationForFieldCattle(player, radius).changed > 0;
         case "cattle_milk_production":
-            return setFieldCowsHasKids(player, radius);
+            return setFieldCowsHasKids(player, radius).changed > 0;
         case "cattle_baby_grow":
-            return growFieldCalvesToAdults(player, radius);
+            return growFieldCalvesToAdults(player, radius).changed > 0;
         case "farmland_fertilize":
-            return farmCrops.fertilize_farmland_sphere(world, pos, radius);
+            return farmCrops.fertilize_farmland_sphere(world, pos, radius) > 0;
         case "farmland_tilt":
-            return farmCrops.tillSurfaceToFarmland(world, pos, radius, true);
+            return farmCrops.tillSurfaceToFarmland(world, pos, radius, true) > 0;
         case "crop_harvest":
-            return farmCrops.harvestCropsBreak(world, pos, radius);
+            return farmCrops.harvestCropsBreak(world, pos, radius) > 0;
         case "crop_harvest_and_plant":
-            return farmCrops.harvestCropsBreakAndReset(world, pos, radius);
+            return farmCrops.harvestCropsBreakAndReset(world, pos, radius) > 0;
         case "crop_growth_random":
-            return farmCrops.randomGrowCrops(world, pos, radius);
+            return farmCrops.randomGrowCrops(world, pos, radius) > 0;
         case "crop_growth_max":
-            return farmCrops.growCropsToMax(world, pos, radius);
+            return farmCrops.growCropsToMax(world, pos, radius) > 0;
         case "crop_rot_random":
-            return farmCrops.randomLowerCrops(world, pos, radius);
+            return farmCrops.randomLowerCrops(world, pos, radius) > 0;
         case "crop_rot_max":
-            return farmCrops.resetCropsToZero(world, pos, radius);
+            return farmCrops.resetCropsToZero(world, pos, radius) > 0;
         case "fruit_growth_max":
-            return farmFruits.growFruitsToMax(world, pos, radius);
+            return farmFruits.growFruitsToMax(world, pos, radius) > 0;
         case "fruit_rot_max":
-            return farmFruits.resetFruitsToZero(world, pos, radius);
+            return farmFruits.resetFruitsToZero(world, pos, radius) > 0;
         case "npc_pickpocket":
-            return pickpocket.pickpocket_npcs_in_radius(player, radius);
+            return pickpocket.pickpocket_npcs_in_radius(player, radius).affected > 0;
         case "nature_grass":
-            return nature.grow_grass_and_flowers(world, pos, radius);
+            var grass = nature.grow_grass_and_flowers(world, pos, radius);
+            return grass.converted + grass.planted > 0;
         case "nature_flowers":
-            return nature.spawn_flower_pattern(world, pos, radius);
+            return nature.spawn_flower_pattern(world, pos, radius) > 0;
         case "crop_plant_mixed":
-            return farmCrops.plantMixedCropsOnFarmland(world, pos, radius);
+            return farmCrops.plantMixedCropsOnFarmland(world, pos, radius) > 0;
         case "fish_swarm":
             playFishRainSpawnEffects(player);
-            return spawnFishSwarm(player, radius, 5);
+            return spawnFishSwarm(player, radius, 5) > 0;
         case "fish_catch_nearby":
-            return catchNearbyFishSwarm(player, radius);
-        default:
-            return null;
+            return catchNearbyFishSwarm(player, radius) > 0;
     }
 }
 
-
-function get_passive_modifier_config_entry(modifierType) {
-    var entry = get_modifier_config_entry(modifierType);
-    return entry && entry.behavior === 'timed' ? entry : null;
-}
 
 function get_passive_modifier_remaining_ms(player_modifier, nowMs) {
-    if (!player_modifier) {
-        return 0;
-    }
-
-    var remainingMs = player_modifier.remainingMs;
-    if (typeof (remainingMs) !== "number") {
-        remainingMs = 0;
-    }
-
-    var lastOnlineAt = player_modifier.lastOnlineAt;
-    if (typeof (lastOnlineAt) === "number") {
-        remainingMs = remainingMs - (nowMs - lastOnlineAt);
-    }
-
-    return remainingMs;
+    if (player_modifier.lastOnlineAt === null) return player_modifier.remainingMs;
+    return player_modifier.remainingMs - (nowMs - player_modifier.lastOnlineAt);
 }
 
 function normalize_and_clean_passive_modifiers(player, modifiers) {
@@ -203,27 +182,19 @@ function normalize_and_clean_passive_modifiers(player, modifiers) {
     var cleaned = [];
     var changed = false;
 
-    if (!modifiers) {
-        return { modifiers: [], changed: false };
-    }
-
     for (var i = 0; i < modifiers.length; i++) {
         var raw = modifiers[i];
-        if (!raw) {
-            changed = true;
-            continue;
-        }
-
-        if (typeof (raw.lastOnlineAt) === "undefined") {
+        if (raw.lastOnlineAt === undefined) {
+            raw.lastOnlineAt = null;
             changed = true;
         }
 
         var alias = get_modifier_legacy_entry(raw.type);
         if (alias) {
             raw.type = alias.effect;
-            if (typeof raw.multiplier !== 'number' && typeof alias.multiplier === 'number') raw.multiplier = alias.multiplier;
-            if (typeof raw.radius !== 'number' && typeof alias.radius === 'number') raw.radius = alias.radius;
-            if (typeof raw.durationMinutes !== 'number') raw.durationMinutes = alias.durationMinutes;
+            if (raw.multiplier === undefined) raw.multiplier = alias.multiplier;
+            if (raw.radius === undefined) raw.radius = alias.radius;
+            if (raw.durationMinutes === undefined) raw.durationMinutes = alias.durationMinutes;
             changed = true;
         }
         var remainingMs = get_passive_modifier_remaining_ms(raw, nowMs);
@@ -258,7 +229,7 @@ function normalize_and_clean_passive_modifiers(player, modifiers) {
  * @returns {boolean} True if a new modifier entry was added, false otherwise.
  */
 function apply_passive_modifier_type(player, modifierType, modifierData) {
-    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH) || {};
+    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
     var playerId = player.getUUID();
 
     if (!data.hasOwnProperty(playerId)) {
@@ -278,10 +249,6 @@ function apply_passive_modifier_type(player, modifierType, modifierData) {
     }
 
     var newEntry = get_dynamic_modifier_entry_from_type(modifierType, modifierData);
-    if (!newEntry) {
-        return false;
-    }
-
     playerModifiers.push(newEntry);
     data[playerId] = playerModifiers;
     saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
@@ -315,8 +282,8 @@ function player_has_passive_modifier_with_tag(player, tag) {
     var playerModifiers = get_players_passive_modifiers(player);
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = get_passive_modifier_config_entry(playerModifiers[i].type);
-        if (entry && entry.tags && includes(entry.tags, tag)) {
+        var entry = get_modifier_config_entry(playerModifiers[i].type);
+        if (includes(entry.tags, tag)) {
             return true;
         }
     }
@@ -330,12 +297,9 @@ function get_passive_multiplier_for_tag(player, tag) {
     var totalMultiplier = 1.0;
 
     for (var i = 0; i < playerModifiers.length; i++) {
-        var entry = get_passive_modifier_config_entry(playerModifiers[i].type);
-        if (entry && entry.tags && includes(entry.tags, tag)) {
-            var multiplier = (typeof (playerModifiers[i].multiplier) === "number") ? playerModifiers[i].multiplier : entry.multiplier;
-            if (typeof (multiplier) !== "number") {
-                multiplier = 1.0;
-            }
+        var entry = get_modifier_config_entry(playerModifiers[i].type);
+        if (includes(entry.tags, tag)) {
+            var multiplier = playerModifiers[i].multiplier;
             totalMultiplier += multiplier - 1.0;
         }
     }
@@ -369,31 +333,13 @@ function clean_modifiers(player, modifiers) {
  * - `lastOnlineAt`: timestamp (ms) when countdown started, or null when paused/offline
  *
  * @param {string} modifierType The canonical timed effect ID to look up.
- * @returns {{type: string, remainingMs: number, lastOnlineAt: (number|null)}|null} Dynamic entry, or null if not found.
+ * @returns {{type: string, remainingMs: number, lastOnlineAt: (number|null)}} Dynamic entry.
  */
 function get_dynamic_modifier_entry_from_type(modifierType, modifierData) {
-    var entry = get_passive_modifier_config_entry(modifierType);
-    if (!entry) {
-        return null;
-    }
-
-    var durationMinutes = entry.durationMinutes;
-    var multiplier = entry.multiplier;
-    var radius = entry.radius;
-
-    if (modifierData) {
-        if (typeof (modifierData.durationMinutes) === "number") {
-            durationMinutes = modifierData.durationMinutes;
-        }
-        if (typeof (modifierData.multiplier) === "number") {
-            multiplier = modifierData.multiplier;
-        }
-        if (typeof (modifierData.radius) === "number") {
-            radius = modifierData.radius;
-        }
-    }
-
-    if (typeof durationMinutes !== "number" || !isFinite(durationMinutes) || durationMinutes <= 0) return null;
+    var entry = get_modifier_config_entry(modifierType);
+    var durationMinutes = modifierData.durationMinutes === undefined ? entry.durationMinutes : modifierData.durationMinutes;
+    var multiplier = modifierData.multiplier === undefined ? entry.multiplier : modifierData.multiplier;
+    var radius = modifierData.radius === undefined ? entry.radius : modifierData.radius;
 
     return {
         type: entry.type,
@@ -412,7 +358,7 @@ function get_dynamic_modifier_entry_from_type(modifierType, modifierData) {
  * @returns {Array} Array of runtime entries.
  */
 function get_players_passive_modifiers(player) {
-    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH) || {};
+    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
     var playerId = player.getUUID();
 
     if (!data.hasOwnProperty(playerId)) {
@@ -434,7 +380,7 @@ function get_players_passive_modifiers(player) {
  * @param {Array} modifiers Full list of runtime entries to store for this player.
  */
 function save_players_passive_modifiers(player, modifiers) {
-    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH) || {};
+    var data = loadJson(PASSIVE_MODIFIERS_DATA_PATH);
     var playerId = player.getUUID();
     data[playerId] = modifiers;
     saveJson(data, PASSIVE_MODIFIERS_DATA_PATH);
@@ -505,18 +451,10 @@ function unfreeze_passive_modifiers(player) {
 }
 
 function format_passive_modifier_presentation(player, player_modifier) {
-    if (!player_modifier || !player_modifier.type) {
-        return ccs("&7(Invalid passive modifier entry)");
-    }
-
-    var entry = get_passive_modifier_config_entry(player_modifier.type);
-    if (!entry) {
-        return ccs("&7Unknown passive modifier: &f" + player_modifier.type);
-    }
-
+    var entry = get_modifier_config_entry(player_modifier.type);
     var remainingTimeMs = get_passive_modifier_remaining_ms(player_modifier, Date.now());
 
-    var displayName = parseEmotes(ccs(resolve_modifier_presentation(entry.displayName, player_modifier) || entry.type));
+    var displayName = parseEmotes(ccs(resolve_modifier_presentation(entry.displayName, player_modifier)));
     var remainingStr = formatDurationMs(remainingTimeMs);
 
     return displayName + ccs(" &8(§7Remaining: §e" + remainingStr + "§8)");
@@ -533,10 +471,6 @@ function format_passive_modifier_presentation(player, player_modifier) {
  * @returns {string} Human-readable duration string.
  */
 function formatDurationMs(durationMs) {
-    if (durationMs === null || typeof (durationMs) === typeof (undefined)) {
-        return "0s";
-    }
-
     if (durationMs < 0) {
         durationMs = 0;
     }
@@ -560,5 +494,5 @@ function formatDurationMs(durationMs) {
 
 function get_modifier_display_name(effect, values) {
     var entry = get_modifier_config_entry(effect);
-    return parseEmotes(ccs(entry ? (resolve_modifier_presentation(entry.displayName, values || {}) || effect) : '&7Unknown modifier: &f' + effect));
+    return parseEmotes(ccs(resolve_modifier_presentation(entry.displayName, values)));
 }

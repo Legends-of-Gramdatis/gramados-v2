@@ -225,7 +225,7 @@ function _prepareLootTablePull(
                         // Resolve RNG once during preparation, before stock/reward commit.
                         var modifier = {};
                         for (var modifierKey in func) {
-                            if (func.hasOwnProperty(modifierKey) && modifierKey !== "function") modifier[modifierKey] = func[modifierKey];
+                            if (modifierKey !== "function") modifier[modifierKey] = func[modifierKey];
                         }
                         var numeric = ['radius', 'durationMinutes', 'multiplier', 'usesBeforeDepletion', 'cooldownSeconds'];
                         for (var ni = 0; ni < numeric.length; ni++) {
@@ -477,9 +477,6 @@ function generateItemStackFromLootEntry(entry, world, player) {
     }
 
     if (entry.bindOwnerToPlayer) {
-        if (!player || typeof player.getUUID !== "function") {
-            throw new Error("set_owner requires a player in generateItemStackFromLootEntry: " + JSON.stringify(entry));
-        }
         itemstack = bindItemToPlayer(itemstack, player);
     }
 

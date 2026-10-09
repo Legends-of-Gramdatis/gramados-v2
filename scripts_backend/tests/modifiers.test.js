@@ -3,7 +3,6 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
-const path = require('node:path');
 const clone = value => JSON.parse(JSON.stringify(value));
 class Nbt {
     constructor(data = {}) { this.data = data; }
@@ -54,12 +53,11 @@ const c = vm.createContext({
     tellPlayer: (player, message) => messages.push(message), logToFile() {},
     format_arcade_token_count: count => `${count} Arcade Tokens`,
     isArcadeToken: item => item.getName() === 'test:arcade_token',
-    rrandom_range: (min, max) => min + Math.floor(c.Math.random() * (max - min + 1)),
     exports_utils_farm_crops: {harvestCropsBreak: () => effectResult},
     exports_utils_farm_fruits: {}, exports_utils_pickpocket: {}, exports_utils_nature: {}
 });
 const scripts = 'world/customnpcs/scripts/ecmascript/';
-for (const file of ['gramados_utils/utils_crate_keys.js', 'gramados_utils/utils_item_ownership.js',
+for (const file of ['gramados_utils/utils_maths.js', 'gramados_utils/utils_crate_keys.js', 'gramados_utils/utils_item_ownership.js',
     'gramados_utils/utils_modifier_items.js', 'gramados_utils/utils_modifiers.js',
     'gramados_utils/utils_loot_tables.js', 'modules/modifiers/modifierEngine.js']) {
     vm.runInContext(fs.readFileSync(scripts + file, 'utf8'), c, {filename: file});
@@ -74,7 +72,7 @@ const player = {
     giveItem(item) { this.received.push(item); return true; }, dropItem(item) { this.dropped.push(item); },
     rayTraceBlock: () => ({getBlock: () => target}), getPos: () => ({getX: () => 0, getY: () => 64, getZ: () => 0})
 };
-const make = (spec = {}, count = 1) => c.create_modifier_item_stack(world, world.createItem('test:carrier', 7, count), {effect: 'crop_harvest', ...spec});
+const make = (spec = {}, count = 1) => c.create_modifier_item_stack(world, world.createItem('test:carrier', 7, count), {type: 'crop_harvest', ...spec});
 const tag = item => item.data.tag;
 let passed = 0;
 function test(name, run) {
@@ -82,28 +80,52 @@ function test(name, run) {
     player.received = []; player.dropped = []; c.Math.random = Math.random;
     run(); passed++; console.log('PASS ' + name);
 }
-test('inclusive integer RNG, continuous multiplier, invalid ranges', () => {
+test('integer and continuous RNG use the existing math helpers', () => {
     c.Math.random = () => 0;
     assert.equal(c.resolve_modifier_value({min: 0, max: 3}, true), 0);
     c.Math.random = () => 0.999999;
     assert.equal(c.resolve_modifier_value({min: 0, max: 3}, true), 3);
     assert(c.resolve_modifier_value({min: 1.05, max: 1.3}) > 1.29);
-    for (const range of [{min: 2, max: 1}, {min: 0.1, max: 0.9}]) assert.throws(() => c.resolve_modifier_value(range, true));
-    assert.throws(() => make({usesBeforeDepletion: -1}));
-    assert.throws(() => make({cooldownSeconds: 2147483648}));
-    assert.throws(() => make({onDepletion: 'nothing'}));
-    assert.throws(() => make({conflictPolicy: 'stack'}));
+    assert.equal(c.resolve_modifier_value(0, true), 0);
+    const rounded = c.rrandom_range;
+    const continuous = c.random_range;
+    c.rrandom_range = () => 42; c.random_range = () => 1.234;
+    assert.equal(c.resolve_modifier_value({min: 0, max: 3}, true), 42);
+    assert.equal(c.resolve_modifier_value({min: 1, max: 2}), 1.234);
+    c.rrandom_range = rounded; c.random_range = continuous;
+});
+test('lifecycle defaults come from config; missing config surfaces a native error', () => {
+    const load = c.loadJson;
+    c.loadJson = name => {
+        const data = load(name);
+        if (name.endsWith('modifiers_config.json')) {
+            data.defaults.usesBeforeDepletion = 4; data.defaults.cooldownSeconds = 60;
+            data.defaults.brokenItem = {id: 'test:default_broken', damage: 6};
+        }
+        return data;
+    };
+    const item = make();
+    assert.equal(tag(item).modifier_uses_before_depletion, 4);
+    assert.equal(tag(item).modifier_cooldown_seconds, 60);
+    assert.equal(tag(item).modifier_broken_item_id, 'test:default_broken');
+    assert.equal(tag(item).modifier_broken_item_damage, 6);
+    c.loadJson = () => null;
+    assert.throws(() => c.get_modifier_config_entry('crop_harvest'), {name: 'TypeError'});
+    assert.throws(() => c.get_modifier_legacy_entry('crop harvest'), {name: 'TypeError'});
+    c.loadJson = load;
 });
 test('new format, physical metadata, tier boundaries and AND presentation', () => {
     const item = make();
     for (const field of ['modifier_class', 'modifier_type', 'modifier_use', 'is_broken']) assert(!Object.hasOwn(tag(item), field));
     assert.equal(item.data.id, 'test:carrier'); assert.equal(item.data.Damage, 7);
-    const rules = [{when: {radius: {gte: 10, lt: 30}, durationMinutes: {gte: 60}}, value: 'tier'}, {value: 'fallback'}];
+    const rules = [{when: {radius: {gte: 10, lt: 30}, durationMinutes: {gte: 60}}, value: 'tier'}, {when: {}, value: 'fallback'}];
     assert.equal(c.resolve_modifier_presentation(rules, {radius: 10, durationMinutes: 60}), 'tier');
     assert.equal(c.resolve_modifier_presentation(rules, {radius: 30, durationMinutes: 60}), 'fallback');
     assert.equal(c.resolve_modifier_presentation(rules, {radius: 10, durationMinutes: 59}), 'fallback');
     assert.equal(c.resolve_modifier_presentation(rules, {}), 'fallback');
-    assert.equal(c.resolve_modifier_presentation([{when: {radius: {unknown: 1}}, value: 'bad'}, {value: 'ok'}], {radius: 1}), 'ok');
+    for (const [op, left, right, expected] of [['lt', 1, 2, true], ['lte', 2, 2, true], ['gt', 2, 1, true], ['gte', 2, 2, true], ['eq', 2, 2, true], ['eq', 2, '2', false]]) {
+        assert.equal(c.compare_values(left, right, op), expected);
+    }
 });
 test('four successful uses then break; recharge restores rolled values and carrier', () => {
     player.hand = make({usesBeforeDepletion: 3, radius: 23, brokenItem: {id: 'test:broken', damage: 4}});
@@ -140,7 +162,7 @@ test('cooldown begins on success, expires at boundary and survives recharge', ()
     now++; c.interact({player}); assert(tag(player.hand).modifier_depleted); assert.equal(tag(player.hand).modifier_last_used_at, now);
 });
 test('duration shorter than cooldown; separate items still obey effect conflict', () => {
-    const spec = {effect: 'stock_income', multiplier: 1.27, durationMinutes: 1, usesBeforeDepletion: 2, cooldownSeconds: 120};
+    const spec = {type: 'stock_income', multiplier: 1.27, durationMinutes: 1, usesBeforeDepletion: 2, cooldownSeconds: 120};
     player.hand = make(spec); c.interact({player}); assert.equal(runtime['player-1'][0].multiplier, 1.27);
     const other = make({...spec, cooldownSeconds: 0}); const first = player.hand;
     player.hand = other; c.interact({player}); assert.equal(tag(player.hand).modifier_uses_before_depletion, 2);
@@ -148,7 +170,7 @@ test('duration shorter than cooldown; separate items still obey effect conflict'
     now += 60000; c.interact({player}); assert.equal(tag(player.hand).modifier_uses_before_depletion, 0);
 });
 test('duration longer than cooldown and logout pauses duration only', () => {
-    player.hand = make({effect: 'stock_income', durationMinutes: 60, usesBeforeDepletion: 2, cooldownSeconds: 600});
+    player.hand = make({type: 'stock_income', durationMinutes: 60, usesBeforeDepletion: 2, cooldownSeconds: 600});
     c.interact({player}); now += 600000; c.logout({player});
     const remaining = runtime['player-1'][0].remainingMs; now += 86400000; c.login({player});
     assert.equal(runtime['player-1'][0].remainingMs, remaining);
@@ -242,6 +264,23 @@ test('all authored modifier/key entries generate; RNG resolved once per prepared
             } else assert(c.isCrateKey(item));
         }
     }
+});
+test('set_owner still links a generated modifier to the receiving player', () => {
+    const load = c.loadJson;
+    c.loadJson = name => name === 'world/loot_tables/test_bound_modifier.json'
+        ? {pools: [{rolls: 1, entries: [{type: 'item', name: 'variedcommodities:orb', weight: 1,
+            functions: [{function: 'set_modifier', type: 'crop_harvest'}, {function: 'set_owner', owner: 'player'}]}]}]}
+        : load(name);
+    const prepared = c.prepareLootTablePull('test_bound_modifier.json', player);
+    const modifier = c.generateItemStackFromLootEntry(prepared.loot[0], world, player);
+    c.loadJson = load;
+    assert.equal(tag(modifier).owner_uuid, player.getUUID());
+    assert.equal(tag(modifier).owner_name, player.getName());
+    player.hand = modifier;
+    const ownUUID = player.getUUID; player.getUUID = () => 'other-player';
+    const before = JSON.stringify(modifier.data); c.interact({player});
+    assert.equal(JSON.stringify(player.hand.data), before); player.getUUID = ownUUID;
+    c.interact({player}); assert.equal(tag(player.hand).owner_uuid, player.getUUID());
 });
 test('new and legacy crate keys tradable; bound keys restricted; engine ignores keys', () => {
     for (const legacy of [false, true]) {

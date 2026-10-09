@@ -14,8 +14,8 @@ function generate_fish_catch_loot(player) {
         if (Math.random() < 0.25) {
             var fishEffects = ["fish_swarm", "fish_catch_nearby"];
             var effect = get_modifier_config_entry(pickFromArray(fishEffects));
-            itemStack = create_modifier_item_stack(player, itemStack, {
-                effect: effect.type,
+            itemStack = create_modifier_item_stack(player.getWorld(), itemStack, {
+                type: effect.type,
                 onDepletion: 'disappear',
                 radius: {min: Math.ceil(effect.radius * 0.5), max: Math.floor(effect.radius * 1.5)}
             });

@@ -15,7 +15,7 @@ Modifiers carry an effect ID and rolled parameters. Effect definitions in `modif
 - `modifier_repairs`: number of completed recharges, also the next cost in Arcade Tokens.
 - `modifier_ready_item_id`, `modifier_ready_item_damage`, `modifier_broken_item_id`, `modifier_broken_item_damage`: exact physical representations for repairable items.
 
-Activation checks ownership, depletion, cooldown and effect rules before running a handler. Only successful effects consume a charge or start cooldown. Instant handlers returning zero changes do not consume the item. Unsupported effects/policies are rejected. Each activation operates on one physical item: stacked unused items retain their charges and timestamp, while the used item is returned separately (dropped if inventory is full).
+Activation checks ownership, depletion, cooldown and effect rules before running a handler. Only successful effects consume a charge or start cooldown. Instant handlers returning zero changes do not consume the item. Each activation operates on one physical item: stacked unused items retain their charges and timestamp, while the used item is returned separately (dropped if inventory is full).
 
 For `break`, the final successful activation changes the physical item and sets `modifier_depleted = true`. Identity, rolled parameters, original charges, ownership and last-used timestamp survive. Use a depleted item on a chest to recharge. The first recharge costs **0** tokens, the next 1, then 2, etc.; an empty chest works for the free recharge. Repair restores the original ID/metadata and charge count. It does not reset cooldown. For `disappear`, the final successful activation removes one physical item.
 
@@ -45,17 +45,21 @@ Timed effects last for **online gameplay time** and pause on logout. Item cooldo
 }
 ```
 
-`radius`, `durationMinutes`, `multiplier`, `usesBeforeDepletion` and `cooldownSeconds` accept numbers or `{min,max}`. Integer parameters use inclusive, uniform integer sampling; multipliers use continuous sampling. Ranges must be ordered, finite and contain at least one valid integer where applicable. Integer fields are bounded by the NBT integer range. Radius/uses/cooldown must be nonnegative; duration/multiplier must be positive. Omitted effect parameters use effect defaults. Omitted charges and cooldown default to 0. Omitted depletion defaults to `break`; omitted `brokenItem` uses `items.usedItemId` with metadata 0. `itemId` may explicitly override the carrier ID.
+`radius`, `durationMinutes`, `multiplier`, `usesBeforeDepletion` and `cooldownSeconds` accept numbers or `{min,max}`. Integer parameters use inclusive, uniform integer sampling; multipliers use continuous sampling. Author valid ranges and integer values in the loot table. `resolve_modifier_value` delegates to `rrandom_range` for integers and `random_range` for multipliers. Omitted parameters inherit their effect definition, then the shared `defaults` in `modifiers_config.json`. These currently set charges/cooldown to 0, depletion to `break`, and the broken carrier to `variedcommodities:orb_broken` with metadata 0. `itemId` may explicitly override the carrier ID. The factory accepts an explicit world: `create_modifier_item_stack(player.getWorld(), baseStack, spec)`, with `spec.type` as the effect ID.
 
-Loot preparation resolves supplied ranges once. Constructing the prepared reward does not reroll them. Optional `set_owner` still binds an item to its recipient; ordinary generated modifiers are tradable.
+Loot preparation resolves supplied ranges once. Constructing the prepared reward does not reroll them. Optional `set_owner` still binds a modifier to its recipient; ordinary generated modifiers are tradable. Ownership lives in `utils_item_ownership.js`, and the modifier engine enforces it before activation or recharge. For a player-linked reward, add this to its loot-table functions:
 
-`displayName` and `description` accept a string or an ordered list of `{when, value}` rules. Conditions use `lt`, `lte`, `gt`, `gte`, `eq`; all conditions are ANDed, and the first match wins. A rule without `when` is a fallback. Names/descriptions derive from the resolved item values; lore updates after use and recharge.
+```json
+{"function": "set_owner", "owner": "player"}
+```
+
+`displayName` and `description` are ordered lists of `{when, value}` rules. A single unconditional rule represents a fixed name or description. Conditions use `lt`, `lte`, `gt`, `gte`, `eq`; all conditions are ANDed, and the first match wins. A rule with `"when": {}` is unconditional. Include it as the last rule to cover the remaining values. Comparisons use the reusable `compare_values(val1, val2, operator)` helper in `utils_maths.js`. Names/descriptions derive from the resolved item values; lore updates after use and recharge.
 
 ```json
 "displayName": [
     {"when": {"radius": {"lt": 10}}, "value": "&dTouch of Verdure"},
     {"when": {"radius": {"lt": 30}}, "value": "&dVerdant Reach"},
-    {"value": "&dMeadow's Blessing"}
+    {"when": {}, "value": "&dMeadow's Blessing"}
 ]
 ```
 
@@ -74,6 +78,12 @@ Existing casino keys remain accepted by the dedicated key helper. New keys use `
 For admin creation, hold `mts:ivv.idcard_seagull` in the offhand, a blank carrier in the main hand, and look at a chest containing a named `minecraft:name_tag`. A canonical effect ID creates that modifier. Historical names also resolve through the migration map. `all` replaces the chest contents with one default modifier per configured effect, up to its capacity. Admin-created carriers use `items.itemId` and metadata 0; skins belong to loot-table content.
 
 `modifier_function_coverage.json` covers fixed/random parameters, charges, cooldown, custom broken metadata, timed effects and consumables. Existing vegetation tables use the new syntax. Historical `instanciate_*` helper entry points are retained for event scripts, but emit only the new item model.
+
+## Code conventions
+
+Trust the authored configuration. Do not add malformed-config recovery, substitute objects/names, broad type checks or custom validation exceptions. Missing or malformed configuration should reach the existing JSON error reporting and normal script errors. Use the existing math utilities for RNG and comparisons. Keep an explicit world argument rather than accepting interchangeable world/player contexts. Checks for ownership, charges, cooldown, passive conflicts and real player interactions remain gameplay logic. Legacy conversions are explicit migration paths.
+
+The runtime file `world/customnpcs/scripts/data_auto/passive_modifiers.json` must contain valid JSON (an empty object for a new installation); do not replace a failed read with an empty object.
 
 ## Validation
 

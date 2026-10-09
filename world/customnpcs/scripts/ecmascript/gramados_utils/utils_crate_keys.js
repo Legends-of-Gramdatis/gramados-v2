@@ -11,8 +11,7 @@ function isCrateKey(stack) {
 }
 
 function create_crate_key_item_stack(world, base, spec) {
-    var crate = spec.crateType || spec.crate_type;
-    if (!/^[a-z0-9_-]+$/.test(String(crate || ''))) throw new Error('Invalid crate key type');
+    var crate = spec.crate_type;
     var nbt = base.copy().getItemNbt();
     var tag = nbt.getCompound('tag');
     tag.setBoolean('is_crate_key', true);
@@ -20,9 +19,9 @@ function create_crate_key_item_stack(world, base, spec) {
     var obsolete = ['is_modifier', 'modifier_class', 'modifier_type', 'modifier_effect', 'modifier_use', 'is_broken'];
     for (var i = 0; i < obsolete.length; i++) tag.remove(obsolete[i]);
     nbt.setCompound('tag', tag);
-    if (spec.item_id || spec.itemId) nbt.setString('id', spec.item_id || spec.itemId);
+    if (spec.item_id !== undefined) nbt.setString('id', spec.item_id);
     var item = world.createItemFromNbt(nbt);
-    item.setCustomName(parseEmotes(ccs(spec.key_name || spec.keyName || '&6Crate Key')));
-    item.setLore([parseEmotes(ccs(spec.key_description || spec.keyDescription || '&7Opens a matching crate.')), ccs('&8Single-use key')]);
+    item.setCustomName(parseEmotes(ccs(spec.key_name)));
+    item.setLore([parseEmotes(ccs(spec.key_description)), ccs('&8Single-use key')]);
     return item;
 }
