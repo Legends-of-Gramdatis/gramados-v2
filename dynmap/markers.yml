@@ -323,10 +323,10 @@ sets:
             marker_2:
                 world: world
                 markup: false
-                x: 251.0
                 icon: shopping_misc
+                x: 250.0
                 y: 75.0
-                z: -1005.0
+                z: -1003.0
                 label: Springfield Flowers
             marker_3:
                 world: world
@@ -663,14 +663,14 @@ sets:
                 y: 93.0
                 z: -521.0
                 label: The Fabric Nightclub
-            marker_10:
-                world: world
-                markup: false
-                x: -2974.0
-                icon: food&drink_food
-                y: 77.0
-                z: 821.0
-                label: The Ghetto Nightclub
+            # marker_10:
+            #     world: world
+            #     markup: false
+            #     x: -2974.0
+            #     icon: food&drink_food
+            #     y: 77.0
+            #     z: 821.0
+            #     label: The Ghetto Nightclub
             marker_11:
                 world: world
                 markup: false
@@ -1406,18 +1406,18 @@ sets:
             marker_3:
                 world: world
                 markup: false
-                x: -1828.0
                 icon: shopping_dealership
+                x: -1830.0
                 y: 74.0
                 z: -46.0
                 label: Luxury Car Dealerships
             marker_4:
                 world: world
                 markup: false
-                x: -1133.0
                 icon: shopping_dealership
+                x: -1102.0
                 y: 74.0
-                z: 231.0
+                z: 219.0
                 label: IVLabs Dealerships
             marker_5:
                 world: world
@@ -1560,9 +1560,9 @@ sets:
             marker_4:
                 world: world
                 markup: false
-                x: -1338.0
+                x: -1343.0
                 y: 74.0
-                z: 262.0
+                z: 261.0
                 icon: shopping_garage
                 label: Repair Shop
             marker_5:
@@ -1737,9 +1737,9 @@ sets:
                 world: world
                 markup: false
                 icon: shopping_gun
-                x: -5235.0
+                x: -5255.0
                 y: 73.0
-                z: -968.0
+                z: -963.0
                 label: Fort Harbenshire Shooting Range
             marker_15:
                 world: world
@@ -1747,7 +1747,7 @@ sets:
                 icon: shopping_gun
                 x: -5249.0
                 y: 79.0
-                z: -912.0
+                z: -909.0
                 label: Fort Harbenshire Marksman's Delight
         lines: {
             }
@@ -2705,9 +2705,9 @@ sets:
                 world: world
                 markup: false
                 icon: shopping_market
-                x: -6301.0
+                x: -6299.0
                 y: 72.0
-                z: 7207.0
+                z: 7204.0
                 label: Brisamar Market
         lines: {
             }
@@ -2995,7 +2995,7 @@ sets:
                 markup: false
                 icon: outdoor_campsite
                 x: -6629.0
-                y: 68.0
+                y: 144.0
                 z: 2567.0
                 label: Tulivar Campsite
             marker_31:
@@ -3043,7 +3043,7 @@ sets:
                 markup: false
                 icon: outdoor_garden_park
                 x: -3260.0
-                y: 110.0
+                y: 105.0
                 z: -5110.0
                 label: Les Jardins en Terrasses de Montaigarde - Allotments
             marker_33:
@@ -3483,7 +3483,7 @@ sets:
                 markup: false
                 icon: ent&lei_misc
                 x: -4712.0
-                y: 76.0
+                y: 79.0
                 z: 6903.0
                 label: Fuente de los Ecos 
             marker_27:
@@ -3531,7 +3531,7 @@ sets:
                 markup: false
                 icon: ent&lei_misc
                 x: -1489.0
-                y: 122.0
+                y: 126.0
                 z: -1355.0
                 label: Roche des Chants
             marker_33:
