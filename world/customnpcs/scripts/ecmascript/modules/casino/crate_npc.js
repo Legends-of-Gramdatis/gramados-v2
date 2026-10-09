@@ -393,7 +393,7 @@ function consumeCasinoCrateKey(player, mainhand) {
 function openCasinoCustomCrate(npc, player, mainhand, crate, casino) {
     var prepared = prepareCasinoCustomCrateReward(crate.rewardHandler, player);
 
-    if (prepared.rewards.length === 0) {
+    if (prepared.type === 'emote' && prepared.rewards.length === 0) {
         rejectCasinoCrate(
             npc,
             player,

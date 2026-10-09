@@ -278,6 +278,6 @@ function recordCasinoCustomCrateOpen(
     logToFile(
         'casino',
         playerName + ' opened ' + crate.name + ' at ' + casinoName +
-        ' and unlocked ' + rewards.join(', ') + '.'
+        ' and received ' + rewards.join(', ') + '.'
     );
 }

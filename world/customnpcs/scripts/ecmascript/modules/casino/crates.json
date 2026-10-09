@@ -41,6 +41,12 @@
       "description": "Randomized farming, nature, trading and scavenging modifiers.",
       "loot_table": "modifiers/modifier_crate.json",
       "key_name": "Modifier Collector's Key"
+    },
+    "random_trip": {
+      "name": "Random Trip Crate",
+      "description": "A surprise trip to a random Dynmap marker.",
+      "reward_handler": "random_trip",
+      "key_name": "Random Trip Key"
     }
   }
 }
