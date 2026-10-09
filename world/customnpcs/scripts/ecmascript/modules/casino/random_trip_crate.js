@@ -2,7 +2,19 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_dynmap.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 
 function prepareCasinoRandomTripCrateReward() {
-    var setName = getRandomMarkerSet();
+    var possible_sets = [
+        ['Historical Sites', 64],
+        ['Parks And Gardens', 33],
+        ['Restaurants', 25],
+        ['Town Halls', 24],
+        ['Hotels', 12],
+        ['Entertainment & Leisure', 7],
+        ['Open Air Markets', 6],
+        ['Education & Culture', 6],
+        ['Bars', 4],
+        ['Government Buildings', 2],
+    ]
+    var setName = pickchance(possible_sets, 1);
     var marker = getRandomMarkerData(setName);
     var name = marker.label.replace(/&#39;/g, "'").replace(/&amp;/g, '&');
     return {
