@@ -32,6 +32,11 @@
           "type": "loot_table",
           "path": "casino/keys/modifiers.json",
           "weight": 10
+        },
+        {
+          "type": "loot_table",
+          "path": "casino/keys/random_trip.json",
+          "weight": 6
         }
       ]
     }
