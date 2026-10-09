@@ -27,7 +27,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1790528324794L,
+        "TimePast": 1791565122100L,
         "Time": 0L,
         "Subject": ""
     },
@@ -192,16 +192,23 @@
                     "customnpcs:itemscripteddata": {
                     }
                 },
-                "id": "variedcommodities:coin_diamond",
+                "id": "variedcommodities:key2",
                 "Count": 1b,
                 "tag": {
+                    "modifier_repairs": 0,
+                    "modifier_class": "key",
+                    "is_broken": 0b,
+                    "modifier_effect": "open_crate",
                     "display": {
                         "Lore": [
-                            "§7Value: §b1,000 Lucky Credits",
-                            "§8For use in the Casinos."
+                            "§7Opens the Key Collector's Crate.",
+                            "§8Single-use item"
                         ],
-                        "Name": "§bDiamond Chip"
-                    }
+                        "Name": "§aKey Collector's Key"
+                    },
+                    "crate_type": "keys",
+                    "is_modifier": 1b,
+                    "modifier_use": "single-use"
                 },
                 "Damage": 0s
             }
