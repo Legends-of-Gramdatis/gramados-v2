@@ -3421,7 +3421,7 @@ sets:
                 x: -2351.0
                 y: 150.0
                 z: -3077.0
-                label: Widow's Cliff
+                label: Falaise des Veuves
             marker_19:
                 world: world
                 markup: false
@@ -3790,6 +3790,22 @@ sets:
                 y: 72.0
                 z: 7238.0
                 label: Templo del Ala Guía
+            marker_65:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3391.0
+                y: 119.0
+                z: -5228.0
+                label: Atelier Harland
+            marker_66:
+                world: world
+                markup: false
+                icon: ent&lei_historic
+                x: -3173.0
+                y: 184.0
+                z: -4910.0
+                label: Atelier du Cristal de la Couronne
         lines: {} 
         layerprio: 0
     Bridges:
