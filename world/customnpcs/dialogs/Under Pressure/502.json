@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "...A bakery boiler? …In Trilnat? Seagull Trin?
+    "DialogText": "...A bakery boiler? …In Trignat-en-Traume? Seagull Trine?
 
 *He snorts.*
 
@@ -74,7 +74,7 @@ Seagull Trin didn’t do plumbing, kid. He helped design engines, suspension sys
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748380269643L,
+        "TimePast": 1792183436970L,
         "Time": 0L,
         "Subject": ""
     }

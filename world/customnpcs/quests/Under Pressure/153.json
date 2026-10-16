@@ -46,8 +46,8 @@
                     "display": {
                         "Lore": [
                             "§7Pulled from the Moulin-Fournelet boiler.",
-                            "§7Worn, scorched, and visibly cracked — no longer operational.",
-                            "§7—",
+                            "§7Worn, scorched, and visibly cracked - no longer operational.",
+                            "§7-",
                             "§7Some markings are still legible...",
                             "§7but age and soot have erased the rest.",
                             "§cHandle with gloves - shards may still be hot.",
@@ -75,11 +75,11 @@
                     "display": {
                         "Lore": [
                             "§7A rare Trin regulator once commissioned by §eSeagull Trin§7 himself.",
-                            "§7Uncatalogued, unreplicated — only a few were ever made.",
-                            "§7—",
+                            "§7Uncatalogued, unreplicated - only a few were ever made.",
+                            "§7-",
                             "§7Rumored to survive only in deep storage,",
                             "§7or in places where rust and silence rule.",
-                            "§7—",
+                            "§7-",
                             "§cRecovered from Depot Kirelli.",
                             "§7No manual. No warranty. Just legacy.",
                             "§8[§f錭 Trin Motors Heritage Division §8]",

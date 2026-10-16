@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Know What You Fix",
-    "Text": "The part is ready — now it’s time to install it. I need to interact with the boiler to start the final diagnostic check. Let’s see if I actually understand how this thing works.",
+    "Text": "The part is ready - now it’s time to install it. I need to interact with the boiler to start the final diagnostic check. Let’s see if I actually understand how this thing works.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

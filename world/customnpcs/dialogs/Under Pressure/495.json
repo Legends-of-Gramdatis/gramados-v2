@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Wish I could say we had one in stock — but no. That part’s a relic. We haven’t used those since before most of our team was even born.
+    "DialogText": "Wish I could say we had one in stock - but no. That part’s a relic. We haven’t used those since before most of our team was even born.
 
-You’ve got one last hope: the old Trin assembly depot, Atelier de la Grange. It’s from the 1940s, built back when the family still assembled vehicles right here in Trilnat. After the production line shut down in the 90s, it became a sort of catch-all — spare parts, damaged units, prototype leftovers. Nobody’s sorted it in years.",
+You’ve got one last hope: the old Trin assembly depot, Atelier de la Grange. It’s from the 640s GE (1940s), built back when the family still assembled vehicles right here in Trignat-en-Traume. After the production line shut down in the 690s GE (1990s), it became a sort of catch-all - spare parts, damaged units, prototype leftovers. Nobody’s sorted it in years.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +66,7 @@ You’ve got one last hope: the old Trin assembly depot, Atelier de la Grange. I
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748530868431L,
+        "TimePast": 1792183202069L,
         "Time": 0L,
         "Subject": ""
     }

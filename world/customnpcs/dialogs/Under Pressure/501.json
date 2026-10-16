@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 502,
-                "Title": "It's for a bakery, actually. In Trilnat. The boiler's broken. It's an old one — Seagull Trin himself apparently helped install it.",
+                "Title": "It's for a bakery, actually. In Trignat-en-Traume. The boiler's broken. It's an old one - Seagull Trine himself apparently helped install it.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -68,7 +68,7 @@ You don’t look like you know a carburetor from a croissant. What’s this abou
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748380260546L,
+        "TimePast": 1792183396770L,
         "Time": 0L,
         "Subject": ""
     }

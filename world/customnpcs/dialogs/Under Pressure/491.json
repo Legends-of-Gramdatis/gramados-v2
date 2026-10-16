@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 492,
-                "Title": "I’m here about an old boiler. Bakery in town — Moulin-Fournelet.",
+                "Title": "I’m here about an old boiler. Bakery in town - Moulin-Fournelet.",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Welcome to Trin of Trilnat! What can I help you with today?",
+    "DialogText": "Welcome to Trin of Trignat-en-Traume! What can I help you with today?",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748507437231L,
+        "TimePast": 1792183123670L,
         "Time": 0L,
         "Subject": ""
     }

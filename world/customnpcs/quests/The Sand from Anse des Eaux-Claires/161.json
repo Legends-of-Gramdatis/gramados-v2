@@ -1,13 +1,12 @@
 {
     "CompleterNpc": "Maëline Courbe",
-    "NextQuestId": 160,
-    "QuestLocation3": "",
+    "NextQuestId": -1,
     "RandomReward": 0b,
-    "QuestLocation2": "",
-    "QuestRepeat": 5,
-    "QuestCompletion": 1,
-    "Title": "Across the Island",
-    "Text": "Maëline told me about a unique dune at the center of Crystal Cove — the finest glass sand comes from there. I need to travel all the way across Foréval to the southwest and stand on the dune to collect it.",
+    "QuestRepeat": 1,
+    "QuestCompletion": 0,
+    "IgnoreNBT": 0b,
+    "Title": "Deliver the Sand",
+    "Text": "Now that I'm back at the Atelier, I just need to speak to Maëline and give her the sand.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -19,7 +18,7 @@
     "RewardExp": 0,
     "QuestCommand": "",
     "ModRev": 18,
-    "Type": 3,
+    "Type": 0,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -28,11 +27,16 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1757577593133L,
+        "TimePast": 1792183689069L,
         "Time": 0L,
         "Subject": ""
     },
+    "IgnoreDamage": 0b,
     "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "Items": {
         "NpcMiscInv": [
             {
                 "Slot": 0b,
@@ -46,19 +50,19 @@
                     "display": {
                         "Lore": [
                             "§7Collected from the exact dune where",
-                            "§7the waters of Crystal Cove deposit their",
+                            "§7the waters of Anse des Eaux-Claires deposit their",
                             "§7clearest grains. It shimmers with faint warmth.",
                             "§r",
                             "§8✧ Maëline Courbe can craft master glass with this."
                         ],
-                        "Name": "§e§lPure Sand from Crystal Cove"
+                        "Name": "§e§lPure Sand from Anse des Eaux-Claires"
                     }
                 },
                 "Damage": 0s
             }
         ]
     },
-    "CompleteText": "The wind is still. The sand here glows faintly in the sunlight — fine as powder, warm underfoot, and eerily perfect. I’ve gathered a handful, just as Maëline asked. Time to bring it home.",
-    "NextQuestTitle": "Return to the Atelier",
-    "QuestLocation": "Crystal Cove"
+    "LeaveItems": 0b,
+    "CompleteText": "She takes the vial carefully, holding it to the light. A quiet smile crosses her face - something between gratitude and reverence. The glass this will make… she'll remember who brought it.",
+    "NextQuestTitle": ""
 }

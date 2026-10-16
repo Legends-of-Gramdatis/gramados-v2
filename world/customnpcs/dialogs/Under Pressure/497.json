@@ -47,9 +47,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "It confirms it, alright. The part you’re missing is a pressure-tolerant thermal regulator, ceramic casing, wide thread. But not just any unit — this one had custom heat channels, probably hand-milled. Prototype-grade.
+    "DialogText": "It confirms it, alright. The part you’re missing is a pressure-tolerant thermal regulator, ceramic casing, wide thread. But not just any unit - this one had custom heat channels, probably hand-milled. Prototype-grade.
 
-And those weren’t mass-produced. Hell, this design was used in exactly one application we know of — experimental steam-assist systems in low-output builds. Trin tried them in the late 40s, early 50s… scrapped the project not long after.
+And those weren’t mass-produced. Hell, this design was used in exactly one application we know of - experimental steam-assist systems in low-output builds. Trin tried them in the late 640s and early 650s GE (late 1940s and early 1950s)… scrapped the project not long after.
 
 We don’t build or stock these anymore. Haven’t for decades.",
     "AvailabilityQuest4Id": -1,
@@ -68,7 +68,7 @@ We don’t build or stock these anymore. Haven’t for decades.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369108322L,
+        "TimePast": 1792183265170L,
         "Time": 0L,
         "Subject": ""
     }

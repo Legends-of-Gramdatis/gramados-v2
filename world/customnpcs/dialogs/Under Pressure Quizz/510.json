@@ -7,7 +7,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 511,
-                "Title": "1930s",
+                "Title": "630s GE (1930s)",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -17,7 +17,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 507,
-                "Title": "1970s",
+                "Title": "670s GE (1970s)",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -27,7 +27,7 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 507,
-                "Title": "1950s",
+                "Title": "650s GE (1950s)",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -37,7 +37,17 @@
             "Option": {
                 "DialogCommand": "",
                 "Dialog": 507,
-                "Title": "1910s",
+                "Title": "610s GE (1910s)",
+                "DialogColor": 14737632,
+                "OptionType": 1
+            }
+        },
+        {
+            "OptionSlot": 4,
+            "Option": {
+                "DialogCommand": "",
+                "Dialog": -1,
+                "Title": "Talk",
                 "DialogColor": 14737632,
                 "OptionType": 1
             }
@@ -94,7 +104,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748505589882L,
+        "TimePast": 1792183486420L,
         "Time": 0L,
         "Subject": ""
     }

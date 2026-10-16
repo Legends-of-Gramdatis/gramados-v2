@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Speak to the Clerk",
-    "Text": "I’ve arrived at the dealership. I should explain the boiler issue — they probably have a replacement part lying around.",
+    "Text": "I’ve arrived at the dealership. I should explain the boiler issue - they probably have a replacement part lying around.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

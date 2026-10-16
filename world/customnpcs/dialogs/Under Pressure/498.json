@@ -49,9 +49,9 @@
     "OptionFaction2Points": 100,
     "DialogText": "Maybe. But there’s one guy who might know more than all of us put together.
 
-Name’s Almard Feros. Used to work Trin’s original line here in Trilnat before they moved the major ops to Rivetshore. He helped assemble the first batch of Trumons, Footpathers, the works. Eventually transferred to the Rivetshore plant when it opened in '66.
+Name’s Almard Feros. Used to work Trin’s original line here in Trignat-en-Traume before they moved the major ops to Rivetshore. He helped assemble the first batch of Trumons, Footpathers, the works. Eventually transferred to the Rivetshore plant when it opened in 666 GE (1966).
 
-He’d know if that part ever made it into production — or if it was just one of Seagull’s mad experiments.",
+He’d know if that part ever made it into production - or if it was just one of Seagull’s mad experiments.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -68,7 +68,7 @@ He’d know if that part ever made it into production — or if it was just one 
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748369143721L,
+        "TimePast": 1792183330569L,
         "Time": 0L,
         "Subject": ""
     }

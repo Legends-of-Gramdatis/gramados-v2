@@ -57,9 +57,9 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Oh—bonjour! You must be new in town. I'm Julien Fournelet, baker and mill-keeper of this... remarkable building. It’s seen better days, but she still bakes a good loaf!
+    "DialogText": "Oh-bonjour! You must be new in town. I'm Julien Fournelet, baker and mill-keeper of this... remarkable building. It’s seen better days, but she still bakes a good loaf!
 
-Listen, I wouldn’t usually ask a newcomer, but... we’ve got a bit of a rodent—or rather, Granivole—problem in the storage.
+Listen, I wouldn’t usually ask a newcomer, but... we’ve got a bit of a rodent-or rather, Granivole-problem in the storage.
 
 Nasty little things. They’ve chewed straight through sacks of grain. I spotted five of them just this morning. If you can help, I’ll toss you some of the good stuff from today’s batch.",
     "AvailabilityQuest4Id": -1,

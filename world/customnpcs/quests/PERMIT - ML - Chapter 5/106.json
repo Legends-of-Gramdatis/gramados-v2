@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Step 7: Defend Guardian-RX and Collect Supplies from Crates",
-    "Text": "Waves of enemy robots are attacking from all sides, trying to reach Guardian-RX. I need to defend it by taking down these attackers as fast as I can. If I run low on ammo or health, I’ll need to scavenge the crates scattered around the ruins for supplies—ammunition, medical kits, and other essential resources. Once I’ve neutralized enough robots, the simulation will end.",
+    "Text": "Waves of enemy robots are attacking from all sides, trying to reach Guardian-RX. I need to defend it by taking down these attackers as fast as I can. If I run low on ammo or health, I’ll need to scavenge the crates scattered around the ruins for supplies-ammunition, medical kits, and other essential resources. Once I’ve neutralized enough robots, the simulation will end.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

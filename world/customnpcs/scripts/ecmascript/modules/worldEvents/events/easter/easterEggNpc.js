@@ -15,7 +15,7 @@ var egg_activation_lines = [
     "&6This egg just clocked in for cardio. Good luck.",
     "&6Initiating Operation: Eggscape.",
     "&6The egg stares into your soul. Then bolts.",
-    "&6You touched the egg. The egg touched back—with legs.",
+    "&6You touched the egg. The egg touched back-with legs.",
     "&6Awakened. Confused. Angry. Egg.",
     "&6This egg just gained sentience and immediately decided you're a threat.",
 ]
@@ -517,7 +517,7 @@ function generateEggItem(world, npc) {
         case "chromashell":
             egg_item = "animania:brown_egg";
             egg_name = '&bChromashell Egg&r';
-            egg_lore_1 = "&eThe surface ripples with changing colors like sunlight through a prism. Tiny runes shimmer under the surface — this one's been touched by a painter's magic.";
+            egg_lore_1 = "&eThe surface ripples with changing colors like sunlight through a prism. Tiny runes shimmer under the surface - this one's been touched by a painter's magic.";
             egg_lore_2 = "&o&aCan only be safely opened by an Aetheric Botanist.";
             egg_lore_5 = "&f&oOpening Method:"
             egg_lore_6 = "&7- Delivered to: &lAetheric Botanist";

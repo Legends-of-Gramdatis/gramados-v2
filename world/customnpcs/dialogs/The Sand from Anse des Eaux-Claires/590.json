@@ -57,8 +57,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Sometimes I make the trip - but it's far. You'd have to cross half the island, past Krelmor's ridge, all the way to the southwestern coast.
+    "DialogText": "Sometimes I make the trip - but it's far. You'd have to cross half the island, past Mont Florne, all the way to the southwestern coast.
+
 *She exhales.*
+
 It takes the car and most of the day. That's time I can't spend shaping glass or being with my family.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
@@ -76,7 +78,7 @@ It takes the car and most of the day. That's time I can't spend shaping glass or
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1757576357434L,
+        "TimePast": 1792183076169L,
         "Time": 0L,
         "Subject": ""
     }

@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Through the Back Alley",
-    "Text": "There’s a van parked by the depot’s rear service alley. Someone's inside — I can hear voices and the clank of tools. Better be ready for trouble.",
+    "Text": "There’s a van parked by the depot’s rear service alley. Someone's inside - I can hear voices and the clank of tools. Better be ready for trouble.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

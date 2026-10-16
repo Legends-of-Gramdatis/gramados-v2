@@ -141,7 +141,7 @@ var Encrypted_Egg_Botanists = [
 var not_an_egg = [
     "&7...That's not an egg.",
     "&7Unless you're hiding a yolk in there, I can't help you.",
-    "&7Nope. Try again—with something round and eggy.",
+    "&7Nope. Try again-with something round and eggy.",
     "&7I open eggs, not... whatever this is.",
     "&7That item's as useful to me as a screen door on a submarine.",
     "&7Mmm, interesting. Not relevant, though.",
@@ -149,7 +149,7 @@ var not_an_egg = [
     "&7Wrong item, right enthusiasm.",
     "&7Sorry, this thing doesn't have a shell, code, or goo. Can't help.",
     "&7That's not on the seasonal egg list. Not even close.",
-    "&7If it doesn't chirp, pulse, or sparkle—it's not my problem.",
+    "&7If it doesn't chirp, pulse, or sparkle-it's not my problem.",
     "&7Come back when it's egg-shaped.",
     "&7Looks nice. Useless here.",
     "&7Hmm... Nope. Doesn't qualify as an egg in any universe.",

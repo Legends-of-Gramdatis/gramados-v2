@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Step 4: Return to Curator Evelyn Marston",
-    "Text": "After exploring the museum exhibits, I should return to Curator Evelyn Marston. She mentioned she'd have something for me once I finished the tour—likely a recommendation that I need to proceed further in the process of obtaining my Marksmanship License.",
+    "Text": "After exploring the museum exhibits, I should return to Curator Evelyn Marston. She mentioned she'd have something for me once I finished the tour-likely a recommendation that I need to proceed further in the process of obtaining my Marksmanship License.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

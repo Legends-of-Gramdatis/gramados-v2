@@ -48,8 +48,10 @@
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
     "DialogText": "Not all sand is equal. I use what I can find nearby, but the purest comes from a far-off place...
+
 *She hesitates, then lowers her voice.*
-Crystal Cove.",
+
+Anse des Eaux-Claires.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -66,7 +68,7 @@ Crystal Cove.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1757576341133L,
+        "TimePast": 1792183024619L,
         "Time": 0L,
         "Subject": ""
     }

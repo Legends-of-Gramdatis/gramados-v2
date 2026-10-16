@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Straight to the point, I see. Good. The tournament will consist of several rounds of target shooting, each testing different aspects of marksmanship—precision, speed, and accuracy over varying distances. Each target has a different score depending on difficulty. The more difficult, the more rewarding. Achieve a high score, and you'll gain more than just the respect of your peers.",
+    "DialogText": "Straight to the point, I see. Good. The tournament will consist of several rounds of target shooting, each testing different aspects of marksmanship-precision, speed, and accuracy over varying distances. Each target has a different score depending on difficulty. The more difficult, the more rewarding. Achieve a high score, and you'll gain more than just the respect of your peers.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,

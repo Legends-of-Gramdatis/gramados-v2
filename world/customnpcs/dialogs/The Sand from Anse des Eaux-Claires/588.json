@@ -48,7 +48,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "Rivermarch's Edge",
+    "DialogTitle": "Rivaldarin's Edge",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -57,8 +57,10 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "This ridge is the very border of Rivermarch and Les Monts de Vermeil. Carral lands end where the tree line fades.
+    "DialogText": "This ridge is the very border of Rivaldarin and Les Monts de Vermeil. The lands historically associated with Maison de Calminier end where the tree line fades.
+
 *She taps the window.*
+
 Everything here must be hauled in. That's why I make my own.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
@@ -76,7 +78,7 @@ Everything here must be hauled in. That's why I make my own.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1757576315184L,
+        "TimePast": 1792183008219L,
         "Time": 0L,
         "Subject": ""
     }

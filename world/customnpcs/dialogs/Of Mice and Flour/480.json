@@ -47,7 +47,7 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "Over the years, it was turned into a proper working farm. They built up the west side, raised a two-floor barn — inspired by those Forez-region styles. Upstairs was grain storage, and downstairs, the cows. They even dug a dirt ramp for carts to unload at the upper gate.",
+    "DialogText": "Over the years, it was turned into a proper working farm. They built up the west side, raised a two-floor barn in a traditional Foréval rural style. Upstairs was grain storage, and downstairs, the cows. They even dug a dirt ramp for carts to unload at the upper gate.",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -64,7 +64,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1748079158818L,
+        "TimePast": 1792182809220L,
         "Time": 0L,
         "Subject": ""
     }

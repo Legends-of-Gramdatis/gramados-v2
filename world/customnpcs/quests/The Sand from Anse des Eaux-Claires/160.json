@@ -7,7 +7,7 @@
     "QuestRepeat": 1,
     "QuestCompletion": 1,
     "Title": "Return to the Atelier",
-    "Text": "I’ve collected the sand Maëline needs. Now I must return to the Atelier de la Verrière in Rivermarch and hand it over.",
+    "Text": "I’ve collected the sand Maëline needs. Now I must return to the Atelier de la Verrière in Rivaldarin and hand it over.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1757577674984L,
+        "TimePast": 1792183683669L,
         "Time": 0L,
         "Subject": ""
     },

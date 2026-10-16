@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "The Fuel Station Job Pt.2",
-    "Text": "Time to clear out the depot. Three armed scavengers are inside — a coordinated crew. This won’t be a casual brawl.",
+    "Text": "Time to clear out the depot. Three armed scavengers are inside - a coordinated crew. This won’t be a casual brawl.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -58,11 +58,11 @@
                     "display": {
                         "Lore": [
                             "§7A rare Trin regulator once commissioned by §eSeagull Trin§7 himself.",
-                            "§7Uncatalogued, unreplicated — only a few were ever made.",
-                            "§7—",
+                            "§7Uncatalogued, unreplicated - only a few were ever made.",
+                            "§7-",
                             "§7Rumored to survive only in deep storage,",
                             "§7or in places where rust and silence rule.",
-                            "§7—",
+                            "§7-",
                             "§cRecovered from Depot Kirelli.",
                             "§7No manual. No warranty. Just legacy.",
                             "§8[§f錭 Trin Motors Heritage Division §8]",
@@ -120,6 +120,6 @@
             }
         ]
     },
-    "CompleteText": "They went down fighting. No doubt about it — these weren’t just looters. I should look around for what they were protecting.",
+    "CompleteText": "They went down fighting. No doubt about it - these weren’t just looters. I should look around for what they were protecting.",
     "NextQuestTitle": "Back to the Source"
 }

@@ -44,7 +44,7 @@ Officer Reynolds"
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I’ve reported the successful capture of the thief and the recovery of the stolen bag to Officer Reynolds. He was pleased with the outcome. As I was leaving, I received a notification of a new mail—seems like there’s another task waiting for me. Time to check my mailbox and see what’s next.",
+    "CompleteText": "I’ve reported the successful capture of the thief and the recovery of the stolen bag to Officer Reynolds. He was pleased with the outcome. As I was leaving, I received a notification of a new mail-seems like there’s another task waiting for me. Time to check my mailbox and see what’s next.",
     "NextQuestTitle": "",
     "QuestLocation": "Gramados Police Station"
 }

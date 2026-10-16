@@ -7,7 +7,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Scrapyard of History",
-    "Text": "There’s no order here — just heaps of rusted crates and bins. I’ll need to search everything. Maybe there’s something usable.",
+    "Text": "There’s no order here - just heaps of rusted crates and bins. I’ll need to search everything. Maybe there’s something usable.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

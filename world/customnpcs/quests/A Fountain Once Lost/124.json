@@ -56,7 +56,7 @@
             }
         ]
     },
-    "CompleteText": "I found a damaged valve and some lodged debris — it looks fixable with basic tools and a new part.",
+    "CompleteText": "I found a damaged valve and some lodged debris - it looks fixable with basic tools and a new part.",
     "NextQuestTitle": "Get a Replacement Valve",
     "QuestLocation": "Fuente de los Ecos"
 }

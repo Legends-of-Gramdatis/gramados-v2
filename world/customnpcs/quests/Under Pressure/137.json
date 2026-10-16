@@ -5,7 +5,7 @@
     "QuestRepeat": 0,
     "QuestCompletion": 1,
     "Title": "Speak to the Specialist",
-    "Text": "Now that I’m in the workshop, I should explain the boiler issue. They’ve probably got a replacement part lying around somewhere — can’t be that rare, right?",
+    "Text": "Now that I’m in the workshop, I should explain the boiler issue. They’ve probably got a replacement part lying around somewhere - can’t be that rare, right?",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,

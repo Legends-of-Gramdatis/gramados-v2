@@ -67,7 +67,7 @@ function spawnGhostSwarm(player, world, count, swarmRadius) {
                 if (spawnedPlayer > 0) {
                     var hauntMsgsPlayer = [
                         "&5A cold shiver runs down your spine... spirits surround you!",
-                        "&5You sense eyes from beyond—the ghosts are haunting you!",
+                        "&5You sense eyes from beyond-the ghosts are haunting you!",
                         "&5The veil thins around you; shapes coalesce from the mist...",
                         "&5Whispers circle your ears; specters gather at your side."
                     ];
