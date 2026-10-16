@@ -83,7 +83,7 @@
         {
             "name": "Under Pressure",
             "display": "§d§lA baker's plea awaits!§r §5Dive into Trin lore, old stories, and strange clues in a heartfelt journey of flour and friendship.",
-            "description": "§7Visit §6Moulin-Fournelet §7in Trilnat and talk to the baker to begin.",
+            "description": "§7Visit §6Moulin-Fournelet §7in Trignat-en-Traume and talk to the baker to begin.",
             "requirements": [
                 {
                     "type": "quests_uncompleted",

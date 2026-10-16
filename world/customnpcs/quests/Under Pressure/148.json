@@ -6,8 +6,8 @@
     "QuestLocation2": "",
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "Back to Trilnat",
-    "Text": "With the part secured and Almard’s blessing, it’s time to return to the workshop in Trilnat.",
+    "Title": "Back to Trignat-en-Traume",
+    "Text": "With the part secured and Almard’s blessing, it’s time to return to the workshop in Trignat-en-Traume.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -38,5 +38,5 @@
     },
     "CompleteText": "Home turf again. Let’s see if the rep thinks the part’s good enough.",
     "NextQuestTitle": "Wrenches and Wonders",
-    "QuestLocation": "Trin Workshop (Trilnat)"
+    "QuestLocation": "Trin Workshop (Trignat-en-Traume)"
 }
