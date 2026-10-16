@@ -28,7 +28,7 @@
     "AvailabilityScoreboardValue": 1,
     "DialogDisableEsc": 0b,
     "AvailabilityFaction": 0,
-    "DialogTitle": "The Peace Meadows Bell Tower",
+    "DialogTitle": "Beffroi de la Concorde",
     "AvailabilityDialog": 0,
     "AvailabilityScoreboard2Type": 1,
     "AvailabilityFaction2": 0,
@@ -37,18 +37,17 @@
     "DialogCommand": "",
     "AvailabilityDialogId": -1,
     "OptionFaction2Points": 100,
-    "DialogText": "
+    "DialogText": "Erected in commemoration of La Paix des Cinq Volées.
 
-Erected in Commemoration of the Peace of the Three Bells
+After generations of conflict, the five noble houses of Foréval set aside their quarrels and pledged themselves to peace. The principal bell of each house rang from its castle, five peals carried across one island.
 
-In the Year 1821, upon this ground, the noble Houses of Foréval set aside their quarrels and joined in unity, vowing peace for the prosperity of all. This bell tower stands as a lasting symbol of the accord forged here, known evermore as the Peace of the Three Bells.
+This tower was raised at the Prairie d'Arpheuil so that their accord would not be forgotten. Its Cloche de la Concorde is the sixth bell: not the voice of a territory, but the voice of the peace between them.
 
-Each dawn, the bells ring in remembrance of those who chose unity over discord, echoing across Foréval as a promise renewed:
-To honor the past, cherish the present, and protect the future.
+During La Cérémonie des Cinq Maisons, the five castle bells and the Cloche de la Concorde ring together once more.
 
-May the sounds of peace ring here for generations to come.
+May their six voices remind every generation:
 
-\"One island, five banners, and one heart united.\"",
+\"Five houses, one island, and peace carried farther than any quarrel.\"",
     "AvailabilityQuest4Id": -1,
     "AvailabilityQuest3Id": -1,
     "AvailabilityQuest2Id": -1,
@@ -65,7 +64,7 @@ May the sounds of peace ring here for generations to come.
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1730280049590L,
+        "TimePast": 1792173038620L,
         "Time": 0L,
         "Subject": ""
     }

@@ -642,8 +642,8 @@ sets:
             marker_7:
                 world: world
                 markup: false
-                x: 95.0
                 icon: food&drink_food
+                x: 91.0
                 y: 72.0
                 z: 114.0
                 label: Seaside Hut
@@ -1109,7 +1109,7 @@ sets:
                 x: -2643.0
                 y: 125.0
                 z: -5863.0
-                label: Courval-en-Fortvelles,
+                label: Courval-en-Fortvelles
             marker_22:
                 world: world
                 markup: false
@@ -2130,10 +2130,10 @@ sets:
             marker_2:
                 world: world
                 markup: false
-                x: -1900.0
                 icon: ent&lei_event_venue
-                y: 78.0
-                z: -620.0
+                x: -1898.0
+                y: 79.0
+                z: -619.0
                 label: Gramados Civic Center
             marker_3:
                 world: world
@@ -2219,8 +2219,8 @@ sets:
                 markup: false
                 icon: ent&lei_misc
                 x: -4973.0
-                y: 76.0
-                z: 167.0
+                y: 73.0
+                z: 173.0
                 label: Suncrest Estate Shooting Festival
             marker_3:
                 world: world
@@ -2933,7 +2933,7 @@ sets:
                 x: -5097.0
                 y: 144.0
                 z: -2809.0
-                label: Mount Krelmor
+                label: Mont Krelmor
             marker_23:
                 world: world
                 markup: false
@@ -3209,7 +3209,7 @@ sets:
                 x: -2620.0
                 y: 75.0
                 z: -4872.0
-                label: The Peace Meadows Parking
+                label: Prairie d'Arpheuil - Parking
             marker_19:
                 world: world
                 markup: false
@@ -3355,7 +3355,7 @@ sets:
                 markup: false
                 icon: ent&lei_lighthouse
                 x: -1948.0
-                y: 98.0
+                y: 67.0
                 z: -831.0
                 label: Gramados Marina Lighthouse
             marker_11:
@@ -3429,7 +3429,7 @@ sets:
                 x: -2689.0
                 y: 69.0
                 z: -4930.0
-                label: The Peace Meadows
+                label: Prairie d'Arpheuil
             marker_20:
                 world: world
                 markup: false
@@ -3437,7 +3437,7 @@ sets:
                 x: -2691.0
                 y: 71.0
                 z: -4882.0
-                label: The Peace Meadows Bell Tower
+                label: Beffroi de la Concorde
             marker_21:
                 world: world
                 markup: false
@@ -3587,8 +3587,8 @@ sets:
                 markup: false
                 icon: ent&lei_lighthouse
                 x: -6301.0
-                y: 136.0
-                z: 4100.0
+                y: 74.0
+                z: 4101.0
                 label: Faro del Sexto Viento - Lighthouse
             marker_40:
                 world: world
@@ -3674,18 +3674,18 @@ sets:
                 world: world
                 markup: false
                 icon: civil_services_worship
-                x: -3230.0
-                y: 130.0
-                z: -5188.0
+                x: -3233.0
+                y: 134.0
+                z: -5189.0
                 label: Sanctuaire de Montaigarde
             marker_51:
                 world: world
                 markup: false
                 icon: civil_services_worship
                 x: -3341.0
-                y: 130.0
+                y: 124.0
                 z: -5262.0
-                label: Cloitre des Hautes Marches
+                label: Cloître des Hautes Marches
             marker_52:
                 world: world
                 markup: false
