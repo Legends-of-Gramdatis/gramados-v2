@@ -2917,7 +2917,7 @@ sets:
                 x: -3188.0
                 y: 68.0
                 z: -2176.0
-                label: Solace Beach
+                label: Plage de Trévisol
             marker_21:
                 world: world
                 markup: false
@@ -2933,7 +2933,7 @@ sets:
                 x: -5097.0
                 y: 144.0
                 z: -2809.0
-                label: Mont Krelmor
+                label: Mont Florne
             marker_23:
                 world: world
                 markup: false
@@ -3317,7 +3317,7 @@ sets:
                 x: -3546.0
                 y: 77.0
                 z: -2462.0
-                label: Trinmot Castle
+                label: Château des Dolomon
             marker_6:
                 world: world
                 markup: false
@@ -3325,7 +3325,7 @@ sets:
                 x: -2964.0
                 y: 163.0
                 z: -3669.0
-                label: Carral Keep
+                label: Château de Calminier
             marker_7:
                 world: world
                 markup: false
@@ -3333,7 +3333,7 @@ sets:
                 x: -4047.0
                 y: 122.0
                 z: -3761.0
-                label: Ambert Paper Mill
+                label: Moulin à papier d'Ambert
             marker_8:
                 world: world
                 markup: false
@@ -3365,7 +3365,7 @@ sets:
                 x: -2945.0
                 y: 118.0
                 z: -2991.0
-                label: Lucucon Feldspar Quarry And Porcelain Factory
+                label: Carrière et Manufacture de Lucuçon
             marker_12:
                 world: world
                 markup: false
