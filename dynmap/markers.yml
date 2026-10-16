@@ -1021,7 +1021,7 @@ sets:
                 icon: civil_services_Civic_Building
                 y: 70.0
                 z: -2586.0
-                label: Trilnat Village
+                label: Trignat-en-Traume
             marker_11:
                 world: world
                 markup: false
@@ -1450,7 +1450,7 @@ sets:
                 x: -3372.0
                 y: 69.0
                 z: -2512.0
-                label: Trilnat Trin Dealerships
+                label: Trignat-en-Traume Trin Dealerships
             marker_9:
                 world: world
                 markup: false
@@ -1873,7 +1873,7 @@ sets:
                 icon: services_station_petrol
                 y: 69.0
                 z: -2482.0
-                label: Trilnat Auto Fuel Station
+                label: Trignat-en-Traume Auto Fuel Station
             marker_15:
                 world: world
                 markup: false
@@ -1953,7 +1953,7 @@ sets:
                 x: -3303.0
                 y: 69.0
                 z: -2484.0
-                label: Trilnat Auto Charging Station
+                label: Trignat-en-Traume Auto Charging Station
             marker_25:
                 world: world
                 markup: false
@@ -2378,7 +2378,7 @@ sets:
                 icon: health_misc
                 y: 70.0
                 z: -2389.0
-                label: Trilnat Multi-Service Facility
+                label: Trignat-en-Traume Multi-Service Facility
             marker_14:
                 world: world
                 markup: false
@@ -2551,7 +2551,7 @@ sets:
                 icon: shopping_grocery
                 y: 69.0
                 z: -2496.0
-                label: Trilnat Auto General Store
+                label: Trignat-en-Traume Auto General Store
             marker_3:
                 world: world
                 markup: false
@@ -3105,7 +3105,7 @@ sets:
                 x: -3561.0
                 y: 68.0
                 z: -2512.0
-                label: Trilnat Parking
+                label: Trignat-en-Traume - Parking
             marker_6:
                 world: world
                 markup: false
@@ -3413,7 +3413,7 @@ sets:
                 x: -3239.0
                 y: 65.0
                 z: -4723.0
-                label: Valley of Betrayal
+                label: Vallon de la Trahison
             marker_18:
                 world: world
                 markup: false
@@ -3509,7 +3509,7 @@ sets:
                 x: -3524.0
                 y: 69.0
                 z: -2518.0
-                label: Trilnat Church
+                label: Trignat-en-Traume Church
             marker_30:
                 world: world
                 markup: false
