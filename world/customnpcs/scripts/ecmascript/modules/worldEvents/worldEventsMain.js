@@ -151,9 +151,9 @@ function tick(e) {
                 }
             }
 
-            if (isEventActiveForPlayer("Spooktober", player)) {
+            if (isEventActiveForPlayer("spooktober", player)) {
                 var playerName = player.getName();
-                var pdata = loadPlayerEventData("Spooktober", playerName);
+                var pdata = loadPlayerEventData("spooktober", playerName);
                 var lastTime = pdata.playerLastSpawnTime || 0;
                 if (new Date().getTime() - lastTime >= SPOOKTOBER_CONFIG.spawnIntervalMs) {
                     run_spooktober_event(player);
