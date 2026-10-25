@@ -479,5 +479,12 @@
             },
             "egg_count": 5
         }
+    },
+    "spooktober": {
+        "TheOddlySeagull": {
+            "ghostsSpawned": 120,
+            "playerLastSpawnTime": 1792926190159,
+            "ghostsHunted": 1
+        }
     }
 }
