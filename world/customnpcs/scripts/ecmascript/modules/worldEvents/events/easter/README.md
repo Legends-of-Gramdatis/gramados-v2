@@ -74,6 +74,11 @@ The event's date range is defined in `event_config.json`:
 }
 ```
 
+Egg display sizes are also configured on the `easter_egg_hunt` event entry:
+
+- `eggSize.jumbo.min` and `eggSize.jumbo.max` define the inclusive size range for the 10% chance of spawning a jumbo egg. The current range is 4-11.
+- `eggSize.regular.min` and `eggSize.regular.max` define the inclusive range for other eggs. The current range is 3-6.
+
 ## Future Improvements
 
 - Add more egg types with unique rewards.

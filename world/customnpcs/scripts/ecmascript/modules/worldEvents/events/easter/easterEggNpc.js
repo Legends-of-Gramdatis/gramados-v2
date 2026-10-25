@@ -8,6 +8,17 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 
 var EASTER_EVENT_ID = "easter_egg_hunt";
+var EASTER_EVENT_CONFIG = null;
+for (var event_index = 0; event_index < allEventConfig.events.length; event_index++) {
+    if (allEventConfig.events[event_index].id == EASTER_EVENT_ID) {
+        EASTER_EVENT_CONFIG = allEventConfig.events[event_index];
+        break;
+    }
+}
+
+if (EASTER_EVENT_CONFIG == null) {
+    throw new Error("Missing Easter event configuration for: " + EASTER_EVENT_ID);
+}
 
 var egg_activation_lines = [
     "&6Uh oh... it woke up.",
@@ -188,10 +199,12 @@ function setRandomSize(npc) {
 
 
     if (random_type == 0) {
-        var random_size = Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+        var jumbo_egg_config = EASTER_EVENT_CONFIG.eggSize.jumbo;
+        var random_size = Math.floor(Math.random() * (jumbo_egg_config.max - jumbo_egg_config.min + 1)) + jumbo_egg_config.min;
         npc.getDisplay().setSize(random_size);
     } else {
-        var random_size = Math.floor(Math.random() * (6 - 3 + 1)) + 3;
+        var regular_egg_config = EASTER_EVENT_CONFIG.eggSize.regular;
+        var random_size = Math.floor(Math.random() * (regular_egg_config.max - regular_egg_config.min + 1)) + regular_egg_config.min;
         npc.getDisplay().setSize(random_size);
     }
     
