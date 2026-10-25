@@ -1,4 +1,4 @@
-// spooktoberEvent.js - Main script for the Spooktober ghost world event
+// spooktoberEvent.js - Main script for the spooktober ghost world event
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
@@ -76,11 +76,11 @@ function spawnGhostSwarm(player, world, count, swarmRadius) {
                 } else {
                     logToFile("events", "Failed to find valid spots to spawn ghosts around player " + player.getName() + ".");
                 }
-                // Track total ghosts spawned per player for Spooktober
+                // Track total ghosts spawned per player for spooktober
                 try {
-                    var pdataP = loadPlayerEventData("Spooktober", player.getName());
+                    var pdataP = loadPlayerEventData("spooktober", player.getName());
                     pdataP.ghostsSpawned = (pdataP.ghostsSpawned || 0) + spawnedPlayer;
-                    savePlayerEventData("Spooktober", player.getName(), pdataP);
+                    savePlayerEventData("spooktober", player.getName(), pdataP);
                 } catch (errP) {
                     // ignore persistence issues to avoid interrupting gameplay
                 }
@@ -133,11 +133,11 @@ function spawnGhostSwarm(player, world, count, swarmRadius) {
         logToFile("events", "Spawned " + spawned + " ghost(s) around " + targetNpc.getName() + 
                           " for player " + player.getName() + ".");
     }
-    // Track total ghosts spawned per player for Spooktober
+    // Track total ghosts spawned per player for spooktober
     try {
-        var pdata = loadPlayerEventData("Spooktober", player.getName());
+        var pdata = loadPlayerEventData("spooktober", player.getName());
         pdata.ghostsSpawned = (pdata.ghostsSpawned || 0) + spawned;
-        savePlayerEventData("Spooktober", player.getName(), pdata);
+        savePlayerEventData("spooktober", player.getName(), pdata);
     } catch (err) {
         // ignore persistence issues to avoid interrupting gameplay
     }
@@ -155,9 +155,9 @@ function run_spooktober_event(player) {
     var count = Math.floor(Math.random() * (max - min + 1)) + min;
     var spawned = spawnGhostSwarm(player, world, count, SPOOKTOBER_CONFIG.swarmRadius);
     // Update player's last spawn time in persistent data (even if none spawned, to apply cooldown)
-    var data = loadPlayerEventData("Spooktober", playerName);
+    var data = loadPlayerEventData("spooktober", playerName);
     data.playerLastSpawnTime = new Date().getTime();
-    savePlayerEventData("Spooktober", playerName, data);
+    savePlayerEventData("spooktober", playerName, data);
 }
 
 /**

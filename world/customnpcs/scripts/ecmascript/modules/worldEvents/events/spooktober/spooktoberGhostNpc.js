@@ -1,4 +1,4 @@
-// spooktoberGhostNpc.js - Script for Spooktober Ghost NPC behavior
+// spooktoberGhostNpc.js - Script for spooktober Ghost NPC behavior
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_date.js');
@@ -31,7 +31,7 @@ function init(event) {
     var npc = event.npc;
     
     // If event already ended, despawn ghost in a particle cloud
-    if (!isEventActive("Spooktober")) {
+    if (!isEventActive("spooktober")) {
         despawnWithGhostParticles(npc);
         return;
     }
@@ -64,7 +64,7 @@ function init(event) {
     npc.getStoreddata().put("spawn_date_str", now.getDate() + "/" + (now.getMonth()+1) + "/" + now.getFullYear());
     // tellNearbyPlayers(npc, "[DEBUG] Spawned on: " + npc.getStoreddata().get("spawn_date_str"), 20);
     // Save event end date (for reference)
-    var endDate = getEventEndDate("Spooktober");
+    var endDate = getEventEndDate("spooktober");
     if (endDate) {
         npc.getStoreddata().put("event_end", endDate.month + "/" + endDate.day);
     }
@@ -117,7 +117,7 @@ function tick(event) {
     var npc = event.npc;
     var stored = npc.getStoreddata();
     // If event ended while this ghost is still around, vanish it
-    if (!isEventActive("Spooktober")) {
+    if (!isEventActive("spooktober")) {
         despawnWithGhostParticles(npc); 
         return;
     }
@@ -176,7 +176,7 @@ function damaged(event) {
     drop.setLore([
         ccs("&7A sugary puff left behind by a vanquished specter."),
         ccs("&8Some say it contains a hint of ectoplasm..."),
-        ccs("&dCollected during: &fSpooktober Event"),
+        ccs("&dCollected during: &fspooktober Event"),
         ccs("&8Spawned on: &7" + (npc.getStoreddata().get("spawn_date_str") || "Unknown"))
     ]);
     // Give to player if hit by a player, otherwise drop on ground
@@ -184,9 +184,9 @@ function damaged(event) {
         // Increment player's ghostsHunted counter
         try {
             var hunter = event.source;
-            var pdata = loadPlayerEventData("Spooktober", hunter.getName());
+            var pdata = loadPlayerEventData("spooktober", hunter.getName());
             pdata.ghostsHunted = (pdata.ghostsHunted || 0) + 1;
-            savePlayerEventData("Spooktober", hunter.getName(), pdata);
+            savePlayerEventData("spooktober", hunter.getName(), pdata);
         } catch (err) {
             // ignore persistence errors
         }
