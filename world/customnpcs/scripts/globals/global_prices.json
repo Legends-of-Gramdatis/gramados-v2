@@ -8076,5 +8076,8 @@
     },
     "variedcommodities:trading_block:0": {
         "value": 3000
+    },
+    "mts:iv_tcp_v3_civil.trin_ropy_4door_root_firered_black:0": {
+        "value": 2235000
     }
 }
