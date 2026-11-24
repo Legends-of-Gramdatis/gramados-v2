@@ -357,7 +357,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                 case 1: { // Check validity: ensure no money items in inventory; then wait for medium delay to Step 2
                     var invMoneyNow = 0;
                     try { invMoneyNow = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (vErr) { invMoneyNow = 0; }
-                    if (invMoneyNow > 0) {
+                    if (invMoneyNow > 0 && invMoneyNow < 600) {
                         // Failure reminder: ask to empty inventory (use depositAll)
                         var s4c1 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
                         var msgFail = s4c1.s4_validity_failure;
@@ -405,7 +405,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     // Detect !withdraw command
                     var withdrawLastRan = onboarding_phase2_getLastRan(pdata, 'withdraw');
 
-                    if (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < (pdata.phase2.s4_step2AvailableAt || pdata.phase2.s4_withdraw_promptTime))) {
+                    if (readMoneyFromPlayerInventory(player, player.getWorld()) < 600 && (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < (pdata.phase2.s4_step2AvailableAt || pdata.phase2.s4_withdraw_promptTime)))) {
                         var lastW = pdata.phase2.s4_withdraw_lastMsg || pdata.phase2.s4_withdraw_promptTime || 0;
                         if ((Date.now() - lastW) > intervalMs) {
                             var s4c2r = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
@@ -547,7 +547,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // If we are in a re-deposit loop after a wrong withdraw, guide until inventory is empty again
-                    if (pdata.phase2.s4_multi_needRedeposit) {
+                    if (pdata.phase2.s4_multi_needRedeposit && !onboarding_phase2_hasSixCoins(player)) {
                         if (invNow4 > 0) {
                             var s4mFailRpt = phaseCfg.stages.stage1.chat;
                             var msgRpt = s4mFailRpt.s4_multi_failure_wrong;
@@ -635,6 +635,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
                     // On first entry into this step, show title and starting guidance once
                     if (!pdata.phase2.s5_step1_started) {
+                        var marketItemsEarly = readMarketItems(phaseCfg.stages.stage5.market.file) || [];
+                        pdata.phase2.s5_marketKeys = _buildMarketKeys(marketItemsEarly);
+                        pdata.phase2.s5_invBaseline = _countItemsByKeys(player, pdata.phase2.s5_marketKeys);
                         pdata.phase2.s5_step1_started = true;
                         pdata.phase2.s5_step1_startedAt = Date.now();
                         tellSeparatorTitle(player, 'Heading to the Canteen', '&2', '&a');
@@ -728,8 +731,10 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             var marketPath = s5cfg.market.file;
                             var marketItems = readMarketItems(marketPath) || [];
                             var keys = _buildMarketKeys(marketItems);
-                            pdata.phase2.s5_marketKeys = keys;
-                            pdata.phase2.s5_invBaseline = _countItemsByKeys(player, keys);
+                            if (!pdata.phase2.s5_marketKeys || !pdata.phase2.s5_invBaseline) {
+                                pdata.phase2.s5_marketKeys = keys;
+                                pdata.phase2.s5_invBaseline = _countItemsByKeys(player, keys);
+                            }
                             logToFile('onboarding', '[p2.waiter.found] ' + player.getName() + ' found waiter ' + waiterName + '.');
                             // Advance to Step 3 (next part of purchase flow)
                             pdata.phase2.currentStep = 3;
