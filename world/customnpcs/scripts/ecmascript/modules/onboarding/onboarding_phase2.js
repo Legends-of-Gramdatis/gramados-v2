@@ -67,6 +67,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     if (!pdata.phase2.s1_given) {
+                        pdata.phase2.s2_pouchBefore = onboarding_phase2_getPouchBalance(player);
                         var cents40g = 40 * 100; // 1g=100
                         var w = player.getWorld();
                         var stacks = generateMoney(w, cents40g, "money") || [];
@@ -180,7 +181,10 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         var playerStr = wds.get(pKey) || null;
                         var pjson = playerStr ? JSON.parse(playerStr) : {};
                         var pouchBefore = (typeof pjson.money === 'number') ? pjson.money : (pjson.money ? Number(pjson.money) : 0);
-                        pdata.phase2.s2_pouchBefore = pouchBefore;
+                        // Preserve the pre-grant baseline. Legacy players may already have deposited.
+                        if (typeof pdata.phase2.s2_pouchBefore !== 'number') {
+                            pdata.phase2.s2_pouchBefore = pouchBefore;
+                        }
                         var s2chat0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
                         tellSeparatorTitle(player, 'Depositing Money', '&2', '&a');
                         tellPlayer(player, s2chat0.s2_deposit_init);
@@ -191,9 +195,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Wait for deposit command run
-                    var depositLastRan = onboarding_phase2_getLastRan(pdata, 'deposit');
+                    var depositLastRan = Math.max(onboarding_phase2_getLastRan(pdata, 'deposit') || 0, onboarding_phase2_getLastRan(pdata, 'depositAll') || 0);
 
-                    if (!depositLastRan || (pdata.phase2.s2_promptTime && depositLastRan < pdata.phase2.s2_promptTime)) {
+                    if (!depositLastRan || (pdata.phase2.s2_promptTime && depositLastRan < (pdata.phase2.s1_givenTime || pdata.phase2.s2_promptTime))) {
                         var last2 = pdata.phase2.s2_lastMsg || pdata.phase2.s2_promptTime || 0;
                         if ((Date.now() - last2) > intervalMs) {
                             var s2chatR = phaseCfg.stages.stage1.chat;
@@ -215,7 +219,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         var invMoney = readMoneyFromPlayerInventory(player, player.getWorld()) || 0;
 
                         var s2chat = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                        if (pouchAfter > pouchBeforeVal) {
+                        if (pouchAfter > pouchBeforeVal || (invMoney === 0 && pouchAfter > 0)) {
                             pdata.phase2.s2_completed = true;
                             pdata.phase2.s2_completedAt = Date.now();
                             tellPlayer(player, s2chat.s2_deposit_detected);
@@ -229,6 +233,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                             tellPlayer(player, s2chat.s3_checkpouch_init);
                             changed = true;
                         } else {
+                            if ((Date.now() - (pdata.phase2.s2_lastMsg || 0)) <= intervalMs) return changed;
                             if (invMoney >= (40 * 100)) {
                                 tellPlayer(player, s2chat.s2_deposit_failure_inv);
                                 pdata.phase2.s2_lastMsg = Date.now();
@@ -249,7 +254,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     var myMoneyLast2 = onboarding_phase2_getLastRan(pdata, 'myMoney');
 
                     if (!pdata.phase2.s3_myMoneySeen) {
-                        if (myMoneyLast2 && pdata.phase2.s3_promptTime && myMoneyLast2 >= pdata.phase2.s3_promptTime) {
+                        if (myMoneyLast2 && pdata.phase2.s3_promptTime && myMoneyLast2 >= (pdata.phase2.s2_completedAt || pdata.phase2.s3_promptTime)) {
                             pdata.phase2.s3_myMoneySeen = true;
                             pdata.phase2.s3_myMoneySeenAt = myMoneyLast2;
                             pdata.phase2.s3_completed = true;
@@ -323,6 +328,15 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         return changed;
                     }
 
+                    // Require the batch to actually be deposited, not just a command attempt.
+                    if (readMoneyFromPlayerInventory(player, player.getWorld()) !== 0) {
+                        if (Date.now() - (pdata.phase2.s3b_lastMsg || 0) > intervalMs) {
+                            tellPlayer(player, phaseCfg.stages.stage1.chat.s3b_reminder);
+                            pdata.phase2.s3b_lastMsg = Date.now();
+                            changed = true;
+                        }
+                        return changed;
+                    }
                     // Completion when depositAll detected
                     pdata.phase2.s3b_completed = true;
                     pdata.phase2.s3b_completedAt = Date.now();
@@ -391,7 +405,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     // Detect !withdraw command
                     var withdrawLastRan = onboarding_phase2_getLastRan(pdata, 'withdraw');
 
-                    if (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < pdata.phase2.s4_withdraw_promptTime)) {
+                    if (!withdrawLastRan || (pdata.phase2.s4_withdraw_promptTime && withdrawLastRan < (pdata.phase2.s4_step2AvailableAt || pdata.phase2.s4_withdraw_promptTime))) {
                         var lastW = pdata.phase2.s4_withdraw_lastMsg || pdata.phase2.s4_withdraw_promptTime || 0;
                         if ((Date.now() - lastW) > intervalMs) {
                             var s4c2r = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
@@ -421,7 +435,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     var invIncreased = (invAfterChk - invBeforeChk) >= expectedCents;
 
                     var s4c2c = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
-                    if (pouchDecreased && invIncreased) {
+                    if ((pouchDecreased && invIncreased) || invAfterChk >= expectedCents) {
                         // Success
                         tellPlayer(player, s4c2c.s4_withdraw_completed);
                         pdata.phase2.s4_withdraw_completed = true;
@@ -468,9 +482,9 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
 
                     // tellPlayer(player, '&7DEBUG: dRan=' + dRan + ' daRan=' + daRan + ' promptTime=' + pdata.phase2.s4_redeposit_promptTime);
 
-                    var triggerTime = pdata.phase2.s4_redeposit_promptTime || 0;
+                    var triggerTime = pdata.phase2.s4_withdraw_completedAt || pdata.phase2.s4_redeposit_promptTime || 0;
                     var hasDeposited = (dRan && dRan >= triggerTime) || (daRan && daRan >= triggerTime);
-                    if (!hasDeposited) {
+                    if (!hasDeposited && readMoneyFromPlayerInventory(player, player.getWorld()) !== 0) {
                         var lastRD = pdata.phase2.s4_redeposit_lastMsg || triggerTime || 0;
                         if ((Date.now() - lastRD) > intervalMs) {
                             var s4c3r = phaseCfg.stages.stage1.chat;
@@ -495,9 +509,11 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         changed = true;
                     } else {
                         // Failure: still has money items left, instruct to run again until no more money items on you
-                        tellPlayer(player, s4c3c.s4_redeposit_failure);
-                        pdata.phase2.s4_redeposit_lastMsg = Date.now();
-                        changed = true;
+                        if (Date.now() - (pdata.phase2.s4_redeposit_lastMsg || 0) > intervalMs) {
+                            tellPlayer(player, s4c3c.s4_redeposit_failure);
+                            pdata.phase2.s4_redeposit_lastMsg = Date.now();
+                            changed = true;
+                        }
                     }
                     break;
                 }
@@ -506,7 +522,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     var invNow4 = 0;
                     try { invNow4 = readMoneyFromPlayerInventory(player, player.getWorld()) || 0; } catch (e40) { invNow4 = 0; }
                     if (!pdata.phase2.s4_multi_started) {
-                        if (invNow4 > 0) {
+                        if (invNow4 > 0 && !onboarding_phase2_hasSixCoins(player)) {
                             // Ask to clear inventory first (reuse validity failure phrasing or custom if provided)
                             var s4m0 = (phaseCfg && phaseCfg.stages && phaseCfg.stages.stage1 && phaseCfg.stages.stage1.chat) ? phaseCfg.stages.stage1.chat : {};
                             var msgV0 = s4m0.s4_validity_failure || s4m0.s4_multi_deposit_first;
@@ -557,7 +573,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     // Detect !withdraw command
                     var withdrawLastRan4 = onboarding_phase2_getLastRan(pdata, 'withdraw');
 
-                    if (!withdrawLastRan4 || (pdata.phase2.s4_multi_promptTime && withdrawLastRan4 < pdata.phase2.s4_multi_promptTime)) {
+                    if (!onboarding_phase2_hasSixCoins(player) && (!withdrawLastRan4 || (pdata.phase2.s4_multi_promptTime && withdrawLastRan4 < pdata.phase2.s4_multi_promptTime))) {
                         var lastM = pdata.phase2.s4_multi_lastMsg || pdata.phase2.s4_multi_promptTime || 0;
                         if ((Date.now() - lastM) > intervalMs) {
                             var s4mR = phaseCfg.stages.stage1.chat;
@@ -587,7 +603,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                         }
                     } catch (cntErr) {}
 
-                    if (onesCount === 6 && totalCents === 600) {
+                    if (onesCount >= 6) {
                         var s4mC = phaseCfg.stages.stage1.chat;
                         tellPlayer(player, s4mC.s4_multi_completed);
                         pdata.phase2.s4_multi_completed = true;
@@ -680,7 +696,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
                     }
 
                     // Keep the player inside the canteen while looking for the waiter
-                    var didConfine = confinePlayerToRegion(player, regionName);
+                    var didConfine = false; // Do not trap players who need to recover money or leave.
                     if (didConfine) {
                         var lastConf = pdata.phase2.s5_waiter_lastConfineMsg || 0;
                         if ((Date.now() - lastConf) > mediumDelayMs) {
@@ -757,7 +773,7 @@ function onboarding_run_phase2(player, pdata, phaseCfg, globalCfg, allPlayersDat
 
                     // Keep the player inside the canteen until purchase detected (lock lifted afterwards)
                     if (!pdata.phase2.s5_purchase_completed) {
-                        var didConfine3 = confinePlayerToRegion(player, regionName3);
+                        var didConfine3 = false; // Purchase remains required, but leaving is allowed.
                         if (didConfine3) {
                             var lastConf3 = pdata.phase2.s5_purchase_lastConfineMsg || 0;
                             if ((Date.now() - lastConf3) > mediumDelayMs) {
@@ -856,4 +872,20 @@ function _countItemsByKeys(player, keys) {
         }
     }
     return counts;
+}
+// Read the same pouch storage used by the existing economy implementation.
+function onboarding_phase2_getPouchBalance(player) {
+    var raw = getWorldData().get('player_' + player.getName());
+    var data = raw ? JSON.parse(raw) : {};
+    return Number(data.money || 0);
+}
+
+function onboarding_phase2_hasSixCoins(player) {
+    var items = player.getInventory().getItems();
+    var count = 0;
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item && getItemMoney(item, player.getWorld(), 'money') === 100) count += item.getStackSize();
+    }
+    return count >= 6;
 }
