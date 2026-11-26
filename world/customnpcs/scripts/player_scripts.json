@@ -89,6 +89,7 @@ function login(event) {
         tellPlayer(player, config.welcomeMessage);
         player.startQuest(config.firstQuestId);
         player.setPosition(config.officePosition.x, config.officePosition.y, config.officePosition.z);
+        logToFile('onboarding', 'Player ' + player.getName() + ' started onboarding V2 questline');
     }
     if (!player.hasActiveQuest(config.firstQuestId) && !player.hasFinishedQuest(config.firstQuestId)) return;
 
@@ -97,7 +98,14 @@ function login(event) {
         uuid: String(player.getUUID())
     });
 }
-",
+
+function questCompleted(event) {
+    event.player.message('Quest completed: ' + event.quest.getId());
+}
+
+function questTurnIn(event) {
+    event.player.message('Quest turned in: ' + event.quest.getId());
+}",
             "Console": [
             ],
             "ScriptList": [
