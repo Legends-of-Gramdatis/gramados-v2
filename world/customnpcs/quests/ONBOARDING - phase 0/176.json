@@ -1,0 +1,49 @@
+{
+    "CompleterNpc": "Elena Marvik",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "A Roof Over My Head",
+    "Text": "I've arrived at the State Hotel, where newcomers are provided with accommodation while they settle into life in Gramados.
+
+I should speak with Elena Marvik, the receptionist, to learn how the State Hotel works and get a room of my own.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 785,
+            "Slot": 0
+        }
+    ],
+    "ModRev": 18,
+    "Type": 1,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1795733116756L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "Elena Marvik has assigned me a room at the State Hotel and provided me with a package containing some basic furniture.
+
+My room number is written on the package. I should find my room before opening it and start making myself at home.",
+    "NextQuestTitle": ""
+}
