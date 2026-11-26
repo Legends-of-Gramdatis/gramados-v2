@@ -4,8 +4,10 @@
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "New",
-    "Text": "",
+    "Title": "A New Beginning",
+    "Text": "I've finally arrived in Gramados! Before I can begin my new life here, I need to complete the immigration formalities at the Zarnivik Office.
+
+I should speak with Daren Krovic, who will explain what awaits me and arrange my transfer to the State Hotel.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -16,8 +18,14 @@
     },
     "RewardExp": 0,
     "QuestCommand": "",
+    "QuestDialogs": [
+        {
+            "Integer": 597,
+            "Slot": 0
+        }
+    ],
     "ModRev": 18,
-    "Type": 5,
+    "Type": 1,
     "QuestMail": {
         "Sender": "",
         "BeenRead": 0b,
@@ -26,16 +34,46 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795724173126L,
+        "TimePast": 1795726352412L,
         "Time": 0L,
         "Subject": ""
     },
     "Rewards": {
         "NpcMiscInv": [
+            {
+                "Slot": 0b,
+                "ForgeCaps": {
+                    "customnpcs:itemscripteddata": {
+                    }
+                },
+                "id": "variedcommodities:bag",
+                "Count": 1b,
+                "tag": {
+                    "modifier_repairs": 0,
+                    "modifier_depleted": 0b,
+                    "modifier_effect": "loot_load",
+                    "modifier_on_depletion": "disappear",
+                    "modifier_cooldown_seconds": 0,
+                    "modifier_loot_tables": "[\"automobile/vehicles/vehicle_ivl_bike.json\",\"automobile/keys/car_keys.json\",\"tools/tools_mts_wrench.json\"]",
+                    "display": {
+                        "Lore": [
+                            "§7Right-click in the air to open this package.",
+                            "§7Uses remaining: §e1"
+                        ],
+                        "Name": "§aSupply Package"
+                    },
+                    "modifier_initial_uses_before_depletion": 0,
+                    "is_modifier": 1b,
+                    "modifier_uses_before_depletion": 0
+                },
+                "Damage": 0s
+            }
         ]
     },
-    "CompleteText": "",
-    "NextQuestTitle": "",
-    "QuestManual": [
-    ]
+    "CompleteText": "My immigration formalities are complete, and I'm officially free to begin my new life in Gramados.
+
+I've been provided with a starter vehicle package to help me get around. I can open it whenever I'm ready.
+
+My next destination is the State Hotel, where accommodation has been arranged for me. From there, it's up to me to make a living and find my place in this country.",
+    "NextQuestTitle": ""
 }
