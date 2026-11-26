@@ -50,6 +50,7 @@ function get_modifier_item_values(tag) {
     for (var key in fields) {
         if (tag.has(fields[key])) values[key] = tag.getDouble(fields[key]);
     }
+    if (tag.has('modifier_loot_tables')) values.lootTables = JSON.parse(tag.getString('modifier_loot_tables'));
     return values;
 }
 
@@ -82,7 +83,7 @@ function create_modifier_item_stack(world, baseStack, spec) {
     var config = loadJson(MODIFIERS_CFG_PATH);
     var effect = spec.type;
     var entry = get_modifier_config_entry(effect);
-    var action = spec.onDepletion === undefined ? config.defaults.onDepletion : spec.onDepletion;
+    var action = spec.onDepletion === undefined ? (entry.onDepletion === undefined ? config.defaults.onDepletion : entry.onDepletion) : spec.onDepletion;
     var nbt = baseStack.copy().getItemNbt();
     var tag = nbt.getCompound('tag');
     tag.setBoolean('is_modifier', true);
@@ -101,6 +102,10 @@ function create_modifier_item_stack(world, baseStack, spec) {
         if (value === undefined) continue;
         if (key === 'multiplier') tag.setDouble(fields[key], value);
         else tag.setInteger(fields[key], value);
+    }
+    tag.remove('modifier_loot_tables');
+    if (effect === 'loot_load') {
+        tag.setString('modifier_loot_tables', JSON.stringify(spec.lootTables === undefined ? entry.lootTables : spec.lootTables));
     }
     tag.setInteger('modifier_initial_uses_before_depletion', tag.getInteger('modifier_uses_before_depletion'));
     if (spec.conflictPolicy) tag.setString('modifier_conflict_policy', spec.conflictPolicy);

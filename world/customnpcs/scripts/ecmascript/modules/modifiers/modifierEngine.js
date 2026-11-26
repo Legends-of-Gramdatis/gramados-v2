@@ -4,6 +4,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_currency.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
 // Each physical item owns its charges and timestamp, even when originally stacked.
@@ -105,7 +107,7 @@ function modifier_admin_create(player, item, block) {
         var effect = alias ? alias.effect : name;
         if (!get_modifier_config_entry(effect)) continue;
         var baseItem = player.getWorld().createItem(config.items.itemId, 0, 1);
-        var result = modifier_create_legacy_preset(player, baseItem, name, 'break');
+        var result = effect === 'loot_load' ? create_modifier_item_stack(player.getWorld(), baseItem, {type: effect}) : modifier_create_legacy_preset(player, baseItem, name, 'break');
         // Blank carriers are consumed one at a time, including stacked carriers.
         replace_used_modifier(player, item, result);
         tellPlayer(player, '&aCreated modifier: ' + effect);
@@ -144,7 +146,18 @@ function interact(event) {
     }
     var values = get_modifier_item_values(tag);
     var success;
-    if (entry.behavior === 'timed') {
+    var lootReward = null;
+    var replacement;
+    if (entry.type === 'loot_load') {
+        lootReward = prepare_modifier_loot(player, values.lootTables);
+        if (!lootReward) {
+            tellPlayer(player, '&eNo loot available. Your modifier was not used.');
+            return;
+        }
+        replacement = modifier_finish_successful_use(player, item, now);
+        if (!commitLootTablePull(lootReward.pull)) return;
+        success = true;
+    } else if (entry.behavior === 'timed') {
         success = apply_passive_modifier_type(player, entry.type, values);
         if (!success) tellPlayer(player, '&eThis modifier effect is already active.');
     } else if (entry.behavior === 'instant') {
@@ -152,7 +165,12 @@ function interact(event) {
         if (!success) tellPlayer(player, '&eNothing changed. Your modifier was not used.');
     }
     if (!success) return;
-    replace_used_modifier(player, original, modifier_finish_successful_use(player, item, now));
+    replace_used_modifier(player, original, lootReward ? replacement : modifier_finish_successful_use(player, item, now));
+    if (lootReward) {
+        for (var i = 0; i < lootReward.rewards.length; i++) {
+            if (!player.giveItem(lootReward.rewards[i])) player.dropItem(lootReward.rewards[i]);
+        }
+    }
     tellPlayer(player, '&aModifier activated: ' + get_modifier_display_name(entry.type, values));
     logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' effect=' + entry.type + ' parameters=' + JSON.stringify(values));
     modifier_play_sound(player, 'shot');

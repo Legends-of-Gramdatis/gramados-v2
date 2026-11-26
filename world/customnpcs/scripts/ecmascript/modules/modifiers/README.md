@@ -99,3 +99,7 @@ The runtime file `world/customnpcs/scripts/data_auto/passive_modifiers.json` mus
 Run `node scripts_backend/tests/modifiers.test.js` from the repository root. The regression fixture executes the production scripts with mocked CustomNPCs items/NBT, inventory, clock, world and persistence.
 
 Before deploying, verify in Minecraft 1.12.2/Nashorn: ordinary and legacy orbs, one stacked multi-use item with a full inventory, free and paid chest recharge, a timed effect across logout/login, cooldown denial, custom broken metadata, and an actual casino modifier-crate pull. Container/NBT behavior and world handlers need this live smoke test; the Node fixture does not emulate the Minecraft server.
+
+## Loot loading modifiers
+
+`loot_load` is an instant effect that rolls each path in `lootTables` once, in order. Paths are relative to `world/loot_tables/`. The list is stored on the item, so subsequent configuration changes do not change existing packages. The default effect grants a bicycle, key and wrench; override `lootTables` in `set_modifier` for other packages. Default depletion is `disappear` (one use). The normal ownership, cooldown and charge rules apply. Right-click in the air. All rewards are prepared before volatile stock is committed; empty or failed preparation does not consume the modifier. Excess rewards are dropped using the existing inventory convention. Admin name tag `loot_load` creates the default package. See `world/loot_tables/modifiers/starter_vehicle_package.json`.
