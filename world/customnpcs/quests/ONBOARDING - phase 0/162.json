@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Daren Krovic",
-    "NextQuestId": -1,
+    "NextQuestId": 176,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
@@ -20,7 +20,7 @@ I should speak with Daren Krovic, who will explain what awaits me and arrange my
     "QuestCommand": "",
     "QuestDialogs": [
         {
-            "Integer": 597,
+            "Integer": 595,
             "Slot": 0
         }
     ],
@@ -34,7 +34,7 @@ I should speak with Daren Krovic, who will explain what awaits me and arrange my
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795726352412L,
+        "TimePast": 1795734543975L,
         "Time": 0L,
         "Subject": ""
     },
@@ -75,5 +75,5 @@ I should speak with Daren Krovic, who will explain what awaits me and arrange my
 I've been provided with a starter vehicle package to help me get around. I can open it whenever I'm ready.
 
 My next destination is the State Hotel, where accommodation has been arranged for me. From there, it's up to me to make a living and find my place in this country.",
-    "NextQuestTitle": ""
+    "NextQuestTitle": "A Roof Over My Head"
 }
