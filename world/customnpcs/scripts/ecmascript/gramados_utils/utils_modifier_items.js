@@ -51,6 +51,10 @@ function get_modifier_item_values(tag) {
         if (tag.has(fields[key])) values[key] = tag.getDouble(fields[key]);
     }
     if (tag.has('modifier_loot_tables')) values.lootTables = JSON.parse(tag.getString('modifier_loot_tables'));
+    var stringFields = {requiredRegion: 'modifier_required_region', displayName: 'modifier_display_name', description: 'modifier_description'};
+    for (var key in stringFields) {
+        if (tag.has(stringFields[key])) values[key] = String(tag.getString(stringFields[key]));
+    }
     return values;
 }
 
@@ -60,11 +64,12 @@ function refresh_modifier_presentation(item) {
     var entry = get_modifier_config_entry(effect);
     var values = get_modifier_item_values(tag);
     var depleted = tag.getBoolean('modifier_depleted');
-    var name = resolve_modifier_presentation(entry.displayName, values);
+    var name = resolve_modifier_presentation(values.displayName === undefined ? entry.displayName : values.displayName, values);
     item.setCustomName(parseEmotes(ccs(name + (depleted ? ' &8(Depleted)' : ''))));
     var lore = [];
-    var description = resolve_modifier_presentation(entry.description, values);
+    var description = resolve_modifier_presentation(values.description === undefined ? entry.description : values.description, values);
     if (description) lore.push(parseEmotes(ccs(description)));
+    if (values.requiredRegion) lore.push(ccs('&7Required region: &e' + values.requiredRegion));
     if (values.radius !== undefined) lore.push(ccs('&7Radius: &e' + values.radius + ' blocks'));
     if (values.durationMinutes !== undefined) lore.push(ccs('&7Duration: &e' + values.durationMinutes + ' online minutes'));
     if (values.multiplier !== undefined) lore.push(ccs('&7Multiplier: &e' + values.multiplier.toFixed(2) + 'x'));
@@ -102,6 +107,11 @@ function create_modifier_item_stack(world, baseStack, spec) {
         if (value === undefined) continue;
         if (key === 'multiplier') tag.setDouble(fields[key], value);
         else tag.setInteger(fields[key], value);
+    }
+    var stringFields = {requiredRegion: 'modifier_required_region', displayName: 'modifier_display_name', description: 'modifier_description'};
+    for (var key in stringFields) {
+        tag.remove(stringFields[key]);
+        if (spec[key] !== undefined) tag.setString(stringFields[key], spec[key]);
     }
     tag.remove('modifier_loot_tables');
     if (effect === 'loot_load') {
