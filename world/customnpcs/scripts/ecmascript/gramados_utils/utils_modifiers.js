@@ -507,5 +507,5 @@ function formatDurationMs(durationMs) {
 
 function get_modifier_display_name(effect, values) {
     var entry = get_modifier_config_entry(effect);
-    return parseEmotes(ccs(resolve_modifier_presentation(entry.displayName, values)));
+    return parseEmotes(ccs(resolve_modifier_presentation(values.displayName === undefined ? entry.displayName : values.displayName, values)));
 }
