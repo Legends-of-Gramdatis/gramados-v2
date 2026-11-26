@@ -7,7 +7,7 @@ function tick(event) {
     var player = event.player;
     if (!player) return;
     // if player name in list, return
-    var excludedPlayers = ['TheOddlySeagull', 'Peter_Gramados'];
+    var excludedPlayers = ['TheOddlySeagull', 'xPeterTheBuilder'];
     if (includes(excludedPlayers, player.name)) {
         return;
     }
