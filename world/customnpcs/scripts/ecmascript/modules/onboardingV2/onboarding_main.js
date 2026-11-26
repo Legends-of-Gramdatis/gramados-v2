@@ -13,6 +13,7 @@ function login(event) {
         tellPlayer(player, config.welcomeMessage);
         player.startQuest(config.firstQuestId);
         player.setPosition(config.officePosition.x, config.officePosition.y, config.officePosition.z);
+        logToFile('onboarding', 'Player ' + player.getName() + ' started onboarding V2 questline');
     }
     if (!player.hasActiveQuest(config.firstQuestId) && !player.hasFinishedQuest(config.firstQuestId)) return;
 
