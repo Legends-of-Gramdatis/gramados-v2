@@ -9,6 +9,19 @@ load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_general.js");
 load("world/customnpcs/scripts/ecmascript/gramados_utils/utils_modifier_items.js");
 load("world/customnpcs/scripts/ecmascript/modules/worldEvents/events/aprilFools/2026/fishSwarm.js");
 
+// Prepare every reward before consuming the modifier or volatile stock.
+function prepare_modifier_loot(player, lootTables) {
+    var pull = prepareLootTablePulls(lootTables, player);
+    if (!pull || !pull.loot.length) return null;
+    var rewards = [];
+    for (var i = 0; i < pull.loot.length; i++) {
+        var stack = generateItemStackFromLootEntry(pull.loot[i], player.getWorld(), player);
+        if (!stack || stack.isEmpty()) return null;
+        rewards.push(stack);
+    }
+    return {pull: pull, rewards: rewards};
+}
+
 var farmCrops = exports_utils_farm_crops;
 var farmFruits = exports_utils_farm_fruits;
 var pickpocket = exports_utils_pickpocket;
