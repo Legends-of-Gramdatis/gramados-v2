@@ -159,10 +159,8 @@ function _prepareLootTablePull(
                     context
                 );
 
-                if (subLoot != null) {
-                    generatedLoot =
-                        generatedLoot.concat(subLoot);
-                }
+                if (subLoot == null) return null;
+                generatedLoot = generatedLoot.concat(subLoot);
 
                 continue;
             }
@@ -301,16 +299,18 @@ function multiplePullLootTable(lootTablePath, player, lootCount) {
  * @returns {Object|null}
  */
 function prepareLootTablePull(lootTablePath, player) {
-    var context = {
-        claims: [],
-        reserved: {}
-    };
+    return prepareLootTablePulls([lootTablePath], player);
+}
 
-    var loot = _prepareLootTablePull(
-        lootTablePath,
-        player,
-        context
-    );
+// Share reservations across all tables before committing any stock.
+function prepareLootTablePulls(lootTablePaths, player) {
+    var context = {claims: [], reserved: {}};
+    var loot = [];
+    for (var i = 0; i < lootTablePaths.length; i++) {
+        var entries = _prepareLootTablePull(lootTablePaths[i], player, context);
+        if (entries == null) return null;
+        loot = loot.concat(entries);
+    }
 
     if (loot == null) {
         return null;
