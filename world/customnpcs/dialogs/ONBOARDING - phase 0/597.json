@@ -36,7 +36,7 @@
     "AvailabilityFaction2Id": -1,
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
-    "DialogDisableEsc": 0b,
+    "DialogDisableEsc": 1b,
     "AvailabilityFaction": 0,
     "DialogTitle": "Quest Start",
     "AvailabilityDialog": 0,
@@ -65,7 +65,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795730208335L,
+        "TimePast": 1795730785927L,
         "Time": 0L,
         "Subject": ""
     }
