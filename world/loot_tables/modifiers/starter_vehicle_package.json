@@ -5,7 +5,7 @@
             "entries": [
                 {
                     "type": "item",
-                    "name": "minecraft:paper",
+                    "name": "variedcommodities:bag",
                     "weight": 1,
                     "functions": [
                         {
