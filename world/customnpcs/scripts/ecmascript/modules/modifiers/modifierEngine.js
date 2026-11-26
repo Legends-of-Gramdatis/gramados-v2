@@ -5,6 +5,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js');
 
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
@@ -145,6 +146,10 @@ function interact(event) {
         return;
     }
     var values = get_modifier_item_values(tag);
+    if (values.requiredRegion && !isPlayerInRegion(player, values.requiredRegion)) {
+        tellPlayer(player, '&cYou cannot use this modifier here. Required region: &e' + values.requiredRegion);
+        return;
+    }
     var success;
     var lootReward = null;
     var replacement;

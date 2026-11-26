@@ -103,3 +103,31 @@ Before deploying, verify in Minecraft 1.12.2/Nashorn: ordinary and legacy orbs, 
 ## Loot loading modifiers
 
 `loot_load` is an instant effect that rolls each path in `lootTables` once, in order. Paths are relative to `world/loot_tables/`. The list is stored on the item, so subsequent configuration changes do not change existing packages. The default effect grants a bicycle, key and wrench; override `lootTables` in `set_modifier` for other packages. Default depletion is `disappear` (one use). The normal ownership, cooldown and charge rules apply. Right-click in the air. All rewards are prepared before volatile stock is committed; empty or failed preparation does not consume the modifier. Excess rewards are dropped using the existing inventory convention. Admin name tag `loot_load` creates the default package. See `world/loot_tables/modifiers/starter_vehicle_package.json`.
+
+## Per-item presentation and region restrictions
+
+The factory and the loot-table `set_modifier` function accept three optional string properties:
+
+- `displayName` (`modifier_display_name`): overrides the configured item name.
+- `description` (`modifier_description`): overrides the configured description. An empty string hides the description.
+- `requiredRegion` (`modifier_required_region`): exact region name accepted by `isPlayerInRegion` (without the `region_` prefix). Omit it for unrestricted activation.
+
+These are per-item NBT values, preserved during use and recharge. Omitted presentation overrides use the existing configured fixed or conditional rules. The region appears in the lore and is checked before any effect or loot preparation; denial does not consume charges, start cooldown or roll loot. This restricts activation only, not recharge, ownership or the ongoing effects of timed modifiers. The custom name applies to the item and activation message, not the timed-effect runtime listing.
+
+Example factory specification (replace the region name with an actual region ID):
+
+```javascript
+{
+    type: 'loot_load',
+    displayName: '&bRoom #204 - Furniture Package',
+    description: '&7Open inside your assigned room.',
+    requiredRegion: roomName,
+    lootTables: [
+        'furniture/furniture_bed.json',
+        'furniture/furniture_storage.json',
+        'furniture/furniture_table.json'
+    ],
+    usesBeforeDepletion: 0,
+    onDepletion: 'disappear'
+}
+```
