@@ -136,7 +136,7 @@
             ],
             "description": [
                 {
-                    "value": "&7Coaxes nearby folk to spill their pockets\u2014sometimes even a little extra.",
+                    "value": "&7Coaxes nearby folk to spill their pockets—sometimes even a little extra.",
                     "when": {
                         "radius": {
                             "lt": 10
@@ -388,6 +388,18 @@
                     "when": {}
                 }
             ]
+        },
+        {
+            "type": "loot_load",
+            "behavior": "instant",
+            "lootTables": [
+                "automobile/vehicles/vehicle_ivl_bike.json",
+                "automobile/keys/car_keys.json",
+                "tools/tools_mts_wrench.json"
+            ],
+            "onDepletion": "disappear",
+            "displayName": "&aSupply Package",
+            "description": "&7Right-click in the air to open this package."
         }
     ],
     "defaults": {
