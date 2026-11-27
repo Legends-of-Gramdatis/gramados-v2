@@ -131,3 +131,11 @@ Example factory specification (replace the region name with an actual region ID)
     onDepletion: 'disappear'
 }
 ```
+
+## Quest completion on activation
+
+The factory and loot-table `set_modifier` accept an optional integer `completeQuestId`, stored as `modifier_complete_quest_id` on the item. For example, add `completeQuestId: 176` to a modifier specification (replace 176 with the intended quest ID).
+
+After successful activation, including charge consumption and loot distribution, the engine calls `player.finishQuest(id)` if the activating player has that quest active. Failed activations and recharge do not complete quests. An absent or inactive quest does not prevent normal modifier use. The property is preserved during use and recharge; creating a new modifier without it removes any inherited tag. Timed modifiers trigger on activation, not expiration.
+
+Verify the native CustomNPCs completion text, rewards, quest events and next-quest behavior in-game before relying on this hook for quest chains.
