@@ -2,6 +2,8 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_onboarding_v2.js'
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_logging.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_chat.js');
 
+load('world/customnpcs/scripts/ecmascript/modules/onboardingV2/onboarding_state_hotel.js');
+
 var ONBOARDING_V2_CONFIG_PATH = 'world/customnpcs/scripts/ecmascript/modules/onboardingV2/onboarding_config.json';
 
 function login(event) {
@@ -21,4 +23,11 @@ function login(event) {
         name: String(player.getName()),
         uuid: String(player.getUUID())
     });
+}
+
+function questTurnIn(event) {
+    var config = loadJson(ONBOARDING_V2_CONFIG_PATH);
+    if (event.quest.getId() === config.hotelQuestId) {
+        onboarding_complete_hotel_quest(event.player);
+    }
 }
