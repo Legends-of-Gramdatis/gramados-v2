@@ -1,3 +1,7 @@
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
+
+var GAMEPLAY_QUESTS_CONFIG_PATH = 'world/customnpcs/scripts/data/gameplay_quests.json';
+
 function complete_quest_objectives(player, questId) {
     var quests = player.getActiveQuests();
 
@@ -14,4 +18,15 @@ function complete_quest_objectives(player, questId) {
     }
 
     return false;
+}
+
+function complete_gameplay_quest(player, action) {
+    var config = loadJson(GAMEPLAY_QUESTS_CONFIG_PATH);
+    var questIds = config[action];
+
+    if (!questIds) return;
+
+    for (var i = 0; i < questIds.length; i++) {
+        complete_quest_objectives(player, questIds[i]);
+    }
 }
