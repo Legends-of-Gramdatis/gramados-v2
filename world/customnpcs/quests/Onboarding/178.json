@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Elena Marvik",
-    "NextQuestId": -1,
+    "NextQuestId": 179,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
@@ -28,7 +28,7 @@ I can use '!setHome <name>' to register my current location as a home. I can cho
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795817436000L,
+        "TimePast": 1795818947951L,
         "Time": 0L,
         "Subject": ""
     },
@@ -37,7 +37,7 @@ I can use '!setHome <name>' to register my current location as a home. I can cho
         ]
     },
     "CompleteText": "I've registered a home! I no longer need to remember the way back to the State Hotel every time I go somewhere.",
-    "NextQuestTitle": "",
+    "NextQuestTitle": "No Place Like Home",
     "QuestManual": [
         {
             "Value": 1,
