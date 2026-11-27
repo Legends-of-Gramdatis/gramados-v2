@@ -1,5 +1,24 @@
 {
-    "home_registered": [178],
-    "home_limit_reached": [178],
-    "home_teleported": [179]
+    "home_registered": [
+        {
+            "questId": 178
+        }
+    ],
+    "home_limit_reached": [
+        {
+            "questId": 178
+        }
+    ],
+    "homes_listed": [
+        {
+            "questId": 179,
+            "objectiveIndex": 0
+        }
+    ],
+    "home_teleported": [
+        {
+            "questId": 179,
+            "objectiveIndex": 1
+        }
+    ]
 }

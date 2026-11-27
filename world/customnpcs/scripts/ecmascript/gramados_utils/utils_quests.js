@@ -2,7 +2,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_files.js');
 
 var GAMEPLAY_QUESTS_CONFIG_PATH = 'world/customnpcs/scripts/data/gameplay_quests.json';
 
-function complete_quest_objectives(player, questId) {
+function complete_quest_objectives(player, questId, objectiveIndex) {
     var quests = player.getActiveQuests();
 
     for (var i = 0; i < quests.length; i++) {
@@ -11,6 +11,7 @@ function complete_quest_objectives(player, questId) {
         var objectives = quests[i].getObjectives(player);
 
         for (var j = 0; j < objectives.length; j++) {
+            if (objectiveIndex !== undefined && j !== objectiveIndex) continue;
             objectives[j].setProgress(objectives[j].getMaxProgress());
         }
 
@@ -22,11 +23,11 @@ function complete_quest_objectives(player, questId) {
 
 function complete_gameplay_quest(player, action) {
     var config = loadJson(GAMEPLAY_QUESTS_CONFIG_PATH);
-    var questIds = config[action];
+    var entries = config[action];
 
-    if (!questIds) return;
+    if (!entries) return;
 
-    for (var i = 0; i < questIds.length; i++) {
-        complete_quest_objectives(player, questIds[i]);
+    for (var i = 0; i < entries.length; i++) {
+        complete_quest_objectives(player, entries[i].questId, entries[i].objectiveIndex);
     }
 }
