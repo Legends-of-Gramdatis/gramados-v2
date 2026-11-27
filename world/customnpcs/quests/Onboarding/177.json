@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Elena Marvik",
-    "NextQuestId": -1,
+    "NextQuestId": 178,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
@@ -28,7 +28,7 @@ Once inside my room, I can open the package by right-clicking with it in my hand
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795815071915L,
+        "TimePast": 1795817428699L,
         "Time": 0L,
         "Subject": ""
     },
@@ -37,7 +37,7 @@ Once inside my room, I can open the package by right-clicking with it in my hand
         ]
     },
     "CompleteText": "I've found my room and unpacked my furniture. I finally have the essentials to start making myself at home in Gramados.",
-    "NextQuestTitle": "",
+    "NextQuestTitle": "A Place to Return To",
     "QuestManual": [
         {
             "Value": 1,
