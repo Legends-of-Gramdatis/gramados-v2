@@ -42,7 +42,8 @@ function onboarding_complete_hotel_quest(player) {
             _LOOTTABLE_FURNITURE_TABLE
         ],
         usesBeforeDepletion: 0,
-        onDepletion: 'disappear'
+        onDepletion: 'disappear',
+        completeQuestId: 177
     });
 
     if (!player.giveItem(packageItem)) player.dropItem(packageItem);
