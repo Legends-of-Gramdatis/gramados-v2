@@ -55,6 +55,7 @@ function get_modifier_item_values(tag) {
     for (var key in stringFields) {
         if (tag.has(stringFields[key])) values[key] = String(tag.getString(stringFields[key]));
     }
+    if (tag.has('modifier_complete_quest_id')) values.completeQuestId = tag.getInteger('modifier_complete_quest_id');
     return values;
 }
 
@@ -113,6 +114,8 @@ function create_modifier_item_stack(world, baseStack, spec) {
         tag.remove(stringFields[key]);
         if (spec[key] !== undefined) tag.setString(stringFields[key], spec[key]);
     }
+    tag.remove('modifier_complete_quest_id');
+    if (spec.completeQuestId !== undefined) tag.setInteger('modifier_complete_quest_id', spec.completeQuestId);
     tag.remove('modifier_loot_tables');
     if (effect === 'loot_load') {
         tag.setString('modifier_loot_tables', JSON.stringify(spec.lootTables === undefined ? entry.lootTables : spec.lootTables));
