@@ -1,6 +1,6 @@
 {
     "CompleterNpc": "Elena Marvik",
-    "NextQuestId": -1,
+    "NextQuestId": 177,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
@@ -34,7 +34,7 @@ I should speak with Elena Marvik, the receptionist, to learn how the State Hotel
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795733116756L,
+        "TimePast": 1795814094899L,
         "Time": 0L,
         "Subject": ""
     },
@@ -45,5 +45,5 @@ I should speak with Elena Marvik, the receptionist, to learn how the State Hotel
     "CompleteText": "Elena Marvik has assigned me a room at the State Hotel and provided me with a package containing some basic furniture.
 
 My room number is written on the package. I should find my room before opening it and start making myself at home.",
-    "NextQuestTitle": ""
+    "NextQuestTitle": "Making Myself at Home"
 }

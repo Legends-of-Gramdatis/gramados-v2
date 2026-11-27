@@ -7,7 +7,7 @@
     "Title": "Making Myself at Home",
     "Text": "I've been assigned a room at the State Hotel. I should find it using the room number written on my furniture package.
 
-Once inside, I can open the package and start furnishing my room.",
+Once inside my room, I can open the package by right-clicking with it in my hand.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -28,7 +28,7 @@ Once inside, I can open the package and start furnishing my room.",
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795813394448L,
+        "TimePast": 1795815071915L,
         "Time": 0L,
         "Subject": ""
     },
@@ -36,8 +36,12 @@ Once inside, I can open the package and start furnishing my room.",
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "I've found my room and unpacked my furniture. It isn't much yet, but at least I have somewhere of my own in Gramados.",
+    "CompleteText": "I've found my room and unpacked my furniture. I finally have the essentials to start making myself at home in Gramados.",
     "NextQuestTitle": "",
     "QuestManual": [
+        {
+            "Value": 1,
+            "Slot": "Open the package in your room"
+        }
     ]
 }
