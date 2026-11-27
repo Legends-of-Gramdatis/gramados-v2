@@ -2,6 +2,16 @@
     "DialogShowWheel": 0b,
     "AvailabilityQuestId": -1,
     "Options": [
+        {
+            "OptionSlot": 0,
+            "Option": {
+                "DialogCommand": "tp @dp -1884 88.5 -192",
+                "Dialog": -1,
+                "Title": "Thank you !",
+                "DialogColor": 14737632,
+                "OptionType": 4
+            }
+        }
     ],
     "AvailabilityScoreboardType": 1,
     "DialogHideNPC": 0b,
@@ -26,7 +36,7 @@
     "AvailabilityFaction2Id": -1,
     "OptionFaction1Points": 100,
     "AvailabilityScoreboardValue": 1,
-    "DialogDisableEsc": 0b,
+    "DialogDisableEsc": 1b,
     "AvailabilityFaction": 0,
     "DialogTitle": "Quest Start",
     "AvailabilityDialog": 0,
@@ -55,7 +65,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1758225591204L,
+        "TimePast": 1795733863687L,
         "Time": 0L,
         "Subject": ""
     }

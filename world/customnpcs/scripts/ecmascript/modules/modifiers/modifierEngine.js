@@ -6,6 +6,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_item_ownership.js
 
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_loot_tables.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_region.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_quests.js');
 
 var API = Java.type('noppes.npcs.api.NpcAPI').Instance();
 
@@ -179,8 +180,8 @@ function interact(event) {
     tellPlayer(player, '&aModifier activated: ' + get_modifier_display_name(entry.type, values));
     logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' effect=' + entry.type + ' parameters=' + JSON.stringify(values));
     modifier_play_sound(player, 'shot');
-    if (values.completeQuestId !== undefined && player.hasActiveQuest(values.completeQuestId)) {
-        player.finishQuest(values.completeQuestId);
+    if (values.completeQuestId !== undefined) {
+        complete_quest_objectives(player, values.completeQuestId);
     }
 }
 

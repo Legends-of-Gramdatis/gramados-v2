@@ -14,6 +14,7 @@ load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_winemaking.js');
 load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_volatile_loot_pools.js');
 load('world/customnpcs/scripts/ecmascript/modules/worldEvents/worldEventUtils.js');
 load('world/customnpcs/scripts/ecmascript/modules/contactInformation/contactInformation_utils.js');
+load('world/customnpcs/scripts/ecmascript/gramados_utils/utils_quests.js');
 
 var gramados_json = loadJson("world/customnpcs/scripts/data/gramados_data.json");
 
@@ -8834,21 +8835,27 @@ registerXCommands([
         var ppos = pl.getPos();
         plo.load(data);
 
-        if (plo.data.maxHomes == -1 || Object.keys(plo.data.homes).length < plo.data.maxHomes) {
-            plo.addHome(args.name, ppos.getX(), ppos.getY(), ppos.getZ());
-            //check if the player owns the region where the home is set
+        var homeExists = Object.prototype.hasOwnProperty.call(plo.data.homes, args.name);
+
+        if (homeExists || plo.data.maxHomes == -1 || Object.keys(plo.data.homes).length < plo.data.maxHomes) {
             var r = getRegionObjectAtPos(pl.getPos(), pl.world);
+
             if (r != null && (r.isTrusted(pl.getName()) || r.isOwner(pl.getName()))) {
-                tellPlayer(pl, "&aAdded home '" + args.name + "'!");
+                plo.addHome(args.name, ppos.getX(), ppos.getY(), ppos.getZ());
+                tellPlayer(pl, "&a" + (homeExists ? "Updated" : "Added") + " home '" + args.name + "'!");
                 plo.save(data);
+                complete_gameplay_quest(pl, 'home_registered');
                 return true;
             } else {
                 tellPlayer(pl, "&cYou can't set a home in a region you don't own or are not trusted in!&r [&9Your Regions{run_command:!myregions}&r]");
                 return false;
             }
-
         } else {
             tellPlayer(pl, "&cYou have reached maximum amount of homes! (" + plo.data.maxHomes + ")");
+
+            if (Object.keys(plo.data.homes).length > 0) {
+                complete_gameplay_quest(pl, 'home_limit_reached');
+            }
         }
 
         return false;
@@ -8872,6 +8879,7 @@ registerXCommands([
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         plo.load(data);
+        complete_gameplay_quest(pl, 'homes_listed');
         // Newcomer grace period check (first 30 days since first login)
         var nowMs_mh = new Date().getTime();
         var firstLogin_mh = (plo.data && typeof plo.data.firstLogin === 'number') ? plo.data.firstLogin : nowMs_mh;
@@ -8919,8 +8927,6 @@ registerXCommands([
             if (plo.hasHome(hname)) {
                 var h = plo.data.homes[hname];
 
-                plo.registerBackPos(pl.pos).save(data);
-
                 // check how much money the player has
                 var cost = 0;
 
@@ -8948,10 +8954,12 @@ registerXCommands([
                     tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &eFree (newcomer)');
                 }
 
+                plo.registerBackPos(pl.pos).save(data);
                 pl.setPosition(h.x, h.y, h.z);
+                complete_gameplay_quest(pl, 'home_teleported');
                 return true;
             } else {
-                tellPlayer(pl, "&cHome '" + args.name + "' does not exist!");
+                tellPlayer(pl, "&cHome '" + hname + "' does not exist!");
             }
         } else {
             tellPlayer(pl, "&cYou don't have any default home set!");

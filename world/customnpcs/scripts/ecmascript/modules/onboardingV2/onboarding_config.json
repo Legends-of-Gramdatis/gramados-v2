@@ -1,0 +1,13 @@
+{
+    "players": [
+        "TheHolySeagull"
+    ],
+    "firstQuestId": 162,
+    "hotelQuestId": 176,
+    "officePosition": {
+        "x": -4324,
+        "y": 88.5,
+        "z": 3723
+    },
+    "welcomeMessage": "&b:sun: Welcome to Gramados! Please speak with &6&lDaren Krovic &r&bto complete your arrival paperwork. Check your &6&lQuest Journal &r&bfor more information."
+}

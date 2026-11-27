@@ -1,0 +1,53 @@
+{
+    "CompleterNpc": "Elena Marvik",
+    "NextQuestId": -1,
+    "RandomReward": 0b,
+    "QuestRepeat": 0,
+    "QuestCompletion": 1,
+    "Title": "No Place Like Home",
+    "Text": "Now that I've registered a home, I should learn how to return to it.
+
+I can use '!myHomes' to see my registered homes and '!home <name>' to teleport to one of them.
+
+I should try these commands before continuing my journey through Gramados.",
+    "QuestFactionPoints": {
+        "DecreaseFaction1Points": 0b,
+        "OptionFaction2Points": 100,
+        "OptionFactions1": -1,
+        "OptionFactions2": -1,
+        "OptionFaction1Points": 100,
+        "DecreaseFaction2Points": 0b
+    },
+    "RewardExp": 0,
+    "QuestCommand": "",
+    "ModRev": 18,
+    "Type": 5,
+    "QuestMail": {
+        "Sender": "",
+        "BeenRead": 0b,
+        "Message": {
+        },
+        "MailItems": [
+        ],
+        "MailQuest": -1,
+        "TimePast": 1795818967850L,
+        "Time": 0L,
+        "Subject": ""
+    },
+    "Rewards": {
+        "NpcMiscInv": [
+        ]
+    },
+    "CompleteText": "I now know how to find and return to my registered homes. I can explore Gramados without worrying about how to get back.",
+    "NextQuestTitle": "",
+    "QuestManual": [
+        {
+            "Value": 1,
+            "Slot": "List my registered homes"
+        },
+        {
+            "Value": 1,
+            "Slot": "Teleport to a home"
+        }
+    ]
+}

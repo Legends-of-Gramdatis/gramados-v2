@@ -1,11 +1,13 @@
 {
-    "CompleterNpc": "Daren Krovic",
-    "NextQuestId": -1,
+    "CompleterNpc": "Elena Marvik",
+    "NextQuestId": 178,
     "RandomReward": 0b,
     "QuestRepeat": 0,
     "QuestCompletion": 1,
-    "Title": "New",
-    "Text": "",
+    "Title": "Making Myself at Home",
+    "Text": "I've been assigned a room at the State Hotel. I should find it using the room number written on my furniture package.
+
+Once inside my room, I can open the package by right-clicking with it in my hand.",
     "QuestFactionPoints": {
         "DecreaseFaction1Points": 0b,
         "OptionFaction2Points": 100,
@@ -26,7 +28,7 @@
         "MailItems": [
         ],
         "MailQuest": -1,
-        "TimePast": 1795724173126L,
+        "TimePast": 1795817428699L,
         "Time": 0L,
         "Subject": ""
     },
@@ -34,8 +36,12 @@
         "NpcMiscInv": [
         ]
     },
-    "CompleteText": "",
-    "NextQuestTitle": "",
+    "CompleteText": "I've found my room and unpacked my furniture. I finally have the essentials to start making myself at home in Gramados.",
+    "NextQuestTitle": "A Place to Return To",
     "QuestManual": [
+        {
+            "Value": 1,
+            "Slot": "Open the package in your room"
+        }
     ]
 }
