@@ -8879,6 +8879,7 @@ registerXCommands([
         var plo = new Player(pl.getName());
         var data = pl.world.getStoreddata();
         plo.load(data);
+        complete_gameplay_quest(pl, 'homes_listed');
         // Newcomer grace period check (first 30 days since first login)
         var nowMs_mh = new Date().getTime();
         var firstLogin_mh = (plo.data && typeof plo.data.firstLogin === 'number') ? plo.data.firstLogin : nowMs_mh;
@@ -8926,8 +8927,6 @@ registerXCommands([
             if (plo.hasHome(hname)) {
                 var h = plo.data.homes[hname];
 
-                plo.registerBackPos(pl.pos).save(data);
-
                 // check how much money the player has
                 var cost = 0;
 
@@ -8955,10 +8954,12 @@ registerXCommands([
                     tellPlayer(pl, '&aTaking the taxi to destination &r' + hname + '&a! cost: &eFree (newcomer)');
                 }
 
+                plo.registerBackPos(pl.pos).save(data);
                 pl.setPosition(h.x, h.y, h.z);
+                complete_gameplay_quest(pl, 'home_teleported');
                 return true;
             } else {
-                tellPlayer(pl, "&cHome '" + args.name + "' does not exist!");
+                tellPlayer(pl, "&cHome '" + hname + "' does not exist!");
             }
         } else {
             tellPlayer(pl, "&cYou don't have any default home set!");
