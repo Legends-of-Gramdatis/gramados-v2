@@ -179,6 +179,9 @@ function interact(event) {
     tellPlayer(player, '&aModifier activated: ' + get_modifier_display_name(entry.type, values));
     logToFile('modifiers', '[modifiers.use] player=' + player.getName() + ' effect=' + entry.type + ' parameters=' + JSON.stringify(values));
     modifier_play_sound(player, 'shot');
+    if (values.completeQuestId !== undefined && player.hasActiveQuest(values.completeQuestId)) {
+        player.finishQuest(values.completeQuestId);
+    }
 }
 
 function logout(event) {
